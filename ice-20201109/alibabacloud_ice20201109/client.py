@@ -4804,6 +4804,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_template_with_options_async(request, runtime)
 
+    def describe_aiagent_instance_with_options(
+        self,
+        request: ice20201109_models.DescribeAIAgentInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DescribeAIAgentInstanceResponse:
+        """
+        @summary 查询实例
+        
+        @param request: DescribeAIAgentInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAIAgentInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAIAgentInstance',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DescribeAIAgentInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_aiagent_instance_with_options_async(
+        self,
+        request: ice20201109_models.DescribeAIAgentInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DescribeAIAgentInstanceResponse:
+        """
+        @summary 查询实例
+        
+        @param request: DescribeAIAgentInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAIAgentInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAIAgentInstance',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DescribeAIAgentInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_aiagent_instance(
+        self,
+        request: ice20201109_models.DescribeAIAgentInstanceRequest,
+    ) -> ice20201109_models.DescribeAIAgentInstanceResponse:
+        """
+        @summary 查询实例
+        
+        @param request: DescribeAIAgentInstanceRequest
+        @return: DescribeAIAgentInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_aiagent_instance_with_options(request, runtime)
+
+    async def describe_aiagent_instance_async(
+        self,
+        request: ice20201109_models.DescribeAIAgentInstanceRequest,
+    ) -> ice20201109_models.DescribeAIAgentInstanceResponse:
+        """
+        @summary 查询实例
+        
+        @param request: DescribeAIAgentInstanceRequest
+        @return: DescribeAIAgentInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_aiagent_instance_with_options_async(request, runtime)
+
     def describe_meter_ims_edit_usage_with_options(
         self,
         request: ice20201109_models.DescribeMeterImsEditUsageRequest,
@@ -5307,6 +5403,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_meter_ims_summary_with_options_async(request, runtime)
+
+    def describe_notify_config_with_options(
+        self,
+        request: ice20201109_models.DescribeNotifyConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DescribeNotifyConfigResponse:
+        """
+        @summary 描述回调配置
+        
+        @param request: DescribeNotifyConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNotifyConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aiagent_id):
+            query['AIAgentId'] = request.aiagent_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNotifyConfig',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DescribeNotifyConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_notify_config_with_options_async(
+        self,
+        request: ice20201109_models.DescribeNotifyConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DescribeNotifyConfigResponse:
+        """
+        @summary 描述回调配置
+        
+        @param request: DescribeNotifyConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNotifyConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aiagent_id):
+            query['AIAgentId'] = request.aiagent_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNotifyConfig',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DescribeNotifyConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_notify_config(
+        self,
+        request: ice20201109_models.DescribeNotifyConfigRequest,
+    ) -> ice20201109_models.DescribeNotifyConfigResponse:
+        """
+        @summary 描述回调配置
+        
+        @param request: DescribeNotifyConfigRequest
+        @return: DescribeNotifyConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_notify_config_with_options(request, runtime)
+
+    async def describe_notify_config_async(
+        self,
+        request: ice20201109_models.DescribeNotifyConfigRequest,
+    ) -> ice20201109_models.DescribeNotifyConfigResponse:
+        """
+        @summary 描述回调配置
+        
+        @param request: DescribeNotifyConfigRequest
+        @return: DescribeNotifyConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_notify_config_with_options_async(request, runtime)
 
     def describe_play_list_with_options(
         self,
@@ -5823,6 +6015,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.drop_search_lib_with_options_async(request, runtime)
+
+    def generate_aiagent_call_with_options(
+        self,
+        tmp_req: ice20201109_models.GenerateAIAgentCallRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GenerateAIAgentCallResponse:
+        """
+        @summary 创建一个智能体实例，返回智能体所在的频道、频道内名称以及进入频道所需的token。
+        
+        @param tmp_req: GenerateAIAgentCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateAIAgentCallResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.GenerateAIAgentCallShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.template_config):
+            request.template_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template_config, 'TemplateConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.aiagent_id):
+            query['AIAgentId'] = request.aiagent_id
+        if not UtilClient.is_unset(request.expire):
+            query['Expire'] = request.expire
+        if not UtilClient.is_unset(request.template_config_shrink):
+            query['TemplateConfig'] = request.template_config_shrink
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateAIAgentCall',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GenerateAIAgentCallResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generate_aiagent_call_with_options_async(
+        self,
+        tmp_req: ice20201109_models.GenerateAIAgentCallRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GenerateAIAgentCallResponse:
+        """
+        @summary 创建一个智能体实例，返回智能体所在的频道、频道内名称以及进入频道所需的token。
+        
+        @param tmp_req: GenerateAIAgentCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateAIAgentCallResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.GenerateAIAgentCallShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.template_config):
+            request.template_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template_config, 'TemplateConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.aiagent_id):
+            query['AIAgentId'] = request.aiagent_id
+        if not UtilClient.is_unset(request.expire):
+            query['Expire'] = request.expire
+        if not UtilClient.is_unset(request.template_config_shrink):
+            query['TemplateConfig'] = request.template_config_shrink
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateAIAgentCall',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GenerateAIAgentCallResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generate_aiagent_call(
+        self,
+        request: ice20201109_models.GenerateAIAgentCallRequest,
+    ) -> ice20201109_models.GenerateAIAgentCallResponse:
+        """
+        @summary 创建一个智能体实例，返回智能体所在的频道、频道内名称以及进入频道所需的token。
+        
+        @param request: GenerateAIAgentCallRequest
+        @return: GenerateAIAgentCallResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.generate_aiagent_call_with_options(request, runtime)
+
+    async def generate_aiagent_call_async(
+        self,
+        request: ice20201109_models.GenerateAIAgentCallRequest,
+    ) -> ice20201109_models.GenerateAIAgentCallResponse:
+        """
+        @summary 创建一个智能体实例，返回智能体所在的频道、频道内名称以及进入频道所需的token。
+        
+        @param request: GenerateAIAgentCallRequest
+        @return: GenerateAIAgentCallResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.generate_aiagent_call_with_options_async(request, runtime)
 
     def generate_kmsdata_key_with_options(
         self,
@@ -10055,6 +10363,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.insert_media_to_search_lib_with_options_async(request, runtime)
+
+    def list_aiagent_instance_with_options(
+        self,
+        request: ice20201109_models.ListAIAgentInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListAIAgentInstanceResponse:
+        """
+        @summary 列出实例
+        
+        @param request: ListAIAgentInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAIAgentInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aiagent_id):
+            query['AIAgentId'] = request.aiagent_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAIAgentInstance',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListAIAgentInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_aiagent_instance_with_options_async(
+        self,
+        request: ice20201109_models.ListAIAgentInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListAIAgentInstanceResponse:
+        """
+        @summary 列出实例
+        
+        @param request: ListAIAgentInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAIAgentInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aiagent_id):
+            query['AIAgentId'] = request.aiagent_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAIAgentInstance',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListAIAgentInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_aiagent_instance(
+        self,
+        request: ice20201109_models.ListAIAgentInstanceRequest,
+    ) -> ice20201109_models.ListAIAgentInstanceResponse:
+        """
+        @summary 列出实例
+        
+        @param request: ListAIAgentInstanceRequest
+        @return: ListAIAgentInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_aiagent_instance_with_options(request, runtime)
+
+    async def list_aiagent_instance_async(
+        self,
+        request: ice20201109_models.ListAIAgentInstanceRequest,
+    ) -> ice20201109_models.ListAIAgentInstanceResponse:
+        """
+        @summary 列出实例
+        
+        @param request: ListAIAgentInstanceRequest
+        @return: ListAIAgentInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_aiagent_instance_with_options_async(request, runtime)
 
     def list_all_public_media_tags_with_options(
         self,
@@ -16018,6 +16438,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.search_public_media_info_with_options_async(request, runtime)
 
+    def send_aiagent_speech_with_options(
+        self,
+        request: ice20201109_models.SendAIAgentSpeechRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SendAIAgentSpeechResponse:
+        """
+        @summary 用来立即让某个智能体实例播报指定的文本。
+        
+        @param request: SendAIAgentSpeechRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendAIAgentSpeechResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.enable_interrupt):
+            query['EnableInterrupt'] = request.enable_interrupt
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.text):
+            query['Text'] = request.text
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendAIAgentSpeech',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SendAIAgentSpeechResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_aiagent_speech_with_options_async(
+        self,
+        request: ice20201109_models.SendAIAgentSpeechRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SendAIAgentSpeechResponse:
+        """
+        @summary 用来立即让某个智能体实例播报指定的文本。
+        
+        @param request: SendAIAgentSpeechRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendAIAgentSpeechResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.enable_interrupt):
+            query['EnableInterrupt'] = request.enable_interrupt
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.text):
+            query['Text'] = request.text
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendAIAgentSpeech',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SendAIAgentSpeechResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_aiagent_speech(
+        self,
+        request: ice20201109_models.SendAIAgentSpeechRequest,
+    ) -> ice20201109_models.SendAIAgentSpeechResponse:
+        """
+        @summary 用来立即让某个智能体实例播报指定的文本。
+        
+        @param request: SendAIAgentSpeechRequest
+        @return: SendAIAgentSpeechResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.send_aiagent_speech_with_options(request, runtime)
+
+    async def send_aiagent_speech_async(
+        self,
+        request: ice20201109_models.SendAIAgentSpeechRequest,
+    ) -> ice20201109_models.SendAIAgentSpeechResponse:
+        """
+        @summary 用来立即让某个智能体实例播报指定的文本。
+        
+        @param request: SendAIAgentSpeechRequest
+        @return: SendAIAgentSpeechResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.send_aiagent_speech_with_options_async(request, runtime)
+
     def send_live_snapshot_job_command_with_options(
         self,
         request: ice20201109_models.SendLiveSnapshotJobCommandRequest,
@@ -16638,6 +17162,238 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.set_event_callback_with_options_async(request, runtime)
 
+    def set_notify_config_with_options(
+        self,
+        request: ice20201109_models.SetNotifyConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SetNotifyConfigResponse:
+        """
+        @summary 更新回调配置
+        
+        @param request: SetNotifyConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetNotifyConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aiagent_id):
+            query['AIAgentId'] = request.aiagent_id
+        if not UtilClient.is_unset(request.callback_url):
+            query['CallbackUrl'] = request.callback_url
+        if not UtilClient.is_unset(request.enable_notify):
+            query['EnableNotify'] = request.enable_notify
+        if not UtilClient.is_unset(request.event_types):
+            query['EventTypes'] = request.event_types
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetNotifyConfig',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SetNotifyConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_notify_config_with_options_async(
+        self,
+        request: ice20201109_models.SetNotifyConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SetNotifyConfigResponse:
+        """
+        @summary 更新回调配置
+        
+        @param request: SetNotifyConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetNotifyConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aiagent_id):
+            query['AIAgentId'] = request.aiagent_id
+        if not UtilClient.is_unset(request.callback_url):
+            query['CallbackUrl'] = request.callback_url
+        if not UtilClient.is_unset(request.enable_notify):
+            query['EnableNotify'] = request.enable_notify
+        if not UtilClient.is_unset(request.event_types):
+            query['EventTypes'] = request.event_types
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetNotifyConfig',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SetNotifyConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_notify_config(
+        self,
+        request: ice20201109_models.SetNotifyConfigRequest,
+    ) -> ice20201109_models.SetNotifyConfigResponse:
+        """
+        @summary 更新回调配置
+        
+        @param request: SetNotifyConfigRequest
+        @return: SetNotifyConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.set_notify_config_with_options(request, runtime)
+
+    async def set_notify_config_async(
+        self,
+        request: ice20201109_models.SetNotifyConfigRequest,
+    ) -> ice20201109_models.SetNotifyConfigResponse:
+        """
+        @summary 更新回调配置
+        
+        @param request: SetNotifyConfigRequest
+        @return: SetNotifyConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.set_notify_config_with_options_async(request, runtime)
+
+    def start_aiagent_instance_with_options(
+        self,
+        tmp_req: ice20201109_models.StartAIAgentInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.StartAIAgentInstanceResponse:
+        """
+        @summary 启动一个智能体实例，并加入通话。
+        
+        @param tmp_req: StartAIAgentInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartAIAgentInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.StartAIAgentInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.runtime_config):
+            request.runtime_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.runtime_config, 'RuntimeConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.template_config):
+            request.template_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template_config, 'TemplateConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.aiagent_id):
+            query['AIAgentId'] = request.aiagent_id
+        if not UtilClient.is_unset(request.runtime_config_shrink):
+            query['RuntimeConfig'] = request.runtime_config_shrink
+        if not UtilClient.is_unset(request.template_config_shrink):
+            query['TemplateConfig'] = request.template_config_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartAIAgentInstance',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.StartAIAgentInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_aiagent_instance_with_options_async(
+        self,
+        tmp_req: ice20201109_models.StartAIAgentInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.StartAIAgentInstanceResponse:
+        """
+        @summary 启动一个智能体实例，并加入通话。
+        
+        @param tmp_req: StartAIAgentInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartAIAgentInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.StartAIAgentInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.runtime_config):
+            request.runtime_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.runtime_config, 'RuntimeConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.template_config):
+            request.template_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template_config, 'TemplateConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.aiagent_id):
+            query['AIAgentId'] = request.aiagent_id
+        if not UtilClient.is_unset(request.runtime_config_shrink):
+            query['RuntimeConfig'] = request.runtime_config_shrink
+        if not UtilClient.is_unset(request.template_config_shrink):
+            query['TemplateConfig'] = request.template_config_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartAIAgentInstance',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.StartAIAgentInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_aiagent_instance(
+        self,
+        request: ice20201109_models.StartAIAgentInstanceRequest,
+    ) -> ice20201109_models.StartAIAgentInstanceResponse:
+        """
+        @summary 启动一个智能体实例，并加入通话。
+        
+        @param request: StartAIAgentInstanceRequest
+        @return: StartAIAgentInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.start_aiagent_instance_with_options(request, runtime)
+
+    async def start_aiagent_instance_async(
+        self,
+        request: ice20201109_models.StartAIAgentInstanceRequest,
+    ) -> ice20201109_models.StartAIAgentInstanceResponse:
+        """
+        @summary 启动一个智能体实例，并加入通话。
+        
+        @param request: StartAIAgentInstanceRequest
+        @return: StartAIAgentInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.start_aiagent_instance_with_options_async(request, runtime)
+
     def start_rtc_robot_instance_with_options(
         self,
         tmp_req: ice20201109_models.StartRtcRobotInstanceRequest,
@@ -16865,6 +17621,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.start_workflow_with_options_async(request, runtime)
+
+    def stop_aiagent_instance_with_options(
+        self,
+        request: ice20201109_models.StopAIAgentInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.StopAIAgentInstanceResponse:
+        """
+        @summary 停止一个智能体实例。
+        
+        @param request: StopAIAgentInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopAIAgentInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopAIAgentInstance',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.StopAIAgentInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_aiagent_instance_with_options_async(
+        self,
+        request: ice20201109_models.StopAIAgentInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.StopAIAgentInstanceResponse:
+        """
+        @summary 停止一个智能体实例。
+        
+        @param request: StopAIAgentInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopAIAgentInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopAIAgentInstance',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.StopAIAgentInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_aiagent_instance(
+        self,
+        request: ice20201109_models.StopAIAgentInstanceRequest,
+    ) -> ice20201109_models.StopAIAgentInstanceResponse:
+        """
+        @summary 停止一个智能体实例。
+        
+        @param request: StopAIAgentInstanceRequest
+        @return: StopAIAgentInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.stop_aiagent_instance_with_options(request, runtime)
+
+    async def stop_aiagent_instance_async(
+        self,
+        request: ice20201109_models.StopAIAgentInstanceRequest,
+    ) -> ice20201109_models.StopAIAgentInstanceResponse:
+        """
+        @summary 停止一个智能体实例。
+        
+        @param request: StopAIAgentInstanceRequest
+        @return: StopAIAgentInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_aiagent_instance_with_options_async(request, runtime)
 
     def stop_rtc_robot_instance_with_options(
         self,
@@ -20273,6 +21125,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.submit_video_translation_job_with_options_async(request, runtime)
+
+    def update_aiagent_instance_with_options(
+        self,
+        tmp_req: ice20201109_models.UpdateAIAgentInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.UpdateAIAgentInstanceResponse:
+        """
+        @summary 修改实例的配置
+        
+        @param tmp_req: UpdateAIAgentInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAIAgentInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.UpdateAIAgentInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.template_config):
+            request.template_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template_config, 'TemplateConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.template_config_shrink):
+            query['TemplateConfig'] = request.template_config_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAIAgentInstance',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.UpdateAIAgentInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_aiagent_instance_with_options_async(
+        self,
+        tmp_req: ice20201109_models.UpdateAIAgentInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.UpdateAIAgentInstanceResponse:
+        """
+        @summary 修改实例的配置
+        
+        @param tmp_req: UpdateAIAgentInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAIAgentInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.UpdateAIAgentInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.template_config):
+            request.template_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template_config, 'TemplateConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.template_config_shrink):
+            query['TemplateConfig'] = request.template_config_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAIAgentInstance',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.UpdateAIAgentInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_aiagent_instance(
+        self,
+        request: ice20201109_models.UpdateAIAgentInstanceRequest,
+    ) -> ice20201109_models.UpdateAIAgentInstanceResponse:
+        """
+        @summary 修改实例的配置
+        
+        @param request: UpdateAIAgentInstanceRequest
+        @return: UpdateAIAgentInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_aiagent_instance_with_options(request, runtime)
+
+    async def update_aiagent_instance_async(
+        self,
+        request: ice20201109_models.UpdateAIAgentInstanceRequest,
+    ) -> ice20201109_models.UpdateAIAgentInstanceResponse:
+        """
+        @summary 修改实例的配置
+        
+        @param request: UpdateAIAgentInstanceRequest
+        @return: UpdateAIAgentInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_aiagent_instance_with_options_async(request, runtime)
 
     def update_avatar_training_job_with_options(
         self,

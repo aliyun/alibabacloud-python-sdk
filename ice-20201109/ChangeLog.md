@@ -1,3 +1,15 @@
+2024-09-24 Version: 3.6.0
+- Support API DescribeAIAgentInstance.
+- Support API DescribeNotifyConfig.
+- Support API GenerateAIAgentCall.
+- Support API ListAIAgentInstance.
+- Support API SendAIAgentSpeech.
+- Support API SetNotifyConfig.
+- Support API StartAIAgentInstance.
+- Support API StopAIAgentInstance.
+- Support API UpdateAIAgentInstance.
+
+
 2024-08-27 Version: 3.5.1
 - Generated python 2020-11-09 for ICE.
 
