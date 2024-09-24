@@ -719,6 +719,8 @@ class Client(OpenApiClient):
             query['CustomHostAlias'] = request.custom_host_alias
         if not UtilClient.is_unset(request.deploy):
             query['Deploy'] = request.deploy
+        if not UtilClient.is_unset(request.dotnet):
+            query['Dotnet'] = request.dotnet
         if not UtilClient.is_unset(request.edas_container_version):
             query['EdasContainerVersion'] = request.edas_container_version
         if not UtilClient.is_unset(request.enable_ebpf):
@@ -879,6 +881,8 @@ class Client(OpenApiClient):
             query['CustomHostAlias'] = request.custom_host_alias
         if not UtilClient.is_unset(request.deploy):
             query['Deploy'] = request.deploy
+        if not UtilClient.is_unset(request.dotnet):
+            query['Dotnet'] = request.dotnet
         if not UtilClient.is_unset(request.edas_container_version):
             query['EdasContainerVersion'] = request.edas_container_version
         if not UtilClient.is_unset(request.enable_ebpf):
@@ -3657,6 +3661,8 @@ class Client(OpenApiClient):
             query['CustomHostAlias'] = request.custom_host_alias
         if not UtilClient.is_unset(request.deploy):
             query['Deploy'] = request.deploy
+        if not UtilClient.is_unset(request.dotnet):
+            query['Dotnet'] = request.dotnet
         if not UtilClient.is_unset(request.edas_container_version):
             query['EdasContainerVersion'] = request.edas_container_version
         if not UtilClient.is_unset(request.enable_ahas):
@@ -3817,6 +3823,8 @@ class Client(OpenApiClient):
             query['CustomHostAlias'] = request.custom_host_alias
         if not UtilClient.is_unset(request.deploy):
             query['Deploy'] = request.deploy
+        if not UtilClient.is_unset(request.dotnet):
+            query['Dotnet'] = request.dotnet
         if not UtilClient.is_unset(request.edas_container_version):
             query['EdasContainerVersion'] = request.edas_container_version
         if not UtilClient.is_unset(request.enable_ahas):
@@ -11357,6 +11365,12 @@ class Client(OpenApiClient):
             query['Cpu'] = request.cpu
         if not UtilClient.is_unset(request.memory):
             query['Memory'] = request.memory
+        if not UtilClient.is_unset(request.auto_enable_application_scaling_rule):
+            query['autoEnableApplicationScalingRule'] = request.auto_enable_application_scaling_rule
+        if not UtilClient.is_unset(request.min_ready_instance_ratio):
+            query['minReadyInstanceRatio'] = request.min_ready_instance_ratio
+        if not UtilClient.is_unset(request.min_ready_instances):
+            query['minReadyInstances'] = request.min_ready_instances
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -11399,6 +11413,12 @@ class Client(OpenApiClient):
             query['Cpu'] = request.cpu
         if not UtilClient.is_unset(request.memory):
             query['Memory'] = request.memory
+        if not UtilClient.is_unset(request.auto_enable_application_scaling_rule):
+            query['autoEnableApplicationScalingRule'] = request.auto_enable_application_scaling_rule
+        if not UtilClient.is_unset(request.min_ready_instance_ratio):
+            query['minReadyInstanceRatio'] = request.min_ready_instance_ratio
+        if not UtilClient.is_unset(request.min_ready_instances):
+            query['minReadyInstances'] = request.min_ready_instances
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)

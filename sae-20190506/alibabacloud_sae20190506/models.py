@@ -10824,6 +10824,7 @@ class CreateApplicationRequest(TeaModel):
         cpu: int = None,
         custom_host_alias: str = None,
         deploy: bool = None,
+        dotnet: str = None,
         edas_container_version: str = None,
         enable_ebpf: str = None,
         enable_new_arms: bool = None,
@@ -10901,6 +10902,7 @@ class CreateApplicationRequest(TeaModel):
         self.custom_host_alias = custom_host_alias
         # true
         self.deploy = deploy
+        self.dotnet = dotnet
         # 3.5.3
         self.edas_container_version = edas_container_version
         self.enable_ebpf = enable_ebpf
@@ -11025,6 +11027,8 @@ class CreateApplicationRequest(TeaModel):
             result['CustomHostAlias'] = self.custom_host_alias
         if self.deploy is not None:
             result['Deploy'] = self.deploy
+        if self.dotnet is not None:
+            result['Dotnet'] = self.dotnet
         if self.edas_container_version is not None:
             result['EdasContainerVersion'] = self.edas_container_version
         if self.enable_ebpf is not None:
@@ -11153,6 +11157,8 @@ class CreateApplicationRequest(TeaModel):
             self.custom_host_alias = m.get('CustomHostAlias')
         if m.get('Deploy') is not None:
             self.deploy = m.get('Deploy')
+        if m.get('Dotnet') is not None:
+            self.dotnet = m.get('Dotnet')
         if m.get('EdasContainerVersion') is not None:
             self.edas_container_version = m.get('EdasContainerVersion')
         if m.get('EnableEbpf') is not None:
@@ -15639,6 +15645,7 @@ class DeployApplicationRequest(TeaModel):
         cpu: int = None,
         custom_host_alias: str = None,
         deploy: str = None,
+        dotnet: str = None,
         edas_container_version: str = None,
         enable_ahas: str = None,
         enable_grey_tag_route: bool = None,
@@ -15746,6 +15753,7 @@ class DeployApplicationRequest(TeaModel):
         # *   **true** (default): specifies that the system immediately deploys the application, enables new configurations, and pulls application instances.
         # *   **false**: specifies that the system only enables the new configurations.
         self.deploy = deploy
+        self.dotnet = dotnet
         # The version of the container, such as Ali-Tomcat, in which an application developed based on High-speed Service Framework (HSF) is deployed.
         self.edas_container_version = edas_container_version
         # Indicates whether access to Application High Availability Service (AHAS) is enabled. Take note of the following rules:
@@ -15998,6 +16006,8 @@ class DeployApplicationRequest(TeaModel):
             result['CustomHostAlias'] = self.custom_host_alias
         if self.deploy is not None:
             result['Deploy'] = self.deploy
+        if self.dotnet is not None:
+            result['Dotnet'] = self.dotnet
         if self.edas_container_version is not None:
             result['EdasContainerVersion'] = self.edas_container_version
         if self.enable_ahas is not None:
@@ -16124,6 +16134,8 @@ class DeployApplicationRequest(TeaModel):
             self.custom_host_alias = m.get('CustomHostAlias')
         if m.get('Deploy') is not None:
             self.deploy = m.get('Deploy')
+        if m.get('Dotnet') is not None:
+            self.dotnet = m.get('Dotnet')
         if m.get('EdasContainerVersion') is not None:
             self.edas_container_version = m.get('EdasContainerVersion')
         if m.get('EnableAhas') is not None:
@@ -17072,6 +17084,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         config_map_mount_desc: List[DescribeApplicationConfigResponseBodyDataConfigMapMountDesc] = None,
         cpu: int = None,
         custom_host_alias: str = None,
+        dotnet: str = None,
         edas_container_version: str = None,
         enable_ahas: str = None,
         enable_grey_tag_route: bool = None,
@@ -17184,6 +17197,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         # *   **hostName**: the domain name or hostname.
         # *   **ip**: the IP address.
         self.custom_host_alias = custom_host_alias
+        self.dotnet = dotnet
         # The version of the container, such as Ali-Tomcat, in which an application developed based on High-speed Service Framework (HSF) is deployed.
         self.edas_container_version = edas_container_version
         # Indicates whether access to Application High Availability Service (AHAS) is enabled. Valid values:
@@ -17481,6 +17495,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['Cpu'] = self.cpu
         if self.custom_host_alias is not None:
             result['CustomHostAlias'] = self.custom_host_alias
+        if self.dotnet is not None:
+            result['Dotnet'] = self.dotnet
         if self.edas_container_version is not None:
             result['EdasContainerVersion'] = self.edas_container_version
         if self.enable_ahas is not None:
@@ -17632,6 +17648,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.cpu = m.get('Cpu')
         if m.get('CustomHostAlias') is not None:
             self.custom_host_alias = m.get('CustomHostAlias')
+        if m.get('Dotnet') is not None:
+            self.dotnet = m.get('Dotnet')
         if m.get('EdasContainerVersion') is not None:
             self.edas_container_version = m.get('EdasContainerVersion')
         if m.get('EnableAhas') is not None:
@@ -31440,11 +31458,13 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
         base_app_id: str = None,
         children: List[ListApplicationsResponseBodyDataApplicationsChildren] = None,
         cpu: int = None,
+        image_url: str = None,
         instances: int = None,
         mem: int = None,
         mse_enabled: bool = None,
         mse_namespace_id: str = None,
         namespace_id: str = None,
+        package_url: str = None,
         programming_language: str = None,
         region_id: str = None,
         running_instances: int = None,
@@ -31473,6 +31493,7 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
         # *   **16000**\
         # *   **32000**\
         self.cpu = cpu
+        self.image_url = image_url
         # The number of application instances.
         self.instances = instances
         # The memory size that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
@@ -31492,6 +31513,7 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
         self.mse_namespace_id = mse_namespace_id
         # The namespace ID.
         self.namespace_id = namespace_id
+        self.package_url = package_url
         self.programming_language = programming_language
         # The region ID.
         self.region_id = region_id
@@ -31532,6 +31554,8 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
                 result['Children'].append(k.to_map() if k else None)
         if self.cpu is not None:
             result['Cpu'] = self.cpu
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
         if self.instances is not None:
             result['Instances'] = self.instances
         if self.mem is not None:
@@ -31542,6 +31566,8 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
             result['MseNamespaceId'] = self.mse_namespace_id
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
+        if self.package_url is not None:
+            result['PackageUrl'] = self.package_url
         if self.programming_language is not None:
             result['ProgrammingLanguage'] = self.programming_language
         if self.region_id is not None:
@@ -31573,6 +31599,8 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
                 self.children.append(temp_model.from_map(k))
         if m.get('Cpu') is not None:
             self.cpu = m.get('Cpu')
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
         if m.get('Instances') is not None:
             self.instances = m.get('Instances')
         if m.get('Mem') is not None:
@@ -31583,6 +31611,8 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
             self.mse_namespace_id = m.get('MseNamespaceId')
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')
+        if m.get('PackageUrl') is not None:
+            self.package_url = m.get('PackageUrl')
         if m.get('ProgrammingLanguage') is not None:
             self.programming_language = m.get('ProgrammingLanguage')
         if m.get('RegionId') is not None:
@@ -37033,6 +37063,9 @@ class RescaleApplicationVerticallyRequest(TeaModel):
         app_id: str = None,
         cpu: str = None,
         memory: str = None,
+        auto_enable_application_scaling_rule: bool = None,
+        min_ready_instance_ratio: int = None,
+        min_ready_instances: int = None,
     ):
         # The application ID.
         # 
@@ -37046,6 +37079,9 @@ class RescaleApplicationVerticallyRequest(TeaModel):
         # 
         # This parameter is required.
         self.memory = memory
+        self.auto_enable_application_scaling_rule = auto_enable_application_scaling_rule
+        self.min_ready_instance_ratio = min_ready_instance_ratio
+        self.min_ready_instances = min_ready_instances
 
     def validate(self):
         pass
@@ -37062,6 +37098,12 @@ class RescaleApplicationVerticallyRequest(TeaModel):
             result['Cpu'] = self.cpu
         if self.memory is not None:
             result['Memory'] = self.memory
+        if self.auto_enable_application_scaling_rule is not None:
+            result['autoEnableApplicationScalingRule'] = self.auto_enable_application_scaling_rule
+        if self.min_ready_instance_ratio is not None:
+            result['minReadyInstanceRatio'] = self.min_ready_instance_ratio
+        if self.min_ready_instances is not None:
+            result['minReadyInstances'] = self.min_ready_instances
         return result
 
     def from_map(self, m: dict = None):
@@ -37072,6 +37114,12 @@ class RescaleApplicationVerticallyRequest(TeaModel):
             self.cpu = m.get('Cpu')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
+        if m.get('autoEnableApplicationScalingRule') is not None:
+            self.auto_enable_application_scaling_rule = m.get('autoEnableApplicationScalingRule')
+        if m.get('minReadyInstanceRatio') is not None:
+            self.min_ready_instance_ratio = m.get('minReadyInstanceRatio')
+        if m.get('minReadyInstances') is not None:
+            self.min_ready_instances = m.get('minReadyInstances')
         return self
 
 
