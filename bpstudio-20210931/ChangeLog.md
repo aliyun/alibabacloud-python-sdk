@@ -1,3 +1,11 @@
+2024-09-24 Version: 5.2.0
+- Support API GetResource4ModifyRecord.
+- Support API GetResult4QueryInstancePrice4Modify.
+- Support API ModifyApplicationSpec.
+- Support API QueryInstancePrice4Modify.
+- Support API QueryInstanceSpec4Modify.
+
+
 2024-09-03 Version: 5.1.0
 - Support API GetApplicationVariables.
 

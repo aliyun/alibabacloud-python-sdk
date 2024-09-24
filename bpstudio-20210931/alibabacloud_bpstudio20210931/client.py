@@ -1565,6 +1565,210 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_potential_fail_zones_with_options_async(request, runtime)
 
+    def get_resource_4modify_record_with_options(
+        self,
+        request: bpstudio_20210931_models.GetResource4ModifyRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.GetResource4ModifyRecordResponse:
+        """
+        @summary 获取询价应用变配记录
+        
+        @param request: GetResource4ModifyRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResource4ModifyRecordResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.application_id):
+            body['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetResource4ModifyRecord',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.GetResource4ModifyRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_resource_4modify_record_with_options_async(
+        self,
+        request: bpstudio_20210931_models.GetResource4ModifyRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.GetResource4ModifyRecordResponse:
+        """
+        @summary 获取询价应用变配记录
+        
+        @param request: GetResource4ModifyRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResource4ModifyRecordResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.application_id):
+            body['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetResource4ModifyRecord',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.GetResource4ModifyRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_resource_4modify_record(
+        self,
+        request: bpstudio_20210931_models.GetResource4ModifyRecordRequest,
+    ) -> bpstudio_20210931_models.GetResource4ModifyRecordResponse:
+        """
+        @summary 获取询价应用变配记录
+        
+        @param request: GetResource4ModifyRecordRequest
+        @return: GetResource4ModifyRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_resource_4modify_record_with_options(request, runtime)
+
+    async def get_resource_4modify_record_async(
+        self,
+        request: bpstudio_20210931_models.GetResource4ModifyRecordRequest,
+    ) -> bpstudio_20210931_models.GetResource4ModifyRecordResponse:
+        """
+        @summary 获取询价应用变配记录
+        
+        @param request: GetResource4ModifyRecordRequest
+        @return: GetResource4ModifyRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_resource_4modify_record_with_options_async(request, runtime)
+
+    def get_result_4query_instance_price_4modify_with_options(
+        self,
+        request: bpstudio_20210931_models.GetResult4QueryInstancePrice4ModifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.GetResult4QueryInstancePrice4ModifyResponse:
+        """
+        @summary 获取询价结果
+        
+        @param request: GetResult4QueryInstancePrice4ModifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResult4QueryInstancePrice4ModifyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.application_id):
+            body['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetResult4QueryInstancePrice4Modify',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.GetResult4QueryInstancePrice4ModifyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_result_4query_instance_price_4modify_with_options_async(
+        self,
+        request: bpstudio_20210931_models.GetResult4QueryInstancePrice4ModifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.GetResult4QueryInstancePrice4ModifyResponse:
+        """
+        @summary 获取询价结果
+        
+        @param request: GetResult4QueryInstancePrice4ModifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResult4QueryInstancePrice4ModifyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.application_id):
+            body['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetResult4QueryInstancePrice4Modify',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.GetResult4QueryInstancePrice4ModifyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_result_4query_instance_price_4modify(
+        self,
+        request: bpstudio_20210931_models.GetResult4QueryInstancePrice4ModifyRequest,
+    ) -> bpstudio_20210931_models.GetResult4QueryInstancePrice4ModifyResponse:
+        """
+        @summary 获取询价结果
+        
+        @param request: GetResult4QueryInstancePrice4ModifyRequest
+        @return: GetResult4QueryInstancePrice4ModifyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_result_4query_instance_price_4modify_with_options(request, runtime)
+
+    async def get_result_4query_instance_price_4modify_async(
+        self,
+        request: bpstudio_20210931_models.GetResult4QueryInstancePrice4ModifyRequest,
+    ) -> bpstudio_20210931_models.GetResult4QueryInstancePrice4ModifyResponse:
+        """
+        @summary 获取询价结果
+        
+        @param request: GetResult4QueryInstancePrice4ModifyRequest
+        @return: GetResult4QueryInstancePrice4ModifyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_result_4query_instance_price_4modify_with_options_async(request, runtime)
+
     def get_template_with_options(
         self,
         request: bpstudio_20210931_models.GetTemplateRequest,
@@ -2336,6 +2540,342 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_template_with_options_async(request, runtime)
+
+    def modify_application_spec_with_options(
+        self,
+        tmp_req: bpstudio_20210931_models.ModifyApplicationSpecRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.ModifyApplicationSpecResponse:
+        """
+        @summary 提交应用变配
+        
+        @param tmp_req: ModifyApplicationSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApplicationSpecResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bpstudio_20210931_models.ModifyApplicationSpecShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_spec):
+            request.instance_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_spec, 'InstanceSpec', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.application_id):
+            body['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_spec_shrink):
+            body['InstanceSpec'] = request.instance_spec_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyApplicationSpec',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.ModifyApplicationSpecResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_application_spec_with_options_async(
+        self,
+        tmp_req: bpstudio_20210931_models.ModifyApplicationSpecRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.ModifyApplicationSpecResponse:
+        """
+        @summary 提交应用变配
+        
+        @param tmp_req: ModifyApplicationSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApplicationSpecResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bpstudio_20210931_models.ModifyApplicationSpecShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_spec):
+            request.instance_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_spec, 'InstanceSpec', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.application_id):
+            body['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_spec_shrink):
+            body['InstanceSpec'] = request.instance_spec_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyApplicationSpec',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.ModifyApplicationSpecResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_application_spec(
+        self,
+        request: bpstudio_20210931_models.ModifyApplicationSpecRequest,
+    ) -> bpstudio_20210931_models.ModifyApplicationSpecResponse:
+        """
+        @summary 提交应用变配
+        
+        @param request: ModifyApplicationSpecRequest
+        @return: ModifyApplicationSpecResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_application_spec_with_options(request, runtime)
+
+    async def modify_application_spec_async(
+        self,
+        request: bpstudio_20210931_models.ModifyApplicationSpecRequest,
+    ) -> bpstudio_20210931_models.ModifyApplicationSpecResponse:
+        """
+        @summary 提交应用变配
+        
+        @param request: ModifyApplicationSpecRequest
+        @return: ModifyApplicationSpecResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_application_spec_with_options_async(request, runtime)
+
+    def query_instance_price_4modify_with_options(
+        self,
+        tmp_req: bpstudio_20210931_models.QueryInstancePrice4ModifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.QueryInstancePrice4ModifyResponse:
+        """
+        @summary 查询变配价格
+        
+        @param tmp_req: QueryInstancePrice4ModifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryInstancePrice4ModifyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bpstudio_20210931_models.QueryInstancePrice4ModifyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.configuration):
+            request.configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.configuration, 'Configuration', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.application_id):
+            body['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.configuration_shrink):
+            body['Configuration'] = request.configuration_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryInstancePrice4Modify',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.QueryInstancePrice4ModifyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_instance_price_4modify_with_options_async(
+        self,
+        tmp_req: bpstudio_20210931_models.QueryInstancePrice4ModifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.QueryInstancePrice4ModifyResponse:
+        """
+        @summary 查询变配价格
+        
+        @param tmp_req: QueryInstancePrice4ModifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryInstancePrice4ModifyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bpstudio_20210931_models.QueryInstancePrice4ModifyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.configuration):
+            request.configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.configuration, 'Configuration', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.application_id):
+            body['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.configuration_shrink):
+            body['Configuration'] = request.configuration_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryInstancePrice4Modify',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.QueryInstancePrice4ModifyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_instance_price_4modify(
+        self,
+        request: bpstudio_20210931_models.QueryInstancePrice4ModifyRequest,
+    ) -> bpstudio_20210931_models.QueryInstancePrice4ModifyResponse:
+        """
+        @summary 查询变配价格
+        
+        @param request: QueryInstancePrice4ModifyRequest
+        @return: QueryInstancePrice4ModifyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_instance_price_4modify_with_options(request, runtime)
+
+    async def query_instance_price_4modify_async(
+        self,
+        request: bpstudio_20210931_models.QueryInstancePrice4ModifyRequest,
+    ) -> bpstudio_20210931_models.QueryInstancePrice4ModifyResponse:
+        """
+        @summary 查询变配价格
+        
+        @param request: QueryInstancePrice4ModifyRequest
+        @return: QueryInstancePrice4ModifyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_instance_price_4modify_with_options_async(request, runtime)
+
+    def query_instance_spec_4modify_with_options(
+        self,
+        tmp_req: bpstudio_20210931_models.QueryInstanceSpec4ModifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.QueryInstanceSpec4ModifyResponse:
+        """
+        @summary 查询变配规格列表
+        
+        @param tmp_req: QueryInstanceSpec4ModifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryInstanceSpec4ModifyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bpstudio_20210931_models.QueryInstanceSpec4ModifyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.parameters):
+            request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.application_id):
+            body['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.method_name):
+            body['MethodName'] = request.method_name
+        if not UtilClient.is_unset(request.parameters_shrink):
+            body['Parameters'] = request.parameters_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryInstanceSpec4Modify',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.QueryInstanceSpec4ModifyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_instance_spec_4modify_with_options_async(
+        self,
+        tmp_req: bpstudio_20210931_models.QueryInstanceSpec4ModifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.QueryInstanceSpec4ModifyResponse:
+        """
+        @summary 查询变配规格列表
+        
+        @param tmp_req: QueryInstanceSpec4ModifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryInstanceSpec4ModifyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bpstudio_20210931_models.QueryInstanceSpec4ModifyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.parameters):
+            request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.application_id):
+            body['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.method_name):
+            body['MethodName'] = request.method_name
+        if not UtilClient.is_unset(request.parameters_shrink):
+            body['Parameters'] = request.parameters_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryInstanceSpec4Modify',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.QueryInstanceSpec4ModifyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_instance_spec_4modify(
+        self,
+        request: bpstudio_20210931_models.QueryInstanceSpec4ModifyRequest,
+    ) -> bpstudio_20210931_models.QueryInstanceSpec4ModifyResponse:
+        """
+        @summary 查询变配规格列表
+        
+        @param request: QueryInstanceSpec4ModifyRequest
+        @return: QueryInstanceSpec4ModifyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_instance_spec_4modify_with_options(request, runtime)
+
+    async def query_instance_spec_4modify_async(
+        self,
+        request: bpstudio_20210931_models.QueryInstanceSpec4ModifyRequest,
+    ) -> bpstudio_20210931_models.QueryInstanceSpec4ModifyResponse:
+        """
+        @summary 查询变配规格列表
+        
+        @param request: QueryInstanceSpec4ModifyRequest
+        @return: QueryInstanceSpec4ModifyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_instance_spec_4modify_with_options_async(request, runtime)
 
     def re_config_application_with_options(
         self,
