@@ -1,3 +1,9 @@
+2024-09-24 Version: 2.3.0
+- Support API CancelDataFlowSubTask.
+- Support API CreateDataFlowSubTask.
+- Support API DescribeDataFlowSubTasks.
+
+
 2024-09-09 Version: 2.2.4
 - Update API ApplyDataFlowAutoRefresh: update response param.
 - Update API CancelAutoSnapshotPolicy: update response param.

@@ -854,6 +854,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_data_flow_auto_refresh_with_options_async(request, runtime)
 
+    def cancel_data_flow_sub_task_with_options(
+        self,
+        request: nas20170626_models.CancelDataFlowSubTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nas20170626_models.CancelDataFlowSubTaskResponse:
+        """
+        @summary 取消数据流动任务队列中尚未执行的子任务
+        
+        @param request: CancelDataFlowSubTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelDataFlowSubTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.data_flow_id):
+            query['DataFlowId'] = request.data_flow_id
+        if not UtilClient.is_unset(request.data_flow_sub_task_id):
+            query['DataFlowSubTaskId'] = request.data_flow_sub_task_id
+        if not UtilClient.is_unset(request.data_flow_task_id):
+            query['DataFlowTaskId'] = request.data_flow_task_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelDataFlowSubTask',
+            version='2017-06-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nas20170626_models.CancelDataFlowSubTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_data_flow_sub_task_with_options_async(
+        self,
+        request: nas20170626_models.CancelDataFlowSubTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nas20170626_models.CancelDataFlowSubTaskResponse:
+        """
+        @summary 取消数据流动任务队列中尚未执行的子任务
+        
+        @param request: CancelDataFlowSubTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelDataFlowSubTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.data_flow_id):
+            query['DataFlowId'] = request.data_flow_id
+        if not UtilClient.is_unset(request.data_flow_sub_task_id):
+            query['DataFlowSubTaskId'] = request.data_flow_sub_task_id
+        if not UtilClient.is_unset(request.data_flow_task_id):
+            query['DataFlowTaskId'] = request.data_flow_task_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelDataFlowSubTask',
+            version='2017-06-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nas20170626_models.CancelDataFlowSubTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_data_flow_sub_task(
+        self,
+        request: nas20170626_models.CancelDataFlowSubTaskRequest,
+    ) -> nas20170626_models.CancelDataFlowSubTaskResponse:
+        """
+        @summary 取消数据流动任务队列中尚未执行的子任务
+        
+        @param request: CancelDataFlowSubTaskRequest
+        @return: CancelDataFlowSubTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_data_flow_sub_task_with_options(request, runtime)
+
+    async def cancel_data_flow_sub_task_async(
+        self,
+        request: nas20170626_models.CancelDataFlowSubTaskRequest,
+    ) -> nas20170626_models.CancelDataFlowSubTaskResponse:
+        """
+        @summary 取消数据流动任务队列中尚未执行的子任务
+        
+        @param request: CancelDataFlowSubTaskRequest
+        @return: CancelDataFlowSubTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_data_flow_sub_task_with_options_async(request, runtime)
+
     def cancel_data_flow_task_with_options(
         self,
         request: nas20170626_models.CancelDataFlowTaskRequest,
@@ -2329,6 +2445,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_data_flow_with_options_async(request, runtime)
+
+    def create_data_flow_sub_task_with_options(
+        self,
+        request: nas20170626_models.CreateDataFlowSubTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nas20170626_models.CreateDataFlowSubTaskResponse:
+        """
+        @summary 创建数据流动子任务
+        
+        @param request: CreateDataFlowSubTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataFlowSubTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.condition):
+            query['Condition'] = request.condition
+        if not UtilClient.is_unset(request.data_flow_id):
+            query['DataFlowId'] = request.data_flow_id
+        if not UtilClient.is_unset(request.data_flow_task_id):
+            query['DataFlowTaskId'] = request.data_flow_task_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.dst_file_path):
+            query['DstFilePath'] = request.dst_file_path
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.src_file_path):
+            query['SrcFilePath'] = request.src_file_path
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDataFlowSubTask',
+            version='2017-06-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nas20170626_models.CreateDataFlowSubTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_flow_sub_task_with_options_async(
+        self,
+        request: nas20170626_models.CreateDataFlowSubTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nas20170626_models.CreateDataFlowSubTaskResponse:
+        """
+        @summary 创建数据流动子任务
+        
+        @param request: CreateDataFlowSubTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataFlowSubTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.condition):
+            query['Condition'] = request.condition
+        if not UtilClient.is_unset(request.data_flow_id):
+            query['DataFlowId'] = request.data_flow_id
+        if not UtilClient.is_unset(request.data_flow_task_id):
+            query['DataFlowTaskId'] = request.data_flow_task_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.dst_file_path):
+            query['DstFilePath'] = request.dst_file_path
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.src_file_path):
+            query['SrcFilePath'] = request.src_file_path
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDataFlowSubTask',
+            version='2017-06-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nas20170626_models.CreateDataFlowSubTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_flow_sub_task(
+        self,
+        request: nas20170626_models.CreateDataFlowSubTaskRequest,
+    ) -> nas20170626_models.CreateDataFlowSubTaskResponse:
+        """
+        @summary 创建数据流动子任务
+        
+        @param request: CreateDataFlowSubTaskRequest
+        @return: CreateDataFlowSubTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_data_flow_sub_task_with_options(request, runtime)
+
+    async def create_data_flow_sub_task_async(
+        self,
+        request: nas20170626_models.CreateDataFlowSubTaskRequest,
+    ) -> nas20170626_models.CreateDataFlowSubTaskResponse:
+        """
+        @summary 创建数据流动子任务
+        
+        @param request: CreateDataFlowSubTaskRequest
+        @return: CreateDataFlowSubTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_data_flow_sub_task_with_options_async(request, runtime)
 
     def create_data_flow_task_with_options(
         self,
@@ -6741,6 +6981,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_black_list_clients_with_options_async(request, runtime)
+
+    def describe_data_flow_sub_tasks_with_options(
+        self,
+        request: nas20170626_models.DescribeDataFlowSubTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nas20170626_models.DescribeDataFlowSubTasksResponse:
+        """
+        @summary 查询数据流动子任务
+        
+        @param request: DescribeDataFlowSubTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataFlowSubTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.filters):
+            query['Filters'] = request.filters
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDataFlowSubTasks',
+            version='2017-06-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nas20170626_models.DescribeDataFlowSubTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_data_flow_sub_tasks_with_options_async(
+        self,
+        request: nas20170626_models.DescribeDataFlowSubTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nas20170626_models.DescribeDataFlowSubTasksResponse:
+        """
+        @summary 查询数据流动子任务
+        
+        @param request: DescribeDataFlowSubTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataFlowSubTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.filters):
+            query['Filters'] = request.filters
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDataFlowSubTasks',
+            version='2017-06-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nas20170626_models.DescribeDataFlowSubTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_data_flow_sub_tasks(
+        self,
+        request: nas20170626_models.DescribeDataFlowSubTasksRequest,
+    ) -> nas20170626_models.DescribeDataFlowSubTasksResponse:
+        """
+        @summary 查询数据流动子任务
+        
+        @param request: DescribeDataFlowSubTasksRequest
+        @return: DescribeDataFlowSubTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_data_flow_sub_tasks_with_options(request, runtime)
+
+    async def describe_data_flow_sub_tasks_async(
+        self,
+        request: nas20170626_models.DescribeDataFlowSubTasksRequest,
+    ) -> nas20170626_models.DescribeDataFlowSubTasksResponse:
+        """
+        @summary 查询数据流动子任务
+        
+        @param request: DescribeDataFlowSubTasksRequest
+        @return: DescribeDataFlowSubTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_data_flow_sub_tasks_with_options_async(request, runtime)
 
     def describe_data_flow_tasks_with_options(
         self,
