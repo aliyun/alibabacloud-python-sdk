@@ -405,8 +405,8 @@ class Client(OpenApiClient):
         """
         @summary Adds members to Cloud Firewall.
         
-        @description You can call the AddInstanceMembers operation to add members to Cloud Firewall.
-        ## Limits
+        @description You can call this operation to add members to Cloud Firewall.
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: AddInstanceMembersRequest
@@ -444,8 +444,8 @@ class Client(OpenApiClient):
         """
         @summary Adds members to Cloud Firewall.
         
-        @description You can call the AddInstanceMembers operation to add members to Cloud Firewall.
-        ## Limits
+        @description You can call this operation to add members to Cloud Firewall.
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: AddInstanceMembersRequest
@@ -482,8 +482,8 @@ class Client(OpenApiClient):
         """
         @summary Adds members to Cloud Firewall.
         
-        @description You can call the AddInstanceMembers operation to add members to Cloud Firewall.
-        ## Limits
+        @description You can call this operation to add members to Cloud Firewall.
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: AddInstanceMembersRequest
@@ -499,8 +499,8 @@ class Client(OpenApiClient):
         """
         @summary Adds members to Cloud Firewall.
         
-        @description You can call the AddInstanceMembers operation to add members to Cloud Firewall.
-        ## Limits
+        @description You can call this operation to add members to Cloud Firewall.
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: AddInstanceMembersRequest
@@ -1051,7 +1051,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.CreateSecurityProxyResponse:
         """
-        @summary 创建安全正向代理
+        @summary Creates a NAT firewall.
         
         @param request: CreateSecurityProxyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1106,7 +1106,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.CreateSecurityProxyResponse:
         """
-        @summary 创建安全正向代理
+        @summary Creates a NAT firewall.
         
         @param request: CreateSecurityProxyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1160,7 +1160,7 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.CreateSecurityProxyRequest,
     ) -> cloudfw_20171207_models.CreateSecurityProxyResponse:
         """
-        @summary 创建安全正向代理
+        @summary Creates a NAT firewall.
         
         @param request: CreateSecurityProxyRequest
         @return: CreateSecurityProxyResponse
@@ -1173,7 +1173,7 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.CreateSecurityProxyRequest,
     ) -> cloudfw_20171207_models.CreateSecurityProxyResponse:
         """
-        @summary 创建安全正向代理
+        @summary Creates a NAT firewall.
         
         @param request: CreateSecurityProxyRequest
         @return: CreateSecurityProxyResponse
@@ -2649,8 +2649,8 @@ class Client(OpenApiClient):
         """
         @summary Removes members from Cloud Firewall.
         
-        @description You can call the DeleteInstanceMembers operation to remove members from Cloud Firewall.
-        ## Limits
+        @description You can call this operation to remove up to 20 members from Cloud Firewall at a time. Separate multiple members with commas (,). After a member is removed, Cloud Firewall can no longer access the cloud resources of the member. Proceed with caution. Before you call this operation, call the [DescribeInstanceMembers](https://help.aliyun.com/document_detail/271704.html) operation to obtain the information about the members that are added to Cloud Firewall.
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DeleteInstanceMembersRequest
@@ -2688,8 +2688,8 @@ class Client(OpenApiClient):
         """
         @summary Removes members from Cloud Firewall.
         
-        @description You can call the DeleteInstanceMembers operation to remove members from Cloud Firewall.
-        ## Limits
+        @description You can call this operation to remove up to 20 members from Cloud Firewall at a time. Separate multiple members with commas (,). After a member is removed, Cloud Firewall can no longer access the cloud resources of the member. Proceed with caution. Before you call this operation, call the [DescribeInstanceMembers](https://help.aliyun.com/document_detail/271704.html) operation to obtain the information about the members that are added to Cloud Firewall.
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DeleteInstanceMembersRequest
@@ -2726,8 +2726,8 @@ class Client(OpenApiClient):
         """
         @summary Removes members from Cloud Firewall.
         
-        @description You can call the DeleteInstanceMembers operation to remove members from Cloud Firewall.
-        ## Limits
+        @description You can call this operation to remove up to 20 members from Cloud Firewall at a time. Separate multiple members with commas (,). After a member is removed, Cloud Firewall can no longer access the cloud resources of the member. Proceed with caution. Before you call this operation, call the [DescribeInstanceMembers](https://help.aliyun.com/document_detail/271704.html) operation to obtain the information about the members that are added to Cloud Firewall.
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DeleteInstanceMembersRequest
@@ -2743,8 +2743,8 @@ class Client(OpenApiClient):
         """
         @summary Removes members from Cloud Firewall.
         
-        @description You can call the DeleteInstanceMembers operation to remove members from Cloud Firewall.
-        ## Limits
+        @description You can call this operation to remove up to 20 members from Cloud Firewall at a time. Separate multiple members with commas (,). After a member is removed, Cloud Firewall can no longer access the cloud resources of the member. Proceed with caution. Before you call this operation, call the [DescribeInstanceMembers](https://help.aliyun.com/document_detail/271704.html) operation to obtain the information about the members that are added to Cloud Firewall.
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DeleteInstanceMembersRequest
@@ -4419,6 +4419,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeDomainResolveResponse:
         """
+        @deprecated OpenAPI DescribeDomainResolve is deprecated
+        
         @summary Queries Domain Name System (DNS) records.
         
         @description You can use this operation to query the DNS record of a domain name. This operation can retrieve DNS records only from Alibaba Cloud DNS. Before you can call this operation, make sure that your domain name is hosted on Alibaba Cloud DNS.
@@ -4428,6 +4430,7 @@ class Client(OpenApiClient):
         @param request: DescribeDomainResolveRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDomainResolveResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -4466,6 +4469,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeDomainResolveResponse:
         """
+        @deprecated OpenAPI DescribeDomainResolve is deprecated
+        
         @summary Queries Domain Name System (DNS) records.
         
         @description You can use this operation to query the DNS record of a domain name. This operation can retrieve DNS records only from Alibaba Cloud DNS. Before you can call this operation, make sure that your domain name is hosted on Alibaba Cloud DNS.
@@ -4475,6 +4480,7 @@ class Client(OpenApiClient):
         @param request: DescribeDomainResolveRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDomainResolveResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -4512,6 +4518,8 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeDomainResolveRequest,
     ) -> cloudfw_20171207_models.DescribeDomainResolveResponse:
         """
+        @deprecated OpenAPI DescribeDomainResolve is deprecated
+        
         @summary Queries Domain Name System (DNS) records.
         
         @description You can use this operation to query the DNS record of a domain name. This operation can retrieve DNS records only from Alibaba Cloud DNS. Before you can call this operation, make sure that your domain name is hosted on Alibaba Cloud DNS.
@@ -4520,6 +4528,7 @@ class Client(OpenApiClient):
         
         @param request: DescribeDomainResolveRequest
         @return: DescribeDomainResolveResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.describe_domain_resolve_with_options(request, runtime)
@@ -4529,6 +4538,8 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeDomainResolveRequest,
     ) -> cloudfw_20171207_models.DescribeDomainResolveResponse:
         """
+        @deprecated OpenAPI DescribeDomainResolve is deprecated
+        
         @summary Queries Domain Name System (DNS) records.
         
         @description You can use this operation to query the DNS record of a domain name. This operation can retrieve DNS records only from Alibaba Cloud DNS. Before you can call this operation, make sure that your domain name is hosted on Alibaba Cloud DNS.
@@ -4537,6 +4548,7 @@ class Client(OpenApiClient):
         
         @param request: DescribeDomainResolveRequest
         @return: DescribeDomainResolveResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_resolve_with_options_async(request, runtime)
@@ -6327,10 +6339,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribePolicyPriorUsedResponse:
         """
-        @summary Queries the priority range of the access control policies that match specific query conditions.
+        @summary Queries the priority range of access control policies.
         
-        @description You can call the DescribePolicyPriorUsed operation to query the priority range of the access control policies that match specific query conditions.
-        ## Limits
+        @description You can call this operation to query the priority range of the access control policies that match specific query conditions.
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribePolicyPriorUsedRequest
@@ -6372,10 +6384,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribePolicyPriorUsedResponse:
         """
-        @summary Queries the priority range of the access control policies that match specific query conditions.
+        @summary Queries the priority range of access control policies.
         
-        @description You can call the DescribePolicyPriorUsed operation to query the priority range of the access control policies that match specific query conditions.
-        ## Limits
+        @description You can call this operation to query the priority range of the access control policies that match specific query conditions.
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribePolicyPriorUsedRequest
@@ -6416,10 +6428,10 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribePolicyPriorUsedRequest,
     ) -> cloudfw_20171207_models.DescribePolicyPriorUsedResponse:
         """
-        @summary Queries the priority range of the access control policies that match specific query conditions.
+        @summary Queries the priority range of access control policies.
         
-        @description You can call the DescribePolicyPriorUsed operation to query the priority range of the access control policies that match specific query conditions.
-        ## Limits
+        @description You can call this operation to query the priority range of the access control policies that match specific query conditions.
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribePolicyPriorUsedRequest
@@ -6433,10 +6445,10 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribePolicyPriorUsedRequest,
     ) -> cloudfw_20171207_models.DescribePolicyPriorUsedResponse:
         """
-        @summary Queries the priority range of the access control policies that match specific query conditions.
+        @summary Queries the priority range of access control policies.
         
-        @description You can call the DescribePolicyPriorUsed operation to query the priority range of the access control policies that match specific query conditions.
-        ## Limits
+        @description You can call this operation to query the priority range of the access control policies that match specific query conditions.
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribePolicyPriorUsedRequest
@@ -6471,6 +6483,8 @@ class Client(OpenApiClient):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
         if not UtilClient.is_unset(request.search_item):
             query['SearchItem'] = request.search_item
         if not UtilClient.is_unset(request.start_time):
@@ -6522,6 +6536,8 @@ class Client(OpenApiClient):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
         if not UtilClient.is_unset(request.search_item):
             query['SearchItem'] = request.search_item
         if not UtilClient.is_unset(request.start_time):
@@ -7843,12 +7859,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_user_asset_iptraffic_info_with_options_async(request, runtime)
 
+    def describe_user_buy_version_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeUserBuyVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeUserBuyVersionResponse:
+        """
+        @summary 获取用户版本信息
+        
+        @param request: DescribeUserBuyVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserBuyVersionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserBuyVersion',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeUserBuyVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_user_buy_version_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeUserBuyVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeUserBuyVersionResponse:
+        """
+        @summary 获取用户版本信息
+        
+        @param request: DescribeUserBuyVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserBuyVersionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserBuyVersion',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeUserBuyVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_user_buy_version(
+        self,
+        request: cloudfw_20171207_models.DescribeUserBuyVersionRequest,
+    ) -> cloudfw_20171207_models.DescribeUserBuyVersionResponse:
+        """
+        @summary 获取用户版本信息
+        
+        @param request: DescribeUserBuyVersionRequest
+        @return: DescribeUserBuyVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_user_buy_version_with_options(request, runtime)
+
+    async def describe_user_buy_version_async(
+        self,
+        request: cloudfw_20171207_models.DescribeUserBuyVersionRequest,
+    ) -> cloudfw_20171207_models.DescribeUserBuyVersionResponse:
+        """
+        @summary 获取用户版本信息
+        
+        @param request: DescribeUserBuyVersionRequest
+        @return: DescribeUserBuyVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_user_buy_version_with_options_async(request, runtime)
+
     def describe_user_ipswhitelist_with_options(
         self,
         request: cloudfw_20171207_models.DescribeUserIPSWhitelistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeUserIPSWhitelistResponse:
         """
+        @summary 获取用户IPS白名单
+        
         @param request: DescribeUserIPSWhitelistRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeUserIPSWhitelistResponse
@@ -7886,6 +8000,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeUserIPSWhitelistResponse:
         """
+        @summary 获取用户IPS白名单
+        
         @param request: DescribeUserIPSWhitelistRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeUserIPSWhitelistResponse
@@ -7922,6 +8038,8 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeUserIPSWhitelistRequest,
     ) -> cloudfw_20171207_models.DescribeUserIPSWhitelistResponse:
         """
+        @summary 获取用户IPS白名单
+        
         @param request: DescribeUserIPSWhitelistRequest
         @return: DescribeUserIPSWhitelistResponse
         """
@@ -7933,6 +8051,8 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeUserIPSWhitelistRequest,
     ) -> cloudfw_20171207_models.DescribeUserIPSWhitelistResponse:
         """
+        @summary 获取用户IPS白名单
+        
         @param request: DescribeUserIPSWhitelistRequest
         @return: DescribeUserIPSWhitelistResponse
         """
@@ -9027,8 +9147,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the priority range of access control policies that are created for a virtual private cloud (VPC) firewall in a specific policy group.
         
-        @description You can call the DescribeVpcFirewallPolicyPriorUsed operation to query the priority range of access control policies that are created for a VPC firewall in a specific policy group.
-        ## Limits
+        @description You can call this operation to query the priority range of access control policies that are created for a VPC firewall in a specific policy group.
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeVpcFirewallPolicyPriorUsedRequest
@@ -9068,8 +9188,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the priority range of access control policies that are created for a virtual private cloud (VPC) firewall in a specific policy group.
         
-        @description You can call the DescribeVpcFirewallPolicyPriorUsed operation to query the priority range of access control policies that are created for a VPC firewall in a specific policy group.
-        ## Limits
+        @description You can call this operation to query the priority range of access control policies that are created for a VPC firewall in a specific policy group.
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeVpcFirewallPolicyPriorUsedRequest
@@ -9108,8 +9228,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the priority range of access control policies that are created for a virtual private cloud (VPC) firewall in a specific policy group.
         
-        @description You can call the DescribeVpcFirewallPolicyPriorUsed operation to query the priority range of access control policies that are created for a VPC firewall in a specific policy group.
-        ## Limits
+        @description You can call this operation to query the priority range of access control policies that are created for a VPC firewall in a specific policy group.
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeVpcFirewallPolicyPriorUsedRequest
@@ -9125,8 +9245,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the priority range of access control policies that are created for a virtual private cloud (VPC) firewall in a specific policy group.
         
-        @description You can call the DescribeVpcFirewallPolicyPriorUsed operation to query the priority range of access control policies that are created for a VPC firewall in a specific policy group.
-        ## Limits
+        @description You can call this operation to query the priority range of access control policies that are created for a VPC firewall in a specific policy group.
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeVpcFirewallPolicyPriorUsedRequest
@@ -9525,7 +9645,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyAddressBookResponse:
         """
-        @summary Modifies the address book that is configured for access control.
+        @summary Modifies the address book that is specified in an access control policy.
         
         @description You can call the ModifyAddressBook operation to modify the address book that is configured for access control.
         ## Limits
@@ -9582,7 +9702,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyAddressBookResponse:
         """
-        @summary Modifies the address book that is configured for access control.
+        @summary Modifies the address book that is specified in an access control policy.
         
         @description You can call the ModifyAddressBook operation to modify the address book that is configured for access control.
         ## Limits
@@ -9638,7 +9758,7 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyAddressBookRequest,
     ) -> cloudfw_20171207_models.ModifyAddressBookResponse:
         """
-        @summary Modifies the address book that is configured for access control.
+        @summary Modifies the address book that is specified in an access control policy.
         
         @description You can call the ModifyAddressBook operation to modify the address book that is configured for access control.
         ## Limits
@@ -9655,7 +9775,7 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyAddressBookRequest,
     ) -> cloudfw_20171207_models.ModifyAddressBookResponse:
         """
-        @summary Modifies the address book that is configured for access control.
+        @summary Modifies the address book that is specified in an access control policy.
         
         @description You can call the ModifyAddressBook operation to modify the address book that is configured for access control.
         ## Limits
@@ -10645,7 +10765,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyObjectGroupOperationResponse:
         """
-        @summary 修改对象组操作
+        @summary Modifies information about an operation on an object group.
         
         @param request: ModifyObjectGroupOperationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10692,7 +10812,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyObjectGroupOperationResponse:
         """
-        @summary 修改对象组操作
+        @summary Modifies information about an operation on an object group.
         
         @param request: ModifyObjectGroupOperationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10738,7 +10858,7 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyObjectGroupOperationRequest,
     ) -> cloudfw_20171207_models.ModifyObjectGroupOperationResponse:
         """
-        @summary 修改对象组操作
+        @summary Modifies information about an operation on an object group.
         
         @param request: ModifyObjectGroupOperationRequest
         @return: ModifyObjectGroupOperationResponse
@@ -10751,7 +10871,7 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyObjectGroupOperationRequest,
     ) -> cloudfw_20171207_models.ModifyObjectGroupOperationResponse:
         """
-        @summary 修改对象组操作
+        @summary Modifies information about an operation on an object group.
         
         @param request: ModifyObjectGroupOperationRequest
         @return: ModifyObjectGroupOperationResponse
@@ -11117,6 +11237,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyUserIPSWhitelistResponse:
         """
+        @summary 修改用户IPS白名单
+        
         @param request: ModifyUserIPSWhitelistRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyUserIPSWhitelistResponse
@@ -11164,6 +11286,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyUserIPSWhitelistResponse:
         """
+        @summary 修改用户IPS白名单
+        
         @param request: ModifyUserIPSWhitelistRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyUserIPSWhitelistResponse
@@ -11210,6 +11334,8 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyUserIPSWhitelistRequest,
     ) -> cloudfw_20171207_models.ModifyUserIPSWhitelistResponse:
         """
+        @summary 修改用户IPS白名单
+        
         @param request: ModifyUserIPSWhitelistRequest
         @return: ModifyUserIPSWhitelistResponse
         """
@@ -11221,6 +11347,8 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyUserIPSWhitelistRequest,
     ) -> cloudfw_20171207_models.ModifyUserIPSWhitelistResponse:
         """
+        @summary 修改用户IPS白名单
+        
         @param request: ModifyUserIPSWhitelistRequest
         @return: ModifyUserIPSWhitelistResponse
         """
@@ -11947,9 +12075,9 @@ class Client(OpenApiClient):
         """
         @summary Modifies the intrusion prevention configurations of a virtual private cloud (VPC) firewall.
         
-        @description You can call the ModifyVpcFirewallDefaultIPSConfig operation to modify the intrusion prevention configurations of a VPC firewall.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        @description You can call this operation to modify the intrusion prevention configurations of a VPC firewall.
+        ## [](#qps-)Limits
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: ModifyVpcFirewallDefaultIPSConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12000,9 +12128,9 @@ class Client(OpenApiClient):
         """
         @summary Modifies the intrusion prevention configurations of a virtual private cloud (VPC) firewall.
         
-        @description You can call the ModifyVpcFirewallDefaultIPSConfig operation to modify the intrusion prevention configurations of a VPC firewall.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        @description You can call this operation to modify the intrusion prevention configurations of a VPC firewall.
+        ## [](#qps-)Limits
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: ModifyVpcFirewallDefaultIPSConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12052,9 +12180,9 @@ class Client(OpenApiClient):
         """
         @summary Modifies the intrusion prevention configurations of a virtual private cloud (VPC) firewall.
         
-        @description You can call the ModifyVpcFirewallDefaultIPSConfig operation to modify the intrusion prevention configurations of a VPC firewall.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        @description You can call this operation to modify the intrusion prevention configurations of a VPC firewall.
+        ## [](#qps-)Limits
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: ModifyVpcFirewallDefaultIPSConfigRequest
         @return: ModifyVpcFirewallDefaultIPSConfigResponse
@@ -12069,9 +12197,9 @@ class Client(OpenApiClient):
         """
         @summary Modifies the intrusion prevention configurations of a virtual private cloud (VPC) firewall.
         
-        @description You can call the ModifyVpcFirewallDefaultIPSConfig operation to modify the intrusion prevention configurations of a VPC firewall.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        @description You can call this operation to modify the intrusion prevention configurations of a VPC firewall.
+        ## [](#qps-)Limits
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: ModifyVpcFirewallDefaultIPSConfigRequest
         @return: ModifyVpcFirewallDefaultIPSConfigResponse
@@ -12701,7 +12829,7 @@ class Client(OpenApiClient):
         
         @description You can call the PutEnableFwSwitch operation to enable a firewall. After you enable a firewall, traffic passes through Cloud Firewall.
         ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+        You can call this operation up to 5 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: PutEnableFwSwitchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12748,7 +12876,7 @@ class Client(OpenApiClient):
         
         @description You can call the PutEnableFwSwitch operation to enable a firewall. After you enable a firewall, traffic passes through Cloud Firewall.
         ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+        You can call this operation up to 5 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: PutEnableFwSwitchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12794,7 +12922,7 @@ class Client(OpenApiClient):
         
         @description You can call the PutEnableFwSwitch operation to enable a firewall. After you enable a firewall, traffic passes through Cloud Firewall.
         ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+        You can call this operation up to 5 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: PutEnableFwSwitchRequest
         @return: PutEnableFwSwitchResponse
@@ -12811,7 +12939,7 @@ class Client(OpenApiClient):
         
         @description You can call the PutEnableFwSwitch operation to enable a firewall. After you enable a firewall, traffic passes through Cloud Firewall.
         ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+        You can call this operation up to 5 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: PutEnableFwSwitchRequest
         @return: PutEnableFwSwitchResponse
