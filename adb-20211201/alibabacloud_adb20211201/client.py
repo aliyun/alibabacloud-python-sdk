@@ -873,6 +873,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.backup_set_id):
             query['BackupSetId'] = request.backup_set_id
+        if not UtilClient.is_unset(request.clone_source_region_id):
+            query['CloneSourceRegionId'] = request.clone_source_region_id
         if not UtilClient.is_unset(request.compute_resource):
             query['ComputeResource'] = request.compute_resource
         if not UtilClient.is_unset(request.dbcluster_description):
@@ -956,6 +958,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.backup_set_id):
             query['BackupSetId'] = request.backup_set_id
+        if not UtilClient.is_unset(request.clone_source_region_id):
+            query['CloneSourceRegionId'] = request.clone_source_region_id
         if not UtilClient.is_unset(request.compute_resource):
             query['ComputeResource'] = request.compute_resource
         if not UtilClient.is_unset(request.dbcluster_description):
@@ -2531,9 +2535,9 @@ class Client(OpenApiClient):
         """
         @summary Deletes Spark template files.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: DeleteSparkTemplateFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2572,9 +2576,9 @@ class Client(OpenApiClient):
         """
         @summary Deletes Spark template files.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: DeleteSparkTemplateFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2612,9 +2616,9 @@ class Client(OpenApiClient):
         """
         @summary Deletes Spark template files.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: DeleteSparkTemplateFileRequest
         @return: DeleteSparkTemplateFileResponse
@@ -2629,9 +2633,9 @@ class Client(OpenApiClient):
         """
         @summary Deletes Spark template files.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: DeleteSparkTemplateFileRequest
         @return: DeleteSparkTemplateFileResponse
@@ -3141,7 +3145,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeAdbMySqlColumnsResponse:
         """
-        @summary Queries the information about table columns for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        @summary Queries the information about table columns for an AnalyticDB for MySQL cluster.
         
         @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
@@ -3185,7 +3189,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeAdbMySqlColumnsResponse:
         """
-        @summary Queries the information about table columns for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        @summary Queries the information about table columns for an AnalyticDB for MySQL cluster.
         
         @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
@@ -3228,7 +3232,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeAdbMySqlColumnsRequest,
     ) -> adb_20211201_models.DescribeAdbMySqlColumnsResponse:
         """
-        @summary Queries the information about table columns for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        @summary Queries the information about table columns for an AnalyticDB for MySQL cluster.
         
         @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
@@ -3244,7 +3248,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeAdbMySqlColumnsRequest,
     ) -> adb_20211201_models.DescribeAdbMySqlColumnsResponse:
         """
-        @summary Queries the information about table columns for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        @summary Queries the information about table columns for an AnalyticDB for MySQL cluster.
         
         @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
@@ -3261,7 +3265,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeAdbMySqlSchemasResponse:
         """
-        @summary Queries a list of databases for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        @summary Queries a list of databases for an AnalyticDB for MySQL cluster.
         
         @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
@@ -3301,7 +3305,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeAdbMySqlSchemasResponse:
         """
-        @summary Queries a list of databases for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        @summary Queries a list of databases for an AnalyticDB for MySQL cluster.
         
         @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
@@ -3340,7 +3344,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeAdbMySqlSchemasRequest,
     ) -> adb_20211201_models.DescribeAdbMySqlSchemasResponse:
         """
-        @summary Queries a list of databases for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        @summary Queries a list of databases for an AnalyticDB for MySQL cluster.
         
         @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
@@ -3356,7 +3360,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeAdbMySqlSchemasRequest,
     ) -> adb_20211201_models.DescribeAdbMySqlSchemasResponse:
         """
-        @summary Queries a list of databases for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        @summary Queries a list of databases for an AnalyticDB for MySQL cluster.
         
         @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
@@ -3373,7 +3377,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeAdbMySqlTablesResponse:
         """
-        @summary Queries a list of tables for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        @summary Queries a list of tables for an AnalyticDB for MySQL cluster.
         
         @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
@@ -3415,7 +3419,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeAdbMySqlTablesResponse:
         """
-        @summary Queries a list of tables for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        @summary Queries a list of tables for an AnalyticDB for MySQL cluster.
         
         @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
@@ -3456,7 +3460,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeAdbMySqlTablesRequest,
     ) -> adb_20211201_models.DescribeAdbMySqlTablesResponse:
         """
-        @summary Queries a list of tables for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        @summary Queries a list of tables for an AnalyticDB for MySQL cluster.
         
         @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
@@ -3472,7 +3476,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeAdbMySqlTablesRequest,
     ) -> adb_20211201_models.DescribeAdbMySqlTablesResponse:
         """
-        @summary Queries a list of tables for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        @summary Queries a list of tables for an AnalyticDB for MySQL cluster.
         
         @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
@@ -4529,9 +4533,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeClusterResourceDetailResponse:
         """
-        @summary 获取集群资源统计
+        @summary Queries the information about resource usage of an AnalyticDB for MySQL cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeClusterResourceDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4566,9 +4570,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeClusterResourceDetailResponse:
         """
-        @summary 获取集群资源统计
+        @summary Queries the information about resource usage of an AnalyticDB for MySQL cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeClusterResourceDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4602,9 +4606,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeClusterResourceDetailRequest,
     ) -> adb_20211201_models.DescribeClusterResourceDetailResponse:
         """
-        @summary 获取集群资源统计
+        @summary Queries the information about resource usage of an AnalyticDB for MySQL cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeClusterResourceDetailRequest
         @return: DescribeClusterResourceDetailResponse
@@ -4617,9 +4621,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeClusterResourceDetailRequest,
     ) -> adb_20211201_models.DescribeClusterResourceDetailResponse:
         """
-        @summary 获取集群资源统计
+        @summary Queries the information about resource usage of an AnalyticDB for MySQL cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeClusterResourceDetailRequest
         @return: DescribeClusterResourceDetailResponse
@@ -6645,9 +6649,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeElasticPlansResponse:
         """
-        @summary Queries scaling plans of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        @summary Queries scaling plans of an AnalyticDB for MySQL cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeElasticPlansRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6694,9 +6698,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeElasticPlansResponse:
         """
-        @summary Queries scaling plans of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        @summary Queries scaling plans of an AnalyticDB for MySQL cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeElasticPlansRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6742,9 +6746,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeElasticPlansRequest,
     ) -> adb_20211201_models.DescribeElasticPlansResponse:
         """
-        @summary Queries scaling plans of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        @summary Queries scaling plans of an AnalyticDB for MySQL cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeElasticPlansRequest
         @return: DescribeElasticPlansResponse
@@ -6757,9 +6761,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeElasticPlansRequest,
     ) -> adb_20211201_models.DescribeElasticPlansResponse:
         """
-        @summary Queries scaling plans of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        @summary Queries scaling plans of an AnalyticDB for MySQL cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeElasticPlansRequest
         @return: DescribeElasticPlansResponse
@@ -8327,6 +8331,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the storage resource usage of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
+        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
         @param request: DescribeStorageResourceUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeStorageResourceUsageResponse
@@ -8366,6 +8372,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the storage resource usage of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
+        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
         @param request: DescribeStorageResourceUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeStorageResourceUsageResponse
@@ -8404,6 +8412,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the storage resource usage of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
+        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
         @param request: DescribeStorageResourceUsageRequest
         @return: DescribeStorageResourceUsageResponse
         """
@@ -8416,6 +8426,8 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.DescribeStorageResourceUsageResponse:
         """
         @summary Queries the storage resource usage of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
         
         @param request: DescribeStorageResourceUsageRequest
         @return: DescribeStorageResourceUsageResponse
@@ -9495,9 +9507,9 @@ class Client(OpenApiClient):
         """
         @summary Queries the information about the retry log of a Spark application.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: GetSparkAppAttemptLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9542,9 +9554,9 @@ class Client(OpenApiClient):
         """
         @summary Queries the information about the retry log of a Spark application.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: GetSparkAppAttemptLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9588,9 +9600,9 @@ class Client(OpenApiClient):
         """
         @summary Queries the information about the retry log of a Spark application.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: GetSparkAppAttemptLogRequest
         @return: GetSparkAppAttemptLogResponse
@@ -9605,9 +9617,9 @@ class Client(OpenApiClient):
         """
         @summary Queries the information about the retry log of a Spark application.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: GetSparkAppAttemptLogRequest
         @return: GetSparkAppAttemptLogResponse
@@ -10915,9 +10927,9 @@ class Client(OpenApiClient):
         """
         @summary Queries the directory structure of Spark applications.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: GetSparkTemplateFullTreeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10954,9 +10966,9 @@ class Client(OpenApiClient):
         """
         @summary Queries the directory structure of Spark applications.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: GetSparkTemplateFullTreeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10992,9 +11004,9 @@ class Client(OpenApiClient):
         """
         @summary Queries the directory structure of Spark applications.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: GetSparkTemplateFullTreeRequest
         @return: GetSparkTemplateFullTreeResponse
@@ -11009,9 +11021,9 @@ class Client(OpenApiClient):
         """
         @summary Queries the directory structure of Spark applications.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: GetSparkTemplateFullTreeRequest
         @return: GetSparkTemplateFullTreeResponse
@@ -12479,9 +12491,9 @@ class Client(OpenApiClient):
         """
         @summary Queries all Spark template file IDs of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: ListSparkTemplateFileIdsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12518,9 +12530,9 @@ class Client(OpenApiClient):
         """
         @summary Queries all Spark template file IDs of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: ListSparkTemplateFileIdsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12556,9 +12568,9 @@ class Client(OpenApiClient):
         """
         @summary Queries all Spark template file IDs of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: ListSparkTemplateFileIdsRequest
         @return: ListSparkTemplateFileIdsResponse
@@ -12573,9 +12585,9 @@ class Client(OpenApiClient):
         """
         @summary Queries all Spark template file IDs of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: ListSparkTemplateFileIdsRequest
         @return: ListSparkTemplateFileIdsResponse
@@ -13467,6 +13479,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.product_form):
+            query['ProductForm'] = request.product_form
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.reserved_node_count):
@@ -13528,6 +13542,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.product_form):
+            query['ProductForm'] = request.product_form
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.reserved_node_count):
@@ -14711,9 +14727,9 @@ class Client(OpenApiClient):
         """
         @summary Modifies the Spark log configuration.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: SetSparkAppLogRootPathRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14754,9 +14770,9 @@ class Client(OpenApiClient):
         """
         @summary Modifies the Spark log configuration.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: SetSparkAppLogRootPathRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14796,9 +14812,9 @@ class Client(OpenApiClient):
         """
         @summary Modifies the Spark log configuration.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: SetSparkAppLogRootPathRequest
         @return: SetSparkAppLogRootPathResponse
@@ -14813,9 +14829,9 @@ class Client(OpenApiClient):
         """
         @summary Modifies the Spark log configuration.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: SetSparkAppLogRootPathRequest
         @return: SetSparkAppLogRootPathResponse

@@ -1,3 +1,10 @@
+2024-09-24 Version: 1.3.12
+- Update API CreateDBCluster: add param CloneSourceRegionId.
+- Update API CreateDBCluster: update param ProductForm.
+- Update API DescribeDiagnosisRecords: update response param.
+- Update API ModifyDBCluster: add param ProductForm.
+
+
 2024-08-20 Version: 1.3.11
 - Update API GetTableObjects: update param PageNumber.
 - Update API GetTableObjects: update param PageSize.
