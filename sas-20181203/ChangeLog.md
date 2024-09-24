@@ -1,3 +1,26 @@
+2024-09-24 Version: 3.1.0
+- Support API AddPublishBatch.
+- Support API BatchCreateMaliciousNote.
+- Support API DescribeHybridProxyClusterList.
+- Support API DescribeHybridProxyLinkedClientList.
+- Support API DescribeHybridProxyList.
+- Support API DescribeHybridProxyPolicy.
+- Support API GetCurrentVersionPublish.
+- Support API ListAssetInfoPublish.
+- Support API ListPrivateK8s.
+- Support API ListPublishBatch.
+- Support API ModifyAttestor.
+- Support API SetImageBuildRiskStatus.
+- Support API UnBindHybridProxy.
+- Update API DescribeSecurityEventOperations: update response param.
+- Update API DescribeSuspiciousUUIDConfig: update response param.
+- Update API DescribeWebLockBindList: add param Uuid.
+- Update API DescribeWebLockBindList: update response param.
+- Update API DescribeWebLockConfigList: add param Id.
+- Update API DescribeWebLockConfigList: update response param.
+- Update API ModifyWebLockCreateConfig: update response param.
+
+
 2024-09-10 Version: 3.0.0
 - Support API AddBaselineCheckWhiteRecord.
 - Support API AddCloudVendorAccountAK.
