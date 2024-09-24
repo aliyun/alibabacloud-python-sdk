@@ -3035,7 +3035,7 @@ class GetResult4QueryInstancePrice4ModifyResponseBodyDataPriceList(TeaModel):
         if self.discount_amount is not None:
             result['DiscountAmount'] = self.discount_amount
         if self.error is not None:
-            result['ERROR'] = self.error
+            result['Error'] = self.error
         if self.node_type is not None:
             result['NodeType'] = self.node_type
         if self.original_amount is not None:
@@ -3052,8 +3052,8 @@ class GetResult4QueryInstancePrice4ModifyResponseBodyDataPriceList(TeaModel):
         m = m or dict()
         if m.get('DiscountAmount') is not None:
             self.discount_amount = m.get('DiscountAmount')
-        if m.get('ERROR') is not None:
-            self.error = m.get('ERROR')
+        if m.get('Error') is not None:
+            self.error = m.get('Error')
         if m.get('NodeType') is not None:
             self.node_type = m.get('NodeType')
         if m.get('OriginalAmount') is not None:
@@ -5187,12 +5187,98 @@ class QueryInstanceSpec4ModifyShrinkRequest(TeaModel):
         return self
 
 
+class QueryInstanceSpec4ModifyResponseBodyDataOptionalValues(TeaModel):
+    def __init__(
+        self,
+        label: str = None,
+        max: float = None,
+        min: float = None,
+        step: float = None,
+        value: str = None,
+    ):
+        self.label = label
+        self.max = max
+        self.min = min
+        self.step = step
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.label is not None:
+            result['Label'] = self.label
+        if self.max is not None:
+            result['Max'] = self.max
+        if self.min is not None:
+            result['Min'] = self.min
+        if self.step is not None:
+            result['Step'] = self.step
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        if m.get('Max') is not None:
+            self.max = m.get('Max')
+        if m.get('Min') is not None:
+            self.min = m.get('Min')
+        if m.get('Step') is not None:
+            self.step = m.get('Step')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class QueryInstanceSpec4ModifyResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        optional_values: List[QueryInstanceSpec4ModifyResponseBodyDataOptionalValues] = None,
+    ):
+        self.optional_values = optional_values
+
+    def validate(self):
+        if self.optional_values:
+            for k in self.optional_values:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['OptionalValues'] = []
+        if self.optional_values is not None:
+            for k in self.optional_values:
+                result['OptionalValues'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.optional_values = []
+        if m.get('OptionalValues') is not None:
+            for k in m.get('OptionalValues'):
+                temp_model = QueryInstanceSpec4ModifyResponseBodyDataOptionalValues()
+                self.optional_values.append(temp_model.from_map(k))
+        return self
+
+
 class QueryInstanceSpec4ModifyResponseBody(TeaModel):
     def __init__(
         self,
         access_denied_detail: str = None,
         code: str = None,
-        data: str = None,
+        data: QueryInstanceSpec4ModifyResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
@@ -5205,7 +5291,8 @@ class QueryInstanceSpec4ModifyResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        pass
+        if self.data:
+            self.data.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5218,7 +5305,7 @@ class QueryInstanceSpec4ModifyResponseBody(TeaModel):
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
-            result['Data'] = self.data
+            result['Data'] = self.data.to_map()
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
@@ -5234,7 +5321,8 @@ class QueryInstanceSpec4ModifyResponseBody(TeaModel):
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
-            self.data = m.get('Data')
+            temp_model = QueryInstanceSpec4ModifyResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:

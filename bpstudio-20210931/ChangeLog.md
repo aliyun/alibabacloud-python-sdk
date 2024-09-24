@@ -1,3 +1,8 @@
+2024-09-24 Version: 5.2.1
+- Update API GetResult4QueryInstancePrice4Modify: update response param.
+- Update API QueryInstanceSpec4Modify: update response param.
+
+
 2024-09-24 Version: 5.2.0
 - Support API GetResource4ModifyRecord.
 - Support API GetResult4QueryInstancePrice4Modify.
