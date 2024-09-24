@@ -1,3 +1,10 @@
+2024-09-24 Version: 4.7.5
+- Update API CancelOperationPlan: update response param.
+- Update API CreateCluster: update param body.
+- Update API DescribeClusterAddonInstance: update param ClusterID.
+- Update API DescribeClusterAddonInstance: update param AddonName.
+
+
 2024-09-04 Version: 4.7.4
 - Update API CreateCluster: update param body.
 - Update API DeleteAlertContact: update response param.

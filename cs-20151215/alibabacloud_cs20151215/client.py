@@ -82,7 +82,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.AttachInstancesResponse:
         """
-        @summary You can call the AttachInstances operation to add existing Elastic Compute Service (ECS) instances to a cluster.
+        @summary Adds existing Elastic Compute Service (ECS) instances to a Container Service for Kubernetes (ACK) cluster.
         
         @param request: AttachInstancesRequest
         @param headers: map
@@ -145,7 +145,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.AttachInstancesResponse:
         """
-        @summary You can call the AttachInstances operation to add existing Elastic Compute Service (ECS) instances to a cluster.
+        @summary Adds existing Elastic Compute Service (ECS) instances to a Container Service for Kubernetes (ACK) cluster.
         
         @param request: AttachInstancesRequest
         @param headers: map
@@ -206,7 +206,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.AttachInstancesRequest,
     ) -> cs20151215_models.AttachInstancesResponse:
         """
-        @summary You can call the AttachInstances operation to add existing Elastic Compute Service (ECS) instances to a cluster.
+        @summary Adds existing Elastic Compute Service (ECS) instances to a Container Service for Kubernetes (ACK) cluster.
         
         @param request: AttachInstancesRequest
         @return: AttachInstancesResponse
@@ -221,7 +221,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.AttachInstancesRequest,
     ) -> cs20151215_models.AttachInstancesResponse:
         """
-        @summary You can call the AttachInstances operation to add existing Elastic Compute Service (ECS) instances to a cluster.
+        @summary Adds existing Elastic Compute Service (ECS) instances to a Container Service for Kubernetes (ACK) cluster.
         
         @param request: AttachInstancesRequest
         @return: AttachInstancesResponse
@@ -959,7 +959,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CheckServiceRoleResponse:
         """
-        @summary 检查是否授权指定服务角色
+        @summary Checks whether the specified service role is granted required permissions within the current Alibaba Cloud account.
         
         @param request: CheckServiceRoleRequest
         @param headers: map
@@ -997,7 +997,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CheckServiceRoleResponse:
         """
-        @summary 检查是否授权指定服务角色
+        @summary Checks whether the specified service role is granted required permissions within the current Alibaba Cloud account.
         
         @param request: CheckServiceRoleRequest
         @param headers: map
@@ -1033,7 +1033,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.CheckServiceRoleRequest,
     ) -> cs20151215_models.CheckServiceRoleResponse:
         """
-        @summary 检查是否授权指定服务角色
+        @summary Checks whether the specified service role is granted required permissions within the current Alibaba Cloud account.
         
         @param request: CheckServiceRoleRequest
         @return: CheckServiceRoleResponse
@@ -1047,7 +1047,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.CheckServiceRoleRequest,
     ) -> cs20151215_models.CheckServiceRoleResponse:
         """
-        @summary 检查是否授权指定服务角色
+        @summary Checks whether the specified service role is granted required permissions within the current Alibaba Cloud account.
         
         @param request: CheckServiceRoleRequest
         @return: CheckServiceRoleResponse
@@ -1068,7 +1068,7 @@ class Client(OpenApiClient):
         @summary You can call the CleanClusterUserPermissions operation to delete kubeconfig files that may pose potential risks from a user and revoke Role-Based Access Control (RBAC) permissions on a cluster.
         
         @description >
-        To call this operation, make sure that you have the AliyunCSFullAccess permissions.
+        To call this operation, make sure that you have the AliyunCSFullAccess permission.
         You cannot revoke the permissions of an Alibaba Cloud account.
         You cannot revoke the permissions of the account that you use to call this operation.
         
@@ -1113,7 +1113,7 @@ class Client(OpenApiClient):
         @summary You can call the CleanClusterUserPermissions operation to delete kubeconfig files that may pose potential risks from a user and revoke Role-Based Access Control (RBAC) permissions on a cluster.
         
         @description >
-        To call this operation, make sure that you have the AliyunCSFullAccess permissions.
+        To call this operation, make sure that you have the AliyunCSFullAccess permission.
         You cannot revoke the permissions of an Alibaba Cloud account.
         You cannot revoke the permissions of the account that you use to call this operation.
         
@@ -1156,7 +1156,7 @@ class Client(OpenApiClient):
         @summary You can call the CleanClusterUserPermissions operation to delete kubeconfig files that may pose potential risks from a user and revoke Role-Based Access Control (RBAC) permissions on a cluster.
         
         @description >
-        To call this operation, make sure that you have the AliyunCSFullAccess permissions.
+        To call this operation, make sure that you have the AliyunCSFullAccess permission.
         You cannot revoke the permissions of an Alibaba Cloud account.
         You cannot revoke the permissions of the account that you use to call this operation.
         
@@ -1177,7 +1177,7 @@ class Client(OpenApiClient):
         @summary You can call the CleanClusterUserPermissions operation to delete kubeconfig files that may pose potential risks from a user and revoke Role-Based Access Control (RBAC) permissions on a cluster.
         
         @description >
-        To call this operation, make sure that you have the AliyunCSFullAccess permissions.
+        To call this operation, make sure that you have the AliyunCSFullAccess permission.
         You cannot revoke the permissions of an Alibaba Cloud account.
         You cannot revoke the permissions of the account that you use to call this operation.
         
@@ -1493,13 +1493,13 @@ class Client(OpenApiClient):
         """
         @summary You can call the CreateCluster operation to create a Container Service for Kubernetes (ACK) cluster. ACK clusters include ACK managed clusters, ACK dedicated clusters, ACK Serverless clusters, ACK Edge clusters, ACK clusters that support sandboxed containers, and registered clusters. For more information about how to create different types of ACK clusters, see the following usage notes.
         
-        @description This topic describes all parameters for creating an ACK cluster. You can create the following types of ACK clusters.
-        [Create an ACK managed cluster](https://help.aliyun.com/document_detail/90776.html)
-        [Create an ACK dedicated cluster](https://help.aliyun.com/document_detail/197620.html)
-        [Create an ACK Serverless cluster](https://help.aliyun.com/document_detail/144246.html)
-        [Create an ACK Edge cluster](https://help.aliyun.com/document_detail/128204.html)
-        [Create an ACK Basic cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/196321.html)
-        [Create an ACK Pro cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/140623.html)
+        @description This topic describes all request parameters for creating a Container Service for Kubernetes (ACK) cluster. For more information about how to call the API to create each type of ACK cluster, refer to the following topics:
+        [Call the API to create an ACK managed cluster](https://help.aliyun.com/document_detail/90776.html)
+        [Call the API to create an ACK dedicated cluster](https://help.aliyun.com/document_detail/197620.html)
+        [Call the API to create an ACK Serverless cluster](https://help.aliyun.com/document_detail/144246.html)
+        [Call the API to create an ACK Edge cluster](https://help.aliyun.com/document_detail/128204.html)
+        [Call the API to create an ACK Basic cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/196321.html)
+        [Call the API to create an ACK Pro cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/140623.html)
         
         @param request: CreateClusterRequest
         @param headers: map
@@ -1514,6 +1514,10 @@ class Client(OpenApiClient):
             body['addons'] = request.addons
         if not UtilClient.is_unset(request.api_audiences):
             body['api_audiences'] = request.api_audiences
+        if not UtilClient.is_unset(request.auto_renew):
+            body['auto_renew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_renew_period):
+            body['auto_renew_period'] = request.auto_renew_period
         if not UtilClient.is_unset(request.charge_type):
             body['charge_type'] = request.charge_type
         if not UtilClient.is_unset(request.cis_enabled):
@@ -1692,6 +1696,8 @@ class Client(OpenApiClient):
             body['worker_vswitch_ids'] = request.worker_vswitch_ids
         if not UtilClient.is_unset(request.zone_id):
             body['zone_id'] = request.zone_id
+        if not UtilClient.is_unset(request.zone_ids):
+            body['zone_ids'] = request.zone_ids
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1721,13 +1727,13 @@ class Client(OpenApiClient):
         """
         @summary You can call the CreateCluster operation to create a Container Service for Kubernetes (ACK) cluster. ACK clusters include ACK managed clusters, ACK dedicated clusters, ACK Serverless clusters, ACK Edge clusters, ACK clusters that support sandboxed containers, and registered clusters. For more information about how to create different types of ACK clusters, see the following usage notes.
         
-        @description This topic describes all parameters for creating an ACK cluster. You can create the following types of ACK clusters.
-        [Create an ACK managed cluster](https://help.aliyun.com/document_detail/90776.html)
-        [Create an ACK dedicated cluster](https://help.aliyun.com/document_detail/197620.html)
-        [Create an ACK Serverless cluster](https://help.aliyun.com/document_detail/144246.html)
-        [Create an ACK Edge cluster](https://help.aliyun.com/document_detail/128204.html)
-        [Create an ACK Basic cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/196321.html)
-        [Create an ACK Pro cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/140623.html)
+        @description This topic describes all request parameters for creating a Container Service for Kubernetes (ACK) cluster. For more information about how to call the API to create each type of ACK cluster, refer to the following topics:
+        [Call the API to create an ACK managed cluster](https://help.aliyun.com/document_detail/90776.html)
+        [Call the API to create an ACK dedicated cluster](https://help.aliyun.com/document_detail/197620.html)
+        [Call the API to create an ACK Serverless cluster](https://help.aliyun.com/document_detail/144246.html)
+        [Call the API to create an ACK Edge cluster](https://help.aliyun.com/document_detail/128204.html)
+        [Call the API to create an ACK Basic cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/196321.html)
+        [Call the API to create an ACK Pro cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/140623.html)
         
         @param request: CreateClusterRequest
         @param headers: map
@@ -1742,6 +1748,10 @@ class Client(OpenApiClient):
             body['addons'] = request.addons
         if not UtilClient.is_unset(request.api_audiences):
             body['api_audiences'] = request.api_audiences
+        if not UtilClient.is_unset(request.auto_renew):
+            body['auto_renew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_renew_period):
+            body['auto_renew_period'] = request.auto_renew_period
         if not UtilClient.is_unset(request.charge_type):
             body['charge_type'] = request.charge_type
         if not UtilClient.is_unset(request.cis_enabled):
@@ -1920,6 +1930,8 @@ class Client(OpenApiClient):
             body['worker_vswitch_ids'] = request.worker_vswitch_ids
         if not UtilClient.is_unset(request.zone_id):
             body['zone_id'] = request.zone_id
+        if not UtilClient.is_unset(request.zone_ids):
+            body['zone_ids'] = request.zone_ids
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1947,13 +1959,13 @@ class Client(OpenApiClient):
         """
         @summary You can call the CreateCluster operation to create a Container Service for Kubernetes (ACK) cluster. ACK clusters include ACK managed clusters, ACK dedicated clusters, ACK Serverless clusters, ACK Edge clusters, ACK clusters that support sandboxed containers, and registered clusters. For more information about how to create different types of ACK clusters, see the following usage notes.
         
-        @description This topic describes all parameters for creating an ACK cluster. You can create the following types of ACK clusters.
-        [Create an ACK managed cluster](https://help.aliyun.com/document_detail/90776.html)
-        [Create an ACK dedicated cluster](https://help.aliyun.com/document_detail/197620.html)
-        [Create an ACK Serverless cluster](https://help.aliyun.com/document_detail/144246.html)
-        [Create an ACK Edge cluster](https://help.aliyun.com/document_detail/128204.html)
-        [Create an ACK Basic cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/196321.html)
-        [Create an ACK Pro cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/140623.html)
+        @description This topic describes all request parameters for creating a Container Service for Kubernetes (ACK) cluster. For more information about how to call the API to create each type of ACK cluster, refer to the following topics:
+        [Call the API to create an ACK managed cluster](https://help.aliyun.com/document_detail/90776.html)
+        [Call the API to create an ACK dedicated cluster](https://help.aliyun.com/document_detail/197620.html)
+        [Call the API to create an ACK Serverless cluster](https://help.aliyun.com/document_detail/144246.html)
+        [Call the API to create an ACK Edge cluster](https://help.aliyun.com/document_detail/128204.html)
+        [Call the API to create an ACK Basic cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/196321.html)
+        [Call the API to create an ACK Pro cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/140623.html)
         
         @param request: CreateClusterRequest
         @return: CreateClusterResponse
@@ -1969,13 +1981,13 @@ class Client(OpenApiClient):
         """
         @summary You can call the CreateCluster operation to create a Container Service for Kubernetes (ACK) cluster. ACK clusters include ACK managed clusters, ACK dedicated clusters, ACK Serverless clusters, ACK Edge clusters, ACK clusters that support sandboxed containers, and registered clusters. For more information about how to create different types of ACK clusters, see the following usage notes.
         
-        @description This topic describes all parameters for creating an ACK cluster. You can create the following types of ACK clusters.
-        [Create an ACK managed cluster](https://help.aliyun.com/document_detail/90776.html)
-        [Create an ACK dedicated cluster](https://help.aliyun.com/document_detail/197620.html)
-        [Create an ACK Serverless cluster](https://help.aliyun.com/document_detail/144246.html)
-        [Create an ACK Edge cluster](https://help.aliyun.com/document_detail/128204.html)
-        [Create an ACK Basic cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/196321.html)
-        [Create an ACK Pro cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/140623.html)
+        @description This topic describes all request parameters for creating a Container Service for Kubernetes (ACK) cluster. For more information about how to call the API to create each type of ACK cluster, refer to the following topics:
+        [Call the API to create an ACK managed cluster](https://help.aliyun.com/document_detail/90776.html)
+        [Call the API to create an ACK dedicated cluster](https://help.aliyun.com/document_detail/197620.html)
+        [Call the API to create an ACK Serverless cluster](https://help.aliyun.com/document_detail/144246.html)
+        [Call the API to create an ACK Edge cluster](https://help.aliyun.com/document_detail/128204.html)
+        [Call the API to create an ACK Basic cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/196321.html)
+        [Call the API to create an ACK Pro cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/140623.html)
         
         @param request: CreateClusterRequest
         @return: CreateClusterResponse
@@ -2600,7 +2612,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateTriggerResponse:
         """
-        @summary You can call the CreateTrigger operation to create a trigger for an application.
+        @summary Creates a trigger for an application to redeploy the application pods when specific conditions are met.
         
         @param request: CreateTriggerRequest
         @param headers: map
@@ -2645,7 +2657,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateTriggerResponse:
         """
-        @summary You can call the CreateTrigger operation to create a trigger for an application.
+        @summary Creates a trigger for an application to redeploy the application pods when specific conditions are met.
         
         @param request: CreateTriggerRequest
         @param headers: map
@@ -2688,7 +2700,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.CreateTriggerRequest,
     ) -> cs20151215_models.CreateTriggerResponse:
         """
-        @summary You can call the CreateTrigger operation to create a trigger for an application.
+        @summary Creates a trigger for an application to redeploy the application pods when specific conditions are met.
         
         @param request: CreateTriggerRequest
         @return: CreateTriggerResponse
@@ -2703,7 +2715,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.CreateTriggerRequest,
     ) -> cs20151215_models.CreateTriggerResponse:
         """
-        @summary You can call the CreateTrigger operation to create a trigger for an application.
+        @summary Creates a trigger for an application to redeploy the application pods when specific conditions are met.
         
         @param request: CreateTriggerRequest
         @return: CreateTriggerResponse
@@ -3190,8 +3202,10 @@ class Client(OpenApiClient):
         """
         @summary Removes nodes from a Container Service for Kubernetes (ACK) cluster. When you remove nodes, you can specify whether to release the Elastic Compute Service (ECS) instances and drain the nodes. When you remove nodes, pods on the nodes are migrated. This may adversely affect your businesses. We recommend that you back up data and perform this operation during off-peak hours.
         
-        @description >
-        When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours. - The operation may have unexpected risks. Back up the data before you perform this operation. - When the system removes a node, it sets the status of the node to Unschedulable. - The system removes only worker nodes. It does not remove master nodes.
+        @description    When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
+        The operation may have unexpected risks. Back up the data before you perform this operation.
+        When the system removes a node, it sets the status of the node to Unschedulable.
+        The system removes only worker nodes. It does not remove master nodes.
         
         @param request: DeleteClusterNodesRequest
         @param headers: map
@@ -3236,8 +3250,10 @@ class Client(OpenApiClient):
         """
         @summary Removes nodes from a Container Service for Kubernetes (ACK) cluster. When you remove nodes, you can specify whether to release the Elastic Compute Service (ECS) instances and drain the nodes. When you remove nodes, pods on the nodes are migrated. This may adversely affect your businesses. We recommend that you back up data and perform this operation during off-peak hours.
         
-        @description >
-        When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours. - The operation may have unexpected risks. Back up the data before you perform this operation. - When the system removes a node, it sets the status of the node to Unschedulable. - The system removes only worker nodes. It does not remove master nodes.
+        @description    When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
+        The operation may have unexpected risks. Back up the data before you perform this operation.
+        When the system removes a node, it sets the status of the node to Unschedulable.
+        The system removes only worker nodes. It does not remove master nodes.
         
         @param request: DeleteClusterNodesRequest
         @param headers: map
@@ -3280,8 +3296,10 @@ class Client(OpenApiClient):
         """
         @summary Removes nodes from a Container Service for Kubernetes (ACK) cluster. When you remove nodes, you can specify whether to release the Elastic Compute Service (ECS) instances and drain the nodes. When you remove nodes, pods on the nodes are migrated. This may adversely affect your businesses. We recommend that you back up data and perform this operation during off-peak hours.
         
-        @description >
-        When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours. - The operation may have unexpected risks. Back up the data before you perform this operation. - When the system removes a node, it sets the status of the node to Unschedulable. - The system removes only worker nodes. It does not remove master nodes.
+        @description    When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
+        The operation may have unexpected risks. Back up the data before you perform this operation.
+        When the system removes a node, it sets the status of the node to Unschedulable.
+        The system removes only worker nodes. It does not remove master nodes.
         
         @param request: DeleteClusterNodesRequest
         @return: DeleteClusterNodesResponse
@@ -3298,8 +3316,10 @@ class Client(OpenApiClient):
         """
         @summary Removes nodes from a Container Service for Kubernetes (ACK) cluster. When you remove nodes, you can specify whether to release the Elastic Compute Service (ECS) instances and drain the nodes. When you remove nodes, pods on the nodes are migrated. This may adversely affect your businesses. We recommend that you back up data and perform this operation during off-peak hours.
         
-        @description >
-        When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours. - The operation may have unexpected risks. Back up the data before you perform this operation. - When the system removes a node, it sets the status of the node to Unschedulable. - The system removes only worker nodes. It does not remove master nodes.
+        @description    When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
+        The operation may have unexpected risks. Back up the data before you perform this operation.
+        When the system removes a node, it sets the status of the node to Unschedulable.
+        The system removes only worker nodes. It does not remove master nodes.
         
         @param request: DeleteClusterNodesRequest
         @return: DeleteClusterNodesResponse
@@ -3716,7 +3736,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteTriggerResponse:
         """
-        @summary You can call the DeleteTrigger operation to delete an application trigger.
+        @summary Deletes an application trigger.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3749,7 +3769,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteTriggerResponse:
         """
-        @summary You can call the DeleteTrigger operation to delete an application trigger.
+        @summary Deletes an application trigger.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3780,7 +3800,7 @@ class Client(OpenApiClient):
         id: str,
     ) -> cs20151215_models.DeleteTriggerResponse:
         """
-        @summary You can call the DeleteTrigger operation to delete an application trigger.
+        @summary Deletes an application trigger.
         
         @return: DeleteTriggerResponse
         """
@@ -3794,7 +3814,7 @@ class Client(OpenApiClient):
         id: str,
     ) -> cs20151215_models.DeleteTriggerResponse:
         """
-        @summary You can call the DeleteTrigger operation to delete an application trigger.
+        @summary Deletes an application trigger.
         
         @return: DeleteTriggerResponse
         """
@@ -4032,7 +4052,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeAddonResponse:
         """
-        @summary 查询指定集群组件
+        @summary Queries the information about a component based on specific conditions such as the region, cluster type, cluster subtype defined by cluster profile, cluster version, and component name. The information includes whether the component is managed, the component type, supported custom parameter schema, compatible operating system architecture, and earliest supported cluster version.
         
         @param request: DescribeAddonRequest
         @param headers: map
@@ -4083,7 +4103,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeAddonResponse:
         """
-        @summary 查询指定集群组件
+        @summary Queries the information about a component based on specific conditions such as the region, cluster type, cluster subtype defined by cluster profile, cluster version, and component name. The information includes whether the component is managed, the component type, supported custom parameter schema, compatible operating system architecture, and earliest supported cluster version.
         
         @param request: DescribeAddonRequest
         @param headers: map
@@ -4132,7 +4152,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeAddonRequest,
     ) -> cs20151215_models.DescribeAddonResponse:
         """
-        @summary 查询指定集群组件
+        @summary Queries the information about a component based on specific conditions such as the region, cluster type, cluster subtype defined by cluster profile, cluster version, and component name. The information includes whether the component is managed, the component type, supported custom parameter schema, compatible operating system architecture, and earliest supported cluster version.
         
         @param request: DescribeAddonRequest
         @return: DescribeAddonResponse
@@ -4147,7 +4167,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeAddonRequest,
     ) -> cs20151215_models.DescribeAddonResponse:
         """
-        @summary 查询指定集群组件
+        @summary Queries the information about a component based on specific conditions such as the region, cluster type, cluster subtype defined by cluster profile, cluster version, and component name. The information includes whether the component is managed, the component type, supported custom parameter schema, compatible operating system architecture, and earliest supported cluster version.
         
         @param request: DescribeAddonRequest
         @return: DescribeAddonResponse
@@ -4862,7 +4882,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAttachScriptsResponse:
         """
-        @summary Queries the script that is used to add existing nodes to a Container Service for Kubernetes (ACK) cluster. You can manually add existing Elastic Compute Service (ECS) instances to an ACK cluster as worker nodes or re-add the worker nodes that you have removed to a node pool.
+        @summary Queries the scripts used to add existing nodes to a Container Service for Kubernetes (ACK) cluster. ACK allows you to manually add existing Elastic Compute Service (ECS) instances to an ACK cluster as worker nodes or re-add worker nodes that you remove from the cluster to a node pool.
         
         @param request: DescribeClusterAttachScriptsRequest
         @param headers: map
@@ -4911,7 +4931,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAttachScriptsResponse:
         """
-        @summary Queries the script that is used to add existing nodes to a Container Service for Kubernetes (ACK) cluster. You can manually add existing Elastic Compute Service (ECS) instances to an ACK cluster as worker nodes or re-add the worker nodes that you have removed to a node pool.
+        @summary Queries the scripts used to add existing nodes to a Container Service for Kubernetes (ACK) cluster. ACK allows you to manually add existing Elastic Compute Service (ECS) instances to an ACK cluster as worker nodes or re-add worker nodes that you remove from the cluster to a node pool.
         
         @param request: DescribeClusterAttachScriptsRequest
         @param headers: map
@@ -4958,7 +4978,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeClusterAttachScriptsRequest,
     ) -> cs20151215_models.DescribeClusterAttachScriptsResponse:
         """
-        @summary Queries the script that is used to add existing nodes to a Container Service for Kubernetes (ACK) cluster. You can manually add existing Elastic Compute Service (ECS) instances to an ACK cluster as worker nodes or re-add the worker nodes that you have removed to a node pool.
+        @summary Queries the scripts used to add existing nodes to a Container Service for Kubernetes (ACK) cluster. ACK allows you to manually add existing Elastic Compute Service (ECS) instances to an ACK cluster as worker nodes or re-add worker nodes that you remove from the cluster to a node pool.
         
         @param request: DescribeClusterAttachScriptsRequest
         @return: DescribeClusterAttachScriptsResponse
@@ -4973,7 +4993,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeClusterAttachScriptsRequest,
     ) -> cs20151215_models.DescribeClusterAttachScriptsResponse:
         """
-        @summary Queries the script that is used to add existing nodes to a Container Service for Kubernetes (ACK) cluster. You can manually add existing Elastic Compute Service (ECS) instances to an ACK cluster as worker nodes or re-add the worker nodes that you have removed to a node pool.
+        @summary Queries the scripts used to add existing nodes to a Container Service for Kubernetes (ACK) cluster. ACK allows you to manually add existing Elastic Compute Service (ECS) instances to an ACK cluster as worker nodes or re-add worker nodes that you remove from the cluster to a node pool.
         
         @param request: DescribeClusterAttachScriptsRequest
         @return: DescribeClusterAttachScriptsResponse
@@ -5834,8 +5854,7 @@ class Client(OpenApiClient):
         """
         @summary Kubeconfig files store identity and authentication information that is used by clients to access Container Service for Kubernetes (ACK) clusters. To use a kubectl client to manage an ACK cluster, you need to use the corresponding kubeconfig file to connect to the ACK cluster. We recommend that you keep kubeconfig files confidential and revoke kubeconfig files that are not in use. This helps prevent data leaks caused by the disclosure of kubeconfig files.
         
-        @description *\
-        ***The default validity period of a kubeconfig file is 3 years. Two months before a kubeconfig file expires, you can renew it in the Container Service for Kubernetes (ACK) console or by calling API operations. After a kubeconfig file is renewed, the secret is valid for 3 years. The previous kubeconfig secret remains valid until expiration. We recommend that you renew your kubeconfig file at the earliest opportunity.
+        @description >  The default validity period of a kubeconfig file is 3 years. 180 days before a kubeconfig file expires, you can renew it in the Container Service for Kubernetes (ACK) console or by calling API operations. After a kubeconfig file is renewed, the kubeconfig file is valid for 3 years. The previous kubeconfig file still remains valid until expiration. We recommend that you renew your kubeconfig file at the earliest opportunity.
         
         @param request: DescribeClusterUserKubeconfigRequest
         @param headers: map
@@ -5878,8 +5897,7 @@ class Client(OpenApiClient):
         """
         @summary Kubeconfig files store identity and authentication information that is used by clients to access Container Service for Kubernetes (ACK) clusters. To use a kubectl client to manage an ACK cluster, you need to use the corresponding kubeconfig file to connect to the ACK cluster. We recommend that you keep kubeconfig files confidential and revoke kubeconfig files that are not in use. This helps prevent data leaks caused by the disclosure of kubeconfig files.
         
-        @description *\
-        ***The default validity period of a kubeconfig file is 3 years. Two months before a kubeconfig file expires, you can renew it in the Container Service for Kubernetes (ACK) console or by calling API operations. After a kubeconfig file is renewed, the secret is valid for 3 years. The previous kubeconfig secret remains valid until expiration. We recommend that you renew your kubeconfig file at the earliest opportunity.
+        @description >  The default validity period of a kubeconfig file is 3 years. 180 days before a kubeconfig file expires, you can renew it in the Container Service for Kubernetes (ACK) console or by calling API operations. After a kubeconfig file is renewed, the kubeconfig file is valid for 3 years. The previous kubeconfig file still remains valid until expiration. We recommend that you renew your kubeconfig file at the earliest opportunity.
         
         @param request: DescribeClusterUserKubeconfigRequest
         @param headers: map
@@ -5920,8 +5938,7 @@ class Client(OpenApiClient):
         """
         @summary Kubeconfig files store identity and authentication information that is used by clients to access Container Service for Kubernetes (ACK) clusters. To use a kubectl client to manage an ACK cluster, you need to use the corresponding kubeconfig file to connect to the ACK cluster. We recommend that you keep kubeconfig files confidential and revoke kubeconfig files that are not in use. This helps prevent data leaks caused by the disclosure of kubeconfig files.
         
-        @description *\
-        ***The default validity period of a kubeconfig file is 3 years. Two months before a kubeconfig file expires, you can renew it in the Container Service for Kubernetes (ACK) console or by calling API operations. After a kubeconfig file is renewed, the secret is valid for 3 years. The previous kubeconfig secret remains valid until expiration. We recommend that you renew your kubeconfig file at the earliest opportunity.
+        @description >  The default validity period of a kubeconfig file is 3 years. 180 days before a kubeconfig file expires, you can renew it in the Container Service for Kubernetes (ACK) console or by calling API operations. After a kubeconfig file is renewed, the kubeconfig file is valid for 3 years. The previous kubeconfig file still remains valid until expiration. We recommend that you renew your kubeconfig file at the earliest opportunity.
         
         @param request: DescribeClusterUserKubeconfigRequest
         @return: DescribeClusterUserKubeconfigResponse
@@ -5938,8 +5955,7 @@ class Client(OpenApiClient):
         """
         @summary Kubeconfig files store identity and authentication information that is used by clients to access Container Service for Kubernetes (ACK) clusters. To use a kubectl client to manage an ACK cluster, you need to use the corresponding kubeconfig file to connect to the ACK cluster. We recommend that you keep kubeconfig files confidential and revoke kubeconfig files that are not in use. This helps prevent data leaks caused by the disclosure of kubeconfig files.
         
-        @description *\
-        ***The default validity period of a kubeconfig file is 3 years. Two months before a kubeconfig file expires, you can renew it in the Container Service for Kubernetes (ACK) console or by calling API operations. After a kubeconfig file is renewed, the secret is valid for 3 years. The previous kubeconfig secret remains valid until expiration. We recommend that you renew your kubeconfig file at the earliest opportunity.
+        @description >  The default validity period of a kubeconfig file is 3 years. 180 days before a kubeconfig file expires, you can renew it in the Container Service for Kubernetes (ACK) console or by calling API operations. After a kubeconfig file is renewed, the kubeconfig file is valid for 3 years. The previous kubeconfig file still remains valid until expiration. We recommend that you renew your kubeconfig file at the earliest opportunity.
         
         @param request: DescribeClusterUserKubeconfigRequest
         @return: DescribeClusterUserKubeconfigResponse
@@ -6167,7 +6183,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DescribeClusters is deprecated
         
-        @summary You can call the DescribeClusters operation to query all the clusters that belong to the current Alibaba Cloud account, including Kubernetes clusters and Swarm clusters.
+        @summary Queries all the clusters that belong to the current Alibaba Cloud account, including Kubernetes clusters and Swarm clusters.
         
         @param request: DescribeClustersRequest
         @param headers: map
@@ -6212,7 +6228,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DescribeClusters is deprecated
         
-        @summary You can call the DescribeClusters operation to query all the clusters that belong to the current Alibaba Cloud account, including Kubernetes clusters and Swarm clusters.
+        @summary Queries all the clusters that belong to the current Alibaba Cloud account, including Kubernetes clusters and Swarm clusters.
         
         @param request: DescribeClustersRequest
         @param headers: map
@@ -6255,7 +6271,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DescribeClusters is deprecated
         
-        @summary You can call the DescribeClusters operation to query all the clusters that belong to the current Alibaba Cloud account, including Kubernetes clusters and Swarm clusters.
+        @summary Queries all the clusters that belong to the current Alibaba Cloud account, including Kubernetes clusters and Swarm clusters.
         
         @param request: DescribeClustersRequest
         @return: DescribeClustersResponse
@@ -6272,7 +6288,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DescribeClusters is deprecated
         
-        @summary You can call the DescribeClusters operation to query all the clusters that belong to the current Alibaba Cloud account, including Kubernetes clusters and Swarm clusters.
+        @summary Queries all the clusters that belong to the current Alibaba Cloud account, including Kubernetes clusters and Swarm clusters.
         
         @param request: DescribeClustersRequest
         @return: DescribeClustersResponse
@@ -6289,7 +6305,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClustersV1Response:
         """
-        @summary You can call the DescribeClustersV1 operation to query the details about all Container Service for Kubernetes (ACK) clusters.
+        @summary Queries the details about Container Service for Kubernetes (ACK) clusters of specified types or specifications within an account.
         
         @param request: DescribeClustersV1Request
         @param headers: map
@@ -6341,7 +6357,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClustersV1Response:
         """
-        @summary You can call the DescribeClustersV1 operation to query the details about all Container Service for Kubernetes (ACK) clusters.
+        @summary Queries the details about Container Service for Kubernetes (ACK) clusters of specified types or specifications within an account.
         
         @param request: DescribeClustersV1Request
         @param headers: map
@@ -6391,7 +6407,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeClustersV1Request,
     ) -> cs20151215_models.DescribeClustersV1Response:
         """
-        @summary You can call the DescribeClustersV1 operation to query the details about all Container Service for Kubernetes (ACK) clusters.
+        @summary Queries the details about Container Service for Kubernetes (ACK) clusters of specified types or specifications within an account.
         
         @param request: DescribeClustersV1Request
         @return: DescribeClustersV1Response
@@ -6405,7 +6421,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeClustersV1Request,
     ) -> cs20151215_models.DescribeClustersV1Response:
         """
-        @summary You can call the DescribeClustersV1 operation to query the details about all Container Service for Kubernetes (ACK) clusters.
+        @summary Queries the details about Container Service for Kubernetes (ACK) clusters of specified types or specifications within an account.
         
         @param request: DescribeClustersV1Request
         @return: DescribeClustersV1Response
@@ -6924,7 +6940,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeExternalAgentResponse:
         """
-        @summary You can call the DescribeExternalAgent operation to query the agent configurations of a registered cluster by cluster ID.
+        @summary Queries the proxy configurations of a registered cluster based on the cluster ID.
         
         @description For more information, see [Register an external Kubernetes cluster](https://help.aliyun.com/document_detail/121053.html).
         
@@ -6967,7 +6983,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeExternalAgentResponse:
         """
-        @summary You can call the DescribeExternalAgent operation to query the agent configurations of a registered cluster by cluster ID.
+        @summary Queries the proxy configurations of a registered cluster based on the cluster ID.
         
         @description For more information, see [Register an external Kubernetes cluster](https://help.aliyun.com/document_detail/121053.html).
         
@@ -7008,7 +7024,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeExternalAgentRequest,
     ) -> cs20151215_models.DescribeExternalAgentResponse:
         """
-        @summary You can call the DescribeExternalAgent operation to query the agent configurations of a registered cluster by cluster ID.
+        @summary Queries the proxy configurations of a registered cluster based on the cluster ID.
         
         @description For more information, see [Register an external Kubernetes cluster](https://help.aliyun.com/document_detail/121053.html).
         
@@ -7025,7 +7041,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeExternalAgentRequest,
     ) -> cs20151215_models.DescribeExternalAgentResponse:
         """
-        @summary You can call the DescribeExternalAgent operation to query the agent configurations of a registered cluster by cluster ID.
+        @summary Queries the proxy configurations of a registered cluster based on the cluster ID.
         
         @description For more information, see [Register an external Kubernetes cluster](https://help.aliyun.com/document_detail/121053.html).
         
@@ -7365,7 +7381,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribePolicyDetailsResponse:
         """
-        @summary Container security policies for Container Service for Kubernetes (ACK) clusters offer a variety of built-in policies, including cis-k8s, infra, k8s-general, and PodSecurityPolicy. You can use these policies to ensure the security of containers running in a production environment. You can call the DescribePolicyDetails operation to query information about a policy, such as the content, action, and severity level of the policy.
+        @summary Queries the detailed information about a policy. The information includes the content, action, and severity level of the policy. Container Service for Kubernetes (ACK) provides the following types of predefined security policies: Compliance, Infra, K8s-general, and pod security policy (PSP). These policies ensure that containers are running in the production environment in a secure manner.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -7397,7 +7413,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribePolicyDetailsResponse:
         """
-        @summary Container security policies for Container Service for Kubernetes (ACK) clusters offer a variety of built-in policies, including cis-k8s, infra, k8s-general, and PodSecurityPolicy. You can use these policies to ensure the security of containers running in a production environment. You can call the DescribePolicyDetails operation to query information about a policy, such as the content, action, and severity level of the policy.
+        @summary Queries the detailed information about a policy. The information includes the content, action, and severity level of the policy. Container Service for Kubernetes (ACK) provides the following types of predefined security policies: Compliance, Infra, K8s-general, and pod security policy (PSP). These policies ensure that containers are running in the production environment in a secure manner.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -7427,7 +7443,7 @@ class Client(OpenApiClient):
         policy_name: str,
     ) -> cs20151215_models.DescribePolicyDetailsResponse:
         """
-        @summary Container security policies for Container Service for Kubernetes (ACK) clusters offer a variety of built-in policies, including cis-k8s, infra, k8s-general, and PodSecurityPolicy. You can use these policies to ensure the security of containers running in a production environment. You can call the DescribePolicyDetails operation to query information about a policy, such as the content, action, and severity level of the policy.
+        @summary Queries the detailed information about a policy. The information includes the content, action, and severity level of the policy. Container Service for Kubernetes (ACK) provides the following types of predefined security policies: Compliance, Infra, K8s-general, and pod security policy (PSP). These policies ensure that containers are running in the production environment in a secure manner.
         
         @return: DescribePolicyDetailsResponse
         """
@@ -7440,7 +7456,7 @@ class Client(OpenApiClient):
         policy_name: str,
     ) -> cs20151215_models.DescribePolicyDetailsResponse:
         """
-        @summary Container security policies for Container Service for Kubernetes (ACK) clusters offer a variety of built-in policies, including cis-k8s, infra, k8s-general, and PodSecurityPolicy. You can use these policies to ensure the security of containers running in a production environment. You can call the DescribePolicyDetails operation to query information about a policy, such as the content, action, and severity level of the policy.
+        @summary Queries the detailed information about a policy. The information includes the content, action, and severity level of the policy. Container Service for Kubernetes (ACK) provides the following types of predefined security policies: Compliance, Infra, K8s-general, and pod security policy (PSP). These policies ensure that containers are running in the production environment in a secure manner.
         
         @return: DescribePolicyDetailsResponse
         """
@@ -7455,7 +7471,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribePolicyGovernanceInClusterResponse:
         """
-        @summary Queries the details of policies for a Container Service for Kubernetes (ACK) cluster. For example, you can query the number of multi-level policies that are enabled for the cluster, audit logs of the policies, and denying and alerting information. Container security policies for ACK clusters offer a variety of built-in policies, such as cis-k8s, infra, k8s-general, and PodSecurityPolicy. You can use these policies to ensure the security of containers running in a production environment.
+        @summary Container Service for Kubernetes (ACK) clusters offer a variety of built-in container security policies, such as Compliance, Infra, K8s-general, and pod security policy (PSP). You can use these policies to ensure the security of containers running in a production environment. You can call the DescribePolicyGovernanceInCluster operation to query the details of policies for an ACK cluster. For example, you can query the number of policies that are enabled per severity level, the audit logs of policies, and the blocking and alerting information.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -7487,7 +7503,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribePolicyGovernanceInClusterResponse:
         """
-        @summary Queries the details of policies for a Container Service for Kubernetes (ACK) cluster. For example, you can query the number of multi-level policies that are enabled for the cluster, audit logs of the policies, and denying and alerting information. Container security policies for ACK clusters offer a variety of built-in policies, such as cis-k8s, infra, k8s-general, and PodSecurityPolicy. You can use these policies to ensure the security of containers running in a production environment.
+        @summary Container Service for Kubernetes (ACK) clusters offer a variety of built-in container security policies, such as Compliance, Infra, K8s-general, and pod security policy (PSP). You can use these policies to ensure the security of containers running in a production environment. You can call the DescribePolicyGovernanceInCluster operation to query the details of policies for an ACK cluster. For example, you can query the number of policies that are enabled per severity level, the audit logs of policies, and the blocking and alerting information.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -7517,7 +7533,7 @@ class Client(OpenApiClient):
         cluster_id: str,
     ) -> cs20151215_models.DescribePolicyGovernanceInClusterResponse:
         """
-        @summary Queries the details of policies for a Container Service for Kubernetes (ACK) cluster. For example, you can query the number of multi-level policies that are enabled for the cluster, audit logs of the policies, and denying and alerting information. Container security policies for ACK clusters offer a variety of built-in policies, such as cis-k8s, infra, k8s-general, and PodSecurityPolicy. You can use these policies to ensure the security of containers running in a production environment.
+        @summary Container Service for Kubernetes (ACK) clusters offer a variety of built-in container security policies, such as Compliance, Infra, K8s-general, and pod security policy (PSP). You can use these policies to ensure the security of containers running in a production environment. You can call the DescribePolicyGovernanceInCluster operation to query the details of policies for an ACK cluster. For example, you can query the number of policies that are enabled per severity level, the audit logs of policies, and the blocking and alerting information.
         
         @return: DescribePolicyGovernanceInClusterResponse
         """
@@ -7530,7 +7546,7 @@ class Client(OpenApiClient):
         cluster_id: str,
     ) -> cs20151215_models.DescribePolicyGovernanceInClusterResponse:
         """
-        @summary Queries the details of policies for a Container Service for Kubernetes (ACK) cluster. For example, you can query the number of multi-level policies that are enabled for the cluster, audit logs of the policies, and denying and alerting information. Container security policies for ACK clusters offer a variety of built-in policies, such as cis-k8s, infra, k8s-general, and PodSecurityPolicy. You can use these policies to ensure the security of containers running in a production environment.
+        @summary Container Service for Kubernetes (ACK) clusters offer a variety of built-in container security policies, such as Compliance, Infra, K8s-general, and pod security policy (PSP). You can use these policies to ensure the security of containers running in a production environment. You can call the DescribePolicyGovernanceInCluster operation to query the details of policies for an ACK cluster. For example, you can query the number of policies that are enabled per severity level, the audit logs of policies, and the blocking and alerting information.
         
         @return: DescribePolicyGovernanceInClusterResponse
         """
@@ -8302,7 +8318,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeTriggerResponse:
         """
-        @summary You can call the DescribeTrigger operation to query triggers.
+        @summary Queries triggers that match specific conditions.
         
         @param request: DescribeTriggerRequest
         @param headers: map
@@ -8347,7 +8363,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeTriggerResponse:
         """
-        @summary You can call the DescribeTrigger operation to query triggers.
+        @summary Queries triggers that match specific conditions.
         
         @param request: DescribeTriggerRequest
         @param headers: map
@@ -8390,7 +8406,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeTriggerRequest,
     ) -> cs20151215_models.DescribeTriggerResponse:
         """
-        @summary You can call the DescribeTrigger operation to query triggers.
+        @summary Queries triggers that match specific conditions.
         
         @param request: DescribeTriggerRequest
         @return: DescribeTriggerResponse
@@ -8405,7 +8421,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeTriggerRequest,
     ) -> cs20151215_models.DescribeTriggerResponse:
         """
-        @summary You can call the DescribeTrigger operation to query triggers.
+        @summary Queries triggers that match specific conditions.
         
         @param request: DescribeTriggerRequest
         @return: DescribeTriggerResponse
@@ -8421,7 +8437,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeUserClusterNamespacesResponse:
         """
-        @summary Queries the Role-Based Access Control (RBAC) permissions that are granted to the current Resource Access Management (RAM) user or RAM role on a Container Service for Kubernetes (ACK) cluster. You can use Kubernetes namespaces to limit users from accessing resources in an ACK cluster. Users that are granted RBAC permissions only on one namespace cannot access resources in other namespaces.
+        @summary You can use Kubernetes namespaces to limit users from accessing resources in a Container Service for Kubernetes (ACK) cluster. Users that are granted Role-Based Access Control (RBAC) permissions only on one namespace cannot access resources in other namespaces. Queries the RBAC permissions that are granted to the current Resource Access Management (RAM) user or RAM role on an ACK cluster.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -8453,7 +8469,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeUserClusterNamespacesResponse:
         """
-        @summary Queries the Role-Based Access Control (RBAC) permissions that are granted to the current Resource Access Management (RAM) user or RAM role on a Container Service for Kubernetes (ACK) cluster. You can use Kubernetes namespaces to limit users from accessing resources in an ACK cluster. Users that are granted RBAC permissions only on one namespace cannot access resources in other namespaces.
+        @summary You can use Kubernetes namespaces to limit users from accessing resources in a Container Service for Kubernetes (ACK) cluster. Users that are granted Role-Based Access Control (RBAC) permissions only on one namespace cannot access resources in other namespaces. Queries the RBAC permissions that are granted to the current Resource Access Management (RAM) user or RAM role on an ACK cluster.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -8483,7 +8499,7 @@ class Client(OpenApiClient):
         cluster_id: str,
     ) -> cs20151215_models.DescribeUserClusterNamespacesResponse:
         """
-        @summary Queries the Role-Based Access Control (RBAC) permissions that are granted to the current Resource Access Management (RAM) user or RAM role on a Container Service for Kubernetes (ACK) cluster. You can use Kubernetes namespaces to limit users from accessing resources in an ACK cluster. Users that are granted RBAC permissions only on one namespace cannot access resources in other namespaces.
+        @summary You can use Kubernetes namespaces to limit users from accessing resources in a Container Service for Kubernetes (ACK) cluster. Users that are granted Role-Based Access Control (RBAC) permissions only on one namespace cannot access resources in other namespaces. Queries the RBAC permissions that are granted to the current Resource Access Management (RAM) user or RAM role on an ACK cluster.
         
         @return: DescribeUserClusterNamespacesResponse
         """
@@ -8496,7 +8512,7 @@ class Client(OpenApiClient):
         cluster_id: str,
     ) -> cs20151215_models.DescribeUserClusterNamespacesResponse:
         """
-        @summary Queries the Role-Based Access Control (RBAC) permissions that are granted to the current Resource Access Management (RAM) user or RAM role on a Container Service for Kubernetes (ACK) cluster. You can use Kubernetes namespaces to limit users from accessing resources in an ACK cluster. Users that are granted RBAC permissions only on one namespace cannot access resources in other namespaces.
+        @summary You can use Kubernetes namespaces to limit users from accessing resources in a Container Service for Kubernetes (ACK) cluster. Users that are granted Role-Based Access Control (RBAC) permissions only on one namespace cannot access resources in other namespaces. Queries the RBAC permissions that are granted to the current Resource Access Management (RAM) user or RAM role on an ACK cluster.
         
         @return: DescribeUserClusterNamespacesResponse
         """
@@ -8512,6 +8528,9 @@ class Client(OpenApiClient):
     ) -> cs20151215_models.DescribeUserPermissionResponse:
         """
         @summary In an Container Service for Kubernetes (ACK) cluster, you can create and specify different Resource Access Management (RAM) users or roles to have different access permissions. This ensures access control and resource isolation. You can call the DescribeUserPermission operation to query the permissions that are granted to a RAM user or RAM role on ACK clusters, including the resources that are allowed to access, the scope of the permissions, the predefined role, and the permission source.
+        
+        @description *Precautions**:
+        If you call this operation as a Resource Access Management (RAM) user or by assuming a RAM role, only the permissions granted on the clusters on which the current account has the role-based access control (RBAC) administrator permissions are returned. If you want to query the permissions on all clusters, you must use an account that has the RBAC administrator permissions on all clusters.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -8545,6 +8564,9 @@ class Client(OpenApiClient):
         """
         @summary In an Container Service for Kubernetes (ACK) cluster, you can create and specify different Resource Access Management (RAM) users or roles to have different access permissions. This ensures access control and resource isolation. You can call the DescribeUserPermission operation to query the permissions that are granted to a RAM user or RAM role on ACK clusters, including the resources that are allowed to access, the scope of the permissions, the predefined role, and the permission source.
         
+        @description *Precautions**:
+        If you call this operation as a Resource Access Management (RAM) user or by assuming a RAM role, only the permissions granted on the clusters on which the current account has the role-based access control (RBAC) administrator permissions are returned. If you want to query the permissions on all clusters, you must use an account that has the RBAC administrator permissions on all clusters.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeUserPermissionResponse
@@ -8575,6 +8597,9 @@ class Client(OpenApiClient):
         """
         @summary In an Container Service for Kubernetes (ACK) cluster, you can create and specify different Resource Access Management (RAM) users or roles to have different access permissions. This ensures access control and resource isolation. You can call the DescribeUserPermission operation to query the permissions that are granted to a RAM user or RAM role on ACK clusters, including the resources that are allowed to access, the scope of the permissions, the predefined role, and the permission source.
         
+        @description *Precautions**:
+        If you call this operation as a Resource Access Management (RAM) user or by assuming a RAM role, only the permissions granted on the clusters on which the current account has the role-based access control (RBAC) administrator permissions are returned. If you want to query the permissions on all clusters, you must use an account that has the RBAC administrator permissions on all clusters.
+        
         @return: DescribeUserPermissionResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -8587,6 +8612,9 @@ class Client(OpenApiClient):
     ) -> cs20151215_models.DescribeUserPermissionResponse:
         """
         @summary In an Container Service for Kubernetes (ACK) cluster, you can create and specify different Resource Access Management (RAM) users or roles to have different access permissions. This ensures access control and resource isolation. You can call the DescribeUserPermission operation to query the permissions that are granted to a RAM user or RAM role on ACK clusters, including the resources that are allowed to access, the scope of the permissions, the predefined role, and the permission source.
+        
+        @description *Precautions**:
+        If you call this operation as a Resource Access Management (RAM) user or by assuming a RAM role, only the permissions granted on the clusters on which the current account has the role-based access control (RBAC) administrator permissions are returned. If you want to query the permissions on all clusters, you must use an account that has the RBAC administrator permissions on all clusters.
         
         @return: DescribeUserPermissionResponse
         """
@@ -9945,7 +9973,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ListAddonsResponse:
         """
-        @summary You can call the ListAddons operation to query all available components in a cluster. You can query all available components in a cluster by specifying the ID of the cluster. You can also specify parameters such as the region, cluster type, cluster subtype (profile), cluster specification, and cluster version to get a list of available components in clusters that meet the conditions.
+        @summary Queries the available components based on specific conditions such as the region, cluster type, cluster subtype defined by cluster profile, and cluster version and queries the detailed information about a component. The information includes whether the component is managed, the supported custom parameter schema, and compatible operating system architecture.
         
         @param request: ListAddonsRequest
         @param headers: map
@@ -9993,7 +10021,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ListAddonsResponse:
         """
-        @summary You can call the ListAddons operation to query all available components in a cluster. You can query all available components in a cluster by specifying the ID of the cluster. You can also specify parameters such as the region, cluster type, cluster subtype (profile), cluster specification, and cluster version to get a list of available components in clusters that meet the conditions.
+        @summary Queries the available components based on specific conditions such as the region, cluster type, cluster subtype defined by cluster profile, and cluster version and queries the detailed information about a component. The information includes whether the component is managed, the supported custom parameter schema, and compatible operating system architecture.
         
         @param request: ListAddonsRequest
         @param headers: map
@@ -10039,7 +10067,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.ListAddonsRequest,
     ) -> cs20151215_models.ListAddonsResponse:
         """
-        @summary You can call the ListAddons operation to query all available components in a cluster. You can query all available components in a cluster by specifying the ID of the cluster. You can also specify parameters such as the region, cluster type, cluster subtype (profile), cluster specification, and cluster version to get a list of available components in clusters that meet the conditions.
+        @summary Queries the available components based on specific conditions such as the region, cluster type, cluster subtype defined by cluster profile, and cluster version and queries the detailed information about a component. The information includes whether the component is managed, the supported custom parameter schema, and compatible operating system architecture.
         
         @param request: ListAddonsRequest
         @return: ListAddonsResponse
@@ -10053,7 +10081,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.ListAddonsRequest,
     ) -> cs20151215_models.ListAddonsResponse:
         """
-        @summary You can call the ListAddons operation to query all available components in a cluster. You can query all available components in a cluster by specifying the ID of the cluster. You can also specify parameters such as the region, cluster type, cluster subtype (profile), cluster specification, and cluster version to get a list of available components in clusters that meet the conditions.
+        @summary Queries the available components based on specific conditions such as the region, cluster type, cluster subtype defined by cluster profile, and cluster version and queries the detailed information about a component. The information includes whether the component is managed, the supported custom parameter schema, and compatible operating system architecture.
         
         @param request: ListAddonsRequest
         @return: ListAddonsResponse
@@ -10069,7 +10097,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ListClusterAddonInstancesResponse:
         """
-        @summary You can call the ListClusterAddonInstances operation to query information about the components that are installed in a cluster.
+        @summary Queries the component instances that are running in the specified cluster and the information about the component instances. The information includes the component version and status.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -10101,7 +10129,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ListClusterAddonInstancesResponse:
         """
-        @summary You can call the ListClusterAddonInstances operation to query information about the components that are installed in a cluster.
+        @summary Queries the component instances that are running in the specified cluster and the information about the component instances. The information includes the component version and status.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -10131,7 +10159,7 @@ class Client(OpenApiClient):
         cluster_id: str,
     ) -> cs20151215_models.ListClusterAddonInstancesResponse:
         """
-        @summary You can call the ListClusterAddonInstances operation to query information about the components that are installed in a cluster.
+        @summary Queries the component instances that are running in the specified cluster and the information about the component instances. The information includes the component version and status.
         
         @return: ListClusterAddonInstancesResponse
         """
@@ -10144,7 +10172,7 @@ class Client(OpenApiClient):
         cluster_id: str,
     ) -> cs20151215_models.ListClusterAddonInstancesResponse:
         """
-        @summary You can call the ListClusterAddonInstances operation to query information about the components that are installed in a cluster.
+        @summary Queries the component instances that are running in the specified cluster and the information about the component instances. The information includes the component version and status.
         
         @return: ListClusterAddonInstancesResponse
         """
@@ -10274,9 +10302,8 @@ class Client(OpenApiClient):
         """
         @summary You can call the ListClusterKubeconfigStates operation to query the kubeconfig files that are issued to users for the current cluster and the status of the kubeconfig files.
         
-        @description >
-        To call this operation, make sure that you have ram:ListUsers and ram:ListRoles permissions.
-        To call this operation, make sure that you have the AliyunCSFullAccess permissions.
+        @description > - To call this operation, make sure that you have ram:ListUsers and ram:ListRoles permissions.
+        > - To call this operation, make sure that you have the AliyunCSFullAccess permissions.
         
         @param request: ListClusterKubeconfigStatesRequest
         @param headers: map
@@ -10319,9 +10346,8 @@ class Client(OpenApiClient):
         """
         @summary You can call the ListClusterKubeconfigStates operation to query the kubeconfig files that are issued to users for the current cluster and the status of the kubeconfig files.
         
-        @description >
-        To call this operation, make sure that you have ram:ListUsers and ram:ListRoles permissions.
-        To call this operation, make sure that you have the AliyunCSFullAccess permissions.
+        @description > - To call this operation, make sure that you have ram:ListUsers and ram:ListRoles permissions.
+        > - To call this operation, make sure that you have the AliyunCSFullAccess permissions.
         
         @param request: ListClusterKubeconfigStatesRequest
         @param headers: map
@@ -10362,9 +10388,8 @@ class Client(OpenApiClient):
         """
         @summary You can call the ListClusterKubeconfigStates operation to query the kubeconfig files that are issued to users for the current cluster and the status of the kubeconfig files.
         
-        @description >
-        To call this operation, make sure that you have ram:ListUsers and ram:ListRoles permissions.
-        To call this operation, make sure that you have the AliyunCSFullAccess permissions.
+        @description > - To call this operation, make sure that you have ram:ListUsers and ram:ListRoles permissions.
+        > - To call this operation, make sure that you have the AliyunCSFullAccess permissions.
         
         @param request: ListClusterKubeconfigStatesRequest
         @return: ListClusterKubeconfigStatesResponse
@@ -10381,9 +10406,8 @@ class Client(OpenApiClient):
         """
         @summary You can call the ListClusterKubeconfigStates operation to query the kubeconfig files that are issued to users for the current cluster and the status of the kubeconfig files.
         
-        @description >
-        To call this operation, make sure that you have ram:ListUsers and ram:ListRoles permissions.
-        To call this operation, make sure that you have the AliyunCSFullAccess permissions.
+        @description > - To call this operation, make sure that you have ram:ListUsers and ram:ListRoles permissions.
+        > - To call this operation, make sure that you have the AliyunCSFullAccess permissions.
         
         @param request: ListClusterKubeconfigStatesRequest
         @return: ListClusterKubeconfigStatesResponse
@@ -10399,7 +10423,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ListOperationPlansResponse:
         """
-        @summary 获取自动运维执行计划列表
+        @summary Queries the auto O\\&M schedules of a cluster.
         
         @param request: ListOperationPlansRequest
         @param headers: map
@@ -10439,7 +10463,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ListOperationPlansResponse:
         """
-        @summary 获取自动运维执行计划列表
+        @summary Queries the auto O\\&M schedules of a cluster.
         
         @param request: ListOperationPlansRequest
         @param headers: map
@@ -10477,7 +10501,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.ListOperationPlansRequest,
     ) -> cs20151215_models.ListOperationPlansResponse:
         """
-        @summary 获取自动运维执行计划列表
+        @summary Queries the auto O\\&M schedules of a cluster.
         
         @param request: ListOperationPlansRequest
         @return: ListOperationPlansResponse
@@ -10491,7 +10515,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.ListOperationPlansRequest,
     ) -> cs20151215_models.ListOperationPlansResponse:
         """
-        @summary 获取自动运维执行计划列表
+        @summary Queries the auto O\\&M schedules of a cluster.
         
         @param request: ListOperationPlansRequest
         @return: ListOperationPlansResponse
@@ -11036,8 +11060,8 @@ class Client(OpenApiClient):
         @summary Modifies the configuration of a cluster component. This operation may affect your businesses. We recommend that you assess the impact, back up data, and perform the operation during off-peak hours.
         
         @description You can use this API operation to modify the components in a Container Service for Kubernetes (ACK) cluster or the control plane components in an ACK Pro cluster.
-        To query the customizable parameters of a component, call the `DescribeClusterAddonMetadata` API operation. For more information, see [Query the metadata of a specified component version](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/query).
-        For more information about the customizable parameters of control plane components in ACK Pro clusters, see [Customize the parameters of control plane components in ACK Pro clusters](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/customize-control-plane-parameters-for-a-professional-kubernetes-cluster).
+        To query the customizable parameters of a component, call the `DescribeClusterAddonMetadata` API operation. For more information, see [Query the metadata of a specified component version](https://help.aliyun.com/document_detail/2667944.html).
+        For more information about the customizable parameters of control plane components in ACK Pro clusters, see [Customize the parameters of control plane components in ACK Pro clusters](https://help.aliyun.com/document_detail/199588.html).
         After you call this operation, the component may be redeployed and restarted. We recommend that you assess the impact before you call this operation.
         
         @param request: ModifyClusterAddonRequest
@@ -11081,8 +11105,8 @@ class Client(OpenApiClient):
         @summary Modifies the configuration of a cluster component. This operation may affect your businesses. We recommend that you assess the impact, back up data, and perform the operation during off-peak hours.
         
         @description You can use this API operation to modify the components in a Container Service for Kubernetes (ACK) cluster or the control plane components in an ACK Pro cluster.
-        To query the customizable parameters of a component, call the `DescribeClusterAddonMetadata` API operation. For more information, see [Query the metadata of a specified component version](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/query).
-        For more information about the customizable parameters of control plane components in ACK Pro clusters, see [Customize the parameters of control plane components in ACK Pro clusters](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/customize-control-plane-parameters-for-a-professional-kubernetes-cluster).
+        To query the customizable parameters of a component, call the `DescribeClusterAddonMetadata` API operation. For more information, see [Query the metadata of a specified component version](https://help.aliyun.com/document_detail/2667944.html).
+        For more information about the customizable parameters of control plane components in ACK Pro clusters, see [Customize the parameters of control plane components in ACK Pro clusters](https://help.aliyun.com/document_detail/199588.html).
         After you call this operation, the component may be redeployed and restarted. We recommend that you assess the impact before you call this operation.
         
         @param request: ModifyClusterAddonRequest
@@ -11124,8 +11148,8 @@ class Client(OpenApiClient):
         @summary Modifies the configuration of a cluster component. This operation may affect your businesses. We recommend that you assess the impact, back up data, and perform the operation during off-peak hours.
         
         @description You can use this API operation to modify the components in a Container Service for Kubernetes (ACK) cluster or the control plane components in an ACK Pro cluster.
-        To query the customizable parameters of a component, call the `DescribeClusterAddonMetadata` API operation. For more information, see [Query the metadata of a specified component version](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/query).
-        For more information about the customizable parameters of control plane components in ACK Pro clusters, see [Customize the parameters of control plane components in ACK Pro clusters](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/customize-control-plane-parameters-for-a-professional-kubernetes-cluster).
+        To query the customizable parameters of a component, call the `DescribeClusterAddonMetadata` API operation. For more information, see [Query the metadata of a specified component version](https://help.aliyun.com/document_detail/2667944.html).
+        For more information about the customizable parameters of control plane components in ACK Pro clusters, see [Customize the parameters of control plane components in ACK Pro clusters](https://help.aliyun.com/document_detail/199588.html).
         After you call this operation, the component may be redeployed and restarted. We recommend that you assess the impact before you call this operation.
         
         @param request: ModifyClusterAddonRequest
@@ -11145,8 +11169,8 @@ class Client(OpenApiClient):
         @summary Modifies the configuration of a cluster component. This operation may affect your businesses. We recommend that you assess the impact, back up data, and perform the operation during off-peak hours.
         
         @description You can use this API operation to modify the components in a Container Service for Kubernetes (ACK) cluster or the control plane components in an ACK Pro cluster.
-        To query the customizable parameters of a component, call the `DescribeClusterAddonMetadata` API operation. For more information, see [Query the metadata of a specified component version](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/query).
-        For more information about the customizable parameters of control plane components in ACK Pro clusters, see [Customize the parameters of control plane components in ACK Pro clusters](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/customize-control-plane-parameters-for-a-professional-kubernetes-cluster).
+        To query the customizable parameters of a component, call the `DescribeClusterAddonMetadata` API operation. For more information, see [Query the metadata of a specified component version](https://help.aliyun.com/document_detail/2667944.html).
+        For more information about the customizable parameters of control plane components in ACK Pro clusters, see [Customize the parameters of control plane components in ACK Pro clusters](https://help.aliyun.com/document_detail/199588.html).
         After you call this operation, the component may be redeployed and restarted. We recommend that you assess the impact before you call this operation.
         
         @param request: ModifyClusterAddonRequest
@@ -11412,7 +11436,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyClusterTagsResponse:
         """
-        @summary Modifies the labels of a Container Service for Kubernetes (ACK) cluster. You can use labels (key-value pairs) to classify and manage ACK clusters in order to meet monitoring, cost analysis, and tenant isolation requirements.
+        @summary You can add labels in key-value pairs to clusters. This allows cluster developers or O\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the ModifyClusterTags operation to modify the labels of a cluster.
         
         @param request: ModifyClusterTagsRequest
         @param headers: map
@@ -11448,7 +11472,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyClusterTagsResponse:
         """
-        @summary Modifies the labels of a Container Service for Kubernetes (ACK) cluster. You can use labels (key-value pairs) to classify and manage ACK clusters in order to meet monitoring, cost analysis, and tenant isolation requirements.
+        @summary You can add labels in key-value pairs to clusters. This allows cluster developers or O\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the ModifyClusterTags operation to modify the labels of a cluster.
         
         @param request: ModifyClusterTagsRequest
         @param headers: map
@@ -11482,7 +11506,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.ModifyClusterTagsRequest,
     ) -> cs20151215_models.ModifyClusterTagsResponse:
         """
-        @summary Modifies the labels of a Container Service for Kubernetes (ACK) cluster. You can use labels (key-value pairs) to classify and manage ACK clusters in order to meet monitoring, cost analysis, and tenant isolation requirements.
+        @summary You can add labels in key-value pairs to clusters. This allows cluster developers or O\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the ModifyClusterTags operation to modify the labels of a cluster.
         
         @param request: ModifyClusterTagsRequest
         @return: ModifyClusterTagsResponse
@@ -11497,7 +11521,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.ModifyClusterTagsRequest,
     ) -> cs20151215_models.ModifyClusterTagsResponse:
         """
-        @summary Modifies the labels of a Container Service for Kubernetes (ACK) cluster. You can use labels (key-value pairs) to classify and manage ACK clusters in order to meet monitoring, cost analysis, and tenant isolation requirements.
+        @summary You can add labels in key-value pairs to clusters. This allows cluster developers or O\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the ModifyClusterTags operation to modify the labels of a cluster.
         
         @param request: ModifyClusterTagsRequest
         @return: ModifyClusterTagsResponse
@@ -11765,7 +11789,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.OpenAckServiceResponse:
         """
-        @summary You can call the OpenAckService operation to activate Container Service for Kubernetes (ACK).
+        @summary When you use Container Service for Kubernetes (ACK) for the first time, you must activate ACK by using an Alibaba Cloud account or RAM user with the required permissions and complete ACK authorization.
         
         @description    You can activate ACK by using Alibaba Cloud accounts.
         To activate ACK by using RAM users, you need to grant the AdministratorAccess permission to the RAM users.
@@ -11806,7 +11830,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.OpenAckServiceResponse:
         """
-        @summary You can call the OpenAckService operation to activate Container Service for Kubernetes (ACK).
+        @summary When you use Container Service for Kubernetes (ACK) for the first time, you must activate ACK by using an Alibaba Cloud account or RAM user with the required permissions and complete ACK authorization.
         
         @description    You can activate ACK by using Alibaba Cloud accounts.
         To activate ACK by using RAM users, you need to grant the AdministratorAccess permission to the RAM users.
@@ -11845,7 +11869,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.OpenAckServiceRequest,
     ) -> cs20151215_models.OpenAckServiceResponse:
         """
-        @summary You can call the OpenAckService operation to activate Container Service for Kubernetes (ACK).
+        @summary When you use Container Service for Kubernetes (ACK) for the first time, you must activate ACK by using an Alibaba Cloud account or RAM user with the required permissions and complete ACK authorization.
         
         @description    You can activate ACK by using Alibaba Cloud accounts.
         To activate ACK by using RAM users, you need to grant the AdministratorAccess permission to the RAM users.
@@ -11862,7 +11886,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.OpenAckServiceRequest,
     ) -> cs20151215_models.OpenAckServiceResponse:
         """
-        @summary You can call the OpenAckService operation to activate Container Service for Kubernetes (ACK).
+        @summary When you use Container Service for Kubernetes (ACK) for the first time, you must activate ACK by using an Alibaba Cloud account or RAM user with the required permissions and complete ACK authorization.
         
         @description    You can activate ACK by using Alibaba Cloud accounts.
         To activate ACK by using RAM users, you need to grant the AdministratorAccess permission to the RAM users.
@@ -12591,7 +12615,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RepairClusterNodePoolResponse:
         """
-        @summary You can call the RepairClusterNodePool operation to fix issues on specified nodes in a managed node pool.
+        @summary Fixes issues on abnormal nodes in a node pool to ensure that the nodes can run as normal.
         
         @param request: RepairClusterNodePoolRequest
         @param headers: map
@@ -12635,7 +12659,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RepairClusterNodePoolResponse:
         """
-        @summary You can call the RepairClusterNodePool operation to fix issues on specified nodes in a managed node pool.
+        @summary Fixes issues on abnormal nodes in a node pool to ensure that the nodes can run as normal.
         
         @param request: RepairClusterNodePoolRequest
         @param headers: map
@@ -12677,7 +12701,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.RepairClusterNodePoolRequest,
     ) -> cs20151215_models.RepairClusterNodePoolResponse:
         """
-        @summary You can call the RepairClusterNodePool operation to fix issues on specified nodes in a managed node pool.
+        @summary Fixes issues on abnormal nodes in a node pool to ensure that the nodes can run as normal.
         
         @param request: RepairClusterNodePoolRequest
         @return: RepairClusterNodePoolResponse
@@ -12693,7 +12717,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.RepairClusterNodePoolRequest,
     ) -> cs20151215_models.RepairClusterNodePoolResponse:
         """
-        @summary You can call the RepairClusterNodePool operation to fix issues on specified nodes in a managed node pool.
+        @summary Fixes issues on abnormal nodes in a node pool to ensure that the nodes can run as normal.
         
         @param request: RepairClusterNodePoolRequest
         @return: RepairClusterNodePoolResponse
@@ -13007,7 +13031,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RevokeK8sClusterKubeConfigResponse:
         """
-        @summary You can call the RevokeK8sClusterKubeConfig operation to revoke the kubeconfig file that the current Resource Access Management (RAM) user uses to log on to a Kubernetes cluster. The kubeconfig file contains the identity information of the RAM user.
+        @summary You can call the RevokeK8sClusterKubeConfig operation to revoke the kubeconfig file of a cluster that belongs to the current Alibaba Cloud account or RAM user. After the kubeconfig file is revoked, the cluster generates a new kubeconfig file, and the original kubeconfig file becomes invalid.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -13039,7 +13063,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RevokeK8sClusterKubeConfigResponse:
         """
-        @summary You can call the RevokeK8sClusterKubeConfig operation to revoke the kubeconfig file that the current Resource Access Management (RAM) user uses to log on to a Kubernetes cluster. The kubeconfig file contains the identity information of the RAM user.
+        @summary You can call the RevokeK8sClusterKubeConfig operation to revoke the kubeconfig file of a cluster that belongs to the current Alibaba Cloud account or RAM user. After the kubeconfig file is revoked, the cluster generates a new kubeconfig file, and the original kubeconfig file becomes invalid.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -13069,7 +13093,7 @@ class Client(OpenApiClient):
         cluster_id: str,
     ) -> cs20151215_models.RevokeK8sClusterKubeConfigResponse:
         """
-        @summary You can call the RevokeK8sClusterKubeConfig operation to revoke the kubeconfig file that the current Resource Access Management (RAM) user uses to log on to a Kubernetes cluster. The kubeconfig file contains the identity information of the RAM user.
+        @summary You can call the RevokeK8sClusterKubeConfig operation to revoke the kubeconfig file of a cluster that belongs to the current Alibaba Cloud account or RAM user. After the kubeconfig file is revoked, the cluster generates a new kubeconfig file, and the original kubeconfig file becomes invalid.
         
         @return: RevokeK8sClusterKubeConfigResponse
         """
@@ -13082,7 +13106,7 @@ class Client(OpenApiClient):
         cluster_id: str,
     ) -> cs20151215_models.RevokeK8sClusterKubeConfigResponse:
         """
-        @summary You can call the RevokeK8sClusterKubeConfig operation to revoke the kubeconfig file that the current Resource Access Management (RAM) user uses to log on to a Kubernetes cluster. The kubeconfig file contains the identity information of the RAM user.
+        @summary You can call the RevokeK8sClusterKubeConfig operation to revoke the kubeconfig file of a cluster that belongs to the current Alibaba Cloud account or RAM user. After the kubeconfig file is revoked, the cluster generates a new kubeconfig file, and the original kubeconfig file becomes invalid.
         
         @return: RevokeK8sClusterKubeConfigResponse
         """
@@ -13098,7 +13122,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RunClusterCheckResponse:
         """
-        @summary Initiates cluster checks such as cluster update checks.
+        @summary Container Intelligence Service (CIS) provides a variety of cluster check capabilities to allow you to perform cluster update check, cluster migration check, component installation check, component update check, and node pool check. A precheck is automatically triggered before an update, migration, or installation is performed. You can perform changes only if the cluster passes the precheck. You can also manually call the RunClusterCheck operation to initiate cluster checks. We recommend that you periodically check and maintain your cluster to mitigate potential risks.
         
         @param request: RunClusterCheckRequest
         @param headers: map
@@ -13141,7 +13165,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RunClusterCheckResponse:
         """
-        @summary Initiates cluster checks such as cluster update checks.
+        @summary Container Intelligence Service (CIS) provides a variety of cluster check capabilities to allow you to perform cluster update check, cluster migration check, component installation check, component update check, and node pool check. A precheck is automatically triggered before an update, migration, or installation is performed. You can perform changes only if the cluster passes the precheck. You can also manually call the RunClusterCheck operation to initiate cluster checks. We recommend that you periodically check and maintain your cluster to mitigate potential risks.
         
         @param request: RunClusterCheckRequest
         @param headers: map
@@ -13182,7 +13206,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.RunClusterCheckRequest,
     ) -> cs20151215_models.RunClusterCheckResponse:
         """
-        @summary Initiates cluster checks such as cluster update checks.
+        @summary Container Intelligence Service (CIS) provides a variety of cluster check capabilities to allow you to perform cluster update check, cluster migration check, component installation check, component update check, and node pool check. A precheck is automatically triggered before an update, migration, or installation is performed. You can perform changes only if the cluster passes the precheck. You can also manually call the RunClusterCheck operation to initiate cluster checks. We recommend that you periodically check and maintain your cluster to mitigate potential risks.
         
         @param request: RunClusterCheckRequest
         @return: RunClusterCheckResponse
@@ -13197,7 +13221,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.RunClusterCheckRequest,
     ) -> cs20151215_models.RunClusterCheckResponse:
         """
-        @summary Initiates cluster checks such as cluster update checks.
+        @summary Container Intelligence Service (CIS) provides a variety of cluster check capabilities to allow you to perform cluster update check, cluster migration check, component installation check, component update check, and node pool check. A precheck is automatically triggered before an update, migration, or installation is performed. You can perform changes only if the cluster passes the precheck. You can also manually call the RunClusterCheck operation to initiate cluster checks. We recommend that you periodically check and maintain your cluster to mitigate potential risks.
         
         @param request: RunClusterCheckRequest
         @return: RunClusterCheckResponse
@@ -14301,7 +14325,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.TagResourcesResponse:
         """
-        @summary Adds labels to a Container Service for Kubernetes (ACK) cluster. You can use labels to classify and manage ACK clusters in order to meet monitoring, cost analysis, and tenant isolation requirements.
+        @summary You can add labels in key-value pairs to clusters. This allows cluster developers or O\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the TagResources operation to add labels to a cluster.
         
         @param request: TagResourcesRequest
         @param headers: map
@@ -14345,7 +14369,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.TagResourcesResponse:
         """
-        @summary Adds labels to a Container Service for Kubernetes (ACK) cluster. You can use labels to classify and manage ACK clusters in order to meet monitoring, cost analysis, and tenant isolation requirements.
+        @summary You can add labels in key-value pairs to clusters. This allows cluster developers or O\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the TagResources operation to add labels to a cluster.
         
         @param request: TagResourcesRequest
         @param headers: map
@@ -14387,7 +14411,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.TagResourcesRequest,
     ) -> cs20151215_models.TagResourcesResponse:
         """
-        @summary Adds labels to a Container Service for Kubernetes (ACK) cluster. You can use labels to classify and manage ACK clusters in order to meet monitoring, cost analysis, and tenant isolation requirements.
+        @summary You can add labels in key-value pairs to clusters. This allows cluster developers or O\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the TagResources operation to add labels to a cluster.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -14401,7 +14425,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.TagResourcesRequest,
     ) -> cs20151215_models.TagResourcesResponse:
         """
-        @summary Adds labels to a Container Service for Kubernetes (ACK) cluster. You can use labels to classify and manage ACK clusters in order to meet monitoring, cost analysis, and tenant isolation requirements.
+        @summary You can add labels in key-value pairs to clusters. This allows cluster developers or O\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the TagResources operation to add labels to a cluster.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -14519,7 +14543,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UntagResourcesResponse:
         """
-        @summary Removes labels from a Container Service for Kubernetes (ACK) cluster.
+        @summary If you no longer need the labels (key-value pairs) of a cluster, you can call the UntagResources operation to delete the labels.
         
         @param tmp_req: UntagResourcesRequest
         @param headers: map
@@ -14571,7 +14595,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UntagResourcesResponse:
         """
-        @summary Removes labels from a Container Service for Kubernetes (ACK) cluster.
+        @summary If you no longer need the labels (key-value pairs) of a cluster, you can call the UntagResources operation to delete the labels.
         
         @param tmp_req: UntagResourcesRequest
         @param headers: map
@@ -14621,7 +14645,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.UntagResourcesRequest,
     ) -> cs20151215_models.UntagResourcesResponse:
         """
-        @summary Removes labels from a Container Service for Kubernetes (ACK) cluster.
+        @summary If you no longer need the labels (key-value pairs) of a cluster, you can call the UntagResources operation to delete the labels.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -14635,7 +14659,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.UntagResourcesRequest,
     ) -> cs20151215_models.UntagResourcesResponse:
         """
-        @summary Removes labels from a Container Service for Kubernetes (ACK) cluster.
+        @summary If you no longer need the labels (key-value pairs) of a cluster, you can call the UntagResources operation to delete the labels.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -14772,7 +14796,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateContactGroupForAlertResponse:
         """
-        @summary 为集群中报警规则集设置订阅的通知对象联系人组
+        @summary null
         
         @param request: UpdateContactGroupForAlertRequest
         @param headers: map
@@ -14817,7 +14841,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateContactGroupForAlertResponse:
         """
-        @summary 为集群中报警规则集设置订阅的通知对象联系人组
+        @summary null
         
         @param request: UpdateContactGroupForAlertRequest
         @param headers: map
@@ -14860,7 +14884,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.UpdateContactGroupForAlertRequest,
     ) -> cs20151215_models.UpdateContactGroupForAlertResponse:
         """
-        @summary 为集群中报警规则集设置订阅的通知对象联系人组
+        @summary null
         
         @param request: UpdateContactGroupForAlertRequest
         @return: UpdateContactGroupForAlertResponse
@@ -14875,7 +14899,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.UpdateContactGroupForAlertRequest,
     ) -> cs20151215_models.UpdateContactGroupForAlertResponse:
         """
-        @summary 为集群中报警规则集设置订阅的通知对象联系人组
+        @summary null
         
         @param request: UpdateContactGroupForAlertRequest
         @return: UpdateContactGroupForAlertResponse
@@ -14892,7 +14916,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateControlPlaneLogResponse:
         """
-        @summary You can call the UpdateControlPlaneLog operation to modify the log collection configurations for control plane components in a Container Service for Kubernetes (ACK) managed cluster.
+        @summary Modifies the log configurations of control plane components. The configurations include the log retention period and components whose logs that you want to collect. Container Service for Kubernetes (ACK) managed clusters can collect the logs of control plane components and deliver the logs to projects in Simple Log Service. These control plane components include Kube-apiserver, kube-scheduler, Kubernetes controller manager, and cloud controller manager (CCM).
         
         @param request: UpdateControlPlaneLogRequest
         @param headers: map
@@ -14937,7 +14961,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateControlPlaneLogResponse:
         """
-        @summary You can call the UpdateControlPlaneLog operation to modify the log collection configurations for control plane components in a Container Service for Kubernetes (ACK) managed cluster.
+        @summary Modifies the log configurations of control plane components. The configurations include the log retention period and components whose logs that you want to collect. Container Service for Kubernetes (ACK) managed clusters can collect the logs of control plane components and deliver the logs to projects in Simple Log Service. These control plane components include Kube-apiserver, kube-scheduler, Kubernetes controller manager, and cloud controller manager (CCM).
         
         @param request: UpdateControlPlaneLogRequest
         @param headers: map
@@ -14980,7 +15004,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.UpdateControlPlaneLogRequest,
     ) -> cs20151215_models.UpdateControlPlaneLogResponse:
         """
-        @summary You can call the UpdateControlPlaneLog operation to modify the log collection configurations for control plane components in a Container Service for Kubernetes (ACK) managed cluster.
+        @summary Modifies the log configurations of control plane components. The configurations include the log retention period and components whose logs that you want to collect. Container Service for Kubernetes (ACK) managed clusters can collect the logs of control plane components and deliver the logs to projects in Simple Log Service. These control plane components include Kube-apiserver, kube-scheduler, Kubernetes controller manager, and cloud controller manager (CCM).
         
         @param request: UpdateControlPlaneLogRequest
         @return: UpdateControlPlaneLogResponse
@@ -14995,7 +15019,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.UpdateControlPlaneLogRequest,
     ) -> cs20151215_models.UpdateControlPlaneLogResponse:
         """
-        @summary You can call the UpdateControlPlaneLog operation to modify the log collection configurations for control plane components in a Container Service for Kubernetes (ACK) managed cluster.
+        @summary Modifies the log configurations of control plane components. The configurations include the log retention period and components whose logs that you want to collect. Container Service for Kubernetes (ACK) managed clusters can collect the logs of control plane components and deliver the logs to projects in Simple Log Service. These control plane components include Kube-apiserver, kube-scheduler, Kubernetes controller manager, and cloud controller manager (CCM).
         
         @param request: UpdateControlPlaneLogRequest
         @return: UpdateControlPlaneLogResponse
@@ -15014,8 +15038,8 @@ class Client(OpenApiClient):
         """
         @summary Sets the validity period of a kubeconfig file used by a Resource Access Management (RAM) user or RAM role to connect to a Container Service for Kubernetes (ACK) cluster. The validity period ranges from 1 to 876,000 hours. You can call this API operation when you customize configurations by using an Alibaba Cloud account. The default validity period of a kubeconfig file is three years.
         
-        @description - You can call this operation only with an Alibaba Cloud account.
-        - If the kubeconfig file used by your cluster is revoked, the custom validity period of the kubeconfig file is reset. In this case, you need to call this API operation to reconfigure the validity period of the kubeconfig file.
+        @description    You can call this operation only with an Alibaba Cloud account.
+        If the kubeconfig file used by your cluster is revoked, the custom validity period of the kubeconfig file is reset. In this case, you need to call this API operation to reconfigure the validity period of the kubeconfig file.
         
         @param request: UpdateK8sClusterUserConfigExpireRequest
         @param headers: map
@@ -15058,8 +15082,8 @@ class Client(OpenApiClient):
         """
         @summary Sets the validity period of a kubeconfig file used by a Resource Access Management (RAM) user or RAM role to connect to a Container Service for Kubernetes (ACK) cluster. The validity period ranges from 1 to 876,000 hours. You can call this API operation when you customize configurations by using an Alibaba Cloud account. The default validity period of a kubeconfig file is three years.
         
-        @description - You can call this operation only with an Alibaba Cloud account.
-        - If the kubeconfig file used by your cluster is revoked, the custom validity period of the kubeconfig file is reset. In this case, you need to call this API operation to reconfigure the validity period of the kubeconfig file.
+        @description    You can call this operation only with an Alibaba Cloud account.
+        If the kubeconfig file used by your cluster is revoked, the custom validity period of the kubeconfig file is reset. In this case, you need to call this API operation to reconfigure the validity period of the kubeconfig file.
         
         @param request: UpdateK8sClusterUserConfigExpireRequest
         @param headers: map
@@ -15100,8 +15124,8 @@ class Client(OpenApiClient):
         """
         @summary Sets the validity period of a kubeconfig file used by a Resource Access Management (RAM) user or RAM role to connect to a Container Service for Kubernetes (ACK) cluster. The validity period ranges from 1 to 876,000 hours. You can call this API operation when you customize configurations by using an Alibaba Cloud account. The default validity period of a kubeconfig file is three years.
         
-        @description - You can call this operation only with an Alibaba Cloud account.
-        - If the kubeconfig file used by your cluster is revoked, the custom validity period of the kubeconfig file is reset. In this case, you need to call this API operation to reconfigure the validity period of the kubeconfig file.
+        @description    You can call this operation only with an Alibaba Cloud account.
+        If the kubeconfig file used by your cluster is revoked, the custom validity period of the kubeconfig file is reset. In this case, you need to call this API operation to reconfigure the validity period of the kubeconfig file.
         
         @param request: UpdateK8sClusterUserConfigExpireRequest
         @return: UpdateK8sClusterUserConfigExpireResponse
@@ -15118,8 +15142,8 @@ class Client(OpenApiClient):
         """
         @summary Sets the validity period of a kubeconfig file used by a Resource Access Management (RAM) user or RAM role to connect to a Container Service for Kubernetes (ACK) cluster. The validity period ranges from 1 to 876,000 hours. You can call this API operation when you customize configurations by using an Alibaba Cloud account. The default validity period of a kubeconfig file is three years.
         
-        @description - You can call this operation only with an Alibaba Cloud account.
-        - If the kubeconfig file used by your cluster is revoked, the custom validity period of the kubeconfig file is reset. In this case, you need to call this API operation to reconfigure the validity period of the kubeconfig file.
+        @description    You can call this operation only with an Alibaba Cloud account.
+        If the kubeconfig file used by your cluster is revoked, the custom validity period of the kubeconfig file is reset. In this case, you need to call this API operation to reconfigure the validity period of the kubeconfig file.
         
         @param request: UpdateK8sClusterUserConfigExpireRequest
         @return: UpdateK8sClusterUserConfigExpireResponse
