@@ -30181,6 +30181,7 @@ class GetServiceListPageResponseBodyDataResult(TeaModel):
         group: str = None,
         instance_num: int = None,
         service_name: str = None,
+        service_type: str = None,
         version: str = None,
     ):
         # The application ID.
@@ -30195,6 +30196,7 @@ class GetServiceListPageResponseBodyDataResult(TeaModel):
         self.instance_num = instance_num
         # The service name.
         self.service_name = service_name
+        self.service_type = service_type
         # The service version.
         self.version = version
 
@@ -30219,6 +30221,8 @@ class GetServiceListPageResponseBodyDataResult(TeaModel):
             result['InstanceNum'] = self.instance_num
         if self.service_name is not None:
             result['ServiceName'] = self.service_name
+        if self.service_type is not None:
+            result['ServiceType'] = self.service_type
         if self.version is not None:
             result['Version'] = self.version
         return result
@@ -30237,6 +30241,8 @@ class GetServiceListPageResponseBodyDataResult(TeaModel):
             self.instance_num = m.get('InstanceNum')
         if m.get('ServiceName') is not None:
             self.service_name = m.get('ServiceName')
+        if m.get('ServiceType') is not None:
+            self.service_type = m.get('ServiceType')
         if m.get('Version') is not None:
             self.version = m.get('Version')
         return self

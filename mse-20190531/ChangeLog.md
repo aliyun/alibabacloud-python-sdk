@@ -1,3 +1,7 @@
+2024-09-25 Version: 6.13.1
+- Update API GetServiceListPage: update response param.
+
+
 2024-09-13 Version: 6.13.0
 - Support API ChangeResourceGroup.
 
