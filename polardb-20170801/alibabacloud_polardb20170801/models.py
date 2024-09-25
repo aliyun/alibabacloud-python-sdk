@@ -3235,12 +3235,13 @@ class CreateDatabaseRequest(TeaModel):
         # 
         # This parameter is required.
         self.character_set_name = character_set_name
-        # The language that indicates the collation of the databases that are created.
+        # The language that defines the collation rules in the database.
         # 
-        # > *   The language must be compatible with the character set that is specified by **CharacterSetName**.
-        # >*   This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is not supported by PolarDB for MySQL clusters.
+        # > 
         # 
-        # To view the valid values for this parameter, perform the following steps: Log on to the PolarDB console and click the ID of a cluster. In the left-side navigation pane, choose **Settings and Management** > **Databases**. Then, click **Create Database**.
+        # *   The language must be compatible with the character set that is specified by **CharacterSetName**.
+        # 
+        # *   This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster. To view the valid values of this parameter, perform the following steps: Log on to the PolarDB console and click the ID of the cluster. In the left-side navigation pane, choose **Settings and Management** > **Databases**. Then, click **Create Database**.
         self.collate = collate
         # The language that indicates the character type of the database.
         # 
@@ -14653,12 +14654,15 @@ class DescribeDBInitializeVariableResponseBodyVariablesVariable(TeaModel):
         self.collate = collate
         # The language that indicates the character type of the database.
         # 
-        # >- The language must be compatible with the character set that is specified by **CharacterSetName**.
-        # >- The specified value must be the same as the value of **Collate**.
-        # >- This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters.
-        # >- This parameter is optional for PolarDB for MySQL clusters.
+        # > 
         # 
-        # To view the valid values for this parameter, perform the following steps: Log on to the PolarDB console and click the ID of a cluster. In the left-side navigation pane, choose **Settings and Management** > **Databases**. Then, click **Create Database**.
+        # *   The language must be compatible with the character set that is specified by **CharacterSetName**.
+        # 
+        # *   The specified parameter value must be the same as the value of **Collate**.
+        # 
+        # *   If the PolarDB cluster runs PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL, this parameter is required. If the cluster runs PolarDB for MySQL, this parameter is not supported.
+        # 
+        # To view the valid values of this parameter, perform the following steps: First, log on to the PolarDB console and click the ID of a cluster. Then, in the left-side navigation pane, choose **Settings and Management** > **Databases**. Finally, click **Create Database**.
         self.ctype = ctype
 
     def validate(self):
@@ -14732,10 +14736,11 @@ class DescribeDBInitializeVariableResponseBody(TeaModel):
         request_id: str = None,
         variables: DescribeDBInitializeVariableResponseBodyVariables = None,
     ):
-        # The type of the database engine. Valid values:
+        # The database type. Valid values:
         # 
         # *   Oracle
         # *   PostgreSQL
+        # *   MySQL
         self.dbtype = dbtype
         # The version of the database engine.
         self.dbversion = dbversion
@@ -21370,6 +21375,7 @@ class DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord(TeaModel):
         query_time_ms: int = None,
         query_times: int = None,
         return_row_counts: int = None,
+        sqlhash: str = None,
         sqltext: str = None,
     ):
         # The name of the database.
@@ -21390,6 +21396,7 @@ class DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord(TeaModel):
         self.query_times = query_times
         # The number of rows returned by the SQL statement.
         self.return_row_counts = return_row_counts
+        self.sqlhash = sqlhash
         # The SQL statement that is executed in the query.
         self.sqltext = sqltext
 
@@ -21420,6 +21427,8 @@ class DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord(TeaModel):
             result['QueryTimes'] = self.query_times
         if self.return_row_counts is not None:
             result['ReturnRowCounts'] = self.return_row_counts
+        if self.sqlhash is not None:
+            result['SQLHash'] = self.sqlhash
         if self.sqltext is not None:
             result['SQLText'] = self.sqltext
         return result
@@ -21444,6 +21453,8 @@ class DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord(TeaModel):
             self.query_times = m.get('QueryTimes')
         if m.get('ReturnRowCounts') is not None:
             self.return_row_counts = m.get('ReturnRowCounts')
+        if m.get('SQLHash') is not None:
+            self.sqlhash = m.get('SQLHash')
         if m.get('SQLText') is not None:
             self.sqltext = m.get('SQLText')
         return self
@@ -32816,18 +32827,19 @@ class UpgradeDBClusterVersionRequest(TeaModel):
         self.planned_start_time = planned_start_time
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The code of the version to which you want to upgrade the cluster. You can call the [DescribeDBClusterVersion](https://help.aliyun.com/document_detail/2319145.html) operation to query the version code.
+        # The code of the db version to which you want to upgrade the cluster. You can call the [DescribeDBClusterVersion](https://help.aliyun.com/document_detail/2319145.html) operation to query the version code.
         self.target_dbrevision_version_code = target_dbrevision_version_code
+        # The code of the proxy version to which you want to upgrade the cluster. You can call the [DescribeDBClusterVersion](https://help.aliyun.com/document_detail/2319145.html) operation to query the version code.
         self.target_proxy_revision_version_code = target_proxy_revision_version_code
         # The upgrade tag. The value is fixed as **INNOVATE**.
         # 
         # > *   This parameter is applicable only when you upgrade PolarDB for MySQL 8.0.1 to PolarDB for MySQL 8.0.2.
         # >*   If you specify this parameter, you must set `UpgradePolicy` to **COLD**.
         self.upgrade_label = upgrade_label
-        # The upgrade policy. Valid values:
+        # The engine version upgrade policy. Valid values:
         # 
         # *   **HOT**: hot upgrade.
-        # *   **COLD**: cold upgrade. Only PolarDB for MySQL Cluster Edition that runs MySQL 8.0 supports this upgrade method.
+        # *   **COLD**: cold upgrade. Only PolarDB for MySQL 8.0 Cluster Edition supports this upgrade method.
         self.upgrade_policy = upgrade_policy
         # The update type. Valid values:
         # 

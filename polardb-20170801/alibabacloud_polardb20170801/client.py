@@ -7645,7 +7645,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBInitializeVariableResponse:
         """
-        @summary Queries the attributes that are supported by a PolarDB for PostgreSQL (Compatible with Oracle) cluster or a PolarDB for PostgreSQL cluster, such as the character sets and collations.
+        @summary Queries attributes such as character sets and collations supported by a database in a PolarDB cluster.
         
         @param request: DescribeDBInitializeVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7688,7 +7688,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBInitializeVariableResponse:
         """
-        @summary Queries the attributes that are supported by a PolarDB for PostgreSQL (Compatible with Oracle) cluster or a PolarDB for PostgreSQL cluster, such as the character sets and collations.
+        @summary Queries attributes such as character sets and collations supported by a database in a PolarDB cluster.
         
         @param request: DescribeDBInitializeVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7730,7 +7730,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDBInitializeVariableRequest,
     ) -> polardb_20170801_models.DescribeDBInitializeVariableResponse:
         """
-        @summary Queries the attributes that are supported by a PolarDB for PostgreSQL (Compatible with Oracle) cluster or a PolarDB for PostgreSQL cluster, such as the character sets and collations.
+        @summary Queries attributes such as character sets and collations supported by a database in a PolarDB cluster.
         
         @param request: DescribeDBInitializeVariableRequest
         @return: DescribeDBInitializeVariableResponse
@@ -7743,7 +7743,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDBInitializeVariableRequest,
     ) -> polardb_20170801_models.DescribeDBInitializeVariableResponse:
         """
-        @summary Queries the attributes that are supported by a PolarDB for PostgreSQL (Compatible with Oracle) cluster or a PolarDB for PostgreSQL cluster, such as the character sets and collations.
+        @summary Queries attributes such as character sets and collations supported by a database in a PolarDB cluster.
         
         @param request: DescribeDBInitializeVariableRequest
         @return: DescribeDBInitializeVariableResponse

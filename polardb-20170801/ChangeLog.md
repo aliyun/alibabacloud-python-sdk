@@ -1,3 +1,10 @@
+2024-09-25 Version: 5.1.13
+- Update API DeleteDBCluster: update param AccessKeyId.
+- Update API DeleteDBCluster: update param BackupRetentionPolicyOnClusterDeletion.
+- Update API DescribeSlowLogRecords: update param AccessKeyId.
+- Update API DescribeSlowLogRecords: update response param.
+
+
 2024-08-29 Version: 5.1.12
 - Update API CreateGlobalDatabaseNetwork: add param EnableGlobalDomainName.
 - Update API DescribeGlobalDatabaseNetwork: update response param.
