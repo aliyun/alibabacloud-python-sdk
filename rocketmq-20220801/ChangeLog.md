@@ -1,3 +1,16 @@
+2024-09-25 Version: 1.5.1
+- Update API GetTrace: update param instanceId.
+- Update API GetTrace: update param topicName.
+- Update API GetTrace: update param messageId.
+- Update API ListTraces: update param instanceId.
+- Update API ListTraces: update param topicName.
+- Update API ListTraces: update param endTime.
+- Update API ListTraces: update param pageNumber.
+- Update API ListTraces: update param pageSize.
+- Update API ListTraces: update param queryType.
+- Update API ListTraces: update param startTime.
+
+
 2024-09-09 Version: 1.5.0
 - Support API CreateInstanceAccount.
 - Support API CreateInstanceAcl.

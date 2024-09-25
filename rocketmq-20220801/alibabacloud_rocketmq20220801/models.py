@@ -9903,12 +9903,17 @@ class ListTracesRequest(TeaModel):
         query_type: str = None,
         start_time: str = None,
     ):
+        # This parameter is required.
         self.end_time = end_time
         self.message_id = message_id
         self.message_key = message_key
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
+        # This parameter is required.
         self.query_type = query_type
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
