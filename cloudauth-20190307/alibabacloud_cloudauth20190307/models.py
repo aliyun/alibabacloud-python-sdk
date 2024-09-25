@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, BinaryIO, List
+from typing import Dict, BinaryIO, List, Any
 
 
 class AIGCFaceVerifyRequest(TeaModel):
@@ -1468,6 +1468,39 @@ class CreateVerifySettingResponse(TeaModel):
         return self
 
 
+class CredentialVerifyRequestMerchantDetail(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CredentialVerifyRequest(TeaModel):
     def __init__(
         self,
@@ -1479,7 +1512,11 @@ class CredentialVerifyRequest(TeaModel):
         image_url: str = None,
         is_check: str = None,
         is_ocr: str = None,
+        merchant_detail: List[CredentialVerifyRequestMerchantDetail] = None,
         merchant_id: str = None,
+        product_code: str = None,
+        prompt: str = None,
+        prompt_model: str = None,
         user_name: str = None,
     ):
         self.cert_num = cert_num
@@ -1490,7 +1527,124 @@ class CredentialVerifyRequest(TeaModel):
         self.image_url = image_url
         self.is_check = is_check
         self.is_ocr = is_ocr
+        self.merchant_detail = merchant_detail
         self.merchant_id = merchant_id
+        self.product_code = product_code
+        self.prompt = prompt
+        self.prompt_model = prompt_model
+        self.user_name = user_name
+
+    def validate(self):
+        if self.merchant_detail:
+            for k in self.merchant_detail:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_num is not None:
+            result['CertNum'] = self.cert_num
+        if self.cred_name is not None:
+            result['CredName'] = self.cred_name
+        if self.cred_type is not None:
+            result['CredType'] = self.cred_type
+        if self.identify_num is not None:
+            result['IdentifyNum'] = self.identify_num
+        if self.image_context is not None:
+            result['ImageContext'] = self.image_context
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.is_check is not None:
+            result['IsCheck'] = self.is_check
+        if self.is_ocr is not None:
+            result['IsOCR'] = self.is_ocr
+        result['MerchantDetail'] = []
+        if self.merchant_detail is not None:
+            for k in self.merchant_detail:
+                result['MerchantDetail'].append(k.to_map() if k else None)
+        if self.merchant_id is not None:
+            result['MerchantId'] = self.merchant_id
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.prompt_model is not None:
+            result['PromptModel'] = self.prompt_model
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertNum') is not None:
+            self.cert_num = m.get('CertNum')
+        if m.get('CredName') is not None:
+            self.cred_name = m.get('CredName')
+        if m.get('CredType') is not None:
+            self.cred_type = m.get('CredType')
+        if m.get('IdentifyNum') is not None:
+            self.identify_num = m.get('IdentifyNum')
+        if m.get('ImageContext') is not None:
+            self.image_context = m.get('ImageContext')
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('IsCheck') is not None:
+            self.is_check = m.get('IsCheck')
+        if m.get('IsOCR') is not None:
+            self.is_ocr = m.get('IsOCR')
+        self.merchant_detail = []
+        if m.get('MerchantDetail') is not None:
+            for k in m.get('MerchantDetail'):
+                temp_model = CredentialVerifyRequestMerchantDetail()
+                self.merchant_detail.append(temp_model.from_map(k))
+        if m.get('MerchantId') is not None:
+            self.merchant_id = m.get('MerchantId')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('PromptModel') is not None:
+            self.prompt_model = m.get('PromptModel')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class CredentialVerifyShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        cert_num: str = None,
+        cred_name: str = None,
+        cred_type: str = None,
+        identify_num: str = None,
+        image_context: str = None,
+        image_url: str = None,
+        is_check: str = None,
+        is_ocr: str = None,
+        merchant_detail_shrink: str = None,
+        merchant_id: str = None,
+        product_code: str = None,
+        prompt: str = None,
+        prompt_model: str = None,
+        user_name: str = None,
+    ):
+        self.cert_num = cert_num
+        self.cred_name = cred_name
+        self.cred_type = cred_type
+        self.identify_num = identify_num
+        self.image_context = image_context
+        self.image_url = image_url
+        self.is_check = is_check
+        self.is_ocr = is_ocr
+        self.merchant_detail_shrink = merchant_detail_shrink
+        self.merchant_id = merchant_id
+        self.product_code = product_code
+        self.prompt = prompt
+        self.prompt_model = prompt_model
         self.user_name = user_name
 
     def validate(self):
@@ -1518,8 +1672,16 @@ class CredentialVerifyRequest(TeaModel):
             result['IsCheck'] = self.is_check
         if self.is_ocr is not None:
             result['IsOCR'] = self.is_ocr
+        if self.merchant_detail_shrink is not None:
+            result['MerchantDetail'] = self.merchant_detail_shrink
         if self.merchant_id is not None:
             result['MerchantId'] = self.merchant_id
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.prompt_model is not None:
+            result['PromptModel'] = self.prompt_model
         if self.user_name is not None:
             result['UserName'] = self.user_name
         return result
@@ -1542,10 +1704,51 @@ class CredentialVerifyRequest(TeaModel):
             self.is_check = m.get('IsCheck')
         if m.get('IsOCR') is not None:
             self.is_ocr = m.get('IsOCR')
+        if m.get('MerchantDetail') is not None:
+            self.merchant_detail_shrink = m.get('MerchantDetail')
         if m.get('MerchantId') is not None:
             self.merchant_id = m.get('MerchantId')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('PromptModel') is not None:
+            self.prompt_model = m.get('PromptModel')
         if m.get('UserName') is not None:
             self.user_name = m.get('UserName')
+        return self
+
+
+class CredentialVerifyResponseBodyResultObjectVlResult(TeaModel):
+    def __init__(
+        self,
+        success: bool = None,
+        vl_content: Dict[str, Any] = None,
+    ):
+        self.success = success
+        self.vl_content = vl_content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.vl_content is not None:
+            result['VlContent'] = self.vl_content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('VlContent') is not None:
+            self.vl_content = m.get('VlContent')
         return self
 
 
@@ -1559,6 +1762,7 @@ class CredentialVerifyResponseBodyResultObject(TeaModel):
         risk_tag: str = None,
         verify_detail: str = None,
         verify_result: str = None,
+        vl_result: CredentialVerifyResponseBodyResultObjectVlResult = None,
     ):
         self.material_info = material_info
         self.ocr_info = ocr_info
@@ -1567,9 +1771,11 @@ class CredentialVerifyResponseBodyResultObject(TeaModel):
         self.risk_tag = risk_tag
         self.verify_detail = verify_detail
         self.verify_result = verify_result
+        self.vl_result = vl_result
 
     def validate(self):
-        pass
+        if self.vl_result:
+            self.vl_result.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1591,6 +1797,8 @@ class CredentialVerifyResponseBodyResultObject(TeaModel):
             result['VerifyDetail'] = self.verify_detail
         if self.verify_result is not None:
             result['VerifyResult'] = self.verify_result
+        if self.vl_result is not None:
+            result['VlResult'] = self.vl_result.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -1609,6 +1817,9 @@ class CredentialVerifyResponseBodyResultObject(TeaModel):
             self.verify_detail = m.get('VerifyDetail')
         if m.get('VerifyResult') is not None:
             self.verify_result = m.get('VerifyResult')
+        if m.get('VlResult') is not None:
+            temp_model = CredentialVerifyResponseBodyResultObjectVlResult()
+            self.vl_result = temp_model.from_map(m['VlResult'])
         return self
 
 
@@ -4518,6 +4729,156 @@ class InitFaceVerifyResponse(TeaModel):
         return self
 
 
+class InsertWhiteListSettingRequest(TeaModel):
+    def __init__(
+        self,
+        cert_no: str = None,
+        certify_id: str = None,
+        remark: str = None,
+        scene_id: int = None,
+        service_code: str = None,
+        valid_day: int = None,
+    ):
+        self.cert_no = cert_no
+        self.certify_id = certify_id
+        self.remark = remark
+        self.scene_id = scene_id
+        self.service_code = service_code
+        self.valid_day = valid_day
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_no is not None:
+            result['CertNo'] = self.cert_no
+        if self.certify_id is not None:
+            result['CertifyId'] = self.certify_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.valid_day is not None:
+            result['ValidDay'] = self.valid_day
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertNo') is not None:
+            self.cert_no = m.get('CertNo')
+        if m.get('CertifyId') is not None:
+            self.certify_id = m.get('CertifyId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('ValidDay') is not None:
+            self.valid_day = m.get('ValidDay')
+        return self
+
+
+class InsertWhiteListSettingResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result_object: bool = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.result_object = result_object
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            self.result_object = m.get('ResultObject')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class InsertWhiteListSettingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: InsertWhiteListSettingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = InsertWhiteListSettingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class LivenessFaceVerifyRequest(TeaModel):
     def __init__(
         self,
@@ -5773,6 +6134,452 @@ class ModifyDeviceInfoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyDeviceInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PageQueryWhiteListSettingRequest(TeaModel):
+    def __init__(
+        self,
+        cert_no: str = None,
+        certify_id: str = None,
+        current_page: int = None,
+        page_size: int = None,
+        scene_id: int = None,
+        service_code: str = None,
+        status: str = None,
+        valid_end_date: str = None,
+        valid_start_date: str = None,
+    ):
+        self.cert_no = cert_no
+        self.certify_id = certify_id
+        self.current_page = current_page
+        self.page_size = page_size
+        self.scene_id = scene_id
+        self.service_code = service_code
+        self.status = status
+        self.valid_end_date = valid_end_date
+        self.valid_start_date = valid_start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_no is not None:
+            result['CertNo'] = self.cert_no
+        if self.certify_id is not None:
+            result['CertifyId'] = self.certify_id
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.valid_end_date is not None:
+            result['ValidEndDate'] = self.valid_end_date
+        if self.valid_start_date is not None:
+            result['ValidStartDate'] = self.valid_start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertNo') is not None:
+            self.cert_no = m.get('CertNo')
+        if m.get('CertifyId') is not None:
+            self.certify_id = m.get('CertifyId')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('ValidEndDate') is not None:
+            self.valid_end_date = m.get('ValidEndDate')
+        if m.get('ValidStartDate') is not None:
+            self.valid_start_date = m.get('ValidStartDate')
+        return self
+
+
+class PageQueryWhiteListSettingResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        cert_no: str = None,
+        certify_id: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        id: int = None,
+        remark: str = None,
+        scene_id: int = None,
+        service_code: str = None,
+        status: str = None,
+        valid_end_date: str = None,
+        valid_start_date: str = None,
+    ):
+        self.cert_no = cert_no
+        self.certify_id = certify_id
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.remark = remark
+        self.scene_id = scene_id
+        self.service_code = service_code
+        self.status = status
+        self.valid_end_date = valid_end_date
+        self.valid_start_date = valid_start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_no is not None:
+            result['CertNo'] = self.cert_no
+        if self.certify_id is not None:
+            result['CertifyId'] = self.certify_id
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.valid_end_date is not None:
+            result['ValidEndDate'] = self.valid_end_date
+        if self.valid_start_date is not None:
+            result['ValidStartDate'] = self.valid_start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertNo') is not None:
+            self.cert_no = m.get('CertNo')
+        if m.get('CertifyId') is not None:
+            self.certify_id = m.get('CertifyId')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('ValidEndDate') is not None:
+            self.valid_end_date = m.get('ValidEndDate')
+        if m.get('ValidStartDate') is not None:
+            self.valid_start_date = m.get('ValidStartDate')
+        return self
+
+
+class PageQueryWhiteListSettingResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        current_page: int = None,
+        message: str = None,
+        page_size: int = None,
+        request_id: str = None,
+        result_object: List[PageQueryWhiteListSettingResponseBodyResultObject] = None,
+        success: bool = None,
+        total_item: int = None,
+        total_page: int = None,
+    ):
+        self.code = code
+        self.current_page = current_page
+        self.message = message
+        self.page_size = page_size
+        # Id of the request
+        self.request_id = request_id
+        self.result_object = result_object
+        self.success = success
+        self.total_item = total_item
+        self.total_page = total_page
+
+    def validate(self):
+        if self.result_object:
+            for k in self.result_object:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ResultObject'] = []
+        if self.result_object is not None:
+            for k in self.result_object:
+                result['ResultObject'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_item is not None:
+            result['TotalItem'] = self.total_item
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.result_object = []
+        if m.get('ResultObject') is not None:
+            for k in m.get('ResultObject'):
+                temp_model = PageQueryWhiteListSettingResponseBodyResultObject()
+                self.result_object.append(temp_model.from_map(k))
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalItem') is not None:
+            self.total_item = m.get('TotalItem')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        return self
+
+
+class PageQueryWhiteListSettingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PageQueryWhiteListSettingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PageQueryWhiteListSettingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RemoveWhiteListSettingRequest(TeaModel):
+    def __init__(
+        self,
+        ids: List[int] = None,
+        service_code: str = None,
+    ):
+        self.ids = ids
+        self.service_code = service_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        return self
+
+
+class RemoveWhiteListSettingShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        ids_shrink: str = None,
+        service_code: str = None,
+    ):
+        self.ids_shrink = ids_shrink
+        self.service_code = service_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ids_shrink is not None:
+            result['Ids'] = self.ids_shrink
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ids') is not None:
+            self.ids_shrink = m.get('Ids')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        return self
+
+
+class RemoveWhiteListSettingResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result_object: bool = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.result_object = result_object
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            self.result_object = m.get('ResultObject')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class RemoveWhiteListSettingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RemoveWhiteListSettingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RemoveWhiteListSettingResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

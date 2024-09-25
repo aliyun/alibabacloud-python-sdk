@@ -1,3 +1,14 @@
+2024-09-25 Version: 2.9.0
+- Support API InsertWhiteListSetting.
+- Support API PageQueryWhiteListSetting.
+- Support API RemoveWhiteListSetting.
+- Update API CredentialVerify: add param MerchantDetail.
+- Update API CredentialVerify: add param ProductCode.
+- Update API CredentialVerify: add param Prompt.
+- Update API CredentialVerify: add param PromptModel.
+- Update API CredentialVerify: update response param.
+
+
 2024-09-11 Version: 2.8.0
 - Support API Vehicle5ItemQuery.
 - Support API VehicleInsureQuery.

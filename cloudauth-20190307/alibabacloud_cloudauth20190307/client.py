@@ -1053,17 +1053,21 @@ class Client(OpenApiClient):
 
     def credential_verify_with_options(
         self,
-        request: cloudauth_20190307_models.CredentialVerifyRequest,
+        tmp_req: cloudauth_20190307_models.CredentialVerifyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.CredentialVerifyResponse:
         """
         @summary 凭证核验
         
-        @param request: CredentialVerifyRequest
+        @param tmp_req: CredentialVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CredentialVerifyResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cloudauth_20190307_models.CredentialVerifyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.merchant_detail):
+            request.merchant_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.merchant_detail, 'MerchantDetail', 'json')
         query = {}
         if not UtilClient.is_unset(request.cert_num):
             query['CertNum'] = request.cert_num
@@ -1079,8 +1083,16 @@ class Client(OpenApiClient):
             query['IsCheck'] = request.is_check
         if not UtilClient.is_unset(request.is_ocr):
             query['IsOCR'] = request.is_ocr
+        if not UtilClient.is_unset(request.merchant_detail_shrink):
+            query['MerchantDetail'] = request.merchant_detail_shrink
         if not UtilClient.is_unset(request.merchant_id):
             query['MerchantId'] = request.merchant_id
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.prompt):
+            query['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.prompt_model):
+            query['PromptModel'] = request.prompt_model
         if not UtilClient.is_unset(request.user_name):
             query['UserName'] = request.user_name
         body = {}
@@ -1108,17 +1120,21 @@ class Client(OpenApiClient):
 
     async def credential_verify_with_options_async(
         self,
-        request: cloudauth_20190307_models.CredentialVerifyRequest,
+        tmp_req: cloudauth_20190307_models.CredentialVerifyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.CredentialVerifyResponse:
         """
         @summary 凭证核验
         
-        @param request: CredentialVerifyRequest
+        @param tmp_req: CredentialVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CredentialVerifyResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cloudauth_20190307_models.CredentialVerifyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.merchant_detail):
+            request.merchant_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.merchant_detail, 'MerchantDetail', 'json')
         query = {}
         if not UtilClient.is_unset(request.cert_num):
             query['CertNum'] = request.cert_num
@@ -1134,8 +1150,16 @@ class Client(OpenApiClient):
             query['IsCheck'] = request.is_check
         if not UtilClient.is_unset(request.is_ocr):
             query['IsOCR'] = request.is_ocr
+        if not UtilClient.is_unset(request.merchant_detail_shrink):
+            query['MerchantDetail'] = request.merchant_detail_shrink
         if not UtilClient.is_unset(request.merchant_id):
             query['MerchantId'] = request.merchant_id
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.prompt):
+            query['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.prompt_model):
+            query['PromptModel'] = request.prompt_model
         if not UtilClient.is_unset(request.user_name):
             query['UserName'] = request.user_name
         body = {}
@@ -2549,6 +2573,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.init_face_verify_with_options_async(request, runtime)
 
+    def insert_white_list_setting_with_options(
+        self,
+        request: cloudauth_20190307_models.InsertWhiteListSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.InsertWhiteListSettingResponse:
+        """
+        @summary 新增实人白名单
+        
+        @param request: InsertWhiteListSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsertWhiteListSettingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_no):
+            query['CertNo'] = request.cert_no
+        if not UtilClient.is_unset(request.certify_id):
+            query['CertifyId'] = request.certify_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.valid_day):
+            query['ValidDay'] = request.valid_day
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='InsertWhiteListSetting',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.InsertWhiteListSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def insert_white_list_setting_with_options_async(
+        self,
+        request: cloudauth_20190307_models.InsertWhiteListSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.InsertWhiteListSettingResponse:
+        """
+        @summary 新增实人白名单
+        
+        @param request: InsertWhiteListSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsertWhiteListSettingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_no):
+            query['CertNo'] = request.cert_no
+        if not UtilClient.is_unset(request.certify_id):
+            query['CertifyId'] = request.certify_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.valid_day):
+            query['ValidDay'] = request.valid_day
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='InsertWhiteListSetting',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.InsertWhiteListSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def insert_white_list_setting(
+        self,
+        request: cloudauth_20190307_models.InsertWhiteListSettingRequest,
+    ) -> cloudauth_20190307_models.InsertWhiteListSettingResponse:
+        """
+        @summary 新增实人白名单
+        
+        @param request: InsertWhiteListSettingRequest
+        @return: InsertWhiteListSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.insert_white_list_setting_with_options(request, runtime)
+
+    async def insert_white_list_setting_async(
+        self,
+        request: cloudauth_20190307_models.InsertWhiteListSettingRequest,
+    ) -> cloudauth_20190307_models.InsertWhiteListSettingResponse:
+        """
+        @summary 新增实人白名单
+        
+        @param request: InsertWhiteListSettingRequest
+        @return: InsertWhiteListSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.insert_white_list_setting_with_options_async(request, runtime)
+
     def liveness_face_verify_with_options(
         self,
         request: cloudauth_20190307_models.LivenessFaceVerifyRequest,
@@ -3312,6 +3452,242 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_device_info_with_options_async(request, runtime)
+
+    def page_query_white_list_setting_with_options(
+        self,
+        request: cloudauth_20190307_models.PageQueryWhiteListSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.PageQueryWhiteListSettingResponse:
+        """
+        @summary 分页查询实人白名单配置
+        
+        @param request: PageQueryWhiteListSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PageQueryWhiteListSettingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_no):
+            query['CertNo'] = request.cert_no
+        if not UtilClient.is_unset(request.certify_id):
+            query['CertifyId'] = request.certify_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.valid_end_date):
+            query['ValidEndDate'] = request.valid_end_date
+        if not UtilClient.is_unset(request.valid_start_date):
+            query['ValidStartDate'] = request.valid_start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PageQueryWhiteListSetting',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.PageQueryWhiteListSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def page_query_white_list_setting_with_options_async(
+        self,
+        request: cloudauth_20190307_models.PageQueryWhiteListSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.PageQueryWhiteListSettingResponse:
+        """
+        @summary 分页查询实人白名单配置
+        
+        @param request: PageQueryWhiteListSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PageQueryWhiteListSettingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_no):
+            query['CertNo'] = request.cert_no
+        if not UtilClient.is_unset(request.certify_id):
+            query['CertifyId'] = request.certify_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.valid_end_date):
+            query['ValidEndDate'] = request.valid_end_date
+        if not UtilClient.is_unset(request.valid_start_date):
+            query['ValidStartDate'] = request.valid_start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PageQueryWhiteListSetting',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.PageQueryWhiteListSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def page_query_white_list_setting(
+        self,
+        request: cloudauth_20190307_models.PageQueryWhiteListSettingRequest,
+    ) -> cloudauth_20190307_models.PageQueryWhiteListSettingResponse:
+        """
+        @summary 分页查询实人白名单配置
+        
+        @param request: PageQueryWhiteListSettingRequest
+        @return: PageQueryWhiteListSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.page_query_white_list_setting_with_options(request, runtime)
+
+    async def page_query_white_list_setting_async(
+        self,
+        request: cloudauth_20190307_models.PageQueryWhiteListSettingRequest,
+    ) -> cloudauth_20190307_models.PageQueryWhiteListSettingResponse:
+        """
+        @summary 分页查询实人白名单配置
+        
+        @param request: PageQueryWhiteListSettingRequest
+        @return: PageQueryWhiteListSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.page_query_white_list_setting_with_options_async(request, runtime)
+
+    def remove_white_list_setting_with_options(
+        self,
+        tmp_req: cloudauth_20190307_models.RemoveWhiteListSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.RemoveWhiteListSettingResponse:
+        """
+        @summary 删除实人白名单
+        
+        @param tmp_req: RemoveWhiteListSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveWhiteListSettingResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cloudauth_20190307_models.RemoveWhiteListSettingShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ids):
+            request.ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ids_shrink):
+            query['Ids'] = request.ids_shrink
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveWhiteListSetting',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.RemoveWhiteListSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_white_list_setting_with_options_async(
+        self,
+        tmp_req: cloudauth_20190307_models.RemoveWhiteListSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.RemoveWhiteListSettingResponse:
+        """
+        @summary 删除实人白名单
+        
+        @param tmp_req: RemoveWhiteListSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveWhiteListSettingResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cloudauth_20190307_models.RemoveWhiteListSettingShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ids):
+            request.ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ids_shrink):
+            query['Ids'] = request.ids_shrink
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveWhiteListSetting',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.RemoveWhiteListSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_white_list_setting(
+        self,
+        request: cloudauth_20190307_models.RemoveWhiteListSettingRequest,
+    ) -> cloudauth_20190307_models.RemoveWhiteListSettingResponse:
+        """
+        @summary 删除实人白名单
+        
+        @param request: RemoveWhiteListSettingRequest
+        @return: RemoveWhiteListSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.remove_white_list_setting_with_options(request, runtime)
+
+    async def remove_white_list_setting_async(
+        self,
+        request: cloudauth_20190307_models.RemoveWhiteListSettingRequest,
+    ) -> cloudauth_20190307_models.RemoveWhiteListSettingResponse:
+        """
+        @summary 删除实人白名单
+        
+        @param request: RemoveWhiteListSettingRequest
+        @return: RemoveWhiteListSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.remove_white_list_setting_with_options_async(request, runtime)
 
     def vehicle_5item_query_with_options(
         self,
