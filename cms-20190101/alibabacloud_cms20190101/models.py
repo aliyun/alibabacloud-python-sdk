@@ -36917,10 +36917,12 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
 class DescribeSiteMonitorAttributeResponseBodySiteMonitorsVpcConfig(TeaModel):
     def __init__(
         self,
+        region: str = None,
         security_group_id: str = None,
         vpc_id: str = None,
         vswitch_id: str = None,
     ):
+        self.region = region
         self.security_group_id = security_group_id
         self.vpc_id = vpc_id
         self.vswitch_id = vswitch_id
@@ -36934,6 +36936,8 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsVpcConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.region is not None:
+            result['Region'] = self.region
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
         if self.vpc_id is not None:
@@ -36944,6 +36948,8 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsVpcConfig(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('VpcId') is not None:
