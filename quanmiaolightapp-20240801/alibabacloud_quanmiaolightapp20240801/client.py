@@ -41,6 +41,114 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def generate_broadcast_news_with_options(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.GenerateBroadcastNewsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.GenerateBroadcastNewsResponse:
+        """
+        @summary 新闻播报-抽取分类获取播报热点
+        
+        @param request: GenerateBroadcastNewsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateBroadcastNewsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.prompt):
+            body['prompt'] = request.prompt
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GenerateBroadcastNews',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/GenerateBroadcastNews',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.GenerateBroadcastNewsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generate_broadcast_news_with_options_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.GenerateBroadcastNewsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.GenerateBroadcastNewsResponse:
+        """
+        @summary 新闻播报-抽取分类获取播报热点
+        
+        @param request: GenerateBroadcastNewsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateBroadcastNewsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.prompt):
+            body['prompt'] = request.prompt
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GenerateBroadcastNews',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/GenerateBroadcastNews',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.GenerateBroadcastNewsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generate_broadcast_news(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.GenerateBroadcastNewsRequest,
+    ) -> quan_miao_light_app_20240801_models.GenerateBroadcastNewsResponse:
+        """
+        @summary 新闻播报-抽取分类获取播报热点
+        
+        @param request: GenerateBroadcastNewsRequest
+        @return: GenerateBroadcastNewsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.generate_broadcast_news_with_options(workspace_id, request, headers, runtime)
+
+    async def generate_broadcast_news_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.GenerateBroadcastNewsRequest,
+    ) -> quan_miao_light_app_20240801_models.GenerateBroadcastNewsResponse:
+        """
+        @summary 新闻播报-抽取分类获取播报热点
+        
+        @param request: GenerateBroadcastNewsRequest
+        @return: GenerateBroadcastNewsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.generate_broadcast_news_with_options_async(workspace_id, request, headers, runtime)
+
     def list_hot_topic_summaries_with_options(
         self,
         workspace_id: str,
@@ -164,6 +272,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_hot_topic_summaries_with_options_async(workspace_id, request, headers, runtime)
+
+    def run_comment_generation_with_options(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunCommentGenerationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.RunCommentGenerationResponse:
+        """
+        @summary 评论生成服务
+        
+        @param request: RunCommentGenerationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunCommentGenerationResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.length):
+            body['length'] = request.length
+        if not UtilClient.is_unset(request.num_comments):
+            body['numComments'] = request.num_comments
+        if not UtilClient.is_unset(request.source_material):
+            body['sourceMaterial'] = request.source_material
+        if not UtilClient.is_unset(request.style):
+            body['style'] = request.style
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunCommentGeneration',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/runCommentGeneration',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunCommentGenerationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_comment_generation_with_options_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunCommentGenerationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.RunCommentGenerationResponse:
+        """
+        @summary 评论生成服务
+        
+        @param request: RunCommentGenerationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunCommentGenerationResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.length):
+            body['length'] = request.length
+        if not UtilClient.is_unset(request.num_comments):
+            body['numComments'] = request.num_comments
+        if not UtilClient.is_unset(request.source_material):
+            body['sourceMaterial'] = request.source_material
+        if not UtilClient.is_unset(request.style):
+            body['style'] = request.style
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunCommentGeneration',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/runCommentGeneration',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunCommentGenerationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_comment_generation(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunCommentGenerationRequest,
+    ) -> quan_miao_light_app_20240801_models.RunCommentGenerationResponse:
+        """
+        @summary 评论生成服务
+        
+        @param request: RunCommentGenerationRequest
+        @return: RunCommentGenerationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.run_comment_generation_with_options(workspace_id, request, headers, runtime)
+
+    async def run_comment_generation_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunCommentGenerationRequest,
+    ) -> quan_miao_light_app_20240801_models.RunCommentGenerationResponse:
+        """
+        @summary 评论生成服务
+        
+        @param request: RunCommentGenerationRequest
+        @return: RunCommentGenerationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.run_comment_generation_with_options_async(workspace_id, request, headers, runtime)
 
     def run_marketing_information_extract_with_options(
         self,
@@ -824,8 +1052,12 @@ class Client(OpenApiClient):
             body['modelId'] = request.model_id
         if not UtilClient.is_unset(request.original_session_id):
             body['originalSessionId'] = request.original_session_id
+        if not UtilClient.is_unset(request.snapshot_interval):
+            body['snapshotInterval'] = request.snapshot_interval
         if not UtilClient.is_unset(request.task_id):
             body['taskId'] = request.task_id
+        if not UtilClient.is_unset(request.video_extra_info):
+            body['videoExtraInfo'] = request.video_extra_info
         if not UtilClient.is_unset(request.video_model_custom_prompt_template):
             body['videoModelCustomPromptTemplate'] = request.video_model_custom_prompt_template
         if not UtilClient.is_unset(request.video_model_id):
@@ -883,8 +1115,12 @@ class Client(OpenApiClient):
             body['modelId'] = request.model_id
         if not UtilClient.is_unset(request.original_session_id):
             body['originalSessionId'] = request.original_session_id
+        if not UtilClient.is_unset(request.snapshot_interval):
+            body['snapshotInterval'] = request.snapshot_interval
         if not UtilClient.is_unset(request.task_id):
             body['taskId'] = request.task_id
+        if not UtilClient.is_unset(request.video_extra_info):
+            body['videoExtraInfo'] = request.video_extra_info
         if not UtilClient.is_unset(request.video_model_custom_prompt_template):
             body['videoModelCustomPromptTemplate'] = request.video_model_custom_prompt_template
         if not UtilClient.is_unset(request.video_model_id):

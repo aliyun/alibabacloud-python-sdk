@@ -4,6 +4,333 @@ from Tea.model import TeaModel
 from typing import List, Dict
 
 
+class GenerateBroadcastNewsRequest(TeaModel):
+    def __init__(
+        self,
+        prompt: str = None,
+    ):
+        # This parameter is required.
+        self.prompt = prompt
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.prompt is not None:
+            result['prompt'] = self.prompt
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('prompt') is not None:
+            self.prompt = m.get('prompt')
+        return self
+
+
+class GenerateBroadcastNewsResponseBodyDataHotTopicSummariesImages(TeaModel):
+    def __init__(
+        self,
+        url: str = None,
+    ):
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class GenerateBroadcastNewsResponseBodyDataHotTopicSummaries(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        hot_topic: str = None,
+        hot_topic_version: str = None,
+        hot_value: float = None,
+        id: str = None,
+        images: List[GenerateBroadcastNewsResponseBodyDataHotTopicSummariesImages] = None,
+        text_summary: str = None,
+    ):
+        self.category = category
+        self.hot_topic = hot_topic
+        self.hot_topic_version = hot_topic_version
+        self.hot_value = hot_value
+        self.id = id
+        self.images = images
+        self.text_summary = text_summary
+
+    def validate(self):
+        if self.images:
+            for k in self.images:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['category'] = self.category
+        if self.hot_topic is not None:
+            result['hotTopic'] = self.hot_topic
+        if self.hot_topic_version is not None:
+            result['hotTopicVersion'] = self.hot_topic_version
+        if self.hot_value is not None:
+            result['hotValue'] = self.hot_value
+        if self.id is not None:
+            result['id'] = self.id
+        result['images'] = []
+        if self.images is not None:
+            for k in self.images:
+                result['images'].append(k.to_map() if k else None)
+        if self.text_summary is not None:
+            result['textSummary'] = self.text_summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        if m.get('hotTopic') is not None:
+            self.hot_topic = m.get('hotTopic')
+        if m.get('hotTopicVersion') is not None:
+            self.hot_topic_version = m.get('hotTopicVersion')
+        if m.get('hotValue') is not None:
+            self.hot_value = m.get('hotValue')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        self.images = []
+        if m.get('images') is not None:
+            for k in m.get('images'):
+                temp_model = GenerateBroadcastNewsResponseBodyDataHotTopicSummariesImages()
+                self.images.append(temp_model.from_map(k))
+        if m.get('textSummary') is not None:
+            self.text_summary = m.get('textSummary')
+        return self
+
+
+class GenerateBroadcastNewsResponseBodyDataUsage(TeaModel):
+    def __init__(
+        self,
+        input_tokens: int = None,
+        output_tokens: int = None,
+        total_tokens: int = None,
+    ):
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+        self.total_tokens = total_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_tokens is not None:
+            result['inputTokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['outputTokens'] = self.output_tokens
+        if self.total_tokens is not None:
+            result['totalTokens'] = self.total_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('inputTokens') is not None:
+            self.input_tokens = m.get('inputTokens')
+        if m.get('outputTokens') is not None:
+            self.output_tokens = m.get('outputTokens')
+        if m.get('totalTokens') is not None:
+            self.total_tokens = m.get('totalTokens')
+        return self
+
+
+class GenerateBroadcastNewsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        hot_topic_summaries: List[GenerateBroadcastNewsResponseBodyDataHotTopicSummaries] = None,
+        session_id: str = None,
+        task_id: str = None,
+        text: str = None,
+        usage: GenerateBroadcastNewsResponseBodyDataUsage = None,
+    ):
+        self.hot_topic_summaries = hot_topic_summaries
+        self.session_id = session_id
+        self.task_id = task_id
+        self.text = text
+        self.usage = usage
+
+    def validate(self):
+        if self.hot_topic_summaries:
+            for k in self.hot_topic_summaries:
+                if k:
+                    k.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['hotTopicSummaries'] = []
+        if self.hot_topic_summaries is not None:
+            for k in self.hot_topic_summaries:
+                result['hotTopicSummaries'].append(k.to_map() if k else None)
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        if self.text is not None:
+            result['text'] = self.text
+        if self.usage is not None:
+            result['usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.hot_topic_summaries = []
+        if m.get('hotTopicSummaries') is not None:
+            for k in m.get('hotTopicSummaries'):
+                temp_model = GenerateBroadcastNewsResponseBodyDataHotTopicSummaries()
+                self.hot_topic_summaries.append(temp_model.from_map(k))
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        if m.get('usage') is not None:
+            temp_model = GenerateBroadcastNewsResponseBodyDataUsage()
+            self.usage = temp_model.from_map(m['usage'])
+        return self
+
+
+class GenerateBroadcastNewsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GenerateBroadcastNewsResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = GenerateBroadcastNewsResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GenerateBroadcastNewsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GenerateBroadcastNewsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GenerateBroadcastNewsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListHotTopicSummariesRequest(TeaModel):
     def __init__(
         self,
@@ -410,6 +737,297 @@ class ListHotTopicSummariesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListHotTopicSummariesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RunCommentGenerationRequest(TeaModel):
+    def __init__(
+        self,
+        length: str = None,
+        num_comments: str = None,
+        source_material: str = None,
+        style: str = None,
+    ):
+        self.length = length
+        self.num_comments = num_comments
+        self.source_material = source_material
+        self.style = style
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.length is not None:
+            result['length'] = self.length
+        if self.num_comments is not None:
+            result['numComments'] = self.num_comments
+        if self.source_material is not None:
+            result['sourceMaterial'] = self.source_material
+        if self.style is not None:
+            result['style'] = self.style
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('length') is not None:
+            self.length = m.get('length')
+        if m.get('numComments') is not None:
+            self.num_comments = m.get('numComments')
+        if m.get('sourceMaterial') is not None:
+            self.source_material = m.get('sourceMaterial')
+        if m.get('style') is not None:
+            self.style = m.get('style')
+        return self
+
+
+class RunCommentGenerationResponseBodyHeader(TeaModel):
+    def __init__(
+        self,
+        event: str = None,
+        event_info: str = None,
+        request_id: str = None,
+        session_id: str = None,
+        task_id: str = None,
+        trace_id: str = None,
+    ):
+        self.event = event
+        self.event_info = event_info
+        self.request_id = request_id
+        self.session_id = session_id
+        self.task_id = task_id
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event is not None:
+            result['event'] = self.event
+        if self.event_info is not None:
+            result['eventInfo'] = self.event_info
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('event') is not None:
+            self.event = m.get('event')
+        if m.get('eventInfo') is not None:
+            self.event_info = m.get('eventInfo')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class RunCommentGenerationResponseBodyPayloadOutput(TeaModel):
+    def __init__(
+        self,
+        text: str = None,
+    ):
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.text is not None:
+            result['text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        return self
+
+
+class RunCommentGenerationResponseBodyPayloadUsage(TeaModel):
+    def __init__(
+        self,
+        input_tokens: int = None,
+        output_tokens: int = None,
+        total_tokens: int = None,
+    ):
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+        self.total_tokens = total_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_tokens is not None:
+            result['inputTokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['outputTokens'] = self.output_tokens
+        if self.total_tokens is not None:
+            result['totalTokens'] = self.total_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('inputTokens') is not None:
+            self.input_tokens = m.get('inputTokens')
+        if m.get('outputTokens') is not None:
+            self.output_tokens = m.get('outputTokens')
+        if m.get('totalTokens') is not None:
+            self.total_tokens = m.get('totalTokens')
+        return self
+
+
+class RunCommentGenerationResponseBodyPayload(TeaModel):
+    def __init__(
+        self,
+        output: RunCommentGenerationResponseBodyPayloadOutput = None,
+        usage: RunCommentGenerationResponseBodyPayloadUsage = None,
+    ):
+        self.output = output
+        self.usage = usage
+
+    def validate(self):
+        if self.output:
+            self.output.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output is not None:
+            result['output'] = self.output.to_map()
+        if self.usage is not None:
+            result['usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('output') is not None:
+            temp_model = RunCommentGenerationResponseBodyPayloadOutput()
+            self.output = temp_model.from_map(m['output'])
+        if m.get('usage') is not None:
+            temp_model = RunCommentGenerationResponseBodyPayloadUsage()
+            self.usage = temp_model.from_map(m['usage'])
+        return self
+
+
+class RunCommentGenerationResponseBody(TeaModel):
+    def __init__(
+        self,
+        end: bool = None,
+        header: RunCommentGenerationResponseBodyHeader = None,
+        payload: RunCommentGenerationResponseBodyPayload = None,
+    ):
+        self.end = end
+        self.header = header
+        self.payload = payload
+
+    def validate(self):
+        if self.header:
+            self.header.validate()
+        if self.payload:
+            self.payload.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end is not None:
+            result['end'] = self.end
+        if self.header is not None:
+            result['header'] = self.header.to_map()
+        if self.payload is not None:
+            result['payload'] = self.payload.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('end') is not None:
+            self.end = m.get('end')
+        if m.get('header') is not None:
+            temp_model = RunCommentGenerationResponseBodyHeader()
+            self.header = temp_model.from_map(m['header'])
+        if m.get('payload') is not None:
+            temp_model = RunCommentGenerationResponseBodyPayload()
+            self.payload = temp_model.from_map(m['payload'])
+        return self
+
+
+class RunCommentGenerationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RunCommentGenerationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RunCommentGenerationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2023,7 +2641,9 @@ class RunVideoAnalysisRequest(TeaModel):
         model_custom_prompt_template_id: str = None,
         model_id: str = None,
         original_session_id: str = None,
+        snapshot_interval: float = None,
         task_id: str = None,
+        video_extra_info: str = None,
         video_model_custom_prompt_template: str = None,
         video_model_id: str = None,
         video_url: str = None,
@@ -2033,7 +2653,9 @@ class RunVideoAnalysisRequest(TeaModel):
         self.model_custom_prompt_template_id = model_custom_prompt_template_id
         self.model_id = model_id
         self.original_session_id = original_session_id
+        self.snapshot_interval = snapshot_interval
         self.task_id = task_id
+        self.video_extra_info = video_extra_info
         self.video_model_custom_prompt_template = video_model_custom_prompt_template
         self.video_model_id = video_model_id
         self.video_url = video_url
@@ -2057,8 +2679,12 @@ class RunVideoAnalysisRequest(TeaModel):
             result['modelId'] = self.model_id
         if self.original_session_id is not None:
             result['originalSessionId'] = self.original_session_id
+        if self.snapshot_interval is not None:
+            result['snapshotInterval'] = self.snapshot_interval
         if self.task_id is not None:
             result['taskId'] = self.task_id
+        if self.video_extra_info is not None:
+            result['videoExtraInfo'] = self.video_extra_info
         if self.video_model_custom_prompt_template is not None:
             result['videoModelCustomPromptTemplate'] = self.video_model_custom_prompt_template
         if self.video_model_id is not None:
@@ -2079,8 +2705,12 @@ class RunVideoAnalysisRequest(TeaModel):
             self.model_id = m.get('modelId')
         if m.get('originalSessionId') is not None:
             self.original_session_id = m.get('originalSessionId')
+        if m.get('snapshotInterval') is not None:
+            self.snapshot_interval = m.get('snapshotInterval')
         if m.get('taskId') is not None:
             self.task_id = m.get('taskId')
+        if m.get('videoExtraInfo') is not None:
+            self.video_extra_info = m.get('videoExtraInfo')
         if m.get('videoModelCustomPromptTemplate') is not None:
             self.video_model_custom_prompt_template = m.get('videoModelCustomPromptTemplate')
         if m.get('videoModelId') is not None:
@@ -2098,7 +2728,9 @@ class RunVideoAnalysisShrinkRequest(TeaModel):
         model_custom_prompt_template_id: str = None,
         model_id: str = None,
         original_session_id: str = None,
+        snapshot_interval: float = None,
         task_id: str = None,
+        video_extra_info: str = None,
         video_model_custom_prompt_template: str = None,
         video_model_id: str = None,
         video_url: str = None,
@@ -2108,7 +2740,9 @@ class RunVideoAnalysisShrinkRequest(TeaModel):
         self.model_custom_prompt_template_id = model_custom_prompt_template_id
         self.model_id = model_id
         self.original_session_id = original_session_id
+        self.snapshot_interval = snapshot_interval
         self.task_id = task_id
+        self.video_extra_info = video_extra_info
         self.video_model_custom_prompt_template = video_model_custom_prompt_template
         self.video_model_id = video_model_id
         self.video_url = video_url
@@ -2132,8 +2766,12 @@ class RunVideoAnalysisShrinkRequest(TeaModel):
             result['modelId'] = self.model_id
         if self.original_session_id is not None:
             result['originalSessionId'] = self.original_session_id
+        if self.snapshot_interval is not None:
+            result['snapshotInterval'] = self.snapshot_interval
         if self.task_id is not None:
             result['taskId'] = self.task_id
+        if self.video_extra_info is not None:
+            result['videoExtraInfo'] = self.video_extra_info
         if self.video_model_custom_prompt_template is not None:
             result['videoModelCustomPromptTemplate'] = self.video_model_custom_prompt_template
         if self.video_model_id is not None:
@@ -2154,8 +2792,12 @@ class RunVideoAnalysisShrinkRequest(TeaModel):
             self.model_id = m.get('modelId')
         if m.get('originalSessionId') is not None:
             self.original_session_id = m.get('originalSessionId')
+        if m.get('snapshotInterval') is not None:
+            self.snapshot_interval = m.get('snapshotInterval')
         if m.get('taskId') is not None:
             self.task_id = m.get('taskId')
+        if m.get('videoExtraInfo') is not None:
+            self.video_extra_info = m.get('videoExtraInfo')
         if m.get('videoModelCustomPromptTemplate') is not None:
             self.video_model_custom_prompt_template = m.get('videoModelCustomPromptTemplate')
         if m.get('videoModelId') is not None:
