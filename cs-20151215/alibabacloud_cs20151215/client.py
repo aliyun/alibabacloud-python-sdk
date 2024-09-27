@@ -11059,9 +11059,9 @@ class Client(OpenApiClient):
         """
         @summary Modifies the configuration of a cluster component. This operation may affect your businesses. We recommend that you assess the impact, back up data, and perform the operation during off-peak hours.
         
-        @description You can use this API operation to modify the components in a Container Service for Kubernetes (ACK) cluster or the control plane components in an ACK Pro cluster.
-        To query the customizable parameters of a component, call the `DescribeClusterAddonMetadata` API operation. For more information, see [Query the metadata of a specified component version](https://help.aliyun.com/document_detail/2667944.html).
-        For more information about the customizable parameters of control plane components in ACK Pro clusters, see [Customize the parameters of control plane components in ACK Pro clusters](https://help.aliyun.com/document_detail/199588.html).
+        @description You can call this API operation to modify the component parameters of an ACK Basic cluster or the control plane parameters of an ACK Pro cluster:
+        To view the component parameters of an ACK Basic cluster, call the DescribeClusterAddonMetadata API operation. For more information, see [Query the metadata of a cluster component](https://help.aliyun.com/document_detail/2667944.html).
+        To view the control plane parameters of an ACK Pro cluster, see [Customize the control plane parameters of an ACK Pro cluster](https://help.aliyun.com/document_detail/199588.html).
         After you call this operation, the component may be redeployed and restarted. We recommend that you assess the impact before you call this operation.
         
         @param request: ModifyClusterAddonRequest
@@ -11104,9 +11104,9 @@ class Client(OpenApiClient):
         """
         @summary Modifies the configuration of a cluster component. This operation may affect your businesses. We recommend that you assess the impact, back up data, and perform the operation during off-peak hours.
         
-        @description You can use this API operation to modify the components in a Container Service for Kubernetes (ACK) cluster or the control plane components in an ACK Pro cluster.
-        To query the customizable parameters of a component, call the `DescribeClusterAddonMetadata` API operation. For more information, see [Query the metadata of a specified component version](https://help.aliyun.com/document_detail/2667944.html).
-        For more information about the customizable parameters of control plane components in ACK Pro clusters, see [Customize the parameters of control plane components in ACK Pro clusters](https://help.aliyun.com/document_detail/199588.html).
+        @description You can call this API operation to modify the component parameters of an ACK Basic cluster or the control plane parameters of an ACK Pro cluster:
+        To view the component parameters of an ACK Basic cluster, call the DescribeClusterAddonMetadata API operation. For more information, see [Query the metadata of a cluster component](https://help.aliyun.com/document_detail/2667944.html).
+        To view the control plane parameters of an ACK Pro cluster, see [Customize the control plane parameters of an ACK Pro cluster](https://help.aliyun.com/document_detail/199588.html).
         After you call this operation, the component may be redeployed and restarted. We recommend that you assess the impact before you call this operation.
         
         @param request: ModifyClusterAddonRequest
@@ -11147,9 +11147,9 @@ class Client(OpenApiClient):
         """
         @summary Modifies the configuration of a cluster component. This operation may affect your businesses. We recommend that you assess the impact, back up data, and perform the operation during off-peak hours.
         
-        @description You can use this API operation to modify the components in a Container Service for Kubernetes (ACK) cluster or the control plane components in an ACK Pro cluster.
-        To query the customizable parameters of a component, call the `DescribeClusterAddonMetadata` API operation. For more information, see [Query the metadata of a specified component version](https://help.aliyun.com/document_detail/2667944.html).
-        For more information about the customizable parameters of control plane components in ACK Pro clusters, see [Customize the parameters of control plane components in ACK Pro clusters](https://help.aliyun.com/document_detail/199588.html).
+        @description You can call this API operation to modify the component parameters of an ACK Basic cluster or the control plane parameters of an ACK Pro cluster:
+        To view the component parameters of an ACK Basic cluster, call the DescribeClusterAddonMetadata API operation. For more information, see [Query the metadata of a cluster component](https://help.aliyun.com/document_detail/2667944.html).
+        To view the control plane parameters of an ACK Pro cluster, see [Customize the control plane parameters of an ACK Pro cluster](https://help.aliyun.com/document_detail/199588.html).
         After you call this operation, the component may be redeployed and restarted. We recommend that you assess the impact before you call this operation.
         
         @param request: ModifyClusterAddonRequest
@@ -11168,9 +11168,9 @@ class Client(OpenApiClient):
         """
         @summary Modifies the configuration of a cluster component. This operation may affect your businesses. We recommend that you assess the impact, back up data, and perform the operation during off-peak hours.
         
-        @description You can use this API operation to modify the components in a Container Service for Kubernetes (ACK) cluster or the control plane components in an ACK Pro cluster.
-        To query the customizable parameters of a component, call the `DescribeClusterAddonMetadata` API operation. For more information, see [Query the metadata of a specified component version](https://help.aliyun.com/document_detail/2667944.html).
-        For more information about the customizable parameters of control plane components in ACK Pro clusters, see [Customize the parameters of control plane components in ACK Pro clusters](https://help.aliyun.com/document_detail/199588.html).
+        @description You can call this API operation to modify the component parameters of an ACK Basic cluster or the control plane parameters of an ACK Pro cluster:
+        To view the component parameters of an ACK Basic cluster, call the DescribeClusterAddonMetadata API operation. For more information, see [Query the metadata of a cluster component](https://help.aliyun.com/document_detail/2667944.html).
+        To view the control plane parameters of an ACK Pro cluster, see [Customize the control plane parameters of an ACK Pro cluster](https://help.aliyun.com/document_detail/199588.html).
         After you call this operation, the component may be redeployed and restarted. We recommend that you assess the impact before you call this operation.
         
         @param request: ModifyClusterAddonRequest
@@ -13741,7 +13741,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ScanClusterVulsResponse:
         """
-        @summary The cluster ID.
+        @summary Scans for vulnerabilities in a Container Service for Kubernetes (ACK) cluster, including workload vulnerabilities, third-party software vulnerabilities, CVE vulnerabilities, WebCMS vulnerabilities, and Windows vulnerabilities. We recommend that you scan your cluster on a regular basis to ensure cluster security.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -13773,7 +13773,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ScanClusterVulsResponse:
         """
-        @summary The cluster ID.
+        @summary Scans for vulnerabilities in a Container Service for Kubernetes (ACK) cluster, including workload vulnerabilities, third-party software vulnerabilities, CVE vulnerabilities, WebCMS vulnerabilities, and Windows vulnerabilities. We recommend that you scan your cluster on a regular basis to ensure cluster security.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -13803,7 +13803,7 @@ class Client(OpenApiClient):
         cluster_id: str,
     ) -> cs20151215_models.ScanClusterVulsResponse:
         """
-        @summary The cluster ID.
+        @summary Scans for vulnerabilities in a Container Service for Kubernetes (ACK) cluster, including workload vulnerabilities, third-party software vulnerabilities, CVE vulnerabilities, WebCMS vulnerabilities, and Windows vulnerabilities. We recommend that you scan your cluster on a regular basis to ensure cluster security.
         
         @return: ScanClusterVulsResponse
         """
@@ -13816,7 +13816,7 @@ class Client(OpenApiClient):
         cluster_id: str,
     ) -> cs20151215_models.ScanClusterVulsResponse:
         """
-        @summary The cluster ID.
+        @summary Scans for vulnerabilities in a Container Service for Kubernetes (ACK) cluster, including workload vulnerabilities, third-party software vulnerabilities, CVE vulnerabilities, WebCMS vulnerabilities, and Windows vulnerabilities. We recommend that you scan your cluster on a regular basis to ensure cluster security.
         
         @return: ScanClusterVulsResponse
         """
@@ -15528,6 +15528,12 @@ class Client(OpenApiClient):
         """
         @summary You can call the UpgradeCluster operation to upgrade a cluster by cluster ID.
         
+        @description After successfully calling the UpgradeCluster interface, this API returns the `task_id` of the upgrade task. You can manage this operation task by calling the following task APIs:
+        - [Call DescribeTaskInfo to query task details](https://help.aliyun.com/document_detail/2667985.html)
+        - [Call PauseTask to pause a running task](https://help.aliyun.com/document_detail/2667986.html)
+        - [Call ResumeTask to resume a task that has been paused](https://help.aliyun.com/document_detail/2667987.html)
+        - [Call CancelTask to cancel a running task](https://help.aliyun.com/document_detail/2667988.html)
+        
         @param request: UpgradeClusterRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -15575,6 +15581,12 @@ class Client(OpenApiClient):
         """
         @summary You can call the UpgradeCluster operation to upgrade a cluster by cluster ID.
         
+        @description After successfully calling the UpgradeCluster interface, this API returns the `task_id` of the upgrade task. You can manage this operation task by calling the following task APIs:
+        - [Call DescribeTaskInfo to query task details](https://help.aliyun.com/document_detail/2667985.html)
+        - [Call PauseTask to pause a running task](https://help.aliyun.com/document_detail/2667986.html)
+        - [Call ResumeTask to resume a task that has been paused](https://help.aliyun.com/document_detail/2667987.html)
+        - [Call CancelTask to cancel a running task](https://help.aliyun.com/document_detail/2667988.html)
+        
         @param request: UpgradeClusterRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -15620,6 +15632,12 @@ class Client(OpenApiClient):
         """
         @summary You can call the UpgradeCluster operation to upgrade a cluster by cluster ID.
         
+        @description After successfully calling the UpgradeCluster interface, this API returns the `task_id` of the upgrade task. You can manage this operation task by calling the following task APIs:
+        - [Call DescribeTaskInfo to query task details](https://help.aliyun.com/document_detail/2667985.html)
+        - [Call PauseTask to pause a running task](https://help.aliyun.com/document_detail/2667986.html)
+        - [Call ResumeTask to resume a task that has been paused](https://help.aliyun.com/document_detail/2667987.html)
+        - [Call CancelTask to cancel a running task](https://help.aliyun.com/document_detail/2667988.html)
+        
         @param request: UpgradeClusterRequest
         @return: UpgradeClusterResponse
         """
@@ -15634,6 +15652,12 @@ class Client(OpenApiClient):
     ) -> cs20151215_models.UpgradeClusterResponse:
         """
         @summary You can call the UpgradeCluster operation to upgrade a cluster by cluster ID.
+        
+        @description After successfully calling the UpgradeCluster interface, this API returns the `task_id` of the upgrade task. You can manage this operation task by calling the following task APIs:
+        - [Call DescribeTaskInfo to query task details](https://help.aliyun.com/document_detail/2667985.html)
+        - [Call PauseTask to pause a running task](https://help.aliyun.com/document_detail/2667986.html)
+        - [Call ResumeTask to resume a task that has been paused](https://help.aliyun.com/document_detail/2667987.html)
+        - [Call CancelTask to cancel a running task](https://help.aliyun.com/document_detail/2667988.html)
         
         @param request: UpgradeClusterRequest
         @return: UpgradeClusterResponse

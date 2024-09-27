@@ -1,3 +1,10 @@
+2024-09-27 Version: 4.7.6
+- Update API CreateClusterNodePool: update param body.
+- Update API DescribeClusterNodePoolDetail: update response param.
+- Update API DescribeClusterNodePools: update response param.
+- Update API ModifyClusterNodePool: update param body.
+
+
 2024-09-24 Version: 4.7.5
 - Update API CancelOperationPlan: update response param.
 - Update API CreateCluster: update param body.
