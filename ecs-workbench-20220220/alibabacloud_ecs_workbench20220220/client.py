@@ -249,6 +249,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_instance_records_with_options_async(request, runtime)
 
+    def list_terminal_commands_with_options(
+        self,
+        request: ecs_workbench_20220220_models.ListTerminalCommandsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_workbench_20220220_models.ListTerminalCommandsResponse:
+        """
+        @summary 查看实例Workbench登录后执行命令的历史列表。
+        
+        @param request: ListTerminalCommandsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTerminalCommandsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.terminal_session_token):
+            body['TerminalSessionToken'] = request.terminal_session_token
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTerminalCommands',
+            version='2022-02-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_workbench_20220220_models.ListTerminalCommandsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_terminal_commands_with_options_async(
+        self,
+        request: ecs_workbench_20220220_models.ListTerminalCommandsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_workbench_20220220_models.ListTerminalCommandsResponse:
+        """
+        @summary 查看实例Workbench登录后执行命令的历史列表。
+        
+        @param request: ListTerminalCommandsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTerminalCommandsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.terminal_session_token):
+            body['TerminalSessionToken'] = request.terminal_session_token
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTerminalCommands',
+            version='2022-02-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_workbench_20220220_models.ListTerminalCommandsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_terminal_commands(
+        self,
+        request: ecs_workbench_20220220_models.ListTerminalCommandsRequest,
+    ) -> ecs_workbench_20220220_models.ListTerminalCommandsResponse:
+        """
+        @summary 查看实例Workbench登录后执行命令的历史列表。
+        
+        @param request: ListTerminalCommandsRequest
+        @return: ListTerminalCommandsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_terminal_commands_with_options(request, runtime)
+
+    async def list_terminal_commands_async(
+        self,
+        request: ecs_workbench_20220220_models.ListTerminalCommandsRequest,
+    ) -> ecs_workbench_20220220_models.ListTerminalCommandsResponse:
+        """
+        @summary 查看实例Workbench登录后执行命令的历史列表。
+        
+        @param request: ListTerminalCommandsRequest
+        @return: ListTerminalCommandsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_terminal_commands_with_options_async(request, runtime)
+
     def login_instance_with_options(
         self,
         request: ecs_workbench_20220220_models.LoginInstanceRequest,

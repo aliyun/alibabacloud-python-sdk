@@ -1,3 +1,7 @@
+2024-09-27 Version: 1.2.0
+- Support API ListTerminalCommands.
+
+
 2024-08-21 Version: 1.1.0
 - Support API GetInstanceRecordConfig.
 - Support API ListInstanceRecords.
