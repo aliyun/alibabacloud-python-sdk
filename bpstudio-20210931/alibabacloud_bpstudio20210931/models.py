@@ -1345,18 +1345,18 @@ class ExecuteOperationSyncShrinkRequest(TeaModel):
         return self
 
 
-class ExecuteOperationSyncResponseBody(TeaModel):
+class ExecuteOperationSyncResponseBodyData(TeaModel):
     def __init__(
         self,
-        code: int = None,
-        data: str = None,
+        arguments: str = None,
         message: str = None,
-        request_id: str = None,
+        operation_id: str = None,
+        status: str = None,
     ):
-        self.code = code
-        self.data = data
+        self.arguments = arguments
         self.message = message
-        self.request_id = request_id
+        self.operation_id = operation_id
+        self.status = status
 
     def validate(self):
         pass
@@ -1367,10 +1367,56 @@ class ExecuteOperationSyncResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.arguments is not None:
+            result['Arguments'] = self.arguments
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.operation_id is not None:
+            result['OperationId'] = self.operation_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Arguments') is not None:
+            self.arguments = m.get('Arguments')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('OperationId') is not None:
+            self.operation_id = m.get('OperationId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ExecuteOperationSyncResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: ExecuteOperationSyncResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
-            result['Data'] = self.data
+            result['Data'] = self.data.to_map()
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
@@ -1382,7 +1428,8 @@ class ExecuteOperationSyncResponseBody(TeaModel):
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
-            self.data = m.get('Data')
+            temp_model = ExecuteOperationSyncResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
