@@ -1,3 +1,7 @@
+2024-09-27 Version: 2.1.1
+- Update API SubmitDocumentAnalyzeJob: add param dataType.
+
+
 2024-09-21 Version: 2.1.0
 - Support API BatchSaveInstructionStatus.
 - Support API BatchUpdateSystemRunningPlan.

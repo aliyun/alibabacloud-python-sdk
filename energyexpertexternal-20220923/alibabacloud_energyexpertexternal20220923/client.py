@@ -4257,6 +4257,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.data_type):
+            query['dataType'] = request.data_type
         if not UtilClient.is_unset(request.file_name):
             query['fileName'] = request.file_name
         if not UtilClient.is_unset(request.file_url):
@@ -4301,6 +4303,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.data_type):
+            query['dataType'] = request.data_type
         if not UtilClient.is_unset(request.file_name):
             query['fileName'] = request.file_name
         if not UtilClient.is_unset(request.file_url):
