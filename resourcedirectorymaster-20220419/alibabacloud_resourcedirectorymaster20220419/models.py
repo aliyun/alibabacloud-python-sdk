@@ -8268,6 +8268,39 @@ class ListDelegatedServicesForAccountResponse(TeaModel):
         return self
 
 
+class ListFoldersForParentRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListFoldersForParentRequest(TeaModel):
     def __init__(
         self,
@@ -8275,6 +8308,7 @@ class ListFoldersForParentRequest(TeaModel):
         page_size: int = None,
         parent_folder_id: str = None,
         query_keyword: str = None,
+        tag: List[ListFoldersForParentRequestTag] = None,
     ):
         # The number of the page to return.
         # 
@@ -8292,9 +8326,13 @@ class ListFoldersForParentRequest(TeaModel):
         # 
         # Fuzzy match is supported.
         self.query_keyword = query_keyword
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -8310,6 +8348,10 @@ class ListFoldersForParentRequest(TeaModel):
             result['ParentFolderId'] = self.parent_folder_id
         if self.query_keyword is not None:
             result['QueryKeyword'] = self.query_keyword
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -8322,6 +8364,79 @@ class ListFoldersForParentRequest(TeaModel):
             self.parent_folder_id = m.get('ParentFolderId')
         if m.get('QueryKeyword') is not None:
             self.query_keyword = m.get('QueryKeyword')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListFoldersForParentRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListFoldersForParentResponseBodyFoldersFolderTagsTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListFoldersForParentResponseBodyFoldersFolderTags(TeaModel):
+    def __init__(
+        self,
+        tag: List[ListFoldersForParentResponseBodyFoldersFolderTagsTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListFoldersForParentResponseBodyFoldersFolderTagsTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -8331,6 +8446,7 @@ class ListFoldersForParentResponseBodyFoldersFolder(TeaModel):
         create_time: str = None,
         folder_id: str = None,
         folder_name: str = None,
+        tags: ListFoldersForParentResponseBodyFoldersFolderTags = None,
     ):
         # The time when the folder was created.
         self.create_time = create_time
@@ -8338,9 +8454,11 @@ class ListFoldersForParentResponseBodyFoldersFolder(TeaModel):
         self.folder_id = folder_id
         # The name of the folder.
         self.folder_name = folder_name
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            self.tags.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -8354,6 +8472,8 @@ class ListFoldersForParentResponseBodyFoldersFolder(TeaModel):
             result['FolderId'] = self.folder_id
         if self.folder_name is not None:
             result['FolderName'] = self.folder_name
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -8364,6 +8484,9 @@ class ListFoldersForParentResponseBodyFoldersFolder(TeaModel):
             self.folder_id = m.get('FolderId')
         if m.get('FolderName') is not None:
             self.folder_name = m.get('FolderName')
+        if m.get('Tags') is not None:
+            temp_model = ListFoldersForParentResponseBodyFoldersFolderTags()
+            self.tags = temp_model.from_map(m['Tags'])
         return self
 
 

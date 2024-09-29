@@ -1,3 +1,8 @@
+2024-09-29 Version: 2.0.5
+- Update API ListFoldersForParent: add param Tag.
+- Update API ListFoldersForParent: update response param.
+
+
 2024-08-15 Version: 2.0.4
 - Update API CreateControlPolicy: add param Tag.
 - Update API CreateFolder: add param Tag.
