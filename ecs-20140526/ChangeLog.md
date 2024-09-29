@@ -1,3 +1,13 @@
+2024-09-29 Version: 4.4.0
+- Support API PurchaseElasticityAssurance.
+- Update API DescribeNetworkInterfaceAttribute: update response param.
+- Update API DescribeNetworkInterfaces: update response param.
+- Update API DescribeSecurityGroups: update response param.
+- Update API ModifyElasticityAssurance: add param ClientToken.
+- Update API ModifyElasticityAssurance: add param InstanceAmount.
+- Update API ModifyNetworkInterfaceAttribute: add param SourceDestCheck.
+
+
 2024-09-07 Version: 4.3.0
 - Support API DescribeDiskDefaultKMSKeyId.
 - Support API DescribeDiskEncryptionByDefaultStatus.
