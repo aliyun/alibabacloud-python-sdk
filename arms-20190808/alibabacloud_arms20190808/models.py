@@ -5438,7 +5438,15 @@ class ConfigAppResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
-        # The result of turning on or off the main switch of the ARMS agent or the main switch status of the ARMS agent. Indicates whether the request was successful. Valid values: success failed The main switch status of the ARMS agent. Valid values: true false
+        # The result of turning on or off the main switch of the agent or the main switch status of the agent. Indicates whether the request was successful. Valid values:
+        # 
+        # *   success
+        # *   failed
+        # 
+        # The main switch status of the agent. Valid values:
+        # 
+        # *   true
+        # *   false
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -6783,7 +6791,10 @@ class CreateGrafanaWorkspaceRequest(TeaModel):
         resource_group_id: str = None,
         tags: List[CreateGrafanaWorkspaceRequestTags] = None,
     ):
-        # The language. Valid values: zh and en. Default value: zh.
+        # The language. Default value: zh. Valid values:
+        # 
+        # *   zh
+        # *   en
         self.aliyun_lang = aliyun_lang
         # The description of the workspace
         self.description = description
@@ -6888,7 +6899,10 @@ class CreateGrafanaWorkspaceShrinkRequest(TeaModel):
         resource_group_id: str = None,
         tags_shrink: str = None,
     ):
-        # The language. Valid values: zh and en. Default value: zh.
+        # The language. Default value: zh. Valid values:
+        # 
+        # *   zh
+        # *   en
         self.aliyun_lang = aliyun_lang
         # The description of the workspace
         self.description = description
@@ -6984,6 +6998,7 @@ class CreateGrafanaWorkspaceResponseBody(TeaModel):
     ):
         # The HTTP status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
         self.code = code
+        # The information about the Grafana workspace.
         self.data = data
         # The returned message.
         self.message = message
@@ -7467,7 +7482,13 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         # *   `true`: enables the health check feature.
         # *   `false`: disables the automatic backup feature.
         self.auto_add_new_application = auto_add_new_application
-        # The configurations that are automatically appended to monitor the application based on the specified alert rule. autoAddMatchType: the matching mode. Valid values: REGULAR and NOT_REGULAR. autoAddMatchExp: the regular expression
+        # The configurations that are automatically appended to monitor the application based on the specified alert rule.
+        # 
+        # *   autoAddMatchType:
+        # 
+        #     the matching mode. Valid values: REGULAR and NOT_REGULAR.
+        # 
+        # *   autoAddMatchExp: the regular expression
         self.auto_add_target_config = auto_add_target_config
         # The ID of the monitored cluster.
         self.cluster_id = cluster_id
@@ -7519,8 +7540,6 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         self.notice = notice
         # The notification mode. You can specify the normal mode or simple mode.
         # 
-        # Valid values:
-        # 
         # *   DIRECTED_MODE
         # *   NORMAL_MODE
         self.notify_mode = notify_mode
@@ -7531,7 +7550,7 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         self.notify_strategy = notify_strategy
         # The process ID (PID) that is associated with the Application Monitoring or Browser Monitoring alert rule.
         self.pids = pids
-        # When creating a Prometheus alert rule, the backend will verify whether this product exists, which is used to distinguish cloud product filtering queries.
+        # The product code. If you specify this parameter when you create a Prometheus alert rule, the backend checks whether the product exists.
         self.product = product
         # The PromQL statement of the Prometheus alert rule.
         self.prom_ql = prom_ql
@@ -11962,7 +11981,7 @@ class CreateRumAppRequest(TeaModel):
         self.app_name = app_name
         # The description of the application.
         self.description = description
-        # The nick name.
+        # The nickname of the application.
         self.nick_name = nick_name
         # The name of the Android application package. This parameter is required if you create an Android application.
         self.package_name = package_name
@@ -12073,7 +12092,7 @@ class CreateRumAppShrinkRequest(TeaModel):
         self.app_name = app_name
         # The description of the application.
         self.description = description
-        # The nick name.
+        # The nickname of the application.
         self.nick_name = nick_name
         # The name of the Android application package. This parameter is required if you create an Android application.
         self.package_name = package_name
@@ -12160,11 +12179,11 @@ class CreateRumAppResponseBodyData(TeaModel):
         endpoint: str = None,
         pid: str = None,
     ):
-        # The SDK Domain.
+        # The domain name of the SDK.
         self.cdn_domain = cdn_domain
-        # The endpoint of the event target.
+        # The endpoint that is used to report application data.
         self.endpoint = endpoint
-        # The application ID.
+        # The process ID (PID) of the application.
         self.pid = pid
 
     def validate(self):
@@ -23459,7 +23478,7 @@ class DescribeEnvironmentResponseBodyData(TeaModel):
         self.user_id = user_id
         # The VPC ID.
         self.vpc_id = vpc_id
-        # The switch ID bound to the environment.
+        # The ID of the vSwitch associated with the environment.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -25668,9 +25687,28 @@ class GetAgentDownloadUrlV2Request(TeaModel):
         arch_type: str = None,
         os_type: str = None,
     ):
+        # The agent type.\\
+        # **Valid values:**\
+        # 
+        # *   **JavaAgent**\
+        # *   **Instgo**\
+        # 
         # This parameter is required.
         self.agent_type = agent_type
+        # The architecture type of the environment where the agent is installed.\\
+        # This parameter is required and valid only when **AgentType** is set to **Instgo**.\\
+        # **Valid values:**\
+        # 
+        # *   **amd64**\
+        # *   **arm64**\
         self.arch_type = arch_type
+        # The operating system of the environment where the agent is installed.\\
+        # This parameter is required and valid only when **AgentType** is set to **Instgo**.\\
+        # **Valid values:**\
+        # 
+        # *   **linux**\
+        # *   **darwin**\
+        # *   **windows**\
         self.os_type = os_type
 
     def validate(self):
@@ -25707,7 +25745,9 @@ class GetAgentDownloadUrlV2ResponseBodyData(TeaModel):
         url: str = None,
         version: str = None,
     ):
+        # The download URL of the agent.
         self.url = url
+        # The version number of the agent.
         self.version = version
 
     def validate(self):
@@ -25743,10 +25783,25 @@ class GetAgentDownloadUrlV2ResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.\\
+        # **Valid values:**\
+        # 
+        # *   2xx: The request was successful.
+        # *   3xx: The request was redirected.
+        # *   4xx: The request was invalid.
+        # *   5xx: A server error occurred.
         self.code = code
+        # The version number and download URL of the agent.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.\\
+        # **Valid values:**\
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -25897,7 +25952,7 @@ class GetAlertRulesRequest(TeaModel):
         # 
         # >  The PAUSED state indicates that the alert rule is abnormal and has been suspended. This may be because the specified threshold value is excessively large, or the associated cluster has been deleted.
         self.alert_status = alert_status
-        # The type of the alert rule. Valid values:
+        # The type of the alert rule. This parameter is required for the new version of Alert Management.
         # 
         # *   APPLICATION_MONITORING_ALERT_RULE: alert rule for Application Monitoring
         # *   BROWSER_MONITORING_ALERT_RULE: alert rule for Browser Monitoring
@@ -29997,9 +30052,9 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         self.access_type = access_type
         # The number of days for which data is automatically archived after the storage duration expires. Valid values: 60, 90, 180, and 365. 0 indicates that the data is not archived.
         self.archive_duration = archive_duration
-        # Read the whitelist policy for password-free addresses.
+        # The whitelist of IP addresses for which password-free read is enabled.
         self.auth_free_read_policy = auth_free_read_policy
-        # Write exempt password address whitelist policy.
+        # The whitelist of IP addresses for which password-free write is enabled.
         self.auth_free_write_policy = auth_free_write_policy
         # The authorization token.
         self.auth_token = auth_token
@@ -30016,12 +30071,13 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         self.cluster_type = cluster_type
         # The data storage status at the backend.
         self.db_instance_status = db_instance_status
-        # Whether to enable password-free reading.
+        # Indicates whether password-free read is enabled.
         self.enable_auth_free_read = enable_auth_free_read
-        # Whether to enable write access without password.
+        # Indicates whether password-free write is enabled.
         self.enable_auth_free_write = enable_auth_free_write
         # Indicates whether access token authentication is enabled.
         self.enable_auth_token = enable_auth_token
+        # 扩展信息（仅控制台请求才返回）
         self.extra_info = extra_info
         # The ID of the Grafana workspace.
         self.grafana_instance_id = grafana_instance_id
@@ -31721,7 +31777,7 @@ class GetRumAppInfoRequest(TeaModel):
     ):
         # The group to which the application belongs.
         self.app_group = app_group
-        # The application ID.
+        # The process ID (PID) of the application.
         # 
         # This parameter is required.
         self.pid = pid
@@ -31817,17 +31873,54 @@ class GetRumAppInfoResponseBodyDataBonreeSDKConfigModuleConfig(TeaModel):
         return self
 
 
+class GetRumAppInfoResponseBodyDataBonreeSDKConfigSamplingConfig(TeaModel):
+    def __init__(
+        self,
+        sampling_rate: int = None,
+        sampling_type: int = None,
+    ):
+        self.sampling_rate = sampling_rate
+        self.sampling_type = sampling_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sampling_rate is not None:
+            result['samplingRate'] = self.sampling_rate
+        if self.sampling_type is not None:
+            result['samplingType'] = self.sampling_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('samplingRate') is not None:
+            self.sampling_rate = m.get('samplingRate')
+        if m.get('samplingType') is not None:
+            self.sampling_type = m.get('samplingType')
+        return self
+
+
 class GetRumAppInfoResponseBodyDataBonreeSDKConfig(TeaModel):
     def __init__(
         self,
         module_config: GetRumAppInfoResponseBodyDataBonreeSDKConfigModuleConfig = None,
+        sampling_config: GetRumAppInfoResponseBodyDataBonreeSDKConfigSamplingConfig = None,
     ):
         # The module configuration.
         self.module_config = module_config
+        self.sampling_config = sampling_config
 
     def validate(self):
         if self.module_config:
             self.module_config.validate()
+        if self.sampling_config:
+            self.sampling_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -31837,6 +31930,8 @@ class GetRumAppInfoResponseBodyDataBonreeSDKConfig(TeaModel):
         result = dict()
         if self.module_config is not None:
             result['moduleConfig'] = self.module_config.to_map()
+        if self.sampling_config is not None:
+            result['samplingConfig'] = self.sampling_config.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -31844,6 +31939,9 @@ class GetRumAppInfoResponseBodyDataBonreeSDKConfig(TeaModel):
         if m.get('moduleConfig') is not None:
             temp_model = GetRumAppInfoResponseBodyDataBonreeSDKConfigModuleConfig()
             self.module_config = temp_model.from_map(m['moduleConfig'])
+        if m.get('samplingConfig') is not None:
+            temp_model = GetRumAppInfoResponseBodyDataBonreeSDKConfigSamplingConfig()
+            self.sampling_config = temp_model.from_map(m['samplingConfig'])
         return self
 
 
@@ -31945,6 +32043,7 @@ class GetRumAppInfoResponseBodyData(TeaModel):
         self,
         app_group: str = None,
         app_type: str = None,
+        backend_service_trace_region: str = None,
         bonree_sdkconfig: GetRumAppInfoResponseBodyDataBonreeSDKConfig = None,
         cdn_domain: str = None,
         create_time: str = None,
@@ -31968,6 +32067,7 @@ class GetRumAppInfoResponseBodyData(TeaModel):
         self.app_group = app_group
         # The application type. Valid values: web, miniapp, ios, and android.
         self.app_type = app_type
+        self.backend_service_trace_region = backend_service_trace_region
         # The mobile collection configurations.
         self.bonree_sdkconfig = bonree_sdkconfig
         # The domain name of the SDK.
@@ -32027,6 +32127,8 @@ class GetRumAppInfoResponseBodyData(TeaModel):
             result['AppGroup'] = self.app_group
         if self.app_type is not None:
             result['AppType'] = self.app_type
+        if self.backend_service_trace_region is not None:
+            result['BackendServiceTraceRegion'] = self.backend_service_trace_region
         if self.bonree_sdkconfig is not None:
             result['BonreeSDKConfig'] = self.bonree_sdkconfig.to_map()
         if self.cdn_domain is not None:
@@ -32075,6 +32177,8 @@ class GetRumAppInfoResponseBodyData(TeaModel):
             self.app_group = m.get('AppGroup')
         if m.get('AppType') is not None:
             self.app_type = m.get('AppType')
+        if m.get('BackendServiceTraceRegion') is not None:
+            self.backend_service_trace_region = m.get('BackendServiceTraceRegion')
         if m.get('BonreeSDKConfig') is not None:
             temp_model = GetRumAppInfoResponseBodyDataBonreeSDKConfig()
             self.bonree_sdkconfig = temp_model.from_map(m['BonreeSDKConfig'])
@@ -64871,14 +64975,19 @@ class UpdatePrometheusInstanceRequest(TeaModel):
     ):
         # The number of days for which data is automatically archived after the storage expires. Valid values: 60, 90, 180, and 365. 0 indicates that the data is not archived.
         self.archive_duration = archive_duration
+        # The IP addresses or CIDR blocks for which password-free read is enabled. Separate multiple IP addresses with line breaks.
         self.auth_free_read_policy = auth_free_read_policy
+        # The IP addresses or CIDR blocks for which password-free write is enabled. Separate multiple IP addresses with line breaks.
         self.auth_free_write_policy = auth_free_write_policy
         # The ID of the Prometheus instance.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # Specifies whether to enable password-free read.
         self.enable_auth_free_read = enable_auth_free_read
+        # Specifies whether to enable password-free write.
         self.enable_auth_free_write = enable_auth_free_write
+        # Specifies whether to enable access token authentication.
         self.enable_auth_token = enable_auth_token
         # The region ID.
         # 
@@ -65547,6 +65656,7 @@ class UpdateRumAppRequest(TeaModel):
     def __init__(
         self,
         auto_restart: bool = None,
+        backend_service_trace_region: str = None,
         bonree_sdkconfig_json: str = None,
         description: str = None,
         is_subscribe: bool = None,
@@ -65561,6 +65671,8 @@ class UpdateRumAppRequest(TeaModel):
         # Specifies whether to restart the application the next day. Valid values: true and false.
         self.auto_restart = auto_restart
         # The collection configurations of the mobile SDK. You can enable or disable collection configurations based on the app version.
+        self.backend_service_trace_region = backend_service_trace_region
+        # The collection configurations of the mobile SDK. You can enable or disable collection configurations based on the app version.
         self.bonree_sdkconfig_json = bonree_sdkconfig_json
         # The description of the application.
         self.description = description
@@ -65572,6 +65684,7 @@ class UpdateRumAppRequest(TeaModel):
         # 
         # This parameter is required.
         self.pid = pid
+        # Backend application deployment area (used in end-to-end link scenarios).
         self.real_region_id = real_region_id
         # The region ID.
         # 
@@ -65595,6 +65708,8 @@ class UpdateRumAppRequest(TeaModel):
         result = dict()
         if self.auto_restart is not None:
             result['AutoRestart'] = self.auto_restart
+        if self.backend_service_trace_region is not None:
+            result['BackendServiceTraceRegion'] = self.backend_service_trace_region
         if self.bonree_sdkconfig_json is not None:
             result['BonreeSDKConfigJson'] = self.bonree_sdkconfig_json
         if self.description is not None:
@@ -65621,6 +65736,8 @@ class UpdateRumAppRequest(TeaModel):
         m = m or dict()
         if m.get('AutoRestart') is not None:
             self.auto_restart = m.get('AutoRestart')
+        if m.get('BackendServiceTraceRegion') is not None:
+            self.backend_service_trace_region = m.get('BackendServiceTraceRegion')
         if m.get('BonreeSDKConfigJson') is not None:
             self.bonree_sdkconfig_json = m.get('BonreeSDKConfigJson')
         if m.get('Description') is not None:

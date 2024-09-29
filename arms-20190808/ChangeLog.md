@@ -1,3 +1,8 @@
+2024-09-29 Version: 7.1.2
+- Update API GetRumAppInfo: update response param.
+- Update API UpdateRumApp: add param BackendServiceTraceRegion.
+
+
 2024-09-06 Version: 7.1.1
 - Update API GetPrometheusInstance: update response param.
 
