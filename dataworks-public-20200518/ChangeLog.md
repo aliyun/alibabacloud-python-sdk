@@ -1,3 +1,8 @@
+2024-09-29 Version: 6.1.3
+- Update API CreateDISyncTask: update param TaskContent.
+- Update API GetNode: update response param.
+
+
 2024-09-18 Version: 6.1.2
 - Update API GetRemind: update response param.
 
