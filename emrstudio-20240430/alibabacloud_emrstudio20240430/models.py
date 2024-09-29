@@ -1789,6 +1789,210 @@ class DescribeWorkflowInstanceResponse(TeaModel):
         return self
 
 
+class ListAlertGroupsRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        search_val: str = None,
+        workspace_id: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.search_val = search_val
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.search_val is not None:
+            result['searchVal'] = self.search_val
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('searchVal') is not None:
+            self.search_val = m.get('searchVal')
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
+        return self
+
+
+class ListAlertGroupsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        alert_group_id: str = None,
+        alert_instance_ids: str = None,
+        create_time: int = None,
+        description: str = None,
+        group_name: str = None,
+        update_time: int = None,
+    ):
+        self.alert_group_id = alert_group_id
+        self.alert_instance_ids = alert_instance_ids
+        self.create_time = create_time
+        self.description = description
+        self.group_name = group_name
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert_group_id is not None:
+            result['alertGroupId'] = self.alert_group_id
+        if self.alert_instance_ids is not None:
+            result['alertInstanceIds'] = self.alert_instance_ids
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.group_name is not None:
+            result['groupName'] = self.group_name
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('alertGroupId') is not None:
+            self.alert_group_id = m.get('alertGroupId')
+        if m.get('alertInstanceIds') is not None:
+            self.alert_instance_ids = m.get('alertInstanceIds')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('groupName') is not None:
+            self.group_name = m.get('groupName')
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
+        return self
+
+
+class ListAlertGroupsResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[ListAlertGroupsResponseBodyData] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.data = data
+        self.max_results = max_results
+        self.next_token = next_token
+        # Id of the request
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = ListAlertGroupsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ListAlertGroupsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAlertGroupsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAlertGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListManualTaskInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -2442,6 +2646,383 @@ class ListProjectsResponse(TeaModel):
         return self
 
 
+class ListResourceGroupsRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        resource_group_name: str = None,
+        resource_group_type: str = None,
+        workspace_id: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.resource_group_name = resource_group_name
+        self.resource_group_type = resource_group_type
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.resource_group_name is not None:
+            result['resourceGroupName'] = self.resource_group_name
+        if self.resource_group_type is not None:
+            result['resourceGroupType'] = self.resource_group_type
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('resourceGroupName') is not None:
+            self.resource_group_name = m.get('resourceGroupName')
+        if m.get('resourceGroupType') is not None:
+            self.resource_group_type = m.get('resourceGroupType')
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
+        return self
+
+
+class ListResourceGroupsResponseBodyDataAssociatedClusterTemplates(TeaModel):
+    def __init__(
+        self,
+        cluster_type: str = None,
+        template_id: str = None,
+        template_name: str = None,
+    ):
+        self.cluster_type = cluster_type
+        self.template_id = template_id
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_type is not None:
+            result['clusterType'] = self.cluster_type
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        if self.template_name is not None:
+            result['templateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('clusterType') is not None:
+            self.cluster_type = m.get('clusterType')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        if m.get('templateName') is not None:
+            self.template_name = m.get('templateName')
+        return self
+
+
+class ListResourceGroupsResponseBodyDataAssociatedClusters(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        cluster_name: str = None,
+        cluster_type: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.cluster_name = cluster_name
+        self.cluster_type = cluster_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['clusterId'] = self.cluster_id
+        if self.cluster_name is not None:
+            result['clusterName'] = self.cluster_name
+        if self.cluster_type is not None:
+            result['clusterType'] = self.cluster_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('clusterId') is not None:
+            self.cluster_id = m.get('clusterId')
+        if m.get('clusterName') is not None:
+            self.cluster_name = m.get('clusterName')
+        if m.get('clusterType') is not None:
+            self.cluster_type = m.get('clusterType')
+        return self
+
+
+class ListResourceGroupsResponseBodyDataAssociatedWorkspaces(TeaModel):
+    def __init__(
+        self,
+        workspace_id: str = None,
+        workspace_name: str = None,
+    ):
+        self.workspace_id = workspace_id
+        self.workspace_name = workspace_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+        if self.workspace_name is not None:
+            result['workspaceName'] = self.workspace_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
+        if m.get('workspaceName') is not None:
+            self.workspace_name = m.get('workspaceName')
+        return self
+
+
+class ListResourceGroupsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        associated_cluster_templates: List[ListResourceGroupsResponseBodyDataAssociatedClusterTemplates] = None,
+        associated_clusters: List[ListResourceGroupsResponseBodyDataAssociatedClusters] = None,
+        associated_workspaces: List[ListResourceGroupsResponseBodyDataAssociatedWorkspaces] = None,
+        create_time: str = None,
+        node_max_count: int = None,
+        node_min_count: int = None,
+        node_type: str = None,
+        payment_type: str = None,
+        resource_group_id: str = None,
+        resource_group_name: str = None,
+        resource_group_type: str = None,
+    ):
+        self.associated_cluster_templates = associated_cluster_templates
+        self.associated_clusters = associated_clusters
+        self.associated_workspaces = associated_workspaces
+        self.create_time = create_time
+        self.node_max_count = node_max_count
+        self.node_min_count = node_min_count
+        self.node_type = node_type
+        self.payment_type = payment_type
+        self.resource_group_id = resource_group_id
+        self.resource_group_name = resource_group_name
+        self.resource_group_type = resource_group_type
+
+    def validate(self):
+        if self.associated_cluster_templates:
+            for k in self.associated_cluster_templates:
+                if k:
+                    k.validate()
+        if self.associated_clusters:
+            for k in self.associated_clusters:
+                if k:
+                    k.validate()
+        if self.associated_workspaces:
+            for k in self.associated_workspaces:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['associatedClusterTemplates'] = []
+        if self.associated_cluster_templates is not None:
+            for k in self.associated_cluster_templates:
+                result['associatedClusterTemplates'].append(k.to_map() if k else None)
+        result['associatedClusters'] = []
+        if self.associated_clusters is not None:
+            for k in self.associated_clusters:
+                result['associatedClusters'].append(k.to_map() if k else None)
+        result['associatedWorkspaces'] = []
+        if self.associated_workspaces is not None:
+            for k in self.associated_workspaces:
+                result['associatedWorkspaces'].append(k.to_map() if k else None)
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.node_max_count is not None:
+            result['nodeMaxCount'] = self.node_max_count
+        if self.node_min_count is not None:
+            result['nodeMinCount'] = self.node_min_count
+        if self.node_type is not None:
+            result['nodeType'] = self.node_type
+        if self.payment_type is not None:
+            result['paymentType'] = self.payment_type
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        if self.resource_group_name is not None:
+            result['resourceGroupName'] = self.resource_group_name
+        if self.resource_group_type is not None:
+            result['resourceGroupType'] = self.resource_group_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.associated_cluster_templates = []
+        if m.get('associatedClusterTemplates') is not None:
+            for k in m.get('associatedClusterTemplates'):
+                temp_model = ListResourceGroupsResponseBodyDataAssociatedClusterTemplates()
+                self.associated_cluster_templates.append(temp_model.from_map(k))
+        self.associated_clusters = []
+        if m.get('associatedClusters') is not None:
+            for k in m.get('associatedClusters'):
+                temp_model = ListResourceGroupsResponseBodyDataAssociatedClusters()
+                self.associated_clusters.append(temp_model.from_map(k))
+        self.associated_workspaces = []
+        if m.get('associatedWorkspaces') is not None:
+            for k in m.get('associatedWorkspaces'):
+                temp_model = ListResourceGroupsResponseBodyDataAssociatedWorkspaces()
+                self.associated_workspaces.append(temp_model.from_map(k))
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('nodeMaxCount') is not None:
+            self.node_max_count = m.get('nodeMaxCount')
+        if m.get('nodeMinCount') is not None:
+            self.node_min_count = m.get('nodeMinCount')
+        if m.get('nodeType') is not None:
+            self.node_type = m.get('nodeType')
+        if m.get('paymentType') is not None:
+            self.payment_type = m.get('paymentType')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        if m.get('resourceGroupName') is not None:
+            self.resource_group_name = m.get('resourceGroupName')
+        if m.get('resourceGroupType') is not None:
+            self.resource_group_type = m.get('resourceGroupType')
+        return self
+
+
+class ListResourceGroupsResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[ListResourceGroupsResponseBodyData] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.data = data
+        self.max_results = max_results
+        self.next_token = next_token
+        # Id of the request
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = ListResourceGroupsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ListResourceGroupsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListResourceGroupsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListResourceGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListTaskInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -3006,6 +3587,210 @@ class ListTasksResponse(TeaModel):
         return self
 
 
+class ListWorkflowDirectoriesRequest(TeaModel):
+    def __init__(
+        self,
+        directory_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        parent_directory_id: str = None,
+        workspace_id: str = None,
+    ):
+        self.directory_id = directory_id
+        self.max_results = max_results
+        self.next_token = next_token
+        self.parent_directory_id = parent_directory_id
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.directory_id is not None:
+            result['directoryId'] = self.directory_id
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.parent_directory_id is not None:
+            result['parentDirectoryId'] = self.parent_directory_id
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('directoryId') is not None:
+            self.directory_id = m.get('directoryId')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('parentDirectoryId') is not None:
+            self.parent_directory_id = m.get('parentDirectoryId')
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
+        return self
+
+
+class ListWorkflowDirectoriesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        directory_id: str = None,
+        name: str = None,
+        parent_directory_id: str = None,
+        project_id: str = None,
+        workflow_id: str = None,
+    ):
+        self.directory_id = directory_id
+        self.name = name
+        self.parent_directory_id = parent_directory_id
+        self.project_id = project_id
+        self.workflow_id = workflow_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.directory_id is not None:
+            result['directoryId'] = self.directory_id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent_directory_id is not None:
+            result['parentDirectoryId'] = self.parent_directory_id
+        if self.project_id is not None:
+            result['projectId'] = self.project_id
+        if self.workflow_id is not None:
+            result['workflowId'] = self.workflow_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('directoryId') is not None:
+            self.directory_id = m.get('directoryId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('parentDirectoryId') is not None:
+            self.parent_directory_id = m.get('parentDirectoryId')
+        if m.get('projectId') is not None:
+            self.project_id = m.get('projectId')
+        if m.get('workflowId') is not None:
+            self.workflow_id = m.get('workflowId')
+        return self
+
+
+class ListWorkflowDirectoriesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[ListWorkflowDirectoriesResponseBodyData] = None,
+        max_results: str = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.data = data
+        self.max_results = max_results
+        self.next_token = next_token
+        # Id of the request
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = ListWorkflowDirectoriesResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ListWorkflowDirectoriesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListWorkflowDirectoriesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListWorkflowDirectoriesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListWorkflowInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -3426,6 +4211,120 @@ class ListWorkflowsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListWorkflowsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class OperateWorkflowInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        exec_type: str = None,
+        workflow_instance_id: str = None,
+        workspace_id: str = None,
+    ):
+        self.exec_type = exec_type
+        self.workflow_instance_id = workflow_instance_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exec_type is not None:
+            result['execType'] = self.exec_type
+        if self.workflow_instance_id is not None:
+            result['workflowInstanceId'] = self.workflow_instance_id
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('execType') is not None:
+            self.exec_type = m.get('execType')
+        if m.get('workflowInstanceId') is not None:
+            self.workflow_instance_id = m.get('workflowInstanceId')
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
+        return self
+
+
+class OperateWorkflowInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class OperateWorkflowInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: OperateWorkflowInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = OperateWorkflowInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

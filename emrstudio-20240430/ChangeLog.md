@@ -1,3 +1,10 @@
+2024-09-29 Version: 1.1.0
+- Support API ListAlertGroups.
+- Support API ListResourceGroups.
+- Support API ListWorkflowDirectories.
+- Support API OperateWorkflowInstance.
+
+
 2024-09-29 Version: 1.0.2
 - Generated python 2024-04-30 for EmrStudio.
 

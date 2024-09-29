@@ -1245,6 +1245,138 @@ class Client(OpenApiClient):
         headers = {}
         return await self.describe_workflow_instance_with_options_async(project_id, workflow_instance_id, request, headers, runtime)
 
+    def list_alert_groups_with_options(
+        self,
+        project_id: str,
+        request: emr_studio_20240430_models.ListAlertGroupsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_studio_20240430_models.ListAlertGroupsResponse:
+        """
+        @summary 查询告警组列表
+        
+        @param request: ListAlertGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAlertGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.search_val):
+            query['searchVal'] = request.search_val
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAlertGroups',
+            version='2024-04-30',
+            protocol='HTTPS',
+            pathname=f'/dolphinscheduler/v3/alert-groups',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                emr_studio_20240430_models.ListAlertGroupsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                emr_studio_20240430_models.ListAlertGroupsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_alert_groups_with_options_async(
+        self,
+        project_id: str,
+        request: emr_studio_20240430_models.ListAlertGroupsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_studio_20240430_models.ListAlertGroupsResponse:
+        """
+        @summary 查询告警组列表
+        
+        @param request: ListAlertGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAlertGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.search_val):
+            query['searchVal'] = request.search_val
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAlertGroups',
+            version='2024-04-30',
+            protocol='HTTPS',
+            pathname=f'/dolphinscheduler/v3/alert-groups',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                emr_studio_20240430_models.ListAlertGroupsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                emr_studio_20240430_models.ListAlertGroupsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_alert_groups(
+        self,
+        project_id: str,
+        request: emr_studio_20240430_models.ListAlertGroupsRequest,
+    ) -> emr_studio_20240430_models.ListAlertGroupsResponse:
+        """
+        @summary 查询告警组列表
+        
+        @param request: ListAlertGroupsRequest
+        @return: ListAlertGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_alert_groups_with_options(project_id, request, headers, runtime)
+
+    async def list_alert_groups_async(
+        self,
+        project_id: str,
+        request: emr_studio_20240430_models.ListAlertGroupsRequest,
+    ) -> emr_studio_20240430_models.ListAlertGroupsResponse:
+        """
+        @summary 查询告警组列表
+        
+        @param request: ListAlertGroupsRequest
+        @return: ListAlertGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_alert_groups_with_options_async(project_id, request, headers, runtime)
+
     def list_manual_task_instances_with_options(
         self,
         project_id: str,
@@ -1653,6 +1785,138 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_projects_with_options_async(request, headers, runtime)
 
+    def list_resource_groups_with_options(
+        self,
+        request: emr_studio_20240430_models.ListResourceGroupsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_studio_20240430_models.ListResourceGroupsResponse:
+        """
+        @summary 查询调度资源组列表
+        
+        @param request: ListResourceGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_group_name):
+            query['resourceGroupName'] = request.resource_group_name
+        if not UtilClient.is_unset(request.resource_group_type):
+            query['resourceGroupType'] = request.resource_group_type
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListResourceGroups',
+            version='2024-04-30',
+            protocol='HTTPS',
+            pathname=f'/dolphinscheduler/v3/resourcegroups',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                emr_studio_20240430_models.ListResourceGroupsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                emr_studio_20240430_models.ListResourceGroupsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_resource_groups_with_options_async(
+        self,
+        request: emr_studio_20240430_models.ListResourceGroupsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_studio_20240430_models.ListResourceGroupsResponse:
+        """
+        @summary 查询调度资源组列表
+        
+        @param request: ListResourceGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_group_name):
+            query['resourceGroupName'] = request.resource_group_name
+        if not UtilClient.is_unset(request.resource_group_type):
+            query['resourceGroupType'] = request.resource_group_type
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListResourceGroups',
+            version='2024-04-30',
+            protocol='HTTPS',
+            pathname=f'/dolphinscheduler/v3/resourcegroups',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                emr_studio_20240430_models.ListResourceGroupsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                emr_studio_20240430_models.ListResourceGroupsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_resource_groups(
+        self,
+        request: emr_studio_20240430_models.ListResourceGroupsRequest,
+    ) -> emr_studio_20240430_models.ListResourceGroupsResponse:
+        """
+        @summary 查询调度资源组列表
+        
+        @param request: ListResourceGroupsRequest
+        @return: ListResourceGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_resource_groups_with_options(request, headers, runtime)
+
+    async def list_resource_groups_async(
+        self,
+        request: emr_studio_20240430_models.ListResourceGroupsRequest,
+    ) -> emr_studio_20240430_models.ListResourceGroupsResponse:
+        """
+        @summary 查询调度资源组列表
+        
+        @param request: ListResourceGroupsRequest
+        @return: ListResourceGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_resource_groups_with_options_async(request, headers, runtime)
+
     def list_task_instances_with_options(
         self,
         project_id: str,
@@ -1941,6 +2205,142 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_tasks_with_options_async(project_id, request, headers, runtime)
 
+    def list_workflow_directories_with_options(
+        self,
+        project_id: str,
+        request: emr_studio_20240430_models.ListWorkflowDirectoriesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_studio_20240430_models.ListWorkflowDirectoriesResponse:
+        """
+        @summary 查询工作流目录列表
+        
+        @param request: ListWorkflowDirectoriesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkflowDirectoriesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.directory_id):
+            query['directoryId'] = request.directory_id
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.parent_directory_id):
+            query['parentDirectoryId'] = request.parent_directory_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWorkflowDirectories',
+            version='2024-04-30',
+            protocol='HTTPS',
+            pathname=f'/dolphinscheduler/v3/projects/{OpenApiUtilClient.get_encode_param(project_id)}/directories',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                emr_studio_20240430_models.ListWorkflowDirectoriesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                emr_studio_20240430_models.ListWorkflowDirectoriesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_workflow_directories_with_options_async(
+        self,
+        project_id: str,
+        request: emr_studio_20240430_models.ListWorkflowDirectoriesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_studio_20240430_models.ListWorkflowDirectoriesResponse:
+        """
+        @summary 查询工作流目录列表
+        
+        @param request: ListWorkflowDirectoriesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkflowDirectoriesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.directory_id):
+            query['directoryId'] = request.directory_id
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.parent_directory_id):
+            query['parentDirectoryId'] = request.parent_directory_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWorkflowDirectories',
+            version='2024-04-30',
+            protocol='HTTPS',
+            pathname=f'/dolphinscheduler/v3/projects/{OpenApiUtilClient.get_encode_param(project_id)}/directories',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                emr_studio_20240430_models.ListWorkflowDirectoriesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                emr_studio_20240430_models.ListWorkflowDirectoriesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_workflow_directories(
+        self,
+        project_id: str,
+        request: emr_studio_20240430_models.ListWorkflowDirectoriesRequest,
+    ) -> emr_studio_20240430_models.ListWorkflowDirectoriesResponse:
+        """
+        @summary 查询工作流目录列表
+        
+        @param request: ListWorkflowDirectoriesRequest
+        @return: ListWorkflowDirectoriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_workflow_directories_with_options(project_id, request, headers, runtime)
+
+    async def list_workflow_directories_async(
+        self,
+        project_id: str,
+        request: emr_studio_20240430_models.ListWorkflowDirectoriesRequest,
+    ) -> emr_studio_20240430_models.ListWorkflowDirectoriesResponse:
+        """
+        @summary 查询工作流目录列表
+        
+        @param request: ListWorkflowDirectoriesRequest
+        @return: ListWorkflowDirectoriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_workflow_directories_with_options_async(project_id, request, headers, runtime)
+
     def list_workflow_instances_with_options(
         self,
         project_id: str,
@@ -2216,6 +2616,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_workflows_with_options_async(project_id, request, headers, runtime)
+
+    def operate_workflow_instance_with_options(
+        self,
+        project_id: str,
+        request: emr_studio_20240430_models.OperateWorkflowInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_studio_20240430_models.OperateWorkflowInstanceResponse:
+        """
+        @summary 操作工作流实例
+        
+        @param request: OperateWorkflowInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OperateWorkflowInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.exec_type):
+            body['execType'] = request.exec_type
+        if not UtilClient.is_unset(request.workflow_instance_id):
+            body['workflowInstanceId'] = request.workflow_instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='OperateWorkflowInstance',
+            version='2024-04-30',
+            protocol='HTTPS',
+            pathname=f'/dolphinscheduler/v3/projects/{OpenApiUtilClient.get_encode_param(project_id)}/executors/execute',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                emr_studio_20240430_models.OperateWorkflowInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                emr_studio_20240430_models.OperateWorkflowInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def operate_workflow_instance_with_options_async(
+        self,
+        project_id: str,
+        request: emr_studio_20240430_models.OperateWorkflowInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_studio_20240430_models.OperateWorkflowInstanceResponse:
+        """
+        @summary 操作工作流实例
+        
+        @param request: OperateWorkflowInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OperateWorkflowInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.exec_type):
+            body['execType'] = request.exec_type
+        if not UtilClient.is_unset(request.workflow_instance_id):
+            body['workflowInstanceId'] = request.workflow_instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='OperateWorkflowInstance',
+            version='2024-04-30',
+            protocol='HTTPS',
+            pathname=f'/dolphinscheduler/v3/projects/{OpenApiUtilClient.get_encode_param(project_id)}/executors/execute',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                emr_studio_20240430_models.OperateWorkflowInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                emr_studio_20240430_models.OperateWorkflowInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def operate_workflow_instance(
+        self,
+        project_id: str,
+        request: emr_studio_20240430_models.OperateWorkflowInstanceRequest,
+    ) -> emr_studio_20240430_models.OperateWorkflowInstanceResponse:
+        """
+        @summary 操作工作流实例
+        
+        @param request: OperateWorkflowInstanceRequest
+        @return: OperateWorkflowInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.operate_workflow_instance_with_options(project_id, request, headers, runtime)
+
+    async def operate_workflow_instance_async(
+        self,
+        project_id: str,
+        request: emr_studio_20240430_models.OperateWorkflowInstanceRequest,
+    ) -> emr_studio_20240430_models.OperateWorkflowInstanceResponse:
+        """
+        @summary 操作工作流实例
+        
+        @param request: OperateWorkflowInstanceRequest
+        @return: OperateWorkflowInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.operate_workflow_instance_with_options_async(project_id, request, headers, runtime)
 
     def run_workflow_with_options(
         self,
