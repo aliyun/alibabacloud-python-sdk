@@ -1,3 +1,9 @@
+2024-09-29 Version: 2.5.0
+- Support API InteractText.
+- Support API ListAvatarProject.
+- Update API SubmitProjectTask: update param body.
+
+
 2024-09-09 Version: 2.4.0
 - Support API CreateRealisticPortrait.
 - Support API QueryTextStream.
