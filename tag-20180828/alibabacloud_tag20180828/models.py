@@ -18,6 +18,8 @@ class AttachPolicyRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the tag policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
         # The region ID. Set the value to cn-shanghai.
         self.region_id = region_id
@@ -160,6 +162,7 @@ class CheckCreatedByEnabledRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -285,6 +288,7 @@ class CloseCreatedByRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -415,7 +419,9 @@ class CreatePolicyRequest(TeaModel):
         self.owner_id = owner_id
         # The document of the tag policy.
         # 
-        # For more information about the syntax of a tag policy, see [Syntax of a tag policy](~~417436~~).
+        # For more information about the syntax of a tag policy, see [Syntax of a tag policy](https://help.aliyun.com/document_detail/417436.html).
+        # 
+        # This parameter is required.
         self.policy_content = policy_content
         # The description of the tag policy.
         # 
@@ -423,7 +429,9 @@ class CreatePolicyRequest(TeaModel):
         self.policy_desc = policy_desc
         # The name of the tag policy.
         # 
-        # The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (\_).
+        # The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
+        # 
+        # This parameter is required.
         self.policy_name = policy_name
         # The region ID. Set the value to cn-shanghai.
         self.region_id = region_id
@@ -433,7 +441,7 @@ class CreatePolicyRequest(TeaModel):
         # *   USER: single-account mode. Set the value to USER if you use an Alibaba Cloud account or a member of a resource directory to call this API operation to create a tag policy for the Alibaba Cloud account or member.
         # *   RD: multi-account mode. Set the value to RD if you use the management account of a resource directory to call this API operation to create a tag policy for the resource directory.
         # 
-        # For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        # For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
         self.user_type = user_type
 
     def validate(self):
@@ -628,6 +636,8 @@ class CreateTagsRequestTagKeyValueParamList(TeaModel):
         # The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
         # 
         # Valid values of N: 1 to 10.
+        # 
+        # This parameter is required.
         self.key = key
         # The information about the tag value.
         self.tag_value_param_list = tag_value_param_list
@@ -682,9 +692,13 @@ class CreateTagsRequest(TeaModel):
         # The region ID.
         # 
         # > Only `cn-hangzhou` is supported.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         # The information about the tags.
+        # 
+        # This parameter is required.
         self.tag_key_value_param_list = tag_key_value_param_list
 
     def validate(self):
@@ -812,6 +826,8 @@ class DeletePolicyRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the tag policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
         # The region ID. Set the value to cn-shanghai.
         self.region_id = region_id
@@ -935,12 +951,16 @@ class DeleteTagRequest(TeaModel):
         # The tag key.
         # 
         # If no tag value is associated with a tag key, you can specify the `Key` parameter without specifying the Value parameter to delete the tag key. Otherwise, you must specify both the `Key` and `Value` parameters to delete a preset tag.
+        # 
+        # This parameter is required.
         self.key = key
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
         # 
         # >  Only `cn-hangzhou` is supported.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         # The tag value.
@@ -1287,6 +1307,8 @@ class DetachPolicyRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the tag policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
         # The region ID. Set the value to cn-shanghai.
         self.region_id = region_id
@@ -1713,7 +1735,7 @@ class GenerateConfigRuleReportRequest(TeaModel):
         # *   USER: single-account mode
         # *   RD: multi-account mode
         # 
-        # For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        # For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
         # 
         # >  This parameter is required if the management account of your resource directory is used to enable the Tag Policy feature in both single-account mode and multi-account mode. The value of this parameter is not case-sensitive.
         self.user_type = user_type
@@ -1870,7 +1892,7 @@ class GetConfigRuleReportRequest(TeaModel):
         # *   USER: single-account mode
         # *   RD: multi-account mode
         # 
-        # For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        # For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
         # 
         # >  The value of this parameter is not case-sensitive.
         self.user_type = user_type
@@ -1933,7 +1955,7 @@ class GetConfigRuleReportResponseBodyData(TeaModel):
         self.report_id = report_id
         # The ID of the object.
         # 
-        # >  This parameter is returned if you set the `TargetType` and `TargetId` parameters in the current request to the same values as the parameters that are configured when you call the [GenerateConfigRuleReport](~~433313~~) operation to generate the report.
+        # >  This parameter is returned if you set the `TargetType` and `TargetId` parameters in the current request to the same values as the parameters that are configured when you call the [GenerateConfigRuleReport](https://help.aliyun.com/document_detail/433313.html) operation to generate the report.
         self.target_id = target_id
         # The type of the object. Valid values:
         # 
@@ -1942,7 +1964,7 @@ class GetConfigRuleReportResponseBodyData(TeaModel):
         # *   FOLDER: a folder other than the Root folder in the resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
         # *   ACCOUNT: a member in the resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
         # 
-        # >  This parameter is returned if you set the `TargetType` and `TargetId` parameters in the current request to the same values as the parameters that are configured when you call the [GenerateConfigRuleReport](~~433313~~) operation to generate the report.
+        # >  This parameter is returned if you set the `TargetType` and `TargetId` parameters in the current request to the same values as the parameters that are configured when you call the [GenerateConfigRuleReport](https://help.aliyun.com/document_detail/433313.html) operation to generate the report.
         self.target_type = target_type
 
     def validate(self):
@@ -2229,6 +2251,8 @@ class GetPolicyRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the tag policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
         # The region ID. Set the value to cn-shanghai.
         self.region_id = region_id
@@ -2289,7 +2313,7 @@ class GetPolicyResponseBodyPolicy(TeaModel):
         # *   USER: single-account mode
         # *   RD: multi-account mode
         # 
-        # For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        # For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
         self.user_type = user_type
 
     def validate(self):
@@ -2413,6 +2437,10 @@ class GetPolicyEnableStatusRequest(TeaModel):
         resource_owner_id: str = None,
         user_type: str = None,
     ):
+        # The enabling type. Valid values:
+        # 
+        # *   TAG_POLICY: the Tag Policy feature.
+        # *   VERIFY_NO_TAG: the strong verification feature.
         self.open_type = open_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -2425,7 +2453,7 @@ class GetPolicyEnableStatusRequest(TeaModel):
         # *   USER: single-account mode
         # *   RD: multi-account mode
         # 
-        # For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        # For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
         # 
         # >  The value of this parameter is not case-sensitive.
         self.user_type = user_type
@@ -2492,7 +2520,7 @@ class GetPolicyEnableStatusResponseBodyStatusModels(TeaModel):
         # *   USER: single-account mode
         # *   RD: multi-account mode
         # 
-        # For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        # For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
         self.user_type = user_type
 
     def validate(self):
@@ -2652,7 +2680,7 @@ class ListConfigRulesForTargetRequest(TeaModel):
         # *   USER: single-account mode
         # *   RD: multi-account mode
         # 
-        # For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        # For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
         # 
         # >  The value of this parameter is not case-sensitive.
         self.user_type = user_type
@@ -2936,7 +2964,7 @@ class ListPoliciesRequest(TeaModel):
         # *   USER: single-account mode
         # *   RD: multi-account mode
         # 
-        # For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        # For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
         # 
         # >  The value of this parameter is not case-sensitive.
         self.user_type = user_type
@@ -3015,7 +3043,7 @@ class ListPoliciesResponseBodyPolicyList(TeaModel):
         # *   USER: single-account mode
         # *   RD: multi-account mode
         # 
-        # For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        # For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
         self.user_type = user_type
 
     def validate(self):
@@ -3253,7 +3281,7 @@ class ListPoliciesForTargetResponseBodyData(TeaModel):
         # *   USER: single-account mode
         # *   RD: multi-account mode
         # 
-        # For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        # For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
         self.user_type = user_type
 
     def validate(self):
@@ -3395,6 +3423,8 @@ class ListResourcesByTagRequestTagFilter(TeaModel):
         # The tag key. This parameter specifies a filter condition for the query.
         # 
         # The tag key can be a maximum of 128 characters in length. It cannot contain `http://` or `https://` and cannot start with `acs:` or `aliyun`.
+        # 
+        # This parameter is required.
         self.key = key
         # The tag value. This parameter specifies a filter condition for the query.
         # 
@@ -3460,13 +3490,17 @@ class ListResourcesByTagRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID.
         # 
-        # For more information about region IDs, see [Endpoints](~~2330902~~).
+        # For more information about region IDs, see [Endpoints](https://help.aliyun.com/document_detail/2330902.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         # The resource type. This parameter specifies a filter condition for the query.
         # 
-        # *   If you set the FuzzyType parameter to EQUAL, you can set this parameter to a value obtained from the response of the [ListSupportResourceTypes](~~2330915~~) operation.
+        # *   If you set the FuzzyType parameter to EQUAL, you can set this parameter to a value obtained from the response of the [ListSupportResourceTypes](https://help.aliyun.com/document_detail/2330915.html) operation.
         # *   If you set the FuzzyType parameter to NOT, you can set this parameter to a resource type provided in **Types of resources that support queries based on the NOT operator**.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -3628,6 +3662,8 @@ class ListResourcesByTagResponseBody(TeaModel):
         # 
         # *   If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the `next query` is not required.
         # *   If the value of this parameter is not empty, the next query is required, and the value is the `token` used to start the next query.
+        # 
+        # This parameter is required.
         self.next_token = next_token
         # The ID of the request.
         self.request_id = request_id
@@ -3739,7 +3775,7 @@ class ListSupportResourceTypesRequest(TeaModel):
         self.product_code = product_code
         # The region ID.
         # 
-        # For more information about region IDs, see [Endpoints](~~2330902~~).
+        # For more information about region IDs, see [Endpoints](https://help.aliyun.com/document_detail/2330902.html).
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         # The resource type. This parameter specifies a filter condition for the query.
@@ -3860,10 +3896,12 @@ class ListSupportResourceTypesResponseBodySupportResourceTypesSupportItems(TeaMo
 class ListSupportResourceTypesResponseBodySupportResourceTypes(TeaModel):
     def __init__(
         self,
+        arn_template: str = None,
         product_code: str = None,
         resource_type: str = None,
         support_items: List[ListSupportResourceTypesResponseBodySupportResourceTypesSupportItems] = None,
     ):
+        self.arn_template = arn_template
         # The service code.
         self.product_code = product_code
         # The resource type.
@@ -3885,6 +3923,8 @@ class ListSupportResourceTypesResponseBodySupportResourceTypes(TeaModel):
             return _map
 
         result = dict()
+        if self.arn_template is not None:
+            result['ArnTemplate'] = self.arn_template
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
         if self.resource_type is not None:
@@ -3897,6 +3937,8 @@ class ListSupportResourceTypesResponseBodySupportResourceTypes(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ArnTemplate') is not None:
+            self.arn_template = m.get('ArnTemplate')
         if m.get('ProductCode') is not None:
             self.product_code = m.get('ProductCode')
         if m.get('ResourceType') is not None:
@@ -4083,15 +4125,17 @@ class ListTagKeysRequest(TeaModel):
         self.query_type = query_type
         # The region ID.
         # 
-        # For more information about region IDs, see [Endpoints](~~2330902~~).
+        # For more information about region IDs, see [Endpoints](https://help.aliyun.com/document_detail/2330902.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         # The resource type. This parameter specifies a filter condition for the query.
         # 
         # Format: `ALIYUN::${ProductCode}::${ResourceType}`. All letters in the value of this parameter must be in uppercase.
         # 
-        # *   `ProductCode`: the service code. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](~~2330915~~) operation.
-        # *   `ResourceType`: the resource type. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](~~2330915~~) operation.
+        # *   `ProductCode`: the service code. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](https://help.aliyun.com/document_detail/2330915.html) operation.
+        # *   `ResourceType`: the resource type. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](https://help.aliyun.com/document_detail/2330915.html) operation.
         self.resource_type = resource_type
 
     def validate(self):
@@ -4355,8 +4399,10 @@ class ListTagResourcesRequest(TeaModel):
         self.page_size = page_size
         # The region ID.
         # 
-        # *   If the resources belong to a service that is centrally deployed, set the value to the region ID of the resources by referring to [Regions supported by tag-related operations on resources of centrally deployed Alibaba Cloud services](~~2579691~~).
+        # *   If the resources belong to a service that is centrally deployed, set the value to the region ID of the resources by referring to [Regions supported by tag-related operations on resources of centrally deployed Alibaba Cloud services](https://help.aliyun.com/document_detail/2579691.html).
         # *   If the resources belong to a service that is not centrally deployed, set the value to the region ID of the resources.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The Alibaba Cloud Resource Name (ARN) of a resource.
         self.resource_arn = resource_arn
@@ -4663,6 +4709,8 @@ class ListTagValuesRequest(TeaModel):
         # >  This parameter is available only in the China (Shenzhen) and China (Hong Kong) regions.
         self.fuzzy_type = fuzzy_type
         # The tag key. This parameter specifies a filter condition for the query.
+        # 
+        # This parameter is required.
         self.key = key
         # The token that is used to start the next query.
         self.next_token = next_token
@@ -4681,15 +4729,17 @@ class ListTagValuesRequest(TeaModel):
         self.query_type = query_type
         # The region ID.
         # 
-        # For more information about region IDs, see [Endpoints](~~2330902~~).
+        # For more information about region IDs, see [Endpoints](https://help.aliyun.com/document_detail/2330902.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         # The resource type. This parameter specifies a filter condition for the query.
         # 
         # Format: `ALIYUN::${ProductCode}::${ResourceType}`. All letters in the value of this parameter must be in uppercase.
         # 
-        # *   `ProductCode`: the service code. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](~~2330915~~) operation.
-        # *   `ResourceType`: the resource type. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](~~2330915~~) operation.
+        # *   `ProductCode`: the service code. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](https://help.aliyun.com/document_detail/2330915.html) operation.
+        # *   `ResourceType`: the resource type. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](https://help.aliyun.com/document_detail/2330915.html) operation.
         self.resource_type = resource_type
 
     def validate(self):
@@ -4889,6 +4939,8 @@ class ListTargetsForPolicyRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the tag policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
         # The region ID. Set the value to cn-shanghai.
         self.region_id = region_id
@@ -5113,17 +5165,19 @@ class ModifyPolicyRequest(TeaModel):
         self.owner_id = owner_id
         # The document of the tag policy.
         # 
-        # For more information about the syntax of a tag policy, see [Syntax of a tag policy](~~417436~~).
+        # For more information about the syntax of a tag policy, see [Syntax of a tag policy](https://help.aliyun.com/document_detail/417436.html).
         self.policy_content = policy_content
         # The description of the tag policy.
         # 
         # The description must be 0 to 512 characters in length.
         self.policy_desc = policy_desc
         # The ID of the tag policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
         # The name of the tag policy.
         # 
-        # The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (\_).
+        # The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
         self.policy_name = policy_name
         # The region ID. Set the value to cn-shanghai.
         self.region_id = region_id
@@ -5262,6 +5316,8 @@ class OpenCreatedByRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID. Set the value to cn-shanghai.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5385,10 +5441,14 @@ class TagResourcesRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID.
         # 
-        # *   If the resources belong to a service that is centrally deployed, set the value to `cn-hangzhou` or to the region ID of the resources by referring to [Regions supported by tag-related operations on resources of centrally deployed Alibaba Cloud services](~~2579691~~).
+        # *   If the resources belong to a service that is centrally deployed, set the value to `cn-hangzhou` or to the region ID of the resources by referring to [Regions supported by tag-related operations on resources of centrally deployed Alibaba Cloud services](https://help.aliyun.com/document_detail/2579691.html).
         # *   If the resources belong to a service that is not centrally deployed, set the value to the region ID of the resources.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The Alibaba Cloud Resource Name (ARN) of a resource.
+        # 
+        # This parameter is required.
         self.resource_arn = resource_arn
         self.resource_owner_account = resource_owner_account
         # The key-value pairs of tags. You can specify 1 to 10 key-value pairs.
@@ -5401,6 +5461,8 @@ class TagResourcesRequest(TeaModel):
         # *   A tag value must be 1 to 128 characters in length.
         # *   Tag keys and tag values are case-sensitive.
         # *   Each tag key on a resource can have only one tag value. If you create a tag that has the same key as an existing tag, the value of the existing tag is overwritten.
+        # 
+        # This parameter is required.
         self.tags = tags
 
     def validate(self):
@@ -5648,13 +5710,19 @@ class UntagResourcesRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID.
         # 
-        # *   If the resources belong to a service that is centrally deployed, set the value to `cn-hangzhou` or to the region ID of the resources by referring to [Regions supported by tag-related operations on resources of centrally deployed Alibaba Cloud services](~~2579691~~).
+        # *   If the resources belong to a service that is centrally deployed, set the value to `cn-hangzhou` or to the region ID of the resources by referring to [Regions supported by tag-related operations on resources of centrally deployed Alibaba Cloud services](https://help.aliyun.com/document_detail/2579691.html).
         # *   If the resources belong to a service that is not centrally deployed, set the value to the region ID of the resources.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The Alibaba Cloud Resource Name (ARN) of a resource.
+        # 
+        # This parameter is required.
         self.resource_arn = resource_arn
         self.resource_owner_account = resource_owner_account
         # A tag key.
+        # 
+        # This parameter is required.
         self.tag_key = tag_key
 
     def validate(self):

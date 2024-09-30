@@ -1,3 +1,7 @@
+2024-09-30 Version: 1.0.8
+- Update API ListSupportResourceTypes: update response param.
+
+
 2024-03-14 Version: 1.0.7
 - Update API DisablePolicyType: add param OpenType.
 - Update API EnablePolicyType: add param OpenType.
