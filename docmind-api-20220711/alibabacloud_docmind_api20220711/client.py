@@ -5,6 +5,7 @@ from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_docmind_api20220711 import models as docmind_api_20220711_models
@@ -27,6 +28,9 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'docmind-api'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'ap-northeast-1': 'docmind-api.aliyuncs.com',
@@ -147,10 +151,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.AyncTradeDocumentPackageExtractSmartAppResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.AyncTradeDocumentPackageExtractSmartAppResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.AyncTradeDocumentPackageExtractSmartAppResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def aync_trade_document_package_extract_smart_app_with_options_async(
         self,
@@ -194,10 +204,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.AyncTradeDocumentPackageExtractSmartAppResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.AyncTradeDocumentPackageExtractSmartAppResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.AyncTradeDocumentPackageExtractSmartAppResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def aync_trade_document_package_extract_smart_app(
         self,
@@ -259,10 +275,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.GetDocParserResultResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.GetDocParserResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.GetDocParserResultResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_doc_parser_result_with_options_async(
         self,
@@ -298,10 +320,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.GetDocParserResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.GetDocParserResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.GetDocParserResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_doc_parser_result(
         self,
@@ -365,10 +393,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.GetDocStructureResultResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.GetDocStructureResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.GetDocStructureResultResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_doc_structure_result_with_options_async(
         self,
@@ -406,10 +440,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.GetDocStructureResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.GetDocStructureResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.GetDocStructureResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_doc_structure_result(
         self,
@@ -467,10 +507,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.GetDocumentCompareResultResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.GetDocumentCompareResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.GetDocumentCompareResultResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_document_compare_result_with_options_async(
         self,
@@ -502,10 +548,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.GetDocumentCompareResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.GetDocumentCompareResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.GetDocumentCompareResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_document_compare_result(
         self,
@@ -563,10 +615,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.GetDocumentConvertResultResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.GetDocumentConvertResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.GetDocumentConvertResultResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_document_convert_result_with_options_async(
         self,
@@ -598,10 +656,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.GetDocumentConvertResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.GetDocumentConvertResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.GetDocumentConvertResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_document_convert_result(
         self,
@@ -659,10 +723,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.GetDocumentExtractResultResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.GetDocumentExtractResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.GetDocumentExtractResultResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_document_extract_result_with_options_async(
         self,
@@ -694,10 +764,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.GetDocumentExtractResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.GetDocumentExtractResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.GetDocumentExtractResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_document_extract_result(
         self,
@@ -755,10 +831,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.GetPageNumResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.GetPageNumResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.GetPageNumResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_page_num_with_options_async(
         self,
@@ -790,10 +872,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.GetPageNumResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.GetPageNumResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.GetPageNumResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_page_num(
         self,
@@ -851,10 +939,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.GetTableUnderstandingResultResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.GetTableUnderstandingResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.GetTableUnderstandingResultResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_table_understanding_result_with_options_async(
         self,
@@ -886,10 +980,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.GetTableUnderstandingResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.GetTableUnderstandingResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.GetTableUnderstandingResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_table_understanding_result(
         self,
@@ -947,10 +1047,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.QueryDocParserStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.QueryDocParserStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.QueryDocParserStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_doc_parser_status_with_options_async(
         self,
@@ -982,10 +1088,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.QueryDocParserStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.QueryDocParserStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.QueryDocParserStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_doc_parser_status(
         self,
@@ -1055,10 +1167,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.SubmitConvertImageToExcelJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertImageToExcelJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertImageToExcelJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def submit_convert_image_to_excel_job_with_options_async(
         self,
@@ -1102,10 +1220,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.SubmitConvertImageToExcelJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertImageToExcelJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertImageToExcelJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def submit_convert_image_to_excel_job(
         self,
@@ -1173,10 +1297,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.SubmitConvertImageToMarkdownJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertImageToMarkdownJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertImageToMarkdownJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def submit_convert_image_to_markdown_job_with_options_async(
         self,
@@ -1218,10 +1348,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.SubmitConvertImageToMarkdownJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertImageToMarkdownJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertImageToMarkdownJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def submit_convert_image_to_markdown_job(
         self,
@@ -1289,10 +1425,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.SubmitConvertImageToPdfJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertImageToPdfJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertImageToPdfJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def submit_convert_image_to_pdf_job_with_options_async(
         self,
@@ -1334,10 +1476,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.SubmitConvertImageToPdfJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertImageToPdfJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertImageToPdfJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def submit_convert_image_to_pdf_job(
         self,
@@ -1405,10 +1553,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.SubmitConvertImageToWordJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertImageToWordJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertImageToWordJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def submit_convert_image_to_word_job_with_options_async(
         self,
@@ -1450,10 +1604,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.SubmitConvertImageToWordJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertImageToWordJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertImageToWordJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def submit_convert_image_to_word_job(
         self,
@@ -1517,10 +1677,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.SubmitConvertPdfToExcelJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertPdfToExcelJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertPdfToExcelJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def submit_convert_pdf_to_excel_job_with_options_async(
         self,
@@ -1558,10 +1724,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.SubmitConvertPdfToExcelJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertPdfToExcelJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertPdfToExcelJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def submit_convert_pdf_to_excel_job(
         self,
@@ -1765,10 +1937,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.SubmitConvertPdfToImageJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertPdfToImageJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertPdfToImageJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def submit_convert_pdf_to_image_job_with_options_async(
         self,
@@ -1802,10 +1980,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.SubmitConvertPdfToImageJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertPdfToImageJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertPdfToImageJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def submit_convert_pdf_to_image_job(
         self,
@@ -2009,10 +2193,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.SubmitConvertPdfToMarkdownJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertPdfToMarkdownJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertPdfToMarkdownJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def submit_convert_pdf_to_markdown_job_with_options_async(
         self,
@@ -2046,10 +2236,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.SubmitConvertPdfToMarkdownJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertPdfToMarkdownJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertPdfToMarkdownJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def submit_convert_pdf_to_markdown_job(
         self,
@@ -2255,10 +2451,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.SubmitConvertPdfToWordJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertPdfToWordJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertPdfToWordJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def submit_convert_pdf_to_word_job_with_options_async(
         self,
@@ -2294,10 +2496,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.SubmitConvertPdfToWordJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertPdfToWordJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitConvertPdfToWordJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def submit_convert_pdf_to_word_job(
         self,
@@ -2509,10 +2717,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.SubmitDigitalDocStructureJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitDigitalDocStructureJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitDigitalDocStructureJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def submit_digital_doc_structure_job_with_options_async(
         self,
@@ -2554,10 +2768,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.SubmitDigitalDocStructureJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitDigitalDocStructureJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitDigitalDocStructureJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def submit_digital_doc_structure_job(
         self,
@@ -2765,10 +2985,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.SubmitDocParserJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitDocParserJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitDocParserJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def submit_doc_parser_job_with_options_async(
         self,
@@ -2806,10 +3032,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.SubmitDocParserJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitDocParserJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitDocParserJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def submit_doc_parser_job(
         self,
@@ -3021,10 +3253,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.SubmitDocStructureJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitDocStructureJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitDocStructureJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def submit_doc_structure_job_with_options_async(
         self,
@@ -3066,10 +3304,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.SubmitDocStructureJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitDocStructureJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitDocStructureJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def submit_doc_structure_job(
         self,
@@ -3275,10 +3519,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.SubmitDocumentExtractJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitDocumentExtractJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitDocumentExtractJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def submit_document_extract_job_with_options_async(
         self,
@@ -3314,10 +3564,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.SubmitDocumentExtractJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitDocumentExtractJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitDocumentExtractJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def submit_document_extract_job(
         self,
@@ -3523,10 +3779,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.SubmitTableUnderstandingJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitTableUnderstandingJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitTableUnderstandingJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def submit_table_understanding_job_with_options_async(
         self,
@@ -3562,10 +3824,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.SubmitTableUnderstandingJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitTableUnderstandingJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                docmind_api_20220711_models.SubmitTableUnderstandingJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def submit_table_understanding_job(
         self,

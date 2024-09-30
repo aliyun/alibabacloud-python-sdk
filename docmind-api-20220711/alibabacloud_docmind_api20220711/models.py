@@ -1213,11 +1213,21 @@ class QueryDocParserStatusRequest(TeaModel):
 class QueryDocParserStatusResponseBodyData(TeaModel):
     def __init__(
         self,
+        image_count: int = None,
         number_of_successful_parsing: int = None,
+        page_count_estimate: int = None,
+        paragraph_count: int = None,
         status: str = None,
+        table_count: int = None,
+        tokens: int = None,
     ):
+        self.image_count = image_count
         self.number_of_successful_parsing = number_of_successful_parsing
+        self.page_count_estimate = page_count_estimate
+        self.paragraph_count = paragraph_count
         self.status = status
+        self.table_count = table_count
+        self.tokens = tokens
 
     def validate(self):
         pass
@@ -1228,18 +1238,38 @@ class QueryDocParserStatusResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.image_count is not None:
+            result['ImageCount'] = self.image_count
         if self.number_of_successful_parsing is not None:
             result['NumberOfSuccessfulParsing'] = self.number_of_successful_parsing
+        if self.page_count_estimate is not None:
+            result['PageCountEstimate'] = self.page_count_estimate
+        if self.paragraph_count is not None:
+            result['ParagraphCount'] = self.paragraph_count
         if self.status is not None:
             result['Status'] = self.status
+        if self.table_count is not None:
+            result['TableCount'] = self.table_count
+        if self.tokens is not None:
+            result['Tokens'] = self.tokens
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ImageCount') is not None:
+            self.image_count = m.get('ImageCount')
         if m.get('NumberOfSuccessfulParsing') is not None:
             self.number_of_successful_parsing = m.get('NumberOfSuccessfulParsing')
+        if m.get('PageCountEstimate') is not None:
+            self.page_count_estimate = m.get('PageCountEstimate')
+        if m.get('ParagraphCount') is not None:
+            self.paragraph_count = m.get('ParagraphCount')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('TableCount') is not None:
+            self.table_count = m.get('TableCount')
+        if m.get('Tokens') is not None:
+            self.tokens = m.get('Tokens')
         return self
 
 
