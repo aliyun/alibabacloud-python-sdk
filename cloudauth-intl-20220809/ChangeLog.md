@@ -1,3 +1,15 @@
+2024-10-08 Version: 3.0.0
+- Delete API DescribeAddressLabels.
+- Delete API DescribeAddressOverview.
+- Delete API DescribeMaliciousAddress.
+- Delete API DescribeRiskScore.
+- Delete API DescribeTransactionsList.
+- Delete API DescribeWeb3AddressLabels.
+- Delete API DescribeWeb3RiskScore.
+- Delete API DescribeWeb3TransactionLabels.
+- Update API Initialize: add param ShowGuidePage.
+
+
 2024-08-29 Version: 2.0.4
 - Update API FaceLiveness: update response param.
 
