@@ -1338,6 +1338,8 @@ class Client(OpenApiClient):
             body['Uuid'] = request.uuid
         if not UtilClient.is_unset(request.wlan):
             body['Wlan'] = request.wlan
+        if not UtilClient.is_unset(request.wos_app_version):
+            body['WosAppVersion'] = request.wos_app_version
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1389,6 +1391,8 @@ class Client(OpenApiClient):
             body['Uuid'] = request.uuid
         if not UtilClient.is_unset(request.wlan):
             body['Wlan'] = request.wlan
+        if not UtilClient.is_unset(request.wos_app_version):
+            body['WosAppVersion'] = request.wos_app_version
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -5121,22 +5125,29 @@ class Client(OpenApiClient):
         @return: ListTerminalsResponse
         """
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.serial_numbers):
-            query['SerialNumbers'] = request.serial_numbers
-        if not UtilClient.is_unset(request.uuids):
-            query['Uuids'] = request.uuids
         body = {}
+        if not UtilClient.is_unset(request.in_manage):
+            body['InManage'] = request.in_manage
         if not UtilClient.is_unset(request.max_results):
             body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.password_free_login_user):
+            body['PasswordFreeLoginUser'] = request.password_free_login_user
         if not UtilClient.is_unset(request.search_keyword):
             body['SearchKeyword'] = request.search_keyword
+        body_flat = {}
+        if not UtilClient.is_unset(request.serial_numbers):
+            body_flat['SerialNumbers'] = request.serial_numbers
         if not UtilClient.is_unset(request.terminal_group_id):
             body['TerminalGroupId'] = request.terminal_group_id
+        if not UtilClient.is_unset(request.uuids):
+            body_flat['Uuids'] = request.uuids
+        if not UtilClient.is_unset(request.with_bind_user):
+            body['WithBindUser'] = request.with_bind_user
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -5168,22 +5179,29 @@ class Client(OpenApiClient):
         @return: ListTerminalsResponse
         """
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.serial_numbers):
-            query['SerialNumbers'] = request.serial_numbers
-        if not UtilClient.is_unset(request.uuids):
-            query['Uuids'] = request.uuids
         body = {}
+        if not UtilClient.is_unset(request.in_manage):
+            body['InManage'] = request.in_manage
         if not UtilClient.is_unset(request.max_results):
             body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.password_free_login_user):
+            body['PasswordFreeLoginUser'] = request.password_free_login_user
         if not UtilClient.is_unset(request.search_keyword):
             body['SearchKeyword'] = request.search_keyword
+        body_flat = {}
+        if not UtilClient.is_unset(request.serial_numbers):
+            body_flat['SerialNumbers'] = request.serial_numbers
         if not UtilClient.is_unset(request.terminal_group_id):
             body['TerminalGroupId'] = request.terminal_group_id
+        if not UtilClient.is_unset(request.uuids):
+            body_flat['Uuids'] = request.uuids
+        if not UtilClient.is_unset(request.with_bind_user):
+            body['WithBindUser'] = request.with_bind_user
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(

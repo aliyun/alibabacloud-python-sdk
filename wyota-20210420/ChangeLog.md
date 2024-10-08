@@ -1,3 +1,14 @@
+2024-10-08 Version: 1.2.1
+- Update API CheckUuidValid: add param WosAppVersion.
+- Update API CheckUuidValid: update response param.
+- Update API ListTerminals: add param InManage.
+- Update API ListTerminals: add param PasswordFreeLoginUser.
+- Update API ListTerminals: add param WithBindUser.
+- Update API ListTerminals: update param SerialNumbers.
+- Update API ListTerminals: update param Uuids.
+- Update API ListTerminals: update response param.
+
+
 2024-09-11 Version: 1.2.0
 - Support API UnbindPasswordFreeLoginUser.
 

@@ -1508,6 +1508,7 @@ class CheckUuidValidRequest(TeaModel):
         serial_no: str = None,
         uuid: str = None,
         wlan: str = None,
+        wos_app_version: str = None,
     ):
         self.bluetooth = bluetooth
         self.build_id = build_id
@@ -1522,6 +1523,7 @@ class CheckUuidValidRequest(TeaModel):
         # This parameter is required.
         self.uuid = uuid
         self.wlan = wlan
+        self.wos_app_version = wos_app_version
 
     def validate(self):
         pass
@@ -1550,6 +1552,8 @@ class CheckUuidValidRequest(TeaModel):
             result['Uuid'] = self.uuid
         if self.wlan is not None:
             result['Wlan'] = self.wlan
+        if self.wos_app_version is not None:
+            result['WosAppVersion'] = self.wos_app_version
         return result
 
     def from_map(self, m: dict = None):
@@ -1572,19 +1576,17 @@ class CheckUuidValidRequest(TeaModel):
             self.uuid = m.get('Uuid')
         if m.get('Wlan') is not None:
             self.wlan = m.get('Wlan')
+        if m.get('WosAppVersion') is not None:
+            self.wos_app_version = m.get('WosAppVersion')
         return self
 
 
-class CheckUuidValidResponseBody(TeaModel):
+class CheckUuidValidResponseBodyData(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        message: str = None,
-        request_id: str = None,
+        new_upgrade: bool = None,
     ):
-        self.code = code
-        self.message = message
-        self.request_id = request_id
+        self.new_upgrade = new_upgrade
 
     def validate(self):
         pass
@@ -1595,8 +1597,44 @@ class CheckUuidValidResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.new_upgrade is not None:
+            result['NewUpgrade'] = self.new_upgrade
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NewUpgrade') is not None:
+            self.new_upgrade = m.get('NewUpgrade')
+        return self
+
+
+class CheckUuidValidResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CheckUuidValidResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.code is not None:
             result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
@@ -1607,6 +1645,9 @@ class CheckUuidValidResponseBody(TeaModel):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CheckUuidValidResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
@@ -9099,19 +9140,25 @@ class ListTerminalResponse(TeaModel):
 class ListTerminalsRequest(TeaModel):
     def __init__(
         self,
+        in_manage: bool = None,
         max_results: int = None,
         next_token: str = None,
+        password_free_login_user: str = None,
         search_keyword: str = None,
         serial_numbers: List[str] = None,
         terminal_group_id: str = None,
         uuids: List[str] = None,
+        with_bind_user: bool = None,
     ):
+        self.in_manage = in_manage
         self.max_results = max_results
         self.next_token = next_token
+        self.password_free_login_user = password_free_login_user
         self.search_keyword = search_keyword
         self.serial_numbers = serial_numbers
         self.terminal_group_id = terminal_group_id
         self.uuids = uuids
+        self.with_bind_user = with_bind_user
 
     def validate(self):
         pass
@@ -9122,10 +9169,14 @@ class ListTerminalsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.in_manage is not None:
+            result['InManage'] = self.in_manage
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.password_free_login_user is not None:
+            result['PasswordFreeLoginUser'] = self.password_free_login_user
         if self.search_keyword is not None:
             result['SearchKeyword'] = self.search_keyword
         if self.serial_numbers is not None:
@@ -9134,14 +9185,20 @@ class ListTerminalsRequest(TeaModel):
             result['TerminalGroupId'] = self.terminal_group_id
         if self.uuids is not None:
             result['Uuids'] = self.uuids
+        if self.with_bind_user is not None:
+            result['WithBindUser'] = self.with_bind_user
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('InManage') is not None:
+            self.in_manage = m.get('InManage')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('PasswordFreeLoginUser') is not None:
+            self.password_free_login_user = m.get('PasswordFreeLoginUser')
         if m.get('SearchKeyword') is not None:
             self.search_keyword = m.get('SearchKeyword')
         if m.get('SerialNumbers') is not None:
@@ -9150,6 +9207,8 @@ class ListTerminalsRequest(TeaModel):
             self.terminal_group_id = m.get('TerminalGroupId')
         if m.get('Uuids') is not None:
             self.uuids = m.get('Uuids')
+        if m.get('WithBindUser') is not None:
+            self.with_bind_user = m.get('WithBindUser')
         return self
 
 
@@ -9157,32 +9216,38 @@ class ListTerminalsResponseBodyData(TeaModel):
     def __init__(
         self,
         alias: str = None,
+        bind_user_count: int = None,
         build_id: str = None,
         client_type: int = None,
         current_connect_desktop: str = None,
         current_login_user: str = None,
         ipv_4: str = None,
+        last_login_user: str = None,
         location_info: str = None,
         manage_time: str = None,
         model: str = None,
         online: bool = None,
         password_free_login_user: str = None,
+        public_ipv_4: str = None,
         serial_number: str = None,
         set_password_free_login_user_time: str = None,
         terminal_group_id: str = None,
         uuid: str = None,
     ):
         self.alias = alias
+        self.bind_user_count = bind_user_count
         self.build_id = build_id
         self.client_type = client_type
         self.current_connect_desktop = current_connect_desktop
         self.current_login_user = current_login_user
         self.ipv_4 = ipv_4
+        self.last_login_user = last_login_user
         self.location_info = location_info
         self.manage_time = manage_time
         self.model = model
         self.online = online
         self.password_free_login_user = password_free_login_user
+        self.public_ipv_4 = public_ipv_4
         self.serial_number = serial_number
         self.set_password_free_login_user_time = set_password_free_login_user_time
         self.terminal_group_id = terminal_group_id
@@ -9199,6 +9264,8 @@ class ListTerminalsResponseBodyData(TeaModel):
         result = dict()
         if self.alias is not None:
             result['Alias'] = self.alias
+        if self.bind_user_count is not None:
+            result['BindUserCount'] = self.bind_user_count
         if self.build_id is not None:
             result['BuildId'] = self.build_id
         if self.client_type is not None:
@@ -9209,6 +9276,8 @@ class ListTerminalsResponseBodyData(TeaModel):
             result['CurrentLoginUser'] = self.current_login_user
         if self.ipv_4 is not None:
             result['Ipv4'] = self.ipv_4
+        if self.last_login_user is not None:
+            result['LastLoginUser'] = self.last_login_user
         if self.location_info is not None:
             result['LocationInfo'] = self.location_info
         if self.manage_time is not None:
@@ -9219,6 +9288,8 @@ class ListTerminalsResponseBodyData(TeaModel):
             result['Online'] = self.online
         if self.password_free_login_user is not None:
             result['PasswordFreeLoginUser'] = self.password_free_login_user
+        if self.public_ipv_4 is not None:
+            result['PublicIpv4'] = self.public_ipv_4
         if self.serial_number is not None:
             result['SerialNumber'] = self.serial_number
         if self.set_password_free_login_user_time is not None:
@@ -9233,6 +9304,8 @@ class ListTerminalsResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('Alias') is not None:
             self.alias = m.get('Alias')
+        if m.get('BindUserCount') is not None:
+            self.bind_user_count = m.get('BindUserCount')
         if m.get('BuildId') is not None:
             self.build_id = m.get('BuildId')
         if m.get('ClientType') is not None:
@@ -9243,6 +9316,8 @@ class ListTerminalsResponseBodyData(TeaModel):
             self.current_login_user = m.get('CurrentLoginUser')
         if m.get('Ipv4') is not None:
             self.ipv_4 = m.get('Ipv4')
+        if m.get('LastLoginUser') is not None:
+            self.last_login_user = m.get('LastLoginUser')
         if m.get('LocationInfo') is not None:
             self.location_info = m.get('LocationInfo')
         if m.get('ManageTime') is not None:
@@ -9253,6 +9328,8 @@ class ListTerminalsResponseBodyData(TeaModel):
             self.online = m.get('Online')
         if m.get('PasswordFreeLoginUser') is not None:
             self.password_free_login_user = m.get('PasswordFreeLoginUser')
+        if m.get('PublicIpv4') is not None:
+            self.public_ipv_4 = m.get('PublicIpv4')
         if m.get('SerialNumber') is not None:
             self.serial_number = m.get('SerialNumber')
         if m.get('SetPasswordFreeLoginUserTime') is not None:
