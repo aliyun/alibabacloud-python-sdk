@@ -299,6 +299,130 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_library_with_options_async(workspace_id, request, headers, runtime)
 
+    def create_pdf_translate_task_with_options(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreatePdfTranslateTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.CreatePdfTranslateTaskResponse:
+        """
+        @summary 创建PDF翻译任务
+        
+        @param request: CreatePdfTranslateTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePdfTranslateTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_id):
+            body['docId'] = request.doc_id
+        if not UtilClient.is_unset(request.knowledge):
+            body['knowledge'] = request.knowledge
+        if not UtilClient.is_unset(request.library_id):
+            body['libraryId'] = request.library_id
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.translate_to):
+            body['translateTo'] = request.translate_to
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreatePdfTranslateTask',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/task/pdfTranslate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.CreatePdfTranslateTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_pdf_translate_task_with_options_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreatePdfTranslateTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.CreatePdfTranslateTaskResponse:
+        """
+        @summary 创建PDF翻译任务
+        
+        @param request: CreatePdfTranslateTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePdfTranslateTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_id):
+            body['docId'] = request.doc_id
+        if not UtilClient.is_unset(request.knowledge):
+            body['knowledge'] = request.knowledge
+        if not UtilClient.is_unset(request.library_id):
+            body['libraryId'] = request.library_id
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.translate_to):
+            body['translateTo'] = request.translate_to
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreatePdfTranslateTask',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/task/pdfTranslate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.CreatePdfTranslateTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_pdf_translate_task(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreatePdfTranslateTaskRequest,
+    ) -> dian_jin_20240628_models.CreatePdfTranslateTaskResponse:
+        """
+        @summary 创建PDF翻译任务
+        
+        @param request: CreatePdfTranslateTaskRequest
+        @return: CreatePdfTranslateTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_pdf_translate_task_with_options(workspace_id, request, headers, runtime)
+
+    async def create_pdf_translate_task_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreatePdfTranslateTaskRequest,
+    ) -> dian_jin_20240628_models.CreatePdfTranslateTaskResponse:
+        """
+        @summary 创建PDF翻译任务
+        
+        @param request: CreatePdfTranslateTaskRequest
+        @return: CreatePdfTranslateTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_pdf_translate_task_with_options_async(workspace_id, request, headers, runtime)
+
     def create_predefined_document_with_options(
         self,
         workspace_id: str,
@@ -1897,6 +2021,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_summary_task_result_with_options_async(workspace_id, request, headers, runtime)
 
+    def get_task_result_with_options(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetTaskResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.GetTaskResultResponse:
+        """
+        @summary 获取异步任务结果
+        
+        @param request: GetTaskResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTaskResult',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/task/result',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.GetTaskResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_task_result_with_options_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetTaskResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.GetTaskResultResponse:
+        """
+        @summary 获取异步任务结果
+        
+        @param request: GetTaskResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTaskResult',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/task/result',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.GetTaskResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_task_result(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetTaskResultRequest,
+    ) -> dian_jin_20240628_models.GetTaskResultResponse:
+        """
+        @summary 获取异步任务结果
+        
+        @param request: GetTaskResultRequest
+        @return: GetTaskResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_task_result_with_options(workspace_id, request, headers, runtime)
+
+    async def get_task_result_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetTaskResultRequest,
+    ) -> dian_jin_20240628_models.GetTaskResultResponse:
+        """
+        @summary 获取异步任务结果
+        
+        @param request: GetTaskResultRequest
+        @return: GetTaskResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_task_result_with_options_async(workspace_id, request, headers, runtime)
+
     def get_task_status_with_options(
         self,
         workspace_id: str,
@@ -2341,7 +2573,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dian_jin_20240628_models.RecallDocumentResponse:
         """
-        @summary 文档召回
+        @summary 文档召回。
         
         @param request: RecallDocumentRequest
         @param headers: map
@@ -2386,7 +2618,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dian_jin_20240628_models.RecallDocumentResponse:
         """
-        @summary 文档召回
+        @summary 文档召回。
         
         @param request: RecallDocumentRequest
         @param headers: map
@@ -2429,7 +2661,7 @@ class Client(OpenApiClient):
         request: dian_jin_20240628_models.RecallDocumentRequest,
     ) -> dian_jin_20240628_models.RecallDocumentResponse:
         """
-        @summary 文档召回
+        @summary 文档召回。
         
         @param request: RecallDocumentRequest
         @return: RecallDocumentResponse
@@ -2444,7 +2676,7 @@ class Client(OpenApiClient):
         request: dian_jin_20240628_models.RecallDocumentRequest,
     ) -> dian_jin_20240628_models.RecallDocumentResponse:
         """
-        @summary 文档召回
+        @summary 文档召回。
         
         @param request: RecallDocumentRequest
         @return: RecallDocumentResponse

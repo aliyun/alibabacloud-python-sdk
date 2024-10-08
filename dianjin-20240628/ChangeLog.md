@@ -1,3 +1,8 @@
+2024-10-08 Version: 1.3.0
+- Support API CreatePdfTranslateTask.
+- Support API GetTaskResult.
+
+
 2024-09-24 Version: 1.2.0
 - Support API CreateFinReportSummaryTask.
 - Support API EvictTask.
