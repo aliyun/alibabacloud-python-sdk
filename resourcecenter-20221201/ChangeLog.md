@@ -1,3 +1,21 @@
+2024-10-08 Version: 1.2.0
+- Support API AssociateDefaultFilter.
+- Support API CreateFilter.
+- Support API DeleteFilter.
+- Support API DisassociateDefaultFilter.
+- Support API ListFilters.
+- Support API UpdateFilter.
+- Update API ExecuteMultiAccountSQLQuery: update response param.
+- Update API ExecuteSQLQuery: update response param.
+- Update API GetMultiAccountResourceConfiguration: update response param.
+- Update API ListMultiAccountTagKeys: update param MatchType.
+- Update API ListResourceTypes: update response param.
+- Update API SearchMultiAccountResources: update param Filter.
+- Update API SearchMultiAccountResources: update param MaxResults.
+- Update API SearchMultiAccountResources: update param NextToken.
+- Update API SearchMultiAccountResources: update response param.
+
+
 2023-11-21 Version: 1.1.1
 - Generated python 2022-12-01 for ResourceCenter.
 

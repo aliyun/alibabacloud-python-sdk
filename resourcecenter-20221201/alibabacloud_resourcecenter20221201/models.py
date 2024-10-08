@@ -4,6 +4,213 @@ from Tea.model import TeaModel
 from typing import Dict, List, Any
 
 
+class AssociateDefaultFilterRequest(TeaModel):
+    def __init__(
+        self,
+        filter_name: str = None,
+    ):
+        # The name of the filter.
+        # 
+        # This parameter is required.
+        self.filter_name = filter_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter_name is not None:
+            result['FilterName'] = self.filter_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FilterName') is not None:
+            self.filter_name = m.get('FilterName')
+        return self
+
+
+class AssociateDefaultFilterResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AssociateDefaultFilterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AssociateDefaultFilterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AssociateDefaultFilterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateFilterRequest(TeaModel):
+    def __init__(
+        self,
+        filter_configuration: str = None,
+        filter_name: str = None,
+    ):
+        # The configurations of the filter.
+        # 
+        # This parameter is required.
+        self.filter_configuration = filter_configuration
+        # The name of the filter.
+        # 
+        # This parameter is required.
+        self.filter_name = filter_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter_configuration is not None:
+            result['FilterConfiguration'] = self.filter_configuration
+        if self.filter_name is not None:
+            result['FilterName'] = self.filter_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FilterConfiguration') is not None:
+            self.filter_configuration = m.get('FilterConfiguration')
+        if m.get('FilterName') is not None:
+            self.filter_name = m.get('FilterName')
+        return self
+
+
+class CreateFilterResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateFilterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateFilterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateFilterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateSavedQueryRequest(TeaModel):
     def __init__(
         self,
@@ -16,12 +223,16 @@ class CreateSavedQueryRequest(TeaModel):
         # The description must be 1 to 256 characters in length.
         self.description = description
         # The query statement in the template.
+        # 
+        # This parameter is required.
         self.expression = expression
         # The name of the template.
         # 
         # *   The name must be 1 to 64 characters in length.
-        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The name can contain letters, digits, underscores (_), and hyphens (-).
         # *   The name must be unique.
+        # 
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -58,7 +269,7 @@ class CreateSavedQueryResponseBody(TeaModel):
         query_id: str = None,
         request_id: str = None,
     ):
-        # The query ID.
+        # The template ID.
         self.query_id = query_id
         # The request ID.
         self.request_id = request_id
@@ -99,9 +310,6 @@ class CreateSavedQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -131,6 +339,105 @@ class CreateSavedQueryResponse(TeaModel):
         return self
 
 
+class DeleteFilterRequest(TeaModel):
+    def __init__(
+        self,
+        filter_name: str = None,
+    ):
+        # The name of the filter.
+        # 
+        # This parameter is required.
+        self.filter_name = filter_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter_name is not None:
+            result['FilterName'] = self.filter_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FilterName') is not None:
+            self.filter_name = m.get('FilterName')
+        return self
+
+
+class DeleteFilterResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteFilterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteFilterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteFilterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteSavedQueryRequest(TeaModel):
     def __init__(
         self,
@@ -139,6 +446,8 @@ class DeleteSavedQueryRequest(TeaModel):
         # The ID of the template.
         # 
         # You can call the [ListSavedQueries](~~ListSavedQueries~~) operation to obtain the template ID.
+        # 
+        # This parameter is required.
         self.query_id = query_id
 
     def validate(self):
@@ -201,9 +510,6 @@ class DeleteSavedQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -273,9 +579,6 @@ class DisableMultiAccountResourceCenterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -345,9 +648,6 @@ class DisableResourceCenterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -373,6 +673,75 @@ class DisableResourceCenterResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DisableResourceCenterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DisassociateDefaultFilterResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisassociateDefaultFilterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisassociateDefaultFilterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisassociateDefaultFilterResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -427,9 +796,6 @@ class EnableMultiAccountResourceCenterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -509,9 +875,6 @@ class EnableResourceCenterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -551,7 +914,9 @@ class ExecuteMultiAccountSQLQueryRequest(TeaModel):
         # 
         # The number of characters in the SQL statement must be less than 2,000.
         # 
-        # For more information about the SQL syntax, see [Basic SQL syntax](~~2539395~~).
+        # For more information about the SQL syntax, see [Basic SQL syntax](https://help.aliyun.com/document_detail/2539395.html).
+        # 
+        # This parameter is required.
         self.expression = expression
         # The search scope. The value of this parameter can be one of the following items:
         # 
@@ -561,7 +926,9 @@ class ExecuteMultiAccountSQLQueryRequest(TeaModel):
         # *   ID of a member: Resources within the member are searched.
         # *   ID of a member/ID of a Resource group: Resources within the member in the resource group are searched.
         # 
-        # For more information about how to obtain the ID of a resource directory, the Root folder, a folder, a member, or a resource group, see [GetResourceDirectory](~~159995~~), [ListFoldersForParent](~~159997~~), [ListFoldersForParent](~~159997~~), [ListAccounts](~~160016~~), or [ListResourceGroups](~~158855~~).
+        # For more information about how to obtain the ID of a resource directory, the Root folder, a folder, a member, or a resource group, see [GetResourceDirectory](https://help.aliyun.com/document_detail/159995.html), [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html), [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html), [ListAccounts](https://help.aliyun.com/document_detail/160016.html), or [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html).
+        # 
+        # This parameter is required.
         self.scope = scope
 
     def validate(self):
@@ -627,11 +994,15 @@ class ExecuteMultiAccountSQLQueryResponseBody(TeaModel):
     def __init__(
         self,
         columns: List[ExecuteMultiAccountSQLQueryResponseBodyColumns] = None,
+        max_results: int = None,
+        next_token: str = None,
         request_id: str = None,
         rows: List[Any] = None,
     ):
         # The columns.
         self.columns = columns
+        self.max_results = max_results
+        self.next_token = next_token
         # The request ID.
         self.request_id = request_id
         # An array of search results.
@@ -653,6 +1024,10 @@ class ExecuteMultiAccountSQLQueryResponseBody(TeaModel):
         if self.columns is not None:
             for k in self.columns:
                 result['Columns'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.rows is not None:
@@ -666,6 +1041,10 @@ class ExecuteMultiAccountSQLQueryResponseBody(TeaModel):
             for k in m.get('Columns'):
                 temp_model = ExecuteMultiAccountSQLQueryResponseBodyColumns()
                 self.columns.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Rows') is not None:
@@ -685,9 +1064,6 @@ class ExecuteMultiAccountSQLQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -727,13 +1103,15 @@ class ExecuteSQLQueryRequest(TeaModel):
         # 
         # The number of characters in the SQL statement must be less than 2,000.
         # 
-        # For more information about the SQL syntax, see [Basic SQL syntax](~~2539395~~).
+        # For more information about the SQL syntax, see [Basic SQL syntax](https://help.aliyun.com/document_detail/2539395.html).
+        # 
+        # This parameter is required.
         self.expression = expression
         # The search scope.
         # 
         # Set this parameter to the ID of a resource group.
         # 
-        # For information about how to obtain the ID of a resource group, see [ListResourceGroups](~~158855~~).
+        # For information about how to obtain the ID of a resource group, see [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html).
         self.scope = scope
 
     def validate(self):
@@ -799,11 +1177,15 @@ class ExecuteSQLQueryResponseBody(TeaModel):
     def __init__(
         self,
         columns: List[ExecuteSQLQueryResponseBodyColumns] = None,
+        max_results: int = None,
+        next_token: str = None,
         request_id: str = None,
         rows: List[Any] = None,
     ):
         # The columns.
         self.columns = columns
+        self.max_results = max_results
+        self.next_token = next_token
         # The request ID.
         self.request_id = request_id
         # An array of search results.
@@ -825,6 +1207,10 @@ class ExecuteSQLQueryResponseBody(TeaModel):
         if self.columns is not None:
             for k in self.columns:
                 result['Columns'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.rows is not None:
@@ -838,6 +1224,10 @@ class ExecuteSQLQueryResponseBody(TeaModel):
             for k in m.get('Columns'):
                 temp_model = ExecuteSQLQueryResponseBodyColumns()
                 self.columns.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Rows') is not None:
@@ -857,9 +1247,6 @@ class ExecuteSQLQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -897,6 +1284,8 @@ class GetExampleQueryRequest(TeaModel):
         # The ID of the template.
         # 
         # >  You can call the [ListExampleQueries](~~ListExampleQueries~~) operation to obtain the template ID.
+        # 
+        # This parameter is required.
         self.query_id = query_id
 
     def validate(self):
@@ -1017,9 +1406,6 @@ class GetExampleQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1109,9 +1495,6 @@ class GetMultiAccountResourceCenterServiceStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1150,12 +1533,20 @@ class GetMultiAccountResourceConfigurationRequest(TeaModel):
         resource_type: str = None,
     ):
         # The ID of the management account or member of the resource directory.
+        # 
+        # This parameter is required.
         self.account_id = account_id
         # The ID of the resource.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The region ID of the resource.
+        # 
+        # This parameter is required.
         self.resource_region_id = resource_region_id
         # The type of the resource.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -1197,8 +1588,14 @@ class GetMultiAccountResourceConfigurationResponseBodyIpAddressAttributes(TeaMod
         network_type: str = None,
         version: str = None,
     ):
+        # The IP address.
         self.ip_address = ip_address
+        # The network type. Valid values:
+        # 
+        # *   **Public**: the Internet
+        # *   **Private**: internal network
         self.network_type = network_type
+        # The version.
         self.version = version
 
     def validate(self):
@@ -1235,9 +1632,9 @@ class GetMultiAccountResourceConfigurationResponseBodyTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The key of tag N.
         self.key = key
-        # The value of the tag.
+        # The value of tag N.
         self.value = value
 
     def validate(self):
@@ -1288,7 +1685,9 @@ class GetMultiAccountResourceConfigurationResponseBody(TeaModel):
         self.configuration = configuration
         # The time when the resource was created.
         self.create_time = create_time
+        # The time when the resource expires.
         self.expire_time = expire_time
+        # The attributes of the IP address.
         self.ip_address_attributes = ip_address_attributes
         # The IP addresses.
         # 
@@ -1412,9 +1811,6 @@ class GetMultiAccountResourceConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1453,7 +1849,7 @@ class GetResourceCenterServiceStatusResponseBody(TeaModel):
     ):
         # The initialization status of the service. Valid values:
         # 
-        # *   Pending: The service being initialized.
+        # *   Pending: The service is being initialized.
         # *   Finished: The service is initialized.
         self.initial_status = initial_status
         # The ID of the request.
@@ -1504,9 +1900,6 @@ class GetResourceCenterServiceStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1544,12 +1937,18 @@ class GetResourceConfigurationRequest(TeaModel):
         resource_type: str = None,
     ):
         # The ID of the resource.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The region ID of the resource.
+        # 
+        # This parameter is required.
         self.resource_region_id = resource_region_id
         # The type of the resource.
         # 
-        # For more information about the resource types supported by Resource Center, see [Services that work with Resource Center](~~477798~~).
+        # For more information about the resource types supported by Resource Center, see [Services that work with Resource Center](https://help.aliyun.com/document_detail/477798.html).
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -1587,8 +1986,14 @@ class GetResourceConfigurationResponseBodyIpAddressAttributes(TeaModel):
         network_type: str = None,
         version: str = None,
     ):
+        # The IP address.
         self.ip_address = ip_address
+        # The network type. Valid values:
+        # 
+        # *   **Public**: the Internet
+        # *   **Private**: internal network
         self.network_type = network_type
+        # The version.
         self.version = version
 
     def validate(self):
@@ -1678,7 +2083,9 @@ class GetResourceConfigurationResponseBody(TeaModel):
         self.configuration = configuration
         # The time when the resource was created.
         self.create_time = create_time
+        # The time when the resource expires.
         self.expire_time = expire_time
+        # The attributes of the IP address.
         self.ip_address_attributes = ip_address_attributes
         # The IP addresses.
         # 
@@ -1802,9 +2209,6 @@ class GetResourceConfigurationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2075,9 +2479,6 @@ class GetResourceCountsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2112,9 +2513,11 @@ class GetSavedQueryRequest(TeaModel):
         self,
         query_id: str = None,
     ):
-        # The ID of the template.
+        # The template ID.
         # 
-        # >  You can call the [ListSavedQueries](~~ListSavedQueries~~) operation to obtain the template ID.
+        # >  You can call the [ListSavedQueries](~~ListSavedQueries~~) operation to query the ID.
+        # 
+        # This parameter is required.
         self.query_id = query_id
 
     def validate(self):
@@ -2147,7 +2550,7 @@ class GetSavedQueryResponseBodySavedQuery(TeaModel):
         query_id: str = None,
         update_time: str = None,
     ):
-        # The time when the template was created.
+        # The time when the template was created. The time is displayed in UTC.
         self.create_time = create_time
         # The description of the template.
         self.description = description
@@ -2155,9 +2558,9 @@ class GetSavedQueryResponseBodySavedQuery(TeaModel):
         self.expression = expression
         # The name of the template.
         self.name = name
-        # The ID of the template.
+        # The template ID.
         self.query_id = query_id
-        # The time when the template was last updated.
+        # The time when the template was updated. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -2208,7 +2611,7 @@ class GetSavedQueryResponseBody(TeaModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the custom query template.
+        # The information about the template.
         self.saved_query = saved_query
 
     def validate(self):
@@ -2249,9 +2652,6 @@ class GetSavedQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2431,9 +2831,6 @@ class ListExampleQueriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2463,6 +2860,134 @@ class ListExampleQueriesResponse(TeaModel):
         return self
 
 
+class ListFiltersResponseBodyFilters(TeaModel):
+    def __init__(
+        self,
+        filter_configuration: str = None,
+        filter_name: str = None,
+    ):
+        # The configurations of the filter.
+        # 
+        # This parameter is required.
+        self.filter_configuration = filter_configuration
+        # The name of the filter.
+        self.filter_name = filter_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter_configuration is not None:
+            result['FilterConfiguration'] = self.filter_configuration
+        if self.filter_name is not None:
+            result['FilterName'] = self.filter_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FilterConfiguration') is not None:
+            self.filter_configuration = m.get('FilterConfiguration')
+        if m.get('FilterName') is not None:
+            self.filter_name = m.get('FilterName')
+        return self
+
+
+class ListFiltersResponseBody(TeaModel):
+    def __init__(
+        self,
+        default_filter_name: str = None,
+        filters: List[ListFiltersResponseBodyFilters] = None,
+        request_id: str = None,
+    ):
+        # The name of the default filter.
+        self.default_filter_name = default_filter_name
+        # The configurations of the filter.
+        self.filters = filters
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.filters:
+            for k in self.filters:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.default_filter_name is not None:
+            result['DefaultFilterName'] = self.default_filter_name
+        result['Filters'] = []
+        if self.filters is not None:
+            for k in self.filters:
+                result['Filters'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DefaultFilterName') is not None:
+            self.default_filter_name = m.get('DefaultFilterName')
+        self.filters = []
+        if m.get('Filters') is not None:
+            for k in m.get('Filters'):
+                temp_model = ListFiltersResponseBodyFilters()
+                self.filters.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListFiltersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListFiltersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListFiltersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListMultiAccountResourceGroupsRequest(TeaModel):
     def __init__(
         self,
@@ -2472,6 +2997,8 @@ class ListMultiAccountResourceGroupsRequest(TeaModel):
         resource_group_ids: List[str] = None,
     ):
         # The ID of the management account or member of the resource directory.
+        # 
+        # This parameter is required.
         self.account_id = account_id
         # The maximum number of entries to return on each page.
         # 
@@ -2643,9 +3170,6 @@ class ListMultiAccountResourceGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2701,10 +3225,12 @@ class ListMultiAccountTagKeysRequest(TeaModel):
         self.next_token = next_token
         # The search scope. You can set the value to one of the following items:
         # 
-        # *   ID of a resource directory: Resources within the management account and all members of the resource directory are searched. You can call the [GetResourceDirectory](~~159995~~) operation to obtain the ID.
-        # *   ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched. You can call the [ListFoldersForParent](~~159997~~) operation to obtain the ID.
-        # *   ID of a folder: Resources within all members in the folder are searched. You can call the [ListFoldersForParent](~~159997~~) operation to obtain the ID.
-        # *   ID of a member: Resources within the member are searched. You can call the [ListAccounts](~~160016~~) operation to obtain the ID.
+        # *   ID of a resource directory: Resources within the management account and all members of the resource directory are searched. You can call the [GetResourceDirectory](https://help.aliyun.com/document_detail/159995.html) operation to obtain the ID.
+        # *   ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched. You can call the [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html) operation to obtain the ID.
+        # *   ID of a folder: Resources within all members in the folder are searched. You can call the [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html) operation to obtain the ID.
+        # *   ID of a member: Resources within the member are searched. You can call the [ListAccounts](https://help.aliyun.com/document_detail/160016.html) operation to obtain the ID.
+        # 
+        # This parameter is required.
         self.scope = scope
         # The tag key.
         self.tag_key = tag_key
@@ -2799,9 +3325,6 @@ class ListMultiAccountTagKeysResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2858,12 +3381,14 @@ class ListMultiAccountTagValuesRequest(TeaModel):
         self.next_token = next_token
         # The search scope. You can set the value to one of the following items:
         # 
-        # *   ID of a resource directory: Resources within the management account and all members of the resource directory are searched. You can call the [GetResourceDirectory](~~159995~~) operation to obtain the ID.
-        # *   ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched. You can call the [ListFoldersForParent](~~159997~~) operation to obtain the ID.
-        # *   ID of a folder: Resources within all members in the folder are searched. You can call the [ListFoldersForParent](~~159997~~) operation to obtain the ID.
-        # *   ID of a member: Resources within the member are searched. You can call the [ListAccounts](~~160016~~) operation to obtain the ID.
+        # *   ID of a resource directory: Resources within the management account and all members of the resource directory are searched. You can call the [GetResourceDirectory](https://help.aliyun.com/document_detail/159995.html) operation to obtain the ID.
+        # *   ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched. You can call the [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html) operation to obtain the ID.
+        # *   ID of a folder: Resources within all members in the folder are searched. You can call the [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html) operation to obtain the ID.
+        # *   ID of a member: Resources within the member are searched. You can call the [ListAccounts](https://help.aliyun.com/document_detail/160016.html) operation to obtain the ID.
         self.scope = scope
         # The tag key.
+        # 
+        # This parameter is required.
         self.tag_key = tag_key
         # The tag value.
         self.tag_value = tag_value
@@ -2962,9 +3487,6 @@ class ListMultiAccountTagValuesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3010,7 +3532,7 @@ class ListResourceTypesRequest(TeaModel):
         self.query = query
         # The resource type.
         # 
-        # For more information about the resource types that are supported by Resource Center, see [Services that work with Resource Center](~~477798~~).
+        # For more information about the resource types that are supported by Resource Center, see [Services that work with Resource Center](https://help.aliyun.com/document_detail/477798.html).
         self.resource_type = resource_type
 
     def validate(self):
@@ -3041,22 +3563,14 @@ class ListResourceTypesRequest(TeaModel):
         return self
 
 
-class ListResourceTypesResponseBodyResourceTypes(TeaModel):
+class ListResourceTypesResponseBodyResourceTypesCodeMapping(TeaModel):
     def __init__(
         self,
-        filter_keys: List[str] = None,
-        product_name: str = None,
-        resource_type: str = None,
-        resource_type_name: str = None,
+        resource_group: str = None,
+        tag: str = None,
     ):
-        # The supported filter conditions.
-        self.filter_keys = filter_keys
-        # The name of the Alibaba Cloud service.
-        self.product_name = product_name
-        # The resource type.
-        self.resource_type = resource_type
-        # The name of the resource type.
-        self.resource_type_name = resource_type_name
+        self.resource_group = resource_group
+        self.tag = tag
 
     def validate(self):
         pass
@@ -3067,6 +3581,56 @@ class ListResourceTypesResponseBodyResourceTypes(TeaModel):
             return _map
 
         result = dict()
+        if self.resource_group is not None:
+            result['ResourceGroup'] = self.resource_group
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceGroup') is not None:
+            self.resource_group = m.get('ResourceGroup')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        return self
+
+
+class ListResourceTypesResponseBodyResourceTypes(TeaModel):
+    def __init__(
+        self,
+        authorized: bool = None,
+        code_mapping: ListResourceTypesResponseBodyResourceTypesCodeMapping = None,
+        filter_keys: List[str] = None,
+        product_name: str = None,
+        resource_type: str = None,
+        resource_type_name: str = None,
+    ):
+        self.authorized = authorized
+        self.code_mapping = code_mapping
+        # The supported filter conditions.
+        self.filter_keys = filter_keys
+        # The name of the Alibaba Cloud service.
+        self.product_name = product_name
+        # The resource type.
+        self.resource_type = resource_type
+        # The name of the resource type.
+        self.resource_type_name = resource_type_name
+
+    def validate(self):
+        if self.code_mapping:
+            self.code_mapping.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authorized is not None:
+            result['Authorized'] = self.authorized
+        if self.code_mapping is not None:
+            result['CodeMapping'] = self.code_mapping.to_map()
         if self.filter_keys is not None:
             result['FilterKeys'] = self.filter_keys
         if self.product_name is not None:
@@ -3079,6 +3643,11 @@ class ListResourceTypesResponseBodyResourceTypes(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Authorized') is not None:
+            self.authorized = m.get('Authorized')
+        if m.get('CodeMapping') is not None:
+            temp_model = ListResourceTypesResponseBodyResourceTypesCodeMapping()
+            self.code_mapping = temp_model.from_map(m['CodeMapping'])
         if m.get('FilterKeys') is not None:
             self.filter_keys = m.get('FilterKeys')
         if m.get('ProductName') is not None:
@@ -3145,9 +3714,6 @@ class ListResourceTypesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3225,15 +3791,15 @@ class ListSavedQueriesResponseBodySavedQueries(TeaModel):
         query_id: str = None,
         update_time: str = None,
     ):
-        # The time when the template was created.
+        # The time when the template was created. The time is displayed in UTC.
         self.create_time = create_time
         # The description of the template.
         self.description = description
-        # The name of the template.
+        # The template name.
         self.name = name
-        # The ID of the template.
+        # The template ID.
         self.query_id = query_id
-        # The time when the template was last updated.
+        # The time when the template was updated. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -3341,9 +3907,6 @@ class ListSavedQueriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3485,9 +4048,6 @@ class ListTagKeysResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3542,6 +4102,8 @@ class ListTagValuesRequest(TeaModel):
         # If the total number of entries returned for the current request exceeds the value of the `MaxResults` parameter, the entries are truncated. In this case, you can use the `token` to initiate another request and obtain the remaining entries.
         self.next_token = next_token
         # The tag key.
+        # 
+        # This parameter is required.
         self.tag_key = tag_key
         # The tag value.
         self.tag_value = tag_value
@@ -3636,9 +4198,6 @@ class ListTagValuesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3775,10 +4334,12 @@ class SearchMultiAccountResourcesRequest(TeaModel):
         self.next_token = next_token
         # The search scope. You can set the value to one of the following items:
         # 
-        # *   ID of a resource directory: Resources within the management account and all members of the resource directory are searched. You can call the [GetResourceDirectory](~~159995~~) operation to obtain the ID.
-        # *   ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched. You can call the [ListFoldersForParent](~~159997~~) operation to obtain the ID.
-        # *   ID of a folder: Resources within all members in the folder are searched. You can call the [ListFoldersForParent](~~159997~~) operation to obtain the ID.
-        # *   ID of a member: Resources within the member are searched. You can call the [ListAccounts](~~160016~~) operation to obtain the ID.
+        # *   ID of a resource directory: Resources within the management account and all members of the resource directory are searched. You can call the [GetResourceDirectory](https://help.aliyun.com/document_detail/159995.html) operation to obtain the ID.
+        # *   ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched. You can call the [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html) operation to obtain the ID.
+        # *   ID of a folder: Resources within all members in the folder are searched. You can call the [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html) operation to obtain the ID.
+        # *   ID of a member: Resources within the member are searched. You can call the [ListAccounts](https://help.aliyun.com/document_detail/160016.html) operation to obtain the ID.
+        # 
+        # This parameter is required.
         self.scope = scope
         # The method that is used to sort the entries returned.
         self.sort_criterion = sort_criterion
@@ -4177,9 +4738,6 @@ class SearchMultiAccountResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4701,9 +5259,6 @@ class SearchResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4733,6 +5288,114 @@ class SearchResourcesResponse(TeaModel):
         return self
 
 
+class UpdateFilterRequest(TeaModel):
+    def __init__(
+        self,
+        filter_configuration: str = None,
+        filter_name: str = None,
+    ):
+        # The configurations of the filter.
+        # 
+        # This parameter is required.
+        self.filter_configuration = filter_configuration
+        # The name of the filter.
+        # 
+        # This parameter is required.
+        self.filter_name = filter_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter_configuration is not None:
+            result['FilterConfiguration'] = self.filter_configuration
+        if self.filter_name is not None:
+            result['FilterName'] = self.filter_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FilterConfiguration') is not None:
+            self.filter_configuration = m.get('FilterConfiguration')
+        if m.get('FilterName') is not None:
+            self.filter_name = m.get('FilterName')
+        return self
+
+
+class UpdateFilterResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateFilterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateFilterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateFilterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateSavedQueryRequest(TeaModel):
     def __init__(
         self,
@@ -4750,10 +5413,12 @@ class UpdateSavedQueryRequest(TeaModel):
         # The name of the template.
         # 
         # *   The name must be 1 to 64 characters in length.
-        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The name can contain letters, digits, underscores (_), and hyphens (-).
         # *   The name must be unique.
         self.name = name
-        # The ID of the template.
+        # The template ID.
+        # 
+        # This parameter is required.
         self.query_id = query_id
 
     def validate(self):
@@ -4828,9 +5493,6 @@ class UpdateSavedQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
