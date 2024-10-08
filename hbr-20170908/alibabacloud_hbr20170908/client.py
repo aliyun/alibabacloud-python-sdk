@@ -21,6 +21,7 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
+        self._signature_algorithm = 'v2'
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'ap-northeast-2-pop': 'hbr.aliyuncs.com',
@@ -81,6 +82,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.AddContainerClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.AddContainerClusterResponse:
+        """
+        @summary Registers a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: AddContainerClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddContainerClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_type):
@@ -117,6 +125,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.AddContainerClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.AddContainerClusterResponse:
+        """
+        @summary Registers a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: AddContainerClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddContainerClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_type):
@@ -152,6 +167,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.AddContainerClusterRequest,
     ) -> hbr_20170908_models.AddContainerClusterResponse:
+        """
+        @summary Registers a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: AddContainerClusterRequest
+        @return: AddContainerClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_container_cluster_with_options(request, runtime)
 
@@ -159,100 +180,27 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.AddContainerClusterRequest,
     ) -> hbr_20170908_models.AddContainerClusterResponse:
+        """
+        @summary Registers a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: AddContainerClusterRequest
+        @return: AddContainerClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_container_cluster_with_options_async(request, runtime)
-
-    def attach_nas_file_system_with_options(
-        self,
-        request: hbr_20170908_models.AttachNasFileSystemRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> hbr_20170908_models.AttachNasFileSystemResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.create_time):
-            query['CreateTime'] = request.create_time
-        if not UtilClient.is_unset(request.cross_account_role_name):
-            query['CrossAccountRoleName'] = request.cross_account_role_name
-        if not UtilClient.is_unset(request.cross_account_type):
-            query['CrossAccountType'] = request.cross_account_type
-        if not UtilClient.is_unset(request.cross_account_user_id):
-            query['CrossAccountUserId'] = request.cross_account_user_id
-        if not UtilClient.is_unset(request.file_system_id):
-            query['FileSystemId'] = request.file_system_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AttachNasFileSystem',
-            version='2017-09-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            hbr_20170908_models.AttachNasFileSystemResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def attach_nas_file_system_with_options_async(
-        self,
-        request: hbr_20170908_models.AttachNasFileSystemRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> hbr_20170908_models.AttachNasFileSystemResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.create_time):
-            query['CreateTime'] = request.create_time
-        if not UtilClient.is_unset(request.cross_account_role_name):
-            query['CrossAccountRoleName'] = request.cross_account_role_name
-        if not UtilClient.is_unset(request.cross_account_type):
-            query['CrossAccountType'] = request.cross_account_type
-        if not UtilClient.is_unset(request.cross_account_user_id):
-            query['CrossAccountUserId'] = request.cross_account_user_id
-        if not UtilClient.is_unset(request.file_system_id):
-            query['FileSystemId'] = request.file_system_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AttachNasFileSystem',
-            version='2017-09-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            hbr_20170908_models.AttachNasFileSystemResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def attach_nas_file_system(
-        self,
-        request: hbr_20170908_models.AttachNasFileSystemRequest,
-    ) -> hbr_20170908_models.AttachNasFileSystemResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.attach_nas_file_system_with_options(request, runtime)
-
-    async def attach_nas_file_system_async(
-        self,
-        request: hbr_20170908_models.AttachNasFileSystemRequest,
-    ) -> hbr_20170908_models.AttachNasFileSystemResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.attach_nas_file_system_with_options_async(request, runtime)
 
     def cancel_backup_job_with_options(
         self,
         request: hbr_20170908_models.CancelBackupJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CancelBackupJobResponse:
+        """
+        @summary Cancels a backup job.
+        
+        @param request: CancelBackupJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelBackupJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -283,6 +231,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CancelBackupJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CancelBackupJobResponse:
+        """
+        @summary Cancels a backup job.
+        
+        @param request: CancelBackupJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelBackupJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -312,6 +267,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.CancelBackupJobRequest,
     ) -> hbr_20170908_models.CancelBackupJobResponse:
+        """
+        @summary Cancels a backup job.
+        
+        @param request: CancelBackupJobRequest
+        @return: CancelBackupJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_backup_job_with_options(request, runtime)
 
@@ -319,6 +280,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.CancelBackupJobRequest,
     ) -> hbr_20170908_models.CancelBackupJobResponse:
+        """
+        @summary Cancels a backup job.
+        
+        @param request: CancelBackupJobRequest
+        @return: CancelBackupJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_backup_job_with_options_async(request, runtime)
 
@@ -327,6 +294,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CancelRestoreJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CancelRestoreJobResponse:
+        """
+        @summary Cancels a restore job.
+        
+        @param request: CancelRestoreJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelRestoreJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.restore_id):
@@ -357,6 +331,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CancelRestoreJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CancelRestoreJobResponse:
+        """
+        @summary Cancels a restore job.
+        
+        @param request: CancelRestoreJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelRestoreJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.restore_id):
@@ -386,6 +367,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.CancelRestoreJobRequest,
     ) -> hbr_20170908_models.CancelRestoreJobResponse:
+        """
+        @summary Cancels a restore job.
+        
+        @param request: CancelRestoreJobRequest
+        @return: CancelRestoreJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_restore_job_with_options(request, runtime)
 
@@ -393,6 +380,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.CancelRestoreJobRequest,
     ) -> hbr_20170908_models.CancelRestoreJobResponse:
+        """
+        @summary Cancels a restore job.
+        
+        @param request: CancelRestoreJobRequest
+        @return: CancelRestoreJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_restore_job_with_options_async(request, runtime)
 
@@ -402,9 +395,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.ChangeResourceGroupResponse:
         """
-        In the Hybrid Backup Recovery (HBR), you can use resource groups to manage resources such as backup vaults, backup clients, and SAP HANA instances.
-        *   A resource is a cloud service entity that you create on Alibaba Cloud, such as an ECS instance, a backup vault, or an SAP HANA instance.
-        *   You can sort resources owned by your Alibaba Cloud account into various resource groups. This facilitates resource management among multiple projects or applications within your Alibaba Cloud account and simplifies permission management.
+        @summary Changes the resource group to which an instance belongs.
+        
+        @description    In Cloud Backup, you can use resource groups to manage resources such as backup vaults, backup clients, and SAP HANA instances.
+        A resource is a cloud service entity that you create on Alibaba Cloud, such as an Elastic Compute Service (ECS) instance, a backup vault, or an SAP HANA instance.
+        You can sort resources owned by your Alibaba Cloud account into various resource groups. Resource groups facilitate resource management among multiple projects or applications within your Alibaba Cloud account and simplify permission management.
         
         @param request: ChangeResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -443,9 +438,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.ChangeResourceGroupResponse:
         """
-        In the Hybrid Backup Recovery (HBR), you can use resource groups to manage resources such as backup vaults, backup clients, and SAP HANA instances.
-        *   A resource is a cloud service entity that you create on Alibaba Cloud, such as an ECS instance, a backup vault, or an SAP HANA instance.
-        *   You can sort resources owned by your Alibaba Cloud account into various resource groups. This facilitates resource management among multiple projects or applications within your Alibaba Cloud account and simplifies permission management.
+        @summary Changes the resource group to which an instance belongs.
+        
+        @description    In Cloud Backup, you can use resource groups to manage resources such as backup vaults, backup clients, and SAP HANA instances.
+        A resource is a cloud service entity that you create on Alibaba Cloud, such as an Elastic Compute Service (ECS) instance, a backup vault, or an SAP HANA instance.
+        You can sort resources owned by your Alibaba Cloud account into various resource groups. Resource groups facilitate resource management among multiple projects or applications within your Alibaba Cloud account and simplify permission management.
         
         @param request: ChangeResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -483,9 +480,11 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.ChangeResourceGroupRequest,
     ) -> hbr_20170908_models.ChangeResourceGroupResponse:
         """
-        In the Hybrid Backup Recovery (HBR), you can use resource groups to manage resources such as backup vaults, backup clients, and SAP HANA instances.
-        *   A resource is a cloud service entity that you create on Alibaba Cloud, such as an ECS instance, a backup vault, or an SAP HANA instance.
-        *   You can sort resources owned by your Alibaba Cloud account into various resource groups. This facilitates resource management among multiple projects or applications within your Alibaba Cloud account and simplifies permission management.
+        @summary Changes the resource group to which an instance belongs.
+        
+        @description    In Cloud Backup, you can use resource groups to manage resources such as backup vaults, backup clients, and SAP HANA instances.
+        A resource is a cloud service entity that you create on Alibaba Cloud, such as an Elastic Compute Service (ECS) instance, a backup vault, or an SAP HANA instance.
+        You can sort resources owned by your Alibaba Cloud account into various resource groups. Resource groups facilitate resource management among multiple projects or applications within your Alibaba Cloud account and simplify permission management.
         
         @param request: ChangeResourceGroupRequest
         @return: ChangeResourceGroupResponse
@@ -498,9 +497,11 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.ChangeResourceGroupRequest,
     ) -> hbr_20170908_models.ChangeResourceGroupResponse:
         """
-        In the Hybrid Backup Recovery (HBR), you can use resource groups to manage resources such as backup vaults, backup clients, and SAP HANA instances.
-        *   A resource is a cloud service entity that you create on Alibaba Cloud, such as an ECS instance, a backup vault, or an SAP HANA instance.
-        *   You can sort resources owned by your Alibaba Cloud account into various resource groups. This facilitates resource management among multiple projects or applications within your Alibaba Cloud account and simplifies permission management.
+        @summary Changes the resource group to which an instance belongs.
+        
+        @description    In Cloud Backup, you can use resource groups to manage resources such as backup vaults, backup clients, and SAP HANA instances.
+        A resource is a cloud service entity that you create on Alibaba Cloud, such as an Elastic Compute Service (ECS) instance, a backup vault, or an SAP HANA instance.
+        You can sort resources owned by your Alibaba Cloud account into various resource groups. Resource groups facilitate resource management among multiple projects or applications within your Alibaba Cloud account and simplify permission management.
         
         @param request: ChangeResourceGroupRequest
         @return: ChangeResourceGroupResponse
@@ -513,6 +514,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CheckRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CheckRoleResponse:
+        """
+        @summary Checks whether the user has permissions to access the current resource or page.
+        
+        @param request: CheckRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.check_role_type):
@@ -545,6 +553,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CheckRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CheckRoleResponse:
+        """
+        @summary Checks whether the user has permissions to access the current resource or page.
+        
+        @param request: CheckRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.check_role_type):
@@ -576,6 +591,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.CheckRoleRequest,
     ) -> hbr_20170908_models.CheckRoleResponse:
+        """
+        @summary Checks whether the user has permissions to access the current resource or page.
+        
+        @param request: CheckRoleRequest
+        @return: CheckRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_role_with_options(request, runtime)
 
@@ -583,6 +604,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.CheckRoleRequest,
     ) -> hbr_20170908_models.CheckRoleResponse:
+        """
+        @summary Checks whether the user has permissions to access the current resource or page.
+        
+        @param request: CheckRoleRequest
+        @return: CheckRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_role_with_options_async(request, runtime)
 
@@ -591,6 +618,13 @@ class Client(OpenApiClient):
         tmp_req: hbr_20170908_models.CreateBackupJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CreateBackupJobResponse:
+        """
+        @summary Creates a backup job.
+        
+        @param tmp_req: CreateBackupJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBackupJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = hbr_20170908_models.CreateBackupJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -657,6 +691,13 @@ class Client(OpenApiClient):
         tmp_req: hbr_20170908_models.CreateBackupJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CreateBackupJobResponse:
+        """
+        @summary Creates a backup job.
+        
+        @param tmp_req: CreateBackupJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBackupJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = hbr_20170908_models.CreateBackupJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -722,6 +763,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.CreateBackupJobRequest,
     ) -> hbr_20170908_models.CreateBackupJobResponse:
+        """
+        @summary Creates a backup job.
+        
+        @param request: CreateBackupJobRequest
+        @return: CreateBackupJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_backup_job_with_options(request, runtime)
 
@@ -729,6 +776,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.CreateBackupJobRequest,
     ) -> hbr_20170908_models.CreateBackupJobResponse:
+        """
+        @summary Creates a backup job.
+        
+        @param request: CreateBackupJobRequest
+        @return: CreateBackupJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_backup_job_with_options_async(request, runtime)
 
@@ -738,10 +791,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CreateBackupPlanResponse:
         """
-        A backup schedule defines the data source, backup policy, and other configurations. After you execute a backup schedule, a backup job is generated to record the backup progress and the backup result. If a backup job is complete, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
-        *   You can specify only one type of data source in a backup schedule.
-        *   You can specify only one interval as a backup cycle in a backup schedule.
-        *   Each backup schedule allows you to back up data to only one backup vault.
+        @summary Creates a backup plan.
+        
+        @description    A backup schedule defines the data source, backup policy, and other configurations. After you execute a backup schedule, a backup job is generated to record the backup progress and the backup result. If a backup job is complete, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+        You can specify only one type of data source in a backup schedule.
+        You can specify only one interval as a backup cycle in a backup schedule.
+        Each backup schedule allows you to back up data to only one backup vault.
         
         @param tmp_req: CreateBackupPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -844,10 +899,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CreateBackupPlanResponse:
         """
-        A backup schedule defines the data source, backup policy, and other configurations. After you execute a backup schedule, a backup job is generated to record the backup progress and the backup result. If a backup job is complete, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
-        *   You can specify only one type of data source in a backup schedule.
-        *   You can specify only one interval as a backup cycle in a backup schedule.
-        *   Each backup schedule allows you to back up data to only one backup vault.
+        @summary Creates a backup plan.
+        
+        @description    A backup schedule defines the data source, backup policy, and other configurations. After you execute a backup schedule, a backup job is generated to record the backup progress and the backup result. If a backup job is complete, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+        You can specify only one type of data source in a backup schedule.
+        You can specify only one interval as a backup cycle in a backup schedule.
+        Each backup schedule allows you to back up data to only one backup vault.
         
         @param tmp_req: CreateBackupPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -949,10 +1006,12 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CreateBackupPlanRequest,
     ) -> hbr_20170908_models.CreateBackupPlanResponse:
         """
-        A backup schedule defines the data source, backup policy, and other configurations. After you execute a backup schedule, a backup job is generated to record the backup progress and the backup result. If a backup job is complete, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
-        *   You can specify only one type of data source in a backup schedule.
-        *   You can specify only one interval as a backup cycle in a backup schedule.
-        *   Each backup schedule allows you to back up data to only one backup vault.
+        @summary Creates a backup plan.
+        
+        @description    A backup schedule defines the data source, backup policy, and other configurations. After you execute a backup schedule, a backup job is generated to record the backup progress and the backup result. If a backup job is complete, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+        You can specify only one type of data source in a backup schedule.
+        You can specify only one interval as a backup cycle in a backup schedule.
+        Each backup schedule allows you to back up data to only one backup vault.
         
         @param request: CreateBackupPlanRequest
         @return: CreateBackupPlanResponse
@@ -965,10 +1024,12 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CreateBackupPlanRequest,
     ) -> hbr_20170908_models.CreateBackupPlanResponse:
         """
-        A backup schedule defines the data source, backup policy, and other configurations. After you execute a backup schedule, a backup job is generated to record the backup progress and the backup result. If a backup job is complete, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
-        *   You can specify only one type of data source in a backup schedule.
-        *   You can specify only one interval as a backup cycle in a backup schedule.
-        *   Each backup schedule allows you to back up data to only one backup vault.
+        @summary Creates a backup plan.
+        
+        @description    A backup schedule defines the data source, backup policy, and other configurations. After you execute a backup schedule, a backup job is generated to record the backup progress and the backup result. If a backup job is complete, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+        You can specify only one type of data source in a backup schedule.
+        You can specify only one interval as a backup cycle in a backup schedule.
+        Each backup schedule allows you to back up data to only one backup vault.
         
         @param request: CreateBackupPlanRequest
         @return: CreateBackupPlanResponse
@@ -982,7 +1043,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CreateClientsResponse:
         """
-        Before you call this operation, make sure that you fully understand the billing methods and pricing of Hybrid Backup Recovery (HBR). For more information, see [Billable items and billing methods](~~89062~~).
+        @summary Installs one or more HBR clients on specified instances.
+        
+        @description Before you call this operation, make sure that you fully understand the billing methods and pricing of Hybrid Backup Recovery (HBR). For more information, see [Billable items and billing methods](https://help.aliyun.com/document_detail/89062.html).
         
         @param request: CreateClientsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -994,6 +1057,12 @@ class Client(OpenApiClient):
             query['AlertSetting'] = request.alert_setting
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.cross_account_role_name):
+            query['CrossAccountRoleName'] = request.cross_account_role_name
+        if not UtilClient.is_unset(request.cross_account_type):
+            query['CrossAccountType'] = request.cross_account_type
+        if not UtilClient.is_unset(request.cross_account_user_id):
+            query['CrossAccountUserId'] = request.cross_account_user_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.use_https):
@@ -1025,7 +1094,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CreateClientsResponse:
         """
-        Before you call this operation, make sure that you fully understand the billing methods and pricing of Hybrid Backup Recovery (HBR). For more information, see [Billable items and billing methods](~~89062~~).
+        @summary Installs one or more HBR clients on specified instances.
+        
+        @description Before you call this operation, make sure that you fully understand the billing methods and pricing of Hybrid Backup Recovery (HBR). For more information, see [Billable items and billing methods](https://help.aliyun.com/document_detail/89062.html).
         
         @param request: CreateClientsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1037,6 +1108,12 @@ class Client(OpenApiClient):
             query['AlertSetting'] = request.alert_setting
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.cross_account_role_name):
+            query['CrossAccountRoleName'] = request.cross_account_role_name
+        if not UtilClient.is_unset(request.cross_account_type):
+            query['CrossAccountType'] = request.cross_account_type
+        if not UtilClient.is_unset(request.cross_account_user_id):
+            query['CrossAccountUserId'] = request.cross_account_user_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.use_https):
@@ -1067,7 +1144,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CreateClientsRequest,
     ) -> hbr_20170908_models.CreateClientsResponse:
         """
-        Before you call this operation, make sure that you fully understand the billing methods and pricing of Hybrid Backup Recovery (HBR). For more information, see [Billable items and billing methods](~~89062~~).
+        @summary Installs one or more HBR clients on specified instances.
+        
+        @description Before you call this operation, make sure that you fully understand the billing methods and pricing of Hybrid Backup Recovery (HBR). For more information, see [Billable items and billing methods](https://help.aliyun.com/document_detail/89062.html).
         
         @param request: CreateClientsRequest
         @return: CreateClientsResponse
@@ -1080,7 +1159,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CreateClientsRequest,
     ) -> hbr_20170908_models.CreateClientsResponse:
         """
-        Before you call this operation, make sure that you fully understand the billing methods and pricing of Hybrid Backup Recovery (HBR). For more information, see [Billable items and billing methods](~~89062~~).
+        @summary Installs one or more HBR clients on specified instances.
+        
+        @description Before you call this operation, make sure that you fully understand the billing methods and pricing of Hybrid Backup Recovery (HBR). For more information, see [Billable items and billing methods](https://help.aliyun.com/document_detail/89062.html).
         
         @param request: CreateClientsRequest
         @return: CreateClientsResponse
@@ -1094,10 +1175,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CreateHanaBackupPlanResponse:
         """
-        A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
-        *   You can specify only one type of data source in a backup plan.
-        *   You can specify only one interval as a backup cycle in a backup plan.
-        *   Each backup plan allows you to back up data to only one backup vault.
+        @summary Creates a backup plan for an SAP HANA instance.
+        
+        @description    A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+        You can specify only one type of data source in a backup plan.
+        You can specify only one interval as a backup cycle in a backup plan.
+        Each backup plan allows you to back up data to only one backup vault.
         
         @param request: CreateHanaBackupPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1146,10 +1229,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CreateHanaBackupPlanResponse:
         """
-        A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
-        *   You can specify only one type of data source in a backup plan.
-        *   You can specify only one interval as a backup cycle in a backup plan.
-        *   Each backup plan allows you to back up data to only one backup vault.
+        @summary Creates a backup plan for an SAP HANA instance.
+        
+        @description    A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+        You can specify only one type of data source in a backup plan.
+        You can specify only one interval as a backup cycle in a backup plan.
+        Each backup plan allows you to back up data to only one backup vault.
         
         @param request: CreateHanaBackupPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1197,10 +1282,12 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CreateHanaBackupPlanRequest,
     ) -> hbr_20170908_models.CreateHanaBackupPlanResponse:
         """
-        A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
-        *   You can specify only one type of data source in a backup plan.
-        *   You can specify only one interval as a backup cycle in a backup plan.
-        *   Each backup plan allows you to back up data to only one backup vault.
+        @summary Creates a backup plan for an SAP HANA instance.
+        
+        @description    A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+        You can specify only one type of data source in a backup plan.
+        You can specify only one interval as a backup cycle in a backup plan.
+        Each backup plan allows you to back up data to only one backup vault.
         
         @param request: CreateHanaBackupPlanRequest
         @return: CreateHanaBackupPlanResponse
@@ -1213,10 +1300,12 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CreateHanaBackupPlanRequest,
     ) -> hbr_20170908_models.CreateHanaBackupPlanResponse:
         """
-        A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
-        *   You can specify only one type of data source in a backup plan.
-        *   You can specify only one interval as a backup cycle in a backup plan.
-        *   Each backup plan allows you to back up data to only one backup vault.
+        @summary Creates a backup plan for an SAP HANA instance.
+        
+        @description    A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+        You can specify only one type of data source in a backup plan.
+        You can specify only one interval as a backup cycle in a backup plan.
+        Each backup plan allows you to back up data to only one backup vault.
         
         @param request: CreateHanaBackupPlanRequest
         @return: CreateHanaBackupPlanResponse
@@ -1230,7 +1319,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CreateHanaInstanceResponse:
         """
-        To register an SAP HANA instance, you must configure the connection parameters of the SAP HANA instance. After the SAP HANA instance is registered, HBR installs an HBR client on the ECS instance that hosts the SAP HANA instance.
+        @summary Registers an SAP HANA instance.
+        
+        @description To register an SAP HANA instance, you must configure the connection parameters of the SAP HANA instance. After the SAP HANA instance is registered, Cloud Backup installs a Cloud Backup client on the Elastic Compute Service (ECS) instance that hosts the SAP HANA instance.
         
         @param request: CreateHanaInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1240,6 +1331,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.alert_setting):
             query['AlertSetting'] = request.alert_setting
+        if not UtilClient.is_unset(request.cross_account_role_name):
+            query['CrossAccountRoleName'] = request.cross_account_role_name
+        if not UtilClient.is_unset(request.cross_account_type):
+            query['CrossAccountType'] = request.cross_account_type
+        if not UtilClient.is_unset(request.cross_account_user_id):
+            query['CrossAccountUserId'] = request.cross_account_user_id
         if not UtilClient.is_unset(request.ecs_instance_id):
             query['EcsInstanceId'] = request.ecs_instance_id
         if not UtilClient.is_unset(request.hana_name):
@@ -1287,7 +1384,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CreateHanaInstanceResponse:
         """
-        To register an SAP HANA instance, you must configure the connection parameters of the SAP HANA instance. After the SAP HANA instance is registered, HBR installs an HBR client on the ECS instance that hosts the SAP HANA instance.
+        @summary Registers an SAP HANA instance.
+        
+        @description To register an SAP HANA instance, you must configure the connection parameters of the SAP HANA instance. After the SAP HANA instance is registered, Cloud Backup installs a Cloud Backup client on the Elastic Compute Service (ECS) instance that hosts the SAP HANA instance.
         
         @param request: CreateHanaInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1297,6 +1396,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.alert_setting):
             query['AlertSetting'] = request.alert_setting
+        if not UtilClient.is_unset(request.cross_account_role_name):
+            query['CrossAccountRoleName'] = request.cross_account_role_name
+        if not UtilClient.is_unset(request.cross_account_type):
+            query['CrossAccountType'] = request.cross_account_type
+        if not UtilClient.is_unset(request.cross_account_user_id):
+            query['CrossAccountUserId'] = request.cross_account_user_id
         if not UtilClient.is_unset(request.ecs_instance_id):
             query['EcsInstanceId'] = request.ecs_instance_id
         if not UtilClient.is_unset(request.hana_name):
@@ -1343,7 +1448,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CreateHanaInstanceRequest,
     ) -> hbr_20170908_models.CreateHanaInstanceResponse:
         """
-        To register an SAP HANA instance, you must configure the connection parameters of the SAP HANA instance. After the SAP HANA instance is registered, HBR installs an HBR client on the ECS instance that hosts the SAP HANA instance.
+        @summary Registers an SAP HANA instance.
+        
+        @description To register an SAP HANA instance, you must configure the connection parameters of the SAP HANA instance. After the SAP HANA instance is registered, Cloud Backup installs a Cloud Backup client on the Elastic Compute Service (ECS) instance that hosts the SAP HANA instance.
         
         @param request: CreateHanaInstanceRequest
         @return: CreateHanaInstanceResponse
@@ -1356,7 +1463,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CreateHanaInstanceRequest,
     ) -> hbr_20170908_models.CreateHanaInstanceResponse:
         """
-        To register an SAP HANA instance, you must configure the connection parameters of the SAP HANA instance. After the SAP HANA instance is registered, HBR installs an HBR client on the ECS instance that hosts the SAP HANA instance.
+        @summary Registers an SAP HANA instance.
+        
+        @description To register an SAP HANA instance, you must configure the connection parameters of the SAP HANA instance. After the SAP HANA instance is registered, Cloud Backup installs a Cloud Backup client on the Elastic Compute Service (ECS) instance that hosts the SAP HANA instance.
         
         @param request: CreateHanaInstanceRequest
         @return: CreateHanaInstanceResponse
@@ -1370,7 +1479,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CreateHanaRestoreResponse:
         """
-        If you call this operation to restore a database, the database is restored to a specified state. Proceed with caution. For more information, see [Restore databases to an SAP HANA instance](~~101178~~).
+        @summary Creates a restore job for an SAP HANA database.
+        
+        @description If you call this operation to restore a database, the database is restored to a specified state. Proceed with caution. For more information, see [Restore databases to an SAP HANA instance](https://help.aliyun.com/document_detail/101178.html).
         
         @param request: CreateHanaRestoreRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1439,7 +1550,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CreateHanaRestoreResponse:
         """
-        If you call this operation to restore a database, the database is restored to a specified state. Proceed with caution. For more information, see [Restore databases to an SAP HANA instance](~~101178~~).
+        @summary Creates a restore job for an SAP HANA database.
+        
+        @description If you call this operation to restore a database, the database is restored to a specified state. Proceed with caution. For more information, see [Restore databases to an SAP HANA instance](https://help.aliyun.com/document_detail/101178.html).
         
         @param request: CreateHanaRestoreRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1507,7 +1620,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CreateHanaRestoreRequest,
     ) -> hbr_20170908_models.CreateHanaRestoreResponse:
         """
-        If you call this operation to restore a database, the database is restored to a specified state. Proceed with caution. For more information, see [Restore databases to an SAP HANA instance](~~101178~~).
+        @summary Creates a restore job for an SAP HANA database.
+        
+        @description If you call this operation to restore a database, the database is restored to a specified state. Proceed with caution. For more information, see [Restore databases to an SAP HANA instance](https://help.aliyun.com/document_detail/101178.html).
         
         @param request: CreateHanaRestoreRequest
         @return: CreateHanaRestoreResponse
@@ -1520,7 +1635,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CreateHanaRestoreRequest,
     ) -> hbr_20170908_models.CreateHanaRestoreResponse:
         """
-        If you call this operation to restore a database, the database is restored to a specified state. Proceed with caution. For more information, see [Restore databases to an SAP HANA instance](~~101178~~).
+        @summary Creates a restore job for an SAP HANA database.
+        
+        @description If you call this operation to restore a database, the database is restored to a specified state. Proceed with caution. For more information, see [Restore databases to an SAP HANA instance](https://help.aliyun.com/document_detail/101178.html).
         
         @param request: CreateHanaRestoreRequest
         @return: CreateHanaRestoreResponse
@@ -1534,8 +1651,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CreatePolicyBindingsResponse:
         """
-        You can bind data sources to only one policy in each request.
-        *   Elastic Compute Service (ECS) instances can be bound to only one policy.
+        @summary Binds one or more data sources to a backup policy.
+        
+        @description    You can bind data sources to only one policy in each request.
+        Elastic Compute Service (ECS) instances can be bound to only one policy.
         
         @param tmp_req: CreatePolicyBindingsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1578,8 +1697,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CreatePolicyBindingsResponse:
         """
-        You can bind data sources to only one policy in each request.
-        *   Elastic Compute Service (ECS) instances can be bound to only one policy.
+        @summary Binds one or more data sources to a backup policy.
+        
+        @description    You can bind data sources to only one policy in each request.
+        Elastic Compute Service (ECS) instances can be bound to only one policy.
         
         @param tmp_req: CreatePolicyBindingsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1621,8 +1742,10 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CreatePolicyBindingsRequest,
     ) -> hbr_20170908_models.CreatePolicyBindingsResponse:
         """
-        You can bind data sources to only one policy in each request.
-        *   Elastic Compute Service (ECS) instances can be bound to only one policy.
+        @summary Binds one or more data sources to a backup policy.
+        
+        @description    You can bind data sources to only one policy in each request.
+        Elastic Compute Service (ECS) instances can be bound to only one policy.
         
         @param request: CreatePolicyBindingsRequest
         @return: CreatePolicyBindingsResponse
@@ -1635,8 +1758,10 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CreatePolicyBindingsRequest,
     ) -> hbr_20170908_models.CreatePolicyBindingsResponse:
         """
-        You can bind data sources to only one policy in each request.
-        *   Elastic Compute Service (ECS) instances can be bound to only one policy.
+        @summary Binds one or more data sources to a backup policy.
+        
+        @description    You can bind data sources to only one policy in each request.
+        Elastic Compute Service (ECS) instances can be bound to only one policy.
         
         @param request: CreatePolicyBindingsRequest
         @return: CreatePolicyBindingsResponse
@@ -1650,10 +1775,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CreatePolicyV2Response:
         """
-        A backup policy records the information required for backup. After you execute a backup policy, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
-        *   A backup policy supports multiple data sources. The data sources can be only Elastic Compute Service (ECS) instances.
-        *   You can specify only one interval as a backup cycle in a backup policy.
-        *   Each backup policy allows you to back up data to only one backup vault.
+        @summary Creates a backup policy.
+        
+        @description A backup policy records the information required for backup. After you execute a backup policy, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+        A backup policy supports multiple data sources. The data sources can be only Elastic Compute Service (ECS) instances.
+        You can specify only one interval as a backup cycle in a backup policy.
+        Each backup policy allows you to back up data to only one backup vault.
         
         @param tmp_req: CreatePolicyV2Request
         @param runtime: runtime options for this request RuntimeOptions
@@ -1669,6 +1796,8 @@ class Client(OpenApiClient):
             body['PolicyDescription'] = request.policy_description
         if not UtilClient.is_unset(request.policy_name):
             body['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_type):
+            body['PolicyType'] = request.policy_type
         if not UtilClient.is_unset(request.rules_shrink):
             body['Rules'] = request.rules_shrink
         req = open_api_models.OpenApiRequest(
@@ -1696,10 +1825,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CreatePolicyV2Response:
         """
-        A backup policy records the information required for backup. After you execute a backup policy, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
-        *   A backup policy supports multiple data sources. The data sources can be only Elastic Compute Service (ECS) instances.
-        *   You can specify only one interval as a backup cycle in a backup policy.
-        *   Each backup policy allows you to back up data to only one backup vault.
+        @summary Creates a backup policy.
+        
+        @description A backup policy records the information required for backup. After you execute a backup policy, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+        A backup policy supports multiple data sources. The data sources can be only Elastic Compute Service (ECS) instances.
+        You can specify only one interval as a backup cycle in a backup policy.
+        Each backup policy allows you to back up data to only one backup vault.
         
         @param tmp_req: CreatePolicyV2Request
         @param runtime: runtime options for this request RuntimeOptions
@@ -1715,6 +1846,8 @@ class Client(OpenApiClient):
             body['PolicyDescription'] = request.policy_description
         if not UtilClient.is_unset(request.policy_name):
             body['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_type):
+            body['PolicyType'] = request.policy_type
         if not UtilClient.is_unset(request.rules_shrink):
             body['Rules'] = request.rules_shrink
         req = open_api_models.OpenApiRequest(
@@ -1741,10 +1874,12 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CreatePolicyV2Request,
     ) -> hbr_20170908_models.CreatePolicyV2Response:
         """
-        A backup policy records the information required for backup. After you execute a backup policy, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
-        *   A backup policy supports multiple data sources. The data sources can be only Elastic Compute Service (ECS) instances.
-        *   You can specify only one interval as a backup cycle in a backup policy.
-        *   Each backup policy allows you to back up data to only one backup vault.
+        @summary Creates a backup policy.
+        
+        @description A backup policy records the information required for backup. After you execute a backup policy, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+        A backup policy supports multiple data sources. The data sources can be only Elastic Compute Service (ECS) instances.
+        You can specify only one interval as a backup cycle in a backup policy.
+        Each backup policy allows you to back up data to only one backup vault.
         
         @param request: CreatePolicyV2Request
         @return: CreatePolicyV2Response
@@ -1757,10 +1892,12 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CreatePolicyV2Request,
     ) -> hbr_20170908_models.CreatePolicyV2Response:
         """
-        A backup policy records the information required for backup. After you execute a backup policy, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
-        *   A backup policy supports multiple data sources. The data sources can be only Elastic Compute Service (ECS) instances.
-        *   You can specify only one interval as a backup cycle in a backup policy.
-        *   Each backup policy allows you to back up data to only one backup vault.
+        @summary Creates a backup policy.
+        
+        @description A backup policy records the information required for backup. After you execute a backup policy, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+        A backup policy supports multiple data sources. The data sources can be only Elastic Compute Service (ECS) instances.
+        You can specify only one interval as a backup cycle in a backup policy.
+        Each backup policy allows you to back up data to only one backup vault.
         
         @param request: CreatePolicyV2Request
         @return: CreatePolicyV2Response
@@ -1774,7 +1911,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CreateReplicationVaultResponse:
         """
-        After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state.
+        @summary Creates a mirror vault.
+        
+        @description After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state.
         
         @param request: CreateReplicationVaultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1784,6 +1923,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.encrypt_type):
+            query['EncryptType'] = request.encrypt_type
+        if not UtilClient.is_unset(request.kms_key_id):
+            query['KmsKeyId'] = request.kms_key_id
         if not UtilClient.is_unset(request.redundancy_type):
             query['RedundancyType'] = request.redundancy_type
         if not UtilClient.is_unset(request.replication_source_region_id):
@@ -1821,7 +1964,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CreateReplicationVaultResponse:
         """
-        After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state.
+        @summary Creates a mirror vault.
+        
+        @description After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state.
         
         @param request: CreateReplicationVaultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1831,6 +1976,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.encrypt_type):
+            query['EncryptType'] = request.encrypt_type
+        if not UtilClient.is_unset(request.kms_key_id):
+            query['KmsKeyId'] = request.kms_key_id
         if not UtilClient.is_unset(request.redundancy_type):
             query['RedundancyType'] = request.redundancy_type
         if not UtilClient.is_unset(request.replication_source_region_id):
@@ -1867,7 +2016,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CreateReplicationVaultRequest,
     ) -> hbr_20170908_models.CreateReplicationVaultResponse:
         """
-        After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state.
+        @summary Creates a mirror vault.
+        
+        @description After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state.
         
         @param request: CreateReplicationVaultRequest
         @return: CreateReplicationVaultResponse
@@ -1880,7 +2031,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CreateReplicationVaultRequest,
     ) -> hbr_20170908_models.CreateReplicationVaultResponse:
         """
-        After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state.
+        @summary Creates a mirror vault.
+        
+        @description After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state.
         
         @param request: CreateReplicationVaultRequest
         @return: CreateReplicationVaultResponse
@@ -1894,8 +2047,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CreateRestoreJobResponse:
         """
-        You must create a restore job based on the specified backup snapshot and restore destination.
-        *   The type of the data source from which you restore data must be the same as the type of the restore destination.
+        @summary Creates a restore job.
+        
+        @description    You must create a restore job based on the specified backup snapshot and restore destination.
+        The type of the data source from which you restore data must be the same as the type of the restore destination.
         
         @param tmp_req: CreateRestoreJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1992,8 +2147,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CreateRestoreJobResponse:
         """
-        You must create a restore job based on the specified backup snapshot and restore destination.
-        *   The type of the data source from which you restore data must be the same as the type of the restore destination.
+        @summary Creates a restore job.
+        
+        @description    You must create a restore job based on the specified backup snapshot and restore destination.
+        The type of the data source from which you restore data must be the same as the type of the restore destination.
         
         @param tmp_req: CreateRestoreJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2089,8 +2246,10 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CreateRestoreJobRequest,
     ) -> hbr_20170908_models.CreateRestoreJobResponse:
         """
-        You must create a restore job based on the specified backup snapshot and restore destination.
-        *   The type of the data source from which you restore data must be the same as the type of the restore destination.
+        @summary Creates a restore job.
+        
+        @description    You must create a restore job based on the specified backup snapshot and restore destination.
+        The type of the data source from which you restore data must be the same as the type of the restore destination.
         
         @param request: CreateRestoreJobRequest
         @return: CreateRestoreJobResponse
@@ -2103,8 +2262,10 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CreateRestoreJobRequest,
     ) -> hbr_20170908_models.CreateRestoreJobResponse:
         """
-        You must create a restore job based on the specified backup snapshot and restore destination.
-        *   The type of the data source from which you restore data must be the same as the type of the restore destination.
+        @summary Creates a restore job.
+        
+        @description    You must create a restore job based on the specified backup snapshot and restore destination.
+        The type of the data source from which you restore data must be the same as the type of the restore destination.
         
         @param request: CreateRestoreJobRequest
         @return: CreateRestoreJobResponse
@@ -2118,7 +2279,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CreateTempFileUploadUrlResponse:
         """
-        1.  You can directly upload a file to Object Storage Service (OSS) by using a form based on the returned value of this operation.
+        @summary Generates the parameters and signature required for a file upload URL.
+        
+        @description 1.  You can directly upload a file to Object Storage Service (OSS) by using a form based on the returned value of this operation.
         2.  For more information about how to upload a file to OSS by using a form, see OSS documentation.
         3.  The system periodically deletes files that are uploaded to OSS.
         
@@ -2155,7 +2318,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CreateTempFileUploadUrlResponse:
         """
-        1.  You can directly upload a file to Object Storage Service (OSS) by using a form based on the returned value of this operation.
+        @summary Generates the parameters and signature required for a file upload URL.
+        
+        @description 1.  You can directly upload a file to Object Storage Service (OSS) by using a form based on the returned value of this operation.
         2.  For more information about how to upload a file to OSS by using a form, see OSS documentation.
         3.  The system periodically deletes files that are uploaded to OSS.
         
@@ -2191,7 +2356,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CreateTempFileUploadUrlRequest,
     ) -> hbr_20170908_models.CreateTempFileUploadUrlResponse:
         """
-        1.  You can directly upload a file to Object Storage Service (OSS) by using a form based on the returned value of this operation.
+        @summary Generates the parameters and signature required for a file upload URL.
+        
+        @description 1.  You can directly upload a file to Object Storage Service (OSS) by using a form based on the returned value of this operation.
         2.  For more information about how to upload a file to OSS by using a form, see OSS documentation.
         3.  The system periodically deletes files that are uploaded to OSS.
         
@@ -2206,7 +2373,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CreateTempFileUploadUrlRequest,
     ) -> hbr_20170908_models.CreateTempFileUploadUrlResponse:
         """
-        1.  You can directly upload a file to Object Storage Service (OSS) by using a form based on the returned value of this operation.
+        @summary Generates the parameters and signature required for a file upload URL.
+        
+        @description 1.  You can directly upload a file to Object Storage Service (OSS) by using a form based on the returned value of this operation.
         2.  For more information about how to upload a file to OSS by using a form, see OSS documentation.
         3.  The system periodically deletes files that are uploaded to OSS.
         
@@ -2222,8 +2391,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CreateVaultResponse:
         """
-        Each Alibaba Cloud account can create up to 100 backup vaults.
-        *   After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state. A backup job can use a backup vault to store backup data only if the backup vault is in the CREATED state.
+        @summary Creates a backup vault.
+        
+        @description    Each Alibaba Cloud account can create up to 100 backup vaults.
+        After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state. A backup job can use a backup vault to store backup data only if the backup vault is in the CREATED state.
+        *\
+        *Note** Before you call this operation, make sure that you fully understand the billing of Cloud Backup.
         
         @param request: CreateVaultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2270,8 +2443,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.CreateVaultResponse:
         """
-        Each Alibaba Cloud account can create up to 100 backup vaults.
-        *   After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state. A backup job can use a backup vault to store backup data only if the backup vault is in the CREATED state.
+        @summary Creates a backup vault.
+        
+        @description    Each Alibaba Cloud account can create up to 100 backup vaults.
+        After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state. A backup job can use a backup vault to store backup data only if the backup vault is in the CREATED state.
+        *\
+        *Note** Before you call this operation, make sure that you fully understand the billing of Cloud Backup.
         
         @param request: CreateVaultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2317,8 +2494,12 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CreateVaultRequest,
     ) -> hbr_20170908_models.CreateVaultResponse:
         """
-        Each Alibaba Cloud account can create up to 100 backup vaults.
-        *   After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state. A backup job can use a backup vault to store backup data only if the backup vault is in the CREATED state.
+        @summary Creates a backup vault.
+        
+        @description    Each Alibaba Cloud account can create up to 100 backup vaults.
+        After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state. A backup job can use a backup vault to store backup data only if the backup vault is in the CREATED state.
+        *\
+        *Note** Before you call this operation, make sure that you fully understand the billing of Cloud Backup.
         
         @param request: CreateVaultRequest
         @return: CreateVaultResponse
@@ -2331,8 +2512,12 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.CreateVaultRequest,
     ) -> hbr_20170908_models.CreateVaultResponse:
         """
-        Each Alibaba Cloud account can create up to 100 backup vaults.
-        *   After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state. A backup job can use a backup vault to store backup data only if the backup vault is in the CREATED state.
+        @summary Creates a backup vault.
+        
+        @description    Each Alibaba Cloud account can create up to 100 backup vaults.
+        After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state. A backup job can use a backup vault to store backup data only if the backup vault is in the CREATED state.
+        *\
+        *Note** Before you call this operation, make sure that you fully understand the billing of Cloud Backup.
         
         @param request: CreateVaultRequest
         @return: CreateVaultResponse
@@ -2346,11 +2531,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DeleteBackupClientResponse:
         """
-        You cannot delete an active backup client from which a heartbeat packet is received within the previous hour. After you call the UninstallBackupClients operation to uninstall a backup client, the status of the backup client changes to inactive.
-        *   This operation deletes the resources that are related to the backup client. The following resources are included:
-        *   Backup plans
-        *   Backup jobs
-        *   Backup files
+        @summary Deletes a Cloud Backup client.
+        
+        @description    You cannot delete the active Cloud Backup clients that receive heartbeat packets within 1 hour. You can call the UninstallBackupClients operation to uninstall a Cloud Backup client. Then, the client becomes inactive.
+        When you perform this operation, resources that are associated with the client are also deleted, including:
+        Backup plans
+        Backup jobs
+        Snapshots
         
         @param request: DeleteBackupClientRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2385,11 +2572,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DeleteBackupClientResponse:
         """
-        You cannot delete an active backup client from which a heartbeat packet is received within the previous hour. After you call the UninstallBackupClients operation to uninstall a backup client, the status of the backup client changes to inactive.
-        *   This operation deletes the resources that are related to the backup client. The following resources are included:
-        *   Backup plans
-        *   Backup jobs
-        *   Backup files
+        @summary Deletes a Cloud Backup client.
+        
+        @description    You cannot delete the active Cloud Backup clients that receive heartbeat packets within 1 hour. You can call the UninstallBackupClients operation to uninstall a Cloud Backup client. Then, the client becomes inactive.
+        When you perform this operation, resources that are associated with the client are also deleted, including:
+        Backup plans
+        Backup jobs
+        Snapshots
         
         @param request: DeleteBackupClientRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2423,11 +2612,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DeleteBackupClientRequest,
     ) -> hbr_20170908_models.DeleteBackupClientResponse:
         """
-        You cannot delete an active backup client from which a heartbeat packet is received within the previous hour. After you call the UninstallBackupClients operation to uninstall a backup client, the status of the backup client changes to inactive.
-        *   This operation deletes the resources that are related to the backup client. The following resources are included:
-        *   Backup plans
-        *   Backup jobs
-        *   Backup files
+        @summary Deletes a Cloud Backup client.
+        
+        @description    You cannot delete the active Cloud Backup clients that receive heartbeat packets within 1 hour. You can call the UninstallBackupClients operation to uninstall a Cloud Backup client. Then, the client becomes inactive.
+        When you perform this operation, resources that are associated with the client are also deleted, including:
+        Backup plans
+        Backup jobs
+        Snapshots
         
         @param request: DeleteBackupClientRequest
         @return: DeleteBackupClientResponse
@@ -2440,11 +2631,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DeleteBackupClientRequest,
     ) -> hbr_20170908_models.DeleteBackupClientResponse:
         """
-        You cannot delete an active backup client from which a heartbeat packet is received within the previous hour. After you call the UninstallBackupClients operation to uninstall a backup client, the status of the backup client changes to inactive.
-        *   This operation deletes the resources that are related to the backup client. The following resources are included:
-        *   Backup plans
-        *   Backup jobs
-        *   Backup files
+        @summary Deletes a Cloud Backup client.
+        
+        @description    You cannot delete the active Cloud Backup clients that receive heartbeat packets within 1 hour. You can call the UninstallBackupClients operation to uninstall a Cloud Backup client. Then, the client becomes inactive.
+        When you perform this operation, resources that are associated with the client are also deleted, including:
+        Backup plans
+        Backup jobs
+        Snapshots
         
         @param request: DeleteBackupClientRequest
         @return: DeleteBackupClientResponse
@@ -2458,7 +2651,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DeleteBackupClientResourceResponse:
         """
-        This operation deletes only the resources that are related to HBR clients. The resources include backup plans, backup jobs, and backup snapshots. The operation does not delete HBR clients.
+        @summary Deletes the resources that are related to one or more HBR clients.
+        
+        @description This operation deletes only the resources that are related to HBR clients. The resources include backup plans, backup jobs, and backup snapshots. The operation does not delete HBR clients.
         
         @param tmp_req: DeleteBackupClientResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2497,7 +2692,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DeleteBackupClientResourceResponse:
         """
-        This operation deletes only the resources that are related to HBR clients. The resources include backup plans, backup jobs, and backup snapshots. The operation does not delete HBR clients.
+        @summary Deletes the resources that are related to one or more HBR clients.
+        
+        @description This operation deletes only the resources that are related to HBR clients. The resources include backup plans, backup jobs, and backup snapshots. The operation does not delete HBR clients.
         
         @param tmp_req: DeleteBackupClientResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2535,7 +2732,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DeleteBackupClientResourceRequest,
     ) -> hbr_20170908_models.DeleteBackupClientResourceResponse:
         """
-        This operation deletes only the resources that are related to HBR clients. The resources include backup plans, backup jobs, and backup snapshots. The operation does not delete HBR clients.
+        @summary Deletes the resources that are related to one or more HBR clients.
+        
+        @description This operation deletes only the resources that are related to HBR clients. The resources include backup plans, backup jobs, and backup snapshots. The operation does not delete HBR clients.
         
         @param request: DeleteBackupClientResourceRequest
         @return: DeleteBackupClientResourceResponse
@@ -2548,7 +2747,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DeleteBackupClientResourceRequest,
     ) -> hbr_20170908_models.DeleteBackupClientResourceResponse:
         """
-        This operation deletes only the resources that are related to HBR clients. The resources include backup plans, backup jobs, and backup snapshots. The operation does not delete HBR clients.
+        @summary Deletes the resources that are related to one or more HBR clients.
+        
+        @description This operation deletes only the resources that are related to HBR clients. The resources include backup plans, backup jobs, and backup snapshots. The operation does not delete HBR clients.
         
         @param request: DeleteBackupClientResourceRequest
         @return: DeleteBackupClientResourceResponse
@@ -2562,8 +2763,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DeleteBackupPlanResponse:
         """
-        If you delete a backup plan, the backup jobs are also deleted.
-        *   If you delete a backup plan, the created snapshot files are not deleted.
+        @summary Deletes a backup plan.
+        
+        @description    If you delete a backup plan, the backup jobs are also deleted.
+        If you delete a backup plan, the created snapshot files are not deleted.
         
         @param request: DeleteBackupPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2604,8 +2807,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DeleteBackupPlanResponse:
         """
-        If you delete a backup plan, the backup jobs are also deleted.
-        *   If you delete a backup plan, the created snapshot files are not deleted.
+        @summary Deletes a backup plan.
+        
+        @description    If you delete a backup plan, the backup jobs are also deleted.
+        If you delete a backup plan, the created snapshot files are not deleted.
         
         @param request: DeleteBackupPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2645,8 +2850,10 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DeleteBackupPlanRequest,
     ) -> hbr_20170908_models.DeleteBackupPlanResponse:
         """
-        If you delete a backup plan, the backup jobs are also deleted.
-        *   If you delete a backup plan, the created snapshot files are not deleted.
+        @summary Deletes a backup plan.
+        
+        @description    If you delete a backup plan, the backup jobs are also deleted.
+        If you delete a backup plan, the created snapshot files are not deleted.
         
         @param request: DeleteBackupPlanRequest
         @return: DeleteBackupPlanResponse
@@ -2659,8 +2866,10 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DeleteBackupPlanRequest,
     ) -> hbr_20170908_models.DeleteBackupPlanResponse:
         """
-        If you delete a backup plan, the backup jobs are also deleted.
-        *   If you delete a backup plan, the created snapshot files are not deleted.
+        @summary Deletes a backup plan.
+        
+        @description    If you delete a backup plan, the backup jobs are also deleted.
+        If you delete a backup plan, the created snapshot files are not deleted.
         
         @param request: DeleteBackupPlanRequest
         @return: DeleteBackupPlanResponse
@@ -2673,6 +2882,11 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DeleteClientRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DeleteClientResponse:
+        """
+        @param request: DeleteClientRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteClientResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -2705,6 +2919,11 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DeleteClientRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DeleteClientResponse:
+        """
+        @param request: DeleteClientRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteClientResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -2736,6 +2955,10 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DeleteClientRequest,
     ) -> hbr_20170908_models.DeleteClientResponse:
+        """
+        @param request: DeleteClientRequest
+        @return: DeleteClientResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_client_with_options(request, runtime)
 
@@ -2743,6 +2966,10 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DeleteClientRequest,
     ) -> hbr_20170908_models.DeleteClientResponse:
+        """
+        @param request: DeleteClientRequest
+        @return: DeleteClientResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_client_with_options_async(request, runtime)
 
@@ -2751,6 +2978,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DeleteHanaBackupPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DeleteHanaBackupPlanResponse:
+        """
+        @summary Deletes an SAP HANA backup plan.
+        
+        @param request: DeleteHanaBackupPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHanaBackupPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -2785,6 +3019,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DeleteHanaBackupPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DeleteHanaBackupPlanResponse:
+        """
+        @summary Deletes an SAP HANA backup plan.
+        
+        @param request: DeleteHanaBackupPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHanaBackupPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -2818,6 +3059,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DeleteHanaBackupPlanRequest,
     ) -> hbr_20170908_models.DeleteHanaBackupPlanResponse:
+        """
+        @summary Deletes an SAP HANA backup plan.
+        
+        @param request: DeleteHanaBackupPlanRequest
+        @return: DeleteHanaBackupPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_hana_backup_plan_with_options(request, runtime)
 
@@ -2825,6 +3072,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DeleteHanaBackupPlanRequest,
     ) -> hbr_20170908_models.DeleteHanaBackupPlanResponse:
+        """
+        @summary Deletes an SAP HANA backup plan.
+        
+        @param request: DeleteHanaBackupPlanRequest
+        @return: DeleteHanaBackupPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_hana_backup_plan_with_options_async(request, runtime)
 
@@ -2834,7 +3087,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DeleteHanaInstanceResponse:
         """
-        If you delete an SAP HANA instance, the existing backup data is also deleted and the running backup and restore jobs fail to be completed. Before you delete the SAP HANA instance, make sure that you no longer need the data in the HBR client of the instance and no backup or restore jobs are running for the instance. To delete an SAP HANA instance, you must specify the security identifier (SID) of the instance. The SID is three characters in length and starts with a letter. For more information, see [How to find sid user and instance number of HANA db?](https://answers.sap.com/questions/555192/how-to-find-sid-user-and-instance-number-of-hana-d.html?)
+        @summary Deletes an SAP HANA instance.
+        
+        @description If you delete an SAP HANA instance, the existing backup data is also deleted and the running backup and restore jobs fail to be completed. Before you delete the SAP HANA instance, make sure that you no longer need the backup data of the instance and no backup or restore jobs are running for the instance. To delete an SAP HANA instance, you must specify the security identifier (SID) of the instance. The SID is three characters in length and starts with a letter. For more information, see [How to find sid user and instance number of HANA db?](https://answers.sap.com/questions/555192/how-to-find-sid-user-and-instance-number-of-hana-d.html?)
         
         @param request: DeleteHanaInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2875,7 +3130,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DeleteHanaInstanceResponse:
         """
-        If you delete an SAP HANA instance, the existing backup data is also deleted and the running backup and restore jobs fail to be completed. Before you delete the SAP HANA instance, make sure that you no longer need the data in the HBR client of the instance and no backup or restore jobs are running for the instance. To delete an SAP HANA instance, you must specify the security identifier (SID) of the instance. The SID is three characters in length and starts with a letter. For more information, see [How to find sid user and instance number of HANA db?](https://answers.sap.com/questions/555192/how-to-find-sid-user-and-instance-number-of-hana-d.html?)
+        @summary Deletes an SAP HANA instance.
+        
+        @description If you delete an SAP HANA instance, the existing backup data is also deleted and the running backup and restore jobs fail to be completed. Before you delete the SAP HANA instance, make sure that you no longer need the backup data of the instance and no backup or restore jobs are running for the instance. To delete an SAP HANA instance, you must specify the security identifier (SID) of the instance. The SID is three characters in length and starts with a letter. For more information, see [How to find sid user and instance number of HANA db?](https://answers.sap.com/questions/555192/how-to-find-sid-user-and-instance-number-of-hana-d.html?)
         
         @param request: DeleteHanaInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2915,7 +3172,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DeleteHanaInstanceRequest,
     ) -> hbr_20170908_models.DeleteHanaInstanceResponse:
         """
-        If you delete an SAP HANA instance, the existing backup data is also deleted and the running backup and restore jobs fail to be completed. Before you delete the SAP HANA instance, make sure that you no longer need the data in the HBR client of the instance and no backup or restore jobs are running for the instance. To delete an SAP HANA instance, you must specify the security identifier (SID) of the instance. The SID is three characters in length and starts with a letter. For more information, see [How to find sid user and instance number of HANA db?](https://answers.sap.com/questions/555192/how-to-find-sid-user-and-instance-number-of-hana-d.html?)
+        @summary Deletes an SAP HANA instance.
+        
+        @description If you delete an SAP HANA instance, the existing backup data is also deleted and the running backup and restore jobs fail to be completed. Before you delete the SAP HANA instance, make sure that you no longer need the backup data of the instance and no backup or restore jobs are running for the instance. To delete an SAP HANA instance, you must specify the security identifier (SID) of the instance. The SID is three characters in length and starts with a letter. For more information, see [How to find sid user and instance number of HANA db?](https://answers.sap.com/questions/555192/how-to-find-sid-user-and-instance-number-of-hana-d.html?)
         
         @param request: DeleteHanaInstanceRequest
         @return: DeleteHanaInstanceResponse
@@ -2928,7 +3187,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DeleteHanaInstanceRequest,
     ) -> hbr_20170908_models.DeleteHanaInstanceResponse:
         """
-        If you delete an SAP HANA instance, the existing backup data is also deleted and the running backup and restore jobs fail to be completed. Before you delete the SAP HANA instance, make sure that you no longer need the data in the HBR client of the instance and no backup or restore jobs are running for the instance. To delete an SAP HANA instance, you must specify the security identifier (SID) of the instance. The SID is three characters in length and starts with a letter. For more information, see [How to find sid user and instance number of HANA db?](https://answers.sap.com/questions/555192/how-to-find-sid-user-and-instance-number-of-hana-d.html?)
+        @summary Deletes an SAP HANA instance.
+        
+        @description If you delete an SAP HANA instance, the existing backup data is also deleted and the running backup and restore jobs fail to be completed. Before you delete the SAP HANA instance, make sure that you no longer need the backup data of the instance and no backup or restore jobs are running for the instance. To delete an SAP HANA instance, you must specify the security identifier (SID) of the instance. The SID is three characters in length and starts with a letter. For more information, see [How to find sid user and instance number of HANA db?](https://answers.sap.com/questions/555192/how-to-find-sid-user-and-instance-number-of-hana-d.html?)
         
         @param request: DeleteHanaInstanceRequest
         @return: DeleteHanaInstanceResponse
@@ -2941,6 +3202,13 @@ class Client(OpenApiClient):
         tmp_req: hbr_20170908_models.DeletePolicyBindingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DeletePolicyBindingResponse:
+        """
+        @summary Disassociates one or more data sources from a backup policy. After you disassociate the data sources from the backup policy, the backup policy no longer protects the data sources. Proceed with caution.
+        
+        @param tmp_req: DeletePolicyBindingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePolicyBindingResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = hbr_20170908_models.DeletePolicyBindingShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2979,6 +3247,13 @@ class Client(OpenApiClient):
         tmp_req: hbr_20170908_models.DeletePolicyBindingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DeletePolicyBindingResponse:
+        """
+        @summary Disassociates one or more data sources from a backup policy. After you disassociate the data sources from the backup policy, the backup policy no longer protects the data sources. Proceed with caution.
+        
+        @param tmp_req: DeletePolicyBindingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePolicyBindingResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = hbr_20170908_models.DeletePolicyBindingShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3016,6 +3291,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DeletePolicyBindingRequest,
     ) -> hbr_20170908_models.DeletePolicyBindingResponse:
+        """
+        @summary Disassociates one or more data sources from a backup policy. After you disassociate the data sources from the backup policy, the backup policy no longer protects the data sources. Proceed with caution.
+        
+        @param request: DeletePolicyBindingRequest
+        @return: DeletePolicyBindingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_policy_binding_with_options(request, runtime)
 
@@ -3023,6 +3304,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DeletePolicyBindingRequest,
     ) -> hbr_20170908_models.DeletePolicyBindingResponse:
+        """
+        @summary Disassociates one or more data sources from a backup policy. After you disassociate the data sources from the backup policy, the backup policy no longer protects the data sources. Proceed with caution.
+        
+        @param request: DeletePolicyBindingRequest
+        @return: DeletePolicyBindingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_policy_binding_with_options_async(request, runtime)
 
@@ -3032,7 +3319,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DeletePolicyV2Response:
         """
-        If you delete a backup policy, the backup policy is disassociated with all data sources. Proceed with caution.
+        @summary Deletes a backup policy.
+        
+        @description If you delete a backup policy, the backup policy is disassociated with all data sources. Proceed with caution.
         
         @param request: DeletePolicyV2Request
         @param runtime: runtime options for this request RuntimeOptions
@@ -3067,7 +3356,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DeletePolicyV2Response:
         """
-        If you delete a backup policy, the backup policy is disassociated with all data sources. Proceed with caution.
+        @summary Deletes a backup policy.
+        
+        @description If you delete a backup policy, the backup policy is disassociated with all data sources. Proceed with caution.
         
         @param request: DeletePolicyV2Request
         @param runtime: runtime options for this request RuntimeOptions
@@ -3101,7 +3392,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DeletePolicyV2Request,
     ) -> hbr_20170908_models.DeletePolicyV2Response:
         """
-        If you delete a backup policy, the backup policy is disassociated with all data sources. Proceed with caution.
+        @summary Deletes a backup policy.
+        
+        @description If you delete a backup policy, the backup policy is disassociated with all data sources. Proceed with caution.
         
         @param request: DeletePolicyV2Request
         @return: DeletePolicyV2Response
@@ -3114,7 +3407,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DeletePolicyV2Request,
     ) -> hbr_20170908_models.DeletePolicyV2Response:
         """
-        If you delete a backup policy, the backup policy is disassociated with all data sources. Proceed with caution.
+        @summary Deletes a backup policy.
+        
+        @description If you delete a backup policy, the backup policy is disassociated with all data sources. Proceed with caution.
         
         @param request: DeletePolicyV2Request
         @return: DeletePolicyV2Response
@@ -3128,7 +3423,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DeleteSnapshotResponse:
         """
-        If you delete the most recent backup file for a data source, you must set the `Force parameter to true`. Otherwise, an error occurs.
+        @summary Deletes a backup snapshot.
+        
+        @description If you delete the most recent backup snapshot for a data source, you must set the Force parameter to `true`. Otherwise, an error occurs.
         
         @param request: DeleteSnapshotRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3175,7 +3472,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DeleteSnapshotResponse:
         """
-        If you delete the most recent backup file for a data source, you must set the `Force parameter to true`. Otherwise, an error occurs.
+        @summary Deletes a backup snapshot.
+        
+        @description If you delete the most recent backup snapshot for a data source, you must set the Force parameter to `true`. Otherwise, an error occurs.
         
         @param request: DeleteSnapshotRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3221,7 +3520,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DeleteSnapshotRequest,
     ) -> hbr_20170908_models.DeleteSnapshotResponse:
         """
-        If you delete the most recent backup file for a data source, you must set the `Force parameter to true`. Otherwise, an error occurs.
+        @summary Deletes a backup snapshot.
+        
+        @description If you delete the most recent backup snapshot for a data source, you must set the Force parameter to `true`. Otherwise, an error occurs.
         
         @param request: DeleteSnapshotRequest
         @return: DeleteSnapshotResponse
@@ -3234,7 +3535,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DeleteSnapshotRequest,
     ) -> hbr_20170908_models.DeleteSnapshotResponse:
         """
-        If you delete the most recent backup file for a data source, you must set the `Force parameter to true`. Otherwise, an error occurs.
+        @summary Deletes a backup snapshot.
+        
+        @description If you delete the most recent backup snapshot for a data source, you must set the Force parameter to `true`. Otherwise, an error occurs.
         
         @param request: DeleteSnapshotRequest
         @return: DeleteSnapshotResponse
@@ -3242,14 +3545,208 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_snapshot_with_options_async(request, runtime)
 
+    def delete_udm_disk_with_options(
+        self,
+        request: hbr_20170908_models.DeleteUdmDiskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbr_20170908_models.DeleteUdmDiskResponse:
+        """
+        @summary 取消保护云盘
+        
+        @param request: DeleteUdmDiskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUdmDiskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.disk_id):
+            query['DiskId'] = request.disk_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteUdmDisk',
+            version='2017-09-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteUdmDiskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_udm_disk_with_options_async(
+        self,
+        request: hbr_20170908_models.DeleteUdmDiskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbr_20170908_models.DeleteUdmDiskResponse:
+        """
+        @summary 取消保护云盘
+        
+        @param request: DeleteUdmDiskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUdmDiskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.disk_id):
+            query['DiskId'] = request.disk_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteUdmDisk',
+            version='2017-09-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteUdmDiskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_udm_disk(
+        self,
+        request: hbr_20170908_models.DeleteUdmDiskRequest,
+    ) -> hbr_20170908_models.DeleteUdmDiskResponse:
+        """
+        @summary 取消保护云盘
+        
+        @param request: DeleteUdmDiskRequest
+        @return: DeleteUdmDiskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_udm_disk_with_options(request, runtime)
+
+    async def delete_udm_disk_async(
+        self,
+        request: hbr_20170908_models.DeleteUdmDiskRequest,
+    ) -> hbr_20170908_models.DeleteUdmDiskResponse:
+        """
+        @summary 取消保护云盘
+        
+        @param request: DeleteUdmDiskRequest
+        @return: DeleteUdmDiskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_udm_disk_with_options_async(request, runtime)
+
+    def delete_udm_ecs_instance_with_options(
+        self,
+        request: hbr_20170908_models.DeleteUdmEcsInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbr_20170908_models.DeleteUdmEcsInstanceResponse:
+        """
+        @summary Stops protection for Elastic Compute Service (ECS) instance backup.
+        
+        @param request: DeleteUdmEcsInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUdmEcsInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteUdmEcsInstance',
+            version='2017-09-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteUdmEcsInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_udm_ecs_instance_with_options_async(
+        self,
+        request: hbr_20170908_models.DeleteUdmEcsInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbr_20170908_models.DeleteUdmEcsInstanceResponse:
+        """
+        @summary Stops protection for Elastic Compute Service (ECS) instance backup.
+        
+        @param request: DeleteUdmEcsInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUdmEcsInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteUdmEcsInstance',
+            version='2017-09-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteUdmEcsInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_udm_ecs_instance(
+        self,
+        request: hbr_20170908_models.DeleteUdmEcsInstanceRequest,
+    ) -> hbr_20170908_models.DeleteUdmEcsInstanceResponse:
+        """
+        @summary Stops protection for Elastic Compute Service (ECS) instance backup.
+        
+        @param request: DeleteUdmEcsInstanceRequest
+        @return: DeleteUdmEcsInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_udm_ecs_instance_with_options(request, runtime)
+
+    async def delete_udm_ecs_instance_async(
+        self,
+        request: hbr_20170908_models.DeleteUdmEcsInstanceRequest,
+    ) -> hbr_20170908_models.DeleteUdmEcsInstanceResponse:
+        """
+        @summary Stops protection for Elastic Compute Service (ECS) instance backup.
+        
+        @param request: DeleteUdmEcsInstanceRequest
+        @return: DeleteUdmEcsInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_udm_ecs_instance_with_options_async(request, runtime)
+
     def delete_vault_with_options(
         self,
         request: hbr_20170908_models.DeleteVaultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DeleteVaultResponse:
         """
-        You cannot delete a backup vault within 2 hours after the backup vault is created or a backup vault that is in the INITIALIZING state.
-        *   After you delete a backup vault, all resources that are associated with the backup vault are deleted. The resources include backup clients of earlier versions, backup plans, backup jobs, snapshots, and restore jobs.
+        @summary Deletes a backup vault.
+        
+        @description    You cannot delete a backup vault within 2 hours after the backup vault is created or a backup vault that is in the INITIALIZING state.
+        After you delete a backup vault, all resources that are associated with the backup vault are deleted. The resources include the Cloud Backup client of the old version, backup plans, backup jobs, snapshots, and restore jobs.
         
         @param request: DeleteVaultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3288,8 +3785,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DeleteVaultResponse:
         """
-        You cannot delete a backup vault within 2 hours after the backup vault is created or a backup vault that is in the INITIALIZING state.
-        *   After you delete a backup vault, all resources that are associated with the backup vault are deleted. The resources include backup clients of earlier versions, backup plans, backup jobs, snapshots, and restore jobs.
+        @summary Deletes a backup vault.
+        
+        @description    You cannot delete a backup vault within 2 hours after the backup vault is created or a backup vault that is in the INITIALIZING state.
+        After you delete a backup vault, all resources that are associated with the backup vault are deleted. The resources include the Cloud Backup client of the old version, backup plans, backup jobs, snapshots, and restore jobs.
         
         @param request: DeleteVaultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3327,8 +3826,10 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DeleteVaultRequest,
     ) -> hbr_20170908_models.DeleteVaultResponse:
         """
-        You cannot delete a backup vault within 2 hours after the backup vault is created or a backup vault that is in the INITIALIZING state.
-        *   After you delete a backup vault, all resources that are associated with the backup vault are deleted. The resources include backup clients of earlier versions, backup plans, backup jobs, snapshots, and restore jobs.
+        @summary Deletes a backup vault.
+        
+        @description    You cannot delete a backup vault within 2 hours after the backup vault is created or a backup vault that is in the INITIALIZING state.
+        After you delete a backup vault, all resources that are associated with the backup vault are deleted. The resources include the Cloud Backup client of the old version, backup plans, backup jobs, snapshots, and restore jobs.
         
         @param request: DeleteVaultRequest
         @return: DeleteVaultResponse
@@ -3341,8 +3842,10 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DeleteVaultRequest,
     ) -> hbr_20170908_models.DeleteVaultResponse:
         """
-        You cannot delete a backup vault within 2 hours after the backup vault is created or a backup vault that is in the INITIALIZING state.
-        *   After you delete a backup vault, all resources that are associated with the backup vault are deleted. The resources include backup clients of earlier versions, backup plans, backup jobs, snapshots, and restore jobs.
+        @summary Deletes a backup vault.
+        
+        @description    You cannot delete a backup vault within 2 hours after the backup vault is created or a backup vault that is in the INITIALIZING state.
+        After you delete a backup vault, all resources that are associated with the backup vault are deleted. The resources include the Cloud Backup client of the old version, backup plans, backup jobs, snapshots, and restore jobs.
         
         @param request: DeleteVaultRequest
         @return: DeleteVaultResponse
@@ -3355,6 +3858,13 @@ class Client(OpenApiClient):
         tmp_req: hbr_20170908_models.DescribeBackupClientsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeBackupClientsResponse:
+        """
+        @summary Queries the information about one or more HBR clients that meet the specified conditions.
+        
+        @param tmp_req: DescribeBackupClientsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupClientsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = hbr_20170908_models.DescribeBackupClientsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3409,6 +3919,13 @@ class Client(OpenApiClient):
         tmp_req: hbr_20170908_models.DescribeBackupClientsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeBackupClientsResponse:
+        """
+        @summary Queries the information about one or more HBR clients that meet the specified conditions.
+        
+        @param tmp_req: DescribeBackupClientsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupClientsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = hbr_20170908_models.DescribeBackupClientsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3462,6 +3979,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribeBackupClientsRequest,
     ) -> hbr_20170908_models.DescribeBackupClientsResponse:
+        """
+        @summary Queries the information about one or more HBR clients that meet the specified conditions.
+        
+        @param request: DescribeBackupClientsRequest
+        @return: DescribeBackupClientsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_backup_clients_with_options(request, runtime)
 
@@ -3469,6 +3992,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribeBackupClientsRequest,
     ) -> hbr_20170908_models.DescribeBackupClientsResponse:
+        """
+        @summary Queries the information about one or more HBR clients that meet the specified conditions.
+        
+        @param request: DescribeBackupClientsRequest
+        @return: DescribeBackupClientsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_clients_with_options_async(request, runtime)
 
@@ -3477,6 +4006,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeBackupJobs2Request,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeBackupJobs2Response:
+        """
+        @summary Queries the information about one or more backup jobs that meet the specified conditions.
+        
+        @param request: DescribeBackupJobs2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupJobs2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filters):
@@ -3513,6 +4049,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeBackupJobs2Request,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeBackupJobs2Response:
+        """
+        @summary Queries the information about one or more backup jobs that meet the specified conditions.
+        
+        @param request: DescribeBackupJobs2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupJobs2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filters):
@@ -3548,6 +4091,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribeBackupJobs2Request,
     ) -> hbr_20170908_models.DescribeBackupJobs2Response:
+        """
+        @summary Queries the information about one or more backup jobs that meet the specified conditions.
+        
+        @param request: DescribeBackupJobs2Request
+        @return: DescribeBackupJobs2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_backup_jobs_2with_options(request, runtime)
 
@@ -3555,6 +4104,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribeBackupJobs2Request,
     ) -> hbr_20170908_models.DescribeBackupJobs2Response:
+        """
+        @summary Queries the information about one or more backup jobs that meet the specified conditions.
+        
+        @param request: DescribeBackupJobs2Request
+        @return: DescribeBackupJobs2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_jobs_2with_options_async(request, runtime)
 
@@ -3563,6 +4118,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeBackupPlansRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeBackupPlansResponse:
+        """
+        @summary Queries the information about one or more backup plans that meet the specified conditions.
+        
+        @param request: DescribeBackupPlansRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupPlansResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filters):
@@ -3597,6 +4159,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeBackupPlansRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeBackupPlansResponse:
+        """
+        @summary Queries the information about one or more backup plans that meet the specified conditions.
+        
+        @param request: DescribeBackupPlansRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupPlansResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filters):
@@ -3630,6 +4199,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribeBackupPlansRequest,
     ) -> hbr_20170908_models.DescribeBackupPlansResponse:
+        """
+        @summary Queries the information about one or more backup plans that meet the specified conditions.
+        
+        @param request: DescribeBackupPlansRequest
+        @return: DescribeBackupPlansResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_backup_plans_with_options(request, runtime)
 
@@ -3637,6 +4212,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribeBackupPlansRequest,
     ) -> hbr_20170908_models.DescribeBackupPlansResponse:
+        """
+        @summary Queries the information about one or more backup plans that meet the specified conditions.
+        
+        @param request: DescribeBackupPlansRequest
+        @return: DescribeBackupPlansResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_plans_with_options_async(request, runtime)
 
@@ -3646,7 +4227,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeClientsResponse:
         """
-        This operation is applicable only to SAP HANA backup. For backup clients of other data sources, call the DescribeBackupClients operation.
+        @summary Queries one or more Cloud Backup clients that meet the specified conditions.
+        
+        @description This operation is applicable only to SAP HANA backup. For Cloud Backup clients of other data sources, call the DescribeBackupClients operation.
         
         @param request: DescribeClientsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3695,7 +4278,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeClientsResponse:
         """
-        This operation is applicable only to SAP HANA backup. For backup clients of other data sources, call the DescribeBackupClients operation.
+        @summary Queries one or more Cloud Backup clients that meet the specified conditions.
+        
+        @description This operation is applicable only to SAP HANA backup. For Cloud Backup clients of other data sources, call the DescribeBackupClients operation.
         
         @param request: DescribeClientsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3743,7 +4328,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeClientsRequest,
     ) -> hbr_20170908_models.DescribeClientsResponse:
         """
-        This operation is applicable only to SAP HANA backup. For backup clients of other data sources, call the DescribeBackupClients operation.
+        @summary Queries one or more Cloud Backup clients that meet the specified conditions.
+        
+        @description This operation is applicable only to SAP HANA backup. For Cloud Backup clients of other data sources, call the DescribeBackupClients operation.
         
         @param request: DescribeClientsRequest
         @return: DescribeClientsResponse
@@ -3756,7 +4343,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeClientsRequest,
     ) -> hbr_20170908_models.DescribeClientsResponse:
         """
-        This operation is applicable only to SAP HANA backup. For backup clients of other data sources, call the DescribeBackupClients operation.
+        @summary Queries one or more Cloud Backup clients that meet the specified conditions.
+        
+        @description This operation is applicable only to SAP HANA backup. For Cloud Backup clients of other data sources, call the DescribeBackupClients operation.
         
         @param request: DescribeClientsRequest
         @return: DescribeClientsResponse
@@ -3770,7 +4359,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeContainerClusterResponse:
         """
-        You can call this operation to query only Container Service for Kubernetes (ACK) clusters.
+        @summary Queries one or more container clusters that meet the specified conditions.
+        
+        @description You can call this operation to query only Container Service for Kubernetes (ACK) clusters.
         
         @param request: DescribeContainerClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3811,7 +4402,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeContainerClusterResponse:
         """
-        You can call this operation to query only Container Service for Kubernetes (ACK) clusters.
+        @summary Queries one or more container clusters that meet the specified conditions.
+        
+        @description You can call this operation to query only Container Service for Kubernetes (ACK) clusters.
         
         @param request: DescribeContainerClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3851,7 +4444,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeContainerClusterRequest,
     ) -> hbr_20170908_models.DescribeContainerClusterResponse:
         """
-        You can call this operation to query only Container Service for Kubernetes (ACK) clusters.
+        @summary Queries one or more container clusters that meet the specified conditions.
+        
+        @description You can call this operation to query only Container Service for Kubernetes (ACK) clusters.
         
         @param request: DescribeContainerClusterRequest
         @return: DescribeContainerClusterResponse
@@ -3864,7 +4459,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeContainerClusterRequest,
     ) -> hbr_20170908_models.DescribeContainerClusterResponse:
         """
-        You can call this operation to query only Container Service for Kubernetes (ACK) clusters.
+        @summary Queries one or more container clusters that meet the specified conditions.
+        
+        @description You can call this operation to query only Container Service for Kubernetes (ACK) clusters.
         
         @param request: DescribeContainerClusterRequest
         @return: DescribeContainerClusterResponse
@@ -3877,6 +4474,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeCrossAccountsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeCrossAccountsResponse:
+        """
+        @summary Queries the information about the accounts used in cross-account backup.
+        
+        @param request: DescribeCrossAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCrossAccountsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -3907,6 +4511,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeCrossAccountsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeCrossAccountsResponse:
+        """
+        @summary Queries the information about the accounts used in cross-account backup.
+        
+        @param request: DescribeCrossAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCrossAccountsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -3936,6 +4547,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribeCrossAccountsRequest,
     ) -> hbr_20170908_models.DescribeCrossAccountsResponse:
+        """
+        @summary Queries the information about the accounts used in cross-account backup.
+        
+        @param request: DescribeCrossAccountsRequest
+        @return: DescribeCrossAccountsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cross_accounts_with_options(request, runtime)
 
@@ -3943,6 +4560,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribeCrossAccountsRequest,
     ) -> hbr_20170908_models.DescribeCrossAccountsResponse:
+        """
+        @summary Queries the information about the accounts used in cross-account backup.
+        
+        @param request: DescribeCrossAccountsRequest
+        @return: DescribeCrossAccountsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cross_accounts_with_options_async(request, runtime)
 
@@ -3951,6 +4574,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeHanaBackupPlansRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeHanaBackupPlansResponse:
+        """
+        @summary Queries one or more SAP HANA backup plans that meet the specified conditions.
+        
+        @param request: DescribeHanaBackupPlansRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHanaBackupPlansResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -3989,6 +4619,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeHanaBackupPlansRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeHanaBackupPlansResponse:
+        """
+        @summary Queries one or more SAP HANA backup plans that meet the specified conditions.
+        
+        @param request: DescribeHanaBackupPlansRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHanaBackupPlansResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -4026,6 +4663,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribeHanaBackupPlansRequest,
     ) -> hbr_20170908_models.DescribeHanaBackupPlansResponse:
+        """
+        @summary Queries one or more SAP HANA backup plans that meet the specified conditions.
+        
+        @param request: DescribeHanaBackupPlansRequest
+        @return: DescribeHanaBackupPlansResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_hana_backup_plans_with_options(request, runtime)
 
@@ -4033,6 +4676,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribeHanaBackupPlansRequest,
     ) -> hbr_20170908_models.DescribeHanaBackupPlansResponse:
+        """
+        @summary Queries one or more SAP HANA backup plans that meet the specified conditions.
+        
+        @param request: DescribeHanaBackupPlansRequest
+        @return: DescribeHanaBackupPlansResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_hana_backup_plans_with_options_async(request, runtime)
 
@@ -4042,7 +4691,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeHanaBackupSettingResponse:
         """
-        If you want to query the backup retention period of a database, you can call the DescribeHanaRetentionSetting operation.
+        @summary Queries the backup parameters of an SAP HANA database.
+        
+        @description If you want to query the backup retention period of a database, you can call the DescribeHanaRetentionSetting operation.
         
         @param request: DescribeHanaBackupSettingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4081,7 +4732,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeHanaBackupSettingResponse:
         """
-        If you want to query the backup retention period of a database, you can call the DescribeHanaRetentionSetting operation.
+        @summary Queries the backup parameters of an SAP HANA database.
+        
+        @description If you want to query the backup retention period of a database, you can call the DescribeHanaRetentionSetting operation.
         
         @param request: DescribeHanaBackupSettingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4119,7 +4772,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeHanaBackupSettingRequest,
     ) -> hbr_20170908_models.DescribeHanaBackupSettingResponse:
         """
-        If you want to query the backup retention period of a database, you can call the DescribeHanaRetentionSetting operation.
+        @summary Queries the backup parameters of an SAP HANA database.
+        
+        @description If you want to query the backup retention period of a database, you can call the DescribeHanaRetentionSetting operation.
         
         @param request: DescribeHanaBackupSettingRequest
         @return: DescribeHanaBackupSettingResponse
@@ -4132,7 +4787,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeHanaBackupSettingRequest,
     ) -> hbr_20170908_models.DescribeHanaBackupSettingResponse:
         """
-        If you want to query the backup retention period of a database, you can call the DescribeHanaRetentionSetting operation.
+        @summary Queries the backup parameters of an SAP HANA database.
+        
+        @description If you want to query the backup retention period of a database, you can call the DescribeHanaRetentionSetting operation.
         
         @param request: DescribeHanaBackupSettingRequest
         @return: DescribeHanaBackupSettingResponse
@@ -4146,7 +4803,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeHanaBackupsAsyncResponse:
         """
-        After you call the DescribeHanaBackupsAsync operation to query the SAP HANA backups that meet the specified conditions, call the DescribeTask operation to query the execution result of the asynchronous job.
+        @summary Queries one or more SAP HANA backups that meet the specified conditions.
+        
+        @description After you call the DescribeHanaBackupsAsync operation to query the SAP HANA backups that meet the specified conditions, call the DescribeTask operation to query the final result.
         
         @param request: DescribeHanaBackupsAsyncRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4213,7 +4872,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeHanaBackupsAsyncResponse:
         """
-        After you call the DescribeHanaBackupsAsync operation to query the SAP HANA backups that meet the specified conditions, call the DescribeTask operation to query the execution result of the asynchronous job.
+        @summary Queries one or more SAP HANA backups that meet the specified conditions.
+        
+        @description After you call the DescribeHanaBackupsAsync operation to query the SAP HANA backups that meet the specified conditions, call the DescribeTask operation to query the final result.
         
         @param request: DescribeHanaBackupsAsyncRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4279,7 +4940,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeHanaBackupsAsyncRequest,
     ) -> hbr_20170908_models.DescribeHanaBackupsAsyncResponse:
         """
-        After you call the DescribeHanaBackupsAsync operation to query the SAP HANA backups that meet the specified conditions, call the DescribeTask operation to query the execution result of the asynchronous job.
+        @summary Queries one or more SAP HANA backups that meet the specified conditions.
+        
+        @description After you call the DescribeHanaBackupsAsync operation to query the SAP HANA backups that meet the specified conditions, call the DescribeTask operation to query the final result.
         
         @param request: DescribeHanaBackupsAsyncRequest
         @return: DescribeHanaBackupsAsyncResponse
@@ -4292,7 +4955,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeHanaBackupsAsyncRequest,
     ) -> hbr_20170908_models.DescribeHanaBackupsAsyncResponse:
         """
-        After you call the DescribeHanaBackupsAsync operation to query the SAP HANA backups that meet the specified conditions, call the DescribeTask operation to query the execution result of the asynchronous job.
+        @summary Queries one or more SAP HANA backups that meet the specified conditions.
+        
+        @description After you call the DescribeHanaBackupsAsync operation to query the SAP HANA backups that meet the specified conditions, call the DescribeTask operation to query the final result.
         
         @param request: DescribeHanaBackupsAsyncRequest
         @return: DescribeHanaBackupsAsyncResponse
@@ -4306,7 +4971,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeHanaDatabasesResponse:
         """
-        After you register an SAP HANA instance and install a backup client on the instance, you can call this operation to query the information about SAP HANA databases. You can call the StartHanaDatabaseAsync operation to start a database and call the StopHanaDatabaseAsync operation to stop a database.
+        @summary Queries the information about SAP HANA databases.
+        
+        @description After you register an SAP HANA instance and install a Cloud Backup client on the instance, you can call this operation to query the information about SAP HANA databases. You can call the StartHanaDatabaseAsync operation to start a database and call the StopHanaDatabaseAsync operation to stop a database.
         
         @param request: DescribeHanaDatabasesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4349,7 +5016,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeHanaDatabasesResponse:
         """
-        After you register an SAP HANA instance and install a backup client on the instance, you can call this operation to query the information about SAP HANA databases. You can call the StartHanaDatabaseAsync operation to start a database and call the StopHanaDatabaseAsync operation to stop a database.
+        @summary Queries the information about SAP HANA databases.
+        
+        @description After you register an SAP HANA instance and install a Cloud Backup client on the instance, you can call this operation to query the information about SAP HANA databases. You can call the StartHanaDatabaseAsync operation to start a database and call the StopHanaDatabaseAsync operation to stop a database.
         
         @param request: DescribeHanaDatabasesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4391,7 +5060,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeHanaDatabasesRequest,
     ) -> hbr_20170908_models.DescribeHanaDatabasesResponse:
         """
-        After you register an SAP HANA instance and install a backup client on the instance, you can call this operation to query the information about SAP HANA databases. You can call the StartHanaDatabaseAsync operation to start a database and call the StopHanaDatabaseAsync operation to stop a database.
+        @summary Queries the information about SAP HANA databases.
+        
+        @description After you register an SAP HANA instance and install a Cloud Backup client on the instance, you can call this operation to query the information about SAP HANA databases. You can call the StartHanaDatabaseAsync operation to start a database and call the StopHanaDatabaseAsync operation to stop a database.
         
         @param request: DescribeHanaDatabasesRequest
         @return: DescribeHanaDatabasesResponse
@@ -4404,7 +5075,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeHanaDatabasesRequest,
     ) -> hbr_20170908_models.DescribeHanaDatabasesResponse:
         """
-        After you register an SAP HANA instance and install a backup client on the instance, you can call this operation to query the information about SAP HANA databases. You can call the StartHanaDatabaseAsync operation to start a database and call the StopHanaDatabaseAsync operation to stop a database.
+        @summary Queries the information about SAP HANA databases.
+        
+        @description After you register an SAP HANA instance and install a Cloud Backup client on the instance, you can call this operation to query the information about SAP HANA databases. You can call the StartHanaDatabaseAsync operation to start a database and call the StopHanaDatabaseAsync operation to stop a database.
         
         @param request: DescribeHanaDatabasesRequest
         @return: DescribeHanaDatabasesResponse
@@ -4417,6 +5090,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeHanaInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeHanaInstancesResponse:
+        """
+        @summary Queries one or more SAP HANA instances that meet the specified conditions.
+        
+        @param request: DescribeHanaInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHanaInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -4457,6 +5137,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeHanaInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeHanaInstancesResponse:
+        """
+        @summary Queries one or more SAP HANA instances that meet the specified conditions.
+        
+        @param request: DescribeHanaInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHanaInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -4496,6 +5183,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribeHanaInstancesRequest,
     ) -> hbr_20170908_models.DescribeHanaInstancesResponse:
+        """
+        @summary Queries one or more SAP HANA instances that meet the specified conditions.
+        
+        @param request: DescribeHanaInstancesRequest
+        @return: DescribeHanaInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_hana_instances_with_options(request, runtime)
 
@@ -4503,6 +5196,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribeHanaInstancesRequest,
     ) -> hbr_20170908_models.DescribeHanaInstancesResponse:
+        """
+        @summary Queries one or more SAP HANA instances that meet the specified conditions.
+        
+        @param request: DescribeHanaInstancesRequest
+        @return: DescribeHanaInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_hana_instances_with_options_async(request, runtime)
 
@@ -4511,6 +5210,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeHanaRestoresRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeHanaRestoresResponse:
+        """
+        @summary Queries one or more SAP HANA restore jobs that meet the specified conditions.
+        
+        @param request: DescribeHanaRestoresRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHanaRestoresResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_id):
@@ -4555,6 +5261,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeHanaRestoresRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeHanaRestoresResponse:
+        """
+        @summary Queries one or more SAP HANA restore jobs that meet the specified conditions.
+        
+        @param request: DescribeHanaRestoresRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHanaRestoresResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_id):
@@ -4598,6 +5311,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribeHanaRestoresRequest,
     ) -> hbr_20170908_models.DescribeHanaRestoresResponse:
+        """
+        @summary Queries one or more SAP HANA restore jobs that meet the specified conditions.
+        
+        @param request: DescribeHanaRestoresRequest
+        @return: DescribeHanaRestoresResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_hana_restores_with_options(request, runtime)
 
@@ -4605,6 +5324,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribeHanaRestoresRequest,
     ) -> hbr_20170908_models.DescribeHanaRestoresResponse:
+        """
+        @summary Queries one or more SAP HANA restore jobs that meet the specified conditions.
+        
+        @param request: DescribeHanaRestoresRequest
+        @return: DescribeHanaRestoresResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_hana_restores_with_options_async(request, runtime)
 
@@ -4614,8 +5339,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeHanaRetentionSettingResponse:
         """
-        If you want to query the backup parameters of a database, you can call the DescribeHanaBackupSetting operation.
-        *   HBR deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
+        @summary Queries the backup retention period of an SAP HANA database.
+        
+        @description    If you want to query the backup parameters of a database, you can call the DescribeHanaBackupSetting operation.
+        Cloud Backup deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
         
         @param request: DescribeHanaRetentionSettingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4654,8 +5381,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeHanaRetentionSettingResponse:
         """
-        If you want to query the backup parameters of a database, you can call the DescribeHanaBackupSetting operation.
-        *   HBR deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
+        @summary Queries the backup retention period of an SAP HANA database.
+        
+        @description    If you want to query the backup parameters of a database, you can call the DescribeHanaBackupSetting operation.
+        Cloud Backup deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
         
         @param request: DescribeHanaRetentionSettingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4693,8 +5422,10 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeHanaRetentionSettingRequest,
     ) -> hbr_20170908_models.DescribeHanaRetentionSettingResponse:
         """
-        If you want to query the backup parameters of a database, you can call the DescribeHanaBackupSetting operation.
-        *   HBR deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
+        @summary Queries the backup retention period of an SAP HANA database.
+        
+        @description    If you want to query the backup parameters of a database, you can call the DescribeHanaBackupSetting operation.
+        Cloud Backup deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
         
         @param request: DescribeHanaRetentionSettingRequest
         @return: DescribeHanaRetentionSettingResponse
@@ -4707,8 +5438,10 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeHanaRetentionSettingRequest,
     ) -> hbr_20170908_models.DescribeHanaRetentionSettingResponse:
         """
-        If you want to query the backup parameters of a database, you can call the DescribeHanaBackupSetting operation.
-        *   HBR deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
+        @summary Queries the backup retention period of an SAP HANA database.
+        
+        @description    If you want to query the backup parameters of a database, you can call the DescribeHanaBackupSetting operation.
+        Cloud Backup deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
         
         @param request: DescribeHanaRetentionSettingRequest
         @return: DescribeHanaRetentionSettingResponse
@@ -4721,6 +5454,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeOtsTableSnapshotsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeOtsTableSnapshotsResponse:
+        """
+        @summary Queries the details about Tablestore instances that are backed up.
+        
+        @param request: DescribeOtsTableSnapshotsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOtsTableSnapshotsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cross_account_role_name):
@@ -4770,6 +5510,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeOtsTableSnapshotsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeOtsTableSnapshotsResponse:
+        """
+        @summary Queries the details about Tablestore instances that are backed up.
+        
+        @param request: DescribeOtsTableSnapshotsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOtsTableSnapshotsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cross_account_role_name):
@@ -4818,6 +5565,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribeOtsTableSnapshotsRequest,
     ) -> hbr_20170908_models.DescribeOtsTableSnapshotsResponse:
+        """
+        @summary Queries the details about Tablestore instances that are backed up.
+        
+        @param request: DescribeOtsTableSnapshotsRequest
+        @return: DescribeOtsTableSnapshotsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ots_table_snapshots_with_options(request, runtime)
 
@@ -4825,6 +5578,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribeOtsTableSnapshotsRequest,
     ) -> hbr_20170908_models.DescribeOtsTableSnapshotsResponse:
+        """
+        @summary Queries the details about Tablestore instances that are backed up.
+        
+        @param request: DescribeOtsTableSnapshotsRequest
+        @return: DescribeOtsTableSnapshotsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ots_table_snapshots_with_options_async(request, runtime)
 
@@ -4833,6 +5592,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribePoliciesV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribePoliciesV2Response:
+        """
+        @summary Queries one or more backup policies.
+        
+        @param request: DescribePoliciesV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePoliciesV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.max_results):
@@ -4865,6 +5631,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribePoliciesV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribePoliciesV2Response:
+        """
+        @summary Queries one or more backup policies.
+        
+        @param request: DescribePoliciesV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePoliciesV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.max_results):
@@ -4896,6 +5669,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribePoliciesV2Request,
     ) -> hbr_20170908_models.DescribePoliciesV2Response:
+        """
+        @summary Queries one or more backup policies.
+        
+        @param request: DescribePoliciesV2Request
+        @return: DescribePoliciesV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_policies_v2with_options(request, runtime)
 
@@ -4903,6 +5682,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribePoliciesV2Request,
     ) -> hbr_20170908_models.DescribePoliciesV2Response:
+        """
+        @summary Queries one or more backup policies.
+        
+        @param request: DescribePoliciesV2Request
+        @return: DescribePoliciesV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_policies_v2with_options_async(request, runtime)
 
@@ -4911,6 +5696,13 @@ class Client(OpenApiClient):
         tmp_req: hbr_20170908_models.DescribePolicyBindingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribePolicyBindingsResponse:
+        """
+        @summary Queries one or more data sources bound to a backup policy or queries one or more backup policies bound to a data source.
+        
+        @param tmp_req: DescribePolicyBindingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePolicyBindingsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = hbr_20170908_models.DescribePolicyBindingsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4955,6 +5747,13 @@ class Client(OpenApiClient):
         tmp_req: hbr_20170908_models.DescribePolicyBindingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribePolicyBindingsResponse:
+        """
+        @summary Queries one or more data sources bound to a backup policy or queries one or more backup policies bound to a data source.
+        
+        @param tmp_req: DescribePolicyBindingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePolicyBindingsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = hbr_20170908_models.DescribePolicyBindingsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4998,6 +5797,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribePolicyBindingsRequest,
     ) -> hbr_20170908_models.DescribePolicyBindingsResponse:
+        """
+        @summary Queries one or more data sources bound to a backup policy or queries one or more backup policies bound to a data source.
+        
+        @param request: DescribePolicyBindingsRequest
+        @return: DescribePolicyBindingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_policy_bindings_with_options(request, runtime)
 
@@ -5005,6 +5810,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribePolicyBindingsRequest,
     ) -> hbr_20170908_models.DescribePolicyBindingsResponse:
+        """
+        @summary Queries one or more data sources bound to a backup policy or queries one or more backup policies bound to a data source.
+        
+        @param request: DescribePolicyBindingsRequest
+        @return: DescribePolicyBindingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_policy_bindings_with_options_async(request, runtime)
 
@@ -5013,6 +5824,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeRecoverableOtsInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeRecoverableOtsInstancesResponse:
+        """
+        @summary Queries the tables of a restorable Tablestore instance.
+        
+        @param request: DescribeRecoverableOtsInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRecoverableOtsInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cross_account_role_name):
@@ -5045,6 +5863,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeRecoverableOtsInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeRecoverableOtsInstancesResponse:
+        """
+        @summary Queries the tables of a restorable Tablestore instance.
+        
+        @param request: DescribeRecoverableOtsInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRecoverableOtsInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cross_account_role_name):
@@ -5076,6 +5901,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribeRecoverableOtsInstancesRequest,
     ) -> hbr_20170908_models.DescribeRecoverableOtsInstancesResponse:
+        """
+        @summary Queries the tables of a restorable Tablestore instance.
+        
+        @param request: DescribeRecoverableOtsInstancesRequest
+        @return: DescribeRecoverableOtsInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_recoverable_ots_instances_with_options(request, runtime)
 
@@ -5083,21 +5914,27 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribeRecoverableOtsInstancesRequest,
     ) -> hbr_20170908_models.DescribeRecoverableOtsInstancesResponse:
+        """
+        @summary Queries the tables of a restorable Tablestore instance.
+        
+        @param request: DescribeRecoverableOtsInstancesRequest
+        @return: DescribeRecoverableOtsInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_recoverable_ots_instances_with_options_async(request, runtime)
 
     def describe_regions_with_options(
         self,
-        request: hbr_20170908_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeRegionsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.need_vault_count):
-            query['NeedVaultCount'] = request.need_vault_count
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        """
+        @summary Queries available regions.
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeRegions',
             version='2017-09-08',
@@ -5116,16 +5953,16 @@ class Client(OpenApiClient):
 
     async def describe_regions_with_options_async(
         self,
-        request: hbr_20170908_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeRegionsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.need_vault_count):
-            query['NeedVaultCount'] = request.need_vault_count
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        """
+        @summary Queries available regions.
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeRegions',
             version='2017-09-08',
@@ -5142,25 +5979,36 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_regions(
-        self,
-        request: hbr_20170908_models.DescribeRegionsRequest,
-    ) -> hbr_20170908_models.DescribeRegionsResponse:
+    def describe_regions(self) -> hbr_20170908_models.DescribeRegionsResponse:
+        """
+        @summary Queries available regions.
+        
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return self.describe_regions_with_options(request, runtime)
+        return self.describe_regions_with_options(runtime)
 
-    async def describe_regions_async(
-        self,
-        request: hbr_20170908_models.DescribeRegionsRequest,
-    ) -> hbr_20170908_models.DescribeRegionsResponse:
+    async def describe_regions_async(self) -> hbr_20170908_models.DescribeRegionsResponse:
+        """
+        @summary Queries available regions.
+        
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return await self.describe_regions_with_options_async(request, runtime)
+        return await self.describe_regions_with_options_async(runtime)
 
     def describe_restore_jobs_2with_options(
         self,
         request: hbr_20170908_models.DescribeRestoreJobs2Request,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeRestoreJobs2Response:
+        """
+        @summary Queries one or more restore jobs that meet the specified conditions.
+        
+        @param request: DescribeRestoreJobs2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRestoreJobs2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filters):
@@ -5195,6 +6043,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeRestoreJobs2Request,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeRestoreJobs2Response:
+        """
+        @summary Queries one or more restore jobs that meet the specified conditions.
+        
+        @param request: DescribeRestoreJobs2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRestoreJobs2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filters):
@@ -5228,6 +6083,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribeRestoreJobs2Request,
     ) -> hbr_20170908_models.DescribeRestoreJobs2Response:
+        """
+        @summary Queries one or more restore jobs that meet the specified conditions.
+        
+        @param request: DescribeRestoreJobs2Request
+        @return: DescribeRestoreJobs2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_restore_jobs_2with_options(request, runtime)
 
@@ -5235,6 +6096,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribeRestoreJobs2Request,
     ) -> hbr_20170908_models.DescribeRestoreJobs2Response:
+        """
+        @summary Queries one or more restore jobs that meet the specified conditions.
+        
+        @param request: DescribeRestoreJobs2Request
+        @return: DescribeRestoreJobs2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_restore_jobs_2with_options_async(request, runtime)
 
@@ -5243,6 +6110,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeTaskResponse:
+        """
+        @summary Queries an asynchronous job.
+        
+        @param request: DescribeTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_group_id):
@@ -5275,6 +6149,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeTaskResponse:
+        """
+        @summary Queries an asynchronous job.
+        
+        @param request: DescribeTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_group_id):
@@ -5306,6 +6187,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribeTaskRequest,
     ) -> hbr_20170908_models.DescribeTaskResponse:
+        """
+        @summary Queries an asynchronous job.
+        
+        @param request: DescribeTaskRequest
+        @return: DescribeTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_task_with_options(request, runtime)
 
@@ -5313,6 +6200,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribeTaskRequest,
     ) -> hbr_20170908_models.DescribeTaskResponse:
+        """
+        @summary Queries an asynchronous job.
+        
+        @param request: DescribeTaskRequest
+        @return: DescribeTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_task_with_options_async(request, runtime)
 
@@ -5321,6 +6214,13 @@ class Client(OpenApiClient):
         tmp_req: hbr_20170908_models.DescribeUdmSnapshotsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeUdmSnapshotsResponse:
+        """
+        @summary Queries the backup snapshots of an Elastic Compute Service (ECS) instance.
+        
+        @param tmp_req: DescribeUdmSnapshotsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUdmSnapshotsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = hbr_20170908_models.DescribeUdmSnapshotsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5369,6 +6269,13 @@ class Client(OpenApiClient):
         tmp_req: hbr_20170908_models.DescribeUdmSnapshotsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeUdmSnapshotsResponse:
+        """
+        @summary Queries the backup snapshots of an Elastic Compute Service (ECS) instance.
+        
+        @param tmp_req: DescribeUdmSnapshotsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUdmSnapshotsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = hbr_20170908_models.DescribeUdmSnapshotsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5416,6 +6323,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribeUdmSnapshotsRequest,
     ) -> hbr_20170908_models.DescribeUdmSnapshotsResponse:
+        """
+        @summary Queries the backup snapshots of an Elastic Compute Service (ECS) instance.
+        
+        @param request: DescribeUdmSnapshotsRequest
+        @return: DescribeUdmSnapshotsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_udm_snapshots_with_options(request, runtime)
 
@@ -5423,6 +6336,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribeUdmSnapshotsRequest,
     ) -> hbr_20170908_models.DescribeUdmSnapshotsResponse:
+        """
+        @summary Queries the backup snapshots of an Elastic Compute Service (ECS) instance.
+        
+        @param request: DescribeUdmSnapshotsRequest
+        @return: DescribeUdmSnapshotsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_udm_snapshots_with_options_async(request, runtime)
 
@@ -5431,6 +6350,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeVaultReplicationRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeVaultReplicationRegionsResponse:
+        """
+        @summary Queries the regions that support cross-region replication.
+        
+        @param request: DescribeVaultReplicationRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVaultReplicationRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.token):
@@ -5461,6 +6387,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeVaultReplicationRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeVaultReplicationRegionsResponse:
+        """
+        @summary Queries the regions that support cross-region replication.
+        
+        @param request: DescribeVaultReplicationRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVaultReplicationRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.token):
@@ -5490,6 +6423,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribeVaultReplicationRegionsRequest,
     ) -> hbr_20170908_models.DescribeVaultReplicationRegionsResponse:
+        """
+        @summary Queries the regions that support cross-region replication.
+        
+        @param request: DescribeVaultReplicationRegionsRequest
+        @return: DescribeVaultReplicationRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vault_replication_regions_with_options(request, runtime)
 
@@ -5497,6 +6436,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribeVaultReplicationRegionsRequest,
     ) -> hbr_20170908_models.DescribeVaultReplicationRegionsResponse:
+        """
+        @summary Queries the regions that support cross-region replication.
+        
+        @param request: DescribeVaultReplicationRegionsRequest
+        @return: DescribeVaultReplicationRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vault_replication_regions_with_options_async(request, runtime)
 
@@ -5505,6 +6450,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeVaultsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeVaultsResponse:
+        """
+        @summary Queries the information about one or more backup vaults that meet the specified conditions.
+        
+        @param request: DescribeVaultsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVaultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -5549,6 +6501,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DescribeVaultsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DescribeVaultsResponse:
+        """
+        @summary Queries the information about one or more backup vaults that meet the specified conditions.
+        
+        @param request: DescribeVaultsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVaultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -5592,6 +6551,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribeVaultsRequest,
     ) -> hbr_20170908_models.DescribeVaultsResponse:
+        """
+        @summary Queries the information about one or more backup vaults that meet the specified conditions.
+        
+        @param request: DescribeVaultsRequest
+        @return: DescribeVaultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vaults_with_options(request, runtime)
 
@@ -5599,6 +6564,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.DescribeVaultsRequest,
     ) -> hbr_20170908_models.DescribeVaultsResponse:
+        """
+        @summary Queries the information about one or more backup vaults that meet the specified conditions.
+        
+        @param request: DescribeVaultsRequest
+        @return: DescribeVaultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vaults_with_options_async(request, runtime)
 
@@ -5608,8 +6579,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DetachNasFileSystemResponse:
         """
-        If the request is successful, the mount target is deleted.
-        *   After you create a backup plan for an Apsara File Storage NAS file system, HBR automatically creates a mount target for the file system. You can call this operation to delete the mount target. In the **Status** column of the mount target of the NAS file system, the following information is displayed: **This mount target is created by an Alibaba Cloud internal service and cannot be operated. Service name: HBR**.
+        @summary Deletes a mount target that is created by Hybrid Backup Recovery (HBR).
+        
+        @description    If the request is successful, the mount target is deleted.
+        After you create a backup plan for an Apsara File Storage NAS file system, HBR automatically creates a mount target for the file system. You can call this operation to delete the mount target. In the **Status** column of the mount target of the NAS file system, the following information is displayed: **This mount target is created by an Alibaba Cloud internal service and cannot be operated. Service name: HBR**.
         
         @param request: DetachNasFileSystemRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5652,8 +6625,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DetachNasFileSystemResponse:
         """
-        If the request is successful, the mount target is deleted.
-        *   After you create a backup plan for an Apsara File Storage NAS file system, HBR automatically creates a mount target for the file system. You can call this operation to delete the mount target. In the **Status** column of the mount target of the NAS file system, the following information is displayed: **This mount target is created by an Alibaba Cloud internal service and cannot be operated. Service name: HBR**.
+        @summary Deletes a mount target that is created by Hybrid Backup Recovery (HBR).
+        
+        @description    If the request is successful, the mount target is deleted.
+        After you create a backup plan for an Apsara File Storage NAS file system, HBR automatically creates a mount target for the file system. You can call this operation to delete the mount target. In the **Status** column of the mount target of the NAS file system, the following information is displayed: **This mount target is created by an Alibaba Cloud internal service and cannot be operated. Service name: HBR**.
         
         @param request: DetachNasFileSystemRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5695,8 +6670,10 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DetachNasFileSystemRequest,
     ) -> hbr_20170908_models.DetachNasFileSystemResponse:
         """
-        If the request is successful, the mount target is deleted.
-        *   After you create a backup plan for an Apsara File Storage NAS file system, HBR automatically creates a mount target for the file system. You can call this operation to delete the mount target. In the **Status** column of the mount target of the NAS file system, the following information is displayed: **This mount target is created by an Alibaba Cloud internal service and cannot be operated. Service name: HBR**.
+        @summary Deletes a mount target that is created by Hybrid Backup Recovery (HBR).
+        
+        @description    If the request is successful, the mount target is deleted.
+        After you create a backup plan for an Apsara File Storage NAS file system, HBR automatically creates a mount target for the file system. You can call this operation to delete the mount target. In the **Status** column of the mount target of the NAS file system, the following information is displayed: **This mount target is created by an Alibaba Cloud internal service and cannot be operated. Service name: HBR**.
         
         @param request: DetachNasFileSystemRequest
         @return: DetachNasFileSystemResponse
@@ -5709,8 +6686,10 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DetachNasFileSystemRequest,
     ) -> hbr_20170908_models.DetachNasFileSystemResponse:
         """
-        If the request is successful, the mount target is deleted.
-        *   After you create a backup plan for an Apsara File Storage NAS file system, HBR automatically creates a mount target for the file system. You can call this operation to delete the mount target. In the **Status** column of the mount target of the NAS file system, the following information is displayed: **This mount target is created by an Alibaba Cloud internal service and cannot be operated. Service name: HBR**.
+        @summary Deletes a mount target that is created by Hybrid Backup Recovery (HBR).
+        
+        @description    If the request is successful, the mount target is deleted.
+        After you create a backup plan for an Apsara File Storage NAS file system, HBR automatically creates a mount target for the file system. You can call this operation to delete the mount target. In the **Status** column of the mount target of the NAS file system, the following information is displayed: **This mount target is created by an Alibaba Cloud internal service and cannot be operated. Service name: HBR**.
         
         @param request: DetachNasFileSystemRequest
         @return: DetachNasFileSystemResponse
@@ -5724,7 +6703,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DisableBackupPlanResponse:
         """
-        If the request is successful, the specified backup plan is disabled. If you call the DescribeBackupPlans operation to query backup plans, the Disabled parameter is set to true for the backup plan.
+        @summary Disables a backup plan.
+        
+        @description After you call this operation, the backup plan is suspended. In the DescribeBackupPlans operation, the Disabled parameter is set to true.
         
         @param request: DisableBackupPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5763,7 +6744,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DisableBackupPlanResponse:
         """
-        If the request is successful, the specified backup plan is disabled. If you call the DescribeBackupPlans operation to query backup plans, the Disabled parameter is set to true for the backup plan.
+        @summary Disables a backup plan.
+        
+        @description After you call this operation, the backup plan is suspended. In the DescribeBackupPlans operation, the Disabled parameter is set to true.
         
         @param request: DisableBackupPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5801,7 +6784,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DisableBackupPlanRequest,
     ) -> hbr_20170908_models.DisableBackupPlanResponse:
         """
-        If the request is successful, the specified backup plan is disabled. If you call the DescribeBackupPlans operation to query backup plans, the Disabled parameter is set to true for the backup plan.
+        @summary Disables a backup plan.
+        
+        @description After you call this operation, the backup plan is suspended. In the DescribeBackupPlans operation, the Disabled parameter is set to true.
         
         @param request: DisableBackupPlanRequest
         @return: DisableBackupPlanResponse
@@ -5814,7 +6799,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DisableBackupPlanRequest,
     ) -> hbr_20170908_models.DisableBackupPlanResponse:
         """
-        If the request is successful, the specified backup plan is disabled. If you call the DescribeBackupPlans operation to query backup plans, the Disabled parameter is set to true for the backup plan.
+        @summary Disables a backup plan.
+        
+        @description After you call this operation, the backup plan is suspended. In the DescribeBackupPlans operation, the Disabled parameter is set to true.
         
         @param request: DisableBackupPlanRequest
         @return: DisableBackupPlanResponse
@@ -5828,7 +6815,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DisableHanaBackupPlanResponse:
         """
-        To enable the backup plan again, call the EnableHanaBackupPlan operation.
+        @summary Disables an SAP HANA backup plan.
+        
+        @description To enable the backup plan again, call the EnableHanaBackupPlan operation.
         
         @param request: DisableHanaBackupPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5869,7 +6858,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.DisableHanaBackupPlanResponse:
         """
-        To enable the backup plan again, call the EnableHanaBackupPlan operation.
+        @summary Disables an SAP HANA backup plan.
+        
+        @description To enable the backup plan again, call the EnableHanaBackupPlan operation.
         
         @param request: DisableHanaBackupPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5909,7 +6900,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DisableHanaBackupPlanRequest,
     ) -> hbr_20170908_models.DisableHanaBackupPlanResponse:
         """
-        To enable the backup plan again, call the EnableHanaBackupPlan operation.
+        @summary Disables an SAP HANA backup plan.
+        
+        @description To enable the backup plan again, call the EnableHanaBackupPlan operation.
         
         @param request: DisableHanaBackupPlanRequest
         @return: DisableHanaBackupPlanResponse
@@ -5922,7 +6915,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.DisableHanaBackupPlanRequest,
     ) -> hbr_20170908_models.DisableHanaBackupPlanResponse:
         """
-        To enable the backup plan again, call the EnableHanaBackupPlan operation.
+        @summary Disables an SAP HANA backup plan.
+        
+        @description To enable the backup plan again, call the EnableHanaBackupPlan operation.
         
         @param request: DisableHanaBackupPlanRequest
         @return: DisableHanaBackupPlanResponse
@@ -5936,7 +6931,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.EnableBackupPlanResponse:
         """
-        If the request is successful, the system enables the backup plan and backs up data based on the polices that are specified in the backup plan. If you call the DescribeBackupPlans operation to query backup plans, the Disabled parameter is automatically set to false for the backup plan.
+        @summary Enables a backup plan.
+        
+        @description After you call this operation, the backup plan is restarted (Disabled is set to false in the DescribeBackupPlans operation). Cloud Backup continues to perform backups based on the policy specified in the backup plan.
         
         @param request: EnableBackupPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5975,7 +6972,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.EnableBackupPlanResponse:
         """
-        If the request is successful, the system enables the backup plan and backs up data based on the polices that are specified in the backup plan. If you call the DescribeBackupPlans operation to query backup plans, the Disabled parameter is automatically set to false for the backup plan.
+        @summary Enables a backup plan.
+        
+        @description After you call this operation, the backup plan is restarted (Disabled is set to false in the DescribeBackupPlans operation). Cloud Backup continues to perform backups based on the policy specified in the backup plan.
         
         @param request: EnableBackupPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6013,7 +7012,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.EnableBackupPlanRequest,
     ) -> hbr_20170908_models.EnableBackupPlanResponse:
         """
-        If the request is successful, the system enables the backup plan and backs up data based on the polices that are specified in the backup plan. If you call the DescribeBackupPlans operation to query backup plans, the Disabled parameter is automatically set to false for the backup plan.
+        @summary Enables a backup plan.
+        
+        @description After you call this operation, the backup plan is restarted (Disabled is set to false in the DescribeBackupPlans operation). Cloud Backup continues to perform backups based on the policy specified in the backup plan.
         
         @param request: EnableBackupPlanRequest
         @return: EnableBackupPlanResponse
@@ -6026,7 +7027,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.EnableBackupPlanRequest,
     ) -> hbr_20170908_models.EnableBackupPlanResponse:
         """
-        If the request is successful, the system enables the backup plan and backs up data based on the polices that are specified in the backup plan. If you call the DescribeBackupPlans operation to query backup plans, the Disabled parameter is automatically set to false for the backup plan.
+        @summary Enables a backup plan.
+        
+        @description After you call this operation, the backup plan is restarted (Disabled is set to false in the DescribeBackupPlans operation). Cloud Backup continues to perform backups based on the policy specified in the backup plan.
         
         @param request: EnableBackupPlanRequest
         @return: EnableBackupPlanResponse
@@ -6040,7 +7043,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.EnableHanaBackupPlanResponse:
         """
-        To disable the backup plan again, call the DisableHanaBackupPlan operation.
+        @summary Enables an SAP HANA backup plan.
+        
+        @description To disable the backup plan again, call the DisableHanaBackupPlan operation.
         
         @param request: EnableHanaBackupPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6081,7 +7086,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.EnableHanaBackupPlanResponse:
         """
-        To disable the backup plan again, call the DisableHanaBackupPlan operation.
+        @summary Enables an SAP HANA backup plan.
+        
+        @description To disable the backup plan again, call the DisableHanaBackupPlan operation.
         
         @param request: EnableHanaBackupPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6121,7 +7128,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.EnableHanaBackupPlanRequest,
     ) -> hbr_20170908_models.EnableHanaBackupPlanResponse:
         """
-        To disable the backup plan again, call the DisableHanaBackupPlan operation.
+        @summary Enables an SAP HANA backup plan.
+        
+        @description To disable the backup plan again, call the DisableHanaBackupPlan operation.
         
         @param request: EnableHanaBackupPlanRequest
         @return: EnableHanaBackupPlanResponse
@@ -6134,7 +7143,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.EnableHanaBackupPlanRequest,
     ) -> hbr_20170908_models.EnableHanaBackupPlanResponse:
         """
-        To disable the backup plan again, call the DisableHanaBackupPlan operation.
+        @summary Enables an SAP HANA backup plan.
+        
+        @description To disable the backup plan again, call the DisableHanaBackupPlan operation.
         
         @param request: EnableHanaBackupPlanRequest
         @return: EnableHanaBackupPlanResponse
@@ -6147,6 +7158,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.ExecuteBackupPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.ExecuteBackupPlanResponse:
+        """
+        @summary Executes a backup plan.
+        
+        @param request: ExecuteBackupPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteBackupPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.plan_id):
@@ -6181,6 +7199,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.ExecuteBackupPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.ExecuteBackupPlanResponse:
+        """
+        @summary Executes a backup plan.
+        
+        @param request: ExecuteBackupPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteBackupPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.plan_id):
@@ -6214,6 +7239,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.ExecuteBackupPlanRequest,
     ) -> hbr_20170908_models.ExecuteBackupPlanResponse:
+        """
+        @summary Executes a backup plan.
+        
+        @param request: ExecuteBackupPlanRequest
+        @return: ExecuteBackupPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.execute_backup_plan_with_options(request, runtime)
 
@@ -6221,6 +7252,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.ExecuteBackupPlanRequest,
     ) -> hbr_20170908_models.ExecuteBackupPlanResponse:
+        """
+        @summary Executes a backup plan.
+        
+        @param request: ExecuteBackupPlanRequest
+        @return: ExecuteBackupPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.execute_backup_plan_with_options_async(request, runtime)
 
@@ -6229,6 +7266,11 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.ExecutePolicyV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.ExecutePolicyV2Response:
+        """
+        @param request: ExecutePolicyV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecutePolicyV2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.rule_id):
@@ -6265,6 +7307,11 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.ExecutePolicyV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.ExecutePolicyV2Response:
+        """
+        @param request: ExecutePolicyV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecutePolicyV2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.rule_id):
@@ -6300,6 +7347,10 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.ExecutePolicyV2Request,
     ) -> hbr_20170908_models.ExecutePolicyV2Response:
+        """
+        @param request: ExecutePolicyV2Request
+        @return: ExecutePolicyV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.execute_policy_v2with_options(request, runtime)
 
@@ -6307,6 +7358,10 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.ExecutePolicyV2Request,
     ) -> hbr_20170908_models.ExecutePolicyV2Response:
+        """
+        @param request: ExecutePolicyV2Request
+        @return: ExecutePolicyV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.execute_policy_v2with_options_async(request, runtime)
 
@@ -6315,6 +7370,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.GenerateRamPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.GenerateRamPolicyResponse:
+        """
+        @summary Generates a Resource Access Management (RAM) policy.
+        
+        @param request: GenerateRamPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateRamPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.action_type):
@@ -6349,6 +7411,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.GenerateRamPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.GenerateRamPolicyResponse:
+        """
+        @summary Generates a Resource Access Management (RAM) policy.
+        
+        @param request: GenerateRamPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateRamPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.action_type):
@@ -6382,6 +7451,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.GenerateRamPolicyRequest,
     ) -> hbr_20170908_models.GenerateRamPolicyResponse:
+        """
+        @summary Generates a Resource Access Management (RAM) policy.
+        
+        @param request: GenerateRamPolicyRequest
+        @return: GenerateRamPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.generate_ram_policy_with_options(request, runtime)
 
@@ -6389,6 +7464,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.GenerateRamPolicyRequest,
     ) -> hbr_20170908_models.GenerateRamPolicyResponse:
+        """
+        @summary Generates a Resource Access Management (RAM) policy.
+        
+        @param request: GenerateRamPolicyRequest
+        @return: GenerateRamPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.generate_ram_policy_with_options_async(request, runtime)
 
@@ -6397,6 +7478,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.GetTempFileDownloadLinkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.GetTempFileDownloadLinkResponse:
+        """
+        @summary Obtains download links of files such as job reports.
+        
+        @param request: GetTempFileDownloadLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTempFileDownloadLinkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.temp_file_key):
@@ -6425,6 +7513,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.GetTempFileDownloadLinkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.GetTempFileDownloadLinkResponse:
+        """
+        @summary Obtains download links of files such as job reports.
+        
+        @param request: GetTempFileDownloadLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTempFileDownloadLinkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.temp_file_key):
@@ -6452,6 +7547,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.GetTempFileDownloadLinkRequest,
     ) -> hbr_20170908_models.GetTempFileDownloadLinkResponse:
+        """
+        @summary Obtains download links of files such as job reports.
+        
+        @param request: GetTempFileDownloadLinkRequest
+        @return: GetTempFileDownloadLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_temp_file_download_link_with_options(request, runtime)
 
@@ -6459,6 +7560,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.GetTempFileDownloadLinkRequest,
     ) -> hbr_20170908_models.GetTempFileDownloadLinkResponse:
+        """
+        @summary Obtains download links of files such as job reports.
+        
+        @param request: GetTempFileDownloadLinkRequest
+        @return: GetTempFileDownloadLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_temp_file_download_link_with_options_async(request, runtime)
 
@@ -6468,9 +7575,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.InstallBackupClientsResponse:
         """
-        This operation creates an asynchronous job at the backend and calls Cloud Assistant to install an HBR client on an ECS instance.
-        *   You can call the [DescribeTask](~~431265~~) operation to query the execution result of an asynchronous job.
-        *   The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 60 seconds after you call the InstallBackupClients operation to install HBR clients. Then, run the next queries at an interval of 30 seconds.
+        @summary Installs an HBR client on one or more Elastic Compute Service (ECS) instances.
+        
+        @description    This operation creates an asynchronous job at the backend and calls Cloud Assistant to install an HBR client on an ECS instance.
+        You can call the [DescribeTask](https://help.aliyun.com/document_detail/431265.html) operation to query the execution result of an asynchronous job.
+        The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 60 seconds after you call the InstallBackupClients operation to install HBR clients. Then, run the next queries at an interval of 30 seconds.
         
         @param tmp_req: InstallBackupClientsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6515,9 +7624,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.InstallBackupClientsResponse:
         """
-        This operation creates an asynchronous job at the backend and calls Cloud Assistant to install an HBR client on an ECS instance.
-        *   You can call the [DescribeTask](~~431265~~) operation to query the execution result of an asynchronous job.
-        *   The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 60 seconds after you call the InstallBackupClients operation to install HBR clients. Then, run the next queries at an interval of 30 seconds.
+        @summary Installs an HBR client on one or more Elastic Compute Service (ECS) instances.
+        
+        @description    This operation creates an asynchronous job at the backend and calls Cloud Assistant to install an HBR client on an ECS instance.
+        You can call the [DescribeTask](https://help.aliyun.com/document_detail/431265.html) operation to query the execution result of an asynchronous job.
+        The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 60 seconds after you call the InstallBackupClients operation to install HBR clients. Then, run the next queries at an interval of 30 seconds.
         
         @param tmp_req: InstallBackupClientsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6561,9 +7672,11 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.InstallBackupClientsRequest,
     ) -> hbr_20170908_models.InstallBackupClientsResponse:
         """
-        This operation creates an asynchronous job at the backend and calls Cloud Assistant to install an HBR client on an ECS instance.
-        *   You can call the [DescribeTask](~~431265~~) operation to query the execution result of an asynchronous job.
-        *   The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 60 seconds after you call the InstallBackupClients operation to install HBR clients. Then, run the next queries at an interval of 30 seconds.
+        @summary Installs an HBR client on one or more Elastic Compute Service (ECS) instances.
+        
+        @description    This operation creates an asynchronous job at the backend and calls Cloud Assistant to install an HBR client on an ECS instance.
+        You can call the [DescribeTask](https://help.aliyun.com/document_detail/431265.html) operation to query the execution result of an asynchronous job.
+        The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 60 seconds after you call the InstallBackupClients operation to install HBR clients. Then, run the next queries at an interval of 30 seconds.
         
         @param request: InstallBackupClientsRequest
         @return: InstallBackupClientsResponse
@@ -6576,9 +7689,11 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.InstallBackupClientsRequest,
     ) -> hbr_20170908_models.InstallBackupClientsResponse:
         """
-        This operation creates an asynchronous job at the backend and calls Cloud Assistant to install an HBR client on an ECS instance.
-        *   You can call the [DescribeTask](~~431265~~) operation to query the execution result of an asynchronous job.
-        *   The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 60 seconds after you call the InstallBackupClients operation to install HBR clients. Then, run the next queries at an interval of 30 seconds.
+        @summary Installs an HBR client on one or more Elastic Compute Service (ECS) instances.
+        
+        @description    This operation creates an asynchronous job at the backend and calls Cloud Assistant to install an HBR client on an ECS instance.
+        You can call the [DescribeTask](https://help.aliyun.com/document_detail/431265.html) operation to query the execution result of an asynchronous job.
+        The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 60 seconds after you call the InstallBackupClients operation to install HBR clients. Then, run the next queries at an interval of 30 seconds.
         
         @param request: InstallBackupClientsRequest
         @return: InstallBackupClientsResponse
@@ -6590,6 +7705,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.OpenHbrServiceResponse:
+        """
+        @summary Activates Hybrid Backup Recovery (HBR).
+        
+        @param request: OpenHbrServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenHbrServiceResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='OpenHbrService',
@@ -6611,6 +7733,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.OpenHbrServiceResponse:
+        """
+        @summary Activates Hybrid Backup Recovery (HBR).
+        
+        @param request: OpenHbrServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenHbrServiceResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='OpenHbrService',
@@ -6629,10 +7758,20 @@ class Client(OpenApiClient):
         )
 
     def open_hbr_service(self) -> hbr_20170908_models.OpenHbrServiceResponse:
+        """
+        @summary Activates Hybrid Backup Recovery (HBR).
+        
+        @return: OpenHbrServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.open_hbr_service_with_options(runtime)
 
     async def open_hbr_service_async(self) -> hbr_20170908_models.OpenHbrServiceResponse:
+        """
+        @summary Activates Hybrid Backup Recovery (HBR).
+        
+        @return: OpenHbrServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.open_hbr_service_with_options_async(runtime)
 
@@ -6641,6 +7780,13 @@ class Client(OpenApiClient):
         tmp_req: hbr_20170908_models.SearchHistoricalSnapshotsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.SearchHistoricalSnapshotsResponse:
+        """
+        @summary Queries the information about one or more backup snapshots that meet the specified conditions.
+        
+        @param tmp_req: SearchHistoricalSnapshotsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchHistoricalSnapshotsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = hbr_20170908_models.SearchHistoricalSnapshotsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6683,6 +7829,13 @@ class Client(OpenApiClient):
         tmp_req: hbr_20170908_models.SearchHistoricalSnapshotsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.SearchHistoricalSnapshotsResponse:
+        """
+        @summary Queries the information about one or more backup snapshots that meet the specified conditions.
+        
+        @param tmp_req: SearchHistoricalSnapshotsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchHistoricalSnapshotsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = hbr_20170908_models.SearchHistoricalSnapshotsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6724,6 +7877,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.SearchHistoricalSnapshotsRequest,
     ) -> hbr_20170908_models.SearchHistoricalSnapshotsResponse:
+        """
+        @summary Queries the information about one or more backup snapshots that meet the specified conditions.
+        
+        @param request: SearchHistoricalSnapshotsRequest
+        @return: SearchHistoricalSnapshotsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.search_historical_snapshots_with_options(request, runtime)
 
@@ -6731,6 +7890,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.SearchHistoricalSnapshotsRequest,
     ) -> hbr_20170908_models.SearchHistoricalSnapshotsResponse:
+        """
+        @summary Queries the information about one or more backup snapshots that meet the specified conditions.
+        
+        @param request: SearchHistoricalSnapshotsRequest
+        @return: SearchHistoricalSnapshotsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.search_historical_snapshots_with_options_async(request, runtime)
 
@@ -6740,7 +7905,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.StartHanaDatabaseAsyncResponse:
         """
-        To stop the database again, call the StopHanaDatabaseAsync operation.
+        @summary Starts an SAP HANA database.
+        
+        @description To stop the database again, call the StopHanaDatabaseAsync operation.
         
         @param request: StartHanaDatabaseAsyncRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6779,7 +7946,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.StartHanaDatabaseAsyncResponse:
         """
-        To stop the database again, call the StopHanaDatabaseAsync operation.
+        @summary Starts an SAP HANA database.
+        
+        @description To stop the database again, call the StopHanaDatabaseAsync operation.
         
         @param request: StartHanaDatabaseAsyncRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6817,7 +7986,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.StartHanaDatabaseAsyncRequest,
     ) -> hbr_20170908_models.StartHanaDatabaseAsyncResponse:
         """
-        To stop the database again, call the StopHanaDatabaseAsync operation.
+        @summary Starts an SAP HANA database.
+        
+        @description To stop the database again, call the StopHanaDatabaseAsync operation.
         
         @param request: StartHanaDatabaseAsyncRequest
         @return: StartHanaDatabaseAsyncResponse
@@ -6830,7 +8001,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.StartHanaDatabaseAsyncRequest,
     ) -> hbr_20170908_models.StartHanaDatabaseAsyncResponse:
         """
-        To stop the database again, call the StopHanaDatabaseAsync operation.
+        @summary Starts an SAP HANA database.
+        
+        @description To stop the database again, call the StopHanaDatabaseAsync operation.
         
         @param request: StartHanaDatabaseAsyncRequest
         @return: StartHanaDatabaseAsyncResponse
@@ -6844,7 +8017,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.StopHanaDatabaseAsyncResponse:
         """
-        To start the database again, call the StartHanaDatabaseAsync operation.
+        @summary Stops an SAP HANA database.
+        
+        @description To start the database again, call the StartHanaDatabaseAsync operation.
         
         @param request: StopHanaDatabaseAsyncRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6883,7 +8058,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.StopHanaDatabaseAsyncResponse:
         """
-        To start the database again, call the StartHanaDatabaseAsync operation.
+        @summary Stops an SAP HANA database.
+        
+        @description To start the database again, call the StartHanaDatabaseAsync operation.
         
         @param request: StopHanaDatabaseAsyncRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6921,7 +8098,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.StopHanaDatabaseAsyncRequest,
     ) -> hbr_20170908_models.StopHanaDatabaseAsyncResponse:
         """
-        To start the database again, call the StartHanaDatabaseAsync operation.
+        @summary Stops an SAP HANA database.
+        
+        @description To start the database again, call the StartHanaDatabaseAsync operation.
         
         @param request: StopHanaDatabaseAsyncRequest
         @return: StopHanaDatabaseAsyncResponse
@@ -6934,7 +8113,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.StopHanaDatabaseAsyncRequest,
     ) -> hbr_20170908_models.StopHanaDatabaseAsyncResponse:
         """
-        To start the database again, call the StartHanaDatabaseAsync operation.
+        @summary Stops an SAP HANA database.
+        
+        @description To start the database again, call the StartHanaDatabaseAsync operation.
         
         @param request: StopHanaDatabaseAsyncRequest
         @return: StopHanaDatabaseAsyncResponse
@@ -6948,9 +8129,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UninstallBackupClientsResponse:
         """
-        This operation creates an asynchronous job at the backend and calls Cloud Assistant to uninstall a backup client from an ECS instance.
-        *   You can call the DescribeTask operation to query the execution result of an asynchronous job.
-        *   The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 30 seconds after you call the UninstallBackupClients operation to uninstall backup clients. Then, run the next queries at an interval of 30 seconds.
+        @summary Uninstalls a Cloud Backup client from one or more Elastic Compute Service (ECS) instance.
+        
+        @description    This operation creates an asynchronous job at the backend and calls Cloud Assistant to uninstall a backup client from an ECS instance.
+        You can call the DescribeTask operation to query the execution result of an asynchronous job.
+        The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 30 seconds after you call the UninstallBackupClients operation to uninstall backup clients. Then, run the next queries at an interval of 30 seconds.
         
         @param tmp_req: UninstallBackupClientsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6999,9 +8182,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UninstallBackupClientsResponse:
         """
-        This operation creates an asynchronous job at the backend and calls Cloud Assistant to uninstall a backup client from an ECS instance.
-        *   You can call the DescribeTask operation to query the execution result of an asynchronous job.
-        *   The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 30 seconds after you call the UninstallBackupClients operation to uninstall backup clients. Then, run the next queries at an interval of 30 seconds.
+        @summary Uninstalls a Cloud Backup client from one or more Elastic Compute Service (ECS) instance.
+        
+        @description    This operation creates an asynchronous job at the backend and calls Cloud Assistant to uninstall a backup client from an ECS instance.
+        You can call the DescribeTask operation to query the execution result of an asynchronous job.
+        The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 30 seconds after you call the UninstallBackupClients operation to uninstall backup clients. Then, run the next queries at an interval of 30 seconds.
         
         @param tmp_req: UninstallBackupClientsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7049,9 +8234,11 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.UninstallBackupClientsRequest,
     ) -> hbr_20170908_models.UninstallBackupClientsResponse:
         """
-        This operation creates an asynchronous job at the backend and calls Cloud Assistant to uninstall a backup client from an ECS instance.
-        *   You can call the DescribeTask operation to query the execution result of an asynchronous job.
-        *   The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 30 seconds after you call the UninstallBackupClients operation to uninstall backup clients. Then, run the next queries at an interval of 30 seconds.
+        @summary Uninstalls a Cloud Backup client from one or more Elastic Compute Service (ECS) instance.
+        
+        @description    This operation creates an asynchronous job at the backend and calls Cloud Assistant to uninstall a backup client from an ECS instance.
+        You can call the DescribeTask operation to query the execution result of an asynchronous job.
+        The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 30 seconds after you call the UninstallBackupClients operation to uninstall backup clients. Then, run the next queries at an interval of 30 seconds.
         
         @param request: UninstallBackupClientsRequest
         @return: UninstallBackupClientsResponse
@@ -7064,9 +8251,11 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.UninstallBackupClientsRequest,
     ) -> hbr_20170908_models.UninstallBackupClientsResponse:
         """
-        This operation creates an asynchronous job at the backend and calls Cloud Assistant to uninstall a backup client from an ECS instance.
-        *   You can call the DescribeTask operation to query the execution result of an asynchronous job.
-        *   The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 30 seconds after you call the UninstallBackupClients operation to uninstall backup clients. Then, run the next queries at an interval of 30 seconds.
+        @summary Uninstalls a Cloud Backup client from one or more Elastic Compute Service (ECS) instance.
+        
+        @description    This operation creates an asynchronous job at the backend and calls Cloud Assistant to uninstall a backup client from an ECS instance.
+        You can call the DescribeTask operation to query the execution result of an asynchronous job.
+        The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 30 seconds after you call the UninstallBackupClients operation to uninstall backup clients. Then, run the next queries at an interval of 30 seconds.
         
         @param request: UninstallBackupClientsRequest
         @return: UninstallBackupClientsResponse
@@ -7080,7 +8269,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UninstallClientResponse:
         """
-        If you call this operation, the specified HBR client is uninstalled. To reinstall the HBR client, call the CreateClients operation.
+        @summary Uninstalls an HBR client.
+        
+        @description If you call this operation, the specified HBR client is uninstalled. To reinstall the HBR client, call the CreateClients operation.
         
         @param request: UninstallClientRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7119,7 +8310,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UninstallClientResponse:
         """
-        If you call this operation, the specified HBR client is uninstalled. To reinstall the HBR client, call the CreateClients operation.
+        @summary Uninstalls an HBR client.
+        
+        @description If you call this operation, the specified HBR client is uninstalled. To reinstall the HBR client, call the CreateClients operation.
         
         @param request: UninstallClientRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7157,7 +8350,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.UninstallClientRequest,
     ) -> hbr_20170908_models.UninstallClientResponse:
         """
-        If you call this operation, the specified HBR client is uninstalled. To reinstall the HBR client, call the CreateClients operation.
+        @summary Uninstalls an HBR client.
+        
+        @description If you call this operation, the specified HBR client is uninstalled. To reinstall the HBR client, call the CreateClients operation.
         
         @param request: UninstallClientRequest
         @return: UninstallClientResponse
@@ -7170,7 +8365,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.UninstallClientRequest,
     ) -> hbr_20170908_models.UninstallClientResponse:
         """
-        If you call this operation, the specified HBR client is uninstalled. To reinstall the HBR client, call the CreateClients operation.
+        @summary Uninstalls an HBR client.
+        
+        @description If you call this operation, the specified HBR client is uninstalled. To reinstall the HBR client, call the CreateClients operation.
         
         @param request: UninstallClientRequest
         @return: UninstallClientResponse
@@ -7183,6 +8380,13 @@ class Client(OpenApiClient):
         tmp_req: hbr_20170908_models.UpdateBackupPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UpdateBackupPlanResponse:
+        """
+        @summary Updates a backup plan.
+        
+        @param tmp_req: UpdateBackupPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBackupPlanResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = hbr_20170908_models.UpdateBackupPlanShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7253,6 +8457,13 @@ class Client(OpenApiClient):
         tmp_req: hbr_20170908_models.UpdateBackupPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UpdateBackupPlanResponse:
+        """
+        @summary Updates a backup plan.
+        
+        @param tmp_req: UpdateBackupPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBackupPlanResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = hbr_20170908_models.UpdateBackupPlanShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7322,6 +8533,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.UpdateBackupPlanRequest,
     ) -> hbr_20170908_models.UpdateBackupPlanResponse:
+        """
+        @summary Updates a backup plan.
+        
+        @param request: UpdateBackupPlanRequest
+        @return: UpdateBackupPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_backup_plan_with_options(request, runtime)
 
@@ -7329,6 +8546,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.UpdateBackupPlanRequest,
     ) -> hbr_20170908_models.UpdateBackupPlanResponse:
+        """
+        @summary Updates a backup plan.
+        
+        @param request: UpdateBackupPlanRequest
+        @return: UpdateBackupPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_backup_plan_with_options_async(request, runtime)
 
@@ -7338,7 +8561,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UpdateClientSettingsResponse:
         """
-        You can call this operation to update the configurations of both the old and new HBR clients.
+        @summary Updates the configurations of an HBR client.
+        
+        @description You can call this operation to update the configurations of both the old and new HBR clients.
         
         @param request: UpdateClientSettingsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7399,7 +8624,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UpdateClientSettingsResponse:
         """
-        You can call this operation to update the configurations of both the old and new HBR clients.
+        @summary Updates the configurations of an HBR client.
+        
+        @description You can call this operation to update the configurations of both the old and new HBR clients.
         
         @param request: UpdateClientSettingsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7459,7 +8686,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.UpdateClientSettingsRequest,
     ) -> hbr_20170908_models.UpdateClientSettingsResponse:
         """
-        You can call this operation to update the configurations of both the old and new HBR clients.
+        @summary Updates the configurations of an HBR client.
+        
+        @description You can call this operation to update the configurations of both the old and new HBR clients.
         
         @param request: UpdateClientSettingsRequest
         @return: UpdateClientSettingsResponse
@@ -7472,7 +8701,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.UpdateClientSettingsRequest,
     ) -> hbr_20170908_models.UpdateClientSettingsResponse:
         """
-        You can call this operation to update the configurations of both the old and new HBR clients.
+        @summary Updates the configurations of an HBR client.
+        
+        @description You can call this operation to update the configurations of both the old and new HBR clients.
         
         @param request: UpdateClientSettingsRequest
         @return: UpdateClientSettingsResponse
@@ -7485,6 +8716,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.UpdateContainerClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UpdateContainerClusterResponse:
+        """
+        @summary Updates the name and network type of a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: UpdateContainerClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateContainerClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -7521,6 +8759,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.UpdateContainerClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UpdateContainerClusterResponse:
+        """
+        @summary Updates the name and network type of a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: UpdateContainerClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateContainerClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -7556,6 +8801,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.UpdateContainerClusterRequest,
     ) -> hbr_20170908_models.UpdateContainerClusterResponse:
+        """
+        @summary Updates the name and network type of a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: UpdateContainerClusterRequest
+        @return: UpdateContainerClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_container_cluster_with_options(request, runtime)
 
@@ -7563,6 +8814,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.UpdateContainerClusterRequest,
     ) -> hbr_20170908_models.UpdateContainerClusterResponse:
+        """
+        @summary Updates the name and network type of a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: UpdateContainerClusterRequest
+        @return: UpdateContainerClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_container_cluster_with_options_async(request, runtime)
 
@@ -7572,10 +8829,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UpdateHanaBackupPlanResponse:
         """
-        A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
-        *   You can specify only one type of data source in a backup plan.
-        *   You can specify only one interval as a backup cycle in a backup plan.
-        *   Each backup plan allows you to back up data to only one backup vault.
+        @summary Updates an SAP HANA backup plan.
+        
+        @description    A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+        You can specify only one type of data source in a backup plan.
+        You can specify only one interval as a backup cycle in a backup plan.
+        Each backup plan allows you to back up data to only one backup vault.
         
         @param request: UpdateHanaBackupPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7622,10 +8881,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UpdateHanaBackupPlanResponse:
         """
-        A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
-        *   You can specify only one type of data source in a backup plan.
-        *   You can specify only one interval as a backup cycle in a backup plan.
-        *   Each backup plan allows you to back up data to only one backup vault.
+        @summary Updates an SAP HANA backup plan.
+        
+        @description    A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+        You can specify only one type of data source in a backup plan.
+        You can specify only one interval as a backup cycle in a backup plan.
+        Each backup plan allows you to back up data to only one backup vault.
         
         @param request: UpdateHanaBackupPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7671,10 +8932,12 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.UpdateHanaBackupPlanRequest,
     ) -> hbr_20170908_models.UpdateHanaBackupPlanResponse:
         """
-        A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
-        *   You can specify only one type of data source in a backup plan.
-        *   You can specify only one interval as a backup cycle in a backup plan.
-        *   Each backup plan allows you to back up data to only one backup vault.
+        @summary Updates an SAP HANA backup plan.
+        
+        @description    A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+        You can specify only one type of data source in a backup plan.
+        You can specify only one interval as a backup cycle in a backup plan.
+        Each backup plan allows you to back up data to only one backup vault.
         
         @param request: UpdateHanaBackupPlanRequest
         @return: UpdateHanaBackupPlanResponse
@@ -7687,10 +8950,12 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.UpdateHanaBackupPlanRequest,
     ) -> hbr_20170908_models.UpdateHanaBackupPlanResponse:
         """
-        A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
-        *   You can specify only one type of data source in a backup plan.
-        *   You can specify only one interval as a backup cycle in a backup plan.
-        *   Each backup plan allows you to back up data to only one backup vault.
+        @summary Updates an SAP HANA backup plan.
+        
+        @description    A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+        You can specify only one type of data source in a backup plan.
+        You can specify only one interval as a backup cycle in a backup plan.
+        Each backup plan allows you to back up data to only one backup vault.
         
         @param request: UpdateHanaBackupPlanRequest
         @return: UpdateHanaBackupPlanResponse
@@ -7704,7 +8969,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UpdateHanaBackupSettingResponse:
         """
-        You can call the UpdateHanaRetentionSetting operation to update the backup retention period of a database.
+        @summary Updates the backup parameters of an SAP HANA database.
+        
+        @description You can call the UpdateHanaRetentionSetting operation to update the backup retention period of a database.
         
         @param request: UpdateHanaBackupSettingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7757,7 +9024,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UpdateHanaBackupSettingResponse:
         """
-        You can call the UpdateHanaRetentionSetting operation to update the backup retention period of a database.
+        @summary Updates the backup parameters of an SAP HANA database.
+        
+        @description You can call the UpdateHanaRetentionSetting operation to update the backup retention period of a database.
         
         @param request: UpdateHanaBackupSettingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7809,7 +9078,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.UpdateHanaBackupSettingRequest,
     ) -> hbr_20170908_models.UpdateHanaBackupSettingResponse:
         """
-        You can call the UpdateHanaRetentionSetting operation to update the backup retention period of a database.
+        @summary Updates the backup parameters of an SAP HANA database.
+        
+        @description You can call the UpdateHanaRetentionSetting operation to update the backup retention period of a database.
         
         @param request: UpdateHanaBackupSettingRequest
         @return: UpdateHanaBackupSettingResponse
@@ -7822,7 +9093,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.UpdateHanaBackupSettingRequest,
     ) -> hbr_20170908_models.UpdateHanaBackupSettingResponse:
         """
-        You can call the UpdateHanaRetentionSetting operation to update the backup retention period of a database.
+        @summary Updates the backup parameters of an SAP HANA database.
+        
+        @description You can call the UpdateHanaRetentionSetting operation to update the backup retention period of a database.
         
         @param request: UpdateHanaBackupSettingRequest
         @return: UpdateHanaBackupSettingResponse
@@ -7835,6 +9108,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.UpdateHanaInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UpdateHanaInstanceResponse:
+        """
+        @summary Updates an SAP HANA instance.
+        
+        @param request: UpdateHanaInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateHanaInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alert_setting):
@@ -7883,6 +9163,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.UpdateHanaInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UpdateHanaInstanceResponse:
+        """
+        @summary Updates an SAP HANA instance.
+        
+        @param request: UpdateHanaInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateHanaInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alert_setting):
@@ -7930,6 +9217,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.UpdateHanaInstanceRequest,
     ) -> hbr_20170908_models.UpdateHanaInstanceResponse:
+        """
+        @summary Updates an SAP HANA instance.
+        
+        @param request: UpdateHanaInstanceRequest
+        @return: UpdateHanaInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_hana_instance_with_options(request, runtime)
 
@@ -7937,6 +9230,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.UpdateHanaInstanceRequest,
     ) -> hbr_20170908_models.UpdateHanaInstanceResponse:
+        """
+        @summary Updates an SAP HANA instance.
+        
+        @param request: UpdateHanaInstanceRequest
+        @return: UpdateHanaInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_hana_instance_with_options_async(request, runtime)
 
@@ -7946,8 +9245,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UpdateHanaRetentionSettingResponse:
         """
-        If you want to update the backup parameters of a database, you can call the UpdateHanaBackupSetting operation.
-        *   HBR deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
+        @summary Updates the backup retention period of an SAP HANA database.
+        
+        @description    If you want to update the backup parameters of a database, you can call the UpdateHanaBackupSetting operation.
+        Cloud Backup deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
         
         @param request: UpdateHanaRetentionSettingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7992,8 +9293,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UpdateHanaRetentionSettingResponse:
         """
-        If you want to update the backup parameters of a database, you can call the UpdateHanaBackupSetting operation.
-        *   HBR deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
+        @summary Updates the backup retention period of an SAP HANA database.
+        
+        @description    If you want to update the backup parameters of a database, you can call the UpdateHanaBackupSetting operation.
+        Cloud Backup deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
         
         @param request: UpdateHanaRetentionSettingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8037,8 +9340,10 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.UpdateHanaRetentionSettingRequest,
     ) -> hbr_20170908_models.UpdateHanaRetentionSettingResponse:
         """
-        If you want to update the backup parameters of a database, you can call the UpdateHanaBackupSetting operation.
-        *   HBR deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
+        @summary Updates the backup retention period of an SAP HANA database.
+        
+        @description    If you want to update the backup parameters of a database, you can call the UpdateHanaBackupSetting operation.
+        Cloud Backup deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
         
         @param request: UpdateHanaRetentionSettingRequest
         @return: UpdateHanaRetentionSettingResponse
@@ -8051,8 +9356,10 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.UpdateHanaRetentionSettingRequest,
     ) -> hbr_20170908_models.UpdateHanaRetentionSettingResponse:
         """
-        If you want to update the backup parameters of a database, you can call the UpdateHanaBackupSetting operation.
-        *   HBR deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
+        @summary Updates the backup retention period of an SAP HANA database.
+        
+        @description    If you want to update the backup parameters of a database, you can call the UpdateHanaBackupSetting operation.
+        Cloud Backup deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
         
         @param request: UpdateHanaRetentionSettingRequest
         @return: UpdateHanaRetentionSettingResponse
@@ -8065,6 +9372,13 @@ class Client(OpenApiClient):
         tmp_req: hbr_20170908_models.UpdatePolicyBindingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UpdatePolicyBindingResponse:
+        """
+        @summary Modifies the association between a backup policy and a data source.
+        
+        @param tmp_req: UpdatePolicyBindingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePolicyBindingResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = hbr_20170908_models.UpdatePolicyBindingShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8075,10 +9389,18 @@ class Client(OpenApiClient):
             query['AdvancedOptions'] = request.advanced_options_shrink
         if not UtilClient.is_unset(request.disabled):
             query['Disabled'] = request.disabled
+        if not UtilClient.is_unset(request.exclude):
+            query['Exclude'] = request.exclude
+        if not UtilClient.is_unset(request.include):
+            query['Include'] = request.include
         if not UtilClient.is_unset(request.policy_binding_description):
             query['PolicyBindingDescription'] = request.policy_binding_description
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
         if not UtilClient.is_unset(request.source_type):
             query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.speed_limit):
+            query['SpeedLimit'] = request.speed_limit
         body = {}
         if not UtilClient.is_unset(request.data_source_id):
             body['DataSourceId'] = request.data_source_id
@@ -8109,6 +9431,13 @@ class Client(OpenApiClient):
         tmp_req: hbr_20170908_models.UpdatePolicyBindingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UpdatePolicyBindingResponse:
+        """
+        @summary Modifies the association between a backup policy and a data source.
+        
+        @param tmp_req: UpdatePolicyBindingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePolicyBindingResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = hbr_20170908_models.UpdatePolicyBindingShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8119,10 +9448,18 @@ class Client(OpenApiClient):
             query['AdvancedOptions'] = request.advanced_options_shrink
         if not UtilClient.is_unset(request.disabled):
             query['Disabled'] = request.disabled
+        if not UtilClient.is_unset(request.exclude):
+            query['Exclude'] = request.exclude
+        if not UtilClient.is_unset(request.include):
+            query['Include'] = request.include
         if not UtilClient.is_unset(request.policy_binding_description):
             query['PolicyBindingDescription'] = request.policy_binding_description
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
         if not UtilClient.is_unset(request.source_type):
             query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.speed_limit):
+            query['SpeedLimit'] = request.speed_limit
         body = {}
         if not UtilClient.is_unset(request.data_source_id):
             body['DataSourceId'] = request.data_source_id
@@ -8152,6 +9489,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.UpdatePolicyBindingRequest,
     ) -> hbr_20170908_models.UpdatePolicyBindingResponse:
+        """
+        @summary Modifies the association between a backup policy and a data source.
+        
+        @param request: UpdatePolicyBindingRequest
+        @return: UpdatePolicyBindingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_policy_binding_with_options(request, runtime)
 
@@ -8159,6 +9502,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.UpdatePolicyBindingRequest,
     ) -> hbr_20170908_models.UpdatePolicyBindingResponse:
+        """
+        @summary Modifies the association between a backup policy and a data source.
+        
+        @param request: UpdatePolicyBindingRequest
+        @return: UpdatePolicyBindingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_policy_binding_with_options_async(request, runtime)
 
@@ -8168,7 +9517,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UpdatePolicyV2Response:
         """
-        If you modify a backup policy, the modification takes effect on all data sources that are bound to the backup policy. Proceed with caution.
+        @summary Modifies a backup policy.
+        
+        @description If you modify a backup policy, the modification takes effect on all data sources that are bound to the backup policy. Proceed with caution.
         
         @param tmp_req: UpdatePolicyV2Request
         @param runtime: runtime options for this request RuntimeOptions
@@ -8213,7 +9564,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UpdatePolicyV2Response:
         """
-        If you modify a backup policy, the modification takes effect on all data sources that are bound to the backup policy. Proceed with caution.
+        @summary Modifies a backup policy.
+        
+        @description If you modify a backup policy, the modification takes effect on all data sources that are bound to the backup policy. Proceed with caution.
         
         @param tmp_req: UpdatePolicyV2Request
         @param runtime: runtime options for this request RuntimeOptions
@@ -8257,7 +9610,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.UpdatePolicyV2Request,
     ) -> hbr_20170908_models.UpdatePolicyV2Response:
         """
-        If you modify a backup policy, the modification takes effect on all data sources that are bound to the backup policy. Proceed with caution.
+        @summary Modifies a backup policy.
+        
+        @description If you modify a backup policy, the modification takes effect on all data sources that are bound to the backup policy. Proceed with caution.
         
         @param request: UpdatePolicyV2Request
         @return: UpdatePolicyV2Response
@@ -8270,7 +9625,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.UpdatePolicyV2Request,
     ) -> hbr_20170908_models.UpdatePolicyV2Response:
         """
-        If you modify a backup policy, the modification takes effect on all data sources that are bound to the backup policy. Proceed with caution.
+        @summary Modifies a backup policy.
+        
+        @description If you modify a backup policy, the modification takes effect on all data sources that are bound to the backup policy. Proceed with caution.
         
         @param request: UpdatePolicyV2Request
         @return: UpdatePolicyV2Response
@@ -8283,6 +9640,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.UpdateVaultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UpdateVaultResponse:
+        """
+        @summary Updates the configuration information about the backup vault.
+        
+        @param request: UpdateVaultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateVaultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -8317,6 +9681,13 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.UpdateVaultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UpdateVaultResponse:
+        """
+        @summary Updates the configuration information about the backup vault.
+        
+        @param request: UpdateVaultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateVaultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -8350,6 +9721,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.UpdateVaultRequest,
     ) -> hbr_20170908_models.UpdateVaultResponse:
+        """
+        @summary Updates the configuration information about the backup vault.
+        
+        @param request: UpdateVaultRequest
+        @return: UpdateVaultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_vault_with_options(request, runtime)
 
@@ -8357,6 +9734,12 @@ class Client(OpenApiClient):
         self,
         request: hbr_20170908_models.UpdateVaultRequest,
     ) -> hbr_20170908_models.UpdateVaultResponse:
+        """
+        @summary Updates the configuration information about the backup vault.
+        
+        @param request: UpdateVaultRequest
+        @return: UpdateVaultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_vault_with_options_async(request, runtime)
 
@@ -8366,9 +9749,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UpgradeBackupClientsResponse:
         """
-        This operation creates an asynchronous job at the backend and calls Cloud Assistant to upgrade an HBR client that is installed on an ECS instance.
-        *   You can call the DescribeTask operation to query the execution result of an asynchronous job.
-        *   The timeout period of an asynchronous job is 15 minutes.
+        @summary Upgrades an HBR client on one or more Elastic Compute Service (ECS) instances.
+        
+        @description    This operation creates an asynchronous job at the backend and calls Cloud Assistant to upgrade an HBR client that is installed on an ECS instance.
+        You can call the DescribeTask operation to query the execution result of an asynchronous job.
+        The timeout period of an asynchronous job is 15 minutes.
         
         @param tmp_req: UpgradeBackupClientsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8417,9 +9802,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UpgradeBackupClientsResponse:
         """
-        This operation creates an asynchronous job at the backend and calls Cloud Assistant to upgrade an HBR client that is installed on an ECS instance.
-        *   You can call the DescribeTask operation to query the execution result of an asynchronous job.
-        *   The timeout period of an asynchronous job is 15 minutes.
+        @summary Upgrades an HBR client on one or more Elastic Compute Service (ECS) instances.
+        
+        @description    This operation creates an asynchronous job at the backend and calls Cloud Assistant to upgrade an HBR client that is installed on an ECS instance.
+        You can call the DescribeTask operation to query the execution result of an asynchronous job.
+        The timeout period of an asynchronous job is 15 minutes.
         
         @param tmp_req: UpgradeBackupClientsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8467,9 +9854,11 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.UpgradeBackupClientsRequest,
     ) -> hbr_20170908_models.UpgradeBackupClientsResponse:
         """
-        This operation creates an asynchronous job at the backend and calls Cloud Assistant to upgrade an HBR client that is installed on an ECS instance.
-        *   You can call the DescribeTask operation to query the execution result of an asynchronous job.
-        *   The timeout period of an asynchronous job is 15 minutes.
+        @summary Upgrades an HBR client on one or more Elastic Compute Service (ECS) instances.
+        
+        @description    This operation creates an asynchronous job at the backend and calls Cloud Assistant to upgrade an HBR client that is installed on an ECS instance.
+        You can call the DescribeTask operation to query the execution result of an asynchronous job.
+        The timeout period of an asynchronous job is 15 minutes.
         
         @param request: UpgradeBackupClientsRequest
         @return: UpgradeBackupClientsResponse
@@ -8482,9 +9871,11 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.UpgradeBackupClientsRequest,
     ) -> hbr_20170908_models.UpgradeBackupClientsResponse:
         """
-        This operation creates an asynchronous job at the backend and calls Cloud Assistant to upgrade an HBR client that is installed on an ECS instance.
-        *   You can call the DescribeTask operation to query the execution result of an asynchronous job.
-        *   The timeout period of an asynchronous job is 15 minutes.
+        @summary Upgrades an HBR client on one or more Elastic Compute Service (ECS) instances.
+        
+        @description    This operation creates an asynchronous job at the backend and calls Cloud Assistant to upgrade an HBR client that is installed on an ECS instance.
+        You can call the DescribeTask operation to query the execution result of an asynchronous job.
+        The timeout period of an asynchronous job is 15 minutes.
         
         @param request: UpgradeBackupClientsRequest
         @return: UpgradeBackupClientsResponse
@@ -8498,7 +9889,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UpgradeClientResponse:
         """
-        You can call this operation to upgrade a backup client to the latest version. After the backup client is upgraded, the version of the backup client cannot be rolled back.
+        @summary Upgrades the Cloud Backup client.
+        
+        @description You can call this operation to upgrade a Cloud Backup client to the latest version. After the Cloud Backup client is upgraded, the version of the client cannot be rolled back.
         
         @param request: UpgradeClientRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8537,7 +9930,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.UpgradeClientResponse:
         """
-        You can call this operation to upgrade a backup client to the latest version. After the backup client is upgraded, the version of the backup client cannot be rolled back.
+        @summary Upgrades the Cloud Backup client.
+        
+        @description You can call this operation to upgrade a Cloud Backup client to the latest version. After the Cloud Backup client is upgraded, the version of the client cannot be rolled back.
         
         @param request: UpgradeClientRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8575,7 +9970,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.UpgradeClientRequest,
     ) -> hbr_20170908_models.UpgradeClientResponse:
         """
-        You can call this operation to upgrade a backup client to the latest version. After the backup client is upgraded, the version of the backup client cannot be rolled back.
+        @summary Upgrades the Cloud Backup client.
+        
+        @description You can call this operation to upgrade a Cloud Backup client to the latest version. After the Cloud Backup client is upgraded, the version of the client cannot be rolled back.
         
         @param request: UpgradeClientRequest
         @return: UpgradeClientResponse
@@ -8588,7 +9985,9 @@ class Client(OpenApiClient):
         request: hbr_20170908_models.UpgradeClientRequest,
     ) -> hbr_20170908_models.UpgradeClientResponse:
         """
-        You can call this operation to upgrade a backup client to the latest version. After the backup client is upgraded, the version of the backup client cannot be rolled back.
+        @summary Upgrades the Cloud Backup client.
+        
+        @description You can call this operation to upgrade a Cloud Backup client to the latest version. After the Cloud Backup client is upgraded, the version of the client cannot be rolled back.
         
         @param request: UpgradeClientRequest
         @return: UpgradeClientResponse

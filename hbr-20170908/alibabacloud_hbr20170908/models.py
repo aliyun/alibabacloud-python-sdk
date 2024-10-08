@@ -218,10 +218,14 @@ class AddContainerClusterRequest(TeaModel):
         network_type: str = None,
     ):
         # The type of the cluster. Only Container Service for Kubernetes (ACK) clusters are supported.
+        # 
+        # This parameter is required.
         self.cluster_type = cluster_type
         # The description of the cluster.
         self.description = description
         # The ID of the cluster that you want to register.
+        # 
+        # This parameter is required.
         self.identifier = identifier
         # The name of the cluster.
         self.name = name
@@ -229,6 +233,8 @@ class AddContainerClusterRequest(TeaModel):
         # 
         # *   **CLASSIC**: the classic network
         # *   **VPC**: a virtual private cloud (VPC)
+        # 
+        # This parameter is required.
         self.network_type = network_type
 
     def validate(self):
@@ -374,149 +380,6 @@ class AddContainerClusterResponse(TeaModel):
         return self
 
 
-class AttachNasFileSystemRequest(TeaModel):
-    def __init__(
-        self,
-        create_time: str = None,
-        cross_account_role_name: str = None,
-        cross_account_type: str = None,
-        cross_account_user_id: int = None,
-        file_system_id: str = None,
-    ):
-        self.create_time = create_time
-        self.cross_account_role_name = cross_account_role_name
-        self.cross_account_type = cross_account_type
-        self.cross_account_user_id = cross_account_user_id
-        self.file_system_id = file_system_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.create_time is not None:
-            result['CreateTime'] = self.create_time
-        if self.cross_account_role_name is not None:
-            result['CrossAccountRoleName'] = self.cross_account_role_name
-        if self.cross_account_type is not None:
-            result['CrossAccountType'] = self.cross_account_type
-        if self.cross_account_user_id is not None:
-            result['CrossAccountUserId'] = self.cross_account_user_id
-        if self.file_system_id is not None:
-            result['FileSystemId'] = self.file_system_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CreateTime') is not None:
-            self.create_time = m.get('CreateTime')
-        if m.get('CrossAccountRoleName') is not None:
-            self.cross_account_role_name = m.get('CrossAccountRoleName')
-        if m.get('CrossAccountType') is not None:
-            self.cross_account_type = m.get('CrossAccountType')
-        if m.get('CrossAccountUserId') is not None:
-            self.cross_account_user_id = m.get('CrossAccountUserId')
-        if m.get('FileSystemId') is not None:
-            self.file_system_id = m.get('FileSystemId')
-        return self
-
-
-class AttachNasFileSystemResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        message: str = None,
-        request_id: str = None,
-        success: bool = None,
-        task_id: str = None,
-    ):
-        self.code = code
-        self.message = message
-        self.request_id = request_id
-        self.success = success
-        self.task_id = task_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        if self.task_id is not None:
-            result['TaskId'] = self.task_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        if m.get('TaskId') is not None:
-            self.task_id = m.get('TaskId')
-        return self
-
-
-class AttachNasFileSystemResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: AttachNasFileSystemResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = AttachNasFileSystemResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class CancelBackupJobRequest(TeaModel):
     def __init__(
         self,
@@ -524,6 +387,8 @@ class CancelBackupJobRequest(TeaModel):
         vault_id: str = None,
     ):
         # The ID of the backup job.
+        # 
+        # This parameter is required.
         self.job_id = job_id
         # The ID of the backup vault.
         self.vault_id = vault_id
@@ -652,8 +517,12 @@ class CancelRestoreJobRequest(TeaModel):
         vault_id: str = None,
     ):
         # The ID of the restore job.
+        # 
+        # This parameter is required.
         self.restore_id = restore_id
         # The ID of the backup vault.
+        # 
+        # This parameter is required.
         self.vault_id = vault_id
 
     def validate(self):
@@ -688,16 +557,16 @@ class CancelRestoreJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The value 200 indicates that the request is successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The message that is returned. If the request is successful, a value of successful is returned. If the request fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: indicates that the request is successful.
-        # *   false: indicates that the request fails.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -781,14 +650,20 @@ class ChangeResourceGroupRequest(TeaModel):
         resource_type: str = None,
     ):
         # The ID of the new resource group. You can view the available resource groups in the Resource Management console.
+        # 
+        # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
         # The ID of the resource. The value of this parameter varies with the resource type. For example, if the ResourceType parameter is set to vault, the ResourceId parameter specifies the ID of the backup vault.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
-        # The type of the resource. Valid values:
+        # The resource type. Valid values:
         # 
         # *   **vault**: backup vault
         # *   **client**: backup client
         # *   **hanainstance**: SAP HANA instance
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -827,16 +702,16 @@ class ChangeResourceGroupResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -919,8 +794,22 @@ class CheckRoleRequest(TeaModel):
         cross_account_role_name: str = None,
         cross_account_user_id: int = None,
     ):
+        # The type of the role. Valid values:
+        # 
+        # *   EcsRole: a role with the permissions to access Elastic Compute Service (ECS) resources
+        # *   CsgRole: a role with the permissions to perform Cloud Storage Gateway (CSG) backup
+        # *   NasRole: a role with the permissions to perform NAS backup
+        # *   OssRole: a role with the permissions to perform Object Storage Service (OSS) backup
+        # *   UdmRole: a role with the permissions to perform ECS instance backup
+        # *   VMwareLocalRole: a role with the permissions to back up on-premises VMware virtual machines (VMs)
+        # *   VMwareCloudRole: a role with the permissions to back up VMs deployed on Alibaba Cloud VMware Service (ACVS)
+        # *   EcsBackupRole: a role with the permissions to perform ECS backup
+        # *   OtsRole: a role with the permissions to perform Tablestore backup
+        # *   CrossAccountRole: a role with the permissions to perform cross-account backup
         self.check_role_type = check_role_type
+        # The name of the Resource Access Management (RAM) role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_role_name = cross_account_role_name
+        # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_user_id = cross_account_user_id
 
     def validate(self):
@@ -959,9 +848,16 @@ class CheckRoleResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -1103,6 +999,8 @@ class CreateBackupJobRequest(TeaModel):
         # *   **ECS_FILE**: Elastic Compute Service (ECS) files
         # *   **UDM_ECS**: ECS instances
         # *   **CONTAINER**: containers
+        # 
+        # This parameter is required.
         self.source_type = source_type
         # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE**. This parameter specifies the throttling rules. Format: `{start}|{end}|{bandwidth}`. Separate multiple throttling rules with vertical bars (|). A specified time range cannot overlap with another time range.
         # 
@@ -1267,6 +1165,8 @@ class CreateBackupJobShrinkRequest(TeaModel):
         # *   **ECS_FILE**: Elastic Compute Service (ECS) files
         # *   **UDM_ECS**: ECS instances
         # *   **CONTAINER**: containers
+        # 
+        # This parameter is required.
         self.source_type = source_type
         # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE**. This parameter specifies the throttling rules. Format: `{start}|{end}|{bandwidth}`. Separate multiple throttling rules with vertical bars (|). A specified time range cannot overlap with another time range.
         # 
@@ -1579,6 +1479,8 @@ class CreateBackupPlanRequest(TeaModel):
         vault_id: str = None,
     ):
         # The backup type. Valid value: **COMPLETE**, which indicates full backup.
+        # 
+        # This parameter is required.
         self.backup_type = backup_type
         # This parameter is required only if the **SourceType** parameter is set to **OSS**. This parameter specifies the name of the OSS bucket.
         self.bucket = bucket
@@ -1632,6 +1534,8 @@ class CreateBackupPlanRequest(TeaModel):
         # The backup paths.
         self.path = path
         # The name of the backup schedule. The name must be 1 to 64 characters in length. The name of a backup schedule for each type of data source must be unique within a backup vault.
+        # 
+        # This parameter is required.
         self.plan_name = plan_name
         # This parameter is required only if the **SourceType** parameter is set to **OSS**. This parameter specifies the prefix of objects that you want to back up. After a prefix is specified, only objects whose names start with the prefix are backed up.
         self.prefix = prefix
@@ -1643,6 +1547,8 @@ class CreateBackupPlanRequest(TeaModel):
         # 
         # *   **startTime**: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
         # *   **interval**: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+        # 
+        # This parameter is required.
         self.schedule = schedule
         # The type of the data source. Valid values:
         # 
@@ -1651,6 +1557,8 @@ class CreateBackupPlanRequest(TeaModel):
         # *   **NAS**: backs up Apsara File Storage NAS file systems.
         # *   **OTS**: backs up Tablestore instances.
         # *   **UDM_ECS**: backs up ECS instances.
+        # 
+        # This parameter is required.
         self.source_type = source_type
         # This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the throttling rules. Format: `{start}|{end}|{bandwidth}`. Separate multiple throttling rules with vertical bars (|). A specified time range cannot overlap with another time range.
         # 
@@ -1924,6 +1832,8 @@ class CreateBackupPlanShrinkRequest(TeaModel):
         vault_id: str = None,
     ):
         # The backup type. Valid value: **COMPLETE**, which indicates full backup.
+        # 
+        # This parameter is required.
         self.backup_type = backup_type
         # This parameter is required only if the **SourceType** parameter is set to **OSS**. This parameter specifies the name of the OSS bucket.
         self.bucket = bucket
@@ -1977,6 +1887,8 @@ class CreateBackupPlanShrinkRequest(TeaModel):
         # The backup paths.
         self.path = path
         # The name of the backup schedule. The name must be 1 to 64 characters in length. The name of a backup schedule for each type of data source must be unique within a backup vault.
+        # 
+        # This parameter is required.
         self.plan_name = plan_name
         # This parameter is required only if the **SourceType** parameter is set to **OSS**. This parameter specifies the prefix of objects that you want to back up. After a prefix is specified, only objects whose names start with the prefix are backed up.
         self.prefix = prefix
@@ -1988,6 +1900,8 @@ class CreateBackupPlanShrinkRequest(TeaModel):
         # 
         # *   **startTime**: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
         # *   **interval**: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+        # 
+        # This parameter is required.
         self.schedule = schedule
         # The type of the data source. Valid values:
         # 
@@ -1996,6 +1910,8 @@ class CreateBackupPlanShrinkRequest(TeaModel):
         # *   **NAS**: backs up Apsara File Storage NAS file systems.
         # *   **OTS**: backs up Tablestore instances.
         # *   **UDM_ECS**: backs up ECS instances.
+        # 
+        # This parameter is required.
         self.source_type = source_type
         # This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the throttling rules. Format: `{start}|{end}|{bandwidth}`. Separate multiple throttling rules with vertical bars (|). A specified time range cannot overlap with another time range.
         # 
@@ -2257,6 +2173,9 @@ class CreateClientsRequest(TeaModel):
         self,
         alert_setting: str = None,
         client_info: str = None,
+        cross_account_role_name: str = None,
+        cross_account_type: str = None,
+        cross_account_user_id: int = None,
         resource_group_id: str = None,
         use_https: bool = None,
         vault_id: str = None,
@@ -2265,6 +2184,15 @@ class CreateClientsRequest(TeaModel):
         self.alert_setting = alert_setting
         # The installation information of the HBR clients.
         self.client_info = client_info
+        # The name of the Resource Access Management (RAM) role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+        self.cross_account_role_name = cross_account_role_name
+        # The backup type. Valid values:
+        # 
+        # - **SELF_ACCOUNT**: Data is backed up within the same Alibaba Cloud account.
+        # - **CROSS_ACCOUNT**: Data is backed up across Alibaba Cloud accounts.
+        self.cross_account_type = cross_account_type
+        # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+        self.cross_account_user_id = cross_account_user_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # Specifies whether to transmit data over HTTPS. Valid values:
@@ -2273,6 +2201,8 @@ class CreateClientsRequest(TeaModel):
         # *   false: transmits data over HTTP.
         self.use_https = use_https
         # The ID of the backup vault.
+        # 
+        # This parameter is required.
         self.vault_id = vault_id
 
     def validate(self):
@@ -2288,6 +2218,12 @@ class CreateClientsRequest(TeaModel):
             result['AlertSetting'] = self.alert_setting
         if self.client_info is not None:
             result['ClientInfo'] = self.client_info
+        if self.cross_account_role_name is not None:
+            result['CrossAccountRoleName'] = self.cross_account_role_name
+        if self.cross_account_type is not None:
+            result['CrossAccountType'] = self.cross_account_type
+        if self.cross_account_user_id is not None:
+            result['CrossAccountUserId'] = self.cross_account_user_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.use_https is not None:
@@ -2302,6 +2238,12 @@ class CreateClientsRequest(TeaModel):
             self.alert_setting = m.get('AlertSetting')
         if m.get('ClientInfo') is not None:
             self.client_info = m.get('ClientInfo')
+        if m.get('CrossAccountRoleName') is not None:
+            self.cross_account_role_name = m.get('CrossAccountRoleName')
+        if m.get('CrossAccountType') is not None:
+            self.cross_account_type = m.get('CrossAccountType')
+        if m.get('CrossAccountUserId') is not None:
+            self.cross_account_user_id = m.get('CrossAccountUserId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('UseHttps') is not None:
@@ -2512,12 +2454,20 @@ class CreateHanaBackupPlanRequest(TeaModel):
         # *   COMPLETE: full backup
         # *   INCREMENTAL: incremental backup
         # *   DIFFERENTIAL: differential backup
+        # 
+        # This parameter is required.
         self.backup_type = backup_type
         # The ID of the SAP HANA instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The name of the database.
+        # 
+        # This parameter is required.
         self.database_name = database_name
         # The name of the backup plan.
+        # 
+        # This parameter is required.
         self.plan_name = plan_name
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -2525,8 +2475,12 @@ class CreateHanaBackupPlanRequest(TeaModel):
         # 
         # *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
         # *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+        # 
+        # This parameter is required.
         self.schedule = schedule
         # The ID of the backup vault.
+        # 
+        # This parameter is required.
         self.vault_id = vault_id
 
     def validate(self):
@@ -2681,6 +2635,9 @@ class CreateHanaInstanceRequest(TeaModel):
     def __init__(
         self,
         alert_setting: str = None,
+        cross_account_role_name: str = None,
+        cross_account_type: str = None,
+        cross_account_user_id: int = None,
         ecs_instance_id: str = None,
         hana_name: str = None,
         host: str = None,
@@ -2693,9 +2650,18 @@ class CreateHanaInstanceRequest(TeaModel):
         validate_certificate: bool = None,
         vault_id: str = None,
     ):
-        # The alert settings. Valid value: INHERITED, which indicates that the backup client sends alert notifications in the same way as the backup vault.
+        # The alert settings. Valid value: INHERITED, which indicates that the Cloud Backup client sends alert notifications by using the same method configured for the backup vault.
         self.alert_setting = alert_setting
-        # The IDs of ECS instances that host the SAP HANA instance to be registered. HBR installs backup clients on the specified ECS instances.
+        # The name of the Resource Access Management (RAM) role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+        self.cross_account_role_name = cross_account_role_name
+        # The backup type. Valid values:
+        # 
+        # - **SELF_ACCOUNT**: Data is backed up within the same Alibaba Cloud account.
+        # - **CROSS_ACCOUNT**: Data is backed up across Alibaba Cloud accounts.
+        self.cross_account_type = cross_account_type
+        # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+        self.cross_account_user_id = cross_account_user_id
+        # The IDs of the ECS instances that host the SAP HANA instance to be registered. Cloud Backup installs backup clients on the specified ECS instances.
         self.ecs_instance_id = ecs_instance_id
         # The name of the SAP HANA instance.
         self.hana_name = hana_name
@@ -2707,9 +2673,7 @@ class CreateHanaInstanceRequest(TeaModel):
         self.password = password
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The security identifier (SID) of the SAP HANA database.
-        # 
-        # For more information, see [How to find sid user and instance number of HANA db?](https://answers.sap.com/questions/555192/how-to-find-sid-user-and-instance-number-of-hana-d.html?spm=a2c4g.11186623.0.0.55c34b4ftZeXNK)
+        # The security identifier (SID) of the SAP HANA database. For more information, see [How to find sid user and instance number of HANA db?](https://answers.sap.com/questions/555192/how-to-find-sid-user-and-instance-number-of-hana-d.html?spm=a2c4g.11186623.0.0.55c34b4ftZeXNK).
         self.sid = sid
         # Specifies whether to connect with the SAP HANA database over Secure Sockets Layer (SSL).
         self.use_ssl = use_ssl
@@ -2718,6 +2682,8 @@ class CreateHanaInstanceRequest(TeaModel):
         # Specifies whether to verify the SSL certificate of the SAP HANA database.
         self.validate_certificate = validate_certificate
         # The ID of the backup vault.
+        # 
+        # This parameter is required.
         self.vault_id = vault_id
 
     def validate(self):
@@ -2731,6 +2697,12 @@ class CreateHanaInstanceRequest(TeaModel):
         result = dict()
         if self.alert_setting is not None:
             result['AlertSetting'] = self.alert_setting
+        if self.cross_account_role_name is not None:
+            result['CrossAccountRoleName'] = self.cross_account_role_name
+        if self.cross_account_type is not None:
+            result['CrossAccountType'] = self.cross_account_type
+        if self.cross_account_user_id is not None:
+            result['CrossAccountUserId'] = self.cross_account_user_id
         if self.ecs_instance_id is not None:
             result['EcsInstanceId'] = self.ecs_instance_id
         if self.hana_name is not None:
@@ -2759,6 +2731,12 @@ class CreateHanaInstanceRequest(TeaModel):
         m = m or dict()
         if m.get('AlertSetting') is not None:
             self.alert_setting = m.get('AlertSetting')
+        if m.get('CrossAccountRoleName') is not None:
+            self.cross_account_role_name = m.get('CrossAccountRoleName')
+        if m.get('CrossAccountType') is not None:
+            self.cross_account_type = m.get('CrossAccountType')
+        if m.get('CrossAccountUserId') is not None:
+            self.cross_account_user_id = m.get('CrossAccountUserId')
         if m.get('EcsInstanceId') is not None:
             self.ecs_instance_id = m.get('EcsInstanceId')
         if m.get('HanaName') is not None:
@@ -2795,16 +2773,16 @@ class CreateHanaInstanceResponseBody(TeaModel):
     ):
         # The ID of the SAP HANA instance.
         self.cluster_id = cluster_id
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -2909,14 +2887,20 @@ class CreateHanaRestoreRequest(TeaModel):
         # The ID of the backup.
         self.backup_id = backup_id
         # The backup prefix.
+        # 
+        # This parameter is required.
         self.backup_prefix = backup_prefix
         # Specifies whether to validate the differential backup and log backup. Valid values: true and false. If you set the value to true, HBR checks whether the required differential backup and log backup are available before the restore job starts. If the differential backup or log backup is unavailable, HBR does not start the restore job.
         self.check_access = check_access
         # Specifies whether to delete all log entries from the log area after the log entries are restored. Valid values: true and false. If you set the value to false, all log entries are deleted from the log area after the log entries are restored.
         self.clear_log = clear_log
         # The ID of the SAP HANA instance that you want to restore.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The name of the database that you want to restore.
+        # 
+        # This parameter is required.
         self.database_name = database_name
         # The log position to which you want to restore the database. This parameter is valid only if you set the Mode parameter to **RECOVERY_TO_LOG_POSITION**.
         self.log_position = log_position
@@ -2928,6 +2912,8 @@ class CreateHanaRestoreRequest(TeaModel):
         # *   **RECOVERY_TO_POINT_IN_TIME**: restores the database to a specified point in time.
         # *   **RECOVERY_TO_SPECIFIC_BACKUP**: restores the database to a specified backup.
         # *   **RECOVERY_TO_LOG_POSITION**: restores the database to a specified log position.
+        # 
+        # This parameter is required.
         self.mode = mode
         # The point in time to which you want to restore the database. This parameter is valid only if you set the Mode parameter to **RECOVERY_TO_POINT_IN_TIME**. HBR restores the database to a state closest to the specified point in time.
         self.recovery_point_in_time = recovery_point_in_time
@@ -2943,7 +2929,7 @@ class CreateHanaRestoreRequest(TeaModel):
         self.use_catalog = use_catalog
         # Specifies whether to use a differential backup or an incremental backup to restore the database. Valid values: true and false. If you want to use a differential backup or an incremental backup to restore the database, set the value to true. If you set the value to false, HBR uses a log backup to restore the database.
         self.use_delta = use_delta
-        # The ID of the vault.
+        # The ID of the backup vault.
         self.vault_id = vault_id
         # The ID of the volume that you want to restore. This parameter is valid only if you set the Mode parameter to **RECOVERY_TO_LOG_POSITION**.
         self.volume_id = volume_id
@@ -3176,8 +3162,14 @@ class CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsCommonNasDetail
         fetch_slice_size: int = None,
         full_on_increment_fail: bool = None,
     ):
+        # The ID of the backup client group. When you perform on-premises NAS backup, Cloud Backup selects clients from the specified backup client group.
         self.cluster_id = cluster_id
+        # The size of backup shards (the number of files).
         self.fetch_slice_size = fetch_slice_size
+        # Specifies whether the system performs full backup if incremental backup fails. Valid values:
+        # 
+        # *   **true**: The system performs full backup if incremental backup fails.
+        # *   **false**: The system does not perform full backup if incremental backup fails.
         self.full_on_increment_fail = full_on_increment_fail
 
     def validate(self):
@@ -3214,7 +3206,15 @@ class CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsFileDetail(TeaM
         adv_policy: bool = None,
         use_vss: bool = None,
     ):
+        # Specifies whether to use an advanced policy. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.adv_policy = adv_policy
+        # Specifies whether to enable the Volume Shadow Copy Service (VSS) feature. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.use_vss = use_vss
 
     def validate(self):
@@ -3247,14 +3247,16 @@ class CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsOssDetail(TeaMo
         inventory_cleanup_policy: str = None,
         inventory_id: str = None,
     ):
-        # Whether delete inventory file after backup.
-        # - **NO_CLEANUP**: Do not delete.
-        # - **DELETE_CURRENT**: Delete current.
-        # - **DELETE_CURRENT_AND_PREVIOUS**: Delete all.
+        # Specifies whether the system deletes the inventory lists when a backup is completed. This parameter is valid only when OSS inventories are used. Valid values:
+        # 
+        # *   **NO_CLEANUP**: Inventory lists are not deleted.
+        # *   **DELETE_CURRENT**: The current inventory list is deleted.
+        # *   **DELETE_CURRENT_AND_PREVIOUS**: All inventory lists are deleted.
         self.inventory_cleanup_policy = inventory_cleanup_policy
-        # OSS inventory name.
-        # - If you want to back up more than 100 million OSS objects, we recommend that you use inventories to accelerate incremental backup. Storage fees for inventory lists are included into your OSS bills.
-        # - OSS inventory file generation takes time. The backup may fail before the OSS inventory file is generated. You can wait for the next cycle to execute.
+        # The name of the OSS inventory. If this parameter is not empty, the OSS inventory is used for performance optimization.
+        # 
+        # *   If you want to back up more than 100 million OSS objects, we recommend that you use inventory lists to accelerate incremental backup. Storage fees for inventory lists are included into your OSS bills.
+        # *   A certain amount of time is required for OSS to generate inventory lists. Before inventory lists are generated, OSS objects may fail to be backed up. In this case, you can back up the OSS objects in the next backup cycle.
         self.inventory_id = inventory_id
 
     def validate(self):
@@ -3297,11 +3299,11 @@ class CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail(TeaMo
     ):
         # Specifies whether to enable application consistency. You can enable application consistency only if all disks are ESSDs.
         self.app_consistent = app_consistent
-        # The IDs of the disks that need to be protected. If all disks need to be protected, this parameter is empty.
+        # The IDs of the disks that need to be protected. If all disks need to be protected, leave this parameter empty.
         self.disk_id_list = disk_id_list
-        # This parameter is required only if the **AppConsistent** parameter is set to **true**. This parameter specifies whether to enable Linux fsfreeze to put file systems into the read-only state before application-consistent snapshots are created. Default value: true.
+        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter specifies whether to enable Linux fsfreeze to put file systems into the read-only state before application-consistent snapshots are created. Default value: true.
         self.enable_fs_freeze = enable_fs_freeze
-        # This parameter is required only if the **AppConsistent** parameter is set to **true**. This parameter specifies whether to create application-consistent snapshots. Valid values:
+        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter specifies whether to create application-consistent snapshots. Valid values:
         # 
         # *   true: creates application-consistent snapshots.
         # *   false: creates file system-consistent snapshots.
@@ -3310,15 +3312,15 @@ class CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail(TeaMo
         self.enable_writers = enable_writers
         # The IDs of the disks that do not need to be protected. If the DiskIdList parameter is not empty, this parameter is ignored.
         self.exclude_disk_id_list = exclude_disk_id_list
-        # This parameter is required only if the **AppConsistent** parameter is set to **true**. This parameter specifies the path of the post-thaw scripts that are executed after application-consistent snapshots are created.
+        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter specifies the path of the post-thaw scripts that are executed after application-consistent snapshots are created.
         self.post_script_path = post_script_path
-        # This parameter is required only if the **AppConsistent** parameter is set to **true**. This parameter specifies the path of the pre-freeze scripts that are executed before application-consistent snapshots are created.
+        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter specifies the path of the pre-freeze scripts that are executed before application-consistent snapshots are created.
         self.pre_script_path = pre_script_path
-        # This parameter is required only if the **AppConsistent** parameter is set to **true**. This parameter specifies the name of the RAM role that is required to create application-consistent snapshots.
+        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter specifies the name of the RAM role that is required to create application-consistent snapshots.
         self.ram_role_name = ram_role_name
         # Specifies whether to create a snapshot-consistent group. You can create a snapshot-consistent group only if all disks are enhanced SSDs (ESSDs).
         self.snapshot_group = snapshot_group
-        # This parameter is required only if the **AppConsistent** parameter is set to **true**. This parameter specifies the I/O freeze timeout period. Default value: 30. Unit: seconds.
+        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter specifies the I/O freeze timeout period. Default value: 30. Unit: seconds.
         self.timeout_in_seconds = timeout_in_seconds
 
     def validate(self):
@@ -3387,11 +3389,13 @@ class CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions(TeaModel):
         udm_detail: CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail = None,
     ):
         self.common_file_system_detail = common_file_system_detail
+        # The advanced options for on-premises NAS backup.
         self.common_nas_detail = common_nas_detail
+        # The advanced options for file backup.
         self.file_detail = file_detail
         # The advanced options for OSS backup.
         self.oss_detail = oss_detail
-        # The details of ECS instance backup.
+        # The advanced options for ECS instance backup.
         self.udm_detail = udm_detail
 
     def validate(self):
@@ -3452,31 +3456,61 @@ class CreatePolicyBindingsRequestPolicyBindingList(TeaModel):
         cross_account_type: str = None,
         cross_account_user_id: int = None,
         data_source_id: str = None,
+        disabled: str = None,
+        exclude: str = None,
+        include: str = None,
         policy_binding_description: str = None,
         source: str = None,
         source_type: str = None,
+        speed_limit: str = None,
     ):
-        # Advanced options.
+        # The advanced options.
         self.advanced_options = advanced_options
         # The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_role_name = cross_account_role_name
-        # Specifies whether data is backed up and restored within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
+        # Specifies whether to back up and restore data within the same Alibaba Cloud account or across Alibaba Cloud accounts. Default value: SELF_ACCOUNT. Valid values:
         # 
-        # *   SELF_ACCOUNT: Data is backed up and restored within the same Alibaba Cloud account.
-        # *   CROSS_ACCOUNT: Data is backed up and restored across Alibaba Cloud accounts.
+        # *   **SELF_ACCOUNT**: Data is backed up within the same Alibaba Cloud account.
+        # *   **CROSS_ACCOUNT**: Data is backed up across Alibaba Cloud accounts.
         self.cross_account_type = cross_account_type
-        # The source Alibaba Cloud account ID when backup across Alibaba Cloud accounts.
+        # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_user_id = cross_account_user_id
-        # The ID of the data source.
+        # The ID of the data source. The meaning of this parameter depends on the **SourceType** parameter.
+        # 
+        # *   **UDM_ECS**: the ID of the Elastic Compute Service (ECS) instance
+        # *   **OSS**: the name of the Object Storage Service (OSS) bucket
+        # *   **NAS**: the ID of the Apsara File Storage NAS (NAS) file system
+        # *   **COMMON_NAS**: the ID of the on-premises NAS file system
+        # *   **ECS_FILE**: the ID of the ECS instance
+        # *   **File**: the ID of the Cloud Backup client
         self.data_source_id = data_source_id
+        # 策略对该数据源是否暂停生效。
+        # - true：暂停
+        # - false：未暂停
+        self.disabled = disabled
+        # 仅当**SourceType**取值为**ECS_FILE**或**File**时，需要配置该参数。表示不需要进行备份的文件类型，该类型的所有文件都不备份。最多支持255个字符。
+        self.exclude = exclude
+        # 仅当**SourceType**取值为**ECS_FILE**或**File**时，需要配置该参数。表示要进行备份的文件类型，这些类型的所有文件都备份。最多支持255个字符。
+        self.include = include
         # The description of the association.
         self.policy_binding_description = policy_binding_description
-        # The prefix of the path to the folder that you want to back up. By default, the entire OSS bucket is backed up.
+        # The prefix of the path to the folder that you want to back up. By default, the entire OSS bucket is backed up. This parameter is required only if you set the SourceType parameter to **OSS**.
         self.source = source
         # The type of the data source. Valid values:
         # 
-        # *   **UDM_ECS**: ECS instance backup
+        # *   **UDM_ECS**: ECS instance
+        # *   **OSS**: OSS bucket
+        # *   **NAS**: Apsara File Storage NAS file system
+        # *   **COMMON_NAS**: on-premises NAS file system
+        # *   **ECS_FILE**: ECS files
+        # *   **File**: on-premises files
         self.source_type = source_type
+        # 仅当**SourceType**取值为**ECS_FILE**或**File**时，需要配置该参数。表示备份流量控制。格式为`{start}{end}{bandwidth}`。多个流量控制配置使用分隔，并且配置时间不允许有重叠。
+        # 
+        # - **start**：起始小时。
+        # - **end**：结束小时。
+        # - **bandwidth**：限制速率，单位KB/s。
+        self.speed_limit = speed_limit
 
     def validate(self):
         if self.advanced_options:
@@ -3498,12 +3532,20 @@ class CreatePolicyBindingsRequestPolicyBindingList(TeaModel):
             result['CrossAccountUserId'] = self.cross_account_user_id
         if self.data_source_id is not None:
             result['DataSourceId'] = self.data_source_id
+        if self.disabled is not None:
+            result['Disabled'] = self.disabled
+        if self.exclude is not None:
+            result['Exclude'] = self.exclude
+        if self.include is not None:
+            result['Include'] = self.include
         if self.policy_binding_description is not None:
             result['PolicyBindingDescription'] = self.policy_binding_description
         if self.source is not None:
             result['Source'] = self.source
         if self.source_type is not None:
             result['SourceType'] = self.source_type
+        if self.speed_limit is not None:
+            result['SpeedLimit'] = self.speed_limit
         return result
 
     def from_map(self, m: dict = None):
@@ -3519,12 +3561,20 @@ class CreatePolicyBindingsRequestPolicyBindingList(TeaModel):
             self.cross_account_user_id = m.get('CrossAccountUserId')
         if m.get('DataSourceId') is not None:
             self.data_source_id = m.get('DataSourceId')
+        if m.get('Disabled') is not None:
+            self.disabled = m.get('Disabled')
+        if m.get('Exclude') is not None:
+            self.exclude = m.get('Exclude')
+        if m.get('Include') is not None:
+            self.include = m.get('Include')
         if m.get('PolicyBindingDescription') is not None:
             self.policy_binding_description = m.get('PolicyBindingDescription')
         if m.get('Source') is not None:
             self.source = m.get('Source')
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')
+        if m.get('SpeedLimit') is not None:
+            self.speed_limit = m.get('SpeedLimit')
         return self
 
 
@@ -3699,6 +3749,39 @@ class CreatePolicyBindingsResponse(TeaModel):
         return self
 
 
+class CreatePolicyV2RequestRulesDataSourceFilters(TeaModel):
+    def __init__(
+        self,
+        data_source_ids: List[str] = None,
+        source_type: str = None,
+    ):
+        self.data_source_ids = data_source_ids
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_source_ids is not None:
+            result['DataSourceIds'] = self.data_source_ids
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataSourceIds') is not None:
+            self.data_source_ids = m.get('DataSourceIds')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
 class CreatePolicyV2RequestRulesRetentionRules(TeaModel):
     def __init__(
         self,
@@ -3708,11 +3791,11 @@ class CreatePolicyV2RequestRulesRetentionRules(TeaModel):
     ):
         # The type of the special retention rule. Valid values:
         # 
-        # *   **WEEKLY**: weekly backups
-        # *   **MONTHLY**: monthly backups
-        # *   **YEARLY**: yearly backups
+        # *   **WEEKLY**: retains weekly backups
+        # *   **MONTHLY**: retains monthly backups
+        # *   **YEARLY**: retains yearly backups
         self.advanced_retention_type = advanced_retention_type
-        # The retention period of the backup data. Minimum value: 1. Unit: days.
+        # The special retention period of backups. Minimum value: 1. Unit: days.
         self.retention = retention
         # Specifies which backup is retained based on the special retention rule. Only the first backup can be retained.
         self.which_snapshot = which_snapshot
@@ -3745,48 +3828,103 @@ class CreatePolicyV2RequestRulesRetentionRules(TeaModel):
         return self
 
 
+class CreatePolicyV2RequestRulesTagFilters(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        operator: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.operator = operator
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreatePolicyV2RequestRules(TeaModel):
     def __init__(
         self,
         backup_type: str = None,
+        data_source_filters: List[CreatePolicyV2RequestRulesDataSourceFilters] = None,
         keep_latest_snapshots: int = None,
         replication_region_id: str = None,
         retention: int = None,
         retention_rules: List[CreatePolicyV2RequestRulesRetentionRules] = None,
         rule_type: str = None,
         schedule: str = None,
+        tag_filters: List[CreatePolicyV2RequestRulesTagFilters] = None,
+        vault_id: str = None,
     ):
-        # This parameter is required only if you set the **RuleType** parameter to **BACKUP**. This parameter specifies the backup type. Valid value: **COMPLETE**, which indicates full backup.
+        # This parameter is required only if the **RuleType** parameter is set to **BACKUP**. This parameter specifies the backup type. Valid value: **COMPLETE**, which indicates full backup.
         self.backup_type = backup_type
+        self.data_source_filters = data_source_filters
         # Specifies whether to enable the feature of keeping at least one backup version. Valid values:
         # 
         # *   0: The feature is disabled.
         # *   1: The feature is enabled.
         self.keep_latest_snapshots = keep_latest_snapshots
-        # This parameter is required only if you set the **RuleType** parameter to **REPLICATION**. This parameter specifies the ID of the destination region.
+        # This parameter is required only if the **RuleType** parameter is set to **REPLICATION**. This parameter specifies the ID of the destination region.
         self.replication_region_id = replication_region_id
-        # This parameter is required only if you set the **RuleType** parameter to **TRANSITION** or **REPLICATION**.
+        # This parameter is required only if the **RuleType** parameter is set to **TRANSITION** or **REPLICATION**.
         # 
         # *   If the **RuleType** parameter is set to **TRANSITION**, this parameter specifies the retention period of the backup data. Minimum value: 1. Maximum value: 364635. Unit: days.
         # *   If the **RuleType** parameter is set to **REPLICATION**, this parameter specifies the retention period of remote backups. Minimum value: 1. Maximum value: 364635. Unit: days.
         self.retention = retention
-        # This parameter is required only if you set the **RuleType** parameter to **TRANSITION**. This parameter specifies the special retention rules.
+        # This parameter is required only if the **RuleType** parameter is set to **TRANSITION**. This parameter specifies the special retention rules.
         self.retention_rules = retention_rules
-        # The type of the rule. Each backup policy must have at least one rule of the **BACKUP** type and only one rule of the **TRANSITION** type.
+        # The type of the rule. Each backup policy must have at least one rule of the **BACKUP** type and only one rule of the **TRANSITION** type. Valid values:
         # 
         # *   **BACKUP**: backup rule
         # *   **TRANSITION**: lifecycle rule
         # *   **REPLICATION**: replication rule
+        # 
+        # This parameter is required.
         self.rule_type = rule_type
-        # This parameter is required only if you set the **RuleType** parameter to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+        # This parameter is required only if the **RuleType** parameter is set to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
         # 
         # *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
-        # *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+        # *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of 1 hour. P1D specifies an interval of one day.
         self.schedule = schedule
+        self.tag_filters = tag_filters
+        self.vault_id = vault_id
 
     def validate(self):
+        if self.data_source_filters:
+            for k in self.data_source_filters:
+                if k:
+                    k.validate()
         if self.retention_rules:
             for k in self.retention_rules:
+                if k:
+                    k.validate()
+        if self.tag_filters:
+            for k in self.tag_filters:
                 if k:
                     k.validate()
 
@@ -3798,6 +3936,10 @@ class CreatePolicyV2RequestRules(TeaModel):
         result = dict()
         if self.backup_type is not None:
             result['BackupType'] = self.backup_type
+        result['DataSourceFilters'] = []
+        if self.data_source_filters is not None:
+            for k in self.data_source_filters:
+                result['DataSourceFilters'].append(k.to_map() if k else None)
         if self.keep_latest_snapshots is not None:
             result['KeepLatestSnapshots'] = self.keep_latest_snapshots
         if self.replication_region_id is not None:
@@ -3812,12 +3954,23 @@ class CreatePolicyV2RequestRules(TeaModel):
             result['RuleType'] = self.rule_type
         if self.schedule is not None:
             result['Schedule'] = self.schedule
+        result['TagFilters'] = []
+        if self.tag_filters is not None:
+            for k in self.tag_filters:
+                result['TagFilters'].append(k.to_map() if k else None)
+        if self.vault_id is not None:
+            result['VaultId'] = self.vault_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('BackupType') is not None:
             self.backup_type = m.get('BackupType')
+        self.data_source_filters = []
+        if m.get('DataSourceFilters') is not None:
+            for k in m.get('DataSourceFilters'):
+                temp_model = CreatePolicyV2RequestRulesDataSourceFilters()
+                self.data_source_filters.append(temp_model.from_map(k))
         if m.get('KeepLatestSnapshots') is not None:
             self.keep_latest_snapshots = m.get('KeepLatestSnapshots')
         if m.get('ReplicationRegionId') is not None:
@@ -3833,6 +3986,13 @@ class CreatePolicyV2RequestRules(TeaModel):
             self.rule_type = m.get('RuleType')
         if m.get('Schedule') is not None:
             self.schedule = m.get('Schedule')
+        self.tag_filters = []
+        if m.get('TagFilters') is not None:
+            for k in m.get('TagFilters'):
+                temp_model = CreatePolicyV2RequestRulesTagFilters()
+                self.tag_filters.append(temp_model.from_map(k))
+        if m.get('VaultId') is not None:
+            self.vault_id = m.get('VaultId')
         return self
 
 
@@ -3841,12 +4001,14 @@ class CreatePolicyV2Request(TeaModel):
         self,
         policy_description: str = None,
         policy_name: str = None,
+        policy_type: str = None,
         rules: List[CreatePolicyV2RequestRules] = None,
     ):
         # The description of the backup policy.
         self.policy_description = policy_description
         # The name of the backup policy.
         self.policy_name = policy_name
+        self.policy_type = policy_type
         # The rules in the backup policy.
         self.rules = rules
 
@@ -3866,6 +4028,8 @@ class CreatePolicyV2Request(TeaModel):
             result['PolicyDescription'] = self.policy_description
         if self.policy_name is not None:
             result['PolicyName'] = self.policy_name
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
         result['Rules'] = []
         if self.rules is not None:
             for k in self.rules:
@@ -3878,6 +4042,8 @@ class CreatePolicyV2Request(TeaModel):
             self.policy_description = m.get('PolicyDescription')
         if m.get('PolicyName') is not None:
             self.policy_name = m.get('PolicyName')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
         self.rules = []
         if m.get('Rules') is not None:
             for k in m.get('Rules'):
@@ -3891,12 +4057,14 @@ class CreatePolicyV2ShrinkRequest(TeaModel):
         self,
         policy_description: str = None,
         policy_name: str = None,
+        policy_type: str = None,
         rules_shrink: str = None,
     ):
         # The description of the backup policy.
         self.policy_description = policy_description
         # The name of the backup policy.
         self.policy_name = policy_name
+        self.policy_type = policy_type
         # The rules in the backup policy.
         self.rules_shrink = rules_shrink
 
@@ -3913,6 +4081,8 @@ class CreatePolicyV2ShrinkRequest(TeaModel):
             result['PolicyDescription'] = self.policy_description
         if self.policy_name is not None:
             result['PolicyName'] = self.policy_name
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
         if self.rules_shrink is not None:
             result['Rules'] = self.rules_shrink
         return result
@@ -3923,6 +4093,8 @@ class CreatePolicyV2ShrinkRequest(TeaModel):
             self.policy_description = m.get('PolicyDescription')
         if m.get('PolicyName') is not None:
             self.policy_name = m.get('PolicyName')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
         if m.get('Rules') is not None:
             self.rules_shrink = m.get('Rules')
         return self
@@ -4032,6 +4204,8 @@ class CreateReplicationVaultRequest(TeaModel):
     def __init__(
         self,
         description: str = None,
+        encrypt_type: str = None,
+        kms_key_id: str = None,
         redundancy_type: str = None,
         replication_source_region_id: str = None,
         replication_source_vault_id: str = None,
@@ -4041,20 +4215,30 @@ class CreateReplicationVaultRequest(TeaModel):
     ):
         # The description of the backup vault. The description must be 0 to 255 characters in length.
         self.description = description
+        self.encrypt_type = encrypt_type
+        self.kms_key_id = kms_key_id
         # The data redundancy type of the backup vault. Valid values:
         # 
-        # - LRS: Locally redundant storage (LRS) is enabled for the backup vault. HBR stores the copies of each object on multiple devices of different facilities in the same zone. This way, HBR ensures data durability and availability even if hardware failures occur.
-        # - ZRS: Zone-redundant storage (ZRS) is enabled for the backup vault. HBR uses the multi-zone mechanism to distribute data across three zones within the same region. If a zone becomes unavailable, the data can still be accessed.
+        # *   LRS: standard locally redundant storage (LRS). Cloud Backup stores the copies of each object on multiple devices of different facilities in the same zone. This way, Cloud Backup ensures data durability and availability even if hardware failures occur.
+        # *   ZRS: standard zone-redundant storage (ZRS). Cloud Backup uses the multi-zone mechanism to distribute data across three zones within the same region. If a zone fails, the data that is stored in the other two zones is still accessible.
         self.redundancy_type = redundancy_type
         # The ID of the region where the source vault resides.
+        # 
+        # This parameter is required.
         self.replication_source_region_id = replication_source_region_id
         # The ID of the source vault.
+        # 
+        # This parameter is required.
         self.replication_source_vault_id = replication_source_vault_id
         # The name of the backup vault. The name must be 1 to 64 characters in length.
+        # 
+        # This parameter is required.
         self.vault_name = vault_name
         # The ID of the region where the backup vault resides.
+        # 
+        # This parameter is required.
         self.vault_region_id = vault_region_id
-        # The storage type of the backup vault. Valid value: **STANDARD**. The value indicates standard storage.
+        # The storage class of the backup vault. Valid value: **STANDARD**, which indicates standard storage.
         self.vault_storage_class = vault_storage_class
 
     def validate(self):
@@ -4068,6 +4252,10 @@ class CreateReplicationVaultRequest(TeaModel):
         result = dict()
         if self.description is not None:
             result['Description'] = self.description
+        if self.encrypt_type is not None:
+            result['EncryptType'] = self.encrypt_type
+        if self.kms_key_id is not None:
+            result['KmsKeyId'] = self.kms_key_id
         if self.redundancy_type is not None:
             result['RedundancyType'] = self.redundancy_type
         if self.replication_source_region_id is not None:
@@ -4086,6 +4274,10 @@ class CreateReplicationVaultRequest(TeaModel):
         m = m or dict()
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('EncryptType') is not None:
+            self.encrypt_type = m.get('EncryptType')
+        if m.get('KmsKeyId') is not None:
+            self.kms_key_id = m.get('KmsKeyId')
         if m.get('RedundancyType') is not None:
             self.redundancy_type = m.get('RedundancyType')
         if m.get('ReplicationSourceRegionId') is not None:
@@ -4111,20 +4303,18 @@ class CreateReplicationVaultResponseBody(TeaModel):
         task_id: str = None,
         vault_id: str = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the request was successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The message that is returned. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # *   true
+        # *   false
         self.success = success
-        # The ID of the initialization task used to initialize the backup vault.
-        # 
-        # You can call the DescribeTask operation to query the status of an initialization task.
+        # The ID of the job that is used to initialize the backup vault. You can call the DescribeTask operation to query the job status.
         self.task_id = task_id
         # The ID of the backup vault.
         self.vault_id = vault_id
@@ -4267,6 +4457,8 @@ class CreateRestoreJobRequest(TeaModel):
         # *   **NAS**: restores data to Apsara File Storage NAS file systems.
         # *   **OTS_TABLE**: restores data to Tablestore instances.
         # *   **UDM_ECS_ROLLBACK**: restores data to ECS instances.
+        # 
+        # This parameter is required.
         self.restore_type = restore_type
         # The hash value of the backup snapshot.
         self.snapshot_hash = snapshot_hash
@@ -4279,6 +4471,8 @@ class CreateRestoreJobRequest(TeaModel):
         # *   **NAS**: NAS file systems
         # *   **OTS_TABLE**: Tablestore instances
         # *   **UDM_ECS**: ECS instances
+        # 
+        # This parameter is required.
         self.source_type = source_type
         # This parameter is required only if the **RestoreType** parameter is set to **OSS**. This parameter specifies the name of the OSS bucket to which you want to restore data.
         self.target_bucket = target_bucket
@@ -4492,6 +4686,8 @@ class CreateRestoreJobShrinkRequest(TeaModel):
         # *   **NAS**: restores data to Apsara File Storage NAS file systems.
         # *   **OTS_TABLE**: restores data to Tablestore instances.
         # *   **UDM_ECS_ROLLBACK**: restores data to ECS instances.
+        # 
+        # This parameter is required.
         self.restore_type = restore_type
         # The hash value of the backup snapshot.
         self.snapshot_hash = snapshot_hash
@@ -4504,6 +4700,8 @@ class CreateRestoreJobShrinkRequest(TeaModel):
         # *   **NAS**: NAS file systems
         # *   **OTS_TABLE**: Tablestore instances
         # *   **UDM_ECS**: ECS instances
+        # 
+        # This parameter is required.
         self.source_type = source_type
         # This parameter is required only if the **RestoreType** parameter is set to **OSS**. This parameter specifies the name of the OSS bucket to which you want to restore data.
         self.target_bucket = target_bucket
@@ -4764,6 +4962,8 @@ class CreateTempFileUploadUrlRequest(TeaModel):
         file_name: str = None,
     ):
         # The name of the file to be uploaded.
+        # 
+        # This parameter is required.
         self.file_name = file_name
 
     def validate(self):
@@ -4949,8 +5149,12 @@ class CreateVaultRequest(TeaModel):
         # The customer master key (CMK) created in KMS or the alias of the key. This parameter is required only if you set the EncryptType parameter to KMS.
         self.kms_key_id = kms_key_id
         # The name of the backup vault. The name must be 1 to 64 characters in length.
+        # 
+        # This parameter is required.
         self.vault_name = vault_name
         # The ID of the region where the backup vault resides.
+        # 
+        # This parameter is required.
         self.vault_region_id = vault_region_id
         # The storage type of the backup vault. Valid value: **STANDARD**, which indicates standard storage.
         self.vault_storage_class = vault_storage_class
@@ -5116,7 +5320,9 @@ class DeleteBackupClientRequest(TeaModel):
         self,
         client_id: str = None,
     ):
-        # The ID of the backup client.
+        # The ID of the Cloud Backup client.
+        # 
+        # This parameter is required.
         self.client_id = client_id
 
     def validate(self):
@@ -5147,16 +5353,16 @@ class DeleteBackupClientResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the request is successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The message that is returned. If the request is successful, a value of successful is returned. If the request fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: indicates that the request is successful.
-        # *   false: indicates that the request fails.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -5238,6 +5444,8 @@ class DeleteBackupClientResourceRequest(TeaModel):
         client_ids: Dict[str, Any] = None,
     ):
         # The IDs of HBR clients. The value can be a JSON array that consists of up to 100 client IDs. Separate the IDs with commas (,).
+        # 
+        # This parameter is required.
         self.client_ids = client_ids
 
     def validate(self):
@@ -5266,6 +5474,8 @@ class DeleteBackupClientResourceShrinkRequest(TeaModel):
         client_ids_shrink: str = None,
     ):
         # The IDs of HBR clients. The value can be a JSON array that consists of up to 100 client IDs. Separate the IDs with commas (,).
+        # 
+        # This parameter is required.
         self.client_ids_shrink = client_ids_shrink
 
     def validate(self):
@@ -5390,7 +5600,10 @@ class DeleteBackupPlanRequest(TeaModel):
         vault_id: str = None,
     ):
         # The ID of the backup plan.
+        # 
+        # This parameter is required.
         self.plan_id = plan_id
+        # Specifies whether no running jobs are required.
         self.require_no_running_jobs = require_no_running_jobs
         # The type of the data source. Valid values:
         # 
@@ -5662,12 +5875,18 @@ class DeleteHanaBackupPlanRequest(TeaModel):
         vault_id: str = None,
     ):
         # The ID of the SAP HANA instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The ID of the backup plan.
+        # 
+        # This parameter is required.
         self.plan_id = plan_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The ID of the backup vault.
+        # 
+        # This parameter is required.
         self.vault_id = vault_id
 
     def validate(self):
@@ -5710,16 +5929,16 @@ class DeleteHanaBackupPlanResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -5804,12 +6023,18 @@ class DeleteHanaInstanceRequest(TeaModel):
         vault_id: str = None,
     ):
         # The ID of the SAP HANA instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The SID of the SAP HANA database. You must specify a valid SID. The SID must be three characters in length and start with a letter. For more information, see [How to find sid user and instance number of HANA db?](https://answers.sap.com/questions/555192/how-to-find-sid-user-and-instance-number-of-hana-d.html?)
+        # The security identifier (SID) of the SAP HANA database. You must specify a valid SID. The SID must be three characters in length and start with a letter. For more information, see [How to find sid user and instance number of HANA db?](https://answers.sap.com/questions/555192/how-to-find-sid-user-and-instance-number-of-hana-d.html?)
+        # 
+        # This parameter is required.
         self.sid = sid
         # The ID of the backup vault.
+        # 
+        # This parameter is required.
         self.vault_id = vault_id
 
     def validate(self):
@@ -5852,16 +6077,16 @@ class DeleteHanaInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -5947,6 +6172,8 @@ class DeletePolicyBindingRequest(TeaModel):
         # The IDs of the data sources that you want to disassociate from the backup policy.
         self.data_source_ids = data_source_ids
         # The ID of the backup policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
         # The type of the data source. Valid values:
         # 
@@ -5991,6 +6218,8 @@ class DeletePolicyBindingShrinkRequest(TeaModel):
         # The IDs of the data sources that you want to disassociate from the backup policy.
         self.data_source_ids_shrink = data_source_ids_shrink
         # The ID of the backup policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
         # The type of the data source. Valid values:
         # 
@@ -6250,24 +6479,26 @@ class DeleteSnapshotRequest(TeaModel):
         token: str = None,
         vault_id: str = None,
     ):
-        # The ID of the backup client. If you delete a backup file for Elastic Compute Service (ECS) instances, you must set one of the **InstanceId** and ClientId parameters.
+        # The ID of the Cloud Backup client. If you delete a backup snapshot for Elastic Compute Service (ECS) instances, you must specify one of the ClientId and **InstanceId** parameters.
         self.client_id = client_id
-        # Specifies whether to forcibly delete the most recent backup file. Valid values:
+        # Specifies whether to forcibly delete the most recent backup snapshot. Valid values:
         # 
-        # *   true: The system forcibly deletes the last backup file.
-        # *   false: The system does not forcibly delete the last backup file. Default value: false.
+        # *   true: The system forcibly deletes the most recent backup snapshot.
+        # *   false (default): The system does not forcibly delete the most recent backup snapshot.
         self.force = force
-        # The ID of the ECS instance. If you delete a backup file for Elastic Compute Service (ECS) instances, you must set one of the **ClientId** and InstanceId parameters.
+        # The ID of the ECS instance. If you delete a backup snapshot for ECS instances, you must specify one of the InstanceId and **ClientId** parameters.
         self.instance_id = instance_id
-        # The ID of the backup file.
+        # The ID of the backup snapshot.
+        # 
+        # This parameter is required.
         self.snapshot_id = snapshot_id
         # The type of the backup source. Valid values:
         # 
-        # *   **ECS_FILE**: indicates backup files for ECS instances.
-        # *   **OSS**: indicates backup files for Object Storage Service (OSS) buckets.
-        # *   **NAS**: indicates the backup files for Apsara File Storage NAS file systems.
+        # *   **ECS_FILE**: backup snapshots for ECS files
+        # *   **OSS**: backup snapshots for Object Storage Service (OSS) buckets
+        # *   **NAS**: backup snapshots for Apsara File Storage NAS (NAS) file systems
         self.source_type = source_type
-        # The token.
+        # The token that you want to delete.
         self.token = token
         # The ID of the backup vault.
         self.vault_id = vault_id
@@ -6324,16 +6555,16 @@ class DeleteSnapshotResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the request is successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The message that is returned. If the request is successful, a value of successful is returned. If the request fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: indicates that the request is successful.
-        # *   false: indicates that the request fails.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -6409,6 +6640,243 @@ class DeleteSnapshotResponse(TeaModel):
         return self
 
 
+class DeleteUdmDiskRequest(TeaModel):
+    def __init__(
+        self,
+        disk_id: str = None,
+    ):
+        self.disk_id = disk_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disk_id is not None:
+            result['DiskId'] = self.disk_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiskId') is not None:
+            self.disk_id = m.get('DiskId')
+        return self
+
+
+class DeleteUdmDiskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteUdmDiskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteUdmDiskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteUdmDiskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteUdmEcsInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        # The ID of the ECS instance.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DeleteUdmEcsInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The response code. The status code 200 indicates that the request was successful.
+        self.code = code
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteUdmEcsInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteUdmEcsInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteUdmEcsInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteVaultRequest(TeaModel):
     def __init__(
         self,
@@ -6459,16 +6927,16 @@ class DeleteVaultResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the request is successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The message that is returned. If the request is successful, a value of successful is returned. If the request fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The request is successful.
-        # *   false: The request failed.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -6607,6 +7075,8 @@ class DescribeBackupClientsRequest(TeaModel):
         # 
         # *   **ECS_CLIENT**: HBR client for Elastic Compute Service (ECS) file backup
         # *   **CONTAINER_CLIENT**: HBR client for container backup
+        # 
+        # This parameter is required.
         self.client_type = client_type
         # The ID of the cluster for the backup.
         self.cluster_id = cluster_id
@@ -6755,6 +7225,8 @@ class DescribeBackupClientsShrinkRequest(TeaModel):
         # 
         # *   **ECS_CLIENT**: HBR client for Elastic Compute Service (ECS) file backup
         # *   **CONTAINER_CLIENT**: HBR client for container backup
+        # 
+        # This parameter is required.
         self.client_type = client_type
         # The ID of the cluster for the backup.
         self.cluster_id = cluster_id
@@ -6855,6 +7327,7 @@ class DescribeBackupClientsResponseBodyClientsSettings(TeaModel):
         proxy_user: str = None,
         use_https: str = None,
     ):
+        # Indicates whether alerts are generated for partially completed jobs. This parameter is valid only for on-premises file backup and ECS file backup.
         self.alert_on_partial_complete = alert_on_partial_complete
         # The type of the endpoint on the data plane. Valid values:
         # 
@@ -6865,11 +7338,12 @@ class DescribeBackupClientsResponseBodyClientsSettings(TeaModel):
         # The proxy configuration on the data plane. Valid values:
         # 
         # *   **DISABLE**: The proxy is not used.
-        # *   \*\*USE_CONTROL_PROXY \*\* (default value): The configuration is the same as that on the control plane.
+        # *   **USE_CONTROL_PROXY** (default): The configuration is the same as that on the control plane.
         # *   **CUSTOM**: The configuration is customized (HTTP).
         self.data_proxy_setting = data_proxy_setting
         # The number of CPU cores used by a single backup job. The value 0 indicates that the number is unlimited.
         self.max_cpu_core = max_cpu_core
+        # The maximum memory that can be used by the client. Unit: bytes. Only V2.13.0 and later are supported.
         self.max_memory = max_memory
         # The number of concurrent backup jobs. The value 0 indicates that the number is unlimited.
         self.max_worker = max_worker
@@ -6953,13 +7427,13 @@ class DescribeBackupClientsResponseBodyClientsTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the backup vault. Valid values of N: 1 to 20.
+        # The tag key of the backup vault. Valid values of N: 1 to 20
         # 
         # *   The tag key cannot start with `aliyun` or `acs:`.
         # *   The tag key cannot contain `http://` or `https://`.
         # *   The tag key cannot be an empty string.
         self.key = key
-        # The tag value of the backup vault. Valid values of N: 1 to 20.
+        # The tag value of the backup vault. Valid values of N: 1 to 20
         # 
         # *   The tag value cannot start with `aliyun` or `acs:`.
         # *   The tag value cannot contain `http://` or `https://`.
@@ -7013,71 +7487,71 @@ class DescribeBackupClientsResponseBodyClients(TeaModel):
         updated_time: int = None,
         zone_id: str = None,
     ):
-        # Indicates whether the HBR client is installed on an all-in-one PC that integrates hardware and monitoring program. Valid values:
+        # Indicates whether the client is installed on an all-in-one PC that integrates hardware and monitoring program. Valid values:
         # 
-        # *   true: The HBR client is installed on an all-in-one PC that integrates hardware and monitoring program.
-        # *   false: The HBR client is not installed on an all-in-one PC that integrates hardware and monitoring program.
+        # *   true: The client is installed on an all-in-one PC that integrates hardware and monitoring program.
+        # *   false: The client is not installed on an all-in-one PC that integrates hardware and monitoring program.
         self.appliance = appliance
-        # This parameter is valid only if the **ClientType** parameter is set to **ECS_CLIENT**. This parameter indicates the system architecture where the HBR client resides. Valid values:
+        # This parameter is valid only if the **ClientType** parameter is set to **ECS_CLIENT**. This parameter indicates the system architecture where the backup client resides. Valid values:
         # 
         # *   **amd64**\
         # *   **386**\
         self.arch_type = arch_type
-        # The protection status of the HBR client. Valid values:
+        # The protection status of the backup client. Valid values:
         # 
-        # *   **UNPROTECTED**: The HBR client is not protected.
-        # *   **PROTECTED**: The HBR client is protected.
+        # *   **UNPROTECTED**: The backup client is not protected.
+        # *   **PROTECTED**: The backup client is protected.
         self.backup_status = backup_status
-        # The ID of the HBR client.
+        # The ID of the backup client.
         self.client_id = client_id
-        # The type of the HBR client. Valid value: **ECS_CLIENT**, which indicates an HBR client for ECS file backup.
+        # The type of the backup client. Valid value: **ECS_CLIENT**, which indicates a client for ECS file backup.
         self.client_type = client_type
-        # The version number of the HBR client.
+        # The version number of the backup client.
         self.client_version = client_version
-        # The time when the HBR client was created. The value is a UNIX timestamp. Unit: seconds.
+        # The time when the backup client was created. The value is a UNIX timestamp. Unit: seconds.
         self.created_time = created_time
-        # The hostname of the HBR client.
+        # The hostname of the backup client.
         self.hostname = hostname
-        # The ID of the instance.
+        # The instance ID.
         # 
-        # *   If the HBR client is used to back up ECS files, this parameter indicates the ID of an ECS instance.
-        # *   If the HBR client is used to back up on-premises files, this parameter indicates the hardware fingerprint that is generated based on the system information.
+        # *   If the client is used to back up ECS files, this parameter indicates the ID of an ECS instance.
+        # *   If the client is used to back up on-premises files, this parameter indicates the hardware fingerprint that is generated based on the system information.
         self.instance_id = instance_id
         # This parameter is valid only if the **ClientType** parameter is set to **ECS_CLIENT**. This parameter indicates the name of the ECS instance.
         self.instance_name = instance_name
-        # The last heartbeat time of the HBR client. The value is a UNIX timestamp. Unit: seconds.
+        # The last heartbeat time of the backup client. The value is a UNIX timestamp. Unit: seconds.
         self.last_heart_beat_time = last_heart_beat_time
-        # The latest version number of the HBR client.
+        # The latest version number of the backup client.
         self.max_client_version = max_client_version
-        # This parameter is valid only if the **ClientType** parameter is set to **ECS_CLIENT**. This parameter indicates the operating system type of the HBR client. Valid values:
+        # This parameter is valid only if the **ClientType** parameter is set to **ECS_CLIENT**. This parameter indicates the operating system type of the backup client. Valid values:
         # 
         # *   **windows**\
         # *   **linux**\
         self.os_type = os_type
         # This parameter is valid only if the **ClientType** parameter is set to **ECS_CLIENT**. This parameter indicates the internal IP address of the ECS instance.
         self.private_ip_v4 = private_ip_v4
-        # The configuration information of the HBR client.
+        # The configuration information of the backup client.
         self.settings = settings
-        # The status of the HBR client. Valid values:
+        # The status of the backup client. Valid values:
         # 
-        # *   **REGISTERED**: The HBR client is registered.
-        # *   **ACTIVATED**: The HBR client is enabled.
-        # *   **DEACTIVATED**: The HBR client fails to be enabled.
-        # *   **INSTALLING**: The HBR client is being installed.
-        # *   **INSTALL_FAILED**: The HBR client fails to be installed.
-        # *   **NOT_INSTALLED**: The HBR client is not installed.
-        # *   **UPGRADING**: The HBR client is being upgraded.
-        # *   **UPGRADE_FAILED**: The HBR client fails to be upgraded.
-        # *   **UNINSTALLING**: The HBR client is being uninstalled.
-        # *   **UNINSTALL_FAILED**: The HBR client fails to be uninstalled.
-        # *   **STOPPED**: The HBR client is out of service.
-        # *   **UNKNOWN**: The HBR client is disconnected.
+        # *   **REGISTERED**: The backup client is registered.
+        # *   **ACTIVATED**: The backup client is activated.
+        # *   **DEACTIVATED**: The backup client fails to be activated.
+        # *   **INSTALLING**: The backup client is being installed.
+        # *   **INSTALL_FAILED**: The backup client fails to be installed.
+        # *   **NOT_INSTALLED**: The backup client is not installed.
+        # *   **UPGRADING**: The backup client is being upgraded.
+        # *   **UPGRADE_FAILED**: The backup client fails to be upgraded.
+        # *   **UNINSTALLING**: The backup client is being uninstalled.
+        # *   **UNINSTALL_FAILED**: The backup client fails to be uninstalled.
+        # *   **STOPPED**: The backup client is out of service.
+        # *   **UNKNOWN**: The backup client is disconnected.
         self.status = status
         # The tag information.
         self.tags = tags
-        # The time when the HBR client was updated. The value is a UNIX timestamp. Unit: seconds.
+        # The time when the backup client was updated. The value is a UNIX timestamp. Unit: seconds.
         self.updated_time = updated_time
-        # This parameter is valid only if the **ClientType** parameter is set to **ECS_CLIENT**. This parameter indicates the zone of the HBR client.
+        # This parameter is valid only if the **ClientType** parameter is set to **ECS_CLIENT**. This parameter indicates the zone of the backup client.
         self.zone_id = zone_id
 
     def validate(self):
@@ -7195,7 +7669,7 @@ class DescribeBackupClientsResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The HBR clients.
+        # The queried backup clients.
         self.clients = clients
         # The HTTP status code. The status code 200 indicates that the call is successful.
         self.code = code
@@ -7489,6 +7963,7 @@ class DescribeBackupJobs2ResponseBodyBackupJobsBackupJobDetail(TeaModel):
         destination_snapshot_id: str = None,
         disk_native_snapshot_id_list: DescribeBackupJobs2ResponseBodyBackupJobsBackupJobDetailDiskNativeSnapshotIdList = None,
         do_copy: bool = None,
+        instance_infos: Dict[str, Any] = None,
         native_snapshot_id: str = None,
     ):
         # The information about the remote replication failure.
@@ -7507,6 +7982,7 @@ class DescribeBackupJobs2ResponseBodyBackupJobsBackupJobDetail(TeaModel):
         self.disk_native_snapshot_id_list = disk_native_snapshot_id_list
         # Indicates whether remote replication is enabled.
         self.do_copy = do_copy
+        self.instance_infos = instance_infos
         # The ID of the backup snapshot.
         self.native_snapshot_id = native_snapshot_id
 
@@ -7536,6 +8012,8 @@ class DescribeBackupJobs2ResponseBodyBackupJobsBackupJobDetail(TeaModel):
             result['DiskNativeSnapshotIdList'] = self.disk_native_snapshot_id_list.to_map()
         if self.do_copy is not None:
             result['DoCopy'] = self.do_copy
+        if self.instance_infos is not None:
+            result['InstanceInfos'] = self.instance_infos
         if self.native_snapshot_id is not None:
             result['NativeSnapshotId'] = self.native_snapshot_id
         return result
@@ -7559,6 +8037,8 @@ class DescribeBackupJobs2ResponseBodyBackupJobsBackupJobDetail(TeaModel):
             self.disk_native_snapshot_id_list = temp_model.from_map(m['DiskNativeSnapshotIdList'])
         if m.get('DoCopy') is not None:
             self.do_copy = m.get('DoCopy')
+        if m.get('InstanceInfos') is not None:
+            self.instance_infos = m.get('InstanceInfos')
         if m.get('NativeSnapshotId') is not None:
             self.native_snapshot_id = m.get('NativeSnapshotId')
         return self
@@ -8229,9 +8709,9 @@ class DescribeBackupPlansRequest(TeaModel):
     ):
         # The filter.
         self.filters = filters
-        # The number of the page to return. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: 1 to 99. Default value: 10.
+        # The number of entries per page. Valid values: 1 to 99. Default value: 10.
         self.page_size = page_size
         # The type of the data source. Valid values:
         # 
@@ -8456,7 +8936,7 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlanRulesRule(TeaModel):
         rule_name: str = None,
         schedule: str = None,
     ):
-        # The backup type. **COMPLETE** indicates full backup.
+        # The backup type. Valid value: **COMPLETE**, which indicates full backup.
         self.backup_type = backup_type
         # The ID of the region in which the remote backup vault resides.
         self.destination_region_id = destination_region_id
@@ -8468,9 +8948,9 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlanRulesRule(TeaModel):
         self.do_copy = do_copy
         # The retention period of the backup data. Unit: days.
         self.retention = retention
-        # The ID of the policy.
+        # The policy ID.
         self.rule_id = rule_id
-        # The name of the policy.
+        # The policy name.
         self.rule_name = rule_name
         # The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified by `{startTime}` and the subsequent backup jobs at an interval that is specified by `{interval}`. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` indicates that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
         # 
@@ -8579,7 +9059,7 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlanTrialInfo(TeaModel):
         self.trial_expire_time = trial_expire_time
         # The start time of the free trial.
         self.trial_start_time = trial_start_time
-        # The time when the free-trial backup vault was released.
+        # The time when the free-trial backup vault is released.
         self.trial_vault_release_time = trial_vault_release_time
 
     def validate(self):
@@ -8660,11 +9140,11 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlan(TeaModel):
     ):
         # The ID of the data source group.
         self.backup_source_group_id = backup_source_group_id
-        # The backup type. **COMPLETE** indicates full backup.
+        # The backup type. Valid value: **COMPLETE**, which indicates full backup.
         self.backup_type = backup_type
         # This parameter is valid only when **SourceType** is set to **OSS**. This parameter indicates the name of the OSS bucket.
         self.bucket = bucket
-        # The configurations of the incremental file synchronization. This parameter is required only for data synchronization.
+        # The configurations of the incremental file synchronization. This parameter is returned only for data synchronization.
         self.change_list_path = change_list_path
         # The ID of the backup client.
         self.client_id = client_id
@@ -8685,11 +9165,11 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlan(TeaModel):
         self.cross_account_user_id = cross_account_user_id
         # The ID of the data source.
         self.data_source_id = data_source_id
-        # The data source details at the destination. This parameter is required only for data synchronization.
+        # The data source details at the destination. This parameter is returned only for data synchronization.
         self.dest_data_source_detail = dest_data_source_detail
-        # The data source ID at the destination. This parameter is required only for data synchronization.
+        # The data source ID at the destination. This parameter is returned only for data synchronization.
         self.dest_data_source_id = dest_data_source_id
-        # The data source type at the destination. This parameter is required only for data synchronization.
+        # The data source type at the destination. This parameter is returned only for data synchronization.
         self.dest_source_type = dest_source_type
         # The details about ECS instance backup.
         self.detail = detail
@@ -8717,7 +9197,7 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlan(TeaModel):
         self.keep_latest_snapshots = keep_latest_snapshots
         # The latest execution job id of plan.
         self.latest_execute_job_id = latest_execute_job_id
-        # This parameter is valid only when **SourceType** is set to **ECS_FILE**. This parameter indicates whether VSS is used to define a source path.
+        # This parameter is valid only when **SourceType** is set to **ECS_FILE**. This parameter indicates whether Windows Volume Shadow Copy Service (VSS) is used to define a source path.
         self.options = options
         # The details about the Tablestore instance.
         self.ots_detail = ots_detail
@@ -9121,15 +9601,15 @@ class DescribeClientsRequest(TeaModel):
         source_type: str = None,
         vault_id: str = None,
     ):
-        # The ID of the backup client.
+        # The ID of the Cloud Backup client.
         self.client_id = client_id
-        # The type of the backup client. Valid value:**ECS_AGENT**, which indicates an SAP HANA backup client.
+        # The type of the Cloud Backup client. Valid value: **ECS_AGENT**, which indicates an SAP HANA backup client.
         self.client_type = client_type
         # The ID of the SAP HANA instance.
         self.cluster_id = cluster_id
-        # The number of the page to return. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: 1 to 99. Default value: 10.
+        # The number of entries per page. Valid values: 1 to 99. Default value: 10.
         self.page_size = page_size
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -9206,36 +9686,36 @@ class DescribeClientsResponseBodyClientsClient(TeaModel):
         use_https: bool = None,
         vault_id: str = None,
     ):
-        # The alert settings. Valid value: INHERITED, which indicates that the backup client sends alert notifications in the same way as the backup vault.
+        # The alert settings. Valid value: INHERITED, which indicates that the Cloud Backup client sends alert notifications by using the same method configured for the backup vault.
         self.alert_setting = alert_setting
-        # The ID of the backup client.
+        # The ID of the Cloud Backup client.
         self.client_id = client_id
-        # The name of the backup client.
+        # The client name.
         self.client_name = client_name
-        # The type of the backup client. Valid value:**ECS_AGENT**, which indicates an SAP HANA backup client.
+        # The type of the Cloud Backup client. Valid value: **ECS_AGENT**, which indicates an SAP HANA backup client.
         self.client_type = client_type
-        # The version number of the backup client.
+        # The version number of the Cloud Backup client.
         self.client_version = client_version
         # The ID of the SAP HANA instance.
         self.cluster_id = cluster_id
-        # The time when the backup client was created.
+        # The time when the Cloud Backup client was created.
         self.created_time = created_time
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
         # The name of the ECS instance.
         self.instance_name = instance_name
-        # The maximum version number of the backup client.
+        # The maximum version number of the Cloud Backup client.
         self.max_version = max_version
         # The network type. Valid values:
         # 
-        # *   **CLASSIC**: classic network
-        # *   **VPC**: virtual private cloud (VPC)
+        # *   **CLASSIC**: the classic network
+        # *   **VPC**: the virtual private cloud (VPC)
         self.network_type = network_type
-        # The status of the backup client. Valid values:
+        # The status of the Cloud Backup client. Valid values:
         # 
         # *   **REGISTERED**: The backup client is registered.
-        # *   **ACTIVATED**: The backup client is enabled.
-        # *   **DEACTIVATED**: The backup client fails to be enabled.
+        # *   **ACTIVATED**: The backup client is activated.
+        # *   **DEACTIVATED**: The backup client fails to be activated.
         # *   **INSTALLING**: The backup client is being installed.
         # *   **INSTALL_FAILED**: The backup client fails to be installed.
         # *   **NOT_INSTALLED**: The backup client is not installed.
@@ -9248,7 +9728,7 @@ class DescribeClientsResponseBodyClientsClient(TeaModel):
         self.status = status
         # The status information.
         self.status_message = status_message
-        # The time when the backup client was updated. This value is a UNIX timestamp. Unit: seconds.
+        # The time when the Cloud Backup client was updated. This value is a UNIX timestamp. Unit: seconds.
         self.updated_time = updated_time
         # Indicates whether data is transmitted over HTTPS. Valid values:
         # 
@@ -9385,24 +9865,24 @@ class DescribeClientsResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The backup clients.
+        # The Cloud Backup clients.
         self.clients = clients
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
-        # The page number of the returned page. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries returned per page. Valid values: 1 to 99. Default value: 10.
+        # The number of entries per page. Valid values: 1 to 99. Default value: 10.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # *   true
+        # *   false
         self.success = success
-        # The total number of returned entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -9504,9 +9984,9 @@ class DescribeContainerClusterRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # The identifier of container cluster.
+        # The identifier of the container cluster. For a Container Service for Kubernetes (ACK) cluster, specify the cluster ID.
         self.identifier = identifier
         # The number of the page to return. Pages start from page 1. Default value: 1.
         self.page_number = page_number
@@ -9764,7 +10244,9 @@ class DescribeCrossAccountsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 99. Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -9802,12 +10284,19 @@ class DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount(TeaModel):
         owner_id: int = None,
         updated_time: int = None,
     ):
+        # The account alias. The value can be up to 32 bits in length.
         self.alias = alias
+        # The time when the account was created. This value is a UNIX timestamp. Unit: seconds.
         self.created_time = created_time
+        # The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_role_name = cross_account_role_name
+        # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_user_id = cross_account_user_id
+        # The ID of the backup type.
         self.id = id
+        # The ID of the current account.
         self.owner_id = owner_id
+        # The time when the account information was updated. The value is a UNIX timestamp. Unit: seconds.
         self.updated_time = updated_time
 
     def validate(self):
@@ -9901,13 +10390,24 @@ class DescribeCrossAccountsResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request was successful.
         self.code = code
+        # The information about the accounts used in cross-account backup.
         self.cross_accounts = cross_accounts
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 99. Default value: 10.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -10012,12 +10512,14 @@ class DescribeHanaBackupPlansRequest(TeaModel):
         vault_id: str = None,
     ):
         # The ID of the SAP HANA instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
-        # The name of the database.
+        # The database name.
         self.database_name = database_name
-        # The number of the page to return. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: 1 to 99. Default value: 10.
+        # The number of entries per page. Valid values: 1 to 99. Default value: 10.
         self.page_size = page_size
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -10087,7 +10589,7 @@ class DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan(TeaModel)
         self.backup_type = backup_type
         # The ID of the SAP HANA instance.
         self.cluster_id = cluster_id
-        # The name of the database.
+        # The database name.
         self.database_name = database_name
         # Indicates whether the backup plan is disabled. Valid values:
         # 
@@ -10098,7 +10600,7 @@ class DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan(TeaModel)
         self.plan_id = plan_id
         # The name of the backup plan.
         self.plan_name = plan_name
-        # The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+        # The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` indicates that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
         # 
         # *   startTime: the time at which the system starts to run a backup job. The time follows the UNIX time format. Unit: seconds.
         # *   interval: the interval at which the system runs a backup job. The interval follows the ISO 8601 standard. For example, PT1H indicates an interval of 1 hour. P1D indicates an interval of one day.
@@ -10205,24 +10707,24 @@ class DescribeHanaBackupPlansResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
         # The details of the backup plan.
         self.hana_backup_plans = hana_backup_plans
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
-        # The page number of the returned page. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries returned on each page. Valid values: 1 to 99. Default value: 10.
+        # The number of entries per page. Valid values: 1 to 99. Default value: 10.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # *   true
+        # *   false
         self.success = success
-        # The total number of returned entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -10324,6 +10826,8 @@ class DescribeHanaBackupSettingRequest(TeaModel):
         vault_id: str = None,
     ):
         # The ID of the SAP HANA instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The name of the database.
         self.database_name = database_name
@@ -10568,8 +11072,10 @@ class DescribeHanaBackupsAsyncRequest(TeaModel):
         volume_id: int = None,
     ):
         # The ID of the SAP HANA instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
-        # The name of the database.
+        # The database name.
         self.database_name = database_name
         # Specifies whether to include differential backups in the query results. Valid values:
         # 
@@ -10595,11 +11101,11 @@ class DescribeHanaBackupsAsyncRequest(TeaModel):
         # *   **RECOVERY_TO_SPECIFIC_BACKUP**: restores the database to a specified backup.
         # *   **RECOVERY_TO_LOG_POSITION**: restores the database to a specified log position.
         self.mode = mode
-        # The number of the page to return. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: 1 to 99. Default value: 10.
+        # The number of entries per page. Valid values: 1 to 99. Default value: 10.
         self.page_size = page_size
-        # The point in time to which you want to restore the database. This parameter is valid only if you set the Mode parameter to **RECOVERY_TO_POINT_IN_TIME**. HBR restores the database to a state closest to the specified point in time.
+        # The point in time to which you want to restore the database. This parameter is valid only if you set the Mode parameter to **RECOVERY_TO_POINT_IN_TIME**. Cloud Backup restores the database to a state closest to the specified point in time.
         self.recovery_point_in_time = recovery_point_in_time
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -10607,7 +11113,7 @@ class DescribeHanaBackupsAsyncRequest(TeaModel):
         self.source = source
         # The ID of the source SAP HANA instance.
         self.source_cluster_id = source_cluster_id
-        # Specifies whether to restore the database to a different instance. Valid values:
+        # Specifies whether to restore the database to a different instance.
         # 
         # *   true: restores the database to a different instance.
         # *   false: restores the database within the same instance.
@@ -10715,18 +11221,18 @@ class DescribeHanaBackupsAsyncResponseBody(TeaModel):
         success: bool = None,
         task_id: str = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # *   true
+        # *   false
         self.success = success
-        # The ID of the asynchronous job. You can call the DescribeTask operation to query the execution result of the asynchronous job.
+        # The ID of the asynchronous job. You can call the DescribeTask operation to query the execution result of an asynchronous job.
         self.task_id = task_id
 
     def validate(self):
@@ -10816,10 +11322,12 @@ class DescribeHanaDatabasesRequest(TeaModel):
         vault_id: str = None,
     ):
         # The ID of the SAP HANA instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
-        # The number of the page to return. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: 1 to 99. Default value: 10.
+        # The number of entries per page. Valid values: 1 to 99. Default value: 10.
         self.page_size = page_size
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -10877,13 +11385,13 @@ class DescribeHanaDatabasesResponseBodyHanaDatabasesHanaDatabase(TeaModel):
         # *   **YES**: The database is started.
         # *   **NO**: The database is not started.
         self.active_status = active_status
-        # The name of the database.
+        # The database name.
         self.database_name = database_name
         # The detailed information.
         self.detail = detail
         # The hostname.
         self.host = host
-        # The name of the service.
+        # The service name.
         self.service_name = service_name
         # The port number.
         self.sql_port = sql_port
@@ -10975,24 +11483,24 @@ class DescribeHanaDatabasesResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
         # The information about SAP HANA databases.
         self.hana_databases = hana_databases
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
-        # The page number of the returned page. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: 1 to 99. Default value: 10.
+        # The number of entries per page. Valid values: 1 to 99. Default value: 10.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # *   true
+        # *   false
         self.success = success
-        # The total number of returned entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -11133,13 +11641,13 @@ class DescribeHanaInstancesRequest(TeaModel):
     ):
         # The ID of the SAP HANA instance.
         self.cluster_id = cluster_id
-        # The number of the page to return. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: 1 to 99. Default value: 10.
+        # The number of entries per page. Valid values: 1 to 99. Default value: 10.
         self.page_size = page_size
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The tags of SAP HANA instance.
+        # The tags of the SAP HANA instance.
         self.tag = tag
         # The ID of the backup vault.
         self.vault_id = vault_id
@@ -11267,6 +11775,9 @@ class DescribeHanaInstancesResponseBodyHanasHana(TeaModel):
         self,
         alert_setting: str = None,
         cluster_id: str = None,
+        cross_account_role_name: str = None,
+        cross_account_type: str = None,
+        cross_account_user_id: int = None,
         hana_name: str = None,
         host: str = None,
         instance_number: int = None,
@@ -11279,17 +11790,26 @@ class DescribeHanaInstancesResponseBodyHanasHana(TeaModel):
         validate_certificate: bool = None,
         vault_id: str = None,
     ):
-        # The alert settings. Valid value: INHERITED, which indicates that the backup client sends alert notifications in the same way as the backup vault.
+        # The alert settings. Valid value: INHERITED, which indicates that the Cloud Backup client sends alert notifications by using the same method configured for the backup vault.
         self.alert_setting = alert_setting
         # The ID of the SAP HANA instance.
         self.cluster_id = cluster_id
+        # The name of the Resource Access Management (RAM) role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+        self.cross_account_role_name = cross_account_role_name
+        # The backup type. Valid values:
+        # 
+        # - **SELF_ACCOUNT**: Data is backed up within the same Alibaba Cloud account.
+        # - **CROSS_ACCOUNT**: Data is backed up across Alibaba Cloud accounts.
+        self.cross_account_type = cross_account_type
+        # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+        self.cross_account_user_id = cross_account_user_id
         # The name of the SAP HANA instance.
         self.hana_name = hana_name
         # The private or internal IP address of the host where the primary node of the SAP HANA instance resides.
         self.host = host
         # The instance number of the SAP HANA system.
         self.instance_number = instance_number
-        # The ID of resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The status of the SAP HANA instance. Valid values:
         # 
@@ -11328,6 +11848,12 @@ class DescribeHanaInstancesResponseBodyHanasHana(TeaModel):
             result['AlertSetting'] = self.alert_setting
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
+        if self.cross_account_role_name is not None:
+            result['CrossAccountRoleName'] = self.cross_account_role_name
+        if self.cross_account_type is not None:
+            result['CrossAccountType'] = self.cross_account_type
+        if self.cross_account_user_id is not None:
+            result['CrossAccountUserId'] = self.cross_account_user_id
         if self.hana_name is not None:
             result['HanaName'] = self.hana_name
         if self.host is not None:
@@ -11358,6 +11884,12 @@ class DescribeHanaInstancesResponseBodyHanasHana(TeaModel):
             self.alert_setting = m.get('AlertSetting')
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
+        if m.get('CrossAccountRoleName') is not None:
+            self.cross_account_role_name = m.get('CrossAccountRoleName')
+        if m.get('CrossAccountType') is not None:
+            self.cross_account_type = m.get('CrossAccountType')
+        if m.get('CrossAccountUserId') is not None:
+            self.cross_account_user_id = m.get('CrossAccountUserId')
         if m.get('HanaName') is not None:
             self.hana_name = m.get('HanaName')
         if m.get('Host') is not None:
@@ -11431,24 +11963,24 @@ class DescribeHanaInstancesResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
         # The information about the SAP HANA instances.
         self.hanas = hanas
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
-        # The page number of the returned page. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries returned on each page. Valid values: 1 to 99. Default value: 10.
+        # The number of entries per page. Valid values: 1 to 99. Default value: 10.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # *   true
+        # *   false
         self.success = success
-        # The total number of returned entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -11555,15 +12087,17 @@ class DescribeHanaRestoresRequest(TeaModel):
         restore_status: str = None,
         vault_id: str = None,
     ):
-        # The ID of the backup.
+        # The backup ID.
         self.backup_id = backup_id
         # The ID of the SAP HANA instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
-        # The name of the database.
+        # The database name.
         self.database_name = database_name
-        # The number of the page to return. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: 1 to 99. Default value: 10.
+        # The number of entries per page. Valid values: 1 to 99. Default value: 10.
         self.page_size = page_size
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -11571,12 +12105,12 @@ class DescribeHanaRestoresRequest(TeaModel):
         self.restore_id = restore_id
         # The status of the restore job. Valid values:
         # 
-        # *   **RUNNING**: The restore job is running.
-        # *   **COMPLETE**: The restore job is completed.
-        # *   **PARTIAL_COMPLETE**: The restore job is partially completed.
-        # *   **FAILED**: The restore job has failed.
-        # *   **CANCELED**: The restore job is canceled.
-        # *   **EXPIRED**: The restore job has timed out.
+        # *   **RUNNING**: The job is running.
+        # *   **COMPLETE**: The job is completed.
+        # *   **PARTIAL_COMPLETE**: The job is partially completed.
+        # *   **FAILED**: The job failed.
+        # *   **CANCELED**: The job is canceled.
+        # *   **EXPIRED**: The job timed out.
         self.restore_status = restore_status
         # The ID of the backup vault.
         self.vault_id = vault_id
@@ -11666,14 +12200,14 @@ class DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores(TeaModel):
         vault_id: str = None,
         volume_id: int = None,
     ):
-        # The ID of the backup.
+        # The backup ID.
         self.backup_id = backup_id
         # The backup prefix.
         self.backup_prefix = backup_prefix
         # Indicates whether the differential backup and log backup are validated. Valid values:
         # 
-        # *   true: HBR checks whether the required differential backup and log backup are available before the restore job starts. If the differential backup or log backup is unavailable, HBR does not start the restore job.
-        # *   false: HBR does not check whether the required differential backup and log backup are available before the restore job starts.
+        # *   true: Cloud Backup checks whether the required differential backup and log backup are available before the restore job starts. If the differential backup or log backup is unavailable, Cloud Backup does not start the restore job.
+        # *   false: Cloud Backup does not check whether the required differential backup and log backup are available before the restore job starts.
         self.check_access = check_access
         # Indicates whether all log entries are deleted from the log area after the log entries are restored. Valid values: true and false. If the return value is false, all log entries are deleted from the log area after the log entries are restored.
         self.clear_log = clear_log
@@ -11683,7 +12217,7 @@ class DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores(TeaModel):
         self.current_phase = current_phase
         # The current progress. This value is obtained from SAP HANA.
         self.current_progress = current_progress
-        # The name of the database.
+        # The database name.
         self.database_name = database_name
         # The ID of the database recovery.
         self.database_restore_id = database_restore_id
@@ -11708,7 +12242,7 @@ class DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores(TeaModel):
         self.phase = phase
         # The point in time at which the database is restored.
         self.reached_time = reached_time
-        # The point in time to which the database is restored. This parameter is returned only if the value of the Mode parameter is **RECOVERY_TO_POINT_IN_TIME**. HBR restores the database to a state closest to the specified point in time.
+        # The point in time to which the database is restored. This parameter is returned only if the value of the Mode parameter is **RECOVERY_TO_POINT_IN_TIME**. Cloud Backup restores the database to a state closest to the specified point in time.
         self.recovery_point_in_time = recovery_point_in_time
         # The ID of the restore job.
         self.restore_id = restore_id
@@ -11722,21 +12256,21 @@ class DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores(TeaModel):
         self.state = state
         # The status of the restore job. Valid values:
         # 
-        # *   **RUNNING**: The restore job is running.
-        # *   **COMPLETE**: The restore job is completed.
-        # *   **PARTIAL_COMPLETE**: The restore job is partially completed.
-        # *   **FAILED**: The restore job has failed.
-        # *   **CANCELED**: The restore job is canceled.
-        # *   **EXPIRED**: The restore job has timed out.
+        # *   **RUNNING**: The job is running.
+        # *   **COMPLETE**: The job is completed.
+        # *   **PARTIAL_COMPLETE**: The job is partially completed.
+        # *   **FAILED**: The job failed.
+        # *   **CANCELED**: The job is canceled.
+        # *   **EXPIRED**: The job timed out.
         self.status = status
         # Indicates whether the database is restored to a different instance. Valid values:
         # 
         # *   true: The database is restored to a different instance.
         # *   false: The database is restored within the same instance.
         self.system_copy = system_copy
-        # Indicates whether a catalog backup is used to restore the database. This parameter is returned only if the value of the Mode parameter is **RECOVERY_TO_SPECIFIC_BACKUP**. If the return value is false, HBR finds the backup file based on the specified prefix and then restores the backup file.
+        # Indicates whether a catalog backup is used to restore the database. This parameter is returned only if the value of the Mode parameter is **RECOVERY_TO_SPECIFIC_BACKUP**. If the return value is false, Cloud Backup finds the backup file based on the specified prefix and then restores the backup file.
         self.use_catalog = use_catalog
-        # Indicates whether a differential backup or an incremental backup is used to restore the database. Valid values: true and false. If the return value is true, HBR uses a differential backup or an incremental backup to restore the database. If the return value is false, HBR uses a log backup to restore the database.
+        # Indicates whether a differential backup or an incremental backup is used to restore the database. Valid values: true and false. If the return value is true, Cloud Backup uses a differential backup or an incremental backup to restore the database. If the return value is false, Cloud Backup uses a log backup to restore the database.
         self.use_delta = use_delta
         # The ID of the backup vault.
         self.vault_id = vault_id
@@ -11922,24 +12456,24 @@ class DescribeHanaRestoresResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
         # The information about restore jobs.
         self.hana_restore = hana_restore
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
-        # The page number of the returned page. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries returned on each page. Valid values: 1 to 99. Default value: 10.
+        # The number of entries per page. Valid values: 1 to 99. Default value: 10.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # *   true
+        # *   false
         self.success = success
-        # The total number of returned entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -12041,10 +12575,14 @@ class DescribeHanaRetentionSettingRequest(TeaModel):
         vault_id: str = None,
     ):
         # The ID of the SAP HANA instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
-        # The name of the database.
+        # The database name.
         self.database_name = database_name
         # The ID of the backup vault.
+        # 
+        # This parameter is required.
         self.vault_id = vault_id
 
     def validate(self):
@@ -12091,30 +12629,30 @@ class DescribeHanaRetentionSettingResponseBody(TeaModel):
     ):
         # The ID of the SAP HANA instance.
         self.cluster_id = cluster_id
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The name of the database.
+        # The database name.
         self.database_name = database_name
         # Indicates whether the backup is permanently retained. Valid values:
         # 
         # *   true: The backup is permanently retained.
         # *   false: The backup is retained for the specified number of days.
         self.disabled = disabled
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The number of days for which the backup is retained. If the value of the Disabled parameter is false, the backup is retained for the number of days specified by this parameter.
         self.retention_days = retention_days
         # The policy to update the retention period. Format: `I|{startTime}|{interval}`, which indicates that the retention period is updated at an interval of {interval} starting from {startTime}.
         # 
-        # *   startTime: the time at which the system starts to update the retention period. The time follows the UNIX time format. Unit: seconds.
-        # *   interval: the interval at which the system updates the retention period. The interval follows the ISO 8601 standard. For example, PT1H indicates an interval of 1 hour. P1D indicates an interval of one day.
+        # *   startTime: the time at which the system starts to run a backup job. The time follows the UNIX time format. Unit: seconds.
+        # *   interval: the interval at which the system runs a backup job. The interval follows the ISO 8601 standard. For example, PT1H indicates an interval of 1 hour. P1D indicates an interval of one day.
         self.schedule = schedule
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # *   true
+        # *   false
         self.success = success
         # The ID of the backup vault.
         self.vault_id = vault_id
@@ -12682,6 +13220,39 @@ class DescribePoliciesV2Request(TeaModel):
         return self
 
 
+class DescribePoliciesV2ResponseBodyPoliciesRulesDataSourceFilters(TeaModel):
+    def __init__(
+        self,
+        data_source_ids: List[str] = None,
+        source_type: str = None,
+    ):
+        self.data_source_ids = data_source_ids
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_source_ids is not None:
+            result['DataSourceIds'] = self.data_source_ids
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataSourceIds') is not None:
+            self.data_source_ids = m.get('DataSourceIds')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
 class DescribePoliciesV2ResponseBodyPoliciesRulesRetentionRules(TeaModel):
     def __init__(
         self,
@@ -12691,11 +13262,11 @@ class DescribePoliciesV2ResponseBodyPoliciesRulesRetentionRules(TeaModel):
     ):
         # The type of the special retention rule. Valid values:
         # 
-        # *   **WEEKLY**: weekly backups.
-        # *   **MONTHLY**: monthly backups.
-        # *   **YEARLY**: yearly backups.
+        # *   **WEEKLY**: weekly backups
+        # *   **MONTHLY**: monthly backups
+        # *   **YEARLY**: yearly backups
         self.advanced_retention_type = advanced_retention_type
-        # The retention period of the backup data. Minimum value: 1. Unit: days.
+        # The special retention period of backups. Minimum value: 1. Unit: days.
         self.retention = retention
         # Indicates which backup is retained based on the special retention rule. Only the first backup can be retained.
         self.which_snapshot = which_snapshot
@@ -12728,11 +13299,51 @@ class DescribePoliciesV2ResponseBodyPoliciesRulesRetentionRules(TeaModel):
         return self
 
 
+class DescribePoliciesV2ResponseBodyPoliciesRulesTagFilters(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        operator: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.operator = operator
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribePoliciesV2ResponseBodyPoliciesRules(TeaModel):
     def __init__(
         self,
         archive_days: int = None,
         backup_type: str = None,
+        data_source_filters: List[DescribePoliciesV2ResponseBodyPoliciesRulesDataSourceFilters] = None,
         keep_latest_snapshots: int = None,
         replication_region_id: str = None,
         retention: int = None,
@@ -12740,15 +13351,18 @@ class DescribePoliciesV2ResponseBodyPoliciesRules(TeaModel):
         rule_id: str = None,
         rule_type: str = None,
         schedule: str = None,
+        tag_filters: List[DescribePoliciesV2ResponseBodyPoliciesRulesTagFilters] = None,
         vault_id: str = None,
     ):
+        # This parameter is returned only if the value of the **RuleType** parameter is **TRANSITION**. This parameter indicates the time when data is dumped from a backup vault to an archive vault. Unit: days.
         self.archive_days = archive_days
-        # This parameter is returned only if the value of the **RuleType** parameter is **BACKUP**. This parameter indicates the backup type. Only **COMPLETE** may be returned, which indicates full backup.
+        # This parameter is returned only if the value of the **RuleType** parameter is **BACKUP**. This parameter indicates the backup type. Valid value: **COMPLETE**, which indicates full backup.
         self.backup_type = backup_type
+        self.data_source_filters = data_source_filters
         # Indicates whether the feature of keeping at least one backup version is enabled. Valid values:
         # 
-        # *   **0**: This feature is disabled.
-        # *   **1**: This feature is enabled.
+        # *   **0**: The feature is disabled.
+        # *   **1**: The feature is enabled.
         self.keep_latest_snapshots = keep_latest_snapshots
         # This parameter is returned only if the value of the **RuleType** parameter is **REPLICATION**. This parameter indicates the ID of the destination region.
         self.replication_region_id = replication_region_id
@@ -12761,22 +13375,32 @@ class DescribePoliciesV2ResponseBodyPoliciesRules(TeaModel):
         self.retention_rules = retention_rules
         # The rule ID.
         self.rule_id = rule_id
-        # The type of the rule. Each backup policy must have at least one rule of the **BACKUP** type and only one rule of the **TRANSITION** type.
+        # The type of the rule. Each backup policy must have at least one rule of the **BACKUP** type and only one rule of the **TRANSITION** type. Valid values:
         # 
-        # *   **BACKUP**: the backup rule.
-        # *   **TRANSITION**: the lifecycle rule.
-        # *   **REPLICATION**: the replication rule.
+        # *   **BACKUP**: backup rule
+        # *   **TRANSITION**: lifecycle rule
+        # *   **REPLICATION**: replication rule
         self.rule_type = rule_type
-        # This parameter is returned only if the value of the **RuleType** parameter is **BACKUP**. This parameter indicates the scheduling settings for the backups. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` indicates that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+        # This parameter is returned only if the value of the **RuleType** parameter is **BACKUP**. This parameter indicates the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` indicates that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
         # 
-        # *   startTime: the time when the system starts to run a backup job. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-        # *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H indicates an interval of one hour. P1D indicates an interval of one day.
+        # *   startTime: the time at which the system starts to run a backup job. The time follows the UNIX time format. Unit: seconds.
+        # *   interval: the interval at which the system runs a backup job. The interval follows the ISO 8601 standard. For example, PT1H indicates an interval of 1 hour. P1D indicates an interval of one day.
         self.schedule = schedule
+        self.tag_filters = tag_filters
+        # This parameter is returned only if the value of the RuleType parameter is BACKUP. The ID of the backup vault.
         self.vault_id = vault_id
 
     def validate(self):
+        if self.data_source_filters:
+            for k in self.data_source_filters:
+                if k:
+                    k.validate()
         if self.retention_rules:
             for k in self.retention_rules:
+                if k:
+                    k.validate()
+        if self.tag_filters:
+            for k in self.tag_filters:
                 if k:
                     k.validate()
 
@@ -12790,6 +13414,10 @@ class DescribePoliciesV2ResponseBodyPoliciesRules(TeaModel):
             result['ArchiveDays'] = self.archive_days
         if self.backup_type is not None:
             result['BackupType'] = self.backup_type
+        result['DataSourceFilters'] = []
+        if self.data_source_filters is not None:
+            for k in self.data_source_filters:
+                result['DataSourceFilters'].append(k.to_map() if k else None)
         if self.keep_latest_snapshots is not None:
             result['KeepLatestSnapshots'] = self.keep_latest_snapshots
         if self.replication_region_id is not None:
@@ -12806,6 +13434,10 @@ class DescribePoliciesV2ResponseBodyPoliciesRules(TeaModel):
             result['RuleType'] = self.rule_type
         if self.schedule is not None:
             result['Schedule'] = self.schedule
+        result['TagFilters'] = []
+        if self.tag_filters is not None:
+            for k in self.tag_filters:
+                result['TagFilters'].append(k.to_map() if k else None)
         if self.vault_id is not None:
             result['VaultId'] = self.vault_id
         return result
@@ -12816,6 +13448,11 @@ class DescribePoliciesV2ResponseBodyPoliciesRules(TeaModel):
             self.archive_days = m.get('ArchiveDays')
         if m.get('BackupType') is not None:
             self.backup_type = m.get('BackupType')
+        self.data_source_filters = []
+        if m.get('DataSourceFilters') is not None:
+            for k in m.get('DataSourceFilters'):
+                temp_model = DescribePoliciesV2ResponseBodyPoliciesRulesDataSourceFilters()
+                self.data_source_filters.append(temp_model.from_map(k))
         if m.get('KeepLatestSnapshots') is not None:
             self.keep_latest_snapshots = m.get('KeepLatestSnapshots')
         if m.get('ReplicationRegionId') is not None:
@@ -12833,6 +13470,11 @@ class DescribePoliciesV2ResponseBodyPoliciesRules(TeaModel):
             self.rule_type = m.get('RuleType')
         if m.get('Schedule') is not None:
             self.schedule = m.get('Schedule')
+        self.tag_filters = []
+        if m.get('TagFilters') is not None:
+            for k in m.get('TagFilters'):
+                temp_model = DescribePoliciesV2ResponseBodyPoliciesRulesTagFilters()
+                self.tag_filters.append(temp_model.from_map(k))
         if m.get('VaultId') is not None:
             self.vault_id = m.get('VaultId')
         return self
@@ -12846,10 +13488,11 @@ class DescribePoliciesV2ResponseBodyPolicies(TeaModel):
         policy_description: str = None,
         policy_id: str = None,
         policy_name: str = None,
+        policy_type: str = None,
         rules: List[DescribePoliciesV2ResponseBodyPoliciesRules] = None,
         updated_time: int = None,
     ):
-        # The time when the backup policy was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when the backup policy was created. The value is a UNIX timestamp. Unit: seconds.
         self.created_time = created_time
         # The number of data sources that are bound to the backup policy.
         self.policy_binding_count = policy_binding_count
@@ -12859,9 +13502,10 @@ class DescribePoliciesV2ResponseBodyPolicies(TeaModel):
         self.policy_id = policy_id
         # The name of the backup policy.
         self.policy_name = policy_name
+        self.policy_type = policy_type
         # The rules in the backup policy.
         self.rules = rules
-        # The time when the backup policy was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when the backup policy was updated. The value is a UNIX timestamp. Unit: seconds.
         self.updated_time = updated_time
 
     def validate(self):
@@ -12886,6 +13530,8 @@ class DescribePoliciesV2ResponseBodyPolicies(TeaModel):
             result['PolicyId'] = self.policy_id
         if self.policy_name is not None:
             result['PolicyName'] = self.policy_name
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
         result['Rules'] = []
         if self.rules is not None:
             for k in self.rules:
@@ -12906,6 +13552,8 @@ class DescribePoliciesV2ResponseBodyPolicies(TeaModel):
             self.policy_id = m.get('PolicyId')
         if m.get('PolicyName') is not None:
             self.policy_name = m.get('PolicyName')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
         self.rules = []
         if m.get('Rules') is not None:
             for k in m.get('Rules'):
@@ -13296,7 +13944,7 @@ class DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonNasDe
         fetch_slice_size: int = None,
         full_on_increment_fail: bool = None,
     ):
-        # The ID of the HBR client.
+        # The ID of the Cloud Backup client.
         self.client_id = client_id
         self.cluster_id = cluster_id
         # The size of backup shards (the number of files).
@@ -13439,29 +14087,30 @@ class DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail(T
     ):
         # Indicates whether application consistency is enabled. You can enable application consistency only if all disks are ESSDs.
         self.app_consistent = app_consistent
+        # The ID of the custom KMS key in the destination region. If this parameter is not empty and geo-replication is enabled, the key is used for encrypted geo-replication.
         self.destination_kms_key_id = destination_kms_key_id
         # The IDs of the disks that need to be protected. If all disks need to be protected, this parameter is empty.
         self.disk_id_list = disk_id_list
-        # This parameter is returned only if **AppConsistent** is set to **true**. This parameter indicates whether Linux fsfreeze is enabled to put file systems into the read-only state before application-consistent snapshots are created. Default value: true.
+        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter indicates whether to enable Linux fsfreeze to put file systems into the read-only state before application-consistent snapshots are created. Default value: true.
         self.enable_fs_freeze = enable_fs_freeze
-        # This parameter is returned only if **AppConsistent** is set to **true**. This parameter indicates whether application-consistent snapshots are created. Valid values:
+        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter indicates whether application-consistent snapshots are created. Valid values:
         # 
         # *   true: Application-consistent snapshots are created.
         # *   false: File system-consistent snapshots are created.
         # 
         # Default value: true.
         self.enable_writers = enable_writers
-        # The IDs of the disks that do not need to be protected. If DiskIdList is not empty, this parameter is ignored.
+        # The IDs of the disks that do not need to be protected. If the DiskIdList parameter is not empty, this parameter is ignored.
         self.exclude_disk_id_list = exclude_disk_id_list
-        # This parameter is returned only if **AppConsistent** is set to **true**. This parameter indicates the path of the post-thaw scripts that are executed after application-consistent snapshots are created.
+        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter indicates the path of the post-thaw scripts that are executed after application-consistent snapshots are created.
         self.post_script_path = post_script_path
-        # This parameter is returned only if **AppConsistent** is set to **true**. This parameter indicates the path of the pre-freeze scripts that are executed before application-consistent snapshots are created.
+        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter indicates the path of the pre-freeze scripts that are executed before application-consistent snapshots are created.
         self.pre_script_path = pre_script_path
-        # This parameter is returned only if **AppConsistent** is set to **true**. This parameter indicates the name of the RAM role that is required to create application-consistent snapshots.
+        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter indicates the name of the RAM role that is required to create application-consistent snapshots.
         self.ram_role_name = ram_role_name
         # Indicates whether a snapshot-consistent group is created. You can create a snapshot-consistent group only if all disks are enhanced SSDs (ESSDs).
         self.snapshot_group = snapshot_group
-        # This parameter is returned only if **AppConsistent** is set to **true**. This parameter indicates the I/O freeze timeout period. Default value: 30. Unit: seconds.
+        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter indicates the I/O freeze timeout period. Default value: 30. Unit: seconds.
         self.timeout_in_seconds = timeout_in_seconds
 
     def validate(self):
@@ -13593,25 +14242,71 @@ class DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions(TeaModel):
         return self
 
 
+class DescribePolicyBindingsResponseBodyPolicyBindingsHitTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        operator: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.operator = operator
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribePolicyBindingsResponseBodyPolicyBindings(TeaModel):
     def __init__(
         self,
         advanced_options: DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions = None,
+        created_by_tag: bool = None,
         created_time: int = None,
         cross_account_role_name: str = None,
         cross_account_type: str = None,
         cross_account_user_id: int = None,
         data_source_id: str = None,
         disabled: bool = None,
+        exclude: str = None,
+        hit_tags: List[DescribePolicyBindingsResponseBodyPolicyBindingsHitTags] = None,
+        include: str = None,
         policy_binding_description: str = None,
         policy_binding_id: str = None,
         policy_id: str = None,
+        source: str = None,
         source_type: str = None,
+        speed_limit: str = None,
         updated_time: int = None,
     ):
         # The advanced options.
         self.advanced_options = advanced_options
-        # The time when the backup policy was created. This value is a UNIX timestamp. Unit: seconds.
+        self.created_by_tag = created_by_tag
+        # The time when the backup policy was created. The value is a UNIX timestamp. Unit: seconds.
         self.created_time = created_time
         # The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_role_name = cross_account_role_name
@@ -13629,22 +14324,31 @@ class DescribePolicyBindingsResponseBodyPolicyBindings(TeaModel):
         # *   true: The backup policy is disabled.
         # *   false: The backup policy is enabled.
         self.disabled = disabled
+        self.exclude = exclude
+        self.hit_tags = hit_tags
+        self.include = include
         # The description of the association.
         self.policy_binding_description = policy_binding_description
         # The ID of the association.
         self.policy_binding_id = policy_binding_id
-        # The policy ID.
+        # The ID of the backup policy.
         self.policy_id = policy_id
+        self.source = source
         # The type of the data source. Valid values:
         # 
         # *   **UDM_ECS**: ECS instances
         self.source_type = source_type
+        self.speed_limit = speed_limit
         # The time when the backup policy was updated. The value is a UNIX timestamp. Unit: seconds.
         self.updated_time = updated_time
 
     def validate(self):
         if self.advanced_options:
             self.advanced_options.validate()
+        if self.hit_tags:
+            for k in self.hit_tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -13654,6 +14358,8 @@ class DescribePolicyBindingsResponseBodyPolicyBindings(TeaModel):
         result = dict()
         if self.advanced_options is not None:
             result['AdvancedOptions'] = self.advanced_options.to_map()
+        if self.created_by_tag is not None:
+            result['CreatedByTag'] = self.created_by_tag
         if self.created_time is not None:
             result['CreatedTime'] = self.created_time
         if self.cross_account_role_name is not None:
@@ -13666,14 +14372,26 @@ class DescribePolicyBindingsResponseBodyPolicyBindings(TeaModel):
             result['DataSourceId'] = self.data_source_id
         if self.disabled is not None:
             result['Disabled'] = self.disabled
+        if self.exclude is not None:
+            result['Exclude'] = self.exclude
+        result['HitTags'] = []
+        if self.hit_tags is not None:
+            for k in self.hit_tags:
+                result['HitTags'].append(k.to_map() if k else None)
+        if self.include is not None:
+            result['Include'] = self.include
         if self.policy_binding_description is not None:
             result['PolicyBindingDescription'] = self.policy_binding_description
         if self.policy_binding_id is not None:
             result['PolicyBindingId'] = self.policy_binding_id
         if self.policy_id is not None:
             result['PolicyId'] = self.policy_id
+        if self.source is not None:
+            result['Source'] = self.source
         if self.source_type is not None:
             result['SourceType'] = self.source_type
+        if self.speed_limit is not None:
+            result['SpeedLimit'] = self.speed_limit
         if self.updated_time is not None:
             result['UpdatedTime'] = self.updated_time
         return result
@@ -13683,6 +14401,8 @@ class DescribePolicyBindingsResponseBodyPolicyBindings(TeaModel):
         if m.get('AdvancedOptions') is not None:
             temp_model = DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions()
             self.advanced_options = temp_model.from_map(m['AdvancedOptions'])
+        if m.get('CreatedByTag') is not None:
+            self.created_by_tag = m.get('CreatedByTag')
         if m.get('CreatedTime') is not None:
             self.created_time = m.get('CreatedTime')
         if m.get('CrossAccountRoleName') is not None:
@@ -13695,14 +14415,27 @@ class DescribePolicyBindingsResponseBodyPolicyBindings(TeaModel):
             self.data_source_id = m.get('DataSourceId')
         if m.get('Disabled') is not None:
             self.disabled = m.get('Disabled')
+        if m.get('Exclude') is not None:
+            self.exclude = m.get('Exclude')
+        self.hit_tags = []
+        if m.get('HitTags') is not None:
+            for k in m.get('HitTags'):
+                temp_model = DescribePolicyBindingsResponseBodyPolicyBindingsHitTags()
+                self.hit_tags.append(temp_model.from_map(k))
+        if m.get('Include') is not None:
+            self.include = m.get('Include')
         if m.get('PolicyBindingDescription') is not None:
             self.policy_binding_description = m.get('PolicyBindingDescription')
         if m.get('PolicyBindingId') is not None:
             self.policy_binding_id = m.get('PolicyBindingId')
         if m.get('PolicyId') is not None:
             self.policy_id = m.get('PolicyId')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')
+        if m.get('SpeedLimit') is not None:
+            self.speed_limit = m.get('SpeedLimit')
         if m.get('UpdatedTime') is not None:
             self.updated_time = m.get('UpdatedTime')
         return self
@@ -13834,13 +14567,14 @@ class DescribeRecoverableOtsInstancesRequest(TeaModel):
         cross_account_type: str = None,
         cross_account_user_id: int = None,
     ):
-        # The role name created in the RAM of the original account used for cross-account backup.
+        # The name of the Resource Access Management (RAM) role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_role_name = cross_account_role_name
-        # The type of cross-account backup. Supported:
-        # * SELF_ACCOUNT: backup of this account
-        # * CROSS_ACCOUNT: Cross-account backup
+        # Specifies whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
+        # 
+        # *   SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
+        # *   CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
         self.cross_account_type = cross_account_type
-        # The Alibaba Cloud Uid of the original account used to cross accounts.
+        # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_user_id = cross_account_user_id
 
     def validate(self):
@@ -13915,18 +14649,18 @@ class DescribeRecoverableOtsInstancesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
         # The list of Tablestore instances that can be restored and the tables in the instances.
         self.ots_instances = ots_instances
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -14014,47 +14748,16 @@ class DescribeRecoverableOtsInstancesResponse(TeaModel):
         return self
 
 
-class DescribeRegionsRequest(TeaModel):
-    def __init__(
-        self,
-        need_vault_count: bool = None,
-    ):
-        # Specifies whether to return detailed information. Default value: false.
-        self.need_vault_count = need_vault_count
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.need_vault_count is not None:
-            result['NeedVaultCount'] = self.need_vault_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('NeedVaultCount') is not None:
-            self.need_vault_count = m.get('NeedVaultCount')
-        return self
-
-
 class DescribeRegionsResponseBodyRegionsRegion(TeaModel):
     def __init__(
         self,
         local_name: str = None,
         region_id: str = None,
-        vault_count: int = None,
     ):
-        # The name of the region.
+        # The region name.
         self.local_name = local_name
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
-        # The number of repositories in the region.
-        self.vault_count = vault_count
 
     def validate(self):
         pass
@@ -14069,8 +14772,6 @@ class DescribeRegionsResponseBodyRegionsRegion(TeaModel):
             result['LocalName'] = self.local_name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.vault_count is not None:
-            result['VaultCount'] = self.vault_count
         return result
 
     def from_map(self, m: dict = None):
@@ -14079,8 +14780,6 @@ class DescribeRegionsResponseBodyRegionsRegion(TeaModel):
             self.local_name = m.get('LocalName')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('VaultCount') is not None:
-            self.vault_count = m.get('VaultCount')
         return self
 
 
@@ -14128,18 +14827,18 @@ class DescribeRegionsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
-        # The list of regions.
+        # The regions returned.
         self.regions = regions
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -14391,10 +15090,15 @@ class DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobReport(TeaModel):
         success_files: str = None,
         total_files: str = None,
     ):
+        # The files that failed to be executed.
         self.failed_files = failed_files
+        # The status of the report generation.
         self.report_task_status = report_task_status
+        # The skipped files.
         self.skipped_files = skipped_files
+        # The files that are successfully executed.
         self.success_files = success_files
+        # The full files that are restored based on the file list.
         self.total_files = total_files
 
     def validate(self):
@@ -14491,15 +15195,15 @@ class DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob(TeaModel):
         self.actual_items = actual_items
         # The amount of data that was restored. Unit: bytes.
         self.bytes_done = bytes_done
-        # The total amount of data that is backed up from the data source. Unit: bytes.
+        # The total amount of data that was backed up from the data source. Unit: bytes.
         self.bytes_total = bytes_total
         # The ID of the client group used for restoration.
         self.cluster_id = cluster_id
-        # The time when the restore job was completed. The value is a UNIX timestamp. Unit: seconds.
+        # The time when the restore job was completed. This value is a UNIX timestamp. Unit: seconds.
         self.complete_time = complete_time
-        # The time when the restore job was created. The value is a UNIX timestamp. Unit: seconds.
+        # The time when the restore job was created. This value is a UNIX timestamp. Unit: seconds.
         self.created_time = created_time
-        # The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+        # The name of the Resource Access Management (RAM) role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_role_name = cross_account_role_name
         # Indicates whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
         # 
@@ -14508,14 +15212,15 @@ class DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob(TeaModel):
         self.cross_account_type = cross_account_type
         # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_user_id = cross_account_user_id
-        # The list of the files that failed to be restored.
+        # The files that failed to be restored.
         self.error_file = error_file
         # The error message that is returned for the restore job.
         self.error_message = error_message
-        # This parameter is returned only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the paths to the files that are excluded from the restore job. The value can be 1 to 255 characters in length.
+        # This parameter is valid only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the paths to the files that are excluded from the restore job. The value can be up to 255 characters in length.
         self.exclude = exclude
         # The time when the restore job expires.
         self.expire_time = expire_time
+        # The details about the VMware failback task.
         self.failback_detail = failback_detail
         # The paths to the files that are included in the restore job.
         self.include = include
@@ -14523,9 +15228,11 @@ class DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob(TeaModel):
         self.items_done = items_done
         # This parameter is valid only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the total number of objects in the data source.
         self.items_total = items_total
+        # The amount of data that was restored. Unit: bytes. This parameter is valid only if the StorageClass parameter is set to ARCHIVE. The minimum billable size of the data stored at the Archive tier is 1 MB.
         self.metering_bytes_done = metering_bytes_done
+        # The total amount of data that was backed up from the data source. Unit: bytes. This parameter is valid only if the StorageClass parameter is set to ARCHIVE. The minimum billable size of the data stored at the Archive tier is 1 MB.
         self.metering_bytes_total = metering_bytes_total
-        # This parameter is returned only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates whether Windows Volume Shadow Copy Service (VSS) is used to define a restoration path.
+        # This parameter is valid only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates whether Windows Volume Shadow Copy Service (VSS) is used to define a restoration path.
         # 
         # *   This parameter is available only for Windows ECS instances.
         # *   If data changes occur in the backup source, the source data must be the same as the data to be backed up before you can set this parameter to `["UseVSS":true]`.
@@ -14535,8 +15242,9 @@ class DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob(TeaModel):
         self.ots_detail = ots_detail
         # The ID of the parent job.
         self.parent_id = parent_id
-        # The progress of the restore job. For example, 10000 indicates that the progress is 100%.
+        # The progress of the restore job. Valid values: [0,10000]. For example, 10000 indicates that the progress is 100%.
         self.progress = progress
+        # The report of the restore job.
         self.report = report
         # The ID of the restore job.
         self.restore_id = restore_id
@@ -14549,27 +15257,31 @@ class DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob(TeaModel):
         # The type of the data source. Valid values:
         # 
         # *   **ECS_FILE**: ECS files
-        # *   **OSS**: OSS buckets
-        # *   **NAS**: NAS file systems
+        # *   **OSS**: Object Storage Service (OSS) buckets
+        # *   **NAS**: Apsara File Storage NAS (NAS) file systems
         # *   **OTS_TABLE**: Tablestore instances
         # *   **UDM_ECS**: ECS instances
         self.source_type = source_type
         # The average speed at which data is backed up. Unit: KB/s.
         self.speed = speed
-        # The time when the restore job starts. The value is a UNIX timestamp. Unit: seconds.
+        # The time when the restore job started. This value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
         # The status of the restore job. Valid values:
         # 
-        # *   **COMPLETE**: The restore job is completed.
-        # *   **PARTIAL_COMPLETE**: The restore job is partially completed.
-        # *   **FAILED**: The restore job has failed.
+        # *   **COMPLETE**: The job is completed.
+        # *   **PARTIAL_COMPLETE**: The job is partially completed.
+        # *   **FAILED**: The job failed.
         self.status = status
+        # The storage class of the backup data. Valid values:
+        # 
+        # *   **STANDARD**\
+        # *   **ARCHIVE**\
         self.storage_class = storage_class
         # The name of the destination OSS bucket. This parameter is returned only for OSS buckets.
         self.target_bucket = target_bucket
         # The ID of the destination client.
         self.target_client_id = target_client_id
-        # This parameter is returned only for NAS file systems. This parameter indicates the time when the file system was created.
+        # The time when the file system was created. This parameter is returned only for NAS file systems.
         self.target_create_time = target_create_time
         # The ID of the destination data source.
         self.target_data_source_id = target_data_source_id
@@ -14585,11 +15297,11 @@ class DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob(TeaModel):
         self.target_prefix = target_prefix
         # The name of the destination table in the Tablestore instance.
         self.target_table_name = target_table_name
-        # The time when the Tablestore instance was backed up. The value is a UNIX timestamp. Unit: seconds.
+        # The time when the Tablestore instance was backed up. This value is a UNIX timestamp. Unit: seconds.
         self.target_time = target_time
-        # The details about ECS instance backup.
+        # The details about Elastic Compute Service (ECS) instance backup.
         self.udm_detail = udm_detail
-        # The time when the restore job was updated. The value is a UNIX timestamp. Unit: seconds.
+        # The time when the restore job was updated. This value is a UNIX timestamp. Unit: seconds.
         self.updated_time = updated_time
         # The ID of the backup vault.
         self.vault_id = vault_id
@@ -14864,7 +15576,7 @@ class DescribeRestoreJobs2ResponseBody(TeaModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The details about the restore jobs.
+        # The queried restore jobs.
         self.restore_jobs = restore_jobs
         # Indicates whether the request was successful. Valid values:
         # 
@@ -15024,7 +15736,7 @@ class DescribeTaskResponseBody(TeaModel):
     ):
         # HttpCode
         self.code = code
-        # The time when the job was completed. This value is a UNIX timestamp. Unit: seconds.
+        # The time when the task was complete. The time is a UNIX timestamp. Unit: seconds.
         self.completed_time = completed_time
         # The time when the job was created. This value is a UNIX timestamp. Unit: seconds.
         self.created_time = created_time
@@ -15169,6 +15881,8 @@ class DescribeUdmSnapshotsRequest(TeaModel):
         # The ID of the disk.
         self.disk_id = disk_id
         # The end of the time range to query. The value must be a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the ECS instance.
         self.instance_id = instance_id
@@ -15181,10 +15895,16 @@ class DescribeUdmSnapshotsRequest(TeaModel):
         # *   **UDM_ECS**: ECS instance backup
         # *   **UDM_ECS_DISK**: disk backup subtask of ECS instance backup
         # *   **UDM_DISK**: disk backup
+        # 
+        # This parameter is required.
         self.source_type = source_type
         # The beginning of the time range to query. The value must be a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The ID of the region where the ECS instance resides.
+        # 
+        # This parameter is required.
         self.udm_region_id = udm_region_id
 
     def validate(self):
@@ -15250,6 +15970,8 @@ class DescribeUdmSnapshotsShrinkRequest(TeaModel):
         # The ID of the disk.
         self.disk_id = disk_id
         # The end of the time range to query. The value must be a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the ECS instance.
         self.instance_id = instance_id
@@ -15262,10 +15984,16 @@ class DescribeUdmSnapshotsShrinkRequest(TeaModel):
         # *   **UDM_ECS**: ECS instance backup
         # *   **UDM_ECS_DISK**: disk backup subtask of ECS instance backup
         # *   **UDM_DISK**: disk backup
+        # 
+        # This parameter is required.
         self.source_type = source_type
         # The beginning of the time range to query. The value must be a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The ID of the region where the ECS instance resides.
+        # 
+        # This parameter is required.
         self.udm_region_id = udm_region_id
 
     def validate(self):
@@ -16018,9 +16746,17 @@ class DescribeVaultsRequest(TeaModel):
         vault_region_id: str = None,
         vault_type: str = None,
     ):
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 99. Default value: 10.
         self.page_size = page_size
         self.resource_group_id = resource_group_id
+        # The status of the backup vault. Valid values:
+        # 
+        # *   **UNKNOWN**: The backup vault is in an unknown state.
+        # *   **INITIALIZING**: The backup vault is being initialized.
+        # *   **CREATED**: The backup vault is created.
+        # *   **ERROR**: An error occurs on the backup vault.
         self.status = status
         self.tag = tag
         self.vault_id = vault_id
@@ -16086,6 +16822,7 @@ class DescribeVaultsRequest(TeaModel):
 class DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics(TeaModel):
     def __init__(
         self,
+        archive: int = None,
         common_nas: int = None,
         csg: int = None,
         ecs_file: int = None,
@@ -16100,18 +16837,33 @@ class DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics(TeaModel):
         ots: int = None,
         sql_server: int = None,
     ):
+        # The number of archive plans.
+        self.archive = archive
+        # The number of backup plans for General-purpose NAS file systems.
         self.common_nas = common_nas
+        # The number of backup plans for Cloud Storage Gateway (CSG) gateways.
         self.csg = csg
+        # The number of backup plans for ECS files.
         self.ecs_file = ecs_file
+        # The number of backup plans for SAP HANA instances.
         self.ecs_hana = ecs_hana
+        # The number of backup plans for Isilon storage systems.
         self.isilon = isilon
+        # The number of backup plans for on-premises servers.
         self.local_file = local_file
+        # The number of backup plans for on-premises virtual machines (VMs).
         self.local_vm = local_vm
+        # The number of backup plans for MySQL databases.
         self.my_sql = my_sql
+        # The number of backup plans for NAS file systems.
         self.nas = nas
+        # The number of backup plans for Oracle databases.
         self.oracle = oracle
+        # The number of backup plans for OSS buckets.
         self.oss = oss
+        # The number of backup plans for Tablestore instances.
         self.ots = ots
+        # The number of backup plans for SQL Server databases.
         self.sql_server = sql_server
 
     def validate(self):
@@ -16123,6 +16875,8 @@ class DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics(TeaModel):
             return _map
 
         result = dict()
+        if self.archive is not None:
+            result['Archive'] = self.archive
         if self.common_nas is not None:
             result['CommonNas'] = self.common_nas
         if self.csg is not None:
@@ -16153,6 +16907,8 @@ class DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Archive') is not None:
+            self.archive = m.get('Archive')
         if m.get('CommonNas') is not None:
             self.common_nas = m.get('CommonNas')
         if m.get('Csg') is not None:
@@ -16188,7 +16944,9 @@ class DescribeVaultsResponseBodyVaultsVaultReplicationProgress(TeaModel):
         historical_replication_progress: int = None,
         new_replication_progress: int = None,
     ):
+        # The progress of historical data synchronization from the backup vault to the mirror vault. Valid values: 0 to 100.
         self.historical_replication_progress = historical_replication_progress
+        # The latest synchronization time of incremental data in the mirror vault.
         self.new_replication_progress = new_replication_progress
 
     def validate(self):
@@ -16248,7 +17006,17 @@ class DescribeVaultsResponseBodyVaultsVaultTagsTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the backup vault. Valid values of N: 1 to 20.
+        # 
+        # *   The tag key cannot start with `aliyun` or `acs:`.
+        # *   The tag key cannot contain `http://` or `https://`.
+        # *   The tag key cannot be an empty string.
         self.key = key
+        # The tag value of the backup vault. Valid values of N: 1 to 20.
+        # 
+        # *   The tag value cannot start with `aliyun` or `acs:`.
+        # *   The tag value cannot contain `http://` or `https://`.
+        # *   The tag value cannot be an empty string.
         self.value = value
 
     def validate(self):
@@ -16318,9 +17086,13 @@ class DescribeVaultsResponseBodyVaultsVaultTrialInfo(TeaModel):
         trial_start_time: int = None,
         trial_vault_release_time: int = None,
     ):
+        # Indicates whether you are billed based on the pay-as-you-go method after the free trial ends.
         self.keep_after_trial_expiration = keep_after_trial_expiration
+        # The expiration time of the free trial.
         self.trial_expire_time = trial_expire_time
+        # The start time of the free trial.
         self.trial_start_time = trial_start_time
+        # The time when the free-trial backup vault is released.
         self.trial_vault_release_time = trial_vault_release_time
 
     def validate(self):
@@ -16401,45 +17173,113 @@ class DescribeVaultsResponseBodyVaultsVault(TeaModel):
         worm_enabled: bool = None,
     ):
         self.archive_bytes_done = archive_bytes_done
+        # The billable storage usage of the Archive tier. Unit: bytes.
         self.archive_storage_size = archive_storage_size
+        # The statistics of backup plans that use the backup vault.
         self.backup_plan_statistics = backup_plan_statistics
+        # The name of the OSS bucket used by the backup vault.
         self.bucket_name = bucket_name
+        # The amount of data that is backed up. Unit: bytes.
         self.bytes_done = bytes_done
+        # The billing method of the backup vault.
         self.charge_type = charge_type
+        # The billable storage usage of the archive vault. Unit: bytes.
         self.charged_storage_size = charged_storage_size
+        # The encryption algorithm used to compress the backup vault. Valid values:
+        # 
+        # *   DISABLED: The backup vault is not compressed.
+        # *   SNAPPY: The backup vault is compressed by using the SNAPPY encryption algorithm.
+        # *   ZSTD: The backup vault is compressed by using Zstandard, a fast lossless compression algorithm.
         self.compression_algorithm = compression_algorithm
+        # The time when the backup vault was created. The value is a UNIX timestamp. Unit: seconds.
         self.created_time = created_time
+        # Indicates whether the deduplication feature is enabled.
         self.dedup = dedup
+        # The description of the backup vault.
         self.description = description
+        # The encryption type of the backup vault. Valid values:
+        # 
+        # *   NONE: The backup vault is not encrypted.
+        # *   HBR_PRIVATE (default): The backup vault is encrypted by using a key provided by Cloud Backup.
+        # *   KMS: The backup vault is encrypted by using a custom master key (CMK) created in Key Management Service (KMS).
         self.encrypt_type = encrypt_type
+        # Indicates whether indexes are available. Indexes are available when they are not being updated.
         self.index_available = index_available
+        # The index level.
+        # 
+        # *   OFF: No indexes are created.
+        # *   META: Metadata indexes are created.
+        # *   ALL: Full-text indexes are created.
         self.index_level = index_level
+        # The time when the index was updated.
         self.index_update_time = index_update_time
+        # The ID or alias of the CMK created in KMS. This parameter is returned only when EncryptType is set to KMS.
         self.kms_key_id = kms_key_id
+        # The time when the last remote backup was synchronized. The value is a UNIX timestamp. Unit: seconds.
         self.latest_replication_time = latest_replication_time
+        # The data redundancy type of the backup vault. Valid values:
+        # 
+        # *   LRS: Locally redundant storage (LRS) is enabled for the backup vault. Cloud Backup stores the copies of each object on multiple devices of different facilities in the same zone. This way, Cloud Backup ensures data durability and availability even if hardware failures occur.
+        # *   ZRS: Zone-redundant storage (ZRS) is enabled for the backup vault. Cloud Backup uses the multi-zone mechanism to distribute data across three zones within the same region. If a zone fails, the data that is stored in the other two zones is still accessible.
         self.redundancy_type = redundancy_type
+        # Indicates whether the backup vault is a remote backup vault. Valid values:
+        # 
+        # *   true: The backup vault is a remote backup vault.
+        # *   false: The backup vault is a local backup vault.
         self.replication = replication
+        # The progress of data synchronization from the backup vault to the mirror vault.
         self.replication_progress = replication_progress
+        # The ID of the region in which the source vault resides. This parameter is valid only for remote backup vaults.
         self.replication_source_region_id = replication_source_region_id
+        # Indicate whether the backup vault is the source vault that corresponds to the remote backup vault. Valid values:
+        # 
+        # *   true
+        # *   false
         self.replication_source_vault = replication_source_vault
+        # The ID of the source vault that corresponds to the remote backup vault.
         self.replication_source_vault_id = replication_source_vault_id
         self.replication_target_region_id = replication_target_region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The retention period of the backup vault. Unit: days.
         self.retention = retention
+        # Indicates whether the backup search feature is enabled.
         self.search_enabled = search_enabled
+        # The number of snapshots in the backup vault.
         self.snapshot_count = snapshot_count
+        # The data source types of the backup vault.
         self.source_types = source_types
+        # The status of the backup vault. Valid values:
+        # 
+        # *   **UNKNOWN**: The backup vault is in an unknown state.
+        # *   **INITIALIZING**: The backup vault is being initialized.
+        # *   **CREATED**: The backup vault is created.
+        # *   **ERROR**: An error occurs on the backup vault.
         self.status = status
+        # The usage of the backup vault. Unit: bytes.
         self.storage_size = storage_size
+        # The tags of the backup vault.
         self.tags = tags
+        # The free trial information.
         self.trial_info = trial_info
+        # The time when the backup vault was updated. The value is a UNIX timestamp. Unit: seconds.
         self.updated_time = updated_time
+        # The ID of the backup vault.
         self.vault_id = vault_id
+        # The name of the backup vault.
         self.vault_name = vault_name
+        # The ID of the region in which the backup vault resides.
         self.vault_region_id = vault_region_id
+        # The status message that is returned when the backup vault is in the ERROR state. This parameter is valid only for remote backup vaults. Valid values:
+        # 
+        # *   **UNKNOWN_ERROR**: An unknown error occurs.
+        # *   **SOURCE_VAULT_ALREADY_HAS_REPLICATION**: A mirror vault is configured for the source vault.
         self.vault_status_message = vault_status_message
+        # The storage class of the backup vault. Valid value: **STANDARD**, which indicates standard storage.
         self.vault_storage_class = vault_storage_class
+        # The type of the backup vault. Valid value: **STANDARD**, which indicates a standard backup vault.
         self.vault_type = vault_type
+        # Indicates whether the immutable backup feature is enabled.
         self.worm_enabled = worm_enabled
 
     def validate(self):
@@ -16690,6 +17530,7 @@ class DescribeVaultsResponseBody(TeaModel):
         self.request_id = request_id
         self.success = success
         self.total_count = total_count
+        # The backup vaults.
         self.vaults = vaults
 
     def validate(self):
@@ -16793,6 +17634,8 @@ class DetachNasFileSystemRequest(TeaModel):
         file_system_id: str = None,
     ):
         # The time when the file system was created. The value must be a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.create_time = create_time
         # The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up and restore data across Alibaba Cloud accounts.
         self.cross_account_role_name = cross_account_role_name
@@ -16804,6 +17647,8 @@ class DetachNasFileSystemRequest(TeaModel):
         # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up and restore data across Alibaba Cloud accounts.
         self.cross_account_user_id = cross_account_user_id
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
 
     def validate(self):
@@ -16950,12 +17795,14 @@ class DisableBackupPlanRequest(TeaModel):
         vault_id: str = None,
     ):
         # The ID of the backup plan.
+        # 
+        # This parameter is required.
         self.plan_id = plan_id
         # The type of the data source. Valid values:
         # 
-        # *   **ECS_FILE**: The system backs up data from Elastic Compute Service (ECS) instances.
-        # *   **OSS**: The system backs up data from Object Storage Service (OSS) buckets.
-        # *   **NAS**: The system backs up data from Apsara File Storage NAS file systems.
+        # *   **ECS_FILE**: Elastic Compute Service (ECS) files
+        # *   **OSS**: Object Storage Service (OSS) buckets
+        # *   **NAS**: Apsara File Storage NAS (NAS) file systems
         self.source_type = source_type
         # The ID of the backup vault.
         self.vault_id = vault_id
@@ -16996,16 +17843,16 @@ class DisableBackupPlanResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the request is successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The message that is returned. If the request is successful, a value of successful is returned. If the request fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: indicates that the request is successful.
-        # *   false: indicates that the request fails.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -17090,12 +17937,18 @@ class DisableHanaBackupPlanRequest(TeaModel):
         vault_id: str = None,
     ):
         # The ID of the SAP HANA instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The ID of the backup plan.
+        # 
+        # This parameter is required.
         self.plan_id = plan_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The ID of the backup vault.
+        # 
+        # This parameter is required.
         self.vault_id = vault_id
 
     def validate(self):
@@ -17138,16 +17991,16 @@ class DisableHanaBackupPlanResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -17230,13 +18083,15 @@ class EnableBackupPlanRequest(TeaModel):
         source_type: str = None,
         vault_id: str = None,
     ):
-        # The ID of the backup schedule.
+        # The ID of the backup plan.
+        # 
+        # This parameter is required.
         self.plan_id = plan_id
         # The type of the data source. Valid values:
         # 
-        # *   **ECS_FILE**: The system backs up data from Elastic Compute Service (ECS) instances.
-        # *   **OSS**: The system backs up data from Object Storage Service (OSS) buckets.
-        # *   **NAS**: The system backs up data from Apsara File Storage NAS file systems.
+        # *   **ECS_FILE**: ECS files
+        # *   **OSS**: Object Storage Service (OSS) buckets
+        # *   **NAS**: Apsara File Storage NAS (NAS) file systems
         self.source_type = source_type
         # The ID of the backup vault.
         self.vault_id = vault_id
@@ -17277,16 +18132,16 @@ class EnableBackupPlanResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the request is successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The message that is returned. If the request is successful, a value of successful is returned. If the request fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: indicates that the request is successful.
-        # *   false: indicates that the request fails.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -17371,12 +18226,18 @@ class EnableHanaBackupPlanRequest(TeaModel):
         vault_id: str = None,
     ):
         # The ID of the SAP HANA instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The ID of the backup plan.
+        # 
+        # This parameter is required.
         self.plan_id = plan_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The ID of the backup vault.
+        # 
+        # This parameter is required.
         self.vault_id = vault_id
 
     def validate(self):
@@ -17419,16 +18280,16 @@ class EnableHanaBackupPlanResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -17513,6 +18374,8 @@ class ExecuteBackupPlanRequest(TeaModel):
         vault_id: str = None,
     ):
         # The ID of the backup plan.
+        # 
+        # This parameter is required.
         self.plan_id = plan_id
         # The ID of the backup rule.
         self.rule_id = rule_id
@@ -17520,7 +18383,7 @@ class ExecuteBackupPlanRequest(TeaModel):
         # 
         # *   **ECS_FILE**: Elastic Compute Service (ECS) files
         # *   **OSS**: Object Storage Service (OSS) buckets
-        # *   **NAS**: Apsara File Storage NAS file systems
+        # *   **NAS**: Apsara File Storage NAS (NAS) file systems
         self.source_type = source_type
         # The ID of the backup vault.
         self.vault_id = vault_id
@@ -17566,18 +18429,18 @@ class ExecuteBackupPlanResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
         # The ID of the backup job.
         self.job_id = job_id
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -17666,7 +18529,9 @@ class ExecutePolicyV2Request(TeaModel):
         source_type: str = None,
     ):
         self.data_source_id = data_source_id
+        # This parameter is required.
         self.policy_id = policy_id
+        # This parameter is required.
         self.rule_id = rule_id
         self.source_type = source_type
 
@@ -17806,6 +18671,8 @@ class GenerateRamPolicyRequest(TeaModel):
         # 
         # *   custom: custom policy
         # *   system: system policy
+        # 
+        # This parameter is required.
         self.action_type = action_type
         # Specifies whether to generate the policy based on an existing instance-specific rule. Valid values:
         # 
@@ -17815,6 +18682,8 @@ class GenerateRamPolicyRequest(TeaModel):
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The ID of the backup vault.
+        # 
+        # This parameter is required.
         self.vault_id = vault_id
 
     def validate(self):
@@ -17858,18 +18727,18 @@ class GenerateRamPolicyResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
         # The content of the policy.
         self.policy_document = policy_document
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -17955,6 +18824,8 @@ class GetTempFileDownloadLinkRequest(TeaModel):
         temp_file_key: str = None,
     ):
         # The key that is used to download a file.
+        # 
+        # This parameter is required.
         self.temp_file_key = temp_file_key
 
     def validate(self):
@@ -18095,6 +18966,8 @@ class InstallBackupClientsRequest(TeaModel):
         # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_user_id = cross_account_user_id
         # The IDs of the ECS instances. You can specify up to 20 IDs.
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
 
     def validate(self):
@@ -18147,6 +19020,8 @@ class InstallBackupClientsShrinkRequest(TeaModel):
         # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_user_id = cross_account_user_id
         # The IDs of the ECS instances. You can specify up to 20 IDs.
+        # 
+        # This parameter is required.
         self.instance_ids_shrink = instance_ids_shrink
 
     def validate(self):
@@ -18436,6 +19311,10 @@ class SearchHistoricalSnapshotsRequest(TeaModel):
         self.limit = limit
         # The token that is required to obtain the next page of backup snapshots.
         self.next_token = next_token
+        # The ordering mode. Valid values:
+        # 
+        # *   ASC (default): ascending order
+        # *   DESC: descending order
         self.order = order
         # The query conditions. Example:
         # 
@@ -18483,6 +19362,7 @@ class SearchHistoricalSnapshotsRequest(TeaModel):
         #     *   IN: specifies an array as a collection. The results must fall within the collection.
         #     *   NOT_IN: specifies an array as a collection. The results cannot fall within the collection.
         self.query = query
+        # The field that is used to sort data.
         self.sort_by = sort_by
         # The type of the data source. Valid values:
         # 
@@ -18545,6 +19425,10 @@ class SearchHistoricalSnapshotsShrinkRequest(TeaModel):
         self.limit = limit
         # The token that is required to obtain the next page of backup snapshots.
         self.next_token = next_token
+        # The ordering mode. Valid values:
+        # 
+        # *   ASC (default): ascending order
+        # *   DESC: descending order
         self.order = order
         # The query conditions. Example:
         # 
@@ -18592,6 +19476,7 @@ class SearchHistoricalSnapshotsShrinkRequest(TeaModel):
         #     *   IN: specifies an array as a collection. The results must fall within the collection.
         #     *   NOT_IN: specifies an array as a collection. The results cannot fall within the collection.
         self.query_shrink = query_shrink
+        # The field that is used to sort data.
         self.sort_by = sort_by
         # The type of the data source. Valid values:
         # 
@@ -19144,7 +20029,9 @@ class StartHanaDatabaseAsyncRequest(TeaModel):
     ):
         # The ID of the SAP HANA instance.
         self.cluster_id = cluster_id
-        # The name of the database.
+        # The database name.
+        # 
+        # This parameter is required.
         self.database_name = database_name
         # The ID of the backup vault.
         self.vault_id = vault_id
@@ -19186,18 +20073,18 @@ class StartHanaDatabaseAsyncResponseBody(TeaModel):
         success: bool = None,
         task_id: str = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # *   true
+        # *   false
         self.success = success
-        # The ID of the job that is used to initialize the backup vault. You can call the DescribeTask operation to query the status of the job.
+        # The ID of the job that is used to initialize the backup vault. You can call the DescribeTask operation to query the job status.
         self.task_id = task_id
 
     def validate(self):
@@ -19286,7 +20173,9 @@ class StopHanaDatabaseAsyncRequest(TeaModel):
     ):
         # The ID of the SAP HANA instance.
         self.cluster_id = cluster_id
-        # The name of the database.
+        # The database name.
+        # 
+        # This parameter is required.
         self.database_name = database_name
         # The ID of the backup vault.
         self.vault_id = vault_id
@@ -19328,18 +20217,18 @@ class StopHanaDatabaseAsyncResponseBody(TeaModel):
         success: bool = None,
         task_id: str = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # *   true
+        # *   false
         self.success = success
-        # The ID of the asynchronous job. You can call the DescribeTask operation to query the execution result of the asynchronous job.
+        # The ID of the asynchronous job. You can call the DescribeTask operation to query the execution result of an asynchronous job.
         self.task_id = task_id
 
     def validate(self):
@@ -19428,7 +20317,7 @@ class UninstallBackupClientsRequest(TeaModel):
         cross_account_user_id: int = None,
         instance_ids: Dict[str, Any] = None,
     ):
-        # The ID of the backup client. The sum of the number of backup client IDs and the number of ECS instance IDs cannot exceed 20. Otherwise, an error occurs.
+        # The IDs of Cloud Backup clients. The sum of the number of Cloud Backup client IDs and the number of ECS instance IDs cannot exceed 20. Otherwise, an error occurs.
         self.client_ids = client_ids
         # The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up and restore data across Alibaba Cloud accounts.
         self.cross_account_role_name = cross_account_role_name
@@ -19439,7 +20328,7 @@ class UninstallBackupClientsRequest(TeaModel):
         self.cross_account_type = cross_account_type
         # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up and restore data across Alibaba Cloud accounts.
         self.cross_account_user_id = cross_account_user_id
-        # The ID of the ECS instance. You can specify up to 20 IDs.
+        # The IDs of ECS instances. You can specify a maximum of 20 ECS instances.
         self.instance_ids = instance_ids
 
     def validate(self):
@@ -19487,7 +20376,7 @@ class UninstallBackupClientsShrinkRequest(TeaModel):
         cross_account_user_id: int = None,
         instance_ids_shrink: str = None,
     ):
-        # The ID of the backup client. The sum of the number of backup client IDs and the number of ECS instance IDs cannot exceed 20. Otherwise, an error occurs.
+        # The IDs of Cloud Backup clients. The sum of the number of Cloud Backup client IDs and the number of ECS instance IDs cannot exceed 20. Otherwise, an error occurs.
         self.client_ids_shrink = client_ids_shrink
         # The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up and restore data across Alibaba Cloud accounts.
         self.cross_account_role_name = cross_account_role_name
@@ -19498,7 +20387,7 @@ class UninstallBackupClientsShrinkRequest(TeaModel):
         self.cross_account_type = cross_account_type
         # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up and restore data across Alibaba Cloud accounts.
         self.cross_account_user_id = cross_account_user_id
-        # The ID of the ECS instance. You can specify up to 20 IDs.
+        # The IDs of ECS instances. You can specify a maximum of 20 ECS instances.
         self.instance_ids_shrink = instance_ids_shrink
 
     def validate(self):
@@ -19710,6 +20599,8 @@ class UninstallClientRequest(TeaModel):
         vault_id: str = None,
     ):
         # The ID of the HBR client.
+        # 
+        # This parameter is required.
         self.client_id = client_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -19974,6 +20865,8 @@ class UpdateBackupPlanRequest(TeaModel):
         # The source paths.
         self.path = path
         # The ID of the backup plan.
+        # 
+        # This parameter is required.
         self.plan_id = plan_id
         # The name of the backup plan.
         self.plan_name = plan_name
@@ -20239,6 +21132,8 @@ class UpdateBackupPlanShrinkRequest(TeaModel):
         # The source paths.
         self.path = path
         # The ID of the backup plan.
+        # 
+        # This parameter is required.
         self.plan_id = plan_id
         # The name of the backup plan.
         self.plan_name = plan_name
@@ -20485,6 +21380,8 @@ class UpdateClientSettingsRequest(TeaModel):
         # Specifies whether to generate alert for partially completed jobs. This parameter is valid only for on-premises file backup and ECS file backup.
         self.alert_on_partial_complete = alert_on_partial_complete
         # The ID of the HBR client.
+        # 
+        # This parameter is required.
         self.client_id = client_id
         # The type of the endpoint on the data plane. Valid values:
         # 
@@ -20696,6 +21593,7 @@ class UpdateContainerClusterRequest(TeaModel):
         network_type: str = None,
         renew_token: bool = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.description = description
         self.name = name
@@ -20850,19 +21748,25 @@ class UpdateHanaBackupPlanRequest(TeaModel):
         # The backup prefix.
         self.backup_prefix = backup_prefix
         # The ID of the SAP HANA instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The ID of the backup plan.
+        # 
+        # This parameter is required.
         self.plan_id = plan_id
         # The name of the backup plan.
         self.plan_name = plan_name
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+        # The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` indicates that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
         # 
-        # *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
-        # *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of 1 hour. P1D specifies an interval of one day.
+        # *   startTime: the time at which the system starts to run a backup job. The time follows the UNIX time format. Unit: seconds.
+        # *   interval: the interval at which the system runs a backup job. The interval follows the ISO 8601 standard. For example, PT1H indicates an interval of 1 hour. P1D indicates an interval of one day.
         self.schedule = schedule
         # The ID of the backup vault.
+        # 
+        # This parameter is required.
         self.vault_id = vault_id
 
     def validate(self):
@@ -20917,16 +21821,16 @@ class UpdateHanaBackupPlanResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -21022,17 +21926,25 @@ class UpdateHanaBackupSettingRequest(TeaModel):
         # 
         # *   true: Backint is used to back up catalogs.
         # *   false: Backint is not used to back up catalogs.
+        # 
+        # This parameter is required.
         self.catalog_backup_using_backint = catalog_backup_using_backint
         # The ID of the SAP HANA instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The configuration file for data backup.
         self.data_backup_parameter_file = data_backup_parameter_file
         # The name of the database.
+        # 
+        # This parameter is required.
         self.database_name = database_name
         # Specifies whether to enable automatic log backup. Valid values:
         # 
         # *   **true**: enables automatic log backup.
         # *   **false**: disables automatic log backup.
+        # 
+        # This parameter is required.
         self.enable_auto_log_backup = enable_auto_log_backup
         # The configuration file for log backup.
         self.log_backup_parameter_file = log_backup_parameter_file
@@ -21042,6 +21954,8 @@ class UpdateHanaBackupSettingRequest(TeaModel):
         # 
         # *   true: Backint is used to back up logs.
         # *   false: Backint is not used to back up logs.
+        # 
+        # This parameter is required.
         self.log_backup_using_backint = log_backup_using_backint
         # The ID of the backup vault.
         self.vault_id = vault_id
@@ -21210,7 +22124,7 @@ class UpdateHanaInstanceRequest(TeaModel):
         validate_certificate: bool = None,
         vault_id: str = None,
     ):
-        # The alert settings. Valid value: INHERITED, which indicates that the backup client sends alert notifications in the same way as the backup vault.
+        # The alert settings. Valid value: INHERITED, which indicates that the Cloud Backup client sends alert notifications by using the same method configured for the backup vault.
         self.alert_setting = alert_setting
         # The ID of the SAP HANA instance.
         self.cluster_id = cluster_id
@@ -21219,6 +22133,8 @@ class UpdateHanaInstanceRequest(TeaModel):
         # The private or internal IP address of the host where the primary node of the SAP HANA instance resides.
         self.host = host
         # The instance number of the SAP HANA system.
+        # 
+        # This parameter is required.
         self.instance_number = instance_number
         # The password that is used to connect with the SAP HANA database.
         self.password = password
@@ -21228,13 +22144,17 @@ class UpdateHanaInstanceRequest(TeaModel):
         # 
         # *   true: The SAP HANA database is connected over SSL.
         # *   false: The SAP HANA database is not connected over SSL.
+        # 
+        # This parameter is required.
         self.use_ssl = use_ssl
         # The username of the SYSTEMDB database.
         self.user_name = user_name
         # Specifies whether to verify the SSL certificate of the SAP HANA database. Valid values:
         # 
-        # *   true: The SSL certificate of the SAP HANA instance is verified.
-        # *   false: The SSL certificate of the SAP HANA instance is not verified.
+        # *   true: The SSL certificate of the SAP HANA database is verified.
+        # *   false: The SSL certificate of the SAP HANA database is not verified.
+        # 
+        # This parameter is required.
         self.validate_certificate = validate_certificate
         # The ID of the backup vault.
         self.vault_id = vault_id
@@ -21307,16 +22227,16 @@ class UpdateHanaInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the call was successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -21404,19 +22324,27 @@ class UpdateHanaRetentionSettingRequest(TeaModel):
     ):
         # The ID of the SAP HANA instance.
         self.cluster_id = cluster_id
-        # The name of the database.
+        # The database name.
+        # 
+        # This parameter is required.
         self.database_name = database_name
         # Specifies whether to permanently retain the backup. Valid values:
         # 
         # *   true: The backup is permanently retained.
         # *   false: The backup is retained for the specified number of days.
+        # 
+        # This parameter is required.
         self.disabled = disabled
-        # The number of days for which the backup is retained. If you set the Disabled parameter to false, the backup is retained for the number of days specified by this parameter.
+        # The retention period of the backup data. Unit: days. If you set the Disabled parameter to false, the backup is retained for the number of days specified by this parameter.
+        # 
+        # This parameter is required.
         self.retention_days = retention_days
         # The policy to update the retention period. Format: `I|{startTime}|{interval}`. The retention period is updated at an interval of {interval} starting from {startTime}.
         # 
-        # *   startTime: the time at which the system starts to update the retention period. The time must follow the UNIX time format. Unit: seconds.
-        # *   interval: the interval at which the system updates the retention period. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of 1 hour and P1D specifies an interval of one day.
+        # *   startTime: the time at which the system starts to run a backup job. The time follows the UNIX time format. Unit: seconds.
+        # *   interval: the interval at which the system runs a backup job. The interval follows the ISO 8601 standard. For example, PT1H indicates an interval of 1 hour, and P1D indicates an interval of one day.
+        # 
+        # This parameter is required.
         self.schedule = schedule
         # The ID of the backup vault.
         self.vault_id = vault_id
@@ -21469,16 +22397,16 @@ class UpdateHanaRetentionSettingResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -21780,27 +22708,41 @@ class UpdatePolicyBindingRequest(TeaModel):
         advanced_options: UpdatePolicyBindingRequestAdvancedOptions = None,
         data_source_id: str = None,
         disabled: bool = None,
+        exclude: str = None,
+        include: str = None,
         policy_binding_description: str = None,
         policy_id: str = None,
+        source: str = None,
         source_type: str = None,
+        speed_limit: str = None,
     ):
         # The advanced options.
         self.advanced_options = advanced_options
         # The ID of the data source.
+        # 
+        # This parameter is required.
         self.data_source_id = data_source_id
-        # Specifies whether to disable the backup policy for the data source.
+        # Specifies whether to disable the backup policy for the data source. Valid values:
         # 
         # *   true: disables the backup policy for the data source
         # *   false: enables the backup policy for the data source
         self.disabled = disabled
+        self.exclude = exclude
+        self.include = include
         # The description of the association.
         self.policy_binding_description = policy_binding_description
         # The ID of the backup policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
+        self.source = source
         # The type of the data source. Valid values:
         # 
         # *   **UDM_ECS**: ECS instance backup
+        # 
+        # This parameter is required.
         self.source_type = source_type
+        self.speed_limit = speed_limit
 
     def validate(self):
         if self.advanced_options:
@@ -21818,12 +22760,20 @@ class UpdatePolicyBindingRequest(TeaModel):
             result['DataSourceId'] = self.data_source_id
         if self.disabled is not None:
             result['Disabled'] = self.disabled
+        if self.exclude is not None:
+            result['Exclude'] = self.exclude
+        if self.include is not None:
+            result['Include'] = self.include
         if self.policy_binding_description is not None:
             result['PolicyBindingDescription'] = self.policy_binding_description
         if self.policy_id is not None:
             result['PolicyId'] = self.policy_id
+        if self.source is not None:
+            result['Source'] = self.source
         if self.source_type is not None:
             result['SourceType'] = self.source_type
+        if self.speed_limit is not None:
+            result['SpeedLimit'] = self.speed_limit
         return result
 
     def from_map(self, m: dict = None):
@@ -21835,12 +22785,20 @@ class UpdatePolicyBindingRequest(TeaModel):
             self.data_source_id = m.get('DataSourceId')
         if m.get('Disabled') is not None:
             self.disabled = m.get('Disabled')
+        if m.get('Exclude') is not None:
+            self.exclude = m.get('Exclude')
+        if m.get('Include') is not None:
+            self.include = m.get('Include')
         if m.get('PolicyBindingDescription') is not None:
             self.policy_binding_description = m.get('PolicyBindingDescription')
         if m.get('PolicyId') is not None:
             self.policy_id = m.get('PolicyId')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')
+        if m.get('SpeedLimit') is not None:
+            self.speed_limit = m.get('SpeedLimit')
         return self
 
 
@@ -21850,27 +22808,41 @@ class UpdatePolicyBindingShrinkRequest(TeaModel):
         advanced_options_shrink: str = None,
         data_source_id: str = None,
         disabled: bool = None,
+        exclude: str = None,
+        include: str = None,
         policy_binding_description: str = None,
         policy_id: str = None,
+        source: str = None,
         source_type: str = None,
+        speed_limit: str = None,
     ):
         # The advanced options.
         self.advanced_options_shrink = advanced_options_shrink
         # The ID of the data source.
+        # 
+        # This parameter is required.
         self.data_source_id = data_source_id
-        # Specifies whether to disable the backup policy for the data source.
+        # Specifies whether to disable the backup policy for the data source. Valid values:
         # 
         # *   true: disables the backup policy for the data source
         # *   false: enables the backup policy for the data source
         self.disabled = disabled
+        self.exclude = exclude
+        self.include = include
         # The description of the association.
         self.policy_binding_description = policy_binding_description
         # The ID of the backup policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
+        self.source = source
         # The type of the data source. Valid values:
         # 
         # *   **UDM_ECS**: ECS instance backup
+        # 
+        # This parameter is required.
         self.source_type = source_type
+        self.speed_limit = speed_limit
 
     def validate(self):
         pass
@@ -21887,12 +22859,20 @@ class UpdatePolicyBindingShrinkRequest(TeaModel):
             result['DataSourceId'] = self.data_source_id
         if self.disabled is not None:
             result['Disabled'] = self.disabled
+        if self.exclude is not None:
+            result['Exclude'] = self.exclude
+        if self.include is not None:
+            result['Include'] = self.include
         if self.policy_binding_description is not None:
             result['PolicyBindingDescription'] = self.policy_binding_description
         if self.policy_id is not None:
             result['PolicyId'] = self.policy_id
+        if self.source is not None:
+            result['Source'] = self.source
         if self.source_type is not None:
             result['SourceType'] = self.source_type
+        if self.speed_limit is not None:
+            result['SpeedLimit'] = self.speed_limit
         return result
 
     def from_map(self, m: dict = None):
@@ -21903,12 +22883,20 @@ class UpdatePolicyBindingShrinkRequest(TeaModel):
             self.data_source_id = m.get('DataSourceId')
         if m.get('Disabled') is not None:
             self.disabled = m.get('Disabled')
+        if m.get('Exclude') is not None:
+            self.exclude = m.get('Exclude')
+        if m.get('Include') is not None:
+            self.include = m.get('Include')
         if m.get('PolicyBindingDescription') is not None:
             self.policy_binding_description = m.get('PolicyBindingDescription')
         if m.get('PolicyId') is not None:
             self.policy_id = m.get('PolicyId')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')
+        if m.get('SpeedLimit') is not None:
+            self.speed_limit = m.get('SpeedLimit')
         return self
 
 
@@ -22005,6 +22993,39 @@ class UpdatePolicyBindingResponse(TeaModel):
         return self
 
 
+class UpdatePolicyV2RequestRulesDataSourceFilters(TeaModel):
+    def __init__(
+        self,
+        data_source_ids: List[str] = None,
+        source_type: str = None,
+    ):
+        self.data_source_ids = data_source_ids
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_source_ids is not None:
+            result['DataSourceIds'] = self.data_source_ids
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataSourceIds') is not None:
+            self.data_source_ids = m.get('DataSourceIds')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
 class UpdatePolicyV2RequestRulesRetentionRules(TeaModel):
     def __init__(
         self,
@@ -22014,11 +23035,11 @@ class UpdatePolicyV2RequestRulesRetentionRules(TeaModel):
     ):
         # The type of the special retention rule. Valid values:
         # 
-        # *   **WEEKLY**: weekly backups
-        # *   **MONTHLY**: monthly backups
-        # *   **YEARLY**: yearly backups
+        # *   **WEEKLY**: retains weekly backups
+        # *   **MONTHLY**: retains monthly backups
+        # *   **YEARLY**: retains yearly backups
         self.advanced_retention_type = advanced_retention_type
-        # The retention period of the backup data. Minimum value: 1. Unit: days.
+        # The special retention period of backups. Minimum value: 1. Unit: days.
         self.retention = retention
         # Specifies which backup is retained based on the special retention rule. Only the first backup can be retained.
         self.which_snapshot = which_snapshot
@@ -22051,12 +23072,52 @@ class UpdatePolicyV2RequestRulesRetentionRules(TeaModel):
         return self
 
 
+class UpdatePolicyV2RequestRulesTagFilters(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        operator: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.operator = operator
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class UpdatePolicyV2RequestRules(TeaModel):
     def __init__(
         self,
         archive_days: int = None,
         backup_type: str = None,
         cold_archive_days: int = None,
+        data_source_filters: List[UpdatePolicyV2RequestRulesDataSourceFilters] = None,
         keep_latest_snapshots: int = None,
         replication_region_id: str = None,
         retention: int = None,
@@ -22064,6 +23125,7 @@ class UpdatePolicyV2RequestRules(TeaModel):
         rule_id: str = None,
         rule_type: str = None,
         schedule: str = None,
+        tag_filters: List[UpdatePolicyV2RequestRulesTagFilters] = None,
     ):
         # This parameter is required only if the **RuleType** parameter is set to **TRANSITION**. This parameter specifies the time when data is dumped from a backup vault to an archive vault. Unit: days.
         self.archive_days = archive_days
@@ -22071,6 +23133,7 @@ class UpdatePolicyV2RequestRules(TeaModel):
         self.backup_type = backup_type
         # This parameter is required only if the **RuleType** parameter is set to **TRANSITION**. This parameter specifies the time when data is dumped from a backup vault to a cold archive vault. Unit: days.
         self.cold_archive_days = cold_archive_days
+        self.data_source_filters = data_source_filters
         # Specifies whether to enable the feature of keeping at least one backup version. Valid values:
         # 
         # *   0: The feature is disabled.
@@ -22087,21 +23150,30 @@ class UpdatePolicyV2RequestRules(TeaModel):
         self.retention_rules = retention_rules
         # The rule ID.
         self.rule_id = rule_id
-        # The type of the rule. Each backup policy must have at least one rule of the **BACKUP** type and only one rule of the **TRANSITION** type.
+        # The type of the rule. Each backup policy must have at least one rule of the **BACKUP** type and only one rule of the **TRANSITION** type. Valid values:
         # 
         # *   **BACKUP**: backup rule
         # *   **TRANSITION**: lifecycle rule
         # *   **REPLICATION**: replication rule
         self.rule_type = rule_type
-        # This parameter is required only if the **RuleType** parameter is set to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+        # This parameter is required only if the **RuleType** parameter is set to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
         # 
         # *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
-        # *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+        # *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of 1 hour. P1D specifies an interval of one day.
         self.schedule = schedule
+        self.tag_filters = tag_filters
 
     def validate(self):
+        if self.data_source_filters:
+            for k in self.data_source_filters:
+                if k:
+                    k.validate()
         if self.retention_rules:
             for k in self.retention_rules:
+                if k:
+                    k.validate()
+        if self.tag_filters:
+            for k in self.tag_filters:
                 if k:
                     k.validate()
 
@@ -22117,6 +23189,10 @@ class UpdatePolicyV2RequestRules(TeaModel):
             result['BackupType'] = self.backup_type
         if self.cold_archive_days is not None:
             result['ColdArchiveDays'] = self.cold_archive_days
+        result['DataSourceFilters'] = []
+        if self.data_source_filters is not None:
+            for k in self.data_source_filters:
+                result['DataSourceFilters'].append(k.to_map() if k else None)
         if self.keep_latest_snapshots is not None:
             result['KeepLatestSnapshots'] = self.keep_latest_snapshots
         if self.replication_region_id is not None:
@@ -22133,6 +23209,10 @@ class UpdatePolicyV2RequestRules(TeaModel):
             result['RuleType'] = self.rule_type
         if self.schedule is not None:
             result['Schedule'] = self.schedule
+        result['TagFilters'] = []
+        if self.tag_filters is not None:
+            for k in self.tag_filters:
+                result['TagFilters'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -22143,6 +23223,11 @@ class UpdatePolicyV2RequestRules(TeaModel):
             self.backup_type = m.get('BackupType')
         if m.get('ColdArchiveDays') is not None:
             self.cold_archive_days = m.get('ColdArchiveDays')
+        self.data_source_filters = []
+        if m.get('DataSourceFilters') is not None:
+            for k in m.get('DataSourceFilters'):
+                temp_model = UpdatePolicyV2RequestRulesDataSourceFilters()
+                self.data_source_filters.append(temp_model.from_map(k))
         if m.get('KeepLatestSnapshots') is not None:
             self.keep_latest_snapshots = m.get('KeepLatestSnapshots')
         if m.get('ReplicationRegionId') is not None:
@@ -22160,6 +23245,11 @@ class UpdatePolicyV2RequestRules(TeaModel):
             self.rule_type = m.get('RuleType')
         if m.get('Schedule') is not None:
             self.schedule = m.get('Schedule')
+        self.tag_filters = []
+        if m.get('TagFilters') is not None:
+            for k in m.get('TagFilters'):
+                temp_model = UpdatePolicyV2RequestRulesTagFilters()
+                self.tag_filters.append(temp_model.from_map(k))
         return self
 
 
@@ -22370,9 +23460,15 @@ class UpdateVaultRequest(TeaModel):
         vault_id: str = None,
         vault_name: str = None,
     ):
+        # The description of the backup vault. The description must be 0 to 255 characters in length.
         self.description = description
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The ID of the backup vault.
+        # 
+        # This parameter is required.
         self.vault_id = vault_id
+        # The name of the backup vault. The name must be 1 to 64 characters in length.
         self.vault_name = vault_name
 
     def validate(self):
@@ -22415,9 +23511,16 @@ class UpdateVaultResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
+        # The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -22502,7 +23605,7 @@ class UpgradeBackupClientsRequest(TeaModel):
         cross_account_user_id: int = None,
         instance_ids: Dict[str, Any] = None,
     ):
-        # The ID of the HBR client. The sum of the number of HBR client IDs and the number of ECS instance IDs cannot exceed 100.
+        # The IDs of Cloud Backup clients. The total number of Cloud Backup client IDs and ECS instance IDs cannot exceed 100.
         self.client_ids = client_ids
         # The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_role_name = cross_account_role_name
@@ -22513,7 +23616,7 @@ class UpgradeBackupClientsRequest(TeaModel):
         self.cross_account_type = cross_account_type
         # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_user_id = cross_account_user_id
-        # The IDs of the ECS instances. The sum of the number of HBR client IDs and the number of ECS instance IDs cannot exceed 100.
+        # The IDs of Elastic Compute Service (ECS) instances. The total number of ECS instance IDs and Cloud Backup client IDs cannot exceed 100.
         self.instance_ids = instance_ids
 
     def validate(self):
@@ -22561,7 +23664,7 @@ class UpgradeBackupClientsShrinkRequest(TeaModel):
         cross_account_user_id: int = None,
         instance_ids_shrink: str = None,
     ):
-        # The ID of the HBR client. The sum of the number of HBR client IDs and the number of ECS instance IDs cannot exceed 100.
+        # The IDs of Cloud Backup clients. The total number of Cloud Backup client IDs and ECS instance IDs cannot exceed 100.
         self.client_ids_shrink = client_ids_shrink
         # The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_role_name = cross_account_role_name
@@ -22572,7 +23675,7 @@ class UpgradeBackupClientsShrinkRequest(TeaModel):
         self.cross_account_type = cross_account_type
         # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_user_id = cross_account_user_id
-        # The IDs of the ECS instances. The sum of the number of HBR client IDs and the number of ECS instance IDs cannot exceed 100.
+        # The IDs of Elastic Compute Service (ECS) instances. The total number of ECS instance IDs and Cloud Backup client IDs cannot exceed 100.
         self.instance_ids_shrink = instance_ids_shrink
 
     def validate(self):
@@ -22783,7 +23886,7 @@ class UpgradeClientRequest(TeaModel):
         resource_group_id: str = None,
         vault_id: str = None,
     ):
-        # The ID of the backup client.
+        # The ID of the Cloud Backup client.
         self.client_id = client_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -22827,18 +23930,18 @@ class UpgradeClientResponseBody(TeaModel):
         success: bool = None,
         task_id: str = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # *   true
+        # *   false
         self.success = success
-        # The ID of the asynchronous job. You can call the DescribeTask operation to query the execution result of the asynchronous job.
+        # The ID of the asynchronous job. You can call the DescribeTask operation to query the execution result of an asynchronous job.
         self.task_id = task_id
 
     def validate(self):
