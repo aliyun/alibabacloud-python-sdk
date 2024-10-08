@@ -1,3 +1,7 @@
+2024-10-08 Version: 1.3.0
+- Support API AddTerminals.
+
+
 2024-10-08 Version: 1.2.1
 - Update API CheckUuidValid: add param WosAppVersion.
 - Update API CheckUuidValid: update response param.

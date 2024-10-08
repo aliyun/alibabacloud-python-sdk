@@ -790,6 +790,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_terminal_with_options_async(request, runtime)
 
+    def add_terminals_with_options(
+        self,
+        request: wyota_20210420_models.AddTerminalsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> wyota_20210420_models.AddTerminalsResponse:
+        """
+        @summary 添加终端
+        
+        @param request: AddTerminalsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddTerminalsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.add_terminal_params):
+            body_flat['AddTerminalParams'] = request.add_terminal_params
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddTerminals',
+            version='2021-04-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            wyota_20210420_models.AddTerminalsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_terminals_with_options_async(
+        self,
+        request: wyota_20210420_models.AddTerminalsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> wyota_20210420_models.AddTerminalsResponse:
+        """
+        @summary 添加终端
+        
+        @param request: AddTerminalsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddTerminalsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.add_terminal_params):
+            body_flat['AddTerminalParams'] = request.add_terminal_params
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddTerminals',
+            version='2021-04-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            wyota_20210420_models.AddTerminalsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_terminals(
+        self,
+        request: wyota_20210420_models.AddTerminalsRequest,
+    ) -> wyota_20210420_models.AddTerminalsResponse:
+        """
+        @summary 添加终端
+        
+        @param request: AddTerminalsRequest
+        @return: AddTerminalsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_terminals_with_options(request, runtime)
+
+    async def add_terminals_async(
+        self,
+        request: wyota_20210420_models.AddTerminalsRequest,
+    ) -> wyota_20210420_models.AddTerminalsResponse:
+        """
+        @summary 添加终端
+        
+        @param request: AddTerminalsRequest
+        @return: AddTerminalsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_terminals_with_options_async(request, runtime)
+
     def attach_end_users_with_options(
         self,
         request: wyota_20210420_models.AttachEndUsersRequest,
