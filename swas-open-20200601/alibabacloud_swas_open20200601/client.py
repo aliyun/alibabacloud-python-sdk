@@ -7927,7 +7927,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> swas__open20200601_models.ListTagResourcesResponse:
         """
-        @summary 云产品查标签接口
+        @summary Queries the tags that are added to simple resources, such as instances, snapshots, disks, images, commands, and firewall rules.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7972,7 +7972,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> swas__open20200601_models.ListTagResourcesResponse:
         """
-        @summary 云产品查标签接口
+        @summary Queries the tags that are added to simple resources, such as instances, snapshots, disks, images, commands, and firewall rules.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8016,7 +8016,7 @@ class Client(OpenApiClient):
         request: swas__open20200601_models.ListTagResourcesRequest,
     ) -> swas__open20200601_models.ListTagResourcesResponse:
         """
-        @summary 云产品查标签接口
+        @summary Queries the tags that are added to simple resources, such as instances, snapshots, disks, images, commands, and firewall rules.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -8029,7 +8029,7 @@ class Client(OpenApiClient):
         request: swas__open20200601_models.ListTagResourcesRequest,
     ) -> swas__open20200601_models.ListTagResourcesResponse:
         """
-        @summary 云产品查标签接口
+        @summary Queries the tags that are added to simple resources, such as instances, snapshots, disks, images, commands, and firewall rules.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -11043,7 +11043,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> swas__open20200601_models.TagResourcesResponse:
         """
-        @summary 打标签接口
+        @summary Adds tags to simple application servers, snapshots, custom images, commands, firewall rules, and disks to facilitate the viewing and management of the preceding resources.
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11086,7 +11086,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> swas__open20200601_models.TagResourcesResponse:
         """
-        @summary 打标签接口
+        @summary Adds tags to simple application servers, snapshots, custom images, commands, firewall rules, and disks to facilitate the viewing and management of the preceding resources.
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11128,7 +11128,7 @@ class Client(OpenApiClient):
         request: swas__open20200601_models.TagResourcesRequest,
     ) -> swas__open20200601_models.TagResourcesResponse:
         """
-        @summary 打标签接口
+        @summary Adds tags to simple application servers, snapshots, custom images, commands, firewall rules, and disks to facilitate the viewing and management of the preceding resources.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -11141,7 +11141,7 @@ class Client(OpenApiClient):
         request: swas__open20200601_models.TagResourcesRequest,
     ) -> swas__open20200601_models.TagResourcesResponse:
         """
-        @summary 打标签接口
+        @summary Adds tags to simple application servers, snapshots, custom images, commands, firewall rules, and disks to facilitate the viewing and management of the preceding resources.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse

@@ -1,3 +1,7 @@
+2024-10-09 Version: 3.0.1
+- Update API ListCustomImages: update response param.
+
+
 2024-08-12 Version: 3.0.0
 - Update API ApplyFirewallTemplate: delete param InstanceId.
 - Update API CreateCustomImage: add param ResourceGroupId.

@@ -899,6 +899,7 @@ class CreateCustomImageRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The ID of the system disk snapshot.
         self.system_snapshot_id = system_snapshot_id
@@ -10561,6 +10562,7 @@ class ListCustomImagesRequest(TeaModel):
         self.image_ids = image_ids
         # The image names of the simple application servers. The value can be a JSON array that consists of up to 100 image names. Separate multiple image names with commas (,).
         self.image_names = image_names
+        # The ID of the Simple Application Server instance that the image originates from.
         self.instance_id = instance_id
         # The page number. Default value: 1.
         self.page_number = page_number
@@ -10575,6 +10577,13 @@ class ListCustomImagesRequest(TeaModel):
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # Whether to query shared images. Value range:
+        # 
+        # - False: No. Indicates that shared images are not included in the returned results.
+        # 
+        # - True: Yes. Indicates that only shared images are returned.
+        # 
+        # If not filled, all images are returned by default.
         self.share = share
         # The ID of the system disk snapshot.
         self.system_snapshot_id = system_snapshot_id
@@ -10704,13 +10713,18 @@ class ListCustomImagesResponseBodyCustomImages(TeaModel):
         name: str = None,
         os_type: str = None,
         region_id: str = None,
+        required_data_disk_size: int = None,
+        required_system_disk_size: int = None,
         resource_group_id: str = None,
+        source_image_name: str = None,
+        source_image_version: str = None,
         status: str = None,
         system_snapshot_id: str = None,
         system_snapshot_name: str = None,
         tags: List[ListCustomImagesResponseBodyCustomImagesTags] = None,
         user_id: int = None,
     ):
+        # The Information about instances created using the image.
         self.create_instances = create_instances
         # The time when the snapshot was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
         self.creation_time = creation_time
@@ -10724,6 +10738,7 @@ class ListCustomImagesResponseBodyCustomImages(TeaModel):
         self.image_id = image_id
         # Indicates whether the custom image is shared to Elastic Compute Service (ECS).
         self.in_share = in_share
+        # Whether the custom image is cross-account shared.
         self.in_share_user = in_share_user
         # The ID of the simple application server.
         self.instance_id = instance_id
@@ -10731,11 +10746,34 @@ class ListCustomImagesResponseBodyCustomImages(TeaModel):
         self.instance_name = instance_name
         # The name of the custom image.
         self.name = name
+        # The type of the operating system.
+        # 
+        # Valid values:
+        # 
+        # *   Linux
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Windows
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.os_type = os_type
         # The region ID.
         self.region_id = region_id
+        self.required_data_disk_size = required_data_disk_size
+        self.required_system_disk_size = required_system_disk_size
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        self.source_image_name = source_image_name
+        self.source_image_version = source_image_version
         # The status of the custom image.
         self.status = status
         # The ID of the system disk snapshot.
@@ -10744,6 +10782,7 @@ class ListCustomImagesResponseBodyCustomImages(TeaModel):
         self.system_snapshot_name = system_snapshot_name
         # The tags of the custom image.
         self.tags = tags
+        # The Primary Alibaba Cloud account ID of the image owner.
         self.user_id = user_id
 
     def validate(self):
@@ -10784,8 +10823,16 @@ class ListCustomImagesResponseBodyCustomImages(TeaModel):
             result['OsType'] = self.os_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.required_data_disk_size is not None:
+            result['RequiredDataDiskSize'] = self.required_data_disk_size
+        if self.required_system_disk_size is not None:
+            result['RequiredSystemDiskSize'] = self.required_system_disk_size
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.source_image_name is not None:
+            result['SourceImageName'] = self.source_image_name
+        if self.source_image_version is not None:
+            result['SourceImageVersion'] = self.source_image_version
         if self.status is not None:
             result['Status'] = self.status
         if self.system_snapshot_id is not None:
@@ -10828,8 +10875,16 @@ class ListCustomImagesResponseBodyCustomImages(TeaModel):
             self.os_type = m.get('OsType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('RequiredDataDiskSize') is not None:
+            self.required_data_disk_size = m.get('RequiredDataDiskSize')
+        if m.get('RequiredSystemDiskSize') is not None:
+            self.required_system_disk_size = m.get('RequiredSystemDiskSize')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SourceImageName') is not None:
+            self.source_image_name = m.get('SourceImageName')
+        if m.get('SourceImageVersion') is not None:
+            self.source_image_version = m.get('SourceImageVersion')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('SystemSnapshotId') is not None:
@@ -14327,9 +14382,9 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N that you want to add to the simple application server. A tag key can be 1 to 64 characters in length. Valid values of N: 1 to 20.
+        # The key of the tag that you want to add to a resource. The tag key can be 1 to 64 characters in length.
         self.key = key
-        # The value of tag N that you want to add to the simple application server. A tag value can be up to 64 characters in length. Valid values of N: 1 to 20.
+        # The value of the tag that you want to add to a resource. The tag value can be 1 to 64 characters in length.
         self.value = value
 
     def validate(self):
@@ -14374,7 +14429,7 @@ class ListTagResourcesRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource IDs. You can specify up to 50 resource IDs.
+        # The ID of the resource. You can specify up to 50 resource IDs.
         self.resource_id = resource_id
         # The resource type. Valid values:
         # 
@@ -14387,7 +14442,7 @@ class ListTagResourcesRequest(TeaModel):
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tags. You can specify up to 20 tags.
+        # The list of tags. You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -14625,6 +14680,12 @@ class LoginInstanceRequest(TeaModel):
         # *   For a Linux server, you do not need to enter a password.
         # *   For a Windows server, enter the password that you set. If you have not set a password for the simple application server, set a password. For more information, see [Reset the password](https://help.aliyun.com/document_detail/60055.html).
         self.password = password
+        # Remote login instance port number:
+        # 
+        # - Linux Server: Default is 22.
+        # - Windows Server: Default is 3389.
+        # 
+        # > If you need to connect to the server using a custom port, you must first modify the server\\"s default remote port. For more information, see [Set a custom port to connect to a simple application server](https://help.aliyun.com/document_detail/2807402.html).
         self.port = port
         # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
         # 
@@ -17909,13 +17970,13 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N that you want to add to the simple application server. Valid values of N: 1 to 20.
+        # The key of tag N that you want to add to a resource.
         # 
-        # You cannot specify an empty string as a tag key. A tag key can be up to 64 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
+        # You cannot specify an empty string as a tag key. The tag key can be up to 64 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
         self.key = key
-        # The value of tag N that you want to add to the simple application server. Valid values of N: 1 to 20.
+        # The value of tag N that you want to add to a resource.
         # 
-        # You can specify an empty string as a tag value. A tag value can be up to 64 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
+        # You can specify an empty string as a tag value. The tag value can be up to 64 characters in length and cannot contain http:// or https://.
         self.value = value
 
     def validate(self):
@@ -17972,7 +18033,7 @@ class TagResourcesRequest(TeaModel):
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tags. You can specify up to 20 tags.
+        # The list of tags. You can specify up to 20 tags.
         # 
         # This parameter is required.
         self.tag = tag
