@@ -1,7 +1,714 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict, Any
+from typing import Dict, List, Any
+
+
+class AddSumRecordFlowPopRequest(TeaModel):
+    def __init__(
+        self,
+        activity_id: str = None,
+        code: str = None,
+        conference_name: str = None,
+        device_id: str = None,
+        entry_name: str = None,
+        idcard: str = None,
+        sign_time: str = None,
+        type: int = None,
+    ):
+        # This parameter is required.
+        self.activity_id = activity_id
+        self.code = code
+        # This parameter is required.
+        self.conference_name = conference_name
+        # This parameter is required.
+        self.device_id = device_id
+        # This parameter is required.
+        self.entry_name = entry_name
+        self.idcard = idcard
+        # This parameter is required.
+        self.sign_time = sign_time
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.activity_id is not None:
+            result['ActivityId'] = self.activity_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.conference_name is not None:
+            result['ConferenceName'] = self.conference_name
+        if self.device_id is not None:
+            result['DeviceId'] = self.device_id
+        if self.entry_name is not None:
+            result['EntryName'] = self.entry_name
+        if self.idcard is not None:
+            result['Idcard'] = self.idcard
+        if self.sign_time is not None:
+            result['SignTime'] = self.sign_time
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActivityId') is not None:
+            self.activity_id = m.get('ActivityId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ConferenceName') is not None:
+            self.conference_name = m.get('ConferenceName')
+        if m.get('DeviceId') is not None:
+            self.device_id = m.get('DeviceId')
+        if m.get('EntryName') is not None:
+            self.entry_name = m.get('EntryName')
+        if m.get('Idcard') is not None:
+            self.idcard = m.get('Idcard')
+        if m.get('SignTime') is not None:
+            self.sign_time = m.get('SignTime')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class AddSumRecordFlowPopResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        data: bool = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AddSumRecordFlowPopResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddSumRecordFlowPopResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddSumRecordFlowPopResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class BindExhibitorRfidPopRequest(TeaModel):
+    def __init__(
+        self,
+        activity_id: int = None,
+        device_id: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        guest_ticket_record_id: int = None,
+        id: int = None,
+        rfid: str = None,
+        ticket_code: str = None,
+    ):
+        # This parameter is required.
+        self.activity_id = activity_id
+        # This parameter is required.
+        self.device_id = device_id
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.guest_ticket_record_id = guest_ticket_record_id
+        self.id = id
+        # This parameter is required.
+        self.rfid = rfid
+        # This parameter is required.
+        self.ticket_code = ticket_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.activity_id is not None:
+            result['ActivityId'] = self.activity_id
+        if self.device_id is not None:
+            result['DeviceId'] = self.device_id
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.guest_ticket_record_id is not None:
+            result['GuestTicketRecordId'] = self.guest_ticket_record_id
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.rfid is not None:
+            result['Rfid'] = self.rfid
+        if self.ticket_code is not None:
+            result['TicketCode'] = self.ticket_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActivityId') is not None:
+            self.activity_id = m.get('ActivityId')
+        if m.get('DeviceId') is not None:
+            self.device_id = m.get('DeviceId')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('GuestTicketRecordId') is not None:
+            self.guest_ticket_record_id = m.get('GuestTicketRecordId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Rfid') is not None:
+            self.rfid = m.get('Rfid')
+        if m.get('TicketCode') is not None:
+            self.ticket_code = m.get('TicketCode')
+        return self
+
+
+class BindExhibitorRfidPopResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        data: bool = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class BindExhibitorRfidPopResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BindExhibitorRfidPopResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BindExhibitorRfidPopResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class BindGuestRfidPopRequest(TeaModel):
+    def __init__(
+        self,
+        activity_id: int = None,
+        device_id: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        guest_ticket_record_id: int = None,
+        id: int = None,
+        rfid: str = None,
+        ticket_code: str = None,
+    ):
+        # This parameter is required.
+        self.activity_id = activity_id
+        # This parameter is required.
+        self.device_id = device_id
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.guest_ticket_record_id = guest_ticket_record_id
+        self.id = id
+        # This parameter is required.
+        self.rfid = rfid
+        # This parameter is required.
+        self.ticket_code = ticket_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.activity_id is not None:
+            result['ActivityId'] = self.activity_id
+        if self.device_id is not None:
+            result['DeviceId'] = self.device_id
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.guest_ticket_record_id is not None:
+            result['GuestTicketRecordId'] = self.guest_ticket_record_id
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.rfid is not None:
+            result['Rfid'] = self.rfid
+        if self.ticket_code is not None:
+            result['TicketCode'] = self.ticket_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActivityId') is not None:
+            self.activity_id = m.get('ActivityId')
+        if m.get('DeviceId') is not None:
+            self.device_id = m.get('DeviceId')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('GuestTicketRecordId') is not None:
+            self.guest_ticket_record_id = m.get('GuestTicketRecordId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Rfid') is not None:
+            self.rfid = m.get('Rfid')
+        if m.get('TicketCode') is not None:
+            self.ticket_code = m.get('TicketCode')
+        return self
+
+
+class BindGuestRfidPopResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        data: bool = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class BindGuestRfidPopResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BindGuestRfidPopResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BindGuestRfidPopResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CheckNFCBindPopRequest(TeaModel):
+    def __init__(
+        self,
+        activity_id: int = None,
+        nfc_id: str = None,
+    ):
+        # This parameter is required.
+        self.activity_id = activity_id
+        # This parameter is required.
+        self.nfc_id = nfc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.activity_id is not None:
+            result['ActivityId'] = self.activity_id
+        if self.nfc_id is not None:
+            result['NfcId'] = self.nfc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActivityId') is not None:
+            self.activity_id = m.get('ActivityId')
+        if m.get('NfcId') is not None:
+            self.nfc_id = m.get('NfcId')
+        return self
+
+
+class CheckNFCBindPopResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        is_global: int = None,
+        is_sign: bool = None,
+    ):
+        self.is_global = is_global
+        self.is_sign = is_sign
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_global is not None:
+            result['IsGlobal'] = self.is_global
+        if self.is_sign is not None:
+            result['IsSign'] = self.is_sign
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsGlobal') is not None:
+            self.is_global = m.get('IsGlobal')
+        if m.get('IsSign') is not None:
+            self.is_sign = m.get('IsSign')
+        return self
+
+
+class CheckNFCBindPopResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        data: CheckNFCBindPopResponseBodyData = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Data') is not None:
+            temp_model = CheckNFCBindPopResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CheckNFCBindPopResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CheckNFCBindPopResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CheckNFCBindPopResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
 
 
 class FindGuestCredentialsRecordRequest(TeaModel):
@@ -1099,6 +1806,814 @@ class QueryAllActivityInfoResponse(TeaModel):
         return self
 
 
+class QueryOrderSessionListPopRequest(TeaModel):
+    def __init__(
+        self,
+        activity_id: int = None,
+        nfc_id: str = None,
+    ):
+        # This parameter is required.
+        self.activity_id = activity_id
+        # This parameter is required.
+        self.nfc_id = nfc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.activity_id is not None:
+            result['ActivityId'] = self.activity_id
+        if self.nfc_id is not None:
+            result['NfcId'] = self.nfc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActivityId') is not None:
+            self.activity_id = m.get('ActivityId')
+        if m.get('NfcId') is not None:
+            self.nfc_id = m.get('NfcId')
+        return self
+
+
+class QueryOrderSessionListPopResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        session_id: int = None,
+        sign_in_date: str = None,
+    ):
+        self.session_id = session_id
+        self.sign_in_date = sign_in_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.sign_in_date is not None:
+            result['SignInDate'] = self.sign_in_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('SignInDate') is not None:
+            self.sign_in_date = m.get('SignInDate')
+        return self
+
+
+class QueryOrderSessionListPopResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        data: List[QueryOrderSessionListPopResponseBodyData] = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = QueryOrderSessionListPopResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryOrderSessionListPopResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryOrderSessionListPopResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryOrderSessionListPopResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QuerySessionByActivityIdPopRequest(TeaModel):
+    def __init__(
+        self,
+        activity_id: int = None,
+    ):
+        # This parameter is required.
+        self.activity_id = activity_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.activity_id is not None:
+            result['ActivityId'] = self.activity_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActivityId') is not None:
+            self.activity_id = m.get('ActivityId')
+        return self
+
+
+class QuerySessionByActivityIdPopResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        description_en: str = None,
+        end_date_time: str = None,
+        id: int = None,
+        location: str = None,
+        name: str = None,
+        name_en: str = None,
+        start_date_time: str = None,
+    ):
+        self.description = description
+        self.description_en = description_en
+        self.end_date_time = end_date_time
+        self.id = id
+        self.location = location
+        self.name = name
+        self.name_en = name_en
+        self.start_date_time = start_date_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.description_en is not None:
+            result['DescriptionEn'] = self.description_en
+        if self.end_date_time is not None:
+            result['EndDateTime'] = self.end_date_time
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.location is not None:
+            result['Location'] = self.location
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.name_en is not None:
+            result['NameEn'] = self.name_en
+        if self.start_date_time is not None:
+            result['StartDateTime'] = self.start_date_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DescriptionEn') is not None:
+            self.description_en = m.get('DescriptionEn')
+        if m.get('EndDateTime') is not None:
+            self.end_date_time = m.get('EndDateTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Location') is not None:
+            self.location = m.get('Location')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NameEn') is not None:
+            self.name_en = m.get('NameEn')
+        if m.get('StartDateTime') is not None:
+            self.start_date_time = m.get('StartDateTime')
+        return self
+
+
+class QuerySessionByActivityIdPopResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        data: List[QuerySessionByActivityIdPopResponseBodyData] = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = QuerySessionByActivityIdPopResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QuerySessionByActivityIdPopResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QuerySessionByActivityIdPopResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QuerySessionByActivityIdPopResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QuerySessionListPopRequest(TeaModel):
+    def __init__(
+        self,
+        activity_id: int = None,
+        nfc_id: str = None,
+    ):
+        # This parameter is required.
+        self.activity_id = activity_id
+        # This parameter is required.
+        self.nfc_id = nfc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.activity_id is not None:
+            result['ActivityId'] = self.activity_id
+        if self.nfc_id is not None:
+            result['NfcId'] = self.nfc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActivityId') is not None:
+            self.activity_id = m.get('ActivityId')
+        if m.get('NfcId') is not None:
+            self.nfc_id = m.get('NfcId')
+        return self
+
+
+class QuerySessionListPopResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        end_time: str = None,
+        id: int = None,
+        location: str = None,
+        name: str = None,
+        start_time: str = None,
+    ):
+        # code
+        self.code = code
+        self.end_time = end_time
+        # id
+        self.id = id
+        # location
+        self.location = location
+        # name
+        self.name = name
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.location is not None:
+            result['Location'] = self.location
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Location') is not None:
+            self.location = m.get('Location')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class QuerySessionListPopResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        data: List[QuerySessionListPopResponseBodyData] = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = QuerySessionListPopResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QuerySessionListPopResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QuerySessionListPopResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QuerySessionListPopResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QuerySignInRecordPopRequest(TeaModel):
+    def __init__(
+        self,
+        activity_id: int = None,
+        end_time: str = None,
+        page_num: int = None,
+        page_size: int = None,
+        start_time: str = None,
+    ):
+        # This parameter is required.
+        self.activity_id = activity_id
+        self.end_time = end_time
+        self.page_num = page_num
+        self.page_size = page_size
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.activity_id is not None:
+            result['ActivityId'] = self.activity_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActivityId') is not None:
+            self.activity_id = m.get('ActivityId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class QuerySignInRecordPopResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        event: str = None,
+        rfid: str = None,
+        session_id: int = None,
+        time: str = None,
+    ):
+        self.event = event
+        # nfcid
+        self.rfid = rfid
+        # sessionId
+        self.session_id = session_id
+        self.time = time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event is not None:
+            result['Event'] = self.event
+        if self.rfid is not None:
+            result['Rfid'] = self.rfid
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.time is not None:
+            result['Time'] = self.time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Event') is not None:
+            self.event = m.get('Event')
+        if m.get('Rfid') is not None:
+            self.rfid = m.get('Rfid')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
+        return self
+
+
+class QuerySignInRecordPopResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        data: List[QuerySignInRecordPopResponseBodyData] = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = QuerySignInRecordPopResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QuerySignInRecordPopResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QuerySignInRecordPopResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QuerySignInRecordPopResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QuerySingleActivityInfoRequest(TeaModel):
     def __init__(
         self,
@@ -1455,6 +2970,495 @@ class SyncSignInInfoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SyncSignInInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TicketOrCredentialsSignInPopRequest(TeaModel):
+    def __init__(
+        self,
+        activity_id: str = None,
+        code: str = None,
+        conference_name: str = None,
+        device_id: str = None,
+        entry_name: str = None,
+        idcard: str = None,
+        sign_time: str = None,
+        type: int = None,
+    ):
+        # This parameter is required.
+        self.activity_id = activity_id
+        self.code = code
+        # This parameter is required.
+        self.conference_name = conference_name
+        # This parameter is required.
+        self.device_id = device_id
+        # This parameter is required.
+        self.entry_name = entry_name
+        self.idcard = idcard
+        # This parameter is required.
+        self.sign_time = sign_time
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.activity_id is not None:
+            result['ActivityId'] = self.activity_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.conference_name is not None:
+            result['ConferenceName'] = self.conference_name
+        if self.device_id is not None:
+            result['DeviceId'] = self.device_id
+        if self.entry_name is not None:
+            result['EntryName'] = self.entry_name
+        if self.idcard is not None:
+            result['Idcard'] = self.idcard
+        if self.sign_time is not None:
+            result['SignTime'] = self.sign_time
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActivityId') is not None:
+            self.activity_id = m.get('ActivityId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ConferenceName') is not None:
+            self.conference_name = m.get('ConferenceName')
+        if m.get('DeviceId') is not None:
+            self.device_id = m.get('DeviceId')
+        if m.get('EntryName') is not None:
+            self.entry_name = m.get('EntryName')
+        if m.get('Idcard') is not None:
+            self.idcard = m.get('Idcard')
+        if m.get('SignTime') is not None:
+            self.sign_time = m.get('SignTime')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class TicketOrCredentialsSignInPopResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        data: Any = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class TicketOrCredentialsSignInPopResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TicketOrCredentialsSignInPopResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TicketOrCredentialsSignInPopResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateCredentialsStatusPopRequest(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        proxy_recipient_name: str = None,
+        proxy_recipient_phone_number: str = None,
+        receipt_location: str = None,
+        time: str = None,
+    ):
+        self.code = code
+        self.proxy_recipient_name = proxy_recipient_name
+        self.proxy_recipient_phone_number = proxy_recipient_phone_number
+        self.receipt_location = receipt_location
+        self.time = time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.proxy_recipient_name is not None:
+            result['ProxyRecipientName'] = self.proxy_recipient_name
+        if self.proxy_recipient_phone_number is not None:
+            result['ProxyRecipientPhoneNumber'] = self.proxy_recipient_phone_number
+        if self.receipt_location is not None:
+            result['ReceiptLocation'] = self.receipt_location
+        if self.time is not None:
+            result['Time'] = self.time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ProxyRecipientName') is not None:
+            self.proxy_recipient_name = m.get('ProxyRecipientName')
+        if m.get('ProxyRecipientPhoneNumber') is not None:
+            self.proxy_recipient_phone_number = m.get('ProxyRecipientPhoneNumber')
+        if m.get('ReceiptLocation') is not None:
+            self.receipt_location = m.get('ReceiptLocation')
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
+        return self
+
+
+class UpdateCredentialsStatusPopResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        data: bool = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateCredentialsStatusPopResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCredentialsStatusPopResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCredentialsStatusPopResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateTicketRecordByticketCodePopRequest(TeaModel):
+    def __init__(
+        self,
+        agenda_id: str = None,
+        code: str = None,
+        event: str = None,
+        scene_id: str = None,
+        time: str = None,
+    ):
+        self.agenda_id = agenda_id
+        self.code = code
+        self.event = event
+        self.scene_id = scene_id
+        self.time = time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agenda_id is not None:
+            result['AgendaId'] = self.agenda_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.event is not None:
+            result['Event'] = self.event
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.time is not None:
+            result['Time'] = self.time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgendaId') is not None:
+            self.agenda_id = m.get('AgendaId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Event') is not None:
+            self.event = m.get('Event')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
+        return self
+
+
+class UpdateTicketRecordByticketCodePopResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        data: bool = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateTicketRecordByticketCodePopResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateTicketRecordByticketCodePopResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateTicketRecordByticketCodePopResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
