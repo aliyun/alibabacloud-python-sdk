@@ -1,3 +1,7 @@
+2024-10-09 Version: 3.0.0
+- Update API CredentialVerify: update response param.
+
+
 2024-09-25 Version: 2.9.0
 - Support API InsertWhiteListSetting.
 - Support API PageQueryWhiteListSetting.

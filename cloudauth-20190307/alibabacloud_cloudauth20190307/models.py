@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, BinaryIO, List, Any
+from typing import Dict, BinaryIO, List
 
 
 class AIGCFaceVerifyRequest(TeaModel):
@@ -1723,7 +1723,7 @@ class CredentialVerifyResponseBodyResultObjectVlResult(TeaModel):
     def __init__(
         self,
         success: bool = None,
-        vl_content: Dict[str, Any] = None,
+        vl_content: str = None,
     ):
         self.success = success
         self.vl_content = vl_content
