@@ -1,3 +1,9 @@
+2024-10-09 Version: 4.4.1
+- Update API DescribeInstanceTypes: update param InstanceTypes.
+- Update API ImportImage: add param DryRun.
+- Update API ImportImage: add param Features.
+
+
 2024-09-29 Version: 4.4.0
 - Support API PurchaseElasticityAssurance.
 - Update API DescribeNetworkInterfaceAttribute: update response param.
