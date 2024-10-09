@@ -13053,6 +13053,7 @@ class ListDeploymentsRequest(TeaModel):
         name: str = None,
         page_index: int = None,
         page_size: int = None,
+        sort_name: str = None,
         status: str = None,
     ):
         # The ID of the user who creates the deployment.
@@ -13076,6 +13077,7 @@ class ListDeploymentsRequest(TeaModel):
         self.page_index = page_index
         # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
+        self.sort_name = sort_name
         # The latest status of the deployment.
         # 
         # Valid values:
@@ -13112,6 +13114,8 @@ class ListDeploymentsRequest(TeaModel):
             result['pageIndex'] = self.page_index
         if self.page_size is not None:
             result['pageSize'] = self.page_size
+        if self.sort_name is not None:
+            result['sortName'] = self.sort_name
         if self.status is not None:
             result['status'] = self.status
         return result
@@ -13134,6 +13138,8 @@ class ListDeploymentsRequest(TeaModel):
             self.page_index = m.get('pageIndex')
         if m.get('pageSize') is not None:
             self.page_size = m.get('pageSize')
+        if m.get('sortName') is not None:
+            self.sort_name = m.get('sortName')
         if m.get('status') is not None:
             self.status = m.get('status')
         return self

@@ -1,3 +1,7 @@
+2024-10-09 Version: 1.6.1
+- Update API ListDeployments: add param sortName.
+
+
 2024-09-14 Version: 1.6.0
 - Support API ApplyScheduledPlan.
 - Support API CreateDeploymentTarget.
