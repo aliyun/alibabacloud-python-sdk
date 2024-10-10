@@ -1,3 +1,7 @@
+2024-10-10 Version: 6.0.1
+- Update API GetResource4ModifyRecord: update response param.
+
+
 2024-09-27 Version: 6.0.0
 - Update API ExecuteOperationSync: update response param.
 - Update API GetExecuteOperationResult: update response param.

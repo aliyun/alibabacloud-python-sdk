@@ -2858,12 +2858,14 @@ class GetResource4ModifyRecordResponseBodyData(TeaModel):
     def __init__(
         self,
         attribute: str = None,
+        error: str = None,
         modify_time: str = None,
         resource_id: str = None,
         status: str = None,
         type: str = None,
     ):
         self.attribute = attribute
+        self.error = error
         self.modify_time = modify_time
         self.resource_id = resource_id
         self.status = status
@@ -2880,6 +2882,8 @@ class GetResource4ModifyRecordResponseBodyData(TeaModel):
         result = dict()
         if self.attribute is not None:
             result['Attribute'] = self.attribute
+        if self.error is not None:
+            result['Error'] = self.error
         if self.modify_time is not None:
             result['ModifyTime'] = self.modify_time
         if self.resource_id is not None:
@@ -2894,6 +2898,8 @@ class GetResource4ModifyRecordResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('Attribute') is not None:
             self.attribute = m.get('Attribute')
+        if m.get('Error') is not None:
+            self.error = m.get('Error')
         if m.get('ModifyTime') is not None:
             self.modify_time = m.get('ModifyTime')
         if m.get('ResourceId') is not None:
