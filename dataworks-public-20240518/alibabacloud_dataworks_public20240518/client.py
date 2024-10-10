@@ -167,6 +167,450 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.abolish_deployment_with_options_async(request, runtime)
 
+    def clone_data_source_with_options(
+        self,
+        request: dataworks_public_20240518_models.CloneDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CloneDataSourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: CloneDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloneDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.clone_data_source_name):
+            query['CloneDataSourceName'] = request.clone_data_source_name
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CloneDataSource',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CloneDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def clone_data_source_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.CloneDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CloneDataSourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: CloneDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloneDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.clone_data_source_name):
+            query['CloneDataSourceName'] = request.clone_data_source_name
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CloneDataSource',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CloneDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def clone_data_source(
+        self,
+        request: dataworks_public_20240518_models.CloneDataSourceRequest,
+    ) -> dataworks_public_20240518_models.CloneDataSourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: CloneDataSourceRequest
+        @return: CloneDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.clone_data_source_with_options(request, runtime)
+
+    async def clone_data_source_async(
+        self,
+        request: dataworks_public_20240518_models.CloneDataSourceRequest,
+    ) -> dataworks_public_20240518_models.CloneDataSourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: CloneDataSourceRequest
+        @return: CloneDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.clone_data_source_with_options_async(request, runtime)
+
+    def create_dijob_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateDIJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDIJobResponse:
+        """
+        @summary 创建数据集成任务
+        
+        @param tmp_req: CreateDIJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDIJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateDIJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.destination_data_source_settings):
+            request.destination_data_source_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.destination_data_source_settings, 'DestinationDataSourceSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.job_settings):
+            request.job_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.job_settings, 'JobSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.resource_settings):
+            request.resource_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_settings, 'ResourceSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.source_data_source_settings):
+            request.source_data_source_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_data_source_settings, 'SourceDataSourceSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.table_mappings):
+            request.table_mappings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.table_mappings, 'TableMappings', 'json')
+        if not UtilClient.is_unset(tmp_req.transformation_rules):
+            request.transformation_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transformation_rules, 'TransformationRules', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDIJob',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDIJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dijob_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateDIJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDIJobResponse:
+        """
+        @summary 创建数据集成任务
+        
+        @param tmp_req: CreateDIJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDIJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateDIJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.destination_data_source_settings):
+            request.destination_data_source_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.destination_data_source_settings, 'DestinationDataSourceSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.job_settings):
+            request.job_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.job_settings, 'JobSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.resource_settings):
+            request.resource_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_settings, 'ResourceSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.source_data_source_settings):
+            request.source_data_source_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_data_source_settings, 'SourceDataSourceSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.table_mappings):
+            request.table_mappings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.table_mappings, 'TableMappings', 'json')
+        if not UtilClient.is_unset(tmp_req.transformation_rules):
+            request.transformation_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transformation_rules, 'TransformationRules', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDIJob',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDIJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dijob(
+        self,
+        request: dataworks_public_20240518_models.CreateDIJobRequest,
+    ) -> dataworks_public_20240518_models.CreateDIJobResponse:
+        """
+        @summary 创建数据集成任务
+        
+        @param request: CreateDIJobRequest
+        @return: CreateDIJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_dijob_with_options(request, runtime)
+
+    async def create_dijob_async(
+        self,
+        request: dataworks_public_20240518_models.CreateDIJobRequest,
+    ) -> dataworks_public_20240518_models.CreateDIJobResponse:
+        """
+        @summary 创建数据集成任务
+        
+        @param request: CreateDIJobRequest
+        @return: CreateDIJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_dijob_with_options_async(request, runtime)
+
+    def create_data_source_with_options(
+        self,
+        request: dataworks_public_20240518_models.CreateDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDataSourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: CreateDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_properties):
+            query['ConnectionProperties'] = request.connection_properties
+        if not UtilClient.is_unset(request.connection_properties_mode):
+            query['ConnectionPropertiesMode'] = request.connection_properties_mode
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDataSource',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_source_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.CreateDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDataSourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: CreateDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_properties):
+            query['ConnectionProperties'] = request.connection_properties
+        if not UtilClient.is_unset(request.connection_properties_mode):
+            query['ConnectionPropertiesMode'] = request.connection_properties_mode
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDataSource',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_source(
+        self,
+        request: dataworks_public_20240518_models.CreateDataSourceRequest,
+    ) -> dataworks_public_20240518_models.CreateDataSourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: CreateDataSourceRequest
+        @return: CreateDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_data_source_with_options(request, runtime)
+
+    async def create_data_source_async(
+        self,
+        request: dataworks_public_20240518_models.CreateDataSourceRequest,
+    ) -> dataworks_public_20240518_models.CreateDataSourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: CreateDataSourceRequest
+        @return: CreateDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_data_source_with_options_async(request, runtime)
+
+    def create_data_source_shared_rule_with_options(
+        self,
+        request: dataworks_public_20240518_models.CreateDataSourceSharedRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDataSourceSharedRuleResponse:
+        """
+        @summary 验证用
+        
+        @param request: CreateDataSourceSharedRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataSourceSharedRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.shared_user):
+            query['SharedUser'] = request.shared_user
+        if not UtilClient.is_unset(request.target_project_id):
+            query['TargetProjectId'] = request.target_project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDataSourceSharedRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataSourceSharedRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_source_shared_rule_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.CreateDataSourceSharedRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDataSourceSharedRuleResponse:
+        """
+        @summary 验证用
+        
+        @param request: CreateDataSourceSharedRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataSourceSharedRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.shared_user):
+            query['SharedUser'] = request.shared_user
+        if not UtilClient.is_unset(request.target_project_id):
+            query['TargetProjectId'] = request.target_project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDataSourceSharedRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataSourceSharedRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_source_shared_rule(
+        self,
+        request: dataworks_public_20240518_models.CreateDataSourceSharedRuleRequest,
+    ) -> dataworks_public_20240518_models.CreateDataSourceSharedRuleResponse:
+        """
+        @summary 验证用
+        
+        @param request: CreateDataSourceSharedRuleRequest
+        @return: CreateDataSourceSharedRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_data_source_shared_rule_with_options(request, runtime)
+
+    async def create_data_source_shared_rule_async(
+        self,
+        request: dataworks_public_20240518_models.CreateDataSourceSharedRuleRequest,
+    ) -> dataworks_public_20240518_models.CreateDataSourceSharedRuleResponse:
+        """
+        @summary 验证用
+        
+        @param request: CreateDataSourceSharedRuleRequest
+        @return: CreateDataSourceSharedRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_data_source_shared_rule_with_options_async(request, runtime)
+
     def create_deployment_with_options(
         self,
         tmp_req: dataworks_public_20240518_models.CreateDeploymentRequest,
@@ -491,6 +935,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_node_with_options_async(request, runtime)
 
+    def create_project_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateProjectResponse:
+        """
+        @summary 创建工作空间
+        
+        @param tmp_req: CreateProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProjectResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateProjectShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.aliyun_resource_tags):
+            request.aliyun_resource_tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.aliyun_resource_tags, 'AliyunResourceTags', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.aliyun_resource_group_id):
+            body['AliyunResourceGroupId'] = request.aliyun_resource_group_id
+        if not UtilClient.is_unset(request.aliyun_resource_tags_shrink):
+            body['AliyunResourceTags'] = request.aliyun_resource_tags_shrink
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.dev_environment_enabled):
+            body['DevEnvironmentEnabled'] = request.dev_environment_enabled
+        if not UtilClient.is_unset(request.dev_role_disabled):
+            body['DevRoleDisabled'] = request.dev_role_disabled
+        if not UtilClient.is_unset(request.display_name):
+            body['DisplayName'] = request.display_name
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.pai_task_enabled):
+            body['PaiTaskEnabled'] = request.pai_task_enabled
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateProject',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_project_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateProjectResponse:
+        """
+        @summary 创建工作空间
+        
+        @param tmp_req: CreateProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProjectResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateProjectShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.aliyun_resource_tags):
+            request.aliyun_resource_tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.aliyun_resource_tags, 'AliyunResourceTags', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.aliyun_resource_group_id):
+            body['AliyunResourceGroupId'] = request.aliyun_resource_group_id
+        if not UtilClient.is_unset(request.aliyun_resource_tags_shrink):
+            body['AliyunResourceTags'] = request.aliyun_resource_tags_shrink
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.dev_environment_enabled):
+            body['DevEnvironmentEnabled'] = request.dev_environment_enabled
+        if not UtilClient.is_unset(request.dev_role_disabled):
+            body['DevRoleDisabled'] = request.dev_role_disabled
+        if not UtilClient.is_unset(request.display_name):
+            body['DisplayName'] = request.display_name
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.pai_task_enabled):
+            body['PaiTaskEnabled'] = request.pai_task_enabled
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateProject',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_project(
+        self,
+        request: dataworks_public_20240518_models.CreateProjectRequest,
+    ) -> dataworks_public_20240518_models.CreateProjectResponse:
+        """
+        @summary 创建工作空间
+        
+        @param request: CreateProjectRequest
+        @return: CreateProjectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_project_with_options(request, runtime)
+
+    async def create_project_async(
+        self,
+        request: dataworks_public_20240518_models.CreateProjectRequest,
+    ) -> dataworks_public_20240518_models.CreateProjectResponse:
+        """
+        @summary 创建工作空间
+        
+        @param request: CreateProjectRequest
+        @return: CreateProjectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_project_with_options_async(request, runtime)
+
     def create_resource_with_options(
         self,
         request: dataworks_public_20240518_models.CreateResourceRequest,
@@ -691,6 +1267,286 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_workflow_definition_with_options_async(request, runtime)
 
+    def delete_dijob_with_options(
+        self,
+        request: dataworks_public_20240518_models.DeleteDIJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteDIJobResponse:
+        """
+        @summary 删除数据集成任务
+        
+        @param request: DeleteDIJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDIJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDIJob',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDIJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_dijob_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteDIJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteDIJobResponse:
+        """
+        @summary 删除数据集成任务
+        
+        @param request: DeleteDIJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDIJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDIJob',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDIJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_dijob(
+        self,
+        request: dataworks_public_20240518_models.DeleteDIJobRequest,
+    ) -> dataworks_public_20240518_models.DeleteDIJobResponse:
+        """
+        @summary 删除数据集成任务
+        
+        @param request: DeleteDIJobRequest
+        @return: DeleteDIJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_dijob_with_options(request, runtime)
+
+    async def delete_dijob_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteDIJobRequest,
+    ) -> dataworks_public_20240518_models.DeleteDIJobResponse:
+        """
+        @summary 删除数据集成任务
+        
+        @param request: DeleteDIJobRequest
+        @return: DeleteDIJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_dijob_with_options_async(request, runtime)
+
+    def delete_data_source_with_options(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteDataSourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: DeleteDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataSource',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_data_source_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteDataSourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: DeleteDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataSource',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_data_source(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataSourceRequest,
+    ) -> dataworks_public_20240518_models.DeleteDataSourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: DeleteDataSourceRequest
+        @return: DeleteDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_data_source_with_options(request, runtime)
+
+    async def delete_data_source_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataSourceRequest,
+    ) -> dataworks_public_20240518_models.DeleteDataSourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: DeleteDataSourceRequest
+        @return: DeleteDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_data_source_with_options_async(request, runtime)
+
+    def delete_data_source_shared_rule_with_options(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataSourceSharedRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteDataSourceSharedRuleResponse:
+        """
+        @summary 验证用
+        
+        @param request: DeleteDataSourceSharedRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataSourceSharedRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataSourceSharedRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataSourceSharedRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_data_source_shared_rule_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataSourceSharedRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteDataSourceSharedRuleResponse:
+        """
+        @summary 验证用
+        
+        @param request: DeleteDataSourceSharedRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataSourceSharedRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataSourceSharedRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataSourceSharedRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_data_source_shared_rule(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataSourceSharedRuleRequest,
+    ) -> dataworks_public_20240518_models.DeleteDataSourceSharedRuleResponse:
+        """
+        @summary 验证用
+        
+        @param request: DeleteDataSourceSharedRuleRequest
+        @return: DeleteDataSourceSharedRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_data_source_shared_rule_with_options(request, runtime)
+
+    async def delete_data_source_shared_rule_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataSourceSharedRuleRequest,
+    ) -> dataworks_public_20240518_models.DeleteDataSourceSharedRuleResponse:
+        """
+        @summary 验证用
+        
+        @param request: DeleteDataSourceSharedRuleRequest
+        @return: DeleteDataSourceSharedRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_data_source_shared_rule_with_options_async(request, runtime)
+
     def delete_function_with_options(
         self,
         request: dataworks_public_20240518_models.DeleteFunctionRequest,
@@ -890,6 +1746,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_node_with_options_async(request, runtime)
+
+    def delete_project_with_options(
+        self,
+        request: dataworks_public_20240518_models.DeleteProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteProjectResponse:
+        """
+        @summary 销毁工作空间
+        
+        @param request: DeleteProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProjectResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteProject',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_project_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteProjectResponse:
+        """
+        @summary 销毁工作空间
+        
+        @param request: DeleteProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProjectResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteProject',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_project(
+        self,
+        request: dataworks_public_20240518_models.DeleteProjectRequest,
+    ) -> dataworks_public_20240518_models.DeleteProjectResponse:
+        """
+        @summary 销毁工作空间
+        
+        @param request: DeleteProjectRequest
+        @return: DeleteProjectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_project_with_options(request, runtime)
+
+    async def delete_project_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteProjectRequest,
+    ) -> dataworks_public_20240518_models.DeleteProjectResponse:
+        """
+        @summary 销毁工作空间
+        
+        @param request: DeleteProjectRequest
+        @return: DeleteProjectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_project_with_options_async(request, runtime)
 
     def delete_resource_with_options(
         self,
@@ -1199,6 +2151,282 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.exec_deployment_stage_with_options_async(request, runtime)
 
+    def get_dijob_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetDIJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDIJobResponse:
+        """
+        @summary 查看数据集成任务
+        
+        @param request: GetDIJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDIJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDIJob',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDIJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_dijob_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetDIJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDIJobResponse:
+        """
+        @summary 查看数据集成任务
+        
+        @param request: GetDIJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDIJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDIJob',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDIJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_dijob(
+        self,
+        request: dataworks_public_20240518_models.GetDIJobRequest,
+    ) -> dataworks_public_20240518_models.GetDIJobResponse:
+        """
+        @summary 查看数据集成任务
+        
+        @param request: GetDIJobRequest
+        @return: GetDIJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_dijob_with_options(request, runtime)
+
+    async def get_dijob_async(
+        self,
+        request: dataworks_public_20240518_models.GetDIJobRequest,
+    ) -> dataworks_public_20240518_models.GetDIJobResponse:
+        """
+        @summary 查看数据集成任务
+        
+        @param request: GetDIJobRequest
+        @return: GetDIJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_dijob_with_options_async(request, runtime)
+
+    def get_dijob_log_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetDIJobLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDIJobLogResponse:
+        """
+        @summary 获取数据集成任务日志
+        
+        @param request: GetDIJobLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDIJobLogResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDIJobLog',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDIJobLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_dijob_log_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetDIJobLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDIJobLogResponse:
+        """
+        @summary 获取数据集成任务日志
+        
+        @param request: GetDIJobLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDIJobLogResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDIJobLog',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDIJobLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_dijob_log(
+        self,
+        request: dataworks_public_20240518_models.GetDIJobLogRequest,
+    ) -> dataworks_public_20240518_models.GetDIJobLogResponse:
+        """
+        @summary 获取数据集成任务日志
+        
+        @param request: GetDIJobLogRequest
+        @return: GetDIJobLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_dijob_log_with_options(request, runtime)
+
+    async def get_dijob_log_async(
+        self,
+        request: dataworks_public_20240518_models.GetDIJobLogRequest,
+    ) -> dataworks_public_20240518_models.GetDIJobLogResponse:
+        """
+        @summary 获取数据集成任务日志
+        
+        @param request: GetDIJobLogRequest
+        @return: GetDIJobLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_dijob_log_with_options_async(request, runtime)
+
+    def get_data_source_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDataSourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: GetDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataSource',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_source_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDataSourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: GetDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataSource',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_source(
+        self,
+        request: dataworks_public_20240518_models.GetDataSourceRequest,
+    ) -> dataworks_public_20240518_models.GetDataSourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: GetDataSourceRequest
+        @return: GetDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_source_with_options(request, runtime)
+
+    async def get_data_source_async(
+        self,
+        request: dataworks_public_20240518_models.GetDataSourceRequest,
+    ) -> dataworks_public_20240518_models.GetDataSourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: GetDataSourceRequest
+        @return: GetDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_source_with_options_async(request, runtime)
+
     def get_deployment_with_options(
         self,
         request: dataworks_public_20240518_models.GetDeploymentRequest,
@@ -1467,6 +2695,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_node_with_options_async(request, runtime)
 
+    def get_project_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetProjectResponse:
+        """
+        @summary 查询工作空间详情
+        
+        @param request: GetProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetProject',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_project_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetProjectResponse:
+        """
+        @summary 查询工作空间详情
+        
+        @param request: GetProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetProject',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_project(
+        self,
+        request: dataworks_public_20240518_models.GetProjectRequest,
+    ) -> dataworks_public_20240518_models.GetProjectResponse:
+        """
+        @summary 查询工作空间详情
+        
+        @param request: GetProjectRequest
+        @return: GetProjectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_project_with_options(request, runtime)
+
+    async def get_project_async(
+        self,
+        request: dataworks_public_20240518_models.GetProjectRequest,
+    ) -> dataworks_public_20240518_models.GetProjectResponse:
+        """
+        @summary 查询工作空间详情
+        
+        @param request: GetProjectRequest
+        @return: GetProjectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_project_with_options_async(request, runtime)
+
     def get_resource_with_options(
         self,
         request: dataworks_public_20240518_models.GetResourceRequest,
@@ -1650,6 +2970,482 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_workflow_definition_with_options_async(request, runtime)
+
+    def list_dijob_events_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListDIJobEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDIJobEventsResponse:
+        """
+        @summary 获取数据集成任务事件
+        
+        @param request: ListDIJobEventsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDIJobEventsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDIJobEvents',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDIJobEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_dijob_events_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListDIJobEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDIJobEventsResponse:
+        """
+        @summary 获取数据集成任务事件
+        
+        @param request: ListDIJobEventsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDIJobEventsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDIJobEvents',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDIJobEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_dijob_events(
+        self,
+        request: dataworks_public_20240518_models.ListDIJobEventsRequest,
+    ) -> dataworks_public_20240518_models.ListDIJobEventsResponse:
+        """
+        @summary 获取数据集成任务事件
+        
+        @param request: ListDIJobEventsRequest
+        @return: ListDIJobEventsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_dijob_events_with_options(request, runtime)
+
+    async def list_dijob_events_async(
+        self,
+        request: dataworks_public_20240518_models.ListDIJobEventsRequest,
+    ) -> dataworks_public_20240518_models.ListDIJobEventsResponse:
+        """
+        @summary 获取数据集成任务事件
+        
+        @param request: ListDIJobEventsRequest
+        @return: ListDIJobEventsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_dijob_events_with_options_async(request, runtime)
+
+    def list_dijob_metrics_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.ListDIJobMetricsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDIJobMetricsResponse:
+        """
+        @summary 获取数据集成任务指标
+        
+        @param tmp_req: ListDIJobMetricsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDIJobMetricsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.ListDIJobMetricsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.metric_name):
+            request.metric_name_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.metric_name, 'MetricName', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDIJobMetrics',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDIJobMetricsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_dijob_metrics_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.ListDIJobMetricsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDIJobMetricsResponse:
+        """
+        @summary 获取数据集成任务指标
+        
+        @param tmp_req: ListDIJobMetricsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDIJobMetricsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.ListDIJobMetricsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.metric_name):
+            request.metric_name_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.metric_name, 'MetricName', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDIJobMetrics',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDIJobMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_dijob_metrics(
+        self,
+        request: dataworks_public_20240518_models.ListDIJobMetricsRequest,
+    ) -> dataworks_public_20240518_models.ListDIJobMetricsResponse:
+        """
+        @summary 获取数据集成任务指标
+        
+        @param request: ListDIJobMetricsRequest
+        @return: ListDIJobMetricsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_dijob_metrics_with_options(request, runtime)
+
+    async def list_dijob_metrics_async(
+        self,
+        request: dataworks_public_20240518_models.ListDIJobMetricsRequest,
+    ) -> dataworks_public_20240518_models.ListDIJobMetricsResponse:
+        """
+        @summary 获取数据集成任务指标
+        
+        @param request: ListDIJobMetricsRequest
+        @return: ListDIJobMetricsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_dijob_metrics_with_options_async(request, runtime)
+
+    def list_dijobs_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListDIJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDIJobsResponse:
+        """
+        @summary 获取数据集成任务
+        
+        @param request: ListDIJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDIJobsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDIJobs',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDIJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_dijobs_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListDIJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDIJobsResponse:
+        """
+        @summary 获取数据集成任务
+        
+        @param request: ListDIJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDIJobsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDIJobs',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDIJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_dijobs(
+        self,
+        request: dataworks_public_20240518_models.ListDIJobsRequest,
+    ) -> dataworks_public_20240518_models.ListDIJobsResponse:
+        """
+        @summary 获取数据集成任务
+        
+        @param request: ListDIJobsRequest
+        @return: ListDIJobsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_dijobs_with_options(request, runtime)
+
+    async def list_dijobs_async(
+        self,
+        request: dataworks_public_20240518_models.ListDIJobsRequest,
+    ) -> dataworks_public_20240518_models.ListDIJobsResponse:
+        """
+        @summary 获取数据集成任务
+        
+        @param request: ListDIJobsRequest
+        @return: ListDIJobsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_dijobs_with_options_async(request, runtime)
+
+    def list_data_source_shared_rules_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListDataSourceSharedRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDataSourceSharedRulesResponse:
+        """
+        @summary 验证用
+        
+        @param request: ListDataSourceSharedRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataSourceSharedRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataSourceSharedRules',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataSourceSharedRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_source_shared_rules_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListDataSourceSharedRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDataSourceSharedRulesResponse:
+        """
+        @summary 验证用
+        
+        @param request: ListDataSourceSharedRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataSourceSharedRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataSourceSharedRules',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataSourceSharedRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_source_shared_rules(
+        self,
+        request: dataworks_public_20240518_models.ListDataSourceSharedRulesRequest,
+    ) -> dataworks_public_20240518_models.ListDataSourceSharedRulesResponse:
+        """
+        @summary 验证用
+        
+        @param request: ListDataSourceSharedRulesRequest
+        @return: ListDataSourceSharedRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_source_shared_rules_with_options(request, runtime)
+
+    async def list_data_source_shared_rules_async(
+        self,
+        request: dataworks_public_20240518_models.ListDataSourceSharedRulesRequest,
+    ) -> dataworks_public_20240518_models.ListDataSourceSharedRulesResponse:
+        """
+        @summary 验证用
+        
+        @param request: ListDataSourceSharedRulesRequest
+        @return: ListDataSourceSharedRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_source_shared_rules_with_options_async(request, runtime)
+
+    def list_data_sources_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.ListDataSourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDataSourcesResponse:
+        """
+        @summary 验证用
+        
+        @param tmp_req: ListDataSourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataSourcesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.ListDataSourcesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.types):
+            request.types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.types, 'Types', 'simple')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataSources',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataSourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_sources_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.ListDataSourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDataSourcesResponse:
+        """
+        @summary 验证用
+        
+        @param tmp_req: ListDataSourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataSourcesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.ListDataSourcesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.types):
+            request.types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.types, 'Types', 'simple')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataSources',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataSourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_sources(
+        self,
+        request: dataworks_public_20240518_models.ListDataSourcesRequest,
+    ) -> dataworks_public_20240518_models.ListDataSourcesResponse:
+        """
+        @summary 验证用
+        
+        @param request: ListDataSourcesRequest
+        @return: ListDataSourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_sources_with_options(request, runtime)
+
+    async def list_data_sources_async(
+        self,
+        request: dataworks_public_20240518_models.ListDataSourcesRequest,
+    ) -> dataworks_public_20240518_models.ListDataSourcesResponse:
+        """
+        @summary 验证用
+        
+        @param request: ListDataSourcesRequest
+        @return: ListDataSourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_sources_with_options_async(request, runtime)
 
     def list_deployments_with_options(
         self,
@@ -2018,6 +3814,154 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_nodes_with_options_async(request, runtime)
+
+    def list_projects_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.ListProjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListProjectsResponse:
+        """
+        @summary 分页查询工作空间详情
+        
+        @param tmp_req: ListProjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.ListProjectsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.aliyun_resource_tags):
+            request.aliyun_resource_tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.aliyun_resource_tags, 'AliyunResourceTags', 'json')
+        if not UtilClient.is_unset(tmp_req.ids):
+            request.ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        if not UtilClient.is_unset(tmp_req.names):
+            request.names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.names, 'Names', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.aliyun_resource_group_id):
+            body['AliyunResourceGroupId'] = request.aliyun_resource_group_id
+        if not UtilClient.is_unset(request.aliyun_resource_tags_shrink):
+            body['AliyunResourceTags'] = request.aliyun_resource_tags_shrink
+        if not UtilClient.is_unset(request.dev_environment_enabled):
+            body['DevEnvironmentEnabled'] = request.dev_environment_enabled
+        if not UtilClient.is_unset(request.dev_role_disabled):
+            body['DevRoleDisabled'] = request.dev_role_disabled
+        if not UtilClient.is_unset(request.ids_shrink):
+            body['Ids'] = request.ids_shrink
+        if not UtilClient.is_unset(request.names_shrink):
+            body['Names'] = request.names_shrink
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.pai_task_enabled):
+            body['PaiTaskEnabled'] = request.pai_task_enabled
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListProjects',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListProjectsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_projects_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.ListProjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListProjectsResponse:
+        """
+        @summary 分页查询工作空间详情
+        
+        @param tmp_req: ListProjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.ListProjectsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.aliyun_resource_tags):
+            request.aliyun_resource_tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.aliyun_resource_tags, 'AliyunResourceTags', 'json')
+        if not UtilClient.is_unset(tmp_req.ids):
+            request.ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        if not UtilClient.is_unset(tmp_req.names):
+            request.names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.names, 'Names', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.aliyun_resource_group_id):
+            body['AliyunResourceGroupId'] = request.aliyun_resource_group_id
+        if not UtilClient.is_unset(request.aliyun_resource_tags_shrink):
+            body['AliyunResourceTags'] = request.aliyun_resource_tags_shrink
+        if not UtilClient.is_unset(request.dev_environment_enabled):
+            body['DevEnvironmentEnabled'] = request.dev_environment_enabled
+        if not UtilClient.is_unset(request.dev_role_disabled):
+            body['DevRoleDisabled'] = request.dev_role_disabled
+        if not UtilClient.is_unset(request.ids_shrink):
+            body['Ids'] = request.ids_shrink
+        if not UtilClient.is_unset(request.names_shrink):
+            body['Names'] = request.names_shrink
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.pai_task_enabled):
+            body['PaiTaskEnabled'] = request.pai_task_enabled
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListProjects',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListProjectsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_projects(
+        self,
+        request: dataworks_public_20240518_models.ListProjectsRequest,
+    ) -> dataworks_public_20240518_models.ListProjectsResponse:
+        """
+        @summary 分页查询工作空间详情
+        
+        @param request: ListProjectsRequest
+        @return: ListProjectsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_projects_with_options(request, runtime)
+
+    async def list_projects_async(
+        self,
+        request: dataworks_public_20240518_models.ListProjectsRequest,
+    ) -> dataworks_public_20240518_models.ListProjectsResponse:
+        """
+        @summary 分页查询工作空间详情
+        
+        @param request: ListProjectsRequest
+        @return: ListProjectsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_projects_with_options_async(request, runtime)
 
     def list_resources_with_options(
         self,
@@ -3035,6 +4979,330 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.rename_workflow_definition_with_options_async(request, runtime)
 
+    def start_dijob_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.StartDIJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.StartDIJobResponse:
+        """
+        @summary 启动数据集成任务
+        
+        @param tmp_req: StartDIJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartDIJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.StartDIJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.realtime_start_settings):
+            request.realtime_start_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.realtime_start_settings, 'RealtimeStartSettings', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartDIJob',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.StartDIJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_dijob_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.StartDIJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.StartDIJobResponse:
+        """
+        @summary 启动数据集成任务
+        
+        @param tmp_req: StartDIJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartDIJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.StartDIJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.realtime_start_settings):
+            request.realtime_start_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.realtime_start_settings, 'RealtimeStartSettings', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartDIJob',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.StartDIJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_dijob(
+        self,
+        request: dataworks_public_20240518_models.StartDIJobRequest,
+    ) -> dataworks_public_20240518_models.StartDIJobResponse:
+        """
+        @summary 启动数据集成任务
+        
+        @param request: StartDIJobRequest
+        @return: StartDIJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.start_dijob_with_options(request, runtime)
+
+    async def start_dijob_async(
+        self,
+        request: dataworks_public_20240518_models.StartDIJobRequest,
+    ) -> dataworks_public_20240518_models.StartDIJobResponse:
+        """
+        @summary 启动数据集成任务
+        
+        @param request: StartDIJobRequest
+        @return: StartDIJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.start_dijob_with_options_async(request, runtime)
+
+    def update_dijob_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.UpdateDIJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateDIJobResponse:
+        """
+        @summary 更新数据集成任务
+        
+        @param tmp_req: UpdateDIJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDIJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.UpdateDIJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.job_settings):
+            request.job_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.job_settings, 'JobSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.resource_settings):
+            request.resource_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_settings, 'ResourceSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.table_mappings):
+            request.table_mappings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.table_mappings, 'TableMappings', 'json')
+        if not UtilClient.is_unset(tmp_req.transformation_rules):
+            request.transformation_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transformation_rules, 'TransformationRules', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDIJob',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDIJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_dijob_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.UpdateDIJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateDIJobResponse:
+        """
+        @summary 更新数据集成任务
+        
+        @param tmp_req: UpdateDIJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDIJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.UpdateDIJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.job_settings):
+            request.job_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.job_settings, 'JobSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.resource_settings):
+            request.resource_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_settings, 'ResourceSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.table_mappings):
+            request.table_mappings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.table_mappings, 'TableMappings', 'json')
+        if not UtilClient.is_unset(tmp_req.transformation_rules):
+            request.transformation_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transformation_rules, 'TransformationRules', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDIJob',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDIJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_dijob(
+        self,
+        request: dataworks_public_20240518_models.UpdateDIJobRequest,
+    ) -> dataworks_public_20240518_models.UpdateDIJobResponse:
+        """
+        @summary 更新数据集成任务
+        
+        @param request: UpdateDIJobRequest
+        @return: UpdateDIJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_dijob_with_options(request, runtime)
+
+    async def update_dijob_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateDIJobRequest,
+    ) -> dataworks_public_20240518_models.UpdateDIJobResponse:
+        """
+        @summary 更新数据集成任务
+        
+        @param request: UpdateDIJobRequest
+        @return: UpdateDIJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_dijob_with_options_async(request, runtime)
+
+    def update_data_source_with_options(
+        self,
+        request: dataworks_public_20240518_models.UpdateDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateDataSourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: UpdateDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_properties):
+            query['ConnectionProperties'] = request.connection_properties
+        if not UtilClient.is_unset(request.connection_properties_mode):
+            query['ConnectionPropertiesMode'] = request.connection_properties_mode
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDataSource',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_data_source_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateDataSourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: UpdateDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_properties):
+            query['ConnectionProperties'] = request.connection_properties
+        if not UtilClient.is_unset(request.connection_properties_mode):
+            query['ConnectionPropertiesMode'] = request.connection_properties_mode
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDataSource',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_data_source(
+        self,
+        request: dataworks_public_20240518_models.UpdateDataSourceRequest,
+    ) -> dataworks_public_20240518_models.UpdateDataSourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: UpdateDataSourceRequest
+        @return: UpdateDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_data_source_with_options(request, runtime)
+
+    async def update_data_source_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateDataSourceRequest,
+    ) -> dataworks_public_20240518_models.UpdateDataSourceResponse:
+        """
+        @summary 验证用
+        
+        @param request: UpdateDataSourceRequest
+        @return: UpdateDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_data_source_with_options_async(request, runtime)
+
     def update_function_with_options(
         self,
         request: dataworks_public_20240518_models.UpdateFunctionRequest,
@@ -3242,6 +5510,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_node_with_options_async(request, runtime)
+
+    def update_project_with_options(
+        self,
+        request: dataworks_public_20240518_models.UpdateProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateProjectResponse:
+        """
+        @summary 更新工作空间
+        
+        @param request: UpdateProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProjectResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.dev_environment_enabled):
+            body['DevEnvironmentEnabled'] = request.dev_environment_enabled
+        if not UtilClient.is_unset(request.dev_role_disabled):
+            body['DevRoleDisabled'] = request.dev_role_disabled
+        if not UtilClient.is_unset(request.display_name):
+            body['DisplayName'] = request.display_name
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.pai_task_enabled):
+            body['PaiTaskEnabled'] = request.pai_task_enabled
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateProject',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_project_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateProjectResponse:
+        """
+        @summary 更新工作空间
+        
+        @param request: UpdateProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProjectResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.dev_environment_enabled):
+            body['DevEnvironmentEnabled'] = request.dev_environment_enabled
+        if not UtilClient.is_unset(request.dev_role_disabled):
+            body['DevRoleDisabled'] = request.dev_role_disabled
+        if not UtilClient.is_unset(request.display_name):
+            body['DisplayName'] = request.display_name
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.pai_task_enabled):
+            body['PaiTaskEnabled'] = request.pai_task_enabled
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateProject',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_project(
+        self,
+        request: dataworks_public_20240518_models.UpdateProjectRequest,
+    ) -> dataworks_public_20240518_models.UpdateProjectResponse:
+        """
+        @summary 更新工作空间
+        
+        @param request: UpdateProjectRequest
+        @return: UpdateProjectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_project_with_options(request, runtime)
+
+    async def update_project_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateProjectRequest,
+    ) -> dataworks_public_20240518_models.UpdateProjectResponse:
+        """
+        @summary 更新工作空间
+        
+        @param request: UpdateProjectRequest
+        @return: UpdateProjectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_project_with_options_async(request, runtime)
 
     def update_resource_with_options(
         self,
