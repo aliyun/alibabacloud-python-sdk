@@ -1,3 +1,9 @@
+2024-10-10 Version: 1.7.0
+- Support API GetMailTaskStatus.
+- Support API GetWorksEmbedList.
+- Support API ManualRunMailTask.
+
+
 2024-09-18 Version: 1.6.1
 - Update API AddUserGroupMember: update response param.
 - Update API AddUserGroupMembers: update response param.

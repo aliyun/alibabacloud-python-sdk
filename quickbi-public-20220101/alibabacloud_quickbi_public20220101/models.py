@@ -4344,6 +4344,173 @@ class DeleteUserTagMetaResponse(TeaModel):
         return self
 
 
+class GetMailTaskStatusRequest(TeaModel):
+    def __init__(
+        self,
+        mail_id: str = None,
+        task_id: int = None,
+    ):
+        # This parameter is required.
+        self.mail_id = mail_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mail_id is not None:
+            result['MailId'] = self.mail_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MailId') is not None:
+            self.mail_id = m.get('MailId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class GetMailTaskStatusResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        exec_time: str = None,
+        mail_id: str = None,
+        status: str = None,
+        task_id: int = None,
+    ):
+        self.exec_time = exec_time
+        self.mail_id = mail_id
+        self.status = status
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exec_time is not None:
+            result['execTime'] = self.exec_time
+        if self.mail_id is not None:
+            result['mailId'] = self.mail_id
+        if self.status is not None:
+            result['status'] = self.status
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('execTime') is not None:
+            self.exec_time = m.get('execTime')
+        if m.get('mailId') is not None:
+            self.mail_id = m.get('mailId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class GetMailTaskStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: List[GetMailTaskStatusResponseBodyResult] = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = GetMailTaskStatusResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetMailTaskStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetMailTaskStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetMailTaskStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetUserGroupInfoRequest(TeaModel):
     def __init__(
         self,
@@ -4533,6 +4700,249 @@ class GetUserGroupInfoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetUserGroupInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetWorksEmbedListRequest(TeaModel):
+    def __init__(
+        self,
+        keyword: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        works_type: str = None,
+        ws_id: str = None,
+    ):
+        self.keyword = keyword
+        self.page_no = page_no
+        self.page_size = page_size
+        self.works_type = works_type
+        self.ws_id = ws_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.works_type is not None:
+            result['WorksType'] = self.works_type
+        if self.ws_id is not None:
+            result['WsId'] = self.ws_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('WorksType') is not None:
+            self.works_type = m.get('WorksType')
+        if m.get('WsId') is not None:
+            self.ws_id = m.get('WsId')
+        return self
+
+
+class GetWorksEmbedListResponseBodyResultData(TeaModel):
+    def __init__(
+        self,
+        embed_time: str = None,
+        works_id: str = None,
+        works_name: str = None,
+        works_type: str = None,
+        workspace_id: str = None,
+    ):
+        self.embed_time = embed_time
+        self.works_id = works_id
+        self.works_name = works_name
+        self.works_type = works_type
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.embed_time is not None:
+            result['EmbedTime'] = self.embed_time
+        if self.works_id is not None:
+            result['WorksId'] = self.works_id
+        if self.works_name is not None:
+            result['WorksName'] = self.works_name
+        if self.works_type is not None:
+            result['WorksType'] = self.works_type
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EmbedTime') is not None:
+            self.embed_time = m.get('EmbedTime')
+        if m.get('WorksId') is not None:
+            self.works_id = m.get('WorksId')
+        if m.get('WorksName') is not None:
+            self.works_name = m.get('WorksName')
+        if m.get('WorksType') is not None:
+            self.works_type = m.get('WorksType')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class GetWorksEmbedListResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        data: List[GetWorksEmbedListResponseBodyResultData] = None,
+        page_no: int = None,
+        page_size: int = None,
+        total_num: int = None,
+        total_pages: int = None,
+    ):
+        self.data = data
+        self.page_no = page_no
+        self.page_size = page_size
+        self.total_num = total_num
+        self.total_pages = total_pages
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_num is not None:
+            result['TotalNum'] = self.total_num
+        if self.total_pages is not None:
+            result['TotalPages'] = self.total_pages
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetWorksEmbedListResponseBodyResultData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalNum') is not None:
+            self.total_num = m.get('TotalNum')
+        if m.get('TotalPages') is not None:
+            self.total_pages = m.get('TotalPages')
+        return self
+
+
+class GetWorksEmbedListResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: GetWorksEmbedListResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = GetWorksEmbedListResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetWorksEmbedListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetWorksEmbedListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetWorksEmbedListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7818,6 +8228,114 @@ class ListWorkspaceRolesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListWorkspaceRolesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ManualRunMailTaskRequest(TeaModel):
+    def __init__(
+        self,
+        mail_id: str = None,
+    ):
+        # This parameter is required.
+        self.mail_id = mail_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mail_id is not None:
+            result['MailId'] = self.mail_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MailId') is not None:
+            self.mail_id = m.get('MailId')
+        return self
+
+
+class ManualRunMailTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: bool = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ManualRunMailTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ManualRunMailTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ManualRunMailTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

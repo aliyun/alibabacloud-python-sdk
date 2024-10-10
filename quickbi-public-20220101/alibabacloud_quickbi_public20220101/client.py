@@ -3401,6 +3401,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_user_tag_meta_with_options_async(request, runtime)
 
+    def get_mail_task_status_with_options(
+        self,
+        request: quickbi_public_20220101_models.GetMailTaskStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.GetMailTaskStatusResponse:
+        """
+        @summary 组织内查看邮件任务运行状态
+        
+        @param request: GetMailTaskStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMailTaskStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.mail_id):
+            query['MailId'] = request.mail_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMailTaskStatus',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.GetMailTaskStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_mail_task_status_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.GetMailTaskStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.GetMailTaskStatusResponse:
+        """
+        @summary 组织内查看邮件任务运行状态
+        
+        @param request: GetMailTaskStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMailTaskStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.mail_id):
+            query['MailId'] = request.mail_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMailTaskStatus',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.GetMailTaskStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_mail_task_status(
+        self,
+        request: quickbi_public_20220101_models.GetMailTaskStatusRequest,
+    ) -> quickbi_public_20220101_models.GetMailTaskStatusResponse:
+        """
+        @summary 组织内查看邮件任务运行状态
+        
+        @param request: GetMailTaskStatusRequest
+        @return: GetMailTaskStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_mail_task_status_with_options(request, runtime)
+
+    async def get_mail_task_status_async(
+        self,
+        request: quickbi_public_20220101_models.GetMailTaskStatusRequest,
+    ) -> quickbi_public_20220101_models.GetMailTaskStatusResponse:
+        """
+        @summary 组织内查看邮件任务运行状态
+        
+        @param request: GetMailTaskStatusRequest
+        @return: GetMailTaskStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_mail_task_status_with_options_async(request, runtime)
+
     def get_user_group_info_with_options(
         self,
         request: quickbi_public_20220101_models.GetUserGroupInfoRequest,
@@ -3496,6 +3596,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_user_group_info_with_options_async(request, runtime)
+
+    def get_works_embed_list_with_options(
+        self,
+        request: quickbi_public_20220101_models.GetWorksEmbedListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.GetWorksEmbedListResponse:
+        """
+        @summary 查询已嵌入报表列表
+        
+        @param request: GetWorksEmbedListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorksEmbedListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.works_type):
+            query['WorksType'] = request.works_type
+        if not UtilClient.is_unset(request.ws_id):
+            query['WsId'] = request.ws_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetWorksEmbedList',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.GetWorksEmbedListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_works_embed_list_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.GetWorksEmbedListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.GetWorksEmbedListResponse:
+        """
+        @summary 查询已嵌入报表列表
+        
+        @param request: GetWorksEmbedListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorksEmbedListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.works_type):
+            query['WorksType'] = request.works_type
+        if not UtilClient.is_unset(request.ws_id):
+            query['WsId'] = request.ws_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetWorksEmbedList',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.GetWorksEmbedListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_works_embed_list(
+        self,
+        request: quickbi_public_20220101_models.GetWorksEmbedListRequest,
+    ) -> quickbi_public_20220101_models.GetWorksEmbedListResponse:
+        """
+        @summary 查询已嵌入报表列表
+        
+        @param request: GetWorksEmbedListRequest
+        @return: GetWorksEmbedListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_works_embed_list_with_options(request, runtime)
+
+    async def get_works_embed_list_async(
+        self,
+        request: quickbi_public_20220101_models.GetWorksEmbedListRequest,
+    ) -> quickbi_public_20220101_models.GetWorksEmbedListResponse:
+        """
+        @summary 查询已嵌入报表列表
+        
+        @param request: GetWorksEmbedListRequest
+        @return: GetWorksEmbedListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_works_embed_list_with_options_async(request, runtime)
 
     def list_api_datasource_with_options(
         self,
@@ -5018,6 +5230,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_workspace_roles_with_options_async(request, runtime)
+
+    def manual_run_mail_task_with_options(
+        self,
+        request: quickbi_public_20220101_models.ManualRunMailTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.ManualRunMailTaskResponse:
+        """
+        @summary 手动执行邮件任务
+        
+        @param request: ManualRunMailTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ManualRunMailTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.mail_id):
+            query['MailId'] = request.mail_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ManualRunMailTask',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.ManualRunMailTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def manual_run_mail_task_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.ManualRunMailTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.ManualRunMailTaskResponse:
+        """
+        @summary 手动执行邮件任务
+        
+        @param request: ManualRunMailTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ManualRunMailTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.mail_id):
+            query['MailId'] = request.mail_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ManualRunMailTask',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.ManualRunMailTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def manual_run_mail_task(
+        self,
+        request: quickbi_public_20220101_models.ManualRunMailTaskRequest,
+    ) -> quickbi_public_20220101_models.ManualRunMailTaskResponse:
+        """
+        @summary 手动执行邮件任务
+        
+        @param request: ManualRunMailTaskRequest
+        @return: ManualRunMailTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.manual_run_mail_task_with_options(request, runtime)
+
+    async def manual_run_mail_task_async(
+        self,
+        request: quickbi_public_20220101_models.ManualRunMailTaskRequest,
+    ) -> quickbi_public_20220101_models.ManualRunMailTaskResponse:
+        """
+        @summary 手动执行邮件任务
+        
+        @param request: ManualRunMailTaskRequest
+        @return: ManualRunMailTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.manual_run_mail_task_with_options_async(request, runtime)
 
     def modify_api_datasource_parameters_with_options(
         self,
