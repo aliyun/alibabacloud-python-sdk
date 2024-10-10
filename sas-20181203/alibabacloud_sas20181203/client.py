@@ -26414,6 +26414,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.asset_type):
+            query['AssetType'] = request.asset_type
+        if not UtilClient.is_unset(request.cspm_status):
+            query['CspmStatus'] = request.cspm_status
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.exposure_component):
@@ -26469,6 +26473,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.asset_type):
+            query['AssetType'] = request.asset_type
+        if not UtilClient.is_unset(request.cspm_status):
+            query['CspmStatus'] = request.cspm_status
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.exposure_component):
@@ -34234,6 +34242,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.root_task_id):
             query['RootTaskId'] = request.root_task_id
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
         if not UtilClient.is_unset(request.start_time_query):
             query['StartTimeQuery'] = request.start_time_query
         if not UtilClient.is_unset(request.task_id):
@@ -34281,6 +34291,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.root_task_id):
             query['RootTaskId'] = request.root_task_id
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
         if not UtilClient.is_unset(request.start_time_query):
             query['StartTimeQuery'] = request.start_time_query
         if not UtilClient.is_unset(request.task_id):
@@ -51378,6 +51390,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_backup_storage_count_with_options_async(runtime)
 
+    def get_build_risk_define_rule_config_with_options(
+        self,
+        request: sas_20181203_models.GetBuildRiskDefineRuleConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetBuildRiskDefineRuleConfigResponse:
+        """
+        @summary 查询用户的构建指令风险规则配置
+        
+        @param request: GetBuildRiskDefineRuleConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBuildRiskDefineRuleConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBuildRiskDefineRuleConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetBuildRiskDefineRuleConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_build_risk_define_rule_config_with_options_async(
+        self,
+        request: sas_20181203_models.GetBuildRiskDefineRuleConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetBuildRiskDefineRuleConfigResponse:
+        """
+        @summary 查询用户的构建指令风险规则配置
+        
+        @param request: GetBuildRiskDefineRuleConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBuildRiskDefineRuleConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBuildRiskDefineRuleConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetBuildRiskDefineRuleConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_build_risk_define_rule_config(
+        self,
+        request: sas_20181203_models.GetBuildRiskDefineRuleConfigRequest,
+    ) -> sas_20181203_models.GetBuildRiskDefineRuleConfigResponse:
+        """
+        @summary 查询用户的构建指令风险规则配置
+        
+        @param request: GetBuildRiskDefineRuleConfigRequest
+        @return: GetBuildRiskDefineRuleConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_build_risk_define_rule_config_with_options(request, runtime)
+
+    async def get_build_risk_define_rule_config_async(
+        self,
+        request: sas_20181203_models.GetBuildRiskDefineRuleConfigRequest,
+    ) -> sas_20181203_models.GetBuildRiskDefineRuleConfigResponse:
+        """
+        @summary 查询用户的构建指令风险规则配置
+        
+        @param request: GetBuildRiskDefineRuleConfigRequest
+        @return: GetBuildRiskDefineRuleConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_build_risk_define_rule_config_with_options_async(request, runtime)
+
     def get_can_try_sas_with_options(
         self,
         request: sas_20181203_models.GetCanTrySasRequest,
@@ -62602,6 +62710,8 @@ class Client(OpenApiClient):
             query['InstanceTypes'] = request.instance_types
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.operation_types):
+            query['OperationTypes'] = request.operation_types
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
@@ -62667,6 +62777,8 @@ class Client(OpenApiClient):
             query['InstanceTypes'] = request.instance_types
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.operation_types):
+            query['OperationTypes'] = request.operation_types
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
@@ -83948,6 +84060,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.send_customize_report_with_options_async(request, runtime)
 
+    def set_build_risk_define_rule_config_with_options(
+        self,
+        request: sas_20181203_models.SetBuildRiskDefineRuleConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.SetBuildRiskDefineRuleConfigResponse:
+        """
+        @summary 设置用户的构建指令风险规则配置
+        
+        @param request: SetBuildRiskDefineRuleConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetBuildRiskDefineRuleConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetBuildRiskDefineRuleConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.SetBuildRiskDefineRuleConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_build_risk_define_rule_config_with_options_async(
+        self,
+        request: sas_20181203_models.SetBuildRiskDefineRuleConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.SetBuildRiskDefineRuleConfigResponse:
+        """
+        @summary 设置用户的构建指令风险规则配置
+        
+        @param request: SetBuildRiskDefineRuleConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetBuildRiskDefineRuleConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetBuildRiskDefineRuleConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.SetBuildRiskDefineRuleConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_build_risk_define_rule_config(
+        self,
+        request: sas_20181203_models.SetBuildRiskDefineRuleConfigRequest,
+    ) -> sas_20181203_models.SetBuildRiskDefineRuleConfigResponse:
+        """
+        @summary 设置用户的构建指令风险规则配置
+        
+        @param request: SetBuildRiskDefineRuleConfigRequest
+        @return: SetBuildRiskDefineRuleConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.set_build_risk_define_rule_config_with_options(request, runtime)
+
+    async def set_build_risk_define_rule_config_async(
+        self,
+        request: sas_20181203_models.SetBuildRiskDefineRuleConfigRequest,
+    ) -> sas_20181203_models.SetBuildRiskDefineRuleConfigResponse:
+        """
+        @summary 设置用户的构建指令风险规则配置
+        
+        @param request: SetBuildRiskDefineRuleConfigRequest
+        @return: SetBuildRiskDefineRuleConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.set_build_risk_define_rule_config_with_options_async(request, runtime)
+
     def set_cluster_interception_config_with_options(
         self,
         request: sas_20181203_models.SetClusterInterceptionConfigRequest,
@@ -85344,6 +85552,8 @@ class Client(OpenApiClient):
             query['DimensionType'] = request.dimension_type
         if not UtilClient.is_unset(request.operation_task_instances):
             query['OperationTaskInstances'] = request.operation_task_instances
+        if not UtilClient.is_unset(request.relation_key):
+            query['RelationKey'] = request.relation_key
         if not UtilClient.is_unset(request.repair_temp_param):
             query['RepairTempParam'] = request.repair_temp_param
         if not UtilClient.is_unset(request.type):
@@ -85387,6 +85597,8 @@ class Client(OpenApiClient):
             query['DimensionType'] = request.dimension_type
         if not UtilClient.is_unset(request.operation_task_instances):
             query['OperationTaskInstances'] = request.operation_task_instances
+        if not UtilClient.is_unset(request.relation_key):
+            query['RelationKey'] = request.relation_key
         if not UtilClient.is_unset(request.repair_temp_param):
             query['RepairTempParam'] = request.repair_temp_param
         if not UtilClient.is_unset(request.type):
