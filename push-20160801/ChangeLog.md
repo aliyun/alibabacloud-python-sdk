@@ -1,3 +1,11 @@
+2024-10-10 Version: 1.0.13
+- Update API MassPush: update param PushTask.
+- Update API Push: add param HarmonyBadgeAddNum.
+- Update API Push: add param HarmonyBadgeSetNum.
+- Update API Push: add param HarmonyExtensionExtraData.
+- Update API Push: add param HarmonyExtensionPush.
+
+
 2024-08-09 Version: 1.0.12
 - Update API MassPush: update param PushTask.
 - Update API Push: add param AndroidBadgeAddNum.

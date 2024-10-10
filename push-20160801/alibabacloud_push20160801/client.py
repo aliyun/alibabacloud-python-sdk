@@ -1327,10 +1327,18 @@ class Client(OpenApiClient):
             query['HarmonyAction'] = request.harmony_action
         if not UtilClient.is_unset(request.harmony_action_type):
             query['HarmonyActionType'] = request.harmony_action_type
+        if not UtilClient.is_unset(request.harmony_badge_add_num):
+            query['HarmonyBadgeAddNum'] = request.harmony_badge_add_num
+        if not UtilClient.is_unset(request.harmony_badge_set_num):
+            query['HarmonyBadgeSetNum'] = request.harmony_badge_set_num
         if not UtilClient.is_unset(request.harmony_category):
             query['HarmonyCategory'] = request.harmony_category
         if not UtilClient.is_unset(request.harmony_ext_parameters):
             query['HarmonyExtParameters'] = request.harmony_ext_parameters
+        if not UtilClient.is_unset(request.harmony_extension_extra_data):
+            query['HarmonyExtensionExtraData'] = request.harmony_extension_extra_data
+        if not UtilClient.is_unset(request.harmony_extension_push):
+            query['HarmonyExtensionPush'] = request.harmony_extension_push
         if not UtilClient.is_unset(request.harmony_image_url):
             query['HarmonyImageUrl'] = request.harmony_image_url
         if not UtilClient.is_unset(request.harmony_inbox_content):
@@ -1540,10 +1548,18 @@ class Client(OpenApiClient):
             query['HarmonyAction'] = request.harmony_action
         if not UtilClient.is_unset(request.harmony_action_type):
             query['HarmonyActionType'] = request.harmony_action_type
+        if not UtilClient.is_unset(request.harmony_badge_add_num):
+            query['HarmonyBadgeAddNum'] = request.harmony_badge_add_num
+        if not UtilClient.is_unset(request.harmony_badge_set_num):
+            query['HarmonyBadgeSetNum'] = request.harmony_badge_set_num
         if not UtilClient.is_unset(request.harmony_category):
             query['HarmonyCategory'] = request.harmony_category
         if not UtilClient.is_unset(request.harmony_ext_parameters):
             query['HarmonyExtParameters'] = request.harmony_ext_parameters
+        if not UtilClient.is_unset(request.harmony_extension_extra_data):
+            query['HarmonyExtensionExtraData'] = request.harmony_extension_extra_data
+        if not UtilClient.is_unset(request.harmony_extension_push):
+            query['HarmonyExtensionPush'] = request.harmony_extension_push
         if not UtilClient.is_unset(request.harmony_image_url):
             query['HarmonyImageUrl'] = request.harmony_image_url
         if not UtilClient.is_unset(request.harmony_inbox_content):

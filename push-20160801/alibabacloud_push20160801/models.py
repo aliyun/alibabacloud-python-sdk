@@ -1515,8 +1515,12 @@ class MassPushRequestPushTask(TeaModel):
         expire_time: str = None,
         harmony_action: str = None,
         harmony_action_type: str = None,
+        harmony_badge_add_num: int = None,
+        harmony_badge_set_num: int = None,
         harmony_category: str = None,
         harmony_ext_parameters: str = None,
+        harmony_extension_extra_data: str = None,
+        harmony_extension_push: bool = None,
         harmony_image_url: str = None,
         harmony_inbox_content: str = None,
         harmony_notification_slot_type: str = None,
@@ -1603,8 +1607,12 @@ class MassPushRequestPushTask(TeaModel):
         self.expire_time = expire_time
         self.harmony_action = harmony_action
         self.harmony_action_type = harmony_action_type
+        self.harmony_badge_add_num = harmony_badge_add_num
+        self.harmony_badge_set_num = harmony_badge_set_num
         self.harmony_category = harmony_category
         self.harmony_ext_parameters = harmony_ext_parameters
+        self.harmony_extension_extra_data = harmony_extension_extra_data
+        self.harmony_extension_push = harmony_extension_push
         self.harmony_image_url = harmony_image_url
         self.harmony_inbox_content = harmony_inbox_content
         self.harmony_notification_slot_type = harmony_notification_slot_type
@@ -1748,10 +1756,18 @@ class MassPushRequestPushTask(TeaModel):
             result['HarmonyAction'] = self.harmony_action
         if self.harmony_action_type is not None:
             result['HarmonyActionType'] = self.harmony_action_type
+        if self.harmony_badge_add_num is not None:
+            result['HarmonyBadgeAddNum'] = self.harmony_badge_add_num
+        if self.harmony_badge_set_num is not None:
+            result['HarmonyBadgeSetNum'] = self.harmony_badge_set_num
         if self.harmony_category is not None:
             result['HarmonyCategory'] = self.harmony_category
         if self.harmony_ext_parameters is not None:
             result['HarmonyExtParameters'] = self.harmony_ext_parameters
+        if self.harmony_extension_extra_data is not None:
+            result['HarmonyExtensionExtraData'] = self.harmony_extension_extra_data
+        if self.harmony_extension_push is not None:
+            result['HarmonyExtensionPush'] = self.harmony_extension_push
         if self.harmony_image_url is not None:
             result['HarmonyImageUrl'] = self.harmony_image_url
         if self.harmony_inbox_content is not None:
@@ -1922,10 +1938,18 @@ class MassPushRequestPushTask(TeaModel):
             self.harmony_action = m.get('HarmonyAction')
         if m.get('HarmonyActionType') is not None:
             self.harmony_action_type = m.get('HarmonyActionType')
+        if m.get('HarmonyBadgeAddNum') is not None:
+            self.harmony_badge_add_num = m.get('HarmonyBadgeAddNum')
+        if m.get('HarmonyBadgeSetNum') is not None:
+            self.harmony_badge_set_num = m.get('HarmonyBadgeSetNum')
         if m.get('HarmonyCategory') is not None:
             self.harmony_category = m.get('HarmonyCategory')
         if m.get('HarmonyExtParameters') is not None:
             self.harmony_ext_parameters = m.get('HarmonyExtParameters')
+        if m.get('HarmonyExtensionExtraData') is not None:
+            self.harmony_extension_extra_data = m.get('HarmonyExtensionExtraData')
+        if m.get('HarmonyExtensionPush') is not None:
+            self.harmony_extension_push = m.get('HarmonyExtensionPush')
         if m.get('HarmonyImageUrl') is not None:
             self.harmony_image_url = m.get('HarmonyImageUrl')
         if m.get('HarmonyInboxContent') is not None:
@@ -2198,8 +2222,12 @@ class PushRequest(TeaModel):
         expire_time: str = None,
         harmony_action: str = None,
         harmony_action_type: str = None,
+        harmony_badge_add_num: int = None,
+        harmony_badge_set_num: int = None,
         harmony_category: str = None,
         harmony_ext_parameters: str = None,
+        harmony_extension_extra_data: str = None,
+        harmony_extension_push: bool = None,
         harmony_image_url: str = None,
         harmony_inbox_content: str = None,
         harmony_notification_slot_type: str = None,
@@ -2293,8 +2321,12 @@ class PushRequest(TeaModel):
         self.expire_time = expire_time
         self.harmony_action = harmony_action
         self.harmony_action_type = harmony_action_type
+        self.harmony_badge_add_num = harmony_badge_add_num
+        self.harmony_badge_set_num = harmony_badge_set_num
         self.harmony_category = harmony_category
         self.harmony_ext_parameters = harmony_ext_parameters
+        self.harmony_extension_extra_data = harmony_extension_extra_data
+        self.harmony_extension_push = harmony_extension_push
         self.harmony_image_url = harmony_image_url
         self.harmony_inbox_content = harmony_inbox_content
         self.harmony_notification_slot_type = harmony_notification_slot_type
@@ -2445,10 +2477,18 @@ class PushRequest(TeaModel):
             result['HarmonyAction'] = self.harmony_action
         if self.harmony_action_type is not None:
             result['HarmonyActionType'] = self.harmony_action_type
+        if self.harmony_badge_add_num is not None:
+            result['HarmonyBadgeAddNum'] = self.harmony_badge_add_num
+        if self.harmony_badge_set_num is not None:
+            result['HarmonyBadgeSetNum'] = self.harmony_badge_set_num
         if self.harmony_category is not None:
             result['HarmonyCategory'] = self.harmony_category
         if self.harmony_ext_parameters is not None:
             result['HarmonyExtParameters'] = self.harmony_ext_parameters
+        if self.harmony_extension_extra_data is not None:
+            result['HarmonyExtensionExtraData'] = self.harmony_extension_extra_data
+        if self.harmony_extension_push is not None:
+            result['HarmonyExtensionPush'] = self.harmony_extension_push
         if self.harmony_image_url is not None:
             result['HarmonyImageUrl'] = self.harmony_image_url
         if self.harmony_inbox_content is not None:
@@ -2631,10 +2671,18 @@ class PushRequest(TeaModel):
             self.harmony_action = m.get('HarmonyAction')
         if m.get('HarmonyActionType') is not None:
             self.harmony_action_type = m.get('HarmonyActionType')
+        if m.get('HarmonyBadgeAddNum') is not None:
+            self.harmony_badge_add_num = m.get('HarmonyBadgeAddNum')
+        if m.get('HarmonyBadgeSetNum') is not None:
+            self.harmony_badge_set_num = m.get('HarmonyBadgeSetNum')
         if m.get('HarmonyCategory') is not None:
             self.harmony_category = m.get('HarmonyCategory')
         if m.get('HarmonyExtParameters') is not None:
             self.harmony_ext_parameters = m.get('HarmonyExtParameters')
+        if m.get('HarmonyExtensionExtraData') is not None:
+            self.harmony_extension_extra_data = m.get('HarmonyExtensionExtraData')
+        if m.get('HarmonyExtensionPush') is not None:
+            self.harmony_extension_push = m.get('HarmonyExtensionPush')
         if m.get('HarmonyImageUrl') is not None:
             self.harmony_image_url = m.get('HarmonyImageUrl')
         if m.get('HarmonyInboxContent') is not None:
