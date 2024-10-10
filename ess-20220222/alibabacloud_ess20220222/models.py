@@ -5929,6 +5929,33 @@ class CreateScalingConfigurationRequestNetworkInterfaces(TeaModel):
         return self
 
 
+class CreateScalingConfigurationRequestSecurityOptions(TeaModel):
+    def __init__(
+        self,
+        confidential_computing_mode: str = None,
+    ):
+        self.confidential_computing_mode = confidential_computing_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidential_computing_mode is not None:
+            result['ConfidentialComputingMode'] = self.confidential_computing_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfidentialComputingMode') is not None:
+            self.confidential_computing_mode = m.get('ConfidentialComputingMode')
+        return self
+
+
 class CreateScalingConfigurationRequestSpotPriceLimits(TeaModel):
     def __init__(
         self,
@@ -6013,6 +6040,7 @@ class CreateScalingConfigurationRequest(TeaModel):
         security_enhancement_strategy: str = None,
         security_group_id: str = None,
         security_group_ids: List[str] = None,
+        security_options: CreateScalingConfigurationRequestSecurityOptions = None,
         spot_duration: int = None,
         spot_interruption_behavior: str = None,
         spot_price_limits: List[CreateScalingConfigurationRequestSpotPriceLimits] = None,
@@ -6181,6 +6209,7 @@ class CreateScalingConfigurationRequest(TeaModel):
         # 
         # > If you specify SecurityGroupId, you cannot specify SecurityGroupIds.
         self.security_group_ids = security_group_ids
+        self.security_options = security_options
         # The retention period of the preemptible instance. Unit: hours. Valid values: 0, 1, 2, 3, 4, 5, and 6.
         # 
         # *   The following retention periods are available in invitational preview: 2, 3, 4, 5, and 6 hours. If you want to set this parameter to one of these values, submit a ticket.
@@ -6255,6 +6284,8 @@ class CreateScalingConfigurationRequest(TeaModel):
             for k in self.network_interfaces:
                 if k:
                     k.validate()
+        if self.security_options:
+            self.security_options.validate()
         if self.spot_price_limits:
             for k in self.spot_price_limits:
                 if k:
@@ -6368,6 +6399,8 @@ class CreateScalingConfigurationRequest(TeaModel):
             result['SecurityGroupId'] = self.security_group_id
         if self.security_group_ids is not None:
             result['SecurityGroupIds'] = self.security_group_ids
+        if self.security_options is not None:
+            result['SecurityOptions'] = self.security_options.to_map()
         if self.spot_duration is not None:
             result['SpotDuration'] = self.spot_duration
         if self.spot_interruption_behavior is not None:
@@ -6506,6 +6539,9 @@ class CreateScalingConfigurationRequest(TeaModel):
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('SecurityGroupIds') is not None:
             self.security_group_ids = m.get('SecurityGroupIds')
+        if m.get('SecurityOptions') is not None:
+            temp_model = CreateScalingConfigurationRequestSecurityOptions()
+            self.security_options = temp_model.from_map(m['SecurityOptions'])
         if m.get('SpotDuration') is not None:
             self.spot_duration = m.get('SpotDuration')
         if m.get('SpotInterruptionBehavior') is not None:
@@ -7301,6 +7337,33 @@ class CreateScalingConfigurationShrinkRequestNetworkInterfaces(TeaModel):
         return self
 
 
+class CreateScalingConfigurationShrinkRequestSecurityOptions(TeaModel):
+    def __init__(
+        self,
+        confidential_computing_mode: str = None,
+    ):
+        self.confidential_computing_mode = confidential_computing_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidential_computing_mode is not None:
+            result['ConfidentialComputingMode'] = self.confidential_computing_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfidentialComputingMode') is not None:
+            self.confidential_computing_mode = m.get('ConfidentialComputingMode')
+        return self
+
+
 class CreateScalingConfigurationShrinkRequestSpotPriceLimits(TeaModel):
     def __init__(
         self,
@@ -7385,6 +7448,7 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
         security_enhancement_strategy: str = None,
         security_group_id: str = None,
         security_group_ids: List[str] = None,
+        security_options: CreateScalingConfigurationShrinkRequestSecurityOptions = None,
         spot_duration: int = None,
         spot_interruption_behavior: str = None,
         spot_price_limits: List[CreateScalingConfigurationShrinkRequestSpotPriceLimits] = None,
@@ -7553,6 +7617,7 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
         # 
         # > If you specify SecurityGroupId, you cannot specify SecurityGroupIds.
         self.security_group_ids = security_group_ids
+        self.security_options = security_options
         # The retention period of the preemptible instance. Unit: hours. Valid values: 0, 1, 2, 3, 4, 5, and 6.
         # 
         # *   The following retention periods are available in invitational preview: 2, 3, 4, 5, and 6 hours. If you want to set this parameter to one of these values, submit a ticket.
@@ -7627,6 +7692,8 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
             for k in self.network_interfaces:
                 if k:
                     k.validate()
+        if self.security_options:
+            self.security_options.validate()
         if self.spot_price_limits:
             for k in self.spot_price_limits:
                 if k:
@@ -7740,6 +7807,8 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
             result['SecurityGroupId'] = self.security_group_id
         if self.security_group_ids is not None:
             result['SecurityGroupIds'] = self.security_group_ids
+        if self.security_options is not None:
+            result['SecurityOptions'] = self.security_options.to_map()
         if self.spot_duration is not None:
             result['SpotDuration'] = self.spot_duration
         if self.spot_interruption_behavior is not None:
@@ -7878,6 +7947,9 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('SecurityGroupIds') is not None:
             self.security_group_ids = m.get('SecurityGroupIds')
+        if m.get('SecurityOptions') is not None:
+            temp_model = CreateScalingConfigurationShrinkRequestSecurityOptions()
+            self.security_options = temp_model.from_map(m['SecurityOptions'])
         if m.get('SpotDuration') is not None:
             self.spot_duration = m.get('SpotDuration')
         if m.get('SpotInterruptionBehavior') is not None:
@@ -19041,6 +19113,33 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsSchedulerOpt
         return self
 
 
+class DescribeScalingConfigurationsResponseBodyScalingConfigurationsSecurityOptions(TeaModel):
+    def __init__(
+        self,
+        confidential_computing_mode: str = None,
+    ):
+        self.confidential_computing_mode = confidential_computing_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidential_computing_mode is not None:
+            result['ConfidentialComputingMode'] = self.confidential_computing_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfidentialComputingMode') is not None:
+            self.confidential_computing_mode = m.get('ConfidentialComputingMode')
+        return self
+
+
 class DescribeScalingConfigurationsResponseBodyScalingConfigurationsSpotPriceLimits(TeaModel):
     def __init__(
         self,
@@ -19164,6 +19263,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         security_enhancement_strategy: str = None,
         security_group_id: str = None,
         security_group_ids: List[str] = None,
+        security_options: DescribeScalingConfigurationsResponseBodyScalingConfigurationsSecurityOptions = None,
         spot_duration: int = None,
         spot_interruption_behavior: str = None,
         spot_price_limits: List[DescribeScalingConfigurationsResponseBodyScalingConfigurationsSpotPriceLimits] = None,
@@ -19330,6 +19430,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         self.security_group_id = security_group_id
         # The IDs of the security groups to which the ECS instances belong. ECS instances that belong to the same security group can communicate with each other.
         self.security_group_ids = security_group_ids
+        self.security_options = security_options
         # The protection period of the preemptible instances. Unit: hours.
         self.spot_duration = spot_duration
         # The interruption event of the preemptible instances.
@@ -19430,6 +19531,8 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
                     k.validate()
         if self.scheduler_options:
             self.scheduler_options.validate()
+        if self.security_options:
+            self.security_options.validate()
         if self.spot_price_limits:
             for k in self.spot_price_limits:
                 if k:
@@ -19545,6 +19648,8 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
             result['SecurityGroupId'] = self.security_group_id
         if self.security_group_ids is not None:
             result['SecurityGroupIds'] = self.security_group_ids
+        if self.security_options is not None:
+            result['SecurityOptions'] = self.security_options.to_map()
         if self.spot_duration is not None:
             result['SpotDuration'] = self.spot_duration
         if self.spot_interruption_behavior is not None:
@@ -19704,6 +19809,9 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('SecurityGroupIds') is not None:
             self.security_group_ids = m.get('SecurityGroupIds')
+        if m.get('SecurityOptions') is not None:
+            temp_model = DescribeScalingConfigurationsResponseBodyScalingConfigurationsSecurityOptions()
+            self.security_options = temp_model.from_map(m['SecurityOptions'])
         if m.get('SpotDuration') is not None:
             self.spot_duration = m.get('SpotDuration')
         if m.get('SpotInterruptionBehavior') is not None:
@@ -30817,6 +30925,33 @@ class ModifyScalingConfigurationRequestNetworkInterfaces(TeaModel):
         return self
 
 
+class ModifyScalingConfigurationRequestSecurityOptions(TeaModel):
+    def __init__(
+        self,
+        confidential_computing_mode: str = None,
+    ):
+        self.confidential_computing_mode = confidential_computing_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidential_computing_mode is not None:
+            result['ConfidentialComputingMode'] = self.confidential_computing_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfidentialComputingMode') is not None:
+            self.confidential_computing_mode = m.get('ConfidentialComputingMode')
+        return self
+
+
 class ModifyScalingConfigurationRequestSpotPriceLimits(TeaModel):
     def __init__(
         self,
@@ -30898,6 +31033,7 @@ class ModifyScalingConfigurationRequest(TeaModel):
         scheduler_options: Dict[str, Any] = None,
         security_group_id: str = None,
         security_group_ids: List[str] = None,
+        security_options: ModifyScalingConfigurationRequestSecurityOptions = None,
         spot_duration: int = None,
         spot_interruption_behavior: str = None,
         spot_price_limits: List[ModifyScalingConfigurationRequestSpotPriceLimits] = None,
@@ -31053,6 +31189,7 @@ class ModifyScalingConfigurationRequest(TeaModel):
         self.security_group_id = security_group_id
         # The IDs of the security groups.
         self.security_group_ids = security_group_ids
+        self.security_options = security_options
         # The protection period of preemptible instances. Unit: hours. Valid values:
         # 
         # *   1: After a preemptible instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After the 1-hour protection period ends, Alibaba Cloud compares the bidding price with the market price and checks the resource inventory to determine whether to release the instance.
@@ -31125,6 +31262,8 @@ class ModifyScalingConfigurationRequest(TeaModel):
             for k in self.network_interfaces:
                 if k:
                     k.validate()
+        if self.security_options:
+            self.security_options.validate()
         if self.spot_price_limits:
             for k in self.spot_price_limits:
                 if k:
@@ -31232,6 +31371,8 @@ class ModifyScalingConfigurationRequest(TeaModel):
             result['SecurityGroupId'] = self.security_group_id
         if self.security_group_ids is not None:
             result['SecurityGroupIds'] = self.security_group_ids
+        if self.security_options is not None:
+            result['SecurityOptions'] = self.security_options.to_map()
         if self.spot_duration is not None:
             result['SpotDuration'] = self.spot_duration
         if self.spot_interruption_behavior is not None:
@@ -31364,6 +31505,9 @@ class ModifyScalingConfigurationRequest(TeaModel):
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('SecurityGroupIds') is not None:
             self.security_group_ids = m.get('SecurityGroupIds')
+        if m.get('SecurityOptions') is not None:
+            temp_model = ModifyScalingConfigurationRequestSecurityOptions()
+            self.security_options = temp_model.from_map(m['SecurityOptions'])
         if m.get('SpotDuration') is not None:
             self.spot_duration = m.get('SpotDuration')
         if m.get('SpotInterruptionBehavior') is not None:
@@ -32168,6 +32312,33 @@ class ModifyScalingConfigurationShrinkRequestNetworkInterfaces(TeaModel):
         return self
 
 
+class ModifyScalingConfigurationShrinkRequestSecurityOptions(TeaModel):
+    def __init__(
+        self,
+        confidential_computing_mode: str = None,
+    ):
+        self.confidential_computing_mode = confidential_computing_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidential_computing_mode is not None:
+            result['ConfidentialComputingMode'] = self.confidential_computing_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfidentialComputingMode') is not None:
+            self.confidential_computing_mode = m.get('ConfidentialComputingMode')
+        return self
+
+
 class ModifyScalingConfigurationShrinkRequestSpotPriceLimits(TeaModel):
     def __init__(
         self,
@@ -32249,6 +32420,7 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         scheduler_options_shrink: str = None,
         security_group_id: str = None,
         security_group_ids: List[str] = None,
+        security_options: ModifyScalingConfigurationShrinkRequestSecurityOptions = None,
         spot_duration: int = None,
         spot_interruption_behavior: str = None,
         spot_price_limits: List[ModifyScalingConfigurationShrinkRequestSpotPriceLimits] = None,
@@ -32404,6 +32576,7 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         self.security_group_id = security_group_id
         # The IDs of the security groups.
         self.security_group_ids = security_group_ids
+        self.security_options = security_options
         # The protection period of preemptible instances. Unit: hours. Valid values:
         # 
         # *   1: After a preemptible instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After the 1-hour protection period ends, Alibaba Cloud compares the bidding price with the market price and checks the resource inventory to determine whether to release the instance.
@@ -32476,6 +32649,8 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
             for k in self.network_interfaces:
                 if k:
                     k.validate()
+        if self.security_options:
+            self.security_options.validate()
         if self.spot_price_limits:
             for k in self.spot_price_limits:
                 if k:
@@ -32583,6 +32758,8 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
             result['SecurityGroupId'] = self.security_group_id
         if self.security_group_ids is not None:
             result['SecurityGroupIds'] = self.security_group_ids
+        if self.security_options is not None:
+            result['SecurityOptions'] = self.security_options.to_map()
         if self.spot_duration is not None:
             result['SpotDuration'] = self.spot_duration
         if self.spot_interruption_behavior is not None:
@@ -32715,6 +32892,9 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('SecurityGroupIds') is not None:
             self.security_group_ids = m.get('SecurityGroupIds')
+        if m.get('SecurityOptions') is not None:
+            temp_model = ModifyScalingConfigurationShrinkRequestSecurityOptions()
+            self.security_options = temp_model.from_map(m['SecurityOptions'])
         if m.get('SpotDuration') is not None:
             self.spot_duration = m.get('SpotDuration')
         if m.get('SpotInterruptionBehavior') is not None:

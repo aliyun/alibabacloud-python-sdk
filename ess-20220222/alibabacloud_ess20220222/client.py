@@ -2651,6 +2651,8 @@ class Client(OpenApiClient):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.security_group_ids):
             query['SecurityGroupIds'] = request.security_group_ids
+        if not UtilClient.is_unset(request.security_options):
+            query['SecurityOptions'] = request.security_options
         if not UtilClient.is_unset(request.spot_duration):
             query['SpotDuration'] = request.spot_duration
         if not UtilClient.is_unset(request.spot_interruption_behavior):
@@ -2810,6 +2812,8 @@ class Client(OpenApiClient):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.security_group_ids):
             query['SecurityGroupIds'] = request.security_group_ids
+        if not UtilClient.is_unset(request.security_options):
+            query['SecurityOptions'] = request.security_options
         if not UtilClient.is_unset(request.spot_duration):
             query['SpotDuration'] = request.spot_duration
         if not UtilClient.is_unset(request.spot_interruption_behavior):
@@ -10598,6 +10602,8 @@ class Client(OpenApiClient):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.security_group_ids):
             query['SecurityGroupIds'] = request.security_group_ids
+        if not UtilClient.is_unset(request.security_options):
+            query['SecurityOptions'] = request.security_options
         if not UtilClient.is_unset(request.spot_duration):
             query['SpotDuration'] = request.spot_duration
         if not UtilClient.is_unset(request.spot_interruption_behavior):
@@ -10748,6 +10754,8 @@ class Client(OpenApiClient):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.security_group_ids):
             query['SecurityGroupIds'] = request.security_group_ids
+        if not UtilClient.is_unset(request.security_options):
+            query['SecurityOptions'] = request.security_options
         if not UtilClient.is_unset(request.spot_duration):
             query['SpotDuration'] = request.spot_duration
         if not UtilClient.is_unset(request.spot_interruption_behavior):

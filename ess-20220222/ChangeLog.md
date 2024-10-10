@@ -1,3 +1,9 @@
+2024-10-10 Version: 1.8.1
+- Update API CreateScalingConfiguration: add param SecurityOptions.
+- Update API DescribeScalingConfigurations: update response param.
+- Update API ModifyScalingConfiguration: add param SecurityOptions.
+
+
 2024-09-14 Version: 1.8.0
 - Support API CancelInstanceRefresh.
 - Support API DescribeInstanceRefreshes.
