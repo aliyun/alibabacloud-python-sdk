@@ -146,6 +146,63 @@ class GetConnectionTicketRequest(TeaModel):
         return self
 
 
+class GetConnectionTicketResponseBodyBindQueueInfo(TeaModel):
+    def __init__(
+        self,
+        length: int = None,
+        rank: int = None,
+        remaining_time_min: int = None,
+        request_key: str = None,
+        target_id: str = None,
+        wait_time_min: int = None,
+    ):
+        self.length = length
+        self.rank = rank
+        self.remaining_time_min = remaining_time_min
+        self.request_key = request_key
+        self.target_id = target_id
+        self.wait_time_min = wait_time_min
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.length is not None:
+            result['Length'] = self.length
+        if self.rank is not None:
+            result['Rank'] = self.rank
+        if self.remaining_time_min is not None:
+            result['RemainingTimeMin'] = self.remaining_time_min
+        if self.request_key is not None:
+            result['RequestKey'] = self.request_key
+        if self.target_id is not None:
+            result['TargetId'] = self.target_id
+        if self.wait_time_min is not None:
+            result['WaitTimeMin'] = self.wait_time_min
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Length') is not None:
+            self.length = m.get('Length')
+        if m.get('Rank') is not None:
+            self.rank = m.get('Rank')
+        if m.get('RemainingTimeMin') is not None:
+            self.remaining_time_min = m.get('RemainingTimeMin')
+        if m.get('RequestKey') is not None:
+            self.request_key = m.get('RequestKey')
+        if m.get('TargetId') is not None:
+            self.target_id = m.get('TargetId')
+        if m.get('WaitTimeMin') is not None:
+            self.wait_time_min = m.get('WaitTimeMin')
+        return self
+
+
 class GetConnectionTicketResponseBodyPolicy(TeaModel):
     def __init__(
         self,
@@ -191,6 +248,7 @@ class GetConnectionTicketResponseBody(TeaModel):
         app_instance_group_id: str = None,
         app_instance_id: str = None,
         app_instance_persistent_id: str = None,
+        bind_queue_info: GetConnectionTicketResponseBodyBindQueueInfo = None,
         code: str = None,
         login_token: str = None,
         message: str = None,
@@ -207,6 +265,7 @@ class GetConnectionTicketResponseBody(TeaModel):
         self.app_instance_group_id = app_instance_group_id
         self.app_instance_id = app_instance_id
         self.app_instance_persistent_id = app_instance_persistent_id
+        self.bind_queue_info = bind_queue_info
         self.code = code
         self.login_token = login_token
         self.message = message
@@ -222,6 +281,8 @@ class GetConnectionTicketResponseBody(TeaModel):
         self.ticket = ticket
 
     def validate(self):
+        if self.bind_queue_info:
+            self.bind_queue_info.validate()
         if self.policy:
             self.policy.validate()
 
@@ -237,6 +298,8 @@ class GetConnectionTicketResponseBody(TeaModel):
             result['AppInstanceId'] = self.app_instance_id
         if self.app_instance_persistent_id is not None:
             result['AppInstancePersistentId'] = self.app_instance_persistent_id
+        if self.bind_queue_info is not None:
+            result['BindQueueInfo'] = self.bind_queue_info.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.login_token is not None:
@@ -271,6 +334,9 @@ class GetConnectionTicketResponseBody(TeaModel):
             self.app_instance_id = m.get('AppInstanceId')
         if m.get('AppInstancePersistentId') is not None:
             self.app_instance_persistent_id = m.get('AppInstancePersistentId')
+        if m.get('BindQueueInfo') is not None:
+            temp_model = GetConnectionTicketResponseBodyBindQueueInfo()
+            self.bind_queue_info = temp_model.from_map(m['BindQueueInfo'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('LoginToken') is not None:
