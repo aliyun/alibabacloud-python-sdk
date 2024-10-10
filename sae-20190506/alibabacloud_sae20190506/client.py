@@ -7723,6 +7723,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.disable_application_scaling_rule_with_options_async(request, headers, runtime)
 
+    def downgrade_application_apm_service_with_options(
+        self,
+        request: sae_20190506_models.DowngradeApplicationApmServiceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DowngradeApplicationApmServiceResponse:
+        """
+        @param request: DowngradeApplicationApmServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DowngradeApplicationApmServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DowngradeApplicationApmService',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/app/applicationApmService',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DowngradeApplicationApmServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def downgrade_application_apm_service_with_options_async(
+        self,
+        request: sae_20190506_models.DowngradeApplicationApmServiceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DowngradeApplicationApmServiceResponse:
+        """
+        @param request: DowngradeApplicationApmServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DowngradeApplicationApmServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DowngradeApplicationApmService',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/app/applicationApmService',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DowngradeApplicationApmServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def downgrade_application_apm_service(
+        self,
+        request: sae_20190506_models.DowngradeApplicationApmServiceRequest,
+    ) -> sae_20190506_models.DowngradeApplicationApmServiceResponse:
+        """
+        @param request: DowngradeApplicationApmServiceRequest
+        @return: DowngradeApplicationApmServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.downgrade_application_apm_service_with_options(request, headers, runtime)
+
+    async def downgrade_application_apm_service_async(
+        self,
+        request: sae_20190506_models.DowngradeApplicationApmServiceRequest,
+    ) -> sae_20190506_models.DowngradeApplicationApmServiceResponse:
+        """
+        @param request: DowngradeApplicationApmServiceRequest
+        @return: DowngradeApplicationApmServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.downgrade_application_apm_service_with_options_async(request, headers, runtime)
+
     def enable_application_scaling_rule_with_options(
         self,
         request: sae_20190506_models.EnableApplicationScalingRuleRequest,
@@ -7962,6 +8058,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.exec_job_with_options_async(request, headers, runtime)
+
+    def get_application_with_options(
+        self,
+        request: sae_20190506_models.GetApplicationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.GetApplicationResponse:
+        """
+        @summary 查询应用基本信息
+        
+        @param request: GetApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetApplication',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/app/getApplication',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.GetApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_application_with_options_async(
+        self,
+        request: sae_20190506_models.GetApplicationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.GetApplicationResponse:
+        """
+        @summary 查询应用基本信息
+        
+        @param request: GetApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetApplication',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/app/getApplication',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.GetApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_application(
+        self,
+        request: sae_20190506_models.GetApplicationRequest,
+    ) -> sae_20190506_models.GetApplicationResponse:
+        """
+        @summary 查询应用基本信息
+        
+        @param request: GetApplicationRequest
+        @return: GetApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_application_with_options(request, headers, runtime)
+
+    async def get_application_async(
+        self,
+        request: sae_20190506_models.GetApplicationRequest,
+    ) -> sae_20190506_models.GetApplicationResponse:
+        """
+        @summary 查询应用基本信息
+        
+        @param request: GetApplicationRequest
+        @return: GetApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_application_with_options_async(request, headers, runtime)
 
     def get_arms_top_nmetric_with_options(
         self,
@@ -14618,3 +14826,99 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_web_custom_domain_with_options_async(domain_name, request, headers, runtime)
+
+    def upgrade_application_apm_service_with_options(
+        self,
+        request: sae_20190506_models.UpgradeApplicationApmServiceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.UpgradeApplicationApmServiceResponse:
+        """
+        @param request: UpgradeApplicationApmServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeApplicationApmServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpgradeApplicationApmService',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/app/applicationApmService',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.UpgradeApplicationApmServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upgrade_application_apm_service_with_options_async(
+        self,
+        request: sae_20190506_models.UpgradeApplicationApmServiceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.UpgradeApplicationApmServiceResponse:
+        """
+        @param request: UpgradeApplicationApmServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeApplicationApmServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpgradeApplicationApmService',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/app/applicationApmService',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.UpgradeApplicationApmServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upgrade_application_apm_service(
+        self,
+        request: sae_20190506_models.UpgradeApplicationApmServiceRequest,
+    ) -> sae_20190506_models.UpgradeApplicationApmServiceResponse:
+        """
+        @param request: UpgradeApplicationApmServiceRequest
+        @return: UpgradeApplicationApmServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.upgrade_application_apm_service_with_options(request, headers, runtime)
+
+    async def upgrade_application_apm_service_async(
+        self,
+        request: sae_20190506_models.UpgradeApplicationApmServiceRequest,
+    ) -> sae_20190506_models.UpgradeApplicationApmServiceResponse:
+        """
+        @param request: UpgradeApplicationApmServiceRequest
+        @return: UpgradeApplicationApmServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.upgrade_application_apm_service_with_options_async(request, headers, runtime)

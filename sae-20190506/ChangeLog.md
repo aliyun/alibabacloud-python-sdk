@@ -1,3 +1,9 @@
+2024-10-10 Version: 1.24.0
+- Support API DowngradeApplicationApmService.
+- Support API GetApplication.
+- Support API UpgradeApplicationApmService.
+
+
 2024-09-24 Version: 1.23.6
 - Update API CreateApplication: add param Dotnet.
 - Update API DeployApplication: add param Dotnet.
