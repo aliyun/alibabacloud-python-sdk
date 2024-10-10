@@ -139,258 +139,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.activate_client_certificate_with_options_async(request, runtime)
 
-    def add_user_business_form_with_options(
-        self,
-        request: esa20240910_models.AddUserBusinessFormRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> esa20240910_models.AddUserBusinessFormResponse:
-        """
-        @summary 新增用户商机单
-        
-        @param request: AddUserBusinessFormRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AddUserBusinessFormResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.company):
-            query['Company'] = request.company
-        if not UtilClient.is_unset(request.email):
-            query['Email'] = request.email
-        if not UtilClient.is_unset(request.phone_number):
-            query['PhoneNumber'] = request.phone_number
-        if not UtilClient.is_unset(request.position):
-            query['Position'] = request.position
-        if not UtilClient.is_unset(request.remark):
-            query['Remark'] = request.remark
-        if not UtilClient.is_unset(request.user_name):
-            query['UserName'] = request.user_name
-        if not UtilClient.is_unset(request.website):
-            query['Website'] = request.website
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AddUserBusinessForm',
-            version='2024-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            esa20240910_models.AddUserBusinessFormResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def add_user_business_form_with_options_async(
-        self,
-        request: esa20240910_models.AddUserBusinessFormRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> esa20240910_models.AddUserBusinessFormResponse:
-        """
-        @summary 新增用户商机单
-        
-        @param request: AddUserBusinessFormRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AddUserBusinessFormResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.company):
-            query['Company'] = request.company
-        if not UtilClient.is_unset(request.email):
-            query['Email'] = request.email
-        if not UtilClient.is_unset(request.phone_number):
-            query['PhoneNumber'] = request.phone_number
-        if not UtilClient.is_unset(request.position):
-            query['Position'] = request.position
-        if not UtilClient.is_unset(request.remark):
-            query['Remark'] = request.remark
-        if not UtilClient.is_unset(request.user_name):
-            query['UserName'] = request.user_name
-        if not UtilClient.is_unset(request.website):
-            query['Website'] = request.website
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AddUserBusinessForm',
-            version='2024-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            esa20240910_models.AddUserBusinessFormResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def add_user_business_form(
-        self,
-        request: esa20240910_models.AddUserBusinessFormRequest,
-    ) -> esa20240910_models.AddUserBusinessFormResponse:
-        """
-        @summary 新增用户商机单
-        
-        @param request: AddUserBusinessFormRequest
-        @return: AddUserBusinessFormResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.add_user_business_form_with_options(request, runtime)
-
-    async def add_user_business_form_async(
-        self,
-        request: esa20240910_models.AddUserBusinessFormRequest,
-    ) -> esa20240910_models.AddUserBusinessFormResponse:
-        """
-        @summary 新增用户商机单
-        
-        @param request: AddUserBusinessFormRequest
-        @return: AddUserBusinessFormResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.add_user_business_form_with_options_async(request, runtime)
-
-    def advance_purge_object_cache_with_options(
-        self,
-        tmp_req: esa20240910_models.AdvancePurgeObjectCacheRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> esa20240910_models.AdvancePurgeObjectCacheResponse:
-        """
-        @summary 缓存对象缓存
-        
-        @param tmp_req: AdvancePurgeObjectCacheRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AdvancePurgeObjectCacheResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = esa20240910_models.AdvancePurgeObjectCacheShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.content):
-            request.content_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.content, 'Content', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.area):
-            query['Area'] = request.area
-        if not UtilClient.is_unset(request.content_shrink):
-            query['Content'] = request.content_shrink
-        if not UtilClient.is_unset(request.force):
-            query['Force'] = request.force
-        if not UtilClient.is_unset(request.site_id):
-            query['SiteId'] = request.site_id
-        if not UtilClient.is_unset(request.stations):
-            query['Stations'] = request.stations
-        if not UtilClient.is_unset(request.time_range_begin):
-            query['TimeRangeBegin'] = request.time_range_begin
-        if not UtilClient.is_unset(request.time_range_end):
-            query['TimeRangeEnd'] = request.time_range_end
-        if not UtilClient.is_unset(request.type):
-            query['Type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AdvancePurgeObjectCache',
-            version='2024-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            esa20240910_models.AdvancePurgeObjectCacheResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def advance_purge_object_cache_with_options_async(
-        self,
-        tmp_req: esa20240910_models.AdvancePurgeObjectCacheRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> esa20240910_models.AdvancePurgeObjectCacheResponse:
-        """
-        @summary 缓存对象缓存
-        
-        @param tmp_req: AdvancePurgeObjectCacheRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AdvancePurgeObjectCacheResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = esa20240910_models.AdvancePurgeObjectCacheShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.content):
-            request.content_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.content, 'Content', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.area):
-            query['Area'] = request.area
-        if not UtilClient.is_unset(request.content_shrink):
-            query['Content'] = request.content_shrink
-        if not UtilClient.is_unset(request.force):
-            query['Force'] = request.force
-        if not UtilClient.is_unset(request.site_id):
-            query['SiteId'] = request.site_id
-        if not UtilClient.is_unset(request.stations):
-            query['Stations'] = request.stations
-        if not UtilClient.is_unset(request.time_range_begin):
-            query['TimeRangeBegin'] = request.time_range_begin
-        if not UtilClient.is_unset(request.time_range_end):
-            query['TimeRangeEnd'] = request.time_range_end
-        if not UtilClient.is_unset(request.type):
-            query['Type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AdvancePurgeObjectCache',
-            version='2024-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            esa20240910_models.AdvancePurgeObjectCacheResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def advance_purge_object_cache(
-        self,
-        request: esa20240910_models.AdvancePurgeObjectCacheRequest,
-    ) -> esa20240910_models.AdvancePurgeObjectCacheResponse:
-        """
-        @summary 缓存对象缓存
-        
-        @param request: AdvancePurgeObjectCacheRequest
-        @return: AdvancePurgeObjectCacheResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.advance_purge_object_cache_with_options(request, runtime)
-
-    async def advance_purge_object_cache_async(
-        self,
-        request: esa20240910_models.AdvancePurgeObjectCacheRequest,
-    ) -> esa20240910_models.AdvancePurgeObjectCacheResponse:
-        """
-        @summary 缓存对象缓存
-        
-        @param request: AdvancePurgeObjectCacheRequest
-        @return: AdvancePurgeObjectCacheResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.advance_purge_object_cache_with_options_async(request, runtime)
-
     def batch_create_records_with_options(
         self,
         tmp_req: esa20240910_models.BatchCreateRecordsRequest,
@@ -6497,6 +6245,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.export_records_with_options_async(request, runtime)
 
+    def get_cache_reserve_specification_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetCacheReserveSpecificationResponse:
+        """
+        @summary 查询缓存保持实例规格
+        
+        @param request: GetCacheReserveSpecificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCacheReserveSpecificationResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetCacheReserveSpecification',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetCacheReserveSpecificationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_cache_reserve_specification_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetCacheReserveSpecificationResponse:
+        """
+        @summary 查询缓存保持实例规格
+        
+        @param request: GetCacheReserveSpecificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCacheReserveSpecificationResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetCacheReserveSpecification',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetCacheReserveSpecificationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_cache_reserve_specification(self) -> esa20240910_models.GetCacheReserveSpecificationResponse:
+        """
+        @summary 查询缓存保持实例规格
+        
+        @return: GetCacheReserveSpecificationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_cache_reserve_specification_with_options(runtime)
+
+    async def get_cache_reserve_specification_async(self) -> esa20240910_models.GetCacheReserveSpecificationResponse:
+        """
+        @summary 查询缓存保持实例规格
+        
+        @return: GetCacheReserveSpecificationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_cache_reserve_specification_with_options_async(runtime)
+
     def get_kv_namespace_with_options(
         self,
         request: esa20240910_models.GetKvNamespaceRequest,
@@ -8459,6 +8281,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_waf_ruleset_with_options_async(request, runtime)
 
+    def list_cache_reserve_instances_with_options(
+        self,
+        request: esa20240910_models.ListCacheReserveInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListCacheReserveInstancesResponse:
+        """
+        @summary 查询缓存保持实例列表
+        
+        @param request: ListCacheReserveInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCacheReserveInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCacheReserveInstances',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListCacheReserveInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cache_reserve_instances_with_options_async(
+        self,
+        request: esa20240910_models.ListCacheReserveInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListCacheReserveInstancesResponse:
+        """
+        @summary 查询缓存保持实例列表
+        
+        @param request: ListCacheReserveInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCacheReserveInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCacheReserveInstances',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListCacheReserveInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cache_reserve_instances(
+        self,
+        request: esa20240910_models.ListCacheReserveInstancesRequest,
+    ) -> esa20240910_models.ListCacheReserveInstancesResponse:
+        """
+        @summary 查询缓存保持实例列表
+        
+        @param request: ListCacheReserveInstancesRequest
+        @return: ListCacheReserveInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_cache_reserve_instances_with_options(request, runtime)
+
+    async def list_cache_reserve_instances_async(
+        self,
+        request: esa20240910_models.ListCacheReserveInstancesRequest,
+    ) -> esa20240910_models.ListCacheReserveInstancesResponse:
+        """
+        @summary 查询缓存保持实例列表
+        
+        @param request: ListCacheReserveInstancesRequest
+        @return: ListCacheReserveInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_cache_reserve_instances_with_options_async(request, runtime)
+
     def list_edge_container_app_records_with_options(
         self,
         request: esa20240910_models.ListEdgeContainerAppRecordsRequest,
@@ -8550,6 +8464,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_edge_container_app_records_with_options_async(request, runtime)
+
+    def list_edge_container_apps_with_options(
+        self,
+        request: esa20240910_models.ListEdgeContainerAppsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListEdgeContainerAppsResponse:
+        """
+        @summary 获取用户全部边缘容器应用
+        
+        @param request: ListEdgeContainerAppsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEdgeContainerAppsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_key):
+            query['OrderKey'] = request.order_key
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.search_type):
+            query['SearchType'] = request.search_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEdgeContainerApps',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListEdgeContainerAppsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_edge_container_apps_with_options_async(
+        self,
+        request: esa20240910_models.ListEdgeContainerAppsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListEdgeContainerAppsResponse:
+        """
+        @summary 获取用户全部边缘容器应用
+        
+        @param request: ListEdgeContainerAppsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEdgeContainerAppsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_key):
+            query['OrderKey'] = request.order_key
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.search_type):
+            query['SearchType'] = request.search_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEdgeContainerApps',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListEdgeContainerAppsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_edge_container_apps(
+        self,
+        request: esa20240910_models.ListEdgeContainerAppsRequest,
+    ) -> esa20240910_models.ListEdgeContainerAppsResponse:
+        """
+        @summary 获取用户全部边缘容器应用
+        
+        @param request: ListEdgeContainerAppsRequest
+        @return: ListEdgeContainerAppsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_edge_container_apps_with_options(request, runtime)
+
+    async def list_edge_container_apps_async(
+        self,
+        request: esa20240910_models.ListEdgeContainerAppsRequest,
+    ) -> esa20240910_models.ListEdgeContainerAppsResponse:
+        """
+        @summary 获取用户全部边缘容器应用
+        
+        @param request: ListEdgeContainerAppsRequest
+        @return: ListEdgeContainerAppsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_edge_container_apps_with_options_async(request, runtime)
 
     def list_edge_container_records_with_options(
         self,
@@ -8643,6 +8673,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_edge_container_records_with_options_async(request, runtime)
 
+    def list_edge_routine_plans_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListEdgeRoutinePlansResponse:
+        """
+        @summary 查询用户可购买的边缘函数的套餐
+        
+        @param request: ListEdgeRoutinePlansRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEdgeRoutinePlansResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListEdgeRoutinePlans',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListEdgeRoutinePlansResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_edge_routine_plans_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListEdgeRoutinePlansResponse:
+        """
+        @summary 查询用户可购买的边缘函数的套餐
+        
+        @param request: ListEdgeRoutinePlansRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEdgeRoutinePlansResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListEdgeRoutinePlans',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListEdgeRoutinePlansResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_edge_routine_plans(self) -> esa20240910_models.ListEdgeRoutinePlansResponse:
+        """
+        @summary 查询用户可购买的边缘函数的套餐
+        
+        @return: ListEdgeRoutinePlansResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_edge_routine_plans_with_options(runtime)
+
+    async def list_edge_routine_plans_async(self) -> esa20240910_models.ListEdgeRoutinePlansResponse:
+        """
+        @summary 查询用户可购买的边缘函数的套餐
+        
+        @return: ListEdgeRoutinePlansResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_edge_routine_plans_with_options_async(runtime)
+
     def list_edge_routine_records_with_options(
         self,
         request: esa20240910_models.ListEdgeRoutineRecordsRequest,
@@ -8734,6 +8838,190 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_edge_routine_records_with_options_async(request, runtime)
+
+    def list_instance_quotas_with_options(
+        self,
+        request: esa20240910_models.ListInstanceQuotasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListInstanceQuotasResponse:
+        """
+        @summary 查询实例或者站点的quota值
+        
+        @param request: ListInstanceQuotasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceQuotasResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceQuotas',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListInstanceQuotasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instance_quotas_with_options_async(
+        self,
+        request: esa20240910_models.ListInstanceQuotasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListInstanceQuotasResponse:
+        """
+        @summary 查询实例或者站点的quota值
+        
+        @param request: ListInstanceQuotasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceQuotasResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceQuotas',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListInstanceQuotasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instance_quotas(
+        self,
+        request: esa20240910_models.ListInstanceQuotasRequest,
+    ) -> esa20240910_models.ListInstanceQuotasResponse:
+        """
+        @summary 查询实例或者站点的quota值
+        
+        @param request: ListInstanceQuotasRequest
+        @return: ListInstanceQuotasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_instance_quotas_with_options(request, runtime)
+
+    async def list_instance_quotas_async(
+        self,
+        request: esa20240910_models.ListInstanceQuotasRequest,
+    ) -> esa20240910_models.ListInstanceQuotasResponse:
+        """
+        @summary 查询实例或者站点的quota值
+        
+        @param request: ListInstanceQuotasRequest
+        @return: ListInstanceQuotasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_instance_quotas_with_options_async(request, runtime)
+
+    def list_instance_quotas_with_usage_with_options(
+        self,
+        request: esa20240910_models.ListInstanceQuotasWithUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListInstanceQuotasWithUsageResponse:
+        """
+        @summary 查询功能quota和用量
+        
+        @param request: ListInstanceQuotasWithUsageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceQuotasWithUsageResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceQuotasWithUsage',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListInstanceQuotasWithUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instance_quotas_with_usage_with_options_async(
+        self,
+        request: esa20240910_models.ListInstanceQuotasWithUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListInstanceQuotasWithUsageResponse:
+        """
+        @summary 查询功能quota和用量
+        
+        @param request: ListInstanceQuotasWithUsageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceQuotasWithUsageResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceQuotasWithUsage',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListInstanceQuotasWithUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instance_quotas_with_usage(
+        self,
+        request: esa20240910_models.ListInstanceQuotasWithUsageRequest,
+    ) -> esa20240910_models.ListInstanceQuotasWithUsageResponse:
+        """
+        @summary 查询功能quota和用量
+        
+        @param request: ListInstanceQuotasWithUsageRequest
+        @return: ListInstanceQuotasWithUsageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_instance_quotas_with_usage_with_options(request, runtime)
+
+    async def list_instance_quotas_with_usage_async(
+        self,
+        request: esa20240910_models.ListInstanceQuotasWithUsageRequest,
+    ) -> esa20240910_models.ListInstanceQuotasWithUsageResponse:
+        """
+        @summary 查询功能quota和用量
+        
+        @param request: ListInstanceQuotasWithUsageRequest
+        @return: ListInstanceQuotasWithUsageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_instance_quotas_with_usage_with_options_async(request, runtime)
 
     def list_kvs_with_options(
         self,
@@ -10007,6 +10295,226 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_user_delivery_tasks_with_options_async(request, runtime)
 
+    def list_user_rate_plan_instances_with_options(
+        self,
+        request: esa20240910_models.ListUserRatePlanInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListUserRatePlanInstancesResponse:
+        """
+        @summary 查询该用户下可用的已购套餐实例
+        
+        @param request: ListUserRatePlanInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserRatePlanInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUserRatePlanInstances',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListUserRatePlanInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_user_rate_plan_instances_with_options_async(
+        self,
+        request: esa20240910_models.ListUserRatePlanInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListUserRatePlanInstancesResponse:
+        """
+        @summary 查询该用户下可用的已购套餐实例
+        
+        @param request: ListUserRatePlanInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserRatePlanInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUserRatePlanInstances',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListUserRatePlanInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_user_rate_plan_instances(
+        self,
+        request: esa20240910_models.ListUserRatePlanInstancesRequest,
+    ) -> esa20240910_models.ListUserRatePlanInstancesResponse:
+        """
+        @summary 查询该用户下可用的已购套餐实例
+        
+        @param request: ListUserRatePlanInstancesRequest
+        @return: ListUserRatePlanInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_user_rate_plan_instances_with_options(request, runtime)
+
+    async def list_user_rate_plan_instances_async(
+        self,
+        request: esa20240910_models.ListUserRatePlanInstancesRequest,
+    ) -> esa20240910_models.ListUserRatePlanInstancesResponse:
+        """
+        @summary 查询该用户下可用的已购套餐实例
+        
+        @param request: ListUserRatePlanInstancesRequest
+        @return: ListUserRatePlanInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_user_rate_plan_instances_with_options_async(request, runtime)
+
+    def list_waf_managed_rules_with_options(
+        self,
+        tmp_req: esa20240910_models.ListWafManagedRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListWafManagedRulesResponse:
+        """
+        @summary 列举WAF托管规则
+        
+        @param tmp_req: ListWafManagedRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWafManagedRulesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.ListWafManagedRulesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.query_args):
+            request.query_args_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.query_args, 'QueryArgs', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.attack_type):
+            query['AttackType'] = request.attack_type
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_args_shrink):
+            query['QueryArgs'] = request.query_args_shrink
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWafManagedRules',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListWafManagedRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_waf_managed_rules_with_options_async(
+        self,
+        tmp_req: esa20240910_models.ListWafManagedRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListWafManagedRulesResponse:
+        """
+        @summary 列举WAF托管规则
+        
+        @param tmp_req: ListWafManagedRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWafManagedRulesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.ListWafManagedRulesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.query_args):
+            request.query_args_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.query_args, 'QueryArgs', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.attack_type):
+            query['AttackType'] = request.attack_type
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_args_shrink):
+            query['QueryArgs'] = request.query_args_shrink
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWafManagedRules',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListWafManagedRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_waf_managed_rules(
+        self,
+        request: esa20240910_models.ListWafManagedRulesRequest,
+    ) -> esa20240910_models.ListWafManagedRulesResponse:
+        """
+        @summary 列举WAF托管规则
+        
+        @param request: ListWafManagedRulesRequest
+        @return: ListWafManagedRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_waf_managed_rules_with_options(request, runtime)
+
+    async def list_waf_managed_rules_async(
+        self,
+        request: esa20240910_models.ListWafManagedRulesRequest,
+    ) -> esa20240910_models.ListWafManagedRulesResponse:
+        """
+        @summary 列举WAF托管规则
+        
+        @param request: ListWafManagedRulesRequest
+        @return: ListWafManagedRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_waf_managed_rules_with_options_async(request, runtime)
+
     def list_waf_phases_with_options(
         self,
         request: esa20240910_models.ListWafPhasesRequest,
@@ -11194,106 +11702,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.put_kv_with_options_async(request, runtime)
-
-    def put_kv_account_with_options(
-        self,
-        request: esa20240910_models.PutKvAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> esa20240910_models.PutKvAccountResponse:
-        """
-        @summary 设置账户
-        
-        @param request: PutKvAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: PutKvAccountResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.account_type):
-            body['AccountType'] = request.account_type
-        if not UtilClient.is_unset(request.status):
-            body['Status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='PutKvAccount',
-            version='2024-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            esa20240910_models.PutKvAccountResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def put_kv_account_with_options_async(
-        self,
-        request: esa20240910_models.PutKvAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> esa20240910_models.PutKvAccountResponse:
-        """
-        @summary 设置账户
-        
-        @param request: PutKvAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: PutKvAccountResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.account_type):
-            body['AccountType'] = request.account_type
-        if not UtilClient.is_unset(request.status):
-            body['Status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='PutKvAccount',
-            version='2024-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            esa20240910_models.PutKvAccountResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def put_kv_account(
-        self,
-        request: esa20240910_models.PutKvAccountRequest,
-    ) -> esa20240910_models.PutKvAccountResponse:
-        """
-        @summary 设置账户
-        
-        @param request: PutKvAccountRequest
-        @return: PutKvAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.put_kv_account_with_options(request, runtime)
-
-    async def put_kv_account_async(
-        self,
-        request: esa20240910_models.PutKvAccountRequest,
-    ) -> esa20240910_models.PutKvAccountResponse:
-        """
-        @summary 设置账户
-        
-        @param request: PutKvAccountRequest
-        @return: PutKvAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.put_kv_account_with_options_async(request, runtime)
 
     def put_kv_with_high_capacity_with_options(
         self,
