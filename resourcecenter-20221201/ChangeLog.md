@@ -1,3 +1,10 @@
+2024-10-10 Version: 1.2.1
+- Update API ExecuteMultiAccountSQLQuery: add param MaxResults.
+- Update API ExecuteMultiAccountSQLQuery: add param NextToken.
+- Update API ExecuteSQLQuery: add param MaxResults.
+- Update API ExecuteSQLQuery: add param NextToken.
+
+
 2024-10-08 Version: 1.2.0
 - Support API AssociateDefaultFilter.
 - Support API CreateFilter.

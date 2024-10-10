@@ -908,6 +908,8 @@ class ExecuteMultiAccountSQLQueryRequest(TeaModel):
     def __init__(
         self,
         expression: str = None,
+        max_results: int = None,
+        next_token: str = None,
         scope: str = None,
     ):
         # The SQL statement to be executed.
@@ -918,6 +920,8 @@ class ExecuteMultiAccountSQLQueryRequest(TeaModel):
         # 
         # This parameter is required.
         self.expression = expression
+        self.max_results = max_results
+        self.next_token = next_token
         # The search scope. The value of this parameter can be one of the following items:
         # 
         # *   ID of a resource directory: Resources within the management account and all members of the resource directory are searched.
@@ -942,6 +946,10 @@ class ExecuteMultiAccountSQLQueryRequest(TeaModel):
         result = dict()
         if self.expression is not None:
             result['Expression'] = self.expression
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.scope is not None:
             result['Scope'] = self.scope
         return result
@@ -950,6 +958,10 @@ class ExecuteMultiAccountSQLQueryRequest(TeaModel):
         m = m or dict()
         if m.get('Expression') is not None:
             self.expression = m.get('Expression')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         if m.get('Scope') is not None:
             self.scope = m.get('Scope')
         return self
@@ -1097,6 +1109,8 @@ class ExecuteSQLQueryRequest(TeaModel):
     def __init__(
         self,
         expression: str = None,
+        max_results: int = None,
+        next_token: str = None,
         scope: str = None,
     ):
         # The SQL statement to be executed.
@@ -1107,6 +1121,8 @@ class ExecuteSQLQueryRequest(TeaModel):
         # 
         # This parameter is required.
         self.expression = expression
+        self.max_results = max_results
+        self.next_token = next_token
         # The search scope.
         # 
         # Set this parameter to the ID of a resource group.
@@ -1125,6 +1141,10 @@ class ExecuteSQLQueryRequest(TeaModel):
         result = dict()
         if self.expression is not None:
             result['Expression'] = self.expression
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.scope is not None:
             result['Scope'] = self.scope
         return result
@@ -1133,6 +1153,10 @@ class ExecuteSQLQueryRequest(TeaModel):
         m = m or dict()
         if m.get('Expression') is not None:
             self.expression = m.get('Expression')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         if m.get('Scope') is not None:
             self.scope = m.get('Scope')
         return self

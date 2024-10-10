@@ -927,6 +927,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.expression):
             query['Expression'] = request.expression
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.scope):
             query['Scope'] = request.scope
         req = open_api_models.OpenApiRequest(
@@ -964,6 +968,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.expression):
             query['Expression'] = request.expression
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.scope):
             query['Scope'] = request.scope
         req = open_api_models.OpenApiRequest(
@@ -1027,6 +1035,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.expression):
             query['Expression'] = request.expression
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.scope):
             query['Scope'] = request.scope
         req = open_api_models.OpenApiRequest(
@@ -1064,6 +1076,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.expression):
             query['Expression'] = request.expression
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.scope):
             query['Scope'] = request.scope
         req = open_api_models.OpenApiRequest(
