@@ -1,3 +1,16 @@
+2024-10-10 Version: 4.4.2
+- Update API CreateImageComponent: add param ComponentVersion.
+- Update API CreateImagePipeline: add param ImageFamily.
+- Update API CreateImagePipeline: add param RepairMode.
+- Update API CreateImagePipeline: add param TestContent.
+- Update API CreateImagePipeline: update response param.
+- Update API DescribeImageComponents: add param ComponentType.
+- Update API DescribeImageComponents: add param ComponentVersion.
+- Update API DescribeImageComponents: add param SystemType.
+- Update API DescribeImageComponents: update response param.
+- Update API DescribeImagePipelines: update response param.
+
+
 2024-10-09 Version: 4.4.1
 - Update API DescribeInstanceTypes: update param InstanceTypes.
 - Update API ImportImage: add param DryRun.

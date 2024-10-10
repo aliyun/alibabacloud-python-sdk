@@ -7511,6 +7511,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.component_type):
             query['ComponentType'] = request.component_type
+        if not UtilClient.is_unset(request.component_version):
+            query['ComponentVersion'] = request.component_version
         if not UtilClient.is_unset(request.content):
             query['Content'] = request.content
         if not UtilClient.is_unset(request.description):
@@ -7581,6 +7583,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.component_type):
             query['ComponentType'] = request.component_type
+        if not UtilClient.is_unset(request.component_version):
+            query['ComponentVersion'] = request.component_version
         if not UtilClient.is_unset(request.content):
             query['Content'] = request.content
         if not UtilClient.is_unset(request.description):
@@ -7704,6 +7708,8 @@ class Client(OpenApiClient):
             query['DeleteInstanceOnFailure'] = request.delete_instance_on_failure
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.image_family):
+            query['ImageFamily'] = request.image_family
         if not UtilClient.is_unset(request.image_name):
             query['ImageName'] = request.image_name
         if not UtilClient.is_unset(request.instance_type):
@@ -7720,6 +7726,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.repair_mode):
+            query['RepairMode'] = request.repair_mode
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -7732,6 +7740,8 @@ class Client(OpenApiClient):
             query['SystemDiskSize'] = request.system_disk_size
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.test_content):
+            query['TestContent'] = request.test_content
         if not UtilClient.is_unset(request.to_region_id):
             query['ToRegionId'] = request.to_region_id
         if not UtilClient.is_unset(request.v_switch_id):
@@ -7793,6 +7803,8 @@ class Client(OpenApiClient):
             query['DeleteInstanceOnFailure'] = request.delete_instance_on_failure
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.image_family):
+            query['ImageFamily'] = request.image_family
         if not UtilClient.is_unset(request.image_name):
             query['ImageName'] = request.image_name
         if not UtilClient.is_unset(request.instance_type):
@@ -7809,6 +7821,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.repair_mode):
+            query['RepairMode'] = request.repair_mode
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -7821,6 +7835,8 @@ class Client(OpenApiClient):
             query['SystemDiskSize'] = request.system_disk_size
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.test_content):
+            query['TestContent'] = request.test_content
         if not UtilClient.is_unset(request.to_region_id):
             query['ToRegionId'] = request.to_region_id
         if not UtilClient.is_unset(request.v_switch_id):
@@ -22598,6 +22614,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.component_type):
+            query['ComponentType'] = request.component_type
+        if not UtilClient.is_unset(request.component_version):
+            query['ComponentVersion'] = request.component_version
         if not UtilClient.is_unset(request.image_component_id):
             query['ImageComponentId'] = request.image_component_id
         if not UtilClient.is_unset(request.max_results):
@@ -22624,6 +22644,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.system_type):
+            query['SystemType'] = request.system_type
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
@@ -22661,6 +22683,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.component_type):
+            query['ComponentType'] = request.component_type
+        if not UtilClient.is_unset(request.component_version):
+            query['ComponentVersion'] = request.component_version
         if not UtilClient.is_unset(request.image_component_id):
             query['ImageComponentId'] = request.image_component_id
         if not UtilClient.is_unset(request.max_results):
@@ -22687,6 +22713,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.system_type):
+            query['SystemType'] = request.system_type
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
