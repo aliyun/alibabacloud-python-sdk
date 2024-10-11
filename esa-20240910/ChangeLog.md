@@ -1,3 +1,8 @@
+2024-10-11 Version: 2.0.1
+- Update API CreateRecord: update param HostPolicy.
+- Update API UpdateRecord: update param HostPolicy.
+
+
 2024-10-10 Version: 2.0.0
 - Support API GetCacheReserveSpecification.
 - Support API ListCacheReserveInstances.
