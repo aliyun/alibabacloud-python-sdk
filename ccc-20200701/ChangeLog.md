@@ -1,3 +1,9 @@
+2024-10-11 Version: 2.29.4
+- Update API GetCallDetailRecord: update response param.
+- Update API ListCallDetailRecordsV2: add param AnalyticsReportReady.
+- Update API ListCallDetailRecordsV2: update response param.
+
+
 2024-09-18 Version: 2.30.0
 - Support API GetChatRoutingProfile.
 - Support API UpdateChatRoutingProfile.

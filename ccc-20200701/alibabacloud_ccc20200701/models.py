@@ -12533,6 +12533,248 @@ class GetCallDetailRecordResponseBodyDataAgentEvents(TeaModel):
         return self
 
 
+class GetCallDetailRecordResponseBodyDataAnalyticsReportEmotion(TeaModel):
+    def __init__(
+        self,
+        confidence: int = None,
+        remark: str = None,
+        success: bool = None,
+        task_id: str = None,
+        type: str = None,
+    ):
+        self.confidence = confidence
+        self.remark = remark
+        self.success = success
+        self.task_id = task_id
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetCallDetailRecordResponseBodyDataAnalyticsReportProblemSolving(TeaModel):
+    def __init__(
+        self,
+        problem: str = None,
+        solution: str = None,
+        solved: bool = None,
+        success: bool = None,
+        task_id: str = None,
+    ):
+        self.problem = problem
+        self.solution = solution
+        self.solved = solved
+        self.success = success
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.problem is not None:
+            result['Problem'] = self.problem
+        if self.solution is not None:
+            result['Solution'] = self.solution
+        if self.solved is not None:
+            result['Solved'] = self.solved
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Problem') is not None:
+            self.problem = m.get('Problem')
+        if m.get('Solution') is not None:
+            self.solution = m.get('Solution')
+        if m.get('Solved') is not None:
+            self.solved = m.get('Solved')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class GetCallDetailRecordResponseBodyDataAnalyticsReportSatisfaction(TeaModel):
+    def __init__(
+        self,
+        remark: str = None,
+        satisfaction_description: str = None,
+        success: bool = None,
+        task_id: str = None,
+    ):
+        self.remark = remark
+        self.satisfaction_description = satisfaction_description
+        self.success = success
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.satisfaction_description is not None:
+            result['SatisfactionDescription'] = self.satisfaction_description
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('SatisfactionDescription') is not None:
+            self.satisfaction_description = m.get('SatisfactionDescription')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class GetCallDetailRecordResponseBodyDataAnalyticsReportTodoList(TeaModel):
+    def __init__(
+        self,
+        success: bool = None,
+        task_id: str = None,
+        tasks: List[str] = None,
+    ):
+        self.success = success
+        self.task_id = task_id
+        self.tasks = tasks
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.tasks is not None:
+            result['Tasks'] = self.tasks
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('Tasks') is not None:
+            self.tasks = m.get('Tasks')
+        return self
+
+
+class GetCallDetailRecordResponseBodyDataAnalyticsReport(TeaModel):
+    def __init__(
+        self,
+        emotion: GetCallDetailRecordResponseBodyDataAnalyticsReportEmotion = None,
+        problem_solving: GetCallDetailRecordResponseBodyDataAnalyticsReportProblemSolving = None,
+        satisfaction: GetCallDetailRecordResponseBodyDataAnalyticsReportSatisfaction = None,
+        todo_list: GetCallDetailRecordResponseBodyDataAnalyticsReportTodoList = None,
+    ):
+        self.emotion = emotion
+        self.problem_solving = problem_solving
+        self.satisfaction = satisfaction
+        self.todo_list = todo_list
+
+    def validate(self):
+        if self.emotion:
+            self.emotion.validate()
+        if self.problem_solving:
+            self.problem_solving.validate()
+        if self.satisfaction:
+            self.satisfaction.validate()
+        if self.todo_list:
+            self.todo_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.emotion is not None:
+            result['Emotion'] = self.emotion.to_map()
+        if self.problem_solving is not None:
+            result['ProblemSolving'] = self.problem_solving.to_map()
+        if self.satisfaction is not None:
+            result['Satisfaction'] = self.satisfaction.to_map()
+        if self.todo_list is not None:
+            result['TodoList'] = self.todo_list.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Emotion') is not None:
+            temp_model = GetCallDetailRecordResponseBodyDataAnalyticsReportEmotion()
+            self.emotion = temp_model.from_map(m['Emotion'])
+        if m.get('ProblemSolving') is not None:
+            temp_model = GetCallDetailRecordResponseBodyDataAnalyticsReportProblemSolving()
+            self.problem_solving = temp_model.from_map(m['ProblemSolving'])
+        if m.get('Satisfaction') is not None:
+            temp_model = GetCallDetailRecordResponseBodyDataAnalyticsReportSatisfaction()
+            self.satisfaction = temp_model.from_map(m['Satisfaction'])
+        if m.get('TodoList') is not None:
+            temp_model = GetCallDetailRecordResponseBodyDataAnalyticsReportTodoList()
+            self.todo_list = temp_model.from_map(m['TodoList'])
+        return self
+
+
 class GetCallDetailRecordResponseBodyDataCustomerEventsEventSequence(TeaModel):
     def __init__(
         self,
@@ -12785,6 +13027,8 @@ class GetCallDetailRecordResponseBodyData(TeaModel):
         agent_events: List[GetCallDetailRecordResponseBodyDataAgentEvents] = None,
         agent_ids: str = None,
         agent_names: str = None,
+        analytics_report: GetCallDetailRecordResponseBodyDataAnalyticsReport = None,
+        analytics_report_ready: bool = None,
         call_duration: int = None,
         called_number: str = None,
         callee_location: str = None,
@@ -12813,6 +13057,8 @@ class GetCallDetailRecordResponseBodyData(TeaModel):
         self.agent_events = agent_events
         self.agent_ids = agent_ids
         self.agent_names = agent_names
+        self.analytics_report = analytics_report
+        self.analytics_report_ready = analytics_report_ready
         self.call_duration = call_duration
         self.called_number = called_number
         self.callee_location = callee_location
@@ -12843,6 +13089,8 @@ class GetCallDetailRecordResponseBodyData(TeaModel):
             for k in self.agent_events:
                 if k:
                     k.validate()
+        if self.analytics_report:
+            self.analytics_report.validate()
         if self.customer_events:
             for k in self.customer_events:
                 if k:
@@ -12870,6 +13118,10 @@ class GetCallDetailRecordResponseBodyData(TeaModel):
             result['AgentIds'] = self.agent_ids
         if self.agent_names is not None:
             result['AgentNames'] = self.agent_names
+        if self.analytics_report is not None:
+            result['AnalyticsReport'] = self.analytics_report.to_map()
+        if self.analytics_report_ready is not None:
+            result['AnalyticsReportReady'] = self.analytics_report_ready
         if self.call_duration is not None:
             result['CallDuration'] = self.call_duration
         if self.called_number is not None:
@@ -12937,6 +13189,11 @@ class GetCallDetailRecordResponseBodyData(TeaModel):
             self.agent_ids = m.get('AgentIds')
         if m.get('AgentNames') is not None:
             self.agent_names = m.get('AgentNames')
+        if m.get('AnalyticsReport') is not None:
+            temp_model = GetCallDetailRecordResponseBodyDataAnalyticsReport()
+            self.analytics_report = temp_model.from_map(m['AnalyticsReport'])
+        if m.get('AnalyticsReportReady') is not None:
+            self.analytics_report_ready = m.get('AnalyticsReportReady')
         if m.get('CallDuration') is not None:
             self.call_duration = m.get('CallDuration')
         if m.get('CalledNumber') is not None:
@@ -26887,6 +27144,7 @@ class ListCallDetailRecordsV2Request(TeaModel):
         self,
         access_channel_type_list: str = None,
         agent_id: str = None,
+        analytics_report_ready: bool = None,
         broker: str = None,
         called_number: str = None,
         calling_number: str = None,
@@ -26914,6 +27172,7 @@ class ListCallDetailRecordsV2Request(TeaModel):
     ):
         self.access_channel_type_list = access_channel_type_list
         self.agent_id = agent_id
+        self.analytics_report_ready = analytics_report_ready
         self.broker = broker
         self.called_number = called_number
         self.calling_number = calling_number
@@ -26955,6 +27214,8 @@ class ListCallDetailRecordsV2Request(TeaModel):
             result['AccessChannelTypeList'] = self.access_channel_type_list
         if self.agent_id is not None:
             result['AgentId'] = self.agent_id
+        if self.analytics_report_ready is not None:
+            result['AnalyticsReportReady'] = self.analytics_report_ready
         if self.broker is not None:
             result['Broker'] = self.broker
         if self.called_number is not None:
@@ -27011,6 +27272,8 @@ class ListCallDetailRecordsV2Request(TeaModel):
             self.access_channel_type_list = m.get('AccessChannelTypeList')
         if m.get('AgentId') is not None:
             self.agent_id = m.get('AgentId')
+        if m.get('AnalyticsReportReady') is not None:
+            self.analytics_report_ready = m.get('AnalyticsReportReady')
         if m.get('Broker') is not None:
             self.broker = m.get('Broker')
         if m.get('CalledNumber') is not None:
@@ -27062,6 +27325,248 @@ class ListCallDetailRecordsV2Request(TeaModel):
         return self
 
 
+class ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportEmotion(TeaModel):
+    def __init__(
+        self,
+        confidence: int = None,
+        remark: str = None,
+        success: bool = None,
+        task_id: str = None,
+        type: str = None,
+    ):
+        self.confidence = confidence
+        self.remark = remark
+        self.success = success
+        self.task_id = task_id
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportProblemSolving(TeaModel):
+    def __init__(
+        self,
+        problem: str = None,
+        solution: str = None,
+        solved: bool = None,
+        success: bool = None,
+        task_id: str = None,
+    ):
+        self.problem = problem
+        self.solution = solution
+        self.solved = solved
+        self.success = success
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.problem is not None:
+            result['Problem'] = self.problem
+        if self.solution is not None:
+            result['Solution'] = self.solution
+        if self.solved is not None:
+            result['Solved'] = self.solved
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Problem') is not None:
+            self.problem = m.get('Problem')
+        if m.get('Solution') is not None:
+            self.solution = m.get('Solution')
+        if m.get('Solved') is not None:
+            self.solved = m.get('Solved')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportSatisfaction(TeaModel):
+    def __init__(
+        self,
+        remark: str = None,
+        satisfaction_description: str = None,
+        success: bool = None,
+        task_id: str = None,
+    ):
+        self.remark = remark
+        self.satisfaction_description = satisfaction_description
+        self.success = success
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.satisfaction_description is not None:
+            result['SatisfactionDescription'] = self.satisfaction_description
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('SatisfactionDescription') is not None:
+            self.satisfaction_description = m.get('SatisfactionDescription')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportTodoList(TeaModel):
+    def __init__(
+        self,
+        success: bool = None,
+        task_id: str = None,
+        tasks: List[str] = None,
+    ):
+        self.success = success
+        self.task_id = task_id
+        self.tasks = tasks
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.tasks is not None:
+            result['Tasks'] = self.tasks
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('Tasks') is not None:
+            self.tasks = m.get('Tasks')
+        return self
+
+
+class ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReport(TeaModel):
+    def __init__(
+        self,
+        emotion: ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportEmotion = None,
+        problem_solving: ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportProblemSolving = None,
+        satisfaction: ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportSatisfaction = None,
+        todo_list: ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportTodoList = None,
+    ):
+        self.emotion = emotion
+        self.problem_solving = problem_solving
+        self.satisfaction = satisfaction
+        self.todo_list = todo_list
+
+    def validate(self):
+        if self.emotion:
+            self.emotion.validate()
+        if self.problem_solving:
+            self.problem_solving.validate()
+        if self.satisfaction:
+            self.satisfaction.validate()
+        if self.todo_list:
+            self.todo_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.emotion is not None:
+            result['Emotion'] = self.emotion.to_map()
+        if self.problem_solving is not None:
+            result['ProblemSolving'] = self.problem_solving.to_map()
+        if self.satisfaction is not None:
+            result['Satisfaction'] = self.satisfaction.to_map()
+        if self.todo_list is not None:
+            result['TodoList'] = self.todo_list.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Emotion') is not None:
+            temp_model = ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportEmotion()
+            self.emotion = temp_model.from_map(m['Emotion'])
+        if m.get('ProblemSolving') is not None:
+            temp_model = ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportProblemSolving()
+            self.problem_solving = temp_model.from_map(m['ProblemSolving'])
+        if m.get('Satisfaction') is not None:
+            temp_model = ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportSatisfaction()
+            self.satisfaction = temp_model.from_map(m['Satisfaction'])
+        if m.get('TodoList') is not None:
+            temp_model = ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportTodoList()
+            self.todo_list = temp_model.from_map(m['TodoList'])
+        return self
+
+
 class ListCallDetailRecordsV2ResponseBodyDataList(TeaModel):
     def __init__(
         self,
@@ -27072,6 +27577,8 @@ class ListCallDetailRecordsV2ResponseBodyDataList(TeaModel):
         additional_broker: str = None,
         agent_ids: str = None,
         agent_names: str = None,
+        analytics_report: ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReport = None,
+        analytics_report_ready: bool = None,
         broker: str = None,
         call_duration: str = None,
         call_ids: str = None,
@@ -27126,6 +27633,8 @@ class ListCallDetailRecordsV2ResponseBodyDataList(TeaModel):
         self.additional_broker = additional_broker
         self.agent_ids = agent_ids
         self.agent_names = agent_names
+        self.analytics_report = analytics_report
+        self.analytics_report_ready = analytics_report_ready
         self.broker = broker
         self.call_duration = call_duration
         self.call_ids = call_ids
@@ -27174,7 +27683,8 @@ class ListCallDetailRecordsV2ResponseBodyDataList(TeaModel):
         self.wait_time = wait_time
 
     def validate(self):
-        pass
+        if self.analytics_report:
+            self.analytics_report.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -27196,6 +27706,10 @@ class ListCallDetailRecordsV2ResponseBodyDataList(TeaModel):
             result['AgentIds'] = self.agent_ids
         if self.agent_names is not None:
             result['AgentNames'] = self.agent_names
+        if self.analytics_report is not None:
+            result['AnalyticsReport'] = self.analytics_report.to_map()
+        if self.analytics_report_ready is not None:
+            result['AnalyticsReportReady'] = self.analytics_report_ready
         if self.broker is not None:
             result['Broker'] = self.broker
         if self.call_duration is not None:
@@ -27306,6 +27820,11 @@ class ListCallDetailRecordsV2ResponseBodyDataList(TeaModel):
             self.agent_ids = m.get('AgentIds')
         if m.get('AgentNames') is not None:
             self.agent_names = m.get('AgentNames')
+        if m.get('AnalyticsReport') is not None:
+            temp_model = ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReport()
+            self.analytics_report = temp_model.from_map(m['AnalyticsReport'])
+        if m.get('AnalyticsReportReady') is not None:
+            self.analytics_report_ready = m.get('AnalyticsReportReady')
         if m.get('Broker') is not None:
             self.broker = m.get('Broker')
         if m.get('CallDuration') is not None:

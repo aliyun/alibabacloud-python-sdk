@@ -11573,6 +11573,8 @@ class Client(OpenApiClient):
             query['AccessChannelTypeList'] = request.access_channel_type_list
         if not UtilClient.is_unset(request.agent_id):
             query['AgentId'] = request.agent_id
+        if not UtilClient.is_unset(request.analytics_report_ready):
+            query['AnalyticsReportReady'] = request.analytics_report_ready
         if not UtilClient.is_unset(request.broker):
             query['Broker'] = request.broker
         if not UtilClient.is_unset(request.called_number):
@@ -11656,6 +11658,8 @@ class Client(OpenApiClient):
             query['AccessChannelTypeList'] = request.access_channel_type_list
         if not UtilClient.is_unset(request.agent_id):
             query['AgentId'] = request.agent_id
+        if not UtilClient.is_unset(request.analytics_report_ready):
+            query['AnalyticsReportReady'] = request.analytics_report_ready
         if not UtilClient.is_unset(request.broker):
             query['Broker'] = request.broker
         if not UtilClient.is_unset(request.called_number):
