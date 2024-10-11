@@ -3411,10 +3411,14 @@ class CreateDBResourceGroupRequest(TeaModel):
         group_type: str = None,
         max_cluster_count: int = None,
         max_compute_resource: str = None,
+        max_gpu_quantity: int = None,
         min_cluster_count: int = None,
         min_compute_resource: str = None,
+        min_gpu_quantity: int = None,
         region_id: str = None,
         rules: List[CreateDBResourceGroupRequestRules] = None,
+        spec_name: str = None,
+        target_resource_group_name: str = None,
     ):
         # A reserved parameter.
         self.cluster_mode = cluster_mode
@@ -3455,6 +3459,7 @@ class CreateDBResourceGroupRequest(TeaModel):
         # *   If GroupType is set to Interactive, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 16ACU.
         # *   If GroupType is set to Job, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 8ACU.
         self.max_compute_resource = max_compute_resource
+        self.max_gpu_quantity = max_gpu_quantity
         # A reserved parameter.
         self.min_cluster_count = min_cluster_count
         # The minimum reserved computing resources.
@@ -3462,12 +3467,15 @@ class CreateDBResourceGroupRequest(TeaModel):
         # *   When GroupType is set to Interactive, set this parameter to 16ACU.
         # *   When GroupType is set to Job, set this parameter to 0ACU.
         self.min_compute_resource = min_compute_resource
+        self.min_gpu_quantity = min_gpu_quantity
         # The region ID of the cluster.
         # 
         # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the most recent region list.
         self.region_id = region_id
         # The job resubmission rules.
         self.rules = rules
+        self.spec_name = spec_name
+        self.target_resource_group_name = target_resource_group_name
 
     def validate(self):
         if self.rules:
@@ -3501,16 +3509,24 @@ class CreateDBResourceGroupRequest(TeaModel):
             result['MaxClusterCount'] = self.max_cluster_count
         if self.max_compute_resource is not None:
             result['MaxComputeResource'] = self.max_compute_resource
+        if self.max_gpu_quantity is not None:
+            result['MaxGpuQuantity'] = self.max_gpu_quantity
         if self.min_cluster_count is not None:
             result['MinClusterCount'] = self.min_cluster_count
         if self.min_compute_resource is not None:
             result['MinComputeResource'] = self.min_compute_resource
+        if self.min_gpu_quantity is not None:
+            result['MinGpuQuantity'] = self.min_gpu_quantity
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         result['Rules'] = []
         if self.rules is not None:
             for k in self.rules:
                 result['Rules'].append(k.to_map() if k else None)
+        if self.spec_name is not None:
+            result['SpecName'] = self.spec_name
+        if self.target_resource_group_name is not None:
+            result['TargetResourceGroupName'] = self.target_resource_group_name
         return result
 
     def from_map(self, m: dict = None):
@@ -3535,10 +3551,14 @@ class CreateDBResourceGroupRequest(TeaModel):
             self.max_cluster_count = m.get('MaxClusterCount')
         if m.get('MaxComputeResource') is not None:
             self.max_compute_resource = m.get('MaxComputeResource')
+        if m.get('MaxGpuQuantity') is not None:
+            self.max_gpu_quantity = m.get('MaxGpuQuantity')
         if m.get('MinClusterCount') is not None:
             self.min_cluster_count = m.get('MinClusterCount')
         if m.get('MinComputeResource') is not None:
             self.min_compute_resource = m.get('MinComputeResource')
+        if m.get('MinGpuQuantity') is not None:
+            self.min_gpu_quantity = m.get('MinGpuQuantity')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         self.rules = []
@@ -3546,6 +3566,10 @@ class CreateDBResourceGroupRequest(TeaModel):
             for k in m.get('Rules'):
                 temp_model = CreateDBResourceGroupRequestRules()
                 self.rules.append(temp_model.from_map(k))
+        if m.get('SpecName') is not None:
+            self.spec_name = m.get('SpecName')
+        if m.get('TargetResourceGroupName') is not None:
+            self.target_resource_group_name = m.get('TargetResourceGroupName')
         return self
 
 
@@ -3562,10 +3586,14 @@ class CreateDBResourceGroupShrinkRequest(TeaModel):
         group_type: str = None,
         max_cluster_count: int = None,
         max_compute_resource: str = None,
+        max_gpu_quantity: int = None,
         min_cluster_count: int = None,
         min_compute_resource: str = None,
+        min_gpu_quantity: int = None,
         region_id: str = None,
         rules_shrink: str = None,
+        spec_name: str = None,
+        target_resource_group_name: str = None,
     ):
         # A reserved parameter.
         self.cluster_mode = cluster_mode
@@ -3606,6 +3634,7 @@ class CreateDBResourceGroupShrinkRequest(TeaModel):
         # *   If GroupType is set to Interactive, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 16ACU.
         # *   If GroupType is set to Job, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 8ACU.
         self.max_compute_resource = max_compute_resource
+        self.max_gpu_quantity = max_gpu_quantity
         # A reserved parameter.
         self.min_cluster_count = min_cluster_count
         # The minimum reserved computing resources.
@@ -3613,12 +3642,15 @@ class CreateDBResourceGroupShrinkRequest(TeaModel):
         # *   When GroupType is set to Interactive, set this parameter to 16ACU.
         # *   When GroupType is set to Job, set this parameter to 0ACU.
         self.min_compute_resource = min_compute_resource
+        self.min_gpu_quantity = min_gpu_quantity
         # The region ID of the cluster.
         # 
         # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the most recent region list.
         self.region_id = region_id
         # The job resubmission rules.
         self.rules_shrink = rules_shrink
+        self.spec_name = spec_name
+        self.target_resource_group_name = target_resource_group_name
 
     def validate(self):
         pass
@@ -3649,14 +3681,22 @@ class CreateDBResourceGroupShrinkRequest(TeaModel):
             result['MaxClusterCount'] = self.max_cluster_count
         if self.max_compute_resource is not None:
             result['MaxComputeResource'] = self.max_compute_resource
+        if self.max_gpu_quantity is not None:
+            result['MaxGpuQuantity'] = self.max_gpu_quantity
         if self.min_cluster_count is not None:
             result['MinClusterCount'] = self.min_cluster_count
         if self.min_compute_resource is not None:
             result['MinComputeResource'] = self.min_compute_resource
+        if self.min_gpu_quantity is not None:
+            result['MinGpuQuantity'] = self.min_gpu_quantity
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.rules_shrink is not None:
             result['Rules'] = self.rules_shrink
+        if self.spec_name is not None:
+            result['SpecName'] = self.spec_name
+        if self.target_resource_group_name is not None:
+            result['TargetResourceGroupName'] = self.target_resource_group_name
         return result
 
     def from_map(self, m: dict = None):
@@ -3681,14 +3721,22 @@ class CreateDBResourceGroupShrinkRequest(TeaModel):
             self.max_cluster_count = m.get('MaxClusterCount')
         if m.get('MaxComputeResource') is not None:
             self.max_compute_resource = m.get('MaxComputeResource')
+        if m.get('MaxGpuQuantity') is not None:
+            self.max_gpu_quantity = m.get('MaxGpuQuantity')
         if m.get('MinClusterCount') is not None:
             self.min_cluster_count = m.get('MinClusterCount')
         if m.get('MinComputeResource') is not None:
             self.min_compute_resource = m.get('MinComputeResource')
+        if m.get('MinGpuQuantity') is not None:
+            self.min_gpu_quantity = m.get('MinGpuQuantity')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('Rules') is not None:
             self.rules_shrink = m.get('Rules')
+        if m.get('SpecName') is not None:
+            self.spec_name = m.get('SpecName')
+        if m.get('TargetResourceGroupName') is not None:
+            self.target_resource_group_name = m.get('TargetResourceGroupName')
         return self
 
 
@@ -4312,6 +4360,7 @@ class CreatePerformanceViewRequest(TeaModel):
         view_detail: CreatePerformanceViewRequestViewDetail = None,
         view_name: str = None,
     ):
+        # The type of the view.
         self.create_from_view_type = create_from_view_type
         # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
@@ -4338,6 +4387,8 @@ class CreatePerformanceViewRequest(TeaModel):
         # 
         # This parameter is required.
         self.view_detail = view_detail
+        # The name of the view.
+        # 
         # This parameter is required.
         self.view_name = view_name
 
@@ -4413,6 +4464,7 @@ class CreatePerformanceViewShrinkRequest(TeaModel):
         view_detail_shrink: str = None,
         view_name: str = None,
     ):
+        # The type of the view.
         self.create_from_view_type = create_from_view_type
         # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
@@ -4439,6 +4491,8 @@ class CreatePerformanceViewShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.view_detail_shrink = view_detail_shrink
+        # The name of the view.
+        # 
         # This parameter is required.
         self.view_name = view_name
 
@@ -4505,12 +4559,16 @@ class CreatePerformanceViewResponseBody(TeaModel):
         create_status: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
+        # 
+        # >  This parameter is returned only if Resource Access Management (RAM) permission verification failed.
         self.access_denied_detail = access_denied_detail
         # The creation result. Valid values:
         # 
         # *   **SUCCESS**\
         # *   **FAILED**\
         self.create_status = create_status
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5243,6 +5301,8 @@ class DeletePerformanceViewRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The name of the view.
+        # 
         # This parameter is required.
         self.view_name = view_name
 
@@ -5301,7 +5361,9 @@ class DeletePerformanceViewResponseBody(TeaModel):
         # 
         # >  This parameter is returned only if Resource Access Management (RAM) permission verification failed.
         self.access_denied_detail = access_denied_detail
+        # The delete status.
         self.delete_status = delete_status
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9312,12 +9374,14 @@ class DescribeClusterAccessWhiteListRequest(TeaModel):
     def __init__(
         self,
         dbcluster_id: str = None,
+        region_id: str = None,
         resource_owner_account: str = None,
     ):
         # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
 
     def validate(self):
@@ -9331,6 +9395,8 @@ class DescribeClusterAccessWhiteListRequest(TeaModel):
         result = dict()
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         return result
@@ -9339,6 +9405,8 @@ class DescribeClusterAccessWhiteListRequest(TeaModel):
         m = m or dict()
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         return self
@@ -13706,12 +13774,16 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(TeaModel):
         group_users: str = None,
         max_cluster_count: int = None,
         max_compute_resource: str = None,
+        max_gpu_quantity: int = None,
         message: str = None,
         min_cluster_count: int = None,
         min_compute_resource: str = None,
+        min_gpu_quantity: int = None,
         rules: List[DescribeDBResourceGroupResponseBodyGroupsInfoRules] = None,
         running_cluster_count: int = None,
+        spec_name: str = None,
         status: str = None,
+        target_resource_group_name: str = None,
         update_time: str = None,
     ):
         # A reserved parameter.
@@ -13746,22 +13818,26 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(TeaModel):
         self.max_cluster_count = max_cluster_count
         # The maximum amount of reserved computing resources.
         self.max_compute_resource = max_compute_resource
+        self.max_gpu_quantity = max_gpu_quantity
         # This parameter is required.
         self.message = message
         # A reserved parameter.
         self.min_cluster_count = min_cluster_count
         # The minimum amount of reserved computing resources.
         self.min_compute_resource = min_compute_resource
+        self.min_gpu_quantity = min_gpu_quantity
         # The job resubmission rules.
         self.rules = rules
         # A reserved parameter.
         self.running_cluster_count = running_cluster_count
+        self.spec_name = spec_name
         # The status of the resource group. Valid values:
         # 
         # *   **creating**: The resource group is being created.
         # *   **ok**: The resource group is created.
         # *   **pendingdelete**: The resource group is pending to be deleted.
         self.status = status
+        self.target_resource_group_name = target_resource_group_name
         # The time when the resource group was updated. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time is displayed in UTC.
         self.update_time = update_time
 
@@ -13801,20 +13877,28 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(TeaModel):
             result['MaxClusterCount'] = self.max_cluster_count
         if self.max_compute_resource is not None:
             result['MaxComputeResource'] = self.max_compute_resource
+        if self.max_gpu_quantity is not None:
+            result['MaxGpuQuantity'] = self.max_gpu_quantity
         if self.message is not None:
             result['Message'] = self.message
         if self.min_cluster_count is not None:
             result['MinClusterCount'] = self.min_cluster_count
         if self.min_compute_resource is not None:
             result['MinComputeResource'] = self.min_compute_resource
+        if self.min_gpu_quantity is not None:
+            result['MinGpuQuantity'] = self.min_gpu_quantity
         result['Rules'] = []
         if self.rules is not None:
             for k in self.rules:
                 result['Rules'].append(k.to_map() if k else None)
         if self.running_cluster_count is not None:
             result['RunningClusterCount'] = self.running_cluster_count
+        if self.spec_name is not None:
+            result['SpecName'] = self.spec_name
         if self.status is not None:
             result['Status'] = self.status
+        if self.target_resource_group_name is not None:
+            result['TargetResourceGroupName'] = self.target_resource_group_name
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
         return result
@@ -13845,12 +13929,16 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(TeaModel):
             self.max_cluster_count = m.get('MaxClusterCount')
         if m.get('MaxComputeResource') is not None:
             self.max_compute_resource = m.get('MaxComputeResource')
+        if m.get('MaxGpuQuantity') is not None:
+            self.max_gpu_quantity = m.get('MaxGpuQuantity')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('MinClusterCount') is not None:
             self.min_cluster_count = m.get('MinClusterCount')
         if m.get('MinComputeResource') is not None:
             self.min_compute_resource = m.get('MinComputeResource')
+        if m.get('MinGpuQuantity') is not None:
+            self.min_gpu_quantity = m.get('MinGpuQuantity')
         self.rules = []
         if m.get('Rules') is not None:
             for k in m.get('Rules'):
@@ -13858,8 +13946,12 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(TeaModel):
                 self.rules.append(temp_model.from_map(k))
         if m.get('RunningClusterCount') is not None:
             self.running_cluster_count = m.get('RunningClusterCount')
+        if m.get('SpecName') is not None:
+            self.spec_name = m.get('SpecName')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('TargetResourceGroupName') is not None:
+            self.target_resource_group_name = m.get('TargetResourceGroupName')
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
         return self
@@ -16821,7 +16913,9 @@ class DescribeJobResourceUsageResponseBodyDataJobAcuUsageAcuUsageDetail(TeaModel
         self.elastic_acu_number = elastic_acu_number
         # The number of ACUs for the reserved resources.
         self.reserved_acu_number = reserved_acu_number
+        # The number of spot ACUs.
         self.spot_acu_number = spot_acu_number
+        # The percent of spot ACUs.
         self.spot_acu_percentage = spot_acu_percentage
         # The total number of ACUs.
         self.total_acu_number = total_acu_number
@@ -17377,6 +17471,8 @@ class DescribePerformanceViewAttributeRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The name of the view.
+        # 
         # This parameter is required.
         self.view_name = view_name
 
@@ -17430,7 +17526,12 @@ class DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys(TeaMo
         key_name: str = None,
         selected: bool = None,
     ):
+        # The name of the metric.
         self.key_name = key_name
+        # Specifies whether to select the metric. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.selected = selected
 
     def validate(self):
@@ -17463,7 +17564,14 @@ class DescribePerformanceViewAttributeResponseBodyViewDetailCategories(TeaModel)
         category: str = None,
         keys: List[DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys] = None,
     ):
+        # The name of the metric category. Valid values:
+        # 
+        # *   **Node**\
+        # *   **DiskData**\
+        # *   **WorkLoad**\
+        # *   **ResourceGroup**\
         self.category = category
+        # The metrics.
         self.keys = keys
 
     def validate(self):
@@ -17505,8 +17613,14 @@ class DescribePerformanceViewAttributeResponseBodyViewDetail(TeaModel):
         chart_linked: bool = None,
         charts_per_line: int = None,
     ):
+        # The metric category.
         self.categories = categories
+        # Specifies whether to enable the filter interaction feature. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.chart_linked = chart_linked
+        # The number of charts to display in each row.
         self.charts_per_line = charts_per_line
 
     def validate(self):
@@ -17556,12 +17670,26 @@ class DescribePerformanceViewAttributeResponseBody(TeaModel):
         view_detail: DescribePerformanceViewAttributeResponseBodyViewDetail = None,
         view_name: str = None,
     ):
+        # The details about the access denial.
+        # 
+        # >  This parameter is returned only if Resource Access Management (RAM) permission verification failed.
         self.access_denied_detail = access_denied_detail
+        # The type of the view.
         self.create_from_view_type = create_from_view_type
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
         self.dbcluster_id = dbcluster_id
+        # Specifies whether to populate the names of the metrics in the original monitoring view when you view the monitoring view. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.fill_origin_view_keys = fill_origin_view_keys
+        # The request ID.
         self.request_id = request_id
+        # The information about the monitoring view.
         self.view_detail = view_detail
+        # The name of the view.
         self.view_name = view_name
 
     def validate(self):
@@ -17725,8 +17853,11 @@ class DescribePerformanceViewsResponseBodyViews(TeaModel):
         update_time: str = None,
         view_name: str = None,
     ):
+        # The time when created.
         self.create_time = create_time
+        # The time when updated.
         self.update_time = update_time
+        # The name of the view.
         self.view_name = view_name
 
     def validate(self):
@@ -17764,8 +17895,13 @@ class DescribePerformanceViewsResponseBody(TeaModel):
         request_id: str = None,
         views: List[DescribePerformanceViewsResponseBodyViews] = None,
     ):
+        # The details about the access denial.
+        # 
+        # >  This parameter is returned only if Resource Access Management (RAM) permission verification failed.
         self.access_denied_detail = access_denied_detail
+        # The request ID.
         self.request_id = request_id
+        # the list of view.
         self.views = views
 
     def validate(self):
@@ -27436,10 +27572,14 @@ class ModifyDBResourceGroupRequest(TeaModel):
         group_type: str = None,
         max_cluster_count: int = None,
         max_compute_resource: str = None,
+        max_gpu_quantity: int = None,
         min_cluster_count: int = None,
         min_compute_resource: str = None,
+        min_gpu_quantity: int = None,
         region_id: str = None,
         rules: List[ModifyDBResourceGroupRequestRules] = None,
+        spec_name: str = None,
+        target_resource_group_name: str = None,
     ):
         # A reserved parameter.
         self.cluster_mode = cluster_mode
@@ -27477,6 +27617,7 @@ class ModifyDBResourceGroupRequest(TeaModel):
         # *   If GroupType is set to Interactive, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 16ACU.
         # *   If GroupType is set to Job, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 8ACU.
         self.max_compute_resource = max_compute_resource
+        self.max_gpu_quantity = max_gpu_quantity
         # A reserved parameter.
         self.min_cluster_count = min_cluster_count
         # The minimum amount of reserved computing resources.
@@ -27484,12 +27625,15 @@ class ModifyDBResourceGroupRequest(TeaModel):
         # *   If the GroupType parameter is set to Interactive, set the value to 16ACU.
         # *   If GroupType is set to Job, set the value to 0ACU.
         self.min_compute_resource = min_compute_resource
+        self.min_gpu_quantity = min_gpu_quantity
         # The region ID of the cluster.
         # 
         # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
         self.region_id = region_id
         # The job resubmission rules.
         self.rules = rules
+        self.spec_name = spec_name
+        self.target_resource_group_name = target_resource_group_name
 
     def validate(self):
         if self.rules:
@@ -27521,16 +27665,24 @@ class ModifyDBResourceGroupRequest(TeaModel):
             result['MaxClusterCount'] = self.max_cluster_count
         if self.max_compute_resource is not None:
             result['MaxComputeResource'] = self.max_compute_resource
+        if self.max_gpu_quantity is not None:
+            result['MaxGpuQuantity'] = self.max_gpu_quantity
         if self.min_cluster_count is not None:
             result['MinClusterCount'] = self.min_cluster_count
         if self.min_compute_resource is not None:
             result['MinComputeResource'] = self.min_compute_resource
+        if self.min_gpu_quantity is not None:
+            result['MinGpuQuantity'] = self.min_gpu_quantity
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         result['Rules'] = []
         if self.rules is not None:
             for k in self.rules:
                 result['Rules'].append(k.to_map() if k else None)
+        if self.spec_name is not None:
+            result['SpecName'] = self.spec_name
+        if self.target_resource_group_name is not None:
+            result['TargetResourceGroupName'] = self.target_resource_group_name
         return result
 
     def from_map(self, m: dict = None):
@@ -27553,10 +27705,14 @@ class ModifyDBResourceGroupRequest(TeaModel):
             self.max_cluster_count = m.get('MaxClusterCount')
         if m.get('MaxComputeResource') is not None:
             self.max_compute_resource = m.get('MaxComputeResource')
+        if m.get('MaxGpuQuantity') is not None:
+            self.max_gpu_quantity = m.get('MaxGpuQuantity')
         if m.get('MinClusterCount') is not None:
             self.min_cluster_count = m.get('MinClusterCount')
         if m.get('MinComputeResource') is not None:
             self.min_compute_resource = m.get('MinComputeResource')
+        if m.get('MinGpuQuantity') is not None:
+            self.min_gpu_quantity = m.get('MinGpuQuantity')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         self.rules = []
@@ -27564,6 +27720,10 @@ class ModifyDBResourceGroupRequest(TeaModel):
             for k in m.get('Rules'):
                 temp_model = ModifyDBResourceGroupRequestRules()
                 self.rules.append(temp_model.from_map(k))
+        if m.get('SpecName') is not None:
+            self.spec_name = m.get('SpecName')
+        if m.get('TargetResourceGroupName') is not None:
+            self.target_resource_group_name = m.get('TargetResourceGroupName')
         return self
 
 
@@ -27579,10 +27739,14 @@ class ModifyDBResourceGroupShrinkRequest(TeaModel):
         group_type: str = None,
         max_cluster_count: int = None,
         max_compute_resource: str = None,
+        max_gpu_quantity: int = None,
         min_cluster_count: int = None,
         min_compute_resource: str = None,
+        min_gpu_quantity: int = None,
         region_id: str = None,
         rules_shrink: str = None,
+        spec_name: str = None,
+        target_resource_group_name: str = None,
     ):
         # A reserved parameter.
         self.cluster_mode = cluster_mode
@@ -27620,6 +27784,7 @@ class ModifyDBResourceGroupShrinkRequest(TeaModel):
         # *   If GroupType is set to Interactive, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 16ACU.
         # *   If GroupType is set to Job, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 8ACU.
         self.max_compute_resource = max_compute_resource
+        self.max_gpu_quantity = max_gpu_quantity
         # A reserved parameter.
         self.min_cluster_count = min_cluster_count
         # The minimum amount of reserved computing resources.
@@ -27627,12 +27792,15 @@ class ModifyDBResourceGroupShrinkRequest(TeaModel):
         # *   If the GroupType parameter is set to Interactive, set the value to 16ACU.
         # *   If GroupType is set to Job, set the value to 0ACU.
         self.min_compute_resource = min_compute_resource
+        self.min_gpu_quantity = min_gpu_quantity
         # The region ID of the cluster.
         # 
         # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
         self.region_id = region_id
         # The job resubmission rules.
         self.rules_shrink = rules_shrink
+        self.spec_name = spec_name
+        self.target_resource_group_name = target_resource_group_name
 
     def validate(self):
         pass
@@ -27661,14 +27829,22 @@ class ModifyDBResourceGroupShrinkRequest(TeaModel):
             result['MaxClusterCount'] = self.max_cluster_count
         if self.max_compute_resource is not None:
             result['MaxComputeResource'] = self.max_compute_resource
+        if self.max_gpu_quantity is not None:
+            result['MaxGpuQuantity'] = self.max_gpu_quantity
         if self.min_cluster_count is not None:
             result['MinClusterCount'] = self.min_cluster_count
         if self.min_compute_resource is not None:
             result['MinComputeResource'] = self.min_compute_resource
+        if self.min_gpu_quantity is not None:
+            result['MinGpuQuantity'] = self.min_gpu_quantity
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.rules_shrink is not None:
             result['Rules'] = self.rules_shrink
+        if self.spec_name is not None:
+            result['SpecName'] = self.spec_name
+        if self.target_resource_group_name is not None:
+            result['TargetResourceGroupName'] = self.target_resource_group_name
         return result
 
     def from_map(self, m: dict = None):
@@ -27691,14 +27867,22 @@ class ModifyDBResourceGroupShrinkRequest(TeaModel):
             self.max_cluster_count = m.get('MaxClusterCount')
         if m.get('MaxComputeResource') is not None:
             self.max_compute_resource = m.get('MaxComputeResource')
+        if m.get('MaxGpuQuantity') is not None:
+            self.max_gpu_quantity = m.get('MaxGpuQuantity')
         if m.get('MinClusterCount') is not None:
             self.min_cluster_count = m.get('MinClusterCount')
         if m.get('MinComputeResource') is not None:
             self.min_compute_resource = m.get('MinComputeResource')
+        if m.get('MinGpuQuantity') is not None:
+            self.min_gpu_quantity = m.get('MinGpuQuantity')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('Rules') is not None:
             self.rules_shrink = m.get('Rules')
+        if m.get('SpecName') is not None:
+            self.spec_name = m.get('SpecName')
+        if m.get('TargetResourceGroupName') is not None:
+            self.target_resource_group_name = m.get('TargetResourceGroupName')
         return self
 
 

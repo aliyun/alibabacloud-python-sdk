@@ -1,3 +1,16 @@
+2024-10-11 Version: 1.3.13
+- Update API CreateDBResourceGroup: add param MaxGpuQuantity.
+- Update API CreateDBResourceGroup: add param MinGpuQuantity.
+- Update API CreateDBResourceGroup: add param SpecName.
+- Update API CreateDBResourceGroup: add param TargetResourceGroupName.
+- Update API DescribeClusterAccessWhiteList: add param RegionId.
+- Update API DescribeDBResourceGroup: update response param.
+- Update API ModifyDBResourceGroup: add param MaxGpuQuantity.
+- Update API ModifyDBResourceGroup: add param MinGpuQuantity.
+- Update API ModifyDBResourceGroup: add param SpecName.
+- Update API ModifyDBResourceGroup: add param TargetResourceGroupName.
+
+
 2024-09-24 Version: 1.3.12
 - Update API CreateDBCluster: add param CloneSourceRegionId.
 - Update API CreateDBCluster: update param ProductForm.

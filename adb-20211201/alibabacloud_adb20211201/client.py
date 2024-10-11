@@ -1097,14 +1097,22 @@ class Client(OpenApiClient):
             query['MaxClusterCount'] = request.max_cluster_count
         if not UtilClient.is_unset(request.max_compute_resource):
             query['MaxComputeResource'] = request.max_compute_resource
+        if not UtilClient.is_unset(request.max_gpu_quantity):
+            query['MaxGpuQuantity'] = request.max_gpu_quantity
         if not UtilClient.is_unset(request.min_cluster_count):
             query['MinClusterCount'] = request.min_cluster_count
         if not UtilClient.is_unset(request.min_compute_resource):
             query['MinComputeResource'] = request.min_compute_resource
+        if not UtilClient.is_unset(request.min_gpu_quantity):
+            query['MinGpuQuantity'] = request.min_gpu_quantity
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.rules_shrink):
             query['Rules'] = request.rules_shrink
+        if not UtilClient.is_unset(request.spec_name):
+            query['SpecName'] = request.spec_name
+        if not UtilClient.is_unset(request.target_resource_group_name):
+            query['TargetResourceGroupName'] = request.target_resource_group_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1166,14 +1174,22 @@ class Client(OpenApiClient):
             query['MaxClusterCount'] = request.max_cluster_count
         if not UtilClient.is_unset(request.max_compute_resource):
             query['MaxComputeResource'] = request.max_compute_resource
+        if not UtilClient.is_unset(request.max_gpu_quantity):
+            query['MaxGpuQuantity'] = request.max_gpu_quantity
         if not UtilClient.is_unset(request.min_cluster_count):
             query['MinClusterCount'] = request.min_cluster_count
         if not UtilClient.is_unset(request.min_compute_resource):
             query['MinComputeResource'] = request.min_compute_resource
+        if not UtilClient.is_unset(request.min_gpu_quantity):
+            query['MinGpuQuantity'] = request.min_gpu_quantity
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.rules_shrink):
             query['Rules'] = request.rules_shrink
+        if not UtilClient.is_unset(request.spec_name):
+            query['SpecName'] = request.spec_name
+        if not UtilClient.is_unset(request.target_resource_group_name):
+            query['TargetResourceGroupName'] = request.target_resource_group_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1485,6 +1501,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreatePerformanceViewResponse:
         """
+        @summary Creates a custom monitoring view.
+        
         @param tmp_req: CreatePerformanceViewRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreatePerformanceViewResponse
@@ -1540,6 +1558,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreatePerformanceViewResponse:
         """
+        @summary Creates a custom monitoring view.
+        
         @param tmp_req: CreatePerformanceViewRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreatePerformanceViewResponse
@@ -1594,6 +1614,8 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreatePerformanceViewRequest,
     ) -> adb_20211201_models.CreatePerformanceViewResponse:
         """
+        @summary Creates a custom monitoring view.
+        
         @param request: CreatePerformanceViewRequest
         @return: CreatePerformanceViewResponse
         """
@@ -1605,6 +1627,8 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreatePerformanceViewRequest,
     ) -> adb_20211201_models.CreatePerformanceViewResponse:
         """
+        @summary Creates a custom monitoring view.
+        
         @param request: CreatePerformanceViewRequest
         @return: CreatePerformanceViewResponse
         """
@@ -2185,6 +2209,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DeletePerformanceViewResponse:
         """
+        @summary Deletes a monitoring view.
+        
         @param request: DeletePerformanceViewRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeletePerformanceViewResponse
@@ -2230,6 +2256,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DeletePerformanceViewResponse:
         """
+        @summary Deletes a monitoring view.
+        
         @param request: DeletePerformanceViewRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeletePerformanceViewResponse
@@ -2274,6 +2302,8 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DeletePerformanceViewRequest,
     ) -> adb_20211201_models.DeletePerformanceViewResponse:
         """
+        @summary Deletes a monitoring view.
+        
         @param request: DeletePerformanceViewRequest
         @return: DeletePerformanceViewResponse
         """
@@ -2285,6 +2315,8 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DeletePerformanceViewRequest,
     ) -> adb_20211201_models.DeletePerformanceViewResponse:
         """
+        @summary Deletes a monitoring view.
+        
         @param request: DeletePerformanceViewRequest
         @return: DeletePerformanceViewResponse
         """
@@ -4329,6 +4361,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         req = open_api_models.OpenApiRequest(
@@ -4368,6 +4402,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         req = open_api_models.OpenApiRequest(
@@ -7249,6 +7285,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribePerformanceViewAttributeResponse:
         """
+        @summary Queries the information about a monitoring view.
+        
         @param request: DescribePerformanceViewAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribePerformanceViewAttributeResponse
@@ -7294,6 +7332,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribePerformanceViewAttributeResponse:
         """
+        @summary Queries the information about a monitoring view.
+        
         @param request: DescribePerformanceViewAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribePerformanceViewAttributeResponse
@@ -7338,6 +7378,8 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribePerformanceViewAttributeRequest,
     ) -> adb_20211201_models.DescribePerformanceViewAttributeResponse:
         """
+        @summary Queries the information about a monitoring view.
+        
         @param request: DescribePerformanceViewAttributeRequest
         @return: DescribePerformanceViewAttributeResponse
         """
@@ -7349,6 +7391,8 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribePerformanceViewAttributeRequest,
     ) -> adb_20211201_models.DescribePerformanceViewAttributeResponse:
         """
+        @summary Queries the information about a monitoring view.
+        
         @param request: DescribePerformanceViewAttributeRequest
         @return: DescribePerformanceViewAttributeResponse
         """
@@ -7361,6 +7405,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribePerformanceViewsResponse:
         """
+        @summary Queries a list of monitoring views.
+        
         @param request: DescribePerformanceViewsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribePerformanceViewsResponse
@@ -7404,6 +7450,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribePerformanceViewsResponse:
         """
+        @summary Queries a list of monitoring views.
+        
         @param request: DescribePerformanceViewsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribePerformanceViewsResponse
@@ -7446,6 +7494,8 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribePerformanceViewsRequest,
     ) -> adb_20211201_models.DescribePerformanceViewsResponse:
         """
+        @summary Queries a list of monitoring views.
+        
         @param request: DescribePerformanceViewsRequest
         @return: DescribePerformanceViewsResponse
         """
@@ -7457,6 +7507,8 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribePerformanceViewsRequest,
     ) -> adb_20211201_models.DescribePerformanceViewsResponse:
         """
+        @summary Queries a list of monitoring views.
+        
         @param request: DescribePerformanceViewsRequest
         @return: DescribePerformanceViewsResponse
         """
@@ -13871,14 +13923,22 @@ class Client(OpenApiClient):
             query['MaxClusterCount'] = request.max_cluster_count
         if not UtilClient.is_unset(request.max_compute_resource):
             query['MaxComputeResource'] = request.max_compute_resource
+        if not UtilClient.is_unset(request.max_gpu_quantity):
+            query['MaxGpuQuantity'] = request.max_gpu_quantity
         if not UtilClient.is_unset(request.min_cluster_count):
             query['MinClusterCount'] = request.min_cluster_count
         if not UtilClient.is_unset(request.min_compute_resource):
             query['MinComputeResource'] = request.min_compute_resource
+        if not UtilClient.is_unset(request.min_gpu_quantity):
+            query['MinGpuQuantity'] = request.min_gpu_quantity
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.rules_shrink):
             query['Rules'] = request.rules_shrink
+        if not UtilClient.is_unset(request.spec_name):
+            query['SpecName'] = request.spec_name
+        if not UtilClient.is_unset(request.target_resource_group_name):
+            query['TargetResourceGroupName'] = request.target_resource_group_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13938,14 +13998,22 @@ class Client(OpenApiClient):
             query['MaxClusterCount'] = request.max_cluster_count
         if not UtilClient.is_unset(request.max_compute_resource):
             query['MaxComputeResource'] = request.max_compute_resource
+        if not UtilClient.is_unset(request.max_gpu_quantity):
+            query['MaxGpuQuantity'] = request.max_gpu_quantity
         if not UtilClient.is_unset(request.min_cluster_count):
             query['MinClusterCount'] = request.min_cluster_count
         if not UtilClient.is_unset(request.min_compute_resource):
             query['MinComputeResource'] = request.min_compute_resource
+        if not UtilClient.is_unset(request.min_gpu_quantity):
+            query['MinGpuQuantity'] = request.min_gpu_quantity
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.rules_shrink):
             query['Rules'] = request.rules_shrink
+        if not UtilClient.is_unset(request.spec_name):
+            query['SpecName'] = request.spec_name
+        if not UtilClient.is_unset(request.target_resource_group_name):
+            query['TargetResourceGroupName'] = request.target_resource_group_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
