@@ -3879,6 +3879,194 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_custom_scene_policy_with_options_async(request, runtime)
 
+    def delete_kv_with_options(
+        self,
+        request: esa20240910_models.DeleteKvRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteKvResponse:
+        """
+        @summary 删除Namespace的Key-Value对
+        
+        @param request: DeleteKvRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteKvResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteKv',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteKvResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_kv_with_options_async(
+        self,
+        request: esa20240910_models.DeleteKvRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteKvResponse:
+        """
+        @summary 删除Namespace的Key-Value对
+        
+        @param request: DeleteKvRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteKvResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteKv',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteKvResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_kv(
+        self,
+        request: esa20240910_models.DeleteKvRequest,
+    ) -> esa20240910_models.DeleteKvResponse:
+        """
+        @summary 删除Namespace的Key-Value对
+        
+        @param request: DeleteKvRequest
+        @return: DeleteKvResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_kv_with_options(request, runtime)
+
+    async def delete_kv_async(
+        self,
+        request: esa20240910_models.DeleteKvRequest,
+    ) -> esa20240910_models.DeleteKvResponse:
+        """
+        @summary 删除Namespace的Key-Value对
+        
+        @param request: DeleteKvRequest
+        @return: DeleteKvResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_kv_with_options_async(request, runtime)
+
+    def delete_kv_namespace_with_options(
+        self,
+        request: esa20240910_models.DeleteKvNamespaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteKvNamespaceResponse:
+        """
+        @summary 删除Namespace
+        
+        @param request: DeleteKvNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteKvNamespaceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteKvNamespace',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteKvNamespaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_kv_namespace_with_options_async(
+        self,
+        request: esa20240910_models.DeleteKvNamespaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteKvNamespaceResponse:
+        """
+        @summary 删除Namespace
+        
+        @param request: DeleteKvNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteKvNamespaceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteKvNamespace',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteKvNamespaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_kv_namespace(
+        self,
+        request: esa20240910_models.DeleteKvNamespaceRequest,
+    ) -> esa20240910_models.DeleteKvNamespaceResponse:
+        """
+        @summary 删除Namespace
+        
+        @param request: DeleteKvNamespaceRequest
+        @return: DeleteKvNamespaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_kv_namespace_with_options(request, runtime)
+
+    async def delete_kv_namespace_async(
+        self,
+        request: esa20240910_models.DeleteKvNamespaceRequest,
+    ) -> esa20240910_models.DeleteKvNamespaceResponse:
+        """
+        @summary 删除Namespace
+        
+        @param request: DeleteKvNamespaceRequest
+        @return: DeleteKvNamespaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_kv_namespace_with_options_async(request, runtime)
+
     def delete_list_with_options(
         self,
         request: esa20240910_models.DeleteListRequest,
@@ -5661,6 +5849,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_iprange_list_with_options_async(runtime)
 
+    def describe_kv_account_status_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DescribeKvAccountStatusResponse:
+        """
+        @summary 查询账户的KV状态信
+        
+        @param request: DescribeKvAccountStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeKvAccountStatusResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeKvAccountStatus',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DescribeKvAccountStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_kv_account_status_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DescribeKvAccountStatusResponse:
+        """
+        @summary 查询账户的KV状态信
+        
+        @param request: DescribeKvAccountStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeKvAccountStatusResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeKvAccountStatus',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DescribeKvAccountStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_kv_account_status(self) -> esa20240910_models.DescribeKvAccountStatusResponse:
+        """
+        @summary 查询账户的KV状态信
+        
+        @return: DescribeKvAccountStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_kv_account_status_with_options(runtime)
+
+    async def describe_kv_account_status_async(self) -> esa20240910_models.DescribeKvAccountStatusResponse:
+        """
+        @summary 查询账户的KV状态信
+        
+        @return: DescribeKvAccountStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_kv_account_status_with_options_async(runtime)
+
     def describe_preload_tasks_with_options(
         self,
         request: esa20240910_models.DescribePreloadTasksRequest,
@@ -6318,6 +6580,172 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_cache_reserve_specification_with_options_async(runtime)
+
+    def get_kv_with_options(
+        self,
+        request: esa20240910_models.GetKvRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetKvResponse:
+        """
+        @summary 查询Key-Value对的某个Key值
+        
+        @param request: GetKvRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetKvResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetKv',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetKvResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_kv_with_options_async(
+        self,
+        request: esa20240910_models.GetKvRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetKvResponse:
+        """
+        @summary 查询Key-Value对的某个Key值
+        
+        @param request: GetKvRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetKvResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetKv',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetKvResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_kv(
+        self,
+        request: esa20240910_models.GetKvRequest,
+    ) -> esa20240910_models.GetKvResponse:
+        """
+        @summary 查询Key-Value对的某个Key值
+        
+        @param request: GetKvRequest
+        @return: GetKvResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_kv_with_options(request, runtime)
+
+    async def get_kv_async(
+        self,
+        request: esa20240910_models.GetKvRequest,
+    ) -> esa20240910_models.GetKvResponse:
+        """
+        @summary 查询Key-Value对的某个Key值
+        
+        @param request: GetKvRequest
+        @return: GetKvResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_kv_with_options_async(request, runtime)
+
+    def get_kv_account_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetKvAccountResponse:
+        """
+        @summary 列出账号下的NS
+        
+        @param request: GetKvAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetKvAccountResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetKvAccount',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetKvAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_kv_account_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetKvAccountResponse:
+        """
+        @summary 列出账号下的NS
+        
+        @param request: GetKvAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetKvAccountResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetKvAccount',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetKvAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_kv_account(self) -> esa20240910_models.GetKvAccountResponse:
+        """
+        @summary 列出账号下的NS
+        
+        @return: GetKvAccountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_kv_account_with_options(runtime)
+
+    async def get_kv_account_async(self) -> esa20240910_models.GetKvAccountResponse:
+        """
+        @summary 列出账号下的NS
+        
+        @return: GetKvAccountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_kv_account_with_options_async(runtime)
 
     def get_kv_namespace_with_options(
         self,

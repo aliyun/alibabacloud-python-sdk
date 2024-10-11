@@ -8861,6 +8861,206 @@ class DeleteCustomScenePolicyResponse(TeaModel):
         return self
 
 
+class DeleteKvRequest(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        namespace: str = None,
+    ):
+        # This parameter is required.
+        self.key = key
+        # This parameter is required.
+        self.namespace = namespace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        return self
+
+
+class DeleteKvResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteKvResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteKvResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteKvResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteKvNamespaceRequest(TeaModel):
+    def __init__(
+        self,
+        namespace: str = None,
+    ):
+        # This parameter is required.
+        self.namespace = namespace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        return self
+
+
+class DeleteKvNamespaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteKvNamespaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteKvNamespaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteKvNamespaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteListRequest(TeaModel):
     def __init__(
         self,
@@ -10985,6 +11185,80 @@ class DescribeIPRangeListResponse(TeaModel):
         return self
 
 
+class DescribeKvAccountStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeKvAccountStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeKvAccountStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeKvAccountStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribePreloadTasksRequest(TeaModel):
     def __init__(
         self,
@@ -11971,6 +12245,314 @@ class GetCacheReserveSpecificationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetCacheReserveSpecificationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetKvRequest(TeaModel):
+    def __init__(
+        self,
+        base_64: bool = None,
+        key: str = None,
+        namespace: str = None,
+    ):
+        self.base_64 = base_64
+        # This parameter is required.
+        self.key = key
+        # This parameter is required.
+        self.namespace = namespace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.base_64 is not None:
+            result['Base64'] = self.base_64
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Base64') is not None:
+            self.base_64 = m.get('Base64')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        return self
+
+
+class GetKvResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        value: str = None,
+    ):
+        self.request_id = request_id
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetKvResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetKvResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetKvResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetKvAccountResponseBodyNamespaceList(TeaModel):
+    def __init__(
+        self,
+        capacity: int = None,
+        capacity_string: str = None,
+        capacity_used: int = None,
+        capacity_used_string: str = None,
+        description: str = None,
+        namespace: str = None,
+        namespace_id: str = None,
+        status: str = None,
+    ):
+        self.capacity = capacity
+        self.capacity_string = capacity_string
+        self.capacity_used = capacity_used
+        self.capacity_used_string = capacity_used_string
+        self.description = description
+        self.namespace = namespace
+        self.namespace_id = namespace_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.capacity is not None:
+            result['Capacity'] = self.capacity
+        if self.capacity_string is not None:
+            result['CapacityString'] = self.capacity_string
+        if self.capacity_used is not None:
+            result['CapacityUsed'] = self.capacity_used
+        if self.capacity_used_string is not None:
+            result['CapacityUsedString'] = self.capacity_used_string
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Capacity') is not None:
+            self.capacity = m.get('Capacity')
+        if m.get('CapacityString') is not None:
+            self.capacity_string = m.get('CapacityString')
+        if m.get('CapacityUsed') is not None:
+            self.capacity_used = m.get('CapacityUsed')
+        if m.get('CapacityUsedString') is not None:
+            self.capacity_used_string = m.get('CapacityUsedString')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetKvAccountResponseBody(TeaModel):
+    def __init__(
+        self,
+        capacity: int = None,
+        capacity_string: str = None,
+        capacity_used: int = None,
+        capacity_used_string: str = None,
+        namespace_list: List[GetKvAccountResponseBodyNamespaceList] = None,
+        namespace_quota: int = None,
+        namespace_used: int = None,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.capacity = capacity
+        self.capacity_string = capacity_string
+        self.capacity_used = capacity_used
+        self.capacity_used_string = capacity_used_string
+        self.namespace_list = namespace_list
+        self.namespace_quota = namespace_quota
+        self.namespace_used = namespace_used
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        if self.namespace_list:
+            for k in self.namespace_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.capacity is not None:
+            result['Capacity'] = self.capacity
+        if self.capacity_string is not None:
+            result['CapacityString'] = self.capacity_string
+        if self.capacity_used is not None:
+            result['CapacityUsed'] = self.capacity_used
+        if self.capacity_used_string is not None:
+            result['CapacityUsedString'] = self.capacity_used_string
+        result['NamespaceList'] = []
+        if self.namespace_list is not None:
+            for k in self.namespace_list:
+                result['NamespaceList'].append(k.to_map() if k else None)
+        if self.namespace_quota is not None:
+            result['NamespaceQuota'] = self.namespace_quota
+        if self.namespace_used is not None:
+            result['NamespaceUsed'] = self.namespace_used
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Capacity') is not None:
+            self.capacity = m.get('Capacity')
+        if m.get('CapacityString') is not None:
+            self.capacity_string = m.get('CapacityString')
+        if m.get('CapacityUsed') is not None:
+            self.capacity_used = m.get('CapacityUsed')
+        if m.get('CapacityUsedString') is not None:
+            self.capacity_used_string = m.get('CapacityUsedString')
+        self.namespace_list = []
+        if m.get('NamespaceList') is not None:
+            for k in m.get('NamespaceList'):
+                temp_model = GetKvAccountResponseBodyNamespaceList()
+                self.namespace_list.append(temp_model.from_map(k))
+        if m.get('NamespaceQuota') is not None:
+            self.namespace_quota = m.get('NamespaceQuota')
+        if m.get('NamespaceUsed') is not None:
+            self.namespace_used = m.get('NamespaceUsed')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetKvAccountResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetKvAccountResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetKvAccountResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

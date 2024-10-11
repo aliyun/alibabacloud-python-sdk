@@ -1,3 +1,11 @@
+2024-10-11 Version: 2.1.0
+- Support API DeleteKv.
+- Support API DeleteKvNamespace.
+- Support API DescribeKvAccountStatus.
+- Support API GetKv.
+- Support API GetKvAccount.
+
+
 2024-10-11 Version: 2.0.1
 - Update API CreateRecord: update param HostPolicy.
 - Update API UpdateRecord: update param HostPolicy.
