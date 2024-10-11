@@ -477,7 +477,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.CreateEndpointResponse:
         """
-        @summary 创建链接地址
+        @summary 申请外网地址
         
         @param request: CreateEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -518,7 +518,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.CreateEndpointResponse:
         """
-        @summary 创建链接地址
+        @summary 申请外网地址
         
         @param request: CreateEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -558,7 +558,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.CreateEndpointRequest,
     ) -> clickhouse_20230522_models.CreateEndpointResponse:
         """
-        @summary 创建链接地址
+        @summary 申请外网地址
         
         @param request: CreateEndpointRequest
         @return: CreateEndpointResponse
@@ -571,7 +571,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.CreateEndpointRequest,
     ) -> clickhouse_20230522_models.CreateEndpointResponse:
         """
-        @summary 创建链接地址
+        @summary 申请外网地址
         
         @param request: CreateEndpointRequest
         @return: CreateEndpointResponse
