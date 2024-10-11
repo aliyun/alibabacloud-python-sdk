@@ -1,3 +1,8 @@
+2024-10-11 Version: 3.3.0
+- Support API ChangeResourceGroup.
+- Update API GetPlayInfo: update response param.
+
+
 2024-08-21 Version: 3.2.0
 - Support API DescribeVodSSLCertificateList.
 - Support API SetVodDomainSSLCertificate.

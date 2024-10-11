@@ -1,7 +1,287 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List
+from typing import List, Dict
+
+
+class AppInfoDTOPlatforms(TeaModel):
+    def __init__(
+        self,
+        item_id: str = None,
+        license_item_ids: List[str] = None,
+        pkg_name: str = None,
+        pkg_signature: str = None,
+        platform_type: int = None,
+        type: int = None,
+    ):
+        self.item_id = item_id
+        self.license_item_ids = license_item_ids
+        self.pkg_name = pkg_name
+        self.pkg_signature = pkg_signature
+        self.platform_type = platform_type
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.item_id is not None:
+            result['ItemId'] = self.item_id
+        if self.license_item_ids is not None:
+            result['LicenseItemIds'] = self.license_item_ids
+        if self.pkg_name is not None:
+            result['PkgName'] = self.pkg_name
+        if self.pkg_signature is not None:
+            result['PkgSignature'] = self.pkg_signature
+        if self.platform_type is not None:
+            result['PlatformType'] = self.platform_type
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ItemId') is not None:
+            self.item_id = m.get('ItemId')
+        if m.get('LicenseItemIds') is not None:
+            self.license_item_ids = m.get('LicenseItemIds')
+        if m.get('PkgName') is not None:
+            self.pkg_name = m.get('PkgName')
+        if m.get('PkgSignature') is not None:
+            self.pkg_signature = m.get('PkgSignature')
+        if m.get('PlatformType') is not None:
+            self.platform_type = m.get('PlatformType')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class AppInfoDTO(TeaModel):
+    def __init__(
+        self,
+        app_name: str = None,
+        app_type: int = None,
+        gmt_create: str = None,
+        item_id: str = None,
+        platforms: List[AppInfoDTOPlatforms] = None,
+        user_id: int = None,
+    ):
+        self.app_name = app_name
+        self.app_type = app_type
+        self.gmt_create = gmt_create
+        self.item_id = item_id
+        self.platforms = platforms
+        self.user_id = user_id
+
+    def validate(self):
+        if self.platforms:
+            for k in self.platforms:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.app_type is not None:
+            result['AppType'] = self.app_type
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.item_id is not None:
+            result['ItemId'] = self.item_id
+        result['Platforms'] = []
+        if self.platforms is not None:
+            for k in self.platforms:
+                result['Platforms'].append(k.to_map() if k else None)
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('AppType') is not None:
+            self.app_type = m.get('AppType')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('ItemId') is not None:
+            self.item_id = m.get('ItemId')
+        self.platforms = []
+        if m.get('Platforms') is not None:
+            for k in m.get('Platforms'):
+                temp_model = AppInfoDTOPlatforms()
+                self.platforms.append(temp_model.from_map(k))
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class LicenseInstanceAppDTOLicenseConfigs(TeaModel):
+    def __init__(
+        self,
+        business_type: str = None,
+        feature_ids: str = None,
+        sdk_id: int = None,
+        sdk_name: str = None,
+        subscription: str = None,
+        subscription_imp: str = None,
+        subscription_pkg: str = None,
+    ):
+        self.business_type = business_type
+        self.feature_ids = feature_ids
+        self.sdk_id = sdk_id
+        self.sdk_name = sdk_name
+        self.subscription = subscription
+        self.subscription_imp = subscription_imp
+        self.subscription_pkg = subscription_pkg
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_type is not None:
+            result['BusinessType'] = self.business_type
+        if self.feature_ids is not None:
+            result['FeatureIds'] = self.feature_ids
+        if self.sdk_id is not None:
+            result['SdkId'] = self.sdk_id
+        if self.sdk_name is not None:
+            result['SdkName'] = self.sdk_name
+        if self.subscription is not None:
+            result['Subscription'] = self.subscription
+        if self.subscription_imp is not None:
+            result['SubscriptionImp'] = self.subscription_imp
+        if self.subscription_pkg is not None:
+            result['SubscriptionPkg'] = self.subscription_pkg
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessType') is not None:
+            self.business_type = m.get('BusinessType')
+        if m.get('FeatureIds') is not None:
+            self.feature_ids = m.get('FeatureIds')
+        if m.get('SdkId') is not None:
+            self.sdk_id = m.get('SdkId')
+        if m.get('SdkName') is not None:
+            self.sdk_name = m.get('SdkName')
+        if m.get('Subscription') is not None:
+            self.subscription = m.get('Subscription')
+        if m.get('SubscriptionImp') is not None:
+            self.subscription_imp = m.get('SubscriptionImp')
+        if m.get('SubscriptionPkg') is not None:
+            self.subscription_pkg = m.get('SubscriptionPkg')
+        return self
+
+
+class LicenseInstanceAppDTO(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        begin_on: str = None,
+        contract_no: str = None,
+        creation_time: str = None,
+        expired_on: str = None,
+        instance_id: str = None,
+        item_id: str = None,
+        license_configs: List[LicenseInstanceAppDTOLicenseConfigs] = None,
+        modification_time: str = None,
+        status: str = None,
+        user_id: int = None,
+    ):
+        self.app_id = app_id
+        self.begin_on = begin_on
+        self.contract_no = contract_no
+        self.creation_time = creation_time
+        self.expired_on = expired_on
+        self.instance_id = instance_id
+        self.item_id = item_id
+        self.license_configs = license_configs
+        self.modification_time = modification_time
+        self.status = status
+        self.user_id = user_id
+
+    def validate(self):
+        if self.license_configs:
+            for k in self.license_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.begin_on is not None:
+            result['BeginOn'] = self.begin_on
+        if self.contract_no is not None:
+            result['ContractNo'] = self.contract_no
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.expired_on is not None:
+            result['ExpiredOn'] = self.expired_on
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.item_id is not None:
+            result['ItemId'] = self.item_id
+        result['LicenseConfigs'] = []
+        if self.license_configs is not None:
+            for k in self.license_configs:
+                result['LicenseConfigs'].append(k.to_map() if k else None)
+        if self.modification_time is not None:
+            result['ModificationTime'] = self.modification_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('BeginOn') is not None:
+            self.begin_on = m.get('BeginOn')
+        if m.get('ContractNo') is not None:
+            self.contract_no = m.get('ContractNo')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('ExpiredOn') is not None:
+            self.expired_on = m.get('ExpiredOn')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ItemId') is not None:
+            self.item_id = m.get('ItemId')
+        self.license_configs = []
+        if m.get('LicenseConfigs') is not None:
+            for k in m.get('LicenseConfigs'):
+                temp_model = LicenseInstanceAppDTOLicenseConfigs()
+                self.license_configs.append(temp_model.from_map(k))
+        if m.get('ModificationTime') is not None:
+            self.modification_time = m.get('ModificationTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
 
 
 class AddAITemplateRequest(TeaModel):
@@ -568,7 +848,7 @@ class AddEditingProjectMaterialsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: str = None,
     ):
-        # The ID of the material. Separate multiple material IDs with commas (,). You can specify up to 10 IDs.
+        # Separate multiple material IDs with commas (,). You can specify up to 10 IDs.
         # 
         # >  If you specify multiple materials, make sure that the materials are of the same type as specified in MaterialType.
         # 
@@ -664,7 +944,7 @@ class AddEditingProjectMaterialsResponseBodyMaterialList(TeaModel):
         self.cover_url = cover_url
         # The time when the material was created. The time follows the ISO 8601 standard in the *YYYY-MM-DD**Thh:mm:ss* format. The time is displayed in UTC.
         self.create_time = create_time
-        # The user ID.
+        # The ID of the user.
         self.customer_id = customer_id
         # The description of the material.
         self.description = description
@@ -2263,6 +2543,123 @@ class CancelUrlUploadJobsResponse(TeaModel):
         return self
 
 
+class ChangeResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        resource_group_id: str = None,
+        resource_id: str = None,
+        resource_region_id: str = None,
+        resource_type: str = None,
+    ):
+        # This parameter is required.
+        self.resource_group_id = resource_group_id
+        # This parameter is required.
+        self.resource_id = resource_id
+        # This parameter is required.
+        self.resource_region_id = resource_region_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_region_id is not None:
+            result['ResourceRegionId'] = self.resource_region_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceRegionId') is not None:
+            self.resource_region_id = m.get('ResourceRegionId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class ChangeResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ChangeResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ChangeResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ChangeResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateAppInfoRequest(TeaModel):
     def __init__(
         self,
@@ -2282,6 +2679,7 @@ class CreateAppInfoRequest(TeaModel):
         # *   The description can contain up to 512 characters in length.
         # *   The value must be encoded in UTF-8.
         self.description = description
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -3271,6 +3669,7 @@ class DecryptKMSDataKeyResponseBody(TeaModel):
         self.key_id = key_id
         # The plaintext that is generated after decryption.
         self.plaintext = plaintext
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4108,12 +4507,22 @@ class DeleteEditingProjectMaterialsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: str = None,
     ):
+        # The material ID. Separate multiple material IDs with commas (,).
+        # 
         # This parameter is required.
         self.material_ids = material_ids
+        # The type of the material. Valid values:
+        # 
+        # *   **video**\
+        # *   **audio**\
+        # *   **image**\
+        # 
         # This parameter is required.
         self.material_type = material_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the online editing project.
+        # 
         # This parameter is required.
         self.project_id = project_id
         self.resource_owner_account = resource_owner_account
@@ -4168,6 +4577,7 @@ class DeleteEditingProjectMaterialsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6902,24 +7312,31 @@ class DescribeVodCertificateListResponseBodyCertificateListModelCertListCert(Tea
         last_time: int = None,
         sign_algorithm: str = None,
     ):
+        # The algorithm.
         self.algorithm = algorithm
         # The ID of the certificate.
         self.cert_id = cert_id
+        # The ID of the certificate.
         self.cert_identifier = cert_identifier
         # The name of the certificate.
         self.cert_name = cert_name
         # The common name of the certificate.
         self.common = common
+        # The time when the certificate was created.
         self.create_time = create_time
+        # DomainMatchCert.
         self.domain_match_cert = domain_match_cert
+        # The time when the certificate expired.
         self.end_time = end_time
         # The fingerprint of the certificate.
         self.fingerprint = fingerprint
+        # The ID of the instance.
         self.instance_id = instance_id
         # The certificate authority (CA) that issued the certificate.
         self.issuer = issuer
         # The time when the certificate was issued. Unit: seconds.
         self.last_time = last_time
+        # The signAlgorithm.
         self.sign_algorithm = sign_algorithm
 
     def validate(self):
@@ -7745,6 +8162,7 @@ class DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo(TeaModel):
         self.cert_domain_name = cert_domain_name
         # The time at which the certificate expires. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.cert_expire_time = cert_expire_time
+        # The ID of the certificate.
         self.cert_id = cert_id
         # The validity period of the certificate. Unit: months or years.
         self.cert_life = cert_life
@@ -7752,7 +8170,9 @@ class DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo(TeaModel):
         self.cert_name = cert_name
         # The certificate authority (CA) that issued the certificate.
         self.cert_org = cert_org
+        # The region where the certificate is used.
         self.cert_region = cert_region
+        # The time when the certificate became effective.
         self.cert_start_time = cert_start_time
         # The type of the certificate. Valid values:
         # 
@@ -7760,10 +8180,18 @@ class DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo(TeaModel):
         # *   **cas**: a certificate that is purchased from Certificate Management Service.
         # *   **upload**: a user-uploaded certificate.
         self.cert_type = cert_type
+        # The time at which the certificate was updated.
         self.cert_update_time = cert_update_time
+        # The CNAME status of the domain name.
+        # 
+        # *   **ok**: The domain name points to the CNAME assigned by Alibaba Cloud CDN.
+        # *   **cname_error**: An error occurred and the domain name cannot point to the CNAME.
+        # *   **op_domain_cname_error** : An error occurred to the CNAME of the top-level domain. The domain name cannot point to the CNAME.
+        # *   **unsupport_wildcard**: The wildcard domain name is not supported.
         self.domain_cname_status = domain_cname_status
         # The accelerated domain name whose ICP filing status you want to update.
         self.domain_name = domain_name
+        # The public key of the certificate.
         self.server_certificate = server_certificate
         # The status of the SSL certificate.
         # 
@@ -7900,7 +8328,7 @@ class DescribeVodDomainCertificateInfoResponseBody(TeaModel):
         cert_infos: DescribeVodDomainCertificateInfoResponseBodyCertInfos = None,
         request_id: str = None,
     ):
-        # The certificate information about the domain name.
+        # The certificate information.
         self.cert_infos = cert_infos
         # The ID of the request.
         self.request_id = request_id
@@ -12792,7 +13220,6 @@ class DescribeVodMediaPlayDataRequest(TeaModel):
         # *   **ap-southeast-1**: Singapore
         # *   **ap-southeast-5**: Indonesia (Jakarta)
         # *   **eu-central-1**: Germany (Frankfurt)
-        # *   **ap-south-1**: India (Mumbai) (disabled)
         self.region = region
         # The type of the player SDK. You can specify this parameter to query all playback data generated by using a specific type of player SDK. Valid values:
         # 
@@ -13950,6 +14377,9 @@ class DescribeVodStorageDataRequest(TeaModel):
         storage: str = None,
         storage_type: str = None,
     ):
+        # The ID of the application. 
+        # 
+        # *   Default value: **app-1000000**.
         self.app_id = app_id
         # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         # 
@@ -18511,6 +18941,7 @@ class GetAppInfosResponseBodyAppInfoList(TeaModel):
         self.description = description
         # The last time when the application was modified. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.modification_time = modification_time
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The status of the application. Valid values:
         # 
@@ -18579,7 +19010,7 @@ class GetAppInfosResponseBody(TeaModel):
         non_exist_app_ids: List[str] = None,
         request_id: str = None,
     ):
-        # The details of each application.
+        # The details of applications.
         self.app_info_list = app_info_list
         # The HTTP status code that is returned.
         self.code = code
@@ -24978,6 +25409,7 @@ class GetMezzanineInfoResponseBodyMezzanine(TeaModel):
         # 
         # > If you specify an OSS URL for the video stream, the video stream must be in the MP4 format.
         self.output_type = output_type
+        # The preprocess status od the media.
         self.preprocess_status = preprocess_status
         # The period of time in which the object remains in the restored state.
         self.restore_expiration = restore_expiration
@@ -25377,6 +25809,7 @@ class GetPlayInfoResponseBodyPlayInfoListPlayInfo(TeaModel):
         definition: str = None,
         duration: str = None,
         encrypt: int = None,
+        encrypt_mode: str = None,
         encrypt_type: str = None,
         format: str = None,
         fps: str = None,
@@ -25421,6 +25854,7 @@ class GetPlayInfoResponseBodyPlayInfoListPlayInfo(TeaModel):
         # *   **0**: The media stream is not encrypted.
         # *   **1**: The media stream is encrypted.
         self.encrypt = encrypt
+        self.encrypt_mode = encrypt_mode
         # The encryption type of the media stream. Valid values:
         # 
         # *   **AliyunVoDEncryption**: Alibaba Cloud proprietary cryptography
@@ -25502,6 +25936,8 @@ class GetPlayInfoResponseBodyPlayInfoListPlayInfo(TeaModel):
             result['Duration'] = self.duration
         if self.encrypt is not None:
             result['Encrypt'] = self.encrypt
+        if self.encrypt_mode is not None:
+            result['EncryptMode'] = self.encrypt_mode
         if self.encrypt_type is not None:
             result['EncryptType'] = self.encrypt_type
         if self.format is not None:
@@ -25552,6 +25988,8 @@ class GetPlayInfoResponseBodyPlayInfoListPlayInfo(TeaModel):
             self.duration = m.get('Duration')
         if m.get('Encrypt') is not None:
             self.encrypt = m.get('Encrypt')
+        if m.get('EncryptMode') is not None:
+            self.encrypt_mode = m.get('EncryptMode')
         if m.get('EncryptType') is not None:
             self.encrypt_type = m.get('EncryptType')
         if m.get('Format') is not None:
@@ -29788,12 +30226,13 @@ class ListAppInfoRequest(TeaModel):
         resource_group_id: str = None,
         status: str = None,
     ):
-        # The number of the page to return. By default, pages start from page 1.
+        # The page number. Default value: **1**.
         self.page_no = page_no
-        # The number of entries to return on each page. Default value: **10**. Maximum value: **100**.
+        # The number of entries per page. Default value: **10**. Maximum value: **100**.
         self.page_size = page_size
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The status of the application. After an application is created, it enters the **Normal** state. Valid values:
+        # The status of the application. You can specify the status of the applications that you want to query. After an application is created, it enters the **Normal** state. Valid values:
         # 
         # *   **Normal**\
         # *   **Disable**\
@@ -29854,7 +30293,9 @@ class ListAppInfoResponseBodyAppInfoList(TeaModel):
         self.description = description
         # The last time when the application was modified. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.modification_time = modification_time
+        # 地域。
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The status of the application. Valid values:
         # 
@@ -29926,7 +30367,7 @@ class ListAppInfoResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The details of each application.
+        # The details of applications.
         self.app_info_list = app_info_list
         # The ID of the request.
         self.request_id = request_id
@@ -32031,6 +32472,7 @@ class ListWatermarkResponseBody(TeaModel):
         request_id: str = None,
         watermark_infos: List[ListWatermarkResponseBodyWatermarkInfos] = None,
     ):
+        # The request ID.
         self.request_id = request_id
         # The information about the watermark template.
         self.watermark_infos = watermark_infos
@@ -32253,7 +32695,15 @@ class PreloadVodObjectCachesRequest(TeaModel):
         security_token: str = None,
         with_header: str = None,
     ):
+        # The acceleration region in which you want to prefetch content. If you do not specify a region, the value overseas is used.
+        # 
+        # *   **domestic**: Chinese mainland
+        # *   **overseas**: outside the Chinese mainland
         self.area = area
+        # Specifies whether to prefetch content to POPs. Valid values:
+        # 
+        # *   **true**: prefetches content to nodes that include L2 DCDN nodes.
+        # *   **false**: prefetches content to L2 POPs or L3 POPs.
         self.l_2preload = l_2preload
         # The URL of the file to be prefetched. Separate multiple URLs with line breaks (\\n or \\r\\n).
         # 
@@ -32261,6 +32711,7 @@ class PreloadVodObjectCachesRequest(TeaModel):
         self.object_path = object_path
         self.owner_id = owner_id
         self.security_token = security_token
+        # The custom header for prefetch in the JSON format.
         self.with_header = with_header
 
     def validate(self):
@@ -35360,6 +35811,8 @@ class SetDefaultAITemplateRequest(TeaModel):
         self,
         template_id: str = None,
     ):
+        # The ID of the AI template.
+        # 
         # This parameter is required.
         self.template_id = template_id
 
@@ -35389,7 +35842,9 @@ class SetDefaultAITemplateResponseBody(TeaModel):
         request_id: str = None,
         template_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The ID of the AI template.
         self.template_id = template_id
 
     def validate(self):
@@ -35815,15 +36270,15 @@ class SetMessageCallbackRequest(TeaModel):
         # The callback method. Valid values:
         # 
         # *   **HTTP**\
-        # *   **MNS**\
+        # *   **Simple Message Queue(formerly MNS)**\
         self.callback_type = callback_type
         # The callback URL. This parameter is required if you set CallbackType to **HTTP**. The callback URL cannot exceed 256 bytes in length. You can specify only one callback URL.
         self.callback_url = callback_url
         # The type of the callback event. If you do not set this parameter, notifications for all types of events are disabled. If you set this parameter to **ALL**, notifications for all types of events are enabled. You can specify the event types for which notifications are enabled. Separate multiple event types with commas (,). For more information about the valid values of this parameter, see [Overview](https://help.aliyun.com/document_detail/55627.html).
         self.event_type_list = event_type_list
-        # The public endpoint of Message Service (MNS). This parameter only takes effect when the CallbackType parameter is set to **MNS**. To obtain the public endpoint, log on to the [MNS console](https://account.aliyun.com/login/login.html) and click **Get Endpoint** in the upper-right corner of the Topics page. For more information, see [Endpoint](https://help.aliyun.com/document_detail/27480.html).
+        # The public endpoint of Message Service (MNS). This parameter only takes effect when the CallbackType parameter is set to **Simple Message Queue(formerly MNS)**. To obtain the public endpoint, log on to the [Simple Message Queue(formerly MNS) console](https://account.aliyun.com/login/login.html) and click **Get Endpoint** in the upper-right corner of the Topics page. For more information, see [Endpoint](https://help.aliyun.com/document_detail/27480.html).
         self.mns_endpoint = mns_endpoint
-        # The name of the MNS queue. You can obtain the name of the MNS queue on the **Queues** page in the [MNS console](https://account.aliyun.com/login/login.html). This parameter is required when you set CallbackType to **MNS**.
+        # The name of the Simple Message Queue(formerly MNS). You can obtain the name of the Simple Message Queue(formerly MNS) on the **Queues** page in the [Simple Message Queue(formerly MNS) console](https://account.aliyun.com/login/login.html). This parameter is required when you set CallbackType to **Simple Message Queue(formerly MNS)**.
         self.mns_queue_name = mns_queue_name
         self.owner_account = owner_account
 
@@ -39705,11 +40160,15 @@ class UpdateVodDomainRequest(TeaModel):
         sources: str = None,
         top_level_domain: str = None,
     ):
+        # The domain name.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
         self.security_token = security_token
+        # The information about the addresses of origin servers.
         self.sources = sources
+        # The top-level domain.
         self.top_level_domain = top_level_domain
 
     def validate(self):
@@ -39753,6 +40212,7 @@ class UpdateVodDomainResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

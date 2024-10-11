@@ -1812,6 +1812,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_url_upload_jobs_with_options_async(request, runtime)
 
+    def change_resource_group_with_options(
+        self,
+        request: vod_20170321_models.ChangeResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.ChangeResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_resource_group_with_options_async(
+        self,
+        request: vod_20170321_models.ChangeResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.ChangeResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_resource_group(
+        self,
+        request: vod_20170321_models.ChangeResourceGroupRequest,
+    ) -> vod_20170321_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.change_resource_group_with_options(request, runtime)
+
+    async def change_resource_group_async(
+        self,
+        request: vod_20170321_models.ChangeResourceGroupRequest,
+    ) -> vod_20170321_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.change_resource_group_with_options_async(request, runtime)
+
     def create_app_info_with_options(
         self,
         request: vod_20170321_models.CreateAppInfoRequest,
@@ -6504,15 +6612,16 @@ class Client(OpenApiClient):
         """
         @summary Queries the number of queries per second (QPS) for one or more accelerated domain names. Data is collected every 5 minutes. You can query data collected in the last 90 days.
         
-        @description  You can call this operation up to 100 times per second per account.
+        @description  This operation is available only in the China (Shanghai) region.
+        You can call this operation up to 100 times per second per account.
         If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
         *Time granularity**\
-        The time granularity varies with the time range specified by the Interval parameter. The following table describes the time period within which historical data is available and the data delay.
+        The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
         |Time granularity|Maximum time range per query|Historical data available|Data delay|
         |---|---|---|---|
         |5 minutes|3 days|93 days|15 minutes|
         |1 hour|31 days|186 days|3 to 4 hours|
-        |1 day|366 days|366 days|4 hours in most cases, not more than 24 hours|
+        |1 day|366 days|366 days|4 to 24 hours|
         ---\
         
         @param request: DescribeVodDomainQpsDataRequest
@@ -6562,15 +6671,16 @@ class Client(OpenApiClient):
         """
         @summary Queries the number of queries per second (QPS) for one or more accelerated domain names. Data is collected every 5 minutes. You can query data collected in the last 90 days.
         
-        @description  You can call this operation up to 100 times per second per account.
+        @description  This operation is available only in the China (Shanghai) region.
+        You can call this operation up to 100 times per second per account.
         If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
         *Time granularity**\
-        The time granularity varies with the time range specified by the Interval parameter. The following table describes the time period within which historical data is available and the data delay.
+        The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
         |Time granularity|Maximum time range per query|Historical data available|Data delay|
         |---|---|---|---|
         |5 minutes|3 days|93 days|15 minutes|
         |1 hour|31 days|186 days|3 to 4 hours|
-        |1 day|366 days|366 days|4 hours in most cases, not more than 24 hours|
+        |1 day|366 days|366 days|4 to 24 hours|
         ---\
         
         @param request: DescribeVodDomainQpsDataRequest
@@ -6619,15 +6729,16 @@ class Client(OpenApiClient):
         """
         @summary Queries the number of queries per second (QPS) for one or more accelerated domain names. Data is collected every 5 minutes. You can query data collected in the last 90 days.
         
-        @description  You can call this operation up to 100 times per second per account.
+        @description  This operation is available only in the China (Shanghai) region.
+        You can call this operation up to 100 times per second per account.
         If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
         *Time granularity**\
-        The time granularity varies with the time range specified by the Interval parameter. The following table describes the time period within which historical data is available and the data delay.
+        The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
         |Time granularity|Maximum time range per query|Historical data available|Data delay|
         |---|---|---|---|
         |5 minutes|3 days|93 days|15 minutes|
         |1 hour|31 days|186 days|3 to 4 hours|
-        |1 day|366 days|366 days|4 hours in most cases, not more than 24 hours|
+        |1 day|366 days|366 days|4 to 24 hours|
         ---\
         
         @param request: DescribeVodDomainQpsDataRequest
@@ -6643,15 +6754,16 @@ class Client(OpenApiClient):
         """
         @summary Queries the number of queries per second (QPS) for one or more accelerated domain names. Data is collected every 5 minutes. You can query data collected in the last 90 days.
         
-        @description  You can call this operation up to 100 times per second per account.
+        @description  This operation is available only in the China (Shanghai) region.
+        You can call this operation up to 100 times per second per account.
         If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
         *Time granularity**\
-        The time granularity varies with the time range specified by the Interval parameter. The following table describes the time period within which historical data is available and the data delay.
+        The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
         |Time granularity|Maximum time range per query|Historical data available|Data delay|
         |---|---|---|---|
         |5 minutes|3 days|93 days|15 minutes|
         |1 hour|31 days|186 days|3 to 4 hours|
-        |1 day|366 days|366 days|4 hours in most cases, not more than 24 hours|
+        |1 day|366 days|366 days|4 to 24 hours|
         ---\
         
         @param request: DescribeVodDomainQpsDataRequest
@@ -14432,7 +14544,10 @@ class Client(OpenApiClient):
         """
         @summary Queries the applications that you are authorized to manage based on query conditions.
         
-        @description Supports filtering queries by application status.
+        @description ### [](#)Usage notes
+        You can query applications based on states.
+        ### [](#qps-)QPS limit
+        You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations](https://help.aliyun.com/document_detail/342790.html).
         
         @param request: ListAppInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14475,7 +14590,10 @@ class Client(OpenApiClient):
         """
         @summary Queries the applications that you are authorized to manage based on query conditions.
         
-        @description Supports filtering queries by application status.
+        @description ### [](#)Usage notes
+        You can query applications based on states.
+        ### [](#qps-)QPS limit
+        You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations](https://help.aliyun.com/document_detail/342790.html).
         
         @param request: ListAppInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14517,7 +14635,10 @@ class Client(OpenApiClient):
         """
         @summary Queries the applications that you are authorized to manage based on query conditions.
         
-        @description Supports filtering queries by application status.
+        @description ### [](#)Usage notes
+        You can query applications based on states.
+        ### [](#qps-)QPS limit
+        You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations](https://help.aliyun.com/document_detail/342790.html).
         
         @param request: ListAppInfoRequest
         @return: ListAppInfoResponse
@@ -14532,7 +14653,10 @@ class Client(OpenApiClient):
         """
         @summary Queries the applications that you are authorized to manage based on query conditions.
         
-        @description Supports filtering queries by application status.
+        @description ### [](#)Usage notes
+        You can query applications based on states.
+        ### [](#qps-)QPS limit
+        You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations](https://help.aliyun.com/document_detail/342790.html).
         
         @param request: ListAppInfoRequest
         @return: ListAppInfoResponse
