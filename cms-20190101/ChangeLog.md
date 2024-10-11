@@ -1,3 +1,6 @@
+2024-10-11 Version: 3.1.2
+- Generated python 2019-01-01 for Cms.
+
 2024-09-26 Version: 3.1.1
 - Update API DescribeSiteMonitorAttribute: update response param.
 

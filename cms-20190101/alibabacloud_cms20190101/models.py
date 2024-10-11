@@ -36077,6 +36077,10 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCitiesIspCity(TeaMo
         self.isp = isp
         # The carrier name.
         self.isp_name = isp_name
+        # 探测点网络类型。取值：
+        # IDC: IDC机房
+        # LASTMILE: 网民家宽
+        # MOBILE: 移动蜂窝网
         self.type = type
 
     def validate(self):
@@ -36666,6 +36670,7 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
         # *   txt: text
         self.response_format = response_format
         self.retry_delay = retry_delay
+        # 是否开启页面截图
         self.screen_shot = screen_shot
         self.strict_mode = strict_mode
         # The timeout period. Unit: milliseconds.
@@ -36922,6 +36927,7 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsVpcConfig(TeaModel):
         vpc_id: str = None,
         vswitch_id: str = None,
     ):
+        # 内网拨测任务的目标站点所在地域。
         self.region = region
         self.security_group_id = security_group_id
         self.vpc_id = vpc_id
