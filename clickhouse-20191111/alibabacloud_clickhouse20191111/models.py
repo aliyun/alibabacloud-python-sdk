@@ -7683,6 +7683,7 @@ class DescribeDBClustersResponseBodyDBClustersDBCluster(TeaModel):
         port: int = None,
         region_id: str = None,
         resource_group_id: str = None,
+        scale_out_disable_write_windows: str = None,
         scale_out_status: DescribeDBClustersResponseBodyDBClustersDBClusterScaleOutStatus = None,
         storage_type: str = None,
         tags: DescribeDBClustersResponseBodyDBClustersDBClusterTags = None,
@@ -7791,6 +7792,7 @@ class DescribeDBClustersResponseBodyDBClustersDBCluster(TeaModel):
         self.region_id = region_id
         # The ID of the resource group to which the cluster belongs.
         self.resource_group_id = resource_group_id
+        self.scale_out_disable_write_windows = scale_out_disable_write_windows
         # The status of a data migration task.
         self.scale_out_status = scale_out_status
         # The storage type of the cluster. Valid values:
@@ -7873,6 +7875,8 @@ class DescribeDBClustersResponseBodyDBClustersDBCluster(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.scale_out_disable_write_windows is not None:
+            result['ScaleOutDisableWriteWindows'] = self.scale_out_disable_write_windows
         if self.scale_out_status is not None:
             result['ScaleOutStatus'] = self.scale_out_status.to_map()
         if self.storage_type is not None:
@@ -7941,6 +7945,8 @@ class DescribeDBClustersResponseBodyDBClustersDBCluster(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ScaleOutDisableWriteWindows') is not None:
+            self.scale_out_disable_write_windows = m.get('ScaleOutDisableWriteWindows')
         if m.get('ScaleOutStatus') is not None:
             temp_model = DescribeDBClustersResponseBodyDBClustersDBClusterScaleOutStatus()
             self.scale_out_status = temp_model.from_map(m['ScaleOutStatus'])
@@ -11305,6 +11311,7 @@ class ModifyDBClusterRequest(TeaModel):
         dbnode_group_count: str = None,
         dbnode_storage: str = None,
         db_node_storage_type: str = None,
+        disable_write_windows: str = None,
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
@@ -11351,6 +11358,7 @@ class ModifyDBClusterRequest(TeaModel):
         # This parameter is required.
         self.dbnode_storage = dbnode_storage
         self.db_node_storage_type = db_node_storage_type
+        self.disable_write_windows = disable_write_windows
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
@@ -11379,6 +11387,8 @@ class ModifyDBClusterRequest(TeaModel):
             result['DBNodeStorage'] = self.dbnode_storage
         if self.db_node_storage_type is not None:
             result['DbNodeStorageType'] = self.db_node_storage_type
+        if self.disable_write_windows is not None:
+            result['DisableWriteWindows'] = self.disable_write_windows
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -11403,6 +11413,8 @@ class ModifyDBClusterRequest(TeaModel):
             self.dbnode_storage = m.get('DBNodeStorage')
         if m.get('DbNodeStorageType') is not None:
             self.db_node_storage_type = m.get('DbNodeStorageType')
+        if m.get('DisableWriteWindows') is not None:
+            self.disable_write_windows = m.get('DisableWriteWindows')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:

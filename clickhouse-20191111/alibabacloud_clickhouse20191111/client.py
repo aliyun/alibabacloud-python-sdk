@@ -937,6 +937,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20191111_models.CreateAccountAndAuthorityResponse:
         """
+        @summary 创建账号及权限
+        
         @param request: CreateAccountAndAuthorityRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateAccountAndAuthorityResponse
@@ -998,6 +1000,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20191111_models.CreateAccountAndAuthorityResponse:
         """
+        @summary 创建账号及权限
+        
         @param request: CreateAccountAndAuthorityRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateAccountAndAuthorityResponse
@@ -1058,6 +1062,8 @@ class Client(OpenApiClient):
         request: clickhouse_20191111_models.CreateAccountAndAuthorityRequest,
     ) -> clickhouse_20191111_models.CreateAccountAndAuthorityResponse:
         """
+        @summary 创建账号及权限
+        
         @param request: CreateAccountAndAuthorityRequest
         @return: CreateAccountAndAuthorityResponse
         """
@@ -1069,6 +1075,8 @@ class Client(OpenApiClient):
         request: clickhouse_20191111_models.CreateAccountAndAuthorityRequest,
     ) -> clickhouse_20191111_models.CreateAccountAndAuthorityResponse:
         """
+        @summary 创建账号及权限
+        
         @param request: CreateAccountAndAuthorityRequest
         @return: CreateAccountAndAuthorityResponse
         """
@@ -3173,6 +3181,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20191111_models.DescribeBackupsResponse:
         """
+        @summary 查看备份集
+        
         @param request: DescribeBackupsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeBackupsResponse
@@ -3224,6 +3234,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20191111_models.DescribeBackupsResponse:
         """
+        @summary 查看备份集
+        
         @param request: DescribeBackupsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeBackupsResponse
@@ -3274,6 +3286,8 @@ class Client(OpenApiClient):
         request: clickhouse_20191111_models.DescribeBackupsRequest,
     ) -> clickhouse_20191111_models.DescribeBackupsResponse:
         """
+        @summary 查看备份集
+        
         @param request: DescribeBackupsRequest
         @return: DescribeBackupsResponse
         """
@@ -3285,6 +3299,8 @@ class Client(OpenApiClient):
         request: clickhouse_20191111_models.DescribeBackupsRequest,
     ) -> clickhouse_20191111_models.DescribeBackupsResponse:
         """
+        @summary 查看备份集
+        
         @param request: DescribeBackupsRequest
         @return: DescribeBackupsResponse
         """
@@ -6183,6 +6199,8 @@ class Client(OpenApiClient):
             query['DBNodeStorage'] = request.dbnode_storage
         if not UtilClient.is_unset(request.db_node_storage_type):
             query['DbNodeStorageType'] = request.db_node_storage_type
+        if not UtilClient.is_unset(request.disable_write_windows):
+            query['DisableWriteWindows'] = request.disable_write_windows
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -6236,6 +6254,8 @@ class Client(OpenApiClient):
             query['DBNodeStorage'] = request.dbnode_storage
         if not UtilClient.is_unset(request.db_node_storage_type):
             query['DbNodeStorageType'] = request.db_node_storage_type
+        if not UtilClient.is_unset(request.disable_write_windows):
+            query['DisableWriteWindows'] = request.disable_write_windows
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
