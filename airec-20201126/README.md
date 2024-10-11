@@ -5,7 +5,7 @@ English | [简体中文](README-CN.md)
 
 ## Requirements
 
-- Python >= 3.6
+- Python >= 3.7
 
 ## Installation
 
@@ -28,7 +28,7 @@ pip install alibabacloud_airec20201126
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/airec-20201126/ChangeLog.md).
 
 ## References
 
