@@ -2667,6 +2667,7 @@ class AddGatewayAuthRequestExternalAuthZJSON(TeaModel):
         service_id: int = None,
         timeout: int = None,
         token_key: str = None,
+        with_rematch_route: bool = None,
         with_request_body: bool = None,
     ):
         # The header that can be carried in an authentication request.
@@ -2684,6 +2685,7 @@ class AddGatewayAuthRequestExternalAuthZJSON(TeaModel):
         self.timeout = timeout
         # The header that stores a token in an authentication request. In most cases, a token is stored in the Authorization or Cookie header.
         self.token_key = token_key
+        self.with_rematch_route = with_rematch_route
         self.with_request_body = with_request_body
 
     def validate(self):
@@ -2711,6 +2713,8 @@ class AddGatewayAuthRequestExternalAuthZJSON(TeaModel):
             result['Timeout'] = self.timeout
         if self.token_key is not None:
             result['TokenKey'] = self.token_key
+        if self.with_rematch_route is not None:
+            result['WithRematchRoute'] = self.with_rematch_route
         if self.with_request_body is not None:
             result['WithRequestBody'] = self.with_request_body
         return result
@@ -2733,6 +2737,8 @@ class AddGatewayAuthRequestExternalAuthZJSON(TeaModel):
             self.timeout = m.get('Timeout')
         if m.get('TokenKey') is not None:
             self.token_key = m.get('TokenKey')
+        if m.get('WithRematchRoute') is not None:
+            self.with_rematch_route = m.get('WithRematchRoute')
         if m.get('WithRequestBody') is not None:
             self.with_request_body = m.get('WithRequestBody')
         return self
@@ -23068,6 +23074,7 @@ class GetGatewayAuthDetailResponseBodyDataExternalAuthZ(TeaModel):
         service_id: int = None,
         timeout: int = None,
         token_key: str = None,
+        with_rematch_route: bool = None,
         with_request_body: bool = None,
     ):
         self.allow_request_headers = allow_request_headers
@@ -23079,6 +23086,7 @@ class GetGatewayAuthDetailResponseBodyDataExternalAuthZ(TeaModel):
         self.service_id = service_id
         self.timeout = timeout
         self.token_key = token_key
+        self.with_rematch_route = with_rematch_route
         self.with_request_body = with_request_body
 
     def validate(self):
@@ -23109,6 +23117,8 @@ class GetGatewayAuthDetailResponseBodyDataExternalAuthZ(TeaModel):
             result['Timeout'] = self.timeout
         if self.token_key is not None:
             result['TokenKey'] = self.token_key
+        if self.with_rematch_route is not None:
+            result['WithRematchRoute'] = self.with_rematch_route
         if self.with_request_body is not None:
             result['WithRequestBody'] = self.with_request_body
         return result
@@ -23134,6 +23144,8 @@ class GetGatewayAuthDetailResponseBodyDataExternalAuthZ(TeaModel):
             self.timeout = m.get('Timeout')
         if m.get('TokenKey') is not None:
             self.token_key = m.get('TokenKey')
+        if m.get('WithRematchRoute') is not None:
+            self.with_rematch_route = m.get('WithRematchRoute')
         if m.get('WithRequestBody') is not None:
             self.with_request_body = m.get('WithRequestBody')
         return self
@@ -32347,6 +32359,178 @@ class ImportZookeeperDataResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ImportZookeeperDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class InitializeServiceLinkRoleRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        role_name: str = None,
+        token: str = None,
+    ):
+        self.accept_language = accept_language
+        self.role_name = role_name
+        self.token = token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.role_name is not None:
+            result['RoleName'] = self.role_name
+        if self.token is not None:
+            result['Token'] = self.token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('RoleName') is not None:
+            self.role_name = m.get('RoleName')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        return self
+
+
+class InitializeServiceLinkRoleResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        required_permission: str = None,
+        role_name: str = None,
+        service_name: str = None,
+    ):
+        self.required_permission = required_permission
+        self.role_name = role_name
+        self.service_name = service_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.required_permission is not None:
+            result['RequiredPermission'] = self.required_permission
+        if self.role_name is not None:
+            result['RoleName'] = self.role_name
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequiredPermission') is not None:
+            self.required_permission = m.get('RequiredPermission')
+        if m.get('RoleName') is not None:
+            self.role_name = m.get('RoleName')
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
+        return self
+
+
+class InitializeServiceLinkRoleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: InitializeServiceLinkRoleResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = InitializeServiceLinkRoleResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class InitializeServiceLinkRoleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: InitializeServiceLinkRoleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = InitializeServiceLinkRoleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

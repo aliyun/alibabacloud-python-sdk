@@ -13082,6 +13082,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.import_zookeeper_data_with_options_async(request, runtime)
 
+    def initialize_service_link_role_with_options(
+        self,
+        request: mse_20190531_models.InitializeServiceLinkRoleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.InitializeServiceLinkRoleResponse:
+        """
+        @summary 用户授权mseSLR
+        
+        @param request: InitializeServiceLinkRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitializeServiceLinkRoleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.role_name):
+            query['RoleName'] = request.role_name
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='InitializeServiceLinkRole',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.InitializeServiceLinkRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def initialize_service_link_role_with_options_async(
+        self,
+        request: mse_20190531_models.InitializeServiceLinkRoleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.InitializeServiceLinkRoleResponse:
+        """
+        @summary 用户授权mseSLR
+        
+        @param request: InitializeServiceLinkRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitializeServiceLinkRoleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.role_name):
+            query['RoleName'] = request.role_name
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='InitializeServiceLinkRole',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.InitializeServiceLinkRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def initialize_service_link_role(
+        self,
+        request: mse_20190531_models.InitializeServiceLinkRoleRequest,
+    ) -> mse_20190531_models.InitializeServiceLinkRoleResponse:
+        """
+        @summary 用户授权mseSLR
+        
+        @param request: InitializeServiceLinkRoleRequest
+        @return: InitializeServiceLinkRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.initialize_service_link_role_with_options(request, runtime)
+
+    async def initialize_service_link_role_async(
+        self,
+        request: mse_20190531_models.InitializeServiceLinkRoleRequest,
+    ) -> mse_20190531_models.InitializeServiceLinkRoleResponse:
+        """
+        @summary 用户授权mseSLR
+        
+        @param request: InitializeServiceLinkRoleRequest
+        @return: InitializeServiceLinkRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.initialize_service_link_role_with_options_async(request, runtime)
+
     def list_ans_instances_with_options(
         self,
         request: mse_20190531_models.ListAnsInstancesRequest,

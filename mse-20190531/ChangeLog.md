@@ -1,3 +1,9 @@
+2024-10-11 Version: 6.14.0
+- Support API InitializeServiceLinkRole.
+- Update API AddGatewayAuth: update param ExternalAuthZJSON.
+- Update API GetGatewayAuthDetail: update response param.
+
+
 2024-09-25 Version: 6.13.1
 - Update API GetServiceListPage: update response param.
 
