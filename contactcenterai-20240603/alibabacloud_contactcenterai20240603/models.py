@@ -1113,6 +1113,601 @@ class CreateConversationAnalysisTaskResponse(TeaModel):
         return self
 
 
+class CreateTaskRequestDialogueSentences(TeaModel):
+    def __init__(
+        self,
+        role: str = None,
+        text: str = None,
+    ):
+        # This parameter is required.
+        self.role = role
+        # This parameter is required.
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.role is not None:
+            result['role'] = self.role
+        if self.text is not None:
+            result['text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        return self
+
+
+class CreateTaskRequestDialogue(TeaModel):
+    def __init__(
+        self,
+        sentences: List[CreateTaskRequestDialogueSentences] = None,
+        session_id: str = None,
+    ):
+        # This parameter is required.
+        self.sentences = sentences
+        self.session_id = session_id
+
+    def validate(self):
+        if self.sentences:
+            for k in self.sentences:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['sentences'] = []
+        if self.sentences is not None:
+            for k in self.sentences:
+                result['sentences'].append(k.to_map() if k else None)
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.sentences = []
+        if m.get('sentences') is not None:
+            for k in m.get('sentences'):
+                temp_model = CreateTaskRequestDialogueSentences()
+                self.sentences.append(temp_model.from_map(k))
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        return self
+
+
+class CreateTaskRequestExamplesSentences(TeaModel):
+    def __init__(
+        self,
+        role: str = None,
+        text: str = None,
+    ):
+        # This parameter is required.
+        self.role = role
+        # This parameter is required.
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.role is not None:
+            result['role'] = self.role
+        if self.text is not None:
+            result['text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        return self
+
+
+class CreateTaskRequestExamples(TeaModel):
+    def __init__(
+        self,
+        output: str = None,
+        sentences: List[CreateTaskRequestExamplesSentences] = None,
+    ):
+        self.output = output
+        # This parameter is required.
+        self.sentences = sentences
+
+    def validate(self):
+        if self.sentences:
+            for k in self.sentences:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output is not None:
+            result['output'] = self.output
+        result['sentences'] = []
+        if self.sentences is not None:
+            for k in self.sentences:
+                result['sentences'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('output') is not None:
+            self.output = m.get('output')
+        self.sentences = []
+        if m.get('sentences') is not None:
+            for k in m.get('sentences'):
+                temp_model = CreateTaskRequestExamplesSentences()
+                self.sentences.append(temp_model.from_map(k))
+        return self
+
+
+class CreateTaskRequestFieldsEnumValues(TeaModel):
+    def __init__(
+        self,
+        desc: str = None,
+        enum_value: str = None,
+    ):
+        # This parameter is required.
+        self.desc = desc
+        # This parameter is required.
+        self.enum_value = enum_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desc is not None:
+            result['desc'] = self.desc
+        if self.enum_value is not None:
+            result['enumValue'] = self.enum_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('desc') is not None:
+            self.desc = m.get('desc')
+        if m.get('enumValue') is not None:
+            self.enum_value = m.get('enumValue')
+        return self
+
+
+class CreateTaskRequestFields(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        desc: str = None,
+        enum_values: List[CreateTaskRequestFieldsEnumValues] = None,
+        name: str = None,
+    ):
+        self.code = code
+        # This parameter is required.
+        self.desc = desc
+        # This parameter is required.
+        self.enum_values = enum_values
+        # This parameter is required.
+        self.name = name
+
+    def validate(self):
+        if self.enum_values:
+            for k in self.enum_values:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.desc is not None:
+            result['desc'] = self.desc
+        result['enumValues'] = []
+        if self.enum_values is not None:
+            for k in self.enum_values:
+                result['enumValues'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('desc') is not None:
+            self.desc = m.get('desc')
+        self.enum_values = []
+        if m.get('enumValues') is not None:
+            for k in m.get('enumValues'):
+                temp_model = CreateTaskRequestFieldsEnumValues()
+                self.enum_values.append(temp_model.from_map(k))
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class CreateTaskRequestServiceInspectionInspectionContents(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        title: str = None,
+    ):
+        # This parameter is required.
+        self.content = content
+        # This parameter is required.
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.title is not None:
+            result['title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        return self
+
+
+class CreateTaskRequestServiceInspection(TeaModel):
+    def __init__(
+        self,
+        inspection_contents: List[CreateTaskRequestServiceInspectionInspectionContents] = None,
+        inspection_introduction: str = None,
+        scene_introduction: str = None,
+    ):
+        # This parameter is required.
+        self.inspection_contents = inspection_contents
+        # This parameter is required.
+        self.inspection_introduction = inspection_introduction
+        # This parameter is required.
+        self.scene_introduction = scene_introduction
+
+    def validate(self):
+        if self.inspection_contents:
+            for k in self.inspection_contents:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['inspectionContents'] = []
+        if self.inspection_contents is not None:
+            for k in self.inspection_contents:
+                result['inspectionContents'].append(k.to_map() if k else None)
+        if self.inspection_introduction is not None:
+            result['inspectionIntroduction'] = self.inspection_introduction
+        if self.scene_introduction is not None:
+            result['sceneIntroduction'] = self.scene_introduction
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.inspection_contents = []
+        if m.get('inspectionContents') is not None:
+            for k in m.get('inspectionContents'):
+                temp_model = CreateTaskRequestServiceInspectionInspectionContents()
+                self.inspection_contents.append(temp_model.from_map(k))
+        if m.get('inspectionIntroduction') is not None:
+            self.inspection_introduction = m.get('inspectionIntroduction')
+        if m.get('sceneIntroduction') is not None:
+            self.scene_introduction = m.get('sceneIntroduction')
+        return self
+
+
+class CreateTaskRequestTranscription(TeaModel):
+    def __init__(
+        self,
+        auto_split: int = None,
+        client_channel: int = None,
+        file_name: str = None,
+        service_channel: int = None,
+        service_channel_keywords: List[str] = None,
+        voice_file_url: str = None,
+    ):
+        self.auto_split = auto_split
+        self.client_channel = client_channel
+        # This parameter is required.
+        self.file_name = file_name
+        self.service_channel = service_channel
+        self.service_channel_keywords = service_channel_keywords
+        # This parameter is required.
+        self.voice_file_url = voice_file_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_split is not None:
+            result['autoSplit'] = self.auto_split
+        if self.client_channel is not None:
+            result['clientChannel'] = self.client_channel
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.service_channel is not None:
+            result['serviceChannel'] = self.service_channel
+        if self.service_channel_keywords is not None:
+            result['serviceChannelKeywords'] = self.service_channel_keywords
+        if self.voice_file_url is not None:
+            result['voiceFileUrl'] = self.voice_file_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('autoSplit') is not None:
+            self.auto_split = m.get('autoSplit')
+        if m.get('clientChannel') is not None:
+            self.client_channel = m.get('clientChannel')
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        if m.get('serviceChannel') is not None:
+            self.service_channel = m.get('serviceChannel')
+        if m.get('serviceChannelKeywords') is not None:
+            self.service_channel_keywords = m.get('serviceChannelKeywords')
+        if m.get('voiceFileUrl') is not None:
+            self.voice_file_url = m.get('voiceFileUrl')
+        return self
+
+
+class CreateTaskRequest(TeaModel):
+    def __init__(
+        self,
+        dialogue: CreateTaskRequestDialogue = None,
+        examples: CreateTaskRequestExamples = None,
+        fields: List[CreateTaskRequestFields] = None,
+        model_code: str = None,
+        result_types: List[str] = None,
+        service_inspection: CreateTaskRequestServiceInspection = None,
+        task_type: str = None,
+        template_ids: List[str] = None,
+        transcription: CreateTaskRequestTranscription = None,
+    ):
+        self.dialogue = dialogue
+        self.examples = examples
+        self.fields = fields
+        # This parameter is required.
+        self.model_code = model_code
+        self.result_types = result_types
+        self.service_inspection = service_inspection
+        # This parameter is required.
+        self.task_type = task_type
+        self.template_ids = template_ids
+        self.transcription = transcription
+
+    def validate(self):
+        if self.dialogue:
+            self.dialogue.validate()
+        if self.examples:
+            self.examples.validate()
+        if self.fields:
+            for k in self.fields:
+                if k:
+                    k.validate()
+        if self.service_inspection:
+            self.service_inspection.validate()
+        if self.transcription:
+            self.transcription.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dialogue is not None:
+            result['dialogue'] = self.dialogue.to_map()
+        if self.examples is not None:
+            result['examples'] = self.examples.to_map()
+        result['fields'] = []
+        if self.fields is not None:
+            for k in self.fields:
+                result['fields'].append(k.to_map() if k else None)
+        if self.model_code is not None:
+            result['modelCode'] = self.model_code
+        if self.result_types is not None:
+            result['resultTypes'] = self.result_types
+        if self.service_inspection is not None:
+            result['serviceInspection'] = self.service_inspection.to_map()
+        if self.task_type is not None:
+            result['taskType'] = self.task_type
+        if self.template_ids is not None:
+            result['templateIds'] = self.template_ids
+        if self.transcription is not None:
+            result['transcription'] = self.transcription.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('dialogue') is not None:
+            temp_model = CreateTaskRequestDialogue()
+            self.dialogue = temp_model.from_map(m['dialogue'])
+        if m.get('examples') is not None:
+            temp_model = CreateTaskRequestExamples()
+            self.examples = temp_model.from_map(m['examples'])
+        self.fields = []
+        if m.get('fields') is not None:
+            for k in m.get('fields'):
+                temp_model = CreateTaskRequestFields()
+                self.fields.append(temp_model.from_map(k))
+        if m.get('modelCode') is not None:
+            self.model_code = m.get('modelCode')
+        if m.get('resultTypes') is not None:
+            self.result_types = m.get('resultTypes')
+        if m.get('serviceInspection') is not None:
+            temp_model = CreateTaskRequestServiceInspection()
+            self.service_inspection = temp_model.from_map(m['serviceInspection'])
+        if m.get('taskType') is not None:
+            self.task_type = m.get('taskType')
+        if m.get('templateIds') is not None:
+            self.template_ids = m.get('templateIds')
+        if m.get('transcription') is not None:
+            temp_model = CreateTaskRequestTranscription()
+            self.transcription = temp_model.from_map(m['transcription'])
+        return self
+
+
+class CreateTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class CreateTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CreateTaskResponseBodyData = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = CreateTaskResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CreateTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetTaskResultRequest(TeaModel):
     def __init__(
         self,

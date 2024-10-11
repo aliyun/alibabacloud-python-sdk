@@ -1,3 +1,7 @@
+2024-10-11 Version: 3.2.0
+- Support API CreateTask.
+
+
 2024-09-24 Version: 3.1.1
 - Update API AnalyzeConversation: update param body.
 

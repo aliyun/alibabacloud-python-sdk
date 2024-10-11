@@ -349,6 +349,150 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_conversation_analysis_task_with_options_async(workspace_id, app_id, request, headers, runtime)
 
+    def create_task_with_options(
+        self,
+        workspace_id: str,
+        app_id: str,
+        request: contact_center_ai20240603_models.CreateTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> contact_center_ai20240603_models.CreateTaskResponse:
+        """
+        @summary 创建语音文件调用llm任务
+        
+        @param request: CreateTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dialogue):
+            body['dialogue'] = request.dialogue
+        if not UtilClient.is_unset(request.examples):
+            body['examples'] = request.examples
+        if not UtilClient.is_unset(request.fields):
+            body['fields'] = request.fields
+        if not UtilClient.is_unset(request.model_code):
+            body['modelCode'] = request.model_code
+        if not UtilClient.is_unset(request.result_types):
+            body['resultTypes'] = request.result_types
+        if not UtilClient.is_unset(request.service_inspection):
+            body['serviceInspection'] = request.service_inspection
+        if not UtilClient.is_unset(request.task_type):
+            body['taskType'] = request.task_type
+        if not UtilClient.is_unset(request.template_ids):
+            body['templateIds'] = request.template_ids
+        if not UtilClient.is_unset(request.transcription):
+            body['transcription'] = request.transcription
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTask',
+            version='2024-06-03',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/ccai/app/{OpenApiUtilClient.get_encode_param(app_id)}/createTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.CreateTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_task_with_options_async(
+        self,
+        workspace_id: str,
+        app_id: str,
+        request: contact_center_ai20240603_models.CreateTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> contact_center_ai20240603_models.CreateTaskResponse:
+        """
+        @summary 创建语音文件调用llm任务
+        
+        @param request: CreateTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dialogue):
+            body['dialogue'] = request.dialogue
+        if not UtilClient.is_unset(request.examples):
+            body['examples'] = request.examples
+        if not UtilClient.is_unset(request.fields):
+            body['fields'] = request.fields
+        if not UtilClient.is_unset(request.model_code):
+            body['modelCode'] = request.model_code
+        if not UtilClient.is_unset(request.result_types):
+            body['resultTypes'] = request.result_types
+        if not UtilClient.is_unset(request.service_inspection):
+            body['serviceInspection'] = request.service_inspection
+        if not UtilClient.is_unset(request.task_type):
+            body['taskType'] = request.task_type
+        if not UtilClient.is_unset(request.template_ids):
+            body['templateIds'] = request.template_ids
+        if not UtilClient.is_unset(request.transcription):
+            body['transcription'] = request.transcription
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTask',
+            version='2024-06-03',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/ccai/app/{OpenApiUtilClient.get_encode_param(app_id)}/createTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.CreateTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_task(
+        self,
+        workspace_id: str,
+        app_id: str,
+        request: contact_center_ai20240603_models.CreateTaskRequest,
+    ) -> contact_center_ai20240603_models.CreateTaskResponse:
+        """
+        @summary 创建语音文件调用llm任务
+        
+        @param request: CreateTaskRequest
+        @return: CreateTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_task_with_options(workspace_id, app_id, request, headers, runtime)
+
+    async def create_task_async(
+        self,
+        workspace_id: str,
+        app_id: str,
+        request: contact_center_ai20240603_models.CreateTaskRequest,
+    ) -> contact_center_ai20240603_models.CreateTaskResponse:
+        """
+        @summary 创建语音文件调用llm任务
+        
+        @param request: CreateTaskRequest
+        @return: CreateTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_task_with_options_async(workspace_id, app_id, request, headers, runtime)
+
     def get_task_result_with_options(
         self,
         request: contact_center_ai20240603_models.GetTaskResultRequest,
