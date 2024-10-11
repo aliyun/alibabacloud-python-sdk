@@ -723,6 +723,8 @@ class Client(OpenApiClient):
             query['Dotnet'] = request.dotnet
         if not UtilClient.is_unset(request.edas_container_version):
             query['EdasContainerVersion'] = request.edas_container_version
+        if not UtilClient.is_unset(request.enable_cpu_burst):
+            query['EnableCpuBurst'] = request.enable_cpu_burst
         if not UtilClient.is_unset(request.enable_ebpf):
             query['EnableEbpf'] = request.enable_ebpf
         if not UtilClient.is_unset(request.enable_new_arms):
@@ -885,6 +887,8 @@ class Client(OpenApiClient):
             query['Dotnet'] = request.dotnet
         if not UtilClient.is_unset(request.edas_container_version):
             query['EdasContainerVersion'] = request.edas_container_version
+        if not UtilClient.is_unset(request.enable_cpu_burst):
+            query['EnableCpuBurst'] = request.enable_cpu_burst
         if not UtilClient.is_unset(request.enable_ebpf):
             query['EnableEbpf'] = request.enable_ebpf
         if not UtilClient.is_unset(request.enable_new_arms):
@@ -3667,6 +3671,8 @@ class Client(OpenApiClient):
             query['EdasContainerVersion'] = request.edas_container_version
         if not UtilClient.is_unset(request.enable_ahas):
             query['EnableAhas'] = request.enable_ahas
+        if not UtilClient.is_unset(request.enable_cpu_burst):
+            query['EnableCpuBurst'] = request.enable_cpu_burst
         if not UtilClient.is_unset(request.enable_grey_tag_route):
             query['EnableGreyTagRoute'] = request.enable_grey_tag_route
         if not UtilClient.is_unset(request.enable_new_arms):
@@ -3829,6 +3835,8 @@ class Client(OpenApiClient):
             query['EdasContainerVersion'] = request.edas_container_version
         if not UtilClient.is_unset(request.enable_ahas):
             query['EnableAhas'] = request.enable_ahas
+        if not UtilClient.is_unset(request.enable_cpu_burst):
+            query['EnableCpuBurst'] = request.enable_cpu_burst
         if not UtilClient.is_unset(request.enable_grey_tag_route):
             query['EnableGreyTagRoute'] = request.enable_grey_tag_route
         if not UtilClient.is_unset(request.enable_new_arms):

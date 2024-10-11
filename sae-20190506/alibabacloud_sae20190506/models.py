@@ -10826,6 +10826,7 @@ class CreateApplicationRequest(TeaModel):
         deploy: bool = None,
         dotnet: str = None,
         edas_container_version: str = None,
+        enable_cpu_burst: bool = None,
         enable_ebpf: str = None,
         enable_new_arms: bool = None,
         envs: str = None,
@@ -10905,6 +10906,7 @@ class CreateApplicationRequest(TeaModel):
         self.dotnet = dotnet
         # 3.5.3
         self.edas_container_version = edas_container_version
+        self.enable_cpu_burst = enable_cpu_burst
         self.enable_ebpf = enable_ebpf
         self.enable_new_arms = enable_new_arms
         # [{"name":"envtmp","value":"0"}]
@@ -11031,6 +11033,8 @@ class CreateApplicationRequest(TeaModel):
             result['Dotnet'] = self.dotnet
         if self.edas_container_version is not None:
             result['EdasContainerVersion'] = self.edas_container_version
+        if self.enable_cpu_burst is not None:
+            result['EnableCpuBurst'] = self.enable_cpu_burst
         if self.enable_ebpf is not None:
             result['EnableEbpf'] = self.enable_ebpf
         if self.enable_new_arms is not None:
@@ -11161,6 +11165,8 @@ class CreateApplicationRequest(TeaModel):
             self.dotnet = m.get('Dotnet')
         if m.get('EdasContainerVersion') is not None:
             self.edas_container_version = m.get('EdasContainerVersion')
+        if m.get('EnableCpuBurst') is not None:
+            self.enable_cpu_burst = m.get('EnableCpuBurst')
         if m.get('EnableEbpf') is not None:
             self.enable_ebpf = m.get('EnableEbpf')
         if m.get('EnableNewArms') is not None:
@@ -15648,6 +15654,7 @@ class DeployApplicationRequest(TeaModel):
         dotnet: str = None,
         edas_container_version: str = None,
         enable_ahas: str = None,
+        enable_cpu_burst: bool = None,
         enable_grey_tag_route: bool = None,
         enable_new_arms: bool = None,
         envs: str = None,
@@ -15761,6 +15768,7 @@ class DeployApplicationRequest(TeaModel):
         # *   **true**: Access to AHAS is enabled.
         # *   **false**: Access to AHAS is disabled.
         self.enable_ahas = enable_ahas
+        self.enable_cpu_burst = enable_cpu_burst
         # Indicates whether canary release rules are enabled. Canary release rules apply only to applications in Spring Cloud and Dubbo frameworks. Take note of the following rules:
         # 
         # *   **true**: The canary release rules are enabled.
@@ -16012,6 +16020,8 @@ class DeployApplicationRequest(TeaModel):
             result['EdasContainerVersion'] = self.edas_container_version
         if self.enable_ahas is not None:
             result['EnableAhas'] = self.enable_ahas
+        if self.enable_cpu_burst is not None:
+            result['EnableCpuBurst'] = self.enable_cpu_burst
         if self.enable_grey_tag_route is not None:
             result['EnableGreyTagRoute'] = self.enable_grey_tag_route
         if self.enable_new_arms is not None:
@@ -16140,6 +16150,8 @@ class DeployApplicationRequest(TeaModel):
             self.edas_container_version = m.get('EdasContainerVersion')
         if m.get('EnableAhas') is not None:
             self.enable_ahas = m.get('EnableAhas')
+        if m.get('EnableCpuBurst') is not None:
+            self.enable_cpu_burst = m.get('EnableCpuBurst')
         if m.get('EnableGreyTagRoute') is not None:
             self.enable_grey_tag_route = m.get('EnableGreyTagRoute')
         if m.get('EnableNewArms') is not None:
@@ -17087,6 +17099,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         dotnet: str = None,
         edas_container_version: str = None,
         enable_ahas: str = None,
+        enable_cpu_burst: str = None,
         enable_grey_tag_route: bool = None,
         enable_idle: bool = None,
         enable_new_arms: bool = None,
@@ -17205,6 +17218,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         # *   **true**: Access to AHAS is enabled.
         # *   **false**: Access to AHAS is disabled.
         self.enable_ahas = enable_ahas
+        self.enable_cpu_burst = enable_cpu_burst
         # Indicates whether canary release rules are enabled. Canary release rules apply only to applications in Spring Cloud and Dubbo frameworks. Valid values:
         # 
         # *   **true**: The canary release rules are enabled.
@@ -17501,6 +17515,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['EdasContainerVersion'] = self.edas_container_version
         if self.enable_ahas is not None:
             result['EnableAhas'] = self.enable_ahas
+        if self.enable_cpu_burst is not None:
+            result['EnableCpuBurst'] = self.enable_cpu_burst
         if self.enable_grey_tag_route is not None:
             result['EnableGreyTagRoute'] = self.enable_grey_tag_route
         if self.enable_idle is not None:
@@ -17654,6 +17670,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.edas_container_version = m.get('EdasContainerVersion')
         if m.get('EnableAhas') is not None:
             self.enable_ahas = m.get('EnableAhas')
+        if m.get('EnableCpuBurst') is not None:
+            self.enable_cpu_burst = m.get('EnableCpuBurst')
         if m.get('EnableGreyTagRoute') is not None:
             self.enable_grey_tag_route = m.get('EnableGreyTagRoute')
         if m.get('EnableIdle') is not None:
