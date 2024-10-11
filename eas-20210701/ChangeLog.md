@@ -1,3 +1,13 @@
+2024-10-11 Version: 6.0.1
+- Update API CreateAclPolicy: update param AclPolicyList.
+- Update API CreateGateway: update param body.
+- Update API ListAclPolicy: update param ClusterId.
+- Update API ListAclPolicy: update param GatewayId.
+- Update API ListGateway: add param ResourceName.
+- Update API ListGateway: update response param.
+- Update API ListServices: add param Role.
+
+
 2024-09-02 Version: 6.0.0
 - Update API ListAclPolicy: update response param.
 

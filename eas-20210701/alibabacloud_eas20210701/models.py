@@ -1020,6 +1020,7 @@ class CloneServiceRequest(TeaModel):
         labels: Dict[str, str] = None,
         body: str = None,
     ):
+        # The label of the service to be cloned.
         self.labels = labels
         # The request body. For more information, see [CreateService](https://help.aliyun.com/document_detail/412086.html).
         self.body = body
@@ -1054,6 +1055,7 @@ class CloneServiceShrinkRequest(TeaModel):
         labels_shrink: str = None,
         body: str = None,
     ):
+        # The label of the service to be cloned.
         self.labels_shrink = labels_shrink
         # The request body. For more information, see [CreateService](https://help.aliyun.com/document_detail/412086.html).
         self.body = body
@@ -1268,7 +1270,11 @@ class CreateAclPolicyRequestAclPolicyList(TeaModel):
         comment: str = None,
         entry: str = None,
     ):
+        # The comment on the IP CIDR block in the VPC that can access the private gateway.
         self.comment = comment
+        # The IP CIDR block in the VPC that can access the private gateway.
+        # 
+        # This parameter is required.
         self.entry = entry
 
     def validate(self):
@@ -1301,7 +1307,11 @@ class CreateAclPolicyRequest(TeaModel):
         acl_policy_list: List[CreateAclPolicyRequestAclPolicyList] = None,
         vpc_id: str = None,
     ):
+        # The whitelisted IP CIDR blocks in the VPC that can access the private gateway.
+        # 
+        # This parameter is required.
         self.acl_policy_list = acl_policy_list
+        # The ID of the virtual private cloud (VPC). For more information about how to obtain the VPC ID, see DescribeVpcs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -1342,7 +1352,11 @@ class CreateAclPolicyShrinkRequest(TeaModel):
         acl_policy_list_shrink: str = None,
         vpc_id: str = None,
     ):
+        # The whitelisted IP CIDR blocks in the VPC that can access the private gateway.
+        # 
+        # This parameter is required.
         self.acl_policy_list_shrink = acl_policy_list_shrink
+        # The ID of the virtual private cloud (VPC). For more information about how to obtain the VPC ID, see DescribeVpcs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -1376,8 +1390,11 @@ class CreateAclPolicyResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The private gateway ID.
         self.gateway_id = gateway_id
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1788,6 +1805,8 @@ class CreateGatewayRequest(TeaModel):
     def __init__(
         self,
         resource_name: str = None,
+        auto_renewal: bool = None,
+        charge_type: str = None,
         enable_internet: bool = None,
         enable_intranet: bool = None,
         instance_type: str = None,
@@ -1796,6 +1815,8 @@ class CreateGatewayRequest(TeaModel):
     ):
         # The resource group ID. To obtain a resource group ID, see the ResourceId field in the response of the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation.
         self.resource_name = resource_name
+        self.auto_renewal = auto_renewal
+        self.charge_type = charge_type
         # Specifies whether to enable Internet access. Default value: false.
         # 
         # Valid values:
@@ -1835,6 +1856,10 @@ class CreateGatewayRequest(TeaModel):
         result = dict()
         if self.resource_name is not None:
             result['ResourceName'] = self.resource_name
+        if self.auto_renewal is not None:
+            result['AutoRenewal'] = self.auto_renewal
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
         if self.enable_internet is not None:
             result['EnableInternet'] = self.enable_internet
         if self.enable_intranet is not None:
@@ -1851,6 +1876,10 @@ class CreateGatewayRequest(TeaModel):
         m = m or dict()
         if m.get('ResourceName') is not None:
             self.resource_name = m.get('ResourceName')
+        if m.get('AutoRenewal') is not None:
+            self.auto_renewal = m.get('AutoRenewal')
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
         if m.get('EnableInternet') is not None:
             self.enable_internet = m.get('EnableInternet')
         if m.get('EnableIntranet') is not None:
@@ -3535,7 +3564,9 @@ class DeleteAclPolicyRequestAclPolicyList(TeaModel):
         comment: str = None,
         entry: str = None,
     ):
+        # The comment on the IP CIDR block in the VPC that can access the private gateway.
         self.comment = comment
+        # The IP CIDR block in the VPC that can access the private gateway.
         self.entry = entry
 
     def validate(self):
@@ -3568,7 +3599,9 @@ class DeleteAclPolicyRequest(TeaModel):
         acl_policy_list: List[DeleteAclPolicyRequestAclPolicyList] = None,
         vpc_id: str = None,
     ):
+        # The whitelisted IP CIDR blocks in the VPC that can access the private gateway.
         self.acl_policy_list = acl_policy_list
+        # The ID of the virtual private cloud (VPC). For more information about how to obtain the VPC ID, see DescribeVpcs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -3609,7 +3642,9 @@ class DeleteAclPolicyShrinkRequest(TeaModel):
         acl_policy_list_shrink: str = None,
         vpc_id: str = None,
     ):
+        # The whitelisted IP CIDR blocks in the VPC that can access the private gateway.
         self.acl_policy_list_shrink = acl_policy_list_shrink
+        # The ID of the virtual private cloud (VPC). For more information about how to obtain the VPC ID, see DescribeVpcs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -3643,8 +3678,11 @@ class DeleteAclPolicyResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The private gateway ID.
         self.gateway_id = gateway_id
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7307,6 +7345,7 @@ class ListAclPolicyRequest(TeaModel):
         self,
         vpc_id: str = None,
     ):
+        # The ID of the virtual private cloud (VPC). For more information about how to obtain the VPC ID, see DescribeVpcs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -7335,7 +7374,9 @@ class ListAclPolicyResponseBodyInternetAclPolicyListAclPolicyList(TeaModel):
         comment: str = None,
         entry: str = None,
     ):
+        # The comment on the IP CIDR block in the VPC that can access the private gateway over the Internet.
         self.comment = comment
+        # The IP CIDR block in the VPC that can access the private gateway over the Internet.
         self.entry = entry
 
     def validate(self):
@@ -7367,6 +7408,7 @@ class ListAclPolicyResponseBodyInternetAclPolicyList(TeaModel):
         self,
         acl_policy_list: List[ListAclPolicyResponseBodyInternetAclPolicyListAclPolicyList] = None,
     ):
+        # The whitelisted IP CIDR blocks in the VPC that can access the private gateway over the Internet.
         self.acl_policy_list = acl_policy_list
 
     def validate(self):
@@ -7403,7 +7445,9 @@ class ListAclPolicyResponseBodyIntranetVpcAclPolicyListAclPolicyList(TeaModel):
         comment: str = None,
         entry: str = None,
     ):
+        # The comment on the IP CIDR block in the VPC that can access the private gateway over the internal network.
         self.comment = comment
+        # The IP CIDR block in the VPC that can access the private gateway over the internal network.
         self.entry = entry
 
     def validate(self):
@@ -7436,7 +7480,9 @@ class ListAclPolicyResponseBodyIntranetVpcAclPolicyList(TeaModel):
         acl_policy_list: List[ListAclPolicyResponseBodyIntranetVpcAclPolicyListAclPolicyList] = None,
         vpc_id: str = None,
     ):
+        # The whitelisted IP CIDR blocks in the VPC that can access the private gateway over the internal network.
         self.acl_policy_list = acl_policy_list
+        # The VPC ID. For more information about how to obtain the VPC ID, see DescribeVpcs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -7479,9 +7525,13 @@ class ListAclPolicyResponseBody(TeaModel):
         intranet_vpc_acl_policy_list: List[ListAclPolicyResponseBodyIntranetVpcAclPolicyList] = None,
         request_id: str = None,
     ):
+        # The private gateway ID.
         self.gateway_id = gateway_id
+        # The access control policies of the private gateway over the Internet.
         self.internet_acl_policy_list = internet_acl_policy_list
+        # The access control policies of the private gateway over the internal network.
         self.intranet_vpc_acl_policy_list = intranet_vpc_acl_policy_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7893,11 +7943,17 @@ class ListGatewayRequest(TeaModel):
         gateway_name: str = None,
         page_number: int = None,
         page_size: int = None,
+        resource_name: str = None,
     ):
+        # The private gateway ID. To obtain the private gateway ID, see the private_gateway_id parameter in the response parameters of the ListResources operation.
         self.gateway_id = gateway_id
+        # The private gateway alias.
         self.gateway_name = gateway_name
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 100.
         self.page_size = page_size
+        self.resource_name = resource_name
 
     def validate(self):
         pass
@@ -7916,6 +7972,8 @@ class ListGatewayRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
         return result
 
     def from_map(self, m: dict = None):
@@ -7928,12 +7986,15 @@ class ListGatewayRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
         return self
 
 
 class ListGatewayResponseBodyGateways(TeaModel):
     def __init__(
         self,
+        charge_type: str = None,
         create_time: str = None,
         gateway_id: str = None,
         gateway_name: str = None,
@@ -7946,16 +8007,38 @@ class ListGatewayResponseBodyGateways(TeaModel):
         status: str = None,
         update_time: str = None,
     ):
+        self.charge_type = charge_type
+        # The time when the private gateway was created. The time is displayed in UTC.
         self.create_time = create_time
+        # The private gateway ID.
         self.gateway_id = gateway_id
+        # The private gateway alias.
         self.gateway_name = gateway_name
+        # The type of instances used for the private gateway.
         self.instance_type = instance_type
+        # The public endpoint.
         self.internet_domain = internet_domain
+        # Indicates whether Internet access is enabled.
         self.internet_enabled = internet_enabled
+        # The internal endpoint.
         self.intranet_domain = intranet_domain
+        # Indicates whether it is the default private gateway.
         self.is_default = is_default
+        # The number of nodes in the private gateway.
         self.replicas = replicas
+        # The state of the private gateway.
+        # 
+        # Valid values:
+        # 
+        # *   Creating
+        # *   Stopped
+        # *   Failed
+        # *   Running
+        # *   Deleted
+        # *   Deleting
+        # *   Waiting
         self.status = status
+        # The time when the private gateway was updated. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -7967,6 +8050,8 @@ class ListGatewayResponseBodyGateways(TeaModel):
             return _map
 
         result = dict()
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.gateway_id is not None:
@@ -7993,6 +8078,8 @@ class ListGatewayResponseBodyGateways(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('GatewayId') is not None:
@@ -8027,10 +8114,15 @@ class ListGatewayResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The private gateways.
         self.gateways = gateways
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of private gateways returned.
         self.total_count = total_count
 
     def validate(self):
@@ -9908,6 +10000,7 @@ class ListServicesRequest(TeaModel):
         parent_service_uid: str = None,
         quota_id: str = None,
         resource_name: str = None,
+        role: str = None,
         service_name: str = None,
         service_status: str = None,
         service_type: str = None,
@@ -9917,7 +10010,7 @@ class ListServicesRequest(TeaModel):
     ):
         # The field that is used for fuzzy matches. The system performs fuzzy matches only by service name.
         self.filter = filter
-        # The ID of the private gateway.
+        # The private gateway ID.
         self.gateway = gateway
         # The name of the service group. For more information about how to query the name of a service group, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
         self.group_name = group_name
@@ -9938,6 +10031,20 @@ class ListServicesRequest(TeaModel):
         self.quota_id = quota_id
         # The name or ID of the resource group to which the service belongs.
         self.resource_name = resource_name
+        # The server role.
+        # 
+        # Valid values:
+        # 
+        # *   DataLoader
+        # *   FrontEnd
+        # *   DataSet
+        # *   SDProxy
+        # *   LLMSscheduler
+        # *   ScalableJob
+        # *   LLMGateway
+        # *   Job
+        # *   Queue
+        self.role = role
         # The service name.
         self.service_name = service_name
         # The service state.
@@ -10165,6 +10272,8 @@ class ListServicesRequest(TeaModel):
             result['QuotaId'] = self.quota_id
         if self.resource_name is not None:
             result['ResourceName'] = self.resource_name
+        if self.role is not None:
+            result['Role'] = self.role
         if self.service_name is not None:
             result['ServiceName'] = self.service_name
         if self.service_status is not None:
@@ -10201,6 +10310,8 @@ class ListServicesRequest(TeaModel):
             self.quota_id = m.get('QuotaId')
         if m.get('ResourceName') is not None:
             self.resource_name = m.get('ResourceName')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
         if m.get('ServiceName') is not None:
             self.service_name = m.get('ServiceName')
         if m.get('ServiceStatus') is not None:
@@ -10229,6 +10340,7 @@ class ListServicesShrinkRequest(TeaModel):
         parent_service_uid: str = None,
         quota_id: str = None,
         resource_name: str = None,
+        role: str = None,
         service_name: str = None,
         service_status: str = None,
         service_type: str = None,
@@ -10238,7 +10350,7 @@ class ListServicesShrinkRequest(TeaModel):
     ):
         # The field that is used for fuzzy matches. The system performs fuzzy matches only by service name.
         self.filter = filter
-        # The ID of the private gateway.
+        # The private gateway ID.
         self.gateway = gateway
         # The name of the service group. For more information about how to query the name of a service group, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
         self.group_name = group_name
@@ -10259,6 +10371,20 @@ class ListServicesShrinkRequest(TeaModel):
         self.quota_id = quota_id
         # The name or ID of the resource group to which the service belongs.
         self.resource_name = resource_name
+        # The server role.
+        # 
+        # Valid values:
+        # 
+        # *   DataLoader
+        # *   FrontEnd
+        # *   DataSet
+        # *   SDProxy
+        # *   LLMSscheduler
+        # *   ScalableJob
+        # *   LLMGateway
+        # *   Job
+        # *   Queue
+        self.role = role
         # The service name.
         self.service_name = service_name
         # The service state.
@@ -10486,6 +10612,8 @@ class ListServicesShrinkRequest(TeaModel):
             result['QuotaId'] = self.quota_id
         if self.resource_name is not None:
             result['ResourceName'] = self.resource_name
+        if self.role is not None:
+            result['Role'] = self.role
         if self.service_name is not None:
             result['ServiceName'] = self.service_name
         if self.service_status is not None:
@@ -10522,6 +10650,8 @@ class ListServicesShrinkRequest(TeaModel):
             self.quota_id = m.get('QuotaId')
         if m.get('ResourceName') is not None:
             self.resource_name = m.get('ResourceName')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
         if m.get('ServiceName') is not None:
             self.service_name = m.get('ServiceName')
         if m.get('ServiceStatus') is not None:
@@ -10648,7 +10778,9 @@ class ListTenantAddonsResponseBodyAddons(TeaModel):
         attributes: Dict[str, str] = None,
         name: str = None,
     ):
+        # The attributes of the plug-in.
         self.attributes = attributes
+        # The name of the plug-in.
         self.name = name
 
     def validate(self):
@@ -10681,7 +10813,9 @@ class ListTenantAddonsResponseBody(TeaModel):
         addons: List[ListTenantAddonsResponseBodyAddons] = None,
         request_id: str = None,
     ):
+        # The information about the plug-in.
         self.addons = addons
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10763,7 +10897,9 @@ class ReinstallTenantAddonResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

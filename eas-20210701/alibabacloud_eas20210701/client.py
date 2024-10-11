@@ -283,7 +283,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateAclPolicyResponse:
         """
-        @summary 创建网关访问权限ACL Policy
+        @summary Creates an access control list (ACL) for a private gateway. The IP CIDR blocks added to the ACL can access the private gateway.
         
         @param tmp_req: CreateAclPolicyRequest
         @param headers: map
@@ -329,7 +329,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateAclPolicyResponse:
         """
-        @summary 创建网关访问权限ACL Policy
+        @summary Creates an access control list (ACL) for a private gateway. The IP CIDR blocks added to the ACL can access the private gateway.
         
         @param tmp_req: CreateAclPolicyRequest
         @param headers: map
@@ -373,7 +373,7 @@ class Client(OpenApiClient):
         request: eas_20210701_models.CreateAclPolicyRequest,
     ) -> eas_20210701_models.CreateAclPolicyResponse:
         """
-        @summary 创建网关访问权限ACL Policy
+        @summary Creates an access control list (ACL) for a private gateway. The IP CIDR blocks added to the ACL can access the private gateway.
         
         @param request: CreateAclPolicyRequest
         @return: CreateAclPolicyResponse
@@ -389,7 +389,7 @@ class Client(OpenApiClient):
         request: eas_20210701_models.CreateAclPolicyRequest,
     ) -> eas_20210701_models.CreateAclPolicyResponse:
         """
-        @summary 创建网关访问权限ACL Policy
+        @summary Creates an access control list (ACL) for a private gateway. The IP CIDR blocks added to the ACL can access the private gateway.
         
         @param request: CreateAclPolicyRequest
         @return: CreateAclPolicyResponse
@@ -651,6 +651,10 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.resource_name):
             query['ResourceName'] = request.resource_name
         body = {}
+        if not UtilClient.is_unset(request.auto_renewal):
+            body['AutoRenewal'] = request.auto_renewal
+        if not UtilClient.is_unset(request.charge_type):
+            body['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.enable_internet):
             body['EnableInternet'] = request.enable_internet
         if not UtilClient.is_unset(request.enable_intranet):
@@ -701,6 +705,10 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.resource_name):
             query['ResourceName'] = request.resource_name
         body = {}
+        if not UtilClient.is_unset(request.auto_renewal):
+            body['AutoRenewal'] = request.auto_renewal
+        if not UtilClient.is_unset(request.charge_type):
+            body['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.enable_internet):
             body['EnableInternet'] = request.enable_internet
         if not UtilClient.is_unset(request.enable_intranet):
@@ -1763,7 +1771,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteAclPolicyResponse:
         """
-        @summary 移除网关acl policy entry
+        @summary Deletes an access control list (ACL) for a private gateway. The IP CIDR block that is deleted from the ACL cannot access the private gateway.
         
         @param tmp_req: DeleteAclPolicyRequest
         @param headers: map
@@ -1809,7 +1817,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteAclPolicyResponse:
         """
-        @summary 移除网关acl policy entry
+        @summary Deletes an access control list (ACL) for a private gateway. The IP CIDR block that is deleted from the ACL cannot access the private gateway.
         
         @param tmp_req: DeleteAclPolicyRequest
         @param headers: map
@@ -1853,7 +1861,7 @@ class Client(OpenApiClient):
         request: eas_20210701_models.DeleteAclPolicyRequest,
     ) -> eas_20210701_models.DeleteAclPolicyResponse:
         """
-        @summary 移除网关acl policy entry
+        @summary Deletes an access control list (ACL) for a private gateway. The IP CIDR block that is deleted from the ACL cannot access the private gateway.
         
         @param request: DeleteAclPolicyRequest
         @return: DeleteAclPolicyResponse
@@ -1869,7 +1877,7 @@ class Client(OpenApiClient):
         request: eas_20210701_models.DeleteAclPolicyRequest,
     ) -> eas_20210701_models.DeleteAclPolicyResponse:
         """
-        @summary 移除网关acl policy entry
+        @summary Deletes an access control list (ACL) for a private gateway. The IP CIDR block that is deleted from the ACL cannot access the private gateway.
         
         @param request: DeleteAclPolicyRequest
         @return: DeleteAclPolicyResponse
@@ -4945,7 +4953,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListAclPolicyResponse:
         """
-        @summary 查询网关所有ACL Policy
+        @summary Queries access control lists (ACLs) created for a private gateway.
         
         @param request: ListAclPolicyRequest
         @param headers: map
@@ -4985,7 +4993,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListAclPolicyResponse:
         """
-        @summary 查询网关所有ACL Policy
+        @summary Queries access control lists (ACLs) created for a private gateway.
         
         @param request: ListAclPolicyRequest
         @param headers: map
@@ -5023,7 +5031,7 @@ class Client(OpenApiClient):
         request: eas_20210701_models.ListAclPolicyRequest,
     ) -> eas_20210701_models.ListAclPolicyResponse:
         """
-        @summary 查询网关所有ACL Policy
+        @summary Queries access control lists (ACLs) created for a private gateway.
         
         @param request: ListAclPolicyRequest
         @return: ListAclPolicyResponse
@@ -5039,7 +5047,7 @@ class Client(OpenApiClient):
         request: eas_20210701_models.ListAclPolicyRequest,
     ) -> eas_20210701_models.ListAclPolicyResponse:
         """
-        @summary 查询网关所有ACL Policy
+        @summary Queries access control lists (ACLs) created for a private gateway.
         
         @param request: ListAclPolicyRequest
         @return: ListAclPolicyResponse
@@ -5171,7 +5179,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListGatewayResponse:
         """
-        @summary 列举gateway
+        @summary Queries a list of private gateways.
         
         @param request: ListGatewayRequest
         @param headers: map
@@ -5188,6 +5196,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_name):
+            query['ResourceName'] = request.resource_name
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -5215,7 +5225,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListGatewayResponse:
         """
-        @summary 列举gateway
+        @summary Queries a list of private gateways.
         
         @param request: ListGatewayRequest
         @param headers: map
@@ -5232,6 +5242,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_name):
+            query['ResourceName'] = request.resource_name
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -5257,7 +5269,7 @@ class Client(OpenApiClient):
         request: eas_20210701_models.ListGatewayRequest,
     ) -> eas_20210701_models.ListGatewayResponse:
         """
-        @summary 列举gateway
+        @summary Queries a list of private gateways.
         
         @param request: ListGatewayRequest
         @return: ListGatewayResponse
@@ -5271,7 +5283,7 @@ class Client(OpenApiClient):
         request: eas_20210701_models.ListGatewayRequest,
     ) -> eas_20210701_models.ListGatewayResponse:
         """
-        @summary 列举gateway
+        @summary Queries a list of private gateways.
         
         @param request: ListGatewayRequest
         @return: ListGatewayResponse
@@ -6387,7 +6399,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListServicesResponse:
         """
-        @summary Queries a list of services that are created by the current user.
+        @summary Lists services.
         
         @param tmp_req: ListServicesRequest
         @param headers: map
@@ -6420,6 +6432,8 @@ class Client(OpenApiClient):
             query['QuotaId'] = request.quota_id
         if not UtilClient.is_unset(request.resource_name):
             query['ResourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.role):
+            query['Role'] = request.role
         if not UtilClient.is_unset(request.service_name):
             query['ServiceName'] = request.service_name
         if not UtilClient.is_unset(request.service_status):
@@ -6459,7 +6473,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListServicesResponse:
         """
-        @summary Queries a list of services that are created by the current user.
+        @summary Lists services.
         
         @param tmp_req: ListServicesRequest
         @param headers: map
@@ -6492,6 +6506,8 @@ class Client(OpenApiClient):
             query['QuotaId'] = request.quota_id
         if not UtilClient.is_unset(request.resource_name):
             query['ResourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.role):
+            query['Role'] = request.role
         if not UtilClient.is_unset(request.service_name):
             query['ServiceName'] = request.service_name
         if not UtilClient.is_unset(request.service_status):
@@ -6529,7 +6545,7 @@ class Client(OpenApiClient):
         request: eas_20210701_models.ListServicesRequest,
     ) -> eas_20210701_models.ListServicesResponse:
         """
-        @summary Queries a list of services that are created by the current user.
+        @summary Lists services.
         
         @param request: ListServicesRequest
         @return: ListServicesResponse
@@ -6543,7 +6559,7 @@ class Client(OpenApiClient):
         request: eas_20210701_models.ListServicesRequest,
     ) -> eas_20210701_models.ListServicesResponse:
         """
-        @summary Queries a list of services that are created by the current user.
+        @summary Lists services.
         
         @param request: ListServicesRequest
         @return: ListServicesResponse
@@ -6558,7 +6574,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListTenantAddonsResponse:
         """
-        @summary 获取租户配置列表
+        @summary Queries a list of tenant plug-ins.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -6589,7 +6605,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListTenantAddonsResponse:
         """
-        @summary 获取租户配置列表
+        @summary Queries a list of tenant plug-ins.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -6616,7 +6632,7 @@ class Client(OpenApiClient):
 
     def list_tenant_addons(self) -> eas_20210701_models.ListTenantAddonsResponse:
         """
-        @summary 获取租户配置列表
+        @summary Queries a list of tenant plug-ins.
         
         @return: ListTenantAddonsResponse
         """
@@ -6626,7 +6642,7 @@ class Client(OpenApiClient):
 
     async def list_tenant_addons_async(self) -> eas_20210701_models.ListTenantAddonsResponse:
         """
-        @summary 获取租户配置列表
+        @summary Queries a list of tenant plug-ins.
         
         @return: ListTenantAddonsResponse
         """
@@ -6642,7 +6658,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ReinstallTenantAddonResponse:
         """
-        @summary 重置租户配置
+        @summary Updates the information about a tenant plug-in.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -6675,7 +6691,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ReinstallTenantAddonResponse:
         """
-        @summary 重置租户配置
+        @summary Updates the information about a tenant plug-in.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -6706,7 +6722,7 @@ class Client(OpenApiClient):
         tenant_addon_name: str,
     ) -> eas_20210701_models.ReinstallTenantAddonResponse:
         """
-        @summary 重置租户配置
+        @summary Updates the information about a tenant plug-in.
         
         @return: ReinstallTenantAddonResponse
         """
@@ -6720,7 +6736,7 @@ class Client(OpenApiClient):
         tenant_addon_name: str,
     ) -> eas_20210701_models.ReinstallTenantAddonResponse:
         """
-        @summary 重置租户配置
+        @summary Updates the information about a tenant plug-in.
         
         @return: ReinstallTenantAddonResponse
         """
