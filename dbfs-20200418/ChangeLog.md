@@ -1,3 +1,10 @@
+2024-10-11 Version: 3.2.3
+- Update API GetDbfs: update response param.
+- Update API ListDbfs: update param PageSize.
+- Update API ListDbfsAttachableEcsInstances: update response param.
+- Update API UpdateDbfs: update param InstanceType.
+
+
 2023-03-16 Version: 3.2.2
 - Increase flow control value for ListDbfs.
 - Fix errorcode.

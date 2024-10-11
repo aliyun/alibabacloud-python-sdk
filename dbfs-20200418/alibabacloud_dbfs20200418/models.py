@@ -13,8 +13,11 @@ class AddTagsBatchRequest(TeaModel):
         tags: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.dbfs_list = dbfs_list
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.tags = tags
 
     def validate(self):
@@ -88,9 +91,6 @@ class AddTagsBatchResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -127,8 +127,11 @@ class ApplyAutoSnapshotPolicyRequest(TeaModel):
         policy_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.dbfs_ids = dbfs_ids
+        # This parameter is required.
         self.policy_id = policy_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -166,8 +169,11 @@ class ApplyAutoSnapshotPolicyShrinkRequest(TeaModel):
         policy_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.dbfs_ids_shrink = dbfs_ids_shrink
+        # This parameter is required.
         self.policy_id = policy_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -237,9 +243,6 @@ class ApplyAutoSnapshotPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -281,8 +284,11 @@ class AttachDbfsRequest(TeaModel):
     ):
         self.attach_mode = attach_mode
         self.attach_point = attach_point
+        # This parameter is required.
         self.ecsinstance_id = ecsinstance_id
+        # This parameter is required.
         self.fs_id = fs_id
+        # This parameter is required.
         self.region_id = region_id
         self.server_url = server_url
 
@@ -365,9 +371,6 @@ class AttachDbfsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -404,8 +407,11 @@ class CancelAutoSnapshotPolicyRequest(TeaModel):
         policy_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.dbfs_ids = dbfs_ids
+        # This parameter is required.
         self.policy_id = policy_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -443,8 +449,11 @@ class CancelAutoSnapshotPolicyShrinkRequest(TeaModel):
         policy_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.dbfs_ids_shrink = dbfs_ids_shrink
+        # This parameter is required.
         self.policy_id = policy_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -514,9 +523,6 @@ class CancelAutoSnapshotPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -555,10 +561,15 @@ class CreateAutoSnapshotPolicyRequest(TeaModel):
         retention_days: int = None,
         time_points: List[str] = None,
     ):
+        # This parameter is required.
         self.policy_name = policy_name
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.repeat_weekdays = repeat_weekdays
+        # This parameter is required.
         self.retention_days = retention_days
+        # This parameter is required.
         self.time_points = time_points
 
     def validate(self):
@@ -606,10 +617,15 @@ class CreateAutoSnapshotPolicyShrinkRequest(TeaModel):
         retention_days: int = None,
         time_points_shrink: str = None,
     ):
+        # This parameter is required.
         self.policy_name = policy_name
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.repeat_weekdays_shrink = repeat_weekdays_shrink
+        # This parameter is required.
         self.retention_days = retention_days
+        # This parameter is required.
         self.time_points_shrink = time_points_shrink
 
     def validate(self):
@@ -693,9 +709,6 @@ class CreateAutoSnapshotPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -746,20 +759,25 @@ class CreateDbfsRequest(TeaModel):
         zone_id: str = None,
     ):
         self.advanced_features = advanced_features
+        # This parameter is required.
         self.category = category
         self.client_token = client_token
         self.delete_snapshot = delete_snapshot
         self.enable_raid = enable_raid
         self.encryption = encryption
+        # This parameter is required.
         self.fs_name = fs_name
         self.instance_type = instance_type
         self.kmskey_id = kmskey_id
         self.performance_level = performance_level
         self.raid_stripe_unit_number = raid_stripe_unit_number
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.size_g = size_g
         self.snapshot_id = snapshot_id
         self.used_scene = used_scene
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -887,9 +905,6 @@ class CreateDbfsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -926,6 +941,7 @@ class CreateServiceLinkedRoleRequest(TeaModel):
         region_id: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -991,9 +1007,6 @@ class CreateServiceLinkedRoleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1035,7 +1048,9 @@ class CreateSnapshotRequest(TeaModel):
     ):
         self.client_token = client_token
         self.description = description
+        # This parameter is required.
         self.fs_id = fs_id
+        # This parameter is required.
         self.region_id = region_id
         self.retention_days = retention_days
         self.snapshot_name = snapshot_name
@@ -1125,9 +1140,6 @@ class CreateSnapshotResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1163,7 +1175,9 @@ class DeleteAutoSnapshotPolicyRequest(TeaModel):
         policy_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.policy_id = policy_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -1229,9 +1243,6 @@ class DeleteAutoSnapshotPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1268,8 +1279,12 @@ class DeleteDbfsRequest(TeaModel):
         fs_id: str = None,
         region_id: str = None,
     ):
+        # 是否强制删除数据库文件系统。
+        # 默认值：false。
         self.force = force
+        # This parameter is required.
         self.fs_id = fs_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -1339,9 +1354,6 @@ class DeleteDbfsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1379,7 +1391,9 @@ class DeleteSnapshotRequest(TeaModel):
         snapshot_id: str = None,
     ):
         self.force = force
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.snapshot_id = snapshot_id
 
     def validate(self):
@@ -1449,9 +1463,6 @@ class DeleteSnapshotResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1488,8 +1499,11 @@ class DeleteTagsBatchRequest(TeaModel):
         region_id: str = None,
         tags: str = None,
     ):
+        # This parameter is required.
         self.dbfs_list = dbfs_list
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.tags = tags
 
     def validate(self):
@@ -1559,9 +1573,6 @@ class DeleteTagsBatchResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1598,8 +1609,11 @@ class DescribeDbfsSpecificationsRequest(TeaModel):
         ecs_instance_type: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.category = category
+        # This parameter is required.
         self.ecs_instance_type = ecs_instance_type
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -1681,9 +1695,6 @@ class DescribeDbfsSpecificationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1718,6 +1729,7 @@ class DescribeInstanceTypesRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -1838,9 +1850,6 @@ class DescribeInstanceTypesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1877,8 +1886,11 @@ class DetachDbfsRequest(TeaModel):
         fs_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.ecsinstance_id = ecsinstance_id
+        # This parameter is required.
         self.fs_id = fs_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -1948,9 +1960,6 @@ class DetachDbfsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1986,7 +1995,9 @@ class GetAutoSnapshotPolicyRequest(TeaModel):
         policy_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.policy_id = policy_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2153,9 +2164,6 @@ class GetAutoSnapshotPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2191,7 +2199,9 @@ class GetDbfsRequest(TeaModel):
         fs_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.fs_id = fs_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2365,6 +2375,7 @@ class GetDbfsResponseBodyDBFSInfoTags(TeaModel):
 class GetDbfsResponseBodyDBFSInfo(TeaModel):
     def __init__(
         self,
+        advanced_features: str = None,
         attach_node_number: int = None,
         category: str = None,
         created_time: str = None,
@@ -2386,12 +2397,14 @@ class GetDbfsResponseBodyDBFSInfo(TeaModel):
         raid_strip: int = None,
         region_id: str = None,
         size_g: int = None,
+        snapshot_id: str = None,
         snapshot_info: GetDbfsResponseBodyDBFSInfoSnapshotInfo = None,
         status: str = None,
         tags: List[GetDbfsResponseBodyDBFSInfoTags] = None,
         used_scene: str = None,
         zone_id: str = None,
     ):
+        self.advanced_features = advanced_features
         self.attach_node_number = attach_node_number
         self.category = category
         self.created_time = created_time
@@ -2413,6 +2426,7 @@ class GetDbfsResponseBodyDBFSInfo(TeaModel):
         self.raid_strip = raid_strip
         self.region_id = region_id
         self.size_g = size_g
+        self.snapshot_id = snapshot_id
         self.snapshot_info = snapshot_info
         self.status = status
         self.tags = tags
@@ -2441,6 +2455,8 @@ class GetDbfsResponseBodyDBFSInfo(TeaModel):
             return _map
 
         result = dict()
+        if self.advanced_features is not None:
+            result['AdvancedFeatures'] = self.advanced_features
         if self.attach_node_number is not None:
             result['AttachNodeNumber'] = self.attach_node_number
         if self.category is not None:
@@ -2487,6 +2503,8 @@ class GetDbfsResponseBodyDBFSInfo(TeaModel):
             result['RegionId'] = self.region_id
         if self.size_g is not None:
             result['SizeG'] = self.size_g
+        if self.snapshot_id is not None:
+            result['SnapshotId'] = self.snapshot_id
         if self.snapshot_info is not None:
             result['SnapshotInfo'] = self.snapshot_info.to_map()
         if self.status is not None:
@@ -2503,6 +2521,8 @@ class GetDbfsResponseBodyDBFSInfo(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdvancedFeatures') is not None:
+            self.advanced_features = m.get('AdvancedFeatures')
         if m.get('AttachNodeNumber') is not None:
             self.attach_node_number = m.get('AttachNodeNumber')
         if m.get('Category') is not None:
@@ -2551,6 +2571,8 @@ class GetDbfsResponseBodyDBFSInfo(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('SizeG') is not None:
             self.size_g = m.get('SizeG')
+        if m.get('SnapshotId') is not None:
+            self.snapshot_id = m.get('SnapshotId')
         if m.get('SnapshotInfo') is not None:
             temp_model = GetDbfsResponseBodyDBFSInfoSnapshotInfo()
             self.snapshot_info = temp_model.from_map(m['SnapshotInfo'])
@@ -2615,9 +2637,6 @@ class GetDbfsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2652,6 +2671,7 @@ class GetServiceLinkedRoleRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2731,9 +2751,6 @@ class GetServiceLinkedRoleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2770,6 +2787,7 @@ class GetSnapshotLinkRequest(TeaModel):
         region_id: str = None,
     ):
         self.link_id = link_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2953,9 +2971,6 @@ class GetSnapshotLinkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2998,6 +3013,7 @@ class ListAutoSnapshotPoliciesRequest(TeaModel):
         self.filter_value = filter_value
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -3200,9 +3216,6 @@ class ListAutoSnapshotPoliciesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3246,7 +3259,9 @@ class ListAutoSnapshotPolicyAppliedDbfsRequest(TeaModel):
         self.filter_value = filter_value
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.policy_id = policy_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -3423,9 +3438,6 @@ class ListAutoSnapshotPolicyAppliedDbfsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3468,6 +3480,7 @@ class ListAutoSnapshotPolicyUnappliedDbfsRequest(TeaModel):
         self.filter_value = filter_value
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -3640,9 +3653,6 @@ class ListAutoSnapshotPolicyUnappliedDbfsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3688,6 +3698,7 @@ class ListDbfsRequest(TeaModel):
         self.filter_value = filter_value
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.region_id = region_id
         self.sort_key = sort_key
         self.sort_type = sort_type
@@ -4156,9 +4167,6 @@ class ListDbfsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4201,6 +4209,7 @@ class ListDbfsAttachableEcsInstancesRequest(TeaModel):
         self.filter_value = filter_value
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -4361,9 +4370,6 @@ class ListDbfsAttachableEcsInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4399,7 +4405,9 @@ class ListDbfsAttachedEcsInstancesRequest(TeaModel):
         fs_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.fs_id = fs_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -4536,9 +4544,6 @@ class ListDbfsAttachedEcsInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4589,6 +4594,7 @@ class ListSnapshotRequest(TeaModel):
         self.fs_id = fs_id
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.region_id = region_id
         self.snapshot_ids = snapshot_ids
         self.snapshot_name = snapshot_name
@@ -4837,9 +4843,6 @@ class ListSnapshotResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4886,6 +4889,7 @@ class ListSnapshotLinksRequest(TeaModel):
         self.link_ids = link_ids
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -5107,9 +5111,6 @@ class ListSnapshotLinksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5144,6 +5145,7 @@ class ListTagKeysRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -5211,9 +5213,6 @@ class ListTagKeysResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5249,7 +5248,9 @@ class ListTagValuesRequest(TeaModel):
         region_id: str = None,
         tag_key: str = None,
     ):
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.tag_key = tag_key
 
     def validate(self):
@@ -5321,9 +5322,6 @@ class ListTagValuesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5363,8 +5361,10 @@ class ModifyAutoSnapshotPolicyRequest(TeaModel):
         retention_days: int = None,
         time_points: List[str] = None,
     ):
+        # This parameter is required.
         self.policy_id = policy_id
         self.policy_name = policy_name
+        # This parameter is required.
         self.region_id = region_id
         self.repeat_weekdays = repeat_weekdays
         self.retention_days = retention_days
@@ -5420,8 +5420,10 @@ class ModifyAutoSnapshotPolicyShrinkRequest(TeaModel):
         retention_days: int = None,
         time_points_shrink: str = None,
     ):
+        # This parameter is required.
         self.policy_id = policy_id
         self.policy_name = policy_name
+        # This parameter is required.
         self.region_id = region_id
         self.repeat_weekdays_shrink = repeat_weekdays_shrink
         self.retention_days = retention_days
@@ -5506,9 +5508,6 @@ class ModifyAutoSnapshotPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5547,7 +5546,9 @@ class ModifySnapshotAttributeRequest(TeaModel):
         snapshot_name: str = None,
     ):
         self.description = description
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.snapshot_id = snapshot_id
         self.snapshot_name = snapshot_name
 
@@ -5622,9 +5623,6 @@ class ModifySnapshotAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5661,8 +5659,11 @@ class RenameDbfsRequest(TeaModel):
         fs_name: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.fs_id = fs_id
+        # This parameter is required.
         self.fs_name = fs_name
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -5732,9 +5733,6 @@ class RenameDbfsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5771,8 +5769,11 @@ class ResizeDbfsRequest(TeaModel):
         new_size_g: int = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.fs_id = fs_id
+        # This parameter is required.
         self.new_size_g = new_size_g
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -5842,9 +5843,6 @@ class ResizeDbfsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5881,8 +5879,11 @@ class TagDbfsRequest(TeaModel):
         region_id: str = None,
         tags: str = None,
     ):
+        # This parameter is required.
         self.dbfs_id = dbfs_id
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.tags = tags
 
     def validate(self):
@@ -5952,9 +5953,6 @@ class TagDbfsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5994,8 +5992,10 @@ class UpdateDbfsRequest(TeaModel):
         used_scene: str = None,
     ):
         self.advanced_features = advanced_features
+        # This parameter is required.
         self.fs_id = fs_id
         self.instance_type = instance_type
+        # This parameter is required.
         self.region_id = region_id
         self.used_scene = used_scene
 
@@ -6074,9 +6074,6 @@ class UpdateDbfsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

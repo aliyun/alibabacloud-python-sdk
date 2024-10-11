@@ -85,6 +85,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.AddTagsBatchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.AddTagsBatchResponse:
+        """
+        @param request: AddTagsBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddTagsBatchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -119,6 +124,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.AddTagsBatchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.AddTagsBatchResponse:
+        """
+        @param request: AddTagsBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddTagsBatchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -152,6 +162,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.AddTagsBatchRequest,
     ) -> dbfs20200418_models.AddTagsBatchResponse:
+        """
+        @param request: AddTagsBatchRequest
+        @return: AddTagsBatchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_tags_batch_with_options(request, runtime)
 
@@ -159,6 +173,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.AddTagsBatchRequest,
     ) -> dbfs20200418_models.AddTagsBatchResponse:
+        """
+        @param request: AddTagsBatchRequest
+        @return: AddTagsBatchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_tags_batch_with_options_async(request, runtime)
 
@@ -167,6 +185,13 @@ class Client(OpenApiClient):
         tmp_req: dbfs20200418_models.ApplyAutoSnapshotPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ApplyAutoSnapshotPolicyResponse:
+        """
+        @summary 设置自动快照策略
+        
+        @param tmp_req: ApplyAutoSnapshotPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyAutoSnapshotPolicyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dbfs20200418_models.ApplyAutoSnapshotPolicyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -203,6 +228,13 @@ class Client(OpenApiClient):
         tmp_req: dbfs20200418_models.ApplyAutoSnapshotPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ApplyAutoSnapshotPolicyResponse:
+        """
+        @summary 设置自动快照策略
+        
+        @param tmp_req: ApplyAutoSnapshotPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyAutoSnapshotPolicyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dbfs20200418_models.ApplyAutoSnapshotPolicyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -238,6 +270,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.ApplyAutoSnapshotPolicyRequest,
     ) -> dbfs20200418_models.ApplyAutoSnapshotPolicyResponse:
+        """
+        @summary 设置自动快照策略
+        
+        @param request: ApplyAutoSnapshotPolicyRequest
+        @return: ApplyAutoSnapshotPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.apply_auto_snapshot_policy_with_options(request, runtime)
 
@@ -245,6 +283,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.ApplyAutoSnapshotPolicyRequest,
     ) -> dbfs20200418_models.ApplyAutoSnapshotPolicyResponse:
+        """
+        @summary 设置自动快照策略
+        
+        @param request: ApplyAutoSnapshotPolicyRequest
+        @return: ApplyAutoSnapshotPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.apply_auto_snapshot_policy_with_options_async(request, runtime)
 
@@ -253,6 +297,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.AttachDbfsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.AttachDbfsResponse:
+        """
+        @param request: AttachDbfsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachDbfsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.attach_mode):
@@ -291,6 +340,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.AttachDbfsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.AttachDbfsResponse:
+        """
+        @param request: AttachDbfsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachDbfsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.attach_mode):
@@ -328,6 +382,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.AttachDbfsRequest,
     ) -> dbfs20200418_models.AttachDbfsResponse:
+        """
+        @param request: AttachDbfsRequest
+        @return: AttachDbfsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.attach_dbfs_with_options(request, runtime)
 
@@ -335,6 +393,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.AttachDbfsRequest,
     ) -> dbfs20200418_models.AttachDbfsResponse:
+        """
+        @param request: AttachDbfsRequest
+        @return: AttachDbfsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.attach_dbfs_with_options_async(request, runtime)
 
@@ -343,6 +405,13 @@ class Client(OpenApiClient):
         tmp_req: dbfs20200418_models.CancelAutoSnapshotPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.CancelAutoSnapshotPolicyResponse:
+        """
+        @summary 取消自动快照策略
+        
+        @param tmp_req: CancelAutoSnapshotPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelAutoSnapshotPolicyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dbfs20200418_models.CancelAutoSnapshotPolicyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -379,6 +448,13 @@ class Client(OpenApiClient):
         tmp_req: dbfs20200418_models.CancelAutoSnapshotPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.CancelAutoSnapshotPolicyResponse:
+        """
+        @summary 取消自动快照策略
+        
+        @param tmp_req: CancelAutoSnapshotPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelAutoSnapshotPolicyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dbfs20200418_models.CancelAutoSnapshotPolicyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -414,6 +490,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.CancelAutoSnapshotPolicyRequest,
     ) -> dbfs20200418_models.CancelAutoSnapshotPolicyResponse:
+        """
+        @summary 取消自动快照策略
+        
+        @param request: CancelAutoSnapshotPolicyRequest
+        @return: CancelAutoSnapshotPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_auto_snapshot_policy_with_options(request, runtime)
 
@@ -421,6 +503,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.CancelAutoSnapshotPolicyRequest,
     ) -> dbfs20200418_models.CancelAutoSnapshotPolicyResponse:
+        """
+        @summary 取消自动快照策略
+        
+        @param request: CancelAutoSnapshotPolicyRequest
+        @return: CancelAutoSnapshotPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_auto_snapshot_policy_with_options_async(request, runtime)
 
@@ -429,6 +517,13 @@ class Client(OpenApiClient):
         tmp_req: dbfs20200418_models.CreateAutoSnapshotPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.CreateAutoSnapshotPolicyResponse:
+        """
+        @summary 创建自动快照策略
+        
+        @param tmp_req: CreateAutoSnapshotPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAutoSnapshotPolicyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dbfs20200418_models.CreateAutoSnapshotPolicyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -471,6 +566,13 @@ class Client(OpenApiClient):
         tmp_req: dbfs20200418_models.CreateAutoSnapshotPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.CreateAutoSnapshotPolicyResponse:
+        """
+        @summary 创建自动快照策略
+        
+        @param tmp_req: CreateAutoSnapshotPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAutoSnapshotPolicyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dbfs20200418_models.CreateAutoSnapshotPolicyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -512,6 +614,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.CreateAutoSnapshotPolicyRequest,
     ) -> dbfs20200418_models.CreateAutoSnapshotPolicyResponse:
+        """
+        @summary 创建自动快照策略
+        
+        @param request: CreateAutoSnapshotPolicyRequest
+        @return: CreateAutoSnapshotPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_auto_snapshot_policy_with_options(request, runtime)
 
@@ -519,6 +627,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.CreateAutoSnapshotPolicyRequest,
     ) -> dbfs20200418_models.CreateAutoSnapshotPolicyResponse:
+        """
+        @summary 创建自动快照策略
+        
+        @param request: CreateAutoSnapshotPolicyRequest
+        @return: CreateAutoSnapshotPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_auto_snapshot_policy_with_options_async(request, runtime)
 
@@ -527,6 +641,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.CreateDbfsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.CreateDbfsResponse:
+        """
+        @param request: CreateDbfsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDbfsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.advanced_features):
@@ -585,6 +704,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.CreateDbfsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.CreateDbfsResponse:
+        """
+        @param request: CreateDbfsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDbfsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.advanced_features):
@@ -642,6 +766,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.CreateDbfsRequest,
     ) -> dbfs20200418_models.CreateDbfsResponse:
+        """
+        @param request: CreateDbfsRequest
+        @return: CreateDbfsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_dbfs_with_options(request, runtime)
 
@@ -649,6 +777,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.CreateDbfsRequest,
     ) -> dbfs20200418_models.CreateDbfsResponse:
+        """
+        @param request: CreateDbfsRequest
+        @return: CreateDbfsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_dbfs_with_options_async(request, runtime)
 
@@ -657,6 +789,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.CreateServiceLinkedRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.CreateServiceLinkedRoleResponse:
+        """
+        @param request: CreateServiceLinkedRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceLinkedRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -687,6 +824,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.CreateServiceLinkedRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.CreateServiceLinkedRoleResponse:
+        """
+        @param request: CreateServiceLinkedRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceLinkedRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -716,6 +858,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.CreateServiceLinkedRoleRequest,
     ) -> dbfs20200418_models.CreateServiceLinkedRoleResponse:
+        """
+        @param request: CreateServiceLinkedRoleRequest
+        @return: CreateServiceLinkedRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_service_linked_role_with_options(request, runtime)
 
@@ -723,6 +869,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.CreateServiceLinkedRoleRequest,
     ) -> dbfs20200418_models.CreateServiceLinkedRoleResponse:
+        """
+        @param request: CreateServiceLinkedRoleRequest
+        @return: CreateServiceLinkedRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_service_linked_role_with_options_async(request, runtime)
 
@@ -731,6 +881,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.CreateSnapshotRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.CreateSnapshotResponse:
+        """
+        @param request: CreateSnapshotRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSnapshotResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -769,6 +924,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.CreateSnapshotRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.CreateSnapshotResponse:
+        """
+        @param request: CreateSnapshotRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSnapshotResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -806,6 +966,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.CreateSnapshotRequest,
     ) -> dbfs20200418_models.CreateSnapshotResponse:
+        """
+        @param request: CreateSnapshotRequest
+        @return: CreateSnapshotResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_snapshot_with_options(request, runtime)
 
@@ -813,6 +977,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.CreateSnapshotRequest,
     ) -> dbfs20200418_models.CreateSnapshotResponse:
+        """
+        @param request: CreateSnapshotRequest
+        @return: CreateSnapshotResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_snapshot_with_options_async(request, runtime)
 
@@ -821,6 +989,13 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.DeleteAutoSnapshotPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.DeleteAutoSnapshotPolicyResponse:
+        """
+        @summary 删除自动快照策略
+        
+        @param request: DeleteAutoSnapshotPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAutoSnapshotPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_id):
@@ -851,6 +1026,13 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.DeleteAutoSnapshotPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.DeleteAutoSnapshotPolicyResponse:
+        """
+        @summary 删除自动快照策略
+        
+        @param request: DeleteAutoSnapshotPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAutoSnapshotPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_id):
@@ -880,6 +1062,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.DeleteAutoSnapshotPolicyRequest,
     ) -> dbfs20200418_models.DeleteAutoSnapshotPolicyResponse:
+        """
+        @summary 删除自动快照策略
+        
+        @param request: DeleteAutoSnapshotPolicyRequest
+        @return: DeleteAutoSnapshotPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_auto_snapshot_policy_with_options(request, runtime)
 
@@ -887,6 +1075,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.DeleteAutoSnapshotPolicyRequest,
     ) -> dbfs20200418_models.DeleteAutoSnapshotPolicyResponse:
+        """
+        @summary 删除自动快照策略
+        
+        @param request: DeleteAutoSnapshotPolicyRequest
+        @return: DeleteAutoSnapshotPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_auto_snapshot_policy_with_options_async(request, runtime)
 
@@ -895,6 +1089,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.DeleteDbfsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.DeleteDbfsResponse:
+        """
+        @param request: DeleteDbfsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDbfsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force):
@@ -927,6 +1126,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.DeleteDbfsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.DeleteDbfsResponse:
+        """
+        @param request: DeleteDbfsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDbfsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force):
@@ -958,6 +1162,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.DeleteDbfsRequest,
     ) -> dbfs20200418_models.DeleteDbfsResponse:
+        """
+        @param request: DeleteDbfsRequest
+        @return: DeleteDbfsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_dbfs_with_options(request, runtime)
 
@@ -965,6 +1173,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.DeleteDbfsRequest,
     ) -> dbfs20200418_models.DeleteDbfsResponse:
+        """
+        @param request: DeleteDbfsRequest
+        @return: DeleteDbfsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dbfs_with_options_async(request, runtime)
 
@@ -973,6 +1185,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.DeleteSnapshotRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.DeleteSnapshotResponse:
+        """
+        @param request: DeleteSnapshotRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSnapshotResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force):
@@ -1005,6 +1222,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.DeleteSnapshotRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.DeleteSnapshotResponse:
+        """
+        @param request: DeleteSnapshotRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSnapshotResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force):
@@ -1036,6 +1258,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.DeleteSnapshotRequest,
     ) -> dbfs20200418_models.DeleteSnapshotResponse:
+        """
+        @param request: DeleteSnapshotRequest
+        @return: DeleteSnapshotResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_snapshot_with_options(request, runtime)
 
@@ -1043,6 +1269,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.DeleteSnapshotRequest,
     ) -> dbfs20200418_models.DeleteSnapshotResponse:
+        """
+        @param request: DeleteSnapshotRequest
+        @return: DeleteSnapshotResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_snapshot_with_options_async(request, runtime)
 
@@ -1051,6 +1281,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.DeleteTagsBatchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.DeleteTagsBatchResponse:
+        """
+        @param request: DeleteTagsBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTagsBatchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbfs_list):
@@ -1083,6 +1318,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.DeleteTagsBatchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.DeleteTagsBatchResponse:
+        """
+        @param request: DeleteTagsBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTagsBatchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbfs_list):
@@ -1114,6 +1354,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.DeleteTagsBatchRequest,
     ) -> dbfs20200418_models.DeleteTagsBatchResponse:
+        """
+        @param request: DeleteTagsBatchRequest
+        @return: DeleteTagsBatchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_tags_batch_with_options(request, runtime)
 
@@ -1121,6 +1365,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.DeleteTagsBatchRequest,
     ) -> dbfs20200418_models.DeleteTagsBatchResponse:
+        """
+        @param request: DeleteTagsBatchRequest
+        @return: DeleteTagsBatchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_tags_batch_with_options_async(request, runtime)
 
@@ -1129,6 +1377,13 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.DescribeDbfsSpecificationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.DescribeDbfsSpecificationsResponse:
+        """
+        @summary 查询DBFS支持的ECS实例类型，根据ECS实例规格返回ECS可挂载的最大DBFS数量
+        
+        @param request: DescribeDbfsSpecificationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDbfsSpecificationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -1161,6 +1416,13 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.DescribeDbfsSpecificationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.DescribeDbfsSpecificationsResponse:
+        """
+        @summary 查询DBFS支持的ECS实例类型，根据ECS实例规格返回ECS可挂载的最大DBFS数量
+        
+        @param request: DescribeDbfsSpecificationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDbfsSpecificationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -1192,6 +1454,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.DescribeDbfsSpecificationsRequest,
     ) -> dbfs20200418_models.DescribeDbfsSpecificationsResponse:
+        """
+        @summary 查询DBFS支持的ECS实例类型，根据ECS实例规格返回ECS可挂载的最大DBFS数量
+        
+        @param request: DescribeDbfsSpecificationsRequest
+        @return: DescribeDbfsSpecificationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbfs_specifications_with_options(request, runtime)
 
@@ -1199,6 +1467,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.DescribeDbfsSpecificationsRequest,
     ) -> dbfs20200418_models.DescribeDbfsSpecificationsResponse:
+        """
+        @summary 查询DBFS支持的ECS实例类型，根据ECS实例规格返回ECS可挂载的最大DBFS数量
+        
+        @param request: DescribeDbfsSpecificationsRequest
+        @return: DescribeDbfsSpecificationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbfs_specifications_with_options_async(request, runtime)
 
@@ -1207,6 +1481,13 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.DescribeInstanceTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.DescribeInstanceTypesResponse:
+        """
+        @summary 查询DBFS实例规格
+        
+        @param request: DescribeInstanceTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceTypesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -1235,6 +1516,13 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.DescribeInstanceTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.DescribeInstanceTypesResponse:
+        """
+        @summary 查询DBFS实例规格
+        
+        @param request: DescribeInstanceTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceTypesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -1262,6 +1550,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.DescribeInstanceTypesRequest,
     ) -> dbfs20200418_models.DescribeInstanceTypesResponse:
+        """
+        @summary 查询DBFS实例规格
+        
+        @param request: DescribeInstanceTypesRequest
+        @return: DescribeInstanceTypesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_types_with_options(request, runtime)
 
@@ -1269,6 +1563,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.DescribeInstanceTypesRequest,
     ) -> dbfs20200418_models.DescribeInstanceTypesResponse:
+        """
+        @summary 查询DBFS实例规格
+        
+        @param request: DescribeInstanceTypesRequest
+        @return: DescribeInstanceTypesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_types_with_options_async(request, runtime)
 
@@ -1277,6 +1577,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.DetachDbfsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.DetachDbfsResponse:
+        """
+        @param request: DetachDbfsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachDbfsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ecsinstance_id):
@@ -1309,6 +1614,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.DetachDbfsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.DetachDbfsResponse:
+        """
+        @param request: DetachDbfsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachDbfsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ecsinstance_id):
@@ -1340,6 +1650,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.DetachDbfsRequest,
     ) -> dbfs20200418_models.DetachDbfsResponse:
+        """
+        @param request: DetachDbfsRequest
+        @return: DetachDbfsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detach_dbfs_with_options(request, runtime)
 
@@ -1347,6 +1661,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.DetachDbfsRequest,
     ) -> dbfs20200418_models.DetachDbfsResponse:
+        """
+        @param request: DetachDbfsRequest
+        @return: DetachDbfsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detach_dbfs_with_options_async(request, runtime)
 
@@ -1355,6 +1673,13 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.GetAutoSnapshotPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.GetAutoSnapshotPolicyResponse:
+        """
+        @summary 查询某条自动快照策略
+        
+        @param request: GetAutoSnapshotPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAutoSnapshotPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_id):
@@ -1385,6 +1710,13 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.GetAutoSnapshotPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.GetAutoSnapshotPolicyResponse:
+        """
+        @summary 查询某条自动快照策略
+        
+        @param request: GetAutoSnapshotPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAutoSnapshotPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_id):
@@ -1414,6 +1746,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.GetAutoSnapshotPolicyRequest,
     ) -> dbfs20200418_models.GetAutoSnapshotPolicyResponse:
+        """
+        @summary 查询某条自动快照策略
+        
+        @param request: GetAutoSnapshotPolicyRequest
+        @return: GetAutoSnapshotPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_auto_snapshot_policy_with_options(request, runtime)
 
@@ -1421,6 +1759,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.GetAutoSnapshotPolicyRequest,
     ) -> dbfs20200418_models.GetAutoSnapshotPolicyResponse:
+        """
+        @summary 查询某条自动快照策略
+        
+        @param request: GetAutoSnapshotPolicyRequest
+        @return: GetAutoSnapshotPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_auto_snapshot_policy_with_options_async(request, runtime)
 
@@ -1429,6 +1773,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.GetDbfsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.GetDbfsResponse:
+        """
+        @param request: GetDbfsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDbfsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.fs_id):
@@ -1459,6 +1808,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.GetDbfsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.GetDbfsResponse:
+        """
+        @param request: GetDbfsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDbfsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.fs_id):
@@ -1488,6 +1842,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.GetDbfsRequest,
     ) -> dbfs20200418_models.GetDbfsResponse:
+        """
+        @param request: GetDbfsRequest
+        @return: GetDbfsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_dbfs_with_options(request, runtime)
 
@@ -1495,6 +1853,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.GetDbfsRequest,
     ) -> dbfs20200418_models.GetDbfsResponse:
+        """
+        @param request: GetDbfsRequest
+        @return: GetDbfsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_dbfs_with_options_async(request, runtime)
 
@@ -1503,6 +1865,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.GetServiceLinkedRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.GetServiceLinkedRoleResponse:
+        """
+        @param request: GetServiceLinkedRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceLinkedRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -1531,6 +1898,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.GetServiceLinkedRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.GetServiceLinkedRoleResponse:
+        """
+        @param request: GetServiceLinkedRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceLinkedRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -1558,6 +1930,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.GetServiceLinkedRoleRequest,
     ) -> dbfs20200418_models.GetServiceLinkedRoleResponse:
+        """
+        @param request: GetServiceLinkedRoleRequest
+        @return: GetServiceLinkedRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_service_linked_role_with_options(request, runtime)
 
@@ -1565,6 +1941,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.GetServiceLinkedRoleRequest,
     ) -> dbfs20200418_models.GetServiceLinkedRoleResponse:
+        """
+        @param request: GetServiceLinkedRoleRequest
+        @return: GetServiceLinkedRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_service_linked_role_with_options_async(request, runtime)
 
@@ -1573,6 +1953,13 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.GetSnapshotLinkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.GetSnapshotLinkResponse:
+        """
+        @summary 获取快照链
+        
+        @param request: GetSnapshotLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSnapshotLinkResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1599,6 +1986,13 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.GetSnapshotLinkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.GetSnapshotLinkResponse:
+        """
+        @summary 获取快照链
+        
+        @param request: GetSnapshotLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSnapshotLinkResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1624,6 +2018,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.GetSnapshotLinkRequest,
     ) -> dbfs20200418_models.GetSnapshotLinkResponse:
+        """
+        @summary 获取快照链
+        
+        @param request: GetSnapshotLinkRequest
+        @return: GetSnapshotLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_snapshot_link_with_options(request, runtime)
 
@@ -1631,6 +2031,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.GetSnapshotLinkRequest,
     ) -> dbfs20200418_models.GetSnapshotLinkResponse:
+        """
+        @summary 获取快照链
+        
+        @param request: GetSnapshotLinkRequest
+        @return: GetSnapshotLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_snapshot_link_with_options_async(request, runtime)
 
@@ -1639,6 +2045,13 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.ListAutoSnapshotPoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListAutoSnapshotPoliciesResponse:
+        """
+        @summary 列出自动快照策略
+        
+        @param request: ListAutoSnapshotPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAutoSnapshotPoliciesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter_key):
@@ -1675,6 +2088,13 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.ListAutoSnapshotPoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListAutoSnapshotPoliciesResponse:
+        """
+        @summary 列出自动快照策略
+        
+        @param request: ListAutoSnapshotPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAutoSnapshotPoliciesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter_key):
@@ -1710,6 +2130,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.ListAutoSnapshotPoliciesRequest,
     ) -> dbfs20200418_models.ListAutoSnapshotPoliciesResponse:
+        """
+        @summary 列出自动快照策略
+        
+        @param request: ListAutoSnapshotPoliciesRequest
+        @return: ListAutoSnapshotPoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_auto_snapshot_policies_with_options(request, runtime)
 
@@ -1717,6 +2143,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.ListAutoSnapshotPoliciesRequest,
     ) -> dbfs20200418_models.ListAutoSnapshotPoliciesResponse:
+        """
+        @summary 列出自动快照策略
+        
+        @param request: ListAutoSnapshotPoliciesRequest
+        @return: ListAutoSnapshotPoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_auto_snapshot_policies_with_options_async(request, runtime)
 
@@ -1725,6 +2157,13 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.ListAutoSnapshotPolicyAppliedDbfsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListAutoSnapshotPolicyAppliedDbfsResponse:
+        """
+        @summary 列出已设置自动快照策略的DBFS
+        
+        @param request: ListAutoSnapshotPolicyAppliedDbfsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAutoSnapshotPolicyAppliedDbfsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter_key):
@@ -1763,6 +2202,13 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.ListAutoSnapshotPolicyAppliedDbfsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListAutoSnapshotPolicyAppliedDbfsResponse:
+        """
+        @summary 列出已设置自动快照策略的DBFS
+        
+        @param request: ListAutoSnapshotPolicyAppliedDbfsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAutoSnapshotPolicyAppliedDbfsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter_key):
@@ -1800,6 +2246,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.ListAutoSnapshotPolicyAppliedDbfsRequest,
     ) -> dbfs20200418_models.ListAutoSnapshotPolicyAppliedDbfsResponse:
+        """
+        @summary 列出已设置自动快照策略的DBFS
+        
+        @param request: ListAutoSnapshotPolicyAppliedDbfsRequest
+        @return: ListAutoSnapshotPolicyAppliedDbfsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_auto_snapshot_policy_applied_dbfs_with_options(request, runtime)
 
@@ -1807,6 +2259,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.ListAutoSnapshotPolicyAppliedDbfsRequest,
     ) -> dbfs20200418_models.ListAutoSnapshotPolicyAppliedDbfsResponse:
+        """
+        @summary 列出已设置自动快照策略的DBFS
+        
+        @param request: ListAutoSnapshotPolicyAppliedDbfsRequest
+        @return: ListAutoSnapshotPolicyAppliedDbfsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_auto_snapshot_policy_applied_dbfs_with_options_async(request, runtime)
 
@@ -1815,6 +2273,13 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.ListAutoSnapshotPolicyUnappliedDbfsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListAutoSnapshotPolicyUnappliedDbfsResponse:
+        """
+        @summary 列出未设置自动快照策略的DBFS
+        
+        @param request: ListAutoSnapshotPolicyUnappliedDbfsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAutoSnapshotPolicyUnappliedDbfsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter_key):
@@ -1851,6 +2316,13 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.ListAutoSnapshotPolicyUnappliedDbfsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListAutoSnapshotPolicyUnappliedDbfsResponse:
+        """
+        @summary 列出未设置自动快照策略的DBFS
+        
+        @param request: ListAutoSnapshotPolicyUnappliedDbfsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAutoSnapshotPolicyUnappliedDbfsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter_key):
@@ -1886,6 +2358,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.ListAutoSnapshotPolicyUnappliedDbfsRequest,
     ) -> dbfs20200418_models.ListAutoSnapshotPolicyUnappliedDbfsResponse:
+        """
+        @summary 列出未设置自动快照策略的DBFS
+        
+        @param request: ListAutoSnapshotPolicyUnappliedDbfsRequest
+        @return: ListAutoSnapshotPolicyUnappliedDbfsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_auto_snapshot_policy_unapplied_dbfs_with_options(request, runtime)
 
@@ -1893,6 +2371,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.ListAutoSnapshotPolicyUnappliedDbfsRequest,
     ) -> dbfs20200418_models.ListAutoSnapshotPolicyUnappliedDbfsResponse:
+        """
+        @summary 列出未设置自动快照策略的DBFS
+        
+        @param request: ListAutoSnapshotPolicyUnappliedDbfsRequest
+        @return: ListAutoSnapshotPolicyUnappliedDbfsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_auto_snapshot_policy_unapplied_dbfs_with_options_async(request, runtime)
 
@@ -1901,6 +2385,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.ListDbfsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListDbfsResponse:
+        """
+        @param request: ListDbfsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDbfsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter_key):
@@ -1943,6 +2432,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.ListDbfsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListDbfsResponse:
+        """
+        @param request: ListDbfsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDbfsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter_key):
@@ -1984,6 +2478,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.ListDbfsRequest,
     ) -> dbfs20200418_models.ListDbfsResponse:
+        """
+        @param request: ListDbfsRequest
+        @return: ListDbfsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_dbfs_with_options(request, runtime)
 
@@ -1991,6 +2489,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.ListDbfsRequest,
     ) -> dbfs20200418_models.ListDbfsResponse:
+        """
+        @param request: ListDbfsRequest
+        @return: ListDbfsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_dbfs_with_options_async(request, runtime)
 
@@ -1999,6 +2501,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.ListDbfsAttachableEcsInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListDbfsAttachableEcsInstancesResponse:
+        """
+        @param request: ListDbfsAttachableEcsInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDbfsAttachableEcsInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter_key):
@@ -2035,6 +2542,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.ListDbfsAttachableEcsInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListDbfsAttachableEcsInstancesResponse:
+        """
+        @param request: ListDbfsAttachableEcsInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDbfsAttachableEcsInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter_key):
@@ -2070,6 +2582,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.ListDbfsAttachableEcsInstancesRequest,
     ) -> dbfs20200418_models.ListDbfsAttachableEcsInstancesResponse:
+        """
+        @param request: ListDbfsAttachableEcsInstancesRequest
+        @return: ListDbfsAttachableEcsInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_dbfs_attachable_ecs_instances_with_options(request, runtime)
 
@@ -2077,6 +2593,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.ListDbfsAttachableEcsInstancesRequest,
     ) -> dbfs20200418_models.ListDbfsAttachableEcsInstancesResponse:
+        """
+        @param request: ListDbfsAttachableEcsInstancesRequest
+        @return: ListDbfsAttachableEcsInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_dbfs_attachable_ecs_instances_with_options_async(request, runtime)
 
@@ -2085,6 +2605,13 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.ListDbfsAttachedEcsInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListDbfsAttachedEcsInstancesResponse:
+        """
+        @summary 查询数据库文件系统被挂载的ECS实例列表
+        
+        @param request: ListDbfsAttachedEcsInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDbfsAttachedEcsInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.fs_id):
@@ -2115,6 +2642,13 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.ListDbfsAttachedEcsInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListDbfsAttachedEcsInstancesResponse:
+        """
+        @summary 查询数据库文件系统被挂载的ECS实例列表
+        
+        @param request: ListDbfsAttachedEcsInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDbfsAttachedEcsInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.fs_id):
@@ -2144,6 +2678,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.ListDbfsAttachedEcsInstancesRequest,
     ) -> dbfs20200418_models.ListDbfsAttachedEcsInstancesResponse:
+        """
+        @summary 查询数据库文件系统被挂载的ECS实例列表
+        
+        @param request: ListDbfsAttachedEcsInstancesRequest
+        @return: ListDbfsAttachedEcsInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_dbfs_attached_ecs_instances_with_options(request, runtime)
 
@@ -2151,6 +2691,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.ListDbfsAttachedEcsInstancesRequest,
     ) -> dbfs20200418_models.ListDbfsAttachedEcsInstancesResponse:
+        """
+        @summary 查询数据库文件系统被挂载的ECS实例列表
+        
+        @param request: ListDbfsAttachedEcsInstancesRequest
+        @return: ListDbfsAttachedEcsInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_dbfs_attached_ecs_instances_with_options_async(request, runtime)
 
@@ -2159,6 +2705,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.ListSnapshotRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListSnapshotResponse:
+        """
+        @param request: ListSnapshotRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSnapshotResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter_key):
@@ -2209,6 +2760,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.ListSnapshotRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListSnapshotResponse:
+        """
+        @param request: ListSnapshotRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSnapshotResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter_key):
@@ -2258,6 +2814,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.ListSnapshotRequest,
     ) -> dbfs20200418_models.ListSnapshotResponse:
+        """
+        @param request: ListSnapshotRequest
+        @return: ListSnapshotResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_snapshot_with_options(request, runtime)
 
@@ -2265,6 +2825,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.ListSnapshotRequest,
     ) -> dbfs20200418_models.ListSnapshotResponse:
+        """
+        @param request: ListSnapshotRequest
+        @return: ListSnapshotResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_snapshot_with_options_async(request, runtime)
 
@@ -2273,6 +2837,13 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.ListSnapshotLinksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListSnapshotLinksResponse:
+        """
+        @summary 列出快照链
+        
+        @param request: ListSnapshotLinksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSnapshotLinksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter_key):
@@ -2313,6 +2884,13 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.ListSnapshotLinksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListSnapshotLinksResponse:
+        """
+        @summary 列出快照链
+        
+        @param request: ListSnapshotLinksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSnapshotLinksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter_key):
@@ -2352,6 +2930,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.ListSnapshotLinksRequest,
     ) -> dbfs20200418_models.ListSnapshotLinksResponse:
+        """
+        @summary 列出快照链
+        
+        @param request: ListSnapshotLinksRequest
+        @return: ListSnapshotLinksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_snapshot_links_with_options(request, runtime)
 
@@ -2359,6 +2943,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.ListSnapshotLinksRequest,
     ) -> dbfs20200418_models.ListSnapshotLinksResponse:
+        """
+        @summary 列出快照链
+        
+        @param request: ListSnapshotLinksRequest
+        @return: ListSnapshotLinksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_snapshot_links_with_options_async(request, runtime)
 
@@ -2367,6 +2957,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.ListTagKeysRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListTagKeysResponse:
+        """
+        @param request: ListTagKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagKeysResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -2395,6 +2990,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.ListTagKeysRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListTagKeysResponse:
+        """
+        @param request: ListTagKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagKeysResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -2422,6 +3022,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.ListTagKeysRequest,
     ) -> dbfs20200418_models.ListTagKeysResponse:
+        """
+        @param request: ListTagKeysRequest
+        @return: ListTagKeysResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_keys_with_options(request, runtime)
 
@@ -2429,6 +3033,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.ListTagKeysRequest,
     ) -> dbfs20200418_models.ListTagKeysResponse:
+        """
+        @param request: ListTagKeysRequest
+        @return: ListTagKeysResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_keys_with_options_async(request, runtime)
 
@@ -2437,6 +3045,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.ListTagValuesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListTagValuesResponse:
+        """
+        @param request: ListTagValuesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagValuesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -2467,6 +3080,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.ListTagValuesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListTagValuesResponse:
+        """
+        @param request: ListTagValuesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagValuesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -2496,6 +3114,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.ListTagValuesRequest,
     ) -> dbfs20200418_models.ListTagValuesResponse:
+        """
+        @param request: ListTagValuesRequest
+        @return: ListTagValuesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_values_with_options(request, runtime)
 
@@ -2503,6 +3125,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.ListTagValuesRequest,
     ) -> dbfs20200418_models.ListTagValuesResponse:
+        """
+        @param request: ListTagValuesRequest
+        @return: ListTagValuesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_values_with_options_async(request, runtime)
 
@@ -2511,6 +3137,13 @@ class Client(OpenApiClient):
         tmp_req: dbfs20200418_models.ModifyAutoSnapshotPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ModifyAutoSnapshotPolicyResponse:
+        """
+        @summary 修改自动快照策略
+        
+        @param tmp_req: ModifyAutoSnapshotPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAutoSnapshotPolicyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dbfs20200418_models.ModifyAutoSnapshotPolicyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2555,6 +3188,13 @@ class Client(OpenApiClient):
         tmp_req: dbfs20200418_models.ModifyAutoSnapshotPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ModifyAutoSnapshotPolicyResponse:
+        """
+        @summary 修改自动快照策略
+        
+        @param tmp_req: ModifyAutoSnapshotPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAutoSnapshotPolicyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dbfs20200418_models.ModifyAutoSnapshotPolicyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2598,6 +3238,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.ModifyAutoSnapshotPolicyRequest,
     ) -> dbfs20200418_models.ModifyAutoSnapshotPolicyResponse:
+        """
+        @summary 修改自动快照策略
+        
+        @param request: ModifyAutoSnapshotPolicyRequest
+        @return: ModifyAutoSnapshotPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_auto_snapshot_policy_with_options(request, runtime)
 
@@ -2605,6 +3251,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.ModifyAutoSnapshotPolicyRequest,
     ) -> dbfs20200418_models.ModifyAutoSnapshotPolicyResponse:
+        """
+        @summary 修改自动快照策略
+        
+        @param request: ModifyAutoSnapshotPolicyRequest
+        @return: ModifyAutoSnapshotPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_auto_snapshot_policy_with_options_async(request, runtime)
 
@@ -2613,6 +3265,13 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.ModifySnapshotAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ModifySnapshotAttributeResponse:
+        """
+        @summary 修改快照属性
+        
+        @param request: ModifySnapshotAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySnapshotAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -2647,6 +3306,13 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.ModifySnapshotAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ModifySnapshotAttributeResponse:
+        """
+        @summary 修改快照属性
+        
+        @param request: ModifySnapshotAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySnapshotAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -2680,6 +3346,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.ModifySnapshotAttributeRequest,
     ) -> dbfs20200418_models.ModifySnapshotAttributeResponse:
+        """
+        @summary 修改快照属性
+        
+        @param request: ModifySnapshotAttributeRequest
+        @return: ModifySnapshotAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_snapshot_attribute_with_options(request, runtime)
 
@@ -2687,6 +3359,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.ModifySnapshotAttributeRequest,
     ) -> dbfs20200418_models.ModifySnapshotAttributeResponse:
+        """
+        @summary 修改快照属性
+        
+        @param request: ModifySnapshotAttributeRequest
+        @return: ModifySnapshotAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_snapshot_attribute_with_options_async(request, runtime)
 
@@ -2695,6 +3373,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.RenameDbfsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.RenameDbfsResponse:
+        """
+        @param request: RenameDbfsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenameDbfsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.fs_id):
@@ -2727,6 +3410,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.RenameDbfsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.RenameDbfsResponse:
+        """
+        @param request: RenameDbfsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenameDbfsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.fs_id):
@@ -2758,6 +3446,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.RenameDbfsRequest,
     ) -> dbfs20200418_models.RenameDbfsResponse:
+        """
+        @param request: RenameDbfsRequest
+        @return: RenameDbfsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.rename_dbfs_with_options(request, runtime)
 
@@ -2765,6 +3457,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.RenameDbfsRequest,
     ) -> dbfs20200418_models.RenameDbfsResponse:
+        """
+        @param request: RenameDbfsRequest
+        @return: RenameDbfsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.rename_dbfs_with_options_async(request, runtime)
 
@@ -2773,6 +3469,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.ResizeDbfsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ResizeDbfsResponse:
+        """
+        @param request: ResizeDbfsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResizeDbfsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.fs_id):
@@ -2805,6 +3506,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.ResizeDbfsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ResizeDbfsResponse:
+        """
+        @param request: ResizeDbfsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResizeDbfsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.fs_id):
@@ -2836,6 +3542,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.ResizeDbfsRequest,
     ) -> dbfs20200418_models.ResizeDbfsResponse:
+        """
+        @param request: ResizeDbfsRequest
+        @return: ResizeDbfsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.resize_dbfs_with_options(request, runtime)
 
@@ -2843,6 +3553,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.ResizeDbfsRequest,
     ) -> dbfs20200418_models.ResizeDbfsResponse:
+        """
+        @param request: ResizeDbfsRequest
+        @return: ResizeDbfsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.resize_dbfs_with_options_async(request, runtime)
 
@@ -2851,6 +3565,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.TagDbfsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.TagDbfsResponse:
+        """
+        @param request: TagDbfsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagDbfsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbfs_id):
@@ -2883,6 +3602,11 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.TagDbfsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.TagDbfsResponse:
+        """
+        @param request: TagDbfsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagDbfsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbfs_id):
@@ -2914,6 +3638,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.TagDbfsRequest,
     ) -> dbfs20200418_models.TagDbfsResponse:
+        """
+        @param request: TagDbfsRequest
+        @return: TagDbfsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_dbfs_with_options(request, runtime)
 
@@ -2921,6 +3649,10 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.TagDbfsRequest,
     ) -> dbfs20200418_models.TagDbfsResponse:
+        """
+        @param request: TagDbfsRequest
+        @return: TagDbfsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_dbfs_with_options_async(request, runtime)
 
@@ -2929,6 +3661,13 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.UpdateDbfsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.UpdateDbfsResponse:
+        """
+        @summary 修改DBFS实例，包括使用场景、实例规格等。
+        
+        @param request: UpdateDbfsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDbfsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.advanced_features):
@@ -2965,6 +3704,13 @@ class Client(OpenApiClient):
         request: dbfs20200418_models.UpdateDbfsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.UpdateDbfsResponse:
+        """
+        @summary 修改DBFS实例，包括使用场景、实例规格等。
+        
+        @param request: UpdateDbfsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDbfsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.advanced_features):
@@ -3000,6 +3746,12 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.UpdateDbfsRequest,
     ) -> dbfs20200418_models.UpdateDbfsResponse:
+        """
+        @summary 修改DBFS实例，包括使用场景、实例规格等。
+        
+        @param request: UpdateDbfsRequest
+        @return: UpdateDbfsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_dbfs_with_options(request, runtime)
 
@@ -3007,5 +3759,11 @@ class Client(OpenApiClient):
         self,
         request: dbfs20200418_models.UpdateDbfsRequest,
     ) -> dbfs20200418_models.UpdateDbfsResponse:
+        """
+        @summary 修改DBFS实例，包括使用场景、实例规格等。
+        
+        @param request: UpdateDbfsRequest
+        @return: UpdateDbfsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_dbfs_with_options_async(request, runtime)
