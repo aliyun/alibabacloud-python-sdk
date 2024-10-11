@@ -1,3 +1,9 @@
+2024-10-11 Version: 1.4.0
+- Support API CreateDocsSummaryTask.
+- Support API CreateQualityCheckTask.
+- Support API GetQualityCheckTaskResult.
+
+
 2024-10-08 Version: 1.3.0
 - Support API CreatePdfTranslateTask.
 - Support API GetTaskResult.

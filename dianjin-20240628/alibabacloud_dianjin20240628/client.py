@@ -47,6 +47,126 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def create_docs_summary_task_with_options(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateDocsSummaryTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.CreateDocsSummaryTaskResponse:
+        """
+        @summary 创建财报总结任务
+        
+        @param request: CreateDocsSummaryTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDocsSummaryTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_infos):
+            body['docInfos'] = request.doc_infos
+        if not UtilClient.is_unset(request.enable_table):
+            body['enableTable'] = request.enable_table
+        if not UtilClient.is_unset(request.instruction):
+            body['instruction'] = request.instruction
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDocsSummaryTask',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/task/summary/docs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.CreateDocsSummaryTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_docs_summary_task_with_options_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateDocsSummaryTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.CreateDocsSummaryTaskResponse:
+        """
+        @summary 创建财报总结任务
+        
+        @param request: CreateDocsSummaryTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDocsSummaryTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_infos):
+            body['docInfos'] = request.doc_infos
+        if not UtilClient.is_unset(request.enable_table):
+            body['enableTable'] = request.enable_table
+        if not UtilClient.is_unset(request.instruction):
+            body['instruction'] = request.instruction
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDocsSummaryTask',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/task/summary/docs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.CreateDocsSummaryTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_docs_summary_task(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateDocsSummaryTaskRequest,
+    ) -> dian_jin_20240628_models.CreateDocsSummaryTaskResponse:
+        """
+        @summary 创建财报总结任务
+        
+        @param request: CreateDocsSummaryTaskRequest
+        @return: CreateDocsSummaryTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_docs_summary_task_with_options(workspace_id, request, headers, runtime)
+
+    async def create_docs_summary_task_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateDocsSummaryTaskRequest,
+    ) -> dian_jin_20240628_models.CreateDocsSummaryTaskResponse:
+        """
+        @summary 创建财报总结任务
+        
+        @param request: CreateDocsSummaryTaskRequest
+        @return: CreateDocsSummaryTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_docs_summary_task_with_options_async(workspace_id, request, headers, runtime)
+
     def create_fin_report_summary_task_with_options(
         self,
         workspace_id: str,
@@ -542,6 +662,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_predefined_document_with_options_async(workspace_id, request, headers, runtime)
+
+    def create_quality_check_task_with_options(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateQualityCheckTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.CreateQualityCheckTaskResponse:
+        """
+        @summary 创建财报总结的任务
+        
+        @param request: CreateQualityCheckTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateQualityCheckTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.conversation_list):
+            body['conversationList'] = request.conversation_list
+        if not UtilClient.is_unset(request.gmt_service):
+            body['gmtService'] = request.gmt_service
+        if not UtilClient.is_unset(request.meta_data):
+            body['metaData'] = request.meta_data
+        if not UtilClient.is_unset(request.quality_group):
+            body['qualityGroup'] = request.quality_group
+        if not UtilClient.is_unset(request.request_id):
+            body['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateQualityCheckTask',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/qualitycheck/task/submit',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.CreateQualityCheckTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_quality_check_task_with_options_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateQualityCheckTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.CreateQualityCheckTaskResponse:
+        """
+        @summary 创建财报总结的任务
+        
+        @param request: CreateQualityCheckTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateQualityCheckTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.conversation_list):
+            body['conversationList'] = request.conversation_list
+        if not UtilClient.is_unset(request.gmt_service):
+            body['gmtService'] = request.gmt_service
+        if not UtilClient.is_unset(request.meta_data):
+            body['metaData'] = request.meta_data
+        if not UtilClient.is_unset(request.quality_group):
+            body['qualityGroup'] = request.quality_group
+        if not UtilClient.is_unset(request.request_id):
+            body['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateQualityCheckTask',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/qualitycheck/task/submit',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.CreateQualityCheckTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_quality_check_task(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateQualityCheckTaskRequest,
+    ) -> dian_jin_20240628_models.CreateQualityCheckTaskResponse:
+        """
+        @summary 创建财报总结的任务
+        
+        @param request: CreateQualityCheckTaskRequest
+        @return: CreateQualityCheckTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_quality_check_task_with_options(workspace_id, request, headers, runtime)
+
+    async def create_quality_check_task_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateQualityCheckTaskRequest,
+    ) -> dian_jin_20240628_models.CreateQualityCheckTaskResponse:
+        """
+        @summary 创建财报总结的任务
+        
+        @param request: CreateQualityCheckTaskRequest
+        @return: CreateQualityCheckTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_quality_check_task_with_options_async(workspace_id, request, headers, runtime)
 
     def delete_document_with_options(
         self,
@@ -1912,6 +2160,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_parse_result_with_options_async(workspace_id, request, headers, runtime)
+
+    def get_quality_check_task_result_with_options(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetQualityCheckTaskResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.GetQualityCheckTaskResultResponse:
+        """
+        @summary 获取异步任务的结果
+        
+        @param request: GetQualityCheckTaskResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQualityCheckTaskResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetQualityCheckTaskResult',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/qualitycheck/task/query',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.GetQualityCheckTaskResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_quality_check_task_result_with_options_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetQualityCheckTaskResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.GetQualityCheckTaskResultResponse:
+        """
+        @summary 获取异步任务的结果
+        
+        @param request: GetQualityCheckTaskResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQualityCheckTaskResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetQualityCheckTaskResult',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/qualitycheck/task/query',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.GetQualityCheckTaskResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_quality_check_task_result(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetQualityCheckTaskResultRequest,
+    ) -> dian_jin_20240628_models.GetQualityCheckTaskResultResponse:
+        """
+        @summary 获取异步任务的结果
+        
+        @param request: GetQualityCheckTaskResultRequest
+        @return: GetQualityCheckTaskResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_quality_check_task_result_with_options(workspace_id, request, headers, runtime)
+
+    async def get_quality_check_task_result_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetQualityCheckTaskResultRequest,
+    ) -> dian_jin_20240628_models.GetQualityCheckTaskResultResponse:
+        """
+        @summary 获取异步任务的结果
+        
+        @param request: GetQualityCheckTaskResultRequest
+        @return: GetQualityCheckTaskResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_quality_check_task_result_with_options_async(workspace_id, request, headers, runtime)
 
     def get_summary_task_result_with_options(
         self,

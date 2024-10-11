@@ -1,7 +1,219 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, Any, List, BinaryIO
+from typing import List, Dict, Any, BinaryIO
+
+
+class CreateDocsSummaryTaskRequestDocInfos(TeaModel):
+    def __init__(
+        self,
+        doc_id: str = None,
+        end_page: int = None,
+        library_id: str = None,
+        start_page: int = None,
+    ):
+        # This parameter is required.
+        self.doc_id = doc_id
+        self.end_page = end_page
+        # This parameter is required.
+        self.library_id = library_id
+        self.start_page = start_page
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.doc_id is not None:
+            result['docId'] = self.doc_id
+        if self.end_page is not None:
+            result['endPage'] = self.end_page
+        if self.library_id is not None:
+            result['libraryId'] = self.library_id
+        if self.start_page is not None:
+            result['startPage'] = self.start_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('docId') is not None:
+            self.doc_id = m.get('docId')
+        if m.get('endPage') is not None:
+            self.end_page = m.get('endPage')
+        if m.get('libraryId') is not None:
+            self.library_id = m.get('libraryId')
+        if m.get('startPage') is not None:
+            self.start_page = m.get('startPage')
+        return self
+
+
+class CreateDocsSummaryTaskRequest(TeaModel):
+    def __init__(
+        self,
+        doc_infos: List[CreateDocsSummaryTaskRequestDocInfos] = None,
+        enable_table: bool = None,
+        instruction: str = None,
+        model_id: str = None,
+    ):
+        # This parameter is required.
+        self.doc_infos = doc_infos
+        self.enable_table = enable_table
+        self.instruction = instruction
+        # This parameter is required.
+        self.model_id = model_id
+
+    def validate(self):
+        if self.doc_infos:
+            for k in self.doc_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['docInfos'] = []
+        if self.doc_infos is not None:
+            for k in self.doc_infos:
+                result['docInfos'].append(k.to_map() if k else None)
+        if self.enable_table is not None:
+            result['enableTable'] = self.enable_table
+        if self.instruction is not None:
+            result['instruction'] = self.instruction
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.doc_infos = []
+        if m.get('docInfos') is not None:
+            for k in m.get('docInfos'):
+                temp_model = CreateDocsSummaryTaskRequestDocInfos()
+                self.doc_infos.append(temp_model.from_map(k))
+        if m.get('enableTable') is not None:
+            self.enable_table = m.get('enableTable')
+        if m.get('instruction') is not None:
+            self.instruction = m.get('instruction')
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        return self
+
+
+class CreateDocsSummaryTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        cost: int = None,
+        data: str = None,
+        data_type: str = None,
+        err_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        time: str = None,
+    ):
+        self.cost = cost
+        self.data = data
+        self.data_type = data_type
+        self.err_code = err_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.time = time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost is not None:
+            result['cost'] = self.cost
+        if self.data is not None:
+            result['data'] = self.data
+        if self.data_type is not None:
+            result['dataType'] = self.data_type
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.time is not None:
+            result['time'] = self.time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cost') is not None:
+            self.cost = m.get('cost')
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('dataType') is not None:
+            self.data_type = m.get('dataType')
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('time') is not None:
+            self.time = m.get('time')
+        return self
+
+
+class CreateDocsSummaryTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDocsSummaryTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDocsSummaryTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
 
 
 class CreateFinReportSummaryTaskRequest(TeaModel):
@@ -1100,6 +1312,359 @@ class CreatePredefinedDocumentResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreatePredefinedDocumentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateQualityCheckTaskRequestConversationListDialogueList(TeaModel):
+    def __init__(
+        self,
+        begin: int = None,
+        begin_time: str = None,
+        content: str = None,
+        customer_id: str = None,
+        customer_service_id: str = None,
+        customer_service_type: str = None,
+        end: int = None,
+        role: str = None,
+        type: str = None,
+    ):
+        self.begin = begin
+        self.begin_time = begin_time
+        # This parameter is required.
+        self.content = content
+        self.customer_id = customer_id
+        self.customer_service_id = customer_service_id
+        self.customer_service_type = customer_service_type
+        self.end = end
+        # This parameter is required.
+        self.role = role
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.begin is not None:
+            result['begin'] = self.begin
+        if self.begin_time is not None:
+            result['beginTime'] = self.begin_time
+        if self.content is not None:
+            result['content'] = self.content
+        if self.customer_id is not None:
+            result['customerId'] = self.customer_id
+        if self.customer_service_id is not None:
+            result['customerServiceId'] = self.customer_service_id
+        if self.customer_service_type is not None:
+            result['customerServiceType'] = self.customer_service_type
+        if self.end is not None:
+            result['end'] = self.end
+        if self.role is not None:
+            result['role'] = self.role
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('begin') is not None:
+            self.begin = m.get('begin')
+        if m.get('beginTime') is not None:
+            self.begin_time = m.get('beginTime')
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('customerId') is not None:
+            self.customer_id = m.get('customerId')
+        if m.get('customerServiceId') is not None:
+            self.customer_service_id = m.get('customerServiceId')
+        if m.get('customerServiceType') is not None:
+            self.customer_service_type = m.get('customerServiceType')
+        if m.get('end') is not None:
+            self.end = m.get('end')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class CreateQualityCheckTaskRequestConversationList(TeaModel):
+    def __init__(
+        self,
+        call_type: str = None,
+        customer_id: str = None,
+        customer_name: str = None,
+        customer_service_id: str = None,
+        customer_service_name: str = None,
+        dialogue_list: List[CreateQualityCheckTaskRequestConversationListDialogueList] = None,
+        gmt_service: str = None,
+    ):
+        self.call_type = call_type
+        self.customer_id = customer_id
+        self.customer_name = customer_name
+        self.customer_service_id = customer_service_id
+        self.customer_service_name = customer_service_name
+        # This parameter is required.
+        self.dialogue_list = dialogue_list
+        self.gmt_service = gmt_service
+
+    def validate(self):
+        if self.dialogue_list:
+            for k in self.dialogue_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.call_type is not None:
+            result['callType'] = self.call_type
+        if self.customer_id is not None:
+            result['customerId'] = self.customer_id
+        if self.customer_name is not None:
+            result['customerName'] = self.customer_name
+        if self.customer_service_id is not None:
+            result['customerServiceId'] = self.customer_service_id
+        if self.customer_service_name is not None:
+            result['customerServiceName'] = self.customer_service_name
+        result['dialogueList'] = []
+        if self.dialogue_list is not None:
+            for k in self.dialogue_list:
+                result['dialogueList'].append(k.to_map() if k else None)
+        if self.gmt_service is not None:
+            result['gmtService'] = self.gmt_service
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('callType') is not None:
+            self.call_type = m.get('callType')
+        if m.get('customerId') is not None:
+            self.customer_id = m.get('customerId')
+        if m.get('customerName') is not None:
+            self.customer_name = m.get('customerName')
+        if m.get('customerServiceId') is not None:
+            self.customer_service_id = m.get('customerServiceId')
+        if m.get('customerServiceName') is not None:
+            self.customer_service_name = m.get('customerServiceName')
+        self.dialogue_list = []
+        if m.get('dialogueList') is not None:
+            for k in m.get('dialogueList'):
+                temp_model = CreateQualityCheckTaskRequestConversationListDialogueList()
+                self.dialogue_list.append(temp_model.from_map(k))
+        if m.get('gmtService') is not None:
+            self.gmt_service = m.get('gmtService')
+        return self
+
+
+class CreateQualityCheckTaskRequest(TeaModel):
+    def __init__(
+        self,
+        conversation_list: CreateQualityCheckTaskRequestConversationList = None,
+        gmt_service: str = None,
+        meta_data: Dict[str, str] = None,
+        quality_group: List[str] = None,
+        request_id: str = None,
+        type: str = None,
+    ):
+        # This parameter is required.
+        self.conversation_list = conversation_list
+        # This parameter is required.
+        self.gmt_service = gmt_service
+        self.meta_data = meta_data
+        self.quality_group = quality_group
+        # This parameter is required.
+        self.request_id = request_id
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        if self.conversation_list:
+            self.conversation_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.conversation_list is not None:
+            result['conversationList'] = self.conversation_list.to_map()
+        if self.gmt_service is not None:
+            result['gmtService'] = self.gmt_service
+        if self.meta_data is not None:
+            result['metaData'] = self.meta_data
+        if self.quality_group is not None:
+            result['qualityGroup'] = self.quality_group
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('conversationList') is not None:
+            temp_model = CreateQualityCheckTaskRequestConversationList()
+            self.conversation_list = temp_model.from_map(m['conversationList'])
+        if m.get('gmtService') is not None:
+            self.gmt_service = m.get('gmtService')
+        if m.get('metaData') is not None:
+            self.meta_data = m.get('metaData')
+        if m.get('qualityGroup') is not None:
+            self.quality_group = m.get('qualityGroup')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class CreateQualityCheckTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        # taskId
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class CreateQualityCheckTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        cost: int = None,
+        data: CreateQualityCheckTaskResponseBodyData = None,
+        data_type: str = None,
+        err_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        time: str = None,
+    ):
+        self.cost = cost
+        self.data = data
+        self.data_type = data_type
+        self.err_code = err_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.time = time
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost is not None:
+            result['cost'] = self.cost
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.data_type is not None:
+            result['dataType'] = self.data_type
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.time is not None:
+            result['time'] = self.time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cost') is not None:
+            self.cost = m.get('cost')
+        if m.get('data') is not None:
+            temp_model = CreateQualityCheckTaskResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('dataType') is not None:
+            self.data_type = m.get('dataType')
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('time') is not None:
+            self.time = m.get('time')
+        return self
+
+
+class CreateQualityCheckTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateQualityCheckTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateQualityCheckTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4676,6 +5241,548 @@ class GetParseResultResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetParseResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetQualityCheckTaskResultRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList(TeaModel):
+    def __init__(
+        self,
+        begin: int = None,
+        begin_time: str = None,
+        content: str = None,
+        customer_id: str = None,
+        customer_service_id: str = None,
+        customer_service_type: str = None,
+        end: int = None,
+        id: int = None,
+        role: str = None,
+        type: str = None,
+    ):
+        self.begin = begin
+        self.begin_time = begin_time
+        self.content = content
+        self.customer_id = customer_id
+        self.customer_service_id = customer_service_id
+        self.customer_service_type = customer_service_type
+        self.end = end
+        self.id = id
+        self.role = role
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.begin is not None:
+            result['begin'] = self.begin
+        if self.begin_time is not None:
+            result['beginTime'] = self.begin_time
+        if self.content is not None:
+            result['content'] = self.content
+        if self.customer_id is not None:
+            result['customerId'] = self.customer_id
+        if self.customer_service_id is not None:
+            result['customerServiceId'] = self.customer_service_id
+        if self.customer_service_type is not None:
+            result['customerServiceType'] = self.customer_service_type
+        if self.end is not None:
+            result['end'] = self.end
+        if self.id is not None:
+            result['id'] = self.id
+        if self.role is not None:
+            result['role'] = self.role
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('begin') is not None:
+            self.begin = m.get('begin')
+        if m.get('beginTime') is not None:
+            self.begin_time = m.get('beginTime')
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('customerId') is not None:
+            self.customer_id = m.get('customerId')
+        if m.get('customerServiceId') is not None:
+            self.customer_service_id = m.get('customerServiceId')
+        if m.get('customerServiceType') is not None:
+            self.customer_service_type = m.get('customerServiceType')
+        if m.get('end') is not None:
+            self.end = m.get('end')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class GetQualityCheckTaskResultResponseBodyDataConversationList(TeaModel):
+    def __init__(
+        self,
+        call_type: str = None,
+        customer_id: str = None,
+        customer_name: str = None,
+        customer_service_id: str = None,
+        customer_service_name: str = None,
+        dialogue_list: List[GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList] = None,
+        gmt_service: str = None,
+    ):
+        self.call_type = call_type
+        self.customer_id = customer_id
+        self.customer_name = customer_name
+        self.customer_service_id = customer_service_id
+        self.customer_service_name = customer_service_name
+        self.dialogue_list = dialogue_list
+        self.gmt_service = gmt_service
+
+    def validate(self):
+        if self.dialogue_list:
+            for k in self.dialogue_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.call_type is not None:
+            result['callType'] = self.call_type
+        if self.customer_id is not None:
+            result['customerId'] = self.customer_id
+        if self.customer_name is not None:
+            result['customerName'] = self.customer_name
+        if self.customer_service_id is not None:
+            result['customerServiceId'] = self.customer_service_id
+        if self.customer_service_name is not None:
+            result['customerServiceName'] = self.customer_service_name
+        result['dialogueList'] = []
+        if self.dialogue_list is not None:
+            for k in self.dialogue_list:
+                result['dialogueList'].append(k.to_map() if k else None)
+        if self.gmt_service is not None:
+            result['gmtService'] = self.gmt_service
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('callType') is not None:
+            self.call_type = m.get('callType')
+        if m.get('customerId') is not None:
+            self.customer_id = m.get('customerId')
+        if m.get('customerName') is not None:
+            self.customer_name = m.get('customerName')
+        if m.get('customerServiceId') is not None:
+            self.customer_service_id = m.get('customerServiceId')
+        if m.get('customerServiceName') is not None:
+            self.customer_service_name = m.get('customerServiceName')
+        self.dialogue_list = []
+        if m.get('dialogueList') is not None:
+            for k in m.get('dialogueList'):
+                temp_model = GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList()
+                self.dialogue_list.append(temp_model.from_map(k))
+        if m.get('gmtService') is not None:
+            self.gmt_service = m.get('gmtService')
+        return self
+
+
+class GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue(TeaModel):
+    def __init__(
+        self,
+        begin: int = None,
+        begin_time: str = None,
+        content: str = None,
+        customer_id: str = None,
+        customer_service_id: str = None,
+        customer_service_type: str = None,
+        end: int = None,
+        id: int = None,
+        role: str = None,
+        type: str = None,
+    ):
+        self.begin = begin
+        self.begin_time = begin_time
+        self.content = content
+        self.customer_id = customer_id
+        self.customer_service_id = customer_service_id
+        self.customer_service_type = customer_service_type
+        self.end = end
+        self.id = id
+        self.role = role
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.begin is not None:
+            result['begin'] = self.begin
+        if self.begin_time is not None:
+            result['beginTime'] = self.begin_time
+        if self.content is not None:
+            result['content'] = self.content
+        if self.customer_id is not None:
+            result['customerId'] = self.customer_id
+        if self.customer_service_id is not None:
+            result['customerServiceId'] = self.customer_service_id
+        if self.customer_service_type is not None:
+            result['customerServiceType'] = self.customer_service_type
+        if self.end is not None:
+            result['end'] = self.end
+        if self.id is not None:
+            result['id'] = self.id
+        if self.role is not None:
+            result['role'] = self.role
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('begin') is not None:
+            self.begin = m.get('begin')
+        if m.get('beginTime') is not None:
+            self.begin_time = m.get('beginTime')
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('customerId') is not None:
+            self.customer_id = m.get('customerId')
+        if m.get('customerServiceId') is not None:
+            self.customer_service_id = m.get('customerServiceId')
+        if m.get('customerServiceType') is not None:
+            self.customer_service_type = m.get('customerServiceType')
+        if m.get('end') is not None:
+            self.end = m.get('end')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class GetQualityCheckTaskResultResponseBodyDataQualityCheckList(TeaModel):
+    def __init__(
+        self,
+        check_explanation: str = None,
+        check_passed: str = None,
+        check_process: str = None,
+        checked: str = None,
+        gmt_end: str = None,
+        gmt_start: str = None,
+        mode: str = None,
+        origin_dialogue: List[GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue] = None,
+        quality_group_id: str = None,
+        rule_description: str = None,
+        rule_id: str = None,
+    ):
+        self.check_explanation = check_explanation
+        self.check_passed = check_passed
+        self.check_process = check_process
+        self.checked = checked
+        self.gmt_end = gmt_end
+        self.gmt_start = gmt_start
+        self.mode = mode
+        self.origin_dialogue = origin_dialogue
+        self.quality_group_id = quality_group_id
+        self.rule_description = rule_description
+        self.rule_id = rule_id
+
+    def validate(self):
+        if self.origin_dialogue:
+            for k in self.origin_dialogue:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_explanation is not None:
+            result['checkExplanation'] = self.check_explanation
+        if self.check_passed is not None:
+            result['checkPassed'] = self.check_passed
+        if self.check_process is not None:
+            result['checkProcess'] = self.check_process
+        if self.checked is not None:
+            result['checked'] = self.checked
+        if self.gmt_end is not None:
+            result['gmtEnd'] = self.gmt_end
+        if self.gmt_start is not None:
+            result['gmtStart'] = self.gmt_start
+        if self.mode is not None:
+            result['mode'] = self.mode
+        result['originDialogue'] = []
+        if self.origin_dialogue is not None:
+            for k in self.origin_dialogue:
+                result['originDialogue'].append(k.to_map() if k else None)
+        if self.quality_group_id is not None:
+            result['qualityGroupId'] = self.quality_group_id
+        if self.rule_description is not None:
+            result['ruleDescription'] = self.rule_description
+        if self.rule_id is not None:
+            result['ruleId'] = self.rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('checkExplanation') is not None:
+            self.check_explanation = m.get('checkExplanation')
+        if m.get('checkPassed') is not None:
+            self.check_passed = m.get('checkPassed')
+        if m.get('checkProcess') is not None:
+            self.check_process = m.get('checkProcess')
+        if m.get('checked') is not None:
+            self.checked = m.get('checked')
+        if m.get('gmtEnd') is not None:
+            self.gmt_end = m.get('gmtEnd')
+        if m.get('gmtStart') is not None:
+            self.gmt_start = m.get('gmtStart')
+        if m.get('mode') is not None:
+            self.mode = m.get('mode')
+        self.origin_dialogue = []
+        if m.get('originDialogue') is not None:
+            for k in m.get('originDialogue'):
+                temp_model = GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue()
+                self.origin_dialogue.append(temp_model.from_map(k))
+        if m.get('qualityGroupId') is not None:
+            self.quality_group_id = m.get('qualityGroupId')
+        if m.get('ruleDescription') is not None:
+            self.rule_description = m.get('ruleDescription')
+        if m.get('ruleId') is not None:
+            self.rule_id = m.get('ruleId')
+        return self
+
+
+class GetQualityCheckTaskResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        conversation_list: GetQualityCheckTaskResultResponseBodyDataConversationList = None,
+        gmt_create: str = None,
+        gmt_end: str = None,
+        gmt_start: str = None,
+        quality_check_list: List[GetQualityCheckTaskResultResponseBodyDataQualityCheckList] = None,
+        status: str = None,
+        task_id: str = None,
+    ):
+        self.conversation_list = conversation_list
+        self.gmt_create = gmt_create
+        self.gmt_end = gmt_end
+        self.gmt_start = gmt_start
+        self.quality_check_list = quality_check_list
+        self.status = status
+        self.task_id = task_id
+
+    def validate(self):
+        if self.conversation_list:
+            self.conversation_list.validate()
+        if self.quality_check_list:
+            for k in self.quality_check_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.conversation_list is not None:
+            result['conversationList'] = self.conversation_list.to_map()
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_end is not None:
+            result['gmtEnd'] = self.gmt_end
+        if self.gmt_start is not None:
+            result['gmtStart'] = self.gmt_start
+        result['qualityCheckList'] = []
+        if self.quality_check_list is not None:
+            for k in self.quality_check_list:
+                result['qualityCheckList'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['status'] = self.status
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('conversationList') is not None:
+            temp_model = GetQualityCheckTaskResultResponseBodyDataConversationList()
+            self.conversation_list = temp_model.from_map(m['conversationList'])
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtEnd') is not None:
+            self.gmt_end = m.get('gmtEnd')
+        if m.get('gmtStart') is not None:
+            self.gmt_start = m.get('gmtStart')
+        self.quality_check_list = []
+        if m.get('qualityCheckList') is not None:
+            for k in m.get('qualityCheckList'):
+                temp_model = GetQualityCheckTaskResultResponseBodyDataQualityCheckList()
+                self.quality_check_list.append(temp_model.from_map(k))
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class GetQualityCheckTaskResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        cost: int = None,
+        data: GetQualityCheckTaskResultResponseBodyData = None,
+        data_type: str = None,
+        err_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        time: str = None,
+    ):
+        self.cost = cost
+        self.data = data
+        self.data_type = data_type
+        self.err_code = err_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.time = time
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost is not None:
+            result['cost'] = self.cost
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.data_type is not None:
+            result['dataType'] = self.data_type
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.time is not None:
+            result['time'] = self.time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cost') is not None:
+            self.cost = m.get('cost')
+        if m.get('data') is not None:
+            temp_model = GetQualityCheckTaskResultResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('dataType') is not None:
+            self.data_type = m.get('dataType')
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('time') is not None:
+            self.time = m.get('time')
+        return self
+
+
+class GetQualityCheckTaskResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetQualityCheckTaskResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetQualityCheckTaskResultResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
