@@ -1,3 +1,24 @@
+2024-10-12 Version: 4.0.0
+- Support API CreateExperiment.
+- Support API CreateRun.
+- Support API DeleteExperiment.
+- Support API DeleteExperimentLabel.
+- Support API DeleteRun.
+- Support API DeleteRunLabel.
+- Support API GetExperiment.
+- Support API GetRun.
+- Support API ListExperiment.
+- Support API ListRunMetrics.
+- Support API ListRuns.
+- Support API LogRunMetrics.
+- Support API SetExperimentLabels.
+- Support API UpdateExperiment.
+- Support API UpdateRun.
+- Delete API GetServiceTemplate.
+- Delete API ListServiceTemplates.
+- Update API ListImages: add param ImageUri.
+
+
 2024-07-25 Version: 3.0.7
 - Update API GetDataset: update response param.
 
