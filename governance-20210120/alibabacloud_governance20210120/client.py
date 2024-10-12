@@ -360,7 +360,7 @@ class Client(OpenApiClient):
 
     def enroll_account_with_options(
         self,
-        request: governance_20210120_models.EnrollAccountRequest,
+        tmp_req: governance_20210120_models.EnrollAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.EnrollAccountResponse:
         """
@@ -369,11 +369,15 @@ class Client(OpenApiClient):
         @description You can call this API operation to create a new account or manage an existing account and apply the account baseline to the account.
         Accounts are created in asynchronous mode. After you create an account, you can apply the account baseline to the account. You can call the [GetEnrolledAccount API](~~GetEnrolledAccount~~) operation to view the details about the account to obtain the result of applying the account baseline to the account.
         
-        @param request: EnrollAccountRequest
+        @param tmp_req: EnrollAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: EnrollAccountResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = governance_20210120_models.EnrollAccountShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.account_name_prefix):
             query['AccountNamePrefix'] = request.account_name_prefix
@@ -393,6 +397,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resell_account_type):
             query['ResellAccountType'] = request.resell_account_type
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -414,7 +420,7 @@ class Client(OpenApiClient):
 
     async def enroll_account_with_options_async(
         self,
-        request: governance_20210120_models.EnrollAccountRequest,
+        tmp_req: governance_20210120_models.EnrollAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.EnrollAccountResponse:
         """
@@ -423,11 +429,15 @@ class Client(OpenApiClient):
         @description You can call this API operation to create a new account or manage an existing account and apply the account baseline to the account.
         Accounts are created in asynchronous mode. After you create an account, you can apply the account baseline to the account. You can call the [GetEnrolledAccount API](~~GetEnrolledAccount~~) operation to view the details about the account to obtain the result of applying the account baseline to the account.
         
-        @param request: EnrollAccountRequest
+        @param tmp_req: EnrollAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: EnrollAccountResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = governance_20210120_models.EnrollAccountShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.account_name_prefix):
             query['AccountNamePrefix'] = request.account_name_prefix
@@ -447,6 +457,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resell_account_type):
             query['ResellAccountType'] = request.resell_account_type
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1240,7 +1252,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.ListEvaluationResultsResponse:
         """
-        @summary 查看检测结果
+        @summary Queries the result and status of a governance maturity check.
         
         @param request: ListEvaluationResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1277,7 +1289,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.ListEvaluationResultsResponse:
         """
-        @summary 查看检测结果
+        @summary Queries the result and status of a governance maturity check.
         
         @param request: ListEvaluationResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1313,7 +1325,7 @@ class Client(OpenApiClient):
         request: governance_20210120_models.ListEvaluationResultsRequest,
     ) -> governance_20210120_models.ListEvaluationResultsResponse:
         """
-        @summary 查看检测结果
+        @summary Queries the result and status of a governance maturity check.
         
         @param request: ListEvaluationResultsRequest
         @return: ListEvaluationResultsResponse
@@ -1326,7 +1338,7 @@ class Client(OpenApiClient):
         request: governance_20210120_models.ListEvaluationResultsRequest,
     ) -> governance_20210120_models.ListEvaluationResultsResponse:
         """
-        @summary 查看检测结果
+        @summary Queries the result and status of a governance maturity check.
         
         @param request: ListEvaluationResultsRequest
         @return: ListEvaluationResultsResponse
@@ -1348,6 +1360,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
         if not UtilClient.is_unset(request.end_date):
             query['EndDate'] = request.end_date
         if not UtilClient.is_unset(request.region_id):
@@ -1387,6 +1401,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
         if not UtilClient.is_unset(request.end_date):
             query['EndDate'] = request.end_date
         if not UtilClient.is_unset(request.region_id):

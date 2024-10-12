@@ -1,3 +1,12 @@
+2024-10-12 Version: 0.3.3
+- Update API EnrollAccount: add param Tag.
+- Update API EnrollAccount: update param AccountNamePrefix.
+- Update API EnrollAccount: update param DisplayName.
+- Update API GetEnrolledAccount: update response param.
+- Update API ListEvaluationMetricDetails: update response param.
+- Update API ListEvaluationScoreHistory: add param AccountId.
+
+
 2024-08-23 Version: 0.3.2
 - Generated python 2021-01-20 for governance.
 
