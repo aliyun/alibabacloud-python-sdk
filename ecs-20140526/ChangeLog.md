@@ -1,3 +1,19 @@
+2024-10-12 Version: 4.4.3
+- Update API CreateLaunchTemplate: add param HttpEndpoint.
+- Update API CreateLaunchTemplate: add param HttpPutResponseHopLimit.
+- Update API CreateLaunchTemplate: add param HttpTokens.
+- Update API CreateLaunchTemplateVersion: add param HttpEndpoint.
+- Update API CreateLaunchTemplateVersion: add param HttpPutResponseHopLimit.
+- Update API CreateLaunchTemplateVersion: add param HttpTokens.
+- Update API DescribeLaunchTemplateVersions: update response param.
+- Update API PurchaseElasticityAssurance: add param Action.
+- Update API PurchaseElasticityAssurance: add param OwnerAccount.
+- Update API PurchaseElasticityAssurance: add param OwnerId.
+- Update API PurchaseElasticityAssurance: add param ResourceOwnerAccount.
+- Update API PurchaseElasticityAssurance: add param ResourceOwnerId.
+- Update API PurchaseElasticityAssurance: update param RegionId.
+
+
 2024-10-10 Version: 4.4.2
 - Update API CreateImageComponent: add param ComponentVersion.
 - Update API CreateImagePipeline: add param ImageFamily.

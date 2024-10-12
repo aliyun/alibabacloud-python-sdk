@@ -8571,6 +8571,12 @@ class Client(OpenApiClient):
             query['EnableVmOsConfig'] = request.enable_vm_os_config
         if not UtilClient.is_unset(request.host_name):
             query['HostName'] = request.host_name
+        if not UtilClient.is_unset(request.http_endpoint):
+            query['HttpEndpoint'] = request.http_endpoint
+        if not UtilClient.is_unset(request.http_put_response_hop_limit):
+            query['HttpPutResponseHopLimit'] = request.http_put_response_hop_limit
+        if not UtilClient.is_unset(request.http_tokens):
+            query['HttpTokens'] = request.http_tokens
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.image_owner_alias):
@@ -8713,6 +8719,12 @@ class Client(OpenApiClient):
             query['EnableVmOsConfig'] = request.enable_vm_os_config
         if not UtilClient.is_unset(request.host_name):
             query['HostName'] = request.host_name
+        if not UtilClient.is_unset(request.http_endpoint):
+            query['HttpEndpoint'] = request.http_endpoint
+        if not UtilClient.is_unset(request.http_put_response_hop_limit):
+            query['HttpPutResponseHopLimit'] = request.http_put_response_hop_limit
+        if not UtilClient.is_unset(request.http_tokens):
+            query['HttpTokens'] = request.http_tokens
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.image_owner_alias):
@@ -8891,6 +8903,12 @@ class Client(OpenApiClient):
             query['EnableVmOsConfig'] = request.enable_vm_os_config
         if not UtilClient.is_unset(request.host_name):
             query['HostName'] = request.host_name
+        if not UtilClient.is_unset(request.http_endpoint):
+            query['HttpEndpoint'] = request.http_endpoint
+        if not UtilClient.is_unset(request.http_put_response_hop_limit):
+            query['HttpPutResponseHopLimit'] = request.http_put_response_hop_limit
+        if not UtilClient.is_unset(request.http_tokens):
+            query['HttpTokens'] = request.http_tokens
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.image_owner_alias):
@@ -9027,6 +9045,12 @@ class Client(OpenApiClient):
             query['EnableVmOsConfig'] = request.enable_vm_os_config
         if not UtilClient.is_unset(request.host_name):
             query['HostName'] = request.host_name
+        if not UtilClient.is_unset(request.http_endpoint):
+            query['HttpEndpoint'] = request.http_endpoint
+        if not UtilClient.is_unset(request.http_put_response_hop_limit):
+            query['HttpPutResponseHopLimit'] = request.http_put_response_hop_limit
+        if not UtilClient.is_unset(request.http_tokens):
+            query['HttpTokens'] = request.http_tokens
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.image_owner_alias):
@@ -48394,12 +48418,20 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.period):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.period_unit):
             query['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.private_pool_options):
@@ -48439,12 +48471,20 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.period):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.period_unit):
             query['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.private_pool_options):
