@@ -4,6 +4,232 @@ from Tea.model import TeaModel
 from typing import List, Dict, Any, BinaryIO
 
 
+class CreateAnnualDocSummaryTaskRequestDocInfos(TeaModel):
+    def __init__(
+        self,
+        doc_id: str = None,
+        doc_year: int = None,
+        end_page: int = None,
+        library_id: str = None,
+        start_page: int = None,
+    ):
+        # This parameter is required.
+        self.doc_id = doc_id
+        # This parameter is required.
+        self.doc_year = doc_year
+        self.end_page = end_page
+        # This parameter is required.
+        self.library_id = library_id
+        self.start_page = start_page
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.doc_id is not None:
+            result['docId'] = self.doc_id
+        if self.doc_year is not None:
+            result['docYear'] = self.doc_year
+        if self.end_page is not None:
+            result['endPage'] = self.end_page
+        if self.library_id is not None:
+            result['libraryId'] = self.library_id
+        if self.start_page is not None:
+            result['startPage'] = self.start_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('docId') is not None:
+            self.doc_id = m.get('docId')
+        if m.get('docYear') is not None:
+            self.doc_year = m.get('docYear')
+        if m.get('endPage') is not None:
+            self.end_page = m.get('endPage')
+        if m.get('libraryId') is not None:
+            self.library_id = m.get('libraryId')
+        if m.get('startPage') is not None:
+            self.start_page = m.get('startPage')
+        return self
+
+
+class CreateAnnualDocSummaryTaskRequest(TeaModel):
+    def __init__(
+        self,
+        ana_years: List[int] = None,
+        doc_infos: List[CreateAnnualDocSummaryTaskRequestDocInfos] = None,
+        enable_table: bool = None,
+        instruction: str = None,
+        model_id: str = None,
+    ):
+        # This parameter is required.
+        self.ana_years = ana_years
+        # This parameter is required.
+        self.doc_infos = doc_infos
+        self.enable_table = enable_table
+        self.instruction = instruction
+        # This parameter is required.
+        self.model_id = model_id
+
+    def validate(self):
+        if self.doc_infos:
+            for k in self.doc_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ana_years is not None:
+            result['anaYears'] = self.ana_years
+        result['docInfos'] = []
+        if self.doc_infos is not None:
+            for k in self.doc_infos:
+                result['docInfos'].append(k.to_map() if k else None)
+        if self.enable_table is not None:
+            result['enableTable'] = self.enable_table
+        if self.instruction is not None:
+            result['instruction'] = self.instruction
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('anaYears') is not None:
+            self.ana_years = m.get('anaYears')
+        self.doc_infos = []
+        if m.get('docInfos') is not None:
+            for k in m.get('docInfos'):
+                temp_model = CreateAnnualDocSummaryTaskRequestDocInfos()
+                self.doc_infos.append(temp_model.from_map(k))
+        if m.get('enableTable') is not None:
+            self.enable_table = m.get('enableTable')
+        if m.get('instruction') is not None:
+            self.instruction = m.get('instruction')
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        return self
+
+
+class CreateAnnualDocSummaryTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        cost: int = None,
+        data: str = None,
+        data_type: str = None,
+        err_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        time: str = None,
+    ):
+        self.cost = cost
+        self.data = data
+        self.data_type = data_type
+        self.err_code = err_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.time = time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost is not None:
+            result['cost'] = self.cost
+        if self.data is not None:
+            result['data'] = self.data
+        if self.data_type is not None:
+            result['dataType'] = self.data_type
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.time is not None:
+            result['time'] = self.time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cost') is not None:
+            self.cost = m.get('cost')
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('dataType') is not None:
+            self.data_type = m.get('dataType')
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('time') is not None:
+            self.time = m.get('time')
+        return self
+
+
+class CreateAnnualDocSummaryTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAnnualDocSummaryTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAnnualDocSummaryTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDocsSummaryTaskRequestDocInfos(TeaModel):
     def __init__(
         self,

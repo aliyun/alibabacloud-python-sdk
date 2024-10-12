@@ -1,3 +1,7 @@
+2024-10-12 Version: 1.5.0
+- Support API CreateAnnualDocSummaryTask.
+
+
 2024-10-11 Version: 1.4.0
 - Support API CreateDocsSummaryTask.
 - Support API CreateQualityCheckTask.

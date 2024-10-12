@@ -47,6 +47,130 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def create_annual_doc_summary_task_with_options(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateAnnualDocSummaryTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.CreateAnnualDocSummaryTaskResponse:
+        """
+        @summary 创建按年文档总结任务
+        
+        @param request: CreateAnnualDocSummaryTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAnnualDocSummaryTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ana_years):
+            body['anaYears'] = request.ana_years
+        if not UtilClient.is_unset(request.doc_infos):
+            body['docInfos'] = request.doc_infos
+        if not UtilClient.is_unset(request.enable_table):
+            body['enableTable'] = request.enable_table
+        if not UtilClient.is_unset(request.instruction):
+            body['instruction'] = request.instruction
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAnnualDocSummaryTask',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/task/summary/doc/annual',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.CreateAnnualDocSummaryTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_annual_doc_summary_task_with_options_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateAnnualDocSummaryTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.CreateAnnualDocSummaryTaskResponse:
+        """
+        @summary 创建按年文档总结任务
+        
+        @param request: CreateAnnualDocSummaryTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAnnualDocSummaryTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ana_years):
+            body['anaYears'] = request.ana_years
+        if not UtilClient.is_unset(request.doc_infos):
+            body['docInfos'] = request.doc_infos
+        if not UtilClient.is_unset(request.enable_table):
+            body['enableTable'] = request.enable_table
+        if not UtilClient.is_unset(request.instruction):
+            body['instruction'] = request.instruction
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAnnualDocSummaryTask',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/task/summary/doc/annual',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.CreateAnnualDocSummaryTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_annual_doc_summary_task(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateAnnualDocSummaryTaskRequest,
+    ) -> dian_jin_20240628_models.CreateAnnualDocSummaryTaskResponse:
+        """
+        @summary 创建按年文档总结任务
+        
+        @param request: CreateAnnualDocSummaryTaskRequest
+        @return: CreateAnnualDocSummaryTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_annual_doc_summary_task_with_options(workspace_id, request, headers, runtime)
+
+    async def create_annual_doc_summary_task_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateAnnualDocSummaryTaskRequest,
+    ) -> dian_jin_20240628_models.CreateAnnualDocSummaryTaskResponse:
+        """
+        @summary 创建按年文档总结任务
+        
+        @param request: CreateAnnualDocSummaryTaskRequest
+        @return: CreateAnnualDocSummaryTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_annual_doc_summary_task_with_options_async(workspace_id, request, headers, runtime)
+
     def create_docs_summary_task_with_options(
         self,
         workspace_id: str,
