@@ -23839,25 +23839,14 @@ class SubmitDocClusterTaskResponse(TeaModel):
         return self
 
 
-class SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments(TeaModel):
+class SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocumentsComments(TeaModel):
     def __init__(
         self,
-        author: str = None,
-        content: str = None,
-        pub_time: str = None,
-        source: str = None,
-        summary: str = None,
-        title: str = None,
-        url: str = None,
+        text: str = None,
+        username: str = None,
     ):
-        self.author = author
-        # This parameter is required.
-        self.content = content
-        self.pub_time = pub_time
-        self.source = source
-        self.summary = summary
-        self.title = title
-        self.url = url
+        self.text = text
+        self.username = username
 
     def validate(self):
         pass
@@ -23868,8 +23857,61 @@ class SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments(TeaModel):
             return _map
 
         result = dict()
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments(TeaModel):
+    def __init__(
+        self,
+        author: str = None,
+        comments: List[SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocumentsComments] = None,
+        content: str = None,
+        pub_time: str = None,
+        source: str = None,
+        summary: str = None,
+        title: str = None,
+        url: str = None,
+    ):
+        self.author = author
+        self.comments = comments
+        # This parameter is required.
+        self.content = content
+        self.pub_time = pub_time
+        self.source = source
+        self.summary = summary
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        if self.comments:
+            for k in self.comments:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.author is not None:
             result['Author'] = self.author
+        result['Comments'] = []
+        if self.comments is not None:
+            for k in self.comments:
+                result['Comments'].append(k.to_map() if k else None)
         if self.content is not None:
             result['Content'] = self.content
         if self.pub_time is not None:
@@ -23888,6 +23930,11 @@ class SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments(TeaModel):
         m = m or dict()
         if m.get('Author') is not None:
             self.author = m.get('Author')
+        self.comments = []
+        if m.get('Comments') is not None:
+            for k in m.get('Comments'):
+                temp_model = SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocumentsComments()
+                self.comments.append(temp_model.from_map(k))
         if m.get('Content') is not None:
             self.content = m.get('Content')
         if m.get('PubTime') is not None:
