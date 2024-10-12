@@ -1,3 +1,8 @@
+2024-10-12 Version: 1.3.14
+- Update API DescribeBackups: update response param.
+- Update API ModifyBackupPolicy: update param PreferredBackupPeriod.
+
+
 2024-10-11 Version: 1.3.13
 - Update API CreateDBResourceGroup: add param MaxGpuQuantity.
 - Update API CreateDBResourceGroup: add param MinGpuQuantity.

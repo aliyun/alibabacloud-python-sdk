@@ -13513,7 +13513,7 @@ class Client(OpenApiClient):
         If the cluster has a built-in dataset loaded, make sure that the cluster has reserved storage resources of at least 24 AnalyticDB compute units (ACUs). Otherwise, the built-in dataset cannot be used.
         When the scaling process is about to end, transient connections may occur. We recommend that you scale your cluster during off-peak hours or make sure that your application is configured to automatically reconnect to your cluster.
         You can change an AnalyticDB for MySQL cluster from Data Warehouse Edition to Data Lakehouse Edition, but not the other way around. For more information, see Change a cluster from Data Warehouse Edition to Data Lakehouse Edition.
-        For information about the endpoints of the current service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: ModifyDBClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13576,7 +13576,7 @@ class Client(OpenApiClient):
         If the cluster has a built-in dataset loaded, make sure that the cluster has reserved storage resources of at least 24 AnalyticDB compute units (ACUs). Otherwise, the built-in dataset cannot be used.
         When the scaling process is about to end, transient connections may occur. We recommend that you scale your cluster during off-peak hours or make sure that your application is configured to automatically reconnect to your cluster.
         You can change an AnalyticDB for MySQL cluster from Data Warehouse Edition to Data Lakehouse Edition, but not the other way around. For more information, see Change a cluster from Data Warehouse Edition to Data Lakehouse Edition.
-        For information about the endpoints of the current service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: ModifyDBClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13638,7 +13638,7 @@ class Client(OpenApiClient):
         If the cluster has a built-in dataset loaded, make sure that the cluster has reserved storage resources of at least 24 AnalyticDB compute units (ACUs). Otherwise, the built-in dataset cannot be used.
         When the scaling process is about to end, transient connections may occur. We recommend that you scale your cluster during off-peak hours or make sure that your application is configured to automatically reconnect to your cluster.
         You can change an AnalyticDB for MySQL cluster from Data Warehouse Edition to Data Lakehouse Edition, but not the other way around. For more information, see Change a cluster from Data Warehouse Edition to Data Lakehouse Edition.
-        For information about the endpoints of the current service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: ModifyDBClusterRequest
         @return: ModifyDBClusterResponse
@@ -13659,7 +13659,7 @@ class Client(OpenApiClient):
         If the cluster has a built-in dataset loaded, make sure that the cluster has reserved storage resources of at least 24 AnalyticDB compute units (ACUs). Otherwise, the built-in dataset cannot be used.
         When the scaling process is about to end, transient connections may occur. We recommend that you scale your cluster during off-peak hours or make sure that your application is configured to automatically reconnect to your cluster.
         You can change an AnalyticDB for MySQL cluster from Data Warehouse Edition to Data Lakehouse Edition, but not the other way around. For more information, see Change a cluster from Data Warehouse Edition to Data Lakehouse Edition.
-        For information about the endpoints of the current service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: ModifyDBClusterRequest
         @return: ModifyDBClusterResponse

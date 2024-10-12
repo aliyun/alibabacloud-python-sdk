@@ -3053,6 +3053,9 @@ class CreateDBClusterRequest(TeaModel):
         # 
         # >  You can call the [DescribeBackups](https://help.aliyun.com/document_detail/612318.html) operation to query the backup sets of the cluster.
         self.backup_set_id = backup_set_id
+        # The region ID of the source cluster.
+        # 
+        # >  This parameter must be specified for cloning clusters across regions.
         self.clone_source_region_id = clone_source_region_id
         # The amount of reserved computing resources. Valid values: 0ACU to 4096ACU. The value must be in increments of 16ACU. Each ACU is approximately equal to 1 core and 4 GB memory.
         # 
@@ -7891,7 +7894,7 @@ class DescribeApsActionLogsRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The end time of the logs to be queried. Specify the time in the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time must be in UTC.
+        # The end time of the logs to be queried. Specify the time in the ISO 8601 standard in the **yyyy-MM-ddTHH:mmZ** format. The time must be in UTC.
         # 
         # >  The end time must be later than the start time. The maximum time range that can be specified is 30 days.
         # 
@@ -7925,7 +7928,7 @@ class DescribeApsActionLogsRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, logs of all the phases are queried.
         self.stage = stage
-        # The start time of the logs to be queried. Specify the time in the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time must be in UTC.
+        # The start time of the logs to be queried. Specify the time in the ISO 8601 standard in the **yyyy-MM-ddTHH:mmZ** format. The time must be in UTC.
         # 
         # This parameter is required.
         self.start_time = start_time
@@ -9167,6 +9170,7 @@ class DescribeBackupsResponseBodyItemsBackup(TeaModel):
     def __init__(
         self,
         backup_end_time: str = None,
+        backup_expired_time: str = None,
         backup_id: str = None,
         backup_method: str = None,
         backup_size: int = None,
@@ -9176,6 +9180,7 @@ class DescribeBackupsResponseBodyItemsBackup(TeaModel):
     ):
         # The end time of the backup.
         self.backup_end_time = backup_end_time
+        self.backup_expired_time = backup_expired_time
         # The backup set ID.
         self.backup_id = backup_id
         # The backup method. Snapshot is returned.
@@ -9203,6 +9208,8 @@ class DescribeBackupsResponseBodyItemsBackup(TeaModel):
         result = dict()
         if self.backup_end_time is not None:
             result['BackupEndTime'] = self.backup_end_time
+        if self.backup_expired_time is not None:
+            result['BackupExpiredTime'] = self.backup_expired_time
         if self.backup_id is not None:
             result['BackupId'] = self.backup_id
         if self.backup_method is not None:
@@ -9221,6 +9228,8 @@ class DescribeBackupsResponseBodyItemsBackup(TeaModel):
         m = m or dict()
         if m.get('BackupEndTime') is not None:
             self.backup_end_time = m.get('BackupEndTime')
+        if m.get('BackupExpiredTime') is not None:
+            self.backup_expired_time = m.get('BackupExpiredTime')
         if m.get('BackupId') is not None:
             self.backup_id = m.get('BackupId')
         if m.get('BackupMethod') is not None:
@@ -9274,12 +9283,15 @@ class DescribeBackupsResponseBodyItems(TeaModel):
 class DescribeBackupsResponseBody(TeaModel):
     def __init__(
         self,
+        free_backup_size: int = None,
         items: DescribeBackupsResponseBodyItems = None,
         page_number: str = None,
         page_size: str = None,
         request_id: str = None,
+        total_backup_size: int = None,
         total_count: str = None,
     ):
+        self.free_backup_size = free_backup_size
         # The queried backup sets.
         self.items = items
         # The page number.
@@ -9288,6 +9300,7 @@ class DescribeBackupsResponseBody(TeaModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
+        self.total_backup_size = total_backup_size
         # The total number of entries returned.
         self.total_count = total_count
 
@@ -9301,6 +9314,8 @@ class DescribeBackupsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.free_backup_size is not None:
+            result['FreeBackupSize'] = self.free_backup_size
         if self.items is not None:
             result['Items'] = self.items.to_map()
         if self.page_number is not None:
@@ -9309,12 +9324,16 @@ class DescribeBackupsResponseBody(TeaModel):
             result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.total_backup_size is not None:
+            result['TotalBackupSize'] = self.total_backup_size
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FreeBackupSize') is not None:
+            self.free_backup_size = m.get('FreeBackupSize')
         if m.get('Items') is not None:
             temp_model = DescribeBackupsResponseBodyItems()
             self.items = temp_model.from_map(m['Items'])
@@ -9324,6 +9343,8 @@ class DescribeBackupsResponseBody(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TotalBackupSize') is not None:
+            self.total_backup_size = m.get('TotalBackupSize')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
         return self
@@ -9377,7 +9398,7 @@ class DescribeClusterAccessWhiteListRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -26690,8 +26711,6 @@ class ModifyBackupPolicyRequest(TeaModel):
         # *   **Sunday**\
         # 
         # >  To ensure data security, we recommend that you specify at least two values.
-        # 
-        # This parameter is required.
         self.preferred_backup_period = preferred_backup_period
         # The start time to perform a full backup. Specify the time in the HH:mmZ-HH:mmZ format. The time must be in UTC.
         # 
@@ -27128,9 +27147,9 @@ class ModifyDBClusterRequest(TeaModel):
         # 
         # >  This parameter must be specified with a unit.
         self.compute_resource = compute_resource
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -27221,7 +27240,7 @@ class ModifyDBClusterResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         self.dbcluster_id = dbcluster_id
         # The order ID.
         self.order_id = order_id
