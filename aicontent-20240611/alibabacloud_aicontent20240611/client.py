@@ -123,6 +123,424 @@ class Client(OpenApiClient):
         headers = {}
         return await self.aliyun_console_open_api_query_aliyun_console_servcie_list_with_options_async(headers, runtime)
 
+    def aliyun_console_open_api_query_aliyun_console_service_list_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse:
+        """
+        @summary 阿里云控制台/列出阿里云控制台上可使用的服务列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='AliyunConsoleOpenApiQueryAliyunConsoleServiceList',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aliyunconsole/queryAliyunConsoleServiceList',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def aliyun_console_open_api_query_aliyun_console_service_list_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse:
+        """
+        @summary 阿里云控制台/列出阿里云控制台上可使用的服务列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='AliyunConsoleOpenApiQueryAliyunConsoleServiceList',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aliyunconsole/queryAliyunConsoleServiceList',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def aliyun_console_open_api_query_aliyun_console_service_list(self) -> ai_content_20240611_models.AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse:
+        """
+        @summary 阿里云控制台/列出阿里云控制台上可使用的服务列表
+        
+        @return: AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.aliyun_console_open_api_query_aliyun_console_service_list_with_options(headers, runtime)
+
+    async def aliyun_console_open_api_query_aliyun_console_service_list_async(self) -> ai_content_20240611_models.AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse:
+        """
+        @summary 阿里云控制台/列出阿里云控制台上可使用的服务列表
+        
+        @return: AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.aliyun_console_open_api_query_aliyun_console_service_list_with_options_async(headers, runtime)
+
+    def personalized_text_to_image_add_inference_job_with_options(
+        self,
+        request: ai_content_20240611_models.PersonalizedTextToImageAddInferenceJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.PersonalizedTextToImageAddInferenceJobResponse:
+        """
+        @summary 个性化文生图/基于一个预训练模型创建图片推理任务
+        
+        @param request: PersonalizedTextToImageAddInferenceJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PersonalizedTextToImageAddInferenceJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_number):
+            body['imageNumber'] = request.image_number
+        if not UtilClient.is_unset(request.image_url):
+            body['imageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.prompt):
+            body['prompt'] = request.prompt
+        if not UtilClient.is_unset(request.seed):
+            body['seed'] = request.seed
+        if not UtilClient.is_unset(request.strength):
+            body['strength'] = request.strength
+        if not UtilClient.is_unset(request.train_steps):
+            body['trainSteps'] = request.train_steps
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PersonalizedTextToImageAddInferenceJob',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/personalizedtxt2img/addPreModelInferenceJob',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.PersonalizedTextToImageAddInferenceJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def personalized_text_to_image_add_inference_job_with_options_async(
+        self,
+        request: ai_content_20240611_models.PersonalizedTextToImageAddInferenceJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.PersonalizedTextToImageAddInferenceJobResponse:
+        """
+        @summary 个性化文生图/基于一个预训练模型创建图片推理任务
+        
+        @param request: PersonalizedTextToImageAddInferenceJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PersonalizedTextToImageAddInferenceJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_number):
+            body['imageNumber'] = request.image_number
+        if not UtilClient.is_unset(request.image_url):
+            body['imageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.prompt):
+            body['prompt'] = request.prompt
+        if not UtilClient.is_unset(request.seed):
+            body['seed'] = request.seed
+        if not UtilClient.is_unset(request.strength):
+            body['strength'] = request.strength
+        if not UtilClient.is_unset(request.train_steps):
+            body['trainSteps'] = request.train_steps
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PersonalizedTextToImageAddInferenceJob',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/personalizedtxt2img/addPreModelInferenceJob',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.PersonalizedTextToImageAddInferenceJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def personalized_text_to_image_add_inference_job(
+        self,
+        request: ai_content_20240611_models.PersonalizedTextToImageAddInferenceJobRequest,
+    ) -> ai_content_20240611_models.PersonalizedTextToImageAddInferenceJobResponse:
+        """
+        @summary 个性化文生图/基于一个预训练模型创建图片推理任务
+        
+        @param request: PersonalizedTextToImageAddInferenceJobRequest
+        @return: PersonalizedTextToImageAddInferenceJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.personalized_text_to_image_add_inference_job_with_options(request, headers, runtime)
+
+    async def personalized_text_to_image_add_inference_job_async(
+        self,
+        request: ai_content_20240611_models.PersonalizedTextToImageAddInferenceJobRequest,
+    ) -> ai_content_20240611_models.PersonalizedTextToImageAddInferenceJobResponse:
+        """
+        @summary 个性化文生图/基于一个预训练模型创建图片推理任务
+        
+        @param request: PersonalizedTextToImageAddInferenceJobRequest
+        @return: PersonalizedTextToImageAddInferenceJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.personalized_text_to_image_add_inference_job_with_options_async(request, headers, runtime)
+
+    def personalized_text_to_image_query_image_asset_with_options(
+        self,
+        request: ai_content_20240611_models.PersonalizedTextToImageQueryImageAssetRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.PersonalizedTextToImageQueryImageAssetResponse:
+        """
+        @summary 个性化文生图/通过唯一的图片编号获取图片内容
+        
+        @param request: PersonalizedTextToImageQueryImageAssetRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PersonalizedTextToImageQueryImageAssetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.encode_format):
+            query['encodeFormat'] = request.encode_format
+        if not UtilClient.is_unset(request.image_id):
+            query['imageId'] = request.image_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PersonalizedTextToImageQueryImageAsset',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/personalizedtxt2img/queryImageAssetFromImageId',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='any'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.PersonalizedTextToImageQueryImageAssetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def personalized_text_to_image_query_image_asset_with_options_async(
+        self,
+        request: ai_content_20240611_models.PersonalizedTextToImageQueryImageAssetRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.PersonalizedTextToImageQueryImageAssetResponse:
+        """
+        @summary 个性化文生图/通过唯一的图片编号获取图片内容
+        
+        @param request: PersonalizedTextToImageQueryImageAssetRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PersonalizedTextToImageQueryImageAssetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.encode_format):
+            query['encodeFormat'] = request.encode_format
+        if not UtilClient.is_unset(request.image_id):
+            query['imageId'] = request.image_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PersonalizedTextToImageQueryImageAsset',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/personalizedtxt2img/queryImageAssetFromImageId',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='any'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.PersonalizedTextToImageQueryImageAssetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def personalized_text_to_image_query_image_asset(
+        self,
+        request: ai_content_20240611_models.PersonalizedTextToImageQueryImageAssetRequest,
+    ) -> ai_content_20240611_models.PersonalizedTextToImageQueryImageAssetResponse:
+        """
+        @summary 个性化文生图/通过唯一的图片编号获取图片内容
+        
+        @param request: PersonalizedTextToImageQueryImageAssetRequest
+        @return: PersonalizedTextToImageQueryImageAssetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.personalized_text_to_image_query_image_asset_with_options(request, headers, runtime)
+
+    async def personalized_text_to_image_query_image_asset_async(
+        self,
+        request: ai_content_20240611_models.PersonalizedTextToImageQueryImageAssetRequest,
+    ) -> ai_content_20240611_models.PersonalizedTextToImageQueryImageAssetResponse:
+        """
+        @summary 个性化文生图/通过唯一的图片编号获取图片内容
+        
+        @param request: PersonalizedTextToImageQueryImageAssetRequest
+        @return: PersonalizedTextToImageQueryImageAssetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.personalized_text_to_image_query_image_asset_with_options_async(request, headers, runtime)
+
+    def personalized_text_to_image_query_pre_model_inference_job_info_with_options(
+        self,
+        request: ai_content_20240611_models.PersonalizedTextToImageQueryPreModelInferenceJobInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse:
+        """
+        @summary 个性化文生图/查询预制模型推理任务的状态
+        
+        @param request: PersonalizedTextToImageQueryPreModelInferenceJobInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.inference_job_id):
+            query['inferenceJobId'] = request.inference_job_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PersonalizedTextToImageQueryPreModelInferenceJobInfo',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/personalizedtxt2img/queryPreModelInferenceJobInfo',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def personalized_text_to_image_query_pre_model_inference_job_info_with_options_async(
+        self,
+        request: ai_content_20240611_models.PersonalizedTextToImageQueryPreModelInferenceJobInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse:
+        """
+        @summary 个性化文生图/查询预制模型推理任务的状态
+        
+        @param request: PersonalizedTextToImageQueryPreModelInferenceJobInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.inference_job_id):
+            query['inferenceJobId'] = request.inference_job_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PersonalizedTextToImageQueryPreModelInferenceJobInfo',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/personalizedtxt2img/queryPreModelInferenceJobInfo',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def personalized_text_to_image_query_pre_model_inference_job_info(
+        self,
+        request: ai_content_20240611_models.PersonalizedTextToImageQueryPreModelInferenceJobInfoRequest,
+    ) -> ai_content_20240611_models.PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse:
+        """
+        @summary 个性化文生图/查询预制模型推理任务的状态
+        
+        @param request: PersonalizedTextToImageQueryPreModelInferenceJobInfoRequest
+        @return: PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.personalized_text_to_image_query_pre_model_inference_job_info_with_options(request, headers, runtime)
+
+    async def personalized_text_to_image_query_pre_model_inference_job_info_async(
+        self,
+        request: ai_content_20240611_models.PersonalizedTextToImageQueryPreModelInferenceJobInfoRequest,
+    ) -> ai_content_20240611_models.PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse:
+        """
+        @summary 个性化文生图/查询预制模型推理任务的状态
+        
+        @param request: PersonalizedTextToImageQueryPreModelInferenceJobInfoRequest
+        @return: PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.personalized_text_to_image_query_pre_model_inference_job_info_with_options_async(request, headers, runtime)
+
     def personalizedtxt_2img_add_inference_job_with_options(
         self,
         request: ai_content_20240611_models.Personalizedtxt2imgAddInferenceJobRequest,
