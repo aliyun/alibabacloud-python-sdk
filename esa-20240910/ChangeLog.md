@@ -1,3 +1,7 @@
+2024-10-12 Version: 2.2.0
+- Support API ListClientCertificates.
+
+
 2024-10-11 Version: 2.1.0
 - Support API DeleteKv.
 - Support API DeleteKvNamespace.
