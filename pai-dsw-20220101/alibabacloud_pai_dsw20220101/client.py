@@ -1118,18 +1118,25 @@ class Client(OpenApiClient):
     def get_instance_with_options(
         self,
         instance_id: str,
+        request: pai_dsw_20220101_models.GetInstanceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetInstanceResponse:
         """
         @summary 获取实例详情
         
+        @param request: GetInstanceRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetInstanceResponse
         """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetInstance',
@@ -1150,18 +1157,25 @@ class Client(OpenApiClient):
     async def get_instance_with_options_async(
         self,
         instance_id: str,
+        request: pai_dsw_20220101_models.GetInstanceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetInstanceResponse:
         """
         @summary 获取实例详情
         
+        @param request: GetInstanceRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetInstanceResponse
         """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetInstance',
@@ -1182,28 +1196,32 @@ class Client(OpenApiClient):
     def get_instance(
         self,
         instance_id: str,
+        request: pai_dsw_20220101_models.GetInstanceRequest,
     ) -> pai_dsw_20220101_models.GetInstanceResponse:
         """
         @summary 获取实例详情
         
+        @param request: GetInstanceRequest
         @return: GetInstanceResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_instance_with_options(instance_id, headers, runtime)
+        return self.get_instance_with_options(instance_id, request, headers, runtime)
 
     async def get_instance_async(
         self,
         instance_id: str,
+        request: pai_dsw_20220101_models.GetInstanceRequest,
     ) -> pai_dsw_20220101_models.GetInstanceResponse:
         """
         @summary 获取实例详情
         
+        @param request: GetInstanceRequest
         @return: GetInstanceResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_instance_with_options_async(instance_id, headers, runtime)
+        return await self.get_instance_with_options_async(instance_id, request, headers, runtime)
 
     def get_instance_events_with_options(
         self,
@@ -1226,6 +1244,8 @@ class Client(OpenApiClient):
             query['MaxEventsNum'] = request.max_events_num
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1267,6 +1287,8 @@ class Client(OpenApiClient):
             query['MaxEventsNum'] = request.max_events_num
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1634,6 +1656,8 @@ class Client(OpenApiClient):
             query['SessionNumber'] = request.session_number
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1679,6 +1703,8 @@ class Client(OpenApiClient):
             query['SessionNumber'] = request.session_number
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)

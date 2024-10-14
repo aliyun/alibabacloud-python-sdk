@@ -2184,6 +2184,33 @@ class GetIdleInstanceCullerResponse(TeaModel):
         return self
 
 
+class GetInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        token: str = None,
+    ):
+        self.token = token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.token is not None:
+            result['Token'] = self.token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        return self
+
+
 class GetInstanceResponseBodyAffinityCPU(TeaModel):
     def __init__(
         self,
@@ -3200,10 +3227,12 @@ class GetInstanceEventsRequest(TeaModel):
         end_time: str = None,
         max_events_num: int = None,
         start_time: str = None,
+        token: str = None,
     ):
         self.end_time = end_time
         self.max_events_num = max_events_num
         self.start_time = start_time
+        self.token = token
 
     def validate(self):
         pass
@@ -3220,6 +3249,8 @@ class GetInstanceEventsRequest(TeaModel):
             result['MaxEventsNum'] = self.max_events_num
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.token is not None:
+            result['Token'] = self.token
         return result
 
     def from_map(self, m: dict = None):
@@ -3230,6 +3261,8 @@ class GetInstanceEventsRequest(TeaModel):
             self.max_events_num = m.get('MaxEventsNum')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
         return self
 
 
@@ -3904,12 +3937,14 @@ class GetLifecycleRequest(TeaModel):
         order: str = None,
         session_number: int = None,
         start_time: str = None,
+        token: str = None,
     ):
         self.end_time = end_time
         self.limit = limit
         self.order = order
         self.session_number = session_number
         self.start_time = start_time
+        self.token = token
 
     def validate(self):
         pass
@@ -3930,6 +3965,8 @@ class GetLifecycleRequest(TeaModel):
             result['SessionNumber'] = self.session_number
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.token is not None:
+            result['Token'] = self.token
         return result
 
     def from_map(self, m: dict = None):
@@ -3944,6 +3981,8 @@ class GetLifecycleRequest(TeaModel):
             self.session_number = m.get('SessionNumber')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
         return self
 
 
