@@ -1,3 +1,7 @@
+2024-10-14 Version: 2.2.14
+- Update API VoiceModerationResult: update response param.
+
+
 2024-09-23 Version: 2.2.13
 - Update API VideoModerationResult: update response param.
 

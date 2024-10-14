@@ -1377,7 +1377,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.VideoModerationResultResponse:
         """
-        @summary 获取视频检测结果
+        @summary Obtains the moderation results of a Video Moderation 2.0 task
+        
+        @description This operation is free of charge. We recommend that you query moderation results at least 30 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for at most 24 hours. After 24 hours, the results are deleted.
         
         @param request: VideoModerationResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1414,7 +1416,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.VideoModerationResultResponse:
         """
-        @summary 获取视频检测结果
+        @summary Obtains the moderation results of a Video Moderation 2.0 task
+        
+        @description This operation is free of charge. We recommend that you query moderation results at least 30 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for at most 24 hours. After 24 hours, the results are deleted.
         
         @param request: VideoModerationResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1450,7 +1454,9 @@ class Client(OpenApiClient):
         request: green_20220302_models.VideoModerationResultRequest,
     ) -> green_20220302_models.VideoModerationResultResponse:
         """
-        @summary 获取视频检测结果
+        @summary Obtains the moderation results of a Video Moderation 2.0 task
+        
+        @description This operation is free of charge. We recommend that you query moderation results at least 30 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for at most 24 hours. After 24 hours, the results are deleted.
         
         @param request: VideoModerationResultRequest
         @return: VideoModerationResultResponse
@@ -1463,7 +1469,9 @@ class Client(OpenApiClient):
         request: green_20220302_models.VideoModerationResultRequest,
     ) -> green_20220302_models.VideoModerationResultResponse:
         """
-        @summary 获取视频检测结果
+        @summary Obtains the moderation results of a Video Moderation 2.0 task
+        
+        @description This operation is free of charge. We recommend that you query moderation results at least 30 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for at most 24 hours. After 24 hours, the results are deleted.
         
         @param request: VideoModerationResultRequest
         @return: VideoModerationResultResponse
