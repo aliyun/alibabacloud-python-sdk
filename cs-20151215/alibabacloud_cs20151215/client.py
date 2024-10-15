@@ -1578,6 +1578,8 @@ class Client(OpenApiClient):
             body['logging_type'] = request.logging_type
         if not UtilClient.is_unset(request.login_password):
             body['login_password'] = request.login_password
+        if not UtilClient.is_unset(request.maintenance_window):
+            body['maintenance_window'] = request.maintenance_window
         if not UtilClient.is_unset(request.master_auto_renew):
             body['master_auto_renew'] = request.master_auto_renew
         if not UtilClient.is_unset(request.master_auto_renew_period):
@@ -1616,6 +1618,8 @@ class Client(OpenApiClient):
             body['nodepools'] = request.nodepools
         if not UtilClient.is_unset(request.num_of_nodes):
             body['num_of_nodes'] = request.num_of_nodes
+        if not UtilClient.is_unset(request.operation_policy):
+            body['operation_policy'] = request.operation_policy
         if not UtilClient.is_unset(request.os_type):
             body['os_type'] = request.os_type
         if not UtilClient.is_unset(request.period):
@@ -1812,6 +1816,8 @@ class Client(OpenApiClient):
             body['logging_type'] = request.logging_type
         if not UtilClient.is_unset(request.login_password):
             body['login_password'] = request.login_password
+        if not UtilClient.is_unset(request.maintenance_window):
+            body['maintenance_window'] = request.maintenance_window
         if not UtilClient.is_unset(request.master_auto_renew):
             body['master_auto_renew'] = request.master_auto_renew
         if not UtilClient.is_unset(request.master_auto_renew_period):
@@ -1850,6 +1856,8 @@ class Client(OpenApiClient):
             body['nodepools'] = request.nodepools
         if not UtilClient.is_unset(request.num_of_nodes):
             body['num_of_nodes'] = request.num_of_nodes
+        if not UtilClient.is_unset(request.operation_policy):
+            body['operation_policy'] = request.operation_policy
         if not UtilClient.is_unset(request.os_type):
             body['os_type'] = request.os_type
         if not UtilClient.is_unset(request.period):

@@ -3001,6 +3001,68 @@ class CreateAutoscalingConfigResponse(TeaModel):
         return self
 
 
+class CreateClusterRequestOperationPolicyClusterAutoUpgrade(TeaModel):
+    def __init__(
+        self,
+        channel: str = None,
+        enabled: bool = None,
+    ):
+        self.channel = channel
+        self.enabled = enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel is not None:
+            result['channel'] = self.channel
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('channel') is not None:
+            self.channel = m.get('channel')
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        return self
+
+
+class CreateClusterRequestOperationPolicy(TeaModel):
+    def __init__(
+        self,
+        cluster_auto_upgrade: CreateClusterRequestOperationPolicyClusterAutoUpgrade = None,
+    ):
+        self.cluster_auto_upgrade = cluster_auto_upgrade
+
+    def validate(self):
+        if self.cluster_auto_upgrade:
+            self.cluster_auto_upgrade.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_auto_upgrade is not None:
+            result['cluster_auto_upgrade'] = self.cluster_auto_upgrade.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_auto_upgrade') is not None:
+            temp_model = CreateClusterRequestOperationPolicyClusterAutoUpgrade()
+            self.cluster_auto_upgrade = temp_model.from_map(m['cluster_auto_upgrade'])
+        return self
+
+
 class CreateClusterRequestWorkerDataDisks(TeaModel):
     def __init__(
         self,
@@ -3097,6 +3159,7 @@ class CreateClusterRequest(TeaModel):
         load_balancer_spec: str = None,
         logging_type: str = None,
         login_password: str = None,
+        maintenance_window: MaintenanceWindow = None,
         master_auto_renew: bool = None,
         master_auto_renew_period: int = None,
         master_count: int = None,
@@ -3116,6 +3179,7 @@ class CreateClusterRequest(TeaModel):
         node_port_range: str = None,
         nodepools: List[Nodepool] = None,
         num_of_nodes: int = None,
+        operation_policy: CreateClusterRequestOperationPolicy = None,
         os_type: str = None,
         period: int = None,
         period_unit: str = None,
@@ -3363,6 +3427,7 @@ class CreateClusterRequest(TeaModel):
         self.logging_type = logging_type
         # The password for SSH logon. You must specify this parameter or `key_pair`. The password must be 8 to 30 characters in length, and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         self.login_password = login_password
+        self.maintenance_window = maintenance_window
         # Specifies whether to enable auto-renewal for master nodes. This parameter takes effect only when `master_instance_charge_type` is set to `PrePaid`. Valid values:
         # 
         # *   `true`: enables auto-renewal.
@@ -3453,6 +3518,7 @@ class CreateClusterRequest(TeaModel):
         self.nodepools = nodepools
         # The number of worker nodes. Valid values: 0 to 100.
         self.num_of_nodes = num_of_nodes
+        self.operation_policy = operation_policy
         # The type of OS. Valid values:
         # 
         # *   Windows
@@ -3660,10 +3726,14 @@ class CreateClusterRequest(TeaModel):
             for k in self.addons:
                 if k:
                     k.validate()
+        if self.maintenance_window:
+            self.maintenance_window.validate()
         if self.nodepools:
             for k in self.nodepools:
                 if k:
                     k.validate()
+        if self.operation_policy:
+            self.operation_policy.validate()
         if self.runtime:
             self.runtime.validate()
         if self.tags:
@@ -3757,6 +3827,8 @@ class CreateClusterRequest(TeaModel):
             result['logging_type'] = self.logging_type
         if self.login_password is not None:
             result['login_password'] = self.login_password
+        if self.maintenance_window is not None:
+            result['maintenance_window'] = self.maintenance_window.to_map()
         if self.master_auto_renew is not None:
             result['master_auto_renew'] = self.master_auto_renew
         if self.master_auto_renew_period is not None:
@@ -3797,6 +3869,8 @@ class CreateClusterRequest(TeaModel):
                 result['nodepools'].append(k.to_map() if k else None)
         if self.num_of_nodes is not None:
             result['num_of_nodes'] = self.num_of_nodes
+        if self.operation_policy is not None:
+            result['operation_policy'] = self.operation_policy.to_map()
         if self.os_type is not None:
             result['os_type'] = self.os_type
         if self.period is not None:
@@ -3962,6 +4036,9 @@ class CreateClusterRequest(TeaModel):
             self.logging_type = m.get('logging_type')
         if m.get('login_password') is not None:
             self.login_password = m.get('login_password')
+        if m.get('maintenance_window') is not None:
+            temp_model = MaintenanceWindow()
+            self.maintenance_window = temp_model.from_map(m['maintenance_window'])
         if m.get('master_auto_renew') is not None:
             self.master_auto_renew = m.get('master_auto_renew')
         if m.get('master_auto_renew_period') is not None:
@@ -4003,6 +4080,9 @@ class CreateClusterRequest(TeaModel):
                 self.nodepools.append(temp_model.from_map(k))
         if m.get('num_of_nodes') is not None:
             self.num_of_nodes = m.get('num_of_nodes')
+        if m.get('operation_policy') is not None:
+            temp_model = CreateClusterRequestOperationPolicy()
+            self.operation_policy = temp_model.from_map(m['operation_policy'])
         if m.get('os_type') is not None:
             self.os_type = m.get('os_type')
         if m.get('period') is not None:
@@ -8788,6 +8868,68 @@ class DescribeClusterAttachScriptsResponse(TeaModel):
         return self
 
 
+class DescribeClusterDetailResponseBodyOperationPolicyClusterAutoUpgrade(TeaModel):
+    def __init__(
+        self,
+        channel: str = None,
+        enabled: bool = None,
+    ):
+        self.channel = channel
+        self.enabled = enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel is not None:
+            result['channel'] = self.channel
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('channel') is not None:
+            self.channel = m.get('channel')
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        return self
+
+
+class DescribeClusterDetailResponseBodyOperationPolicy(TeaModel):
+    def __init__(
+        self,
+        cluster_auto_upgrade: DescribeClusterDetailResponseBodyOperationPolicyClusterAutoUpgrade = None,
+    ):
+        self.cluster_auto_upgrade = cluster_auto_upgrade
+
+    def validate(self):
+        if self.cluster_auto_upgrade:
+            self.cluster_auto_upgrade.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_auto_upgrade is not None:
+            result['cluster_auto_upgrade'] = self.cluster_auto_upgrade.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_auto_upgrade') is not None:
+            temp_model = DescribeClusterDetailResponseBodyOperationPolicyClusterAutoUpgrade()
+            self.cluster_auto_upgrade = temp_model.from_map(m['cluster_auto_upgrade'])
+        return self
+
+
 class DescribeClusterDetailResponseBody(TeaModel):
     def __init__(
         self,
@@ -8806,6 +8948,7 @@ class DescribeClusterDetailResponseBody(TeaModel):
         name: str = None,
         network_mode: str = None,
         next_version: str = None,
+        operation_policy: DescribeClusterDetailResponseBodyOperationPolicy = None,
         parameters: Dict[str, str] = None,
         private_zone: bool = None,
         profile: str = None,
@@ -8859,6 +9002,7 @@ class DescribeClusterDetailResponseBody(TeaModel):
         self.name = name
         self.network_mode = network_mode
         self.next_version = next_version
+        self.operation_policy = operation_policy
         # The ROS parameters of the cluster.
         self.parameters = parameters
         self.private_zone = private_zone
@@ -8917,6 +9061,8 @@ class DescribeClusterDetailResponseBody(TeaModel):
     def validate(self):
         if self.maintenance_window:
             self.maintenance_window.validate()
+        if self.operation_policy:
+            self.operation_policy.validate()
         if self.tags:
             for k in self.tags:
                 if k:
@@ -8958,6 +9104,8 @@ class DescribeClusterDetailResponseBody(TeaModel):
             result['network_mode'] = self.network_mode
         if self.next_version is not None:
             result['next_version'] = self.next_version
+        if self.operation_policy is not None:
+            result['operation_policy'] = self.operation_policy.to_map()
         if self.parameters is not None:
             result['parameters'] = self.parameters
         if self.private_zone is not None:
@@ -9025,6 +9173,9 @@ class DescribeClusterDetailResponseBody(TeaModel):
             self.network_mode = m.get('network_mode')
         if m.get('next_version') is not None:
             self.next_version = m.get('next_version')
+        if m.get('operation_policy') is not None:
+            temp_model = DescribeClusterDetailResponseBodyOperationPolicy()
+            self.operation_policy = temp_model.from_map(m['operation_policy'])
         if m.get('parameters') is not None:
             self.parameters = m.get('parameters')
         if m.get('private_zone') is not None:
@@ -14229,6 +14380,68 @@ class DescribeClustersV1Request(TeaModel):
         return self
 
 
+class DescribeClustersV1ResponseBodyClustersOperationPolicyClusterAutoUpgrade(TeaModel):
+    def __init__(
+        self,
+        channel: str = None,
+        enabled: bool = None,
+    ):
+        self.channel = channel
+        self.enabled = enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel is not None:
+            result['channel'] = self.channel
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('channel') is not None:
+            self.channel = m.get('channel')
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        return self
+
+
+class DescribeClustersV1ResponseBodyClustersOperationPolicy(TeaModel):
+    def __init__(
+        self,
+        cluster_auto_upgrade: DescribeClustersV1ResponseBodyClustersOperationPolicyClusterAutoUpgrade = None,
+    ):
+        self.cluster_auto_upgrade = cluster_auto_upgrade
+
+    def validate(self):
+        if self.cluster_auto_upgrade:
+            self.cluster_auto_upgrade.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_auto_upgrade is not None:
+            result['cluster_auto_upgrade'] = self.cluster_auto_upgrade.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_auto_upgrade') is not None:
+            temp_model = DescribeClustersV1ResponseBodyClustersOperationPolicyClusterAutoUpgrade()
+            self.cluster_auto_upgrade = temp_model.from_map(m['cluster_auto_upgrade'])
+        return self
+
+
 class DescribeClustersV1ResponseBodyClusters(TeaModel):
     def __init__(
         self,
@@ -14247,6 +14460,7 @@ class DescribeClustersV1ResponseBodyClusters(TeaModel):
         name: str = None,
         network_mode: str = None,
         next_version: str = None,
+        operation_policy: DescribeClustersV1ResponseBodyClustersOperationPolicy = None,
         private_zone: bool = None,
         profile: str = None,
         region_id: str = None,
@@ -14311,6 +14525,7 @@ class DescribeClustersV1ResponseBodyClusters(TeaModel):
         self.network_mode = network_mode
         # The Kubernetes version to which the cluster can be updated.
         self.next_version = next_version
+        self.operation_policy = operation_policy
         # Indicates whether Alibaba Cloud DNS PrivateZone is enabled. Valid values:
         # 
         # *   `true`: Alibaba Cloud DNS PrivateZone is enabled.
@@ -14370,6 +14585,8 @@ class DescribeClustersV1ResponseBodyClusters(TeaModel):
     def validate(self):
         if self.maintenance_window:
             self.maintenance_window.validate()
+        if self.operation_policy:
+            self.operation_policy.validate()
         if self.tags:
             for k in self.tags:
                 if k:
@@ -14411,6 +14628,8 @@ class DescribeClustersV1ResponseBodyClusters(TeaModel):
             result['network_mode'] = self.network_mode
         if self.next_version is not None:
             result['next_version'] = self.next_version
+        if self.operation_policy is not None:
+            result['operation_policy'] = self.operation_policy.to_map()
         if self.private_zone is not None:
             result['private_zone'] = self.private_zone
         if self.profile is not None:
@@ -14476,6 +14695,9 @@ class DescribeClustersV1ResponseBodyClusters(TeaModel):
             self.network_mode = m.get('network_mode')
         if m.get('next_version') is not None:
             self.next_version = m.get('next_version')
+        if m.get('operation_policy') is not None:
+            temp_model = DescribeClustersV1ResponseBodyClustersOperationPolicy()
+            self.operation_policy = temp_model.from_map(m['operation_policy'])
         if m.get('private_zone') is not None:
             self.private_zone = m.get('private_zone')
         if m.get('profile') is not None:

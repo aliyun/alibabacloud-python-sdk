@@ -1,3 +1,9 @@
+2024-10-15 Version: 4.7.7
+- Update API CreateCluster: update param body.
+- Update API DescribeClusterDetail: update response param.
+- Update API DescribeClustersV1: update response param.
+
+
 2024-09-27 Version: 4.7.6
 - Update API CreateClusterNodePool: update param body.
 - Update API DescribeClusterNodePoolDetail: update response param.
