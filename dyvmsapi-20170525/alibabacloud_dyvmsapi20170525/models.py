@@ -19,9 +19,13 @@ class AddVirtualNumberRelationRequest(TeaModel):
         # The company names. Separate multiple company names with commas (,).
         self.corp_name_list = corp_name_list
         # The real numbers. Separate multiple real numbers with commas (,).
+        # 
+        # This parameter is required.
         self.number_list = number_list
         self.owner_id = owner_id
         # The virtual number.
+        # 
+        # This parameter is required.
         self.phone_num = phone_num
         # The service name. Default value: **dyvms**.
         self.prod_code = prod_code
@@ -31,6 +35,8 @@ class AddVirtualNumberRelationRequest(TeaModel):
         # 
         # *   **0**: number location first.
         # *   **1**: random.
+        # 
+        # This parameter is required.
         self.route_type = route_type
 
     def validate(self):
@@ -92,7 +98,7 @@ class AddVirtualNumberRelationResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value 200 indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # The numbers that failed to be associated.
         # 
@@ -197,10 +203,14 @@ class BatchRobotSmartCallRequest(TeaModel):
         # The called number. Only mobile phone numbers in the Chinese mainland are supported.
         # 
         # You can set up to 1,000 called numbers and separate the numbers with commas (,).
+        # 
+        # This parameter is required.
         self.called_number = called_number
         # The number displayed to called parties, which must be a number you purchased. You can view the numbers you purchased in the [Voice Messaging Service console](https://dyvms.console.aliyun.com/dyvms.htm#/number/normal).
         # 
         # You can set up to 100 numbers and separate the numbers with commas (,).
+        # 
+        # This parameter is required.
         self.called_show_number = called_show_number
         # The company name, which must be the same as the **company name** specified on the [qualification management page](https://dyvms.console.aliyun.com/dyvms.htm#/corp/normal).
         # 
@@ -209,6 +219,8 @@ class BatchRobotSmartCallRequest(TeaModel):
         # The ID of the robot or communication script that is used to initiate a call.
         # 
         # You can obtain the **communication script ID** from the [Communication script management](https://dyvms.console.aliyun.com/dyvms.htm#/smart-call/saas/robot/list) page.
+        # 
+        # This parameter is required.
         self.dialog_id = dialog_id
         # The speech recognition identifier of early media. The default value is **false**, which means that the speech recognition identifier of early media is not enabled.
         # 
@@ -226,6 +238,8 @@ class BatchRobotSmartCallRequest(TeaModel):
         # >  This parameter is required only when **ScheduleCall** is set to **true**.
         self.schedule_time = schedule_time
         # The task name. The task name can be up to 30 characters in length.
+        # 
+        # This parameter is required.
         self.task_name = task_name
         # The variable value of the TTS template, in the JSON format.
         # 
@@ -319,13 +333,13 @@ class BatchRobotSmartCallResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The unique ID of the robocall task. You can call the [QueryCallDetailByTaskId](~~393537~~) operation to query the details of the task based on the task ID.
+        # The unique ID of the robocall task. You can call the [QueryCallDetailByTaskId](https://help.aliyun.com/document_detail/393537.html) operation to query the details of the task based on the task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -412,7 +426,9 @@ class CancelOrderRobotTaskRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The unique ID of the robocall task. You can call the [CreateRobotTask](~~393531~~) operation to obtain the ID of the robocall task.
+        # The unique ID of the robocall task. You can call the [CreateRobotTask](https://help.aliyun.com/document_detail/393531.html) operation to obtain the ID of the robocall task.
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -458,7 +474,7 @@ class CancelOrderRobotTaskResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # Indicates whether the request was successful. Valid values:
         # 
@@ -554,7 +570,7 @@ class CancelRobotTaskRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The unique ID of the robocall task. You can call the [CreateRobotTask](~~393531~~) operation to obtain the task ID.
+        # The unique ID of the robocall task. You can call the [CreateRobotTask](https://help.aliyun.com/document_detail/393531.html) operation to obtain the task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -600,7 +616,7 @@ class CancelRobotTaskResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # Indicates whether the request was successful. Valid values:
         # 
@@ -697,6 +713,7 @@ class ChangeMediaTypeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         self.call_id = call_id
+        # This parameter is required.
         self.called_num = called_num
         self.media_type = media_type
         self.out_id = out_id
@@ -1069,12 +1086,16 @@ class CreateRobotTaskRequest(TeaModel):
         # The calling number.
         # 
         # You must use the phone numbers that you have purchased and separate multiple numbers with commas (,). You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home) and choose **Real Number Service** > **Real Number Management** to view the numbers you purchased.
+        # 
+        # This parameter is required.
         self.caller = caller
         # The company name, which must be the same as the **enterprise name** on the qualification management page.
         self.corp_name = corp_name
         # The ID of the robot or communication script that is used to initiate the call.
         # 
         # You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home) and choose **Intelligent Voice Robot** > **Communication Script Management** to view the communication script ID.
+        # 
+        # This parameter is required.
         self.dialog_id = dialog_id
         # Specifies whether to call the self-managed line. Valid values:
         # 
@@ -1089,6 +1110,8 @@ class CreateRobotTaskRequest(TeaModel):
         # *   **true**\
         # 
         # > If you set this parameter to **true**, the reason why a call is not answered is recorded.
+        # 
+        # This parameter is required.
         self.number_status_ident = number_status_ident
         self.owner_id = owner_id
         # The redial interval. Unit: minutes. The value must be greater than 1.
@@ -1112,8 +1135,12 @@ class CreateRobotTaskRequest(TeaModel):
         # 
         # *   **1**: enables auto-redial.
         # *   **0**: disables auto-redial.
+        # 
+        # This parameter is required.
         self.retry_type = retry_type
         # The task name. The task name can be up to 30 characters in length.
+        # 
+        # This parameter is required.
         self.task_name = task_name
 
     def validate(self):
@@ -1195,11 +1222,11 @@ class CreateRobotTaskResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # The unique ID of the robocall task.
         # 
-        # You can call the [QueryRobotTaskDetail](~~393538~~) operation to query the details of the task based on the task ID.
+        # You can call the [QueryRobotTaskDetail](https://help.aliyun.com/document_detail/393538.html) operation to query the details of the task based on the task ID.
         self.data = data
         # The returned message.
         self.message = message
@@ -1291,6 +1318,7 @@ class DegradeVideoFileRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         self.call_id = call_id
+        # This parameter is required.
         self.called_number = called_number
         self.media_type = media_type
         self.out_id = out_id
@@ -1446,6 +1474,8 @@ class DeleteRobotTaskRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The unique ID of the robocall task. You can call the [CreateRobotTask](~~CreateRobotTask~~) operation to obtain the task ID.
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -1491,7 +1521,7 @@ class DeleteRobotTaskResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # Indicates whether the request was successful. Valid values:
         # 
@@ -1598,8 +1628,12 @@ class ExecuteCallTaskRequest(TeaModel):
         # *   **RUNNING**\
         # *   **STOP**\
         # *   **CANCEL**\
+        # 
+        # This parameter is required.
         self.status = status
         # The task ID. You can call the [CreateCallTask](~~CreateCallTask~~) operation to obtain the task ID.
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -1738,6 +1772,7 @@ class GetCallMediaTypeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         self.call_id = call_id
+        # This parameter is required.
         self.called_number = called_number
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -1881,6 +1916,7 @@ class GetCallProgressRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         self.call_id = call_id
+        # This parameter is required.
         self.called_num = called_num
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -2024,7 +2060,9 @@ class GetHotlineQualificationByOrderRequest(TeaModel):
     ):
         # The ticket ID.
         # 
-        # You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Qualification\&Communication Script Management** > **Qualification Management**, and then click the **400 Qualifications** tab to view the ticket ID.
+        # You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Qualification\\&Communication Script Management** > **Qualification Management**, and then click the **400 Qualifications** tab to view the ticket ID.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -2118,7 +2156,7 @@ class GetHotlineQualificationByOrderResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # The response parameters.
         self.data = data
@@ -2213,6 +2251,7 @@ class GetTemporaryFileUrlRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.video_id = video_id
 
     def validate(self):
@@ -2403,7 +2442,7 @@ class GetTokenResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # The returned message.
         self.message = message
@@ -2710,10 +2749,14 @@ class IvrCallRequest(TeaModel):
         # The called number.
         # 
         # Only phone numbers in the Chinese mainland are supported. Each request supports only one called number.
+        # 
+        # This parameter is required.
         self.called_number = called_number
         # The calling number.
         # 
         # The value must be a number you purchased. Each request supports only one calling number. In most cases, a calling number is configured with the maximum number of concurrent requests. New requests fail if the maximum number of concurrent requests is reached. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home) and choose **Real Number Service > Real Number Management** to view the number you purchased.
+        # 
+        # This parameter is required.
         self.called_show_number = called_show_number
         # The information about the key pressed by the subscriber.
         self.menu_key_map = menu_key_map
@@ -2730,6 +2773,8 @@ class IvrCallRequest(TeaModel):
         # 
         # *   If you use a voice notification file, this parameter specifies the voice ID. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice Messages** > Voice Notifications, and then click the **Voice Notification Files** tab to view the voice ID.
         # *   If you use a text-to-speech (TTS) template, this parameter specifies the template ID. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice Messages** > **Voice Notifications**, and then click the **TTS Template** tab to view the template ID.
+        # 
+        # This parameter is required.
         self.start_code = start_code
         # The variables in the TTS template, in the JSON format.
         # 
@@ -2824,12 +2869,12 @@ class IvrCallResponseBody(TeaModel):
     ):
         # The unique receipt ID of the call.
         # 
-        # You can call the [QueryCallDetailByCallId](~~393529~~) operation to query the details of the call based on the receipt ID.
+        # You can call the [QueryCallDetailByCallId](https://help.aliyun.com/document_detail/393529.html) operation to query the details of the call based on the receipt ID.
         self.call_id = call_id
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # The returned message.
         self.message = message
@@ -3289,6 +3334,8 @@ class ListCallTaskDetailRequest(TeaModel):
         # *   **INIT**: The task is not started.
         self.status = status
         # The task ID.
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -3413,7 +3460,7 @@ class ListCallTaskDetailResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # The information about the task.
         self.data = data
@@ -3533,13 +3580,17 @@ class ListHotlineTransferNumberRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The China 400 number.
+        # 
+        # This parameter is required.
         self.hotline_number = hotline_number
         self.owner_id = owner_id
         # The page number. Default value: **1**.
         self.page_no = page_no
         # The number of entries per page. Valid values: 1 to 10.
         self.page_size = page_size
-        # The qualification ID. You can call the [GetHotlineQualificationByOrder](~~393548~~) operation to obtain the qualification ID.
+        # The qualification ID. You can call the [GetHotlineQualificationByOrder](https://help.aliyun.com/document_detail/393548.html) operation to obtain the qualification ID.
+        # 
+        # This parameter is required.
         self.qualification_id = qualification_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -3719,7 +3770,7 @@ class ListHotlineTransferNumberResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # The information about the registered phone number.
         self.data = data
@@ -3815,13 +3866,17 @@ class ListHotlineTransferRegisterFileRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The China 400 number.
+        # 
+        # This parameter is required.
         self.hotline_number = hotline_number
         self.owner_id = owner_id
         # The page number. Default value: **1**.
         self.page_no = page_no
         # The number of entries per page. Valid values: 1 to 10.
         self.page_size = page_size
-        # The qualification ID. You can call the [GetHotlineQualificationByOrder](~~393548~~) operation to obtain the qualification ID.
+        # The qualification ID. You can call the [GetHotlineQualificationByOrder](https://help.aliyun.com/document_detail/393548.html) operation to obtain the qualification ID.
+        # 
+        # This parameter is required.
         self.qualification_id = qualification_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -4022,7 +4077,7 @@ class ListHotlineTransferRegisterFileResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # The response parameters.
         self.data = data
@@ -4116,6 +4171,7 @@ class PauseVideoFileRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         self.call_id = call_id
+        # This parameter is required.
         self.called_number = called_number
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -4254,6 +4310,7 @@ class PlayVideoFileRequest(TeaModel):
         self,
         call_id: str = None,
         called_number: str = None,
+        only_phone: bool = None,
         out_id: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
@@ -4262,10 +4319,12 @@ class PlayVideoFileRequest(TeaModel):
     ):
         self.call_id = call_id
         self.called_number = called_number
+        self.only_phone = only_phone
         self.out_id = out_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.video_id = video_id
 
     def validate(self):
@@ -4281,6 +4340,8 @@ class PlayVideoFileRequest(TeaModel):
             result['CallId'] = self.call_id
         if self.called_number is not None:
             result['CalledNumber'] = self.called_number
+        if self.only_phone is not None:
+            result['OnlyPhone'] = self.only_phone
         if self.out_id is not None:
             result['OutId'] = self.out_id
         if self.owner_id is not None:
@@ -4299,6 +4360,8 @@ class PlayVideoFileRequest(TeaModel):
             self.call_id = m.get('CallId')
         if m.get('CalledNumber') is not None:
             self.called_number = m.get('CalledNumber')
+        if m.get('OnlyPhone') is not None:
+            self.only_phone = m.get('OnlyPhone')
         if m.get('OutId') is not None:
             self.out_id = m.get('OutId')
         if m.get('OwnerId') is not None:
@@ -4423,6 +4486,8 @@ class QueryCallDetailByCallIdRequest(TeaModel):
         # *   The date when the call specified by CallId is started must be the same as the date specified by QueryDate.
         # 
         # *   The value of CallId must match the value of ProdId.
+        # 
+        # This parameter is required.
         self.call_id = call_id
         self.owner_id = owner_id
         # The service ID. Valid values:
@@ -4432,10 +4497,14 @@ class QueryCallDetailByCallIdRequest(TeaModel):
         # *   **11000000300005**: IVR. You can call the [IvrCall](https://help.aliyun.com/document_detail/393521.html) operation to initiate an interactive voice call to the specified number.
         # *   **11000000300009**: Session Initiation Protocol (SIP) call.
         # *   **11030000180001**: intelligent outbound call.
+        # 
+        # This parameter is required.
         self.prod_id = prod_id
         # The time at which call details are queried. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # > The system queries the call records that are generated within 24 hours after the specified point in time. For example, if you specify the time 20:00:01 on November 21, 2022, the system queries the call records that are generated for the specified call ID from 20:00:01 on November 21, 2022, to 20:00:01 on November 22, 2022.
+        # 
+        # This parameter is required.
         self.query_date = query_date
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -4491,7 +4560,7 @@ class QueryCallDetailByCallIdResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # The details of the call, in the JSON format.
         # 
@@ -4501,7 +4570,7 @@ class QueryCallDetailByCallIdResponseBody(TeaModel):
         # *   **duration**: the call duration. Unit: seconds. The value **0** indicates that the user was not connected.
         # *   **callerShowNumber**: the calling number displayed to the called party.
         # *   **gmtCreate**: the time when the call request was received.
-        # *   **state**: the call state. The call state is returned by the Internet service provider (ISP) in real time. For more information about call states, see [ISP-returned error codes](~~55085~~).
+        # *   **state**: the call state. The call state is returned by the Internet service provider (ISP) in real time. For more information about call states, see [ISP-returned error codes](https://help.aliyun.com/document_detail/55085.html).
         # *   **endDate**: the time when the call was ended.
         # *   **calleeShowNumber**: the number displayed to the called party.
         # *   **callee**: the called number.
@@ -4599,13 +4668,19 @@ class QueryCallDetailByTaskIdRequest(TeaModel):
         task_id: str = None,
     ):
         # The called number. You can view the outbound call records of only one called number.
+        # 
+        # This parameter is required.
         self.callee = callee
         self.owner_id = owner_id
         # The start time of the outbound robocall task. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.query_date = query_date
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The unique ID of the outbound robocall task. The task ID is returned after the outbound robocall task is successfully delivered. You can view the task ID on the [Task Management](https://dyvms.console.aliyun.com/job/list) page of the Voice Messaging Service console, or call the **BatchRobotSmartCall** operation to obtain the **task ID**.
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -4659,7 +4734,7 @@ class QueryCallDetailByTaskIdResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # The call details of the outbound robocall task, in the JSON format.
         # 
@@ -4806,6 +4881,8 @@ class QueryCallInPoolTransferConfigRequest(TeaModel):
     ):
         self.owner_id = owner_id
         # The China 400 number used to transfer the call.
+        # 
+        # This parameter is required.
         self.phone_number = phone_number
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -4941,7 +5018,7 @@ class QueryCallInPoolTransferConfigResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # The response parameters.
         self.data = data
@@ -5041,14 +5118,22 @@ class QueryCallInTransferRecordRequest(TeaModel):
         self.call_in_caller = call_in_caller
         self.owner_id = owner_id
         # The page number. Default value: **1**.
+        # 
+        # This parameter is required.
         self.page_no = page_no
         # The number of entries per page. Valid values: 1 to 10.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The phone number to which a call is transferred.
+        # 
+        # This parameter is required.
         self.phone_number = phone_number
         # The time at which call transfer records are queried, in the YYYY-MM-DD hh:mm:ss format.
         # 
         # > The query result is all the call transfer records of the specified day.
+        # 
+        # This parameter is required.
         self.query_date = query_date
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5232,7 +5317,7 @@ class QueryCallInTransferRecordResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # The response parameters.
         self.data = data
@@ -5378,7 +5463,7 @@ class QueryRobotInfoListResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # The basic information about the robot, in the JSON format. The basic information contains the following parameters:
         # 
@@ -5482,13 +5567,19 @@ class QueryRobotTaskCallDetailRequest(TeaModel):
         task_id: int = None,
     ):
         # The called number.
+        # 
+        # This parameter is required.
         self.callee = callee
         self.owner_id = owner_id
         # The timestamp of the time at which the call details you want to query.
+        # 
+        # This parameter is required.
         self.query_date = query_date
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The unique ID of the robocall task. You can call the [CreateRobotTask](~~393531~~) operation to obtain the task ID.
+        # The unique ID of the robocall task. You can call the [CreateRobotTask](https://help.aliyun.com/document_detail/393531.html) operation to obtain the task ID.
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -5542,7 +5633,7 @@ class QueryRobotTaskCallDetailResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # The call details of a robocall task, in the JSON format.
         # 
@@ -5698,7 +5789,9 @@ class QueryRobotTaskCallListRequest(TeaModel):
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The unique ID of the robocall task. You can call the [CreateRobotTask](~~393531~~) operation to obtain the task ID.
+        # The unique ID of the robocall task. You can call the [CreateRobotTask](https://help.aliyun.com/document_detail/393531.html) operation to obtain the task ID.
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -5780,7 +5873,7 @@ class QueryRobotTaskCallListResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # The information about the robocall task, which is a JSON-formatted array.
         # 
@@ -5896,6 +5989,8 @@ class QueryRobotTaskDetailRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The unique ID of the robocall task. You can call the [CreateRobotTask](~~CreateRobotTask~~) operation to obtain the task ID.
+        # 
+        # This parameter is required.
         self.id = id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -5944,7 +6039,7 @@ class QueryRobotTaskDetailResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # The details of the robocall task, in the JSON format.
         # 
@@ -6303,7 +6398,7 @@ class QueryRobotv2AllListResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # The information about the robot communication script, in the JSON format.
         # 
@@ -6399,6 +6494,7 @@ class QueryVideoPlayProgressRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         self.call_id = call_id
+        # This parameter is required.
         self.called_number = called_number
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -6726,7 +6822,7 @@ class QueryVirtualNumberRelationRequest(TeaModel):
         self.prod_code = prod_code
         # The qualification ID.
         # 
-        # You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Qualifications\&Communication Scripts > Qualification Management**, and then click **Details** in the Actions column to view the qualification ID.
+        # You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Qualifications\\&Communication Scripts > Qualification Management**, and then click **Details** in the Actions column to view the qualification ID.
         self.qualification_id = qualification_id
         # The city to which the virtual number belongs.
         self.region_name_city = region_name_city
@@ -6740,7 +6836,7 @@ class QueryVirtualNumberRelationRequest(TeaModel):
         self.route_type = route_type
         # The number type. Valid values:
         # 
-        # *   **1**: the number provided by a virtual network operator, in the 05710000\*\*\*\* format.
+        # *   **1**: the number provided by a virtual network operator, in the 05710000\\*\\*\\*\\* format.
         # *   **2**: the number provided by an Internet service provider (ISP).
         # *   **3**: a 5-digit phone number that starts with 95.
         self.spec_id = spec_id
@@ -6819,7 +6915,7 @@ class QueryVirtualNumberRelationResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value 200 indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # The list of associations between virtual numbers and real numbers. The following fields are returned:
         # 
@@ -6921,6 +7017,8 @@ class QueryVoiceFileAuditInfoRequest(TeaModel):
         # The ID of the voice file. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice Messages** > **Voice Notifications** or **Voice File Management**, and then click the **Voice Notification Files** tab to view the **voice ID**.
         # 
         # > You can query up to 10 voice files each time. Separate the voice file names with commas (,).
+        # 
+        # This parameter is required.
         self.voice_codes = voice_codes
 
     def validate(self):
@@ -7020,7 +7118,7 @@ class QueryVoiceFileAuditInfoResponseBody(TeaModel):
     ):
         # The response code.
         # 
-        # The value OK indicates that the request was successful. For more information about other response codes, see [API error codes](~~112502~~).
+        # The value OK indicates that the request was successful. For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # The response parameters.
         self.data = data
@@ -7119,6 +7217,8 @@ class RecoverCallInConfigRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The China 400 number that is used to transfer the inbound call.
+        # 
+        # This parameter is required.
         self.number = number
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -7259,6 +7359,7 @@ class ResumeVideoFileRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         self.call_id = call_id
+        # This parameter is required.
         self.called_number = called_number
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -7555,13 +7656,19 @@ class SendVerificationRequest(TeaModel):
         verify_type: str = None,
     ):
         # The business type. Set the value to **CONTACT**.
+        # 
+        # This parameter is required.
         self.biz_type = biz_type
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The mobile phone number that receives the SMS verification code.
+        # 
+        # This parameter is required.
         self.target = target
         # The mode of sending the SMS verification code. Set the value to **SMS**.
+        # 
+        # This parameter is required.
         self.verify_type = verify_type
 
     def validate(self):
@@ -7615,7 +7722,7 @@ class SendVerificationResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # Indicates whether the verification code was sent successfully.
         self.data = data
@@ -7704,6 +7811,8 @@ class SetTransferCalleePoolConfigRequestDetails(TeaModel):
         caller: str = None,
     ):
         # The called number.
+        # 
+        # This parameter is required.
         self.called = called
         # The calling number.
         self.caller = caller
@@ -7747,13 +7856,21 @@ class SetTransferCalleePoolConfigRequest(TeaModel):
         # 
         # *   **roundRobin**\
         # *   **random**\
+        # 
+        # This parameter is required.
         self.called_route_mode = called_route_mode
         # The information about the phone numbers for transferring the call.
+        # 
+        # This parameter is required.
         self.details = details
         self.owner_id = owner_id
         # The phone number used for transferring the call.
+        # 
+        # This parameter is required.
         self.phone_number = phone_number
-        # The qualification ID. You can call the [GetHotlineQualificationByOrder](~~393548~~) operation to obtain the qualification ID.
+        # The qualification ID. You can call the [GetHotlineQualificationByOrder](https://help.aliyun.com/document_detail/393548.html) operation to obtain the qualification ID.
+        # 
+        # This parameter is required.
         self.qualification_id = qualification_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -7821,7 +7938,7 @@ class SetTransferCalleePoolConfigResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # Indicates whether the phone numbers for transferring the call were configured.
         self.data = data
@@ -7922,20 +8039,22 @@ class SingleCallByTtsRequest(TeaModel):
         # 
         # *   Number format in the Chinese mainland:
         # 
-        #     *   Mobile phone number, for example, 159\*\*\*\*0000.
-        #     *   Landline number, for example, 0571\*\*\*\*5678.
+        #     *   Mobile phone number, for example, 159\\*\\*\\*\\*0000.
+        #     *   Landline number, for example, 0571\\*\\*\\*\\*5678.
         # 
-        # *   Number format outside the Chinese mainland: country code + phone number, for example, 85200\*\*\*\*00.
+        # *   Number format outside the Chinese mainland: country code + phone number, for example, 85200\\*\\*\\*\\*00.
         # 
         # > 
         # 
-        # *   Each request supports only one called number. For more information, see [How to use voice notifications in the Chinese mainland](~~150016~~) or [How to use voice verification codes in regions outside the Chinese mainland](~~270044~~).
+        # *   Each request supports only one called number. For more information, see [How to use voice notifications in the Chinese mainland](https://help.aliyun.com/document_detail/150016.html) or [How to use voice verification codes in regions outside the Chinese mainland](https://help.aliyun.com/document_detail/270044.html).
         # 
         # *   Voice verification codes are sent to a called number at the following frequency: one time per minute, five times per hour, and 20 times per 24 hours.
+        # 
+        # This parameter is required.
         self.called_number = called_number
         # The number displayed to the called party.
         # 
-        # *   You do not need to specify this parameter if you use the text-to-speech (TTS) notification template or voice verification code template for outbound calls in the common mode. For more information, see [FAQ about the common outbound call mode](~~172104~~).
+        # *   You do not need to specify this parameter if you use the text-to-speech (TTS) notification template or voice verification code template for outbound calls in the common mode. For more information, see [FAQ about the common outbound call mode](https://help.aliyun.com/document_detail/172104.html).
         # *   If you use the TTS notification template or voice verification code template for outbound calls in the dedicated mode, you must specify a number you purchased and only one number can be specified. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home) and choose **Voice Numbers** > **Real Number Management** to view the number you purchased.
         self.called_show_number = called_show_number
         # The custom ID that is reserved for the caller of the operation when the request is initiated. This ID is returned to the caller in a receipt message.
@@ -7954,6 +8073,8 @@ class SingleCallByTtsRequest(TeaModel):
         # You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), and choose **Voice Messages** > **Voice Verification Codes** or choose **Voice Messages** > **Voice Notifications** to view the **template ID**.
         # 
         # > The account to which the TTS template belongs must be the same as the account that is used to call the SingleCallByTts operation.
+        # 
+        # This parameter is required.
         self.tts_code = tts_code
         # The variables in the template, in the JSON format.
         # 
@@ -8032,12 +8153,12 @@ class SingleCallByTtsResponseBody(TeaModel):
     ):
         # The unique receipt ID of the call.
         # 
-        # You can call the [QueryCallDetailByCallId](~~393529~~) operation to query the details of the call based on the receipt ID.
+        # You can call the [QueryCallDetailByCallId](https://help.aliyun.com/document_detail/393529.html) operation to query the details of the call based on the receipt ID.
         self.call_id = call_id
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # The returned message.
         self.message = message
@@ -8132,6 +8253,7 @@ class SingleCallByVideoRequest(TeaModel):
         voice_code: str = None,
         volume: int = None,
     ):
+        # This parameter is required.
         self.called_number = called_number
         self.called_show_number = called_show_number
         self.out_id = out_id
@@ -8140,7 +8262,9 @@ class SingleCallByVideoRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.speed = speed
+        # This parameter is required.
         self.video_code = video_code
+        # This parameter is required.
         self.voice_code = voice_code
         self.volume = volume
 
@@ -8310,20 +8434,22 @@ class SingleCallByVoiceRequest(TeaModel):
         # 
         # *   In the Chinese mainland:
         # 
-        #     *   Mobile phone number, for example, 159\*\*\*\*0000.
-        #     *   Landline number, for example, 0571\*\*\*\*5678.
+        #     *   Mobile phone number, for example, 159\\*\\*\\*\\*0000.
+        #     *   Landline number, for example, 0571\\*\\*\\*\\*5678.
         # 
-        # *   Outside the Chinese mainland: country code + phone number, for example, 85200\*\*\*\*00.
+        # *   Outside the Chinese mainland: country code + phone number, for example, 85200\\*\\*\\*\\*00.
         # 
         # > 
         # 
-        # *   You can specify only one called number for a request. For more information, see [How to use voice notifications in the Chinese mainland](~~150016~~) or [How to use voice notifications in regions outside the Chinese mainland](~~268810~~).
+        # *   You can specify only one called number for a request. For more information, see [How to use voice notifications in the Chinese mainland](https://help.aliyun.com/document_detail/150016.html) or [How to use voice notifications in regions outside the Chinese mainland](https://help.aliyun.com/document_detail/268810.html).
         # 
         # *   Voice notifications are sent to a called number at the following frequency: one time per minute, five times per hour, and 20 times per 24 hours.
+        # 
+        # This parameter is required.
         self.called_number = called_number
         # The number displayed to the called party.
         # 
-        # *   You do not need to specify this parameter if you use a voice notification file that uses the common outbound call mode. For more information, see [FAQ about the common outbound call mode](~~172104~~).
+        # *   You do not need to specify this parameter if you use a voice notification file that uses the common outbound call mode. For more information, see [FAQ about the common outbound call mode](https://help.aliyun.com/document_detail/172104.html).
         # *   If you use a voice notification file that uses the dedicated outbound call mode, you must specify a number that you purchased. You can specify only one number. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home) and choose **Real Number Service** > **Real Number Management** to view the number that you purchased.
         self.called_show_number = called_show_number
         # The ID reserved for the caller. This ID is returned to the caller in a receipt message.
@@ -8340,6 +8466,8 @@ class SingleCallByVoiceRequest(TeaModel):
         # The voice ID of the voice notification file.
         # 
         # You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice Messages** > **Voice Notifications** or **Voice File Management**, and then click the **Voice Notification Files** tab to view the **voice ID**.
+        # 
+        # This parameter is required.
         self.voice_code = voice_code
         # The playback volume of the voice notification file. Valid values: 0 to 100. Default value: 100.
         self.volume = volume
@@ -8410,12 +8538,12 @@ class SingleCallByVoiceResponseBody(TeaModel):
     ):
         # The unique receipt ID for the call.
         # 
-        # You can call the [QueryCallDetailByCallId](~~393529~~) operation to query the details of the call.
+        # You can call the [QueryCallDetailByCallId](https://help.aliyun.com/document_detail/393529.html) operation to query the details of the call.
         self.call_id = call_id
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.****\
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # The returned message.
         self.message = message
@@ -8507,11 +8635,13 @@ class SkipVideoFileRequest(TeaModel):
         skip_times: int = None,
     ):
         self.call_id = call_id
+        # This parameter is required.
         self.called_number = called_number
         self.out_id = out_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.skip_times = skip_times
 
     def validate(self):
@@ -8696,8 +8826,8 @@ class SmartCallRequest(TeaModel):
         self.action_code_time_break = action_code_time_break
         # The ASR base model. Valid values:
         # 
-        # *   **customer_service\_8k** (default): Chinese Mandarin.
-        # *   **dialect_customer_service\_8k**: a heavy accent.
+        # *   **customer_service_8k** (default): Chinese Mandarin.
+        # *   **dialect_customer_service_8k**: a heavy accent.
         # 
         # > You must specify the ASR model when you call the SmartCall operation. We recommend that you specify either of the AsrModelId and AsrBaseId parameters.
         # 
@@ -8705,7 +8835,7 @@ class SmartCallRequest(TeaModel):
         # 
         # *   If you specify only the AsrBaseId parameter, the ASR base model is used.
         # 
-        # *   If you specify neither of the two parameters, the default ASR base model is used, that is, the default value customer_service\_8k is used for the AsrBaseId parameter.
+        # *   If you specify neither of the two parameters, the default ASR base model is used, that is, the default value customer_service_8k is used for the AsrBaseId parameter.
         # 
         # *   If you specify both parameters, make sure that their values do not conflict with each other.
         self.asr_base_id = asr_base_id
@@ -8719,7 +8849,7 @@ class SmartCallRequest(TeaModel):
         # 
         # *   If you specify only the AsrBaseId parameter, the specified ASR base model is used.
         # 
-        # *   If you specify neither of the two parameters, the default value customer_service\_8k is used for the AsrBaseId parameter. This means that the default Mandarin ASR base model is used.
+        # *   If you specify neither of the two parameters, the default value customer_service_8k is used for the AsrBaseId parameter. This means that the default Mandarin ASR base model is used.
         # 
         # *   If you specify both parameters, make sure that their values do not conflict with each other.
         self.asr_model_id = asr_model_id
@@ -8732,10 +8862,14 @@ class SmartCallRequest(TeaModel):
         # This parameter is unavailable.
         self.background_volume = background_volume
         # The called number. Only phone numbers in the Chinese mainland are supported.
+        # 
+        # This parameter is required.
         self.called_number = called_number
         # The number displayed to the called party. The value must be the number you purchased.
         # 
         # You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home) and choose **Voice Numbers** > **Real Number Management** to view the number you purchased.
+        # 
+        # This parameter is required.
         self.called_show_number = called_show_number
         # The dynamic extension ID that is reserved for the caller of the operation. This ID is returned in the callback URL and is used as the development identifier of the customer.
         self.dynamic_id = dynamic_id
@@ -8808,6 +8942,8 @@ class SmartCallRequest(TeaModel):
         # *   If you use an online file as the recording file, set the value of **VoiceCode** to the URL of the file that can be accessed over the Internet.
         # *   If you use a voice file uploaded from the Voice Messaging Service console as the recording file, set the value of **VoiceCode** to the voice ID of the file. You can log on to the [Voice Messaging Service console](https://dyvms.console.aliyun.com/overview/home), choose **Voice File Management**, click the **Intelligent Speech Interaction Recording File** tab, and then click **Details** in the Actions column to view the voice ID.
         # *   If you use a TTS template that contains variables as the recording file, set the value of **VoiceCode** to a variable name such as $name$, and also set a value for the variable in the **VoiceCodeParam** parameter.
+        # 
+        # This parameter is required.
         self.voice_code = voice_code
         # The value of the TTS variable, in the JSON format. This value must match the TTS variable specified by the **VoiceCode** parameter.
         self.voice_code_param = voice_code_param
@@ -8965,7 +9101,7 @@ class SmartCallResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # The returned message.
         self.message = message
@@ -9055,11 +9191,15 @@ class SmartCallOperateRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The unique receipt ID of the call. You can call the [SmartCall](~~393526~~) operation to obtain the receipt ID.
+        # The unique receipt ID of the call. You can call the [SmartCall](https://help.aliyun.com/document_detail/393526.html) operation to obtain the receipt ID.
+        # 
+        # This parameter is required.
         self.call_id = call_id
         # The action that is initiated to the called number of an outbound robocall.
         # 
         # > Only the value **parallelBridge** is supported. This value indicates that a bridge action is initiated between a called number and an agent of the call center.
+        # 
+        # This parameter is required.
         self.command = command
         self.owner_id = owner_id
         # The extended field.
@@ -9118,7 +9258,7 @@ class SmartCallOperateResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # The returned message.
         self.message = message
@@ -9218,6 +9358,8 @@ class StartRobotTaskRequest(TeaModel):
         # The time scheduled for starting the robocall task, in the yyyy-MM-dd HH:mm:ss format.
         self.schedule_time = schedule_time
         # The unique ID of the robocall task. You can call the [CreateRobotTask](~~CreateRobotTask~~) operation to obtain the task ID.
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -9267,7 +9409,7 @@ class StartRobotTaskResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # Indicates whether the request was successful. Valid values:
         # 
@@ -9361,6 +9503,8 @@ class StopCallInConfigRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The China 400 number from which the inbound call to be stopped is transferred.
+        # 
+        # This parameter is required.
         self.number = number
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -9503,6 +9647,8 @@ class StopRobotTaskRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The unique ID of the robocall task. You can call the [CreateRobotTask](~~CreateRobotTask~~) operation to obtain the task ID.
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -9548,7 +9694,7 @@ class StopRobotTaskResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # Indicates whether the request was successful. Valid values:
         # 
@@ -9641,10 +9787,16 @@ class SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos(TeaModel):
         phone_number_owner_name: str = None,
     ):
         # The ID card number of the number owner.
+        # 
+        # This parameter is required.
         self.identity_card = identity_card
         # The China 400 number that you want to submit for registration.
+        # 
+        # This parameter is required.
         self.phone_number = phone_number
         # The real name or company name of the number owner.
+        # 
+        # This parameter is required.
         self.phone_number_owner_name = phone_number_owner_name
 
     def validate(self):
@@ -9696,27 +9848,45 @@ class SubmitHotlineTransferRegisterRequest(TeaModel):
         # 
         # *   **true**: The commitment is authentic.
         # *   **false**: The commitment is not authentic.
+        # 
+        # This parameter is required.
         self.agreement = agreement
         # The China 400 number.
+        # 
+        # This parameter is required.
         self.hotline_number = hotline_number
         # The ID card number of the handler.
+        # 
+        # This parameter is required.
         self.operator_identity_card = operator_identity_card
         # The email address of the handler.
+        # 
+        # This parameter is required.
         self.operator_mail = operator_mail
         # The verification code that is received by the mailbox of the handler.
         self.operator_mail_verify_code = operator_mail_verify_code
         # The mobile phone number of the handler.
+        # 
+        # This parameter is required.
         self.operator_mobile = operator_mobile
         # The verification code that is received by the mobile phone of the handler.
+        # 
+        # This parameter is required.
         self.operator_mobile_verify_code = operator_mobile_verify_code
         # The name of the handler.
+        # 
+        # This parameter is required.
         self.operator_name = operator_name
         self.owner_id = owner_id
-        # The qualification ID. You can call the [GetHotlineQualificationByOrder](~~393548~~) operation to obtain the qualification ID.
+        # The qualification ID. You can call the [GetHotlineQualificationByOrder](https://help.aliyun.com/document_detail/393548.html) operation to obtain the qualification ID.
+        # 
+        # This parameter is required.
         self.qualification_id = qualification_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The registration information about the China 400 number.
+        # 
+        # This parameter is required.
         self.transfer_phone_number_infos = transfer_phone_number_infos
 
     def validate(self):
@@ -9806,7 +9976,7 @@ class SubmitHotlineTransferRegisterResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # The registration ID.
         self.data = data
@@ -9900,6 +10070,7 @@ class UpgradeVideoFileRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         self.call_id = call_id
+        # This parameter is required.
         self.called_number = called_number
         self.media_type = media_type
         self.out_id = out_id
@@ -10057,8 +10228,12 @@ class UploadRobotTaskCalledFileRequest(TeaModel):
         # The called numbers. Separate multiple called numbers with commas (,).
         # 
         # > After you create a robocall task, you must upload called numbers in batches. You can upload up to 300,000 called numbers for each task.
+        # 
+        # This parameter is required.
         self.called_number = called_number
         # The unique ID of the robocall task. You can call the [CreateRobotTask](~~CreateRobotTask~~) operation to obtain the ID of the robocall task.
+        # 
+        # This parameter is required.
         self.id = id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -10126,7 +10301,7 @@ class UploadRobotTaskCalledFileResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](~~112502~~).
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
         self.code = code
         # The unique ID of the robocall task.
         # 

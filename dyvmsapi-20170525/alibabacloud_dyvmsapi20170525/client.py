@@ -47,7 +47,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.AddVirtualNumberRelationResponse:
         """
-        ### QPS limits
+        @summary Adds the association relationship between a virtual number and real numbers in batches.
+        
+        @description ### QPS limits
         You can call this operation up to 200 times per second per account.
         
         @param request: AddVirtualNumberRelationRequest
@@ -97,7 +99,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.AddVirtualNumberRelationResponse:
         """
-        ### QPS limits
+        @summary Adds the association relationship between a virtual number and real numbers in batches.
+        
+        @description ### QPS limits
         You can call this operation up to 200 times per second per account.
         
         @param request: AddVirtualNumberRelationRequest
@@ -146,7 +150,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.AddVirtualNumberRelationRequest,
     ) -> dyvmsapi_20170525_models.AddVirtualNumberRelationResponse:
         """
-        ### QPS limits
+        @summary Adds the association relationship between a virtual number and real numbers in batches.
+        
+        @description ### QPS limits
         You can call this operation up to 200 times per second per account.
         
         @param request: AddVirtualNumberRelationRequest
@@ -160,7 +166,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.AddVirtualNumberRelationRequest,
     ) -> dyvmsapi_20170525_models.AddVirtualNumberRelationResponse:
         """
-        ### QPS limits
+        @summary Adds the association relationship between a virtual number and real numbers in batches.
+        
+        @description ### QPS limits
         You can call this operation up to 200 times per second per account.
         
         @param request: AddVirtualNumberRelationRequest
@@ -175,12 +183,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.BatchRobotSmartCallResponse:
         """
-        In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
-        *   The BatchRobotSmartCall operation is used to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console.
+        @summary Initiates an outbound robocall task.
+        
+        @description    In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
+        The BatchRobotSmartCall operation is used to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console.
         ## Prerequisites
-        *   You have passed the real-name verification for an enterprise user and passed the enterprise qualification review.
-        *   You have purchased numbers in the [Voice Messaging Service console](https://dyvms.console.aliyun.com/dyvms.htm#/number/normal).
-        *   You have added communication scripts on the [Communication script management](https://dyvms.console.aliyun.com/dyvms.htm#/smart-call/saas/robot/list) page, and the communication scripts have been approved.
+        You have passed the real-name verification for an enterprise user and passed the enterprise qualification review.
+        You have purchased numbers in the [Voice Messaging Service console](https://dyvms.console.aliyun.com/dyvms.htm#/number/normal).
+        You have added communication scripts on the [Communication script management](https://dyvms.console.aliyun.com/dyvms.htm#/smart-call/saas/robot/list) page, and the communication scripts have been approved.
         > Before you call this operation, make sure that you are familiar with the [billing](https://www.aliyun.com/price/product#/vms/detail) of Voice Messaging Service (VMS).
         
         @param request: BatchRobotSmartCallRequest
@@ -242,12 +252,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.BatchRobotSmartCallResponse:
         """
-        In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
-        *   The BatchRobotSmartCall operation is used to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console.
+        @summary Initiates an outbound robocall task.
+        
+        @description    In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
+        The BatchRobotSmartCall operation is used to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console.
         ## Prerequisites
-        *   You have passed the real-name verification for an enterprise user and passed the enterprise qualification review.
-        *   You have purchased numbers in the [Voice Messaging Service console](https://dyvms.console.aliyun.com/dyvms.htm#/number/normal).
-        *   You have added communication scripts on the [Communication script management](https://dyvms.console.aliyun.com/dyvms.htm#/smart-call/saas/robot/list) page, and the communication scripts have been approved.
+        You have passed the real-name verification for an enterprise user and passed the enterprise qualification review.
+        You have purchased numbers in the [Voice Messaging Service console](https://dyvms.console.aliyun.com/dyvms.htm#/number/normal).
+        You have added communication scripts on the [Communication script management](https://dyvms.console.aliyun.com/dyvms.htm#/smart-call/saas/robot/list) page, and the communication scripts have been approved.
         > Before you call this operation, make sure that you are familiar with the [billing](https://www.aliyun.com/price/product#/vms/detail) of Voice Messaging Service (VMS).
         
         @param request: BatchRobotSmartCallRequest
@@ -308,12 +320,14 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.BatchRobotSmartCallRequest,
     ) -> dyvmsapi_20170525_models.BatchRobotSmartCallResponse:
         """
-        In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
-        *   The BatchRobotSmartCall operation is used to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console.
+        @summary Initiates an outbound robocall task.
+        
+        @description    In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
+        The BatchRobotSmartCall operation is used to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console.
         ## Prerequisites
-        *   You have passed the real-name verification for an enterprise user and passed the enterprise qualification review.
-        *   You have purchased numbers in the [Voice Messaging Service console](https://dyvms.console.aliyun.com/dyvms.htm#/number/normal).
-        *   You have added communication scripts on the [Communication script management](https://dyvms.console.aliyun.com/dyvms.htm#/smart-call/saas/robot/list) page, and the communication scripts have been approved.
+        You have passed the real-name verification for an enterprise user and passed the enterprise qualification review.
+        You have purchased numbers in the [Voice Messaging Service console](https://dyvms.console.aliyun.com/dyvms.htm#/number/normal).
+        You have added communication scripts on the [Communication script management](https://dyvms.console.aliyun.com/dyvms.htm#/smart-call/saas/robot/list) page, and the communication scripts have been approved.
         > Before you call this operation, make sure that you are familiar with the [billing](https://www.aliyun.com/price/product#/vms/detail) of Voice Messaging Service (VMS).
         
         @param request: BatchRobotSmartCallRequest
@@ -327,12 +341,14 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.BatchRobotSmartCallRequest,
     ) -> dyvmsapi_20170525_models.BatchRobotSmartCallResponse:
         """
-        In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
-        *   The BatchRobotSmartCall operation is used to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console.
+        @summary Initiates an outbound robocall task.
+        
+        @description    In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
+        The BatchRobotSmartCall operation is used to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console.
         ## Prerequisites
-        *   You have passed the real-name verification for an enterprise user and passed the enterprise qualification review.
-        *   You have purchased numbers in the [Voice Messaging Service console](https://dyvms.console.aliyun.com/dyvms.htm#/number/normal).
-        *   You have added communication scripts on the [Communication script management](https://dyvms.console.aliyun.com/dyvms.htm#/smart-call/saas/robot/list) page, and the communication scripts have been approved.
+        You have passed the real-name verification for an enterprise user and passed the enterprise qualification review.
+        You have purchased numbers in the [Voice Messaging Service console](https://dyvms.console.aliyun.com/dyvms.htm#/number/normal).
+        You have added communication scripts on the [Communication script management](https://dyvms.console.aliyun.com/dyvms.htm#/smart-call/saas/robot/list) page, and the communication scripts have been approved.
         > Before you call this operation, make sure that you are familiar with the [billing](https://www.aliyun.com/price/product#/vms/detail) of Voice Messaging Service (VMS).
         
         @param request: BatchRobotSmartCallRequest
@@ -347,7 +363,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.CancelOrderRobotTaskResponse:
         """
-        ### QPS limits
+        @summary Cancels a robocall task that has not been started.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: CancelOrderRobotTaskRequest
@@ -389,7 +407,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.CancelOrderRobotTaskResponse:
         """
-        ### QPS limits
+        @summary Cancels a robocall task that has not been started.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: CancelOrderRobotTaskRequest
@@ -430,7 +450,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.CancelOrderRobotTaskRequest,
     ) -> dyvmsapi_20170525_models.CancelOrderRobotTaskResponse:
         """
-        ### QPS limits
+        @summary Cancels a robocall task that has not been started.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: CancelOrderRobotTaskRequest
@@ -444,7 +466,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.CancelOrderRobotTaskRequest,
     ) -> dyvmsapi_20170525_models.CancelOrderRobotTaskResponse:
         """
-        ### QPS limits
+        @summary Cancels a robocall task that has not been started.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: CancelOrderRobotTaskRequest
@@ -459,7 +483,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.CancelRobotTaskResponse:
         """
-        Only a task in progress can be terminated by calling the CancelRobotTask operation, and the task cannot be resumed after it is terminated.
+        @summary Terminates a robocall task.
+        
+        @description Only a task in progress can be terminated by calling the CancelRobotTask operation, and the task cannot be resumed after it is terminated.
         ### QPS limits
         You can call this operation up to 100 times per second per account.
         
@@ -502,7 +528,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.CancelRobotTaskResponse:
         """
-        Only a task in progress can be terminated by calling the CancelRobotTask operation, and the task cannot be resumed after it is terminated.
+        @summary Terminates a robocall task.
+        
+        @description Only a task in progress can be terminated by calling the CancelRobotTask operation, and the task cannot be resumed after it is terminated.
         ### QPS limits
         You can call this operation up to 100 times per second per account.
         
@@ -544,7 +572,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.CancelRobotTaskRequest,
     ) -> dyvmsapi_20170525_models.CancelRobotTaskResponse:
         """
-        Only a task in progress can be terminated by calling the CancelRobotTask operation, and the task cannot be resumed after it is terminated.
+        @summary Terminates a robocall task.
+        
+        @description Only a task in progress can be terminated by calling the CancelRobotTask operation, and the task cannot be resumed after it is terminated.
         ### QPS limits
         You can call this operation up to 100 times per second per account.
         
@@ -559,7 +589,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.CancelRobotTaskRequest,
     ) -> dyvmsapi_20170525_models.CancelRobotTaskResponse:
         """
-        Only a task in progress can be terminated by calling the CancelRobotTask operation, and the task cannot be resumed after it is terminated.
+        @summary Terminates a robocall task.
+        
+        @description Only a task in progress can be terminated by calling the CancelRobotTask operation, and the task cannot be resumed after it is terminated.
         ### QPS limits
         You can call this operation up to 100 times per second per account.
         
@@ -574,6 +606,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.ChangeMediaTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.ChangeMediaTypeResponse:
+        """
+        @summary ChangeMediaType
+        
+        @param request: ChangeMediaTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeMediaTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -614,6 +653,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.ChangeMediaTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.ChangeMediaTypeResponse:
+        """
+        @summary ChangeMediaType
+        
+        @param request: ChangeMediaTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeMediaTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -653,6 +699,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.ChangeMediaTypeRequest,
     ) -> dyvmsapi_20170525_models.ChangeMediaTypeResponse:
+        """
+        @summary ChangeMediaType
+        
+        @param request: ChangeMediaTypeRequest
+        @return: ChangeMediaTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.change_media_type_with_options(request, runtime)
 
@@ -660,6 +712,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.ChangeMediaTypeRequest,
     ) -> dyvmsapi_20170525_models.ChangeMediaTypeResponse:
+        """
+        @summary ChangeMediaType
+        
+        @param request: ChangeMediaTypeRequest
+        @return: ChangeMediaTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.change_media_type_with_options_async(request, runtime)
 
@@ -669,7 +727,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.CreateCallTaskResponse:
         """
-        You can create up to 1,000 voice notifications for each task.
+        @summary Creates a task for sending voice notifications or voice verification codes.
+        
+        @description You can create up to 1,000 voice notifications for each task.
         ### QPS limits
         You can call this operation up to 100 times per second per account.
         
@@ -732,7 +792,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.CreateCallTaskResponse:
         """
-        You can create up to 1,000 voice notifications for each task.
+        @summary Creates a task for sending voice notifications or voice verification codes.
+        
+        @description You can create up to 1,000 voice notifications for each task.
         ### QPS limits
         You can call this operation up to 100 times per second per account.
         
@@ -794,7 +856,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.CreateCallTaskRequest,
     ) -> dyvmsapi_20170525_models.CreateCallTaskResponse:
         """
-        You can create up to 1,000 voice notifications for each task.
+        @summary Creates a task for sending voice notifications or voice verification codes.
+        
+        @description You can create up to 1,000 voice notifications for each task.
         ### QPS limits
         You can call this operation up to 100 times per second per account.
         
@@ -809,7 +873,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.CreateCallTaskRequest,
     ) -> dyvmsapi_20170525_models.CreateCallTaskResponse:
         """
-        You can create up to 1,000 voice notifications for each task.
+        @summary Creates a task for sending voice notifications or voice verification codes.
+        
+        @description You can create up to 1,000 voice notifications for each task.
         ### QPS limits
         You can call this operation up to 100 times per second per account.
         
@@ -825,7 +891,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.CreateRobotTaskResponse:
         """
-        You can call this operation to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console. In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
+        @summary Initiates an outbound robocall task.
+        
+        @description You can call this operation to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console. In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
         ### QPS limits
         You can call this operation up to 100 times per second per account.
         
@@ -886,7 +954,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.CreateRobotTaskResponse:
         """
-        You can call this operation to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console. In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
+        @summary Initiates an outbound robocall task.
+        
+        @description You can call this operation to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console. In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
         ### QPS limits
         You can call this operation up to 100 times per second per account.
         
@@ -946,7 +1016,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.CreateRobotTaskRequest,
     ) -> dyvmsapi_20170525_models.CreateRobotTaskResponse:
         """
-        You can call this operation to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console. In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
+        @summary Initiates an outbound robocall task.
+        
+        @description You can call this operation to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console. In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
         ### QPS limits
         You can call this operation up to 100 times per second per account.
         
@@ -961,7 +1033,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.CreateRobotTaskRequest,
     ) -> dyvmsapi_20170525_models.CreateRobotTaskResponse:
         """
-        You can call this operation to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console. In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
+        @summary Initiates an outbound robocall task.
+        
+        @description You can call this operation to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console. In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
         ### QPS limits
         You can call this operation up to 100 times per second per account.
         
@@ -976,6 +1050,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.DegradeVideoFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.DegradeVideoFileResponse:
+        """
+        @summary DegradeVideoFile
+        
+        @param request: DegradeVideoFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DegradeVideoFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -1016,6 +1097,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.DegradeVideoFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.DegradeVideoFileResponse:
+        """
+        @summary DegradeVideoFile
+        
+        @param request: DegradeVideoFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DegradeVideoFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -1055,6 +1143,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.DegradeVideoFileRequest,
     ) -> dyvmsapi_20170525_models.DegradeVideoFileResponse:
+        """
+        @summary DegradeVideoFile
+        
+        @param request: DegradeVideoFileRequest
+        @return: DegradeVideoFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.degrade_video_file_with_options(request, runtime)
 
@@ -1062,6 +1156,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.DegradeVideoFileRequest,
     ) -> dyvmsapi_20170525_models.DegradeVideoFileResponse:
+        """
+        @summary DegradeVideoFile
+        
+        @param request: DegradeVideoFileRequest
+        @return: DegradeVideoFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.degrade_video_file_with_options_async(request, runtime)
 
@@ -1071,7 +1171,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.DeleteRobotTaskResponse:
         """
-        You can call this operation to delete only tasks that are not started, that are completed, and that are terminated.
+        @summary Deletes a robocall task.
+        
+        @description You can call this operation to delete only tasks that are not started, that are completed, and that are terminated.
         ### QPS limits
         You can call this operation up to 100 times per second per account.
         
@@ -1114,7 +1216,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.DeleteRobotTaskResponse:
         """
-        You can call this operation to delete only tasks that are not started, that are completed, and that are terminated.
+        @summary Deletes a robocall task.
+        
+        @description You can call this operation to delete only tasks that are not started, that are completed, and that are terminated.
         ### QPS limits
         You can call this operation up to 100 times per second per account.
         
@@ -1156,7 +1260,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.DeleteRobotTaskRequest,
     ) -> dyvmsapi_20170525_models.DeleteRobotTaskResponse:
         """
-        You can call this operation to delete only tasks that are not started, that are completed, and that are terminated.
+        @summary Deletes a robocall task.
+        
+        @description You can call this operation to delete only tasks that are not started, that are completed, and that are terminated.
         ### QPS limits
         You can call this operation up to 100 times per second per account.
         
@@ -1171,7 +1277,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.DeleteRobotTaskRequest,
     ) -> dyvmsapi_20170525_models.DeleteRobotTaskResponse:
         """
-        You can call this operation to delete only tasks that are not started, that are completed, and that are terminated.
+        @summary Deletes a robocall task.
+        
+        @description You can call this operation to delete only tasks that are not started, that are completed, and that are terminated.
         ### QPS limits
         You can call this operation up to 100 times per second per account.
         
@@ -1187,7 +1295,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.ExecuteCallTaskResponse:
         """
-        ### QPS limits
+        @summary Executes a call task.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: ExecuteCallTaskRequest
@@ -1233,7 +1343,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.ExecuteCallTaskResponse:
         """
-        ### QPS limits
+        @summary Executes a call task.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: ExecuteCallTaskRequest
@@ -1278,7 +1390,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.ExecuteCallTaskRequest,
     ) -> dyvmsapi_20170525_models.ExecuteCallTaskResponse:
         """
-        ### QPS limits
+        @summary Executes a call task.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: ExecuteCallTaskRequest
@@ -1292,7 +1406,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.ExecuteCallTaskRequest,
     ) -> dyvmsapi_20170525_models.ExecuteCallTaskResponse:
         """
-        ### QPS limits
+        @summary Executes a call task.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: ExecuteCallTaskRequest
@@ -1306,6 +1422,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.GetCallMediaTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.GetCallMediaTypeResponse:
+        """
+        @summary GetCallMediaType
+        
+        @param request: GetCallMediaTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCallMediaTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -1342,6 +1465,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.GetCallMediaTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.GetCallMediaTypeResponse:
+        """
+        @summary GetCallMediaType
+        
+        @param request: GetCallMediaTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCallMediaTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -1377,6 +1507,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.GetCallMediaTypeRequest,
     ) -> dyvmsapi_20170525_models.GetCallMediaTypeResponse:
+        """
+        @summary GetCallMediaType
+        
+        @param request: GetCallMediaTypeRequest
+        @return: GetCallMediaTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_call_media_type_with_options(request, runtime)
 
@@ -1384,6 +1520,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.GetCallMediaTypeRequest,
     ) -> dyvmsapi_20170525_models.GetCallMediaTypeResponse:
+        """
+        @summary GetCallMediaType
+        
+        @param request: GetCallMediaTypeRequest
+        @return: GetCallMediaTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_call_media_type_with_options_async(request, runtime)
 
@@ -1392,6 +1534,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.GetCallProgressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.GetCallProgressResponse:
+        """
+        @summary GetCallProgress
+        
+        @param request: GetCallProgressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCallProgressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -1428,6 +1577,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.GetCallProgressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.GetCallProgressResponse:
+        """
+        @summary GetCallProgress
+        
+        @param request: GetCallProgressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCallProgressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -1463,6 +1619,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.GetCallProgressRequest,
     ) -> dyvmsapi_20170525_models.GetCallProgressResponse:
+        """
+        @summary GetCallProgress
+        
+        @param request: GetCallProgressRequest
+        @return: GetCallProgressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_call_progress_with_options(request, runtime)
 
@@ -1470,6 +1632,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.GetCallProgressRequest,
     ) -> dyvmsapi_20170525_models.GetCallProgressResponse:
+        """
+        @summary GetCallProgress
+        
+        @param request: GetCallProgressRequest
+        @return: GetCallProgressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_call_progress_with_options_async(request, runtime)
 
@@ -1479,7 +1647,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.GetHotlineQualificationByOrderResponse:
         """
-        ### QPS limits
+        @summary Obtains the qualification ID based on the ID of a qualification application ticket.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: GetHotlineQualificationByOrderRequest
@@ -1521,7 +1691,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.GetHotlineQualificationByOrderResponse:
         """
-        ### QPS limits
+        @summary Obtains the qualification ID based on the ID of a qualification application ticket.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: GetHotlineQualificationByOrderRequest
@@ -1562,7 +1734,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.GetHotlineQualificationByOrderRequest,
     ) -> dyvmsapi_20170525_models.GetHotlineQualificationByOrderResponse:
         """
-        ### QPS limits
+        @summary Obtains the qualification ID based on the ID of a qualification application ticket.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: GetHotlineQualificationByOrderRequest
@@ -1576,7 +1750,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.GetHotlineQualificationByOrderRequest,
     ) -> dyvmsapi_20170525_models.GetHotlineQualificationByOrderResponse:
         """
-        ### QPS limits
+        @summary Obtains the qualification ID based on the ID of a qualification application ticket.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: GetHotlineQualificationByOrderRequest
@@ -1590,6 +1766,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.GetTemporaryFileUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.GetTemporaryFileUrlResponse:
+        """
+        @summary GetTemporaryFileUrl
+        
+        @param request: GetTemporaryFileUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTemporaryFileUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -1624,6 +1807,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.GetTemporaryFileUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.GetTemporaryFileUrlResponse:
+        """
+        @summary GetTemporaryFileUrl
+        
+        @param request: GetTemporaryFileUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTemporaryFileUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -1657,6 +1847,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.GetTemporaryFileUrlRequest,
     ) -> dyvmsapi_20170525_models.GetTemporaryFileUrlResponse:
+        """
+        @summary GetTemporaryFileUrl
+        
+        @param request: GetTemporaryFileUrlRequest
+        @return: GetTemporaryFileUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_temporary_file_url_with_options(request, runtime)
 
@@ -1664,6 +1860,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.GetTemporaryFileUrlRequest,
     ) -> dyvmsapi_20170525_models.GetTemporaryFileUrlResponse:
+        """
+        @summary GetTemporaryFileUrl
+        
+        @param request: GetTemporaryFileUrlRequest
+        @return: GetTemporaryFileUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_temporary_file_url_with_options_async(request, runtime)
 
@@ -1673,7 +1875,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.GetTokenResponse:
         """
-        ### QPS limits
+        @summary Obtains the token for authentication.
+        
+        @description ### QPS limits
         You can call this operation up to five times per second per account.
         
         @param request: GetTokenRequest
@@ -1715,7 +1919,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.GetTokenResponse:
         """
-        ### QPS limits
+        @summary Obtains the token for authentication.
+        
+        @description ### QPS limits
         You can call this operation up to five times per second per account.
         
         @param request: GetTokenRequest
@@ -1756,7 +1962,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.GetTokenRequest,
     ) -> dyvmsapi_20170525_models.GetTokenResponse:
         """
-        ### QPS limits
+        @summary Obtains the token for authentication.
+        
+        @description ### QPS limits
         You can call this operation up to five times per second per account.
         
         @param request: GetTokenRequest
@@ -1770,7 +1978,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.GetTokenRequest,
     ) -> dyvmsapi_20170525_models.GetTokenResponse:
         """
-        ### QPS limits
+        @summary Obtains the token for authentication.
+        
+        @description ### QPS limits
         You can call this operation up to five times per second per account.
         
         @param request: GetTokenRequest
@@ -1784,6 +1994,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.GetVideoFieldUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.GetVideoFieldUrlResponse:
+        """
+        @summary GetVideoFieldUrl
+        
+        @param request: GetVideoFieldUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVideoFieldUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -1818,6 +2035,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.GetVideoFieldUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.GetVideoFieldUrlResponse:
+        """
+        @summary GetVideoFieldUrl
+        
+        @param request: GetVideoFieldUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVideoFieldUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -1851,6 +2075,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.GetVideoFieldUrlRequest,
     ) -> dyvmsapi_20170525_models.GetVideoFieldUrlResponse:
+        """
+        @summary GetVideoFieldUrl
+        
+        @param request: GetVideoFieldUrlRequest
+        @return: GetVideoFieldUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_video_field_url_with_options(request, runtime)
 
@@ -1858,6 +2088,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.GetVideoFieldUrlRequest,
     ) -> dyvmsapi_20170525_models.GetVideoFieldUrlResponse:
+        """
+        @summary GetVideoFieldUrl
+        
+        @param request: GetVideoFieldUrlRequest
+        @return: GetVideoFieldUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_video_field_url_with_options_async(request, runtime)
 
@@ -1867,9 +2103,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.IvrCallResponse:
         """
-        Your enterprise qualification is approved. For more information, see [Submit enterprise qualifications](~~149795~~).
-        *   Voice numbers are purchased. For more information, see [Purchase numbers](~~149794~~).
-        *   When the subscriber answers the call, the subscriber hears a voice that instructs the subscriber to press a key as needed. If the [message receipt](~~112503~~) feature is enabled, the Voice Messaging Service (VMS) platform returns the information about the key pressed by the subscriber to the business system. The key information includes the order confirmation, questionnaire survey, and satisfaction survey completed by the subscriber.
+        @summary Initiates an interactive voice response (IVR) call to a specified number.
+        
+        @description    Your enterprise qualification is approved. For more information, see [Submit enterprise qualifications](https://help.aliyun.com/document_detail/149795.html).
+        Voice numbers are purchased. For more information, see [Purchase numbers](https://help.aliyun.com/document_detail/149794.html).
+        When the subscriber answers the call, the subscriber hears a voice that instructs the subscriber to press a key as needed. If the [message receipt](https://help.aliyun.com/document_detail/112503.html) feature is enabled, the Voice Messaging Service (VMS) platform returns the information about the key pressed by the subscriber to the business system. The key information includes the order confirmation, questionnaire survey, and satisfaction survey completed by the subscriber.
         ## QPS limits
         You can call this operation up to 100 times per second per account.
         
@@ -1930,9 +2168,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.IvrCallResponse:
         """
-        Your enterprise qualification is approved. For more information, see [Submit enterprise qualifications](~~149795~~).
-        *   Voice numbers are purchased. For more information, see [Purchase numbers](~~149794~~).
-        *   When the subscriber answers the call, the subscriber hears a voice that instructs the subscriber to press a key as needed. If the [message receipt](~~112503~~) feature is enabled, the Voice Messaging Service (VMS) platform returns the information about the key pressed by the subscriber to the business system. The key information includes the order confirmation, questionnaire survey, and satisfaction survey completed by the subscriber.
+        @summary Initiates an interactive voice response (IVR) call to a specified number.
+        
+        @description    Your enterprise qualification is approved. For more information, see [Submit enterprise qualifications](https://help.aliyun.com/document_detail/149795.html).
+        Voice numbers are purchased. For more information, see [Purchase numbers](https://help.aliyun.com/document_detail/149794.html).
+        When the subscriber answers the call, the subscriber hears a voice that instructs the subscriber to press a key as needed. If the [message receipt](https://help.aliyun.com/document_detail/112503.html) feature is enabled, the Voice Messaging Service (VMS) platform returns the information about the key pressed by the subscriber to the business system. The key information includes the order confirmation, questionnaire survey, and satisfaction survey completed by the subscriber.
         ## QPS limits
         You can call this operation up to 100 times per second per account.
         
@@ -1992,9 +2232,11 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.IvrCallRequest,
     ) -> dyvmsapi_20170525_models.IvrCallResponse:
         """
-        Your enterprise qualification is approved. For more information, see [Submit enterprise qualifications](~~149795~~).
-        *   Voice numbers are purchased. For more information, see [Purchase numbers](~~149794~~).
-        *   When the subscriber answers the call, the subscriber hears a voice that instructs the subscriber to press a key as needed. If the [message receipt](~~112503~~) feature is enabled, the Voice Messaging Service (VMS) platform returns the information about the key pressed by the subscriber to the business system. The key information includes the order confirmation, questionnaire survey, and satisfaction survey completed by the subscriber.
+        @summary Initiates an interactive voice response (IVR) call to a specified number.
+        
+        @description    Your enterprise qualification is approved. For more information, see [Submit enterprise qualifications](https://help.aliyun.com/document_detail/149795.html).
+        Voice numbers are purchased. For more information, see [Purchase numbers](https://help.aliyun.com/document_detail/149794.html).
+        When the subscriber answers the call, the subscriber hears a voice that instructs the subscriber to press a key as needed. If the [message receipt](https://help.aliyun.com/document_detail/112503.html) feature is enabled, the Voice Messaging Service (VMS) platform returns the information about the key pressed by the subscriber to the business system. The key information includes the order confirmation, questionnaire survey, and satisfaction survey completed by the subscriber.
         ## QPS limits
         You can call this operation up to 100 times per second per account.
         
@@ -2009,9 +2251,11 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.IvrCallRequest,
     ) -> dyvmsapi_20170525_models.IvrCallResponse:
         """
-        Your enterprise qualification is approved. For more information, see [Submit enterprise qualifications](~~149795~~).
-        *   Voice numbers are purchased. For more information, see [Purchase numbers](~~149794~~).
-        *   When the subscriber answers the call, the subscriber hears a voice that instructs the subscriber to press a key as needed. If the [message receipt](~~112503~~) feature is enabled, the Voice Messaging Service (VMS) platform returns the information about the key pressed by the subscriber to the business system. The key information includes the order confirmation, questionnaire survey, and satisfaction survey completed by the subscriber.
+        @summary Initiates an interactive voice response (IVR) call to a specified number.
+        
+        @description    Your enterprise qualification is approved. For more information, see [Submit enterprise qualifications](https://help.aliyun.com/document_detail/149795.html).
+        Voice numbers are purchased. For more information, see [Purchase numbers](https://help.aliyun.com/document_detail/149794.html).
+        When the subscriber answers the call, the subscriber hears a voice that instructs the subscriber to press a key as needed. If the [message receipt](https://help.aliyun.com/document_detail/112503.html) feature is enabled, the Voice Messaging Service (VMS) platform returns the information about the key pressed by the subscriber to the business system. The key information includes the order confirmation, questionnaire survey, and satisfaction survey completed by the subscriber.
         ## QPS limits
         You can call this operation up to 100 times per second per account.
         
@@ -2027,7 +2271,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.ListCallTaskResponse:
         """
-        ### QPS limits
+        @summary Queries task information.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: ListCallTaskRequest
@@ -2081,7 +2327,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.ListCallTaskResponse:
         """
-        ### QPS limits
+        @summary Queries task information.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: ListCallTaskRequest
@@ -2134,7 +2382,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.ListCallTaskRequest,
     ) -> dyvmsapi_20170525_models.ListCallTaskResponse:
         """
-        ### QPS limits
+        @summary Queries task information.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: ListCallTaskRequest
@@ -2148,7 +2398,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.ListCallTaskRequest,
     ) -> dyvmsapi_20170525_models.ListCallTaskResponse:
         """
-        ### QPS limits
+        @summary Queries task information.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: ListCallTaskRequest
@@ -2163,7 +2415,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.ListCallTaskDetailResponse:
         """
-        ### QPS limits
+        @summary Queries the information about a task based on the task ID.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: ListCallTaskDetailRequest
@@ -2213,7 +2467,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.ListCallTaskDetailResponse:
         """
-        ### QPS limits
+        @summary Queries the information about a task based on the task ID.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: ListCallTaskDetailRequest
@@ -2262,7 +2518,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.ListCallTaskDetailRequest,
     ) -> dyvmsapi_20170525_models.ListCallTaskDetailResponse:
         """
-        ### QPS limits
+        @summary Queries the information about a task based on the task ID.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: ListCallTaskDetailRequest
@@ -2276,7 +2534,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.ListCallTaskDetailRequest,
     ) -> dyvmsapi_20170525_models.ListCallTaskDetailResponse:
         """
-        ### QPS limits
+        @summary Queries the information about a task based on the task ID.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: ListCallTaskDetailRequest
@@ -2291,7 +2551,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.ListHotlineTransferNumberResponse:
         """
-        ### QPS limits
+        @summary Queries a list of registered phone numbers that are used to transfer calls.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: ListHotlineTransferNumberRequest
@@ -2339,7 +2601,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.ListHotlineTransferNumberResponse:
         """
-        ### QPS limits
+        @summary Queries a list of registered phone numbers that are used to transfer calls.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: ListHotlineTransferNumberRequest
@@ -2386,7 +2650,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.ListHotlineTransferNumberRequest,
     ) -> dyvmsapi_20170525_models.ListHotlineTransferNumberResponse:
         """
-        ### QPS limits
+        @summary Queries a list of registered phone numbers that are used to transfer calls.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: ListHotlineTransferNumberRequest
@@ -2400,7 +2666,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.ListHotlineTransferNumberRequest,
     ) -> dyvmsapi_20170525_models.ListHotlineTransferNumberResponse:
         """
-        ### QPS limits
+        @summary Queries a list of registered phone numbers that are used to transfer calls.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: ListHotlineTransferNumberRequest
@@ -2415,7 +2683,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.ListHotlineTransferRegisterFileResponse:
         """
-        ### QPS limits
+        @summary Queries the registration information about a China 400 number.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: ListHotlineTransferRegisterFileRequest
@@ -2463,7 +2733,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.ListHotlineTransferRegisterFileResponse:
         """
-        ### QPS limits
+        @summary Queries the registration information about a China 400 number.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: ListHotlineTransferRegisterFileRequest
@@ -2510,7 +2782,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.ListHotlineTransferRegisterFileRequest,
     ) -> dyvmsapi_20170525_models.ListHotlineTransferRegisterFileResponse:
         """
-        ### QPS limits
+        @summary Queries the registration information about a China 400 number.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: ListHotlineTransferRegisterFileRequest
@@ -2524,7 +2798,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.ListHotlineTransferRegisterFileRequest,
     ) -> dyvmsapi_20170525_models.ListHotlineTransferRegisterFileResponse:
         """
-        ### QPS limits
+        @summary Queries the registration information about a China 400 number.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: ListHotlineTransferRegisterFileRequest
@@ -2538,6 +2814,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.PauseVideoFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.PauseVideoFileResponse:
+        """
+        @summary PauseVideoFile
+        
+        @param request: PauseVideoFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PauseVideoFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -2574,6 +2857,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.PauseVideoFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.PauseVideoFileResponse:
+        """
+        @summary PauseVideoFile
+        
+        @param request: PauseVideoFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PauseVideoFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -2609,6 +2899,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.PauseVideoFileRequest,
     ) -> dyvmsapi_20170525_models.PauseVideoFileResponse:
+        """
+        @summary PauseVideoFile
+        
+        @param request: PauseVideoFileRequest
+        @return: PauseVideoFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.pause_video_file_with_options(request, runtime)
 
@@ -2616,6 +2912,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.PauseVideoFileRequest,
     ) -> dyvmsapi_20170525_models.PauseVideoFileResponse:
+        """
+        @summary PauseVideoFile
+        
+        @param request: PauseVideoFileRequest
+        @return: PauseVideoFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.pause_video_file_with_options_async(request, runtime)
 
@@ -2624,12 +2926,21 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.PlayVideoFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.PlayVideoFileResponse:
+        """
+        @summary PlayVideoFile
+        
+        @param request: PlayVideoFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PlayVideoFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
             query['CallId'] = request.call_id
         if not UtilClient.is_unset(request.called_number):
             query['CalledNumber'] = request.called_number
+        if not UtilClient.is_unset(request.only_phone):
+            query['OnlyPhone'] = request.only_phone
         if not UtilClient.is_unset(request.out_id):
             query['OutId'] = request.out_id
         if not UtilClient.is_unset(request.owner_id):
@@ -2664,12 +2975,21 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.PlayVideoFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.PlayVideoFileResponse:
+        """
+        @summary PlayVideoFile
+        
+        @param request: PlayVideoFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PlayVideoFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
             query['CallId'] = request.call_id
         if not UtilClient.is_unset(request.called_number):
             query['CalledNumber'] = request.called_number
+        if not UtilClient.is_unset(request.only_phone):
+            query['OnlyPhone'] = request.only_phone
         if not UtilClient.is_unset(request.out_id):
             query['OutId'] = request.out_id
         if not UtilClient.is_unset(request.owner_id):
@@ -2703,6 +3023,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.PlayVideoFileRequest,
     ) -> dyvmsapi_20170525_models.PlayVideoFileResponse:
+        """
+        @summary PlayVideoFile
+        
+        @param request: PlayVideoFileRequest
+        @return: PlayVideoFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.play_video_file_with_options(request, runtime)
 
@@ -2710,6 +3036,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.PlayVideoFileRequest,
     ) -> dyvmsapi_20170525_models.PlayVideoFileResponse:
+        """
+        @summary PlayVideoFile
+        
+        @param request: PlayVideoFileRequest
+        @return: PlayVideoFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.play_video_file_with_options_async(request, runtime)
 
@@ -2719,7 +3051,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryCallDetailByCallIdResponse:
         """
-        QueryCallDetailByCallId is a common query operation. You can call this operation to query the details of a voice notification, voice verification code, interactive voice response (IVR), intelligent inbound voice call, intelligent outbound voice call, or intelligent robocall.
+        @summary Queries the details of a call.
+        
+        @description QueryCallDetailByCallId is a common query operation. You can call this operation to query the details of a voice notification, voice verification code, interactive voice response (IVR), intelligent inbound voice call, intelligent outbound voice call, or intelligent robocall.
         ### QPS limits
         You can call this operation up to 100 times per second per account.
         
@@ -2766,7 +3100,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryCallDetailByCallIdResponse:
         """
-        QueryCallDetailByCallId is a common query operation. You can call this operation to query the details of a voice notification, voice verification code, interactive voice response (IVR), intelligent inbound voice call, intelligent outbound voice call, or intelligent robocall.
+        @summary Queries the details of a call.
+        
+        @description QueryCallDetailByCallId is a common query operation. You can call this operation to query the details of a voice notification, voice verification code, interactive voice response (IVR), intelligent inbound voice call, intelligent outbound voice call, or intelligent robocall.
         ### QPS limits
         You can call this operation up to 100 times per second per account.
         
@@ -2812,7 +3148,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.QueryCallDetailByCallIdRequest,
     ) -> dyvmsapi_20170525_models.QueryCallDetailByCallIdResponse:
         """
-        QueryCallDetailByCallId is a common query operation. You can call this operation to query the details of a voice notification, voice verification code, interactive voice response (IVR), intelligent inbound voice call, intelligent outbound voice call, or intelligent robocall.
+        @summary Queries the details of a call.
+        
+        @description QueryCallDetailByCallId is a common query operation. You can call this operation to query the details of a voice notification, voice verification code, interactive voice response (IVR), intelligent inbound voice call, intelligent outbound voice call, or intelligent robocall.
         ### QPS limits
         You can call this operation up to 100 times per second per account.
         
@@ -2827,7 +3165,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.QueryCallDetailByCallIdRequest,
     ) -> dyvmsapi_20170525_models.QueryCallDetailByCallIdResponse:
         """
-        QueryCallDetailByCallId is a common query operation. You can call this operation to query the details of a voice notification, voice verification code, interactive voice response (IVR), intelligent inbound voice call, intelligent outbound voice call, or intelligent robocall.
+        @summary Queries the details of a call.
+        
+        @description QueryCallDetailByCallId is a common query operation. You can call this operation to query the details of a voice notification, voice verification code, interactive voice response (IVR), intelligent inbound voice call, intelligent outbound voice call, or intelligent robocall.
         ### QPS limits
         You can call this operation up to 100 times per second per account.
         
@@ -2842,6 +3182,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.QueryCallDetailByTaskIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryCallDetailByTaskIdResponse:
+        """
+        @summary Queries the call details of an outbound robocall task.
+        
+        @param request: QueryCallDetailByTaskIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCallDetailByTaskIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.callee):
@@ -2880,6 +3227,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.QueryCallDetailByTaskIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryCallDetailByTaskIdResponse:
+        """
+        @summary Queries the call details of an outbound robocall task.
+        
+        @param request: QueryCallDetailByTaskIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCallDetailByTaskIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.callee):
@@ -2917,6 +3271,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.QueryCallDetailByTaskIdRequest,
     ) -> dyvmsapi_20170525_models.QueryCallDetailByTaskIdResponse:
+        """
+        @summary Queries the call details of an outbound robocall task.
+        
+        @param request: QueryCallDetailByTaskIdRequest
+        @return: QueryCallDetailByTaskIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_call_detail_by_task_id_with_options(request, runtime)
 
@@ -2924,6 +3284,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.QueryCallDetailByTaskIdRequest,
     ) -> dyvmsapi_20170525_models.QueryCallDetailByTaskIdResponse:
+        """
+        @summary Queries the call details of an outbound robocall task.
+        
+        @param request: QueryCallDetailByTaskIdRequest
+        @return: QueryCallDetailByTaskIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_call_detail_by_task_id_with_options_async(request, runtime)
 
@@ -2933,7 +3299,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryCallInPoolTransferConfigResponse:
         """
-        ### QPS limits
+        @summary Queries the configuration of the phone number used to transfer a call.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryCallInPoolTransferConfigRequest
@@ -2975,7 +3343,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryCallInPoolTransferConfigResponse:
         """
-        ### QPS limits
+        @summary Queries the configuration of the phone number used to transfer a call.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryCallInPoolTransferConfigRequest
@@ -3016,7 +3386,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.QueryCallInPoolTransferConfigRequest,
     ) -> dyvmsapi_20170525_models.QueryCallInPoolTransferConfigResponse:
         """
-        ### QPS limits
+        @summary Queries the configuration of the phone number used to transfer a call.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryCallInPoolTransferConfigRequest
@@ -3030,7 +3402,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.QueryCallInPoolTransferConfigRequest,
     ) -> dyvmsapi_20170525_models.QueryCallInPoolTransferConfigResponse:
         """
-        ### QPS limits
+        @summary Queries the configuration of the phone number used to transfer a call.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryCallInPoolTransferConfigRequest
@@ -3045,7 +3419,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryCallInTransferRecordResponse:
         """
-        ### QPS limits
+        @summary Queries call transfer records.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryCallInTransferRecordRequest
@@ -3095,7 +3471,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryCallInTransferRecordResponse:
         """
-        ### QPS limits
+        @summary Queries call transfer records.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryCallInTransferRecordRequest
@@ -3144,7 +3522,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.QueryCallInTransferRecordRequest,
     ) -> dyvmsapi_20170525_models.QueryCallInTransferRecordResponse:
         """
-        ### QPS limits
+        @summary Queries call transfer records.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryCallInTransferRecordRequest
@@ -3158,7 +3538,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.QueryCallInTransferRecordRequest,
     ) -> dyvmsapi_20170525_models.QueryCallInTransferRecordResponse:
         """
-        ### QPS limits
+        @summary Queries call transfer records.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryCallInTransferRecordRequest
@@ -3172,6 +3554,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.QueryRobotInfoListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryRobotInfoListResponse:
+        """
+        @summary Queries a list of robots.
+        
+        @param request: QueryRobotInfoListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRobotInfoListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.audit_status):
@@ -3206,6 +3595,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.QueryRobotInfoListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryRobotInfoListResponse:
+        """
+        @summary Queries a list of robots.
+        
+        @param request: QueryRobotInfoListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRobotInfoListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.audit_status):
@@ -3239,6 +3635,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.QueryRobotInfoListRequest,
     ) -> dyvmsapi_20170525_models.QueryRobotInfoListResponse:
+        """
+        @summary Queries a list of robots.
+        
+        @param request: QueryRobotInfoListRequest
+        @return: QueryRobotInfoListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_robot_info_list_with_options(request, runtime)
 
@@ -3246,6 +3648,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.QueryRobotInfoListRequest,
     ) -> dyvmsapi_20170525_models.QueryRobotInfoListResponse:
+        """
+        @summary Queries a list of robots.
+        
+        @param request: QueryRobotInfoListRequest
+        @return: QueryRobotInfoListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_robot_info_list_with_options_async(request, runtime)
 
@@ -3255,7 +3663,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryRobotTaskCallDetailResponse:
         """
-        ### QPS limits
+        @summary Queries the call details of a called number in a robocall task.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryRobotTaskCallDetailRequest
@@ -3301,7 +3711,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryRobotTaskCallDetailResponse:
         """
-        ### QPS limits
+        @summary Queries the call details of a called number in a robocall task.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryRobotTaskCallDetailRequest
@@ -3346,7 +3758,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.QueryRobotTaskCallDetailRequest,
     ) -> dyvmsapi_20170525_models.QueryRobotTaskCallDetailResponse:
         """
-        ### QPS limits
+        @summary Queries the call details of a called number in a robocall task.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryRobotTaskCallDetailRequest
@@ -3360,7 +3774,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.QueryRobotTaskCallDetailRequest,
     ) -> dyvmsapi_20170525_models.QueryRobotTaskCallDetailResponse:
         """
-        ### QPS limits
+        @summary Queries the call details of a called number in a robocall task.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryRobotTaskCallDetailRequest
@@ -3375,7 +3791,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryRobotTaskCallListResponse:
         """
-        ### QPS limits
+        @summary Queries the information about a robocall task.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryRobotTaskCallListRequest
@@ -3435,7 +3853,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryRobotTaskCallListResponse:
         """
-        ### QPS limits
+        @summary Queries the information about a robocall task.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryRobotTaskCallListRequest
@@ -3494,7 +3914,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.QueryRobotTaskCallListRequest,
     ) -> dyvmsapi_20170525_models.QueryRobotTaskCallListResponse:
         """
-        ### QPS limits
+        @summary Queries the information about a robocall task.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryRobotTaskCallListRequest
@@ -3508,7 +3930,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.QueryRobotTaskCallListRequest,
     ) -> dyvmsapi_20170525_models.QueryRobotTaskCallListResponse:
         """
-        ### QPS limits
+        @summary Queries the information about a robocall task.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryRobotTaskCallListRequest
@@ -3523,7 +3947,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryRobotTaskDetailResponse:
         """
-        ### QPS limits
+        @summary Queries the details of a robocall task.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryRobotTaskDetailRequest
@@ -3565,7 +3991,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryRobotTaskDetailResponse:
         """
-        ### QPS limits
+        @summary Queries the details of a robocall task.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryRobotTaskDetailRequest
@@ -3606,7 +4034,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.QueryRobotTaskDetailRequest,
     ) -> dyvmsapi_20170525_models.QueryRobotTaskDetailResponse:
         """
-        ### QPS limits
+        @summary Queries the details of a robocall task.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryRobotTaskDetailRequest
@@ -3620,7 +4050,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.QueryRobotTaskDetailRequest,
     ) -> dyvmsapi_20170525_models.QueryRobotTaskDetailResponse:
         """
-        ### QPS limits
+        @summary Queries the details of a robocall task.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryRobotTaskDetailRequest
@@ -3635,7 +4067,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryRobotTaskListResponse:
         """
-        ### QPS limits
+        @summary Queries the information about all robocall tasks.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryRobotTaskListRequest
@@ -3685,7 +4119,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryRobotTaskListResponse:
         """
-        ### QPS limits
+        @summary Queries the information about all robocall tasks.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryRobotTaskListRequest
@@ -3734,7 +4170,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.QueryRobotTaskListRequest,
     ) -> dyvmsapi_20170525_models.QueryRobotTaskListResponse:
         """
-        ### QPS limits
+        @summary Queries the information about all robocall tasks.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryRobotTaskListRequest
@@ -3748,7 +4186,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.QueryRobotTaskListRequest,
     ) -> dyvmsapi_20170525_models.QueryRobotTaskListResponse:
         """
-        ### QPS limits
+        @summary Queries the information about all robocall tasks.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryRobotTaskListRequest
@@ -3763,7 +4203,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryRobotv2AllListResponse:
         """
-        ### QPS limits
+        @summary Queries a list of robot communication scripts.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryRobotv2AllListRequest
@@ -3803,7 +4245,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryRobotv2AllListResponse:
         """
-        ### QPS limits
+        @summary Queries a list of robot communication scripts.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryRobotv2AllListRequest
@@ -3842,7 +4286,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.QueryRobotv2AllListRequest,
     ) -> dyvmsapi_20170525_models.QueryRobotv2AllListResponse:
         """
-        ### QPS limits
+        @summary Queries a list of robot communication scripts.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryRobotv2AllListRequest
@@ -3856,7 +4302,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.QueryRobotv2AllListRequest,
     ) -> dyvmsapi_20170525_models.QueryRobotv2AllListResponse:
         """
-        ### QPS limits
+        @summary Queries a list of robot communication scripts.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryRobotv2AllListRequest
@@ -3870,6 +4318,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.QueryVideoPlayProgressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryVideoPlayProgressResponse:
+        """
+        @summary QueryVideoPlayProgress
+        
+        @param request: QueryVideoPlayProgressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryVideoPlayProgressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -3906,6 +4361,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.QueryVideoPlayProgressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryVideoPlayProgressResponse:
+        """
+        @summary QueryVideoPlayProgress
+        
+        @param request: QueryVideoPlayProgressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryVideoPlayProgressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -3941,6 +4403,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.QueryVideoPlayProgressRequest,
     ) -> dyvmsapi_20170525_models.QueryVideoPlayProgressResponse:
+        """
+        @summary QueryVideoPlayProgress
+        
+        @param request: QueryVideoPlayProgressRequest
+        @return: QueryVideoPlayProgressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_video_play_progress_with_options(request, runtime)
 
@@ -3948,6 +4416,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.QueryVideoPlayProgressRequest,
     ) -> dyvmsapi_20170525_models.QueryVideoPlayProgressResponse:
+        """
+        @summary QueryVideoPlayProgress
+        
+        @param request: QueryVideoPlayProgressRequest
+        @return: QueryVideoPlayProgressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_video_play_progress_with_options_async(request, runtime)
 
@@ -3957,7 +4431,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryVirtualNumberResponse:
         """
-        ### QPS limits
+        @summary Queries a list of virtual numbers.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryVirtualNumberRequest
@@ -4005,7 +4481,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryVirtualNumberResponse:
         """
-        ### QPS limits
+        @summary Queries a list of virtual numbers.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryVirtualNumberRequest
@@ -4052,7 +4530,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.QueryVirtualNumberRequest,
     ) -> dyvmsapi_20170525_models.QueryVirtualNumberResponse:
         """
-        ### QPS limits
+        @summary Queries a list of virtual numbers.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryVirtualNumberRequest
@@ -4066,7 +4546,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.QueryVirtualNumberRequest,
     ) -> dyvmsapi_20170525_models.QueryVirtualNumberResponse:
         """
-        ### QPS limits
+        @summary Queries a list of virtual numbers.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: QueryVirtualNumberRequest
@@ -4081,7 +4563,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryVirtualNumberRelationResponse:
         """
-        ### QPS limits
+        @summary Queries a list of associations between virtual numbers and real numbers.
+        
+        @description ### QPS limits
         You can call this operation up to 200 times per second per account.
         
         @param request: QueryVirtualNumberRelationRequest
@@ -4139,7 +4623,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryVirtualNumberRelationResponse:
         """
-        ### QPS limits
+        @summary Queries a list of associations between virtual numbers and real numbers.
+        
+        @description ### QPS limits
         You can call this operation up to 200 times per second per account.
         
         @param request: QueryVirtualNumberRelationRequest
@@ -4196,7 +4682,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.QueryVirtualNumberRelationRequest,
     ) -> dyvmsapi_20170525_models.QueryVirtualNumberRelationResponse:
         """
-        ### QPS limits
+        @summary Queries a list of associations between virtual numbers and real numbers.
+        
+        @description ### QPS limits
         You can call this operation up to 200 times per second per account.
         
         @param request: QueryVirtualNumberRelationRequest
@@ -4210,7 +4698,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.QueryVirtualNumberRelationRequest,
     ) -> dyvmsapi_20170525_models.QueryVirtualNumberRelationResponse:
         """
-        ### QPS limits
+        @summary Queries a list of associations between virtual numbers and real numbers.
+        
+        @description ### QPS limits
         You can call this operation up to 200 times per second per account.
         
         @param request: QueryVirtualNumberRelationRequest
@@ -4224,6 +4714,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.QueryVoiceFileAuditInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryVoiceFileAuditInfoResponse:
+        """
+        @summary Queries the review state of a voice file.
+        
+        @param request: QueryVoiceFileAuditInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryVoiceFileAuditInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.business_type):
@@ -4260,6 +4757,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.QueryVoiceFileAuditInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryVoiceFileAuditInfoResponse:
+        """
+        @summary Queries the review state of a voice file.
+        
+        @param request: QueryVoiceFileAuditInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryVoiceFileAuditInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.business_type):
@@ -4295,6 +4799,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.QueryVoiceFileAuditInfoRequest,
     ) -> dyvmsapi_20170525_models.QueryVoiceFileAuditInfoResponse:
+        """
+        @summary Queries the review state of a voice file.
+        
+        @param request: QueryVoiceFileAuditInfoRequest
+        @return: QueryVoiceFileAuditInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_voice_file_audit_info_with_options(request, runtime)
 
@@ -4302,6 +4812,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.QueryVoiceFileAuditInfoRequest,
     ) -> dyvmsapi_20170525_models.QueryVoiceFileAuditInfoResponse:
+        """
+        @summary Queries the review state of a voice file.
+        
+        @param request: QueryVoiceFileAuditInfoRequest
+        @return: QueryVoiceFileAuditInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_voice_file_audit_info_with_options_async(request, runtime)
 
@@ -4310,6 +4826,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.RecoverCallInConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.RecoverCallInConfigResponse:
+        """
+        @summary Resumes the inbound call that is transferred by using a China 400 number.
+        
+        @param request: RecoverCallInConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RecoverCallInConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.number):
@@ -4344,6 +4867,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.RecoverCallInConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.RecoverCallInConfigResponse:
+        """
+        @summary Resumes the inbound call that is transferred by using a China 400 number.
+        
+        @param request: RecoverCallInConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RecoverCallInConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.number):
@@ -4377,6 +4907,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.RecoverCallInConfigRequest,
     ) -> dyvmsapi_20170525_models.RecoverCallInConfigResponse:
+        """
+        @summary Resumes the inbound call that is transferred by using a China 400 number.
+        
+        @param request: RecoverCallInConfigRequest
+        @return: RecoverCallInConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.recover_call_in_config_with_options(request, runtime)
 
@@ -4384,6 +4920,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.RecoverCallInConfigRequest,
     ) -> dyvmsapi_20170525_models.RecoverCallInConfigResponse:
+        """
+        @summary Resumes the inbound call that is transferred by using a China 400 number.
+        
+        @param request: RecoverCallInConfigRequest
+        @return: RecoverCallInConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.recover_call_in_config_with_options_async(request, runtime)
 
@@ -4392,6 +4934,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.ResumeVideoFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.ResumeVideoFileResponse:
+        """
+        @summary ResumeVideoFile
+        
+        @param request: ResumeVideoFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeVideoFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -4428,6 +4977,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.ResumeVideoFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.ResumeVideoFileResponse:
+        """
+        @summary ResumeVideoFile
+        
+        @param request: ResumeVideoFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeVideoFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -4463,6 +5019,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.ResumeVideoFileRequest,
     ) -> dyvmsapi_20170525_models.ResumeVideoFileResponse:
+        """
+        @summary ResumeVideoFile
+        
+        @param request: ResumeVideoFileRequest
+        @return: ResumeVideoFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.resume_video_file_with_options(request, runtime)
 
@@ -4470,6 +5032,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.ResumeVideoFileRequest,
     ) -> dyvmsapi_20170525_models.ResumeVideoFileResponse:
+        """
+        @summary ResumeVideoFile
+        
+        @param request: ResumeVideoFileRequest
+        @return: ResumeVideoFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.resume_video_file_with_options_async(request, runtime)
 
@@ -4478,6 +5046,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.SeekVideoFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SeekVideoFileResponse:
+        """
+        @summary SeekVideoFile
+        
+        @param request: SeekVideoFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SeekVideoFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -4516,6 +5091,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.SeekVideoFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SeekVideoFileResponse:
+        """
+        @summary SeekVideoFile
+        
+        @param request: SeekVideoFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SeekVideoFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -4553,6 +5135,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.SeekVideoFileRequest,
     ) -> dyvmsapi_20170525_models.SeekVideoFileResponse:
+        """
+        @summary SeekVideoFile
+        
+        @param request: SeekVideoFileRequest
+        @return: SeekVideoFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.seek_video_file_with_options(request, runtime)
 
@@ -4560,6 +5148,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.SeekVideoFileRequest,
     ) -> dyvmsapi_20170525_models.SeekVideoFileResponse:
+        """
+        @summary SeekVideoFile
+        
+        @param request: SeekVideoFileRequest
+        @return: SeekVideoFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.seek_video_file_with_options_async(request, runtime)
 
@@ -4569,7 +5163,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SendVerificationResponse:
         """
-        ### QPS limits
+        @summary Sends an SMS verification code.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: SendVerificationRequest
@@ -4615,7 +5211,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SendVerificationResponse:
         """
-        ### QPS limits
+        @summary Sends an SMS verification code.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: SendVerificationRequest
@@ -4660,7 +5258,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.SendVerificationRequest,
     ) -> dyvmsapi_20170525_models.SendVerificationResponse:
         """
-        ### QPS limits
+        @summary Sends an SMS verification code.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: SendVerificationRequest
@@ -4674,7 +5274,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.SendVerificationRequest,
     ) -> dyvmsapi_20170525_models.SendVerificationResponse:
         """
-        ### QPS limits
+        @summary Sends an SMS verification code.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: SendVerificationRequest
@@ -4689,7 +5291,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SetTransferCalleePoolConfigResponse:
         """
-        ### QPS limits
+        @summary Sets the phone numbers for transferring a call.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: SetTransferCalleePoolConfigRequest
@@ -4737,7 +5341,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SetTransferCalleePoolConfigResponse:
         """
-        ### QPS limits
+        @summary Sets the phone numbers for transferring a call.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: SetTransferCalleePoolConfigRequest
@@ -4784,7 +5390,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.SetTransferCalleePoolConfigRequest,
     ) -> dyvmsapi_20170525_models.SetTransferCalleePoolConfigResponse:
         """
-        ### QPS limits
+        @summary Sets the phone numbers for transferring a call.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: SetTransferCalleePoolConfigRequest
@@ -4798,7 +5406,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.SetTransferCalleePoolConfigRequest,
     ) -> dyvmsapi_20170525_models.SetTransferCalleePoolConfigResponse:
         """
-        ### QPS limits
+        @summary Sets the phone numbers for transferring a call.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: SetTransferCalleePoolConfigRequest
@@ -4813,8 +5423,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SingleCallByTtsResponse:
         """
-        Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
-        *   For more information about voice plans or voice service billing, see [Pricing of VMS on China site (aliyun.com)](~~150083~~).
+        @summary Sends a voice verification code or a voice notification with variables to a specified phone number.
+        
+        @description    Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
+        For more information about voice plans or voice service billing, see [Pricing of VMS on China site (aliyun.com)](https://help.aliyun.com/document_detail/150083.html).
         ### QPS limits
         You can call this operation up to 1,000 times per second per account.
         
@@ -4871,8 +5483,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SingleCallByTtsResponse:
         """
-        Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
-        *   For more information about voice plans or voice service billing, see [Pricing of VMS on China site (aliyun.com)](~~150083~~).
+        @summary Sends a voice verification code or a voice notification with variables to a specified phone number.
+        
+        @description    Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
+        For more information about voice plans or voice service billing, see [Pricing of VMS on China site (aliyun.com)](https://help.aliyun.com/document_detail/150083.html).
         ### QPS limits
         You can call this operation up to 1,000 times per second per account.
         
@@ -4928,8 +5542,10 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.SingleCallByTtsRequest,
     ) -> dyvmsapi_20170525_models.SingleCallByTtsResponse:
         """
-        Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
-        *   For more information about voice plans or voice service billing, see [Pricing of VMS on China site (aliyun.com)](~~150083~~).
+        @summary Sends a voice verification code or a voice notification with variables to a specified phone number.
+        
+        @description    Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
+        For more information about voice plans or voice service billing, see [Pricing of VMS on China site (aliyun.com)](https://help.aliyun.com/document_detail/150083.html).
         ### QPS limits
         You can call this operation up to 1,000 times per second per account.
         
@@ -4944,8 +5560,10 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.SingleCallByTtsRequest,
     ) -> dyvmsapi_20170525_models.SingleCallByTtsResponse:
         """
-        Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
-        *   For more information about voice plans or voice service billing, see [Pricing of VMS on China site (aliyun.com)](~~150083~~).
+        @summary Sends a voice verification code or a voice notification with variables to a specified phone number.
+        
+        @description    Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
+        For more information about voice plans or voice service billing, see [Pricing of VMS on China site (aliyun.com)](https://help.aliyun.com/document_detail/150083.html).
         ### QPS limits
         You can call this operation up to 1,000 times per second per account.
         
@@ -4960,6 +5578,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.SingleCallByVideoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SingleCallByVideoResponse:
+        """
+        @summary 语音视频单呼接口
+        
+        @param request: SingleCallByVideoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SingleCallByVideoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.called_number):
@@ -5008,6 +5633,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.SingleCallByVideoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SingleCallByVideoResponse:
+        """
+        @summary 语音视频单呼接口
+        
+        @param request: SingleCallByVideoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SingleCallByVideoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.called_number):
@@ -5055,6 +5687,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.SingleCallByVideoRequest,
     ) -> dyvmsapi_20170525_models.SingleCallByVideoResponse:
+        """
+        @summary 语音视频单呼接口
+        
+        @param request: SingleCallByVideoRequest
+        @return: SingleCallByVideoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.single_call_by_video_with_options(request, runtime)
 
@@ -5062,6 +5700,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.SingleCallByVideoRequest,
     ) -> dyvmsapi_20170525_models.SingleCallByVideoResponse:
+        """
+        @summary 语音视频单呼接口
+        
+        @param request: SingleCallByVideoRequest
+        @return: SingleCallByVideoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.single_call_by_video_with_options_async(request, runtime)
 
@@ -5071,8 +5715,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SingleCallByVoiceResponse:
         """
-        > Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
-        You can call the [SingleCallByTts](~~393519~~) operation to send voice notifications with variables.
+        @summary Sends a voice notification to a phone number by using a voice notification file.
+        
+        @description > Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
+        You can call the [SingleCallByTts](https://help.aliyun.com/document_detail/393519.html) operation to send voice notifications with variables.
         ### QPS limits
         You can call this operation up to 1,200 times per second per account.
         
@@ -5127,8 +5773,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SingleCallByVoiceResponse:
         """
-        > Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
-        You can call the [SingleCallByTts](~~393519~~) operation to send voice notifications with variables.
+        @summary Sends a voice notification to a phone number by using a voice notification file.
+        
+        @description > Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
+        You can call the [SingleCallByTts](https://help.aliyun.com/document_detail/393519.html) operation to send voice notifications with variables.
         ### QPS limits
         You can call this operation up to 1,200 times per second per account.
         
@@ -5182,8 +5830,10 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.SingleCallByVoiceRequest,
     ) -> dyvmsapi_20170525_models.SingleCallByVoiceResponse:
         """
-        > Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
-        You can call the [SingleCallByTts](~~393519~~) operation to send voice notifications with variables.
+        @summary Sends a voice notification to a phone number by using a voice notification file.
+        
+        @description > Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
+        You can call the [SingleCallByTts](https://help.aliyun.com/document_detail/393519.html) operation to send voice notifications with variables.
         ### QPS limits
         You can call this operation up to 1,200 times per second per account.
         
@@ -5198,8 +5848,10 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.SingleCallByVoiceRequest,
     ) -> dyvmsapi_20170525_models.SingleCallByVoiceResponse:
         """
-        > Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
-        You can call the [SingleCallByTts](~~393519~~) operation to send voice notifications with variables.
+        @summary Sends a voice notification to a phone number by using a voice notification file.
+        
+        @description > Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
+        You can call the [SingleCallByTts](https://help.aliyun.com/document_detail/393519.html) operation to send voice notifications with variables.
         ### QPS limits
         You can call this operation up to 1,200 times per second per account.
         
@@ -5214,6 +5866,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.SkipVideoFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SkipVideoFileResponse:
+        """
+        @summary SkipVideoFile
+        
+        @param request: SkipVideoFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SkipVideoFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -5254,6 +5913,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.SkipVideoFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SkipVideoFileResponse:
+        """
+        @summary SkipVideoFile
+        
+        @param request: SkipVideoFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SkipVideoFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -5293,6 +5959,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.SkipVideoFileRequest,
     ) -> dyvmsapi_20170525_models.SkipVideoFileResponse:
+        """
+        @summary SkipVideoFile
+        
+        @param request: SkipVideoFileRequest
+        @return: SkipVideoFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.skip_video_file_with_options(request, runtime)
 
@@ -5300,6 +5972,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.SkipVideoFileRequest,
     ) -> dyvmsapi_20170525_models.SkipVideoFileResponse:
+        """
+        @summary SkipVideoFile
+        
+        @param request: SkipVideoFileRequest
+        @return: SkipVideoFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.skip_video_file_with_options_async(request, runtime)
 
@@ -5309,8 +5987,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SmartCallResponse:
         """
-        The SmartCall operation must be used together with the [intelligent outbound HTTP operation](~~112703~~). After the call initiated by the Voice Messaging Service (VMS) platform is connected, the VMS platform sends the text converted from speech back to the business side, and the business side then returns the follow-up action to the VMS platform.
-        *   The SmartCall operation does not support the following characters: `@ = : "" $ { } ^ * ￥`.
+        @summary Initiates an intelligent voice call.
+        
+        @description    The SmartCall operation must be used together with the [intelligent outbound HTTP operation](https://help.aliyun.com/document_detail/112703.html). After the call initiated by the Voice Messaging Service (VMS) platform is connected, the VMS platform sends the text converted from speech back to the business side, and the business side then returns the follow-up action to the VMS platform.
+        The SmartCall operation does not support the following characters: `@ = : "" $ { } ^ * ￥`.
         ### QPS limits
         You can call this operation up to 1,000 times per second per account.
         
@@ -5405,8 +6085,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SmartCallResponse:
         """
-        The SmartCall operation must be used together with the [intelligent outbound HTTP operation](~~112703~~). After the call initiated by the Voice Messaging Service (VMS) platform is connected, the VMS platform sends the text converted from speech back to the business side, and the business side then returns the follow-up action to the VMS platform.
-        *   The SmartCall operation does not support the following characters: `@ = : "" $ { } ^ * ￥`.
+        @summary Initiates an intelligent voice call.
+        
+        @description    The SmartCall operation must be used together with the [intelligent outbound HTTP operation](https://help.aliyun.com/document_detail/112703.html). After the call initiated by the Voice Messaging Service (VMS) platform is connected, the VMS platform sends the text converted from speech back to the business side, and the business side then returns the follow-up action to the VMS platform.
+        The SmartCall operation does not support the following characters: `@ = : "" $ { } ^ * ￥`.
         ### QPS limits
         You can call this operation up to 1,000 times per second per account.
         
@@ -5500,8 +6182,10 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.SmartCallRequest,
     ) -> dyvmsapi_20170525_models.SmartCallResponse:
         """
-        The SmartCall operation must be used together with the [intelligent outbound HTTP operation](~~112703~~). After the call initiated by the Voice Messaging Service (VMS) platform is connected, the VMS platform sends the text converted from speech back to the business side, and the business side then returns the follow-up action to the VMS platform.
-        *   The SmartCall operation does not support the following characters: `@ = : "" $ { } ^ * ￥`.
+        @summary Initiates an intelligent voice call.
+        
+        @description    The SmartCall operation must be used together with the [intelligent outbound HTTP operation](https://help.aliyun.com/document_detail/112703.html). After the call initiated by the Voice Messaging Service (VMS) platform is connected, the VMS platform sends the text converted from speech back to the business side, and the business side then returns the follow-up action to the VMS platform.
+        The SmartCall operation does not support the following characters: `@ = : "" $ { } ^ * ￥`.
         ### QPS limits
         You can call this operation up to 1,000 times per second per account.
         
@@ -5516,8 +6200,10 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.SmartCallRequest,
     ) -> dyvmsapi_20170525_models.SmartCallResponse:
         """
-        The SmartCall operation must be used together with the [intelligent outbound HTTP operation](~~112703~~). After the call initiated by the Voice Messaging Service (VMS) platform is connected, the VMS platform sends the text converted from speech back to the business side, and the business side then returns the follow-up action to the VMS platform.
-        *   The SmartCall operation does not support the following characters: `@ = : "" $ { } ^ * ￥`.
+        @summary Initiates an intelligent voice call.
+        
+        @description    The SmartCall operation must be used together with the [intelligent outbound HTTP operation](https://help.aliyun.com/document_detail/112703.html). After the call initiated by the Voice Messaging Service (VMS) platform is connected, the VMS platform sends the text converted from speech back to the business side, and the business side then returns the follow-up action to the VMS platform.
+        The SmartCall operation does not support the following characters: `@ = : "" $ { } ^ * ￥`.
         ### QPS limits
         You can call this operation up to 1,000 times per second per account.
         
@@ -5533,7 +6219,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SmartCallOperateResponse:
         """
-        You can call this operation to initiate a specified action on the called number of an outbound robocall when the call is transferred to an agent of the call center.
+        @summary Initiates an action in an outbound robocall. This operation is applicable only when the robocall is transferred to an agent or an agent is listening in on the conversation between the robot and the user.
+        
+        @description You can call this operation to initiate a specified action on the called number of an outbound robocall when the call is transferred to an agent of the call center.
         > You can only initiate the action of bridging a called number and an agent of the call center.
         ### QPS limits
         You can call this operation up to 100 times per second per account.
@@ -5581,7 +6269,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SmartCallOperateResponse:
         """
-        You can call this operation to initiate a specified action on the called number of an outbound robocall when the call is transferred to an agent of the call center.
+        @summary Initiates an action in an outbound robocall. This operation is applicable only when the robocall is transferred to an agent or an agent is listening in on the conversation between the robot and the user.
+        
+        @description You can call this operation to initiate a specified action on the called number of an outbound robocall when the call is transferred to an agent of the call center.
         > You can only initiate the action of bridging a called number and an agent of the call center.
         ### QPS limits
         You can call this operation up to 100 times per second per account.
@@ -5628,7 +6318,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.SmartCallOperateRequest,
     ) -> dyvmsapi_20170525_models.SmartCallOperateResponse:
         """
-        You can call this operation to initiate a specified action on the called number of an outbound robocall when the call is transferred to an agent of the call center.
+        @summary Initiates an action in an outbound robocall. This operation is applicable only when the robocall is transferred to an agent or an agent is listening in on the conversation between the robot and the user.
+        
+        @description You can call this operation to initiate a specified action on the called number of an outbound robocall when the call is transferred to an agent of the call center.
         > You can only initiate the action of bridging a called number and an agent of the call center.
         ### QPS limits
         You can call this operation up to 100 times per second per account.
@@ -5644,7 +6336,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.SmartCallOperateRequest,
     ) -> dyvmsapi_20170525_models.SmartCallOperateResponse:
         """
-        You can call this operation to initiate a specified action on the called number of an outbound robocall when the call is transferred to an agent of the call center.
+        @summary Initiates an action in an outbound robocall. This operation is applicable only when the robocall is transferred to an agent or an agent is listening in on the conversation between the robot and the user.
+        
+        @description You can call this operation to initiate a specified action on the called number of an outbound robocall when the call is transferred to an agent of the call center.
         > You can only initiate the action of bridging a called number and an agent of the call center.
         ### QPS limits
         You can call this operation up to 100 times per second per account.
@@ -5661,7 +6355,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.StartRobotTaskResponse:
         """
-        ### QPS limits
+        @summary Starts a robocall task immediately or at a scheduled time.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: StartRobotTaskRequest
@@ -5705,7 +6401,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.StartRobotTaskResponse:
         """
-        ### QPS limits
+        @summary Starts a robocall task immediately or at a scheduled time.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: StartRobotTaskRequest
@@ -5748,7 +6446,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.StartRobotTaskRequest,
     ) -> dyvmsapi_20170525_models.StartRobotTaskResponse:
         """
-        ### QPS limits
+        @summary Starts a robocall task immediately or at a scheduled time.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: StartRobotTaskRequest
@@ -5762,7 +6462,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.StartRobotTaskRequest,
     ) -> dyvmsapi_20170525_models.StartRobotTaskResponse:
         """
-        ### QPS limits
+        @summary Starts a robocall task immediately or at a scheduled time.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: StartRobotTaskRequest
@@ -5776,6 +6478,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.StopCallInConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.StopCallInConfigResponse:
+        """
+        @summary Stops the inbound call that is transferred from a China 400 number.
+        
+        @param request: StopCallInConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopCallInConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.number):
@@ -5810,6 +6519,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.StopCallInConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.StopCallInConfigResponse:
+        """
+        @summary Stops the inbound call that is transferred from a China 400 number.
+        
+        @param request: StopCallInConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopCallInConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.number):
@@ -5843,6 +6559,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.StopCallInConfigRequest,
     ) -> dyvmsapi_20170525_models.StopCallInConfigResponse:
+        """
+        @summary Stops the inbound call that is transferred from a China 400 number.
+        
+        @param request: StopCallInConfigRequest
+        @return: StopCallInConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_call_in_config_with_options(request, runtime)
 
@@ -5850,6 +6572,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.StopCallInConfigRequest,
     ) -> dyvmsapi_20170525_models.StopCallInConfigResponse:
+        """
+        @summary Stops the inbound call that is transferred from a China 400 number.
+        
+        @param request: StopCallInConfigRequest
+        @return: StopCallInConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_call_in_config_with_options_async(request, runtime)
 
@@ -5859,7 +6587,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.StopRobotTaskResponse:
         """
-        After you stop a robocall task, you can call the [StartRobotTask](~~StartRobotTask~~) operation to start it again.
+        @summary Stops a robocall task that is in progress.
+        
+        @description After you stop a robocall task, you can call the [StartRobotTask](~~StartRobotTask~~) operation to start it again.
         ### QPS limits
         You can call this operation up to 100 times per second per account.
         
@@ -5902,7 +6632,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.StopRobotTaskResponse:
         """
-        After you stop a robocall task, you can call the [StartRobotTask](~~StartRobotTask~~) operation to start it again.
+        @summary Stops a robocall task that is in progress.
+        
+        @description After you stop a robocall task, you can call the [StartRobotTask](~~StartRobotTask~~) operation to start it again.
         ### QPS limits
         You can call this operation up to 100 times per second per account.
         
@@ -5944,7 +6676,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.StopRobotTaskRequest,
     ) -> dyvmsapi_20170525_models.StopRobotTaskResponse:
         """
-        After you stop a robocall task, you can call the [StartRobotTask](~~StartRobotTask~~) operation to start it again.
+        @summary Stops a robocall task that is in progress.
+        
+        @description After you stop a robocall task, you can call the [StartRobotTask](~~StartRobotTask~~) operation to start it again.
         ### QPS limits
         You can call this operation up to 100 times per second per account.
         
@@ -5959,7 +6693,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.StopRobotTaskRequest,
     ) -> dyvmsapi_20170525_models.StopRobotTaskResponse:
         """
-        After you stop a robocall task, you can call the [StartRobotTask](~~StartRobotTask~~) operation to start it again.
+        @summary Stops a robocall task that is in progress.
+        
+        @description After you stop a robocall task, you can call the [StartRobotTask](~~StartRobotTask~~) operation to start it again.
         ### QPS limits
         You can call this operation up to 100 times per second per account.
         
@@ -5975,7 +6711,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SubmitHotlineTransferRegisterResponse:
         """
-        ### QPS limits
+        @summary Submits a China 400 number for registration.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: SubmitHotlineTransferRegisterRequest
@@ -6035,7 +6773,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SubmitHotlineTransferRegisterResponse:
         """
-        ### QPS limits
+        @summary Submits a China 400 number for registration.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: SubmitHotlineTransferRegisterRequest
@@ -6094,7 +6834,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.SubmitHotlineTransferRegisterRequest,
     ) -> dyvmsapi_20170525_models.SubmitHotlineTransferRegisterResponse:
         """
-        ### QPS limits
+        @summary Submits a China 400 number for registration.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: SubmitHotlineTransferRegisterRequest
@@ -6108,7 +6850,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.SubmitHotlineTransferRegisterRequest,
     ) -> dyvmsapi_20170525_models.SubmitHotlineTransferRegisterResponse:
         """
-        ### QPS limits
+        @summary Submits a China 400 number for registration.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: SubmitHotlineTransferRegisterRequest
@@ -6122,6 +6866,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.UpgradeVideoFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.UpgradeVideoFileResponse:
+        """
+        @summary UpgradeVideoFile
+        
+        @param request: UpgradeVideoFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeVideoFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -6162,6 +6913,13 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.UpgradeVideoFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.UpgradeVideoFileResponse:
+        """
+        @summary UpgradeVideoFile
+        
+        @param request: UpgradeVideoFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeVideoFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -6201,6 +6959,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.UpgradeVideoFileRequest,
     ) -> dyvmsapi_20170525_models.UpgradeVideoFileResponse:
+        """
+        @summary UpgradeVideoFile
+        
+        @param request: UpgradeVideoFileRequest
+        @return: UpgradeVideoFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upgrade_video_file_with_options(request, runtime)
 
@@ -6208,6 +6972,12 @@ class Client(OpenApiClient):
         self,
         request: dyvmsapi_20170525_models.UpgradeVideoFileRequest,
     ) -> dyvmsapi_20170525_models.UpgradeVideoFileResponse:
+        """
+        @summary UpgradeVideoFile
+        
+        @param request: UpgradeVideoFileRequest
+        @return: UpgradeVideoFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upgrade_video_file_with_options_async(request, runtime)
 
@@ -6217,7 +6987,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.UploadRobotTaskCalledFileResponse:
         """
-        ### QPS limits
+        @summary Uploads the called numbers of a robocall task.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: UploadRobotTaskCalledFileRequest
@@ -6265,7 +7037,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.UploadRobotTaskCalledFileResponse:
         """
-        ### QPS limits
+        @summary Uploads the called numbers of a robocall task.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: UploadRobotTaskCalledFileRequest
@@ -6312,7 +7086,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.UploadRobotTaskCalledFileRequest,
     ) -> dyvmsapi_20170525_models.UploadRobotTaskCalledFileResponse:
         """
-        ### QPS limits
+        @summary Uploads the called numbers of a robocall task.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: UploadRobotTaskCalledFileRequest
@@ -6326,7 +7102,9 @@ class Client(OpenApiClient):
         request: dyvmsapi_20170525_models.UploadRobotTaskCalledFileRequest,
     ) -> dyvmsapi_20170525_models.UploadRobotTaskCalledFileResponse:
         """
-        ### QPS limits
+        @summary Uploads the called numbers of a robocall task.
+        
+        @description ### QPS limits
         You can call this operation up to 100 times per second per account.
         
         @param request: UploadRobotTaskCalledFileRequest

@@ -1,3 +1,8 @@
+2024-10-15 Version: 3.2.2
+- Update API PlayVideoFile: add param OnlyPhone.
+- Update API PlayVideoFile: update param CalledNumber.
+
+
 2024-04-26 Version: 3.2.1
 - Generated python 2017-05-25 for Dyvmsapi.
 
