@@ -773,6 +773,8 @@ class Client(OpenApiClient):
             query['dep_date'] = request.dep_date
         if not UtilClient.is_unset(request.itinerary_id):
             query['itinerary_id'] = request.itinerary_id
+        if not UtilClient.is_unset(request.middle_page):
+            query['middle_page'] = request.middle_page
         if not UtilClient.is_unset(request.order_id):
             query['order_Id'] = request.order_id
         if not UtilClient.is_unset(request.phone):
@@ -781,6 +783,8 @@ class Client(OpenApiClient):
             query['sub_corp_id'] = request.sub_corp_id
         if not UtilClient.is_unset(request.taobao_callback_url):
             query['taobao_callback_url'] = request.taobao_callback_url
+        if not UtilClient.is_unset(request.thirdpart_apply_id):
+            query['thirdpart_apply_id'] = request.thirdpart_apply_id
         if not UtilClient.is_unset(request.traveler_id):
             query['traveler_id'] = request.traveler_id
         if not UtilClient.is_unset(request.type):
@@ -846,6 +850,8 @@ class Client(OpenApiClient):
             query['dep_date'] = request.dep_date
         if not UtilClient.is_unset(request.itinerary_id):
             query['itinerary_id'] = request.itinerary_id
+        if not UtilClient.is_unset(request.middle_page):
+            query['middle_page'] = request.middle_page
         if not UtilClient.is_unset(request.order_id):
             query['order_Id'] = request.order_id
         if not UtilClient.is_unset(request.phone):
@@ -854,6 +860,8 @@ class Client(OpenApiClient):
             query['sub_corp_id'] = request.sub_corp_id
         if not UtilClient.is_unset(request.taobao_callback_url):
             query['taobao_callback_url'] = request.taobao_callback_url
+        if not UtilClient.is_unset(request.thirdpart_apply_id):
+            query['thirdpart_apply_id'] = request.thirdpart_apply_id
         if not UtilClient.is_unset(request.traveler_id):
             query['traveler_id'] = request.traveler_id
         if not UtilClient.is_unset(request.type):
@@ -4496,6 +4504,274 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CooperatorHotelBillSettlementQueryHeaders()
         return await self.cooperator_hotel_bill_settlement_query_with_options_async(request, headers, runtime)
+
+    def cooperator_hotel_event_push_with_options(
+        self,
+        request: btrip_open_20220520_models.CooperatorHotelEventPushRequest,
+        headers: btrip_open_20220520_models.CooperatorHotelEventPushHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.CooperatorHotelEventPushResponse:
+        """
+        @summary 酒店订单事件推送
+        
+        @param request: CooperatorHotelEventPushRequest
+        @param headers: CooperatorHotelEventPushHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CooperatorHotelEventPushResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.change_order_status):
+            body['change_order_status'] = request.change_order_status
+        if not UtilClient.is_unset(request.change_order_status_desc):
+            body['change_order_status_desc'] = request.change_order_status_desc
+        if not UtilClient.is_unset(request.cooperator_order_id):
+            body['cooperator_order_id'] = request.cooperator_order_id
+        if not UtilClient.is_unset(request.event):
+            body['event'] = request.event
+        if not UtilClient.is_unset(request.event_desc):
+            body['event_desc'] = request.event_desc
+        if not UtilClient.is_unset(request.event_time):
+            body['event_time'] = request.event_time
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CooperatorHotelEventPush',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/coop-hotel/v1/orders/events',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.CooperatorHotelEventPushResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cooperator_hotel_event_push_with_options_async(
+        self,
+        request: btrip_open_20220520_models.CooperatorHotelEventPushRequest,
+        headers: btrip_open_20220520_models.CooperatorHotelEventPushHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.CooperatorHotelEventPushResponse:
+        """
+        @summary 酒店订单事件推送
+        
+        @param request: CooperatorHotelEventPushRequest
+        @param headers: CooperatorHotelEventPushHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CooperatorHotelEventPushResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.change_order_status):
+            body['change_order_status'] = request.change_order_status
+        if not UtilClient.is_unset(request.change_order_status_desc):
+            body['change_order_status_desc'] = request.change_order_status_desc
+        if not UtilClient.is_unset(request.cooperator_order_id):
+            body['cooperator_order_id'] = request.cooperator_order_id
+        if not UtilClient.is_unset(request.event):
+            body['event'] = request.event
+        if not UtilClient.is_unset(request.event_desc):
+            body['event_desc'] = request.event_desc
+        if not UtilClient.is_unset(request.event_time):
+            body['event_time'] = request.event_time
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CooperatorHotelEventPush',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/coop-hotel/v1/orders/events',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.CooperatorHotelEventPushResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cooperator_hotel_event_push(
+        self,
+        request: btrip_open_20220520_models.CooperatorHotelEventPushRequest,
+    ) -> btrip_open_20220520_models.CooperatorHotelEventPushResponse:
+        """
+        @summary 酒店订单事件推送
+        
+        @param request: CooperatorHotelEventPushRequest
+        @return: CooperatorHotelEventPushResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.CooperatorHotelEventPushHeaders()
+        return self.cooperator_hotel_event_push_with_options(request, headers, runtime)
+
+    async def cooperator_hotel_event_push_async(
+        self,
+        request: btrip_open_20220520_models.CooperatorHotelEventPushRequest,
+    ) -> btrip_open_20220520_models.CooperatorHotelEventPushResponse:
+        """
+        @summary 酒店订单事件推送
+        
+        @param request: CooperatorHotelEventPushRequest
+        @return: CooperatorHotelEventPushResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.CooperatorHotelEventPushHeaders()
+        return await self.cooperator_hotel_event_push_with_options_async(request, headers, runtime)
+
+    def cooperator_sync_pay_status_with_options(
+        self,
+        request: btrip_open_20220520_models.CooperatorSyncPayStatusRequest,
+        headers: btrip_open_20220520_models.CooperatorSyncPayStatusHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.CooperatorSyncPayStatusResponse:
+        """
+        @summary 个人支付结果推送
+        
+        @param request: CooperatorSyncPayStatusRequest
+        @param headers: CooperatorSyncPayStatusHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CooperatorSyncPayStatusResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cooperator_order_id):
+            body['cooperator_order_id'] = request.cooperator_order_id
+        if not UtilClient.is_unset(request.cooperator_pay_no):
+            body['cooperator_pay_no'] = request.cooperator_pay_no
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.pay_status):
+            body['pay_status'] = request.pay_status
+        if not UtilClient.is_unset(request.pay_time):
+            body['pay_time'] = request.pay_time
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CooperatorSyncPayStatus',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/coop-pay/v1/cashiers/status',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.CooperatorSyncPayStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cooperator_sync_pay_status_with_options_async(
+        self,
+        request: btrip_open_20220520_models.CooperatorSyncPayStatusRequest,
+        headers: btrip_open_20220520_models.CooperatorSyncPayStatusHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.CooperatorSyncPayStatusResponse:
+        """
+        @summary 个人支付结果推送
+        
+        @param request: CooperatorSyncPayStatusRequest
+        @param headers: CooperatorSyncPayStatusHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CooperatorSyncPayStatusResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cooperator_order_id):
+            body['cooperator_order_id'] = request.cooperator_order_id
+        if not UtilClient.is_unset(request.cooperator_pay_no):
+            body['cooperator_pay_no'] = request.cooperator_pay_no
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.pay_status):
+            body['pay_status'] = request.pay_status
+        if not UtilClient.is_unset(request.pay_time):
+            body['pay_time'] = request.pay_time
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CooperatorSyncPayStatus',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/coop-pay/v1/cashiers/status',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.CooperatorSyncPayStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cooperator_sync_pay_status(
+        self,
+        request: btrip_open_20220520_models.CooperatorSyncPayStatusRequest,
+    ) -> btrip_open_20220520_models.CooperatorSyncPayStatusResponse:
+        """
+        @summary 个人支付结果推送
+        
+        @param request: CooperatorSyncPayStatusRequest
+        @return: CooperatorSyncPayStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.CooperatorSyncPayStatusHeaders()
+        return self.cooperator_sync_pay_status_with_options(request, headers, runtime)
+
+    async def cooperator_sync_pay_status_async(
+        self,
+        request: btrip_open_20220520_models.CooperatorSyncPayStatusRequest,
+    ) -> btrip_open_20220520_models.CooperatorSyncPayStatusResponse:
+        """
+        @summary 个人支付结果推送
+        
+        @param request: CooperatorSyncPayStatusRequest
+        @return: CooperatorSyncPayStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.CooperatorSyncPayStatusHeaders()
+        return await self.cooperator_sync_pay_status_with_options_async(request, headers, runtime)
 
     def corp_auth_link_info_query_with_options(
         self,

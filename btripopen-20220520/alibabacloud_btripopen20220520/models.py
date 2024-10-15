@@ -6833,10 +6833,12 @@ class AddressGetRequest(TeaModel):
         dep_city_name: str = None,
         dep_date: str = None,
         itinerary_id: str = None,
+        middle_page: int = None,
         order_id: str = None,
         phone: str = None,
         sub_corp_id: str = None,
         taobao_callback_url: str = None,
+        thirdpart_apply_id: str = None,
         traveler_id: str = None,
         type: int = None,
         use_booking_proxy: int = None,
@@ -6851,10 +6853,12 @@ class AddressGetRequest(TeaModel):
         self.dep_city_name = dep_city_name
         self.dep_date = dep_date
         self.itinerary_id = itinerary_id
+        self.middle_page = middle_page
         self.order_id = order_id
         self.phone = phone
         self.sub_corp_id = sub_corp_id
         self.taobao_callback_url = taobao_callback_url
+        self.thirdpart_apply_id = thirdpart_apply_id
         self.traveler_id = traveler_id
         self.type = type
         self.use_booking_proxy = use_booking_proxy
@@ -6886,6 +6890,8 @@ class AddressGetRequest(TeaModel):
             result['dep_date'] = self.dep_date
         if self.itinerary_id is not None:
             result['itinerary_id'] = self.itinerary_id
+        if self.middle_page is not None:
+            result['middle_page'] = self.middle_page
         if self.order_id is not None:
             result['order_Id'] = self.order_id
         if self.phone is not None:
@@ -6894,6 +6900,8 @@ class AddressGetRequest(TeaModel):
             result['sub_corp_id'] = self.sub_corp_id
         if self.taobao_callback_url is not None:
             result['taobao_callback_url'] = self.taobao_callback_url
+        if self.thirdpart_apply_id is not None:
+            result['thirdpart_apply_id'] = self.thirdpart_apply_id
         if self.traveler_id is not None:
             result['traveler_id'] = self.traveler_id
         if self.type is not None:
@@ -6922,6 +6930,8 @@ class AddressGetRequest(TeaModel):
             self.dep_date = m.get('dep_date')
         if m.get('itinerary_id') is not None:
             self.itinerary_id = m.get('itinerary_id')
+        if m.get('middle_page') is not None:
+            self.middle_page = m.get('middle_page')
         if m.get('order_Id') is not None:
             self.order_id = m.get('order_Id')
         if m.get('phone') is not None:
@@ -6930,6 +6940,8 @@ class AddressGetRequest(TeaModel):
             self.sub_corp_id = m.get('sub_corp_id')
         if m.get('taobao_callback_url') is not None:
             self.taobao_callback_url = m.get('taobao_callback_url')
+        if m.get('thirdpart_apply_id') is not None:
+            self.thirdpart_apply_id = m.get('thirdpart_apply_id')
         if m.get('traveler_id') is not None:
             self.traveler_id = m.get('traveler_id')
         if m.get('type') is not None:
@@ -10063,6 +10075,7 @@ class ApplyInvoiceTaskRequestInvoiceTaskList(TeaModel):
         telephone: str = None,
         train_acceleration_package_invoice_fee: str = None,
         train_invoice_fee: str = None,
+        vas_mall_special_invoice_fee: str = None,
         vehicle_invoice_fee: str = None,
         vehicle_normal_invoice_fee: str = None,
     ):
@@ -10088,6 +10101,7 @@ class ApplyInvoiceTaskRequestInvoiceTaskList(TeaModel):
         self.telephone = telephone
         self.train_acceleration_package_invoice_fee = train_acceleration_package_invoice_fee
         self.train_invoice_fee = train_invoice_fee
+        self.vas_mall_special_invoice_fee = vas_mall_special_invoice_fee
         self.vehicle_invoice_fee = vehicle_invoice_fee
         self.vehicle_normal_invoice_fee = vehicle_normal_invoice_fee
 
@@ -10142,6 +10156,8 @@ class ApplyInvoiceTaskRequestInvoiceTaskList(TeaModel):
             result['train_acceleration_package_invoice_fee'] = self.train_acceleration_package_invoice_fee
         if self.train_invoice_fee is not None:
             result['train_invoice_fee'] = self.train_invoice_fee
+        if self.vas_mall_special_invoice_fee is not None:
+            result['vas_mall_special_invoice_fee'] = self.vas_mall_special_invoice_fee
         if self.vehicle_invoice_fee is not None:
             result['vehicle_invoice_fee'] = self.vehicle_invoice_fee
         if self.vehicle_normal_invoice_fee is not None:
@@ -10192,6 +10208,8 @@ class ApplyInvoiceTaskRequestInvoiceTaskList(TeaModel):
             self.train_acceleration_package_invoice_fee = m.get('train_acceleration_package_invoice_fee')
         if m.get('train_invoice_fee') is not None:
             self.train_invoice_fee = m.get('train_invoice_fee')
+        if m.get('vas_mall_special_invoice_fee') is not None:
+            self.vas_mall_special_invoice_fee = m.get('vas_mall_special_invoice_fee')
         if m.get('vehicle_invoice_fee') is not None:
             self.vehicle_invoice_fee = m.get('vehicle_invoice_fee')
         if m.get('vehicle_normal_invoice_fee') is not None:
@@ -16772,6 +16790,7 @@ class CarBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         arr_location: str = None,
         arr_time: str = None,
         bill_record_time: str = None,
+        billing_entity: str = None,
         book_model: str = None,
         book_time: str = None,
         booker_id: str = None,
@@ -16815,6 +16834,8 @@ class CarBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         real_from_addr: str = None,
         real_to_addr: str = None,
         remark: str = None,
+        scene_id: str = None,
+        scene_name: str = None,
         service_fee: float = None,
         settlement_fee: float = None,
         settlement_grant_fee: float = None,
@@ -16849,6 +16870,7 @@ class CarBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         self.arr_location = arr_location
         self.arr_time = arr_time
         self.bill_record_time = bill_record_time
+        self.billing_entity = billing_entity
         self.book_model = book_model
         self.book_time = book_time
         self.booker_id = booker_id
@@ -16892,6 +16914,8 @@ class CarBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         self.real_from_addr = real_from_addr
         self.real_to_addr = real_to_addr
         self.remark = remark
+        self.scene_id = scene_id
+        self.scene_name = scene_name
         self.service_fee = service_fee
         self.settlement_fee = settlement_fee
         self.settlement_grant_fee = settlement_grant_fee
@@ -16948,6 +16972,8 @@ class CarBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             result['arr_time'] = self.arr_time
         if self.bill_record_time is not None:
             result['bill_record_time'] = self.bill_record_time
+        if self.billing_entity is not None:
+            result['billing_entity'] = self.billing_entity
         if self.book_model is not None:
             result['book_model'] = self.book_model
         if self.book_time is not None:
@@ -17034,6 +17060,10 @@ class CarBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             result['real_to_addr'] = self.real_to_addr
         if self.remark is not None:
             result['remark'] = self.remark
+        if self.scene_id is not None:
+            result['scene_id'] = self.scene_id
+        if self.scene_name is not None:
+            result['scene_name'] = self.scene_name
         if self.service_fee is not None:
             result['service_fee'] = self.service_fee
         if self.settlement_fee is not None:
@@ -17102,6 +17132,8 @@ class CarBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             self.arr_time = m.get('arr_time')
         if m.get('bill_record_time') is not None:
             self.bill_record_time = m.get('bill_record_time')
+        if m.get('billing_entity') is not None:
+            self.billing_entity = m.get('billing_entity')
         if m.get('book_model') is not None:
             self.book_model = m.get('book_model')
         if m.get('book_time') is not None:
@@ -17188,6 +17220,10 @@ class CarBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             self.real_to_addr = m.get('real_to_addr')
         if m.get('remark') is not None:
             self.remark = m.get('remark')
+        if m.get('scene_id') is not None:
+            self.scene_id = m.get('scene_id')
+        if m.get('scene_name') is not None:
+            self.scene_name = m.get('scene_name')
         if m.get('service_fee') is not None:
             self.service_fee = m.get('service_fee')
         if m.get('settlement_fee') is not None:
@@ -21719,6 +21755,375 @@ class CooperatorHotelBillSettlementQueryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CooperatorHotelBillSettlementQueryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CooperatorHotelEventPushHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_corp_token = x_acs_btrip_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_corp_token is not None:
+            result['x-acs-btrip-corp-token'] = self.x_acs_btrip_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-corp-token') is not None:
+            self.x_acs_btrip_corp_token = m.get('x-acs-btrip-corp-token')
+        return self
+
+
+class CooperatorHotelEventPushRequest(TeaModel):
+    def __init__(
+        self,
+        change_order_status: int = None,
+        change_order_status_desc: str = None,
+        cooperator_order_id: str = None,
+        event: str = None,
+        event_desc: str = None,
+        event_time: str = None,
+        order_id: str = None,
+    ):
+        # This parameter is required.
+        self.change_order_status = change_order_status
+        # This parameter is required.
+        self.change_order_status_desc = change_order_status_desc
+        # This parameter is required.
+        self.cooperator_order_id = cooperator_order_id
+        # This parameter is required.
+        self.event = event
+        self.event_desc = event_desc
+        # This parameter is required.
+        self.event_time = event_time
+        # This parameter is required.
+        self.order_id = order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.change_order_status is not None:
+            result['change_order_status'] = self.change_order_status
+        if self.change_order_status_desc is not None:
+            result['change_order_status_desc'] = self.change_order_status_desc
+        if self.cooperator_order_id is not None:
+            result['cooperator_order_id'] = self.cooperator_order_id
+        if self.event is not None:
+            result['event'] = self.event
+        if self.event_desc is not None:
+            result['event_desc'] = self.event_desc
+        if self.event_time is not None:
+            result['event_time'] = self.event_time
+        if self.order_id is not None:
+            result['order_id'] = self.order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('change_order_status') is not None:
+            self.change_order_status = m.get('change_order_status')
+        if m.get('change_order_status_desc') is not None:
+            self.change_order_status_desc = m.get('change_order_status_desc')
+        if m.get('cooperator_order_id') is not None:
+            self.cooperator_order_id = m.get('cooperator_order_id')
+        if m.get('event') is not None:
+            self.event = m.get('event')
+        if m.get('event_desc') is not None:
+            self.event_desc = m.get('event_desc')
+        if m.get('event_time') is not None:
+            self.event_time = m.get('event_time')
+        if m.get('order_id') is not None:
+            self.order_id = m.get('order_id')
+        return self
+
+
+class CooperatorHotelEventPushResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        module: bool = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.module = module
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.module is not None:
+            result['module'] = self.module
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('module') is not None:
+            self.module = m.get('module')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CooperatorHotelEventPushResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CooperatorHotelEventPushResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CooperatorHotelEventPushResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CooperatorSyncPayStatusHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_corp_token = x_acs_btrip_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_corp_token is not None:
+            result['x-acs-btrip-corp-token'] = self.x_acs_btrip_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-corp-token') is not None:
+            self.x_acs_btrip_corp_token = m.get('x-acs-btrip-corp-token')
+        return self
+
+
+class CooperatorSyncPayStatusRequest(TeaModel):
+    def __init__(
+        self,
+        cooperator_order_id: str = None,
+        cooperator_pay_no: str = None,
+        order_id: str = None,
+        pay_status: str = None,
+        pay_time: int = None,
+    ):
+        # This parameter is required.
+        self.cooperator_order_id = cooperator_order_id
+        # This parameter is required.
+        self.cooperator_pay_no = cooperator_pay_no
+        # This parameter is required.
+        self.order_id = order_id
+        # This parameter is required.
+        self.pay_status = pay_status
+        # This parameter is required.
+        self.pay_time = pay_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cooperator_order_id is not None:
+            result['cooperator_order_id'] = self.cooperator_order_id
+        if self.cooperator_pay_no is not None:
+            result['cooperator_pay_no'] = self.cooperator_pay_no
+        if self.order_id is not None:
+            result['order_id'] = self.order_id
+        if self.pay_status is not None:
+            result['pay_status'] = self.pay_status
+        if self.pay_time is not None:
+            result['pay_time'] = self.pay_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cooperator_order_id') is not None:
+            self.cooperator_order_id = m.get('cooperator_order_id')
+        if m.get('cooperator_pay_no') is not None:
+            self.cooperator_pay_no = m.get('cooperator_pay_no')
+        if m.get('order_id') is not None:
+            self.order_id = m.get('order_id')
+        if m.get('pay_status') is not None:
+            self.pay_status = m.get('pay_status')
+        if m.get('pay_time') is not None:
+            self.pay_time = m.get('pay_time')
+        return self
+
+
+class CooperatorSyncPayStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CooperatorSyncPayStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CooperatorSyncPayStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CooperatorSyncPayStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -27268,11 +27673,15 @@ class FlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         primary_id: int = None,
         project_code: str = None,
         project_name: str = None,
+        refund_affiliate_no: str = None,
+        refund_apply_id: str = None,
         refund_fee: float = None,
         refund_result: str = None,
         refund_upgrade_cost: float = None,
         remark: str = None,
         repeat_refund: str = None,
+        scene_id: str = None,
+        scene_name: str = None,
         seal_price: float = None,
         service_fee: float = None,
         settlement_fee: float = None,
@@ -27367,11 +27776,15 @@ class FlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         self.primary_id = primary_id
         self.project_code = project_code
         self.project_name = project_name
+        self.refund_affiliate_no = refund_affiliate_no
+        self.refund_apply_id = refund_apply_id
         self.refund_fee = refund_fee
         self.refund_result = refund_result
         self.refund_upgrade_cost = refund_upgrade_cost
         self.remark = remark
         self.repeat_refund = repeat_refund
+        self.scene_id = scene_id
+        self.scene_name = scene_name
         self.seal_price = seal_price
         self.service_fee = service_fee
         self.settlement_fee = settlement_fee
@@ -27549,6 +27962,10 @@ class FlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             result['project_code'] = self.project_code
         if self.project_name is not None:
             result['project_name'] = self.project_name
+        if self.refund_affiliate_no is not None:
+            result['refund_affiliate_no'] = self.refund_affiliate_no
+        if self.refund_apply_id is not None:
+            result['refund_apply_id'] = self.refund_apply_id
         if self.refund_fee is not None:
             result['refund_fee'] = self.refund_fee
         if self.refund_result is not None:
@@ -27559,6 +27976,10 @@ class FlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             result['remark'] = self.remark
         if self.repeat_refund is not None:
             result['repeat_refund'] = self.repeat_refund
+        if self.scene_id is not None:
+            result['scene_id'] = self.scene_id
+        if self.scene_name is not None:
+            result['scene_name'] = self.scene_name
         if self.seal_price is not None:
             result['seal_price'] = self.seal_price
         if self.service_fee is not None:
@@ -27747,6 +28168,10 @@ class FlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             self.project_code = m.get('project_code')
         if m.get('project_name') is not None:
             self.project_name = m.get('project_name')
+        if m.get('refund_affiliate_no') is not None:
+            self.refund_affiliate_no = m.get('refund_affiliate_no')
+        if m.get('refund_apply_id') is not None:
+            self.refund_apply_id = m.get('refund_apply_id')
         if m.get('refund_fee') is not None:
             self.refund_fee = m.get('refund_fee')
         if m.get('refund_result') is not None:
@@ -27757,6 +28182,10 @@ class FlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             self.remark = m.get('remark')
         if m.get('repeat_refund') is not None:
             self.repeat_refund = m.get('repeat_refund')
+        if m.get('scene_id') is not None:
+            self.scene_id = m.get('scene_id')
+        if m.get('scene_name') is not None:
+            self.scene_name = m.get('scene_name')
         if m.get('seal_price') is not None:
             self.seal_price = m.get('seal_price')
         if m.get('service_fee') is not None:
@@ -30415,14 +30844,18 @@ class FlightItineraryScanQueryResponseBodyModuleItems(TeaModel):
         id: str = None,
         insurance: str = None,
         invoice_title: str = None,
+        invoice_type: int = None,
         issue_company: str = None,
         issue_date: str = None,
         itinerary_num: str = None,
+        ofd_oss_url: str = None,
         order_id: int = None,
         oss_url: str = None,
         passenger_name: str = None,
         project: str = None,
         prompt_message: str = None,
+        purchaser_name: str = None,
+        purchaser_type: int = None,
         tax_amount: str = None,
         tax_rate: str = None,
         ticket_no: str = None,
@@ -30444,17 +30877,21 @@ class FlightItineraryScanQueryResponseBodyModuleItems(TeaModel):
         self.id = id
         self.insurance = insurance
         self.invoice_title = invoice_title
+        self.invoice_type = invoice_type
         # 填开单位
         self.issue_company = issue_company
         # 填开日期
         self.issue_date = issue_date
         self.itinerary_num = itinerary_num
+        self.ofd_oss_url = ofd_oss_url
         self.order_id = order_id
         self.oss_url = oss_url
         self.passenger_name = passenger_name
         self.project = project
         # 提示信息
         self.prompt_message = prompt_message
+        self.purchaser_name = purchaser_name
+        self.purchaser_type = purchaser_type
         self.tax_amount = tax_amount
         self.tax_rate = tax_rate
         self.ticket_no = ticket_no
@@ -30499,12 +30936,16 @@ class FlightItineraryScanQueryResponseBodyModuleItems(TeaModel):
             result['insurance'] = self.insurance
         if self.invoice_title is not None:
             result['invoice_title'] = self.invoice_title
+        if self.invoice_type is not None:
+            result['invoice_type'] = self.invoice_type
         if self.issue_company is not None:
             result['issue_company'] = self.issue_company
         if self.issue_date is not None:
             result['issue_date'] = self.issue_date
         if self.itinerary_num is not None:
             result['itinerary_num'] = self.itinerary_num
+        if self.ofd_oss_url is not None:
+            result['ofd_oss_url'] = self.ofd_oss_url
         if self.order_id is not None:
             result['order_id'] = self.order_id
         if self.oss_url is not None:
@@ -30515,6 +30956,10 @@ class FlightItineraryScanQueryResponseBodyModuleItems(TeaModel):
             result['project'] = self.project
         if self.prompt_message is not None:
             result['prompt_message'] = self.prompt_message
+        if self.purchaser_name is not None:
+            result['purchaser_name'] = self.purchaser_name
+        if self.purchaser_type is not None:
+            result['purchaser_type'] = self.purchaser_type
         if self.tax_amount is not None:
             result['tax_amount'] = self.tax_amount
         if self.tax_rate is not None:
@@ -30556,12 +31001,16 @@ class FlightItineraryScanQueryResponseBodyModuleItems(TeaModel):
             self.insurance = m.get('insurance')
         if m.get('invoice_title') is not None:
             self.invoice_title = m.get('invoice_title')
+        if m.get('invoice_type') is not None:
+            self.invoice_type = m.get('invoice_type')
         if m.get('issue_company') is not None:
             self.issue_company = m.get('issue_company')
         if m.get('issue_date') is not None:
             self.issue_date = m.get('issue_date')
         if m.get('itinerary_num') is not None:
             self.itinerary_num = m.get('itinerary_num')
+        if m.get('ofd_oss_url') is not None:
+            self.ofd_oss_url = m.get('ofd_oss_url')
         if m.get('order_id') is not None:
             self.order_id = m.get('order_id')
         if m.get('oss_url') is not None:
@@ -30572,6 +31021,10 @@ class FlightItineraryScanQueryResponseBodyModuleItems(TeaModel):
             self.project = m.get('project')
         if m.get('prompt_message') is not None:
             self.prompt_message = m.get('prompt_message')
+        if m.get('purchaser_name') is not None:
+            self.purchaser_name = m.get('purchaser_name')
+        if m.get('purchaser_type') is not None:
+            self.purchaser_type = m.get('purchaser_type')
         if m.get('tax_amount') is not None:
             self.tax_amount = m.get('tax_amount')
         if m.get('tax_rate') is not None:
@@ -33720,9 +34173,11 @@ class FlightListingSearchV2ResponseBodyModuleFlightItemListItemListSubItems(TeaM
     def __init__(
         self,
         shopping_item_map: Dict[str, ModuleFlightItemListItemListSubItemsShoppingItemMapValue] = None,
+        tag: str = None,
         uniq_key: str = None,
     ):
         self.shopping_item_map = shopping_item_map
+        self.tag = tag
         self.uniq_key = uniq_key
 
     def validate(self):
@@ -33741,6 +34196,8 @@ class FlightListingSearchV2ResponseBodyModuleFlightItemListItemListSubItems(TeaM
         if self.shopping_item_map is not None:
             for k, v in self.shopping_item_map.items():
                 result['shopping_item_map'][k] = v.to_map()
+        if self.tag is not None:
+            result['tag'] = self.tag
         if self.uniq_key is not None:
             result['uniq_key'] = self.uniq_key
         return result
@@ -33752,6 +34209,8 @@ class FlightListingSearchV2ResponseBodyModuleFlightItemListItemListSubItems(TeaM
             for k, v in m.get('shopping_item_map').items():
                 temp_model = ModuleFlightItemListItemListSubItemsShoppingItemMapValue()
                 self.shopping_item_map[k] = temp_model.from_map(v)
+        if m.get('tag') is not None:
+            self.tag = m.get('tag')
         if m.get('uniq_key') is not None:
             self.uniq_key = m.get('uniq_key')
         return self
@@ -36829,6 +37288,57 @@ class FlightModifyOrderDetailV2Request(TeaModel):
         return self
 
 
+class FlightModifyOrderDetailV2ResponseBodyModuleAttributes(TeaModel):
+    def __init__(
+        self,
+        baggage_rule: str = None,
+        change_rule: str = None,
+        latest_pay_time: Any = None,
+        latest_pay_time_str: str = None,
+        refund_rule: str = None,
+    ):
+        self.baggage_rule = baggage_rule
+        self.change_rule = change_rule
+        self.latest_pay_time = latest_pay_time
+        self.latest_pay_time_str = latest_pay_time_str
+        self.refund_rule = refund_rule
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.baggage_rule is not None:
+            result['baggage_rule'] = self.baggage_rule
+        if self.change_rule is not None:
+            result['change_rule'] = self.change_rule
+        if self.latest_pay_time is not None:
+            result['latest_pay_time'] = self.latest_pay_time
+        if self.latest_pay_time_str is not None:
+            result['latest_pay_time_str'] = self.latest_pay_time_str
+        if self.refund_rule is not None:
+            result['refund_rule'] = self.refund_rule
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('baggage_rule') is not None:
+            self.baggage_rule = m.get('baggage_rule')
+        if m.get('change_rule') is not None:
+            self.change_rule = m.get('change_rule')
+        if m.get('latest_pay_time') is not None:
+            self.latest_pay_time = m.get('latest_pay_time')
+        if m.get('latest_pay_time_str') is not None:
+            self.latest_pay_time_str = m.get('latest_pay_time_str')
+        if m.get('refund_rule') is not None:
+            self.refund_rule = m.get('refund_rule')
+        return self
+
+
 class FlightModifyOrderDetailV2ResponseBodyModuleContactInfoDTO(TeaModel):
     def __init__(
         self,
@@ -36871,6 +37381,57 @@ class FlightModifyOrderDetailV2ResponseBodyModuleContactInfoDTO(TeaModel):
             self.contact_phone = m.get('contact_phone')
         if m.get('send_msg_to_passenger') is not None:
             self.send_msg_to_passenger = m.get('send_msg_to_passenger')
+        return self
+
+
+class FlightModifyOrderDetailV2ResponseBodyModuleDestFlightInfoDTOSFlightChange(TeaModel):
+    def __init__(
+        self,
+        change_desc: str = None,
+        change_status: str = None,
+        change_status_code: str = None,
+        new_segment: Any = None,
+        passenger_names: List[str] = None,
+    ):
+        self.change_desc = change_desc
+        self.change_status = change_status
+        self.change_status_code = change_status_code
+        self.new_segment = new_segment
+        self.passenger_names = passenger_names
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.change_desc is not None:
+            result['change_desc'] = self.change_desc
+        if self.change_status is not None:
+            result['change_status'] = self.change_status
+        if self.change_status_code is not None:
+            result['change_status_code'] = self.change_status_code
+        if self.new_segment is not None:
+            result['new_segment'] = self.new_segment
+        if self.passenger_names is not None:
+            result['passenger_names'] = self.passenger_names
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('change_desc') is not None:
+            self.change_desc = m.get('change_desc')
+        if m.get('change_status') is not None:
+            self.change_status = m.get('change_status')
+        if m.get('change_status_code') is not None:
+            self.change_status_code = m.get('change_status_code')
+        if m.get('new_segment') is not None:
+            self.new_segment = m.get('new_segment')
+        if m.get('passenger_names') is not None:
+            self.passenger_names = m.get('passenger_names')
         return self
 
 
@@ -36933,6 +37494,7 @@ class FlightModifyOrderDetailV2ResponseBodyModuleDestFlightInfoDTOS(TeaModel):
         dep_city_name: str = None,
         dep_terminal: str = None,
         dep_time: str = None,
+        flight_change: FlightModifyOrderDetailV2ResponseBodyModuleDestFlightInfoDTOSFlightChange = None,
         flight_no: str = None,
         flight_type: str = None,
         meal_desc: str = None,
@@ -36965,6 +37527,7 @@ class FlightModifyOrderDetailV2ResponseBodyModuleDestFlightInfoDTOS(TeaModel):
         self.dep_city_name = dep_city_name
         self.dep_terminal = dep_terminal
         self.dep_time = dep_time
+        self.flight_change = flight_change
         self.flight_no = flight_no
         self.flight_type = flight_type
         self.meal_desc = meal_desc
@@ -36975,6 +37538,8 @@ class FlightModifyOrderDetailV2ResponseBodyModuleDestFlightInfoDTOS(TeaModel):
         self.stop_dep_time = stop_dep_time
 
     def validate(self):
+        if self.flight_change:
+            self.flight_change.validate()
         if self.segment_position:
             self.segment_position.validate()
 
@@ -37030,6 +37595,8 @@ class FlightModifyOrderDetailV2ResponseBodyModuleDestFlightInfoDTOS(TeaModel):
             result['dep_terminal'] = self.dep_terminal
         if self.dep_time is not None:
             result['dep_time'] = self.dep_time
+        if self.flight_change is not None:
+            result['flight_change'] = self.flight_change.to_map()
         if self.flight_no is not None:
             result['flight_no'] = self.flight_no
         if self.flight_type is not None:
@@ -37096,6 +37663,9 @@ class FlightModifyOrderDetailV2ResponseBodyModuleDestFlightInfoDTOS(TeaModel):
             self.dep_terminal = m.get('dep_terminal')
         if m.get('dep_time') is not None:
             self.dep_time = m.get('dep_time')
+        if m.get('flight_change') is not None:
+            temp_model = FlightModifyOrderDetailV2ResponseBodyModuleDestFlightInfoDTOSFlightChange()
+            self.flight_change = temp_model.from_map(m['flight_change'])
         if m.get('flight_no') is not None:
             self.flight_no = m.get('flight_no')
         if m.get('flight_type') is not None:
@@ -37254,6 +37824,7 @@ class FlightModifyOrderDetailV2ResponseBodyModule(TeaModel):
     def __init__(
         self,
         apply_time: str = None,
+        attributes: FlightModifyOrderDetailV2ResponseBodyModuleAttributes = None,
         book_user_email: str = None,
         book_user_name: str = None,
         bookuser_phone: str = None,
@@ -37274,6 +37845,7 @@ class FlightModifyOrderDetailV2ResponseBodyModule(TeaModel):
         traveler_info_dtos: List[FlightModifyOrderDetailV2ResponseBodyModuleTravelerInfoDTOS] = None,
     ):
         self.apply_time = apply_time
+        self.attributes = attributes
         self.book_user_email = book_user_email
         self.book_user_name = book_user_name
         self.bookuser_phone = bookuser_phone
@@ -37294,6 +37866,8 @@ class FlightModifyOrderDetailV2ResponseBodyModule(TeaModel):
         self.traveler_info_dtos = traveler_info_dtos
 
     def validate(self):
+        if self.attributes:
+            self.attributes.validate()
         if self.contact_info_dto:
             self.contact_info_dto.validate()
         if self.dest_flight_info_dtos:
@@ -37313,6 +37887,8 @@ class FlightModifyOrderDetailV2ResponseBodyModule(TeaModel):
         result = dict()
         if self.apply_time is not None:
             result['apply_time'] = self.apply_time
+        if self.attributes is not None:
+            result['attributes'] = self.attributes.to_map()
         if self.book_user_email is not None:
             result['book_user_email'] = self.book_user_email
         if self.book_user_name is not None:
@@ -37359,6 +37935,9 @@ class FlightModifyOrderDetailV2ResponseBodyModule(TeaModel):
         m = m or dict()
         if m.get('apply_time') is not None:
             self.apply_time = m.get('apply_time')
+        if m.get('attributes') is not None:
+            temp_model = FlightModifyOrderDetailV2ResponseBodyModuleAttributes()
+            self.attributes = temp_model.from_map(m['attributes'])
         if m.get('book_user_email') is not None:
             self.book_user_email = m.get('book_user_email')
         if m.get('book_user_name') is not None:
@@ -48923,9 +49502,11 @@ class FlightOtaSearchV2ResponseBodyModuleItemListSubItems(TeaModel):
     def __init__(
         self,
         shopping_item_map: Dict[str, ModuleItemListSubItemsShoppingItemMapValue] = None,
+        tag: str = None,
         uniq_key: str = None,
     ):
         self.shopping_item_map = shopping_item_map
+        self.tag = tag
         self.uniq_key = uniq_key
 
     def validate(self):
@@ -48944,6 +49525,8 @@ class FlightOtaSearchV2ResponseBodyModuleItemListSubItems(TeaModel):
         if self.shopping_item_map is not None:
             for k, v in self.shopping_item_map.items():
                 result['shopping_item_map'][k] = v.to_map()
+        if self.tag is not None:
+            result['tag'] = self.tag
         if self.uniq_key is not None:
             result['uniq_key'] = self.uniq_key
         return result
@@ -48955,6 +49538,8 @@ class FlightOtaSearchV2ResponseBodyModuleItemListSubItems(TeaModel):
             for k, v in m.get('shopping_item_map').items():
                 temp_model = ModuleItemListSubItemsShoppingItemMapValue()
                 self.shopping_item_map[k] = temp_model.from_map(v)
+        if m.get('tag') is not None:
+            self.tag = m.get('tag')
         if m.get('uniq_key') is not None:
             self.uniq_key = m.get('uniq_key')
         return self
@@ -58711,6 +59296,7 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         apply_id: str = None,
         average_nights: str = None,
         bill_record_time: str = None,
+        billing_entity: str = None,
         book_reason: str = None,
         book_time: str = None,
         booker_id: str = None,
@@ -58719,6 +59305,8 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         brand_group: str = None,
         brand_name: str = None,
         business_trip_result: str = None,
+        cancel_or_modify_reason: str = None,
+        cancel_or_modify_scene: str = None,
         capital_direction: str = None,
         cascade_department: str = None,
         check_in_date: str = None,
@@ -58752,6 +59340,7 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         order_id: str = None,
         order_price: float = None,
         order_type: str = None,
+        original_reserve_rule: str = None,
         over_apply_id: str = None,
         payment_department_id: str = None,
         payment_department_name: str = None,
@@ -58767,6 +59356,8 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         room_number: int = None,
         room_price: float = None,
         room_type: str = None,
+        scene_id: str = None,
+        scene_name: str = None,
         service_fee: float = None,
         settlement_fee: float = None,
         settlement_grant_fee: float = None,
@@ -58794,6 +59385,7 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         self.apply_id = apply_id
         self.average_nights = average_nights
         self.bill_record_time = bill_record_time
+        self.billing_entity = billing_entity
         self.book_reason = book_reason
         self.book_time = book_time
         self.booker_id = booker_id
@@ -58802,6 +59394,8 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         self.brand_group = brand_group
         self.brand_name = brand_name
         self.business_trip_result = business_trip_result
+        self.cancel_or_modify_reason = cancel_or_modify_reason
+        self.cancel_or_modify_scene = cancel_or_modify_scene
         self.capital_direction = capital_direction
         self.cascade_department = cascade_department
         self.check_in_date = check_in_date
@@ -58835,6 +59429,7 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         self.order_id = order_id
         self.order_price = order_price
         self.order_type = order_type
+        self.original_reserve_rule = original_reserve_rule
         self.over_apply_id = over_apply_id
         self.payment_department_id = payment_department_id
         self.payment_department_name = payment_department_name
@@ -58850,6 +59445,8 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         self.room_number = room_number
         self.room_price = room_price
         self.room_type = room_type
+        self.scene_id = scene_id
+        self.scene_name = scene_name
         self.service_fee = service_fee
         self.settlement_fee = settlement_fee
         self.settlement_grant_fee = settlement_grant_fee
@@ -58896,6 +59493,8 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             result['average_nights'] = self.average_nights
         if self.bill_record_time is not None:
             result['bill_record_time'] = self.bill_record_time
+        if self.billing_entity is not None:
+            result['billing_entity'] = self.billing_entity
         if self.book_reason is not None:
             result['book_reason'] = self.book_reason
         if self.book_time is not None:
@@ -58912,6 +59511,10 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             result['brand_name'] = self.brand_name
         if self.business_trip_result is not None:
             result['business_trip_result'] = self.business_trip_result
+        if self.cancel_or_modify_reason is not None:
+            result['cancel_or_modify_reason'] = self.cancel_or_modify_reason
+        if self.cancel_or_modify_scene is not None:
+            result['cancel_or_modify_scene'] = self.cancel_or_modify_scene
         if self.capital_direction is not None:
             result['capital_direction'] = self.capital_direction
         if self.cascade_department is not None:
@@ -58978,6 +59581,8 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             result['order_price'] = self.order_price
         if self.order_type is not None:
             result['order_type'] = self.order_type
+        if self.original_reserve_rule is not None:
+            result['original_reserve_rule'] = self.original_reserve_rule
         if self.over_apply_id is not None:
             result['over_apply_id'] = self.over_apply_id
         if self.payment_department_id is not None:
@@ -59008,6 +59613,10 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             result['room_price'] = self.room_price
         if self.room_type is not None:
             result['room_type'] = self.room_type
+        if self.scene_id is not None:
+            result['scene_id'] = self.scene_id
+        if self.scene_name is not None:
+            result['scene_name'] = self.scene_name
         if self.service_fee is not None:
             result['service_fee'] = self.service_fee
         if self.settlement_fee is not None:
@@ -59062,6 +59671,8 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             self.average_nights = m.get('average_nights')
         if m.get('bill_record_time') is not None:
             self.bill_record_time = m.get('bill_record_time')
+        if m.get('billing_entity') is not None:
+            self.billing_entity = m.get('billing_entity')
         if m.get('book_reason') is not None:
             self.book_reason = m.get('book_reason')
         if m.get('book_time') is not None:
@@ -59078,6 +59689,10 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             self.brand_name = m.get('brand_name')
         if m.get('business_trip_result') is not None:
             self.business_trip_result = m.get('business_trip_result')
+        if m.get('cancel_or_modify_reason') is not None:
+            self.cancel_or_modify_reason = m.get('cancel_or_modify_reason')
+        if m.get('cancel_or_modify_scene') is not None:
+            self.cancel_or_modify_scene = m.get('cancel_or_modify_scene')
         if m.get('capital_direction') is not None:
             self.capital_direction = m.get('capital_direction')
         if m.get('cascade_department') is not None:
@@ -59144,6 +59759,8 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             self.order_price = m.get('order_price')
         if m.get('order_type') is not None:
             self.order_type = m.get('order_type')
+        if m.get('original_reserve_rule') is not None:
+            self.original_reserve_rule = m.get('original_reserve_rule')
         if m.get('over_apply_id') is not None:
             self.over_apply_id = m.get('over_apply_id')
         if m.get('payment_department_id') is not None:
@@ -59174,6 +59791,10 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             self.room_price = m.get('room_price')
         if m.get('room_type') is not None:
             self.room_type = m.get('room_type')
+        if m.get('scene_id') is not None:
+            self.scene_id = m.get('scene_id')
+        if m.get('scene_name') is not None:
+            self.scene_name = m.get('scene_name')
         if m.get('service_fee') is not None:
             self.service_fee = m.get('service_fee')
         if m.get('settlement_fee') is not None:
@@ -71500,8 +72121,10 @@ class IeFlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         fee_type: str = None,
         flight_no: str = None,
         index: str = None,
+        ins_order_id: str = None,
         insurance_fee: float = None,
         insurance_number: str = None,
+        insurance_product_name: str = None,
         invoice_title: str = None,
         most_difference_dept_time: str = None,
         most_difference_discount: str = None,
@@ -71541,6 +72164,7 @@ class IeFlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         traveler_job_no: str = None,
         traveler_name: str = None,
         voucher_type: int = None,
+        voyage_name: str = None,
     ):
         self.advance_day = advance_day
         self.airline_corp_code = airline_corp_code
@@ -71594,8 +72218,10 @@ class IeFlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         self.fee_type = fee_type
         self.flight_no = flight_no
         self.index = index
+        self.ins_order_id = ins_order_id
         self.insurance_fee = insurance_fee
         self.insurance_number = insurance_number
+        self.insurance_product_name = insurance_product_name
         self.invoice_title = invoice_title
         self.most_difference_dept_time = most_difference_dept_time
         self.most_difference_discount = most_difference_discount
@@ -71636,6 +72262,7 @@ class IeFlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         self.traveler_job_no = traveler_job_no
         self.traveler_name = traveler_name
         self.voucher_type = voucher_type
+        self.voyage_name = voyage_name
 
     def validate(self):
         pass
@@ -71748,10 +72375,14 @@ class IeFlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             result['flight_no'] = self.flight_no
         if self.index is not None:
             result['index'] = self.index
+        if self.ins_order_id is not None:
+            result['ins_order_id'] = self.ins_order_id
         if self.insurance_fee is not None:
             result['insurance_fee'] = self.insurance_fee
         if self.insurance_number is not None:
             result['insurance_number'] = self.insurance_number
+        if self.insurance_product_name is not None:
+            result['insurance_product_name'] = self.insurance_product_name
         if self.invoice_title is not None:
             result['invoice_title'] = self.invoice_title
         if self.most_difference_dept_time is not None:
@@ -71830,6 +72461,8 @@ class IeFlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             result['traveler_name'] = self.traveler_name
         if self.voucher_type is not None:
             result['voucher_type'] = self.voucher_type
+        if self.voyage_name is not None:
+            result['voyage_name'] = self.voyage_name
         return result
 
     def from_map(self, m: dict = None):
@@ -71936,10 +72569,14 @@ class IeFlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             self.flight_no = m.get('flight_no')
         if m.get('index') is not None:
             self.index = m.get('index')
+        if m.get('ins_order_id') is not None:
+            self.ins_order_id = m.get('ins_order_id')
         if m.get('insurance_fee') is not None:
             self.insurance_fee = m.get('insurance_fee')
         if m.get('insurance_number') is not None:
             self.insurance_number = m.get('insurance_number')
+        if m.get('insurance_product_name') is not None:
+            self.insurance_product_name = m.get('insurance_product_name')
         if m.get('invoice_title') is not None:
             self.invoice_title = m.get('invoice_title')
         if m.get('most_difference_dept_time') is not None:
@@ -72018,6 +72655,8 @@ class IeFlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             self.traveler_name = m.get('traveler_name')
         if m.get('voucher_type') is not None:
             self.voucher_type = m.get('voucher_type')
+        if m.get('voyage_name') is not None:
+            self.voyage_name = m.get('voyage_name')
         return self
 
 
@@ -72332,6 +72971,7 @@ class IeHotelBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         order_price: float = None,
         order_status_desc: str = None,
         order_type: str = None,
+        original_reserve_rule: str = None,
         over_apply_id: str = None,
         payment_department_id: str = None,
         payment_department_name: str = None,
@@ -72417,6 +73057,7 @@ class IeHotelBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         self.order_price = order_price
         self.order_status_desc = order_status_desc
         self.order_type = order_type
+        self.original_reserve_rule = original_reserve_rule
         self.over_apply_id = over_apply_id
         self.payment_department_id = payment_department_id
         self.payment_department_name = payment_department_name
@@ -72561,6 +73202,8 @@ class IeHotelBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             result['order_status_desc'] = self.order_status_desc
         if self.order_type is not None:
             result['order_type'] = self.order_type
+        if self.original_reserve_rule is not None:
+            result['original_reserve_rule'] = self.original_reserve_rule
         if self.over_apply_id is not None:
             result['over_apply_id'] = self.over_apply_id
         if self.payment_department_id is not None:
@@ -72733,6 +73376,8 @@ class IeHotelBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             self.order_status_desc = m.get('order_status_desc')
         if m.get('order_type') is not None:
             self.order_type = m.get('order_type')
+        if m.get('original_reserve_rule') is not None:
+            self.original_reserve_rule = m.get('original_reserve_rule')
         if m.get('over_apply_id') is not None:
             self.over_apply_id = m.get('over_apply_id')
         if m.get('payment_department_id') is not None:
@@ -96421,6 +97066,7 @@ class TrainBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         booker_job_no: str = None,
         booker_name: str = None,
         business_trip_result: str = None,
+        cabin_max_price: float = None,
         capital_direction: str = None,
         cascade_department: str = None,
         change_affiliate_no: str = None,
@@ -96443,6 +97089,7 @@ class TrainBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         index: str = None,
         invoice_title: str = None,
         is_transfer_order: str = None,
+        max_cabin: str = None,
         order_id: str = None,
         order_price: float = None,
         over_apply_id: str = None,
@@ -96459,6 +97106,8 @@ class TrainBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         remark: str = None,
         reserve_mode: str = None,
         run_time: str = None,
+        scene_id: str = None,
+        scene_name: str = None,
         seat_no: str = None,
         seat_type: str = None,
         service_fee: float = None,
@@ -96502,6 +97151,7 @@ class TrainBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         self.booker_job_no = booker_job_no
         self.booker_name = booker_name
         self.business_trip_result = business_trip_result
+        self.cabin_max_price = cabin_max_price
         self.capital_direction = capital_direction
         self.cascade_department = cascade_department
         self.change_affiliate_no = change_affiliate_no
@@ -96524,6 +97174,7 @@ class TrainBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         self.index = index
         self.invoice_title = invoice_title
         self.is_transfer_order = is_transfer_order
+        self.max_cabin = max_cabin
         self.order_id = order_id
         self.order_price = order_price
         self.over_apply_id = over_apply_id
@@ -96540,6 +97191,8 @@ class TrainBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         self.remark = remark
         self.reserve_mode = reserve_mode
         self.run_time = run_time
+        self.scene_id = scene_id
+        self.scene_name = scene_name
         self.seat_no = seat_no
         self.seat_type = seat_type
         self.service_fee = service_fee
@@ -96610,6 +97263,8 @@ class TrainBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             result['booker_name'] = self.booker_name
         if self.business_trip_result is not None:
             result['business_trip_result'] = self.business_trip_result
+        if self.cabin_max_price is not None:
+            result['cabin_max_price'] = self.cabin_max_price
         if self.capital_direction is not None:
             result['capital_direction'] = self.capital_direction
         if self.cascade_department is not None:
@@ -96654,6 +97309,8 @@ class TrainBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             result['invoice_title'] = self.invoice_title
         if self.is_transfer_order is not None:
             result['is_transfer_order'] = self.is_transfer_order
+        if self.max_cabin is not None:
+            result['max_cabin'] = self.max_cabin
         if self.order_id is not None:
             result['order_id'] = self.order_id
         if self.order_price is not None:
@@ -96686,6 +97343,10 @@ class TrainBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             result['reserve_mode'] = self.reserve_mode
         if self.run_time is not None:
             result['run_time'] = self.run_time
+        if self.scene_id is not None:
+            result['scene_id'] = self.scene_id
+        if self.scene_name is not None:
+            result['scene_name'] = self.scene_name
         if self.seat_no is not None:
             result['seat_no'] = self.seat_no
         if self.seat_type is not None:
@@ -96772,6 +97433,8 @@ class TrainBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             self.booker_name = m.get('booker_name')
         if m.get('business_trip_result') is not None:
             self.business_trip_result = m.get('business_trip_result')
+        if m.get('cabin_max_price') is not None:
+            self.cabin_max_price = m.get('cabin_max_price')
         if m.get('capital_direction') is not None:
             self.capital_direction = m.get('capital_direction')
         if m.get('cascade_department') is not None:
@@ -96816,6 +97479,8 @@ class TrainBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             self.invoice_title = m.get('invoice_title')
         if m.get('is_transfer_order') is not None:
             self.is_transfer_order = m.get('is_transfer_order')
+        if m.get('max_cabin') is not None:
+            self.max_cabin = m.get('max_cabin')
         if m.get('order_id') is not None:
             self.order_id = m.get('order_id')
         if m.get('order_price') is not None:
@@ -96848,6 +97513,10 @@ class TrainBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             self.reserve_mode = m.get('reserve_mode')
         if m.get('run_time') is not None:
             self.run_time = m.get('run_time')
+        if m.get('scene_id') is not None:
+            self.scene_id = m.get('scene_id')
+        if m.get('scene_name') is not None:
+            self.scene_name = m.get('scene_name')
         if m.get('seat_no') is not None:
             self.seat_no = m.get('seat_no')
         if m.get('seat_type') is not None:
@@ -109978,6 +110647,7 @@ class WaitApplyInvoiceTaskDetailQueryResponseBodyModule(TeaModel):
         telephone: str = None,
         train_acceleration_package_invoice_fee: str = None,
         train_invoice_fee: str = None,
+        vas_mall_special_invoice_fee: str = None,
         vehicle_invoice_fee: str = None,
         vehicle_normal_invoice_fee: str = None,
     ):
@@ -110002,6 +110672,7 @@ class WaitApplyInvoiceTaskDetailQueryResponseBodyModule(TeaModel):
         self.telephone = telephone
         self.train_acceleration_package_invoice_fee = train_acceleration_package_invoice_fee
         self.train_invoice_fee = train_invoice_fee
+        self.vas_mall_special_invoice_fee = vas_mall_special_invoice_fee
         self.vehicle_invoice_fee = vehicle_invoice_fee
         self.vehicle_normal_invoice_fee = vehicle_normal_invoice_fee
 
@@ -110056,6 +110727,8 @@ class WaitApplyInvoiceTaskDetailQueryResponseBodyModule(TeaModel):
             result['train_acceleration_package_invoice_fee'] = self.train_acceleration_package_invoice_fee
         if self.train_invoice_fee is not None:
             result['train_invoice_fee'] = self.train_invoice_fee
+        if self.vas_mall_special_invoice_fee is not None:
+            result['vas_mall_special_invoice_fee'] = self.vas_mall_special_invoice_fee
         if self.vehicle_invoice_fee is not None:
             result['vehicle_invoice_fee'] = self.vehicle_invoice_fee
         if self.vehicle_normal_invoice_fee is not None:
@@ -110106,6 +110779,8 @@ class WaitApplyInvoiceTaskDetailQueryResponseBodyModule(TeaModel):
             self.train_acceleration_package_invoice_fee = m.get('train_acceleration_package_invoice_fee')
         if m.get('train_invoice_fee') is not None:
             self.train_invoice_fee = m.get('train_invoice_fee')
+        if m.get('vas_mall_special_invoice_fee') is not None:
+            self.vas_mall_special_invoice_fee = m.get('vas_mall_special_invoice_fee')
         if m.get('vehicle_invoice_fee') is not None:
             self.vehicle_invoice_fee = m.get('vehicle_invoice_fee')
         if m.get('vehicle_normal_invoice_fee') is not None:

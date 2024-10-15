@@ -1,3 +1,22 @@
+2024-10-15 Version: 4.4.0
+- Support API CooperatorHotelEventPush.
+- Support API CooperatorSyncPayStatus.
+- Update API AddressGet: add param middle_page.
+- Update API AddressGet: add param thirdpart_apply_id.
+- Update API ApplyInvoiceTask: update param invoice_task_list.
+- Update API CarBillSettlementQuery: update response param.
+- Update API FlightBillSettlementQuery: update response param.
+- Update API FlightItineraryScanQuery: update response param.
+- Update API FlightListingSearchV2: update response param.
+- Update API FlightModifyOrderDetailV2: update response param.
+- Update API FlightOtaSearchV2: update response param.
+- Update API HotelBillSettlementQuery: update response param.
+- Update API IeFlightBillSettlementQuery: update response param.
+- Update API IeHotelBillSettlementQuery: update response param.
+- Update API TrainBillSettlementQuery: update response param.
+- Update API WaitApplyInvoiceTaskDetailQuery: update response param.
+
+
 2024-08-01 Version: 4.3.0
 - Support API ExternalUserQuery.
 - Update API ApplyAdd: update param external_traveler_list.
