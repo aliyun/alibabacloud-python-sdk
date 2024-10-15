@@ -1,3 +1,7 @@
+2024-10-15 Version: 4.4.1
+- Update API HotelGoodsQuery: update response param.
+
+
 2024-10-15 Version: 4.4.0
 - Support API CooperatorHotelEventPush.
 - Support API CooperatorSyncPayStatus.

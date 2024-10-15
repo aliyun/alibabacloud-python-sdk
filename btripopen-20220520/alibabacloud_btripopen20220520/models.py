@@ -61075,6 +61075,7 @@ class HotelGoodsQueryResponseBodyModuleRoomsRates(TeaModel):
         end_time_daily: str = None,
         hotel_detail_rate_price_dto: List[HotelGoodsQueryResponseBodyModuleRoomsRatesHotelDetailRatePriceDTO] = None,
         instant_confirm: bool = None,
+        inventory_desc: str = None,
         inventory_price: str = None,
         is_business_pay_4goods: bool = None,
         is_guarantee: int = None,
@@ -61118,6 +61119,7 @@ class HotelGoodsQueryResponseBodyModuleRoomsRates(TeaModel):
         self.end_time_daily = end_time_daily
         self.hotel_detail_rate_price_dto = hotel_detail_rate_price_dto
         self.instant_confirm = instant_confirm
+        self.inventory_desc = inventory_desc
         self.inventory_price = inventory_price
         self.is_business_pay_4goods = is_business_pay_4goods
         self.is_guarantee = is_guarantee
@@ -61202,6 +61204,8 @@ class HotelGoodsQueryResponseBodyModuleRoomsRates(TeaModel):
                 result['hotel_detail_rate_price_d_t_o'].append(k.to_map() if k else None)
         if self.instant_confirm is not None:
             result['instant_confirm'] = self.instant_confirm
+        if self.inventory_desc is not None:
+            result['inventory_desc'] = self.inventory_desc
         if self.inventory_price is not None:
             result['inventory_price'] = self.inventory_price
         if self.is_business_pay_4goods is not None:
@@ -61298,6 +61302,8 @@ class HotelGoodsQueryResponseBodyModuleRoomsRates(TeaModel):
                 self.hotel_detail_rate_price_dto.append(temp_model.from_map(k))
         if m.get('instant_confirm') is not None:
             self.instant_confirm = m.get('instant_confirm')
+        if m.get('inventory_desc') is not None:
+            self.inventory_desc = m.get('inventory_desc')
         if m.get('inventory_price') is not None:
             self.inventory_price = m.get('inventory_price')
         if m.get('is_business_pay4_goods') is not None:
