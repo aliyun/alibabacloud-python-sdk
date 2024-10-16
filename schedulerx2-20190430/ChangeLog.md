@@ -1,3 +1,7 @@
+2024-10-16 Version: 2.0.1
+- Update API GrantPermission: update response param.
+
+
 2024-06-26 Version: 2.0.0
 - Update API CreateAppGroup: add param AppVersion.
 - Update API CreateAppGroup: delete param Version.

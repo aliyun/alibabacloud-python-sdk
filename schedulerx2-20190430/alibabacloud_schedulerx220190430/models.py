@@ -630,19 +630,19 @@ class CreateAppGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.app_name = app_name
-        # 应用类型。
+        # The type of application. Valid values:
         # 
-        # - 1、普通应用。
-        # - 2、k8s应用。
+        # *   `TRACE`: Application Monitoring
+        # *   `EBPF`: Application Monitoring eBPF Edition
         self.app_type = app_type
+        # The application version. 1: Basic version, 2: Professional version.
         self.app_version = app_version
         # The description of the application.
         self.description = description
-        # 是否开启日志。
+        # Specifies whether to enable logging. Valid values:
         # 
-        # - true：开启
-        # 
-        # - false：关闭
+        # *   `true`: enabled
+        # *   `false`: disabled
         self.enable_log = enable_log
         # The application ID. You can obtain the application ID on the Application Management page in the SchedulerX console.
         # 
@@ -969,7 +969,7 @@ class CreateJobRequest(TeaModel):
         timezone: str = None,
         xattrs: str = None,
     ):
-        # The interval of retries after a job failure. Default value: 30. Unit: seconds.
+        # The time interval between retry attempts in case of a job failure. Unit: seconds. Default value: 30.
         self.attempt_interval = attempt_interval
         # If you set TimeType to 1 (cron), you can specify calendar days.
         self.calendar = calendar
@@ -977,7 +977,7 @@ class CreateJobRequest(TeaModel):
         # 
         # This parameter is available only when you set JobType to java. You must enter a full path.
         self.class_name = class_name
-        # The number of threads that are triggered by a single worker at a time. Default value: 5. This parameter is an advanced configuration item of the MapReduce job.
+        # The number of threads that a single worker triggers simultaneously. You can specify this parameter for MapReduce jobs. Default value: 5.
         self.consumer_size = consumer_size
         # The information about the alert contact.
         self.contact_info = contact_info
@@ -987,7 +987,7 @@ class CreateJobRequest(TeaModel):
         self.data_offset = data_offset
         # The job description.
         self.description = description
-        # The number of task distribution threads. Default value: 5. This parameter is an advanced configuration item of the MapReduce job.
+        # The number of task distribution threads. This parameter is an advanced configuration item of the MapReduce job. Default value: 5.
         self.dispatcher_size = dispatcher_size
         # The execution mode of the job. Valid values:
         # 
@@ -999,12 +999,12 @@ class CreateJobRequest(TeaModel):
         # 
         # This parameter is required.
         self.execute_mode = execute_mode
-        # Specifies whether to turn on Failure alarm. If the switch is turned on, an alert will be generated upon a failure. Valid values:
+        # Specifies whether to trigger an alert when a job fails. Valid values:
         # 
-        # *   **true**\
-        # *   **false**\
+        # *   **true**: triggers an alert when a job fails.
+        # *   **false**: does not trigger an alert when a job fails.
         self.fail_enable = fail_enable
-        # The number of consecutive failures. An alert will be received if the number of consecutive failures reaches the value of this parameter.
+        # The maximum number of consecutive failures before an alert is triggered. An alert will be triggered if the number of consecutive failures reaches the value of this parameter.
         self.fail_times = fail_times
         # The application ID. You can obtain the application ID on the Application Management page in the SchedulerX console.
         # 
@@ -1024,14 +1024,14 @@ class CreateJobRequest(TeaModel):
         # 
         # This parameter is required.
         self.job_type = job_type
-        # The maximum number of retries after a job failure. Specify this parameter based on your business requirements. Default value: 0.
+        # The maximum number of retry attempts in case of a job failure. Specify this parameter based on your business requirements. Default value: 0.
         self.max_attempt = max_attempt
-        # The maximum number of concurrent instances. Default value: 1. The default value indicates that only one instance is allowed to run at a time. When an instance is running, another instance is not triggered even if the scheduled time for running the instance is reached.
+        # The maximum number of concurrent instances. By default, only one instance can run at a time. When an instance is running, the next instance is not triggered even if the scheduled start time arrives.
         self.max_concurrency = max_concurrency
-        # Specifies whether to turn on No machine alarm available. If the switch is turned on, an alert will be generated when no machine is available for running the job. Valid values:
+        # Specifies whether to generate an alert if no machines are available to run the job. Valid values:
         # 
-        # *   **true**\
-        # *   **false**\
+        # *   **true**: generates an alert if no machines are available to run the job.
+        # *   **false**: does not generate an alert if no machines are available to run the job.
         self.miss_worker_enable = miss_worker_enable
         # The job name.
         # 
@@ -1041,27 +1041,27 @@ class CreateJobRequest(TeaModel):
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The namespace source. This parameter is required only for a special third party.
+        # The source of the namespace. You must specify this parameter only if the namespace is provided by a third party.
         self.namespace_source = namespace_source
-        # The number of tasks that can be pulled at a time. Default value: 100. This parameter is an advanced configuration item of the MapReduce job.
+        # The number of entries per page. You can specify this parameter for MapReduce jobs. Default value: 100.
         self.page_size = page_size
         # The user-defined parameters that you can obtain when the job is running.
         self.parameters = parameters
-        # The maximum number of tasks that can be queued. Default value: 10000. This parameter is an advanced configuration item of the MapReduce job.
+        # The maximum capacity of the task queue. You can specify this parameter for MapReduce jobs. Default value: 10000.
         self.queue_size = queue_size
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The method that is used to send alerts. Only Short Message Service (SMS) is supported. Default value: sms.
+        # The method that is used to send alerts. Set the value to sms. Default value: sms.
         self.send_channel = send_channel
         # Specifies whether to enable the job. If this parameter is set to 0, the job is disabled. If this parameter is set to 1, the job is enabled. Default value: 1.
         self.status = status
-        # Specifies whether to turn on Successful notice. If the switch is turned on, a notice will be sent when a job succeeds.
+        # Specifies whether to send notifications for successfully running the job.
         self.success_notice_enable = success_notice_enable
-        # The interval of retries after a task failure. Default value: 0. This parameter is an advanced configuration item of the MapReduce job.
+        # The time interval between retry attempts in case of a job failure. This parameter is an advanced configuration item of the MapReduce job. Default value: 0.
         self.task_attempt_interval = task_attempt_interval
-        # The number of retries after a task failure. Default value: 0. This parameter is an advanced configuration item of the MapReduce job.
+        # The maximum number of retry attempts in case of a job failure. This parameter is an advanced configuration item of the MapReduce job. Default value: 0.
         self.task_max_attempt = task_max_attempt
         # The time expression. Specify the time expression based on the value of TimeType:
         # 
@@ -1081,21 +1081,21 @@ class CreateJobRequest(TeaModel):
         # 
         # This parameter is required.
         self.time_type = time_type
-        # The timeout threshold. Default value: 7200. Unit: seconds.
+        # The timeout threshold. Unit: seconds. Default value: 7200.
         self.timeout = timeout
-        # Specifies whether to turn on Timeout alarm. If the switch is turned on, an alert will be generated upon a timeout. Valid values:
+        # Specifies whether to enable the timeout alert feature. If the feature is enabled, an alert will be triggered upon a timeout. Valid values:
         # 
-        # *   **true**\
-        # *   **false**\
+        # *   **true**: enables the timeout alert feature.
+        # *   **false**: disables the timeout alert feature.
         self.timeout_enable = timeout_enable
-        # Specifies whether to turn on Timeout termination. If the switch is turned on, the job will be terminated upon a timeout. Valid values:
+        # Specifies whether to enable the timeout termination feature. If the feature is enabled, a job will automatically be terminated if it times out. Valid values:
         # 
-        # *   **true**\
-        # *   **false**\
+        # *   **true**: enables the timeout termination feature.
+        # *   **false**: disables the timeout termination feature.
         self.timeout_kill_enable = timeout_kill_enable
         # Time zone.
         self.timezone = timezone
-        # If you set JobType to k8s, this parameter is required. xxljob task: {"resource":"job"} shell task: {"image":"busybox","resource":"shell"}
+        # The extended attributes. If you set JobType to k8s, this parameter is required. For a job whose resource type is Job-YAML, set this parameter to {"resource":"job"}. For a job whose resource type is Shell-Script, set this parameter to {"image":"busybox","resource":"shell"}.
         self.xattrs = xattrs
 
     def validate(self):
@@ -1829,13 +1829,13 @@ class CreateWorkflowRequest(TeaModel):
         self.region_id = region_id
         # The time expression. You can set the time expression based on the selected method that is used to specify time.
         # 
-        # *   If you set the TimeType parameter to cron, you need to enter a standard cron expression. Online verification is supported.
-        # *   If you set the TimeType parameter to api, no time expression is required.
+        # - If you set the TimeType parameter to cron, you need to enter a standard cron expression. Online verification is supported.
+        # - If you set the TimeType parameter to api, no time expression is required.
         self.time_expression = time_expression
         # The method that is used to specify the time. Valid values:
         # 
-        # *   1: cron
-        # *   100: api
+        # - 1: cron
+        # - 100: api
         # 
         # This parameter is required.
         self.time_type = time_type
@@ -1945,8 +1945,8 @@ class CreateWorkflowResponseBody(TeaModel):
         self.request_id = request_id
         # Indicates whether the workflow was created. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # - false
         self.success = success
 
     def validate(self):
@@ -2627,6 +2627,7 @@ class DescribeRegionsRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -3856,6 +3857,8 @@ class ExecuteWorkflowRequest(TeaModel):
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
+        # The region information.
+        # 
         # This parameter is required.
         self.region_id = region_id
         # The workflow ID.
@@ -4037,10 +4040,15 @@ class GetAppGroupRequest(TeaModel):
         namespace: str = None,
         region_id: str = None,
     ):
+        # The ID of the application. You can obtain the application ID on the **Application Management** page in the SchedulerX console.
+        # 
         # This parameter is required.
         self.group_id = group_id
+        # The ID of the namespace. You can obtain the ID of the namespace on the **Namespace** page in the SchedulerX console.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -4083,13 +4091,21 @@ class GetAppGroupResponseBodyData(TeaModel):
         max_jobs: int = None,
         monitor_config_json: str = None,
     ):
+        # The AppKey of the application.
         self.app_key = app_key
+        # The name of the application.
         self.app_name = app_name
+        # The application version. 1: Basic version, 2: Professional version.
         self.app_version = app_version
+        # The number of jobs that are configured for the application group.
         self.cur_jobs = cur_jobs
+        # The description of the application.
         self.description = description
+        # The ID of the application.
         self.group_id = group_id
+        # The maximum number of jobs that can be configured for the application group.
         self.max_jobs = max_jobs
+        # The configuration of the alert. The value is a JSON string. For more information, see **the additional information about response parameters below this table.**\
         self.monitor_config_json = monitor_config_json
 
     def validate(self):
@@ -4149,10 +4165,18 @@ class GetAppGroupResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code that is returned.
         self.code = code
+        # The information about the application group.
         self.data = data
+        # The additional information that is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -4627,7 +4651,6 @@ class GetJobInfoResponseBodyDataJobConfigInfo(TeaModel):
         # *   **Broadcast run**\
         # *   **Visual MapReduce**\
         # *   **MapReduce**\
-        # *   ****\
         # *   **Shard run**\
         self.execute_mode = execute_mode
         # The full path used to upload files to Object Storage Service (OSS).
@@ -4985,7 +5008,9 @@ class GetJobInstanceResponseBodyDataJobInstanceDetail(TeaModel):
         self.instance_id = instance_id
         # The job ID.
         self.job_id = job_id
+        # The job name.
         self.job_name = job_name
+        # The parameters of the job instance.
         self.parameters = parameters
         # The progress of the job instance.
         self.progress = progress
@@ -5014,6 +5039,7 @@ class GetJobInstanceResponseBodyDataJobInstanceDetail(TeaModel):
         # 
         # Enumeration class: com.alibaba.schedulerx.common.domain.TimeType
         self.time_type = time_type
+        # The trace ID, which can be used to query trace details.
         self.trace_id = trace_id
         # The trigger type of the job instance. Valid values:
         # 
@@ -5254,7 +5280,7 @@ class GetJobInstanceListRequest(TeaModel):
         start_timestamp: int = None,
         status: int = None,
     ):
-        # The end of the time range to query. Specify the time as a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The end of the time range to query. Specify a UNIX timestamp.
         self.end_timestamp = end_timestamp
         # The application group ID.
         # 
@@ -5268,17 +5294,19 @@ class GetJobInstanceListRequest(TeaModel):
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
+        # The page number. Default value: 1.
         self.page_num = page_num
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The beginning of the time range to query. Specify the time as a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The beginning of the time range to query. Specify a UNIX timestamp.
         self.start_timestamp = start_timestamp
-        # The state of the job instance. Valid values:
+        # The status of the job instance. Valid values:
         # 
-        # 1: The job instance is waiting for execution. 3: The job instance is running. 4: The job instance is successful. 5: The job instance fails. 9: The job instance is rejected. Enumeration class: com.alibaba.schedulerx.common.domain.InstanceStatus
+        # 1: The job instance is pending. 3: The job instance is running. 4: The job instance is run. 5: The job instance fails. 9: The request for running the job instance is rejected. To specify this parameter, you must declare the following enumeration class: com.alibaba.schedulerx.common.domain.InstanceStatus.
         self.status = status
 
     def validate(self):
@@ -6747,7 +6775,7 @@ class GetWorkflowInstanceResponseBodyDataWfInstanceDagEdges(TeaModel):
         source: int = None,
         target: int = None,
     ):
-        # The upstream job instance of the current job instance. The value 0 indicates that the upstream job instance is the root node.
+        # The upstream job instance of the current job instance. A value of 0 indicates that the upstream job instance is the root node.
         self.source = source
         # The downstream job instance of the current job instance.
         self.target = target
@@ -6791,25 +6819,27 @@ class GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes(TeaModel):
         status: int = None,
         work_addr: str = None,
     ):
-        # The number of retries when the job instance failed.
+        # The number of retries when the job failed.
         self.attempt = attempt
-        # The data timestamp of the job instance.
+        # The data timestamp of the job.
         self.data_time = data_time
-        # The time when the job instance stopped running.
+        # The time when the job stopped running.
         self.end_time = end_time
         # The job ID.
         self.job_id = job_id
-        # The job instance ID.
+        # The ID of the job instance.
         self.job_instance_id = job_instance_id
+        # The job name.
         self.job_name = job_name
-        # The state of the job instance.
+        # The execution result of the job.
         self.result = result
-        # The time when the job instance was scheduled to run.
+        # The time when the job was scheduled.
         self.schedule_time = schedule_time
-        # The time when the job instance started to run.
+        # The time when the job started to run.
         self.start_time = start_time
+        # The state of the job instance. Valid values: 1: The job instance is waiting for execution. 3: The job instance is running. 4: The job instance is run. 5: The job instance failed to run. 9: The job instance is rejected. Enumeration class: com.alibaba.schedulerx.common.domain.InstanceStatus.
         self.status = status
-        # The server on which the job instance was run.
+        # The worker on which the job instance run.
         self.work_addr = work_addr
 
     def validate(self):
@@ -6992,7 +7022,7 @@ class GetWorkflowInstanceResponseBodyData(TeaModel):
         wf_instance_dag: GetWorkflowInstanceResponseBodyDataWfInstanceDag = None,
         wf_instance_info: GetWorkflowInstanceResponseBodyDataWfInstanceInfo = None,
     ):
-        # The directed acyclic graph (DAG) of the workflow instance, including job instances and dependencies.
+        # The directed acyclic graph (DAG) of the workflow instance, including nodes and dependencies.
         self.wf_instance_dag = wf_instance_dag
         # The details of the workflow instance, including the state of the workflow instance, the time when the workflow instance started to run, the time when the workflow instance stopped running, the state of each job instance, and the dependencies between job instances.
         self.wf_instance_info = wf_instance_info
@@ -7206,14 +7236,79 @@ class GrantPermissionRequest(TeaModel):
         return self
 
 
+class GrantPermissionResponseBodyAccessDeniedDetail(TeaModel):
+    def __init__(
+        self,
+        auth_action: str = None,
+        auth_principal_display_name: str = None,
+        auth_principal_owner_id: str = None,
+        auth_principal_type: str = None,
+        encoded_diagnostic_message: str = None,
+        no_permission_type: str = None,
+        policy_type: str = None,
+    ):
+        self.auth_action = auth_action
+        self.auth_principal_display_name = auth_principal_display_name
+        self.auth_principal_owner_id = auth_principal_owner_id
+        self.auth_principal_type = auth_principal_type
+        self.encoded_diagnostic_message = encoded_diagnostic_message
+        self.no_permission_type = no_permission_type
+        self.policy_type = policy_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_action is not None:
+            result['AuthAction'] = self.auth_action
+        if self.auth_principal_display_name is not None:
+            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
+        if self.auth_principal_owner_id is not None:
+            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
+        if self.auth_principal_type is not None:
+            result['AuthPrincipalType'] = self.auth_principal_type
+        if self.encoded_diagnostic_message is not None:
+            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
+        if self.no_permission_type is not None:
+            result['NoPermissionType'] = self.no_permission_type
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthAction') is not None:
+            self.auth_action = m.get('AuthAction')
+        if m.get('AuthPrincipalDisplayName') is not None:
+            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
+        if m.get('AuthPrincipalOwnerId') is not None:
+            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
+        if m.get('AuthPrincipalType') is not None:
+            self.auth_principal_type = m.get('AuthPrincipalType')
+        if m.get('EncodedDiagnosticMessage') is not None:
+            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
+        if m.get('NoPermissionType') is not None:
+            self.no_permission_type = m.get('NoPermissionType')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
+        return self
+
+
 class GrantPermissionResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: GrantPermissionResponseBodyAccessDeniedDetail = None,
         code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         self.code = code
         # The error message that is returned only if the corresponding error occurs.
@@ -7227,7 +7322,8 @@ class GrantPermissionResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        pass
+        if self.access_denied_detail:
+            self.access_denied_detail.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7235,6 +7331,8 @@ class GrantPermissionResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -7247,6 +7345,9 @@ class GrantPermissionResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            temp_model = GrantPermissionResponseBodyAccessDeniedDetail()
+            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -7366,6 +7467,7 @@ class ListGroupsResponseBodyDataAppGroups(TeaModel):
         self.app_key = app_key
         # The name of the application.
         self.app_name = app_name
+        # The application version. 1: Basic version, 2: Professional version.
         self.app_version = app_version
         # The description of the application.
         self.description = description
@@ -8214,7 +8316,9 @@ class ListNamespacesRequest(TeaModel):
         namespace_name: str = None,
         region_id: str = None,
     ):
+        # The namespace ID.
         self.namespace = namespace
+        # The name of the namespace.
         self.namespace_name = namespace_name
         # The region ID.
         # 
@@ -9722,13 +9826,22 @@ class UpdateAppGroupRequest(TeaModel):
         namespace: str = None,
         region_id: str = None,
     ):
+        # The application version. 1: Basic version, 2: Professional version.
         self.app_version = app_version
+        # The description of the application.
         self.description = description
+        # The ID of the application. You can obtain the application ID on the **Application Management** page in the SchedulerX console.
+        # 
         # This parameter is required.
         self.group_id = group_id
+        # The maximum number of concurrent instances. Default value: 1. A value of 1 specifies that if the last triggered instance is running, the next instance is not triggered even if the scheduled point in time for running the next instance is reached.
         self.max_concurrency = max_concurrency
+        # The ID of the namespace. You can obtain the ID of the namespace on the Namespace page in the SchedulerX console.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The ID of the region.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -9780,9 +9893,16 @@ class UpdateAppGroupResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The additional information that is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -9970,11 +10090,11 @@ class UpdateJobRequest(TeaModel):
         self.dispatcher_size = dispatcher_size
         # The execution mode of the job. Valid values:
         # 
-        # *   **Stand-alone operation**\
-        # *   **Broadcast run**\
-        # *   **Visual MapReduce**\
-        # *   **MapReduce**\
-        # *   **Shard run**\
+        # *   **Stand-alone operation**: standalone
+        # *   **Broadcast run**: broadcatst
+        # *   **Visual MapReduce**: parallel
+        # *   **MapReduce**: batch
+        # *   **Shard run**: shard
         self.execute_mode = execute_mode
         # Specifies whether to turn on Failure alarm. If the switch is turned on, an alert will be generated upon a failure. Valid values:
         # 
@@ -10028,6 +10148,7 @@ class UpdateJobRequest(TeaModel):
         self.task_dispatch_mode = task_dispatch_mode
         # The number of retries after a task failure. This parameter is an advanced configuration item of the MapReduce job.
         self.task_max_attempt = task_max_attempt
+        # Custom task template for the k8s task type.
         self.template = template
         # The time expression. Specify the time expression based on the value of TimeType:
         # 
@@ -10057,6 +10178,7 @@ class UpdateJobRequest(TeaModel):
         self.timeout_kill_enable = timeout_kill_enable
         # Time zone.
         self.timezone = timezone
+        # If you set JobType to k8s, this parameter is required. xxljob task: {"resource":"job"} shell task: {"image":"busybox","resource":"shell"}
         self.xattrs = xattrs
 
     def validate(self):

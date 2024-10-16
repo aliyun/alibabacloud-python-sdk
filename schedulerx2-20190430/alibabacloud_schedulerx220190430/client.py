@@ -2465,7 +2465,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.GetAppGroupResponse:
         """
-        @summary The configuration of the alert. The value is a JSON string. For more information, see *the additional information about response parameters below this table**.
+        @summary The configuration of the alert. The value is a JSON string. For more information, see \\\\*the additional information about response parameters below this table\\*\\*.
         
         @param request: GetAppGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2504,7 +2504,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.GetAppGroupResponse:
         """
-        @summary The configuration of the alert. The value is a JSON string. For more information, see *the additional information about response parameters below this table**.
+        @summary The configuration of the alert. The value is a JSON string. For more information, see \\\\*the additional information about response parameters below this table\\*\\*.
         
         @param request: GetAppGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2542,7 +2542,7 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.GetAppGroupRequest,
     ) -> schedulerx_220190430_models.GetAppGroupResponse:
         """
-        @summary The configuration of the alert. The value is a JSON string. For more information, see *the additional information about response parameters below this table**.
+        @summary The configuration of the alert. The value is a JSON string. For more information, see \\\\*the additional information about response parameters below this table\\*\\*.
         
         @param request: GetAppGroupRequest
         @return: GetAppGroupResponse
@@ -2555,7 +2555,7 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.GetAppGroupRequest,
     ) -> schedulerx_220190430_models.GetAppGroupResponse:
         """
-        @summary The configuration of the alert. The value is a JSON string. For more information, see *the additional information about response parameters below this table**.
+        @summary The configuration of the alert. The value is a JSON string. For more information, see \\\\*the additional information about response parameters below this table\\*\\*.
         
         @param request: GetAppGroupRequest
         @return: GetAppGroupResponse
