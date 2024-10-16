@@ -31,6 +31,39 @@ class AgentBaseQuery(TeaModel):
         return self
 
 
+class CommonAgentQuery(TeaModel):
+    def __init__(
+        self,
+        query: str = None,
+        query_scene_enum_code: str = None,
+    ):
+        self.query = query
+        self.query_scene_enum_code = query_scene_enum_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.query is not None:
+            result['query'] = self.query
+        if self.query_scene_enum_code is not None:
+            result['querySceneEnumCode'] = self.query_scene_enum_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('query') is not None:
+            self.query = m.get('query')
+        if m.get('querySceneEnumCode') is not None:
+            self.query_scene_enum_code = m.get('querySceneEnumCode')
+        return self
+
+
 class QueryResultDataImages(TeaModel):
     def __init__(
         self,
@@ -247,14 +280,8 @@ class QueryResult(TeaModel):
     def __init__(
         self,
         data: List[QueryResultData] = None,
-        error_code: str = None,
-        error_message: str = None,
-        success: bool = None,
     ):
         self.data = data
-        self.error_code = error_code
-        self.error_message = error_message
-        self.success = success
 
     def validate(self):
         if self.data:
@@ -272,12 +299,6 @@ class QueryResult(TeaModel):
         if self.data is not None:
             for k in self.data:
                 result['data'].append(k.to_map() if k else None)
-        if self.error_code is not None:
-            result['errorCode'] = self.error_code
-        if self.error_message is not None:
-            result['errorMessage'] = self.error_message
-        if self.success is not None:
-            result['success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
@@ -287,12 +308,76 @@ class QueryResult(TeaModel):
             for k in m.get('data'):
                 temp_model = QueryResultData()
                 self.data.append(temp_model.from_map(k))
-        if m.get('errorCode') is not None:
-            self.error_code = m.get('errorCode')
-        if m.get('errorMessage') is not None:
-            self.error_message = m.get('errorMessage')
-        if m.get('success') is not None:
-            self.success = m.get('success')
+        return self
+
+
+class CommonQueryBySceneRequest(TeaModel):
+    def __init__(
+        self,
+        body: CommonAgentQuery = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = CommonAgentQuery()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CommonQueryBySceneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryResult = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryResult()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 

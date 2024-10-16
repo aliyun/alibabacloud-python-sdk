@@ -41,6 +41,104 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def common_query_by_scene_with_options(
+        self,
+        request: iqs20240712_models.CommonQueryBySceneRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20240712_models.CommonQueryBySceneResponse:
+        """
+        @summary 自然语言通用查询
+        
+        @param request: CommonQueryBySceneRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CommonQueryBySceneResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CommonQueryByScene',
+            version='2024-07-12',
+            protocol='HTTPS',
+            pathname=f'/amap-function-call-agent/iqs-agent-service/v2/nl/common',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iqs20240712_models.CommonQueryBySceneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def common_query_by_scene_with_options_async(
+        self,
+        request: iqs20240712_models.CommonQueryBySceneRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20240712_models.CommonQueryBySceneResponse:
+        """
+        @summary 自然语言通用查询
+        
+        @param request: CommonQueryBySceneRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CommonQueryBySceneResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CommonQueryByScene',
+            version='2024-07-12',
+            protocol='HTTPS',
+            pathname=f'/amap-function-call-agent/iqs-agent-service/v2/nl/common',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iqs20240712_models.CommonQueryBySceneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def common_query_by_scene(
+        self,
+        request: iqs20240712_models.CommonQueryBySceneRequest,
+    ) -> iqs20240712_models.CommonQueryBySceneResponse:
+        """
+        @summary 自然语言通用查询
+        
+        @param request: CommonQueryBySceneRequest
+        @return: CommonQueryBySceneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.common_query_by_scene_with_options(request, headers, runtime)
+
+    async def common_query_by_scene_async(
+        self,
+        request: iqs20240712_models.CommonQueryBySceneRequest,
+    ) -> iqs20240712_models.CommonQueryBySceneResponse:
+        """
+        @summary 自然语言通用查询
+        
+        @param request: CommonQueryBySceneRequest
+        @return: CommonQueryBySceneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.common_query_by_scene_with_options_async(request, headers, runtime)
+
     def query_attractions_with_options(
         self,
         request: iqs20240712_models.QueryAttractionsRequest,
@@ -146,7 +244,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iqs20240712_models.QueryHotelsResponse:
         """
-        @summary 餐厅查询
+        @summary 酒店查询
         
         @param request: QueryHotelsRequest
         @param headers: map
@@ -181,7 +279,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iqs20240712_models.QueryHotelsResponse:
         """
-        @summary 餐厅查询
+        @summary 酒店查询
         
         @param request: QueryHotelsRequest
         @param headers: map
@@ -214,7 +312,7 @@ class Client(OpenApiClient):
         request: iqs20240712_models.QueryHotelsRequest,
     ) -> iqs20240712_models.QueryHotelsResponse:
         """
-        @summary 餐厅查询
+        @summary 酒店查询
         
         @param request: QueryHotelsRequest
         @return: QueryHotelsResponse
@@ -228,7 +326,7 @@ class Client(OpenApiClient):
         request: iqs20240712_models.QueryHotelsRequest,
     ) -> iqs20240712_models.QueryHotelsResponse:
         """
-        @summary 餐厅查询
+        @summary 酒店查询
         
         @param request: QueryHotelsRequest
         @return: QueryHotelsResponse
