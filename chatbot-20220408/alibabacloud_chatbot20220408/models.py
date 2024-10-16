@@ -2229,6 +2229,92 @@ class CreateDSEntityValueResponse(TeaModel):
         return self
 
 
+class CreateDocRequestDocMetadataMetaCellInfoDTOList(TeaModel):
+    def __init__(
+        self,
+        field_code: str = None,
+        field_name: str = None,
+        value: str = None,
+    ):
+        self.field_code = field_code
+        self.field_name = field_name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.field_code is not None:
+            result['FieldCode'] = self.field_code
+        if self.field_name is not None:
+            result['FieldName'] = self.field_name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FieldCode') is not None:
+            self.field_code = m.get('FieldCode')
+        if m.get('FieldName') is not None:
+            self.field_name = m.get('FieldName')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateDocRequestDocMetadata(TeaModel):
+    def __init__(
+        self,
+        business_view_id: str = None,
+        business_view_name: str = None,
+        meta_cell_info_dtolist: List[CreateDocRequestDocMetadataMetaCellInfoDTOList] = None,
+    ):
+        self.business_view_id = business_view_id
+        self.business_view_name = business_view_name
+        self.meta_cell_info_dtolist = meta_cell_info_dtolist
+
+    def validate(self):
+        if self.meta_cell_info_dtolist:
+            for k in self.meta_cell_info_dtolist:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_view_id is not None:
+            result['BusinessViewId'] = self.business_view_id
+        if self.business_view_name is not None:
+            result['BusinessViewName'] = self.business_view_name
+        result['MetaCellInfoDTOList'] = []
+        if self.meta_cell_info_dtolist is not None:
+            for k in self.meta_cell_info_dtolist:
+                result['MetaCellInfoDTOList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessViewId') is not None:
+            self.business_view_id = m.get('BusinessViewId')
+        if m.get('BusinessViewName') is not None:
+            self.business_view_name = m.get('BusinessViewName')
+        self.meta_cell_info_dtolist = []
+        if m.get('MetaCellInfoDTOList') is not None:
+            for k in m.get('MetaCellInfoDTOList'):
+                temp_model = CreateDocRequestDocMetadataMetaCellInfoDTOList()
+                self.meta_cell_info_dtolist.append(temp_model.from_map(k))
+        return self
+
+
 class CreateDocRequest(TeaModel):
     def __init__(
         self,
@@ -2236,6 +2322,7 @@ class CreateDocRequest(TeaModel):
         category_id: int = None,
         config: str = None,
         content: str = None,
+        doc_metadata: List[CreateDocRequestDocMetadata] = None,
         end_date: str = None,
         meta: str = None,
         start_date: str = None,
@@ -2248,6 +2335,7 @@ class CreateDocRequest(TeaModel):
         self.category_id = category_id
         self.config = config
         self.content = content
+        self.doc_metadata = doc_metadata
         self.end_date = end_date
         self.meta = meta
         self.start_date = start_date
@@ -2257,7 +2345,10 @@ class CreateDocRequest(TeaModel):
         self.url = url
 
     def validate(self):
-        pass
+        if self.doc_metadata:
+            for k in self.doc_metadata:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2273,6 +2364,10 @@ class CreateDocRequest(TeaModel):
             result['Config'] = self.config
         if self.content is not None:
             result['Content'] = self.content
+        result['DocMetadata'] = []
+        if self.doc_metadata is not None:
+            for k in self.doc_metadata:
+                result['DocMetadata'].append(k.to_map() if k else None)
         if self.end_date is not None:
             result['EndDate'] = self.end_date
         if self.meta is not None:
@@ -2297,6 +2392,11 @@ class CreateDocRequest(TeaModel):
             self.config = m.get('Config')
         if m.get('Content') is not None:
             self.content = m.get('Content')
+        self.doc_metadata = []
+        if m.get('DocMetadata') is not None:
+            for k in m.get('DocMetadata'):
+                temp_model = CreateDocRequestDocMetadata()
+                self.doc_metadata.append(temp_model.from_map(k))
         if m.get('EndDate') is not None:
             self.end_date = m.get('EndDate')
         if m.get('Meta') is not None:
@@ -2319,6 +2419,7 @@ class CreateDocShrinkRequest(TeaModel):
         category_id: int = None,
         config: str = None,
         content: str = None,
+        doc_metadata_shrink: str = None,
         end_date: str = None,
         meta: str = None,
         start_date: str = None,
@@ -2331,6 +2432,7 @@ class CreateDocShrinkRequest(TeaModel):
         self.category_id = category_id
         self.config = config
         self.content = content
+        self.doc_metadata_shrink = doc_metadata_shrink
         self.end_date = end_date
         self.meta = meta
         self.start_date = start_date
@@ -2356,6 +2458,8 @@ class CreateDocShrinkRequest(TeaModel):
             result['Config'] = self.config
         if self.content is not None:
             result['Content'] = self.content
+        if self.doc_metadata_shrink is not None:
+            result['DocMetadata'] = self.doc_metadata_shrink
         if self.end_date is not None:
             result['EndDate'] = self.end_date
         if self.meta is not None:
@@ -2380,6 +2484,8 @@ class CreateDocShrinkRequest(TeaModel):
             self.config = m.get('Config')
         if m.get('Content') is not None:
             self.content = m.get('Content')
+        if m.get('DocMetadata') is not None:
+            self.doc_metadata_shrink = m.get('DocMetadata')
         if m.get('EndDate') is not None:
             self.end_date = m.get('EndDate')
         if m.get('Meta') is not None:
@@ -6044,6 +6150,92 @@ class DescribeDocResponseBodyDocInfo(TeaModel):
         return self
 
 
+class DescribeDocResponseBodyDocMetadataMetaCellInfoDTOList(TeaModel):
+    def __init__(
+        self,
+        field_code: str = None,
+        field_name: str = None,
+        value: str = None,
+    ):
+        self.field_code = field_code
+        self.field_name = field_name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.field_code is not None:
+            result['FieldCode'] = self.field_code
+        if self.field_name is not None:
+            result['FieldName'] = self.field_name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FieldCode') is not None:
+            self.field_code = m.get('FieldCode')
+        if m.get('FieldName') is not None:
+            self.field_name = m.get('FieldName')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeDocResponseBodyDocMetadata(TeaModel):
+    def __init__(
+        self,
+        business_view_id: str = None,
+        business_view_name: str = None,
+        meta_cell_info_dtolist: List[DescribeDocResponseBodyDocMetadataMetaCellInfoDTOList] = None,
+    ):
+        self.business_view_id = business_view_id
+        self.business_view_name = business_view_name
+        self.meta_cell_info_dtolist = meta_cell_info_dtolist
+
+    def validate(self):
+        if self.meta_cell_info_dtolist:
+            for k in self.meta_cell_info_dtolist:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_view_id is not None:
+            result['BusinessViewId'] = self.business_view_id
+        if self.business_view_name is not None:
+            result['BusinessViewName'] = self.business_view_name
+        result['MetaCellInfoDTOList'] = []
+        if self.meta_cell_info_dtolist is not None:
+            for k in self.meta_cell_info_dtolist:
+                result['MetaCellInfoDTOList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessViewId') is not None:
+            self.business_view_id = m.get('BusinessViewId')
+        if m.get('BusinessViewName') is not None:
+            self.business_view_name = m.get('BusinessViewName')
+        self.meta_cell_info_dtolist = []
+        if m.get('MetaCellInfoDTOList') is not None:
+            for k in m.get('MetaCellInfoDTOList'):
+                temp_model = DescribeDocResponseBodyDocMetadataMetaCellInfoDTOList()
+                self.meta_cell_info_dtolist.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeDocResponseBodyDocTags(TeaModel):
     def __init__(
         self,
@@ -6105,6 +6297,7 @@ class DescribeDocResponseBody(TeaModel):
         create_user_id: int = None,
         create_user_name: str = None,
         doc_info: DescribeDocResponseBodyDocInfo = None,
+        doc_metadata: List[DescribeDocResponseBodyDocMetadata] = None,
         doc_name: str = None,
         doc_tags: List[DescribeDocResponseBodyDocTags] = None,
         effect_status: int = None,
@@ -6130,6 +6323,7 @@ class DescribeDocResponseBody(TeaModel):
         self.create_user_id = create_user_id
         self.create_user_name = create_user_name
         self.doc_info = doc_info
+        self.doc_metadata = doc_metadata
         self.doc_name = doc_name
         self.doc_tags = doc_tags
         self.effect_status = effect_status
@@ -6152,6 +6346,10 @@ class DescribeDocResponseBody(TeaModel):
     def validate(self):
         if self.doc_info:
             self.doc_info.validate()
+        if self.doc_metadata:
+            for k in self.doc_metadata:
+                if k:
+                    k.validate()
         if self.doc_tags:
             for k in self.doc_tags:
                 if k:
@@ -6177,6 +6375,10 @@ class DescribeDocResponseBody(TeaModel):
             result['CreateUserName'] = self.create_user_name
         if self.doc_info is not None:
             result['DocInfo'] = self.doc_info.to_map()
+        result['DocMetadata'] = []
+        if self.doc_metadata is not None:
+            for k in self.doc_metadata:
+                result['DocMetadata'].append(k.to_map() if k else None)
         if self.doc_name is not None:
             result['DocName'] = self.doc_name
         result['DocTags'] = []
@@ -6232,6 +6434,11 @@ class DescribeDocResponseBody(TeaModel):
         if m.get('DocInfo') is not None:
             temp_model = DescribeDocResponseBodyDocInfo()
             self.doc_info = temp_model.from_map(m['DocInfo'])
+        self.doc_metadata = []
+        if m.get('DocMetadata') is not None:
+            for k in m.get('DocMetadata'):
+                temp_model = DescribeDocResponseBodyDocMetadata()
+                self.doc_metadata.append(temp_model.from_map(k))
         if m.get('DocName') is not None:
             self.doc_name = m.get('DocName')
         self.doc_tags = []
@@ -11082,6 +11289,127 @@ class ListTongyiChatHistorysResponse(TeaModel):
         return self
 
 
+class ListTongyiConversationLogsRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        robot_instance_id: str = None,
+        session_id: str = None,
+    ):
+        self.agent_key = agent_key
+        # This parameter is required.
+        self.robot_instance_id = robot_instance_id
+        # This parameter is required.
+        self.session_id = session_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.robot_instance_id is not None:
+            result['RobotInstanceId'] = self.robot_instance_id
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('RobotInstanceId') is not None:
+            self.robot_instance_id = m.get('RobotInstanceId')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        return self
+
+
+class ListTongyiConversationLogsResponseBody(TeaModel):
+    def __init__(
+        self,
+        cost_time: str = None,
+        datas: List[Dict[str, Any]] = None,
+        request_id: str = None,
+    ):
+        self.cost_time = cost_time
+        self.datas = datas
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost_time is not None:
+            result['CostTime'] = self.cost_time
+        if self.datas is not None:
+            result['Datas'] = self.datas
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CostTime') is not None:
+            self.cost_time = m.get('CostTime')
+        if m.get('Datas') is not None:
+            self.datas = m.get('Datas')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListTongyiConversationLogsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTongyiConversationLogsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTongyiConversationLogsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListUserSayRequest(TeaModel):
     def __init__(
         self,
@@ -13682,6 +14010,92 @@ class UpdateDSEntityValueResponse(TeaModel):
         return self
 
 
+class UpdateDocRequestDocMetadataMetaCellInfoDTOList(TeaModel):
+    def __init__(
+        self,
+        field_code: str = None,
+        field_name: str = None,
+        value: str = None,
+    ):
+        self.field_code = field_code
+        self.field_name = field_name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.field_code is not None:
+            result['FieldCode'] = self.field_code
+        if self.field_name is not None:
+            result['FieldName'] = self.field_name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FieldCode') is not None:
+            self.field_code = m.get('FieldCode')
+        if m.get('FieldName') is not None:
+            self.field_name = m.get('FieldName')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class UpdateDocRequestDocMetadata(TeaModel):
+    def __init__(
+        self,
+        business_view_id: str = None,
+        business_view_name: str = None,
+        meta_cell_info_dtolist: List[UpdateDocRequestDocMetadataMetaCellInfoDTOList] = None,
+    ):
+        self.business_view_id = business_view_id
+        self.business_view_name = business_view_name
+        self.meta_cell_info_dtolist = meta_cell_info_dtolist
+
+    def validate(self):
+        if self.meta_cell_info_dtolist:
+            for k in self.meta_cell_info_dtolist:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_view_id is not None:
+            result['BusinessViewId'] = self.business_view_id
+        if self.business_view_name is not None:
+            result['BusinessViewName'] = self.business_view_name
+        result['MetaCellInfoDTOList'] = []
+        if self.meta_cell_info_dtolist is not None:
+            for k in self.meta_cell_info_dtolist:
+                result['MetaCellInfoDTOList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessViewId') is not None:
+            self.business_view_id = m.get('BusinessViewId')
+        if m.get('BusinessViewName') is not None:
+            self.business_view_name = m.get('BusinessViewName')
+        self.meta_cell_info_dtolist = []
+        if m.get('MetaCellInfoDTOList') is not None:
+            for k in m.get('MetaCellInfoDTOList'):
+                temp_model = UpdateDocRequestDocMetadataMetaCellInfoDTOList()
+                self.meta_cell_info_dtolist.append(temp_model.from_map(k))
+        return self
+
+
 class UpdateDocRequest(TeaModel):
     def __init__(
         self,
@@ -13689,6 +14103,7 @@ class UpdateDocRequest(TeaModel):
         category_id: int = None,
         config: str = None,
         content: str = None,
+        doc_metadata: List[UpdateDocRequestDocMetadata] = None,
         doc_name: str = None,
         end_date: str = None,
         knowledge_id: int = None,
@@ -13701,6 +14116,7 @@ class UpdateDocRequest(TeaModel):
         self.category_id = category_id
         self.config = config
         self.content = content
+        self.doc_metadata = doc_metadata
         self.doc_name = doc_name
         self.end_date = end_date
         # This parameter is required.
@@ -13711,7 +14127,10 @@ class UpdateDocRequest(TeaModel):
         self.title = title
 
     def validate(self):
-        pass
+        if self.doc_metadata:
+            for k in self.doc_metadata:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -13727,6 +14146,10 @@ class UpdateDocRequest(TeaModel):
             result['Config'] = self.config
         if self.content is not None:
             result['Content'] = self.content
+        result['DocMetadata'] = []
+        if self.doc_metadata is not None:
+            for k in self.doc_metadata:
+                result['DocMetadata'].append(k.to_map() if k else None)
         if self.doc_name is not None:
             result['DocName'] = self.doc_name
         if self.end_date is not None:
@@ -13753,6 +14176,11 @@ class UpdateDocRequest(TeaModel):
             self.config = m.get('Config')
         if m.get('Content') is not None:
             self.content = m.get('Content')
+        self.doc_metadata = []
+        if m.get('DocMetadata') is not None:
+            for k in m.get('DocMetadata'):
+                temp_model = UpdateDocRequestDocMetadata()
+                self.doc_metadata.append(temp_model.from_map(k))
         if m.get('DocName') is not None:
             self.doc_name = m.get('DocName')
         if m.get('EndDate') is not None:
@@ -13777,6 +14205,7 @@ class UpdateDocShrinkRequest(TeaModel):
         category_id: int = None,
         config: str = None,
         content: str = None,
+        doc_metadata_shrink: str = None,
         doc_name: str = None,
         end_date: str = None,
         knowledge_id: int = None,
@@ -13789,6 +14218,7 @@ class UpdateDocShrinkRequest(TeaModel):
         self.category_id = category_id
         self.config = config
         self.content = content
+        self.doc_metadata_shrink = doc_metadata_shrink
         self.doc_name = doc_name
         self.end_date = end_date
         # This parameter is required.
@@ -13815,6 +14245,8 @@ class UpdateDocShrinkRequest(TeaModel):
             result['Config'] = self.config
         if self.content is not None:
             result['Content'] = self.content
+        if self.doc_metadata_shrink is not None:
+            result['DocMetadata'] = self.doc_metadata_shrink
         if self.doc_name is not None:
             result['DocName'] = self.doc_name
         if self.end_date is not None:
@@ -13841,6 +14273,8 @@ class UpdateDocShrinkRequest(TeaModel):
             self.config = m.get('Config')
         if m.get('Content') is not None:
             self.content = m.get('Content')
+        if m.get('DocMetadata') is not None:
+            self.doc_metadata_shrink = m.get('DocMetadata')
         if m.get('DocName') is not None:
             self.doc_name = m.get('DocName')
         if m.get('EndDate') is not None:

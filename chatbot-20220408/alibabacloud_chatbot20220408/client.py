@@ -1284,6 +1284,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = chatbot_20220408_models.CreateDocShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.doc_metadata):
+            request.doc_metadata_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.doc_metadata, 'DocMetadata', 'json')
         if not UtilClient.is_unset(tmp_req.tag_ids):
             request.tag_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_ids, 'TagIds', 'json')
         query = {}
@@ -1295,6 +1297,8 @@ class Client(OpenApiClient):
             query['Config'] = request.config
         if not UtilClient.is_unset(request.content):
             query['Content'] = request.content
+        if not UtilClient.is_unset(request.doc_metadata_shrink):
+            query['DocMetadata'] = request.doc_metadata_shrink
         if not UtilClient.is_unset(request.end_date):
             query['EndDate'] = request.end_date
         if not UtilClient.is_unset(request.meta):
@@ -1341,6 +1345,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = chatbot_20220408_models.CreateDocShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.doc_metadata):
+            request.doc_metadata_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.doc_metadata, 'DocMetadata', 'json')
         if not UtilClient.is_unset(tmp_req.tag_ids):
             request.tag_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_ids, 'TagIds', 'json')
         query = {}
@@ -1352,6 +1358,8 @@ class Client(OpenApiClient):
             query['Config'] = request.config
         if not UtilClient.is_unset(request.content):
             query['Content'] = request.content
+        if not UtilClient.is_unset(request.doc_metadata_shrink):
+            query['DocMetadata'] = request.doc_metadata_shrink
         if not UtilClient.is_unset(request.end_date):
             query['EndDate'] = request.end_date
         if not UtilClient.is_unset(request.meta):
@@ -6969,6 +6977,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_tongyi_chat_historys_with_options_async(request, runtime)
 
+    def list_tongyi_conversation_logs_with_options(
+        self,
+        request: chatbot_20220408_models.ListTongyiConversationLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.ListTongyiConversationLogsResponse:
+        """
+        @summary 查询通义晓蜜的单个会话对话记录
+        
+        @param request: ListTongyiConversationLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTongyiConversationLogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTongyiConversationLogs',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.ListTongyiConversationLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tongyi_conversation_logs_with_options_async(
+        self,
+        request: chatbot_20220408_models.ListTongyiConversationLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.ListTongyiConversationLogsResponse:
+        """
+        @summary 查询通义晓蜜的单个会话对话记录
+        
+        @param request: ListTongyiConversationLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTongyiConversationLogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTongyiConversationLogs',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.ListTongyiConversationLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tongyi_conversation_logs(
+        self,
+        request: chatbot_20220408_models.ListTongyiConversationLogsRequest,
+    ) -> chatbot_20220408_models.ListTongyiConversationLogsResponse:
+        """
+        @summary 查询通义晓蜜的单个会话对话记录
+        
+        @param request: ListTongyiConversationLogsRequest
+        @return: ListTongyiConversationLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_tongyi_conversation_logs_with_options(request, runtime)
+
+    async def list_tongyi_conversation_logs_async(
+        self,
+        request: chatbot_20220408_models.ListTongyiConversationLogsRequest,
+    ) -> chatbot_20220408_models.ListTongyiConversationLogsResponse:
+        """
+        @summary 查询通义晓蜜的单个会话对话记录
+        
+        @param request: ListTongyiConversationLogsRequest
+        @return: ListTongyiConversationLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tongyi_conversation_logs_with_options_async(request, runtime)
+
     def list_user_say_with_options(
         self,
         request: chatbot_20220408_models.ListUserSayRequest,
@@ -8212,6 +8324,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = chatbot_20220408_models.UpdateDocShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.doc_metadata):
+            request.doc_metadata_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.doc_metadata, 'DocMetadata', 'json')
         if not UtilClient.is_unset(tmp_req.tag_ids):
             request.tag_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_ids, 'TagIds', 'json')
         query = {}
@@ -8223,6 +8337,8 @@ class Client(OpenApiClient):
             query['Config'] = request.config
         if not UtilClient.is_unset(request.content):
             query['Content'] = request.content
+        if not UtilClient.is_unset(request.doc_metadata_shrink):
+            query['DocMetadata'] = request.doc_metadata_shrink
         if not UtilClient.is_unset(request.doc_name):
             query['DocName'] = request.doc_name
         if not UtilClient.is_unset(request.end_date):
@@ -8271,6 +8387,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = chatbot_20220408_models.UpdateDocShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.doc_metadata):
+            request.doc_metadata_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.doc_metadata, 'DocMetadata', 'json')
         if not UtilClient.is_unset(tmp_req.tag_ids):
             request.tag_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_ids, 'TagIds', 'json')
         query = {}
@@ -8282,6 +8400,8 @@ class Client(OpenApiClient):
             query['Config'] = request.config
         if not UtilClient.is_unset(request.content):
             query['Content'] = request.content
+        if not UtilClient.is_unset(request.doc_metadata_shrink):
+            query['DocMetadata'] = request.doc_metadata_shrink
         if not UtilClient.is_unset(request.doc_name):
             query['DocName'] = request.doc_name
         if not UtilClient.is_unset(request.end_date):

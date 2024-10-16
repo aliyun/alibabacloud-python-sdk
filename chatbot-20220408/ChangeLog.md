@@ -1,3 +1,10 @@
+2024-10-16 Version: 2.2.0
+- Support API ListTongyiConversationLogs.
+- Update API CreateDoc: add param DocMetadata.
+- Update API DescribeDoc: update response param.
+- Update API UpdateDoc: add param DocMetadata.
+
+
 2024-08-07 Version: 2.1.1
 - Update API GenerateUserAccessToken: update param Email.
 - Update API GenerateUserAccessToken: update param ExpireTime.
