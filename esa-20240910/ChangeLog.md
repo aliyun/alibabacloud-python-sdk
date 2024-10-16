@@ -1,3 +1,22 @@
+2024-10-16 Version: 2.3.0
+- Support API CommitRoutineStagingCode.
+- Support API CreateRoutine.
+- Support API CreateRoutineRelatedRecord.
+- Support API CreateRoutineRelatedRoute.
+- Support API DeleteRoutine.
+- Support API DeleteRoutineCodeVersion.
+- Support API DeleteRoutineRelatedRecord.
+- Support API DeleteRoutineRelatedRoute.
+- Support API GetErService.
+- Support API GetRoutine.
+- Support API GetRoutineStagingCodeUploadInfo.
+- Support API GetRoutineStagingEnvIp.
+- Support API GetRoutineUserInfo.
+- Support API ListRoutineCanaryAreas.
+- Support API ListRoutineOptionalSpecs.
+- Support API PublishRoutineCodeVersion.
+
+
 2024-10-12 Version: 2.2.0
 - Support API ListClientCertificates.
 

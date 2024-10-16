@@ -4577,6 +4577,114 @@ class CheckUserProjectNameResponse(TeaModel):
         return self
 
 
+class CommitRoutineStagingCodeRequest(TeaModel):
+    def __init__(
+        self,
+        code_description: str = None,
+        name: str = None,
+    ):
+        self.code_description = code_description
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code_description is not None:
+            result['CodeDescription'] = self.code_description
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CodeDescription') is not None:
+            self.code_description = m.get('CodeDescription')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class CommitRoutineStagingCodeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code_version: str = None,
+        request_id: str = None,
+    ):
+        self.code_version = code_version
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code_version is not None:
+            result['CodeVersion'] = self.code_version
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CodeVersion') is not None:
+            self.code_version = m.get('CodeVersion')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CommitRoutineStagingCodeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CommitRoutineStagingCodeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CommitRoutineStagingCodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateCustomScenePolicyRequest(TeaModel):
     def __init__(
         self,
@@ -5577,6 +5685,348 @@ class CreateRecordResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateRecordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateRoutineRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+        spec_name: str = None,
+    ):
+        self.description = description
+        self.name = name
+        self.spec_name = spec_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.spec_name is not None:
+            result['SpecName'] = self.spec_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SpecName') is not None:
+            self.spec_name = m.get('SpecName')
+        return self
+
+
+class CreateRoutineResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        status: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class CreateRoutineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateRoutineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateRoutineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateRoutineRelatedRecordRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        record_name: str = None,
+        site_id: int = None,
+    ):
+        self.name = name
+        self.record_name = record_name
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.record_name is not None:
+            result['RecordName'] = self.record_name
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RecordName') is not None:
+            self.record_name = m.get('RecordName')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class CreateRoutineRelatedRecordResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        status: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class CreateRoutineRelatedRecordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateRoutineRelatedRecordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateRoutineRelatedRecordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateRoutineRelatedRouteRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        route: str = None,
+        site_id: int = None,
+    ):
+        self.name = name
+        self.route = route
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.route is not None:
+            result['Route'] = self.route
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Route') is not None:
+            self.route = m.get('Route')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class CreateRoutineRelatedRouteResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        status: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class CreateRoutineRelatedRouteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateRoutineRelatedRouteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateRoutineRelatedRouteResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9358,6 +9808,456 @@ class DeleteRecordResponse(TeaModel):
         return self
 
 
+class DeleteRoutineRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class DeleteRoutineResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        status: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DeleteRoutineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteRoutineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteRoutineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteRoutineCodeVersionRequest(TeaModel):
+    def __init__(
+        self,
+        code_version: str = None,
+        name: str = None,
+    ):
+        self.code_version = code_version
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code_version is not None:
+            result['CodeVersion'] = self.code_version
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CodeVersion') is not None:
+            self.code_version = m.get('CodeVersion')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class DeleteRoutineCodeVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        status: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DeleteRoutineCodeVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteRoutineCodeVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteRoutineCodeVersionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteRoutineRelatedRecordRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        record_id: int = None,
+        record_name: str = None,
+        site_id: int = None,
+    ):
+        self.name = name
+        self.record_id = record_id
+        self.record_name = record_name
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.record_id is not None:
+            result['RecordId'] = self.record_id
+        if self.record_name is not None:
+            result['RecordName'] = self.record_name
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RecordId') is not None:
+            self.record_id = m.get('RecordId')
+        if m.get('RecordName') is not None:
+            self.record_name = m.get('RecordName')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class DeleteRoutineRelatedRecordResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        status: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DeleteRoutineRelatedRecordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteRoutineRelatedRecordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteRoutineRelatedRecordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteRoutineRelatedRouteRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        route: str = None,
+        route_id: str = None,
+        site_id: int = None,
+    ):
+        self.name = name
+        self.route = route
+        self.route_id = route_id
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.route is not None:
+            result['Route'] = self.route
+        if self.route_id is not None:
+            result['RouteId'] = self.route_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Route') is not None:
+            self.route = m.get('Route')
+        if m.get('RouteId') is not None:
+            self.route_id = m.get('RouteId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class DeleteRoutineRelatedRouteResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        status: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DeleteRoutineRelatedRouteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteRoutineRelatedRouteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteRoutineRelatedRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteScheduledPreloadExecutionRequest(TeaModel):
     def __init__(
         self,
@@ -12249,6 +13149,120 @@ class GetCacheReserveSpecificationResponse(TeaModel):
         return self
 
 
+class GetErServiceRequest(TeaModel):
+    def __init__(
+        self,
+        owner_id: int = None,
+        security_token: str = None,
+    ):
+        self.owner_id = owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class GetErServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        plan_name: str = None,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.plan_name = plan_name
+        # Id of the request
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.plan_name is not None:
+            result['PlanName'] = self.plan_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PlanName') is not None:
+            self.plan_name = m.get('PlanName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetErServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetErServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetErServiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetKvRequest(TeaModel):
     def __init__(
         self,
@@ -13591,6 +14605,676 @@ class GetRecordResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetRecordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetRoutineRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class GetRoutineResponseBodyCodeVersions(TeaModel):
+    def __init__(
+        self,
+        code_description: str = None,
+        code_version: str = None,
+        create_time: str = None,
+    ):
+        self.code_description = code_description
+        self.code_version = code_version
+        self.create_time = create_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code_description is not None:
+            result['CodeDescription'] = self.code_description
+        if self.code_version is not None:
+            result['CodeVersion'] = self.code_version
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CodeDescription') is not None:
+            self.code_description = m.get('CodeDescription')
+        if m.get('CodeVersion') is not None:
+            self.code_version = m.get('CodeVersion')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        return self
+
+
+class GetRoutineResponseBodyEnvs(TeaModel):
+    def __init__(
+        self,
+        canary_area_list: List[str] = None,
+        canary_code_version: str = None,
+        code_version: str = None,
+        env: str = None,
+        spec_name: str = None,
+    ):
+        self.canary_area_list = canary_area_list
+        self.canary_code_version = canary_code_version
+        self.code_version = code_version
+        self.env = env
+        self.spec_name = spec_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.canary_area_list is not None:
+            result['CanaryAreaList'] = self.canary_area_list
+        if self.canary_code_version is not None:
+            result['CanaryCodeVersion'] = self.canary_code_version
+        if self.code_version is not None:
+            result['CodeVersion'] = self.code_version
+        if self.env is not None:
+            result['Env'] = self.env
+        if self.spec_name is not None:
+            result['SpecName'] = self.spec_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CanaryAreaList') is not None:
+            self.canary_area_list = m.get('CanaryAreaList')
+        if m.get('CanaryCodeVersion') is not None:
+            self.canary_code_version = m.get('CanaryCodeVersion')
+        if m.get('CodeVersion') is not None:
+            self.code_version = m.get('CodeVersion')
+        if m.get('Env') is not None:
+            self.env = m.get('Env')
+        if m.get('SpecName') is not None:
+            self.spec_name = m.get('SpecName')
+        return self
+
+
+class GetRoutineResponseBodyRelatedRecords(TeaModel):
+    def __init__(
+        self,
+        record_id: int = None,
+        record_name: str = None,
+        site_id: int = None,
+        site_name: str = None,
+    ):
+        self.record_id = record_id
+        self.record_name = record_name
+        self.site_id = site_id
+        self.site_name = site_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.record_id is not None:
+            result['RecordId'] = self.record_id
+        if self.record_name is not None:
+            result['RecordName'] = self.record_name
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RecordId') is not None:
+            self.record_id = m.get('RecordId')
+        if m.get('RecordName') is not None:
+            self.record_name = m.get('RecordName')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        return self
+
+
+class GetRoutineResponseBodyRelatedRoutes(TeaModel):
+    def __init__(
+        self,
+        route: str = None,
+        route_id: str = None,
+        site_id: int = None,
+        site_name: str = None,
+    ):
+        self.route = route
+        self.route_id = route_id
+        self.site_id = site_id
+        self.site_name = site_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.route is not None:
+            result['Route'] = self.route
+        if self.route_id is not None:
+            result['RouteId'] = self.route_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_name is not None:
+            result['SiteName'] = self.site_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Route') is not None:
+            self.route = m.get('Route')
+        if m.get('RouteId') is not None:
+            self.route_id = m.get('RouteId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteName') is not None:
+            self.site_name = m.get('SiteName')
+        return self
+
+
+class GetRoutineResponseBody(TeaModel):
+    def __init__(
+        self,
+        code_versions: List[GetRoutineResponseBodyCodeVersions] = None,
+        create_time: str = None,
+        default_related_record: str = None,
+        description: str = None,
+        envs: List[GetRoutineResponseBodyEnvs] = None,
+        related_records: List[GetRoutineResponseBodyRelatedRecords] = None,
+        related_routes: List[GetRoutineResponseBodyRelatedRoutes] = None,
+        request_id: str = None,
+    ):
+        self.code_versions = code_versions
+        self.create_time = create_time
+        self.default_related_record = default_related_record
+        self.description = description
+        self.envs = envs
+        self.related_records = related_records
+        self.related_routes = related_routes
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.code_versions:
+            for k in self.code_versions:
+                if k:
+                    k.validate()
+        if self.envs:
+            for k in self.envs:
+                if k:
+                    k.validate()
+        if self.related_records:
+            for k in self.related_records:
+                if k:
+                    k.validate()
+        if self.related_routes:
+            for k in self.related_routes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CodeVersions'] = []
+        if self.code_versions is not None:
+            for k in self.code_versions:
+                result['CodeVersions'].append(k.to_map() if k else None)
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.default_related_record is not None:
+            result['DefaultRelatedRecord'] = self.default_related_record
+        if self.description is not None:
+            result['Description'] = self.description
+        result['Envs'] = []
+        if self.envs is not None:
+            for k in self.envs:
+                result['Envs'].append(k.to_map() if k else None)
+        result['RelatedRecords'] = []
+        if self.related_records is not None:
+            for k in self.related_records:
+                result['RelatedRecords'].append(k.to_map() if k else None)
+        result['RelatedRoutes'] = []
+        if self.related_routes is not None:
+            for k in self.related_routes:
+                result['RelatedRoutes'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.code_versions = []
+        if m.get('CodeVersions') is not None:
+            for k in m.get('CodeVersions'):
+                temp_model = GetRoutineResponseBodyCodeVersions()
+                self.code_versions.append(temp_model.from_map(k))
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DefaultRelatedRecord') is not None:
+            self.default_related_record = m.get('DefaultRelatedRecord')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.envs = []
+        if m.get('Envs') is not None:
+            for k in m.get('Envs'):
+                temp_model = GetRoutineResponseBodyEnvs()
+                self.envs.append(temp_model.from_map(k))
+        self.related_records = []
+        if m.get('RelatedRecords') is not None:
+            for k in m.get('RelatedRecords'):
+                temp_model = GetRoutineResponseBodyRelatedRecords()
+                self.related_records.append(temp_model.from_map(k))
+        self.related_routes = []
+        if m.get('RelatedRoutes') is not None:
+            for k in m.get('RelatedRoutes'):
+                temp_model = GetRoutineResponseBodyRelatedRoutes()
+                self.related_routes.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetRoutineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetRoutineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetRoutineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetRoutineStagingCodeUploadInfoRequest(TeaModel):
+    def __init__(
+        self,
+        code_description: str = None,
+        name: str = None,
+    ):
+        self.code_description = code_description
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code_description is not None:
+            result['CodeDescription'] = self.code_description
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CodeDescription') is not None:
+            self.code_description = m.get('CodeDescription')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class GetRoutineStagingCodeUploadInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        code_version: str = None,
+        oss_post_config: Dict[str, Any] = None,
+        request_id: str = None,
+    ):
+        self.code_version = code_version
+        self.oss_post_config = oss_post_config
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code_version is not None:
+            result['CodeVersion'] = self.code_version
+        if self.oss_post_config is not None:
+            result['OssPostConfig'] = self.oss_post_config
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CodeVersion') is not None:
+            self.code_version = m.get('CodeVersion')
+        if m.get('OssPostConfig') is not None:
+            self.oss_post_config = m.get('OssPostConfig')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetRoutineStagingCodeUploadInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetRoutineStagingCodeUploadInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetRoutineStagingCodeUploadInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetRoutineStagingEnvIpResponseBody(TeaModel):
+    def __init__(
+        self,
+        ipv4: List[str] = None,
+        request_id: str = None,
+    ):
+        self.ipv4 = ipv4
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ipv4 is not None:
+            result['IPV4'] = self.ipv4
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IPV4') is not None:
+            self.ipv4 = m.get('IPV4')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetRoutineStagingEnvIpResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetRoutineStagingEnvIpResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetRoutineStagingEnvIpResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetRoutineUserInfoResponseBodyRoutines(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        description: str = None,
+        routine_name: str = None,
+    ):
+        self.create_time = create_time
+        self.description = description
+        self.routine_name = routine_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.routine_name is not None:
+            result['RoutineName'] = self.routine_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RoutineName') is not None:
+            self.routine_name = m.get('RoutineName')
+        return self
+
+
+class GetRoutineUserInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        routines: List[GetRoutineUserInfoResponseBodyRoutines] = None,
+        subdomains: List[str] = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.routines = routines
+        self.subdomains = subdomains
+
+    def validate(self):
+        if self.routines:
+            for k in self.routines:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Routines'] = []
+        if self.routines is not None:
+            for k in self.routines:
+                result['Routines'].append(k.to_map() if k else None)
+        if self.subdomains is not None:
+            result['Subdomains'] = self.subdomains
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.routines = []
+        if m.get('Routines') is not None:
+            for k in m.get('Routines'):
+                temp_model = GetRoutineUserInfoResponseBodyRoutines()
+                self.routines.append(temp_model.from_map(k))
+        if m.get('Subdomains') is not None:
+            self.subdomains = m.get('Subdomains')
+        return self
+
+
+class GetRoutineUserInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetRoutineUserInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetRoutineUserInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -19831,6 +21515,197 @@ class ListRecordsResponse(TeaModel):
         return self
 
 
+class ListRoutineCanaryAreasResponseBody(TeaModel):
+    def __init__(
+        self,
+        canary_areas: List[str] = None,
+        request_id: str = None,
+    ):
+        self.canary_areas = canary_areas
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.canary_areas is not None:
+            result['CanaryAreas'] = self.canary_areas
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CanaryAreas') is not None:
+            self.canary_areas = m.get('CanaryAreas')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListRoutineCanaryAreasResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListRoutineCanaryAreasResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListRoutineCanaryAreasResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListRoutineOptionalSpecsResponseBodySpecs(TeaModel):
+    def __init__(
+        self,
+        is_available: bool = None,
+        spec_name: str = None,
+    ):
+        self.is_available = is_available
+        self.spec_name = spec_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_available is not None:
+            result['IsAvailable'] = self.is_available
+        if self.spec_name is not None:
+            result['SpecName'] = self.spec_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsAvailable') is not None:
+            self.is_available = m.get('IsAvailable')
+        if m.get('SpecName') is not None:
+            self.spec_name = m.get('SpecName')
+        return self
+
+
+class ListRoutineOptionalSpecsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        specs: List[ListRoutineOptionalSpecsResponseBodySpecs] = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.specs = specs
+
+    def validate(self):
+        if self.specs:
+            for k in self.specs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Specs'] = []
+        if self.specs is not None:
+            for k in self.specs:
+                result['Specs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.specs = []
+        if m.get('Specs') is not None:
+            for k in m.get('Specs'):
+                temp_model = ListRoutineOptionalSpecsResponseBodySpecs()
+                self.specs.append(temp_model.from_map(k))
+        return self
+
+
+class ListRoutineOptionalSpecsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListRoutineOptionalSpecsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListRoutineOptionalSpecsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListScheduledPreloadExecutionsRequest(TeaModel):
     def __init__(
         self,
@@ -24394,6 +26269,183 @@ class PreloadCachesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PreloadCachesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PublishRoutineCodeVersionRequest(TeaModel):
+    def __init__(
+        self,
+        canary_area_list: List[str] = None,
+        canary_code_version: str = None,
+        code_version: str = None,
+        env: str = None,
+        name: str = None,
+    ):
+        self.canary_area_list = canary_area_list
+        self.canary_code_version = canary_code_version
+        self.code_version = code_version
+        self.env = env
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.canary_area_list is not None:
+            result['CanaryAreaList'] = self.canary_area_list
+        if self.canary_code_version is not None:
+            result['CanaryCodeVersion'] = self.canary_code_version
+        if self.code_version is not None:
+            result['CodeVersion'] = self.code_version
+        if self.env is not None:
+            result['Env'] = self.env
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CanaryAreaList') is not None:
+            self.canary_area_list = m.get('CanaryAreaList')
+        if m.get('CanaryCodeVersion') is not None:
+            self.canary_code_version = m.get('CanaryCodeVersion')
+        if m.get('CodeVersion') is not None:
+            self.code_version = m.get('CodeVersion')
+        if m.get('Env') is not None:
+            self.env = m.get('Env')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class PublishRoutineCodeVersionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        canary_area_list_shrink: str = None,
+        canary_code_version: str = None,
+        code_version: str = None,
+        env: str = None,
+        name: str = None,
+    ):
+        self.canary_area_list_shrink = canary_area_list_shrink
+        self.canary_code_version = canary_code_version
+        self.code_version = code_version
+        self.env = env
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.canary_area_list_shrink is not None:
+            result['CanaryAreaList'] = self.canary_area_list_shrink
+        if self.canary_code_version is not None:
+            result['CanaryCodeVersion'] = self.canary_code_version
+        if self.code_version is not None:
+            result['CodeVersion'] = self.code_version
+        if self.env is not None:
+            result['Env'] = self.env
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CanaryAreaList') is not None:
+            self.canary_area_list_shrink = m.get('CanaryAreaList')
+        if m.get('CanaryCodeVersion') is not None:
+            self.canary_code_version = m.get('CanaryCodeVersion')
+        if m.get('CodeVersion') is not None:
+            self.code_version = m.get('CodeVersion')
+        if m.get('Env') is not None:
+            self.env = m.get('Env')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class PublishRoutineCodeVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        code_version: str = None,
+        request_id: str = None,
+    ):
+        self.code_version = code_version
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code_version is not None:
+            result['CodeVersion'] = self.code_version
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CodeVersion') is not None:
+            self.code_version = m.get('CodeVersion')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class PublishRoutineCodeVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PublishRoutineCodeVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PublishRoutineCodeVersionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
