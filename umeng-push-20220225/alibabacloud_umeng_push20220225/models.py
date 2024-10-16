@@ -166,20 +166,99 @@ class Body(TeaModel):
         return self
 
 
+class Message2ThirdChannel(TeaModel):
+    def __init__(
+        self,
+        set_badge: int = None,
+        add_badge: int = None,
+        big_body: str = None,
+        big_title: str = None,
+        expand_image: str = None,
+        img: str = None,
+        sound: str = None,
+        text: str = None,
+        title: str = None,
+    ):
+        self.set_badge = set_badge
+        self.add_badge = add_badge
+        self.big_body = big_body
+        self.big_title = big_title
+        self.expand_image = expand_image
+        self.img = img
+        self.sound = sound
+        self.text = text
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.set_badge is not None:
+            result['SetBadge'] = self.set_badge
+        if self.add_badge is not None:
+            result['addBadge'] = self.add_badge
+        if self.big_body is not None:
+            result['bigBody'] = self.big_body
+        if self.big_title is not None:
+            result['bigTitle'] = self.big_title
+        if self.expand_image is not None:
+            result['expandImage'] = self.expand_image
+        if self.img is not None:
+            result['img'] = self.img
+        if self.sound is not None:
+            result['sound'] = self.sound
+        if self.text is not None:
+            result['text'] = self.text
+        if self.title is not None:
+            result['title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SetBadge') is not None:
+            self.set_badge = m.get('SetBadge')
+        if m.get('addBadge') is not None:
+            self.add_badge = m.get('addBadge')
+        if m.get('bigBody') is not None:
+            self.big_body = m.get('bigBody')
+        if m.get('bigTitle') is not None:
+            self.big_title = m.get('bigTitle')
+        if m.get('expandImage') is not None:
+            self.expand_image = m.get('expandImage')
+        if m.get('img') is not None:
+            self.img = m.get('img')
+        if m.get('sound') is not None:
+            self.sound = m.get('sound')
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        return self
+
+
 class AndroidPayload(TeaModel):
     def __init__(
         self,
         body: Body = None,
         display_type: str = None,
         extra: Dict[str, Any] = None,
+        message_2third_channel: Message2ThirdChannel = None,
     ):
         self.body = body
         self.display_type = display_type
         self.extra = extra
+        self.message_2third_channel = message_2third_channel
 
     def validate(self):
         if self.body:
             self.body.validate()
+        if self.message_2third_channel:
+            self.message_2third_channel.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -193,6 +272,8 @@ class AndroidPayload(TeaModel):
             result['displayType'] = self.display_type
         if self.extra is not None:
             result['extra'] = self.extra
+        if self.message_2third_channel is not None:
+            result['message2ThirdChannel'] = self.message_2third_channel.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -204,6 +285,9 @@ class AndroidPayload(TeaModel):
             self.display_type = m.get('displayType')
         if m.get('extra') is not None:
             self.extra = m.get('extra')
+        if m.get('message2ThirdChannel') is not None:
+            temp_model = Message2ThirdChannel()
+            self.message_2third_channel = temp_model.from_map(m['message2ThirdChannel'])
         return self
 
 

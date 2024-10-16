@@ -1,3 +1,6 @@
+2024-10-16 Version: 1.0.9
+- Generated python 2022-02-25 for umeng-push.
+
 2024-10-16 Version: 1.0.8
 - Generated python 2022-02-25 for umeng-push.
 
