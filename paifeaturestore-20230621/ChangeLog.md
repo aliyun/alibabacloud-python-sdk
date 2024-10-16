@@ -1,3 +1,8 @@
+2024-10-16 Version: 4.0.1
+- Update API GetInstance: update response param.
+- Update API ListInstances: update response param.
+
+
 2024-09-09 Version: 4.0.0
 - Delete API ChangeProjectFeatureEntityHotIdVersion.
 - Delete API GetProjectFeatureEntityHotIds.
