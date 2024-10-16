@@ -157,7 +157,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.AddFileResponse:
         """
-        @summary 将临时上传的文档导入百炼数据中心，导入成功之后会自动触发文档解析。
+        @summary Imports an unstructured document stored in the temporary storage space to Data Management.
+        
+        @description    Before you call this operation, make sure that you have obtained the lease and uploaded the document to the temporary storage space by using the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. For more information, see [Upload files by calling API](https://help.aliyun.com/zh/model-studio/developer-reference/upload-files-by-calling-api).
+        >  After you call this operation, the used lease ID expires immediately. Do not use the same lease ID to submit new requests.
+        You must call this operation within 12 hours after you call the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. Otherwise, the lease expires and the request fails.
+        After you call this operation, the system parses and imports your document. The process takes some time.
+        This interface is not idempotent.
         
         @param tmp_req: AddFileRequest
         @param headers: map
@@ -206,7 +212,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.AddFileResponse:
         """
-        @summary 将临时上传的文档导入百炼数据中心，导入成功之后会自动触发文档解析。
+        @summary Imports an unstructured document stored in the temporary storage space to Data Management.
+        
+        @description    Before you call this operation, make sure that you have obtained the lease and uploaded the document to the temporary storage space by using the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. For more information, see [Upload files by calling API](https://help.aliyun.com/zh/model-studio/developer-reference/upload-files-by-calling-api).
+        >  After you call this operation, the used lease ID expires immediately. Do not use the same lease ID to submit new requests.
+        You must call this operation within 12 hours after you call the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. Otherwise, the lease expires and the request fails.
+        After you call this operation, the system parses and imports your document. The process takes some time.
+        This interface is not idempotent.
         
         @param tmp_req: AddFileRequest
         @param headers: map
@@ -253,7 +265,13 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.AddFileRequest,
     ) -> bailian_20231229_models.AddFileResponse:
         """
-        @summary 将临时上传的文档导入百炼数据中心，导入成功之后会自动触发文档解析。
+        @summary Imports an unstructured document stored in the temporary storage space to Data Management.
+        
+        @description    Before you call this operation, make sure that you have obtained the lease and uploaded the document to the temporary storage space by using the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. For more information, see [Upload files by calling API](https://help.aliyun.com/zh/model-studio/developer-reference/upload-files-by-calling-api).
+        >  After you call this operation, the used lease ID expires immediately. Do not use the same lease ID to submit new requests.
+        You must call this operation within 12 hours after you call the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. Otherwise, the lease expires and the request fails.
+        After you call this operation, the system parses and imports your document. The process takes some time.
+        This interface is not idempotent.
         
         @param request: AddFileRequest
         @return: AddFileResponse
@@ -268,7 +286,13 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.AddFileRequest,
     ) -> bailian_20231229_models.AddFileResponse:
         """
-        @summary 将临时上传的文档导入百炼数据中心，导入成功之后会自动触发文档解析。
+        @summary Imports an unstructured document stored in the temporary storage space to Data Management.
+        
+        @description    Before you call this operation, make sure that you have obtained the lease and uploaded the document to the temporary storage space by using the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. For more information, see [Upload files by calling API](https://help.aliyun.com/zh/model-studio/developer-reference/upload-files-by-calling-api).
+        >  After you call this operation, the used lease ID expires immediately. Do not use the same lease ID to submit new requests.
+        You must call this operation within 12 hours after you call the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. Otherwise, the lease expires and the request fails.
+        After you call this operation, the system parses and imports your document. The process takes some time.
+        This interface is not idempotent.
         
         @param request: AddFileRequest
         @return: AddFileResponse
@@ -286,7 +310,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.ApplyFileUploadLeaseResponse:
         """
-        @summary 请求文档上传租约，进行文档上传。
+        @summary Applies for a document upload lease to upload a document.
+        
+        @description    This operation returns an HTTP URL that can be used to upload an unstructured document (the lease) and parameters required for the upload. Structured documents are not supported.
+        The HTTP URL returned by this operation is valid only for minutes. Upload the document before the URL expires.
+        After you apply for a lease and upload a document, the document is stored in a temporary storage space for 12 hours. Call the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) interface in time to import the document to the [Data Management](https://bailian.console.aliyun.com/#/data-center) page.
+        This interface is not idempotent.
         
         @param request: ApplyFileUploadLeaseRequest
         @param headers: map
@@ -330,7 +359,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.ApplyFileUploadLeaseResponse:
         """
-        @summary 请求文档上传租约，进行文档上传。
+        @summary Applies for a document upload lease to upload a document.
+        
+        @description    This operation returns an HTTP URL that can be used to upload an unstructured document (the lease) and parameters required for the upload. Structured documents are not supported.
+        The HTTP URL returned by this operation is valid only for minutes. Upload the document before the URL expires.
+        After you apply for a lease and upload a document, the document is stored in a temporary storage space for 12 hours. Call the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) interface in time to import the document to the [Data Management](https://bailian.console.aliyun.com/#/data-center) page.
+        This interface is not idempotent.
         
         @param request: ApplyFileUploadLeaseRequest
         @param headers: map
@@ -372,7 +406,12 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.ApplyFileUploadLeaseRequest,
     ) -> bailian_20231229_models.ApplyFileUploadLeaseResponse:
         """
-        @summary 请求文档上传租约，进行文档上传。
+        @summary Applies for a document upload lease to upload a document.
+        
+        @description    This operation returns an HTTP URL that can be used to upload an unstructured document (the lease) and parameters required for the upload. Structured documents are not supported.
+        The HTTP URL returned by this operation is valid only for minutes. Upload the document before the URL expires.
+        After you apply for a lease and upload a document, the document is stored in a temporary storage space for 12 hours. Call the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) interface in time to import the document to the [Data Management](https://bailian.console.aliyun.com/#/data-center) page.
+        This interface is not idempotent.
         
         @param request: ApplyFileUploadLeaseRequest
         @return: ApplyFileUploadLeaseResponse
@@ -388,7 +427,12 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.ApplyFileUploadLeaseRequest,
     ) -> bailian_20231229_models.ApplyFileUploadLeaseResponse:
         """
-        @summary 请求文档上传租约，进行文档上传。
+        @summary Applies for a document upload lease to upload a document.
+        
+        @description    This operation returns an HTTP URL that can be used to upload an unstructured document (the lease) and parameters required for the upload. Structured documents are not supported.
+        The HTTP URL returned by this operation is valid only for minutes. Upload the document before the URL expires.
+        After you apply for a lease and upload a document, the document is stored in a temporary storage space for 12 hours. Call the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) interface in time to import the document to the [Data Management](https://bailian.console.aliyun.com/#/data-center) page.
+        This interface is not idempotent.
         
         @param request: ApplyFileUploadLeaseRequest
         @return: ApplyFileUploadLeaseResponse
@@ -533,7 +577,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.CreateIndexResponse:
         """
-        @summary 创建并运行pipeline
+        @summary Creates an unstructured knowledge base and imports one or more parsed documents into the knowledge base. You cannot create a structured knowledge base by calling an API operation. Use the console instead.
+        
+        @description 1.  You must first upload documents to [Data Management](https://bailian.console.aliyun.com/#/data-center) and obtain the `FileId`. The documents are the knowledge source of the knowledge base. To upload documents, call the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) operation.
+        2.  This operation only initializes a knowledge base creation job. You must also call the [SubmitIndexJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexjob) operation to complete the job.
+        3.  This interface is not idempotent.
         
         @param tmp_req: CreateIndexRequest
         @param headers: map
@@ -614,7 +662,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.CreateIndexResponse:
         """
-        @summary 创建并运行pipeline
+        @summary Creates an unstructured knowledge base and imports one or more parsed documents into the knowledge base. You cannot create a structured knowledge base by calling an API operation. Use the console instead.
+        
+        @description 1.  You must first upload documents to [Data Management](https://bailian.console.aliyun.com/#/data-center) and obtain the `FileId`. The documents are the knowledge source of the knowledge base. To upload documents, call the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) operation.
+        2.  This operation only initializes a knowledge base creation job. You must also call the [SubmitIndexJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexjob) operation to complete the job.
+        3.  This interface is not idempotent.
         
         @param tmp_req: CreateIndexRequest
         @param headers: map
@@ -693,7 +745,11 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.CreateIndexRequest,
     ) -> bailian_20231229_models.CreateIndexResponse:
         """
-        @summary 创建并运行pipeline
+        @summary Creates an unstructured knowledge base and imports one or more parsed documents into the knowledge base. You cannot create a structured knowledge base by calling an API operation. Use the console instead.
+        
+        @description 1.  You must first upload documents to [Data Management](https://bailian.console.aliyun.com/#/data-center) and obtain the `FileId`. The documents are the knowledge source of the knowledge base. To upload documents, call the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) operation.
+        2.  This operation only initializes a knowledge base creation job. You must also call the [SubmitIndexJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexjob) operation to complete the job.
+        3.  This interface is not idempotent.
         
         @param request: CreateIndexRequest
         @return: CreateIndexResponse
@@ -708,7 +764,11 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.CreateIndexRequest,
     ) -> bailian_20231229_models.CreateIndexResponse:
         """
-        @summary 创建并运行pipeline
+        @summary Creates an unstructured knowledge base and imports one or more parsed documents into the knowledge base. You cannot create a structured knowledge base by calling an API operation. Use the console instead.
+        
+        @description 1.  You must first upload documents to [Data Management](https://bailian.console.aliyun.com/#/data-center) and obtain the `FileId`. The documents are the knowledge source of the knowledge base. To upload documents, call the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) operation.
+        2.  This operation only initializes a knowledge base creation job. You must also call the [SubmitIndexJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexjob) operation to complete the job.
+        3.  This interface is not idempotent.
         
         @param request: CreateIndexRequest
         @return: CreateIndexResponse
@@ -936,6 +996,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_memory_node_with_options_async(workspace_id, memory_id, request, headers, runtime)
+
+    def create_prompt_template_with_options(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.CreatePromptTemplateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.CreatePromptTemplateResponse:
+        """
+        @summary 创建Prompt模板
+        
+        @param request: CreatePromptTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePromptTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.content):
+            query['content'] = request.content
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePromptTemplate',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/promptTemplates',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.CreatePromptTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_prompt_template_with_options_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.CreatePromptTemplateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.CreatePromptTemplateResponse:
+        """
+        @summary 创建Prompt模板
+        
+        @param request: CreatePromptTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePromptTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.content):
+            query['content'] = request.content
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePromptTemplate',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/promptTemplates',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.CreatePromptTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_prompt_template(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.CreatePromptTemplateRequest,
+    ) -> bailian_20231229_models.CreatePromptTemplateResponse:
+        """
+        @summary 创建Prompt模板
+        
+        @param request: CreatePromptTemplateRequest
+        @return: CreatePromptTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_prompt_template_with_options(workspace_id, request, headers, runtime)
+
+    async def create_prompt_template_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.CreatePromptTemplateRequest,
+    ) -> bailian_20231229_models.CreatePromptTemplateResponse:
+        """
+        @summary 创建Prompt模板
+        
+        @param request: CreatePromptTemplateRequest
+        @return: CreatePromptTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_prompt_template_with_options_async(workspace_id, request, headers, runtime)
 
     def delete_agent_with_options(
         self,
@@ -1219,7 +1391,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.DeleteIndexResponse:
         """
-        @summary 删除Index
+        @summary Deletes a specified knowledge base permanently.
+        
+        @description    Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+        If a knowledge base is being called by an application, disassociate the knowledge base before you can delete it. To disassociate the knowledge base, you must use the console. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base).
+        After you delete a knowledge base, it cannot be recovered. We recommend that you proceed with caution.
+        Imported documents are not deleted from the [Data Management](https://bailian.console.aliyun.com/#/data-center) if you call this operation.
+        This interface is idempotent.
         
         @param request: DeleteIndexRequest
         @param headers: map
@@ -1258,7 +1436,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.DeleteIndexResponse:
         """
-        @summary 删除Index
+        @summary Deletes a specified knowledge base permanently.
+        
+        @description    Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+        If a knowledge base is being called by an application, disassociate the knowledge base before you can delete it. To disassociate the knowledge base, you must use the console. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base).
+        After you delete a knowledge base, it cannot be recovered. We recommend that you proceed with caution.
+        Imported documents are not deleted from the [Data Management](https://bailian.console.aliyun.com/#/data-center) if you call this operation.
+        This interface is idempotent.
         
         @param request: DeleteIndexRequest
         @param headers: map
@@ -1295,7 +1479,13 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.DeleteIndexRequest,
     ) -> bailian_20231229_models.DeleteIndexResponse:
         """
-        @summary 删除Index
+        @summary Deletes a specified knowledge base permanently.
+        
+        @description    Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+        If a knowledge base is being called by an application, disassociate the knowledge base before you can delete it. To disassociate the knowledge base, you must use the console. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base).
+        After you delete a knowledge base, it cannot be recovered. We recommend that you proceed with caution.
+        Imported documents are not deleted from the [Data Management](https://bailian.console.aliyun.com/#/data-center) if you call this operation.
+        This interface is idempotent.
         
         @param request: DeleteIndexRequest
         @return: DeleteIndexResponse
@@ -1310,7 +1500,13 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.DeleteIndexRequest,
     ) -> bailian_20231229_models.DeleteIndexResponse:
         """
-        @summary 删除Index
+        @summary Deletes a specified knowledge base permanently.
+        
+        @description    Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+        If a knowledge base is being called by an application, disassociate the knowledge base before you can delete it. To disassociate the knowledge base, you must use the console. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base).
+        After you delete a knowledge base, it cannot be recovered. We recommend that you proceed with caution.
+        Imported documents are not deleted from the [Data Management](https://bailian.console.aliyun.com/#/data-center) if you call this operation.
+        This interface is idempotent.
         
         @param request: DeleteIndexRequest
         @return: DeleteIndexResponse
@@ -1327,7 +1523,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.DeleteIndexDocumentResponse:
         """
-        @summary 删除index doc
+        @summary Deletes one or more documents from a specified unstructured knowledge base permanently.
+        
+        @description    Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+        Only documents with the INSERT_ERROR and FINISH states can be deleted. To query the status of documents in a specified knowledge base, call the [ListIndexDocuments](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-listindexdocuments) operation.
+        After you delete a document, it cannot be recovered and the [Retrieve](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-retrieve) operation cannot query information about the document. We recommend that you proceed with caution.
+        Imported documents are not deleted from the [Data Management](https://bailian.console.aliyun.com/#/data-center) if you call this operation.
+        This interface is idempotent.
         
         @param tmp_req: DeleteIndexDocumentRequest
         @param headers: map
@@ -1372,7 +1574,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.DeleteIndexDocumentResponse:
         """
-        @summary 删除index doc
+        @summary Deletes one or more documents from a specified unstructured knowledge base permanently.
+        
+        @description    Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+        Only documents with the INSERT_ERROR and FINISH states can be deleted. To query the status of documents in a specified knowledge base, call the [ListIndexDocuments](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-listindexdocuments) operation.
+        After you delete a document, it cannot be recovered and the [Retrieve](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-retrieve) operation cannot query information about the document. We recommend that you proceed with caution.
+        Imported documents are not deleted from the [Data Management](https://bailian.console.aliyun.com/#/data-center) if you call this operation.
+        This interface is idempotent.
         
         @param tmp_req: DeleteIndexDocumentRequest
         @param headers: map
@@ -1415,7 +1623,13 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.DeleteIndexDocumentRequest,
     ) -> bailian_20231229_models.DeleteIndexDocumentResponse:
         """
-        @summary 删除index doc
+        @summary Deletes one or more documents from a specified unstructured knowledge base permanently.
+        
+        @description    Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+        Only documents with the INSERT_ERROR and FINISH states can be deleted. To query the status of documents in a specified knowledge base, call the [ListIndexDocuments](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-listindexdocuments) operation.
+        After you delete a document, it cannot be recovered and the [Retrieve](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-retrieve) operation cannot query information about the document. We recommend that you proceed with caution.
+        Imported documents are not deleted from the [Data Management](https://bailian.console.aliyun.com/#/data-center) if you call this operation.
+        This interface is idempotent.
         
         @param request: DeleteIndexDocumentRequest
         @return: DeleteIndexDocumentResponse
@@ -1430,7 +1644,13 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.DeleteIndexDocumentRequest,
     ) -> bailian_20231229_models.DeleteIndexDocumentResponse:
         """
-        @summary 删除index doc
+        @summary Deletes one or more documents from a specified unstructured knowledge base permanently.
+        
+        @description    Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+        Only documents with the INSERT_ERROR and FINISH states can be deleted. To query the status of documents in a specified knowledge base, call the [ListIndexDocuments](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-listindexdocuments) operation.
+        After you delete a document, it cannot be recovered and the [Retrieve](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-retrieve) operation cannot query information about the document. We recommend that you proceed with caution.
+        Imported documents are not deleted from the [Data Management](https://bailian.console.aliyun.com/#/data-center) if you call this operation.
+        This interface is idempotent.
         
         @param request: DeleteIndexDocumentRequest
         @return: DeleteIndexDocumentResponse
@@ -1631,6 +1851,100 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_memory_node_with_options_async(workspace_id, memory_id, memory_node_id, headers, runtime)
 
+    def delete_prompt_template_with_options(
+        self,
+        workspace_id: str,
+        prompt_template_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.DeletePromptTemplateResponse:
+        """
+        @summary 基于模板Id删除Prompt模板。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePromptTemplateResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeletePromptTemplate',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/promptTemplates/{OpenApiUtilClient.get_encode_param(prompt_template_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeletePromptTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_prompt_template_with_options_async(
+        self,
+        workspace_id: str,
+        prompt_template_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.DeletePromptTemplateResponse:
+        """
+        @summary 基于模板Id删除Prompt模板。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePromptTemplateResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeletePromptTemplate',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/promptTemplates/{OpenApiUtilClient.get_encode_param(prompt_template_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeletePromptTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_prompt_template(
+        self,
+        workspace_id: str,
+        prompt_template_id: str,
+    ) -> bailian_20231229_models.DeletePromptTemplateResponse:
+        """
+        @summary 基于模板Id删除Prompt模板。
+        
+        @return: DeletePromptTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_prompt_template_with_options(workspace_id, prompt_template_id, headers, runtime)
+
+    async def delete_prompt_template_async(
+        self,
+        workspace_id: str,
+        prompt_template_id: str,
+    ) -> bailian_20231229_models.DeletePromptTemplateResponse:
+        """
+        @summary 基于模板Id删除Prompt模板。
+        
+        @return: DeletePromptTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_prompt_template_with_options_async(workspace_id, prompt_template_id, headers, runtime)
+
     def describe_file_with_options(
         self,
         workspace_id: str,
@@ -1639,7 +1953,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.DescribeFileResponse:
         """
-        @summary 获取文档基本信息，包括文档名称、类型、状态等。
+        @summary Queries the details of an unstructured document.
+        
+        @description Before you call this API, make sure that your document is uploaded to the [Data Management](https://bailian.console.aliyun.com/knowledge-base#/data-center) page of Alibaba Cloud Model Studio.
+        If you upload the document by calling an API, make sure that you have called the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) operation to obtain `FileId`.
+        You can also call this operation to query unstructured documents that you upload on the [Data Management](https://bailian.console.aliyun.com/knowledge-base#/data-center) page.
+        This operation is idempotent.
+        *Throttling:** Make sure that the interval between the two queries is at least 15 seconds. Otherwise, you may trigger system throttling. If throttling is triggered, try again later.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1672,7 +1992,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.DescribeFileResponse:
         """
-        @summary 获取文档基本信息，包括文档名称、类型、状态等。
+        @summary Queries the details of an unstructured document.
+        
+        @description Before you call this API, make sure that your document is uploaded to the [Data Management](https://bailian.console.aliyun.com/knowledge-base#/data-center) page of Alibaba Cloud Model Studio.
+        If you upload the document by calling an API, make sure that you have called the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) operation to obtain `FileId`.
+        You can also call this operation to query unstructured documents that you upload on the [Data Management](https://bailian.console.aliyun.com/knowledge-base#/data-center) page.
+        This operation is idempotent.
+        *Throttling:** Make sure that the interval between the two queries is at least 15 seconds. Otherwise, you may trigger system throttling. If throttling is triggered, try again later.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1703,7 +2029,13 @@ class Client(OpenApiClient):
         file_id: str,
     ) -> bailian_20231229_models.DescribeFileResponse:
         """
-        @summary 获取文档基本信息，包括文档名称、类型、状态等。
+        @summary Queries the details of an unstructured document.
+        
+        @description Before you call this API, make sure that your document is uploaded to the [Data Management](https://bailian.console.aliyun.com/knowledge-base#/data-center) page of Alibaba Cloud Model Studio.
+        If you upload the document by calling an API, make sure that you have called the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) operation to obtain `FileId`.
+        You can also call this operation to query unstructured documents that you upload on the [Data Management](https://bailian.console.aliyun.com/knowledge-base#/data-center) page.
+        This operation is idempotent.
+        *Throttling:** Make sure that the interval between the two queries is at least 15 seconds. Otherwise, you may trigger system throttling. If throttling is triggered, try again later.
         
         @return: DescribeFileResponse
         """
@@ -1717,7 +2049,13 @@ class Client(OpenApiClient):
         file_id: str,
     ) -> bailian_20231229_models.DescribeFileResponse:
         """
-        @summary 获取文档基本信息，包括文档名称、类型、状态等。
+        @summary Queries the details of an unstructured document.
+        
+        @description Before you call this API, make sure that your document is uploaded to the [Data Management](https://bailian.console.aliyun.com/knowledge-base#/data-center) page of Alibaba Cloud Model Studio.
+        If you upload the document by calling an API, make sure that you have called the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) operation to obtain `FileId`.
+        You can also call this operation to query unstructured documents that you upload on the [Data Management](https://bailian.console.aliyun.com/knowledge-base#/data-center) page.
+        This operation is idempotent.
+        *Throttling:** Make sure that the interval between the two queries is at least 15 seconds. Otherwise, you may trigger system throttling. If throttling is triggered, try again later.
         
         @return: DescribeFileResponse
         """
@@ -1733,7 +2071,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.GetIndexJobStatusResponse:
         """
-        @summary 获取Index运行状态
+        @summary Queries the current status of a specified knowledge base creation or add document job.
+        
+        @description 1.  A knowledge base job is running. You can call the [SubmitIndexJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexjob) operation to create a creation job or the [SubmitIndexAddDocumentsJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexadddocumentsjob) operation to create a add document job. Then, obtain the `JobId` returned by the operations.
+        2.  We recommend that you call this operation at intervals of more than 5 seconds.
+        3.  This interface is idempotent.
         
         @param request: GetIndexJobStatusRequest
         @param headers: map
@@ -1778,7 +2120,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.GetIndexJobStatusResponse:
         """
-        @summary 获取Index运行状态
+        @summary Queries the current status of a specified knowledge base creation or add document job.
+        
+        @description 1.  A knowledge base job is running. You can call the [SubmitIndexJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexjob) operation to create a creation job or the [SubmitIndexAddDocumentsJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexadddocumentsjob) operation to create a add document job. Then, obtain the `JobId` returned by the operations.
+        2.  We recommend that you call this operation at intervals of more than 5 seconds.
+        3.  This interface is idempotent.
         
         @param request: GetIndexJobStatusRequest
         @param headers: map
@@ -1821,7 +2167,11 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.GetIndexJobStatusRequest,
     ) -> bailian_20231229_models.GetIndexJobStatusResponse:
         """
-        @summary 获取Index运行状态
+        @summary Queries the current status of a specified knowledge base creation or add document job.
+        
+        @description 1.  A knowledge base job is running. You can call the [SubmitIndexJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexjob) operation to create a creation job or the [SubmitIndexAddDocumentsJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexadddocumentsjob) operation to create a add document job. Then, obtain the `JobId` returned by the operations.
+        2.  We recommend that you call this operation at intervals of more than 5 seconds.
+        3.  This interface is idempotent.
         
         @param request: GetIndexJobStatusRequest
         @return: GetIndexJobStatusResponse
@@ -1836,7 +2186,11 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.GetIndexJobStatusRequest,
     ) -> bailian_20231229_models.GetIndexJobStatusResponse:
         """
-        @summary 获取Index运行状态
+        @summary Queries the current status of a specified knowledge base creation or add document job.
+        
+        @description 1.  A knowledge base job is running. You can call the [SubmitIndexJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexjob) operation to create a creation job or the [SubmitIndexAddDocumentsJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexadddocumentsjob) operation to create a add document job. Then, obtain the `JobId` returned by the operations.
+        2.  We recommend that you call this operation at intervals of more than 5 seconds.
+        3.  This interface is idempotent.
         
         @param request: GetIndexJobStatusRequest
         @return: GetIndexJobStatusResponse
@@ -2036,6 +2390,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_memory_node_with_options_async(workspace_id, memory_id, memory_node_id, headers, runtime)
+
+    def get_prompt_template_with_options(
+        self,
+        workspace_id: str,
+        prompt_template_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.GetPromptTemplateResponse:
+        """
+        @summary 基于模板Id获取Prompt模板。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPromptTemplateResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetPromptTemplate',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/promptTemplates/{OpenApiUtilClient.get_encode_param(prompt_template_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.GetPromptTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_prompt_template_with_options_async(
+        self,
+        workspace_id: str,
+        prompt_template_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.GetPromptTemplateResponse:
+        """
+        @summary 基于模板Id获取Prompt模板。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPromptTemplateResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetPromptTemplate',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/promptTemplates/{OpenApiUtilClient.get_encode_param(prompt_template_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.GetPromptTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_prompt_template(
+        self,
+        workspace_id: str,
+        prompt_template_id: str,
+    ) -> bailian_20231229_models.GetPromptTemplateResponse:
+        """
+        @summary 基于模板Id获取Prompt模板。
+        
+        @return: GetPromptTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_prompt_template_with_options(workspace_id, prompt_template_id, headers, runtime)
+
+    async def get_prompt_template_async(
+        self,
+        workspace_id: str,
+        prompt_template_id: str,
+    ) -> bailian_20231229_models.GetPromptTemplateResponse:
+        """
+        @summary 基于模板Id获取Prompt模板。
+        
+        @return: GetPromptTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_prompt_template_with_options_async(workspace_id, prompt_template_id, headers, runtime)
 
     def get_published_agent_with_options(
         self,
@@ -2259,7 +2707,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.ListChunksResponse:
         """
-        @summary Chunk
+        @summary For unstructured knowledge base, obtains the details of all chunks of a specified document; for structured knowledge base, obtains the details of all chunks.
+        
+        @description    Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+        This interface is idempotent.
         
         @param request: ListChunksRequest
         @param headers: map
@@ -2306,7 +2757,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.ListChunksResponse:
         """
-        @summary Chunk
+        @summary For unstructured knowledge base, obtains the details of all chunks of a specified document; for structured knowledge base, obtains the details of all chunks.
+        
+        @description    Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+        This interface is idempotent.
         
         @param request: ListChunksRequest
         @param headers: map
@@ -2351,7 +2805,10 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.ListChunksRequest,
     ) -> bailian_20231229_models.ListChunksResponse:
         """
-        @summary Chunk
+        @summary For unstructured knowledge base, obtains the details of all chunks of a specified document; for structured knowledge base, obtains the details of all chunks.
+        
+        @description    Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+        This interface is idempotent.
         
         @param request: ListChunksRequest
         @return: ListChunksResponse
@@ -2366,7 +2823,10 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.ListChunksRequest,
     ) -> bailian_20231229_models.ListChunksResponse:
         """
-        @summary Chunk
+        @summary For unstructured knowledge base, obtains the details of all chunks of a specified document; for structured knowledge base, obtains the details of all chunks.
+        
+        @description    Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+        This interface is idempotent.
         
         @param request: ListChunksRequest
         @return: ListChunksResponse
@@ -2394,6 +2854,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.category_id):
             query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -2437,6 +2899,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.category_id):
             query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -2499,7 +2963,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.ListIndexDocumentsResponse:
         """
-        @summary 查询Index文件
+        @summary Queries the details of one or more documents in a specified knowledge base.
+        
+        @description    Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+        This interface is idempotent.
         
         @param request: ListIndexDocumentsRequest
         @param headers: map
@@ -2546,7 +3013,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.ListIndexDocumentsResponse:
         """
-        @summary 查询Index文件
+        @summary Queries the details of one or more documents in a specified knowledge base.
+        
+        @description    Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+        This interface is idempotent.
         
         @param request: ListIndexDocumentsRequest
         @param headers: map
@@ -2591,7 +3061,10 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.ListIndexDocumentsRequest,
     ) -> bailian_20231229_models.ListIndexDocumentsResponse:
         """
-        @summary 查询Index文件
+        @summary Queries the details of one or more documents in a specified knowledge base.
+        
+        @description    Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+        This interface is idempotent.
         
         @param request: ListIndexDocumentsRequest
         @return: ListIndexDocumentsResponse
@@ -2606,7 +3079,10 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.ListIndexDocumentsRequest,
     ) -> bailian_20231229_models.ListIndexDocumentsResponse:
         """
-        @summary 查询Index文件
+        @summary Queries the details of one or more documents in a specified knowledge base.
+        
+        @description    Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+        This interface is idempotent.
         
         @param request: ListIndexDocumentsRequest
         @return: ListIndexDocumentsResponse
@@ -2623,7 +3099,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.ListIndicesResponse:
         """
-        @summary 查询pipeline
+        @summary Lists knowledge bases in a specified workspace.
+        
+        @description This interface is idempotent.
         
         @param request: ListIndicesRequest
         @param headers: map
@@ -2666,7 +3144,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.ListIndicesResponse:
         """
-        @summary 查询pipeline
+        @summary Lists knowledge bases in a specified workspace.
+        
+        @description This interface is idempotent.
         
         @param request: ListIndicesRequest
         @param headers: map
@@ -2707,7 +3187,9 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.ListIndicesRequest,
     ) -> bailian_20231229_models.ListIndicesResponse:
         """
-        @summary 查询pipeline
+        @summary Lists knowledge bases in a specified workspace.
+        
+        @description This interface is idempotent.
         
         @param request: ListIndicesRequest
         @return: ListIndicesResponse
@@ -2722,7 +3204,9 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.ListIndicesRequest,
     ) -> bailian_20231229_models.ListIndicesResponse:
         """
-        @summary 查询pipeline
+        @summary Lists knowledge bases in a specified workspace.
+        
+        @description This interface is idempotent.
         
         @param request: ListIndicesRequest
         @return: ListIndicesResponse
@@ -2959,6 +3443,126 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_memory_nodes_with_options_async(workspace_id, memory_id, request, headers, runtime)
 
+    def list_prompt_templates_with_options(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListPromptTemplatesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.ListPromptTemplatesResponse:
+        """
+        @summary 获取Prompt模板列表。
+        
+        @param request: ListPromptTemplatesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPromptTemplatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPromptTemplates',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/promptTemplates',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListPromptTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_prompt_templates_with_options_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListPromptTemplatesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.ListPromptTemplatesResponse:
+        """
+        @summary 获取Prompt模板列表。
+        
+        @param request: ListPromptTemplatesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPromptTemplatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPromptTemplates',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/promptTemplates',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListPromptTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_prompt_templates(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListPromptTemplatesRequest,
+    ) -> bailian_20231229_models.ListPromptTemplatesResponse:
+        """
+        @summary 获取Prompt模板列表。
+        
+        @param request: ListPromptTemplatesRequest
+        @return: ListPromptTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_prompt_templates_with_options(workspace_id, request, headers, runtime)
+
+    async def list_prompt_templates_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListPromptTemplatesRequest,
+    ) -> bailian_20231229_models.ListPromptTemplatesResponse:
+        """
+        @summary 获取Prompt模板列表。
+        
+        @param request: ListPromptTemplatesRequest
+        @return: ListPromptTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_prompt_templates_with_options_async(workspace_id, request, headers, runtime)
+
     def list_published_agent_with_options(
         self,
         workspace_id: str,
@@ -3079,7 +3683,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.RetrieveResponse:
         """
-        @summary 召回测试
+        @summary Queries information from a specified knowledge base.
+        
+        @description    Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+        The response time may be long because this operation involves complex retrieval and matching. We recommend that you set appropriate timeout and retry policy for requests.
+        This interface is idempotent.
         
         @param tmp_req: RetrieveRequest
         @param headers: map
@@ -3152,7 +3760,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.RetrieveResponse:
         """
-        @summary 召回测试
+        @summary Queries information from a specified knowledge base.
+        
+        @description    Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+        The response time may be long because this operation involves complex retrieval and matching. We recommend that you set appropriate timeout and retry policy for requests.
+        This interface is idempotent.
         
         @param tmp_req: RetrieveRequest
         @param headers: map
@@ -3223,7 +3835,11 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.RetrieveRequest,
     ) -> bailian_20231229_models.RetrieveResponse:
         """
-        @summary 召回测试
+        @summary Queries information from a specified knowledge base.
+        
+        @description    Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+        The response time may be long because this operation involves complex retrieval and matching. We recommend that you set appropriate timeout and retry policy for requests.
+        This interface is idempotent.
         
         @param request: RetrieveRequest
         @return: RetrieveResponse
@@ -3238,7 +3854,11 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.RetrieveRequest,
     ) -> bailian_20231229_models.RetrieveResponse:
         """
-        @summary 召回测试
+        @summary Queries information from a specified knowledge base.
+        
+        @description    Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+        The response time may be long because this operation involves complex retrieval and matching. We recommend that you set appropriate timeout and retry policy for requests.
+        This interface is idempotent.
         
         @param request: RetrieveRequest
         @return: RetrieveResponse
@@ -3255,7 +3875,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.SubmitIndexAddDocumentsJobResponse:
         """
-        @summary 知识索引
+        @summary Adds parsed documents to an unstructured knowledge base.
+        
+        @description    Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+        Before you call this operation, call the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) operation to upload the documents to Model Studio.
+        After you call this operation, you can call the [GetIndexJobStatus](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-getindexjobstatus) operation to query the status of the job. More than 20 calls to the GetIndexJobStatus operation per minute may trigger throttling.
+        Execution takes a period of time after this operation is called. Do not make new request before the request is returned. This interface is not idempotent.
         
         @param tmp_req: SubmitIndexAddDocumentsJobRequest
         @param headers: map
@@ -3306,7 +3931,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.SubmitIndexAddDocumentsJobResponse:
         """
-        @summary 知识索引
+        @summary Adds parsed documents to an unstructured knowledge base.
+        
+        @description    Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+        Before you call this operation, call the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) operation to upload the documents to Model Studio.
+        After you call this operation, you can call the [GetIndexJobStatus](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-getindexjobstatus) operation to query the status of the job. More than 20 calls to the GetIndexJobStatus operation per minute may trigger throttling.
+        Execution takes a period of time after this operation is called. Do not make new request before the request is returned. This interface is not idempotent.
         
         @param tmp_req: SubmitIndexAddDocumentsJobRequest
         @param headers: map
@@ -3355,7 +3985,12 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.SubmitIndexAddDocumentsJobRequest,
     ) -> bailian_20231229_models.SubmitIndexAddDocumentsJobResponse:
         """
-        @summary 知识索引
+        @summary Adds parsed documents to an unstructured knowledge base.
+        
+        @description    Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+        Before you call this operation, call the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) operation to upload the documents to Model Studio.
+        After you call this operation, you can call the [GetIndexJobStatus](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-getindexjobstatus) operation to query the status of the job. More than 20 calls to the GetIndexJobStatus operation per minute may trigger throttling.
+        Execution takes a period of time after this operation is called. Do not make new request before the request is returned. This interface is not idempotent.
         
         @param request: SubmitIndexAddDocumentsJobRequest
         @return: SubmitIndexAddDocumentsJobResponse
@@ -3370,7 +4005,12 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.SubmitIndexAddDocumentsJobRequest,
     ) -> bailian_20231229_models.SubmitIndexAddDocumentsJobResponse:
         """
-        @summary 知识索引
+        @summary Adds parsed documents to an unstructured knowledge base.
+        
+        @description    Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+        Before you call this operation, call the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) operation to upload the documents to Model Studio.
+        After you call this operation, you can call the [GetIndexJobStatus](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-getindexjobstatus) operation to query the status of the job. More than 20 calls to the GetIndexJobStatus operation per minute may trigger throttling.
+        Execution takes a period of time after this operation is called. Do not make new request before the request is returned. This interface is not idempotent.
         
         @param request: SubmitIndexAddDocumentsJobRequest
         @return: SubmitIndexAddDocumentsJobResponse
@@ -3387,7 +4027,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.SubmitIndexJobResponse:
         """
-        @summary 提交索引任务
+        @summary Submits a specified CreateIndex job to complete knowledge base creation.
+        
+        @description 1.  Before you call this operation, you must call the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation and obtain the `IndexId`.
+        2.  Execution takes a period of time after this operation is called. Do not make new request before the request is returned.
+        3.  If you want to query the execution status of the job after you call this operation, call the [GetIndexJobStatus](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-getindexjobstatus) operation.
+        4.  This interface is not idempotent.
         
         @param request: SubmitIndexJobRequest
         @param headers: map
@@ -3426,7 +4071,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.SubmitIndexJobResponse:
         """
-        @summary 提交索引任务
+        @summary Submits a specified CreateIndex job to complete knowledge base creation.
+        
+        @description 1.  Before you call this operation, you must call the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation and obtain the `IndexId`.
+        2.  Execution takes a period of time after this operation is called. Do not make new request before the request is returned.
+        3.  If you want to query the execution status of the job after you call this operation, call the [GetIndexJobStatus](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-getindexjobstatus) operation.
+        4.  This interface is not idempotent.
         
         @param request: SubmitIndexJobRequest
         @param headers: map
@@ -3463,7 +4113,12 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.SubmitIndexJobRequest,
     ) -> bailian_20231229_models.SubmitIndexJobResponse:
         """
-        @summary 提交索引任务
+        @summary Submits a specified CreateIndex job to complete knowledge base creation.
+        
+        @description 1.  Before you call this operation, you must call the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation and obtain the `IndexId`.
+        2.  Execution takes a period of time after this operation is called. Do not make new request before the request is returned.
+        3.  If you want to query the execution status of the job after you call this operation, call the [GetIndexJobStatus](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-getindexjobstatus) operation.
+        4.  This interface is not idempotent.
         
         @param request: SubmitIndexJobRequest
         @return: SubmitIndexJobResponse
@@ -3478,7 +4133,12 @@ class Client(OpenApiClient):
         request: bailian_20231229_models.SubmitIndexJobRequest,
     ) -> bailian_20231229_models.SubmitIndexJobResponse:
         """
-        @summary 提交索引任务
+        @summary Submits a specified CreateIndex job to complete knowledge base creation.
+        
+        @description 1.  Before you call this operation, you must call the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation and obtain the `IndexId`.
+        2.  Execution takes a period of time after this operation is called. Do not make new request before the request is returned.
+        3.  If you want to query the execution status of the job after you call this operation, call the [GetIndexJobStatus](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-getindexjobstatus) operation.
+        4.  This interface is not idempotent.
         
         @param request: SubmitIndexJobRequest
         @return: SubmitIndexJobResponse
@@ -3846,3 +4506,119 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_memory_node_with_options_async(workspace_id, memory_id, memory_node_id, request, headers, runtime)
+
+    def update_prompt_template_with_options(
+        self,
+        workspace_id: str,
+        prompt_template_id: str,
+        request: bailian_20231229_models.UpdatePromptTemplateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.UpdatePromptTemplateResponse:
+        """
+        @summary 基于模板Id增量更新Prompt模板。
+        
+        @param request: UpdatePromptTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePromptTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.content):
+            query['content'] = request.content
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePromptTemplate',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/promptTemplates/{OpenApiUtilClient.get_encode_param(prompt_template_id)}',
+            method='PATCH',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.UpdatePromptTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_prompt_template_with_options_async(
+        self,
+        workspace_id: str,
+        prompt_template_id: str,
+        request: bailian_20231229_models.UpdatePromptTemplateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.UpdatePromptTemplateResponse:
+        """
+        @summary 基于模板Id增量更新Prompt模板。
+        
+        @param request: UpdatePromptTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePromptTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.content):
+            query['content'] = request.content
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePromptTemplate',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/promptTemplates/{OpenApiUtilClient.get_encode_param(prompt_template_id)}',
+            method='PATCH',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.UpdatePromptTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_prompt_template(
+        self,
+        workspace_id: str,
+        prompt_template_id: str,
+        request: bailian_20231229_models.UpdatePromptTemplateRequest,
+    ) -> bailian_20231229_models.UpdatePromptTemplateResponse:
+        """
+        @summary 基于模板Id增量更新Prompt模板。
+        
+        @param request: UpdatePromptTemplateRequest
+        @return: UpdatePromptTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_prompt_template_with_options(workspace_id, prompt_template_id, request, headers, runtime)
+
+    async def update_prompt_template_async(
+        self,
+        workspace_id: str,
+        prompt_template_id: str,
+        request: bailian_20231229_models.UpdatePromptTemplateRequest,
+    ) -> bailian_20231229_models.UpdatePromptTemplateResponse:
+        """
+        @summary 基于模板Id增量更新Prompt模板。
+        
+        @param request: UpdatePromptTemplateRequest
+        @return: UpdatePromptTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_prompt_template_with_options_async(workspace_id, prompt_template_id, request, headers, runtime)

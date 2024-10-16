@@ -187,12 +187,21 @@ class AddFileRequest(TeaModel):
         parser: str = None,
         tags: List[str] = None,
     ):
+        # The primary key ID of the category to which the document is uploaded. This parameter corresponds to the `CategoryId` returned by the [AddCategory](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addcategory) operation. You can also click the ID icon next to the category name on the Unstructured Data tab of the [Data Management](https://bailian.console.aliyun.com/#/data-center) page to view the ID. You can set the parameter to default, which specifies the Default Category created by the system.
+        # 
         # This parameter is required.
         self.category_id = category_id
+        # The lease ID, which corresponds to the `FileUploadLeaseId` parameter returned by the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation.
+        # 
         # This parameter is required.
         self.lease_id = lease_id
+        # The parser. Valid value:
+        # 
+        # *   DASHSCOPE_DOCMIND: Intelligent document parsing by Alibaba Cloud.
+        # 
         # This parameter is required.
         self.parser = parser
+        # A list of tags associated with the document. The default value is null, which means no tags. You can specify up to 10 tags.
         self.tags = tags
 
     def validate(self):
@@ -235,12 +244,21 @@ class AddFileShrinkRequest(TeaModel):
         parser: str = None,
         tags_shrink: str = None,
     ):
+        # The primary key ID of the category to which the document is uploaded. This parameter corresponds to the `CategoryId` returned by the [AddCategory](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addcategory) operation. You can also click the ID icon next to the category name on the Unstructured Data tab of the [Data Management](https://bailian.console.aliyun.com/#/data-center) page to view the ID. You can set the parameter to default, which specifies the Default Category created by the system.
+        # 
         # This parameter is required.
         self.category_id = category_id
+        # The lease ID, which corresponds to the `FileUploadLeaseId` parameter returned by the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation.
+        # 
         # This parameter is required.
         self.lease_id = lease_id
+        # The parser. Valid value:
+        # 
+        # *   DASHSCOPE_DOCMIND: Intelligent document parsing by Alibaba Cloud.
+        # 
         # This parameter is required.
         self.parser = parser
+        # A list of tags associated with the document. The default value is null, which means no tags. You can specify up to 10 tags.
         self.tags_shrink = tags_shrink
 
     def validate(self):
@@ -281,7 +299,11 @@ class AddFileResponseBodyData(TeaModel):
         file_id: str = None,
         parser: str = None,
     ):
+        # The primary key ID of the document. We recommend that you store the ID because it is required for all subsequent API operations related to this document.
         self.file_id = file_id
+        # The parser that is used to parse the document. Valid value:
+        # 
+        # *   DASHSCOPE_DOCMIND: Intelligent document parsing by Alibaba Cloud.
         self.parser = parser
 
     def validate(self):
@@ -318,11 +340,20 @@ class AddFileResponseBody(TeaModel):
         status: str = None,
         success: str = None,
     ):
+        # The status code.
         self.code = code
+        # The returned data fields.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The HTTP status code.
         self.status = status
+        # Indications whether the call is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -415,10 +446,16 @@ class ApplyFileUploadLeaseRequest(TeaModel):
         md_5: str = None,
         size_in_bytes: str = None,
     ):
+        # The name of the uploaded document, including the extension. Supported formats: pdf, doc, docx, md, txt, ppt, and pptx. The document name must be 4 to 128 characters in length.
+        # 
         # This parameter is required.
         self.file_name = file_name
+        # The MD5 value of the uploaded document. This parameter is verified by the server (not in the current version).
+        # 
         # This parameter is required.
         self.md_5 = md_5
+        # The size of the uploaded document, in bytes. This parameter is verified by the server (not in the current version). Valid values: 1 to 100000000.
+        # 
         # This parameter is required.
         self.size_in_bytes = size_in_bytes
 
@@ -457,8 +494,14 @@ class ApplyFileUploadLeaseResponseBodyDataParam(TeaModel):
         method: str = None,
         url: str = None,
     ):
+        # The key-value pair to be placed in the Header. Both the key and the value are strings.
         self.headers = headers
+        # The HTTP call method. Valid values:
+        # 
+        # *   PUT
+        # *   POST
         self.method = method
+        # The upload URL of the document.
         self.url = url
 
     def validate(self):
@@ -496,8 +539,14 @@ class ApplyFileUploadLeaseResponseBodyData(TeaModel):
         param: ApplyFileUploadLeaseResponseBodyDataParam = None,
         type: str = None,
     ):
+        # The unique ID of the lease. You need to specify this parameter when you call the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) operation.
         self.file_upload_lease_id = file_upload_lease_id
+        # The HTTP request parameters used to upload the document.
         self.param = param
+        # The upload method of the document. Valid values:
+        # 
+        # *   OSS.PreSignedURL
+        # *   HTTP
         self.type = type
 
     def validate(self):
@@ -540,11 +589,20 @@ class ApplyFileUploadLeaseResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The returned data fields.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The HTTP status code.
         self.status = status
+        # Indications whether the call is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -1223,15 +1281,25 @@ class CreateIndexRequestDataSource(TeaModel):
         table: str = None,
         type: str = None,
     ):
+        # >  This parameter is not available. Do not specify this parameter.
         self.credential_id = credential_id
+        # >  This parameter is not available. Do not specify this parameter.
         self.credential_key = credential_key
+        # >  This parameter is not available. Do not specify this parameter.
         self.database = database
+        # >  This parameter is not available. Do not specify this parameter.
         self.endpoint = endpoint
+        # >  This parameter is not available. Do not specify this parameter.
         self.is_private_link = is_private_link
+        # >  This parameter is not available. Do not specify this parameter.
         self.region = region
+        # >  This parameter is not available. Do not specify this parameter.
         self.sub_path = sub_path
+        # >  This parameter is not available. Do not specify this parameter.
         self.sub_type = sub_type
+        # >  This parameter is not available. Do not specify this parameter.
         self.table = table
+        # >  This parameter is not available. Do not specify this parameter.
         self.type = type
 
     def validate(self):
@@ -1311,25 +1379,94 @@ class CreateIndexRequest(TeaModel):
         source_type: str = None,
         structure_type: str = None,
     ):
+        # The list of primary key IDs of the categories to be imported into the knowledge base.
         self.category_ids = category_ids
+        # The estimated length of chunks. The maximum number of characters for a chunk. Texts exceeding this limit are splited. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values: [1-2048].
+        # 
+        # The default value is empty, which means using the intelligent splitting method.
+        # 
+        # >  If you specify the `ChunkSize` parameter, you must also specify the `OverlapSize` and `Separator` parameters. If you do not specify these three parameters, the system uses the intelligent splitting method by default.
         self.chunk_size = chunk_size
         self.columns = columns
+        # >  This parameter is not available. Do not specify this parameter.
         self.data_source = data_source
+        # The description of the knowledge base. The description must be 0 to 1,000 characters in length. This parameter is empty by default.
         self.description = description
+        # The list of primary key IDs of the documents to be imported into the knowledge base.
         self.document_ids = document_ids
+        # The name of the embedding model. The embedding model converts the original input prompt and knowledge text into numerical vectors for similarity comparison. The default and only model available is DashScope text-embedding-v2. It supports multiple languages including Chinese and English and normalizes the vector results. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid value:
+        # 
+        # *   text-embedding-v2
+        # 
+        # The default value is null, which means using the text-embedding-v2 model.
         self.embedding_model_name = embedding_model_name
+        # The name of the knowledge base. The name must be 1 to 20 characters in length and can contain characters classified as letter in Unicode, including English letters, Chinese characters, digits, among others. The name can also contain colons (:), underscores (_), periods (.), and hyphens (-).
+        # 
         # This parameter is required.
         self.name = name
+        # The overlap length. The number of overlapping characters between two consecutive chunks. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values: 0 to 1024.
+        # 
+        # The default value is empty, which means using the intelligent splitting method.
         self.overlap_size = overlap_size
+        # Similarity Threshold. The lowest similarity score of chunks that can be returned. This parameter is used to filter text chunks returned by the rank model. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values: [0.01-1.00].
+        # 
+        # Default value: 0.20.
         self.rerank_min_score = rerank_min_score
+        # The name of the rank model. The rank model is a scoring system outside the knowledge base. It calculates the similarity score of each text chunk in the input question and knowledge base and ranks them in descending order. Then, the model returns the top K chunks with the highest scores. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # 
+        # *   gte-rerank-hybrid
+        # *   gte-rerank
+        # 
+        # The default value is empty, which means using the official gte-rerank-hybrid model.
+        # 
+        # >  If you need only semantic ranking, we recommend that you use gte-rerank. If you need both semantic ranking and text matching features to ensure relevance, we recommend that you use gte-rerank-hybrid.
         self.rerank_model_name = rerank_model_name
+        # The clause identifier. The document is split into chunks based on this identifier. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). You can specify multiple identifiers and do not need to add any other characters to separate them. For example: !,\\\\\\n. Valid values:
+        # 
+        # *   \\n: line break
+        # *   ，: Chinese comma
+        # *   ,: English comma
+        # *   。 : Chinese full stop
+        # *   .: English full stop
+        # *   ！ : Chinese exclamation point
+        # *   ! : English exclamation point
+        # *   ；: Chinese semicolon
+        # *   ;: English semicolon
+        # *   ？ : Chinese question mark
+        # *   ?: English question mark
+        # 
+        # The default value is empty, which means using the intelligent splitting method.
         self.separator = separator
+        # The ID of the vector storage instance. This parameter is available only when SinkType is set to ADB. You can view the ID on the [Instances](https://gpdbnext.console.aliyun.com/gpdb/list) page of AnalyticDB for PostgreSQL.
         self.sink_instance_id = sink_instance_id
+        # The region of the vector storage instance. This parameter is available only when SinkType is set to ADB. You can call the [DescribeRegions](https://help.aliyun.com/zh/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-describeregions) operation to query the most recent region list.
         self.sink_region = sink_region
+        # The vector storage type of the knowledge base. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # 
+        # *   DEFAULT: The built-in vector database.
+        # *   ADB: AnalyticDB for PostgreSQL database. If you need advanced features, such as managing, auditing, and monitoring, we recommend that you specify ADB.
+        # 
+        # >  If you have not used AnalyticDB for AnalyticDB in Model Studio before, go to the [Create Knowledge Base](https://bailian.console.aliyun.com/#/knowledge-base/create) page, select ADB-PG as Vector Storage Type, and follow the instructions to grant permissions. If you specify ADB, you must also specify the `SinkInstanceId` and `SinkRegion` parameters.
+        # 
         # This parameter is required.
         self.sink_type = sink_type
+        # The data type of [Data Management](https://bailian.console.aliyun.com/#/data-center). For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # 
+        # *   DATA_CENTER_CATEGORY: The category type. Import all documents from one or more categories in Data Center.
+        # *   DATA_CENTER_FILE: The document type. Import one or more documents from Data Center.
+        # 
+        # >  If this parameter is set to DATA_CENTER_CATEGORY, you must specify the `CategoryIds` parameter. If this parameter is set to DATA_CENTER_FILE, you must specify the `DocumentIds` parameter.
+        # 
+        # >  If you want to create an empty knowledge base, you can use an empty category. Set this parameter to DATA_CENTER_CATEGORY. And specify the ID of an empty category for the `CategoryIds` parameter.
+        # 
         # This parameter is required.
         self.source_type = source_type
+        # The data type of the knowledge base. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid value:
+        # 
+        # *   unstructured
+        # 
+        # >  After a knowledge base is created, its data type cannot be changed. You cannot create a structured knowledge base by calling an API operation. Use the console instead.
+        # 
         # This parameter is required.
         self.structure_type = structure_type
 
@@ -1449,25 +1586,94 @@ class CreateIndexShrinkRequest(TeaModel):
         source_type: str = None,
         structure_type: str = None,
     ):
+        # The list of primary key IDs of the categories to be imported into the knowledge base.
         self.category_ids_shrink = category_ids_shrink
+        # The estimated length of chunks. The maximum number of characters for a chunk. Texts exceeding this limit are splited. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values: [1-2048].
+        # 
+        # The default value is empty, which means using the intelligent splitting method.
+        # 
+        # >  If you specify the `ChunkSize` parameter, you must also specify the `OverlapSize` and `Separator` parameters. If you do not specify these three parameters, the system uses the intelligent splitting method by default.
         self.chunk_size = chunk_size
         self.columns_shrink = columns_shrink
+        # >  This parameter is not available. Do not specify this parameter.
         self.data_source_shrink = data_source_shrink
+        # The description of the knowledge base. The description must be 0 to 1,000 characters in length. This parameter is empty by default.
         self.description = description
+        # The list of primary key IDs of the documents to be imported into the knowledge base.
         self.document_ids_shrink = document_ids_shrink
+        # The name of the embedding model. The embedding model converts the original input prompt and knowledge text into numerical vectors for similarity comparison. The default and only model available is DashScope text-embedding-v2. It supports multiple languages including Chinese and English and normalizes the vector results. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid value:
+        # 
+        # *   text-embedding-v2
+        # 
+        # The default value is null, which means using the text-embedding-v2 model.
         self.embedding_model_name = embedding_model_name
+        # The name of the knowledge base. The name must be 1 to 20 characters in length and can contain characters classified as letter in Unicode, including English letters, Chinese characters, digits, among others. The name can also contain colons (:), underscores (_), periods (.), and hyphens (-).
+        # 
         # This parameter is required.
         self.name = name
+        # The overlap length. The number of overlapping characters between two consecutive chunks. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values: 0 to 1024.
+        # 
+        # The default value is empty, which means using the intelligent splitting method.
         self.overlap_size = overlap_size
+        # Similarity Threshold. The lowest similarity score of chunks that can be returned. This parameter is used to filter text chunks returned by the rank model. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values: [0.01-1.00].
+        # 
+        # Default value: 0.20.
         self.rerank_min_score = rerank_min_score
+        # The name of the rank model. The rank model is a scoring system outside the knowledge base. It calculates the similarity score of each text chunk in the input question and knowledge base and ranks them in descending order. Then, the model returns the top K chunks with the highest scores. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # 
+        # *   gte-rerank-hybrid
+        # *   gte-rerank
+        # 
+        # The default value is empty, which means using the official gte-rerank-hybrid model.
+        # 
+        # >  If you need only semantic ranking, we recommend that you use gte-rerank. If you need both semantic ranking and text matching features to ensure relevance, we recommend that you use gte-rerank-hybrid.
         self.rerank_model_name = rerank_model_name
+        # The clause identifier. The document is split into chunks based on this identifier. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). You can specify multiple identifiers and do not need to add any other characters to separate them. For example: !,\\\\\\n. Valid values:
+        # 
+        # *   \\n: line break
+        # *   ，: Chinese comma
+        # *   ,: English comma
+        # *   。 : Chinese full stop
+        # *   .: English full stop
+        # *   ！ : Chinese exclamation point
+        # *   ! : English exclamation point
+        # *   ；: Chinese semicolon
+        # *   ;: English semicolon
+        # *   ？ : Chinese question mark
+        # *   ?: English question mark
+        # 
+        # The default value is empty, which means using the intelligent splitting method.
         self.separator = separator
+        # The ID of the vector storage instance. This parameter is available only when SinkType is set to ADB. You can view the ID on the [Instances](https://gpdbnext.console.aliyun.com/gpdb/list) page of AnalyticDB for PostgreSQL.
         self.sink_instance_id = sink_instance_id
+        # The region of the vector storage instance. This parameter is available only when SinkType is set to ADB. You can call the [DescribeRegions](https://help.aliyun.com/zh/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-describeregions) operation to query the most recent region list.
         self.sink_region = sink_region
+        # The vector storage type of the knowledge base. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # 
+        # *   DEFAULT: The built-in vector database.
+        # *   ADB: AnalyticDB for PostgreSQL database. If you need advanced features, such as managing, auditing, and monitoring, we recommend that you specify ADB.
+        # 
+        # >  If you have not used AnalyticDB for AnalyticDB in Model Studio before, go to the [Create Knowledge Base](https://bailian.console.aliyun.com/#/knowledge-base/create) page, select ADB-PG as Vector Storage Type, and follow the instructions to grant permissions. If you specify ADB, you must also specify the `SinkInstanceId` and `SinkRegion` parameters.
+        # 
         # This parameter is required.
         self.sink_type = sink_type
+        # The data type of [Data Management](https://bailian.console.aliyun.com/#/data-center). For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # 
+        # *   DATA_CENTER_CATEGORY: The category type. Import all documents from one or more categories in Data Center.
+        # *   DATA_CENTER_FILE: The document type. Import one or more documents from Data Center.
+        # 
+        # >  If this parameter is set to DATA_CENTER_CATEGORY, you must specify the `CategoryIds` parameter. If this parameter is set to DATA_CENTER_FILE, you must specify the `DocumentIds` parameter.
+        # 
+        # >  If you want to create an empty knowledge base, you can use an empty category. Set this parameter to DATA_CENTER_CATEGORY. And specify the ID of an empty category for the `CategoryIds` parameter.
+        # 
         # This parameter is required.
         self.source_type = source_type
+        # The data type of the knowledge base. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid value:
+        # 
+        # *   unstructured
+        # 
+        # >  After a knowledge base is created, its data type cannot be changed. You cannot create a structured knowledge base by calling an API operation. Use the console instead.
+        # 
         # This parameter is required.
         self.structure_type = structure_type
 
@@ -1560,6 +1766,9 @@ class CreateIndexResponseBodyData(TeaModel):
         self,
         id: str = None,
     ):
+        # The primary key ID of the knowledge base, `IndexId`.
+        # 
+        # >  We recommend that you store this ID. It is required for all subsequent API operations related to this knowledge base.
         self.id = id
 
     def validate(self):
@@ -1592,12 +1801,20 @@ class CreateIndexResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # HTTP status code
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The status code.
         self.status = status
+        # Indications whether the API call is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -1882,6 +2099,115 @@ class CreateMemoryNodeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateMemoryNodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreatePromptTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        name: str = None,
+    ):
+        # This parameter is required.
+        self.content = content
+        # This parameter is required.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class CreatePromptTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        prompt_template_id: str = None,
+        request_id: str = None,
+    ):
+        self.prompt_template_id = prompt_template_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.prompt_template_id is not None:
+            result['promptTemplateId'] = self.prompt_template_id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('promptTemplateId') is not None:
+            self.prompt_template_id = m.get('promptTemplateId')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreatePromptTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreatePromptTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreatePromptTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2246,6 +2572,8 @@ class DeleteIndexRequest(TeaModel):
         self,
         index_id: str = None,
     ):
+        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+        # 
         # This parameter is required.
         self.index_id = index_id
 
@@ -2278,11 +2606,18 @@ class DeleteIndexResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # HTTP status code
         self.code = code
+        # The error message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The status code.
         self.status = status
+        # Indications whether the API call is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -2368,8 +2703,12 @@ class DeleteIndexDocumentRequest(TeaModel):
         document_ids: List[str] = None,
         index_id: str = None,
     ):
+        # The list of the primary key IDs of the documents.
+        # 
         # This parameter is required.
         self.document_ids = document_ids
+        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+        # 
         # This parameter is required.
         self.index_id = index_id
 
@@ -2403,8 +2742,12 @@ class DeleteIndexDocumentShrinkRequest(TeaModel):
         document_ids_shrink: str = None,
         index_id: str = None,
     ):
+        # The list of the primary key IDs of the documents.
+        # 
         # This parameter is required.
         self.document_ids_shrink = document_ids_shrink
+        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+        # 
         # This parameter is required.
         self.index_id = index_id
 
@@ -2437,6 +2780,7 @@ class DeleteIndexDocumentResponseBodyData(TeaModel):
         self,
         deleted_document: List[str] = None,
     ):
+        # The list of primary key IDs of documents that are deleted.
         self.deleted_document = deleted_document
 
     def validate(self):
@@ -2469,12 +2813,20 @@ class DeleteIndexDocumentResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # HTTP status code
         self.code = code
+        # The parameters returned by the operation.
         self.data = data
+        # The error message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The status code.
         self.status = status
+        # Indications whether the API call is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -2696,6 +3048,74 @@ class DeleteMemoryNodeResponse(TeaModel):
         return self
 
 
+class DeletePromptTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeletePromptTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeletePromptTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeletePromptTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeFileResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -2709,14 +3129,30 @@ class DescribeFileResponseBodyData(TeaModel):
         status: str = None,
         tags: List[str] = None,
     ):
+        # The ID of the category to which the document belongs.
         self.category_id = category_id
+        # The timestamp when the document was uploaded to Model Studio. Format: yyyy-MM-dd HH:mm:ss. Time zone: UTC + 8.
         self.create_time = create_time
+        # The primary key ID of the document.
         self.file_id = file_id
+        # The name of the document.
         self.file_name = file_name
+        # The file type of the document. The value is an extension. Valid values: pdf, docx, doc, txt, md, pptx, and ppt.
         self.file_type = file_type
+        # The parser that is used to parse the document. Valid value:
+        # 
+        # *   DASHSCOPE_DOCMIND: The default document parser.
         self.parser = parser
+        # The size of the document. Unit: bytes.
         self.size_in_bytes = size_in_bytes
+        # The status of the document. Valid values:
+        # 
+        # *   INIT: pending parsing.
+        # *   PARSING
+        # *   PARSE_SUCCESS
+        # *   PARSE_FAILED
         self.status = status
+        # The tags that are associated with the document. A document can be associated with multiple tags.
         self.tags = tags
 
     def validate(self):
@@ -2781,11 +3217,20 @@ class DescribeFileResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The returned data fields.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The HTTP status code.
         self.status = status
+        # Indications whether the API call is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -2879,11 +3324,17 @@ class GetIndexJobStatusRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+        # 
         # This parameter is required.
         self.index_id = index_id
+        # The knowledge base job ID, which is the `Data.Id` parameter returned by the [SubmitIndexJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexjob) or [SubmitIndexAddDocumentsJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexadddocumentsjob) operations.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # Both the [SubmitIndexJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexjob) and [SubmitIndexAddDocumentsJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexadddocumentsjob) operations support batch import of documents. This operation returns both the overall `Status` of the job and the `Document.Status` of each document. If there are a large number of documents, you can use the `PageNumber` parameter to perform a paged query. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of document import jobs that are displayed on each page. No maximum value. Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -2927,10 +3378,20 @@ class GetIndexJobStatusResponseBodyDataDocuments(TeaModel):
         message: str = None,
         status: str = None,
     ):
+        # HTTP status code
         self.code = code
+        # The primary key ID of the document.
         self.doc_id = doc_id
+        # The name of the document.
         self.doc_name = doc_name
+        # The error message.
         self.message = message
+        # The import status of the document. Valid values:
+        # 
+        # *   INSERT_ERROR
+        # *   RUNNING
+        # *   DELETED
+        # *   FINISH
         self.status = status
 
     def validate(self):
@@ -2976,8 +3437,16 @@ class GetIndexJobStatusResponseBodyData(TeaModel):
         job_id: str = None,
         status: str = None,
     ):
+        # The list of imported documents.
         self.documents = documents
+        # The ID of the job.
         self.job_id = job_id
+        # The status of the knowledge base job. Valid values:
+        # 
+        # *   COMPLETED
+        # *   FAILED
+        # *   RUNNING
+        # *   PENDING
         self.status = status
 
     def validate(self):
@@ -3026,11 +3495,20 @@ class GetIndexJobStatusResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # HTTP status code
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The HTTP status code returned.
         self.status = status
+        # Indications whether the API call is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -3290,6 +3768,104 @@ class GetMemoryNodeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetMemoryNodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetPromptTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        name: str = None,
+        prompt_template_id: str = None,
+        request_id: str = None,
+        variables: List[str] = None,
+        workspace_id: str = None,
+    ):
+        self.content = content
+        self.name = name
+        self.prompt_template_id = prompt_template_id
+        self.request_id = request_id
+        self.variables = variables
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.name is not None:
+            result['name'] = self.name
+        if self.prompt_template_id is not None:
+            result['promptTemplateId'] = self.prompt_template_id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.variables is not None:
+            result['variables'] = self.variables
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('promptTemplateId') is not None:
+            self.prompt_template_id = m.get('promptTemplateId')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('variables') is not None:
+            self.variables = m.get('variables')
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
+        return self
+
+
+class GetPromptTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPromptTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPromptTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4051,11 +4627,17 @@ class ListChunksRequest(TeaModel):
         page_num: int = None,
         page_size: int = None,
     ):
+        # An array of field names. This parameter is used to filter non-private fields (prefixed with_underscores) in the Metadata parameter returned by this operation. By default, this parameter is left empty, which means all non-private fields in the Metadata parameter are returned. If you only want specified non-private fields, such as title, set this parameter to title.
         self.fields = fields
+        # The primary key ID of the document, which is the `FieldID` parameter returned by the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) operation. This parameter is not required for structured knowledge base, but is required for unstructured knowledge base. To view the ID, you can click the ID icon next to the file name on the [Data Management](https://bailian.console.aliyun.com/#/data-center) page. You can filter returned chunks by the document ID. This parameter is left empty by default.
         self.filed = filed
+        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+        # 
         # This parameter is required.
         self.index_id = index_id
+        # The number of the pages to return. Pages start from page 1. Default value: 1.
         self.page_num = page_num
+        # The number of chunks to display on each page. Maximum value: 100. Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -4101,8 +4683,11 @@ class ListChunksResponseBodyDataNodes(TeaModel):
         score: float = None,
         text: str = None,
     ):
+        # The metadata map of the chunk.
         self.metadata = metadata
+        # The similarity score of the chunk.
         self.score = score
+        # The text of the chunk.
         self.text = text
 
     def validate(self):
@@ -4139,7 +4724,9 @@ class ListChunksResponseBodyData(TeaModel):
         nodes: List[ListChunksResponseBodyDataNodes] = None,
         total: int = None,
     ):
+        # The list of chunks.
         self.nodes = nodes
+        # The total number of chunks returned.
         self.total = total
 
     def validate(self):
@@ -4184,12 +4771,20 @@ class ListChunksResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The error message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The HTTP status code returned.
         self.status = status
+        # Indications whether the API call is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -4279,11 +4874,13 @@ class ListFileRequest(TeaModel):
     def __init__(
         self,
         category_id: str = None,
+        file_name: str = None,
         max_results: int = None,
         next_token: str = None,
     ):
         # This parameter is required.
         self.category_id = category_id
+        self.file_name = file_name
         self.max_results = max_results
         self.next_token = next_token
 
@@ -4298,6 +4895,8 @@ class ListFileRequest(TeaModel):
         result = dict()
         if self.category_id is not None:
             result['CategoryId'] = self.category_id
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -4308,6 +4907,8 @@ class ListFileRequest(TeaModel):
         m = m or dict()
         if m.get('CategoryId') is not None:
             self.category_id = m.get('CategoryId')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -4559,11 +5160,24 @@ class ListIndexDocumentsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The names of the queried documents. The default value is null, which means the names are not used to filter the results.
         self.document_name = document_name
+        # The import status of the documents to be queried. Valid values:
+        # 
+        # *   INSERT_ERROR
+        # *   RUNNING
+        # *   DELETED
+        # *   FINISH
+        # 
+        # The default value is null, which means the import status is not used to filter the results.
         self.document_status = document_status
+        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+        # 
         # This parameter is required.
         self.index_id = index_id
+        # The page numbers of the pages to return. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of documents displayed on each page. No maximum value. Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -4614,13 +5228,28 @@ class ListIndexDocumentsResponseBodyDataDocuments(TeaModel):
         source_id: str = None,
         status: str = None,
     ):
+        # The error status code of document import.
         self.code = code
+        # The format of the document. Valid values: pdf, docx, doc, txt, md, pptx, ppt, and EXCEL.
         self.document_type = document_type
+        # The primary key ID of the document.
         self.id = id
+        # The error message of document import.
         self.message = message
+        # The name of the document.
         self.name = name
+        # The size of the document. Unit: bytes.
         self.size = size
+        # For unstructured knowledge base, this parameter is the category ID, which is the `CategoryId` returned by the [AddCategory](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addcategory) interface. To view the category ID, you can click the ID icon next to the category name on the Unstructured Data tab of the [Data Management](https://bailian.console.aliyun.com/#/data-center) page.
+        # 
+        # For structured knowledge base, this parameter is the data table ID. To view the table ID, you can click the ID icon next to the table name on the Structured Data tab of the [Data Management](https://bailian.console.aliyun.com/#/data-center) page.
         self.source_id = source_id
+        # The import status of the document. Valid values:
+        # 
+        # *   INSERT_ERROR
+        # *   RUNNING
+        # *   DELETED
+        # *   FINISH
         self.status = status
 
     def validate(self):
@@ -4680,10 +5309,15 @@ class ListIndexDocumentsResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The list of documents in the knowledge base.
         self.documents = documents
+        # The primary key ID of the knowledge base.
         self.index_id = index_id
+        # The specified page number.
         self.page_number = page_number
+        # The specified number of documents on each page.
         self.page_size = page_size
+        # The total number of documents returned.
         self.total_count = total_count
 
     def validate(self):
@@ -4740,12 +5374,20 @@ class ListIndexDocumentsResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # HTTP status code
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The status code.
         self.status = status
+        # Indications whether the API call is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -4838,8 +5480,13 @@ class ListIndicesRequest(TeaModel):
         page_number: str = None,
         page_size: str = None,
     ):
+        # The name of the knowledge base. You can query knowledge base by name. The name must be 1 to 20 characters in length and can contain characters classified as letter in Unicode, including English letters, Chinese characters, digits, among others. The name can also contain colons (:), underscores (_), periods (.), and hyphens (-).
+        # 
+        # This parameter is left empty by default, which means that all knowledge bases in the specified workspace are queried.
         self.index_name = index_name
+        # The number of the pages to return. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of knowledge bases to display on each page. No maximum value. Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -4889,20 +5536,65 @@ class ListIndicesResponseBodyDataIndices(TeaModel):
         source_type: str = None,
         structure_type: str = None,
     ):
+        # The estimated length of chunks. Valid values: [1-2048].
         self.chunk_size = chunk_size
+        # The description of the knowledge base.
         self.description = description
+        # The list of the primary key IDs of the documents.
         self.document_ids = document_ids
+        # The name of the embedding model. Valid values:
+        # 
+        # *   text-embedding-v2
         self.embedding_model_name = embedding_model_name
+        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
         self.id = id
+        # The name of the knowledge base.
         self.name = name
+        # The overlap length. Valid values: [0-1024].
         self.overlap_size = overlap_size
+        # Similarity Threshold Valid values: [0.01-1.00].
         self.rerank_min_score = rerank_min_score
+        # The name of the rank model. Valid values:
+        # 
+        # *   gte-rerank-hybrid
+        # *   gte-rerank
         self.rerank_model_name = rerank_model_name
+        # The clause identifier. Separate multiple clause identifiers with |. Valid values:
+        # 
+        # *   \\n: line break
+        # *   ，: Chinese comma
+        # *   ,: English comma
+        # *   。 : Chinese full stop
+        # *   .: English full stop
+        # *   ！ : Chinese exclamation point
+        # *   ! : English exclamation point
+        # *   ；: Chinese semicolon
+        # *   ;: English semicolon
+        # *   ？ : Chinese question mark
+        # *   ?: English question mark
         self.separator = separator
+        # The ID of the vector storage instance.
         self.sink_instance_id = sink_instance_id
+        # The region of the vector storage instance.
         self.sink_region = sink_region
+        # The vector storage type of the knowledge base. Valid values:
+        # 
+        # *   ES: Built-in vector database.
+        # *   BUILT_IN: Built-in vector database.
+        # *   ADB: AnalyticDB for PostgreSQL database.
         self.sink_type = sink_type
+        # The data type of [Data Management](https://bailian.console.aliyun.com/#/data-center). For unstructured knowledge base, possible values:
+        # 
+        # *   DATA_CENTER_CATEGORY: The category type.
+        # *   DATA_CENTER_FILE: The document type.
+        # 
+        # For structured knowledge base, possible values:
+        # 
+        # *   DATA_CENTER_STRUCTURED_TABLE: The data table type.
         self.source_type = source_type
+        # The vector storage type of the knowledge base. Valid values:
+        # 
+        # *   UNSTRUCTURED
         self.structure_type = structure_type
 
     def validate(self):
@@ -4989,9 +5681,13 @@ class ListIndicesResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The list of knowledge bases.
         self.indices = indices
+        # The specified page number.
         self.page_number = page_number
+        # The specified number of documents on each page.
         self.page_size = page_size
+        # The total number of knowledge bases returned.
         self.total_count = total_count
 
     def validate(self):
@@ -5044,12 +5740,20 @@ class ListIndicesResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # HTTP status code
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The HTTP status code returned.
         self.status = status
+        # Indications whether the API call is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -5469,6 +6173,208 @@ class ListMemoryNodesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListMemoryNodesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListPromptTemplatesRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        name: str = None,
+        next_token: str = None,
+        type: str = None,
+    ):
+        self.max_results = max_results
+        self.name = name
+        self.next_token = next_token
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.name is not None:
+            result['name'] = self.name
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ListPromptTemplatesResponseBodyPromptTemplates(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        name: str = None,
+        prompt_template_id: str = None,
+        type: str = None,
+        variables: List[str] = None,
+    ):
+        self.content = content
+        self.name = name
+        self.prompt_template_id = prompt_template_id
+        self.type = type
+        self.variables = variables
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.name is not None:
+            result['name'] = self.name
+        if self.prompt_template_id is not None:
+            result['promptTemplateId'] = self.prompt_template_id
+        if self.type is not None:
+            result['type'] = self.type
+        if self.variables is not None:
+            result['variables'] = self.variables
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('promptTemplateId') is not None:
+            self.prompt_template_id = m.get('promptTemplateId')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('variables') is not None:
+            self.variables = m.get('variables')
+        return self
+
+
+class ListPromptTemplatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        prompt_templates: List[ListPromptTemplatesResponseBodyPromptTemplates] = None,
+        request_id: str = None,
+        total_count: int = None,
+        workspace_id: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.prompt_templates = prompt_templates
+        self.request_id = request_id
+        self.total_count = total_count
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.prompt_templates:
+            for k in self.prompt_templates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        result['promptTemplates'] = []
+        if self.prompt_templates is not None:
+            for k in self.prompt_templates:
+                result['promptTemplates'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        self.prompt_templates = []
+        if m.get('promptTemplates') is not None:
+            for k in m.get('promptTemplates'):
+                temp_model = ListPromptTemplatesResponseBodyPromptTemplates()
+                self.prompt_templates.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
+        return self
+
+
+class ListPromptTemplatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPromptTemplatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPromptTemplatesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6055,6 +6961,10 @@ class RetrieveRequestRerank(TeaModel):
         self,
         model_name: str = None,
     ):
+        # The name of the rank model. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # 
+        # *   gte-rerank-hybrid: Recommended official model.
+        # *   gte-rerank
         self.model_name = model_name
 
     def validate(self):
@@ -6082,6 +6992,11 @@ class RetrieveRequestRewrite(TeaModel):
         self,
         model_name: str = None,
     ):
+        # Conversation rewriting model name. The query rewriting model automatically adjusts the original prompt based on the context to improve retrieval performance. Valid value:
+        # 
+        # *   conv-rewrite-qwen-1.8b
+        # 
+        # By default, this parameter is left empty, which means conv-rewrite-qwen-1.8b is used.
         self.model_name = model_name
 
     def validate(self):
@@ -6121,19 +7036,53 @@ class RetrieveRequest(TeaModel):
         search_filters: List[Dict[str, str]] = None,
         sparse_similarity_top_k: int = None,
     ):
+        # Vector retrieval top K. After generating vectors based on input text, the top K chunks in the knowledge base that are most similar to the vector representation of the input text are retrieved. Valid values: 0 to 100. The sum of the `DenseSimilarityTopK` and `SparseSimilarityTopK` parameters must be less than or equal to 200.
+        # 
+        # Default value: 100.
         self.dense_similarity_top_k = dense_similarity_top_k
+        # Specifies whether to enable reranking. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: true.
         self.enable_reranking = enable_reranking
+        # Specifies whether to enable multi-round conversation rewriting. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
         self.enable_rewrite = enable_rewrite
         self.images = images
+        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+        # 
         # This parameter is required.
         self.index_id = index_id
+        # The input query prompt. The length and characters of the query are not limited.
         self.query = query
+        # Ranking configurations.
         self.rerank = rerank
+        # Similarity Threshold The lowest similarity score of chunks that can be returned. This parameter is used to filter text chunks returned by the rank model. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values: [0.01-1.00]. The priority of this parameter is greater than the similarity threshold configured for the knowledge base.
+        # 
+        # By default, this parameter is left empty. In this case, the similarity threshold of the knowledge base is used.
         self.rerank_min_score = rerank_min_score
+        # The top N return data after reranking. Valid values: 1 to 20. Default value: 5.
         self.rerank_top_n = rerank_top_n
+        # Conversation rewriting configurations.
         self.rewrite = rewrite
+        # Specifies whether to save the retrieve test history. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
         self.save_retriever_history = save_retriever_history
+        # Specifies complex filter conditions. For more information about the syntax of SearchFilters, see the SearchFilter syntax section of this topic.
         self.search_filters = search_filters
+        # The top K of keyword retrieval. Chunks that exactly match the keywords of the input text are retrieved from the knowledge base. This filters out irrelevant chunks and boosts accuracy. Valid values: 0 to 100. The sum of the `DenseSimilarityTopK` and `SparseSimilarityTopK` parameters must be less than or equal to 200.
+        # 
+        # Default value: 100.
         self.sparse_similarity_top_k = sparse_similarity_top_k
 
     def validate(self):
@@ -6238,19 +7187,53 @@ class RetrieveShrinkRequest(TeaModel):
         search_filters_shrink: str = None,
         sparse_similarity_top_k: int = None,
     ):
+        # Vector retrieval top K. After generating vectors based on input text, the top K chunks in the knowledge base that are most similar to the vector representation of the input text are retrieved. Valid values: 0 to 100. The sum of the `DenseSimilarityTopK` and `SparseSimilarityTopK` parameters must be less than or equal to 200.
+        # 
+        # Default value: 100.
         self.dense_similarity_top_k = dense_similarity_top_k
+        # Specifies whether to enable reranking. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: true.
         self.enable_reranking = enable_reranking
+        # Specifies whether to enable multi-round conversation rewriting. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
         self.enable_rewrite = enable_rewrite
         self.images_shrink = images_shrink
+        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+        # 
         # This parameter is required.
         self.index_id = index_id
+        # The input query prompt. The length and characters of the query are not limited.
         self.query = query
+        # Ranking configurations.
         self.rerank_shrink = rerank_shrink
+        # Similarity Threshold The lowest similarity score of chunks that can be returned. This parameter is used to filter text chunks returned by the rank model. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values: [0.01-1.00]. The priority of this parameter is greater than the similarity threshold configured for the knowledge base.
+        # 
+        # By default, this parameter is left empty. In this case, the similarity threshold of the knowledge base is used.
         self.rerank_min_score = rerank_min_score
+        # The top N return data after reranking. Valid values: 1 to 20. Default value: 5.
         self.rerank_top_n = rerank_top_n
+        # Conversation rewriting configurations.
         self.rewrite_shrink = rewrite_shrink
+        # Specifies whether to save the retrieve test history. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
         self.save_retriever_history = save_retriever_history
+        # Specifies complex filter conditions. For more information about the syntax of SearchFilters, see the SearchFilter syntax section of this topic.
         self.search_filters_shrink = search_filters_shrink
+        # The top K of keyword retrieval. Chunks that exactly match the keywords of the input text are retrieved from the knowledge base. This filters out irrelevant chunks and boosts accuracy. Valid values: 0 to 100. The sum of the `DenseSimilarityTopK` and `SparseSimilarityTopK` parameters must be less than or equal to 200.
+        # 
+        # Default value: 100.
         self.sparse_similarity_top_k = sparse_similarity_top_k
 
     def validate(self):
@@ -6328,8 +7311,11 @@ class RetrieveResponseBodyDataNodes(TeaModel):
         score: float = None,
         text: str = None,
     ):
+        # The metadata map of the chunk.
         self.metadata = metadata
+        # The similarity score of the chunk. Valid values:[0-1].
         self.score = score
+        # The text of the chunk.
         self.text = text
 
     def validate(self):
@@ -6365,6 +7351,7 @@ class RetrieveResponseBodyData(TeaModel):
         self,
         nodes: List[RetrieveResponseBodyDataNodes] = None,
     ):
+        # The list of queried chunks.
         self.nodes = nodes
 
     def validate(self):
@@ -6405,12 +7392,20 @@ class RetrieveResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # HTTP status code
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The HTTP status code returned.
         self.status = status
+        # Indications whether the API call is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -6504,10 +7499,21 @@ class SubmitIndexAddDocumentsJobRequest(TeaModel):
         index_id: str = None,
         source_type: str = None,
     ):
+        # The list of primary key IDs of the category.
         self.category_ids = category_ids
+        # The list of the primary key IDs of the documents.
         self.document_ids = document_ids
+        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+        # 
         # This parameter is required.
         self.index_id = index_id
+        # The data type of [Data Management](https://bailian.console.aliyun.com/#/data-center). For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # 
+        # *   DATA_CENTER_CATEGORY: The category type. Import all documents from one or more categories in Data Center.
+        # *   DATA_CENTER_FILE: The document type. Import one or more documents from Data Center.
+        # 
+        # >  If this parameter is set to DATA_CENTER_CATEGORY, you must specify the `CategoryIds` parameter. If this parameter is set to DATA_CENTER_FILE, you must specify the `DocumentIds` parameter.
+        # 
         # This parameter is required.
         self.source_type = source_type
 
@@ -6551,10 +7557,21 @@ class SubmitIndexAddDocumentsJobShrinkRequest(TeaModel):
         index_id: str = None,
         source_type: str = None,
     ):
+        # The list of primary key IDs of the category.
         self.category_ids_shrink = category_ids_shrink
+        # The list of the primary key IDs of the documents.
         self.document_ids_shrink = document_ids_shrink
+        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+        # 
         # This parameter is required.
         self.index_id = index_id
+        # The data type of [Data Management](https://bailian.console.aliyun.com/#/data-center). For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # 
+        # *   DATA_CENTER_CATEGORY: The category type. Import all documents from one or more categories in Data Center.
+        # *   DATA_CENTER_FILE: The document type. Import one or more documents from Data Center.
+        # 
+        # >  If this parameter is set to DATA_CENTER_CATEGORY, you must specify the `CategoryIds` parameter. If this parameter is set to DATA_CENTER_FILE, you must specify the `DocumentIds` parameter.
+        # 
         # This parameter is required.
         self.source_type = source_type
 
@@ -6595,6 +7612,7 @@ class SubmitIndexAddDocumentsJobResponseBodyData(TeaModel):
         self,
         id: str = None,
     ):
+        # The primary key ID of the task, `JobId`.
         self.id = id
 
     def validate(self):
@@ -6627,12 +7645,20 @@ class SubmitIndexAddDocumentsJobResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # HTTP status code
         self.code = code
+        # The data returned.
         self.data = data
+        # The error message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The HTTP status code returned.
         self.status = status
+        # Indications whether the API call is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -6723,6 +7749,8 @@ class SubmitIndexJobRequest(TeaModel):
         self,
         index_id: str = None,
     ):
+        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+        # 
         # This parameter is required.
         self.index_id = index_id
 
@@ -6752,7 +7780,9 @@ class SubmitIndexJobResponseBodyData(TeaModel):
         id: str = None,
         index_id: str = None,
     ):
+        # The primary key ID of the job, which is the `JobId` parameter of the [GetIndexJobStatus](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-getindexjobstatus) operation.
         self.id = id
+        # The primary key ID of the knowledge base.
         self.index_id = index_id
 
     def validate(self):
@@ -6789,12 +7819,20 @@ class SubmitIndexJobResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # HTTP status code
         self.code = code
+        # The data returned.
         self.data = data
+        # The error message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The status code.
         self.status = status
+        # Indications whether the API call is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -7595,6 +8633,107 @@ class UpdateMemoryNodeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateMemoryNodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdatePromptTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        name: str = None,
+    ):
+        self.content = content
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class UpdatePromptTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpdatePromptTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdatePromptTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdatePromptTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

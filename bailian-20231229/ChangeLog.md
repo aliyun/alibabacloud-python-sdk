@@ -1,3 +1,13 @@
+2024-10-16 Version: 1.9.0
+- Support API CreatePromptTemplate.
+- Support API DeletePromptTemplate.
+- Support API GetPromptTemplate.
+- Support API ListPromptTemplates.
+- Support API UpdatePromptTemplate.
+- Update API ListChunks: update param body.
+- Update API ListFile: add param FileName.
+
+
 2024-09-19 Version: 1.8.4
 - Update API AddFile: add param Tags.
 - Update API DescribeFile: update response param.
