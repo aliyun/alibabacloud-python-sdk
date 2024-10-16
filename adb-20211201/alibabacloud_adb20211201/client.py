@@ -1077,6 +1077,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.rules):
             request.rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rules, 'Rules', 'json')
         query = {}
+        if not UtilClient.is_unset(request.auto_stop_interval):
+            query['AutoStopInterval'] = request.auto_stop_interval
         if not UtilClient.is_unset(request.cluster_mode):
             query['ClusterMode'] = request.cluster_mode
         if not UtilClient.is_unset(request.cluster_size_resource):
@@ -1154,6 +1156,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.rules):
             request.rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rules, 'Rules', 'json')
         query = {}
+        if not UtilClient.is_unset(request.auto_stop_interval):
+            query['AutoStopInterval'] = request.auto_stop_interval
         if not UtilClient.is_unset(request.cluster_mode):
             query['ClusterMode'] = request.cluster_mode
         if not UtilClient.is_unset(request.cluster_size_resource):
@@ -13905,6 +13909,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.rules):
             request.rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rules, 'Rules', 'json')
         query = {}
+        if not UtilClient.is_unset(request.auto_stop_interval):
+            query['AutoStopInterval'] = request.auto_stop_interval
         if not UtilClient.is_unset(request.cluster_mode):
             query['ClusterMode'] = request.cluster_mode
         if not UtilClient.is_unset(request.cluster_size_resource):
@@ -13937,6 +13943,8 @@ class Client(OpenApiClient):
             query['Rules'] = request.rules_shrink
         if not UtilClient.is_unset(request.spec_name):
             query['SpecName'] = request.spec_name
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         if not UtilClient.is_unset(request.target_resource_group_name):
             query['TargetResourceGroupName'] = request.target_resource_group_name
         req = open_api_models.OpenApiRequest(
@@ -13980,6 +13988,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.rules):
             request.rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rules, 'Rules', 'json')
         query = {}
+        if not UtilClient.is_unset(request.auto_stop_interval):
+            query['AutoStopInterval'] = request.auto_stop_interval
         if not UtilClient.is_unset(request.cluster_mode):
             query['ClusterMode'] = request.cluster_mode
         if not UtilClient.is_unset(request.cluster_size_resource):
@@ -14012,6 +14022,8 @@ class Client(OpenApiClient):
             query['Rules'] = request.rules_shrink
         if not UtilClient.is_unset(request.spec_name):
             query['SpecName'] = request.spec_name
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         if not UtilClient.is_unset(request.target_resource_group_name):
             query['TargetResourceGroupName'] = request.target_resource_group_name
         req = open_api_models.OpenApiRequest(

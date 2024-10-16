@@ -1,3 +1,11 @@
+2024-10-16 Version: 1.3.15
+- Update API CreateDBResourceGroup: add param AutoStopInterval.
+- Update API DescribeDBResourceGroup: update response param.
+- Update API DescribePerformanceViewAttribute: update response param.
+- Update API ModifyDBResourceGroup: add param AutoStopInterval.
+- Update API ModifyDBResourceGroup: add param Status.
+
+
 2024-10-12 Version: 1.3.14
 - Update API DescribeBackups: update response param.
 - Update API ModifyBackupPolicy: update param PreferredBackupPeriod.

@@ -3404,6 +3404,7 @@ class CreateDBResourceGroupRequestRules(TeaModel):
 class CreateDBResourceGroupRequest(TeaModel):
     def __init__(
         self,
+        auto_stop_interval: str = None,
         cluster_mode: str = None,
         cluster_size_resource: str = None,
         dbcluster_id: str = None,
@@ -3423,6 +3424,7 @@ class CreateDBResourceGroupRequest(TeaModel):
         spec_name: str = None,
         target_resource_group_name: str = None,
     ):
+        self.auto_stop_interval = auto_stop_interval
         # A reserved parameter.
         self.cluster_mode = cluster_mode
         # A reserved parameter.
@@ -3492,6 +3494,8 @@ class CreateDBResourceGroupRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_stop_interval is not None:
+            result['AutoStopInterval'] = self.auto_stop_interval
         if self.cluster_mode is not None:
             result['ClusterMode'] = self.cluster_mode
         if self.cluster_size_resource is not None:
@@ -3534,6 +3538,8 @@ class CreateDBResourceGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoStopInterval') is not None:
+            self.auto_stop_interval = m.get('AutoStopInterval')
         if m.get('ClusterMode') is not None:
             self.cluster_mode = m.get('ClusterMode')
         if m.get('ClusterSizeResource') is not None:
@@ -3579,6 +3585,7 @@ class CreateDBResourceGroupRequest(TeaModel):
 class CreateDBResourceGroupShrinkRequest(TeaModel):
     def __init__(
         self,
+        auto_stop_interval: str = None,
         cluster_mode: str = None,
         cluster_size_resource: str = None,
         dbcluster_id: str = None,
@@ -3598,6 +3605,7 @@ class CreateDBResourceGroupShrinkRequest(TeaModel):
         spec_name: str = None,
         target_resource_group_name: str = None,
     ):
+        self.auto_stop_interval = auto_stop_interval
         # A reserved parameter.
         self.cluster_mode = cluster_mode
         # A reserved parameter.
@@ -3664,6 +3672,8 @@ class CreateDBResourceGroupShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_stop_interval is not None:
+            result['AutoStopInterval'] = self.auto_stop_interval
         if self.cluster_mode is not None:
             result['ClusterMode'] = self.cluster_mode
         if self.cluster_size_resource is not None:
@@ -3704,6 +3714,8 @@ class CreateDBResourceGroupShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoStopInterval') is not None:
+            self.auto_stop_interval = m.get('AutoStopInterval')
         if m.get('ClusterMode') is not None:
             self.cluster_mode = m.get('ClusterMode')
         if m.get('ClusterSizeResource') is not None:
@@ -13783,6 +13795,7 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoRules(TeaModel):
 class DescribeDBResourceGroupResponseBodyGroupsInfo(TeaModel):
     def __init__(
         self,
+        auto_stop_interval: str = None,
         cluster_mode: str = None,
         cluster_size_resource: str = None,
         create_time: str = None,
@@ -13807,6 +13820,7 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(TeaModel):
         target_resource_group_name: str = None,
         update_time: str = None,
     ):
+        self.auto_stop_interval = auto_stop_interval
         # A reserved parameter.
         self.cluster_mode = cluster_mode
         # A reserved parameter.
@@ -13874,6 +13888,8 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_stop_interval is not None:
+            result['AutoStopInterval'] = self.auto_stop_interval
         if self.cluster_mode is not None:
             result['ClusterMode'] = self.cluster_mode
         if self.cluster_size_resource is not None:
@@ -13926,6 +13942,8 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoStopInterval') is not None:
+            self.auto_stop_interval = m.get('AutoStopInterval')
         if m.get('ClusterMode') is not None:
             self.cluster_mode = m.get('ClusterMode')
         if m.get('ClusterSizeResource') is not None:
@@ -17544,9 +17562,15 @@ class DescribePerformanceViewAttributeRequest(TeaModel):
 class DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys(TeaModel):
     def __init__(
         self,
+        enable_auto_mc: bool = None,
+        engine: List[str] = None,
+        group_type: List[str] = None,
         key_name: str = None,
         selected: bool = None,
     ):
+        self.enable_auto_mc = enable_auto_mc
+        self.engine = engine
+        self.group_type = group_type
         # The name of the metric.
         self.key_name = key_name
         # Specifies whether to select the metric. Valid values:
@@ -17564,6 +17588,12 @@ class DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys(TeaMo
             return _map
 
         result = dict()
+        if self.enable_auto_mc is not None:
+            result['EnableAutoMc'] = self.enable_auto_mc
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.group_type is not None:
+            result['GroupType'] = self.group_type
         if self.key_name is not None:
             result['KeyName'] = self.key_name
         if self.selected is not None:
@@ -17572,6 +17602,12 @@ class DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys(TeaMo
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EnableAutoMc') is not None:
+            self.enable_auto_mc = m.get('EnableAutoMc')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('GroupType') is not None:
+            self.group_type = m.get('GroupType')
         if m.get('KeyName') is not None:
             self.key_name = m.get('KeyName')
         if m.get('Selected') is not None:
@@ -27582,6 +27618,7 @@ class ModifyDBResourceGroupRequestRules(TeaModel):
 class ModifyDBResourceGroupRequest(TeaModel):
     def __init__(
         self,
+        auto_stop_interval: str = None,
         cluster_mode: str = None,
         cluster_size_resource: str = None,
         dbcluster_id: str = None,
@@ -27598,8 +27635,10 @@ class ModifyDBResourceGroupRequest(TeaModel):
         region_id: str = None,
         rules: List[ModifyDBResourceGroupRequestRules] = None,
         spec_name: str = None,
+        status: str = None,
         target_resource_group_name: str = None,
     ):
+        self.auto_stop_interval = auto_stop_interval
         # A reserved parameter.
         self.cluster_mode = cluster_mode
         # A reserved parameter.
@@ -27652,6 +27691,7 @@ class ModifyDBResourceGroupRequest(TeaModel):
         # The job resubmission rules.
         self.rules = rules
         self.spec_name = spec_name
+        self.status = status
         self.target_resource_group_name = target_resource_group_name
 
     def validate(self):
@@ -27666,6 +27706,8 @@ class ModifyDBResourceGroupRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_stop_interval is not None:
+            result['AutoStopInterval'] = self.auto_stop_interval
         if self.cluster_mode is not None:
             result['ClusterMode'] = self.cluster_mode
         if self.cluster_size_resource is not None:
@@ -27700,12 +27742,16 @@ class ModifyDBResourceGroupRequest(TeaModel):
                 result['Rules'].append(k.to_map() if k else None)
         if self.spec_name is not None:
             result['SpecName'] = self.spec_name
+        if self.status is not None:
+            result['Status'] = self.status
         if self.target_resource_group_name is not None:
             result['TargetResourceGroupName'] = self.target_resource_group_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoStopInterval') is not None:
+            self.auto_stop_interval = m.get('AutoStopInterval')
         if m.get('ClusterMode') is not None:
             self.cluster_mode = m.get('ClusterMode')
         if m.get('ClusterSizeResource') is not None:
@@ -27741,6 +27787,8 @@ class ModifyDBResourceGroupRequest(TeaModel):
                 self.rules.append(temp_model.from_map(k))
         if m.get('SpecName') is not None:
             self.spec_name = m.get('SpecName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('TargetResourceGroupName') is not None:
             self.target_resource_group_name = m.get('TargetResourceGroupName')
         return self
@@ -27749,6 +27797,7 @@ class ModifyDBResourceGroupRequest(TeaModel):
 class ModifyDBResourceGroupShrinkRequest(TeaModel):
     def __init__(
         self,
+        auto_stop_interval: str = None,
         cluster_mode: str = None,
         cluster_size_resource: str = None,
         dbcluster_id: str = None,
@@ -27765,8 +27814,10 @@ class ModifyDBResourceGroupShrinkRequest(TeaModel):
         region_id: str = None,
         rules_shrink: str = None,
         spec_name: str = None,
+        status: str = None,
         target_resource_group_name: str = None,
     ):
+        self.auto_stop_interval = auto_stop_interval
         # A reserved parameter.
         self.cluster_mode = cluster_mode
         # A reserved parameter.
@@ -27819,6 +27870,7 @@ class ModifyDBResourceGroupShrinkRequest(TeaModel):
         # The job resubmission rules.
         self.rules_shrink = rules_shrink
         self.spec_name = spec_name
+        self.status = status
         self.target_resource_group_name = target_resource_group_name
 
     def validate(self):
@@ -27830,6 +27882,8 @@ class ModifyDBResourceGroupShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_stop_interval is not None:
+            result['AutoStopInterval'] = self.auto_stop_interval
         if self.cluster_mode is not None:
             result['ClusterMode'] = self.cluster_mode
         if self.cluster_size_resource is not None:
@@ -27862,12 +27916,16 @@ class ModifyDBResourceGroupShrinkRequest(TeaModel):
             result['Rules'] = self.rules_shrink
         if self.spec_name is not None:
             result['SpecName'] = self.spec_name
+        if self.status is not None:
+            result['Status'] = self.status
         if self.target_resource_group_name is not None:
             result['TargetResourceGroupName'] = self.target_resource_group_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoStopInterval') is not None:
+            self.auto_stop_interval = m.get('AutoStopInterval')
         if m.get('ClusterMode') is not None:
             self.cluster_mode = m.get('ClusterMode')
         if m.get('ClusterSizeResource') is not None:
@@ -27900,6 +27958,8 @@ class ModifyDBResourceGroupShrinkRequest(TeaModel):
             self.rules_shrink = m.get('Rules')
         if m.get('SpecName') is not None:
             self.spec_name = m.get('SpecName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('TargetResourceGroupName') is not None:
             self.target_resource_group_name = m.get('TargetResourceGroupName')
         return self
