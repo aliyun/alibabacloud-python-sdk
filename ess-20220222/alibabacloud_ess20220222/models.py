@@ -8568,6 +8568,7 @@ class CreateScalingGroupRequest(TeaModel):
         spot_allocation_strategy: str = None,
         spot_instance_pools: int = None,
         spot_instance_remedy: bool = None,
+        stop_instance_timeout: int = None,
         sync_alarm_rule_to_cms: bool = None,
         tags: List[CreateScalingGroupRequestTags] = None,
         vserver_groups: List[CreateScalingGroupRequestVServerGroups] = None,
@@ -8782,6 +8783,7 @@ class CreateScalingGroupRequest(TeaModel):
         self.spot_instance_pools = spot_instance_pools
         # Specifies whether to supplement preemptible instances. If you set this parameter to true, Auto Scaling creates an instance to replace a preemptible instance when Auto Scaling receives a system message which indicates that the preemptible instance is to be reclaimed.
         self.spot_instance_remedy = spot_instance_remedy
+        self.stop_instance_timeout = stop_instance_timeout
         # > This parameter is unavailable.
         self.sync_alarm_rule_to_cms = sync_alarm_rule_to_cms
         # The tags that you want to add to the scaling group.
@@ -8935,6 +8937,8 @@ class CreateScalingGroupRequest(TeaModel):
             result['SpotInstancePools'] = self.spot_instance_pools
         if self.spot_instance_remedy is not None:
             result['SpotInstanceRemedy'] = self.spot_instance_remedy
+        if self.stop_instance_timeout is not None:
+            result['StopInstanceTimeout'] = self.stop_instance_timeout
         if self.sync_alarm_rule_to_cms is not None:
             result['SyncAlarmRuleToCms'] = self.sync_alarm_rule_to_cms
         result['Tags'] = []
@@ -9051,6 +9055,8 @@ class CreateScalingGroupRequest(TeaModel):
             self.spot_instance_pools = m.get('SpotInstancePools')
         if m.get('SpotInstanceRemedy') is not None:
             self.spot_instance_remedy = m.get('SpotInstanceRemedy')
+        if m.get('StopInstanceTimeout') is not None:
+            self.stop_instance_timeout = m.get('StopInstanceTimeout')
         if m.get('SyncAlarmRuleToCms') is not None:
             self.sync_alarm_rule_to_cms = m.get('SyncAlarmRuleToCms')
         self.tags = []
@@ -21538,6 +21544,7 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
         spot_instance_pools: int = None,
         spot_instance_remedy: bool = None,
         standby_capacity: int = None,
+        stop_instance_timeout: int = None,
         stopped_capacity: int = None,
         suspended_processes: List[str] = None,
         system_suspended: bool = None,
@@ -21711,6 +21718,7 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
         self.spot_instance_remedy = spot_instance_remedy
         # The number of ECS instances that are in the Standby state in the scaling group.
         self.standby_capacity = standby_capacity
+        self.stop_instance_timeout = stop_instance_timeout
         # The number of instances that was stopped in Economical Mode in the scaling group.
         self.stopped_capacity = stopped_capacity
         # The processes that are suspended. If no process is suspended, null is returned. Valid values:
@@ -21889,6 +21897,8 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
             result['SpotInstanceRemedy'] = self.spot_instance_remedy
         if self.standby_capacity is not None:
             result['StandbyCapacity'] = self.standby_capacity
+        if self.stop_instance_timeout is not None:
+            result['StopInstanceTimeout'] = self.stop_instance_timeout
         if self.stopped_capacity is not None:
             result['StoppedCapacity'] = self.stopped_capacity
         if self.suspended_processes is not None:
@@ -22034,6 +22044,8 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
             self.spot_instance_remedy = m.get('SpotInstanceRemedy')
         if m.get('StandbyCapacity') is not None:
             self.standby_capacity = m.get('StandbyCapacity')
+        if m.get('StopInstanceTimeout') is not None:
+            self.stop_instance_timeout = m.get('StopInstanceTimeout')
         if m.get('StoppedCapacity') is not None:
             self.stopped_capacity = m.get('StoppedCapacity')
         if m.get('SuspendedProcesses') is not None:
@@ -33089,6 +33101,7 @@ class ModifyScalingGroupRequest(TeaModel):
         spot_allocation_strategy: str = None,
         spot_instance_pools: int = None,
         spot_instance_remedy: bool = None,
+        stop_instance_timeout: int = None,
         v_switch_ids: List[str] = None,
     ):
         # The ID of the active scaling configuration in the scaling group.
@@ -33239,6 +33252,7 @@ class ModifyScalingGroupRequest(TeaModel):
         self.spot_instance_pools = spot_instance_pools
         # Specifies whether to supplement preemptible instances. If this parameter is set to true, Auto Scaling creates an instance to replace a preemptible instance when Auto Scaling receives the system message that the preemptible instance is to be reclaimed.
         self.spot_instance_remedy = spot_instance_remedy
+        self.stop_instance_timeout = stop_instance_timeout
         # The IDs of vSwitches.
         # 
         # This parameter takes effect only when the network type of the scaling group is virtual private cloud (VPC). The specified vSwitches and the scaling group must reside in the same VPC.
@@ -33322,6 +33336,8 @@ class ModifyScalingGroupRequest(TeaModel):
             result['SpotInstancePools'] = self.spot_instance_pools
         if self.spot_instance_remedy is not None:
             result['SpotInstanceRemedy'] = self.spot_instance_remedy
+        if self.stop_instance_timeout is not None:
+            result['StopInstanceTimeout'] = self.stop_instance_timeout
         if self.v_switch_ids is not None:
             result['VSwitchIds'] = self.v_switch_ids
         return result
@@ -33393,6 +33409,8 @@ class ModifyScalingGroupRequest(TeaModel):
             self.spot_instance_pools = m.get('SpotInstancePools')
         if m.get('SpotInstanceRemedy') is not None:
             self.spot_instance_remedy = m.get('SpotInstanceRemedy')
+        if m.get('StopInstanceTimeout') is not None:
+            self.stop_instance_timeout = m.get('StopInstanceTimeout')
         if m.get('VSwitchIds') is not None:
             self.v_switch_ids = m.get('VSwitchIds')
         return self
@@ -34509,6 +34527,7 @@ class RemoveInstancesRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         scaling_group_id: str = None,
+        stop_instance_timeout: int = None,
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
         self.client_token = client_token
@@ -34559,6 +34578,7 @@ class RemoveInstancesRequest(TeaModel):
         # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
+        self.stop_instance_timeout = stop_instance_timeout
 
     def validate(self):
         pass
@@ -34591,6 +34611,8 @@ class RemoveInstancesRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.scaling_group_id is not None:
             result['ScalingGroupId'] = self.scaling_group_id
+        if self.stop_instance_timeout is not None:
+            result['StopInstanceTimeout'] = self.stop_instance_timeout
         return result
 
     def from_map(self, m: dict = None):
@@ -34617,6 +34639,8 @@ class RemoveInstancesRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('ScalingGroupId') is not None:
             self.scaling_group_id = m.get('ScalingGroupId')
+        if m.get('StopInstanceTimeout') is not None:
+            self.stop_instance_timeout = m.get('StopInstanceTimeout')
         return self
 
 

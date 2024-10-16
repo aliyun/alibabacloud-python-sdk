@@ -3020,6 +3020,8 @@ class Client(OpenApiClient):
             query['SpotInstancePools'] = request.spot_instance_pools
         if not UtilClient.is_unset(request.spot_instance_remedy):
             query['SpotInstanceRemedy'] = request.spot_instance_remedy
+        if not UtilClient.is_unset(request.stop_instance_timeout):
+            query['StopInstanceTimeout'] = request.stop_instance_timeout
         if not UtilClient.is_unset(request.sync_alarm_rule_to_cms):
             query['SyncAlarmRuleToCms'] = request.sync_alarm_rule_to_cms
         if not UtilClient.is_unset(request.tags):
@@ -3166,6 +3168,8 @@ class Client(OpenApiClient):
             query['SpotInstancePools'] = request.spot_instance_pools
         if not UtilClient.is_unset(request.spot_instance_remedy):
             query['SpotInstanceRemedy'] = request.spot_instance_remedy
+        if not UtilClient.is_unset(request.stop_instance_timeout):
+            query['StopInstanceTimeout'] = request.stop_instance_timeout
         if not UtilClient.is_unset(request.sync_alarm_rule_to_cms):
             query['SyncAlarmRuleToCms'] = request.sync_alarm_rule_to_cms
         if not UtilClient.is_unset(request.tags):
@@ -10929,6 +10933,8 @@ class Client(OpenApiClient):
             query['SpotInstancePools'] = request.spot_instance_pools
         if not UtilClient.is_unset(request.spot_instance_remedy):
             query['SpotInstanceRemedy'] = request.spot_instance_remedy
+        if not UtilClient.is_unset(request.stop_instance_timeout):
+            query['StopInstanceTimeout'] = request.stop_instance_timeout
         if not UtilClient.is_unset(request.v_switch_ids):
             query['VSwitchIds'] = request.v_switch_ids
         req = open_api_models.OpenApiRequest(
@@ -11040,6 +11046,8 @@ class Client(OpenApiClient):
             query['SpotInstancePools'] = request.spot_instance_pools
         if not UtilClient.is_unset(request.spot_instance_remedy):
             query['SpotInstanceRemedy'] = request.spot_instance_remedy
+        if not UtilClient.is_unset(request.stop_instance_timeout):
+            query['StopInstanceTimeout'] = request.stop_instance_timeout
         if not UtilClient.is_unset(request.v_switch_ids):
             query['VSwitchIds'] = request.v_switch_ids
         req = open_api_models.OpenApiRequest(
@@ -11820,6 +11828,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.scaling_group_id):
             query['ScalingGroupId'] = request.scaling_group_id
+        if not UtilClient.is_unset(request.stop_instance_timeout):
+            query['StopInstanceTimeout'] = request.stop_instance_timeout
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11884,6 +11894,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.scaling_group_id):
             query['ScalingGroupId'] = request.scaling_group_id
+        if not UtilClient.is_unset(request.stop_instance_timeout):
+            query['StopInstanceTimeout'] = request.stop_instance_timeout
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
