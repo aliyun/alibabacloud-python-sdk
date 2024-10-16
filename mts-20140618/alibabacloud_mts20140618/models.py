@@ -222,10 +222,11 @@ class AddMediaRequest(TeaModel):
         # *   The description can be up to 1,024 bytes in length.
         # *   The value must be encoded in UTF-8.
         self.description = description
-        # The path of the input file. You can query the path of the input file in the MPS or OSS console. For more information, see the **Triggering and matching rules for a workflow** section of this topic.
+        # The URL of the input file. You can obtain the URL in the MPS or OSS console. For more information, see the **Triggering and matching rule for a workflow** section of this topic.
         # 
-        # *   The value can be up to 3,200 bytes in length.
-        # *   The URL complies with RFC 2396 and is encoded in UTF-8, with reserved characters being percent-encoded. For more information, see [URL encoding](https://help.aliyun.com/document_detail/423796.html).
+        # *   Only OSS HTTP URLs are supported. Alibaba Cloud CDN URLs and HTTPS URLs are not supported.
+        # *   The value can be up to 3,200 bytes in size.
+        # *   The URL complies with RFC 2396 and is encoded in UTF-8. For more information, see [URL encoding](https://help.aliyun.com/document_detail/423796.html).
         # 
         # This parameter is required.
         self.file_url = file_url
@@ -28402,11 +28403,13 @@ class QuerySmarttagJobResponseBody(TeaModel):
     def __init__(
         self,
         job_status: str = None,
+        message: str = None,
         request_id: str = None,
         results: QuerySmarttagJobResponseBodyResults = None,
         user_data: str = None,
     ):
         self.job_status = job_status
+        self.message = message
         self.request_id = request_id
         self.results = results
         self.user_data = user_data
@@ -28423,6 +28426,8 @@ class QuerySmarttagJobResponseBody(TeaModel):
         result = dict()
         if self.job_status is not None:
             result['JobStatus'] = self.job_status
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.results is not None:
@@ -28435,6 +28440,8 @@ class QuerySmarttagJobResponseBody(TeaModel):
         m = m or dict()
         if m.get('JobStatus') is not None:
             self.job_status = m.get('JobStatus')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Results') is not None:
@@ -31771,6 +31778,7 @@ class RegisterCustomFaceRequest(TeaModel):
         owner_account: str = None,
         owner_id: int = None,
         person_id: str = None,
+        person_name: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
@@ -31788,6 +31796,7 @@ class RegisterCustomFaceRequest(TeaModel):
         # 
         # This parameter is required.
         self.person_id = person_id
+        self.person_name = person_name
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -31810,6 +31819,8 @@ class RegisterCustomFaceRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.person_id is not None:
             result['PersonId'] = self.person_id
+        if self.person_name is not None:
+            result['PersonName'] = self.person_name
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -31828,6 +31839,8 @@ class RegisterCustomFaceRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('PersonId') is not None:
             self.person_id = m.get('PersonId')
+        if m.get('PersonName') is not None:
+            self.person_name = m.get('PersonName')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -36463,7 +36476,7 @@ class SubmitJobsRequest(TeaModel):
         # The ID of the MPS queue. For more information, see [Terms](https://help.aliyun.com/document_detail/31827.html).
         # 
         # *   To obtain the ID of an MPS queue, you can log on to the [MPS console](https://mps.console.aliyun.com/overview) and choose **Global Settings** > **MPS Queue and Callback** in the left-side navigation pane.
-        # *   If you want to receive asynchronous message notifications, associate an MNS queue or topic with the MPS queue. For more information, see [Receive notifications](https://www.alibabacloud.com/help/zh/apsaravideo-for-media-processing/latest/receive-message-notifications).
+        # *   If you want to receive asynchronous message notifications, associate an MNS queue or topic with the MPS queue. For more information, see [Receive notifications](https://help.aliyun.com/document_detail/42618.html).
         # 
         # This parameter is required.
         self.pipeline_id = pipeline_id
@@ -40204,7 +40217,10 @@ class SubmitMediaInfoJobRequest(TeaModel):
         self.input = input
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the MPS queue to which the analysis job is submitted. To view the ID of the MPS queue, log on to the **MPS console** and choose **Global Settings** > **Pipelines** in the left-side navigation pane.
+        # The ID of the MPS queue to which the job was submitted. For more information, see [Terms](https://help.aliyun.com/document_detail/29197.html).
+        # 
+        # *   To view the ID of the MPS queue, log on to the [MPS console](https://mps.console.aliyun.com/overview) and choose **Global Settings** > **MPS queue and Callback** in the left-side navigation pane. On the MPS queue and Callback page, you can view the ID of an MPS queue or create an MPS queue.
+        # *   If you want to receive asynchronous message notifications, associate an MNS queue or topic with the MPS queue. For more information, see [Receive message notifications](https://www.alibabacloud.com/help/en/mps/receive-message-notifications/?spm=a2c63.p38356.0.0.b48576d2jxNSca).
         self.pipeline_id = pipeline_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -40361,7 +40377,7 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesFormat(TeaModel):
         self.duration = duration
         # The full name of the container format.
         self.format_long_name = format_long_name
-        # The short name of the container format. For more information about the parameters, see [Parameter details](https://www.alibabacloud.com/help/zh/apsaravideo-for-media-processing/latest/parameter-details-a).
+        # The short name of the container format. For more information about the parameters, see [Parameter details](https://help.aliyun.com/document_detail/29253.html).
         self.format_name = format_name
         # The total number of program streams.
         self.num_programs = num_programs

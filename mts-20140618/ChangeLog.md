@@ -1,3 +1,11 @@
+2024-10-16 Version: 5.0.1
+- Update API QuerySmarttagJob: update param AccessKeyId.
+- Update API QuerySmarttagJob: update response param.
+- Update API RegisterCustomFace: add param PersonName.
+- Update API RegisterCustomFace: update param AccessKeyId.
+- Update API SubmitMediaCensorJob: update param PipelineId.
+
+
 2024-07-23 Version: 5.0.0
 - Update API SubmitCopyrightJob: update param Level.
 - Update API SubmitImageCopyright: update param Output.
