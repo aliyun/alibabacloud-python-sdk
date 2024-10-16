@@ -10889,6 +10889,7 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(TeaModel):
         acl_status: str = None,
         address_group_list: List[DescribeOutgoingDestinationIPResponseBodyDstIPListAddressGroupList] = None,
         application_port_list: List[DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList] = None,
+        asset_count: int = None,
         category_class_id: str = None,
         category_id: str = None,
         category_name: str = None,
@@ -10898,7 +10899,9 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(TeaModel):
         has_acl_recommend: bool = None,
         in_bytes: int = None,
         is_mark_normal: bool = None,
+        location_name: str = None,
         out_bytes: int = None,
+        private_asset_count: int = None,
         rule_id: str = None,
         rule_name: str = None,
         security_reason: str = None,
@@ -10923,6 +10926,7 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(TeaModel):
         self.address_group_list = address_group_list
         # The application ports.
         self.application_port_list = application_port_list
+        self.asset_count = asset_count
         # The type of the tag. Valid values:
         # 
         # *   **Suspicious**\
@@ -10960,8 +10964,10 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(TeaModel):
         # *   **true**\
         # *   **false**\
         self.is_mark_normal = is_mark_normal
+        self.location_name = location_name
         # The outbound traffic. Unit: bytes.
         self.out_bytes = out_bytes
+        self.private_asset_count = private_asset_count
         # The UUID of the access control policy.
         self.rule_id = rule_id
         # The name of the access control policy.
@@ -11015,6 +11021,8 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(TeaModel):
         if self.application_port_list is not None:
             for k in self.application_port_list:
                 result['ApplicationPortList'].append(k.to_map() if k else None)
+        if self.asset_count is not None:
+            result['AssetCount'] = self.asset_count
         if self.category_class_id is not None:
             result['CategoryClassId'] = self.category_class_id
         if self.category_id is not None:
@@ -11033,8 +11041,12 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(TeaModel):
             result['InBytes'] = self.in_bytes
         if self.is_mark_normal is not None:
             result['IsMarkNormal'] = self.is_mark_normal
+        if self.location_name is not None:
+            result['LocationName'] = self.location_name
         if self.out_bytes is not None:
             result['OutBytes'] = self.out_bytes
+        if self.private_asset_count is not None:
+            result['PrivateAssetCount'] = self.private_asset_count
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
         if self.rule_name is not None:
@@ -11071,6 +11083,8 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(TeaModel):
             for k in m.get('ApplicationPortList'):
                 temp_model = DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList()
                 self.application_port_list.append(temp_model.from_map(k))
+        if m.get('AssetCount') is not None:
+            self.asset_count = m.get('AssetCount')
         if m.get('CategoryClassId') is not None:
             self.category_class_id = m.get('CategoryClassId')
         if m.get('CategoryId') is not None:
@@ -11089,8 +11103,12 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(TeaModel):
             self.in_bytes = m.get('InBytes')
         if m.get('IsMarkNormal') is not None:
             self.is_mark_normal = m.get('IsMarkNormal')
+        if m.get('LocationName') is not None:
+            self.location_name = m.get('LocationName')
         if m.get('OutBytes') is not None:
             self.out_bytes = m.get('OutBytes')
+        if m.get('PrivateAssetCount') is not None:
+            self.private_asset_count = m.get('PrivateAssetCount')
         if m.get('RuleId') is not None:
             self.rule_id = m.get('RuleId')
         if m.get('RuleName') is not None:
@@ -11433,6 +11451,8 @@ class DescribeOutgoingDomainResponseBodyDomainList(TeaModel):
         acl_status: str = None,
         address_group_name: str = None,
         address_group_uuid: str = None,
+        application_name_list: List[str] = None,
+        asset_count: int = None,
         business: str = None,
         category_class_id: str = None,
         category_id: str = None,
@@ -11445,6 +11465,7 @@ class DescribeOutgoingDomainResponseBodyDomainList(TeaModel):
         is_mark_normal: bool = None,
         organization: str = None,
         out_bytes: int = None,
+        private_asset_count: int = None,
         rule_id: str = None,
         rule_name: str = None,
         security_reason: str = None,
@@ -11469,6 +11490,8 @@ class DescribeOutgoingDomainResponseBodyDomainList(TeaModel):
         self.address_group_name = address_group_name
         # The UUID of the address book.
         self.address_group_uuid = address_group_uuid
+        self.application_name_list = application_name_list
+        self.asset_count = asset_count
         # The website service.
         self.business = business
         # The type of the tag. Valid values:
@@ -11512,6 +11535,7 @@ class DescribeOutgoingDomainResponseBodyDomainList(TeaModel):
         self.organization = organization
         # The volume of outbound traffic.
         self.out_bytes = out_bytes
+        self.private_asset_count = private_asset_count
         # The ID of the access control policy.
         self.rule_id = rule_id
         # The name of the access control policy.
@@ -11553,6 +11577,10 @@ class DescribeOutgoingDomainResponseBodyDomainList(TeaModel):
             result['AddressGroupName'] = self.address_group_name
         if self.address_group_uuid is not None:
             result['AddressGroupUUID'] = self.address_group_uuid
+        if self.application_name_list is not None:
+            result['ApplicationNameList'] = self.application_name_list
+        if self.asset_count is not None:
+            result['AssetCount'] = self.asset_count
         if self.business is not None:
             result['Business'] = self.business
         if self.category_class_id is not None:
@@ -11577,6 +11605,8 @@ class DescribeOutgoingDomainResponseBodyDomainList(TeaModel):
             result['Organization'] = self.organization
         if self.out_bytes is not None:
             result['OutBytes'] = self.out_bytes
+        if self.private_asset_count is not None:
+            result['PrivateAssetCount'] = self.private_asset_count
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
         if self.rule_name is not None:
@@ -11607,6 +11637,10 @@ class DescribeOutgoingDomainResponseBodyDomainList(TeaModel):
             self.address_group_name = m.get('AddressGroupName')
         if m.get('AddressGroupUUID') is not None:
             self.address_group_uuid = m.get('AddressGroupUUID')
+        if m.get('ApplicationNameList') is not None:
+            self.application_name_list = m.get('ApplicationNameList')
+        if m.get('AssetCount') is not None:
+            self.asset_count = m.get('AssetCount')
         if m.get('Business') is not None:
             self.business = m.get('Business')
         if m.get('CategoryClassId') is not None:
@@ -11631,6 +11665,8 @@ class DescribeOutgoingDomainResponseBodyDomainList(TeaModel):
             self.organization = m.get('Organization')
         if m.get('OutBytes') is not None:
             self.out_bytes = m.get('OutBytes')
+        if m.get('PrivateAssetCount') is not None:
+            self.private_asset_count = m.get('PrivateAssetCount')
         if m.get('RuleId') is not None:
             self.rule_id = m.get('RuleId')
         if m.get('RuleName') is not None:
@@ -13533,6 +13569,9 @@ class DescribeRiskEventPayloadResponseBody(TeaModel):
         dst_ip: str = None,
         dst_port: int = None,
         dst_vpc_id: str = None,
+        hit_content_type: int = None,
+        hit_to: int = None,
+        parsed_content: str = None,
         payload: str = None,
         payload_len: int = None,
         proto: str = None,
@@ -13549,6 +13588,9 @@ class DescribeRiskEventPayloadResponseBody(TeaModel):
         self.dst_port = dst_port
         # The destination VPC ID of the intrusion event.
         self.dst_vpc_id = dst_vpc_id
+        self.hit_content_type = hit_content_type
+        self.hit_to = hit_to
+        self.parsed_content = parsed_content
         # The attack payload of the intrusion event.
         self.payload = payload
         # The length of the attack payload of the intrusion event.
@@ -13586,6 +13628,12 @@ class DescribeRiskEventPayloadResponseBody(TeaModel):
             result['DstPort'] = self.dst_port
         if self.dst_vpc_id is not None:
             result['DstVpcId'] = self.dst_vpc_id
+        if self.hit_content_type is not None:
+            result['HitContentType'] = self.hit_content_type
+        if self.hit_to is not None:
+            result['HitTo'] = self.hit_to
+        if self.parsed_content is not None:
+            result['ParsedContent'] = self.parsed_content
         if self.payload is not None:
             result['Payload'] = self.payload
         if self.payload_len is not None:
@@ -13614,6 +13662,12 @@ class DescribeRiskEventPayloadResponseBody(TeaModel):
             self.dst_port = m.get('DstPort')
         if m.get('DstVpcId') is not None:
             self.dst_vpc_id = m.get('DstVpcId')
+        if m.get('HitContentType') is not None:
+            self.hit_content_type = m.get('HitContentType')
+        if m.get('HitTo') is not None:
+            self.hit_to = m.get('HitTo')
+        if m.get('ParsedContent') is not None:
+            self.parsed_content = m.get('ParsedContent')
         if m.get('Payload') is not None:
             self.payload = m.get('Payload')
         if m.get('PayloadLen') is not None:
