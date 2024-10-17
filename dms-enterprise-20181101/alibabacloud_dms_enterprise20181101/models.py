@@ -2232,7 +2232,7 @@ class ApproveOrderRequest(TeaModel):
     ):
         # If ApprovalType is set to ADD_APPROVAL_NODE, you need to specify this parameter. The ID of the user that is added as the new approval node. This node must be a user-defined approval node. You can call the ListUserDefineWorkFlowNodes operation to obtain the value of this parameter.
         self.approval_node_id = approval_node_id
-        # If ApprovalType is set to ADD_APPROVAL_NODE, you need to specify this parameter. The position of the new approval node. Valid values:
+        # The position of the new approval node. You must specify this parameter if ApprovalType is set to ADD_APPROVAL_NODE. Valid values:
         # 
         # *   **PRE_ADD_APPROVAL_NODE**: before the current approval node.
         # *   **POST_ADD_APPROVAL_NODE**: after the current approval node.
@@ -2251,9 +2251,13 @@ class ApproveOrderRequest(TeaModel):
         self.comment = comment
         # The ID of the user to which the ticket is transferred. If ApprovalType is set to TRANSFER, you need to specify this parameter.
         self.new_approver = new_approver
+        # >  You can specify this parameter if ApprovalType is set to TRANSFER. You need to only specify one of NewApproverList and NewApprover.
+        # 
+        # The IDs of the users to whom the ticket is transferred. Separate multiple IDs with commas (,).
         self.new_approver_list = new_approver_list
         # The ID of the user that transfers the ticket to another user. The default value is the ID of the current user. If the current user is an administrator or a database administrator (DBA), the user can change the value of this parameter to the ID of another user.
         self.old_approver = old_approver
+        # The UID of the Alibaba Cloud account that actually calls the API.
         self.real_login_user_uid = real_login_user_uid
         # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to obtain the tenant ID.
         self.tid = tid
@@ -5209,6 +5213,7 @@ class CreateDataExportOrderRequest(TeaModel):
         # 
         # This parameter is required.
         self.plugin_param = plugin_param
+        # The UID of the Alibaba Cloud account that actually calls the API.
         self.real_login_user_uid = real_login_user_uid
         # The stakeholders involved in this operation.
         self.related_user_list = related_user_list
@@ -5286,6 +5291,7 @@ class CreateDataExportOrderShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.plugin_param_shrink = plugin_param_shrink
+        # The UID of the Alibaba Cloud account that actually calls the API.
         self.real_login_user_uid = real_login_user_uid
         # The stakeholders involved in this operation.
         self.related_user_list_shrink = related_user_list_shrink
@@ -17196,7 +17202,12 @@ class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailCro
         current_clear_task_count: int = None,
         optimize_table_after_every_clear_times: int = None,
     ):
+        # The number of times defragmentation is performed. This parameter is valid only if the value of OptimizeTableAfterEveryClearTimes is greater than 0.
         self.current_clear_task_count = current_clear_task_count
+        # Indicates whether the Periodically Optimize Table feature is enabled. Valid values:
+        # 
+        # *   **0** (default): The feature is disabled.
+        # *   **A value greater than 0**: The feature is enabled. The value indicates the number of cleanups after which the system performs defragmentation.
         self.optimize_table_after_every_clear_times = optimize_table_after_every_clear_times
 
     def validate(self):
@@ -17231,9 +17242,30 @@ class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailImp
         import_mode: str = None,
         insert_type: str = None,
     ):
+        # Indicates whether the first row of the CSV file contains field names. Valid values:
+        # 
+        # *   **true**: The first row in the CSV file contains field names.
+        # *   **false**: The first row in the CSV file contains data.
+        # 
+        # >  This parameter is valid if the value of **FileType** is **CSV** or **EXCEL**.
         self.csv_first_row_is_column_def = csv_first_row_is_column_def
+        # Indicates whether an error that occurs is ignored. Valid values:
+        # 
+        # *   **true**: If an error occurs when SQL statements are being executed, DMS skips the current SQL statement and continues to execute subsequent SQL statements.
+        # *   **false**: If an error occurs when SQL statements are being executed, DMS stops executing subsequent SQL statements.
         self.ignore_error = ignore_error
+        # The import mode. Valid values:
+        # 
+        # *   **FAST_MODE**: fast mode. In the Execute step, the uploaded file is read and SQL statements are executed to import data to the specified destination database. Compared with the security mode, this mode can be used to import data in a less secure but more efficient manner.
+        # *   **SAFE_MODE**: security mode. In the Precheck step, the uploaded file is parsed, and SQL statements or CSV file data is cached. In the Execute step, the cached SQL statements are read and executed to import data, or the cached CSV file data is read and imported to the specified destination database. Compared with the fast mode, this mode can be used to import data in a more secure but less efficient manner.
         self.import_mode = import_mode
+        # The mode in which data is to be imported to the destination table. Valid values:
+        # 
+        # *   **INSERT**: The database checks the primary key during data insertion. If the primary key is duplicated, an error is reported.
+        # *   **INSERT_IGNORE**: If the imported data contains data records that are the same as those in the destination table, the new data records are ignored.
+        # *   **REPLACE_INTO**: If the imported data contains a row that has the same value for the primary key or unique index as an existing row in the destination table, the system deletes the existing row and inserts the new row into the destination table.
+        # 
+        # >  This parameter is valid if the value of FileType is CSV or EXCEL.
         self.insert_type = insert_type
 
     def validate(self):
@@ -17286,19 +17318,53 @@ class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail(Te
         file_type: str = None,
         import_ext_config: GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetailImportExtConfig = None,
     ):
+        # Indicates whether the task is a scheduled task for historical data cleanup. This parameter is a reserved parameter and is valid only if the value of DetailType is CRON_CLEAR_DATA.
         self.cron = cron
+        # The number of times the scheduled task is run. This parameter is valid only if the value of DetailType is CRON_CLEAR_DATA.
         self.cron_call_times = cron_call_times
+        # The additional configuration information about historical data cleanup. This parameter is valid only if the value of DetailType is CRON_CLEAR_DATA.
         self.cron_ext_config = cron_ext_config
+        # The CRON expression of the scheduled task. This parameter is valid only if the value of DetailType is CRON_CLEAR_DATA.
         self.cron_format = cron_format
+        # The time when the task was last run.
         self.cron_last_call_start_time = cron_last_call_start_time
+        # The time when the task is run next time. This parameter is returned only if the value of CronStatus is SUCCESS.
         self.cron_next_call_time = cron_next_call_time
+        # The state of the scheduled task. If this parameter is empty, the task is not run. Valid values:
+        # 
+        # *   PAUSE: The task is suspended.
+        # *   WAITING: The task is waiting to be run.
+        # *   SUCCESS: The task is run.
         self.cron_status = cron_status
+        # The name of the table to which data is to be imported. This parameter is valid only if the value of DetailType is BIG_FILE. If the value of FileType is SQL, this parameter is empty.
         self.csv_table_name = csv_table_name
+        # The ID of the current data change task. This is a reserved parameter and can be ignored.
         self.current_task_id = current_task_id
+        # The type of the ticket. Valid values:
+        # 
+        # *   COMMON: regular data change.
+        # *   CHUNK_DML: lock-free data change.
+        # *   BIG_FILE: large data import.
+        # *   CRON_CLEAR_DATA: historical data cleanup.
+        # *   PROCEDURE: programmable object change.
         self.detail_type = detail_type
+        # The execution duration of the scheduled task. Unit: hour. This parameter is valid only if the value of DetailType is CRON_CLEAR_DATA. If the value is greater than 0, an execution duration is set.
         self.duration = duration
+        # The encoding method of the file. This parameter may be empty, which indicates the value of AUTO. Valid values:
+        # 
+        # *   **AUTO**: automatic identification.
+        # *   **UTF-8**: UTF-8 encoding.
+        # *   **GBK**: GBK encoding.
+        # *   **ISO-8859-1**: ISO-8859-1 encoding.
         self.file_encoding = file_encoding
+        # The type of the file to be imported. This parameter is valid if the value of DetailType is BIG_FILE. Valid values:
+        # 
+        # *   **SQL**: an SQL file.
+        # *   **CSV**: a CSV file.
+        # *   **EXCEL**: an Excel file.
+        # *   **JSON**: a JSON file, which is supported only by MongoDB databases.
         self.file_type = file_type
+        # The additional configuration information about data import. This parameter is valid if the value of DetailType is BIG_FILE.
         self.import_ext_config = import_ext_config
 
     def validate(self):
@@ -17387,25 +17453,25 @@ class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailDatabaseListDat
         logic: bool = None,
         search_name: str = None,
     ):
-        # The ID of the database.
+        # The database ID.
         self.db_id = db_id
         # The engine of the database.
         self.db_type = db_type
         # The type of the environment to which the database belongs. Valid values:
         # 
-        # - product: production environment
-        # - dev: development environment
-        # - pre: staging environment
-        # - test: test environment
-        # - sit: system integration testing (SIT) environment
-        # - uat: user acceptance testing (UAT) environment
-        # - pet: stress testing environment
-        # - stag: STAG environment
+        # *   product: production environment.
+        # *   dev: development environment.
+        # *   pre: pre-release environment.
+        # *   test: test environment.
+        # *   sit: system integration testing (SIT) environment
+        # *   uat: user acceptance testing (UAT) environment.
+        # *   pet: stress testing environment.
+        # *   stag: staging environment.
         self.env_type = env_type
         # Indicates whether the database is a logical database. Valid values:
         # 
-        # - **true**: The database is a logical database.
-        # - **false**: The database is a physical database.
+        # *   **true.**: The database is a logical database.
+        # *   **false**: The database is a physical database.
         self.logic = logic
         # The name that is used to search for the database.
         self.search_name = search_name
@@ -17595,7 +17661,7 @@ class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailPreCheckDetailT
         check_step: str = None,
         user_tip: str = None,
     ):
-        # The status of the precheck. Valid values:
+        # The state of the precheck. Valid values:
         # 
         # *   **WAITING**: The ticket is pending precheck.
         # *   **RUNNING**: The ticket is being prechecked.
@@ -17609,7 +17675,7 @@ class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailPreCheckDetailT
         # *   **PERMISSION_CHECK**: The system checks the permissions required for the data change.
         # *   **ROW_CHECK**: The system checks the number of affected rows.
         self.check_step = check_step
-        # The message that indicates a check step.
+        # The message that appears when a check step is executed.
         self.user_tip = user_tip
 
     def validate(self):
@@ -17685,6 +17751,7 @@ class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail(TeaModel):
         pre_check_detail: GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailPreCheckDetail = None,
         status: str = None,
     ):
+        # The configurations of the ticket. This parameter is used to store the configuration information specific to a data change ticket type.
         self.config_detail = config_detail
         # The information about the database in which data is changed.
         self.database_list = database_list
@@ -17698,19 +17765,20 @@ class GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail(TeaModel):
         self.order_detail = order_detail
         # The precheck details of the ticket.
         self.pre_check_detail = pre_check_detail
-        # The status of the ticket. Valid values:
+        # The specific state of the data change ticket. Valid values:
         # 
-        # - **new**: The ticket is created.
-        # - **precheck**: The ticket is being prechecked.
-        # - **precheck_fail**: The ticket fails the precheck.
-        # - **precheck_success**: The ticket passes the precheck and waits to be submitted for approval.
-        # - **toaudit**: The ticket is being reviewed.
-        # - **Approved**: The ticket is approved.
-        # - **reject**: The ticket is rejected.
-        # - **waiting**: The ticket is submitted and waits to be scheduled.
-        # - **processing**: The ticket is being executed.
-        # - **success**: The ticket is executed.
-        # - **closed**: The ticket is closed.
+        # >  The state of the ticket is not exactly equivalent to the status code for the ticket. To query the status code of the ticket, you can call the [GetOrderBaseInfo](https://help.aliyun.com/document_detail/465868.html) operation and check the value of StatusCode in the response.
+        # 
+        # *   **new**: The ticket is created.
+        # *   **precheck**: The ticket is in the pre-check phase.
+        # *   **precheckFailed**: The ticket failed to pass the precheck.
+        # *   **precheck_success**: The ticket passes the precheck and waits to be submitted for approval.
+        # *   **toaudit**: The ticket is being reviewed.
+        # *   **Approved**: The ticket is approved.
+        # *   **reject**: The ticket is rejected.
+        # *   **waiting**: The task is submitted and waits to be scheduled.
+        # *   **processing**: The task is being executed.
+        # *   **Success**: The task is successful.
         self.status = status
 
     def validate(self):
@@ -17781,10 +17849,10 @@ class GetDataCorrectOrderDetailResponseBody(TeaModel):
         self.error_message = error_message
         # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # - **true**: The request is successful.
-        # - **false**: The request fails.
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -19017,9 +19085,11 @@ class GetDataExportOrderDetailRequest(TeaModel):
 class GetDataExportOrderDetailResponseBodyDataExportOrderDetailKeyInfo(TeaModel):
     def __init__(
         self,
+        job_id: int = None,
         job_status: str = None,
         pre_check_id: int = None,
     ):
+        self.job_id = job_id
         # The state of the data export ticket. Valid values:
         # 
         # *   **PRE_CHECKING**: The ticket was being prechecked.
@@ -19045,6 +19115,8 @@ class GetDataExportOrderDetailResponseBodyDataExportOrderDetailKeyInfo(TeaModel)
             return _map
 
         result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
         if self.job_status is not None:
             result['JobStatus'] = self.job_status
         if self.pre_check_id is not None:
@@ -19053,6 +19125,8 @@ class GetDataExportOrderDetailResponseBodyDataExportOrderDetailKeyInfo(TeaModel)
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
         if m.get('JobStatus') is not None:
             self.job_status = m.get('JobStatus')
         if m.get('PreCheckId') is not None:
@@ -41492,9 +41566,9 @@ class ListSQLReviewOriginSQLRequestOrderActionDetailPage(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The number of the page to return.
+        # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):
@@ -41531,25 +41605,25 @@ class ListSQLReviewOriginSQLRequestOrderActionDetail(TeaModel):
     ):
         # The review status of the SQL statement. Valid values:
         # 
-        # *   **new**: The SQL statement is pending for analysis.
-        # *   **unknown**: The SQL statement failed to be parsed.
-        # *   **check_not_pass**: The SQL statement failed the review.
+        # *   **new**: The SQL statement was waiting to be reviewed.
+        # *   **unknown**: The SQL statement cannot be parsed.
+        # *   **check_not_pass**: The SQL statement failed to pass the review.
         # *   **check_pass**: The SQL statement passed the review.
-        # *   **force_pass**: The SQL statement passed the review by manual effort.
-        # *   **force_not_pass**: The SQL statement failed the review by manual effort.
+        # *   **force_pass**: The SQL statement passed the manual review.
+        # *   **force_not_pass**: The SQL statement failed to pass the manual review.
         self.check_status_result = check_status_result
-        # The ID of the file.
+        # The ID of the file that contains the SQL statements to be reviewed.
         self.file_id = file_id
-        # The paging settings.
+        # The pagination information.
         self.page = page
         # The optimization suggestion for the SQL statement. Valid values:
         # 
-        # *   **MUST_IMPROVE**: The SQL statement must be improved.
+        # *   **MUST_IMPROVE**: The SQL statement must be optimized.
         # *   **POTENTIAL_ISSUE**: The SQL statement contains potential issues.
-        # *   **SUGGEST_IMPROVE**: We recommend that you improve the SQL statement.
+        # *   **SUGGEST_IMPROVE**: We recommend that you optimize the SQL statement.
         # *   **USE_DMS_TOOLKIT**: We recommend that you change schemas without locking tables.
         # *   **USE_DMS_DML_UNLOCK**: We recommend that you change data without locking tables.
-        # *   **TABLE_INDEX_SUGGEST**: We recommend that you use SQL statements that use indexes.
+        # *   **TABLE_INDEX_SUGGEST**: We recommend that you optimize indexes for the SQL statement.
         self.sqlreview_result = sqlreview_result
 
     def validate(self):
@@ -41595,11 +41669,11 @@ class ListSQLReviewOriginSQLRequest(TeaModel):
     ):
         # The parameters that are used to filter SQL statements involved in the ticket.
         self.order_action_detail = order_action_detail
-        # The ID of the ticket for the SQL review. You can call the [CreateSQLReviewOrder](https://help.aliyun.com/document_detail/257777.html) operation to query the ID of the ticket.
+        # The ID of the SQL review ticket. You can call the [CreateSQLReviewOrder](https://help.aliyun.com/document_detail/257777.html) operation to query the ticket ID.
         # 
         # This parameter is required.
         self.order_id = order_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/465818.html) operation to query the ID of the tenant.
+        # The tenant ID. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -41641,11 +41715,11 @@ class ListSQLReviewOriginSQLShrinkRequest(TeaModel):
     ):
         # The parameters that are used to filter SQL statements involved in the ticket.
         self.order_action_detail_shrink = order_action_detail_shrink
-        # The ID of the ticket for the SQL review. You can call the [CreateSQLReviewOrder](https://help.aliyun.com/document_detail/257777.html) operation to query the ID of the ticket.
+        # The ID of the SQL review ticket. You can call the [CreateSQLReviewOrder](https://help.aliyun.com/document_detail/257777.html) operation to query the ticket ID.
         # 
         # This parameter is required.
         self.order_id = order_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/465818.html) operation to query the ID of the tenant.
+        # The tenant ID. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -41693,37 +41767,37 @@ class ListSQLReviewOriginSQLResponseBodyOriginSQLList(TeaModel):
     ):
         # The review status of the SQL statement. Valid values:
         # 
-        # *   **new**: The SQL statement is pending for analysis.
-        # *   **unknown**: The SQL statement failed to be parsed.
-        # *   **check_not_pass**: The SQL statement failed the review.
+        # *   **new**: The SQL statement was waiting to be reviewed.
+        # *   **unknown**: The SQL statement cannot be parsed.
+        # *   **check_not_pass**: The SQL statement failed to pass the review.
         # *   **check_pass**: The SQL statement passed the review.
-        # *   **force_pass**: The SQL statement passed the review by manual effort.
-        # *   **force_not_pass**: The SQL statement failed the review by manual effort.
+        # *   **force_pass**: The SQL statement passed the manual review.
+        # *   **force_not_pass**: The SQL statement failed to pass the manual review.
         self.check_status = check_status
-        # The time when the SQL statement is reviewed.
+        # The time when the SQL statement was reviewed.
         self.checked_time = checked_time
-        # The ID of the file.
+        # The file ID.
         self.file_id = file_id
         # The name of the file.
         self.file_name = file_name
-        # The statistics of optimization suggestions for SQL statements. The value is a JSON string. The following optimization suggestions are involved:
+        # The statistics on the optimization suggestions for SQL statements. The value is a JSON string. Valid values:
         # 
-        # *   **MUST_IMPROVE**: The SQL statement must be improved.
-        # *   **POTENTIAL_ISSUE**: The SQL statement contains potential issues.
-        # *   **SUGGEST_IMPROVE**: We recommend that you improve the SQL statement.
+        # *   **MUST_IMPROVE**: The SQL statements must be optimized.
+        # *   **POTENTIAL_ISSUE**: The SQL statements contain potential issues.
+        # *   **SUGGEST_IMPROVE**: We recommend that you optimize the SQL statements.
         # *   **USEDMSTOOLKIT**: We recommend that you change schemas without locking tables.
         # *   **USEDMSDML_UNLOCK**: We recommend that you change data without locking tables.
-        # *   **TABLEINDEXSUGGEST**: We recommend that you use SQL statements that use indexes.
+        # *   **TABLEINDEXSUGGEST**: We recommend that you optimize indexes for the SQL statements.
         self.review_summary = review_summary
-        # The SQL statement.
+        # The SQL statement in the file.
         self.sqlcontent = sqlcontent
         # The ID of the SQL statement.
         self.sqlid = sqlid
-        # SQLName.
+        # The name of the SQL statement.
         self.sqlname = sqlname
-        # The key that is used to query the details of optimization suggestions. You can call the [GetSQLReviewOptimizeDetail](https://icms.alibaba-inc.com/content/dms/doc?l=1\\&m=61777\\&n=2712723\\&spm) operation to query the details of optimization suggestions based on the key.
+        # The key that is used to query the information about optimization suggestions. You can call the [GetSQLReviewOptimizeDetail](https://help.aliyun.com/document_detail/465919.html) operation to query the details based on this key.
         self.sqlreview_query_key = sqlreview_query_key
-        # The MD5 hash value of the SQL statement.
+        # The MD5 hash value that is obtained after the SQL statement is calculated by using a hash algorithm.
         self.sql_hash = sql_hash
         # The description of the review status.
         self.status_desc = status_desc
@@ -41798,17 +41872,20 @@ class ListSQLReviewOriginSQLResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The error code returned.
+        # The error code that is returned.
         self.error_code = error_code
-        # The error message returned.
+        # The error message that is returned if the request failed.
         self.error_message = error_message
         # The information about the parsed SQL statements.
         self.origin_sqllist = origin_sqllist
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful. Valid values: Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
-        # The total number of the SQL statements.
+        # The number of SQL statements in the file.
         self.total_count = total_count
 
     def validate(self):
@@ -49521,6 +49598,133 @@ class PauseDataCorrectSQLJobResponse(TeaModel):
         return self
 
 
+class PauseDataExportJobRequest(TeaModel):
+    def __init__(
+        self,
+        job_id: int = None,
+        order_id: int = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.job_id = job_id
+        # This parameter is required.
+        self.order_id = order_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class PauseDataExportJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class PauseDataExportJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PauseDataExportJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PauseDataExportJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class PreviewWorkflowRequest(TeaModel):
     def __init__(
         self,
@@ -51156,6 +51360,133 @@ class RegisterUserResponse(TeaModel):
         return self
 
 
+class RemoveDataExportJobRequest(TeaModel):
+    def __init__(
+        self,
+        job_id: int = None,
+        order_id: int = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.job_id = job_id
+        # This parameter is required.
+        self.order_id = order_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class RemoveDataExportJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class RemoveDataExportJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RemoveDataExportJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RemoveDataExportJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RestartDataCorrectSQLJobRequest(TeaModel):
     def __init__(
         self,
@@ -51303,6 +51634,133 @@ class RestartDataCorrectSQLJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RestartDataCorrectSQLJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RestartDataExportJobRequest(TeaModel):
+    def __init__(
+        self,
+        job_id: int = None,
+        order_id: int = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.job_id = job_id
+        # This parameter is required.
+        self.order_id = order_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class RestartDataExportJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class RestartDataExportJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RestartDataExportJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RestartDataExportJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -51743,50 +52201,55 @@ class RevokeUserPermissionRequest(TeaModel):
         user_access_id: str = None,
         user_id: str = None,
     ):
-        # The ID of the database. The database can be a physical database or a logical database.
+        # The database ID. The database can be a physical database or a logical database.
         # 
         # *   To query the ID of a physical database, call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
         # *   To query the ID of a logical database, call the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
         self.db_id = db_id
-        # The object type on which the permission you want to revoke from the user. Valid values:
+        # The type of the object on which you want to revoke permissions from a user. Valid values:
         # 
-        # *   **INSTANCE**: database instances
-        # *   **DATABASE**: physical databases
-        # *   **LOGIC_DATABASE**: logical databases
-        # *   **TABLE**: physical tables
-        # *   **LOGIC_TABLE**: logical tables
+        # *   **INSTANCE**: instances.
+        # *   **DATABASE**: physical databases.
+        # *   **LOGIC_DATABASE**: logical databases.
+        # *   **TABLE**: physical tables.
+        # *   **LOGIC_TABLE**: logical tables.
         # 
         # This parameter is required.
         self.ds_type = ds_type
-        # The ID of the database instance. You must specify this parameter when you revoke a permission from the database instance. You can call the [ListInstances](https://help.aliyun.com/document_detail/141936.html) or [GetInstance](https://help.aliyun.com/document_detail/141567.html) operation to query the database instance ID.
+        # The database instance ID. You must specify this parameter if you revoke a permission from the database instance. You can call the [ListInstances](https://help.aliyun.com/document_detail/141936.html) or [GetInstance](https://help.aliyun.com/document_detail/141567.html) operation to query the ID of the database instance.
         self.instance_id = instance_id
         # Specifies whether the database is a logical database. Valid values:
         # 
-        # * **true**: The database is a logical database.
-        # * **false**: The database is a physical database.
+        # *   **true**: The database is a logical database.
+        # *   **false**: The database is a physical database.
         # 
-        # > * If the database is a logical database, set this parameter to **true**.
-        # > * If the database is a physical database, set this parameter to **false**.
+        # > 
+        # 
+        # *   If the database is a logical database, set this parameter to **true**.
+        # 
+        # *   If the database is a physical database, set this parameter to **false**.
         self.logic = logic
-        # The type of the permission. Valid values:
+        # The type of the permissions. Valid values:
         # 
-        # *   **QUERY**: the data query permission
-        # *   **EXPORT**: the data export permission
-        # *   **CORRECT**: the data change permission
+        # *   **QUERY**: query permissions.
+        # *   **EXPORT**: export permissions.
+        # *   **CORRECT**: change permissions.
+        # *   **LOGIN**: logon permissions.
+        # *   **PERF**: query permissions on the performance details of an instance.
         # 
         # This parameter is required.
         self.perm_types = perm_types
-        # The ID of the table. You must specify this parameter when you revoke a permission from the table. You can call the [ListTables](https://help.aliyun.com/document_detail/141878.html) operation to query the table ID.
+        # The table ID. You must specify this parameter if you revoke a permission from the table. You can call the [ListTables](https://help.aliyun.com/document_detail/141878.html) operation to query the table ID.
         self.table_id = table_id
         # The name of the table. You can call the [ListTables](https://help.aliyun.com/document_detail/141878.html) operation to query the table name.
         self.table_name = table_name
-        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
+        # The tenant ID. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
-        # The ID of the permission. You can call the [ListUserPermission](https://help.aliyun.com/document_detail/146957.html) operation to query the permission ID.
+        # The permission ID. You can call the [ListUserPermission](https://help.aliyun.com/document_detail/146957.html) operation to query the permission ID.
         # 
         # This parameter is required.
         self.user_access_id = user_access_id
-        # The ID of the user. You can call the [ListUsers](https://help.aliyun.com/document_detail/141938.html) or [GetUser](https://help.aliyun.com/document_detail/147098.html) operation to query the user ID.
+        # The user ID. You can call the [ListUsers](https://help.aliyun.com/document_detail/141938.html) or [GetUser](https://help.aliyun.com/document_detail/147098.html) operation to query the ID of the user.
         # 
         # This parameter is required.
         self.user_id = user_id
@@ -51855,16 +52318,16 @@ class RevokeUserPermissionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code returned.
+        # The error code that is returned.
         self.error_code = error_code
-        # The error message returned.
+        # The error message that is returned.
         self.error_message = error_message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -54084,6 +54547,133 @@ class SubmitStructSyncOrderApprovalResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SubmitStructSyncOrderApprovalResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SuspendDataExportJobRequest(TeaModel):
+    def __init__(
+        self,
+        job_id: int = None,
+        order_id: int = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.job_id = job_id
+        # This parameter is required.
+        self.order_id = order_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class SuspendDataExportJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SuspendDataExportJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SuspendDataExportJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SuspendDataExportJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

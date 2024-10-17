@@ -20355,6 +20355,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.pause_data_correct_sqljob_with_options_async(request, runtime)
 
+    def pause_data_export_job_with_options(
+        self,
+        request: dms_enterprise_20181101_models.PauseDataExportJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.PauseDataExportJobResponse:
+        """
+        @summary 终止数据导出任务
+        
+        @param request: PauseDataExportJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PauseDataExportJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PauseDataExportJob',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.PauseDataExportJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pause_data_export_job_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.PauseDataExportJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.PauseDataExportJobResponse:
+        """
+        @summary 终止数据导出任务
+        
+        @param request: PauseDataExportJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PauseDataExportJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PauseDataExportJob',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.PauseDataExportJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pause_data_export_job(
+        self,
+        request: dms_enterprise_20181101_models.PauseDataExportJobRequest,
+    ) -> dms_enterprise_20181101_models.PauseDataExportJobResponse:
+        """
+        @summary 终止数据导出任务
+        
+        @param request: PauseDataExportJobRequest
+        @return: PauseDataExportJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.pause_data_export_job_with_options(request, runtime)
+
+    async def pause_data_export_job_async(
+        self,
+        request: dms_enterprise_20181101_models.PauseDataExportJobRequest,
+    ) -> dms_enterprise_20181101_models.PauseDataExportJobResponse:
+        """
+        @summary 终止数据导出任务
+        
+        @param request: PauseDataExportJobRequest
+        @return: PauseDataExportJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.pause_data_export_job_with_options_async(request, runtime)
+
     def preview_workflow_with_options(
         self,
         request: dms_enterprise_20181101_models.PreviewWorkflowRequest,
@@ -21303,6 +21407,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.register_user_with_options_async(request, runtime)
 
+    def remove_data_export_job_with_options(
+        self,
+        request: dms_enterprise_20181101_models.RemoveDataExportJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.RemoveDataExportJobResponse:
+        """
+        @summary 删除数据导出任务
+        
+        @param request: RemoveDataExportJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveDataExportJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveDataExportJob',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.RemoveDataExportJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_data_export_job_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.RemoveDataExportJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.RemoveDataExportJobResponse:
+        """
+        @summary 删除数据导出任务
+        
+        @param request: RemoveDataExportJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveDataExportJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveDataExportJob',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.RemoveDataExportJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_data_export_job(
+        self,
+        request: dms_enterprise_20181101_models.RemoveDataExportJobRequest,
+    ) -> dms_enterprise_20181101_models.RemoveDataExportJobResponse:
+        """
+        @summary 删除数据导出任务
+        
+        @param request: RemoveDataExportJobRequest
+        @return: RemoveDataExportJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.remove_data_export_job_with_options(request, runtime)
+
+    async def remove_data_export_job_async(
+        self,
+        request: dms_enterprise_20181101_models.RemoveDataExportJobRequest,
+    ) -> dms_enterprise_20181101_models.RemoveDataExportJobResponse:
+        """
+        @summary 删除数据导出任务
+        
+        @param request: RemoveDataExportJobRequest
+        @return: RemoveDataExportJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.remove_data_export_job_with_options_async(request, runtime)
+
     def restart_data_correct_sqljob_with_options(
         self,
         request: dms_enterprise_20181101_models.RestartDataCorrectSQLJobRequest,
@@ -21410,6 +21618,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.restart_data_correct_sqljob_with_options_async(request, runtime)
+
+    def restart_data_export_job_with_options(
+        self,
+        request: dms_enterprise_20181101_models.RestartDataExportJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.RestartDataExportJobResponse:
+        """
+        @summary 重启数据导出任务
+        
+        @param request: RestartDataExportJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartDataExportJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestartDataExportJob',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.RestartDataExportJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def restart_data_export_job_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.RestartDataExportJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.RestartDataExportJobResponse:
+        """
+        @summary 重启数据导出任务
+        
+        @param request: RestartDataExportJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartDataExportJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestartDataExportJob',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.RestartDataExportJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def restart_data_export_job(
+        self,
+        request: dms_enterprise_20181101_models.RestartDataExportJobRequest,
+    ) -> dms_enterprise_20181101_models.RestartDataExportJobResponse:
+        """
+        @summary 重启数据导出任务
+        
+        @param request: RestartDataExportJobRequest
+        @return: RestartDataExportJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.restart_data_export_job_with_options(request, runtime)
+
+    async def restart_data_export_job_async(
+        self,
+        request: dms_enterprise_20181101_models.RestartDataExportJobRequest,
+    ) -> dms_enterprise_20181101_models.RestartDataExportJobResponse:
+        """
+        @summary 重启数据导出任务
+        
+        @param request: RestartDataExportJobRequest
+        @return: RestartDataExportJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.restart_data_export_job_with_options_async(request, runtime)
 
     def resume_task_flow_instance_with_options(
         self,
@@ -21745,7 +22057,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RevokeUserPermissionResponse:
         """
-        @summary Revokes a permission on a resource from a user.
+        @summary Revokes the permissions on instances, databases, and tables from a user.
         
         @param request: RevokeUserPermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21798,7 +22110,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RevokeUserPermissionResponse:
         """
-        @summary Revokes a permission on a resource from a user.
+        @summary Revokes the permissions on instances, databases, and tables from a user.
         
         @param request: RevokeUserPermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21850,7 +22162,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.RevokeUserPermissionRequest,
     ) -> dms_enterprise_20181101_models.RevokeUserPermissionResponse:
         """
-        @summary Revokes a permission on a resource from a user.
+        @summary Revokes the permissions on instances, databases, and tables from a user.
         
         @param request: RevokeUserPermissionRequest
         @return: RevokeUserPermissionResponse
@@ -21863,7 +22175,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.RevokeUserPermissionRequest,
     ) -> dms_enterprise_20181101_models.RevokeUserPermissionResponse:
         """
-        @summary Revokes a permission on a resource from a user.
+        @summary Revokes the permissions on instances, databases, and tables from a user.
         
         @param request: RevokeUserPermissionRequest
         @return: RevokeUserPermissionResponse
@@ -22786,6 +23098,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.submit_struct_sync_order_approval_with_options_async(request, runtime)
+
+    def suspend_data_export_job_with_options(
+        self,
+        request: dms_enterprise_20181101_models.SuspendDataExportJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.SuspendDataExportJobResponse:
+        """
+        @summary 中断数据导出任务
+        
+        @param request: SuspendDataExportJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SuspendDataExportJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SuspendDataExportJob',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.SuspendDataExportJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def suspend_data_export_job_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.SuspendDataExportJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.SuspendDataExportJobResponse:
+        """
+        @summary 中断数据导出任务
+        
+        @param request: SuspendDataExportJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SuspendDataExportJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SuspendDataExportJob',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.SuspendDataExportJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def suspend_data_export_job(
+        self,
+        request: dms_enterprise_20181101_models.SuspendDataExportJobRequest,
+    ) -> dms_enterprise_20181101_models.SuspendDataExportJobResponse:
+        """
+        @summary 中断数据导出任务
+        
+        @param request: SuspendDataExportJobRequest
+        @return: SuspendDataExportJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.suspend_data_export_job_with_options(request, runtime)
+
+    async def suspend_data_export_job_async(
+        self,
+        request: dms_enterprise_20181101_models.SuspendDataExportJobRequest,
+    ) -> dms_enterprise_20181101_models.SuspendDataExportJobResponse:
+        """
+        @summary 中断数据导出任务
+        
+        @param request: SuspendDataExportJobRequest
+        @return: SuspendDataExportJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.suspend_data_export_job_with_options_async(request, runtime)
 
     def suspend_task_flow_instance_with_options(
         self,

@@ -1,3 +1,14 @@
+2024-10-17 Version: 1.62.0
+- Support API PauseDataExportJob.
+- Support API RemoveDataExportJob.
+- Support API RestartDataExportJob.
+- Support API SuspendDataExportJob.
+- Update API GetDataExportOrderDetail: update response param.
+- Update API ListUsers: update param Role.
+- Update API SearchDatabase: update param PageSize.
+- Update API SearchDatabase: update response param.
+
+
 2024-08-02 Version: 1.61.3
 - Generated python 2018-11-01 for dms-enterprise.
 
