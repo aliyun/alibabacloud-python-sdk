@@ -3304,6 +3304,115 @@ class QueryDomainTransferStatusResponse(TeaModel):
         return self
 
 
+class QueryExchangeRateRequest(TeaModel):
+    def __init__(
+        self,
+        from_currency: str = None,
+        to_currency: str = None,
+    ):
+        # This parameter is required.
+        self.from_currency = from_currency
+        # This parameter is required.
+        self.to_currency = to_currency
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.from_currency is not None:
+            result['FromCurrency'] = self.from_currency
+        if self.to_currency is not None:
+            result['ToCurrency'] = self.to_currency
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FromCurrency') is not None:
+            self.from_currency = m.get('FromCurrency')
+        if m.get('ToCurrency') is not None:
+            self.to_currency = m.get('ToCurrency')
+        return self
+
+
+class QueryExchangeRateResponseBody(TeaModel):
+    def __init__(
+        self,
+        exchange_rate: float = None,
+        request_id: str = None,
+    ):
+        self.exchange_rate = exchange_rate
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exchange_rate is not None:
+            result['ExchangeRate'] = self.exchange_rate
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExchangeRate') is not None:
+            self.exchange_rate = m.get('ExchangeRate')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class QueryExchangeRateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryExchangeRateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryExchangeRateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryPurchasedDomainsRequest(TeaModel):
     def __init__(
         self,

@@ -1813,6 +1813,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_domain_transfer_status_with_options_async(request, runtime)
 
+    def query_exchange_rate_with_options(
+        self,
+        request: domain_20180208_models.QueryExchangeRateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180208_models.QueryExchangeRateResponse:
+        """
+        @summary 查询汇率
+        
+        @param request: QueryExchangeRateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryExchangeRateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_currency):
+            query['FromCurrency'] = request.from_currency
+        if not UtilClient.is_unset(request.to_currency):
+            query['ToCurrency'] = request.to_currency
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryExchangeRate',
+            version='2018-02-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180208_models.QueryExchangeRateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_exchange_rate_with_options_async(
+        self,
+        request: domain_20180208_models.QueryExchangeRateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180208_models.QueryExchangeRateResponse:
+        """
+        @summary 查询汇率
+        
+        @param request: QueryExchangeRateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryExchangeRateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_currency):
+            query['FromCurrency'] = request.from_currency
+        if not UtilClient.is_unset(request.to_currency):
+            query['ToCurrency'] = request.to_currency
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryExchangeRate',
+            version='2018-02-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180208_models.QueryExchangeRateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_exchange_rate(
+        self,
+        request: domain_20180208_models.QueryExchangeRateRequest,
+    ) -> domain_20180208_models.QueryExchangeRateResponse:
+        """
+        @summary 查询汇率
+        
+        @param request: QueryExchangeRateRequest
+        @return: QueryExchangeRateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_exchange_rate_with_options(request, runtime)
+
+    async def query_exchange_rate_async(
+        self,
+        request: domain_20180208_models.QueryExchangeRateRequest,
+    ) -> domain_20180208_models.QueryExchangeRateResponse:
+        """
+        @summary 查询汇率
+        
+        @param request: QueryExchangeRateRequest
+        @return: QueryExchangeRateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_exchange_rate_with_options_async(request, runtime)
+
     def query_purchased_domains_with_options(
         self,
         request: domain_20180208_models.QueryPurchasedDomainsRequest,

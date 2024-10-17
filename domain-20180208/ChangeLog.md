@@ -1,3 +1,7 @@
+2024-10-17 Version: 1.3.0
+- Support API QueryExchangeRate.
+
+
 2024-06-18 Version: 1.2.2
 - Update API QueryAuctions: add param AuctionEndTimeOrder.
 - Update API QueryAuctions: add param Statuses.
