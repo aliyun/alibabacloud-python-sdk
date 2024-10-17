@@ -9862,6 +9862,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the recycle bin configurations of a General-purpose NAS file system.
         
+        @description Only General-purpose Apsara File Storage NAS (NAS) file systems support this operation.
+        
         @param request: GetRecycleBinAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetRecycleBinAttributeResponse
@@ -9895,6 +9897,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the recycle bin configurations of a General-purpose NAS file system.
         
+        @description Only General-purpose Apsara File Storage NAS (NAS) file systems support this operation.
+        
         @param request: GetRecycleBinAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetRecycleBinAttributeResponse
@@ -9927,6 +9931,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the recycle bin configurations of a General-purpose NAS file system.
         
+        @description Only General-purpose Apsara File Storage NAS (NAS) file systems support this operation.
+        
         @param request: GetRecycleBinAttributeRequest
         @return: GetRecycleBinAttributeResponse
         """
@@ -9939,6 +9945,8 @@ class Client(OpenApiClient):
     ) -> nas20170626_models.GetRecycleBinAttributeResponse:
         """
         @summary Queries the recycle bin configurations of a General-purpose NAS file system.
+        
+        @description Only General-purpose Apsara File Storage NAS (NAS) file systems support this operation.
         
         @param request: GetRecycleBinAttributeRequest
         @return: GetRecycleBinAttributeResponse

@@ -3444,7 +3444,7 @@ class CreateFileSystemRequest(TeaModel):
         # *   2: A KMS-managed key is used to encrypt the data in the file system. This value is valid only if the FileSystemType parameter is set to standard or extreme.
         # 
         # >  *   Extreme NAS file system: All regions support KMS-managed keys.
-        # > *   General-purpose NAS file system: KMS-managed keys are supported in the following regions: China (Chengdu), China (Qingdao), China (Hohhot), China (Ulanqab), China (Heyuan), China (Hangzhou), China (Shanghai), China (Beijing), China (Zhangjiakou), China (Shenzhen), China (Guangzhou), China (Hong Kong), Japan (Tokyo), Philippines (Manila), Thailand (Bangkok), Malaysia (Kuala Lumpur), US (Silicon Valley), Indonesia (Jakarta), UK (London), Singapore, US (Virginia), Germany (Frankfurt), Australia (Sydney), and China East 1 Finance.
+        # > *   General-purpose NAS file system: KMS-managed keys are supported in the following regions: China (Chengdu), China (Qingdao), China (Hohhot), China (Ulanqab), China (Heyuan), China (Hangzhou), China (Shanghai), China (Beijing), China (Zhangjiakou), China (Shenzhen), China (Guangzhou), China (Hong Kong), Japan (Tokyo), Philippines (Manila), Thailand (Bangkok), Malaysia (Kuala Lumpur), US (Silicon Valley), Indonesia (Jakarta), UK (London), Singapore, US (Virginia), Germany (Frankfurt), Australia (Sydney) Closing Down, and China East 1 Finance.
         self.encrypt_type = encrypt_type
         # The type of the file system.
         # 
@@ -12070,10 +12070,38 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemTags(TeaModel):
         return self
 
 
+class DescribeFileSystemsResponseBodyFileSystemsFileSystemVswIds(TeaModel):
+    def __init__(
+        self,
+        vsw_id: List[str] = None,
+    ):
+        self.vsw_id = vsw_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.vsw_id is not None:
+            result['VswId'] = self.vsw_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VswId') is not None:
+            self.vsw_id = m.get('VswId')
+        return self
+
+
 class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
     def __init__(
         self,
         access_point_count: str = None,
+        auto_snapshot_policy_id: str = None,
         bandwidth: int = None,
         capacity: int = None,
         charge_type: str = None,
@@ -12092,6 +12120,7 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         options: DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions = None,
         packages: DescribeFileSystemsResponseBodyFileSystemsFileSystemPackages = None,
         protocol_type: str = None,
+        quorum_vsw_id: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         status: str = None,
@@ -12099,10 +12128,13 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         supported_features: DescribeFileSystemsResponseBodyFileSystemsFileSystemSupportedFeatures = None,
         tags: DescribeFileSystemsResponseBodyFileSystemsFileSystemTags = None,
         version: str = None,
+        vpc_id: str = None,
+        vsw_ids: DescribeFileSystemsResponseBodyFileSystemsFileSystemVswIds = None,
         zone_id: str = None,
     ):
         # Number of access points.
         self.access_point_count = access_point_count
+        self.auto_snapshot_policy_id = auto_snapshot_policy_id
         # The bandwidth of the file system.
         # 
         # Unit: MB/s. This parameter is unavailable for General-purpose NAS file systems.
@@ -12176,6 +12208,7 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         # 
         # > CPFS file systems are available only on the China site (aliyun.com).
         self.protocol_type = protocol_type
+        self.quorum_vsw_id = quorum_vsw_id
         # The region ID.
         self.region_id = region_id
         # The resource group ID.
@@ -12206,6 +12239,8 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         # 
         # This parameter is available only for Extreme NAS file systems and CPFS file systems.
         self.version = version
+        self.vpc_id = vpc_id
+        self.vsw_ids = vsw_ids
         # The ID of the zone where the file system resides.
         self.zone_id = zone_id
 
@@ -12222,6 +12257,8 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
             self.supported_features.validate()
         if self.tags:
             self.tags.validate()
+        if self.vsw_ids:
+            self.vsw_ids.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -12231,6 +12268,8 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         result = dict()
         if self.access_point_count is not None:
             result['AccessPointCount'] = self.access_point_count
+        if self.auto_snapshot_policy_id is not None:
+            result['AutoSnapshotPolicyId'] = self.auto_snapshot_policy_id
         if self.bandwidth is not None:
             result['Bandwidth'] = self.bandwidth
         if self.capacity is not None:
@@ -12267,6 +12306,8 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
             result['Packages'] = self.packages.to_map()
         if self.protocol_type is not None:
             result['ProtocolType'] = self.protocol_type
+        if self.quorum_vsw_id is not None:
+            result['QuorumVswId'] = self.quorum_vsw_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -12281,6 +12322,10 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
             result['Tags'] = self.tags.to_map()
         if self.version is not None:
             result['Version'] = self.version
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.vsw_ids is not None:
+            result['VswIds'] = self.vsw_ids.to_map()
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
         return result
@@ -12289,6 +12334,8 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         m = m or dict()
         if m.get('AccessPointCount') is not None:
             self.access_point_count = m.get('AccessPointCount')
+        if m.get('AutoSnapshotPolicyId') is not None:
+            self.auto_snapshot_policy_id = m.get('AutoSnapshotPolicyId')
         if m.get('Bandwidth') is not None:
             self.bandwidth = m.get('Bandwidth')
         if m.get('Capacity') is not None:
@@ -12329,6 +12376,8 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
             self.packages = temp_model.from_map(m['Packages'])
         if m.get('ProtocolType') is not None:
             self.protocol_type = m.get('ProtocolType')
+        if m.get('QuorumVswId') is not None:
+            self.quorum_vsw_id = m.get('QuorumVswId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -12345,6 +12394,11 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
             self.tags = temp_model.from_map(m['Tags'])
         if m.get('Version') is not None:
             self.version = m.get('Version')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('VswIds') is not None:
+            temp_model = DescribeFileSystemsResponseBodyFileSystemsFileSystemVswIds()
+            self.vsw_ids = temp_model.from_map(m['VswIds'])
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
         return self
@@ -17097,6 +17151,7 @@ class GetRecycleBinAttributeResponseBodyRecycleBinAttribute(TeaModel):
         size: int = None,
         status: str = None,
     ):
+        # The size of the archived data that is dumped to the recycle bin. Unit: bytes.
         self.archive_size = archive_size
         # The time at which the recycle bin was enabled.
         self.enable_time = enable_time
@@ -17104,7 +17159,7 @@ class GetRecycleBinAttributeResponseBodyRecycleBinAttribute(TeaModel):
         # 
         # If the recycle bin is disabled, 0 is returned for this parameter.
         self.reserved_days = reserved_days
-        # The size of the cold data that is dumped to the recycle bin. Unit: bytes.
+        # The size of the Infrequent Access (IA) data that is dumped to the recycle bin. Unit: bytes.
         self.secondary_size = secondary_size
         # The size of the files that are dumped to the recycle bin. Unit: bytes.
         self.size = size

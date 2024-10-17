@@ -1,3 +1,12 @@
+2024-10-17 Version: 2.4.0
+- Support API CancelDataFlowSubTask.
+- Support API CreateDataFlowSubTask.
+- Support API DescribeDataFlowSubTasks.
+- Update API CreateMountTarget: update response param.
+- Update API DescribeFileSystems: update param FileSystemType.
+- Update API DescribeFileSystems: update response param.
+
+
 2024-09-24 Version: 2.3.0
 - Support API CancelDataFlowSubTask.
 - Support API CreateDataFlowSubTask.
