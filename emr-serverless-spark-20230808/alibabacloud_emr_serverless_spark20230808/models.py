@@ -781,6 +781,7 @@ class Task(TeaModel):
         spark_submit_clause: str = None,
         spark_version: str = None,
         tags: Dict[str, str] = None,
+        timeout: int = None,
         type: str = None,
     ):
         self.archives = archives
@@ -834,6 +835,7 @@ class Task(TeaModel):
         # This parameter is required.
         self.spark_version = spark_version
         self.tags = tags
+        self.timeout = timeout
         # This parameter is required.
         self.type = type
 
@@ -925,6 +927,8 @@ class Task(TeaModel):
             result['sparkVersion'] = self.spark_version
         if self.tags is not None:
             result['tags'] = self.tags
+        if self.timeout is not None:
+            result['timeout'] = self.timeout
         if self.type is not None:
             result['type'] = self.type
         return result
@@ -1008,6 +1012,8 @@ class Task(TeaModel):
             self.spark_version = m.get('sparkVersion')
         if m.get('tags') is not None:
             self.tags = m.get('tags')
+        if m.get('timeout') is not None:
+            self.timeout = m.get('timeout')
         if m.get('type') is not None:
             self.type = m.get('type')
         return self
@@ -2504,7 +2510,7 @@ class ListJobRunsRequest(TeaModel):
         states: List[str] = None,
         tags: List[ListJobRunsRequestTags] = None,
     ):
-        # The ID of the user who creates a Spark job.
+        # The ID of the user who created the job.
         self.creator = creator
         # The range of end time.
         self.end_time = end_time
@@ -2622,7 +2628,7 @@ class ListJobRunsShrinkRequest(TeaModel):
         states_shrink: str = None,
         tags_shrink: str = None,
     ):
-        # The ID of the user who creates a Spark job.
+        # The ID of the user who created the job.
         self.creator = creator
         # The range of end time.
         self.end_time_shrink = end_time_shrink
@@ -3064,6 +3070,7 @@ class ListReleaseVersionsRequest(TeaModel):
         release_type: str = None,
         release_version: str = None,
         release_version_status: str = None,
+        workspace_id: str = None,
     ):
         # The region ID.
         self.region_id = region_id
@@ -3072,17 +3079,19 @@ class ListReleaseVersionsRequest(TeaModel):
         # Valid values:
         # 
         # *   stable
-        # *   beta
+        # *   Beta
         self.release_type = release_type
-        # The version of Serverless Spark.
+        # The version of EMR Serverless Spark.
         self.release_version = release_version
-        # The status of the version. Valid values:
+        # The status of the version.
         # 
         # Valid values:
         # 
         # *   ONLINE
         # *   OFFLINE
         self.release_version_status = release_version_status
+        # The workspace ID.
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -3101,6 +3110,8 @@ class ListReleaseVersionsRequest(TeaModel):
             result['releaseVersion'] = self.release_version
         if self.release_version_status is not None:
             result['releaseVersionStatus'] = self.release_version_status
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3113,6 +3124,8 @@ class ListReleaseVersionsRequest(TeaModel):
             self.release_version = m.get('releaseVersion')
         if m.get('releaseVersionStatus') is not None:
             self.release_version_status = m.get('releaseVersionStatus')
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
         return self
 
 
@@ -3134,13 +3147,15 @@ class ListReleaseVersionsResponseBodyReleaseVersions(TeaModel):
         self.community_version = community_version
         # The CPU architectures.
         self.cpu_architectures = cpu_architectures
+        # The version number.
         self.display_release_version = display_release_version
+        # Indicates whether the Fusion engine is used for acceleration.
         self.fusion = fusion
         # The creation time.
         self.gmt_create = gmt_create
         # The type of the Infrastructure as a Service (IaaS) layer.
         self.iaas_type = iaas_type
-        # The version.
+        # The version number.
         self.release_version = release_version
         # The version of Scala.
         self.scala_version = scala_version
@@ -4731,6 +4746,236 @@ class StartJobRunResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StartJobRunResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StartSessionClusterRequest(TeaModel):
+    def __init__(
+        self,
+        queue_name: str = None,
+        session_cluster_id: str = None,
+        region_id: str = None,
+    ):
+        self.queue_name = queue_name
+        self.session_cluster_id = session_cluster_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.queue_name is not None:
+            result['queueName'] = self.queue_name
+        if self.session_cluster_id is not None:
+            result['sessionClusterId'] = self.session_cluster_id
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('queueName') is not None:
+            self.queue_name = m.get('queueName')
+        if m.get('sessionClusterId') is not None:
+            self.session_cluster_id = m.get('sessionClusterId')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class StartSessionClusterResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        session_cluster_id: str = None,
+    ):
+        # 请求ID。
+        self.request_id = request_id
+        # Workspace Id。
+        self.session_cluster_id = session_cluster_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.session_cluster_id is not None:
+            result['sessionClusterId'] = self.session_cluster_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('sessionClusterId') is not None:
+            self.session_cluster_id = m.get('sessionClusterId')
+        return self
+
+
+class StartSessionClusterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartSessionClusterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartSessionClusterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StopSessionClusterRequest(TeaModel):
+    def __init__(
+        self,
+        queue_name: str = None,
+        session_cluster_id: str = None,
+        region_id: str = None,
+    ):
+        self.queue_name = queue_name
+        self.session_cluster_id = session_cluster_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.queue_name is not None:
+            result['queueName'] = self.queue_name
+        if self.session_cluster_id is not None:
+            result['sessionClusterId'] = self.session_cluster_id
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('queueName') is not None:
+            self.queue_name = m.get('queueName')
+        if m.get('sessionClusterId') is not None:
+            self.session_cluster_id = m.get('sessionClusterId')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class StopSessionClusterResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        session_cluster_id: str = None,
+    ):
+        # 请求ID。
+        self.request_id = request_id
+        # Workspace Id。
+        self.session_cluster_id = session_cluster_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.session_cluster_id is not None:
+            result['sessionClusterId'] = self.session_cluster_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('sessionClusterId') is not None:
+            self.session_cluster_id = m.get('sessionClusterId')
+        return self
+
+
+class StopSessionClusterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopSessionClusterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopSessionClusterResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

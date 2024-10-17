@@ -277,7 +277,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.CreateSqlStatementResponse:
         """
-        @summary 使用session运行SQL
+        @summary Creates an SQL query task.
         
         @param request: CreateSqlStatementRequest
         @param headers: map
@@ -328,7 +328,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.CreateSqlStatementResponse:
         """
-        @summary 使用session运行SQL
+        @summary Creates an SQL query task.
         
         @param request: CreateSqlStatementRequest
         @param headers: map
@@ -377,7 +377,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.CreateSqlStatementRequest,
     ) -> emr_serverless_spark_20230808_models.CreateSqlStatementResponse:
         """
-        @summary 使用session运行SQL
+        @summary Creates an SQL query task.
         
         @param request: CreateSqlStatementRequest
         @return: CreateSqlStatementResponse
@@ -392,7 +392,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.CreateSqlStatementRequest,
     ) -> emr_serverless_spark_20230808_models.CreateSqlStatementResponse:
         """
-        @summary 使用session运行SQL
+        @summary Creates an SQL query task.
         
         @param request: CreateSqlStatementRequest
         @return: CreateSqlStatementResponse
@@ -522,7 +522,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.GetSqlStatementResponse:
         """
-        @summary 获取Sql Statement状态
+        @summary Queries the status of an SQL query task.
         
         @param request: GetSqlStatementRequest
         @param headers: map
@@ -562,7 +562,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.GetSqlStatementResponse:
         """
-        @summary 获取Sql Statement状态
+        @summary Queries the status of an SQL query task.
         
         @param request: GetSqlStatementRequest
         @param headers: map
@@ -600,7 +600,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.GetSqlStatementRequest,
     ) -> emr_serverless_spark_20230808_models.GetSqlStatementResponse:
         """
-        @summary 获取Sql Statement状态
+        @summary Queries the status of an SQL query task.
         
         @param request: GetSqlStatementRequest
         @return: GetSqlStatementResponse
@@ -616,7 +616,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.GetSqlStatementRequest,
     ) -> emr_serverless_spark_20230808_models.GetSqlStatementResponse:
         """
-        @summary 获取Sql Statement状态
+        @summary Queries the status of an SQL query task.
         
         @param request: GetSqlStatementRequest
         @return: GetSqlStatementResponse
@@ -920,7 +920,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.ListReleaseVersionsResponse:
         """
-        @summary 获取发布版本列表
+        @summary Queries the list of published versions of E-MapReduce (EMR) Serverless Spark.
         
         @param request: ListReleaseVersionsRequest
         @param headers: map
@@ -937,6 +937,8 @@ class Client(OpenApiClient):
             query['releaseVersion'] = request.release_version
         if not UtilClient.is_unset(request.release_version_status):
             query['releaseVersionStatus'] = request.release_version_status
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -964,7 +966,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.ListReleaseVersionsResponse:
         """
-        @summary 获取发布版本列表
+        @summary Queries the list of published versions of E-MapReduce (EMR) Serverless Spark.
         
         @param request: ListReleaseVersionsRequest
         @param headers: map
@@ -981,6 +983,8 @@ class Client(OpenApiClient):
             query['releaseVersion'] = request.release_version
         if not UtilClient.is_unset(request.release_version_status):
             query['releaseVersionStatus'] = request.release_version_status
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1006,7 +1010,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.ListReleaseVersionsRequest,
     ) -> emr_serverless_spark_20230808_models.ListReleaseVersionsResponse:
         """
-        @summary 获取发布版本列表
+        @summary Queries the list of published versions of E-MapReduce (EMR) Serverless Spark.
         
         @param request: ListReleaseVersionsRequest
         @return: ListReleaseVersionsResponse
@@ -1020,7 +1024,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.ListReleaseVersionsRequest,
     ) -> emr_serverless_spark_20230808_models.ListReleaseVersionsResponse:
         """
-        @summary 获取发布版本列表
+        @summary Queries the list of published versions of E-MapReduce (EMR) Serverless Spark.
         
         @param request: ListReleaseVersionsRequest
         @return: ListReleaseVersionsResponse
@@ -1549,6 +1553,246 @@ class Client(OpenApiClient):
         headers = {}
         return await self.start_job_run_with_options_async(workspace_id, request, headers, runtime)
 
+    def start_session_cluster_with_options(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.StartSessionClusterRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.StartSessionClusterResponse:
+        """
+        @summary 启动session集群
+        
+        @param request: StartSessionClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartSessionClusterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.queue_name):
+            body['queueName'] = request.queue_name
+        if not UtilClient.is_unset(request.session_cluster_id):
+            body['sessionClusterId'] = request.session_cluster_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartSessionCluster',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/sessionClusters/action/startSessionCluster',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.StartSessionClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_session_cluster_with_options_async(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.StartSessionClusterRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.StartSessionClusterResponse:
+        """
+        @summary 启动session集群
+        
+        @param request: StartSessionClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartSessionClusterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.queue_name):
+            body['queueName'] = request.queue_name
+        if not UtilClient.is_unset(request.session_cluster_id):
+            body['sessionClusterId'] = request.session_cluster_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartSessionCluster',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/sessionClusters/action/startSessionCluster',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.StartSessionClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_session_cluster(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.StartSessionClusterRequest,
+    ) -> emr_serverless_spark_20230808_models.StartSessionClusterResponse:
+        """
+        @summary 启动session集群
+        
+        @param request: StartSessionClusterRequest
+        @return: StartSessionClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.start_session_cluster_with_options(workspace_id, request, headers, runtime)
+
+    async def start_session_cluster_async(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.StartSessionClusterRequest,
+    ) -> emr_serverless_spark_20230808_models.StartSessionClusterResponse:
+        """
+        @summary 启动session集群
+        
+        @param request: StartSessionClusterRequest
+        @return: StartSessionClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.start_session_cluster_with_options_async(workspace_id, request, headers, runtime)
+
+    def stop_session_cluster_with_options(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.StopSessionClusterRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.StopSessionClusterResponse:
+        """
+        @summary 启动session集群
+        
+        @param request: StopSessionClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopSessionClusterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.queue_name):
+            body['queueName'] = request.queue_name
+        if not UtilClient.is_unset(request.session_cluster_id):
+            body['sessionClusterId'] = request.session_cluster_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StopSessionCluster',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/sessionClusters/action/stopSessionCluster',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.StopSessionClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_session_cluster_with_options_async(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.StopSessionClusterRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.StopSessionClusterResponse:
+        """
+        @summary 启动session集群
+        
+        @param request: StopSessionClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopSessionClusterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.queue_name):
+            body['queueName'] = request.queue_name
+        if not UtilClient.is_unset(request.session_cluster_id):
+            body['sessionClusterId'] = request.session_cluster_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StopSessionCluster',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/sessionClusters/action/stopSessionCluster',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.StopSessionClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_session_cluster(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.StopSessionClusterRequest,
+    ) -> emr_serverless_spark_20230808_models.StopSessionClusterResponse:
+        """
+        @summary 启动session集群
+        
+        @param request: StopSessionClusterRequest
+        @return: StopSessionClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.stop_session_cluster_with_options(workspace_id, request, headers, runtime)
+
+    async def stop_session_cluster_async(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.StopSessionClusterRequest,
+    ) -> emr_serverless_spark_20230808_models.StopSessionClusterResponse:
+        """
+        @summary 启动session集群
+        
+        @param request: StopSessionClusterRequest
+        @return: StopSessionClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.stop_session_cluster_with_options_async(workspace_id, request, headers, runtime)
+
     def terminate_sql_statement_with_options(
         self,
         workspace_id: str,
@@ -1558,7 +1802,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.TerminateSqlStatementResponse:
         """
-        @summary 终止 session statement
+        @summary Terminates an SQL query task.
         
         @param request: TerminateSqlStatementRequest
         @param headers: map
@@ -1598,7 +1842,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.TerminateSqlStatementResponse:
         """
-        @summary 终止 session statement
+        @summary Terminates an SQL query task.
         
         @param request: TerminateSqlStatementRequest
         @param headers: map
@@ -1636,7 +1880,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.TerminateSqlStatementRequest,
     ) -> emr_serverless_spark_20230808_models.TerminateSqlStatementResponse:
         """
-        @summary 终止 session statement
+        @summary Terminates an SQL query task.
         
         @param request: TerminateSqlStatementRequest
         @return: TerminateSqlStatementResponse
@@ -1652,7 +1896,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.TerminateSqlStatementRequest,
     ) -> emr_serverless_spark_20230808_models.TerminateSqlStatementResponse:
         """
-        @summary 终止 session statement
+        @summary Terminates an SQL query task.
         
         @param request: TerminateSqlStatementRequest
         @return: TerminateSqlStatementResponse
