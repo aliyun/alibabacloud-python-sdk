@@ -1,3 +1,7 @@
+2024-10-17 Version: 6.1.4
+- Update API ListNodes: update response param.
+
+
 2024-09-29 Version: 6.1.3
 - Update API CreateDISyncTask: update param TaskContent.
 - Update API GetNode: update response param.

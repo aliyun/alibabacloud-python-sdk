@@ -8382,8 +8382,8 @@ class CreateQualityEntityRequest(TeaModel):
         # 
         # The value 0 indicates that the partition filter expression is at the SQL level, and the system checks data quality after each SQL statement is executed.
         # 
-        # *\
-        # *\
+        # * 0
+        # * 1
         self.entity_level = entity_level
         # The type of the compute engine or data source.
         # 
@@ -60661,6 +60661,7 @@ class ListNodesResponseBodyDataNodes(TeaModel):
         project_id: int = None,
         related_flow_id: int = None,
         repeat_interval: int = None,
+        repeat_mode: int = None,
         repeatability: bool = None,
         res_group_identifier: str = None,
         res_group_name: str = None,
@@ -60704,6 +60705,7 @@ class ListNodesResponseBodyDataNodes(TeaModel):
         self.related_flow_id = related_flow_id
         # The environment of the workspace. Valid values: PROD and DEV.
         self.repeat_interval = repeat_interval
+        self.repeat_mode = repeat_mode
         # The name of the node.
         self.repeatability = repeatability
         self.res_group_identifier = res_group_identifier
@@ -60765,6 +60767,8 @@ class ListNodesResponseBodyDataNodes(TeaModel):
             result['RelatedFlowId'] = self.related_flow_id
         if self.repeat_interval is not None:
             result['RepeatInterval'] = self.repeat_interval
+        if self.repeat_mode is not None:
+            result['RepeatMode'] = self.repeat_mode
         if self.repeatability is not None:
             result['Repeatability'] = self.repeatability
         if self.res_group_identifier is not None:
@@ -60821,6 +60825,8 @@ class ListNodesResponseBodyDataNodes(TeaModel):
             self.related_flow_id = m.get('RelatedFlowId')
         if m.get('RepeatInterval') is not None:
             self.repeat_interval = m.get('RepeatInterval')
+        if m.get('RepeatMode') is not None:
+            self.repeat_mode = m.get('RepeatMode')
         if m.get('Repeatability') is not None:
             self.repeatability = m.get('Repeatability')
         if m.get('ResGroupIdentifier') is not None:
