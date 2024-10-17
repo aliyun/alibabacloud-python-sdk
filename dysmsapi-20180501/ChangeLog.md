@@ -1,3 +1,7 @@
+2024-10-17 Version: 1.0.7
+- Update API BatchSendMessageToGlobe: add param ChannelId.
+
+
 2024-08-01 Version: 1.0.6
 - Update API SendMessageToGlobe: add param ChannelId.
 - Update API SendMessageWithTemplate: add param ChannelId.

@@ -7,6 +7,7 @@ from typing import Dict
 class BatchSendMessageToGlobeRequest(TeaModel):
     def __init__(
         self,
+        channel_id: str = None,
         from_: str = None,
         message: str = None,
         task_id: str = None,
@@ -14,6 +15,7 @@ class BatchSendMessageToGlobeRequest(TeaModel):
         type: str = None,
         validity_period: int = None,
     ):
+        self.channel_id = channel_id
         # The mobile phone number of the sender. You can also specify a sender ID. The sender ID can contain both letters and digits. If it does, the ID must be between 1 to 11 characters in length. If the sender ID contains only digits, it must be 1 to 15 characters in length.
         self.from_ = from_
         # The content of the message.
@@ -24,7 +26,7 @@ class BatchSendMessageToGlobeRequest(TeaModel):
         self.task_id = task_id
         # The mobile phone numbers to which the message is sent. You must add the dialing code to the beginning of each mobile phone number.
         # 
-        # For more information, see [Dialing codes](https://www.alibabacloud.com/help/zh/short-message-service/latest/dialing-codes).
+        # For more information, see [Dialing codes](https://www.alibabacloud.com/help/en/short-message-service/latest/dialing-codes).
         # 
         # This parameter is required.
         self.to = to
@@ -45,6 +47,8 @@ class BatchSendMessageToGlobeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
         if self.from_ is not None:
             result['From'] = self.from_
         if self.message is not None:
@@ -61,6 +65,8 @@ class BatchSendMessageToGlobeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
         if m.get('From') is not None:
             self.from_ = m.get('From')
         if m.get('Message') is not None:
@@ -95,7 +101,7 @@ class BatchSendMessageToGlobeResponseBody(TeaModel):
         self.message_id_list = message_id_list
         # The ID of the request.
         self.request_id = request_id
-        # The status code. If OK is returned, the request is successful. For more information, see [Error codes](https://www.alibabacloud.com/help/zh/short-message-service/latest/error-codes).
+        # The status code. If OK is returned, the request is successful. For more information, see [Error codes](https://www.alibabacloud.com/help/en/short-message-service/latest/error-codes).
         self.response_code = response_code
         # The description of the status code.
         self.response_description = response_description
