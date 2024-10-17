@@ -1,3 +1,7 @@
+2024-10-17 Version: 3.6.1
+- Update API SearchMediaByAILabel: add param MatchingMode.
+
+
 2024-09-24 Version: 3.6.0
 - Support API DescribeAIAgentInstance.
 - Support API DescribeNotifyConfig.

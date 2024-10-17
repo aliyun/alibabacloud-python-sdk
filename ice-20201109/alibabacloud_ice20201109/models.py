@@ -1,10 +1,49 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List, Any
+from typing import List, Dict, Any
 
 
 class AIAgentRuntimeConfigAvatarChat3D(TeaModel):
+    def __init__(
+        self,
+        agent_user_id: str = None,
+        auth_token: str = None,
+        channel_id: str = None,
+    ):
+        self.agent_user_id = agent_user_id
+        self.auth_token = auth_token
+        self.channel_id = channel_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_user_id is not None:
+            result['AgentUserId'] = self.agent_user_id
+        if self.auth_token is not None:
+            result['AuthToken'] = self.auth_token
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentUserId') is not None:
+            self.agent_user_id = m.get('AgentUserId')
+        if m.get('AuthToken') is not None:
+            self.auth_token = m.get('AuthToken')
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        return self
+
+
+class AIAgentRuntimeConfigVisionChat(TeaModel):
     def __init__(
         self,
         agent_user_id: str = None,
@@ -86,14 +125,18 @@ class AIAgentRuntimeConfig(TeaModel):
     def __init__(
         self,
         avatar_chat_3d: AIAgentRuntimeConfigAvatarChat3D = None,
+        vision_chat: AIAgentRuntimeConfigVisionChat = None,
         voice_chat: AIAgentRuntimeConfigVoiceChat = None,
     ):
         self.avatar_chat_3d = avatar_chat_3d
+        self.vision_chat = vision_chat
         self.voice_chat = voice_chat
 
     def validate(self):
         if self.avatar_chat_3d:
             self.avatar_chat_3d.validate()
+        if self.vision_chat:
+            self.vision_chat.validate()
         if self.voice_chat:
             self.voice_chat.validate()
 
@@ -105,6 +148,8 @@ class AIAgentRuntimeConfig(TeaModel):
         result = dict()
         if self.avatar_chat_3d is not None:
             result['AvatarChat3D'] = self.avatar_chat_3d.to_map()
+        if self.vision_chat is not None:
+            result['VisionChat'] = self.vision_chat.to_map()
         if self.voice_chat is not None:
             result['VoiceChat'] = self.voice_chat.to_map()
         return result
@@ -114,6 +159,9 @@ class AIAgentRuntimeConfig(TeaModel):
         if m.get('AvatarChat3D') is not None:
             temp_model = AIAgentRuntimeConfigAvatarChat3D()
             self.avatar_chat_3d = temp_model.from_map(m['AvatarChat3D'])
+        if m.get('VisionChat') is not None:
+            temp_model = AIAgentRuntimeConfigVisionChat()
+            self.vision_chat = temp_model.from_map(m['VisionChat'])
         if m.get('VoiceChat') is not None:
             temp_model = AIAgentRuntimeConfigVoiceChat()
             self.voice_chat = temp_model.from_map(m['VoiceChat'])
@@ -123,6 +171,7 @@ class AIAgentRuntimeConfig(TeaModel):
 class AIAgentTemplateConfigAvatarChat3D(TeaModel):
     def __init__(
         self,
+        asr_max_silence: int = None,
         avatar_id: str = None,
         enable_voice_interrupt: bool = None,
         graceful_shutdown: bool = None,
@@ -130,6 +179,7 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
         voice_id: str = None,
         volume: int = None,
     ):
+        self.asr_max_silence = asr_max_silence
         self.avatar_id = avatar_id
         self.enable_voice_interrupt = enable_voice_interrupt
         self.graceful_shutdown = graceful_shutdown
@@ -146,6 +196,8 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
             return _map
 
         result = dict()
+        if self.asr_max_silence is not None:
+            result['AsrMaxSilence'] = self.asr_max_silence
         if self.avatar_id is not None:
             result['AvatarId'] = self.avatar_id
         if self.enable_voice_interrupt is not None:
@@ -162,8 +214,73 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AsrMaxSilence') is not None:
+            self.asr_max_silence = m.get('AsrMaxSilence')
         if m.get('AvatarId') is not None:
             self.avatar_id = m.get('AvatarId')
+        if m.get('EnableVoiceInterrupt') is not None:
+            self.enable_voice_interrupt = m.get('EnableVoiceInterrupt')
+        if m.get('GracefulShutdown') is not None:
+            self.graceful_shutdown = m.get('GracefulShutdown')
+        if m.get('Greeting') is not None:
+            self.greeting = m.get('Greeting')
+        if m.get('VoiceId') is not None:
+            self.voice_id = m.get('VoiceId')
+        if m.get('Volume') is not None:
+            self.volume = m.get('Volume')
+        return self
+
+
+class AIAgentTemplateConfigVisionChat(TeaModel):
+    def __init__(
+        self,
+        asr_max_silence: int = None,
+        enable_intelligent_segment: bool = None,
+        enable_voice_interrupt: bool = None,
+        graceful_shutdown: bool = None,
+        greeting: str = None,
+        voice_id: str = None,
+        volume: int = None,
+    ):
+        self.asr_max_silence = asr_max_silence
+        self.enable_intelligent_segment = enable_intelligent_segment
+        self.enable_voice_interrupt = enable_voice_interrupt
+        self.graceful_shutdown = graceful_shutdown
+        self.greeting = greeting
+        self.voice_id = voice_id
+        self.volume = volume
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asr_max_silence is not None:
+            result['AsrMaxSilence'] = self.asr_max_silence
+        if self.enable_intelligent_segment is not None:
+            result['EnableIntelligentSegment'] = self.enable_intelligent_segment
+        if self.enable_voice_interrupt is not None:
+            result['EnableVoiceInterrupt'] = self.enable_voice_interrupt
+        if self.graceful_shutdown is not None:
+            result['GracefulShutdown'] = self.graceful_shutdown
+        if self.greeting is not None:
+            result['Greeting'] = self.greeting
+        if self.voice_id is not None:
+            result['VoiceId'] = self.voice_id
+        if self.volume is not None:
+            result['Volume'] = self.volume
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AsrMaxSilence') is not None:
+            self.asr_max_silence = m.get('AsrMaxSilence')
+        if m.get('EnableIntelligentSegment') is not None:
+            self.enable_intelligent_segment = m.get('EnableIntelligentSegment')
         if m.get('EnableVoiceInterrupt') is not None:
             self.enable_voice_interrupt = m.get('EnableVoiceInterrupt')
         if m.get('GracefulShutdown') is not None:
@@ -180,12 +297,14 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
 class AIAgentTemplateConfigVoiceChat(TeaModel):
     def __init__(
         self,
+        asr_max_silence: int = None,
         enable_voice_interrupt: bool = None,
         graceful_shutdown: bool = None,
         greeting: str = None,
         voice_id: str = None,
         volume: int = None,
     ):
+        self.asr_max_silence = asr_max_silence
         self.enable_voice_interrupt = enable_voice_interrupt
         self.graceful_shutdown = graceful_shutdown
         self.greeting = greeting
@@ -201,6 +320,8 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
             return _map
 
         result = dict()
+        if self.asr_max_silence is not None:
+            result['AsrMaxSilence'] = self.asr_max_silence
         if self.enable_voice_interrupt is not None:
             result['EnableVoiceInterrupt'] = self.enable_voice_interrupt
         if self.graceful_shutdown is not None:
@@ -215,6 +336,8 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AsrMaxSilence') is not None:
+            self.asr_max_silence = m.get('AsrMaxSilence')
         if m.get('EnableVoiceInterrupt') is not None:
             self.enable_voice_interrupt = m.get('EnableVoiceInterrupt')
         if m.get('GracefulShutdown') is not None:
@@ -232,14 +355,18 @@ class AIAgentTemplateConfig(TeaModel):
     def __init__(
         self,
         avatar_chat_3d: AIAgentTemplateConfigAvatarChat3D = None,
+        vision_chat: AIAgentTemplateConfigVisionChat = None,
         voice_chat: AIAgentTemplateConfigVoiceChat = None,
     ):
         self.avatar_chat_3d = avatar_chat_3d
+        self.vision_chat = vision_chat
         self.voice_chat = voice_chat
 
     def validate(self):
         if self.avatar_chat_3d:
             self.avatar_chat_3d.validate()
+        if self.vision_chat:
+            self.vision_chat.validate()
         if self.voice_chat:
             self.voice_chat.validate()
 
@@ -251,6 +378,8 @@ class AIAgentTemplateConfig(TeaModel):
         result = dict()
         if self.avatar_chat_3d is not None:
             result['AvatarChat3D'] = self.avatar_chat_3d.to_map()
+        if self.vision_chat is not None:
+            result['VisionChat'] = self.vision_chat.to_map()
         if self.voice_chat is not None:
             result['VoiceChat'] = self.voice_chat.to_map()
         return result
@@ -260,9 +389,292 @@ class AIAgentTemplateConfig(TeaModel):
         if m.get('AvatarChat3D') is not None:
             temp_model = AIAgentTemplateConfigAvatarChat3D()
             self.avatar_chat_3d = temp_model.from_map(m['AvatarChat3D'])
+        if m.get('VisionChat') is not None:
+            temp_model = AIAgentTemplateConfigVisionChat()
+            self.vision_chat = temp_model.from_map(m['VisionChat'])
         if m.get('VoiceChat') is not None:
             temp_model = AIAgentTemplateConfigVoiceChat()
             self.voice_chat = temp_model.from_map(m['VoiceChat'])
+        return self
+
+
+class AppInfoDTOPlatforms(TeaModel):
+    def __init__(
+        self,
+        item_id: str = None,
+        license_item_ids: List[str] = None,
+        pkg_name: str = None,
+        pkg_signature: str = None,
+        platform_type: int = None,
+        type: int = None,
+    ):
+        self.item_id = item_id
+        self.license_item_ids = license_item_ids
+        self.pkg_name = pkg_name
+        self.pkg_signature = pkg_signature
+        self.platform_type = platform_type
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.item_id is not None:
+            result['ItemId'] = self.item_id
+        if self.license_item_ids is not None:
+            result['LicenseItemIds'] = self.license_item_ids
+        if self.pkg_name is not None:
+            result['PkgName'] = self.pkg_name
+        if self.pkg_signature is not None:
+            result['PkgSignature'] = self.pkg_signature
+        if self.platform_type is not None:
+            result['PlatformType'] = self.platform_type
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ItemId') is not None:
+            self.item_id = m.get('ItemId')
+        if m.get('LicenseItemIds') is not None:
+            self.license_item_ids = m.get('LicenseItemIds')
+        if m.get('PkgName') is not None:
+            self.pkg_name = m.get('PkgName')
+        if m.get('PkgSignature') is not None:
+            self.pkg_signature = m.get('PkgSignature')
+        if m.get('PlatformType') is not None:
+            self.platform_type = m.get('PlatformType')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class AppInfoDTO(TeaModel):
+    def __init__(
+        self,
+        app_name: str = None,
+        app_type: int = None,
+        gmt_create: str = None,
+        item_id: str = None,
+        platforms: List[AppInfoDTOPlatforms] = None,
+        user_id: int = None,
+    ):
+        self.app_name = app_name
+        self.app_type = app_type
+        self.gmt_create = gmt_create
+        self.item_id = item_id
+        self.platforms = platforms
+        self.user_id = user_id
+
+    def validate(self):
+        if self.platforms:
+            for k in self.platforms:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.app_type is not None:
+            result['AppType'] = self.app_type
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.item_id is not None:
+            result['ItemId'] = self.item_id
+        result['Platforms'] = []
+        if self.platforms is not None:
+            for k in self.platforms:
+                result['Platforms'].append(k.to_map() if k else None)
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('AppType') is not None:
+            self.app_type = m.get('AppType')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('ItemId') is not None:
+            self.item_id = m.get('ItemId')
+        self.platforms = []
+        if m.get('Platforms') is not None:
+            for k in m.get('Platforms'):
+                temp_model = AppInfoDTOPlatforms()
+                self.platforms.append(temp_model.from_map(k))
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class LicenseInstanceAppDTOLicenseConfigs(TeaModel):
+    def __init__(
+        self,
+        business_type: str = None,
+        feature_ids: str = None,
+        sdk_id: int = None,
+        sdk_name: str = None,
+        subscription: str = None,
+        subscription_imp: str = None,
+        subscription_pkg: str = None,
+    ):
+        self.business_type = business_type
+        self.feature_ids = feature_ids
+        self.sdk_id = sdk_id
+        self.sdk_name = sdk_name
+        self.subscription = subscription
+        self.subscription_imp = subscription_imp
+        self.subscription_pkg = subscription_pkg
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_type is not None:
+            result['BusinessType'] = self.business_type
+        if self.feature_ids is not None:
+            result['FeatureIds'] = self.feature_ids
+        if self.sdk_id is not None:
+            result['SdkId'] = self.sdk_id
+        if self.sdk_name is not None:
+            result['SdkName'] = self.sdk_name
+        if self.subscription is not None:
+            result['Subscription'] = self.subscription
+        if self.subscription_imp is not None:
+            result['SubscriptionImp'] = self.subscription_imp
+        if self.subscription_pkg is not None:
+            result['SubscriptionPkg'] = self.subscription_pkg
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessType') is not None:
+            self.business_type = m.get('BusinessType')
+        if m.get('FeatureIds') is not None:
+            self.feature_ids = m.get('FeatureIds')
+        if m.get('SdkId') is not None:
+            self.sdk_id = m.get('SdkId')
+        if m.get('SdkName') is not None:
+            self.sdk_name = m.get('SdkName')
+        if m.get('Subscription') is not None:
+            self.subscription = m.get('Subscription')
+        if m.get('SubscriptionImp') is not None:
+            self.subscription_imp = m.get('SubscriptionImp')
+        if m.get('SubscriptionPkg') is not None:
+            self.subscription_pkg = m.get('SubscriptionPkg')
+        return self
+
+
+class LicenseInstanceAppDTO(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        begin_on: str = None,
+        contract_no: str = None,
+        creation_time: str = None,
+        expired_on: str = None,
+        instance_id: str = None,
+        item_id: str = None,
+        license_configs: List[LicenseInstanceAppDTOLicenseConfigs] = None,
+        modification_time: str = None,
+        status: str = None,
+        user_id: int = None,
+    ):
+        self.app_id = app_id
+        self.begin_on = begin_on
+        self.contract_no = contract_no
+        self.creation_time = creation_time
+        self.expired_on = expired_on
+        self.instance_id = instance_id
+        self.item_id = item_id
+        self.license_configs = license_configs
+        self.modification_time = modification_time
+        self.status = status
+        self.user_id = user_id
+
+    def validate(self):
+        if self.license_configs:
+            for k in self.license_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.begin_on is not None:
+            result['BeginOn'] = self.begin_on
+        if self.contract_no is not None:
+            result['ContractNo'] = self.contract_no
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.expired_on is not None:
+            result['ExpiredOn'] = self.expired_on
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.item_id is not None:
+            result['ItemId'] = self.item_id
+        result['LicenseConfigs'] = []
+        if self.license_configs is not None:
+            for k in self.license_configs:
+                result['LicenseConfigs'].append(k.to_map() if k else None)
+        if self.modification_time is not None:
+            result['ModificationTime'] = self.modification_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('BeginOn') is not None:
+            self.begin_on = m.get('BeginOn')
+        if m.get('ContractNo') is not None:
+            self.contract_no = m.get('ContractNo')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('ExpiredOn') is not None:
+            self.expired_on = m.get('ExpiredOn')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ItemId') is not None:
+            self.item_id = m.get('ItemId')
+        self.license_configs = []
+        if m.get('LicenseConfigs') is not None:
+            for k in m.get('LicenseConfigs'):
+                temp_model = LicenseInstanceAppDTOLicenseConfigs()
+                self.license_configs.append(temp_model.from_map(k))
+        if m.get('ModificationTime') is not None:
+            self.modification_time = m.get('ModificationTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
         return self
 
 
@@ -273,9 +685,19 @@ class AddCategoryRequest(TeaModel):
         parent_id: int = None,
         type: str = None,
     ):
+        # The category name.
+        # 
+        # *   The value can be up to 64 bytes in length.
+        # *   The value must be encoded in UTF-8.
+        # 
         # This parameter is required.
         self.cate_name = cate_name
+        # The ID of the parent category.
         self.parent_id = parent_id
+        # The type of the category. Valid values:
+        # 
+        # *   default: audio, video, and image files. This is the default value.
+        # *   material: short video materials.
         self.type = type
 
     def validate(self):
@@ -315,10 +737,18 @@ class AddCategoryResponseBodyCategory(TeaModel):
         parent_id: int = None,
         type: str = None,
     ):
+        # The ID of the created category.
         self.cate_id = cate_id
+        # The category name.
         self.cate_name = cate_name
+        # The level of the category. A value of **0** indicates a level-1 category, a value of **1** indicates a level-2 category, and a value of **2** indicates a level-3 category.
         self.level = level
+        # The ID of the parent category. By default, if ParentId is left empty or less than 1, -1 is returned, which indicates that the created category is the root directory.
         self.parent_id = parent_id
+        # The type of the category. Valid values:
+        # 
+        # *   **default**: audio, video, and image files. This is the default value.
+        # *   **material**: short video materials.
         self.type = type
 
     def validate(self):
@@ -363,7 +793,9 @@ class AddCategoryResponseBody(TeaModel):
         category: AddCategoryResponseBodyCategory = None,
         request_id: str = None,
     ):
+        # The information about the category.
         self.category = category
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -439,8 +871,18 @@ class AddEditingProjectMaterialsRequest(TeaModel):
         material_maps: str = None,
         project_id: str = None,
     ):
+        # The material ID. Separate multiple material IDs with commas (,). Each type supports up to 10 material IDs. The following material types are supported:
+        # 
+        # *   video
+        # *   audio
+        # *   image
+        # *   liveStream
+        # *   editingProject
+        # 
         # This parameter is required.
         self.material_maps = material_maps
+        # The ID of the online editing project.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -476,9 +918,13 @@ class AddEditingProjectMaterialsResponseBodyLiveMaterials(TeaModel):
         live_url: str = None,
         stream_name: str = None,
     ):
+        # The application name of the live stream.
         self.app_name = app_name
+        # The domain name of the live stream.
         self.domain_name = domain_name
+        # The URL of the live stream.
         self.live_url = live_url
+        # The name of the live stream.
         self.stream_name = stream_name
 
     def validate(self):
@@ -528,16 +974,37 @@ class AddEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo(
         region: str = None,
         width: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The duration.
         self.duration = duration
+        # The file name.
         self.file_name = file_name
+        # The file size. Unit: bytes.
         self.file_size = file_size
+        # The file status.
+        # 
+        # \\-Uploading
+        # 
+        # \\-Normal
+        # 
+        # \\-UploadFail
+        # 
+        # \\-Disable
+        # 
+        # \\-Deleted
         self.file_status = file_status
+        # The file type.
         self.file_type = file_type
+        # The Object Storage Service (OSS) URL of the file.
         self.file_url = file_url
+        # The container format.
         self.format_name = format_name
+        # The height.
         self.height = height
+        # The region in which the file resides.
         self.region = region
+        # The width.
         self.width = width
 
     def validate(self):
@@ -605,6 +1072,7 @@ class AddEditingProjectMaterialsResponseBodyMediaInfosFileInfoList(TeaModel):
         self,
         file_basic_info: AddEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo = None,
     ):
+        # The basic information of the file, including the duration and size.
         self.file_basic_info = file_basic_info
 
     def validate(self):
@@ -651,23 +1119,49 @@ class AddEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo(TeaModel):
         transcode_status: str = None,
         user_data: str = None,
     ):
+        # The business type of the media asset.
         self.business_type = business_type
+        # The category of the media asset.
         self.category = category
+        # The thumbnail URL of the media asset.
         self.cover_url = cover_url
+        # The time when the media asset was created.
         self.create_time = create_time
+        # The time when the media asset was deleted.
         self.deleted_time = deleted_time
+        # The description of the media asset.
         self.description = description
+        # The URL of the media asset in another service.
         self.input_url = input_url
+        # The ID of the media asset.
         self.media_id = media_id
+        # The tags of the media asset.
         self.media_tags = media_tags
+        # The type of the media asset.
         self.media_type = media_type
+        # The time when the media asset was last modified.
         self.modified_time = modified_time
+        # The snapshots of the media asset.
         self.snapshots = snapshots
+        # The source of the media asset.
         self.source = source
+        # The sprite of the media asset.
         self.sprite_images = sprite_images
+        # The status of the media asset. Valid values:
+        # 
+        # \\- Init
+        # 
+        # \\- Preparing
+        # 
+        # \\- PrepareFail
+        # 
+        # \\- Normal
         self.status = status
+        # The title of the media asset.
         self.title = title
+        # The transcoding status of the media asset.
         self.transcode_status = transcode_status
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -767,7 +1261,9 @@ class AddEditingProjectMaterialsResponseBodyMediaInfos(TeaModel):
     ):
         # FileInfos
         self.file_info_list = file_info_list
+        # The basic information of the media assets.
         self.media_basic_info = media_basic_info
+        # The ID of the media asset.
         self.media_id = media_id
 
     def validate(self):
@@ -818,10 +1314,15 @@ class AddEditingProjectMaterialsResponseBody(TeaModel):
         project_materials: List[str] = None,
         request_id: str = None,
     ):
+        # The materials associated with the live stream.
         self.live_materials = live_materials
+        # The media assets that meet the specified conditions.
         self.media_infos = media_infos
+        # The ID of the online editing project.
         self.project_id = project_id
+        # The materials associated with the editing project. A live stream editing project will be associated with a regular editing project after the live streaming ends.
         self.project_materials = project_materials
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1025,8 +1526,12 @@ class AddMediaMarksRequest(TeaModel):
         media_id: str = None,
         media_marks: str = None,
     ):
+        # The ID of the media asset.
+        # 
         # This parameter is required.
         self.media_id = media_id
+        # The mark information. The value must be a JSONArray.
+        # 
         # This parameter is required.
         self.media_marks = media_marks
 
@@ -1061,8 +1566,11 @@ class AddMediaMarksResponseBody(TeaModel):
         media_mark_ids: str = None,
         request_id: str = None,
     ):
+        # The ID of the media asset.
         self.media_id = media_id
+        # The IDs of the marks that are added.
         self.media_mark_ids = media_mark_ids
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1363,10 +1871,29 @@ class AlterSearchIndexRequest(TeaModel):
         index_type: str = None,
         search_lib_name: str = None,
     ):
+        # The configurations of the index.
+        # 
+        # >  You must specify either IndexStatus or IndexConfig.
         self.index_config = index_config
+        # The state of the index. Valid values:
+        # 
+        # *   active (default): the index is enabled.
+        # *   Deactive: the index is not enabled.
+        # 
+        # >  You must specify either IndexStatus or IndexConfig.
         self.index_status = index_status
+        # The category of the index. Valid values:
+        # 
+        # *   mm: large visual model.
+        # *   face: face recognition.
+        # *   aiLabel: smart tagging.
+        # 
         # This parameter is required.
         self.index_type = index_type
+        # The name of the search library.
+        # 
+        # *   If you leave this parameter empty, the search index is created in the default search library of Intelligent Media Service (IMS). Default value: ims-default-search-lib.
+        # *   To query information about an existing search library, call the [QuerySearchLib](https://help.aliyun.com/document_detail/2584455.html) API operation.
         self.search_lib_name = search_lib_name
 
     def validate(self):
@@ -1408,9 +1935,14 @@ class AlterSearchIndexResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The status code returned.
         self.code = code
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -1488,7 +2020,13 @@ class BatchGetMediaInfosRequest(TeaModel):
         addition_type: str = None,
         media_ids: str = None,
     ):
+        # The additional information that you want to query about the media assets. By default, only BasicInfo is returned. The following additional information can be queried:
+        # 
+        # \\- FileInfo
+        # 
+        # \\- DynamicMetaData
         self.addition_type = addition_type
+        # The IDs of the media assets that you want to query. Separate the IDs with commas (,).
         self.media_ids = media_ids
 
     def validate(self):
@@ -1530,16 +2068,27 @@ class BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo(TeaModel
         region: str = None,
         width: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The duration.
         self.duration = duration
+        # The file name.
         self.file_name = file_name
+        # The file size. Unit: bytes.
         self.file_size = file_size
+        # The file status.
         self.file_status = file_status
+        # The file type.
         self.file_type = file_type
+        # The Object Storage Service (OSS) URL of the file.
         self.file_url = file_url
+        # The container format.
         self.format_name = format_name
+        # The height.
         self.height = height
+        # The region in which the file resides.
         self.region = region
+        # The width.
         self.width = width
 
     def validate(self):
@@ -1607,6 +2156,7 @@ class BatchGetMediaInfosResponseBodyMediaInfosFileInfoList(TeaModel):
         self,
         file_basic_info: BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo = None,
     ):
+        # The basic information of the file, including the duration and size.
         self.file_basic_info = file_basic_info
 
     def validate(self):
@@ -1653,24 +2203,53 @@ class BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo(TeaModel):
         transcode_status: str = None,
         user_data: str = None,
     ):
+        # The business type of the media asset.
         self.business_type = business_type
+        # The category of the media asset.
         self.category = category
+        # The thumbnail URL of the media asset.
         self.cover_url = cover_url
+        # The time when the media asset was created.
         self.create_time = create_time
+        # The time when the media asset was deleted.
         self.deleted_time = deleted_time
+        # The description of the media asset.
         self.description = description
+        # The URL of the media asset in another service.
         self.input_url = input_url
         # MediaId
         self.media_id = media_id
+        # The tags of the media asset.
         self.media_tags = media_tags
+        # The type of the media asset. Valid values:
+        # 
+        # \\- image
+        # 
+        # \\- video
+        # 
+        # \\- audio
+        # 
+        # \\- text
         self.media_type = media_type
+        # The time when the media asset was last modified.
         self.modified_time = modified_time
+        # The snapshots of the media asset.
         self.snapshots = snapshots
+        # The source of the media asset. Valid values:
+        # 
+        # \\- oss
+        # 
+        # \\- vod
         self.source = source
+        # The sprite.
         self.sprite_images = sprite_images
+        # The status of the media asset.
         self.status = status
+        # The title of the media asset.
         self.title = title
+        # The transcoding status of the media asset.
         self.transcode_status = transcode_status
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -1770,7 +2349,9 @@ class BatchGetMediaInfosResponseBodyMediaInfos(TeaModel):
     ):
         # FileInfos
         self.file_info_list = file_info_list
+        # The basic information of the media asset.
         self.media_basic_info = media_basic_info
+        # The ID of the media asset.
         self.media_id = media_id
 
     def validate(self):
@@ -1818,7 +2399,9 @@ class BatchGetMediaInfosResponseBody(TeaModel):
         media_infos: List[BatchGetMediaInfosResponseBodyMediaInfos] = None,
         request_id: str = None,
     ):
+        # The queried media assets.
         self.media_infos = media_infos
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2969,15 +3552,34 @@ class CreateEditingProjectRequest(TeaModel):
         timeline: str = None,
         title: str = None,
     ):
+        # The business configuration of the project. This parameter can be ignored for general editing projects.
+        # 
+        # For a live stream editing project, observe the following rules: OutputMediaConfig.StorageLocation is required. OutputMediaConfig.Path is optional. If you do not specify this option, the live streaming clips are stored in the root directory by default.
+        # 
+        # Valid values of OutputMediaTarget include vod-media and oss-object. If you do not specify OutputMediaTarget, the default value oss-object is used.
+        # 
+        # If you set OutputMediaTarget to vod-media, the setting of OutputMediaConfig.Path does not take effect.
         self.business_config = business_config
+        # The material parameter corresponding to the template, in the JSON format. If TemplateId is specified, ClipsParam must also be specified. For more information<props="china">, see [Create and use a regular template](https://help.aliyun.com/document_detail/328557.html) and [Create and use an advanced template](https://help.aliyun.com/document_detail/291418.html).
         self.clips_param = clips_param
+        # The thumbnail URL of the online editing project.
         self.cover_url = cover_url
+        # The description of the online editing project.
         self.description = description
+        # The material associated with the project. Separate multiple material IDs with commas (,). Each type supports up to 10 material IDs.
         self.material_maps = material_maps
+        # The type of the editing project. Valid values: EditingProject and LiveEditingProject. A value of EditingProject indicates a regular editing project, and a value of LiveEditingProject indicates a live stream editing project.
         self.project_type = project_type
+        # The template ID. This parameter is used to quickly build a timeline with ease. Note: Only one of Timeline and TemplateId can be specified. If TemplateId is specified, ClipsParam must also be specified.
         self.template_id = template_id
+        # The template type. This parameter is required if you create a template-based online editing project. Default value: Timeline. Valid values:
+        # 
+        # *   Timeline: a regular template.
+        # *   VETemplate: an advanced template.
         self.template_type = template_type
         self.timeline = timeline
+        # The title of the online editing project.
+        # 
         # This parameter is required.
         self.title = title
 
@@ -3059,23 +3661,89 @@ class CreateEditingProjectResponseBodyProject(TeaModel):
         timeline: str = None,
         title: str = None,
     ):
+        # The business configuration of the project. This parameter can be ignored for general editing projects.
         self.business_config = business_config
+        # The business status of the project. This parameter can be ignored for general editing projects. Valid values:
+        # 
+        # *   Reserving
+        # *   ReservationCanceled
+        # *   BroadCasting
+        # *   LoadingFailed
+        # *   LiveFinished
         self.business_status = business_status
+        # The template material parameters.
         self.clips_param = clips_param
+        # The thumbnail URL of the online editing project.
         self.cover_url = cover_url
+        # The method for creating the online editing project. Valid values:
+        # 
+        # \\- OpenAPI
+        # 
+        # \\- AliyunConsole
+        # 
+        # \\- WebSDK
+        # 
+        # \\- LiveEditingOpenAPI
+        # 
+        # \\- LiveEditingConsole
         self.create_source = create_source
+        # The time when the online editing project was created.
         self.create_time = create_time
+        # The description of the online editing project.
         self.description = description
+        # The duration of the online editing project.
         self.duration = duration
+        # The method for editing the online editing project. Valid values:
+        # 
+        # \\- OpenAPI
+        # 
+        # \\- AliyunConsole
+        # 
+        # \\- WebSDK
+        # 
+        # \\- LiveEditingOpenAPI
+        # 
+        # \\- LiveEditingConsole
         self.modified_source = modified_source
+        # The time when the online editing project was last edited.
         self.modified_time = modified_time
+        # The ID of the online editing project.
         self.project_id = project_id
+        # The type of the editing project. Default value: EditingProject. Valid values:
+        # 
+        # \\- EditingProject: a regular editing project.
+        # 
+        # \\- LiveEditingProject: a live stream editing project.
         self.project_type = project_type
+        # The status of the online editing project.
+        # 
+        # Valid values:
+        # 
+        # \\- 1: Draft
+        # 
+        # \\- 2: Editing
+        # 
+        # \\- 3: Producing
+        # 
+        # \\- 4: Produced
+        # 
+        # \\- 5: ProduceFailed
+        # 
+        # \\- 7: Deleted
         self.status = status
+        # The status of the online editing project. For more information, see the status list.
         self.status_name = status_name
+        # The template ID.
         self.template_id = template_id
+        # The template type of the online editing project. Valid values:
+        # 
+        # \\- Timeline
+        # 
+        # \\- VETemplate
         self.template_type = template_type
+        # The timeline of the online editing project, in the JSON format. For more information about objects in a timeline, see [Timeline configurations](https://help.aliyun.com/document_detail/198823.htm?spm=a2c4g.11186623.2.9.90dc653dF67srN#topic-2024662). If you leave this parameter empty, an empty timeline is created and the duration of the online editing project is zero.
         self.timeline = timeline
+        # The title of the online editing project.
         self.title = title
 
     def validate(self):
@@ -3172,8 +3840,9 @@ class CreateEditingProjectResponseBody(TeaModel):
         project: CreateEditingProjectResponseBodyProject = None,
         request_id: str = None,
     ):
+        # The information about the online editing project.
         self.project = project
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4082,6 +4751,15 @@ class CreateSearchIndexRequest(TeaModel):
     ):
         self.index_config = index_config
         self.index_status = index_status
+        # The category of the index. Valid values:
+        # 
+        # *   mm: large visual model. You can use this model to describe complex visual features and identify and search for specific actions, movements, and events in videos, such as when athletes score a goal or get injured.
+        # 
+        # >  This feature is in the public preview phase. You can use this feature for free for 1,000 hours of videos.
+        # 
+        # *   face: face recognition. You can use the face recognition technology to describe face characteristics and automatically mark or search for faces in videos.
+        # *   aiLabel: smart tagging. The smart tagging category is used to describe content such as subtitles and audio in videos. You can use the speech recognition technology to automatically extract, mark, and search for subtitles and dialog content from videos. This helps you quickly locate the video content that is related to specific topics or keywords.
+        # 
         # This parameter is required.
         self.index_type = index_type
         self.search_lib_name = search_lib_name
@@ -4203,6 +4881,8 @@ class CreateSearchLibRequest(TeaModel):
         self,
         search_lib_name: str = None,
     ):
+        # The name of the search library. The name can contain letters and digits and must start with a letter.
+        # 
         # This parameter is required.
         self.search_lib_name = search_lib_name
 
@@ -4234,10 +4914,16 @@ class CreateSearchLibResponseBody(TeaModel):
         search_lib_name: str = None,
         success: str = None,
     ):
+        # The status code returned.
         self.code = code
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The name of the search library.
         self.search_lib_name = search_lib_name
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -4324,12 +5010,54 @@ class CreateUploadMediaRequest(TeaModel):
         upload_target_config: str = None,
         user_data: str = None,
     ):
+        # The application ID. Default value: app-1000000.
         self.app_id = app_id
+        # The entity ID. You can call the CreateEntity operation to create an entity and specify a dynamic metadata structure.
         self.entity_id = entity_id
+        # The file information, which is in the JSON format and contains the following fields:
+        # 
+        # *   Type: required. The file type. Valid values: video, image, audio, text, and other.
+        # *   Name: required. The file name without the extension.
+        # *   Size: optional. The file size.
+        # *   Ext: required. The file name extension.
         self.file_info = file_info
+        # The metadata of the media asset, which is a JSON string that contains the following fields:
+        # 
+        # Title: required.
+        # 
+        # *   The value can be up to 128 characters in length.
+        # *   The value must be encoded in UTF-8.
+        # 
+        # Description: optional.
+        # 
+        # *   The value can be up to 1,024 characters in length.
+        # *   The value must be encoded in UTF-8.
+        # 
+        # CateId: optional.
+        # 
+        # Tags: optional.
+        # 
+        # BusinessType: required. Valid values:
+        # 
+        # *   opening or ending if Type is set to video
+        # *   default or cover if Type is set to image
+        # *   subtitles or font if Type is set to text
+        # *   watermark if Type is set to material
+        # *   general CoverURL: optional.
+        # 
+        # DynamicMetaData: The value is a string.
         self.media_meta_data = media_meta_data
+        # The postprocessing configurations. You can specify this parameter if Type is set to video or audio.
+        # 
+        # Set ProcessType to Workflow.
         self.post_process_config = post_process_config
+        # The destination storage address.
+        # 
+        # Set StorageType to oss.
+        # 
+        # Set StorageLocation to an address in ApsaraVideo VOD. You cannot set this field to an OSS URL.
         self.upload_target_config = upload_target_config
+        # The user data. The value must be a JSON string. You can configure settings such as message callbacks.
         self.user_data = user_data
 
     def validate(self):
@@ -4386,11 +5114,23 @@ class CreateUploadMediaResponseBody(TeaModel):
         upload_address: str = None,
         upload_auth: str = None,
     ):
+        # The OSS URL of the file. The URL does not contain the information used for authentication.
         self.file_url = file_url
+        # The ID of the media asset.
         self.media_id = media_id
+        # The URL of the media asset.
+        # 
+        # >  If a domain name for Alibaba Cloud CDN (CDN) is specified, a CDN URL is returned. Otherwise, an OSS URL is returned. If the HTTP status code 403 is returned when you access the URL from your browser, the URL authentication feature of ApsaraVideo VOD is enabled. To resolve this issue, disable URL authentication or generate an authentication signature.
         self.media_url = media_url
+        # The request ID.
         self.request_id = request_id
+        # The upload URL.
+        # 
+        # >  The returned upload URL is a Base64-encoded URL. You must decode the Base64-encoded upload URL before you use an SDK or call an API operation to upload media files. You need to parse UploadAddress only if you use OSS SDK or call an OSS API operation to upload media files.
         self.upload_address = upload_address
+        # The upload credential.
+        # 
+        # >  The returned upload credential is a Base64-encoded value. You must decode the Base64-encoded upload URL before you use an SDK or call an API operation to upload media files. You need to parse UploadAuth only if you use OSS SDK or call an OSS API operation to upload media files.
         self.upload_auth = upload_auth
 
     def validate(self):
@@ -4483,10 +5223,38 @@ class CreateUploadStreamRequest(TeaModel):
         media_id: str = None,
         user_data: str = None,
     ):
+        # The quality of the media stream. Valid values:
+        # 
+        # *   FD: low definition.
+        # *   LD: standard definition.
+        # *   SD: high definition.
+        # *   HD: ultra-high definition.
+        # *   OD: original quality.
+        # *   2K: 2K resolution.
+        # *   4K: 4K resolution.
+        # *   SQ: standard sound quality.
+        # *   HQ: high sound quality.
         self.definition = definition
+        # The file name extension of the media stream.
         self.file_extension = file_extension
+        # The high dynamic range (HDR) format of the transcoded stream. Valid values:
+        # 
+        # *   HDR
+        # *   HDR10
+        # *   HLG
+        # *   DolbyVision
+        # *   HDRVivid
+        # *   SDR+\
+        # 
+        # > 
+        # 
+        # *   The value is not case-sensitive,
+        # 
+        # *   You can leave this parameter empty for non-HDR streams.
         self.hdrtype = hdrtype
+        # The ID of the media asset.
         self.media_id = media_id
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -4534,10 +5302,19 @@ class CreateUploadStreamResponseBody(TeaModel):
         upload_address: str = None,
         upload_auth: str = None,
     ):
+        # The Object Storage Service (OSS) URL of the file. The URL does not contain the information used for authentication.
         self.file_url = file_url
+        # The ID of the media asset.
         self.media_id = media_id
+        # The request ID.
         self.request_id = request_id
+        # The upload URL.
+        # 
+        # >  The returned upload URL is a Base64-encoded URL. You must decode the Base64-encoded upload URL before you use an SDK or call an API operation to upload media files. You need to parse UploadAddress only if you use OSS SDK or call an OSS API operation to upload media files.
         self.upload_address = upload_address
+        # The upload credential.
+        # 
+        # >  The returned upload credential is a Base64-encoded value. You must decode the Base64-encoded upload URL before you use an SDK or call an API operation to upload media files. You need to parse UploadAuth only if you use OSS SDK or call an OSS API operation to upload media files.
         self.upload_auth = upload_auth
 
     def validate(self):
@@ -4896,6 +5673,12 @@ class DeleteCategoryRequest(TeaModel):
         self,
         cate_id: int = None,
     ):
+        # The category ID. You can use one of the following methods to obtain the ID:
+        # 
+        # *   Log on to the [Intelligent Media Services (IMS) console](https://ims.console.aliyun.com) and choose **Media Asset Management** > **Category Management** to view the category ID.
+        # *   View the value of CateId returned by the AddCategory operation that you called to create a category.
+        # *   View the value of CateId returned by the GetCategories operation that you called to query a category.
+        # 
         # This parameter is required.
         self.cate_id = cate_id
 
@@ -4924,6 +5707,7 @@ class DeleteCategoryResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5445,10 +6229,26 @@ class DeleteEditingProjectMaterialsRequest(TeaModel):
         material_type: str = None,
         project_id: str = None,
     ):
+        # The material ID. Separate multiple material IDs with commas (,). You can specify up to 10 IDs.
+        # 
         # This parameter is required.
         self.material_ids = material_ids
+        # The material type. Valid values:
+        # 
+        # \\- video
+        # 
+        # \\- image
+        # 
+        # \\- audio
+        # 
+        # \\- subtitle
+        # 
+        # \\- text
+        # 
         # This parameter is required.
         self.material_type = material_type
+        # The ID of the online editing project.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -5485,6 +6285,7 @@ class DeleteEditingProjectMaterialsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5553,6 +6354,7 @@ class DeleteEditingProjectsRequest(TeaModel):
         self,
         project_ids: str = None,
     ):
+        # The ID of the online editing project. You can specify multiple IDs separated with commas (,).
         self.project_ids = project_ids
 
     def validate(self):
@@ -5580,6 +6382,7 @@ class DeleteEditingProjectsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6395,9 +7198,13 @@ class DeleteMediaFromSearchLibRequest(TeaModel):
         msg_body: str = None,
         search_lib_name: str = None,
     ):
+        # The ID of the media asset.
+        # 
         # This parameter is required.
         self.media_id = media_id
+        # The message body.
         self.msg_body = msg_body
+        # The name of the search library. Default value: ims-default-search-lib.
         self.search_lib_name = search_lib_name
 
     def validate(self):
@@ -6436,9 +7243,16 @@ class DeleteMediaFromSearchLibResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The status code returned.
         self.code = code
+        # The ID of the media asset.
         self.media_id = media_id
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -6521,8 +7335,21 @@ class DeleteMediaInfosRequest(TeaModel):
         input_urls: str = None,
         media_ids: str = None,
     ):
+        # Specifies whether to delete the physical file of the media asset.
+        # 
+        # If the media asset is stored in your own OSS bucket, you must authorize the service role AliyunICEDefaultRole in advance. For more information<props="china">, see [Authorize IMS to delete recording files in OSS](https://help.aliyun.com/zh/ims/user-guide/record?spm=a2c4g.11186623.0.i8#0737d9c437bmn).
         self.delete_physical_files = delete_physical_files
+        # The URL of the media asset that you want to delete. The file corresponding to the URL must be registered with IMS. Separate multiple URLs with commas (,). The following two formats are supported:
+        # 
+        # 1.  http(s)://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4?
+        # 2.  OSS://example-bucket/example.mp4?\\
+        #     In this format, it is considered by default that the region of the OSS bucket in which the media asset resides is the same as the region in which IMS is activated.
         self.input_urls = input_urls
+        # The ID of the media asset that you want to delete from Intelligent Media Services (IMS).
+        # 
+        # *   Separate multiple IDs with commas (,).
+        # 
+        # If you leave MediaIds empty, you must specify InputURLs.
         self.media_ids = media_ids
 
     def validate(self):
@@ -6560,8 +7387,11 @@ class DeleteMediaInfosResponseBody(TeaModel):
         ignored_list: List[str] = None,
         request_id: str = None,
     ):
+        # The IDs or URLs of media assets that cannot be deleted. Generally, media assets cannot be deleted if you do not have the required permissions.
         self.forbidden_list = forbidden_list
+        # The IDs or URLs of ignored media assets. An error occurred while obtaining such media assets.
         self.ignored_list = ignored_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6639,7 +7469,11 @@ class DeleteMediaMarksRequest(TeaModel):
         media_id: str = None,
         media_mark_ids: str = None,
     ):
+        # The ID of the media asset.
         self.media_id = media_id
+        # The mark ID. You can specify multiple mark IDs separated with commas (,).
+        # 
+        # If you do not specify MediaMarkIds, all the marks of the media asset are deleted.
         self.media_mark_ids = media_mark_ids
 
     def validate(self):
@@ -6673,8 +7507,11 @@ class DeleteMediaMarksResponseBody(TeaModel):
         media_mark_ids: str = None,
         request_id: str = None,
     ):
+        # The ID of the media asset.
         self.media_id = media_id
+        # The IDs of the deleted marks separated with commas (,).
         self.media_mark_ids = media_mark_ids
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6855,8 +7692,15 @@ class DeletePlayInfoRequest(TeaModel):
         file_urls: str = None,
         media_id: str = None,
     ):
+        # Specifies whether to delete the physical file of the media stream.
+        # 
+        # If the media asset is stored in your own Object Storage Service (OSS) bucket, you must authorize the service role AliyunICEDefaultRole in advance. <props="china">For more information, see [Authorize IMS to delete recording files in OSS](https://help.aliyun.com/document_detail/449331.html#p-ko2-wc7-iad).
+        # 
+        # You can delete only the physical files of transcoded streams, but not the physical files of source files.
         self.delete_physical_files = delete_physical_files
+        # The URL of the media stream file that you want to delete. Separate multiple URLs with commas (,).
         self.file_urls = file_urls
+        # The ID of the media asset.
         self.media_id = media_id
 
     def validate(self):
@@ -6894,8 +7738,11 @@ class DeletePlayInfoResponseBody(TeaModel):
         ignored_list: List[str] = None,
         request_id: str = None,
     ):
+        # The URLs of the media streams that cannot be deleted. Generally, media streams cannot be deleted if you do not have the required permissions.
         self.forbidden_list = forbidden_list
+        # The URLs of ignored media streams. An error occurred while obtaining such media assets because the IDs or URLs of the media assets do not exist.
         self.ignored_list = ignored_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8903,8 +9750,18 @@ class DropSearchIndexRequest(TeaModel):
         index_type: str = None,
         search_lib_name: str = None,
     ):
+        # The category of the index. Valid values:
+        # 
+        # *   mm: large visual model.
+        # *   face: face recognition.
+        # *   aiLabel: smart tagging.
+        # 
         # This parameter is required.
         self.index_type = index_type
+        # The name of the search library.
+        # 
+        # *   If you leave this parameter empty, the search index is created in the default search library of Intelligent Media Service (IMS). Default value: ims-default-search-lib.
+        # *   To query information about an existing search library, call the [QuerySearchLib](https://help.aliyun.com/document_detail/2584455.html) API operation.
         self.search_lib_name = search_lib_name
 
     def validate(self):
@@ -8938,8 +9795,14 @@ class DropSearchIndexResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The status code returned.
         self.code = code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -9016,6 +9879,8 @@ class DropSearchLibRequest(TeaModel):
         self,
         search_lib_name: str = None,
     ):
+        # The name of the search library.
+        # 
         # This parameter is required.
         self.search_lib_name = search_lib_name
 
@@ -9046,9 +9911,14 @@ class DropSearchLibResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The status code returned.
         self.code = code
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -10155,10 +11025,23 @@ class GetCategoriesRequest(TeaModel):
         sort_by: str = None,
         type: str = None,
     ):
+        # The category ID. You can use one of the following methods to obtain the ID:
+        # 
+        # *   Log on to the [Intelligent Media Services (IMS) console](https://ims.console.aliyun.com) and choose **Media Asset Management** > **Category Management** to view the category ID.
+        # *   View the value of CateId returned by the AddCategory operation that you called to create a category.
+        # *   View the value of CateId returned by the GetCategories operation that you called to query a category.
         self.cate_id = cate_id
+        # The page number. Default value: 1
         self.page_no = page_no
+        # The number of entries per page. Valid values: 10 to 100.
         self.page_size = page_size
+        # The sorting rule of results. Valid values:
+        # 
+        # \\- CreationTime:Desc (default): The results are sorted in reverse chronological order based on the creation time.
+        # 
+        # \\- CreationTime:Asc: The results are sorted in chronological order based on the creation time.
         self.sort_by = sort_by
+        # The type of the category. Valid values: default and material. A value of default indicates audio, video, and image files. This is the default value. A value of material indicates short video materials.
         self.type = type
 
     def validate(self):
@@ -10206,10 +11089,18 @@ class GetCategoriesResponseBodyCategory(TeaModel):
         parent_id: int = None,
         type: str = None,
     ):
+        # The category ID.
         self.cate_id = cate_id
+        # The category name.
         self.cate_name = cate_name
+        # The level of the category. A value of **0** indicates a level-1 category, a value of **1** indicates a level-2 category, and a value of **2** indicates a level-3 category.
         self.level = level
+        # The ID of the parent category.
         self.parent_id = parent_id
+        # The type of the category. Valid values:
+        # 
+        # *   **default**: audio, video, and image files. This is the default value.
+        # *   **material**: short video materials.
         self.type = type
 
     def validate(self):
@@ -10258,11 +11149,23 @@ class GetCategoriesResponseBodySubCategoriesCategory(TeaModel):
         sub_total: int = None,
         type: str = None,
     ):
+        # The category ID.
         self.cate_id = cate_id
+        # The category name.
+        # 
+        # *   The value can be up to 64 bytes in length.
+        # *   The value is encoded in UTF-8.
         self.cate_name = cate_name
+        # The level of the category. A value of **0** indicates a level-1 category, a value of **1** indicates a level-2 category, and a value of **2** indicates a level-3 category.
         self.level = level
+        # The ID of the parent category.
         self.parent_id = parent_id
+        # The total number of subcategories.
         self.sub_total = sub_total
+        # The type of the category. Valid values:
+        # 
+        # *   **default**: audio, video, and image files. This is the default value.
+        # *   **material**: short video materials.
         self.type = type
 
     def validate(self):
@@ -10348,9 +11251,13 @@ class GetCategoriesResponseBody(TeaModel):
         sub_categories: GetCategoriesResponseBodySubCategories = None,
         sub_total: int = None,
     ):
+        # The information about the category.
         self.category = category
+        # The request ID.
         self.request_id = request_id
+        # The subcategories in the category.
         self.sub_categories = sub_categories
+        # The total number of subcategories.
         self.sub_total = sub_total
 
     def validate(self):
@@ -11842,8 +12749,15 @@ class GetEditingProjectRequest(TeaModel):
         project_id: str = None,
         request_source: str = None,
     ):
+        # The ID of the online editing project.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The ID of the request source. Valid values:
+        # 
+        # \\- OpenAPI (default): Timeline conversion is not performed.
+        # 
+        # \\- WebSDK: If you specify this value, the project timeline is automatically converted into the frontend style, and the materials in the timeline are associated with the project to enable preview by using frontend web SDKs.
         self.request_source = request_source
 
     def validate(self):
@@ -11893,24 +12807,101 @@ class GetEditingProjectResponseBodyProject(TeaModel):
         timeline_convert_status: str = None,
         title: str = None,
     ):
+        # The business configuration of the project. This parameter can be ignored for general editing projects.
         self.business_config = business_config
+        # The business status of the project. This parameter can be ignored for general editing projects. Valid values:
+        # 
+        # Reserving
+        # 
+        # ReservationCanceled
+        # 
+        # BroadCasting
+        # 
+        # LoadingFailed
+        # 
+        # LiveFinished
         self.business_status = business_status
+        # The material parameter corresponding to the template, in the JSON format. If TemplateId is specified, ClipsParam must also be specified. For more information<props="china">, see [Create and use a regular template](https://help.aliyun.com/document_detail/328557.html) and [Create and use an advanced template](https://help.aliyun.com/document_detail/291418.html).
         self.clips_param = clips_param
+        # The thumbnail URL of the online editing project.
         self.cover_url = cover_url
+        # The method for creating the online editing project. Valid values:
+        # 
+        # \\- OpenAPI
+        # 
+        # \\- AliyunConsole
+        # 
+        # \\- WebSDK
+        # 
+        # \\- LiveEditingOpenAPI
+        # 
+        # \\- LiveEditingConsole
         self.create_source = create_source
+        # The time when the online editing project was created.
         self.create_time = create_time
+        # The description of the online editing project.
         self.description = description
+        # The total duration of the online editing project.
         self.duration = duration
+        # The method for editing the online editing project. Valid values:
+        # 
+        # \\- OpenAPI
+        # 
+        # \\- AliyunConsole
+        # 
+        # \\- WebSDK
+        # 
+        # \\- LiveEditingOpenAPI
+        # 
+        # \\- LiveEditingConsole
         self.modified_source = modified_source
+        # The time when the online editing project was last modified.
         self.modified_time = modified_time
+        # The ID of the online editing project.
         self.project_id = project_id
+        # The type of the editing project. Default value: EditingProject. Valid values:
+        # 
+        # \\- EditingProject: a regular editing project.
+        # 
+        # \\- LiveEditingProject: a live stream editing project.
         self.project_type = project_type
+        # The status of the online editing project. Valid values:
+        # 
+        # \\- Draft
+        # 
+        # \\- Editing
+        # 
+        # \\- Producing
+        # 
+        # \\- Produced
+        # 
+        # \\- ProduceFailed
+        # 
+        # \\- Deleted
         self.status = status
+        # The template ID.
         self.template_id = template_id
+        # The template type of the online editing project. Valid values:
+        # 
+        # \\- Timeline
+        # 
+        # \\- VETemplate
         self.template_type = template_type
+        # The timeline of the online editing project.
         self.timeline = timeline
+        # The error message returned if the project conversion failed. The error message displays the detailed information about the failure, and is returned only if the value of TimelineConvertStatus is ConvertFailed.
         self.timeline_convert_error_message = timeline_convert_error_message
+        # The project conversion status. Conversion of an API-style timeline into a frontend-style timeline is an asynchronous process and takes effect only if RequestSource:WebSDK is specified.
+        # 
+        # \\- Unconverted
+        # 
+        # \\- Converting
+        # 
+        # \\- Converted
+        # 
+        # \\- ConvertFailed
         self.timeline_convert_status = timeline_convert_status
+        # The title of the online editing project.
         self.title = title
 
     def validate(self):
@@ -12011,7 +13002,9 @@ class GetEditingProjectResponseBody(TeaModel):
         project: GetEditingProjectResponseBodyProject = None,
         request_id: str = None,
     ):
+        # The information about the online editing project.
         self.project = project
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12086,6 +13079,8 @@ class GetEditingProjectMaterialsRequest(TeaModel):
         self,
         project_id: str = None,
     ):
+        # The ID of the online editing project.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -12117,9 +13112,13 @@ class GetEditingProjectMaterialsResponseBodyLiveMaterials(TeaModel):
         live_url: str = None,
         stream_name: str = None,
     ):
+        # The application name of the live stream.
         self.app_name = app_name
+        # The domain name of the live stream.
         self.domain_name = domain_name
+        # The URL of the live stream.
         self.live_url = live_url
+        # The name of the live stream.
         self.stream_name = stream_name
 
     def validate(self):
@@ -12169,16 +13168,27 @@ class GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo(
         region: str = None,
         width: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The duration.
         self.duration = duration
+        # The file name.
         self.file_name = file_name
+        # The file size. Unit: bytes.
         self.file_size = file_size
+        # The file status.
         self.file_status = file_status
+        # The file type.
         self.file_type = file_type
+        # The Object Storage Service (OSS) URL of the file.
         self.file_url = file_url
+        # The container format.
         self.format_name = format_name
+        # The height.
         self.height = height
+        # The region in which the file resides.
         self.region = region
+        # The width.
         self.width = width
 
     def validate(self):
@@ -12246,6 +13256,7 @@ class GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoList(TeaModel):
         self,
         file_basic_info: GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo = None,
     ):
+        # The basic information of the file, such as the duration and size.
         self.file_basic_info = file_basic_info
 
     def validate(self):
@@ -12292,24 +13303,48 @@ class GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo(TeaModel):
         transcode_status: str = None,
         user_data: str = None,
     ):
+        # The business type of the media asset.
         self.business_type = business_type
+        # The category of the media asset.
         self.category = category
+        # The thumbnail URL of the media asset.
         self.cover_url = cover_url
+        # The time when the media asset was created.
         self.create_time = create_time
+        # The time when the media asset was deleted.
         self.deleted_time = deleted_time
+        # The description of the media asset.
         self.description = description
+        # The URL of the media asset in another service.
         self.input_url = input_url
-        # MediaId
+        # The ID of the media asset.
         self.media_id = media_id
+        # The tags of the media asset.
         self.media_tags = media_tags
+        # The type of the media asset.
         self.media_type = media_type
+        # The time when the media asset was last modified.
         self.modified_time = modified_time
+        # The snapshots of the media asset.
         self.snapshots = snapshots
+        # The source of the media asset.
         self.source = source
+        # The sprite of the media asset
         self.sprite_images = sprite_images
+        # The status of the media asset.
         self.status = status
+        # The title of the media asset.
         self.title = title
+        # The transcoding status of the media asset.
+        # 
+        # Valid values:
+        # 
+        # *   TranscodeSuccess: transcoding completed.
+        # *   TranscodeFailed: transcoding failed.
+        # *   Init: initializing.
+        # *   Transcoding: transcoding in progress.
         self.transcode_status = transcode_status
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -12407,10 +13442,11 @@ class GetEditingProjectMaterialsResponseBodyMediaInfos(TeaModel):
         media_basic_info: GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo = None,
         media_id: str = None,
     ):
-        # FileInfos
+        # The information about the file.
         self.file_info_list = file_info_list
-        # BasicInfo
+        # The basic information of the media asset.
         self.media_basic_info = media_basic_info
+        # The ID of the media asset.
         self.media_id = media_id
 
     def validate(self):
@@ -12461,10 +13497,15 @@ class GetEditingProjectMaterialsResponseBody(TeaModel):
         project_materials: List[str] = None,
         request_id: str = None,
     ):
+        # The materials associated with the live stream.
         self.live_materials = live_materials
+        # The media assets that meet the specified conditions.
         self.media_infos = media_infos
+        # The project ID.
         self.project_id = project_id
+        # The materials associated with the editing project. A live stream editing project will be associated with a regular editing project after the live streaming ends.
         self.project_materials = project_materials
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12673,9 +13714,13 @@ class GetLiveEditingIndexFileRequest(TeaModel):
         project_id: str = None,
         stream_name: str = None,
     ):
+        # The application name of the live stream.
         self.app_name = app_name
+        # The domain name of the live stream.
         self.domain_name = domain_name
+        # The ID of the live stream editing project.
         self.project_id = project_id
+        # The name of the live stream.
         self.stream_name = stream_name
 
     def validate(self):
@@ -12716,7 +13761,9 @@ class GetLiveEditingIndexFileResponseBody(TeaModel):
         index_file: str = None,
         request_id: str = None,
     ):
+        # The URL of the index file.
         self.index_file = index_file
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14650,9 +15697,25 @@ class GetMediaInfoRequest(TeaModel):
         output_type: str = None,
         return_detailed_info: str = None,
     ):
+        # The input URL of the media asset in another service. The URL must be registered in the IMS content library and bound to the ID of the media asset in IMS.
+        # 
+        # *   For a media asset from Object Storage Service (OSS), the URL may have one of the following formats:
+        # 
+        # http(s)://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4 or
+        # 
+        # oss://example-bucket/example.mp4. The second format indicates that the region in which the OSS bucket of the media asset resides is the same as the region in which OSS is activated.
         self.input_url = input_url
+        # The ID of the media asset in IMS. If this parameter is left empty, the InputURL parameter must be specified.
         self.media_id = media_id
+        # The type of the URL of the media asset to return in the response. Valid values:
+        # 
+        # *   oss (default): an OSS URL.
+        # *   cdn: a CDN URL. A CDN URL is returned only if the media asset is imported from ApsaraVideo VOD and the relevant domain name is an accelerated domain name in ApsaraVideo VOD.
         self.output_type = output_type
+        # Specifies whether to return detailed information for specific media asset attributes. Supported attributes: AiRoughData.StandardSmartTagJob, which specifies whether to return detailed tag information if a tagging job has been submitted for the media asset. Valid values for the attribute:
+        # 
+        # *   false (default): The job result is returned as a URL.
+        # *   true: The job result is returned as text.
         self.return_detailed_info = return_detailed_info
 
     def validate(self):
@@ -14693,7 +15756,11 @@ class GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJobResults(Tea
         data: str = None,
         type: str = None,
     ):
+        # The result data. The value is a JSON string. For information about the data structures of different data types<props="china">, see [Description of the Results parameter](https://help.aliyun.com/zh/ims/developer-reference/api-ice-2020-11-09-querysmarttagjob?spm=a2c4g.11186623.0.0.521d48b7KfapOL#api-detail-40).
         self.data = data
+        # The tagging type. Valid values:
+        # 
+        # *   NLP: natural language processing (NLP)-based tagging
         self.type = type
 
     def validate(self):
@@ -14728,9 +15795,17 @@ class GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJob(TeaModel):
         results: List[GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJobResults] = None,
         status: str = None,
     ):
+        # The ID of the AI task.
         self.ai_job_id = ai_job_id
+        # The URL of the tagging result.
         self.result_url = result_url
+        # The recognized tags.
         self.results = results
+        # The analysis status. Valid values:
+        # 
+        # *   Analyzing
+        # *   AnalyzeSuccess
+        # *   AnalyzeFailed
         self.status = status
 
     def validate(self):
@@ -14783,11 +15858,37 @@ class GetMediaInfoResponseBodyMediaInfoAiRoughData(TeaModel):
         standard_smart_tag_job: GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJob = None,
         status: str = None,
     ):
+        # The AI category. Valid values:
+        # 
+        # *   Life
+        # *   Good-looking
+        # *   Cute pets
+        # *   News
+        # *   Ads
+        # *   Environmental resources
+        # *   Automobile
         self.ai_category = ai_category
+        # The ID of the AI task.
         self.ai_job_id = ai_job_id
+        # The analysis result.
         self.result = result
+        # The storage type. This parameter indicates the library in which the analysis data is stored. Valid values:
+        # 
+        # *   TEXT: the text library.
         self.save_type = save_type
+        # The information about the tagging job.
         self.standard_smart_tag_job = standard_smart_tag_job
+        # The analysis status. Valid values:
+        # 
+        # *   Analyzing
+        # *   AnalyzeSuccess
+        # *   AnalyzeFailed
+        # *   Saving
+        # *   SaveSuccess
+        # *   SaveFailed
+        # *   Deleting
+        # *   DeleteSuccess
+        # *   DeleteFailed
         self.status = status
 
     def validate(self):
@@ -14854,23 +15955,41 @@ class GetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList(TeaModel)
         start_time: str = None,
         timebase: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The output layout of sound channels.
         self.channel_layout = channel_layout
+        # The number of sound channels.
         self.channels = channels
+        # The full name of the codec.
         self.codec_long_name = codec_long_name
+        # The short name of the codec.
         self.codec_name = codec_name
+        # The tag of the codec.
         self.codec_tag = codec_tag
+        # The tag string of the codec.
         self.codec_tag_string = codec_tag_string
+        # The time base of the codec.
         self.codec_time_base = codec_time_base
+        # The duration.
         self.duration = duration
+        # The audio frame rate.
         self.fps = fps
+        # The sequence number of the audio track.
         self.index = index
+        # The language.
         self.lang = lang
+        # The number of frames.
         self.num_frames = num_frames
+        # The codec profile.
         self.profile = profile
+        # The sampling format.
         self.sample_fmt = sample_fmt
+        # The sampling rate.
         self.sample_rate = sample_rate
+        # The start time.
         self.start_time = start_time
+        # The time base.
         self.timebase = timebase
 
     def validate(self):
@@ -14978,18 +16097,31 @@ class GetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo(TeaModel):
         region: str = None,
         width: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The time when the file was created.
         self.create_time = create_time
+        # The duration.
         self.duration = duration
+        # The file name.
         self.file_name = file_name
+        # The file size. Unit: bytes.
         self.file_size = file_size
+        # The file status.
         self.file_status = file_status
+        # The file type.
         self.file_type = file_type
+        # The OSS URL of the file.
         self.file_url = file_url
+        # The container format.
         self.format_name = format_name
+        # The height.
         self.height = height
+        # The time when the file was last modified.
         self.modified_time = modified_time
+        # The region in which the file is stored.
         self.region = region
+        # The width.
         self.width = width
 
     def validate(self):
@@ -15074,15 +16206,25 @@ class GetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList(TeaMod
         start_time: str = None,
         timebase: str = None,
     ):
+        # The full name of the codec.
         self.codec_long_name = codec_long_name
+        # The short name of the codec.
         self.codec_name = codec_name
+        # The tag of the codec.
         self.codec_tag = codec_tag
+        # The tag string of the codec.
         self.codec_tag_string = codec_tag_string
+        # The time base of the codec.
         self.codec_time_base = codec_time_base
+        # The duration.
         self.duration = duration
+        # The sequence number of the subtitle track.
         self.index = index
+        # The language.
         self.lang = lang
+        # The start time.
         self.start_time = start_time
+        # The time base.
         self.timebase = timebase
 
     def validate(self):
@@ -15169,29 +16311,53 @@ class GetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList(TeaModel)
         timebase: str = None,
         width: str = None,
     ):
+        # The average video frame rate.
         self.avg_fps = avg_fps
+        # The bitrate.
         self.bitrate = bitrate
+        # The full name of the codec.
         self.codec_long_name = codec_long_name
+        # The short name of the codec.
         self.codec_name = codec_name
+        # The tag of the codec.
         self.codec_tag = codec_tag
+        # The tag string of the codec.
         self.codec_tag_string = codec_tag_string
+        # The time base of the codec.
         self.codec_time_base = codec_time_base
+        # The display aspect ratio (DAR).
         self.dar = dar
+        # The duration.
         self.duration = duration
+        # The video frame rate.
         self.fps = fps
+        # Indicates whether the video track contains bidirectional frames (B-frames).
         self.has_bframes = has_bframes
+        # The height.
         self.height = height
+        # The sequence number of the video track.
         self.index = index
+        # The language.
         self.lang = lang
+        # The codec level.
         self.level = level
+        # The total number of frames.
         self.nb_frames = nb_frames
+        # The number of frames.
         self.num_frames = num_frames
+        # The pixel format.
         self.pix_fmt = pix_fmt
+        # The codec profile.
         self.profile = profile
+        # The rotation angle.
         self.rotate = rotate
+        # The sample aspect ratio (SAR).
         self.sar = sar
+        # The start time.
         self.start_time = start_time
+        # The time base.
         self.timebase = timebase
+        # The width.
         self.width = width
 
     def validate(self):
@@ -15314,9 +16480,13 @@ class GetMediaInfoResponseBodyMediaInfoFileInfoList(TeaModel):
         subtitle_stream_info_list: List[GetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList] = None,
         video_stream_info_list: List[GetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList] = None,
     ):
+        # The information about the audio tracks. A media asset may have multiple audio tracks.
         self.audio_stream_info_list = audio_stream_info_list
+        # The basic information about the file, including the duration and size.
         self.file_basic_info = file_basic_info
+        # The information about the subtitle tracks. A media asset may have multiple subtitle tracks.
         self.subtitle_stream_info_list = subtitle_stream_info_list
+        # The information about the video tracks. A media asset may have multiple video tracks.
         self.video_stream_info_list = video_stream_info_list
 
     def validate(self):
@@ -15406,28 +16576,49 @@ class GetMediaInfoResponseBodyMediaInfoMediaBasicInfo(TeaModel):
         upload_source: str = None,
         user_data: str = None,
     ):
+        # The service to which the media asset belongs.
         self.biz = biz
+        # The business type.
         self.business_type = business_type
+        # The category ID.
         self.cate_id = cate_id
+        # The category name.
         self.cate_name = cate_name
+        # The category.
         self.category = category
+        # The URL of the thumbnail.
         self.cover_url = cover_url
+        # The time when the media asset was created.
         self.create_time = create_time
+        # The time when the media asset was deleted.
         self.deleted_time = deleted_time
+        # The content description.
         self.description = description
+        # The input URL of the media asset in another service.
         self.input_url = input_url
-        # MediaId
+        # The ID of the media asset.
         self.media_id = media_id
+        # The tags.
         self.media_tags = media_tags
+        # The type of the media asset.
         self.media_type = media_type
+        # The time when the media asset was last modified.
         self.modified_time = modified_time
+        # The custom ID. The ID can be 6 to 64 characters in length and can contain only letters, digits, hyphens (-), and underscores (_). The ID is unique among users.
         self.reference_id = reference_id
+        # The snapshots.
         self.snapshots = snapshots
+        # The source.
         self.source = source
+        # The sprite.
         self.sprite_images = sprite_images
+        # The resource status.
         self.status = status
+        # The title.
         self.title = title
+        # The upload source of the media asset.
         self.upload_source = upload_source
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -15542,10 +16733,13 @@ class GetMediaInfoResponseBodyMediaInfo(TeaModel):
         media_basic_info: GetMediaInfoResponseBodyMediaInfoMediaBasicInfo = None,
         media_id: str = None,
     ):
+        # The original AI analysis data.
         self.ai_rough_data = ai_rough_data
+        # The file information.
         self.file_info_list = file_info_list
-        # BasicInfo
+        # The basic information about the media asset.
         self.media_basic_info = media_basic_info
+        # The ID of the media asset.
         self.media_id = media_id
 
     def validate(self):
@@ -15600,7 +16794,9 @@ class GetMediaInfoResponseBody(TeaModel):
         media_info: GetMediaInfoResponseBodyMediaInfo = None,
         request_id: str = None,
     ):
+        # The information about the media asset.
         self.media_info = media_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16375,7 +17571,9 @@ class GetMediaMarksRequest(TeaModel):
         media_id: str = None,
         media_mark_ids: str = None,
     ):
+        # The ID of the media asset.
         self.media_id = media_id
+        # The mark ID. You can specify multiple mark IDs separated with commas (,).
         self.media_mark_ids = media_mark_ids
 
     def validate(self):
@@ -16409,8 +17607,13 @@ class GetMediaMarksResponseBody(TeaModel):
         media_marks: str = None,
         request_id: str = None,
     ):
+        # The ID of the media asset.
         self.media_id = media_id
+        # The queried marks.
+        # 
+        # *   The value is in the JSONArray format.
         self.media_marks = media_marks
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17208,7 +18411,13 @@ class GetPlayInfoRequest(TeaModel):
         input_url: str = None,
         media_id: str = None,
     ):
+        # The input URL that you specified for the media asset when you registered the media asset. For more information, see [RegisterMediaInfo](https://help.aliyun.com/document_detail/441152.html).
+        # 
+        # >  You must specify at least one of the MediaId and InputURL parameters.
         self.input_url = input_url
+        # The ID of the media asset.
+        # 
+        # >  You must specify at least one of the MediaId and InputURL parameters.
         self.media_id = media_id
 
     def validate(self):
@@ -17248,14 +18457,42 @@ class GetPlayInfoResponseBodyMediaBase(TeaModel):
         status: str = None,
         title: str = None,
     ):
+        # The category ID. You can use one of the following methods to obtain the ID:
+        # 
+        # *   Log on to the [Intelligent Media Services (IMS) console](https://ims.console.aliyun.com) and choose **Media Asset Management** > **Category Management** to view the category ID.
+        # *   View the value of the CateId parameter returned by the AddCategory operation that you called to create a category.
+        # *   View the value of the CateId parameter returned by the GetCategories operation that you called to query a category.
         self.cate_id = cate_id
+        # The URL of the thumbnail.
         self.cover_url = cover_url
+        # The time when the media asset was created.
         self.creation_time = creation_time
+        # The content description.
         self.description = description
+        # The ID of the media asset.
         self.media_id = media_id
+        # The tags.
+        # 
+        # *   Up to 16 tags are supported.
+        # *   Multiple tags are separated by commas (,).
+        # *   Each tag can be up to 32 bytes in length.
+        # *   The value is encoded in UTF-8.
         self.media_tags = media_tags
+        # The type of the media asset. Valid values:
+        # 
+        # video audio
         self.media_type = media_type
+        # The resource status. Valid values:
+        # 
+        # Init: the initial state, which indicates that the source file is not ready.
+        # 
+        # Preparing: The source file is being prepared. For example, the file is being uploaded or edited.
+        # 
+        # PrepareFail: The source file failed to be prepared. For example, the information of the source file failed to be obtained.
+        # 
+        # Normal: The source file is ready.
         self.status = status
+        # The title.
         self.title = title
 
     def validate(self):
@@ -17337,28 +18574,96 @@ class GetPlayInfoResponseBodyPlayInfoList(TeaModel):
         watermark_id: str = None,
         width: int = None,
     ):
+        # The color depth.
         self.bit_depth = bit_depth
+        # The bitrate of the media stream. Unit: Kbit/s.
         self.bitrate = bitrate
+        # The time when the media stream was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
+        # The quality of the media stream. Valid values:
+        # 
+        # *   **FD**: low definition
+        # *   **LD**: standard definition
+        # *   **SD**: high definition
+        # *   **HD**: ultra-high definition
+        # *   **OD**: original definition
+        # *   **2K**\
+        # *   **4K**\
+        # *   **SQ**: standard sound quality
+        # *   **HQ**: high sound quality
+        # *   **AUTO**: adaptive bitrate
         self.definition = definition
+        # The duration of the media stream. Unit: seconds.
         self.duration = duration
+        # Indicates whether the media stream is encrypted. Valid values:
+        # 
+        # *   **0**: The media stream is not encrypted.
+        # *   **1**: The media stream is encrypted.
         self.encrypt = encrypt
+        # The encryption type of the media stream. Valid values:
+        # 
+        # *   **AliyunVoDEncryption**: Alibaba Cloud proprietary cryptography
+        # *   **HLSEncryption**: HTTP Live Streaming (HLS) encryption
+        # 
+        # >  If the encryption type is AliyunVoDEncryption, only ApsaraVideo Player SDK can be used to play videos.
         self.encrypt_type = encrypt_type
+        # The OSS URL of the file.
         self.file_url = file_url
+        # The format of the media stream.
+        # 
+        # *   If the media asset is a video file, the valid values are **mp4** and **m3u8**.
+        # *   If the media asset is an audio-only file, the value is **mp3**.
         self.format = format
+        # The frame rate of the media stream. Unit: frames per second (FPS).
         self.fps = fps
+        # The high dynamic range (HDR) type of the media stream. Valid values:
+        # 
+        # *   HDR
+        # *   HDR10
+        # *   HLG
+        # *   DolbyVision
+        # *   HDRVivid
+        # *   SDR+\
         self.hdrtype = hdrtype
+        # The height of the media stream. Unit: pixels.
         self.height = height
+        # The task ID.
         self.job_id = job_id
+        # The time when the media stream was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.modification_time = modification_time
+        # The type of Narrowband HD™ transcoding. Valid values:
+        # 
+        # *   **0**: standard transcoding
+        # *   **1.0**: Narrowband HD™ 1.0 transcoding
+        # *   **2.0**: Narrowband HD™ 2.0 transcoding
+        # 
+        # This parameter is returned only when a definition that is available in the built-in Narrowband HD™ 1.0 transcoding template is specified. For more information, see the [Definition parameter in TranscodeTemplate](https://help.aliyun.com/document_detail/52839.html) table.
         self.narrow_band_type = narrow_band_type
+        # The playback URL of the media stream.
         self.play_url = play_url
+        # The size of the media stream. Unit: bytes.
         self.size = size
+        # The status of the media stream. Valid values:
+        # 
+        # *   **Normal**\
+        # *   **Invisible**\
         self.status = status
+        # The tags of the media stream, which are used to identify the transcoding type.
         self.stream_tags = stream_tags
+        # The type of the media stream. If the media stream is a video stream, the value is **video**. If the media stream is an audio-only stream, the value is **audio**.
         self.stream_type = stream_type
+        # The type of the transcoding template. Valid values:
+        # 
+        # *   Normal: standard transcoding
+        # *   AudioTranscode: audio transcoding
+        # *   Remux: container format conversion
+        # *   NarrowBandV1: Narrowband HD™ 1.0
+        # *   NarrowBandV2: Narrowband HD™ 2.0
+        # *   UHD: audio and video enhancement (ultra-high definition)
         self.trans_template_type = trans_template_type
+        # The ID of the watermark that is associated with the media stream.
         self.watermark_id = watermark_id
+        # The width of the media stream. Unit: pixels.
         self.width = width
 
     def validate(self):
@@ -17476,8 +18781,11 @@ class GetPlayInfoResponseBody(TeaModel):
         play_info_list: List[GetPlayInfoResponseBodyPlayInfoList] = None,
         request_id: str = None,
     ):
+        # The information about the media asset.
         self.media_base = media_base
+        # The information about the audio or video stream.
         self.play_info_list = play_info_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -23364,7 +24672,22 @@ class GetUrlUploadInfosRequest(TeaModel):
         job_ids: str = None,
         upload_urls: str = None,
     ):
+        # The IDs of the upload jobs. You can specify one or more job IDs. You can obtain the job IDs from the response parameter JobId of the [UploadMediaByURL](https://help.aliyun.com/document_detail/86311.html) operation.
+        # 
+        # *   You can specify a maximum of 10 job IDs.
+        # *   Separate the job IDs with commas (,).
+        # 
+        # >  You must specify either JobIds or UploadURLs. If you specify both parameters, only the value of JobIds takes effect.
         self.job_ids = job_ids
+        # The upload URLs of the source files. You can specify a maximum of 10 URLs. Separate the URLs with commas (,).
+        # 
+        # > 
+        # 
+        # *   The URLs must be encoded.
+        # 
+        # *   If a media file is uploaded multiple times, we recommend that you specify the URL of the media file only once in this parameter.
+        # 
+        # *   You must specify either JobIds or UploadURLs. If you specify both parameters, only the value of JobIds takes effect.
         self.upload_urls = upload_urls
 
     def validate(self):
@@ -23405,15 +24728,27 @@ class GetUrlUploadInfosResponseBodyURLUploadInfoList(TeaModel):
         upload_url: str = None,
         user_data: str = None,
     ):
+        # The time when the upload job was complete. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.complete_time = complete_time
+        # The time when the upload job was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
+        # The error code returned if the upload job failed.
         self.error_code = error_code
+        # The error message returned if the upload job failed.
         self.error_message = error_message
+        # The file size. Unit: bytes.
         self.file_size = file_size
+        # The ID of the upload job.
         self.job_id = job_id
+        # The ID of the uploaded media file.
         self.media_id = media_id
+        # The status of the upload job. For more information about the valid values of the parameter, see the "Status: the status of a URL-based upload job" section of the [Basic data types](https://help.aliyun.com/document_detail/52839.html) topic.
         self.status = status
+        # The upload URL of the source file.
+        # 
+        # >  A maximum of 100 URLs can be returned.
         self.upload_url = upload_url
+        # The user data. The value is a JSON string.
         self.user_data = user_data
 
     def validate(self):
@@ -23479,8 +24814,11 @@ class GetUrlUploadInfosResponseBody(TeaModel):
         request_id: str = None,
         urlupload_info_list: List[GetUrlUploadInfosResponseBodyURLUploadInfoList] = None,
     ):
+        # The job IDs or upload URLs that do not exist.
         self.non_exists = non_exists
+        # The request ID.
         self.request_id = request_id
+        # The details about URL-based upload jobs.
         self.urlupload_info_list = urlupload_info_list
 
     def validate(self):
@@ -23571,12 +24909,36 @@ class GetVideoListRequest(TeaModel):
         start_time: str = None,
         status: str = None,
     ):
+        # The ID of the category.
         self.cate_id = cate_id
+        # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_time = end_time
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10. Maximum value: 50.
         self.page_size = page_size
+        # The sorting method of the results. Valid values:
+        # 
+        # *   CreationTime:Desc (default): sorts results in reverse chronological order.
+        # *   CreationTime:Asc: sorts results in chronological order.
         self.sort_by = sort_by
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
+        # The status of the video. You can specify multiple video statuses and separate them with commas (,).
+        # 
+        # Valid values:
+        # 
+        # *   PrepareFail: The file is abnormal.
+        # *   UploadFail: The video failed to be uploaded.
+        # *   UploadSucc: The video is uploaded.
+        # *   Transcoding: The video is being transcoded.
+        # *   TranscodeFail: The video failed to be transcoded.
+        # *   ProduceFail: The video failed to be produced.
+        # *   Normal: The video is normal.
+        # *   Uploading: The video is being uploaded.
+        # *   Preparing: The file is being generated.
+        # *   Blocked: The video is blocked.
+        # *   checking: The video is being reviewed.
         self.status = status
 
     def validate(self):
@@ -23642,20 +25004,49 @@ class GetVideoListResponseBodyMediaList(TeaModel):
         tags: str = None,
         title: str = None,
     ):
+        # The ID of the application. Default value: app-1000000.
         self.app_id = app_id
+        # The ID of the category.
         self.cate_id = cate_id
+        # The name of the category.
         self.cate_name = cate_name
+        # The URL of the thumbnail.
         self.cover_url = cover_url
+        # The time when the audio or video file was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
+        # The description of the audio or video file.
         self.description = description
+        # The duration. Unit: seconds.
         self.duration = duration
+        # The ID of the audio or video file.
         self.media_id = media_id
+        # The time when the audio or video file was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.modification_time = modification_time
+        # The size of the source file. Unit: bytes.
         self.size = size
+        # The array of video snapshot URLs.
         self.snapshots = snapshots
+        # The status of the video.
+        # 
+        # Valid values:
+        # 
+        # *   PrepareFail: The file is abnormal.
+        # *   UploadFail: The video failed to be uploaded.
+        # *   UploadSucc: The video is uploaded.
+        # *   Transcoding: The video is being transcoded.
+        # *   TranscodeFail: The video failed to be transcoded.
+        # *   ProduceFail: The video failed to be produced.
+        # *   Normal: The video is normal.
+        # *   Uploading: The video is being uploaded.
+        # *   Preparing: The file is being generated.
+        # *   Blocked: The video is blocked.
+        # *   checking: The video is being reviewed.
         self.status = status
+        # The storage address.
         self.storage_location = storage_location
+        # The tags of the audio or video file.
         self.tags = tags
+        # The title of the audio or video file.
         self.title = title
 
     def validate(self):
@@ -23743,11 +25134,18 @@ class GetVideoListResponseBody(TeaModel):
         success: str = None,
         total: int = None,
     ):
+        # The status code returned.
         self.code = code
+        # The information about the audio and video files.
         self.media_list = media_list
-        # Id of the request。
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
+        # The total number of audio and video files that meet the conditions.
         self.total = total
 
     def validate(self):
@@ -24076,11 +25474,27 @@ class InsertMediaToSearchLibRequest(TeaModel):
         msg_body: str = None,
         search_lib_name: str = None,
     ):
+        # The URL of the video, audio, or image file that you want to import to the search library.
+        # 
+        # Note: Make sure that you specify a correct file name and the bucket in which the file resides is in the same region where this operation is called. Otherwise, the file cannot be found or the operation may fail.
+        # 
+        # Specify an Object Storage Service (OSS) URL in the following format: oss://[Bucket name]/[File path]. For example, you can specify oss://[example-bucket-****]/[object_path-****].
+        # 
+        # Specify an HTTP URL in the following format: public endpoint. For example, you can specify http://example-test-\\*\\*\\*\\*.mp4.
+        # 
         # This parameter is required.
         self.input = input
+        # The ID of the media asset. Each media ID is unique. If you leave this parameter empty, a media ID is automatically generated for this parameter.
         self.media_id = media_id
+        # The type of the media asset. Valid values:
+        # 
+        # *   video (default)
+        # *   image
+        # *   audio
         self.media_type = media_type
+        # The message body.
         self.msg_body = msg_body
+        # The name of the search library. Default value: ims-default-search-lib.
         self.search_lib_name = search_lib_name
 
     def validate(self):
@@ -24127,10 +25541,16 @@ class InsertMediaToSearchLibResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The status code returned.
         self.code = code
+        # The ID of the media asset.
         self.media_id = media_id
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -24402,7 +25822,11 @@ class ListAllPublicMediaTagsRequest(TeaModel):
         business_type: str = None,
         entity_id: str = None,
     ):
+        # The business type of the media asset.
         self.business_type = business_type
+        # The entity ID, which is used to distinguish between media assets of different types in the public domain.
+        # 
+        # Set this parameter to Copyright_Music, which indicates music in the public domain.
         self.entity_id = entity_id
 
     def validate(self):
@@ -24436,8 +25860,11 @@ class ListAllPublicMediaTagsResponseBodyMediaTagListOptions(TeaModel):
         option_english_name: str = None,
         option_id: str = None,
     ):
+        # The option name in Chinese.
         self.option_chinese_name = option_chinese_name
+        # The option name in English.
         self.option_english_name = option_english_name
+        # The option ID.
         self.option_id = option_id
 
     def validate(self):
@@ -24476,9 +25903,13 @@ class ListAllPublicMediaTagsResponseBodyMediaTagList(TeaModel):
         media_tag_name_english: str = None,
         options: List[ListAllPublicMediaTagsResponseBodyMediaTagListOptions] = None,
     ):
+        # The ID of the media tag.
         self.media_tag_id = media_tag_id
+        # The name of the media tag in Chinese.
         self.media_tag_name_chinese = media_tag_name_chinese
+        # The name of the material tag in English.
         self.media_tag_name_english = media_tag_name_english
+        # The options.
         self.options = options
 
     def validate(self):
@@ -24527,7 +25958,9 @@ class ListAllPublicMediaTagsResponseBody(TeaModel):
         media_tag_list: List[ListAllPublicMediaTagsResponseBodyMediaTagList] = None,
         request_id: str = None,
     ):
+        # The tags of media assets in the public media library.
         self.media_tag_list = media_tag_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -26780,15 +28213,48 @@ class ListEditingProjectsRequest(TeaModel):
         status: str = None,
         template_type: str = None,
     ):
+        # The method for creating the online editing project. Valid values:
+        # 
+        # \\- OpenAPI
+        # 
+        # \\- AliyunConsole
+        # 
+        # \\- WebSDK
         self.create_source = create_source
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_time = end_time
+        # The search keyword. You can search by job ID.
         self.keyword = keyword
+        # The number of entries per page. A maximum of 100 entries can be returned on each page.
+        # 
+        # Default value: 10.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The type of the editing project. Valid values:
+        # 
+        # *   EditingProject: a regular editing project.
+        # *   LiveEditingProject: a live stream editing project.
         self.project_type = project_type
+        # The order of sorting of the results. Valid values:
+        # 
+        # *   CreationTime:Desc (default): sorts the results in reverse chronological order.
+        # *   CreationTime:Asc: sorts the results in chronological order.
         self.sort_by = sort_by
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
+        # The status of the online editing project. By default, online editing projects in all states are queried.
         self.status = status
+        # The template type. This parameter is required if you create a template-based online editing project. Default value: Timeline.
+        # 
+        # *\
+        # *\
+        # 
+        # Valid values:
+        # 
+        # *   Timeline: a regular template.
+        # *   VETemplate: an advanced template.
+        # *   None: general editing.
         self.template_type = template_type
 
     def validate(self):
@@ -26866,20 +28332,57 @@ class ListEditingProjectsResponseBodyProjectList(TeaModel):
         template_type: str = None,
         title: str = None,
     ):
+        # The business configuration of the project. This parameter can be ignored for general editing projects.
         self.business_config = business_config
+        # The business status of the project. This parameter can be ignored for general editing projects.
         self.business_status = business_status
+        # The thumbnail URL of the online editing project.
         self.cover_url = cover_url
+        # The method for editing the online editing project. Valid values:
+        # 
+        # \\- OpenAPI
+        # 
+        # \\- AliyunConsole
+        # 
+        # \\- WebSDK
         self.create_source = create_source
+        # The time when the online editing project was created.
         self.create_time = create_time
+        # The description of the online editing project.
         self.description = description
+        # The error code returned if the production of the online editing project failed.
         self.error_code = error_code
+        # The error message returned if the production of the online editing project failed.
         self.error_message = error_message
+        # The method for modifying the online editing project last time.
         self.modified_source = modified_source
+        # The time when the online editing project was last modified.
         self.modified_time = modified_time
+        # The ID of the online editing project.
         self.project_id = project_id
+        # The type of the editing project. Valid values:
+        # 
+        # *   EditingProject: a regular editing project.
+        # *   LiveEditingProject: a live stream editing project.
         self.project_type = project_type
+        # The status of the online editing project. Valid values:
+        # 
+        # \\- Draft
+        # 
+        # \\- Editing
+        # 
+        # \\- Producing
+        # 
+        # \\- Produced
+        # 
+        # \\- ProduceFailed
         self.status = status
+        # The template type. Valid values:
+        # 
+        # *   Timeline: a regular template.
+        # *   VETemplate: an advanced template.
         self.template_type = template_type
+        # The title of the online editing project.
         self.title = title
 
     def validate(self):
@@ -26966,11 +28469,15 @@ class ListEditingProjectsResponseBody(TeaModel):
         project_list: List[ListEditingProjectsResponseBodyProjectList] = None,
         request_id: str = None,
     ):
+        # The maximum number of entries returned.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # 
         # This parameter is required.
         self.next_token = next_token
+        # The queried online editing projects.
         self.project_list = project_list
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -29352,16 +30859,75 @@ class ListMediaBasicInfosRequest(TeaModel):
         start_time: str = None,
         status: str = None,
     ):
+        # The business type of the media asset. Valid values:
+        # 
+        # \\- subtitles
+        # 
+        # \\- watermark
+        # 
+        # \\- opening
+        # 
+        # \\- ending
+        # 
+        # \\- general
         self.business_type = business_type
+        # The end time of utcCreated.
+        # 
+        # \\- The value is the end of the left-open right-closed interval.
+        # 
+        # \\- Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. For example, 2017-01-11T12:00:00Z indicates 20:00:00 on January 11, 2017 (UTC +8).
         self.end_time = end_time
+        # Specifies whether to return the basic information of the source file.
         self.include_file_basic_info = include_file_basic_info
+        # The maximum number of entries to return.
+        # 
+        # Maximum value: 100. Default value: 10.
         self.max_results = max_results
+        # The ID of the media asset.
         self.media_id = media_id
+        # The type of the media asset. Valid values:
+        # 
+        # \\- image
+        # 
+        # \\- video
+        # 
+        # \\- audio
+        # 
+        # \\- text
         self.media_type = media_type
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The order of sorting by utcCreated. Default value: desc. Valid values:
+        # 
+        # \\- desc
+        # 
+        # \\- asc
         self.sort_by = sort_by
+        # The source of the media asset. Valid values:
+        # 
+        # \\- oss: Object Storage Service (OSS).
+        # 
+        # \\- vod: ApsaraVideo VOD.
+        # 
+        # \\- live: ApsaraVideo Live.
+        # 
+        # \\- general: other sources. This is the default value.
         self.source = source
+        # The start time of utcCreated.
+        # 
+        # \\- The value is the beginning of a left-open right-closed interval.
+        # 
+        # \\- Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. For example, 2017-01-11T12:00:00Z indicates 20:00:00 on January 11, 2017 (UTC +8).
         self.start_time = start_time
+        # The status of the media asset. Valid values:
+        # 
+        # \\- Init: the initial state, which indicates that the source file is not ready.
+        # 
+        # \\- Preparing: The source file is being prepared. For example, the file is being uploaded or edited.
+        # 
+        # \\- PrepareFail: The source file failed to be prepared. For example, the information of the source file failed to be obtained.
+        # 
+        # \\- Normal: The source file is ready.
         self.status = status
 
     def validate(self):
@@ -29441,18 +31007,31 @@ class ListMediaBasicInfosResponseBodyMediaInfosFileInfoListFileBasicInfo(TeaMode
         region: str = None,
         width: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The time when the file was created.
         self.create_time = create_time
+        # The duration.
         self.duration = duration
+        # The file name.
         self.file_name = file_name
+        # The file size. Unit: bytes.
         self.file_size = file_size
+        # The file status.
         self.file_status = file_status
+        # The file type.
         self.file_type = file_type
+        # The OSS URL of the file.
         self.file_url = file_url
+        # The container format.
         self.format_name = format_name
+        # The height.
         self.height = height
+        # The time when the file was last modified.
         self.modified_time = modified_time
+        # The region in which the file resides.
         self.region = region
+        # The width.
         self.width = width
 
     def validate(self):
@@ -29528,6 +31107,7 @@ class ListMediaBasicInfosResponseBodyMediaInfosFileInfoList(TeaModel):
         self,
         file_basic_info: ListMediaBasicInfosResponseBodyMediaInfosFileInfoListFileBasicInfo = None,
     ):
+        # The basic information of the file, including the duration and size.
         self.file_basic_info = file_basic_info
 
     def validate(self):
@@ -29578,27 +31158,49 @@ class ListMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo(TeaModel):
         upload_source: str = None,
         user_data: str = None,
     ):
+        # The service to which the media asset belongs.
         self.biz = biz
+        # The business type of the media asset.
         self.business_type = business_type
+        # The category ID.
         self.cate_id = cate_id
+        # The category of the media asset.
         self.category = category
+        # The thumbnail URL of the media asset.
         self.cover_url = cover_url
+        # The time when the media asset was created.
         self.create_time = create_time
+        # The time when the media asset was deleted.
         self.deleted_time = deleted_time
+        # The description of the media asset.
         self.description = description
+        # The URL of the media asset in another service.
         self.input_url = input_url
+        # The ID of the media asset.
         self.media_id = media_id
+        # The tags of the media asset.
         self.media_tags = media_tags
+        # The type of the media asset.
         self.media_type = media_type
+        # The time when the media asset was last modified.
         self.modified_time = modified_time
+        # The custom ID of the media asset. The ID is a string that contains 6 to 64 characters. Only letters, digits, hyphens (-), and underscores (_) are supported. The ID is unique among users.
         self.reference_id = reference_id
+        # The snapshots of the media asset.
         self.snapshots = snapshots
+        # The source of the media asset.
         self.source = source
+        # The sprite.
         self.sprite_images = sprite_images
+        # The status of the media asset.
         self.status = status
+        # The title of the media asset.
         self.title = title
+        # The transcoding status of the media asset.
         self.transcode_status = transcode_status
+        # The upload source of the media asset.
         self.upload_source = upload_source
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -29716,6 +31318,7 @@ class ListMediaBasicInfosResponseBodyMediaInfos(TeaModel):
         self.file_info_list = file_info_list
         # BasicInfo
         self.media_basic_info = media_basic_info
+        # The ID of the media asset.
         self.media_id = media_id
 
     def validate(self):
@@ -29766,10 +31369,15 @@ class ListMediaBasicInfosResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The maximum number of entries returned in the query.
         self.max_results = max_results
+        # The media assets that meet the specified conditions.
         self.media_infos = media_infos
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -30609,7 +32217,9 @@ class ListMediaMarksRequest(TeaModel):
         media_id: str = None,
         media_mark_ids: str = None,
     ):
+        # The ID of the media asset.
         self.media_id = media_id
+        # The mark ID. You can specify multiple IDs separated with commas (,). This parameter is discontinued.
         self.media_mark_ids = media_mark_ids
 
     def validate(self):
@@ -30643,8 +32253,11 @@ class ListMediaMarksResponseBody(TeaModel):
         media_marks: str = None,
         request_id: str = None,
     ):
+        # The ID of the media asset.
         self.media_id = media_id
+        # The marks of the media asset, in the JSONArray format.
         self.media_marks = media_marks
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -31577,12 +33190,51 @@ class ListPublicMediaBasicInfosRequest(TeaModel):
         page_no: int = None,
         page_size: int = None,
     ):
+        # The business type of the media asset. Valid values:
+        # 
+        # *   sticker
+        # *   bgm
+        # *   bgi
         self.business_type = business_type
+        # Specifies whether to return the basic information of the media asset.
         self.include_file_basic_info = include_file_basic_info
+        # The maximum number of entries to return.
+        # 
+        # Maximum value: 100. Default value: 10.
         self.max_results = max_results
+        # The media tag. All media assets that contain the specified media tag are returned. Valid values:
+        # 
+        # *   Sticker tags:
+        # 
+        #     *   sticker-atmosphere
+        #     *   sticker-bubble
+        #     *   sticker-cute
+        #     *   sticker-daily
+        #     *   sticker-expression
+        #     *   sticker-gif
+        # 
+        # *   Background music (BGM) tags:
+        # 
+        #     *   bgm-romantic
+        #     *   bgm-cuisine
+        #     *   bgm-chinese-style
+        #     *   bgm-upbeat
+        #     *   bgm-dynamic
+        #     *   bgm-relaxing
+        #     *   bgm-quirky
+        #     *   bgm-beauty
+        # 
+        # *   Background image (BGI) tags:
+        # 
+        #     *   bgi-grad
+        #     *   bgi-solid
+        #     *   bgi-pic
         self.media_tag_id = media_tag_id
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The page number. Default value: 1
         self.page_no = page_no
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
 
     def validate(self):
@@ -31644,16 +33296,27 @@ class ListPublicMediaBasicInfosResponseBodyMediaInfosFileInfoListFileBasicInfo(T
         region: str = None,
         width: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The duration.
         self.duration = duration
+        # The file name.
         self.file_name = file_name
+        # The file size. Unit: bytes.
         self.file_size = file_size
+        # The file status.
         self.file_status = file_status
+        # The file type.
         self.file_type = file_type
+        # The Object Storage Service (OSS) URL of the file.
         self.file_url = file_url
+        # The container format.
         self.format_name = format_name
+        # The height.
         self.height = height
+        # The region in which the file resides.
         self.region = region
+        # The width.
         self.width = width
 
     def validate(self):
@@ -31721,6 +33384,7 @@ class ListPublicMediaBasicInfosResponseBodyMediaInfosFileInfoList(TeaModel):
         self,
         file_basic_info: ListPublicMediaBasicInfosResponseBodyMediaInfosFileInfoListFileBasicInfo = None,
     ):
+        # The basic information of the file, such as the duration and size.
         self.file_basic_info = file_basic_info
 
     def validate(self):
@@ -31766,23 +33430,39 @@ class ListPublicMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo(TeaModel):
         transcode_status: str = None,
         user_data: str = None,
     ):
+        # The business type of the media asset.
         self.business_type = business_type
+        # The category of the media asset.
         self.category = category
+        # The thumbnail URL of the media asset.
         self.cover_url = cover_url
+        # The time when the media asset was created.
         self.create_time = create_time
+        # The time when the media asset was deleted.
         self.deleted_time = deleted_time
+        # The description of the media asset.
         self.description = description
+        # The URL of the media asset in another service.
         self.input_url = input_url
-        # MediaId
+        # The ID of the media asset.
         self.media_id = media_id
+        # The tags of the media asset.
         self.media_tags = media_tags
+        # The type of the media asset.
         self.media_type = media_type
+        # The time when the media asset was last modified.
         self.modified_time = modified_time
+        # The snapshots of the media asset.
         self.snapshots = snapshots
+        # The source of the media asset.
         self.source = source
+        # The status of the media asset.
         self.status = status
+        # The title of the media asset.
         self.title = title
+        # The transcoding status of the media asset.
         self.transcode_status = transcode_status
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -31876,10 +33556,11 @@ class ListPublicMediaBasicInfosResponseBodyMediaInfos(TeaModel):
         media_basic_info: ListPublicMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo = None,
         media_id: str = None,
     ):
-        # FileInfos
+        # The file information of the media asset.
         self.file_info_list = file_info_list
-        # BasicInfo
+        # The basic information of the media asset.
         self.media_basic_info = media_basic_info
+        # The ID of the media asset.
         self.media_id = media_id
 
     def validate(self):
@@ -31930,10 +33611,15 @@ class ListPublicMediaBasicInfosResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The maximum number of entries returned.
         self.max_results = max_results
+        # The media assets that meet the specified conditions.
         self.media_infos = media_infos
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of media assets that meet the specified conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -37750,8 +39436,11 @@ class QueryMediaIndexJobRequest(TeaModel):
         media_id: str = None,
         search_lib_name: str = None,
     ):
+        # The ID of the media asset.
+        # 
         # This parameter is required.
         self.media_id = media_id
+        # The name of the search library. Default value: ims-default-search-lib.
         self.search_lib_name = search_lib_name
 
     def validate(self):
@@ -37786,9 +39475,21 @@ class QueryMediaIndexJobResponseBodyIndexJobInfoList(TeaModel):
         index_type: str = None,
         status: str = None,
     ):
+        # The end time of the indexing job.
         self.gmt_finish = gmt_finish
+        # The time when the index job was submitted.
         self.gmt_submit = gmt_submit
+        # The index type. Valid values:
+        # 
+        # *   mm: large visual model.
+        # *   face: face recognition.
+        # *   aiLabel: smart tagging.
         self.index_type = index_type
+        # The job status. Valid values:
+        # 
+        # *   Running
+        # *   Success
+        # *   Fail
         self.status = status
 
     def validate(self):
@@ -37831,9 +39532,16 @@ class QueryMediaIndexJobResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The response code.
         self.code = code
+        # The indexing jobs enabled for the media asset.
         self.index_job_info_list = index_job_info_list
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -37923,8 +39631,18 @@ class QuerySearchIndexRequest(TeaModel):
         index_type: str = None,
         search_lib_name: str = None,
     ):
+        # The category of the index. Valid values:
+        # 
+        # *   mm: large visual model.
+        # *   face: face recognition.
+        # *   aiLabel: smart tagging.
+        # 
         # This parameter is required.
         self.index_type = index_type
+        # The name of the search library.
+        # 
+        # *   If you leave this parameter empty, the search index is created in the default search library of Intelligent Media Service (IMS). Default value: ims-default-search-lib.
+        # *   To query information about an existing search library, call the [QuerySearchLib](https://help.aliyun.com/document_detail/2584455.html) API operation.
         self.search_lib_name = search_lib_name
 
     def validate(self):
@@ -37962,13 +39680,29 @@ class QuerySearchIndexResponseBody(TeaModel):
         search_lib_name: str = None,
         success: str = None,
     ):
+        # The status code returned.
         self.code = code
+        # The state of the index. Valid values:
+        # 
+        # *   active: the index is enabled.
+        # *   Deactive: the index is not enabled.
         self.index_status = index_status
+        # The category of the index. Valid values:
+        # 
+        # *   mm: large visual model.
+        # *   face: face recognition.
+        # *   aiLabel: smart tagging.
         self.index_type = index_type
+        # The total number of media assets.
         self.media_total = media_total
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The name of the search library.
         self.search_lib_name = search_lib_name
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -38061,6 +39795,8 @@ class QuerySearchLibRequest(TeaModel):
         self,
         search_lib_name: str = None,
     ):
+        # The name of the search library.
+        # 
         # This parameter is required.
         self.search_lib_name = search_lib_name
 
@@ -38093,11 +39829,24 @@ class QuerySearchLibResponseBody(TeaModel):
         status: str = None,
         success: str = None,
     ):
+        # The status code returned.
         self.code = code
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The name of the search library.
         self.search_lib_name = search_lib_name
+        # The status of the search library.
+        # 
+        # Valid values:
+        # 
+        # *   normal
+        # *   deleting
+        # *   deleteFail
         self.status = status
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -38372,6 +40121,7 @@ class RefreshUploadMediaRequest(TeaModel):
         self,
         media_id: str = None,
     ):
+        # The ID of the media asset.
         self.media_id = media_id
 
     def validate(self):
@@ -38402,9 +40152,17 @@ class RefreshUploadMediaResponseBody(TeaModel):
         upload_address: str = None,
         upload_auth: str = None,
     ):
+        # The ID of the media asset.
         self.media_id = media_id
+        # The request ID.
         self.request_id = request_id
+        # The upload URL.
+        # 
+        # >  The returned upload URL is a Base64-encoded URL. You must decode the Base64-encoded upload URL before you use an SDK or call an API operation to upload media files. You need to parse UploadAddress only if you use Object Storage Service (OSS) SDK or call an OSS API operation to upload media files.
         self.upload_address = upload_address
+        # The upload credential.
+        # 
+        # >  The returned upload credential is a Base64-encoded value. You must decode the Base64-encoded upload credential before you use an SDK or call an API operation to upload media files. You need to parse UploadAuth only if you use OSS SDK or call an OSS API operation to upload media files.
         self.upload_auth = upload_auth
 
     def validate(self):
@@ -38499,21 +40257,93 @@ class RegisterMediaInfoRequest(TeaModel):
         user_data: str = None,
         workflow_id: str = None,
     ):
+        # The business type of the media asset. Valid values:
+        # 
+        # *   subtitles
+        # *   watermark
+        # *   opening
+        # *   ending
+        # *   general
         self.business_type = business_type
+        # The category ID.
         self.cate_id = cate_id
+        # The client token that is used to ensure the idempotence of the request. The value must be a UUID that contains 32 characters.
         self.client_token = client_token
+        # The thumbnail URL of the media asset.
+        # 
+        # *   The value can be up to 128 bytes in length.
+        # *   The value must be encoded in UTF-8.
         self.cover_url = cover_url
+        # The description of the media asset.
+        # 
+        # *   The value can be up to 1,024 bytes in length.
+        # *   The value must be encoded in UTF-8.
         self.description = description
+        # The URL of the media asset in another service. The URL is associated with the ID of the media asset in IMS. The URL cannot be modified once registered. The following types of URLs are supported:
+        # 
+        # *   OSS URL in one of the following formats:
+        # 
+        # http(s)://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4
+        # 
+        # oss://example-bucket/example.mp4: In this format, it is considered by default that the region of the OSS bucket in which the media asset resides is the same as the region in which IMS is activated.
+        # 
+        # *   URL of an ApsaraVideo VOD media asset
+        # 
+        # vod://\\*\\*\\*20b48fb04483915d4f2cd8ac\\*\\*\\*\\*\
+        # 
         # This parameter is required.
         self.input_url = input_url
+        # The tags of the media asset.
+        # 
+        # *   Up to 16 tags are supported.
+        # *   Separate multiple tags with commas (,).
+        # *   Each tag can be up to 32 bytes in length.
+        # *   The value must be encoded in UTF-8.
         self.media_tags = media_tags
+        # The type of the media asset. Valid values:
+        # 
+        # *   image
+        # *   video
+        # *   audio
+        # *   text
+        # 
+        # We recommend that you specify this parameter based on your business requirements. If you set InputURL to an OSS URL, the media asset type can be automatically determined based on the file name extension. For more information
+        # <props="china">, see [File formats](https://help.aliyun.com/document_detail/466207.html).
         self.media_type = media_type
+        # Specifies whether to overwrite the media asset that has been registered by using the same URL. Default value: false. Valid values:
+        # 
+        # \\- true: If a media asset has been registered by using the same URL, the original media asset is deleted and the new media asset is registered.
+        # 
+        # \\- false: If a media asset has been registered by using the same URL, the new media asset is not registered. A URL cannot be used to register multiple media assets.
         self.overwrite = overwrite
+        # The custom ID. The ID can be 6 to 64 characters in length and can contain only letters, digits, hyphens (-), and underscores (_). Make sure that the ID is unique among users.
         self.reference_id = reference_id
+        # The registration configurations.
+        # 
+        # By default, a sprite is generated for the media asset. You can set NeedSprite to false to disable automatic sprite generation.
+        # 
+        # By default, a snapshot is generated for the media asset. You can set NeedSnapshot to false to disable automatic snapshot generation.
         self.register_config = register_config
+        # The ID of the smart tagging template. Valid values:
+        # 
+        # *   S00000101-300080: the system template that supports natural language processing (NLP) for content recognition.
+        # *   S00000103-000001: the system template that supports NLP for content recognition and all tagging capabilities.
+        # *   S00000103-000002: the system template that supports all tagging capabilities but does not support NLP for content recognition.
+        # 
+        # After you configure this parameter, a smart tag analysis task is automatically initiated after the media asset is registered. For more information about the billable items<props="china">, see [Smart tagging](https://help.aliyun.com/zh/ims/media-ai-billing?spm=a2c4g.11186623.0.0.3147392dWwlSjL#p-k38-3rb-dug).
         self.smart_tag_template_id = smart_tag_template_id
+        # The title. If you do not specify this parameter, a default title is automatically generated based on the date.
+        # 
+        # *   The value can be up to 128 bytes in length.
+        # *   The value must be encoded in UTF-8.
         self.title = title
+        # The user data. You can specify a custom callback URL. For more information<props="china"> ,see [Configure a callback upon editing completion](https://help.aliyun.com/document_detail/451631.html).
+        # 
+        # *   The value can be up to 1,024 bytes in length.
+        # *   The value must be encoded in UTF-8.
+        # *   The value must be in the JSON format.
         self.user_data = user_data
+        # The workflow ID.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -38598,7 +40428,9 @@ class RegisterMediaInfoResponseBody(TeaModel):
         media_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the media asset in IMS.
         self.media_id = media_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -38673,8 +40505,17 @@ class RegisterMediaStreamRequest(TeaModel):
         media_id: str = None,
         user_data: str = None,
     ):
+        # The URL of the media asset in another service. The URL is associated with the ID of the media asset in IMS. The URL cannot be modified once registered.
+        # 
+        # Set this parameter to the OSS URL of the media asset. The following formats are supported:
+        # 
+        # http(s)://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4
+        # 
+        # oss://example-bucket/example.mp4: In this format, it is considered by default that the region of the OSS bucket in which the media asset resides is the same as the region in which IMS is activated.
         self.input_url = input_url
+        # The ID of the media asset.
         self.media_id = media_id
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -38711,7 +40552,9 @@ class RegisterMediaStreamResponseBody(TeaModel):
         media_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the media asset.
         self.media_id = media_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -39245,7 +41088,8 @@ class SearchMediaRequest(TeaModel):
     ):
         # The ID of the entity.
         self.entity_id = entity_id
-        # The filter conditions. For more information about the parameter syntax, see [Media asset search protocols](https://help.aliyun.com/document_detail/2584256.html).
+        # The filter conditions. For more information about the parameter syntax
+        # <props="china">, see [Media asset search protocols](https://help.aliyun.com/document_detail/2584256.html).
         self.match = match
         # The page number. Default value: 1.
         self.page_no = page_no
@@ -39710,7 +41554,7 @@ class SearchMediaResponseBodyMediaInfoListAiRoughData(TeaModel):
         save_type: str = None,
         status: str = None,
     ):
-        # The category of the AI job.
+        # TV Series
         self.ai_category = ai_category
         # The ID of the AI job.
         self.ai_job_id = ai_job_id
@@ -39995,7 +41839,7 @@ class SearchMediaResponseBodyMediaInfoListMediaBasicInfo(TeaModel):
         self.source = source
         # The image sprite of the media asset
         self.sprite_images = sprite_images
-        # The state of the resource.
+        # The state of the media asset.
         self.status = status
         # The title of the media asset.
         self.title = title
@@ -40317,6 +42161,7 @@ class SearchMediaResponse(TeaModel):
 class SearchMediaByAILabelRequest(TeaModel):
     def __init__(
         self,
+        matching_mode: str = None,
         media_id: str = None,
         media_type: str = None,
         multimodal_search_type: str = None,
@@ -40327,14 +42172,39 @@ class SearchMediaByAILabelRequest(TeaModel):
         specific_search: bool = None,
         text: str = None,
     ):
+        self.matching_mode = matching_mode
+        # The ID of the media asset. This parameter is required if you want to query media asset clips.
         self.media_id = media_id
+        # The type of the media assets. Valid values:
+        # 
+        # *   image
+        # *   video
+        # *   audio
         self.media_type = media_type
+        # The type of query. Valid values:
+        # 
+        # *   PersonName: queries media assets based on character names.
+        # *   Ocr: queries media assets based on subtitles.
+        # *   AiCategory: queries media assets based on AI categories.
+        # *   FullSearch (default): queries all media assets.
         self.multimodal_search_type = multimodal_search_type
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10. Maximum value: 50.
         self.page_size = page_size
+        # The name of the search library.
         self.search_lib_name = search_lib_name
+        # The sorting method of the results. Valid values:
+        # 
+        # *   CreationTime:Desc (default): sorts results in reverse chronological order.
+        # *   CreationTime:Asc: sorts results in chronological order.
         self.sort_by = sort_by
+        # Specifies whether to query media asset clips. Valid values:
+        # 
+        # *   true
+        # *   false
         self.specific_search = specific_search
+        # The content that you want to query.
         self.text = text
 
     def validate(self):
@@ -40346,6 +42216,8 @@ class SearchMediaByAILabelRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.matching_mode is not None:
+            result['MatchingMode'] = self.matching_mode
         if self.media_id is not None:
             result['MediaId'] = self.media_id
         if self.media_type is not None:
@@ -40368,6 +42240,8 @@ class SearchMediaByAILabelRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MatchingMode') is not None:
+            self.matching_mode = m.get('MatchingMode')
         if m.get('MediaId') is not None:
             self.media_id = m.get('MediaId')
         if m.get('MediaType') is not None:
@@ -40396,8 +42270,11 @@ class SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrencesTrack
         size: float = None,
         timestamp: float = None,
     ):
+        # The coordinates of the bounding box.
         self.position = position
+        # The size of the bounding box.
         self.size = size
+        # The timestamp of the track.
         self.timestamp = timestamp
 
     def validate(self):
@@ -40442,15 +42319,25 @@ class SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences(TeaM
         to: float = None,
         tracks: List[SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrencesTracks] = None,
     ):
+        # The ID of the clip.
         self.clip_id = clip_id
+        # The content of the text.
         self.content = content
+        # The fine-grained ID of the entity.
         self.finegrain_id = finegrain_id
+        # The fine-grained name of the entity.
         self.finegrain_name = finegrain_name
+        # The start time of the clip.
         self.from_ = from_
+        # The image that contains the most face information.
         self.image = image
+        # The score.
         self.score = score
+        # The sequence ID of the vector table.
         self.table_batch_seq_id = table_batch_seq_id
+        # The end time of the clip.
         self.to = to
+        # The tracks.
         self.tracks = tracks
 
     def validate(self):
@@ -40528,12 +42415,19 @@ class SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfo(TeaModel):
         occurrences: List[SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences] = None,
         source: str = None,
     ):
+        # The category.
         self.category = category
+        # The ID of the face.
         self.face_id = face_id
+        # The ID of the entity.
         self.label_id = label_id
+        # The name of the entity.
         self.label_name = label_name
+        # The type of the tag.
         self.label_type = label_type
+        # The information about the clips.
         self.occurrences = occurrences
+        # The source.
         self.source = source
 
     def validate(self):
@@ -40597,10 +42491,15 @@ class SearchMediaByAILabelResponseBodyMediaListAiDataAsrInfo(TeaModel):
         timestamp: float = None,
         to: float = None,
     ):
+        # The ID of the clip.
         self.clip_id = clip_id
+        # The content of the audio.
         self.content = content
+        # The start time of the clip.
         self.from_ = from_
+        # The timestamp of the clip.
         self.timestamp = timestamp
+        # The end time of the clip.
         self.to = to
 
     def validate(self):
@@ -40648,10 +42547,15 @@ class SearchMediaByAILabelResponseBodyMediaListAiDataOcrInfo(TeaModel):
         timestamp: float = None,
         to: float = None,
     ):
+        # The ID of the clip.
         self.clip_id = clip_id
+        # The content of the text.
         self.content = content
+        # The start time of the clip.
         self.from_ = from_
+        # The timestamp of the clip.
         self.timestamp = timestamp
+        # The end time of the clip.
         self.to = to
 
     def validate(self):
@@ -40697,8 +42601,11 @@ class SearchMediaByAILabelResponseBodyMediaListAiData(TeaModel):
         asr_info: List[SearchMediaByAILabelResponseBodyMediaListAiDataAsrInfo] = None,
         ocr_info: List[SearchMediaByAILabelResponseBodyMediaListAiDataOcrInfo] = None,
     ):
+        # The tags of the AI job.
         self.ai_label_info = ai_label_info
+        # The information about audio files.
         self.asr_info = asr_info
+        # The information about subtitle files.
         self.ocr_info = ocr_info
 
     def validate(self):
@@ -40773,19 +42680,48 @@ class SearchMediaByAILabelResponseBodyMediaList(TeaModel):
         tags: str = None,
         title: str = None,
     ):
+        # The details of the AI job.
         self.ai_data = ai_data
+        # The ID of the application. Default value: app-1000000.
         self.app_id = app_id
+        # The URL of the thumbnail.
         self.cover_url = cover_url
+        # The time when the media asset was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
+        # The description of the media asset.
         self.description = description
+        # The duration. Unit: seconds.
         self.duration = duration
+        # The ID of the media asset.
         self.media_id = media_id
+        # The time when the media asset was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.modification_time = modification_time
+        # The size of the source file. Unit: bytes.
         self.size = size
+        # The array of video snapshot URLs.
         self.snapshots = snapshots
+        # The status of the video.
+        # 
+        # Valid values:
+        # 
+        # *   PrepareFail
+        # *   UploadFail
+        # *   Init
+        # *   UploadSucc
+        # *   Transcoding
+        # *   TranscodeFail
+        # *   Deleted
+        # *   Normal
+        # *   Uploading
+        # *   Preparing
+        # *   Blocked
+        # *   Checking
         self.status = status
+        # The storage address.
         self.storage_location = storage_location
+        # The tags of the media asset.
         self.tags = tags
+        # The title of the media asset.
         self.title = title
 
     def validate(self):
@@ -40871,10 +42807,15 @@ class SearchMediaByAILabelResponseBody(TeaModel):
         success: str = None,
         total: int = None,
     ):
+        # The status code returned.
         self.code = code
+        # The media assets that contain the specified content.
         self.media_list = media_list
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of audio and video files that meet the conditions.
         self.total = total
 
     def validate(self):
@@ -40973,14 +42914,26 @@ class SearchMediaByFaceRequest(TeaModel):
         person_image_url: str = None,
         search_lib_name: str = None,
     ):
+        # The ID of the entity.
         self.entity_id = entity_id
+        # The token that is used to identify the query. You can use this parameter in the SearchMediaClipByFace operation to specify the same query conditions.
+        # 
         # This parameter is required.
         self.face_search_token = face_search_token
+        # The type of the media asset. Valid values:
+        # 
+        # *   image
+        # *   video
         self.media_type = media_type
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10. Maximum value: 50.
         self.page_size = page_size
+        # The URL of the face image.
+        # 
         # This parameter is required.
         self.person_image_url = person_image_url
+        # The name of the search library.
         self.search_lib_name = search_lib_name
 
     def validate(self):
@@ -41032,6 +42985,7 @@ class SearchMediaByFaceResponseBodyMediaInfoList(TeaModel):
         self,
         media_id: str = None,
     ):
+        # The ID of the media asset.
         self.media_id = media_id
 
     def validate(self):
@@ -41063,10 +43017,15 @@ class SearchMediaByFaceResponseBody(TeaModel):
         success: str = None,
         total: int = None,
     ):
+        # The status code returned.
         self.code = code
+        # The media assets that meet the conditions.
         self.media_info_list = media_info_list
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: true false
         self.success = success
+        # The total number of data records that meet the specified filter condition.
         self.total = total
 
     def validate(self):
@@ -41164,6 +43123,7 @@ class SearchMediaByHybridRequest(TeaModel):
         search_lib_name: str = None,
         text: str = None,
     ):
+        # The ID of the media asset. The details of the media asset are returned.
         self.media_id = media_id
         self.media_type = media_type
         self.page_no = page_no
@@ -41400,10 +43360,20 @@ class SearchMediaByMultimodalRequest(TeaModel):
         search_lib_name: str = None,
         text: str = None,
     ):
+        # The type of the media assets.
+        # 
+        # Valid values:
+        # 
+        # *   image
+        # *   video (default)
         self.media_type = media_type
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10. Maximum value: 50.
         self.page_size = page_size
+        # The search library.
         self.search_lib_name = search_lib_name
+        # The content that you want to query. You can describe the content in natural language.
         self.text = text
 
     def validate(self):
@@ -41449,8 +43419,11 @@ class SearchMediaByMultimodalResponseBodyMediaListClipInfo(TeaModel):
         score: float = None,
         to: float = None,
     ):
+        # The start time of the clip.
         self.from_ = from_
+        # The score.
         self.score = score
+        # The end time of the clip.
         self.to = to
 
     def validate(self):
@@ -41487,7 +43460,9 @@ class SearchMediaByMultimodalResponseBodyMediaList(TeaModel):
         clip_info: List[SearchMediaByMultimodalResponseBodyMediaListClipInfo] = None,
         media_id: str = None,
     ):
+        # The information about the clip.
         self.clip_info = clip_info
+        # The ID of the media asset.
         self.media_id = media_id
 
     def validate(self):
@@ -41531,10 +43506,15 @@ class SearchMediaByMultimodalResponseBody(TeaModel):
         success: str = None,
         total: int = None,
     ):
+        # The status code returned.
         self.code = code
+        # The media assets that contain the specified content.
         self.media_list = media_list
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: true false
         self.success = success
+        # The total number of data records that meet the specified filter condition.
         self.total = total
 
     def validate(self):
@@ -41632,13 +43612,21 @@ class SearchMediaClipByFaceRequest(TeaModel):
         page_size: int = None,
         search_lib_name: str = None,
     ):
+        # The ID of the entity.
         self.entity_id = entity_id
+        # The value of this parameter is the same as that of the FaceSearchToken parameter in the SearchMediaByFace request. This specifies to return media asset clips that meet the same query conditions.
+        # 
         # This parameter is required.
         self.face_search_token = face_search_token
+        # The ID of the media asset.
+        # 
         # This parameter is required.
         self.media_id = media_id
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10. Maximum value: 50.
         self.page_size = page_size
+        # The name of the search library.
         self.search_lib_name = search_lib_name
 
     def validate(self):
@@ -41689,9 +43677,13 @@ class SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackDataBox
         x: int = None,
         y: int = None,
     ):
+        # The height of the rectangle frame. Unit: pixels.
         self.h = h
+        # The width of the rectangle frame. Unit: pixels.
         self.w = w
+        # The x-axis coordinate of the upper-left corner. Unit: pixels.
         self.x = x
+        # The y-axis coordinate of the upper-left corner. Unit: pixels.
         self.y = y
 
     def validate(self):
@@ -41732,7 +43724,9 @@ class SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackData(Te
         box_position: SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackDataBoxPosition = None,
         timestamp: float = None,
     ):
+        # The coordinates of the face.
         self.box_position = box_position
+        # The timestamp when the face appears in the clip. Unit: seconds. The value is of the Float type.
         self.timestamp = timestamp
 
     def validate(self):
@@ -41768,8 +43762,11 @@ class SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos(TeaModel):
         start_time: float = None,
         track_data: List[SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackData] = None,
     ):
+        # The end time of the clip. Unit: seconds. The value is of the Float type.
         self.end_time = end_time
+        # The start time of the clip. Unit: seconds. The value is of the Float type.
         self.start_time = start_time
+        # The information about the face in the clip.
         self.track_data = track_data
 
     def validate(self):
@@ -41817,10 +43814,15 @@ class SearchMediaClipByFaceResponseBodyMediaClipList(TeaModel):
         occurrences_infos: List[SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos] = None,
         score: float = None,
     ):
+        # The type of the character. Valid values: celebrity sensitive politician custom unknown
         self.category = category
+        # The ID of the entity, which is the same as the entity ID returned in tag analysis.
         self.entity_id = entity_id
+        # The name of the entity.
         self.label_name = label_name
+        # The information about clips related to the face.
         self.occurrences_infos = occurrences_infos
+        # The score of the clip. The value is of the Float type. The value is in the range of [0,1].
         self.score = score
 
     def validate(self):
@@ -41876,10 +43878,15 @@ class SearchMediaClipByFaceResponseBody(TeaModel):
         success: str = None,
         total: int = None,
     ):
+        # The status code returned.
         self.code = code
+        # The media asset clips that meet the requirements.
         self.media_clip_list = media_clip_list
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: true and false.
         self.success = success
+        # The total number of media asset clips that meet the conditions.
         self.total = total
 
     def validate(self):
@@ -47070,7 +49077,9 @@ class SubmitMediaAiAnalysisJobRequest(TeaModel):
         analysis_params: str = None,
         input: str = None,
     ):
+        # The analysis parameters.
         self.analysis_params = analysis_params
+        # The media asset that you want to analyze. You can specify an Object Storage Service (OSS) URL, a media asset ID, or an external URL.
         self.input = input
 
     def validate(self):
@@ -47103,8 +49112,9 @@ class SubmitMediaAiAnalysisJobResponseBody(TeaModel):
         media_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the media asset.
         self.media_id = media_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -55448,12 +57458,23 @@ class SubmitVideoTranslationJobRequest(TeaModel):
         title: str = None,
         user_data: str = None,
     ):
+        # *   The client token.
         self.client_token = client_token
+        # *   The job description.
         self.description = description
+        # *   The configuration parameters of the video translation job.
+        # *   The value must be in the JSON format.
         self.editing_config = editing_config
+        # *   The input parameters of the video translation job.
+        # *   A video translation job takes a video or subtitle file as the input.
+        # *   The value must be in the JSON format.
         self.input_config = input_config
+        # *   The output parameters of the video translation job.
+        # *   A video translation job can generate a video or subtitle file as the output.
         self.output_config = output_config
+        # *   The job title.
         self.title = title
+        # *   The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -55505,6 +57526,7 @@ class SubmitVideoTranslationJobResponseBodyData(TeaModel):
         self,
         job_id: str = None,
     ):
+        # The ID of the video translation job.
         self.job_id = job_id
 
     def validate(self):
@@ -55534,9 +57556,16 @@ class SubmitVideoTranslationJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned.
         self.data = data
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -55939,8 +57968,16 @@ class UpdateCategoryRequest(TeaModel):
         cate_id: int = None,
         cate_name: str = None,
     ):
+        # The category ID. You can use one of the following methods to obtain the ID:
+        # 
+        # *   Log on to the [Intelligent Media Services (IMS) console](https://ims.console.aliyun.com) and choose **Media Asset Management** > **Category Management** to view the category ID.
+        # *   View the value of CateId returned by the AddCategory operation that you called to create a category.
+        # *   View the value of CateId returned by the GetCategories operation that you called to query a category.
+        # 
         # This parameter is required.
         self.cate_id = cate_id
+        # The category name.
+        # 
         # This parameter is required.
         self.cate_name = cate_name
 
@@ -55973,6 +58010,7 @@ class UpdateCategoryResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -56270,14 +58308,25 @@ class UpdateEditingProjectRequest(TeaModel):
         timeline: str = None,
         title: str = None,
     ):
+        # The business status of the project. This parameter can be ignored for general editing projects. Valid values:
+        # 
+        # *   Reserving
+        # *   ReservationCanceled
         self.business_status = business_status
+        # The material parameter corresponding to the template, in the JSON format. If TemplateId is specified, ClipsParam must also be specified. For more information<props="china">, see [Create and use a regular template](https://help.aliyun.com/document_detail/328557.html) and [Create and use an advanced template](https://help.aliyun.com/document_detail/291418.html).
         self.clips_param = clips_param
+        # The thumbnail URL of the online editing project.
         self.cover_url = cover_url
+        # The description of the online editing project.
         self.description = description
+        # The ID of the online editing project.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The template ID. This parameter is used to quickly build a timeline with ease. Note: Only one of ProjectId, Timeline, and TemplateId can be specified. If TemplateId is specified, ClipsParam must also be specified.
         self.template_id = template_id
         self.timeline = timeline
+        # The title of the online editing project.
         self.title = title
 
     def validate(self):
@@ -56333,6 +58382,7 @@ class UpdateEditingProjectResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -57349,17 +59399,61 @@ class UpdateMediaInfoRequest(TeaModel):
         title: str = None,
         user_data: str = None,
     ):
+        # Specifies whether to append tags. Default value: false. Valid values:
+        # 
+        # *   true: updates the MediaTags parameter by appending new tags.
+        # *   false: updates the MediaTags parameter by overwriting existing tags with new tags.
         self.append_tags = append_tags
+        # The business type. Valid values:
+        # 
+        # *   subtitles
+        # *   watermark
+        # *   opening
+        # *   ending
+        # *   general
         self.business_type = business_type
+        # The category ID.
         self.cate_id = cate_id
+        # The category.
+        # 
+        # *   The value can be up to 64 bytes in length.
+        # *   The value must be encoded in UTF-8.
         self.category = category
+        # The URL of the thumbnail.
+        # 
+        # *   The value can be up to 128 bytes in length.
+        # *   The value must be encoded in UTF-8.
         self.cover_url = cover_url
+        # The content description.
+        # 
+        # *   The value can be up to 1,024 bytes in length.
+        # *   The value must be encoded in UTF-8.
         self.description = description
+        # The input URL of the media asset in another service. The URL must be bound to the ID of the media asset in IMS. The URL cannot be modified once registered.
+        # 
+        # For a media asset from Object Storage Service (OSS), the URL may have one of the following formats:
+        # 
+        # 1\\. http(s)://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4
+        # 
+        # 2\\. oss://example-bucket/example.mp4. This format indicates that the region in which the OSS bucket of the media asset resides is the same as the region in which OSS is activated.
         self.input_url = input_url
+        # The ID of the media asset. If this parameter is left empty, you must specify the input URL of the media asset, which has been registered in the IMS content library.
         self.media_id = media_id
+        # The tags.
+        # 
+        # *   Up to 16 tags are supported.
+        # *   Separate multiple tags with commas (,).
+        # *   Each tag can be up to 32 bytes in length.
+        # *   The value must be encoded in UTF-8.
         self.media_tags = media_tags
+        # The custom ID. The ID can be 6 to 64 characters in length and can contain only letters, digits, hyphens (-), and underscores (_). Make sure that the ID is unique among users.
         self.reference_id = reference_id
+        # The title.
+        # 
+        # *   The value can be up to 128 bytes in length.
+        # *   The value must be encoded in UTF-8.
         self.title = title
+        # The user data. It can be up to 1,024 bytes in size.
         self.user_data = user_data
 
     def validate(self):
@@ -57432,7 +59526,9 @@ class UpdateMediaInfoResponseBody(TeaModel):
         media_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the media asset in IMS.
         self.media_id = media_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -57506,8 +59602,12 @@ class UpdateMediaMarksRequest(TeaModel):
         media_id: str = None,
         media_marks: str = None,
     ):
+        # The ID of the media asset.
+        # 
         # This parameter is required.
         self.media_id = media_id
+        # The marks of the media asset.
+        # 
         # This parameter is required.
         self.media_marks = media_marks
 
@@ -57542,8 +59642,11 @@ class UpdateMediaMarksResponseBody(TeaModel):
         media_mark_ids: str = None,
         request_id: str = None,
     ):
+        # The ID of the media asset.
         self.media_id = media_id
+        # The IDs of the successfully modified marks.
         self.media_mark_ids = media_mark_ids
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -57622,10 +59725,15 @@ class UpdateMediaToSearchLibRequest(TeaModel):
         msg_body: str = None,
         search_lib_name: str = None,
     ):
+        # The ID of the media asset.
+        # 
         # This parameter is required.
         self.media_id = media_id
+        # The message body.
+        # 
         # This parameter is required.
         self.msg_body = msg_body
+        # The name of the search library. Default value: ims-default-search-lib.
         self.search_lib_name = search_lib_name
 
     def validate(self):
@@ -57664,9 +59772,16 @@ class UpdateMediaToSearchLibResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The status code returned.
         self.code = code
+        # The ID of the media asset.
         self.media_id = media_id
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -58188,12 +60303,38 @@ class UploadMediaByURLRequest(TeaModel):
         upload_urls: str = None,
         user_data: str = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The entity ID. You can call the CreateEntity operation to create an entity and specify a dynamic metadata structure.
         self.entity_id = entity_id
+        # The metadata of the media file that you want to upload. The value must be a JSON string.
+        # 
+        # *   This parameter takes effect only if its value matches a URL that is specified in UploadURLs.
+        # *   You must convert the JSON-formatted data, such as [UploadMetadata, UploadMetadata,…], into a JSON string.
+        # *   For more information, see the "UploadMetadata" section of this topic.
         self.media_meta_data = media_meta_data
+        # The postprocessing configurations. You can specify this parameter if Type is set to video or audio.
+        # 
+        # Set ProcessType to Workflow.
         self.post_process_config = post_process_config
+        # The destination storage address.
+        # 
+        # Set StorageType to oss.
+        # 
+        # Set StorageLocation to an address in ApsaraVideo VOD. You cannot set this field to an OSS URL.
         self.upload_target_config = upload_target_config
+        # The URL of the source file.
+        # 
+        # *   The URL must contain a file name extension, such as mp4 in `https://****.mp4`.
+        # 
+        #     *   If the URL does not contain a file name extension, you can specify one by setting `FileExtension` in `UploadMetadata`.
+        #     *   If the URL contains a file name extension and `FileExtension` is also specified, the value of `FileExtension` prevails.
+        # 
+        # *   URL encoding is required. Separate multiple URLs with commas (,). You can specify a maximum of 20 URLs.
+        # 
+        # *   Special characters may cause upload failures. Therefore, you must encode URLs before you separate them with commas (,).
         self.upload_urls = upload_urls
+        # The user data. The value must be a JSON string. You can configure settings such as message callbacks.
         self.user_data = user_data
 
     def validate(self):
@@ -58247,8 +60388,11 @@ class UploadMediaByURLResponseBodyUploadJobs(TeaModel):
         media_id: str = None,
         source_url: str = None,
     ):
+        # The ID of the upload job.
         self.job_id = job_id
+        # The ID of the media asset.
         self.media_id = media_id
+        # The URL of the source file that is uploaded in the upload job.
         self.source_url = source_url
 
     def validate(self):
@@ -58285,7 +60429,9 @@ class UploadMediaByURLResponseBody(TeaModel):
         request_id: str = None,
         upload_jobs: List[UploadMediaByURLResponseBodyUploadJobs] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The information about upload jobs.
         self.upload_jobs = upload_jobs
 
     def validate(self):
@@ -58371,11 +60517,42 @@ class UploadStreamByURLRequest(TeaModel):
         stream_url: str = None,
         user_data: str = None,
     ):
+        # The quality of the media stream. Valid values:
+        # 
+        # *   FD: low definition.
+        # *   LD: standard definition.
+        # *   SD: high definition.
+        # *   HD: ultra-high definition.
+        # *   OD: original quality.
+        # *   2K: 2K resolution.
+        # *   4K: 4K resolution.
+        # *   SQ: standard sound quality.
+        # *   HQ: high sound quality.
         self.definition = definition
+        # The file name extension of the media stream.
         self.file_extension = file_extension
+        # The high dynamic range (HDR) format of the transcoded stream. Valid values:
+        # 
+        # *   HDR
+        # *   HDR10
+        # *   HLG
+        # *   DolbyVision
+        # *   HDRVivid
+        # *   SDR+\
+        # 
+        # > 
+        # 
+        # *   The value is not case-sensitive,
+        # 
+        # *   You can leave this parameter empty for non-HDR streams.
         self.hdrtype = hdrtype
+        # The ID of the media asset.
         self.media_id = media_id
+        # The URL of the transcoded stream file.
+        # 
+        # If the URL of the transcoded stream requires authentication, you must specify the authentication parameters in the stream URL and make sure that the URL can be accessed over the Internet.
         self.stream_url = stream_url
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -58427,10 +60604,15 @@ class UploadStreamByURLResponseBody(TeaModel):
         request_id: str = None,
         source_url: str = None,
     ):
+        # The OSS URL of the file.
         self.file_url = file_url
+        # The ID of the upload job.
         self.job_id = job_id
+        # The ID of the media asset.
         self.media_id = media_id
+        # The request ID.
         self.request_id = request_id
+        # The URL of the source file that is uploaded in the upload job.
         self.source_url = source_url
 
     def validate(self):

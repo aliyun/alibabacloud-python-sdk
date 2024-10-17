@@ -106,7 +106,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AddCategoryResponse:
         """
-        @summary 创建媒资分类
+        @summary Creates a category.
+        
+        @description You can create at most three levels of categories. Each category level can contain a maximum of 100 subcategories.
         
         @param request: AddCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -145,7 +147,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AddCategoryResponse:
         """
-        @summary 创建媒资分类
+        @summary Creates a category.
+        
+        @description You can create at most three levels of categories. Each category level can contain a maximum of 100 subcategories.
         
         @param request: AddCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -183,7 +187,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.AddCategoryRequest,
     ) -> ice20201109_models.AddCategoryResponse:
         """
-        @summary 创建媒资分类
+        @summary Creates a category.
+        
+        @description You can create at most three levels of categories. Each category level can contain a maximum of 100 subcategories.
         
         @param request: AddCategoryRequest
         @return: AddCategoryResponse
@@ -196,7 +202,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.AddCategoryRequest,
     ) -> ice20201109_models.AddCategoryResponse:
         """
-        @summary 创建媒资分类
+        @summary Creates a category.
+        
+        @description You can create at most three levels of categories. Each category level can contain a maximum of 100 subcategories.
         
         @param request: AddCategoryRequest
         @return: AddCategoryResponse
@@ -210,7 +218,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AddEditingProjectMaterialsResponse:
         """
-        @summary 剪辑工程增加素材
+        @summary Adds one or more materials to an online editing project.
         
         @param request: AddEditingProjectMaterialsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -247,7 +255,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AddEditingProjectMaterialsResponse:
         """
-        @summary 剪辑工程增加素材
+        @summary Adds one or more materials to an online editing project.
         
         @param request: AddEditingProjectMaterialsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -283,7 +291,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.AddEditingProjectMaterialsRequest,
     ) -> ice20201109_models.AddEditingProjectMaterialsResponse:
         """
-        @summary 剪辑工程增加素材
+        @summary Adds one or more materials to an online editing project.
         
         @param request: AddEditingProjectMaterialsRequest
         @return: AddEditingProjectMaterialsResponse
@@ -296,7 +304,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.AddEditingProjectMaterialsRequest,
     ) -> ice20201109_models.AddEditingProjectMaterialsResponse:
         """
-        @summary 剪辑工程增加素材
+        @summary Adds one or more materials to an online editing project.
         
         @param request: AddEditingProjectMaterialsRequest
         @return: AddEditingProjectMaterialsResponse
@@ -406,7 +414,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AddMediaMarksResponse:
         """
-        @summary 为媒资增加标注信息
+        @summary Adds marks for a media asset.
         
         @param request: AddMediaMarksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -443,7 +451,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AddMediaMarksResponse:
         """
-        @summary 为媒资增加标注信息
+        @summary Adds marks for a media asset.
         
         @param request: AddMediaMarksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -479,7 +487,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.AddMediaMarksRequest,
     ) -> ice20201109_models.AddMediaMarksResponse:
         """
-        @summary 为媒资增加标注信息
+        @summary Adds marks for a media asset.
         
         @param request: AddMediaMarksRequest
         @return: AddMediaMarksResponse
@@ -492,7 +500,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.AddMediaMarksRequest,
     ) -> ice20201109_models.AddMediaMarksResponse:
         """
-        @summary 为媒资增加标注信息
+        @summary Adds marks for a media asset.
         
         @param request: AddMediaMarksRequest
         @return: AddMediaMarksResponse
@@ -634,7 +642,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AlterSearchIndexResponse:
         """
-        @summary 更新搜索索引
+        @summary Modifies search index information including index status and configurations.
         
         @param request: AlterSearchIndexRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -675,7 +683,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AlterSearchIndexResponse:
         """
-        @summary 更新搜索索引
+        @summary Modifies search index information including index status and configurations.
         
         @param request: AlterSearchIndexRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -715,7 +723,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.AlterSearchIndexRequest,
     ) -> ice20201109_models.AlterSearchIndexResponse:
         """
-        @summary 更新搜索索引
+        @summary Modifies search index information including index status and configurations.
         
         @param request: AlterSearchIndexRequest
         @return: AlterSearchIndexResponse
@@ -728,7 +736,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.AlterSearchIndexRequest,
     ) -> ice20201109_models.AlterSearchIndexResponse:
         """
-        @summary 更新搜索索引
+        @summary Modifies search index information including index status and configurations.
         
         @param request: AlterSearchIndexRequest
         @return: AlterSearchIndexResponse
@@ -742,7 +750,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.BatchGetMediaInfosResponse:
         """
-        @summary 批量获取媒资信息
+        @summary Queries the information about multiple media assets at a time based on media asset IDs.
         
         @param request: BatchGetMediaInfosRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -779,7 +787,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.BatchGetMediaInfosResponse:
         """
-        @summary 批量获取媒资信息
+        @summary Queries the information about multiple media assets at a time based on media asset IDs.
         
         @param request: BatchGetMediaInfosRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -815,7 +823,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.BatchGetMediaInfosRequest,
     ) -> ice20201109_models.BatchGetMediaInfosResponse:
         """
-        @summary 批量获取媒资信息
+        @summary Queries the information about multiple media assets at a time based on media asset IDs.
         
         @param request: BatchGetMediaInfosRequest
         @return: BatchGetMediaInfosResponse
@@ -828,7 +836,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.BatchGetMediaInfosRequest,
     ) -> ice20201109_models.BatchGetMediaInfosResponse:
         """
-        @summary 批量获取媒资信息
+        @summary Queries the information about multiple media assets at a time based on media asset IDs.
         
         @param request: BatchGetMediaInfosRequest
         @return: BatchGetMediaInfosResponse
@@ -1606,7 +1614,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateEditingProjectResponse:
         """
-        @summary 创建云剪辑工程
+        @summary Creates an online editing project. You can specify configurations such as the title, description, timeline, and thumbnail for the project.
         
         @param request: CreateEditingProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1661,7 +1669,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateEditingProjectResponse:
         """
-        @summary 创建云剪辑工程
+        @summary Creates an online editing project. You can specify configurations such as the title, description, timeline, and thumbnail for the project.
         
         @param request: CreateEditingProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1715,7 +1723,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateEditingProjectRequest,
     ) -> ice20201109_models.CreateEditingProjectResponse:
         """
-        @summary 创建云剪辑工程
+        @summary Creates an online editing project. You can specify configurations such as the title, description, timeline, and thumbnail for the project.
         
         @param request: CreateEditingProjectRequest
         @return: CreateEditingProjectResponse
@@ -1728,7 +1736,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateEditingProjectRequest,
     ) -> ice20201109_models.CreateEditingProjectResponse:
         """
-        @summary 创建云剪辑工程
+        @summary Creates an online editing project. You can specify configurations such as the title, description, timeline, and thumbnail for the project.
         
         @param request: CreateEditingProjectRequest
         @return: CreateEditingProjectResponse
@@ -2176,6 +2184,8 @@ class Client(OpenApiClient):
         """
         @summary 创建搜索索引
         
+        @description The large visual model feature is still in the public preview phase. You can use this feature for free for 1,000 hours of videos.
+        
         @param request: CreateSearchIndexRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateSearchIndexResponse
@@ -2217,6 +2227,8 @@ class Client(OpenApiClient):
         """
         @summary 创建搜索索引
         
+        @description The large visual model feature is still in the public preview phase. You can use this feature for free for 1,000 hours of videos.
+        
         @param request: CreateSearchIndexRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateSearchIndexResponse
@@ -2257,6 +2269,8 @@ class Client(OpenApiClient):
         """
         @summary 创建搜索索引
         
+        @description The large visual model feature is still in the public preview phase. You can use this feature for free for 1,000 hours of videos.
+        
         @param request: CreateSearchIndexRequest
         @return: CreateSearchIndexResponse
         """
@@ -2270,6 +2284,8 @@ class Client(OpenApiClient):
         """
         @summary 创建搜索索引
         
+        @description The large visual model feature is still in the public preview phase. You can use this feature for free for 1,000 hours of videos.
+        
         @param request: CreateSearchIndexRequest
         @return: CreateSearchIndexResponse
         """
@@ -2282,7 +2298,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateSearchLibResponse:
         """
-        @summary 创建库
+        @summary Creates a search library to store media assets.
         
         @param request: CreateSearchLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2317,7 +2333,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateSearchLibResponse:
         """
-        @summary 创建库
+        @summary Creates a search library to store media assets.
         
         @param request: CreateSearchLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2351,7 +2367,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateSearchLibRequest,
     ) -> ice20201109_models.CreateSearchLibResponse:
         """
-        @summary 创建库
+        @summary Creates a search library to store media assets.
         
         @param request: CreateSearchLibRequest
         @return: CreateSearchLibResponse
@@ -2364,7 +2380,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateSearchLibRequest,
     ) -> ice20201109_models.CreateSearchLibResponse:
         """
-        @summary 创建库
+        @summary Creates a search library to store media assets.
         
         @param request: CreateSearchLibRequest
         @return: CreateSearchLibResponse
@@ -2378,7 +2394,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateUploadMediaResponse:
         """
-        @summary 本地媒资上传
+        @summary Obtains the upload URL and credential of a media asset and creates information about the media asset.
+        
+        @description    You can call this operation to obtain the upload URLs and credentials of audio and video files. You can also call this operation to obtain the upload URLs and credentials of images and auxiliary media assets.
+        Obtaining an upload URL and credential is essential for Intelligent Media Services (IMS) and is required in each upload operation.
+        If the video upload credential expires, you can call the RefreshUploadMedia operation to obtain a new upload credential. The default validity period of a video upload credential is 3,000 seconds.
+        After you upload a media asset, you can configure a callback to receive upload event notifications or call the GetMediaInfo operation to determine whether the media asset is uploaded based on the returned status.
+        The MediaId parameter returned by this operation can be used for media asset lifecycle management or media processing.
+        You can call this operation to upload media assets only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media asset to your own OSS bucket, you can upload the file to your OSS bucket by using [OSS SDK](https://help.aliyun.com/document_detail/32006.html), and then call the [RegisterMediaInfo](https://help.aliyun.com/document_detail/441152.html) operation to register the file in the OSS bucket with the media asset library.
+        This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
         
         @param request: CreateUploadMediaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2425,7 +2449,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateUploadMediaResponse:
         """
-        @summary 本地媒资上传
+        @summary Obtains the upload URL and credential of a media asset and creates information about the media asset.
+        
+        @description    You can call this operation to obtain the upload URLs and credentials of audio and video files. You can also call this operation to obtain the upload URLs and credentials of images and auxiliary media assets.
+        Obtaining an upload URL and credential is essential for Intelligent Media Services (IMS) and is required in each upload operation.
+        If the video upload credential expires, you can call the RefreshUploadMedia operation to obtain a new upload credential. The default validity period of a video upload credential is 3,000 seconds.
+        After you upload a media asset, you can configure a callback to receive upload event notifications or call the GetMediaInfo operation to determine whether the media asset is uploaded based on the returned status.
+        The MediaId parameter returned by this operation can be used for media asset lifecycle management or media processing.
+        You can call this operation to upload media assets only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media asset to your own OSS bucket, you can upload the file to your OSS bucket by using [OSS SDK](https://help.aliyun.com/document_detail/32006.html), and then call the [RegisterMediaInfo](https://help.aliyun.com/document_detail/441152.html) operation to register the file in the OSS bucket with the media asset library.
+        This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
         
         @param request: CreateUploadMediaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2471,7 +2503,15 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateUploadMediaRequest,
     ) -> ice20201109_models.CreateUploadMediaResponse:
         """
-        @summary 本地媒资上传
+        @summary Obtains the upload URL and credential of a media asset and creates information about the media asset.
+        
+        @description    You can call this operation to obtain the upload URLs and credentials of audio and video files. You can also call this operation to obtain the upload URLs and credentials of images and auxiliary media assets.
+        Obtaining an upload URL and credential is essential for Intelligent Media Services (IMS) and is required in each upload operation.
+        If the video upload credential expires, you can call the RefreshUploadMedia operation to obtain a new upload credential. The default validity period of a video upload credential is 3,000 seconds.
+        After you upload a media asset, you can configure a callback to receive upload event notifications or call the GetMediaInfo operation to determine whether the media asset is uploaded based on the returned status.
+        The MediaId parameter returned by this operation can be used for media asset lifecycle management or media processing.
+        You can call this operation to upload media assets only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media asset to your own OSS bucket, you can upload the file to your OSS bucket by using [OSS SDK](https://help.aliyun.com/document_detail/32006.html), and then call the [RegisterMediaInfo](https://help.aliyun.com/document_detail/441152.html) operation to register the file in the OSS bucket with the media asset library.
+        This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
         
         @param request: CreateUploadMediaRequest
         @return: CreateUploadMediaResponse
@@ -2484,7 +2524,15 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateUploadMediaRequest,
     ) -> ice20201109_models.CreateUploadMediaResponse:
         """
-        @summary 本地媒资上传
+        @summary Obtains the upload URL and credential of a media asset and creates information about the media asset.
+        
+        @description    You can call this operation to obtain the upload URLs and credentials of audio and video files. You can also call this operation to obtain the upload URLs and credentials of images and auxiliary media assets.
+        Obtaining an upload URL and credential is essential for Intelligent Media Services (IMS) and is required in each upload operation.
+        If the video upload credential expires, you can call the RefreshUploadMedia operation to obtain a new upload credential. The default validity period of a video upload credential is 3,000 seconds.
+        After you upload a media asset, you can configure a callback to receive upload event notifications or call the GetMediaInfo operation to determine whether the media asset is uploaded based on the returned status.
+        The MediaId parameter returned by this operation can be used for media asset lifecycle management or media processing.
+        You can call this operation to upload media assets only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media asset to your own OSS bucket, you can upload the file to your OSS bucket by using [OSS SDK](https://help.aliyun.com/document_detail/32006.html), and then call the [RegisterMediaInfo](https://help.aliyun.com/document_detail/441152.html) operation to register the file in the OSS bucket with the media asset library.
+        This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
         
         @param request: CreateUploadMediaRequest
         @return: CreateUploadMediaResponse
@@ -2498,7 +2546,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateUploadStreamResponse:
         """
-        @summary 本地上传媒体流
+        @summary Obtains the upload URL and credential of a media stream.
+        
+        @description    You can call this operation to upload only a local media stream. After the media stream is uploaded, it is associated with the specified media asset ID.
+        You can call this operation to upload media streams only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media stream to your own OSS bucket, you can upload the file to your OSS bucket by using [OSS SDK](https://help.aliyun.com/document_detail/32006.html), and then call the [RegisterMediaStream](https://help.aliyun.com/document_detail/440765.html) operation to associate the media stream with the specified media asset ID.
+        This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
         
         @param request: CreateUploadStreamRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2541,7 +2593,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateUploadStreamResponse:
         """
-        @summary 本地上传媒体流
+        @summary Obtains the upload URL and credential of a media stream.
+        
+        @description    You can call this operation to upload only a local media stream. After the media stream is uploaded, it is associated with the specified media asset ID.
+        You can call this operation to upload media streams only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media stream to your own OSS bucket, you can upload the file to your OSS bucket by using [OSS SDK](https://help.aliyun.com/document_detail/32006.html), and then call the [RegisterMediaStream](https://help.aliyun.com/document_detail/440765.html) operation to associate the media stream with the specified media asset ID.
+        This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
         
         @param request: CreateUploadStreamRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2583,7 +2639,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateUploadStreamRequest,
     ) -> ice20201109_models.CreateUploadStreamResponse:
         """
-        @summary 本地上传媒体流
+        @summary Obtains the upload URL and credential of a media stream.
+        
+        @description    You can call this operation to upload only a local media stream. After the media stream is uploaded, it is associated with the specified media asset ID.
+        You can call this operation to upload media streams only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media stream to your own OSS bucket, you can upload the file to your OSS bucket by using [OSS SDK](https://help.aliyun.com/document_detail/32006.html), and then call the [RegisterMediaStream](https://help.aliyun.com/document_detail/440765.html) operation to associate the media stream with the specified media asset ID.
+        This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
         
         @param request: CreateUploadStreamRequest
         @return: CreateUploadStreamResponse
@@ -2596,7 +2656,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateUploadStreamRequest,
     ) -> ice20201109_models.CreateUploadStreamResponse:
         """
-        @summary 本地上传媒体流
+        @summary Obtains the upload URL and credential of a media stream.
+        
+        @description    You can call this operation to upload only a local media stream. After the media stream is uploaded, it is associated with the specified media asset ID.
+        You can call this operation to upload media streams only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media stream to your own OSS bucket, you can upload the file to your OSS bucket by using [OSS SDK](https://help.aliyun.com/document_detail/32006.html), and then call the [RegisterMediaStream](https://help.aliyun.com/document_detail/440765.html) operation to associate the media stream with the specified media asset ID.
+        This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
         
         @param request: CreateUploadStreamRequest
         @return: CreateUploadStreamResponse
@@ -2802,7 +2866,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteCategoryResponse:
         """
-        @summary 删除媒资分类
+        @summary Deletes a media asset category.
+        
+        @description This operation also deletes the subcategories, including the level-2 and level-3 categories, of the category.
         
         @param request: DeleteCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2837,7 +2903,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteCategoryResponse:
         """
-        @summary 删除媒资分类
+        @summary Deletes a media asset category.
+        
+        @description This operation also deletes the subcategories, including the level-2 and level-3 categories, of the category.
         
         @param request: DeleteCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2871,7 +2939,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteCategoryRequest,
     ) -> ice20201109_models.DeleteCategoryResponse:
         """
-        @summary 删除媒资分类
+        @summary Deletes a media asset category.
+        
+        @description This operation also deletes the subcategories, including the level-2 and level-3 categories, of the category.
         
         @param request: DeleteCategoryRequest
         @return: DeleteCategoryResponse
@@ -2884,7 +2954,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteCategoryRequest,
     ) -> ice20201109_models.DeleteCategoryResponse:
         """
-        @summary 删除媒资分类
+        @summary Deletes a media asset category.
+        
+        @description This operation also deletes the subcategories, including the level-2 and level-3 categories, of the category.
         
         @param request: DeleteCategoryRequest
         @return: DeleteCategoryResponse
@@ -3318,7 +3390,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteEditingProjectMaterialsResponse:
         """
-        @summary 删除剪辑工程关联素材
+        @summary Deletes one or more materials from an online editing project.
         
         @param request: DeleteEditingProjectMaterialsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3357,7 +3429,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteEditingProjectMaterialsResponse:
         """
-        @summary 删除剪辑工程关联素材
+        @summary Deletes one or more materials from an online editing project.
         
         @param request: DeleteEditingProjectMaterialsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3395,7 +3467,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteEditingProjectMaterialsRequest,
     ) -> ice20201109_models.DeleteEditingProjectMaterialsResponse:
         """
-        @summary 删除剪辑工程关联素材
+        @summary Deletes one or more materials from an online editing project.
         
         @param request: DeleteEditingProjectMaterialsRequest
         @return: DeleteEditingProjectMaterialsResponse
@@ -3408,7 +3480,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteEditingProjectMaterialsRequest,
     ) -> ice20201109_models.DeleteEditingProjectMaterialsResponse:
         """
-        @summary 删除剪辑工程关联素材
+        @summary Deletes one or more materials from an online editing project.
         
         @param request: DeleteEditingProjectMaterialsRequest
         @return: DeleteEditingProjectMaterialsResponse
@@ -3422,7 +3494,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteEditingProjectsResponse:
         """
-        @summary 删除云剪辑工程
+        @summary Deletes one or more online editing project.
         
         @param request: DeleteEditingProjectsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3457,7 +3529,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteEditingProjectsResponse:
         """
-        @summary 删除云剪辑工程
+        @summary Deletes one or more online editing project.
         
         @param request: DeleteEditingProjectsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3491,7 +3563,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteEditingProjectsRequest,
     ) -> ice20201109_models.DeleteEditingProjectsResponse:
         """
-        @summary 删除云剪辑工程
+        @summary Deletes one or more online editing project.
         
         @param request: DeleteEditingProjectsRequest
         @return: DeleteEditingProjectsResponse
@@ -3504,7 +3576,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteEditingProjectsRequest,
     ) -> ice20201109_models.DeleteEditingProjectsResponse:
         """
-        @summary 删除云剪辑工程
+        @summary Deletes one or more online editing project.
         
         @param request: DeleteEditingProjectsRequest
         @return: DeleteEditingProjectsResponse
@@ -4114,7 +4186,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteMediaFromSearchLibResponse:
         """
-        @summary 删除媒资从搜索
+        @summary Deletes a specific media asset from a search library.
         
         @param request: DeleteMediaFromSearchLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4153,7 +4225,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteMediaFromSearchLibResponse:
         """
-        @summary 删除媒资从搜索
+        @summary Deletes a specific media asset from a search library.
         
         @param request: DeleteMediaFromSearchLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4191,7 +4263,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteMediaFromSearchLibRequest,
     ) -> ice20201109_models.DeleteMediaFromSearchLibResponse:
         """
-        @summary 删除媒资从搜索
+        @summary Deletes a specific media asset from a search library.
         
         @param request: DeleteMediaFromSearchLibRequest
         @return: DeleteMediaFromSearchLibResponse
@@ -4204,7 +4276,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteMediaFromSearchLibRequest,
     ) -> ice20201109_models.DeleteMediaFromSearchLibResponse:
         """
-        @summary 删除媒资从搜索
+        @summary Deletes a specific media asset from a search library.
         
         @param request: DeleteMediaFromSearchLibRequest
         @return: DeleteMediaFromSearchLibResponse
@@ -4218,7 +4290,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteMediaInfosResponse:
         """
-        @summary 删除媒资信息
+        @summary Deletes multiple media assets at a time. You can delete at most 20 media assets at a time. If MediaIds is specified, it is preferentially used. If MediaIds is empty, InputURLs must be specified.
         
         @param request: DeleteMediaInfosRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4257,7 +4329,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteMediaInfosResponse:
         """
-        @summary 删除媒资信息
+        @summary Deletes multiple media assets at a time. You can delete at most 20 media assets at a time. If MediaIds is specified, it is preferentially used. If MediaIds is empty, InputURLs must be specified.
         
         @param request: DeleteMediaInfosRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4295,7 +4367,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteMediaInfosRequest,
     ) -> ice20201109_models.DeleteMediaInfosResponse:
         """
-        @summary 删除媒资信息
+        @summary Deletes multiple media assets at a time. You can delete at most 20 media assets at a time. If MediaIds is specified, it is preferentially used. If MediaIds is empty, InputURLs must be specified.
         
         @param request: DeleteMediaInfosRequest
         @return: DeleteMediaInfosResponse
@@ -4308,7 +4380,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteMediaInfosRequest,
     ) -> ice20201109_models.DeleteMediaInfosResponse:
         """
-        @summary 删除媒资信息
+        @summary Deletes multiple media assets at a time. You can delete at most 20 media assets at a time. If MediaIds is specified, it is preferentially used. If MediaIds is empty, InputURLs must be specified.
         
         @param request: DeleteMediaInfosRequest
         @return: DeleteMediaInfosResponse
@@ -4322,7 +4394,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteMediaMarksResponse:
         """
-        @summary 删除媒资标注信息
+        @summary Deletes the marks of a media asset.
         
         @param request: DeleteMediaMarksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4359,7 +4431,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteMediaMarksResponse:
         """
-        @summary 删除媒资标注信息
+        @summary Deletes the marks of a media asset.
         
         @param request: DeleteMediaMarksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4395,7 +4467,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteMediaMarksRequest,
     ) -> ice20201109_models.DeleteMediaMarksResponse:
         """
-        @summary 删除媒资标注信息
+        @summary Deletes the marks of a media asset.
         
         @param request: DeleteMediaMarksRequest
         @return: DeleteMediaMarksResponse
@@ -4408,7 +4480,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteMediaMarksRequest,
     ) -> ice20201109_models.DeleteMediaMarksResponse:
         """
-        @summary 删除媒资标注信息
+        @summary Deletes the marks of a media asset.
         
         @param request: DeleteMediaMarksRequest
         @return: DeleteMediaMarksResponse
@@ -4518,7 +4590,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeletePlayInfoResponse:
         """
-        @summary 删除播放信息
+        @summary Deletes media streams such as video streams and audio streams.
+        
+        @description You can call this operation to delete multiple media streams at a time.
         
         @param request: DeletePlayInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4557,7 +4631,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeletePlayInfoResponse:
         """
-        @summary 删除播放信息
+        @summary Deletes media streams such as video streams and audio streams.
+        
+        @description You can call this operation to delete multiple media streams at a time.
         
         @param request: DeletePlayInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4595,7 +4671,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeletePlayInfoRequest,
     ) -> ice20201109_models.DeletePlayInfoResponse:
         """
-        @summary 删除播放信息
+        @summary Deletes media streams such as video streams and audio streams.
+        
+        @description You can call this operation to delete multiple media streams at a time.
         
         @param request: DeletePlayInfoRequest
         @return: DeletePlayInfoResponse
@@ -4608,7 +4686,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeletePlayInfoRequest,
     ) -> ice20201109_models.DeletePlayInfoResponse:
         """
-        @summary 删除播放信息
+        @summary Deletes media streams such as video streams and audio streams.
+        
+        @description You can call this operation to delete multiple media streams at a time.
         
         @param request: DeletePlayInfoRequest
         @return: DeletePlayInfoResponse
@@ -5826,7 +5906,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DropSearchIndexResponse:
         """
-        @summary 删除搜索索引
+        @summary Deletes a search index. After you delete a search index, the existing index data is cleared and index-based analysis, storage, and query are not supported for subsequent media assets.
         
         @param request: DropSearchIndexRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5863,7 +5943,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DropSearchIndexResponse:
         """
-        @summary 删除搜索索引
+        @summary Deletes a search index. After you delete a search index, the existing index data is cleared and index-based analysis, storage, and query are not supported for subsequent media assets.
         
         @param request: DropSearchIndexRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5899,7 +5979,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DropSearchIndexRequest,
     ) -> ice20201109_models.DropSearchIndexResponse:
         """
-        @summary 删除搜索索引
+        @summary Deletes a search index. After you delete a search index, the existing index data is cleared and index-based analysis, storage, and query are not supported for subsequent media assets.
         
         @param request: DropSearchIndexRequest
         @return: DropSearchIndexResponse
@@ -5912,7 +5992,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DropSearchIndexRequest,
     ) -> ice20201109_models.DropSearchIndexResponse:
         """
-        @summary 删除搜索索引
+        @summary Deletes a search index. After you delete a search index, the existing index data is cleared and index-based analysis, storage, and query are not supported for subsequent media assets.
         
         @param request: DropSearchIndexRequest
         @return: DropSearchIndexResponse
@@ -5926,7 +6006,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DropSearchLibResponse:
         """
-        @summary 删除库
+        @summary Deletes a search library and all media assets in the library.
         
         @param request: DropSearchLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5961,7 +6041,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DropSearchLibResponse:
         """
-        @summary 删除库
+        @summary Deletes a search library and all media assets in the library.
         
         @param request: DropSearchLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5995,7 +6075,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DropSearchLibRequest,
     ) -> ice20201109_models.DropSearchLibResponse:
         """
-        @summary 删除库
+        @summary Deletes a search library and all media assets in the library.
         
         @param request: DropSearchLibRequest
         @return: DropSearchLibResponse
@@ -6008,7 +6088,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DropSearchLibRequest,
     ) -> ice20201109_models.DropSearchLibResponse:
         """
-        @summary 删除库
+        @summary Deletes a search library and all media assets in the library.
         
         @param request: DropSearchLibRequest
         @return: DropSearchLibResponse
@@ -6500,7 +6580,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetCategoriesResponse:
         """
-        @summary 查询媒资分类
+        @summary Queries the information about a category and its subcategories.
+        
+        @description You can call this operation to query the information about a category and its subcategories based on the category ID and category type.
         
         @param request: GetCategoriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6543,7 +6625,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetCategoriesResponse:
         """
-        @summary 查询媒资分类
+        @summary Queries the information about a category and its subcategories.
+        
+        @description You can call this operation to query the information about a category and its subcategories based on the category ID and category type.
         
         @param request: GetCategoriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6585,7 +6669,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetCategoriesRequest,
     ) -> ice20201109_models.GetCategoriesResponse:
         """
-        @summary 查询媒资分类
+        @summary Queries the information about a category and its subcategories.
+        
+        @description You can call this operation to query the information about a category and its subcategories based on the category ID and category type.
         
         @param request: GetCategoriesRequest
         @return: GetCategoriesResponse
@@ -6598,7 +6684,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetCategoriesRequest,
     ) -> ice20201109_models.GetCategoriesResponse:
         """
-        @summary 查询媒资分类
+        @summary Queries the information about a category and its subcategories.
+        
+        @description You can call this operation to query the information about a category and its subcategories based on the category ID and category type.
         
         @param request: GetCategoriesRequest
         @return: GetCategoriesResponse
@@ -7248,7 +7336,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetEditingProjectResponse:
         """
-        @summary 获取单个云剪辑工程
+        @summary Queries the information about an online editing project.
         
         @param request: GetEditingProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7285,7 +7373,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetEditingProjectResponse:
         """
-        @summary 获取单个云剪辑工程
+        @summary Queries the information about an online editing project.
         
         @param request: GetEditingProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7321,7 +7409,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetEditingProjectRequest,
     ) -> ice20201109_models.GetEditingProjectResponse:
         """
-        @summary 获取单个云剪辑工程
+        @summary Queries the information about an online editing project.
         
         @param request: GetEditingProjectRequest
         @return: GetEditingProjectResponse
@@ -7334,7 +7422,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetEditingProjectRequest,
     ) -> ice20201109_models.GetEditingProjectResponse:
         """
-        @summary 获取单个云剪辑工程
+        @summary Queries the information about an online editing project.
         
         @param request: GetEditingProjectRequest
         @return: GetEditingProjectResponse
@@ -7348,7 +7436,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetEditingProjectMaterialsResponse:
         """
-        @summary 获取剪辑工程关联素材
+        @summary Queries all materials associated with an online editing project.
         
         @param request: GetEditingProjectMaterialsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7383,7 +7471,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetEditingProjectMaterialsResponse:
         """
-        @summary 获取剪辑工程关联素材
+        @summary Queries all materials associated with an online editing project.
         
         @param request: GetEditingProjectMaterialsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7417,7 +7505,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetEditingProjectMaterialsRequest,
     ) -> ice20201109_models.GetEditingProjectMaterialsResponse:
         """
-        @summary 获取剪辑工程关联素材
+        @summary Queries all materials associated with an online editing project.
         
         @param request: GetEditingProjectMaterialsRequest
         @return: GetEditingProjectMaterialsResponse
@@ -7430,7 +7518,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetEditingProjectMaterialsRequest,
     ) -> ice20201109_models.GetEditingProjectMaterialsResponse:
         """
-        @summary 获取剪辑工程关联素材
+        @summary Queries all materials associated with an online editing project.
         
         @param request: GetEditingProjectMaterialsRequest
         @return: GetEditingProjectMaterialsResponse
@@ -7518,7 +7606,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveEditingIndexFileResponse:
         """
-        @summary 获取直播剪辑m3u8索引文件
+        @summary Queries the index file of a live stream. The index file is used to preview an editing project in the console.
         
         @param request: GetLiveEditingIndexFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7559,7 +7647,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveEditingIndexFileResponse:
         """
-        @summary 获取直播剪辑m3u8索引文件
+        @summary Queries the index file of a live stream. The index file is used to preview an editing project in the console.
         
         @param request: GetLiveEditingIndexFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7599,7 +7687,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveEditingIndexFileRequest,
     ) -> ice20201109_models.GetLiveEditingIndexFileResponse:
         """
-        @summary 获取直播剪辑m3u8索引文件
+        @summary Queries the index file of a live stream. The index file is used to preview an editing project in the console.
         
         @param request: GetLiveEditingIndexFileRequest
         @return: GetLiveEditingIndexFileResponse
@@ -7612,7 +7700,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveEditingIndexFileRequest,
     ) -> ice20201109_models.GetLiveEditingIndexFileResponse:
         """
-        @summary 获取直播剪辑m3u8索引文件
+        @summary Queries the index file of a live stream. The index file is used to preview an editing project in the console.
         
         @param request: GetLiveEditingIndexFileRequest
         @return: GetLiveEditingIndexFileResponse
@@ -8282,7 +8370,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetMediaInfoResponse:
         """
-        @summary 获取媒资内容信息
+        @summary Queries information about a media asset based on the ID of the media asset in Intelligent Media Services (IMS) or the input URL of the media asset.
+        
+        @description If the MediaId parameter is specified, the MediaId parameter is preferentially used for the query. If the MediaId parameter is left empty, the InputURL parameter must be specified.
         
         @param request: GetMediaInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8323,7 +8413,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetMediaInfoResponse:
         """
-        @summary 获取媒资内容信息
+        @summary Queries information about a media asset based on the ID of the media asset in Intelligent Media Services (IMS) or the input URL of the media asset.
+        
+        @description If the MediaId parameter is specified, the MediaId parameter is preferentially used for the query. If the MediaId parameter is left empty, the InputURL parameter must be specified.
         
         @param request: GetMediaInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8363,7 +8455,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetMediaInfoRequest,
     ) -> ice20201109_models.GetMediaInfoResponse:
         """
-        @summary 获取媒资内容信息
+        @summary Queries information about a media asset based on the ID of the media asset in Intelligent Media Services (IMS) or the input URL of the media asset.
+        
+        @description If the MediaId parameter is specified, the MediaId parameter is preferentially used for the query. If the MediaId parameter is left empty, the InputURL parameter must be specified.
         
         @param request: GetMediaInfoRequest
         @return: GetMediaInfoResponse
@@ -8376,7 +8470,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetMediaInfoRequest,
     ) -> ice20201109_models.GetMediaInfoResponse:
         """
-        @summary 获取媒资内容信息
+        @summary Queries information about a media asset based on the ID of the media asset in Intelligent Media Services (IMS) or the input URL of the media asset.
+        
+        @description If the MediaId parameter is specified, the MediaId parameter is preferentially used for the query. If the MediaId parameter is left empty, the InputURL parameter must be specified.
         
         @param request: GetMediaInfoRequest
         @return: GetMediaInfoResponse
@@ -8478,7 +8574,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetMediaMarksResponse:
         """
-        @summary 获取媒资标注信息
+        @summary Queries the information about marks based on mark IDs.
         
         @param request: GetMediaMarksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8515,7 +8611,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetMediaMarksResponse:
         """
-        @summary 获取媒资标注信息
+        @summary Queries the information about marks based on mark IDs.
         
         @param request: GetMediaMarksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8551,7 +8647,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetMediaMarksRequest,
     ) -> ice20201109_models.GetMediaMarksResponse:
         """
-        @summary 获取媒资标注信息
+        @summary Queries the information about marks based on mark IDs.
         
         @param request: GetMediaMarksRequest
         @return: GetMediaMarksResponse
@@ -8564,7 +8660,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetMediaMarksRequest,
     ) -> ice20201109_models.GetMediaMarksResponse:
         """
-        @summary 获取媒资标注信息
+        @summary Queries the information about marks based on mark IDs.
         
         @param request: GetMediaMarksRequest
         @return: GetMediaMarksResponse
@@ -8862,7 +8958,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetPlayInfoResponse:
         """
-        @summary 获取播放信息
+        @summary Queries the playback URL of a video or audio file based on its ID.
+        
+        @description You use the ID of a video or audio file to query the playback URL of the file. Then, you can use the playback URL to play the audio or video in ApsaraVideo Player SDK (for URL-based playback) or a third-party player.
         
         @param request: GetPlayInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8899,7 +8997,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetPlayInfoResponse:
         """
-        @summary 获取播放信息
+        @summary Queries the playback URL of a video or audio file based on its ID.
+        
+        @description You use the ID of a video or audio file to query the playback URL of the file. Then, you can use the playback URL to play the audio or video in ApsaraVideo Player SDK (for URL-based playback) or a third-party player.
         
         @param request: GetPlayInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8935,7 +9035,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetPlayInfoRequest,
     ) -> ice20201109_models.GetPlayInfoResponse:
         """
-        @summary 获取播放信息
+        @summary Queries the playback URL of a video or audio file based on its ID.
+        
+        @description You use the ID of a video or audio file to query the playback URL of the file. Then, you can use the playback URL to play the audio or video in ApsaraVideo Player SDK (for URL-based playback) or a third-party player.
         
         @param request: GetPlayInfoRequest
         @return: GetPlayInfoResponse
@@ -8948,7 +9050,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetPlayInfoRequest,
     ) -> ice20201109_models.GetPlayInfoResponse:
         """
-        @summary 获取播放信息
+        @summary Queries the playback URL of a video or audio file based on its ID.
+        
+        @description You use the ID of a video or audio file to query the playback URL of the file. Then, you can use the playback URL to play the audio or video in ApsaraVideo Player SDK (for URL-based playback) or a third-party player.
         
         @param request: GetPlayInfoRequest
         @return: GetPlayInfoResponse
@@ -9942,7 +10046,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetUrlUploadInfosResponse:
         """
-        @summary 获取URL上传信息
+        @summary Queries the information about URL-based upload jobs.
+        
+        @description You can call this operation to query the information, including the upload status, user data, creation time, and completion time, about URL-based upload jobs based on the returned job IDs or the URLs used during the upload.
+        If an upload job fails, you can view the error code and error message. If an upload job is successful, you can obtain the video ID.
         
         @param request: GetUrlUploadInfosRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9979,7 +10086,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetUrlUploadInfosResponse:
         """
-        @summary 获取URL上传信息
+        @summary Queries the information about URL-based upload jobs.
+        
+        @description You can call this operation to query the information, including the upload status, user data, creation time, and completion time, about URL-based upload jobs based on the returned job IDs or the URLs used during the upload.
+        If an upload job fails, you can view the error code and error message. If an upload job is successful, you can obtain the video ID.
         
         @param request: GetUrlUploadInfosRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10015,7 +10125,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetUrlUploadInfosRequest,
     ) -> ice20201109_models.GetUrlUploadInfosResponse:
         """
-        @summary 获取URL上传信息
+        @summary Queries the information about URL-based upload jobs.
+        
+        @description You can call this operation to query the information, including the upload status, user data, creation time, and completion time, about URL-based upload jobs based on the returned job IDs or the URLs used during the upload.
+        If an upload job fails, you can view the error code and error message. If an upload job is successful, you can obtain the video ID.
         
         @param request: GetUrlUploadInfosRequest
         @return: GetUrlUploadInfosResponse
@@ -10028,7 +10141,10 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetUrlUploadInfosRequest,
     ) -> ice20201109_models.GetUrlUploadInfosResponse:
         """
-        @summary 获取URL上传信息
+        @summary Queries the information about URL-based upload jobs.
+        
+        @description You can call this operation to query the information, including the upload status, user data, creation time, and completion time, about URL-based upload jobs based on the returned job IDs or the URLs used during the upload.
+        If an upload job fails, you can view the error code and error message. If an upload job is successful, you can obtain the video ID.
         
         @param request: GetUrlUploadInfosRequest
         @return: GetUrlUploadInfosResponse
@@ -10042,7 +10158,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetVideoListResponse:
         """
-        @summary 获取媒资新增列表
+        @summary Queries information about video and audio files.
+        
+        @description You can call this operation to query information about up to the first 5,000 audio and video files based on the filter condition, such as the status or category ID of the file. We recommend that you set the StartTime and EndTime parameters to narrow down the time range and perform multiple queries to obtain data.
         
         @param request: GetVideoListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10089,7 +10207,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetVideoListResponse:
         """
-        @summary 获取媒资新增列表
+        @summary Queries information about video and audio files.
+        
+        @description You can call this operation to query information about up to the first 5,000 audio and video files based on the filter condition, such as the status or category ID of the file. We recommend that you set the StartTime and EndTime parameters to narrow down the time range and perform multiple queries to obtain data.
         
         @param request: GetVideoListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10135,7 +10255,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetVideoListRequest,
     ) -> ice20201109_models.GetVideoListResponse:
         """
-        @summary 获取媒资新增列表
+        @summary Queries information about video and audio files.
+        
+        @description You can call this operation to query information about up to the first 5,000 audio and video files based on the filter condition, such as the status or category ID of the file. We recommend that you set the StartTime and EndTime parameters to narrow down the time range and perform multiple queries to obtain data.
         
         @param request: GetVideoListRequest
         @return: GetVideoListResponse
@@ -10148,7 +10270,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetVideoListRequest,
     ) -> ice20201109_models.GetVideoListResponse:
         """
-        @summary 获取媒资新增列表
+        @summary Queries information about video and audio files.
+        
+        @description You can call this operation to query information about up to the first 5,000 audio and video files based on the filter condition, such as the status or category ID of the file. We recommend that you set the StartTime and EndTime parameters to narrow down the time range and perform multiple queries to obtain data.
         
         @param request: GetVideoListRequest
         @return: GetVideoListResponse
@@ -10258,7 +10382,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.InsertMediaToSearchLibResponse:
         """
-        @summary 插入媒资到搜索
+        @summary Adds a media asset in a search library. Before you call this operation, you must create a search library.
         
         @param request: InsertMediaToSearchLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10301,7 +10425,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.InsertMediaToSearchLibResponse:
         """
-        @summary 插入媒资到搜索
+        @summary Adds a media asset in a search library. Before you call this operation, you must create a search library.
         
         @param request: InsertMediaToSearchLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10343,7 +10467,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.InsertMediaToSearchLibRequest,
     ) -> ice20201109_models.InsertMediaToSearchLibResponse:
         """
-        @summary 插入媒资到搜索
+        @summary Adds a media asset in a search library. Before you call this operation, you must create a search library.
         
         @param request: InsertMediaToSearchLibRequest
         @return: InsertMediaToSearchLibResponse
@@ -10356,7 +10480,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.InsertMediaToSearchLibRequest,
     ) -> ice20201109_models.InsertMediaToSearchLibResponse:
         """
-        @summary 插入媒资到搜索
+        @summary Adds a media asset in a search library. Before you call this operation, you must create a search library.
         
         @param request: InsertMediaToSearchLibRequest
         @return: InsertMediaToSearchLibResponse
@@ -10482,7 +10606,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListAllPublicMediaTagsResponse:
         """
-        @summary 列出公共素材库所有标签
+        @summary Queries a list of tags of media assets in the public media library.
         
         @param request: ListAllPublicMediaTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10519,7 +10643,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListAllPublicMediaTagsResponse:
         """
-        @summary 列出公共素材库所有标签
+        @summary Queries a list of tags of media assets in the public media library.
         
         @param request: ListAllPublicMediaTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10555,7 +10679,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListAllPublicMediaTagsRequest,
     ) -> ice20201109_models.ListAllPublicMediaTagsResponse:
         """
-        @summary 列出公共素材库所有标签
+        @summary Queries a list of tags of media assets in the public media library.
         
         @param request: ListAllPublicMediaTagsRequest
         @return: ListAllPublicMediaTagsResponse
@@ -10568,7 +10692,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListAllPublicMediaTagsRequest,
     ) -> ice20201109_models.ListAllPublicMediaTagsResponse:
         """
-        @summary 列出公共素材库所有标签
+        @summary Queries a list of tags of media assets in the public media library.
         
         @param request: ListAllPublicMediaTagsRequest
         @return: ListAllPublicMediaTagsResponse
@@ -11594,7 +11718,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListEditingProjectsResponse:
         """
-        @summary 获取云剪辑工程列表
+        @summary Queries a list of projects that meet the specified conditions. You can filter projects by project creation time.
         
         @param request: ListEditingProjectsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11647,7 +11771,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListEditingProjectsResponse:
         """
-        @summary 获取云剪辑工程列表
+        @summary Queries a list of projects that meet the specified conditions. You can filter projects by project creation time.
         
         @param request: ListEditingProjectsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11699,7 +11823,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListEditingProjectsRequest,
     ) -> ice20201109_models.ListEditingProjectsResponse:
         """
-        @summary 获取云剪辑工程列表
+        @summary Queries a list of projects that meet the specified conditions. You can filter projects by project creation time.
         
         @param request: ListEditingProjectsRequest
         @return: ListEditingProjectsResponse
@@ -11712,7 +11836,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListEditingProjectsRequest,
     ) -> ice20201109_models.ListEditingProjectsResponse:
         """
-        @summary 获取云剪辑工程列表
+        @summary Queries a list of projects that meet the specified conditions. You can filter projects by project creation time.
         
         @param request: ListEditingProjectsRequest
         @return: ListEditingProjectsResponse
@@ -12518,7 +12642,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListMediaBasicInfosResponse:
         """
-        @summary 列出符合条件的媒资基础信息
+        @summary Queries the basic information of all media assets that meet the specified conditions.
+        
+        @description If includeFileBasicInfo is set to true, the basic information, such as the duration and file size, of the source file is also returned. At most the first 100 entries that meet the specified conditions are returned. All media assets must exactly match all non-empty fields. The fields that support exact match include MediaType, Source, BusinessType, Category, and Status. If all information cannot be returned at a time, you can use NextToken to initiate a request to retrieve a new page of results.
         
         @param request: ListMediaBasicInfosRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12573,7 +12699,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListMediaBasicInfosResponse:
         """
-        @summary 列出符合条件的媒资基础信息
+        @summary Queries the basic information of all media assets that meet the specified conditions.
+        
+        @description If includeFileBasicInfo is set to true, the basic information, such as the duration and file size, of the source file is also returned. At most the first 100 entries that meet the specified conditions are returned. All media assets must exactly match all non-empty fields. The fields that support exact match include MediaType, Source, BusinessType, Category, and Status. If all information cannot be returned at a time, you can use NextToken to initiate a request to retrieve a new page of results.
         
         @param request: ListMediaBasicInfosRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12627,7 +12755,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListMediaBasicInfosRequest,
     ) -> ice20201109_models.ListMediaBasicInfosResponse:
         """
-        @summary 列出符合条件的媒资基础信息
+        @summary Queries the basic information of all media assets that meet the specified conditions.
+        
+        @description If includeFileBasicInfo is set to true, the basic information, such as the duration and file size, of the source file is also returned. At most the first 100 entries that meet the specified conditions are returned. All media assets must exactly match all non-empty fields. The fields that support exact match include MediaType, Source, BusinessType, Category, and Status. If all information cannot be returned at a time, you can use NextToken to initiate a request to retrieve a new page of results.
         
         @param request: ListMediaBasicInfosRequest
         @return: ListMediaBasicInfosResponse
@@ -12640,7 +12770,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListMediaBasicInfosRequest,
     ) -> ice20201109_models.ListMediaBasicInfosResponse:
         """
-        @summary 列出符合条件的媒资基础信息
+        @summary Queries the basic information of all media assets that meet the specified conditions.
+        
+        @description If includeFileBasicInfo is set to true, the basic information, such as the duration and file size, of the source file is also returned. At most the first 100 entries that meet the specified conditions are returned. All media assets must exactly match all non-empty fields. The fields that support exact match include MediaType, Source, BusinessType, Category, and Status. If all information cannot be returned at a time, you can use NextToken to initiate a request to retrieve a new page of results.
         
         @param request: ListMediaBasicInfosRequest
         @return: ListMediaBasicInfosResponse
@@ -12766,7 +12898,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListMediaMarksResponse:
         """
-        @summary 获取媒资的标注信息
+        @summary Queries a list of marks of a media asset.
         
         @param request: ListMediaMarksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12803,7 +12935,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListMediaMarksResponse:
         """
-        @summary 获取媒资的标注信息
+        @summary Queries a list of marks of a media asset.
         
         @param request: ListMediaMarksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12839,7 +12971,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListMediaMarksRequest,
     ) -> ice20201109_models.ListMediaMarksResponse:
         """
-        @summary 获取媒资的标注信息
+        @summary Queries a list of marks of a media asset.
         
         @param request: ListMediaMarksRequest
         @return: ListMediaMarksResponse
@@ -12852,7 +12984,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListMediaMarksRequest,
     ) -> ice20201109_models.ListMediaMarksResponse:
         """
-        @summary 获取媒资的标注信息
+        @summary Queries a list of marks of a media asset.
         
         @param request: ListMediaMarksRequest
         @return: ListMediaMarksResponse
@@ -13214,7 +13346,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListPublicMediaBasicInfosResponse:
         """
-        @summary 列出公共素材库素材的基础信息
+        @summary Queries a list of media assets in the public media library that meet the specified conditions. A maximum of 100 media assets can be returned.
         
         @param request: ListPublicMediaBasicInfosRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13261,7 +13393,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListPublicMediaBasicInfosResponse:
         """
-        @summary 列出公共素材库素材的基础信息
+        @summary Queries a list of media assets in the public media library that meet the specified conditions. A maximum of 100 media assets can be returned.
         
         @param request: ListPublicMediaBasicInfosRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13307,7 +13439,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListPublicMediaBasicInfosRequest,
     ) -> ice20201109_models.ListPublicMediaBasicInfosResponse:
         """
-        @summary 列出公共素材库素材的基础信息
+        @summary Queries a list of media assets in the public media library that meet the specified conditions. A maximum of 100 media assets can be returned.
         
         @param request: ListPublicMediaBasicInfosRequest
         @return: ListPublicMediaBasicInfosResponse
@@ -13320,7 +13452,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListPublicMediaBasicInfosRequest,
     ) -> ice20201109_models.ListPublicMediaBasicInfosResponse:
         """
-        @summary 列出公共素材库素材的基础信息
+        @summary Queries a list of media assets in the public media library that meet the specified conditions. A maximum of 100 media assets can be returned.
         
         @param request: ListPublicMediaBasicInfosRequest
         @return: ListPublicMediaBasicInfosResponse
@@ -14628,7 +14760,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryMediaIndexJobResponse:
         """
-        @summary 查询索引任务
+        @summary Queries the indexing jobs enabled for a media asset.
         
         @param request: QueryMediaIndexJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14665,7 +14797,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryMediaIndexJobResponse:
         """
-        @summary 查询索引任务
+        @summary Queries the indexing jobs enabled for a media asset.
         
         @param request: QueryMediaIndexJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14701,7 +14833,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryMediaIndexJobRequest,
     ) -> ice20201109_models.QueryMediaIndexJobResponse:
         """
-        @summary 查询索引任务
+        @summary Queries the indexing jobs enabled for a media asset.
         
         @param request: QueryMediaIndexJobRequest
         @return: QueryMediaIndexJobResponse
@@ -14714,7 +14846,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryMediaIndexJobRequest,
     ) -> ice20201109_models.QueryMediaIndexJobResponse:
         """
-        @summary 查询索引任务
+        @summary Queries the indexing jobs enabled for a media asset.
         
         @param request: QueryMediaIndexJobRequest
         @return: QueryMediaIndexJobResponse
@@ -14728,7 +14860,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QuerySearchIndexResponse:
         """
-        @summary 查询搜索索引
+        @summary Queries the details of a search index.
         
         @param request: QuerySearchIndexRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14765,7 +14897,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QuerySearchIndexResponse:
         """
-        @summary 查询搜索索引
+        @summary Queries the details of a search index.
         
         @param request: QuerySearchIndexRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14801,7 +14933,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.QuerySearchIndexRequest,
     ) -> ice20201109_models.QuerySearchIndexResponse:
         """
-        @summary 查询搜索索引
+        @summary Queries the details of a search index.
         
         @param request: QuerySearchIndexRequest
         @return: QuerySearchIndexResponse
@@ -14814,7 +14946,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.QuerySearchIndexRequest,
     ) -> ice20201109_models.QuerySearchIndexResponse:
         """
-        @summary 查询搜索索引
+        @summary Queries the details of a search index.
         
         @param request: QuerySearchIndexRequest
         @return: QuerySearchIndexResponse
@@ -14828,7 +14960,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QuerySearchLibResponse:
         """
-        @summary 查询库
+        @summary Queries the information about a search library.
         
         @param request: QuerySearchLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14863,7 +14995,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QuerySearchLibResponse:
         """
-        @summary 查询库
+        @summary Queries the information about a search library.
         
         @param request: QuerySearchLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14897,7 +15029,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.QuerySearchLibRequest,
     ) -> ice20201109_models.QuerySearchLibResponse:
         """
-        @summary 查询库
+        @summary Queries the information about a search library.
         
         @param request: QuerySearchLibRequest
         @return: QuerySearchLibResponse
@@ -14910,7 +15042,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.QuerySearchLibRequest,
     ) -> ice20201109_models.QuerySearchLibResponse:
         """
-        @summary 查询库
+        @summary Queries the information about a search library.
         
         @param request: QuerySearchLibRequest
         @return: QuerySearchLibResponse
@@ -15016,7 +15148,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.RefreshUploadMediaResponse:
         """
-        @summary 刷新媒资上传凭证
+        @summary Obtain a new upload credential for a media asset after its upload credential expires.
+        
+        @description You can also call this operation to overwrite media files. After you obtain the upload URL of a media file, you can upload the media file again without changing the audio or video ID.
         
         @param request: RefreshUploadMediaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15051,7 +15185,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.RefreshUploadMediaResponse:
         """
-        @summary 刷新媒资上传凭证
+        @summary Obtain a new upload credential for a media asset after its upload credential expires.
+        
+        @description You can also call this operation to overwrite media files. After you obtain the upload URL of a media file, you can upload the media file again without changing the audio or video ID.
         
         @param request: RefreshUploadMediaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15085,7 +15221,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.RefreshUploadMediaRequest,
     ) -> ice20201109_models.RefreshUploadMediaResponse:
         """
-        @summary 刷新媒资上传凭证
+        @summary Obtain a new upload credential for a media asset after its upload credential expires.
+        
+        @description You can also call this operation to overwrite media files. After you obtain the upload URL of a media file, you can upload the media file again without changing the audio or video ID.
         
         @param request: RefreshUploadMediaRequest
         @return: RefreshUploadMediaResponse
@@ -15098,7 +15236,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.RefreshUploadMediaRequest,
     ) -> ice20201109_models.RefreshUploadMediaResponse:
         """
-        @summary 刷新媒资上传凭证
+        @summary Obtain a new upload credential for a media asset after its upload credential expires.
+        
+        @description You can also call this operation to overwrite media files. After you obtain the upload URL of a media file, you can upload the media file again without changing the audio or video ID.
         
         @param request: RefreshUploadMediaRequest
         @return: RefreshUploadMediaResponse
@@ -15112,7 +15252,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.RegisterMediaInfoResponse:
         """
-        @summary 注册内容库资源
+        @summary Registers a media asset with Intelligent Media Services (IMS). IMS assigns an ID to the media asset. This operation asynchronously accesses the media asset service in which the media asset is stored to obtain the file information of the media asset based on the input URL. You can also specify basic information, such as the title, tags, and description, for the media asset. This operation returns the ID of the media asset. You can call the GetMediaInfo operation based on the ID to query the details of the media asset. You can set InputURL only to the URL of an Object Storage Service (OSS) file or an ApsaraVideo VOD media asset.
+        
+        @description Registering a media asset is an asynchronous job that takes 2 to 3 seconds. When the operation returns the ID of the media asset, the registration may have not be completed. If you call the GetMediaInfo operation at this time, you may fail to obtain the information about the media asset.
         
         @param request: RegisterMediaInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15175,7 +15317,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.RegisterMediaInfoResponse:
         """
-        @summary 注册内容库资源
+        @summary Registers a media asset with Intelligent Media Services (IMS). IMS assigns an ID to the media asset. This operation asynchronously accesses the media asset service in which the media asset is stored to obtain the file information of the media asset based on the input URL. You can also specify basic information, such as the title, tags, and description, for the media asset. This operation returns the ID of the media asset. You can call the GetMediaInfo operation based on the ID to query the details of the media asset. You can set InputURL only to the URL of an Object Storage Service (OSS) file or an ApsaraVideo VOD media asset.
+        
+        @description Registering a media asset is an asynchronous job that takes 2 to 3 seconds. When the operation returns the ID of the media asset, the registration may have not be completed. If you call the GetMediaInfo operation at this time, you may fail to obtain the information about the media asset.
         
         @param request: RegisterMediaInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15237,7 +15381,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.RegisterMediaInfoRequest,
     ) -> ice20201109_models.RegisterMediaInfoResponse:
         """
-        @summary 注册内容库资源
+        @summary Registers a media asset with Intelligent Media Services (IMS). IMS assigns an ID to the media asset. This operation asynchronously accesses the media asset service in which the media asset is stored to obtain the file information of the media asset based on the input URL. You can also specify basic information, such as the title, tags, and description, for the media asset. This operation returns the ID of the media asset. You can call the GetMediaInfo operation based on the ID to query the details of the media asset. You can set InputURL only to the URL of an Object Storage Service (OSS) file or an ApsaraVideo VOD media asset.
+        
+        @description Registering a media asset is an asynchronous job that takes 2 to 3 seconds. When the operation returns the ID of the media asset, the registration may have not be completed. If you call the GetMediaInfo operation at this time, you may fail to obtain the information about the media asset.
         
         @param request: RegisterMediaInfoRequest
         @return: RegisterMediaInfoResponse
@@ -15250,7 +15396,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.RegisterMediaInfoRequest,
     ) -> ice20201109_models.RegisterMediaInfoResponse:
         """
-        @summary 注册内容库资源
+        @summary Registers a media asset with Intelligent Media Services (IMS). IMS assigns an ID to the media asset. This operation asynchronously accesses the media asset service in which the media asset is stored to obtain the file information of the media asset based on the input URL. You can also specify basic information, such as the title, tags, and description, for the media asset. This operation returns the ID of the media asset. You can call the GetMediaInfo operation based on the ID to query the details of the media asset. You can set InputURL only to the URL of an Object Storage Service (OSS) file or an ApsaraVideo VOD media asset.
+        
+        @description Registering a media asset is an asynchronous job that takes 2 to 3 seconds. When the operation returns the ID of the media asset, the registration may have not be completed. If you call the GetMediaInfo operation at this time, you may fail to obtain the information about the media asset.
         
         @param request: RegisterMediaInfoRequest
         @return: RegisterMediaInfoResponse
@@ -15264,7 +15412,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.RegisterMediaStreamResponse:
         """
-        @summary 注册媒体流
+        @summary Registers a media stream.
+        
+        @description You can call this operation to register a media stream file in an Object Storage Service (OSS) bucket with Intelligent Media Services (IMS) and associate the media stream with the specified media asset ID.
         
         @param request: RegisterMediaStreamRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15303,7 +15453,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.RegisterMediaStreamResponse:
         """
-        @summary 注册媒体流
+        @summary Registers a media stream.
+        
+        @description You can call this operation to register a media stream file in an Object Storage Service (OSS) bucket with Intelligent Media Services (IMS) and associate the media stream with the specified media asset ID.
         
         @param request: RegisterMediaStreamRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15341,7 +15493,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.RegisterMediaStreamRequest,
     ) -> ice20201109_models.RegisterMediaStreamResponse:
         """
-        @summary 注册媒体流
+        @summary Registers a media stream.
+        
+        @description You can call this operation to register a media stream file in an Object Storage Service (OSS) bucket with Intelligent Media Services (IMS) and associate the media stream with the specified media asset ID.
         
         @param request: RegisterMediaStreamRequest
         @return: RegisterMediaStreamResponse
@@ -15354,7 +15508,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.RegisterMediaStreamRequest,
     ) -> ice20201109_models.RegisterMediaStreamResponse:
         """
-        @summary 注册媒体流
+        @summary Registers a media stream.
+        
+        @description You can call this operation to register a media stream file in an Object Storage Service (OSS) bucket with Intelligent Media Services (IMS) and associate the media stream with the specified media asset ID.
         
         @param request: RegisterMediaStreamRequest
         @return: RegisterMediaStreamResponse
@@ -15728,7 +15884,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchMediaByAILabelResponse:
         """
-        @summary 智能标签搜索
+        @summary Queries media assets based on character names, subtitles, or AI categories.
+        
+        @description You can call this operation to query media assets or media asset clips based on character names, subtitles, or AI categories.
         
         @param request: SearchMediaByAILabelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15736,6 +15894,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.matching_mode):
+            query['MatchingMode'] = request.matching_mode
         if not UtilClient.is_unset(request.media_id):
             query['MediaId'] = request.media_id
         if not UtilClient.is_unset(request.media_type):
@@ -15779,7 +15939,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchMediaByAILabelResponse:
         """
-        @summary 智能标签搜索
+        @summary Queries media assets based on character names, subtitles, or AI categories.
+        
+        @description You can call this operation to query media assets or media asset clips based on character names, subtitles, or AI categories.
         
         @param request: SearchMediaByAILabelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15787,6 +15949,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.matching_mode):
+            query['MatchingMode'] = request.matching_mode
         if not UtilClient.is_unset(request.media_id):
             query['MediaId'] = request.media_id
         if not UtilClient.is_unset(request.media_type):
@@ -15829,7 +15993,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchMediaByAILabelRequest,
     ) -> ice20201109_models.SearchMediaByAILabelResponse:
         """
-        @summary 智能标签搜索
+        @summary Queries media assets based on character names, subtitles, or AI categories.
+        
+        @description You can call this operation to query media assets or media asset clips based on character names, subtitles, or AI categories.
         
         @param request: SearchMediaByAILabelRequest
         @return: SearchMediaByAILabelResponse
@@ -15842,7 +16008,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchMediaByAILabelRequest,
     ) -> ice20201109_models.SearchMediaByAILabelResponse:
         """
-        @summary 智能标签搜索
+        @summary Queries media assets based on character names, subtitles, or AI categories.
+        
+        @description You can call this operation to query media assets or media asset clips based on character names, subtitles, or AI categories.
         
         @param request: SearchMediaByAILabelRequest
         @return: SearchMediaByAILabelResponse
@@ -15856,7 +16024,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchMediaByFaceResponse:
         """
-        @summary 人脸搜粗搜接口，输入一张人脸图片，搜索该人物所在媒资的相关信息
+        @summary Queries the information about media assets that are related to a specific face.
+        
+        @description If you have questions about how to use the media asset search feature in Intelligent Media Services (IMS), contact technical support in the DingTalk group (ID 30415005038).
         
         @param request: SearchMediaByFaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15903,7 +16073,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchMediaByFaceResponse:
         """
-        @summary 人脸搜粗搜接口，输入一张人脸图片，搜索该人物所在媒资的相关信息
+        @summary Queries the information about media assets that are related to a specific face.
+        
+        @description If you have questions about how to use the media asset search feature in Intelligent Media Services (IMS), contact technical support in the DingTalk group (ID 30415005038).
         
         @param request: SearchMediaByFaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15949,7 +16121,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchMediaByFaceRequest,
     ) -> ice20201109_models.SearchMediaByFaceResponse:
         """
-        @summary 人脸搜粗搜接口，输入一张人脸图片，搜索该人物所在媒资的相关信息
+        @summary Queries the information about media assets that are related to a specific face.
+        
+        @description If you have questions about how to use the media asset search feature in Intelligent Media Services (IMS), contact technical support in the DingTalk group (ID 30415005038).
         
         @param request: SearchMediaByFaceRequest
         @return: SearchMediaByFaceResponse
@@ -15962,7 +16136,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchMediaByFaceRequest,
     ) -> ice20201109_models.SearchMediaByFaceResponse:
         """
-        @summary 人脸搜粗搜接口，输入一张人脸图片，搜索该人物所在媒资的相关信息
+        @summary Queries the information about media assets that are related to a specific face.
+        
+        @description If you have questions about how to use the media asset search feature in Intelligent Media Services (IMS), contact technical support in the DingTalk group (ID 30415005038).
         
         @param request: SearchMediaByFaceRequest
         @return: SearchMediaByFaceResponse
@@ -15976,7 +16152,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchMediaByHybridResponse:
         """
-        @summary 混合搜索
+        @summary Queries media assets by using the hybrid search feature. This operation allows you to search for media assets by using natural language based on intelligent tag text search and the search capabilities of large language models (LLMs). This implements multimodal retrieval.
         
         @param request: SearchMediaByHybridRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16021,7 +16197,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchMediaByHybridResponse:
         """
-        @summary 混合搜索
+        @summary Queries media assets by using the hybrid search feature. This operation allows you to search for media assets by using natural language based on intelligent tag text search and the search capabilities of large language models (LLMs). This implements multimodal retrieval.
         
         @param request: SearchMediaByHybridRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16065,7 +16241,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchMediaByHybridRequest,
     ) -> ice20201109_models.SearchMediaByHybridResponse:
         """
-        @summary 混合搜索
+        @summary Queries media assets by using the hybrid search feature. This operation allows you to search for media assets by using natural language based on intelligent tag text search and the search capabilities of large language models (LLMs). This implements multimodal retrieval.
         
         @param request: SearchMediaByHybridRequest
         @return: SearchMediaByHybridResponse
@@ -16078,7 +16254,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchMediaByHybridRequest,
     ) -> ice20201109_models.SearchMediaByHybridResponse:
         """
-        @summary 混合搜索
+        @summary Queries media assets by using the hybrid search feature. This operation allows you to search for media assets by using natural language based on intelligent tag text search and the search capabilities of large language models (LLMs). This implements multimodal retrieval.
         
         @param request: SearchMediaByHybridRequest
         @return: SearchMediaByHybridResponse
@@ -16092,7 +16268,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchMediaByMultimodalResponse:
         """
-        @summary 多模态搜索
+        @summary Queries media assets by using the large visual model. You can use natural language for the query.
+        
+        @description If you have questions about how to use the media asset search feature in Intelligent Media Services (IMS), contact technical support in the DingTalk group (ID 30415005038).
         
         @param request: SearchMediaByMultimodalRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16135,7 +16313,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchMediaByMultimodalResponse:
         """
-        @summary 多模态搜索
+        @summary Queries media assets by using the large visual model. You can use natural language for the query.
+        
+        @description If you have questions about how to use the media asset search feature in Intelligent Media Services (IMS), contact technical support in the DingTalk group (ID 30415005038).
         
         @param request: SearchMediaByMultimodalRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16177,7 +16357,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchMediaByMultimodalRequest,
     ) -> ice20201109_models.SearchMediaByMultimodalResponse:
         """
-        @summary 多模态搜索
+        @summary Queries media assets by using the large visual model. You can use natural language for the query.
+        
+        @description If you have questions about how to use the media asset search feature in Intelligent Media Services (IMS), contact technical support in the DingTalk group (ID 30415005038).
         
         @param request: SearchMediaByMultimodalRequest
         @return: SearchMediaByMultimodalResponse
@@ -16190,7 +16372,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchMediaByMultimodalRequest,
     ) -> ice20201109_models.SearchMediaByMultimodalResponse:
         """
-        @summary 多模态搜索
+        @summary Queries media assets by using the large visual model. You can use natural language for the query.
+        
+        @description If you have questions about how to use the media asset search feature in Intelligent Media Services (IMS), contact technical support in the DingTalk group (ID 30415005038).
         
         @param request: SearchMediaByMultimodalRequest
         @return: SearchMediaByMultimodalResponse
@@ -16204,7 +16388,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchMediaClipByFaceResponse:
         """
-        @summary 人脸搜精搜接口，基于粗搜结果返回该人物所在媒资的相关人物片段信息
+        @summary Queries the information about media asset clips that are related to a specific face based on the response to the SearchMediaByFace operation.
+        
+        @description If you have questions about how to use the media asset search feature in Intelligent Media Services (IMS), contact technical support in the DingTalk group (ID 30415005038).
         
         @param request: SearchMediaClipByFaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16249,7 +16435,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchMediaClipByFaceResponse:
         """
-        @summary 人脸搜精搜接口，基于粗搜结果返回该人物所在媒资的相关人物片段信息
+        @summary Queries the information about media asset clips that are related to a specific face based on the response to the SearchMediaByFace operation.
+        
+        @description If you have questions about how to use the media asset search feature in Intelligent Media Services (IMS), contact technical support in the DingTalk group (ID 30415005038).
         
         @param request: SearchMediaClipByFaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16293,7 +16481,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchMediaClipByFaceRequest,
     ) -> ice20201109_models.SearchMediaClipByFaceResponse:
         """
-        @summary 人脸搜精搜接口，基于粗搜结果返回该人物所在媒资的相关人物片段信息
+        @summary Queries the information about media asset clips that are related to a specific face based on the response to the SearchMediaByFace operation.
+        
+        @description If you have questions about how to use the media asset search feature in Intelligent Media Services (IMS), contact technical support in the DingTalk group (ID 30415005038).
         
         @param request: SearchMediaClipByFaceRequest
         @return: SearchMediaClipByFaceResponse
@@ -16306,7 +16496,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchMediaClipByFaceRequest,
     ) -> ice20201109_models.SearchMediaClipByFaceResponse:
         """
-        @summary 人脸搜精搜接口，基于粗搜结果返回该人物所在媒资的相关人物片段信息
+        @summary Queries the information about media asset clips that are related to a specific face based on the response to the SearchMediaByFace operation.
+        
+        @description If you have questions about how to use the media asset search feature in Intelligent Media Services (IMS), contact technical support in the DingTalk group (ID 30415005038).
         
         @param request: SearchMediaClipByFaceRequest
         @return: SearchMediaClipByFaceResponse
@@ -19548,7 +19740,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitMediaAiAnalysisJobResponse:
         """
-        @summary 提交媒资结构化分析任务
+        @summary Submits a structural analysis job for a media asset. For example, you can submit a job to analyze the speaker, translate the video, and obtain the paragraph summary.
         
         @param request: SubmitMediaAiAnalysisJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19585,7 +19777,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitMediaAiAnalysisJobResponse:
         """
-        @summary 提交媒资结构化分析任务
+        @summary Submits a structural analysis job for a media asset. For example, you can submit a job to analyze the speaker, translate the video, and obtain the paragraph summary.
         
         @param request: SubmitMediaAiAnalysisJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19621,7 +19813,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitMediaAiAnalysisJobRequest,
     ) -> ice20201109_models.SubmitMediaAiAnalysisJobResponse:
         """
-        @summary 提交媒资结构化分析任务
+        @summary Submits a structural analysis job for a media asset. For example, you can submit a job to analyze the speaker, translate the video, and obtain the paragraph summary.
         
         @param request: SubmitMediaAiAnalysisJobRequest
         @return: SubmitMediaAiAnalysisJobResponse
@@ -19634,7 +19826,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitMediaAiAnalysisJobRequest,
     ) -> ice20201109_models.SubmitMediaAiAnalysisJobResponse:
         """
-        @summary 提交媒资结构化分析任务
+        @summary Submits a structural analysis job for a media asset. For example, you can submit a job to analyze the speaker, translate the video, and obtain the paragraph summary.
         
         @param request: SubmitMediaAiAnalysisJobRequest
         @return: SubmitMediaAiAnalysisJobResponse
@@ -21012,7 +21204,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitVideoTranslationJobResponse:
         """
-        @summary 提交视频翻译任务
+        @summary Submits a video translation job. You can call this operation to translate the subtitle that appears in a video into the specified language. In the future, this operation will support voice translation and lip synchronization for spoken content.
+        
+        @description After you call this operation to submit a video translation job, the system returns a job ID. You can call the GetSmartHandleJob operation based on the job ID to obtain the status and result information of the job.
         
         @param request: SubmitVideoTranslationJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21059,7 +21253,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitVideoTranslationJobResponse:
         """
-        @summary 提交视频翻译任务
+        @summary Submits a video translation job. You can call this operation to translate the subtitle that appears in a video into the specified language. In the future, this operation will support voice translation and lip synchronization for spoken content.
+        
+        @description After you call this operation to submit a video translation job, the system returns a job ID. You can call the GetSmartHandleJob operation based on the job ID to obtain the status and result information of the job.
         
         @param request: SubmitVideoTranslationJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21105,7 +21301,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitVideoTranslationJobRequest,
     ) -> ice20201109_models.SubmitVideoTranslationJobResponse:
         """
-        @summary 提交视频翻译任务
+        @summary Submits a video translation job. You can call this operation to translate the subtitle that appears in a video into the specified language. In the future, this operation will support voice translation and lip synchronization for spoken content.
+        
+        @description After you call this operation to submit a video translation job, the system returns a job ID. You can call the GetSmartHandleJob operation based on the job ID to obtain the status and result information of the job.
         
         @param request: SubmitVideoTranslationJobRequest
         @return: SubmitVideoTranslationJobResponse
@@ -21118,7 +21316,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitVideoTranslationJobRequest,
     ) -> ice20201109_models.SubmitVideoTranslationJobResponse:
         """
-        @summary 提交视频翻译任务
+        @summary Submits a video translation job. You can call this operation to translate the subtitle that appears in a video into the specified language. In the future, this operation will support voice translation and lip synchronization for spoken content.
+        
+        @description After you call this operation to submit a video translation job, the system returns a job ID. You can call the GetSmartHandleJob operation based on the job ID to obtain the status and result information of the job.
         
         @param request: SubmitVideoTranslationJobRequest
         @return: SubmitVideoTranslationJobResponse
@@ -21364,7 +21564,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateCategoryResponse:
         """
-        @summary 更新媒资分类
+        @summary Updates a category.
+        
+        @description After you create a media asset category, you can call this operation to find the category based on the category ID and change the name of the category.
         
         @param request: UpdateCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21401,7 +21603,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateCategoryResponse:
         """
-        @summary 更新媒资分类
+        @summary Updates a category.
+        
+        @description After you create a media asset category, you can call this operation to find the category based on the category ID and change the name of the category.
         
         @param request: UpdateCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21437,7 +21641,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateCategoryRequest,
     ) -> ice20201109_models.UpdateCategoryResponse:
         """
-        @summary 更新媒资分类
+        @summary Updates a category.
+        
+        @description After you create a media asset category, you can call this operation to find the category based on the category ID and change the name of the category.
         
         @param request: UpdateCategoryRequest
         @return: UpdateCategoryResponse
@@ -21450,7 +21656,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateCategoryRequest,
     ) -> ice20201109_models.UpdateCategoryResponse:
         """
-        @summary 更新媒资分类
+        @summary Updates a category.
+        
+        @description After you create a media asset category, you can call this operation to find the category based on the category ID and change the name of the category.
         
         @param request: UpdateCategoryRequest
         @return: UpdateCategoryResponse
@@ -21668,7 +21876,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateEditingProjectResponse:
         """
-        @summary 修改云剪辑工程
+        @summary Modifies an online editing project. You can call this operation to modify the configurations such as the title, timeline, and thumbnail of an online editing project.
         
         @param request: UpdateEditingProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21719,7 +21927,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateEditingProjectResponse:
         """
-        @summary 修改云剪辑工程
+        @summary Modifies an online editing project. You can call this operation to modify the configurations such as the title, timeline, and thumbnail of an online editing project.
         
         @param request: UpdateEditingProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21769,7 +21977,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateEditingProjectRequest,
     ) -> ice20201109_models.UpdateEditingProjectResponse:
         """
-        @summary 修改云剪辑工程
+        @summary Modifies an online editing project. You can call this operation to modify the configurations such as the title, timeline, and thumbnail of an online editing project.
         
         @param request: UpdateEditingProjectRequest
         @return: UpdateEditingProjectResponse
@@ -21782,7 +21990,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateEditingProjectRequest,
     ) -> ice20201109_models.UpdateEditingProjectResponse:
         """
-        @summary 修改云剪辑工程
+        @summary Modifies an online editing project. You can call this operation to modify the configurations such as the title, timeline, and thumbnail of an online editing project.
         
         @param request: UpdateEditingProjectRequest
         @return: UpdateEditingProjectResponse
@@ -22260,7 +22468,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateMediaInfoResponse:
         """
-        @summary UpdateMediaInfo
+        @summary Updates information about a media asset based on the ID of the media asset in Intelligent Media Services (IMS) or the input URL of the media asset.
+        
+        @description If the MediaId parameter is specified, the MediaId parameter is preferentially used for the query. If the MediaId parameter is left empty, the InputURL parameter must be specified. The request ID and media asset ID are returned. You cannot modify the input URL of a media asset by specifying the ID of the media asset.
         
         @param request: UpdateMediaInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22317,7 +22527,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateMediaInfoResponse:
         """
-        @summary UpdateMediaInfo
+        @summary Updates information about a media asset based on the ID of the media asset in Intelligent Media Services (IMS) or the input URL of the media asset.
+        
+        @description If the MediaId parameter is specified, the MediaId parameter is preferentially used for the query. If the MediaId parameter is left empty, the InputURL parameter must be specified. The request ID and media asset ID are returned. You cannot modify the input URL of a media asset by specifying the ID of the media asset.
         
         @param request: UpdateMediaInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22373,7 +22585,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateMediaInfoRequest,
     ) -> ice20201109_models.UpdateMediaInfoResponse:
         """
-        @summary UpdateMediaInfo
+        @summary Updates information about a media asset based on the ID of the media asset in Intelligent Media Services (IMS) or the input URL of the media asset.
+        
+        @description If the MediaId parameter is specified, the MediaId parameter is preferentially used for the query. If the MediaId parameter is left empty, the InputURL parameter must be specified. The request ID and media asset ID are returned. You cannot modify the input URL of a media asset by specifying the ID of the media asset.
         
         @param request: UpdateMediaInfoRequest
         @return: UpdateMediaInfoResponse
@@ -22386,7 +22600,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateMediaInfoRequest,
     ) -> ice20201109_models.UpdateMediaInfoResponse:
         """
-        @summary UpdateMediaInfo
+        @summary Updates information about a media asset based on the ID of the media asset in Intelligent Media Services (IMS) or the input URL of the media asset.
+        
+        @description If the MediaId parameter is specified, the MediaId parameter is preferentially used for the query. If the MediaId parameter is left empty, the InputURL parameter must be specified. The request ID and media asset ID are returned. You cannot modify the input URL of a media asset by specifying the ID of the media asset.
         
         @param request: UpdateMediaInfoRequest
         @return: UpdateMediaInfoResponse
@@ -22400,7 +22616,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateMediaMarksResponse:
         """
-        @summary 为媒资修改标注信息
+        @summary Modifies the marks of a media asset.
         
         @param request: UpdateMediaMarksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22437,7 +22653,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateMediaMarksResponse:
         """
-        @summary 为媒资修改标注信息
+        @summary Modifies the marks of a media asset.
         
         @param request: UpdateMediaMarksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22473,7 +22689,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateMediaMarksRequest,
     ) -> ice20201109_models.UpdateMediaMarksResponse:
         """
-        @summary 为媒资修改标注信息
+        @summary Modifies the marks of a media asset.
         
         @param request: UpdateMediaMarksRequest
         @return: UpdateMediaMarksResponse
@@ -22486,7 +22702,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateMediaMarksRequest,
     ) -> ice20201109_models.UpdateMediaMarksResponse:
         """
-        @summary 为媒资修改标注信息
+        @summary Modifies the marks of a media asset.
         
         @param request: UpdateMediaMarksRequest
         @return: UpdateMediaMarksResponse
@@ -22500,7 +22716,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateMediaToSearchLibResponse:
         """
-        @summary 更新媒资到搜索
+        @summary Updates the media asset information in a search library.
         
         @param request: UpdateMediaToSearchLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22539,7 +22755,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateMediaToSearchLibResponse:
         """
-        @summary 更新媒资到搜索
+        @summary Updates the media asset information in a search library.
         
         @param request: UpdateMediaToSearchLibRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22577,7 +22793,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateMediaToSearchLibRequest,
     ) -> ice20201109_models.UpdateMediaToSearchLibResponse:
         """
-        @summary 更新媒资到搜索
+        @summary Updates the media asset information in a search library.
         
         @param request: UpdateMediaToSearchLibRequest
         @return: UpdateMediaToSearchLibResponse
@@ -22590,7 +22806,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateMediaToSearchLibRequest,
     ) -> ice20201109_models.UpdateMediaToSearchLibResponse:
         """
-        @summary 更新媒资到搜索
+        @summary Updates the media asset information in a search library.
         
         @param request: UpdateMediaToSearchLibRequest
         @return: UpdateMediaToSearchLibResponse
@@ -22948,7 +23164,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UploadMediaByURLResponse:
         """
-        @summary URL拉取上传
+        @summary Uploads an audio or video file based on the URL of the source file. You can upload multiple media files at a time.
+        
+        @description    If a callback is configured, you will receive an UploadByURLComplete event notification after the file is uploaded. You can query the upload status by calling the GetURLUploadInfos operation.
+        After a request is submitted, the upload job is queued as an asynchronous job in the cloud. You can query the status of the upload job based on information such as the URL and media asset ID that are returned in the event notification.
+        You can call this operation to upload media files that are not stored on a local server or device and must be uploaded by using URLs that are accessible over the Internet.
+        You can call this operation to upload media files only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media file to an OSS bucket, pull the file to a local directory, use [OSS SDK](https://help.aliyun.com/document_detail/32006.html) to upload the file to an OSS bucket, and then call the [RegisterMediaInfo](https://help.aliyun.com/document_detail/441152.html) operation to register the file in the OSS bucket with the media asset library.
+        This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
+        You can call this operation to upload only audio and video files.
         
         @param request: UploadMediaByURLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22995,7 +23218,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UploadMediaByURLResponse:
         """
-        @summary URL拉取上传
+        @summary Uploads an audio or video file based on the URL of the source file. You can upload multiple media files at a time.
+        
+        @description    If a callback is configured, you will receive an UploadByURLComplete event notification after the file is uploaded. You can query the upload status by calling the GetURLUploadInfos operation.
+        After a request is submitted, the upload job is queued as an asynchronous job in the cloud. You can query the status of the upload job based on information such as the URL and media asset ID that are returned in the event notification.
+        You can call this operation to upload media files that are not stored on a local server or device and must be uploaded by using URLs that are accessible over the Internet.
+        You can call this operation to upload media files only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media file to an OSS bucket, pull the file to a local directory, use [OSS SDK](https://help.aliyun.com/document_detail/32006.html) to upload the file to an OSS bucket, and then call the [RegisterMediaInfo](https://help.aliyun.com/document_detail/441152.html) operation to register the file in the OSS bucket with the media asset library.
+        This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
+        You can call this operation to upload only audio and video files.
         
         @param request: UploadMediaByURLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23041,7 +23271,14 @@ class Client(OpenApiClient):
         request: ice20201109_models.UploadMediaByURLRequest,
     ) -> ice20201109_models.UploadMediaByURLResponse:
         """
-        @summary URL拉取上传
+        @summary Uploads an audio or video file based on the URL of the source file. You can upload multiple media files at a time.
+        
+        @description    If a callback is configured, you will receive an UploadByURLComplete event notification after the file is uploaded. You can query the upload status by calling the GetURLUploadInfos operation.
+        After a request is submitted, the upload job is queued as an asynchronous job in the cloud. You can query the status of the upload job based on information such as the URL and media asset ID that are returned in the event notification.
+        You can call this operation to upload media files that are not stored on a local server or device and must be uploaded by using URLs that are accessible over the Internet.
+        You can call this operation to upload media files only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media file to an OSS bucket, pull the file to a local directory, use [OSS SDK](https://help.aliyun.com/document_detail/32006.html) to upload the file to an OSS bucket, and then call the [RegisterMediaInfo](https://help.aliyun.com/document_detail/441152.html) operation to register the file in the OSS bucket with the media asset library.
+        This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
+        You can call this operation to upload only audio and video files.
         
         @param request: UploadMediaByURLRequest
         @return: UploadMediaByURLResponse
@@ -23054,7 +23291,14 @@ class Client(OpenApiClient):
         request: ice20201109_models.UploadMediaByURLRequest,
     ) -> ice20201109_models.UploadMediaByURLResponse:
         """
-        @summary URL拉取上传
+        @summary Uploads an audio or video file based on the URL of the source file. You can upload multiple media files at a time.
+        
+        @description    If a callback is configured, you will receive an UploadByURLComplete event notification after the file is uploaded. You can query the upload status by calling the GetURLUploadInfos operation.
+        After a request is submitted, the upload job is queued as an asynchronous job in the cloud. You can query the status of the upload job based on information such as the URL and media asset ID that are returned in the event notification.
+        You can call this operation to upload media files that are not stored on a local server or device and must be uploaded by using URLs that are accessible over the Internet.
+        You can call this operation to upload media files only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media file to an OSS bucket, pull the file to a local directory, use [OSS SDK](https://help.aliyun.com/document_detail/32006.html) to upload the file to an OSS bucket, and then call the [RegisterMediaInfo](https://help.aliyun.com/document_detail/441152.html) operation to register the file in the OSS bucket with the media asset library.
+        This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
+        You can call this operation to upload only audio and video files.
         
         @param request: UploadMediaByURLRequest
         @return: UploadMediaByURLResponse
@@ -23068,7 +23312,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UploadStreamByURLResponse:
         """
-        @summary URL拉取上传媒体流
+        @summary Uploads a media stream file based on the URL of the source file.
+        
+        @description    You can call this operation to pull a media stream file based on a URL and upload the file. After the media stream file is uploaded, the media stream is associated with the specified media asset ID.
+        You can call this operation to upload media stream files only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media stream file to an OSS bucket, pull the file to a local directory, use [OSS SDK](https://help.aliyun.com/document_detail/32006.html) to upload the file to an OSS bucket, and then call the [RegisterMediaStream](https://help.aliyun.com/document_detail/440765.html) operation to associate the media stream with the specified media asset ID.
+        This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
         
         @param request: UploadStreamByURLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23113,7 +23361,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UploadStreamByURLResponse:
         """
-        @summary URL拉取上传媒体流
+        @summary Uploads a media stream file based on the URL of the source file.
+        
+        @description    You can call this operation to pull a media stream file based on a URL and upload the file. After the media stream file is uploaded, the media stream is associated with the specified media asset ID.
+        You can call this operation to upload media stream files only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media stream file to an OSS bucket, pull the file to a local directory, use [OSS SDK](https://help.aliyun.com/document_detail/32006.html) to upload the file to an OSS bucket, and then call the [RegisterMediaStream](https://help.aliyun.com/document_detail/440765.html) operation to associate the media stream with the specified media asset ID.
+        This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
         
         @param request: UploadStreamByURLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23157,7 +23409,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.UploadStreamByURLRequest,
     ) -> ice20201109_models.UploadStreamByURLResponse:
         """
-        @summary URL拉取上传媒体流
+        @summary Uploads a media stream file based on the URL of the source file.
+        
+        @description    You can call this operation to pull a media stream file based on a URL and upload the file. After the media stream file is uploaded, the media stream is associated with the specified media asset ID.
+        You can call this operation to upload media stream files only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media stream file to an OSS bucket, pull the file to a local directory, use [OSS SDK](https://help.aliyun.com/document_detail/32006.html) to upload the file to an OSS bucket, and then call the [RegisterMediaStream](https://help.aliyun.com/document_detail/440765.html) operation to associate the media stream with the specified media asset ID.
+        This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
         
         @param request: UploadStreamByURLRequest
         @return: UploadStreamByURLResponse
@@ -23170,7 +23426,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.UploadStreamByURLRequest,
     ) -> ice20201109_models.UploadStreamByURLResponse:
         """
-        @summary URL拉取上传媒体流
+        @summary Uploads a media stream file based on the URL of the source file.
+        
+        @description    You can call this operation to pull a media stream file based on a URL and upload the file. After the media stream file is uploaded, the media stream is associated with the specified media asset ID.
+        You can call this operation to upload media stream files only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media stream file to an OSS bucket, pull the file to a local directory, use [OSS SDK](https://help.aliyun.com/document_detail/32006.html) to upload the file to an OSS bucket, and then call the [RegisterMediaStream](https://help.aliyun.com/document_detail/440765.html) operation to associate the media stream with the specified media asset ID.
+        This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
         
         @param request: UploadStreamByURLRequest
         @return: UploadStreamByURLResponse
