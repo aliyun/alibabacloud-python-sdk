@@ -4,6 +4,123 @@ from Tea.model import TeaModel
 from typing import List, Dict
 
 
+class AckConfigPvcs(TeaModel):
+    def __init__(
+        self,
+        data_disk_size: int = None,
+        data_disk_storage_class: str = None,
+        name: str = None,
+        path: str = None,
+    ):
+        self.data_disk_size = data_disk_size
+        self.data_disk_storage_class = data_disk_storage_class
+        self.name = name
+        self.path = path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_disk_size is not None:
+            result['DataDiskSize'] = self.data_disk_size
+        if self.data_disk_storage_class is not None:
+            result['DataDiskStorageClass'] = self.data_disk_storage_class
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.path is not None:
+            result['Path'] = self.path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataDiskSize') is not None:
+            self.data_disk_size = m.get('DataDiskSize')
+        if m.get('DataDiskStorageClass') is not None:
+            self.data_disk_storage_class = m.get('DataDiskStorageClass')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        return self
+
+
+class AckConfigVolumeMounts(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        path: str = None,
+    ):
+        self.name = name
+        self.path = path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.path is not None:
+            result['Path'] = self.path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        return self
+
+
+class AckConfigVolumes(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        path: str = None,
+        type: str = None,
+    ):
+        self.name = name
+        self.path = path
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
 class Tag(TeaModel):
     def __init__(
         self,
@@ -98,10 +215,17 @@ class AckConfig(TeaModel):
         limit_memory: float = None,
         mount_host_cgroup: bool = None,
         namespace: str = None,
+        node_affinity: str = None,
         node_selectors: List[Tag] = None,
+        pod_affinity: str = None,
+        pod_anti_affinity: str = None,
+        pre_start_command: List[str] = None,
+        pvcs: List[AckConfigPvcs] = None,
         request_cpu: float = None,
         request_memory: float = None,
         tolerations: List[Toleration] = None,
+        volume_mounts: List[AckConfigVolumeMounts] = None,
+        volumes: List[AckConfigVolumes] = None,
     ):
         # ack集群id
         self.ack_instance_id = ack_instance_id
@@ -116,14 +240,21 @@ class AckConfig(TeaModel):
         self.mount_host_cgroup = mount_host_cgroup
         # ack 命名空间
         self.namespace = namespace
+        self.node_affinity = node_affinity
         # ack的节点标签限制
         self.node_selectors = node_selectors
+        self.pod_affinity = pod_affinity
+        self.pod_anti_affinity = pod_anti_affinity
+        self.pre_start_command = pre_start_command
+        self.pvcs = pvcs
         # Pod的CPU请求值
         self.request_cpu = request_cpu
         # Pod的内存请求值。
         self.request_memory = request_memory
         # ack的节点污点容忍
         self.tolerations = tolerations
+        self.volume_mounts = volume_mounts
+        self.volumes = volumes
 
     def validate(self):
         if self.custom_annotations:
@@ -138,8 +269,20 @@ class AckConfig(TeaModel):
             for k in self.node_selectors:
                 if k:
                     k.validate()
+        if self.pvcs:
+            for k in self.pvcs:
+                if k:
+                    k.validate()
         if self.tolerations:
             for k in self.tolerations:
+                if k:
+                    k.validate()
+        if self.volume_mounts:
+            for k in self.volume_mounts:
+                if k:
+                    k.validate()
+        if self.volumes:
+            for k in self.volumes:
                 if k:
                     k.validate()
 
@@ -171,10 +314,22 @@ class AckConfig(TeaModel):
             result['MountHostCgroup'] = self.mount_host_cgroup
         if self.namespace is not None:
             result['Namespace'] = self.namespace
+        if self.node_affinity is not None:
+            result['NodeAffinity'] = self.node_affinity
         result['NodeSelectors'] = []
         if self.node_selectors is not None:
             for k in self.node_selectors:
                 result['NodeSelectors'].append(k.to_map() if k else None)
+        if self.pod_affinity is not None:
+            result['PodAffinity'] = self.pod_affinity
+        if self.pod_anti_affinity is not None:
+            result['PodAntiAffinity'] = self.pod_anti_affinity
+        if self.pre_start_command is not None:
+            result['PreStartCommand'] = self.pre_start_command
+        result['Pvcs'] = []
+        if self.pvcs is not None:
+            for k in self.pvcs:
+                result['Pvcs'].append(k.to_map() if k else None)
         if self.request_cpu is not None:
             result['RequestCpu'] = self.request_cpu
         if self.request_memory is not None:
@@ -183,6 +338,14 @@ class AckConfig(TeaModel):
         if self.tolerations is not None:
             for k in self.tolerations:
                 result['Tolerations'].append(k.to_map() if k else None)
+        result['VolumeMounts'] = []
+        if self.volume_mounts is not None:
+            for k in self.volume_mounts:
+                result['VolumeMounts'].append(k.to_map() if k else None)
+        result['Volumes'] = []
+        if self.volumes is not None:
+            for k in self.volumes:
+                result['Volumes'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -211,11 +374,24 @@ class AckConfig(TeaModel):
             self.mount_host_cgroup = m.get('MountHostCgroup')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
+        if m.get('NodeAffinity') is not None:
+            self.node_affinity = m.get('NodeAffinity')
         self.node_selectors = []
         if m.get('NodeSelectors') is not None:
             for k in m.get('NodeSelectors'):
                 temp_model = Tag()
                 self.node_selectors.append(temp_model.from_map(k))
+        if m.get('PodAffinity') is not None:
+            self.pod_affinity = m.get('PodAffinity')
+        if m.get('PodAntiAffinity') is not None:
+            self.pod_anti_affinity = m.get('PodAntiAffinity')
+        if m.get('PreStartCommand') is not None:
+            self.pre_start_command = m.get('PreStartCommand')
+        self.pvcs = []
+        if m.get('Pvcs') is not None:
+            for k in m.get('Pvcs'):
+                temp_model = AckConfigPvcs()
+                self.pvcs.append(temp_model.from_map(k))
         if m.get('RequestCpu') is not None:
             self.request_cpu = m.get('RequestCpu')
         if m.get('RequestMemory') is not None:
@@ -225,6 +401,16 @@ class AckConfig(TeaModel):
             for k in m.get('Tolerations'):
                 temp_model = Toleration()
                 self.tolerations.append(temp_model.from_map(k))
+        self.volume_mounts = []
+        if m.get('VolumeMounts') is not None:
+            for k in m.get('VolumeMounts'):
+                temp_model = AckConfigVolumeMounts()
+                self.volume_mounts.append(temp_model.from_map(k))
+        self.volumes = []
+        if m.get('Volumes') is not None:
+            for k in m.get('Volumes'):
+                temp_model = AckConfigVolumes()
+                self.volumes.append(temp_model.from_map(k))
         return self
 
 
@@ -1232,6 +1418,7 @@ class ScalingRule(TeaModel):
         activity_type: str = None,
         adjustment_value: int = None,
         metrics_trigger: MetricsTrigger = None,
+        min_adjustment_value: int = None,
         rule_name: str = None,
         time_trigger: TimeTrigger = None,
         trigger_type: str = None,
@@ -1249,6 +1436,7 @@ class ScalingRule(TeaModel):
         # 按照负载伸缩描述。
         # <p>
         self.metrics_trigger = metrics_trigger
+        self.min_adjustment_value = min_adjustment_value
         # 规则名称。
         # 
         # This parameter is required.
@@ -1281,6 +1469,8 @@ class ScalingRule(TeaModel):
             result['AdjustmentValue'] = self.adjustment_value
         if self.metrics_trigger is not None:
             result['MetricsTrigger'] = self.metrics_trigger.to_map()
+        if self.min_adjustment_value is not None:
+            result['MinAdjustmentValue'] = self.min_adjustment_value
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
         if self.time_trigger is not None:
@@ -1298,6 +1488,8 @@ class ScalingRule(TeaModel):
         if m.get('MetricsTrigger') is not None:
             temp_model = MetricsTrigger()
             self.metrics_trigger = temp_model.from_map(m['MetricsTrigger'])
+        if m.get('MinAdjustmentValue') is not None:
+            self.min_adjustment_value = m.get('MinAdjustmentValue')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
         if m.get('TimeTrigger') is not None:
@@ -1991,6 +2183,7 @@ class Cluster(TeaModel):
         cluster_type: str = None,
         create_time: int = None,
         deploy_mode: str = None,
+        description: str = None,
         emr_default_role: str = None,
         end_time: int = None,
         expire_time: int = None,
@@ -2017,6 +2210,7 @@ class Cluster(TeaModel):
         self.create_time = create_time
         # 部署模式。
         self.deploy_mode = deploy_mode
+        self.description = description
         # EMR默认角色。
         self.emr_default_role = emr_default_role
         # 删除时间。
@@ -2073,6 +2267,8 @@ class Cluster(TeaModel):
             result['CreateTime'] = self.create_time
         if self.deploy_mode is not None:
             result['DeployMode'] = self.deploy_mode
+        if self.description is not None:
+            result['Description'] = self.description
         if self.emr_default_role is not None:
             result['EmrDefaultRole'] = self.emr_default_role
         if self.end_time is not None:
@@ -2117,6 +2313,8 @@ class Cluster(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('DeployMode') is not None:
             self.deploy_mode = m.get('DeployMode')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('EmrDefaultRole') is not None:
             self.emr_default_role = m.get('EmrDefaultRole')
         if m.get('EndTime') is not None:
@@ -2298,6 +2496,7 @@ class ClusterSummary(TeaModel):
         cluster_state: str = None,
         cluster_type: str = None,
         create_time: int = None,
+        description: str = None,
         emr_default_role: str = None,
         end_time: int = None,
         expire_time: int = None,
@@ -2330,6 +2529,7 @@ class ClusterSummary(TeaModel):
         self.cluster_type = cluster_type
         # 创建时间。
         self.create_time = create_time
+        self.description = description
         # EMR服务角色。
         self.emr_default_role = emr_default_role
         # 删除时间。
@@ -2375,6 +2575,8 @@ class ClusterSummary(TeaModel):
             result['ClusterType'] = self.cluster_type
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
         if self.emr_default_role is not None:
             result['EmrDefaultRole'] = self.emr_default_role
         if self.end_time is not None:
@@ -2409,6 +2611,8 @@ class ClusterSummary(TeaModel):
             self.cluster_type = m.get('ClusterType')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('EmrDefaultRole') is not None:
             self.emr_default_role = m.get('EmrDefaultRole')
         if m.get('EndTime') is not None:
@@ -4027,6 +4231,48 @@ class ListApiTemplatesDTO(TeaModel):
         return self
 
 
+class ManagedScalingConstraints(TeaModel):
+    def __init__(
+        self,
+        max_capacity: int = None,
+        max_on_demand_capacity: int = None,
+        min_capacity: int = None,
+    ):
+        # 最大值。
+        self.max_capacity = max_capacity
+        # 最大按量节点数量
+        self.max_on_demand_capacity = max_on_demand_capacity
+        # 最小值。
+        self.min_capacity = min_capacity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_capacity is not None:
+            result['MaxCapacity'] = self.max_capacity
+        if self.max_on_demand_capacity is not None:
+            result['MaxOnDemandCapacity'] = self.max_on_demand_capacity
+        if self.min_capacity is not None:
+            result['MinCapacity'] = self.min_capacity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxCapacity') is not None:
+            self.max_capacity = m.get('MaxCapacity')
+        if m.get('MaxOnDemandCapacity') is not None:
+            self.max_on_demand_capacity = m.get('MaxOnDemandCapacity')
+        if m.get('MinCapacity') is not None:
+            self.min_capacity = m.get('MinCapacity')
+        return self
+
+
 class MetaStoreConf(TeaModel):
     def __init__(
         self,
@@ -4599,6 +4845,7 @@ class NodeGroupConfig(TeaModel):
     def __init__(
         self,
         additional_security_group_ids: List[str] = None,
+        auto_scaling_policy: AutoScalingPolicy = None,
         component_tags: List[str] = None,
         cost_optimized_config: CostOptimizedConfig = None,
         data_disks: List[DataDisk] = None,
@@ -4620,6 +4867,7 @@ class NodeGroupConfig(TeaModel):
     ):
         # 附加安全组。除集群设置的安全组外，为节点组单独设置的附加安全组。数组元数个数N的取值范围：0~2。
         self.additional_security_group_ids = additional_security_group_ids
+        self.auto_scaling_policy = auto_scaling_policy
         self.component_tags = component_tags
         # 成本优化模式配置。
         self.cost_optimized_config = cost_optimized_config
@@ -4692,6 +4940,8 @@ class NodeGroupConfig(TeaModel):
         self.with_public_ip = with_public_ip
 
     def validate(self):
+        if self.auto_scaling_policy:
+            self.auto_scaling_policy.validate()
         if self.cost_optimized_config:
             self.cost_optimized_config.validate()
         if self.data_disks:
@@ -4715,6 +4965,8 @@ class NodeGroupConfig(TeaModel):
         result = dict()
         if self.additional_security_group_ids is not None:
             result['AdditionalSecurityGroupIds'] = self.additional_security_group_ids
+        if self.auto_scaling_policy is not None:
+            result['AutoScalingPolicy'] = self.auto_scaling_policy.to_map()
         if self.component_tags is not None:
             result['ComponentTags'] = self.component_tags
         if self.cost_optimized_config is not None:
@@ -4761,6 +5013,9 @@ class NodeGroupConfig(TeaModel):
         m = m or dict()
         if m.get('AdditionalSecurityGroupIds') is not None:
             self.additional_security_group_ids = m.get('AdditionalSecurityGroupIds')
+        if m.get('AutoScalingPolicy') is not None:
+            temp_model = AutoScalingPolicy()
+            self.auto_scaling_policy = temp_model.from_map(m['AutoScalingPolicy'])
         if m.get('ComponentTags') is not None:
             self.component_tags = m.get('ComponentTags')
         if m.get('CostOptimizedConfig') is not None:
@@ -7267,11 +7522,11 @@ class CreateApiTemplateRequest(TeaModel):
         resource_group_id: str = None,
         template_name: str = None,
     ):
-        # 接口名。
+        # The name of the API operation. You can create only a cluster API operation template. Set the value to CreateCluster.
         # 
         # This parameter is required.
         self.api_name = api_name
-        # 接口request内容。
+        # The content of the cluster API operation template. Set the value to JSON strings of the request parameters of the [CreateCluster](https://help.aliyun.com/zh/emr/emr-on-ecs/developer-reference/api-emr-2021-03-20-createcluster) API operation for creating a cluster.
         # 
         # This parameter is required.
         self.content = content
@@ -7413,6 +7668,7 @@ class CreateClusterRequest(TeaModel):
         cluster_name: str = None,
         cluster_type: str = None,
         deploy_mode: str = None,
+        description: str = None,
         node_attributes: NodeAttributes = None,
         node_groups: List[NodeGroupConfig] = None,
         payment_type: str = None,
@@ -7455,6 +7711,7 @@ class CreateClusterRequest(TeaModel):
         # *   NORMAL: regular mode. This is the default value. A cluster that contains only one master node is created.
         # *   HA: high availability (HA) mode. A cluster that contains three master nodes is created.
         self.deploy_mode = deploy_mode
+        self.description = description
         # The attributes of all ECS instances.
         # 
         # This parameter is required.
@@ -7542,6 +7799,8 @@ class CreateClusterRequest(TeaModel):
             result['ClusterType'] = self.cluster_type
         if self.deploy_mode is not None:
             result['DeployMode'] = self.deploy_mode
+        if self.description is not None:
+            result['Description'] = self.description
         if self.node_attributes is not None:
             result['NodeAttributes'] = self.node_attributes.to_map()
         result['NodeGroups'] = []
@@ -7591,6 +7850,8 @@ class CreateClusterRequest(TeaModel):
             self.cluster_type = m.get('ClusterType')
         if m.get('DeployMode') is not None:
             self.deploy_mode = m.get('DeployMode')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('NodeAttributes') is not None:
             temp_model = NodeAttributes()
             self.node_attributes = temp_model.from_map(m['NodeAttributes'])
@@ -9408,7 +9669,7 @@ class GetAutoScalingPolicyResponseBodyScalingPolicy(TeaModel):
     ):
         # The cluster ID.
         self.cluster_id = cluster_id
-        # The maximum and minimum numbers of node groups.
+        # The maximum and minimum number of nodes in the node group.
         self.constraints = constraints
         # The ID of the node group.
         self.node_group_id = node_group_id
@@ -9552,7 +9813,7 @@ class GetClusterRequest(TeaModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The ID of the region in which you want to create the instance.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -9655,6 +9916,547 @@ class GetClusterResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetClusterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetClusterCloneMetaRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        region_id: str = None,
+    ):
+        # The cluster ID.
+        # 
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstraints(TeaModel):
+    def __init__(
+        self,
+        max_capacity: int = None,
+        min_capacity: int = None,
+    ):
+        # The maximum number of nodes in the node group. Default value: 2000.
+        self.max_capacity = max_capacity
+        # The minimum number of nodes in the node group. Default value: 0.
+        self.min_capacity = min_capacity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_capacity is not None:
+            result['MaxCapacity'] = self.max_capacity
+        if self.min_capacity is not None:
+            result['MinCapacity'] = self.min_capacity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxCapacity') is not None:
+            self.max_capacity = m.get('MaxCapacity')
+        if m.get('MinCapacity') is not None:
+            self.min_capacity = m.get('MinCapacity')
+        return self
+
+
+class GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesScalingRules(TeaModel):
+    def __init__(
+        self,
+        activity_type: str = None,
+        adjustment_value: int = None,
+        metrics_trigger: MetricsTrigger = None,
+        rule_name: str = None,
+        time_trigger: TimeTrigger = None,
+        trigger_type: str = None,
+    ):
+        # The scaling type. This parameter is required. Valid values:
+        # 
+        # *   SCALE_OUT
+        # *   SCALE_IN
+        self.activity_type = activity_type
+        # The adjustment value of the auto scaling rule. This parameter is required. The parameter value must be a positive integer, which indicates the number of instances to be added or removed.
+        self.adjustment_value = adjustment_value
+        # The description of load-based scaling.
+        self.metrics_trigger = metrics_trigger
+        # The name of the auto scaling rule.
+        self.rule_name = rule_name
+        # The description of time-based scaling.
+        self.time_trigger = time_trigger
+        # The trigger mode of the auto scaling rule. This parameter is required. Valid values:
+        # 
+        # *   TIME_TRIGGER: time-based scaling.
+        # *   METRICS_TRIGGER: load-based scaling.
+        self.trigger_type = trigger_type
+
+    def validate(self):
+        if self.metrics_trigger:
+            self.metrics_trigger.validate()
+        if self.time_trigger:
+            self.time_trigger.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.activity_type is not None:
+            result['ActivityType'] = self.activity_type
+        if self.adjustment_value is not None:
+            result['AdjustmentValue'] = self.adjustment_value
+        if self.metrics_trigger is not None:
+            result['MetricsTrigger'] = self.metrics_trigger.to_map()
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.time_trigger is not None:
+            result['TimeTrigger'] = self.time_trigger.to_map()
+        if self.trigger_type is not None:
+            result['TriggerType'] = self.trigger_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActivityType') is not None:
+            self.activity_type = m.get('ActivityType')
+        if m.get('AdjustmentValue') is not None:
+            self.adjustment_value = m.get('AdjustmentValue')
+        if m.get('MetricsTrigger') is not None:
+            temp_model = MetricsTrigger()
+            self.metrics_trigger = temp_model.from_map(m['MetricsTrigger'])
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('TimeTrigger') is not None:
+            temp_model = TimeTrigger()
+            self.time_trigger = temp_model.from_map(m['TimeTrigger'])
+        if m.get('TriggerType') is not None:
+            self.trigger_type = m.get('TriggerType')
+        return self
+
+
+class GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        constraints: GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstraints = None,
+        node_group_id: str = None,
+        scaling_policy_id: str = None,
+        scaling_rules: List[GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesScalingRules] = None,
+    ):
+        # The cluster ID.
+        self.cluster_id = cluster_id
+        # The maximum and minimum number of nodes in the node group.
+        self.constraints = constraints
+        # The node group ID.
+        self.node_group_id = node_group_id
+        # The ID of the auto scaling policy.
+        self.scaling_policy_id = scaling_policy_id
+        # The list of auto scaling rules.
+        self.scaling_rules = scaling_rules
+
+    def validate(self):
+        if self.constraints:
+            self.constraints.validate()
+        if self.scaling_rules:
+            for k in self.scaling_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.constraints is not None:
+            result['Constraints'] = self.constraints.to_map()
+        if self.node_group_id is not None:
+            result['NodeGroupId'] = self.node_group_id
+        if self.scaling_policy_id is not None:
+            result['ScalingPolicyId'] = self.scaling_policy_id
+        result['ScalingRules'] = []
+        if self.scaling_rules is not None:
+            for k in self.scaling_rules:
+                result['ScalingRules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('Constraints') is not None:
+            temp_model = GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstraints()
+            self.constraints = temp_model.from_map(m['Constraints'])
+        if m.get('NodeGroupId') is not None:
+            self.node_group_id = m.get('NodeGroupId')
+        if m.get('ScalingPolicyId') is not None:
+            self.scaling_policy_id = m.get('ScalingPolicyId')
+        self.scaling_rules = []
+        if m.get('ScalingRules') is not None:
+            for k in m.get('ScalingRules'):
+                temp_model = GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesScalingRules()
+                self.scaling_rules.append(temp_model.from_map(k))
+        return self
+
+
+class GetClusterCloneMetaResponseBodyClusterCloneMeta(TeaModel):
+    def __init__(
+        self,
+        application_configs: List[ApplicationConfig] = None,
+        applications: List[Application] = None,
+        bootstrap_scripts: List[Script] = None,
+        cluster_id: str = None,
+        cluster_name: str = None,
+        cluster_state: str = None,
+        cluster_type: str = None,
+        deploy_mode: str = None,
+        emr_default_role: str = None,
+        exist_clone_config: bool = None,
+        node_attributes: NodeAttributes = None,
+        node_groups: List[NodeGroup] = None,
+        payment_type: str = None,
+        region_id: str = None,
+        release_version: str = None,
+        resource_group_id: str = None,
+        scaling_policies: List[GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies] = None,
+        security_mode: str = None,
+        subscription_config: SubscriptionConfig = None,
+        tags: List[Tag] = None,
+    ):
+        # The modified configuration items.
+        self.application_configs = application_configs
+        # The services deployed in the cluster.
+        self.applications = applications
+        # The bootstrap actions. Number of elements in the array: 1 to 10.
+        self.bootstrap_scripts = bootstrap_scripts
+        # The cluster ID.
+        self.cluster_id = cluster_id
+        # The name of the cluster.
+        self.cluster_name = cluster_name
+        # The status of the cluster. Valid values:
+        # 
+        # *   STARTING
+        # *   START_FAILED
+        # *   BOOTSTRAPPING
+        # *   RUNNING
+        # *   TERMINATING
+        # *   TERMINATED
+        # *   TERMINATED_WITH_ERRORS
+        # *   TERMINATE_FAILED
+        self.cluster_state = cluster_state
+        # The cluster type. Valid values:
+        # 
+        # *   DATALAKE
+        # *   OLAP
+        # *   DATAFLOW
+        # *   DATASERVING
+        # *   CUSTOM
+        # *   HADOOP
+        self.cluster_type = cluster_type
+        # The deployment mode of master nodes in the cluster. Valid values:
+        # 
+        # *   NORMAL: regular mode.
+        # *   HA: high availability mode.
+        self.deploy_mode = deploy_mode
+        # The EMR service role.
+        self.emr_default_role = emr_default_role
+        # Indicates whether the service configurations of a Hadoop cluster that you made during cluster creation can be cloned. Valid values:
+        # 
+        # *   False
+        # *   True
+        self.exist_clone_config = exist_clone_config
+        # The attributes of the node.
+        self.node_attributes = node_attributes
+        # The node groups. Number of elements in the array: 1 to 100.
+        self.node_groups = node_groups
+        # The billing method of the cluster. Valid values:
+        # 
+        # *   PayAsYouGo
+        # *   Subscription
+        self.payment_type = payment_type
+        # The region ID.
+        self.region_id = region_id
+        # The EMR version.
+        self.release_version = release_version
+        # The resource group ID.
+        self.resource_group_id = resource_group_id
+        # The auto scaling policies of each node group in the cluster.
+        self.scaling_policies = scaling_policies
+        # The security mode of the cluster. Valid values:
+        # 
+        # *   NORMAL: regular mode. Kerberos is not enabled.
+        # *   KERBEROS: Kerberos mode. Kerberos is enabled.
+        self.security_mode = security_mode
+        # The subscription configurations.
+        self.subscription_config = subscription_config
+        # The list of tags.
+        self.tags = tags
+
+    def validate(self):
+        if self.application_configs:
+            for k in self.application_configs:
+                if k:
+                    k.validate()
+        if self.applications:
+            for k in self.applications:
+                if k:
+                    k.validate()
+        if self.bootstrap_scripts:
+            for k in self.bootstrap_scripts:
+                if k:
+                    k.validate()
+        if self.node_attributes:
+            self.node_attributes.validate()
+        if self.node_groups:
+            for k in self.node_groups:
+                if k:
+                    k.validate()
+        if self.scaling_policies:
+            for k in self.scaling_policies:
+                if k:
+                    k.validate()
+        if self.subscription_config:
+            self.subscription_config.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ApplicationConfigs'] = []
+        if self.application_configs is not None:
+            for k in self.application_configs:
+                result['ApplicationConfigs'].append(k.to_map() if k else None)
+        result['Applications'] = []
+        if self.applications is not None:
+            for k in self.applications:
+                result['Applications'].append(k.to_map() if k else None)
+        result['BootstrapScripts'] = []
+        if self.bootstrap_scripts is not None:
+            for k in self.bootstrap_scripts:
+                result['BootstrapScripts'].append(k.to_map() if k else None)
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.cluster_state is not None:
+            result['ClusterState'] = self.cluster_state
+        if self.cluster_type is not None:
+            result['ClusterType'] = self.cluster_type
+        if self.deploy_mode is not None:
+            result['DeployMode'] = self.deploy_mode
+        if self.emr_default_role is not None:
+            result['EmrDefaultRole'] = self.emr_default_role
+        if self.exist_clone_config is not None:
+            result['ExistCloneConfig'] = self.exist_clone_config
+        if self.node_attributes is not None:
+            result['NodeAttributes'] = self.node_attributes.to_map()
+        result['NodeGroups'] = []
+        if self.node_groups is not None:
+            for k in self.node_groups:
+                result['NodeGroups'].append(k.to_map() if k else None)
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.release_version is not None:
+            result['ReleaseVersion'] = self.release_version
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['ScalingPolicies'] = []
+        if self.scaling_policies is not None:
+            for k in self.scaling_policies:
+                result['ScalingPolicies'].append(k.to_map() if k else None)
+        if self.security_mode is not None:
+            result['SecurityMode'] = self.security_mode
+        if self.subscription_config is not None:
+            result['SubscriptionConfig'] = self.subscription_config.to_map()
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.application_configs = []
+        if m.get('ApplicationConfigs') is not None:
+            for k in m.get('ApplicationConfigs'):
+                temp_model = ApplicationConfig()
+                self.application_configs.append(temp_model.from_map(k))
+        self.applications = []
+        if m.get('Applications') is not None:
+            for k in m.get('Applications'):
+                temp_model = Application()
+                self.applications.append(temp_model.from_map(k))
+        self.bootstrap_scripts = []
+        if m.get('BootstrapScripts') is not None:
+            for k in m.get('BootstrapScripts'):
+                temp_model = Script()
+                self.bootstrap_scripts.append(temp_model.from_map(k))
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('ClusterState') is not None:
+            self.cluster_state = m.get('ClusterState')
+        if m.get('ClusterType') is not None:
+            self.cluster_type = m.get('ClusterType')
+        if m.get('DeployMode') is not None:
+            self.deploy_mode = m.get('DeployMode')
+        if m.get('EmrDefaultRole') is not None:
+            self.emr_default_role = m.get('EmrDefaultRole')
+        if m.get('ExistCloneConfig') is not None:
+            self.exist_clone_config = m.get('ExistCloneConfig')
+        if m.get('NodeAttributes') is not None:
+            temp_model = NodeAttributes()
+            self.node_attributes = temp_model.from_map(m['NodeAttributes'])
+        self.node_groups = []
+        if m.get('NodeGroups') is not None:
+            for k in m.get('NodeGroups'):
+                temp_model = NodeGroup()
+                self.node_groups.append(temp_model.from_map(k))
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ReleaseVersion') is not None:
+            self.release_version = m.get('ReleaseVersion')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.scaling_policies = []
+        if m.get('ScalingPolicies') is not None:
+            for k in m.get('ScalingPolicies'):
+                temp_model = GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies()
+                self.scaling_policies.append(temp_model.from_map(k))
+        if m.get('SecurityMode') is not None:
+            self.security_mode = m.get('SecurityMode')
+        if m.get('SubscriptionConfig') is not None:
+            temp_model = SubscriptionConfig()
+            self.subscription_config = temp_model.from_map(m['SubscriptionConfig'])
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = Tag()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
+class GetClusterCloneMetaResponseBody(TeaModel):
+    def __init__(
+        self,
+        cluster_clone_meta: GetClusterCloneMetaResponseBodyClusterCloneMeta = None,
+        request_id: str = None,
+    ):
+        # The metadata of the cluster that you want to clone.
+        self.cluster_clone_meta = cluster_clone_meta
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.cluster_clone_meta:
+            self.cluster_clone_meta.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_clone_meta is not None:
+            result['ClusterCloneMeta'] = self.cluster_clone_meta.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterCloneMeta') is not None:
+            temp_model = GetClusterCloneMetaResponseBodyClusterCloneMeta()
+            self.cluster_clone_meta = temp_model.from_map(m['ClusterCloneMeta'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetClusterCloneMetaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetClusterCloneMetaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetClusterCloneMetaResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -29440,7 +30242,12 @@ class GetOperationRequest(TeaModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The ID of the operation.
+        # The operation ID.
+        # 
+        # References:
+        # 
+        # *   [CreateCluster](https://help.aliyun.com/document_detail/454393.html)
+        # *   [IncreaseNodes](https://help.aliyun.com/document_detail/454397.html)
         # 
         # This parameter is required.
         self.operation_id = operation_id
@@ -29569,7 +30376,7 @@ class IncreaseNodesRequest(TeaModel):
         payment_duration_unit: str = None,
         region_id: str = None,
     ):
-        # The configurations of the applications. Valid values of N: 1 to 1000.
+        # The application configurations. You can specify a maximum of 1,000 items.
         self.application_configs = application_configs
         # Indicates whether to automatically pay for the orders involved in the scale-out operation. This parameter takes effect only when the PaymentType parameter is set to Subscription. Valid values:
         # 
@@ -29578,6 +30385,10 @@ class IncreaseNodesRequest(TeaModel):
         # 
         # Default value: false
         self.auto_pay_order = auto_pay_order
+        # Specifies whether to enable auto-renewal for nodes. Valid values:
+        # 
+        # *   true
+        # *   false (default value)
         self.auto_renew = auto_renew
         # The ID of the cluster.
         # 
@@ -30443,7 +31254,12 @@ class ListApplicationsResponseBodyApplications(TeaModel):
     ):
         # The application name.
         self.application_name = application_name
-        # The status of the application operation.
+        # The status of the applications. Valid values:
+        # 
+        # *   STOPPED: At least one application is in the Stopped state.
+        # *   RUNNING: All applications are in the Running state.
+        # 
+        # This parameter is returned only for DataLake, OLAP, Dataflow, DataServing, and custom clusters. For other types of clusters, no value is returned for this parameter.
         self.application_state = application_state
         # The version of the application.
         self.application_version = application_version
@@ -30491,7 +31307,7 @@ class ListApplicationsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about applications.
+        # The applications.
         self.applications = applications
         # The number of entries per page.
         self.max_results = max_results
@@ -30933,11 +31749,39 @@ class ListClustersRequest(TeaModel):
         self.payment_types = payment_types
         # The region ID.
         # 
+        # Valid values:
+        # 
+        # *   cn-qingdao
+        # *   cn-beijing
+        # *   cn-zhangjiakou
+        # *   cn-huhehaote
+        # *   cn-hangzhou
+        # *   cn-shanghai
+        # *   cn-shenzhen
+        # *   cn-chengdu
+        # *   cn-hongkong
+        # *   cn-wulanchabu
+        # *   cn-heyuan-acdr-1
+        # *   cn-qingdao-acdr-ut-1
+        # *   ap-northeast-1
+        # *   ap-southeast-1
+        # *   ap-southeast-2
+        # *   ap-southeast-3
+        # *   ap-southeast-5
+        # *   ap-south-1
+        # *   us-east-1
+        # *   us-west-1
+        # *   me-east-1
+        # *   me-central-1
+        # *   eu-central-1
+        # *   eu-west-1
+        # *   cn-north-2-gov-1
+        # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The tags. You can specify a maximum of 20 items.
+        # The tags. Number of elements in the array: 1 to 20.
         self.tags = tags
 
     def validate(self):
@@ -31421,7 +32265,6 @@ class ListComponentsRequest(TeaModel):
         cluster_id: str = None,
         component_names: List[str] = None,
         component_states: List[str] = None,
-        include_expired_config: bool = None,
         max_results: int = None,
         next_token: str = None,
         region_id: str = None,
@@ -31435,8 +32278,6 @@ class ListComponentsRequest(TeaModel):
         # 组件名称列表。
         self.component_names = component_names
         self.component_states = component_states
-        # 是否包含过期配置。
-        self.include_expired_config = include_expired_config
         # 一次获取的最大记录数。取值范围：1~100。
         self.max_results = max_results
         # 标记当前开始读取的位置，置空表示从头开始。
@@ -31463,8 +32304,6 @@ class ListComponentsRequest(TeaModel):
             result['ComponentNames'] = self.component_names
         if self.component_states is not None:
             result['ComponentStates'] = self.component_states
-        if self.include_expired_config is not None:
-            result['IncludeExpiredConfig'] = self.include_expired_config
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -31483,8 +32322,6 @@ class ListComponentsRequest(TeaModel):
             self.component_names = m.get('ComponentNames')
         if m.get('ComponentStates') is not None:
             self.component_states = m.get('ComponentStates')
-        if m.get('IncludeExpiredConfig') is not None:
-            self.include_expired_config = m.get('IncludeExpiredConfig')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -45445,242 +46282,6 @@ class ListDoctorReportsResponse(TeaModel):
         return self
 
 
-class ListInspectionHistoryRequest(TeaModel):
-    def __init__(
-        self,
-        cluster_id: str = None,
-        component: str = None,
-        instance_id: str = None,
-        language: str = None,
-        max_results: int = None,
-        next_token: str = None,
-        region_id: str = None,
-        service: str = None,
-        type: str = None,
-    ):
-        # 集群ID。
-        self.cluster_id = cluster_id
-        # 组件名称
-        self.component = component
-        # 节点id
-        self.instance_id = instance_id
-        self.language = language
-        # 一次获取的最大记录数。取值范围：1~100。
-        self.max_results = max_results
-        # 标记当前开始读取的位置，置空表示从头开始。
-        self.next_token = next_token
-        # 地域ID。
-        self.region_id = region_id
-        # 服务名称
-        self.service = service
-        # 巡检历史类型 application/component
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cluster_id is not None:
-            result['ClusterId'] = self.cluster_id
-        if self.component is not None:
-            result['Component'] = self.component
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.language is not None:
-            result['Language'] = self.language
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.service is not None:
-            result['Service'] = self.service
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClusterId') is not None:
-            self.cluster_id = m.get('ClusterId')
-        if m.get('Component') is not None:
-            self.component = m.get('Component')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('Language') is not None:
-            self.language = m.get('Language')
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('Service') is not None:
-            self.service = m.get('Service')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        return self
-
-
-class ListInspectionHistoryResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        change_message: str = None,
-        health_status: str = None,
-        inspection_items: List[Dict[str, str]] = None,
-        report_time: str = None,
-    ):
-        # 变更消息
-        self.change_message = change_message
-        # 巡检状态
-        self.health_status = health_status
-        # 巡检变更明细
-        self.inspection_items = inspection_items
-        self.report_time = report_time
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.change_message is not None:
-            result['ChangeMessage'] = self.change_message
-        if self.health_status is not None:
-            result['HealthStatus'] = self.health_status
-        if self.inspection_items is not None:
-            result['InspectionItems'] = self.inspection_items
-        if self.report_time is not None:
-            result['ReportTime'] = self.report_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ChangeMessage') is not None:
-            self.change_message = m.get('ChangeMessage')
-        if m.get('HealthStatus') is not None:
-            self.health_status = m.get('HealthStatus')
-        if m.get('InspectionItems') is not None:
-            self.inspection_items = m.get('InspectionItems')
-        if m.get('ReportTime') is not None:
-            self.report_time = m.get('ReportTime')
-        return self
-
-
-class ListInspectionHistoryResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: List[ListInspectionHistoryResponseBodyData] = None,
-        max_results: int = None,
-        next_token: str = None,
-        request_id: str = None,
-        total_count: int = None,
-    ):
-        # Created on 2023/8/21
-        self.data = data
-        # 本次请求所返回的最大记录条数。
-        self.max_results = max_results
-        # 返回读取到的数据位置，空代表数据已经读取完毕。
-        self.next_token = next_token
-        # 请求ID。
-        self.request_id = request_id
-        # 本次请求条件下的数据总量。
-        self.total_count = total_count
-
-    def validate(self):
-        if self.data:
-            for k in self.data:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Data'] = []
-        if self.data is not None:
-            for k in self.data:
-                result['Data'].append(k.to_map() if k else None)
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.data = []
-        if m.get('Data') is not None:
-            for k in m.get('Data'):
-                temp_model = ListInspectionHistoryResponseBodyData()
-                self.data.append(temp_model.from_map(k))
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
-class ListInspectionHistoryResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListInspectionHistoryResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListInspectionHistoryResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ListInstanceTypesRequest(TeaModel):
     def __init__(
         self,
@@ -46505,303 +47106,6 @@ class ListReleaseVersionsResponse(TeaModel):
         return self
 
 
-class ListResourceHealthInspectionsRequest(TeaModel):
-    def __init__(
-        self,
-        application_name: str = None,
-        cluster_id: str = None,
-        component_name: str = None,
-        health_statuses: List[str] = None,
-        language: str = None,
-        max_results: int = None,
-        next_token: str = None,
-        node_ids: List[str] = None,
-        node_names: List[str] = None,
-        region_id: str = None,
-        resource_type: str = None,
-    ):
-        # 应用名称。
-        self.application_name = application_name
-        # 集群ID。
-        # 
-        # This parameter is required.
-        self.cluster_id = cluster_id
-        # 组件名称。
-        self.component_name = component_name
-        # 健康状态。
-        self.health_statuses = health_statuses
-        # 语言
-        self.language = language
-        # 一次获取的最大记录数。取值范围：1~100。
-        self.max_results = max_results
-        # 标记当前开始读取的位置，置空表示从头开始。
-        self.next_token = next_token
-        # 节点Id列表。
-        self.node_ids = node_ids
-        # 节点名称列表。
-        self.node_names = node_names
-        # 地域ID。
-        # 
-        # This parameter is required.
-        self.region_id = region_id
-        # 查询的目标资源类型，合法值：
-        # <p>
-        # - APPLICATION
-        # <p>
-        # - COMPONENT
-        # <p>
-        # - COMPONENT_INSTANCE
-        # <p>
-        self.resource_type = resource_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.application_name is not None:
-            result['ApplicationName'] = self.application_name
-        if self.cluster_id is not None:
-            result['ClusterId'] = self.cluster_id
-        if self.component_name is not None:
-            result['ComponentName'] = self.component_name
-        if self.health_statuses is not None:
-            result['HealthStatuses'] = self.health_statuses
-        if self.language is not None:
-            result['Language'] = self.language
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        if self.node_ids is not None:
-            result['NodeIds'] = self.node_ids
-        if self.node_names is not None:
-            result['NodeNames'] = self.node_names
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.resource_type is not None:
-            result['ResourceType'] = self.resource_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ApplicationName') is not None:
-            self.application_name = m.get('ApplicationName')
-        if m.get('ClusterId') is not None:
-            self.cluster_id = m.get('ClusterId')
-        if m.get('ComponentName') is not None:
-            self.component_name = m.get('ComponentName')
-        if m.get('HealthStatuses') is not None:
-            self.health_statuses = m.get('HealthStatuses')
-        if m.get('Language') is not None:
-            self.language = m.get('Language')
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('NodeIds') is not None:
-            self.node_ids = m.get('NodeIds')
-        if m.get('NodeNames') is not None:
-            self.node_names = m.get('NodeNames')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('ResourceType') is not None:
-            self.resource_type = m.get('ResourceType')
-        return self
-
-
-class ListResourceHealthInspectionsResponseBodyHealthInspections(TeaModel):
-    def __init__(
-        self,
-        application_name: str = None,
-        component_name: str = None,
-        health_message: str = None,
-        health_status: str = None,
-        inspection_name: str = None,
-        node_id: str = None,
-        node_name: str = None,
-        report_time: int = None,
-        rule_name: str = None,
-    ):
-        # 应用名称。
-        self.application_name = application_name
-        # 组件名称。
-        self.component_name = component_name
-        # 健康详细信息。
-        self.health_message = health_message
-        # 健康状态。
-        self.health_status = health_status
-        # 巡检项名称。
-        self.inspection_name = inspection_name
-        # 节点ID。
-        self.node_id = node_id
-        # 节点名称。
-        self.node_name = node_name
-        # 最近上报时间戳。
-        self.report_time = report_time
-        # 规则名称。
-        self.rule_name = rule_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.application_name is not None:
-            result['ApplicationName'] = self.application_name
-        if self.component_name is not None:
-            result['ComponentName'] = self.component_name
-        if self.health_message is not None:
-            result['HealthMessage'] = self.health_message
-        if self.health_status is not None:
-            result['HealthStatus'] = self.health_status
-        if self.inspection_name is not None:
-            result['InspectionName'] = self.inspection_name
-        if self.node_id is not None:
-            result['NodeId'] = self.node_id
-        if self.node_name is not None:
-            result['NodeName'] = self.node_name
-        if self.report_time is not None:
-            result['ReportTime'] = self.report_time
-        if self.rule_name is not None:
-            result['RuleName'] = self.rule_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ApplicationName') is not None:
-            self.application_name = m.get('ApplicationName')
-        if m.get('ComponentName') is not None:
-            self.component_name = m.get('ComponentName')
-        if m.get('HealthMessage') is not None:
-            self.health_message = m.get('HealthMessage')
-        if m.get('HealthStatus') is not None:
-            self.health_status = m.get('HealthStatus')
-        if m.get('InspectionName') is not None:
-            self.inspection_name = m.get('InspectionName')
-        if m.get('NodeId') is not None:
-            self.node_id = m.get('NodeId')
-        if m.get('NodeName') is not None:
-            self.node_name = m.get('NodeName')
-        if m.get('ReportTime') is not None:
-            self.report_time = m.get('ReportTime')
-        if m.get('RuleName') is not None:
-            self.rule_name = m.get('RuleName')
-        return self
-
-
-class ListResourceHealthInspectionsResponseBody(TeaModel):
-    def __init__(
-        self,
-        health_inspections: List[ListResourceHealthInspectionsResponseBodyHealthInspections] = None,
-        max_results: int = None,
-        next_token: str = None,
-        request_id: str = None,
-        total_count: int = None,
-    ):
-        self.health_inspections = health_inspections
-        # 本次请求所返回的最大记录条数。
-        self.max_results = max_results
-        # 返回读取到的数据位置，空代表数据已经读取完毕。
-        self.next_token = next_token
-        # 请求ID。
-        self.request_id = request_id
-        # 本次请求条件下的数据总量。
-        self.total_count = total_count
-
-    def validate(self):
-        if self.health_inspections:
-            for k in self.health_inspections:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['HealthInspections'] = []
-        if self.health_inspections is not None:
-            for k in self.health_inspections:
-                result['HealthInspections'].append(k.to_map() if k else None)
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.health_inspections = []
-        if m.get('HealthInspections') is not None:
-            for k in m.get('HealthInspections'):
-                temp_model = ListResourceHealthInspectionsResponseBodyHealthInspections()
-                self.health_inspections.append(temp_model.from_map(k))
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
-class ListResourceHealthInspectionsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListResourceHealthInspectionsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListResourceHealthInspectionsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ListScriptsRequest(TeaModel):
     def __init__(
         self,
@@ -47105,7 +47409,7 @@ class ListTagResourcesRequest(TeaModel):
     ):
         # The number of maximum number of records to obtain at a time.
         self.max_results = max_results
-        # Marks the current position to start reading. If this field is empty, the data is read from the beginning.
+        # The pagination token that is used in the request to retrieve a new page of results. If NextToken is empty, the query starts from the beginning.
         self.next_token = next_token
         # The ID of the region in which you want to create the instance.
         # 
@@ -47943,6 +48247,475 @@ class RunApplicationActionResponse(TeaModel):
         return self
 
 
+class RunClusterRequest(TeaModel):
+    def __init__(
+        self,
+        application_configs: List[ApplicationConfig] = None,
+        applications: List[Application] = None,
+        bootstrap_scripts: List[Script] = None,
+        client_token: str = None,
+        cluster_name: str = None,
+        cluster_type: str = None,
+        deploy_mode: str = None,
+        description: str = None,
+        node_attributes: NodeAttributes = None,
+        node_groups: List[NodeGroupConfig] = None,
+        payment_type: str = None,
+        region_id: str = None,
+        release_version: str = None,
+        resource_group_id: str = None,
+        security_mode: str = None,
+        subscription_config: SubscriptionConfig = None,
+        tags: List[Tag] = None,
+    ):
+        # 应用配置。数组元素个数N的取值范围：1~1000。
+        self.application_configs = application_configs
+        # 应用列表。数组元素个数N的取值范围：1~100。
+        # 
+        # This parameter is required.
+        self.applications = applications
+        # 引导脚本。数组元素个数N的取值范围：1~10。
+        self.bootstrap_scripts = bootstrap_scripts
+        # 幂等客户端TOKEN。同一个ClientToken多次调用的返回结果一致，同一个ClientToken最多只创建一个集群。
+        self.client_token = client_token
+        # 集群名称。长度为1~128个字符，必须以大小字母或中文开头，不能以http://和https://开头。可以包含中文、英文、数字、半角冒号（:）、下划线（_）、半角句号（.）或者短划线（-）
+        # 
+        # This parameter is required.
+        self.cluster_name = cluster_name
+        # 创建的EMR集群类型。取值范围：
+        # - DATALAKE：新版数据湖。
+        # - OLAP：数据分析。
+        # - DATAFLOW：实时数据流。
+        # - DATASERVING：数据服务。
+        # - CUSTOM：自定义集群。
+        # - HADOOP：旧版数据湖（不推荐使用，建议使用新版数据湖）。
+        # 
+        # This parameter is required.
+        self.cluster_type = cluster_type
+        # 集群中的应用部署模式。取值范围：
+        # - NORMAL：非高可用部署。集群1个MASTER节点。
+        # - HA：高可用部署。高可用部署要求至少3个MASTER节点。
+        # 
+        # 默认值：NORMAL。
+        self.deploy_mode = deploy_mode
+        self.description = description
+        self.node_attributes = node_attributes
+        # 节点组。数组元素个数N的取值范围：1~100。
+        # <p>
+        # 
+        # This parameter is required.
+        self.node_groups = node_groups
+        # 集群的付费类型。取值范围：
+        # - PayAsYouGo：后付费。
+        # - Subscription：预付费。
+        # 
+        # 默认值：PayAsYouGo。
+        self.payment_type = payment_type
+        # 区域ID。
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # EMR发行版。
+        # 
+        # This parameter is required.
+        self.release_version = release_version
+        # 集群所在的企业资源组ID。
+        self.resource_group_id = resource_group_id
+        # Kerberos安全模式。取值范围：
+        # - NORMAL：普通模式，不开启Kerberos模式。
+        # - KERBEROS：开启Kerberos模式。
+        # 
+        # 默认值：NORMAL
+        self.security_mode = security_mode
+        self.subscription_config = subscription_config
+        # 标签。数组元数个数N的取值范围：0~20。
+        self.tags = tags
+
+    def validate(self):
+        if self.application_configs:
+            for k in self.application_configs:
+                if k:
+                    k.validate()
+        if self.applications:
+            for k in self.applications:
+                if k:
+                    k.validate()
+        if self.bootstrap_scripts:
+            for k in self.bootstrap_scripts:
+                if k:
+                    k.validate()
+        if self.node_attributes:
+            self.node_attributes.validate()
+        if self.node_groups:
+            for k in self.node_groups:
+                if k:
+                    k.validate()
+        if self.subscription_config:
+            self.subscription_config.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ApplicationConfigs'] = []
+        if self.application_configs is not None:
+            for k in self.application_configs:
+                result['ApplicationConfigs'].append(k.to_map() if k else None)
+        result['Applications'] = []
+        if self.applications is not None:
+            for k in self.applications:
+                result['Applications'].append(k.to_map() if k else None)
+        result['BootstrapScripts'] = []
+        if self.bootstrap_scripts is not None:
+            for k in self.bootstrap_scripts:
+                result['BootstrapScripts'].append(k.to_map() if k else None)
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.cluster_type is not None:
+            result['ClusterType'] = self.cluster_type
+        if self.deploy_mode is not None:
+            result['DeployMode'] = self.deploy_mode
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.node_attributes is not None:
+            result['NodeAttributes'] = self.node_attributes.to_map()
+        result['NodeGroups'] = []
+        if self.node_groups is not None:
+            for k in self.node_groups:
+                result['NodeGroups'].append(k.to_map() if k else None)
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.release_version is not None:
+            result['ReleaseVersion'] = self.release_version
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.security_mode is not None:
+            result['SecurityMode'] = self.security_mode
+        if self.subscription_config is not None:
+            result['SubscriptionConfig'] = self.subscription_config.to_map()
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.application_configs = []
+        if m.get('ApplicationConfigs') is not None:
+            for k in m.get('ApplicationConfigs'):
+                temp_model = ApplicationConfig()
+                self.application_configs.append(temp_model.from_map(k))
+        self.applications = []
+        if m.get('Applications') is not None:
+            for k in m.get('Applications'):
+                temp_model = Application()
+                self.applications.append(temp_model.from_map(k))
+        self.bootstrap_scripts = []
+        if m.get('BootstrapScripts') is not None:
+            for k in m.get('BootstrapScripts'):
+                temp_model = Script()
+                self.bootstrap_scripts.append(temp_model.from_map(k))
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('ClusterType') is not None:
+            self.cluster_type = m.get('ClusterType')
+        if m.get('DeployMode') is not None:
+            self.deploy_mode = m.get('DeployMode')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('NodeAttributes') is not None:
+            temp_model = NodeAttributes()
+            self.node_attributes = temp_model.from_map(m['NodeAttributes'])
+        self.node_groups = []
+        if m.get('NodeGroups') is not None:
+            for k in m.get('NodeGroups'):
+                temp_model = NodeGroupConfig()
+                self.node_groups.append(temp_model.from_map(k))
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ReleaseVersion') is not None:
+            self.release_version = m.get('ReleaseVersion')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SecurityMode') is not None:
+            self.security_mode = m.get('SecurityMode')
+        if m.get('SubscriptionConfig') is not None:
+            temp_model = SubscriptionConfig()
+            self.subscription_config = temp_model.from_map(m['SubscriptionConfig'])
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = Tag()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
+class RunClusterShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        application_configs_shrink: str = None,
+        applications_shrink: str = None,
+        bootstrap_scripts_shrink: str = None,
+        client_token: str = None,
+        cluster_name: str = None,
+        cluster_type: str = None,
+        deploy_mode: str = None,
+        description: str = None,
+        node_attributes_shrink: str = None,
+        node_groups_shrink: str = None,
+        payment_type: str = None,
+        region_id: str = None,
+        release_version: str = None,
+        resource_group_id: str = None,
+        security_mode: str = None,
+        subscription_config_shrink: str = None,
+        tags_shrink: str = None,
+    ):
+        # 应用配置。数组元素个数N的取值范围：1~1000。
+        self.application_configs_shrink = application_configs_shrink
+        # 应用列表。数组元素个数N的取值范围：1~100。
+        # 
+        # This parameter is required.
+        self.applications_shrink = applications_shrink
+        # 引导脚本。数组元素个数N的取值范围：1~10。
+        self.bootstrap_scripts_shrink = bootstrap_scripts_shrink
+        # 幂等客户端TOKEN。同一个ClientToken多次调用的返回结果一致，同一个ClientToken最多只创建一个集群。
+        self.client_token = client_token
+        # 集群名称。长度为1~128个字符，必须以大小字母或中文开头，不能以http://和https://开头。可以包含中文、英文、数字、半角冒号（:）、下划线（_）、半角句号（.）或者短划线（-）
+        # 
+        # This parameter is required.
+        self.cluster_name = cluster_name
+        # 创建的EMR集群类型。取值范围：
+        # - DATALAKE：新版数据湖。
+        # - OLAP：数据分析。
+        # - DATAFLOW：实时数据流。
+        # - DATASERVING：数据服务。
+        # - CUSTOM：自定义集群。
+        # - HADOOP：旧版数据湖（不推荐使用，建议使用新版数据湖）。
+        # 
+        # This parameter is required.
+        self.cluster_type = cluster_type
+        # 集群中的应用部署模式。取值范围：
+        # - NORMAL：非高可用部署。集群1个MASTER节点。
+        # - HA：高可用部署。高可用部署要求至少3个MASTER节点。
+        # 
+        # 默认值：NORMAL。
+        self.deploy_mode = deploy_mode
+        self.description = description
+        self.node_attributes_shrink = node_attributes_shrink
+        # 节点组。数组元素个数N的取值范围：1~100。
+        # <p>
+        # 
+        # This parameter is required.
+        self.node_groups_shrink = node_groups_shrink
+        # 集群的付费类型。取值范围：
+        # - PayAsYouGo：后付费。
+        # - Subscription：预付费。
+        # 
+        # 默认值：PayAsYouGo。
+        self.payment_type = payment_type
+        # 区域ID。
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # EMR发行版。
+        # 
+        # This parameter is required.
+        self.release_version = release_version
+        # 集群所在的企业资源组ID。
+        self.resource_group_id = resource_group_id
+        # Kerberos安全模式。取值范围：
+        # - NORMAL：普通模式，不开启Kerberos模式。
+        # - KERBEROS：开启Kerberos模式。
+        # 
+        # 默认值：NORMAL
+        self.security_mode = security_mode
+        self.subscription_config_shrink = subscription_config_shrink
+        # 标签。数组元数个数N的取值范围：0~20。
+        self.tags_shrink = tags_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_configs_shrink is not None:
+            result['ApplicationConfigs'] = self.application_configs_shrink
+        if self.applications_shrink is not None:
+            result['Applications'] = self.applications_shrink
+        if self.bootstrap_scripts_shrink is not None:
+            result['BootstrapScripts'] = self.bootstrap_scripts_shrink
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.cluster_type is not None:
+            result['ClusterType'] = self.cluster_type
+        if self.deploy_mode is not None:
+            result['DeployMode'] = self.deploy_mode
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.node_attributes_shrink is not None:
+            result['NodeAttributes'] = self.node_attributes_shrink
+        if self.node_groups_shrink is not None:
+            result['NodeGroups'] = self.node_groups_shrink
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.release_version is not None:
+            result['ReleaseVersion'] = self.release_version
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.security_mode is not None:
+            result['SecurityMode'] = self.security_mode
+        if self.subscription_config_shrink is not None:
+            result['SubscriptionConfig'] = self.subscription_config_shrink
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationConfigs') is not None:
+            self.application_configs_shrink = m.get('ApplicationConfigs')
+        if m.get('Applications') is not None:
+            self.applications_shrink = m.get('Applications')
+        if m.get('BootstrapScripts') is not None:
+            self.bootstrap_scripts_shrink = m.get('BootstrapScripts')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('ClusterType') is not None:
+            self.cluster_type = m.get('ClusterType')
+        if m.get('DeployMode') is not None:
+            self.deploy_mode = m.get('DeployMode')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('NodeAttributes') is not None:
+            self.node_attributes_shrink = m.get('NodeAttributes')
+        if m.get('NodeGroups') is not None:
+            self.node_groups_shrink = m.get('NodeGroups')
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ReleaseVersion') is not None:
+            self.release_version = m.get('ReleaseVersion')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SecurityMode') is not None:
+            self.security_mode = m.get('SecurityMode')
+        if m.get('SubscriptionConfig') is not None:
+            self.subscription_config_shrink = m.get('SubscriptionConfig')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
+        return self
+
+
+class RunClusterResponseBody(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        operation_id: str = None,
+        request_id: str = None,
+    ):
+        # 集群ID。
+        self.cluster_id = cluster_id
+        # 操作ID。
+        self.operation_id = operation_id
+        # 请求ID。
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.operation_id is not None:
+            result['OperationId'] = self.operation_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('OperationId') is not None:
+            self.operation_id = m.get('OperationId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RunClusterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RunClusterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RunClusterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class TagResourcesRequest(TeaModel):
     def __init__(
         self,
@@ -48225,11 +48998,11 @@ class UpdateApiTemplateRequest(TeaModel):
         template_id: str = None,
         template_name: str = None,
     ):
-        # 接口名。
+        # The name of the API. You can create only a cluster API operation template. Set the value to CreateCluster.
         # 
         # This parameter is required.
         self.api_name = api_name
-        # 接口request内容。
+        # The content of the cluster API operation template. Set the value to JSON strings of the request parameters of the [CreateCluster](https://help.aliyun.com/document_detail/454393.html) API for creating a cluster.
         # 
         # This parameter is required.
         self.content = content
@@ -48406,7 +49179,7 @@ class UpdateApplicationConfigsRequest(TeaModel):
         self.node_group_id = node_group_id
         # The node ID.
         self.node_id = node_id
-        # Specifies whether to refresh the configurations.
+        # Specifies whether to refresh the configurations. Default value: True.
         self.refresh_config = refresh_config
         # The region ID.
         # 

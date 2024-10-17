@@ -217,6 +217,8 @@ class Client(OpenApiClient):
             query['ClusterType'] = request.cluster_type
         if not UtilClient.is_unset(request.deploy_mode):
             query['DeployMode'] = request.deploy_mode
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         if not UtilClient.is_unset(request.node_attributes):
             query['NodeAttributes'] = request.node_attributes
         if not UtilClient.is_unset(request.node_groups):
@@ -282,6 +284,8 @@ class Client(OpenApiClient):
             query['ClusterType'] = request.cluster_type
         if not UtilClient.is_unset(request.deploy_mode):
             query['DeployMode'] = request.deploy_mode
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         if not UtilClient.is_unset(request.node_attributes):
             query['NodeAttributes'] = request.node_attributes
         if not UtilClient.is_unset(request.node_groups):
@@ -1488,6 +1492,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_cluster_with_options_async(request, runtime)
+
+    def get_cluster_clone_meta_with_options(
+        self,
+        request: emr_20210320_models.GetClusterCloneMetaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.GetClusterCloneMetaResponse:
+        """
+        @summary Obtains metadata of the E-MapReduce (EMR) cluster that you want to clone. This helps you call the CreateCluster API operation to quickly create an EMR cluster.
+        
+        @param request: GetClusterCloneMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClusterCloneMetaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetClusterCloneMeta',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.GetClusterCloneMetaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_cluster_clone_meta_with_options_async(
+        self,
+        request: emr_20210320_models.GetClusterCloneMetaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.GetClusterCloneMetaResponse:
+        """
+        @summary Obtains metadata of the E-MapReduce (EMR) cluster that you want to clone. This helps you call the CreateCluster API operation to quickly create an EMR cluster.
+        
+        @param request: GetClusterCloneMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClusterCloneMetaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetClusterCloneMeta',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.GetClusterCloneMetaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_cluster_clone_meta(
+        self,
+        request: emr_20210320_models.GetClusterCloneMetaRequest,
+    ) -> emr_20210320_models.GetClusterCloneMetaResponse:
+        """
+        @summary Obtains metadata of the E-MapReduce (EMR) cluster that you want to clone. This helps you call the CreateCluster API operation to quickly create an EMR cluster.
+        
+        @param request: GetClusterCloneMetaRequest
+        @return: GetClusterCloneMetaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_cluster_clone_meta_with_options(request, runtime)
+
+    async def get_cluster_clone_meta_async(
+        self,
+        request: emr_20210320_models.GetClusterCloneMetaRequest,
+    ) -> emr_20210320_models.GetClusterCloneMetaResponse:
+        """
+        @summary Obtains metadata of the E-MapReduce (EMR) cluster that you want to clone. This helps you call the CreateCluster API operation to quickly create an EMR cluster.
+        
+        @param request: GetClusterCloneMetaRequest
+        @return: GetClusterCloneMetaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_cluster_clone_meta_with_options_async(request, runtime)
 
     def get_doctor_application_with_options(
         self,
@@ -3795,8 +3899,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListApplicationsResponse:
         """
-        @description 查询应用列表。
-        
         @param request: ListApplicationsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListApplicationsResponse
@@ -3838,8 +3940,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListApplicationsResponse:
         """
-        @description 查询应用列表。
-        
         @param request: ListApplicationsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListApplicationsResponse
@@ -3880,8 +3980,6 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListApplicationsRequest,
     ) -> emr_20210320_models.ListApplicationsResponse:
         """
-        @description 查询应用列表。
-        
         @param request: ListApplicationsRequest
         @return: ListApplicationsResponse
         """
@@ -3893,8 +3991,6 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListApplicationsRequest,
     ) -> emr_20210320_models.ListApplicationsResponse:
         """
-        @description 查询应用列表。
-        
         @param request: ListApplicationsRequest
         @return: ListApplicationsResponse
         """
@@ -4299,8 +4395,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListComponentsResponse:
         """
-        @description 查询组件列表。
-        
         @param request: ListComponentsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListComponentsResponse
@@ -4315,8 +4409,6 @@ class Client(OpenApiClient):
             query['ComponentNames'] = request.component_names
         if not UtilClient.is_unset(request.component_states):
             query['ComponentStates'] = request.component_states
-        if not UtilClient.is_unset(request.include_expired_config):
-            query['IncludeExpiredConfig'] = request.include_expired_config
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -4348,8 +4440,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListComponentsResponse:
         """
-        @description 查询组件列表。
-        
         @param request: ListComponentsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListComponentsResponse
@@ -4364,8 +4454,6 @@ class Client(OpenApiClient):
             query['ComponentNames'] = request.component_names
         if not UtilClient.is_unset(request.component_states):
             query['ComponentStates'] = request.component_states
-        if not UtilClient.is_unset(request.include_expired_config):
-            query['IncludeExpiredConfig'] = request.include_expired_config
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -4396,8 +4484,6 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListComponentsRequest,
     ) -> emr_20210320_models.ListComponentsResponse:
         """
-        @description 查询组件列表。
-        
         @param request: ListComponentsRequest
         @return: ListComponentsResponse
         """
@@ -4409,8 +4495,6 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListComponentsRequest,
     ) -> emr_20210320_models.ListComponentsResponse:
         """
-        @description 查询组件列表。
-        
         @param request: ListComponentsRequest
         @return: ListComponentsResponse
         """
@@ -5877,126 +5961,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_doctor_reports_with_options_async(request, runtime)
 
-    def list_inspection_history_with_options(
-        self,
-        request: emr_20210320_models.ListInspectionHistoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20210320_models.ListInspectionHistoryResponse:
-        """
-        @param request: ListInspectionHistoryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListInspectionHistoryResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.component):
-            query['Component'] = request.component
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.language):
-            query['Language'] = request.language
-        if not UtilClient.is_unset(request.max_results):
-            query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
-            query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.service):
-            query['Service'] = request.service
-        if not UtilClient.is_unset(request.type):
-            query['Type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListInspectionHistory',
-            version='2021-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            emr_20210320_models.ListInspectionHistoryResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_inspection_history_with_options_async(
-        self,
-        request: emr_20210320_models.ListInspectionHistoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20210320_models.ListInspectionHistoryResponse:
-        """
-        @param request: ListInspectionHistoryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListInspectionHistoryResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.component):
-            query['Component'] = request.component
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.language):
-            query['Language'] = request.language
-        if not UtilClient.is_unset(request.max_results):
-            query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
-            query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.service):
-            query['Service'] = request.service
-        if not UtilClient.is_unset(request.type):
-            query['Type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListInspectionHistory',
-            version='2021-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            emr_20210320_models.ListInspectionHistoryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_inspection_history(
-        self,
-        request: emr_20210320_models.ListInspectionHistoryRequest,
-    ) -> emr_20210320_models.ListInspectionHistoryResponse:
-        """
-        @param request: ListInspectionHistoryRequest
-        @return: ListInspectionHistoryResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.list_inspection_history_with_options(request, runtime)
-
-    async def list_inspection_history_async(
-        self,
-        request: emr_20210320_models.ListInspectionHistoryRequest,
-    ) -> emr_20210320_models.ListInspectionHistoryResponse:
-        """
-        @param request: ListInspectionHistoryRequest
-        @return: ListInspectionHistoryResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.list_inspection_history_with_options_async(request, runtime)
-
     def list_instance_types_with_options(
         self,
         request: emr_20210320_models.ListInstanceTypesRequest,
@@ -6496,142 +6460,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_release_versions_with_options_async(request, runtime)
-
-    def list_resource_health_inspections_with_options(
-        self,
-        request: emr_20210320_models.ListResourceHealthInspectionsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20210320_models.ListResourceHealthInspectionsResponse:
-        """
-        @description 查询资源巡检项。
-        
-        @param request: ListResourceHealthInspectionsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListResourceHealthInspectionsResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.application_name):
-            query['ApplicationName'] = request.application_name
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.component_name):
-            query['ComponentName'] = request.component_name
-        if not UtilClient.is_unset(request.health_statuses):
-            query['HealthStatuses'] = request.health_statuses
-        if not UtilClient.is_unset(request.language):
-            query['Language'] = request.language
-        if not UtilClient.is_unset(request.max_results):
-            query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
-            query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.node_ids):
-            query['NodeIds'] = request.node_ids
-        if not UtilClient.is_unset(request.node_names):
-            query['NodeNames'] = request.node_names
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_type):
-            query['ResourceType'] = request.resource_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListResourceHealthInspections',
-            version='2021-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            emr_20210320_models.ListResourceHealthInspectionsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_resource_health_inspections_with_options_async(
-        self,
-        request: emr_20210320_models.ListResourceHealthInspectionsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20210320_models.ListResourceHealthInspectionsResponse:
-        """
-        @description 查询资源巡检项。
-        
-        @param request: ListResourceHealthInspectionsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListResourceHealthInspectionsResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.application_name):
-            query['ApplicationName'] = request.application_name
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.component_name):
-            query['ComponentName'] = request.component_name
-        if not UtilClient.is_unset(request.health_statuses):
-            query['HealthStatuses'] = request.health_statuses
-        if not UtilClient.is_unset(request.language):
-            query['Language'] = request.language
-        if not UtilClient.is_unset(request.max_results):
-            query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
-            query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.node_ids):
-            query['NodeIds'] = request.node_ids
-        if not UtilClient.is_unset(request.node_names):
-            query['NodeNames'] = request.node_names
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_type):
-            query['ResourceType'] = request.resource_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListResourceHealthInspections',
-            version='2021-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            emr_20210320_models.ListResourceHealthInspectionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_resource_health_inspections(
-        self,
-        request: emr_20210320_models.ListResourceHealthInspectionsRequest,
-    ) -> emr_20210320_models.ListResourceHealthInspectionsResponse:
-        """
-        @description 查询资源巡检项。
-        
-        @param request: ListResourceHealthInspectionsRequest
-        @return: ListResourceHealthInspectionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.list_resource_health_inspections_with_options(request, runtime)
-
-    async def list_resource_health_inspections_async(
-        self,
-        request: emr_20210320_models.ListResourceHealthInspectionsRequest,
-    ) -> emr_20210320_models.ListResourceHealthInspectionsResponse:
-        """
-        @description 查询资源巡检项。
-        
-        @param request: ListResourceHealthInspectionsRequest
-        @return: ListResourceHealthInspectionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.list_resource_health_inspections_with_options_async(request, runtime)
 
     def list_scripts_with_options(
         self,
@@ -7288,6 +7116,194 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.run_application_action_with_options_async(request, runtime)
+
+    def run_cluster_with_options(
+        self,
+        tmp_req: emr_20210320_models.RunClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.RunClusterResponse:
+        """
+        @param tmp_req: RunClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunClusterResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = emr_20210320_models.RunClusterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.application_configs):
+            request.application_configs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.application_configs, 'ApplicationConfigs', 'json')
+        if not UtilClient.is_unset(tmp_req.applications):
+            request.applications_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.applications, 'Applications', 'json')
+        if not UtilClient.is_unset(tmp_req.bootstrap_scripts):
+            request.bootstrap_scripts_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.bootstrap_scripts, 'BootstrapScripts', 'json')
+        if not UtilClient.is_unset(tmp_req.node_attributes):
+            request.node_attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_attributes, 'NodeAttributes', 'json')
+        if not UtilClient.is_unset(tmp_req.node_groups):
+            request.node_groups_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_groups, 'NodeGroups', 'json')
+        if not UtilClient.is_unset(tmp_req.subscription_config):
+            request.subscription_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.subscription_config, 'SubscriptionConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.application_configs_shrink):
+            body['ApplicationConfigs'] = request.application_configs_shrink
+        if not UtilClient.is_unset(request.applications_shrink):
+            body['Applications'] = request.applications_shrink
+        if not UtilClient.is_unset(request.bootstrap_scripts_shrink):
+            body['BootstrapScripts'] = request.bootstrap_scripts_shrink
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cluster_name):
+            body['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.cluster_type):
+            body['ClusterType'] = request.cluster_type
+        if not UtilClient.is_unset(request.deploy_mode):
+            body['DeployMode'] = request.deploy_mode
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.node_attributes_shrink):
+            body['NodeAttributes'] = request.node_attributes_shrink
+        if not UtilClient.is_unset(request.node_groups_shrink):
+            body['NodeGroups'] = request.node_groups_shrink
+        if not UtilClient.is_unset(request.payment_type):
+            body['PaymentType'] = request.payment_type
+        if not UtilClient.is_unset(request.release_version):
+            body['ReleaseVersion'] = request.release_version
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.security_mode):
+            body['SecurityMode'] = request.security_mode
+        if not UtilClient.is_unset(request.subscription_config_shrink):
+            body['SubscriptionConfig'] = request.subscription_config_shrink
+        if not UtilClient.is_unset(request.tags_shrink):
+            body['Tags'] = request.tags_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunCluster',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.RunClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_cluster_with_options_async(
+        self,
+        tmp_req: emr_20210320_models.RunClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.RunClusterResponse:
+        """
+        @param tmp_req: RunClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunClusterResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = emr_20210320_models.RunClusterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.application_configs):
+            request.application_configs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.application_configs, 'ApplicationConfigs', 'json')
+        if not UtilClient.is_unset(tmp_req.applications):
+            request.applications_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.applications, 'Applications', 'json')
+        if not UtilClient.is_unset(tmp_req.bootstrap_scripts):
+            request.bootstrap_scripts_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.bootstrap_scripts, 'BootstrapScripts', 'json')
+        if not UtilClient.is_unset(tmp_req.node_attributes):
+            request.node_attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_attributes, 'NodeAttributes', 'json')
+        if not UtilClient.is_unset(tmp_req.node_groups):
+            request.node_groups_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_groups, 'NodeGroups', 'json')
+        if not UtilClient.is_unset(tmp_req.subscription_config):
+            request.subscription_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.subscription_config, 'SubscriptionConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.application_configs_shrink):
+            body['ApplicationConfigs'] = request.application_configs_shrink
+        if not UtilClient.is_unset(request.applications_shrink):
+            body['Applications'] = request.applications_shrink
+        if not UtilClient.is_unset(request.bootstrap_scripts_shrink):
+            body['BootstrapScripts'] = request.bootstrap_scripts_shrink
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cluster_name):
+            body['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.cluster_type):
+            body['ClusterType'] = request.cluster_type
+        if not UtilClient.is_unset(request.deploy_mode):
+            body['DeployMode'] = request.deploy_mode
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.node_attributes_shrink):
+            body['NodeAttributes'] = request.node_attributes_shrink
+        if not UtilClient.is_unset(request.node_groups_shrink):
+            body['NodeGroups'] = request.node_groups_shrink
+        if not UtilClient.is_unset(request.payment_type):
+            body['PaymentType'] = request.payment_type
+        if not UtilClient.is_unset(request.release_version):
+            body['ReleaseVersion'] = request.release_version
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.security_mode):
+            body['SecurityMode'] = request.security_mode
+        if not UtilClient.is_unset(request.subscription_config_shrink):
+            body['SubscriptionConfig'] = request.subscription_config_shrink
+        if not UtilClient.is_unset(request.tags_shrink):
+            body['Tags'] = request.tags_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunCluster',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.RunClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_cluster(
+        self,
+        request: emr_20210320_models.RunClusterRequest,
+    ) -> emr_20210320_models.RunClusterResponse:
+        """
+        @param request: RunClusterRequest
+        @return: RunClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_cluster_with_options(request, runtime)
+
+    async def run_cluster_async(
+        self,
+        request: emr_20210320_models.RunClusterRequest,
+    ) -> emr_20210320_models.RunClusterResponse:
+        """
+        @param request: RunClusterRequest
+        @return: RunClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_cluster_with_options_async(request, runtime)
 
     def tag_resources_with_options(
         self,
