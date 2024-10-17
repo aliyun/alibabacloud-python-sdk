@@ -8024,6 +8024,143 @@ class DescribeEventsResponse(TeaModel):
         return self
 
 
+class DescribeIdentifyTaskStatusRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        lang: str = None,
+    ):
+        # This parameter is required.
+        self.id = id
+        self.lang = lang
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        return self
+
+
+class DescribeIdentifyTaskStatusResponseBodyContent(TeaModel):
+    def __init__(
+        self,
+        status: int = None,
+    ):
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeIdentifyTaskStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        content: DescribeIdentifyTaskStatusResponseBodyContent = None,
+        request_id: str = None,
+    ):
+        self.content = content
+        self.request_id = request_id
+
+    def validate(self):
+        if self.content:
+            self.content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            temp_model = DescribeIdentifyTaskStatusResponseBodyContent()
+            self.content = temp_model.from_map(m['Content'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeIdentifyTaskStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeIdentifyTaskStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeIdentifyTaskStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeInstanceSourcesRequest(TeaModel):
     def __init__(
         self,
@@ -8632,6 +8769,7 @@ class DescribeInstancesResponseBodyItems(TeaModel):
         instance_description: str = None,
         labelsec: bool = None,
         last_finish_time: int = None,
+        member_ali_uid: str = None,
         model_tags: List[DescribeInstancesResponseBodyItemsModelTags] = None,
         name: str = None,
         odps_risk_level_name: str = None,
@@ -8662,6 +8800,7 @@ class DescribeInstancesResponseBodyItems(TeaModel):
         self.labelsec = labelsec
         # The time when the data asset was last scanned. The value is a UNIX timestamp. Unit: milliseconds.
         self.last_finish_time = last_finish_time
+        self.member_ali_uid = member_ali_uid
         # A list of tags.
         self.model_tags = model_tags
         # The name of the data asset.
@@ -8733,6 +8872,8 @@ class DescribeInstancesResponseBodyItems(TeaModel):
             result['Labelsec'] = self.labelsec
         if self.last_finish_time is not None:
             result['LastFinishTime'] = self.last_finish_time
+        if self.member_ali_uid is not None:
+            result['MemberAliUid'] = self.member_ali_uid
         result['ModelTags'] = []
         if self.model_tags is not None:
             for k in self.model_tags:
@@ -8779,6 +8920,8 @@ class DescribeInstancesResponseBodyItems(TeaModel):
             self.labelsec = m.get('Labelsec')
         if m.get('LastFinishTime') is not None:
             self.last_finish_time = m.get('LastFinishTime')
+        if m.get('MemberAliUid') is not None:
+            self.member_ali_uid = m.get('MemberAliUid')
         self.model_tags = []
         if m.get('ModelTags') is not None:
             for k in m.get('ModelTags'):
@@ -9389,17 +9532,29 @@ class DescribeOssObjectDetailV2ResponseBodyOssObjectDetail(TeaModel):
         self,
         bucket_name: str = None,
         category_name: str = None,
+        file_category_name: str = None,
+        id: str = None,
+        model_tag_ids: str = None,
         name: str = None,
+        object_acl: str = None,
         region_id: str = None,
+        risk_level_id: int = None,
         risk_level_name: str = None,
         rule_list: List[DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleList] = None,
+        size: int = None,
     ):
         self.bucket_name = bucket_name
         self.category_name = category_name
+        self.file_category_name = file_category_name
+        self.id = id
+        self.model_tag_ids = model_tag_ids
         self.name = name
+        self.object_acl = object_acl
         self.region_id = region_id
+        self.risk_level_id = risk_level_id
         self.risk_level_name = risk_level_name
         self.rule_list = rule_list
+        self.size = size
 
     def validate(self):
         if self.rule_list:
@@ -9417,16 +9572,28 @@ class DescribeOssObjectDetailV2ResponseBodyOssObjectDetail(TeaModel):
             result['BucketName'] = self.bucket_name
         if self.category_name is not None:
             result['CategoryName'] = self.category_name
+        if self.file_category_name is not None:
+            result['FileCategoryName'] = self.file_category_name
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.model_tag_ids is not None:
+            result['ModelTagIds'] = self.model_tag_ids
         if self.name is not None:
             result['Name'] = self.name
+        if self.object_acl is not None:
+            result['ObjectAcl'] = self.object_acl
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.risk_level_id is not None:
+            result['RiskLevelId'] = self.risk_level_id
         if self.risk_level_name is not None:
             result['RiskLevelName'] = self.risk_level_name
         result['RuleList'] = []
         if self.rule_list is not None:
             for k in self.rule_list:
                 result['RuleList'].append(k.to_map() if k else None)
+        if self.size is not None:
+            result['Size'] = self.size
         return result
 
     def from_map(self, m: dict = None):
@@ -9435,10 +9602,20 @@ class DescribeOssObjectDetailV2ResponseBodyOssObjectDetail(TeaModel):
             self.bucket_name = m.get('BucketName')
         if m.get('CategoryName') is not None:
             self.category_name = m.get('CategoryName')
+        if m.get('FileCategoryName') is not None:
+            self.file_category_name = m.get('FileCategoryName')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModelTagIds') is not None:
+            self.model_tag_ids = m.get('ModelTagIds')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('ObjectAcl') is not None:
+            self.object_acl = m.get('ObjectAcl')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('RiskLevelId') is not None:
+            self.risk_level_id = m.get('RiskLevelId')
         if m.get('RiskLevelName') is not None:
             self.risk_level_name = m.get('RiskLevelName')
         self.rule_list = []
@@ -9446,6 +9623,8 @@ class DescribeOssObjectDetailV2ResponseBodyOssObjectDetail(TeaModel):
             for k in m.get('RuleList'):
                 temp_model = DescribeOssObjectDetailV2ResponseBodyOssObjectDetailRuleList()
                 self.rule_list.append(temp_model.from_map(k))
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
         return self
 
 

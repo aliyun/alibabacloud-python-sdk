@@ -3360,6 +3360,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_events_with_options_async(request, runtime)
 
+    def describe_identify_task_status_with_options(
+        self,
+        request: sddp_20190103_models.DescribeIdentifyTaskStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sddp_20190103_models.DescribeIdentifyTaskStatusResponse:
+        """
+        @summary 查询识别任务状态
+        
+        @param request: DescribeIdentifyTaskStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIdentifyTaskStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeIdentifyTaskStatus',
+            version='2019-01-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sddp_20190103_models.DescribeIdentifyTaskStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_identify_task_status_with_options_async(
+        self,
+        request: sddp_20190103_models.DescribeIdentifyTaskStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sddp_20190103_models.DescribeIdentifyTaskStatusResponse:
+        """
+        @summary 查询识别任务状态
+        
+        @param request: DescribeIdentifyTaskStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIdentifyTaskStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeIdentifyTaskStatus',
+            version='2019-01-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sddp_20190103_models.DescribeIdentifyTaskStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_identify_task_status(
+        self,
+        request: sddp_20190103_models.DescribeIdentifyTaskStatusRequest,
+    ) -> sddp_20190103_models.DescribeIdentifyTaskStatusResponse:
+        """
+        @summary 查询识别任务状态
+        
+        @param request: DescribeIdentifyTaskStatusRequest
+        @return: DescribeIdentifyTaskStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_identify_task_status_with_options(request, runtime)
+
+    async def describe_identify_task_status_async(
+        self,
+        request: sddp_20190103_models.DescribeIdentifyTaskStatusRequest,
+    ) -> sddp_20190103_models.DescribeIdentifyTaskStatusResponse:
+        """
+        @summary 查询识别任务状态
+        
+        @param request: DescribeIdentifyTaskStatusRequest
+        @return: DescribeIdentifyTaskStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_identify_task_status_with_options_async(request, runtime)
+
     def describe_instance_sources_with_options(
         self,
         request: sddp_20190103_models.DescribeInstanceSourcesRequest,

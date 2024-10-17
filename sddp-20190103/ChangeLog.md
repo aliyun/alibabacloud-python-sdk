@@ -1,3 +1,9 @@
+2024-10-17 Version: 1.4.0
+- Support API DescribeIdentifyTaskStatus.
+- Update API DescribeInstances: update response param.
+- Update API DescribeOssObjectDetailV2: update response param.
+
+
 2024-08-19 Version: 1.3.0
 - Support API ScanOssObjectV1.
 
