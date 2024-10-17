@@ -1456,7 +1456,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateIngressResponse:
         """
-        @summary {"appId":"395b60e4-0550-458d-9c54-a265d036\\\\*\\*\\*","containerPort":8080}
+        @summary Creates a routing rule.
         
         @param request: CreateIngressRequest
         @param headers: map
@@ -1520,7 +1520,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateIngressResponse:
         """
-        @summary {"appId":"395b60e4-0550-458d-9c54-a265d036\\\\*\\*\\*","containerPort":8080}
+        @summary Creates a routing rule.
         
         @param request: CreateIngressRequest
         @param headers: map
@@ -1582,7 +1582,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.CreateIngressRequest,
     ) -> sae_20190506_models.CreateIngressResponse:
         """
-        @summary {"appId":"395b60e4-0550-458d-9c54-a265d036\\\\*\\*\\*","containerPort":8080}
+        @summary Creates a routing rule.
         
         @param request: CreateIngressRequest
         @return: CreateIngressResponse
@@ -1596,7 +1596,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.CreateIngressRequest,
     ) -> sae_20190506_models.CreateIngressResponse:
         """
-        @summary {"appId":"395b60e4-0550-458d-9c54-a265d036\\\\*\\*\\*","containerPort":8080}
+        @summary Creates a routing rule.
         
         @param request: CreateIngressRequest
         @return: CreateIngressResponse
@@ -13606,6 +13606,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateIngressResponse:
         """
+        @summary Updates the configurations of a routing rule.
+        
         @param request: UpdateIngressRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -13666,6 +13668,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateIngressResponse:
         """
+        @summary Updates the configurations of a routing rule.
+        
         @param request: UpdateIngressRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -13724,6 +13728,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpdateIngressRequest,
     ) -> sae_20190506_models.UpdateIngressResponse:
         """
+        @summary Updates the configurations of a routing rule.
+        
         @param request: UpdateIngressRequest
         @return: UpdateIngressResponse
         """
@@ -13736,6 +13742,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpdateIngressRequest,
     ) -> sae_20190506_models.UpdateIngressResponse:
         """
+        @summary Updates the configurations of a routing rule.
+        
         @param request: UpdateIngressRequest
         @return: UpdateIngressResponse
         """

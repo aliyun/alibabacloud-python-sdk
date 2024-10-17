@@ -732,19 +732,132 @@ class HTTPTriggerConfig(TeaModel):
         return self
 
 
+class RegistryAuthConfig(TeaModel):
+    def __init__(
+        self,
+        password: str = None,
+        role: str = None,
+        user_name: str = None,
+    ):
+        self.password = password
+        self.role = role
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.password is not None:
+            result['password'] = self.password
+        if self.role is not None:
+            result['role'] = self.role
+        if self.user_name is not None:
+            result['userName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('password') is not None:
+            self.password = m.get('password')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        if m.get('userName') is not None:
+            self.user_name = m.get('userName')
+        return self
+
+
+class RegistryCertConfig(TeaModel):
+    def __init__(
+        self,
+        insecure: bool = None,
+        root_ca_cert_base_64: str = None,
+    ):
+        self.insecure = insecure
+        self.root_ca_cert_base_64 = root_ca_cert_base_64
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.insecure is not None:
+            result['insecure'] = self.insecure
+        if self.root_ca_cert_base_64 is not None:
+            result['rootCaCertBase64'] = self.root_ca_cert_base_64
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('insecure') is not None:
+            self.insecure = m.get('insecure')
+        if m.get('rootCaCertBase64') is not None:
+            self.root_ca_cert_base_64 = m.get('rootCaCertBase64')
+        return self
+
+
+class RegistryConfig(TeaModel):
+    def __init__(
+        self,
+        auth_config: RegistryAuthConfig = None,
+        cert_config: RegistryCertConfig = None,
+    ):
+        self.auth_config = auth_config
+        self.cert_config = cert_config
+
+    def validate(self):
+        if self.auth_config:
+            self.auth_config.validate()
+        if self.cert_config:
+            self.cert_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_config is not None:
+            result['authConfig'] = self.auth_config.to_map()
+        if self.cert_config is not None:
+            result['certConfig'] = self.cert_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('authConfig') is not None:
+            temp_model = RegistryAuthConfig()
+            self.auth_config = temp_model.from_map(m['authConfig'])
+        if m.get('certConfig') is not None:
+            temp_model = RegistryCertConfig()
+            self.cert_config = temp_model.from_map(m['certConfig'])
+        return self
+
+
 class ImageConfig(TeaModel):
     def __init__(
         self,
         acceleration_type: str = None,
         image: str = None,
         instance_id: str = None,
+        registry_config: RegistryConfig = None,
     ):
         self.acceleration_type = acceleration_type
         self.image = image
         self.instance_id = instance_id
+        self.registry_config = registry_config
 
     def validate(self):
-        pass
+        if self.registry_config:
+            self.registry_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -758,6 +871,8 @@ class ImageConfig(TeaModel):
             result['image'] = self.image
         if self.instance_id is not None:
             result['instanceID'] = self.instance_id
+        if self.registry_config is not None:
+            result['registryConfig'] = self.registry_config.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -768,6 +883,9 @@ class ImageConfig(TeaModel):
             self.image = m.get('image')
         if m.get('instanceID') is not None:
             self.instance_id = m.get('instanceID')
+        if m.get('registryConfig') is not None:
+            temp_model = RegistryConfig()
+            self.registry_config = temp_model.from_map(m['registryConfig'])
         return self
 
 
@@ -12334,22 +12452,68 @@ class CreateIngressRequest(TeaModel):
         security_policy_id: str = None,
         slb_id: str = None,
     ):
+        # The ID of the certificate that is associated with the **CLB** instance.
+        # 
+        # *   If you set **LoadBalanceType** to **clb**, you can use CertId to configure a certificate for the HTTPS listener.
+        # 
+        # For more information about how to manage the SSL certificate IDs that are used by CLB instances, see [Overview](https://help.aliyun.com/document_detail/90792.html).
         self.cert_id = cert_id
+        # The IDs of the certificates that are associated with the **ALB** instance.
+        # 
+        # *   If you set **LoadBalanceType** to **alb**, you can use CertIds to configure multiple certificates for the HTTPS listener. Separate multiple certificate IDs with commas (,).
+        # *   The ID of the SSL certificate that is used by an ALB instance can be obtained from Certificate Management Service. For example, if you specify `756***-cn-hangzhou`, `756***` is the certificate ID that is obtained from the service page, and `-cn-hangzhou` is the fixed suffix. For more information, see [Manage certificates](https://help.aliyun.com/document_detail/209076.html).
         self.cert_ids = cert_ids
+        # Default forwarding rule. Traffic is forwarded to the specified application through a designated port based on the IP address. Parameter descriptions are as follows:
+        # - **appId**: Application ID. - **containerPort**: Application instance port.
+        # > All requests that do not match or do not meet the **Rules** for forwarding will be directed to this specified application.
+        # 
         # This parameter is required.
         self.default_rule = default_rule
+        # Route rule name.
         self.description = description
+        # The timeout period of an idle connection. Unit: seconds. Valid values: 1 to 60.
+        # 
+        # If no request is received within the specified timeout period, ALB closes the current connection. When another request is received, ALB establishes a new connection.
         self.idle_timeout = idle_timeout
+        # SThe frontend port that is used by the ALB instance.
+        # Valid values: 1 to 65535.
+        # 
         # This parameter is required.
         self.listener_port = listener_port
+        # Request forwarding protocol. The value description is as follows:
+        # - **HTTP**: Suitable for applications that need to identify data content. - **HTTPS**: Suitable for applications that require encrypted transmission.
         self.listener_protocol = listener_protocol
+        # The type of the SLB instance. The instance type can be specified only when you create a routing rule. You cannot change the instance type when you update the routing rule. Valid values:
+        # 
+        # *   **clb**\
+        # *   **alb**\
         self.load_balance_type = load_balance_type
+        # The ID of the namespace where the application is located. Currently, cross-namespace applications are not supported.
+        # 
         # This parameter is required.
         self.namespace_id = namespace_id
+        # The timeout period of a request. Unit: seconds. Valid values: 1 to 180.
+        # If no response is received from the backend server within the specified timeout period, ALB returns an HTTP 504 error code to the client.
         self.request_timeout = request_timeout
+        # The forwarding rules. You can specify a port and an application in a forwarding rule to forward traffic based on the specified domain name and request path. The following list describes the involved parameters:
+        # 
+        # *   **appId**: the ID of the application.
+        # *   **containerPort**: the container port of the application.
+        # *   **domain**: the domain name.
+        # *   **path**: the request path.
+        # *   **backendProtocol**: the backend service protocol. Valid values: http, https, and grpc. Default value: http.
+        # *   **rewritePath**: the rewrite path.
+        # 
+        # >  The path rewrite feature is supported only by ALB instances.
+        # 
         # This parameter is required.
         self.rules = rules
+        # The security policy ID.
         self.security_policy_id = security_policy_id
+        # The Server Load Balancer (SLB) instance that is used by the routing rule.
+        # 
+        # >  The SLB instance can be a Classic Load Balancer (CLB) instance or an Application Load Balancer (ALB) instance.
+        # 
         # This parameter is required.
         self.slb_id = slb_id
 
@@ -12426,6 +12590,7 @@ class CreateIngressResponseBodyData(TeaModel):
         self,
         ingress_id: int = None,
     ):
+        # The ID of the routing rule.
         self.ingress_id = ingress_id
 
     def validate(self):
@@ -12459,12 +12624,33 @@ class CreateIngressResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The response.
         self.data = data
+        # The error code returned. Take note of the following rules:
+        # 
+        # *   The **ErrorCode** parameter is not returned if the request succeeds.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
+        # The additional information that is returned. Valid values:
+        # 
+        # *   success: If the call is successful, **success** is returned.
+        # *   An error code: If the call fails, an error code is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the Secret is successfully deleted. Valid values:
+        # 
+        # *   **true**: The instance was deleted.
+        # *   **false**: The instance failed to be deleted.
         self.success = success
+        # The ID of the trace. It is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -22203,9 +22389,11 @@ class DescribeConfigurationPriceResponseBodyDataBagUsage(TeaModel):
     def __init__(
         self,
         cpu: float = None,
+        cu: float = None,
         mem: float = None,
     ):
         self.cpu = cpu
+        self.cu = cu
         self.mem = mem
 
     def validate(self):
@@ -22219,6 +22407,8 @@ class DescribeConfigurationPriceResponseBodyDataBagUsage(TeaModel):
         result = dict()
         if self.cpu is not None:
             result['Cpu'] = self.cpu
+        if self.cu is not None:
+            result['Cu'] = self.cu
         if self.mem is not None:
             result['Mem'] = self.mem
         return result
@@ -22227,6 +22417,8 @@ class DescribeConfigurationPriceResponseBodyDataBagUsage(TeaModel):
         m = m or dict()
         if m.get('Cpu') is not None:
             self.cpu = m.get('Cpu')
+        if m.get('Cu') is not None:
+            self.cu = m.get('Cu')
         if m.get('Mem') is not None:
             self.mem = m.get('Mem')
         return self
@@ -41070,17 +41262,47 @@ class UpdateIngressRequest(TeaModel):
         rules: str = None,
         security_policy_id: str = None,
     ):
+        # The ID of the certificate that is associated with the Classic Load Balancer (**CLB**) instance.
+        # 
+        # *   If you set **LoadBalanceType** to **clb**, you can use CertId to configure a certificate for the HTTPS listener.
+        # 
+        # For more information about how to manage the SSL certificate IDs that are used by CLB instances, see [Overview](https://help.aliyun.com/document_detail/90792.html).
         self.cert_id = cert_id
+        # The IDs of the certificates that are associated with the Application Load Balancer (**ALB**) instance.
+        # 
+        # *   If you set **LoadBalanceType** to **alb**, you can use CertIds to configure multiple certificates for the HTTPS listener. Separate multiple certificate IDs with commas (,).
+        # *   The ID of the SSL certificate that is used by an ALB instance can be obtained from Certificate Management Service. For example, if you specify `756***-cn-hangzhou`, `756***` is the certificate ID that is obtained from the service page, and `-cn-hangzhou` is the fixed suffix. For more information, see [Manage certificates](https://help.aliyun.com/document_detail/209076.html).
         self.cert_ids = cert_ids
+        # The default forwarding rule. You can specify a port and an application in the default forwarding rule to forward traffic based on the IP address. The following list describes the involved parameters:
+        # 
+        # *   **appId**: the ID of the application.
+        # *   **containerPort**: the container port of the application.
+        # 
+        # >  All requests that do not match the forwarding rules specified for Rules are forwarded over the port to the application.
         self.default_rule = default_rule
+        # The name of the routing rule.
         self.description = description
         self.idle_timeout = idle_timeout
+        # The ID of the routing rule.
+        # 
         # This parameter is required.
         self.ingress_id = ingress_id
+        # The port specified for the Server Load Balancer (SLB) listener. You must specify a vacant port.
         self.listener_port = listener_port
+        # The protocol that is used to forward requests. Valid values:
+        # 
+        # *   **HTTP**: HTTP is suitable for applications that need to identify the transmitted data.
+        # *   **HTTPS**: HTTPS is suitable for applications that require encrypted data transmission.
         self.listener_protocol = listener_protocol
+        # This parameter is discontinued.
         self.load_balance_type = load_balance_type
         self.request_timeout = request_timeout
+        # The forwarding rules. You can specify a port and an application in a forwarding rule to forward traffic based on the specified domain name and request path. The following list describes the involved parameters:
+        # 
+        # *   **appId**: the ID of the application.
+        # *   **containerPort**: the container port of the application.
+        # *   **domain**: the domain name.
+        # *   **path**: the request path.
         self.rules = rules
         self.security_policy_id = security_policy_id
 
@@ -41153,6 +41375,7 @@ class UpdateIngressResponseBodyData(TeaModel):
         self,
         ingress_id: int = None,
     ):
+        # The ID of the routing rule.
         self.ingress_id = ingress_id
 
     def validate(self):
@@ -41186,12 +41409,33 @@ class UpdateIngressResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: The request was successful.
+        # *   **3xx**: The request was redirected.
+        # *   **4xx**: The request failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The returned result.
         self.data = data
+        # The error code.
+        # 
+        # *   If the request was successful, **ErrorCode** is not returned.
+        # *   If the request failed, **ErrorCode** is returned. For more information, see the **Error codes** section of this topic.
         self.error_code = error_code
+        # The returned information.
+        # 
+        # *   If the request was successful, **success** is returned.
+        # *   If the request failed, an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the configurations of the routing rule were updated. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The trace ID.
         self.trace_id = trace_id
 
     def validate(self):
