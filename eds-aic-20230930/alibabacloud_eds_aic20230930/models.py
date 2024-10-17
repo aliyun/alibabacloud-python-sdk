@@ -359,14 +359,18 @@ class BackupFileRequest(TeaModel):
         return self
 
 
-class BackupFileResponseBody(TeaModel):
+class BackupFileResponseBodyData(TeaModel):
     def __init__(
         self,
-        data: str = None,
-        request_id: str = None,
+        android_instance_id: str = None,
+        backup_file_id: str = None,
+        backup_file_name: str = None,
+        task_id: str = None,
     ):
-        self.data = data
-        self.request_id = request_id
+        self.android_instance_id = android_instance_id
+        self.backup_file_id = backup_file_id
+        self.backup_file_name = backup_file_name
+        self.task_id = task_id
 
     def validate(self):
         pass
@@ -377,16 +381,71 @@ class BackupFileResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.android_instance_id is not None:
+            result['AndroidInstanceId'] = self.android_instance_id
+        if self.backup_file_id is not None:
+            result['BackupFileId'] = self.backup_file_id
+        if self.backup_file_name is not None:
+            result['BackupFileName'] = self.backup_file_name
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AndroidInstanceId') is not None:
+            self.android_instance_id = m.get('AndroidInstanceId')
+        if m.get('BackupFileId') is not None:
+            self.backup_file_id = m.get('BackupFileId')
+        if m.get('BackupFileName') is not None:
+            self.backup_file_name = m.get('BackupFileName')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class BackupFileResponseBody(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        data: List[BackupFileResponseBodyData] = None,
+        request_id: str = None,
+    ):
+        self.count = count
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        result['Data'] = []
         if self.data is not None:
-            result['Data'] = self.data
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        self.data = []
         if m.get('Data') is not None:
-            self.data = m.get('Data')
+            for k in m.get('Data'):
+                temp_model = BackupFileResponseBodyData()
+                self.data.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -437,11 +496,13 @@ class CheckResourceStockRequest(TeaModel):
     def __init__(
         self,
         acp_spec_id: str = None,
+        amount: int = None,
         biz_region_id: str = None,
         gpu_acceleration: bool = None,
         zone_id: str = None,
     ):
         self.acp_spec_id = acp_spec_id
+        self.amount = amount
         # This parameter is required.
         self.biz_region_id = biz_region_id
         self.gpu_acceleration = gpu_acceleration
@@ -458,6 +519,8 @@ class CheckResourceStockRequest(TeaModel):
         result = dict()
         if self.acp_spec_id is not None:
             result['AcpSpecId'] = self.acp_spec_id
+        if self.amount is not None:
+            result['Amount'] = self.amount
         if self.biz_region_id is not None:
             result['BizRegionId'] = self.biz_region_id
         if self.gpu_acceleration is not None:
@@ -470,6 +533,8 @@ class CheckResourceStockRequest(TeaModel):
         m = m or dict()
         if m.get('AcpSpecId') is not None:
             self.acp_spec_id = m.get('AcpSpecId')
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
         if m.get('BizRegionId') is not None:
             self.biz_region_id = m.get('BizRegionId')
         if m.get('GpuAcceleration') is not None:
@@ -1296,6 +1361,7 @@ class CreatePolicyGroupRequest(TeaModel):
         clipboard: str = None,
         html_5file_transfer: str = None,
         local_drive: str = None,
+        lock_resolution: str = None,
         net_redirect_policy: CreatePolicyGroupRequestNetRedirectPolicy = None,
         policy_group_name: str = None,
         resolution_height: int = None,
@@ -1305,6 +1371,7 @@ class CreatePolicyGroupRequest(TeaModel):
         self.clipboard = clipboard
         self.html_5file_transfer = html_5file_transfer
         self.local_drive = local_drive
+        self.lock_resolution = lock_resolution
         self.net_redirect_policy = net_redirect_policy
         self.policy_group_name = policy_group_name
         self.resolution_height = resolution_height
@@ -1328,6 +1395,8 @@ class CreatePolicyGroupRequest(TeaModel):
             result['Html5FileTransfer'] = self.html_5file_transfer
         if self.local_drive is not None:
             result['LocalDrive'] = self.local_drive
+        if self.lock_resolution is not None:
+            result['LockResolution'] = self.lock_resolution
         if self.net_redirect_policy is not None:
             result['NetRedirectPolicy'] = self.net_redirect_policy.to_map()
         if self.policy_group_name is not None:
@@ -1348,6 +1417,8 @@ class CreatePolicyGroupRequest(TeaModel):
             self.html_5file_transfer = m.get('Html5FileTransfer')
         if m.get('LocalDrive') is not None:
             self.local_drive = m.get('LocalDrive')
+        if m.get('LockResolution') is not None:
+            self.lock_resolution = m.get('LockResolution')
         if m.get('NetRedirectPolicy') is not None:
             temp_model = CreatePolicyGroupRequestNetRedirectPolicy()
             self.net_redirect_policy = temp_model.from_map(m['NetRedirectPolicy'])
@@ -1367,6 +1438,7 @@ class CreatePolicyGroupShrinkRequest(TeaModel):
         clipboard: str = None,
         html_5file_transfer: str = None,
         local_drive: str = None,
+        lock_resolution: str = None,
         net_redirect_policy_shrink: str = None,
         policy_group_name: str = None,
         resolution_height: int = None,
@@ -1376,6 +1448,7 @@ class CreatePolicyGroupShrinkRequest(TeaModel):
         self.clipboard = clipboard
         self.html_5file_transfer = html_5file_transfer
         self.local_drive = local_drive
+        self.lock_resolution = lock_resolution
         self.net_redirect_policy_shrink = net_redirect_policy_shrink
         self.policy_group_name = policy_group_name
         self.resolution_height = resolution_height
@@ -1398,6 +1471,8 @@ class CreatePolicyGroupShrinkRequest(TeaModel):
             result['Html5FileTransfer'] = self.html_5file_transfer
         if self.local_drive is not None:
             result['LocalDrive'] = self.local_drive
+        if self.lock_resolution is not None:
+            result['LockResolution'] = self.lock_resolution
         if self.net_redirect_policy_shrink is not None:
             result['NetRedirectPolicy'] = self.net_redirect_policy_shrink
         if self.policy_group_name is not None:
@@ -1418,6 +1493,8 @@ class CreatePolicyGroupShrinkRequest(TeaModel):
             self.html_5file_transfer = m.get('Html5FileTransfer')
         if m.get('LocalDrive') is not None:
             self.local_drive = m.get('LocalDrive')
+        if m.get('LockResolution') is not None:
+            self.lock_resolution = m.get('LockResolution')
         if m.get('NetRedirectPolicy') is not None:
             self.net_redirect_policy_shrink = m.get('NetRedirectPolicy')
         if m.get('PolicyGroupName') is not None:
@@ -2453,8 +2530,10 @@ class DescribeAndroidInstancesRequest(TeaModel):
         self,
         android_instance_ids: List[str] = None,
         android_instance_name: str = None,
+        charge_type: str = None,
         instance_group_id: str = None,
         instance_group_ids: List[str] = None,
+        instance_group_name: str = None,
         key_pair_id: str = None,
         max_results: int = None,
         next_token: str = None,
@@ -2463,8 +2542,10 @@ class DescribeAndroidInstancesRequest(TeaModel):
     ):
         self.android_instance_ids = android_instance_ids
         self.android_instance_name = android_instance_name
+        self.charge_type = charge_type
         self.instance_group_id = instance_group_id
         self.instance_group_ids = instance_group_ids
+        self.instance_group_name = instance_group_name
         self.key_pair_id = key_pair_id
         self.max_results = max_results
         self.next_token = next_token
@@ -2484,10 +2565,14 @@ class DescribeAndroidInstancesRequest(TeaModel):
             result['AndroidInstanceIds'] = self.android_instance_ids
         if self.android_instance_name is not None:
             result['AndroidInstanceName'] = self.android_instance_name
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
         if self.instance_group_id is not None:
             result['InstanceGroupId'] = self.instance_group_id
         if self.instance_group_ids is not None:
             result['InstanceGroupIds'] = self.instance_group_ids
+        if self.instance_group_name is not None:
+            result['InstanceGroupName'] = self.instance_group_name
         if self.key_pair_id is not None:
             result['KeyPairId'] = self.key_pair_id
         if self.max_results is not None:
@@ -2506,10 +2591,14 @@ class DescribeAndroidInstancesRequest(TeaModel):
             self.android_instance_ids = m.get('AndroidInstanceIds')
         if m.get('AndroidInstanceName') is not None:
             self.android_instance_name = m.get('AndroidInstanceName')
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
         if m.get('InstanceGroupId') is not None:
             self.instance_group_id = m.get('InstanceGroupId')
         if m.get('InstanceGroupIds') is not None:
             self.instance_group_ids = m.get('InstanceGroupIds')
+        if m.get('InstanceGroupName') is not None:
+            self.instance_group_name = m.get('InstanceGroupName')
         if m.get('KeyPairId') is not None:
             self.key_pair_id = m.get('KeyPairId')
         if m.get('MaxResults') is not None:
@@ -2523,44 +2612,14 @@ class DescribeAndroidInstancesRequest(TeaModel):
         return self
 
 
-class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
+class DescribeAndroidInstancesResponseBodyInstanceModelDisks(TeaModel):
     def __init__(
         self,
-        android_instance_group_id: str = None,
-        android_instance_id: str = None,
-        android_instance_name: str = None,
-        android_instance_status: str = None,
-        app_instance_group_id: str = None,
-        app_instance_id: str = None,
-        authorized_user_id: str = None,
-        bind_user_id: str = None,
-        error_code: str = None,
-        gmt_create: str = None,
-        gmt_modified: str = None,
-        key_pair_id: str = None,
-        network_interface_ip: str = None,
-        persistent_app_instance_id: str = None,
-        rate: int = None,
-        region_id: str = None,
-        rendering_type: str = None,
+        disk_size: int = None,
+        disk_type: str = None,
     ):
-        self.android_instance_group_id = android_instance_group_id
-        self.android_instance_id = android_instance_id
-        self.android_instance_name = android_instance_name
-        self.android_instance_status = android_instance_status
-        self.app_instance_group_id = app_instance_group_id
-        self.app_instance_id = app_instance_id
-        self.authorized_user_id = authorized_user_id
-        self.bind_user_id = bind_user_id
-        self.error_code = error_code
-        self.gmt_create = gmt_create
-        self.gmt_modified = gmt_modified
-        self.key_pair_id = key_pair_id
-        self.network_interface_ip = network_interface_ip
-        self.persistent_app_instance_id = persistent_app_instance_id
-        self.rate = rate
-        self.region_id = region_id
-        self.rendering_type = rendering_type
+        self.disk_size = disk_size
+        self.disk_type = disk_type
 
     def validate(self):
         pass
@@ -2571,8 +2630,94 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             return _map
 
         result = dict()
+        if self.disk_size is not None:
+            result['DiskSize'] = self.disk_size
+        if self.disk_type is not None:
+            result['DiskType'] = self.disk_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiskSize') is not None:
+            self.disk_size = m.get('DiskSize')
+        if m.get('DiskType') is not None:
+            self.disk_type = m.get('DiskType')
+        return self
+
+
+class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
+    def __init__(
+        self,
+        android_instance_group_id: str = None,
+        android_instance_group_name: str = None,
+        android_instance_id: str = None,
+        android_instance_name: str = None,
+        android_instance_status: str = None,
+        app_instance_group_id: str = None,
+        app_instance_id: str = None,
+        authorized_user_id: str = None,
+        bind_user_id: str = None,
+        charge_type: str = None,
+        cpu: str = None,
+        disks: List[DescribeAndroidInstancesResponseBodyInstanceModelDisks] = None,
+        error_code: str = None,
+        gmt_create: str = None,
+        gmt_expired: str = None,
+        gmt_modified: str = None,
+        instance_type: str = None,
+        key_pair_id: str = None,
+        memory: int = None,
+        network_interface_ip: str = None,
+        office_site_id: str = None,
+        persistent_app_instance_id: str = None,
+        policy_group_id: str = None,
+        rate: int = None,
+        region_id: str = None,
+        rendering_type: str = None,
+    ):
+        self.android_instance_group_id = android_instance_group_id
+        self.android_instance_group_name = android_instance_group_name
+        self.android_instance_id = android_instance_id
+        self.android_instance_name = android_instance_name
+        self.android_instance_status = android_instance_status
+        self.app_instance_group_id = app_instance_group_id
+        self.app_instance_id = app_instance_id
+        self.authorized_user_id = authorized_user_id
+        self.bind_user_id = bind_user_id
+        self.charge_type = charge_type
+        self.cpu = cpu
+        self.disks = disks
+        self.error_code = error_code
+        self.gmt_create = gmt_create
+        self.gmt_expired = gmt_expired
+        self.gmt_modified = gmt_modified
+        self.instance_type = instance_type
+        self.key_pair_id = key_pair_id
+        self.memory = memory
+        self.network_interface_ip = network_interface_ip
+        self.office_site_id = office_site_id
+        self.persistent_app_instance_id = persistent_app_instance_id
+        self.policy_group_id = policy_group_id
+        self.rate = rate
+        self.region_id = region_id
+        self.rendering_type = rendering_type
+
+    def validate(self):
+        if self.disks:
+            for k in self.disks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.android_instance_group_id is not None:
             result['AndroidInstanceGroupId'] = self.android_instance_group_id
+        if self.android_instance_group_name is not None:
+            result['AndroidInstanceGroupName'] = self.android_instance_group_name
         if self.android_instance_id is not None:
             result['AndroidInstanceId'] = self.android_instance_id
         if self.android_instance_name is not None:
@@ -2587,18 +2732,36 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             result['AuthorizedUserId'] = self.authorized_user_id
         if self.bind_user_id is not None:
             result['BindUserId'] = self.bind_user_id
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        result['Disks'] = []
+        if self.disks is not None:
+            for k in self.disks:
+                result['Disks'].append(k.to_map() if k else None)
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
+        if self.gmt_expired is not None:
+            result['GmtExpired'] = self.gmt_expired
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
         if self.key_pair_id is not None:
             result['KeyPairId'] = self.key_pair_id
+        if self.memory is not None:
+            result['Memory'] = self.memory
         if self.network_interface_ip is not None:
             result['NetworkInterfaceIp'] = self.network_interface_ip
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
         if self.persistent_app_instance_id is not None:
             result['PersistentAppInstanceId'] = self.persistent_app_instance_id
+        if self.policy_group_id is not None:
+            result['PolicyGroupId'] = self.policy_group_id
         if self.rate is not None:
             result['Rate'] = self.rate
         if self.region_id is not None:
@@ -2611,6 +2774,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         m = m or dict()
         if m.get('AndroidInstanceGroupId') is not None:
             self.android_instance_group_id = m.get('AndroidInstanceGroupId')
+        if m.get('AndroidInstanceGroupName') is not None:
+            self.android_instance_group_name = m.get('AndroidInstanceGroupName')
         if m.get('AndroidInstanceId') is not None:
             self.android_instance_id = m.get('AndroidInstanceId')
         if m.get('AndroidInstanceName') is not None:
@@ -2625,18 +2790,37 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             self.authorized_user_id = m.get('AuthorizedUserId')
         if m.get('BindUserId') is not None:
             self.bind_user_id = m.get('BindUserId')
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        self.disks = []
+        if m.get('Disks') is not None:
+            for k in m.get('Disks'):
+                temp_model = DescribeAndroidInstancesResponseBodyInstanceModelDisks()
+                self.disks.append(temp_model.from_map(k))
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtExpired') is not None:
+            self.gmt_expired = m.get('GmtExpired')
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
         if m.get('KeyPairId') is not None:
             self.key_pair_id = m.get('KeyPairId')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
         if m.get('NetworkInterfaceIp') is not None:
             self.network_interface_ip = m.get('NetworkInterfaceIp')
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
         if m.get('PersistentAppInstanceId') is not None:
             self.persistent_app_instance_id = m.get('PersistentAppInstanceId')
+        if m.get('PolicyGroupId') is not None:
+            self.policy_group_id = m.get('PolicyGroupId')
         if m.get('Rate') is not None:
             self.rate = m.get('Rate')
         if m.get('RegionId') is not None:
@@ -2816,6 +3000,7 @@ class DescribeAppsResponseBodyData(TeaModel):
         icon_url: str = None,
         installation_status: str = None,
         instance_group_list: List[str] = None,
+        package_name: str = None,
         status: str = None,
     ):
         self.android_app_version = android_app_version
@@ -2828,6 +3013,7 @@ class DescribeAppsResponseBodyData(TeaModel):
         self.icon_url = icon_url
         self.installation_status = installation_status
         self.instance_group_list = instance_group_list
+        self.package_name = package_name
         self.status = status
 
     def validate(self):
@@ -2859,6 +3045,8 @@ class DescribeAppsResponseBodyData(TeaModel):
             result['InstallationStatus'] = self.installation_status
         if self.instance_group_list is not None:
             result['InstanceGroupList'] = self.instance_group_list
+        if self.package_name is not None:
+            result['PackageName'] = self.package_name
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -2885,6 +3073,8 @@ class DescribeAppsResponseBodyData(TeaModel):
             self.installation_status = m.get('InstallationStatus')
         if m.get('InstanceGroupList') is not None:
             self.instance_group_list = m.get('InstanceGroupList')
+        if m.get('PackageName') is not None:
+            self.package_name = m.get('PackageName')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -4017,12 +4207,14 @@ class DescribeRegionsResponse(TeaModel):
 class DescribeSpecRequest(TeaModel):
     def __init__(
         self,
+        biz_region_id: str = None,
         max_results: int = None,
         next_token: str = None,
         spec_ids: List[str] = None,
         spec_status: str = None,
         spec_type: str = None,
     ):
+        self.biz_region_id = biz_region_id
         self.max_results = max_results
         self.next_token = next_token
         self.spec_ids = spec_ids
@@ -4038,6 +4230,8 @@ class DescribeSpecRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.biz_region_id is not None:
+            result['BizRegionId'] = self.biz_region_id
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -4052,6 +4246,8 @@ class DescribeSpecRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BizRegionId') is not None:
+            self.biz_region_id = m.get('BizRegionId')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -4876,14 +5072,14 @@ class FetchFileRequest(TeaModel):
         return self
 
 
-class FetchFileResponseBody(TeaModel):
+class FetchFileResponseBodyData(TeaModel):
     def __init__(
         self,
-        data: str = None,
-        request_id: str = None,
+        android_instance_id: str = None,
+        task_id: str = None,
     ):
-        self.data = data
-        self.request_id = request_id
+        self.android_instance_id = android_instance_id
+        self.task_id = task_id
 
     def validate(self):
         pass
@@ -4894,16 +5090,57 @@ class FetchFileResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.android_instance_id is not None:
+            result['AndroidInstanceId'] = self.android_instance_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AndroidInstanceId') is not None:
+            self.android_instance_id = m.get('AndroidInstanceId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class FetchFileResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[FetchFileResponseBodyData] = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
         if self.data is not None:
-            result['Data'] = self.data
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.data = []
         if m.get('Data') is not None:
-            self.data = m.get('Data')
+            for k in m.get('Data'):
+                temp_model = FetchFileResponseBodyData()
+                self.data.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -5458,6 +5695,7 @@ class ListPolicyGroupsResponseBodyPolicyGroupModel(TeaModel):
         gmt_create: str = None,
         html_5file_transfer: str = None,
         local_drive: str = None,
+        lock_resolution: str = None,
         net_redirect_policy: ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy = None,
         policy_group_id: str = None,
         policy_group_name: str = None,
@@ -5469,6 +5707,7 @@ class ListPolicyGroupsResponseBodyPolicyGroupModel(TeaModel):
         self.gmt_create = gmt_create
         self.html_5file_transfer = html_5file_transfer
         self.local_drive = local_drive
+        self.lock_resolution = lock_resolution
         self.net_redirect_policy = net_redirect_policy
         self.policy_group_id = policy_group_id
         self.policy_group_name = policy_group_name
@@ -5495,6 +5734,8 @@ class ListPolicyGroupsResponseBodyPolicyGroupModel(TeaModel):
             result['Html5FileTransfer'] = self.html_5file_transfer
         if self.local_drive is not None:
             result['LocalDrive'] = self.local_drive
+        if self.lock_resolution is not None:
+            result['LockResolution'] = self.lock_resolution
         if self.net_redirect_policy is not None:
             result['NetRedirectPolicy'] = self.net_redirect_policy.to_map()
         if self.policy_group_id is not None:
@@ -5519,6 +5760,8 @@ class ListPolicyGroupsResponseBodyPolicyGroupModel(TeaModel):
             self.html_5file_transfer = m.get('Html5FileTransfer')
         if m.get('LocalDrive') is not None:
             self.local_drive = m.get('LocalDrive')
+        if m.get('LockResolution') is not None:
+            self.lock_resolution = m.get('LockResolution')
         if m.get('NetRedirectPolicy') is not None:
             temp_model = ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy()
             self.net_redirect_policy = temp_model.from_map(m['NetRedirectPolicy'])
@@ -6085,6 +6328,7 @@ class ModifyPolicyGroupRequest(TeaModel):
         clipboard: str = None,
         html_5file_transfer: str = None,
         local_drive: str = None,
+        lock_resolution: str = None,
         net_redirect_policy: ModifyPolicyGroupRequestNetRedirectPolicy = None,
         policy_group_id: str = None,
         policy_group_name: str = None,
@@ -6095,6 +6339,7 @@ class ModifyPolicyGroupRequest(TeaModel):
         self.clipboard = clipboard
         self.html_5file_transfer = html_5file_transfer
         self.local_drive = local_drive
+        self.lock_resolution = lock_resolution
         self.net_redirect_policy = net_redirect_policy
         self.policy_group_id = policy_group_id
         self.policy_group_name = policy_group_name
@@ -6119,6 +6364,8 @@ class ModifyPolicyGroupRequest(TeaModel):
             result['Html5FileTransfer'] = self.html_5file_transfer
         if self.local_drive is not None:
             result['LocalDrive'] = self.local_drive
+        if self.lock_resolution is not None:
+            result['LockResolution'] = self.lock_resolution
         if self.net_redirect_policy is not None:
             result['NetRedirectPolicy'] = self.net_redirect_policy.to_map()
         if self.policy_group_id is not None:
@@ -6141,6 +6388,8 @@ class ModifyPolicyGroupRequest(TeaModel):
             self.html_5file_transfer = m.get('Html5FileTransfer')
         if m.get('LocalDrive') is not None:
             self.local_drive = m.get('LocalDrive')
+        if m.get('LockResolution') is not None:
+            self.lock_resolution = m.get('LockResolution')
         if m.get('NetRedirectPolicy') is not None:
             temp_model = ModifyPolicyGroupRequestNetRedirectPolicy()
             self.net_redirect_policy = temp_model.from_map(m['NetRedirectPolicy'])
@@ -6162,6 +6411,7 @@ class ModifyPolicyGroupShrinkRequest(TeaModel):
         clipboard: str = None,
         html_5file_transfer: str = None,
         local_drive: str = None,
+        lock_resolution: str = None,
         net_redirect_policy_shrink: str = None,
         policy_group_id: str = None,
         policy_group_name: str = None,
@@ -6172,6 +6422,7 @@ class ModifyPolicyGroupShrinkRequest(TeaModel):
         self.clipboard = clipboard
         self.html_5file_transfer = html_5file_transfer
         self.local_drive = local_drive
+        self.lock_resolution = lock_resolution
         self.net_redirect_policy_shrink = net_redirect_policy_shrink
         self.policy_group_id = policy_group_id
         self.policy_group_name = policy_group_name
@@ -6195,6 +6446,8 @@ class ModifyPolicyGroupShrinkRequest(TeaModel):
             result['Html5FileTransfer'] = self.html_5file_transfer
         if self.local_drive is not None:
             result['LocalDrive'] = self.local_drive
+        if self.lock_resolution is not None:
+            result['LockResolution'] = self.lock_resolution
         if self.net_redirect_policy_shrink is not None:
             result['NetRedirectPolicy'] = self.net_redirect_policy_shrink
         if self.policy_group_id is not None:
@@ -6217,6 +6470,8 @@ class ModifyPolicyGroupShrinkRequest(TeaModel):
             self.html_5file_transfer = m.get('Html5FileTransfer')
         if m.get('LocalDrive') is not None:
             self.local_drive = m.get('LocalDrive')
+        if m.get('LockResolution') is not None:
+            self.lock_resolution = m.get('LockResolution')
         if m.get('NetRedirectPolicy') is not None:
             self.net_redirect_policy_shrink = m.get('NetRedirectPolicy')
         if m.get('PolicyGroupId') is not None:
@@ -6451,14 +6706,14 @@ class RecoveryFileRequest(TeaModel):
         return self
 
 
-class RecoveryFileResponseBody(TeaModel):
+class RecoveryFileResponseBodyData(TeaModel):
     def __init__(
         self,
-        data: str = None,
-        request_id: str = None,
+        android_instance_id: str = None,
+        task_id: str = None,
     ):
-        self.data = data
-        self.request_id = request_id
+        self.android_instance_id = android_instance_id
+        self.task_id = task_id
 
     def validate(self):
         pass
@@ -6469,16 +6724,63 @@ class RecoveryFileResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.android_instance_id is not None:
+            result['AndroidInstanceId'] = self.android_instance_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AndroidInstanceId') is not None:
+            self.android_instance_id = m.get('AndroidInstanceId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class RecoveryFileResponseBody(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        data: List[RecoveryFileResponseBodyData] = None,
+        request_id: str = None,
+    ):
+        self.count = count
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        result['Data'] = []
         if self.data is not None:
-            result['Data'] = self.data
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        self.data = []
         if m.get('Data') is not None:
-            self.data = m.get('Data')
+            for k in m.get('Data'):
+                temp_model = RecoveryFileResponseBodyData()
+                self.data.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -6908,14 +7210,14 @@ class SendFileRequest(TeaModel):
         return self
 
 
-class SendFileResponseBody(TeaModel):
+class SendFileResponseBodyData(TeaModel):
     def __init__(
         self,
-        data: str = None,
-        request_id: str = None,
+        android_instance_id: str = None,
+        task_id: str = None,
     ):
-        self.data = data
-        self.request_id = request_id
+        self.android_instance_id = android_instance_id
+        self.task_id = task_id
 
     def validate(self):
         pass
@@ -6926,16 +7228,57 @@ class SendFileResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.android_instance_id is not None:
+            result['AndroidInstanceId'] = self.android_instance_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AndroidInstanceId') is not None:
+            self.android_instance_id = m.get('AndroidInstanceId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class SendFileResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[SendFileResponseBodyData] = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
         if self.data is not None:
-            result['Data'] = self.data
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.data = []
         if m.get('Data') is not None:
-            self.data = m.get('Data')
+            for k in m.get('Data'):
+                temp_model = SendFileResponseBodyData()
+                self.data.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self

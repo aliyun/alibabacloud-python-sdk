@@ -252,6 +252,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.BackupFileResponse:
         """
+        @summary 数据备份
+        
         @param request: BackupFileRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: BackupFileResponse
@@ -295,6 +297,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.BackupFileResponse:
         """
+        @summary 数据备份
+        
         @param request: BackupFileRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: BackupFileResponse
@@ -337,6 +341,8 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.BackupFileRequest,
     ) -> eds_aic_20230930_models.BackupFileResponse:
         """
+        @summary 数据备份
+        
         @param request: BackupFileRequest
         @return: BackupFileResponse
         """
@@ -348,6 +354,8 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.BackupFileRequest,
     ) -> eds_aic_20230930_models.BackupFileResponse:
         """
+        @summary 数据备份
+        
         @param request: BackupFileRequest
         @return: BackupFileResponse
         """
@@ -370,6 +378,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.acp_spec_id):
             query['AcpSpecId'] = request.acp_spec_id
+        if not UtilClient.is_unset(request.amount):
+            query['Amount'] = request.amount
         if not UtilClient.is_unset(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.gpu_acceleration):
@@ -411,6 +421,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.acp_spec_id):
             query['AcpSpecId'] = request.acp_spec_id
+        if not UtilClient.is_unset(request.amount):
+            query['Amount'] = request.amount
         if not UtilClient.is_unset(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.gpu_acceleration):
@@ -964,6 +976,8 @@ class Client(OpenApiClient):
             body['Html5FileTransfer'] = request.html_5file_transfer
         if not UtilClient.is_unset(request.local_drive):
             body['LocalDrive'] = request.local_drive
+        if not UtilClient.is_unset(request.lock_resolution):
+            body['LockResolution'] = request.lock_resolution
         if not UtilClient.is_unset(request.net_redirect_policy_shrink):
             body['NetRedirectPolicy'] = request.net_redirect_policy_shrink
         if not UtilClient.is_unset(request.policy_group_name):
@@ -1017,6 +1031,8 @@ class Client(OpenApiClient):
             body['Html5FileTransfer'] = request.html_5file_transfer
         if not UtilClient.is_unset(request.local_drive):
             body['LocalDrive'] = request.local_drive
+        if not UtilClient.is_unset(request.lock_resolution):
+            body['LockResolution'] = request.lock_resolution
         if not UtilClient.is_unset(request.net_redirect_policy_shrink):
             body['NetRedirectPolicy'] = request.net_redirect_policy_shrink
         if not UtilClient.is_unset(request.policy_group_name):
@@ -1700,10 +1716,14 @@ class Client(OpenApiClient):
             query['AndroidInstanceIds'] = request.android_instance_ids
         if not UtilClient.is_unset(request.android_instance_name):
             query['AndroidInstanceName'] = request.android_instance_name
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.instance_group_id):
             query['InstanceGroupId'] = request.instance_group_id
         if not UtilClient.is_unset(request.instance_group_ids):
             query['InstanceGroupIds'] = request.instance_group_ids
+        if not UtilClient.is_unset(request.instance_group_name):
+            query['InstanceGroupName'] = request.instance_group_name
         if not UtilClient.is_unset(request.key_pair_id):
             query['KeyPairId'] = request.key_pair_id
         if not UtilClient.is_unset(request.max_results):
@@ -1751,10 +1771,14 @@ class Client(OpenApiClient):
             query['AndroidInstanceIds'] = request.android_instance_ids
         if not UtilClient.is_unset(request.android_instance_name):
             query['AndroidInstanceName'] = request.android_instance_name
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.instance_group_id):
             query['InstanceGroupId'] = request.instance_group_id
         if not UtilClient.is_unset(request.instance_group_ids):
             query['InstanceGroupIds'] = request.instance_group_ids
+        if not UtilClient.is_unset(request.instance_group_name):
+            query['InstanceGroupName'] = request.instance_group_name
         if not UtilClient.is_unset(request.key_pair_id):
             query['KeyPairId'] = request.key_pair_id
         if not UtilClient.is_unset(request.max_results):
@@ -2462,6 +2486,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -2505,6 +2531,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -3926,6 +3954,8 @@ class Client(OpenApiClient):
             body['Html5FileTransfer'] = request.html_5file_transfer
         if not UtilClient.is_unset(request.local_drive):
             body['LocalDrive'] = request.local_drive
+        if not UtilClient.is_unset(request.lock_resolution):
+            body['LockResolution'] = request.lock_resolution
         if not UtilClient.is_unset(request.net_redirect_policy_shrink):
             body['NetRedirectPolicy'] = request.net_redirect_policy_shrink
         if not UtilClient.is_unset(request.policy_group_id):
@@ -3981,6 +4011,8 @@ class Client(OpenApiClient):
             body['Html5FileTransfer'] = request.html_5file_transfer
         if not UtilClient.is_unset(request.local_drive):
             body['LocalDrive'] = request.local_drive
+        if not UtilClient.is_unset(request.lock_resolution):
+            body['LockResolution'] = request.lock_resolution
         if not UtilClient.is_unset(request.net_redirect_policy_shrink):
             body['NetRedirectPolicy'] = request.net_redirect_policy_shrink
         if not UtilClient.is_unset(request.policy_group_id):
@@ -4142,7 +4174,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.RecoveryFileResponse:
         """
-        @summary 文件恢复
+        @summary 数据恢复
         
         @param request: RecoveryFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4185,7 +4217,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.RecoveryFileResponse:
         """
-        @summary 文件恢复
+        @summary 数据恢复
         
         @param request: RecoveryFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4227,7 +4259,7 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.RecoveryFileRequest,
     ) -> eds_aic_20230930_models.RecoveryFileResponse:
         """
-        @summary 文件恢复
+        @summary 数据恢复
         
         @param request: RecoveryFileRequest
         @return: RecoveryFileResponse
@@ -4240,7 +4272,7 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.RecoveryFileRequest,
     ) -> eds_aic_20230930_models.RecoveryFileResponse:
         """
-        @summary 文件恢复
+        @summary 数据恢复
         
         @param request: RecoveryFileRequest
         @return: RecoveryFileResponse

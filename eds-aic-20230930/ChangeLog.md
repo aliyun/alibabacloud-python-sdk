@@ -1,3 +1,20 @@
+2024-10-17 Version: 2.0.0
+- Update API BackupFile: update response param.
+- Update API CheckResourceStock: add param Amount.
+- Update API CreatePolicyGroup: add param LockResolution.
+- Update API DescribeAndroidInstances: add param ChargeType.
+- Update API DescribeAndroidInstances: add param InstanceGroupName.
+- Update API DescribeAndroidInstances: update response param.
+- Update API DescribeApps: update response param.
+- Update API DescribeSpec: add param BizRegionId.
+- Update API FetchFile: update response param.
+- Update API ListPolicyGroups: update response param.
+- Update API ModifyPolicyGroup: add param LockResolution.
+- Update API RecoveryFile: update response param.
+- Update API RunCommand: update param InstanceIds.
+- Update API SendFile: update response param.
+
+
 2024-08-22 Version: 1.3.5
 - Update API CreateAndroidInstanceGroup: add param ClientToken.
 - Update API CreateAndroidInstanceGroup: update param Amount.
