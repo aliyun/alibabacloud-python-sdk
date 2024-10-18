@@ -28,12 +28,16 @@ class CheckSmsVerifyCodeRequest(TeaModel):
         self.out_id = out_id
         self.owner_id = owner_id
         # The phone number.
+        # 
+        # This parameter is required.
         self.phone_number = phone_number
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The verification service name. If this parameter is not specified, the default service is used. The name can be up to 20 characters in length.
         self.scheme_name = scheme_name
         # The verification code.
+        # 
+        # This parameter is required.
         self.verify_code = verify_code
 
     def validate(self):
@@ -202,9 +206,6 @@ class CheckSmsVerifyCodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -249,7 +250,7 @@ class CreateSchemeConfigRequest(TeaModel):
         resource_owner_id: int = None,
         scheme_name: str = None,
     ):
-        # The package name. This parameter is required when Platform is set to Android. The name must be 1 to 128 characters in length and can contain digits, letters, hyphens (-), underscores (\_), and periods (.).
+        # The package name. This parameter is required when Platform is set to Android. The name must be 1 to 128 characters in length and can contain digits, letters, hyphens (-), underscores (_), and periods (.).
         self.android_package_name = android_package_name
         # The package signature. This parameter is required when Platform is set to Android. The signature must be 32 characters in length and can contain digits and letters.
         self.android_package_sign = android_package_sign
@@ -259,7 +260,7 @@ class CreateSchemeConfigRequest(TeaModel):
         self.h_5origin = h_5origin
         # The reserved field. HTML5 apps are not supported.
         self.h_5url = h_5url
-        # The bundle ID. This parameter is required when OsType is set to iOS. The bundle ID must be 1 to 128 characters in length and can contain digits, letters, hyphens (-), underscores (\_), and periods (.).
+        # The bundle ID. This parameter is required when OsType is set to iOS. The bundle ID must be 1 to 128 characters in length and can contain digits, letters, hyphens (-), underscores (_), and periods (.).
         self.ios_bundle_id = ios_bundle_id
         self.owner_id = owner_id
         # The app platform.
@@ -268,10 +269,14 @@ class CreateSchemeConfigRequest(TeaModel):
         # 
         # *   Android
         # *   iOS
+        # 
+        # This parameter is required.
         self.platform = platform
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The service name, which can be up to 10 characters in length and can contain letters.
+        # 
+        # This parameter is required.
         self.scheme_name = scheme_name
 
     def validate(self):
@@ -438,9 +443,6 @@ class CreateSchemeConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -480,6 +482,9 @@ class CreateVerifySchemeRequest(TeaModel):
         ct_api_code: int = None,
         cu_api_code: int = None,
         email: str = None,
+        hm_app_identifier: str = None,
+        hm_package_name: str = None,
+        hm_sign_name: str = None,
         ip_white_list: str = None,
         origin: str = None,
         os_type: str = None,
@@ -494,13 +499,15 @@ class CreateVerifySchemeRequest(TeaModel):
         url: str = None,
     ):
         # The app name.
+        # 
+        # This parameter is required.
         self.app_name = app_name
         # The verification type. You can select multiple types only when the phone number verification is supported. Separate multiple types with commas (,).
         # 
         # *   **1**: phone number verification
         # *   **2**: SMS verification
         self.auth_type = auth_type
-        # The bundle ID. This parameter is required when OsType is set to iOS. The bundle ID must be 1 to 128 characters in length and can contain digits, letters, hyphens (-), underscores (\_), and periods (.).
+        # The bundle ID. This parameter is required when OsType is set to iOS. The bundle ID must be 1 to 128 characters in length and can contain digits, letters, hyphens (-), underscores (_), and periods (.).
         self.bundle_id = bundle_id
         # The channel code of China Mobile.
         self.cm_api_code = cm_api_code
@@ -510,14 +517,19 @@ class CreateVerifySchemeRequest(TeaModel):
         self.cu_api_code = cu_api_code
         # The email address that receives the key.
         self.email = email
+        self.hm_app_identifier = hm_app_identifier
+        self.hm_package_name = hm_package_name
+        self.hm_sign_name = hm_sign_name
         # The IP address whitelist.
         self.ip_white_list = ip_white_list
         # The source URL of the HTML5 app page. We recommend that you specify this parameter as a domain name.
         self.origin = origin
         # The type of the operating system for the terminal. Valid values: iOS and Android.
+        # 
+        # This parameter is required.
         self.os_type = os_type
         self.owner_id = owner_id
-        # The package name. This parameter is required when OsType is set to Android. The name must be 1 to 128 characters in length and can contain digits, letters, hyphens (-), underscores (\_), and periods (.).
+        # The package name. This parameter is required when OsType is set to Android. The name must be 1 to 128 characters in length and can contain digits, letters, hyphens (-), underscores (_), and periods (.).
         self.pack_name = pack_name
         # The package signature. This parameter is required when OsType is set to Android. The signature must be 32 characters in length and can contain digits and letters.
         self.pack_sign = pack_sign
@@ -526,6 +538,8 @@ class CreateVerifySchemeRequest(TeaModel):
         # The service type.
         self.scene_type = scene_type
         # The service name.
+        # 
+        # This parameter is required.
         self.scheme_name = scheme_name
         # The bound SMS signature. This parameter is valid only when AuthType is set to 2. The signature must be approved.
         self.sms_sign_name = sms_sign_name
@@ -555,6 +569,12 @@ class CreateVerifySchemeRequest(TeaModel):
             result['CuApiCode'] = self.cu_api_code
         if self.email is not None:
             result['Email'] = self.email
+        if self.hm_app_identifier is not None:
+            result['HmAppIdentifier'] = self.hm_app_identifier
+        if self.hm_package_name is not None:
+            result['HmPackageName'] = self.hm_package_name
+        if self.hm_sign_name is not None:
+            result['HmSignName'] = self.hm_sign_name
         if self.ip_white_list is not None:
             result['IpWhiteList'] = self.ip_white_list
         if self.origin is not None:
@@ -597,6 +617,12 @@ class CreateVerifySchemeRequest(TeaModel):
             self.cu_api_code = m.get('CuApiCode')
         if m.get('Email') is not None:
             self.email = m.get('Email')
+        if m.get('HmAppIdentifier') is not None:
+            self.hm_app_identifier = m.get('HmAppIdentifier')
+        if m.get('HmPackageName') is not None:
+            self.hm_package_name = m.get('HmPackageName')
+        if m.get('HmSignName') is not None:
+            self.hm_sign_name = m.get('HmSignName')
         if m.get('IpWhiteList') is not None:
             self.ip_white_list = m.get('IpWhiteList')
         if m.get('Origin') is not None:
@@ -665,7 +691,7 @@ class CreateVerifySchemeResponseBody(TeaModel):
         # The response code.
         # 
         # *   If OK is returned, the request is successful.
-        # *   For more information about other error codes, see [API response codes](~~85198~~).
+        # *   For more information about other error codes, see [API response codes](https://help.aliyun.com/document_detail/85198.html).
         self.code = code
         # The response parameters.
         self.gate_verify_scheme_dto = gate_verify_scheme_dto
@@ -735,9 +761,6 @@ class CreateVerifySchemeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -782,6 +805,8 @@ class DeleteVerifySchemeRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The service code.
+        # 
+        # This parameter is required.
         self.scheme_code = scheme_code
 
     def validate(self):
@@ -828,7 +853,7 @@ class DeleteVerifySchemeResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The request is successful. For more information about other error codes, see [API response codes](~~85198~~).
+        # The request is successful. For more information about other error codes, see [API response codes](https://help.aliyun.com/document_detail/85198.html).
         self.code = code
         # The returned message.
         self.message = message
@@ -884,9 +909,6 @@ class DeleteVerifySchemeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -931,6 +953,8 @@ class DescribeVerifySchemeRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The service code.
+        # 
+        # This parameter is required.
         self.scheme_code = scheme_code
 
     def validate(self):
@@ -1005,7 +1029,7 @@ class DescribeVerifySchemeResponseBody(TeaModel):
         request_id: str = None,
         scheme_query_result_dto: DescribeVerifySchemeResponseBodySchemeQueryResultDTO = None,
     ):
-        # The response code. OK indicates that the request is successful. For more information about other error codes, see [API response codes](~~85198~~).
+        # The response code. OK indicates that the request is successful. For more information about other error codes, see [API response codes](https://help.aliyun.com/document_detail/85198.html).
         self.code = code
         # The returned message.
         self.message = message
@@ -1060,9 +1084,6 @@ class DescribeVerifySchemeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1103,12 +1124,16 @@ class GetAuthTokenRequest(TeaModel):
         url: str = None,
     ):
         # The requested domain name.
+        # 
+        # This parameter is required.
         self.origin = origin
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.scene_code = scene_code
         # The URL of the requested web page.
+        # 
+        # This parameter is required.
         self.url = url
 
     def validate(self):
@@ -1201,7 +1226,7 @@ class GetAuthTokenResponseBody(TeaModel):
         # The response code.
         # 
         # *   If OK is returned, the request is successful.
-        # *   For more information about other error codes, see [API response codes](~~85198~~).
+        # *   For more information about other error codes, see [API response codes](https://help.aliyun.com/document_detail/85198.html).
         self.code = code
         # The returned message.
         self.message = message
@@ -1256,9 +1281,6 @@ class GetAuthTokenResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1302,10 +1324,14 @@ class GetAuthorizationUrlRequest(TeaModel):
         self.end_date = end_date
         self.owner_id = owner_id
         # The phone number.
+        # 
+        # This parameter is required.
         self.phone_no = phone_no
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the authorization scenario. You can view the ID of the authorization scenario on the **Authorization Scenario Management** page in the **Phone Number Verification Service console**.
+        # 
+        # This parameter is required.
         self.scheme_id = scheme_id
 
     def validate(self):
@@ -1387,7 +1413,7 @@ class GetAuthorizationUrlResponseBody(TeaModel):
         # The response code.
         # 
         # *   If OK is returned, the request is successful.
-        # *   For more information about other error codes, see [API response codes](~~85198~~).
+        # *   For more information about other error codes, see [API response codes](https://help.aliyun.com/document_detail/85198.html).
         self.code = code
         # The response parameters.
         self.data = data
@@ -1442,9 +1468,6 @@ class GetAuthorizationUrlResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1490,6 +1513,8 @@ class GetFusionAuthTokenRequest(TeaModel):
         # The bundle ID of the app. This parameter is required when Platform is set to iOS.
         self.bundle_id = bundle_id
         # The validity period of the token. Unit: seconds. Valid values: 900 to 43200.
+        # 
+        # This parameter is required.
         self.duration_seconds = duration_seconds
         self.owner_id = owner_id
         # The package name of the app. This parameter is required when Platform is set to Android.
@@ -1497,10 +1522,14 @@ class GetFusionAuthTokenRequest(TeaModel):
         # The package signature of the app. This parameter is required when Platform is set to Android.
         self.package_sign = package_sign
         # The platform type. Valid values: Android and iOS.
+        # 
+        # This parameter is required.
         self.platform = platform
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The service code.
+        # 
+        # This parameter is required.
         self.scheme_code = scheme_code
 
     def validate(self):
@@ -1623,9 +1652,6 @@ class GetFusionAuthTokenResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1665,6 +1691,8 @@ class GetMobileRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The logon token obtained by the SDK for your app.
+        # 
+        # This parameter is required.
         self.access_token = access_token
         # The external ID.
         self.out_id = out_id
@@ -1747,7 +1775,7 @@ class GetMobileResponseBody(TeaModel):
         # The response code.
         # 
         # *   If OK is returned, the request is successful.
-        # *   For more information about other error codes, see [API response codes](~~85198~~).
+        # *   For more information about other error codes, see [API response codes](https://help.aliyun.com/document_detail/85198.html).
         self.code = code
         # The response parameters.
         self.get_mobile_result_dto = get_mobile_result_dto
@@ -1802,9 +1830,6 @@ class GetMobileResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1846,6 +1871,8 @@ class GetPhoneWithTokenRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The token for phone number verification that is obtained by the JavaScript SDK. The validity period of the token is 10 minutes for China Telecom, 30 minutes for China Unicom, and 2 minutes for China Mobile. The token can be used only once.
+        # 
+        # This parameter is required.
         self.sp_token = sp_token
 
     def validate(self):
@@ -1919,7 +1946,7 @@ class GetPhoneWithTokenResponseBody(TeaModel):
         # The response code.
         # 
         # *   If OK is returned, the request is successful.
-        # *   For more information about other error codes, see [API response codes](~~85198~~).
+        # *   For more information about other error codes, see [API response codes](https://help.aliyun.com/document_detail/85198.html).
         self.code = code
         # The response parameters.
         self.data = data
@@ -1974,9 +2001,6 @@ class GetPhoneWithTokenResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2024,8 +2048,12 @@ class GetSmsAuthTokensRequest(TeaModel):
         # The ID of the iOS application. This parameter is required if OsType is set to **iOS**.
         self.bundle_id = bundle_id
         # The validity period of the token. Unit: seconds. Valid values: 900 to 43200.
+        # 
+        # This parameter is required.
         self.expire = expire
         # The type of the operating system. Valid values: **Android** and **iOS**.
+        # 
+        # This parameter is required.
         self.os_type = os_type
         self.owner_id = owner_id
         # The package name. This parameter is required if OsType is set to **Android**.
@@ -2033,12 +2061,16 @@ class GetSmsAuthTokensRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The service code.
+        # 
+        # This parameter is required.
         self.scene_code = scene_code
         # The signature. This parameter is required if OsType is set to **Android**.
         self.sign_name = sign_name
         # The validity period of the SMS verification code. Unit: seconds. Default value: 180.
         self.sms_code_expire = sms_code_expire
         # The code of the text message template.
+        # 
+        # This parameter is required.
         self.sms_template_code = sms_template_code
 
     def validate(self):
@@ -2168,7 +2200,7 @@ class GetSmsAuthTokensResponseBody(TeaModel):
         # The response code.
         # 
         # *   If OK is returned, the request is successful.
-        # *   For more information about other error codes, see [API response codes](~~85198~~).
+        # *   For more information about other error codes, see [API response codes](https://help.aliyun.com/document_detail/85198.html).
         self.code = code
         # The response parameters.
         self.data = data
@@ -2223,9 +2255,6 @@ class GetSmsAuthTokensResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2271,17 +2300,20 @@ class JyCreateVerifySchemeRequest(TeaModel):
         resource_owner_id: int = None,
         scheme_name: str = None,
     ):
+        # This parameter is required.
         self.app_name = app_name
         self.bundle_id = bundle_id
         self.cm_api_code = cm_api_code
         self.ct_api_code = ct_api_code
         self.cu_api_code = cu_api_code
+        # This parameter is required.
         self.os_type = os_type
         self.owner_id = owner_id
         self.pack_name = pack_name
         self.pack_sign = pack_sign
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.scheme_name = scheme_name
 
     def validate(self):
@@ -2434,9 +2466,6 @@ class JyCreateVerifySchemeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2477,6 +2506,7 @@ class JyQueryAppInfoBySceneCodeRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.scene_code = scene_code
 
     def validate(self):
@@ -2615,9 +2645,6 @@ class JyQueryAppInfoBySceneCodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2662,8 +2689,12 @@ class QueryGateVerifyBillingPublicRequest(TeaModel):
         # *   **2**: all
         # *   **3**: facial recognition
         # *   **4**: SMS verification
+        # 
+        # This parameter is required.
         self.authentication_type = authentication_type
         # The month in which the bill is generated. Specify this parameter in the YYYYMM format. Example: 202111.
+        # 
+        # This parameter is required.
         self.month = month
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -2824,7 +2855,7 @@ class QueryGateVerifyBillingPublicResponseBody(TeaModel):
         # The response code. Valid values:
         # 
         # *   If OK is returned, the request is successful.
-        # *   For more information about other error codes, see [API response codes](~~85198~~).
+        # *   For more information about other error codes, see [API response codes](https://help.aliyun.com/document_detail/85198.html).
         self.code = code
         # The billing information about each verification service.
         self.data = data
@@ -2879,9 +2910,6 @@ class QueryGateVerifyBillingPublicResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2928,8 +2956,12 @@ class QueryGateVerifyStatisticPublicRequest(TeaModel):
         # *   **2**: phone number verification, including the verification of the phone number used in HTML5 pages
         # *   **3**: SMS verification
         # *   **4**: facial recognition
+        # 
+        # This parameter is required.
         self.authentication_type = authentication_type
         # The end date. Specify this parameter in the YYYYMMDD format. Example: 20220106.
+        # 
+        # This parameter is required.
         self.end_date = end_date
         # The type of the operating system. Valid values:
         # 
@@ -2941,6 +2973,8 @@ class QueryGateVerifyStatisticPublicRequest(TeaModel):
         # The service code.
         self.scene_code = scene_code
         # The start date. Specify this parameter in the YYYYMMDD format. Example: 20220101.
+        # 
+        # This parameter is required.
         self.start_date = start_date
 
     def validate(self):
@@ -3111,7 +3145,7 @@ class QueryGateVerifyStatisticPublicResponseBody(TeaModel):
         # The response code. Valid values:
         # 
         # *   If OK is returned, the request is successful.
-        # *   For more information about other error codes, see [API response codes](~~85198~~).
+        # *   For more information about other error codes, see [API response codes](https://help.aliyun.com/document_detail/85198.html).
         self.code = code
         # The information about the calls of Phone Number Verification Service, including the total calls, the successful calls, failed calls, unknown calls, and daily calls within the statistical date range.
         self.data = data
@@ -3166,9 +3200,6 @@ class QueryGateVerifyStatisticPublicResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3213,17 +3244,25 @@ class QuerySendDetailsRequest(TeaModel):
         # The unique ID of the business, which is provided by Alibaba Cloud.
         self.biz_id = biz_id
         # The number of the page on which you are reading the text message. Pages start from page 1. The value of this parameter cannot exceed the maximum page number.
+        # 
+        # This parameter is required.
         self.current_page = current_page
         self.owner_id = owner_id
         # The number of entries per page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The phone number.
+        # 
+        # This parameter is required.
         self.phone_number = phone_number
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The date when the text message was sent. You can query text messages that were sent within the last 30 days.
         # 
         # Specify the date in the yyyyMMdd format. Example: 20181225.
+        # 
+        # This parameter is required.
         self.send_date = send_date
 
     def validate(self):
@@ -3452,9 +3491,6 @@ class QuerySendDetailsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3530,6 +3566,8 @@ class SendSmsVerifyCodeRequest(TeaModel):
         self.out_id = out_id
         self.owner_id = owner_id
         # The phone number.
+        # 
+        # This parameter is required.
         self.phone_number = phone_number
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -3541,6 +3579,8 @@ class SendSmsVerifyCodeRequest(TeaModel):
         # The verification service name. If this parameter is not specified, the default service is used. The name can be up to 20 characters in length.
         self.scheme_name = scheme_name
         # The signature.
+        # 
+        # This parameter is required.
         self.sign_name = sign_name
         # The extension code of the upstream text message. Upstream text messages are text messages sent to the communication service provider. Upstream text messages are used to customize a service, complete an inquiry, or send a request. You are charged for sending upstream text messages based on the billing standards of the service provider.
         # 
@@ -3551,6 +3591,8 @@ class SendSmsVerifyCodeRequest(TeaModel):
         # Log on to the [SMS console](https://dysms.console.aliyun.com/dysms.htm?spm=5176.12818093.categories-n-products.ddysms.3b2816d0xml2NA#/overview). In the left-side navigation pane, click **Go China** or **Go Globe**. You can view the text message template code in the **Template Code** column on the **Message Templates** tab.
         # 
         # >  The text message templates must be created on the Go Globe page and approved.
+        # 
+        # This parameter is required.
         self.template_code = template_code
         # The value of the variable in the text message template. The verification code is replaced with "##code##".
         # 
@@ -3562,7 +3604,9 @@ class SendSmsVerifyCodeRequest(TeaModel):
         # 
         # *   If line breaks are required in JSON-formatted data, they must meet the relevant requirements that are specified in the standard JSON protocol.
         # 
-        # *   For more information about template variables, see [SMS template specifications](~~108253~~).
+        # *   For more information about template variables, see [SMS template specifications](https://help.aliyun.com/document_detail/108253.html).
+        # 
+        # This parameter is required.
         self.template_param = template_param
         # The validity period of the verification code. Unit: seconds. Default value: 300.
         self.valid_time = valid_time
@@ -3773,9 +3817,6 @@ class SendSmsVerifyCodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3816,11 +3857,15 @@ class VerifyMobileRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The token obtained by the SDK for your app.
+        # 
+        # This parameter is required.
         self.access_code = access_code
         # The external ID.
         self.out_id = out_id
         self.owner_id = owner_id
         # The phone number.
+        # 
+        # This parameter is required.
         self.phone_number = phone_number
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -3915,7 +3960,7 @@ class VerifyMobileResponseBody(TeaModel):
         # The response code.
         # 
         # *   If OK is returned, the request is successful.
-        # *   For more information about other error codes, see [API response codes](~~85198~~).
+        # *   For more information about other error codes, see [API response codes](https://help.aliyun.com/document_detail/85198.html).
         self.code = code
         # The response parameters.
         self.gate_verify_result_dto = gate_verify_result_dto
@@ -3970,9 +4015,6 @@ class VerifyMobileResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4013,10 +4055,14 @@ class VerifyPhoneWithTokenRequest(TeaModel):
     ):
         self.owner_id = owner_id
         # The phone number.
+        # 
+        # This parameter is required.
         self.phone_number = phone_number
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The token for phone number verification that is obtained by the JavaScript SDK.
+        # 
+        # This parameter is required.
         self.sp_token = sp_token
 
     def validate(self):
@@ -4105,7 +4151,7 @@ class VerifyPhoneWithTokenResponseBody(TeaModel):
         # The response code.
         # 
         # *   If OK is returned, the request is successful.
-        # *   For more information about other error codes, see [API response codes](~~85198~~).
+        # *   For more information about other error codes, see [API response codes](https://help.aliyun.com/document_detail/85198.html).
         self.code = code
         # The response parameters.
         self.gate_verify = gate_verify
@@ -4160,9 +4206,6 @@ class VerifyPhoneWithTokenResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4200,10 +4243,16 @@ class VerifySmsCodeRequest(TeaModel):
         sms_token: str = None,
     ):
         # The phone number, which is used to receive SMS verification codes.
+        # 
+        # This parameter is required.
         self.phone_number = phone_number
         # The SMS verification code.
+        # 
+        # This parameter is required.
         self.sms_code = sms_code
-        # The text message verification code. After you successfully call the corresponding API operation to send the SMS verification code, the end users receive the SMS verification code. SmsToken is returned by the SDK for SMS verification for you to verify the text message verification code. For an Android client, sendVerifyCode is called to send the verification code. For an iOS client, sendVerifyCodeWithTimeout is called to send the verification code. For more information, see [Overview](~~400434~~).
+        # The text message verification code. After you successfully call the corresponding API operation to send the SMS verification code, the end users receive the SMS verification code. SmsToken is returned by the SDK for SMS verification for you to verify the text message verification code. For an Android client, sendVerifyCode is called to send the verification code. For an iOS client, sendVerifyCodeWithTimeout is called to send the verification code. For more information, see [Overview](https://help.aliyun.com/document_detail/400434.html).
+        # 
+        # This parameter is required.
         self.sms_token = sms_token
 
     def validate(self):
@@ -4245,7 +4294,7 @@ class VerifySmsCodeResponseBody(TeaModel):
         # The response code.
         # 
         # *   If OK is returned, the request is successful.
-        # *   For more information about other error codes, see [API response codes](~~85198~~).
+        # *   For more information about other error codes, see [API response codes](https://help.aliyun.com/document_detail/85198.html).
         self.code = code
         # Indicates whether the request is successful. Valid values:
         # 
@@ -4301,9 +4350,6 @@ class VerifySmsCodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4345,6 +4391,8 @@ class VerifyWithFusionAuthTokenRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The unified verification token that is returned by the client SDKs.
+        # 
+        # This parameter is required.
         self.verify_token = verify_token
 
     def validate(self):
@@ -4491,9 +4539,6 @@ class VerifyWithFusionAuthTokenResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
