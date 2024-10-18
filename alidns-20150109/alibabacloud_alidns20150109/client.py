@@ -1551,6 +1551,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddGtmRecoveryPlanResponse:
         """
+        @summary Creates a disaster recovery plan.
+        
         @param request: AddGtmRecoveryPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddGtmRecoveryPlanResponse
@@ -1590,6 +1592,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddGtmRecoveryPlanResponse:
         """
+        @summary Creates a disaster recovery plan.
+        
         @param request: AddGtmRecoveryPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddGtmRecoveryPlanResponse
@@ -1628,6 +1632,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddGtmRecoveryPlanRequest,
     ) -> alidns_20150109_models.AddGtmRecoveryPlanResponse:
         """
+        @summary Creates a disaster recovery plan.
+        
         @param request: AddGtmRecoveryPlanRequest
         @return: AddGtmRecoveryPlanResponse
         """
@@ -1639,6 +1645,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddGtmRecoveryPlanRequest,
     ) -> alidns_20150109_models.AddGtmRecoveryPlanResponse:
         """
+        @summary Creates a disaster recovery plan.
+        
         @param request: AddGtmRecoveryPlanRequest
         @return: AddGtmRecoveryPlanResponse
         """
@@ -1879,9 +1887,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ChangeDomainOfDnsProductResponse:
         """
-        @summary Changes the domain name bound to an Alibaba Cloud DNS instance.
+        @summary Changes the domain name that is bound to an Alibaba Cloud DNS instance.
         
-        @description >  You can call this operation to change the domain name for an Alibaba Cloud DNS instance to which a domain name is bound. You can also call this operation to bind a domain name to an Alibaba Cloud DNS instance to which no domain name is bound. If you need to unbind a domain name from an Alibaba Cloud DNS instance, you can call this operation. In this case, the NewDomain parameter must not be specified.
+        @description    **You can call this operation regardless of whether the Alibaba Cloud DNS instance is bound to a domain name. You can also call this operation to unbind the domain name from the Alibaba Cloud DNS instance by leaving the NewDomain parameter empty.**\
+        **This operation applies to instances of the custom edition. To change the domain name that is bound to an Alibaba Cloud DNS instance of Personal Edition, Enterprise Standard Edition, or Enterprise Ultimate Edition, call the BindInstanceDomains operation.
         
         @param request: ChangeDomainOfDnsProductRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1924,9 +1933,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ChangeDomainOfDnsProductResponse:
         """
-        @summary Changes the domain name bound to an Alibaba Cloud DNS instance.
+        @summary Changes the domain name that is bound to an Alibaba Cloud DNS instance.
         
-        @description >  You can call this operation to change the domain name for an Alibaba Cloud DNS instance to which a domain name is bound. You can also call this operation to bind a domain name to an Alibaba Cloud DNS instance to which no domain name is bound. If you need to unbind a domain name from an Alibaba Cloud DNS instance, you can call this operation. In this case, the NewDomain parameter must not be specified.
+        @description    **You can call this operation regardless of whether the Alibaba Cloud DNS instance is bound to a domain name. You can also call this operation to unbind the domain name from the Alibaba Cloud DNS instance by leaving the NewDomain parameter empty.**\
+        **This operation applies to instances of the custom edition. To change the domain name that is bound to an Alibaba Cloud DNS instance of Personal Edition, Enterprise Standard Edition, or Enterprise Ultimate Edition, call the BindInstanceDomains operation.
         
         @param request: ChangeDomainOfDnsProductRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1968,9 +1978,10 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ChangeDomainOfDnsProductRequest,
     ) -> alidns_20150109_models.ChangeDomainOfDnsProductResponse:
         """
-        @summary Changes the domain name bound to an Alibaba Cloud DNS instance.
+        @summary Changes the domain name that is bound to an Alibaba Cloud DNS instance.
         
-        @description >  You can call this operation to change the domain name for an Alibaba Cloud DNS instance to which a domain name is bound. You can also call this operation to bind a domain name to an Alibaba Cloud DNS instance to which no domain name is bound. If you need to unbind a domain name from an Alibaba Cloud DNS instance, you can call this operation. In this case, the NewDomain parameter must not be specified.
+        @description    **You can call this operation regardless of whether the Alibaba Cloud DNS instance is bound to a domain name. You can also call this operation to unbind the domain name from the Alibaba Cloud DNS instance by leaving the NewDomain parameter empty.**\
+        **This operation applies to instances of the custom edition. To change the domain name that is bound to an Alibaba Cloud DNS instance of Personal Edition, Enterprise Standard Edition, or Enterprise Ultimate Edition, call the BindInstanceDomains operation.
         
         @param request: ChangeDomainOfDnsProductRequest
         @return: ChangeDomainOfDnsProductResponse
@@ -1983,9 +1994,10 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ChangeDomainOfDnsProductRequest,
     ) -> alidns_20150109_models.ChangeDomainOfDnsProductResponse:
         """
-        @summary Changes the domain name bound to an Alibaba Cloud DNS instance.
+        @summary Changes the domain name that is bound to an Alibaba Cloud DNS instance.
         
-        @description >  You can call this operation to change the domain name for an Alibaba Cloud DNS instance to which a domain name is bound. You can also call this operation to bind a domain name to an Alibaba Cloud DNS instance to which no domain name is bound. If you need to unbind a domain name from an Alibaba Cloud DNS instance, you can call this operation. In this case, the NewDomain parameter must not be specified.
+        @description    **You can call this operation regardless of whether the Alibaba Cloud DNS instance is bound to a domain name. You can also call this operation to unbind the domain name from the Alibaba Cloud DNS instance by leaving the NewDomain parameter empty.**\
+        **This operation applies to instances of the custom edition. To change the domain name that is bound to an Alibaba Cloud DNS instance of Personal Edition, Enterprise Standard Edition, or Enterprise Ultimate Edition, call the BindInstanceDomains operation.
         
         @param request: ChangeDomainOfDnsProductRequest
         @return: ChangeDomainOfDnsProductResponse
@@ -1999,6 +2011,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.CopyGtmConfigResponse:
         """
+        @summary Copies the configurations of a Global Traffic Manager (GTM) instance.
+        
         @param request: CopyGtmConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CopyGtmConfigResponse
@@ -2038,6 +2052,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.CopyGtmConfigResponse:
         """
+        @summary Copies the configurations of a Global Traffic Manager (GTM) instance.
+        
         @param request: CopyGtmConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CopyGtmConfigResponse
@@ -2076,6 +2092,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.CopyGtmConfigRequest,
     ) -> alidns_20150109_models.CopyGtmConfigResponse:
         """
+        @summary Copies the configurations of a Global Traffic Manager (GTM) instance.
+        
         @param request: CopyGtmConfigRequest
         @return: CopyGtmConfigResponse
         """
@@ -2087,6 +2105,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.CopyGtmConfigRequest,
     ) -> alidns_20150109_models.CopyGtmConfigResponse:
         """
+        @summary Copies the configurations of a Global Traffic Manager (GTM) instance.
+        
         @param request: CopyGtmConfigRequest
         @return: CopyGtmConfigResponse
         """
@@ -2099,6 +2119,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.CreateCloudGtmAddressResponse:
         """
+        @summary Creates an address.
+        
         @param tmp_req: CreateCloudGtmAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateCloudGtmAddressResponse
@@ -2158,6 +2180,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.CreateCloudGtmAddressResponse:
         """
+        @summary Creates an address.
+        
         @param tmp_req: CreateCloudGtmAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateCloudGtmAddressResponse
@@ -2216,6 +2240,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.CreateCloudGtmAddressRequest,
     ) -> alidns_20150109_models.CreateCloudGtmAddressResponse:
         """
+        @summary Creates an address.
+        
         @param request: CreateCloudGtmAddressRequest
         @return: CreateCloudGtmAddressResponse
         """
@@ -2227,6 +2253,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.CreateCloudGtmAddressRequest,
     ) -> alidns_20150109_models.CreateCloudGtmAddressResponse:
         """
+        @summary Creates an address.
+        
         @param request: CreateCloudGtmAddressRequest
         @return: CreateCloudGtmAddressResponse
         """
@@ -2239,6 +2267,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.CreateCloudGtmAddressPoolResponse:
         """
+        @summary Creates an address pool.
+        
         @param request: CreateCloudGtmAddressPoolRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateCloudGtmAddressPoolResponse
@@ -2284,6 +2314,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.CreateCloudGtmAddressPoolResponse:
         """
+        @summary Creates an address pool.
+        
         @param request: CreateCloudGtmAddressPoolRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateCloudGtmAddressPoolResponse
@@ -2328,6 +2360,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.CreateCloudGtmAddressPoolRequest,
     ) -> alidns_20150109_models.CreateCloudGtmAddressPoolResponse:
         """
+        @summary Creates an address pool.
+        
         @param request: CreateCloudGtmAddressPoolRequest
         @return: CreateCloudGtmAddressPoolResponse
         """
@@ -2339,6 +2373,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.CreateCloudGtmAddressPoolRequest,
     ) -> alidns_20150109_models.CreateCloudGtmAddressPoolResponse:
         """
+        @summary Creates an address pool.
+        
         @param request: CreateCloudGtmAddressPoolRequest
         @return: CreateCloudGtmAddressPoolResponse
         """
@@ -2475,6 +2511,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.CreateCloudGtmMonitorTemplateResponse:
         """
+        @summary Creates a health check template.
+        
         @param tmp_req: CreateCloudGtmMonitorTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateCloudGtmMonitorTemplateResponse
@@ -2532,6 +2570,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.CreateCloudGtmMonitorTemplateResponse:
         """
+        @summary Creates a health check template.
+        
         @param tmp_req: CreateCloudGtmMonitorTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateCloudGtmMonitorTemplateResponse
@@ -2588,6 +2628,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.CreateCloudGtmMonitorTemplateRequest,
     ) -> alidns_20150109_models.CreateCloudGtmMonitorTemplateResponse:
         """
+        @summary Creates a health check template.
+        
         @param request: CreateCloudGtmMonitorTemplateRequest
         @return: CreateCloudGtmMonitorTemplateResponse
         """
@@ -2599,6 +2641,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.CreateCloudGtmMonitorTemplateRequest,
     ) -> alidns_20150109_models.CreateCloudGtmMonitorTemplateResponse:
         """
+        @summary Creates a health check template.
+        
         @param request: CreateCloudGtmMonitorTemplateRequest
         @return: CreateCloudGtmMonitorTemplateResponse
         """
@@ -2621,6 +2665,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2656,6 +2702,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2815,6 +2863,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteCloudGtmAddressResponse:
         """
+        @summary Deletes an address.
+        
         @param request: DeleteCloudGtmAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteCloudGtmAddressResponse
@@ -2852,6 +2902,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteCloudGtmAddressResponse:
         """
+        @summary Deletes an address.
+        
         @param request: DeleteCloudGtmAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteCloudGtmAddressResponse
@@ -2888,6 +2940,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteCloudGtmAddressRequest,
     ) -> alidns_20150109_models.DeleteCloudGtmAddressResponse:
         """
+        @summary Deletes an address.
+        
         @param request: DeleteCloudGtmAddressRequest
         @return: DeleteCloudGtmAddressResponse
         """
@@ -2899,6 +2953,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteCloudGtmAddressRequest,
     ) -> alidns_20150109_models.DeleteCloudGtmAddressResponse:
         """
+        @summary Deletes an address.
+        
         @param request: DeleteCloudGtmAddressRequest
         @return: DeleteCloudGtmAddressResponse
         """
@@ -2911,6 +2967,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteCloudGtmAddressPoolResponse:
         """
+        @summary Deletes an address pool.
+        
         @param request: DeleteCloudGtmAddressPoolRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteCloudGtmAddressPoolResponse
@@ -2948,6 +3006,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteCloudGtmAddressPoolResponse:
         """
+        @summary Deletes an address pool.
+        
         @param request: DeleteCloudGtmAddressPoolRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteCloudGtmAddressPoolResponse
@@ -2984,6 +3044,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteCloudGtmAddressPoolRequest,
     ) -> alidns_20150109_models.DeleteCloudGtmAddressPoolResponse:
         """
+        @summary Deletes an address pool.
+        
         @param request: DeleteCloudGtmAddressPoolRequest
         @return: DeleteCloudGtmAddressPoolResponse
         """
@@ -2995,6 +3057,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteCloudGtmAddressPoolRequest,
     ) -> alidns_20150109_models.DeleteCloudGtmAddressPoolResponse:
         """
+        @summary Deletes an address pool.
+        
         @param request: DeleteCloudGtmAddressPoolRequest
         @return: DeleteCloudGtmAddressPoolResponse
         """
@@ -3007,6 +3071,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteCloudGtmInstanceConfigResponse:
         """
+        @summary Deletes an access domain name that is configured for a Global Traffic Manager (GTM) 3.0 instance.
+        
         @param request: DeleteCloudGtmInstanceConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteCloudGtmInstanceConfigResponse
@@ -3046,6 +3112,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteCloudGtmInstanceConfigResponse:
         """
+        @summary Deletes an access domain name that is configured for a Global Traffic Manager (GTM) 3.0 instance.
+        
         @param request: DeleteCloudGtmInstanceConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteCloudGtmInstanceConfigResponse
@@ -3084,6 +3152,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteCloudGtmInstanceConfigRequest,
     ) -> alidns_20150109_models.DeleteCloudGtmInstanceConfigResponse:
         """
+        @summary Deletes an access domain name that is configured for a Global Traffic Manager (GTM) 3.0 instance.
+        
         @param request: DeleteCloudGtmInstanceConfigRequest
         @return: DeleteCloudGtmInstanceConfigResponse
         """
@@ -3095,6 +3165,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteCloudGtmInstanceConfigRequest,
     ) -> alidns_20150109_models.DeleteCloudGtmInstanceConfigResponse:
         """
+        @summary Deletes an access domain name that is configured for a Global Traffic Manager (GTM) 3.0 instance.
+        
         @param request: DeleteCloudGtmInstanceConfigRequest
         @return: DeleteCloudGtmInstanceConfigResponse
         """
@@ -3107,6 +3179,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteCloudGtmMonitorTemplateResponse:
         """
+        @summary Deletes a health check template.
+        
         @param request: DeleteCloudGtmMonitorTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteCloudGtmMonitorTemplateResponse
@@ -3144,6 +3218,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteCloudGtmMonitorTemplateResponse:
         """
+        @summary Deletes a health check template.
+        
         @param request: DeleteCloudGtmMonitorTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteCloudGtmMonitorTemplateResponse
@@ -3180,6 +3256,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteCloudGtmMonitorTemplateRequest,
     ) -> alidns_20150109_models.DeleteCloudGtmMonitorTemplateResponse:
         """
+        @summary Deletes a health check template.
+        
         @param request: DeleteCloudGtmMonitorTemplateRequest
         @return: DeleteCloudGtmMonitorTemplateResponse
         """
@@ -3191,6 +3269,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteCloudGtmMonitorTemplateRequest,
     ) -> alidns_20150109_models.DeleteCloudGtmMonitorTemplateResponse:
         """
+        @summary Deletes a health check template.
+        
         @param request: DeleteCloudGtmMonitorTemplateRequest
         @return: DeleteCloudGtmMonitorTemplateResponse
         """
@@ -4279,6 +4359,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeBatchResultCountResponse:
         """
+        @summary Queries the result of a batch operation task.
+        
         @param request: DescribeBatchResultCountRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeBatchResultCountResponse
@@ -4316,6 +4398,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeBatchResultCountResponse:
         """
+        @summary Queries the result of a batch operation task.
+        
         @param request: DescribeBatchResultCountRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeBatchResultCountResponse
@@ -4352,6 +4436,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeBatchResultCountRequest,
     ) -> alidns_20150109_models.DescribeBatchResultCountResponse:
         """
+        @summary Queries the result of a batch operation task.
+        
         @param request: DescribeBatchResultCountRequest
         @return: DescribeBatchResultCountResponse
         """
@@ -4363,6 +4449,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeBatchResultCountRequest,
     ) -> alidns_20150109_models.DescribeBatchResultCountResponse:
         """
+        @summary Queries the result of a batch operation task.
+        
         @param request: DescribeBatchResultCountRequest
         @return: DescribeBatchResultCountResponse
         """
@@ -4499,6 +4587,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeCloudGtmAddressResponse:
         """
+        @summary Queries the configurations of an address.
+        
         @param request: DescribeCloudGtmAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeCloudGtmAddressResponse
@@ -4536,6 +4626,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeCloudGtmAddressResponse:
         """
+        @summary Queries the configurations of an address.
+        
         @param request: DescribeCloudGtmAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeCloudGtmAddressResponse
@@ -4572,6 +4664,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeCloudGtmAddressRequest,
     ) -> alidns_20150109_models.DescribeCloudGtmAddressResponse:
         """
+        @summary Queries the configurations of an address.
+        
         @param request: DescribeCloudGtmAddressRequest
         @return: DescribeCloudGtmAddressResponse
         """
@@ -4583,6 +4677,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeCloudGtmAddressRequest,
     ) -> alidns_20150109_models.DescribeCloudGtmAddressResponse:
         """
+        @summary Queries the configurations of an address.
+        
         @param request: DescribeCloudGtmAddressRequest
         @return: DescribeCloudGtmAddressResponse
         """
@@ -4595,6 +4691,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeCloudGtmAddressPoolResponse:
         """
+        @summary Queries the configurations of an address pool.
+        
         @param request: DescribeCloudGtmAddressPoolRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeCloudGtmAddressPoolResponse
@@ -4632,6 +4730,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeCloudGtmAddressPoolResponse:
         """
+        @summary Queries the configurations of an address pool.
+        
         @param request: DescribeCloudGtmAddressPoolRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeCloudGtmAddressPoolResponse
@@ -4668,6 +4768,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeCloudGtmAddressPoolRequest,
     ) -> alidns_20150109_models.DescribeCloudGtmAddressPoolResponse:
         """
+        @summary Queries the configurations of an address pool.
+        
         @param request: DescribeCloudGtmAddressPoolRequest
         @return: DescribeCloudGtmAddressPoolResponse
         """
@@ -4679,6 +4781,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeCloudGtmAddressPoolRequest,
     ) -> alidns_20150109_models.DescribeCloudGtmAddressPoolResponse:
         """
+        @summary Queries the configurations of an address pool.
+        
         @param request: DescribeCloudGtmAddressPoolRequest
         @return: DescribeCloudGtmAddressPoolResponse
         """
@@ -4691,6 +4795,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeCloudGtmAddressPoolReferenceResponse:
         """
+        @summary Queries the information about the access domain names that reference an address pool.
+        
         @param request: DescribeCloudGtmAddressPoolReferenceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeCloudGtmAddressPoolReferenceResponse
@@ -4728,6 +4834,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeCloudGtmAddressPoolReferenceResponse:
         """
+        @summary Queries the information about the access domain names that reference an address pool.
+        
         @param request: DescribeCloudGtmAddressPoolReferenceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeCloudGtmAddressPoolReferenceResponse
@@ -4764,6 +4872,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeCloudGtmAddressPoolReferenceRequest,
     ) -> alidns_20150109_models.DescribeCloudGtmAddressPoolReferenceResponse:
         """
+        @summary Queries the information about the access domain names that reference an address pool.
+        
         @param request: DescribeCloudGtmAddressPoolReferenceRequest
         @return: DescribeCloudGtmAddressPoolReferenceResponse
         """
@@ -4775,6 +4885,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeCloudGtmAddressPoolReferenceRequest,
     ) -> alidns_20150109_models.DescribeCloudGtmAddressPoolReferenceResponse:
         """
+        @summary Queries the information about the access domain names that reference an address pool.
+        
         @param request: DescribeCloudGtmAddressPoolReferenceRequest
         @return: DescribeCloudGtmAddressPoolReferenceResponse
         """
@@ -4787,6 +4899,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeCloudGtmAddressReferenceResponse:
         """
+        @summary Queries the information about the address pools and Global Traffic Manager (GTM) 3.0 instances that reference an address.
+        
         @param request: DescribeCloudGtmAddressReferenceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeCloudGtmAddressReferenceResponse
@@ -4824,6 +4938,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeCloudGtmAddressReferenceResponse:
         """
+        @summary Queries the information about the address pools and Global Traffic Manager (GTM) 3.0 instances that reference an address.
+        
         @param request: DescribeCloudGtmAddressReferenceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeCloudGtmAddressReferenceResponse
@@ -4860,6 +4976,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeCloudGtmAddressReferenceRequest,
     ) -> alidns_20150109_models.DescribeCloudGtmAddressReferenceResponse:
         """
+        @summary Queries the information about the address pools and Global Traffic Manager (GTM) 3.0 instances that reference an address.
+        
         @param request: DescribeCloudGtmAddressReferenceRequest
         @return: DescribeCloudGtmAddressReferenceResponse
         """
@@ -4871,6 +4989,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeCloudGtmAddressReferenceRequest,
     ) -> alidns_20150109_models.DescribeCloudGtmAddressReferenceResponse:
         """
+        @summary Queries the information about the address pools and Global Traffic Manager (GTM) 3.0 instances that reference an address.
+        
         @param request: DescribeCloudGtmAddressReferenceRequest
         @return: DescribeCloudGtmAddressReferenceResponse
         """
@@ -5183,6 +5303,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeCloudGtmMonitorTemplateResponse:
         """
+        @summary Queries the configurations of a health check template.
+        
         @param request: DescribeCloudGtmMonitorTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeCloudGtmMonitorTemplateResponse
@@ -5218,6 +5340,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeCloudGtmMonitorTemplateResponse:
         """
+        @summary Queries the configurations of a health check template.
+        
         @param request: DescribeCloudGtmMonitorTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeCloudGtmMonitorTemplateResponse
@@ -5252,6 +5376,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeCloudGtmMonitorTemplateRequest,
     ) -> alidns_20150109_models.DescribeCloudGtmMonitorTemplateResponse:
         """
+        @summary Queries the configurations of a health check template.
+        
         @param request: DescribeCloudGtmMonitorTemplateRequest
         @return: DescribeCloudGtmMonitorTemplateResponse
         """
@@ -5263,6 +5389,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeCloudGtmMonitorTemplateRequest,
     ) -> alidns_20150109_models.DescribeCloudGtmMonitorTemplateResponse:
         """
+        @summary Queries the configurations of a health check template.
+        
         @param request: DescribeCloudGtmMonitorTemplateRequest
         @return: DescribeCloudGtmMonitorTemplateResponse
         """
@@ -5529,7 +5657,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeCustomLinesResponse:
         """
-        @summary Queries custom lines.
+        @summary Queries a list of custom lines.
         
         @param request: DescribeCustomLinesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5570,7 +5698,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeCustomLinesResponse:
         """
-        @summary Queries custom lines.
+        @summary Queries a list of custom lines.
         
         @param request: DescribeCustomLinesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5610,7 +5738,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeCustomLinesRequest,
     ) -> alidns_20150109_models.DescribeCustomLinesResponse:
         """
-        @summary Queries custom lines.
+        @summary Queries a list of custom lines.
         
         @param request: DescribeCustomLinesRequest
         @return: DescribeCustomLinesResponse
@@ -5623,7 +5751,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeCustomLinesRequest,
     ) -> alidns_20150109_models.DescribeCustomLinesResponse:
         """
-        @summary Queries custom lines.
+        @summary Queries a list of custom lines.
         
         @param request: DescribeCustomLinesRequest
         @return: DescribeCustomLinesResponse
@@ -6169,6 +6297,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmAddrAttributeInfoResponse:
         """
+        @summary Queries the source regions of addresses.
+        
         @param request: DescribeDnsGtmAddrAttributeInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDnsGtmAddrAttributeInfoResponse
@@ -6206,6 +6336,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmAddrAttributeInfoResponse:
         """
+        @summary Queries the source regions of addresses.
+        
         @param request: DescribeDnsGtmAddrAttributeInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDnsGtmAddrAttributeInfoResponse
@@ -6242,6 +6374,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmAddrAttributeInfoRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmAddrAttributeInfoResponse:
         """
+        @summary Queries the source regions of addresses.
+        
         @param request: DescribeDnsGtmAddrAttributeInfoRequest
         @return: DescribeDnsGtmAddrAttributeInfoResponse
         """
@@ -6253,6 +6387,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmAddrAttributeInfoRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmAddrAttributeInfoResponse:
         """
+        @summary Queries the source regions of addresses.
+        
         @param request: DescribeDnsGtmAddrAttributeInfoRequest
         @return: DescribeDnsGtmAddrAttributeInfoResponse
         """
@@ -6961,6 +7097,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmInstancesResponse:
         """
+        @summary Queries a list of instances.
+        
         @param request: DescribeDnsGtmInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDnsGtmInstancesResponse
@@ -7002,6 +7140,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmInstancesResponse:
         """
+        @summary Queries a list of instances.
+        
         @param request: DescribeDnsGtmInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDnsGtmInstancesResponse
@@ -7042,6 +7182,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmInstancesRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmInstancesResponse:
         """
+        @summary Queries a list of instances.
+        
         @param request: DescribeDnsGtmInstancesRequest
         @return: DescribeDnsGtmInstancesResponse
         """
@@ -7053,6 +7195,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmInstancesRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmInstancesResponse:
         """
+        @summary Queries a list of instances.
+        
         @param request: DescribeDnsGtmInstancesRequest
         @return: DescribeDnsGtmInstancesResponse
         """
@@ -7185,7 +7329,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmMonitorAvailableConfigResponse:
         """
-        @summary Queries available monitored nodes.
+        @summary Queries the configuration items that can be set for a health check task.
         
         @param request: DescribeDnsGtmMonitorAvailableConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7220,7 +7364,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmMonitorAvailableConfigResponse:
         """
-        @summary Queries available monitored nodes.
+        @summary Queries the configuration items that can be set for a health check task.
         
         @param request: DescribeDnsGtmMonitorAvailableConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7254,7 +7398,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmMonitorAvailableConfigRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmMonitorAvailableConfigResponse:
         """
-        @summary Queries available monitored nodes.
+        @summary Queries the configuration items that can be set for a health check task.
         
         @param request: DescribeDnsGtmMonitorAvailableConfigRequest
         @return: DescribeDnsGtmMonitorAvailableConfigResponse
@@ -7267,7 +7411,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmMonitorAvailableConfigRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmMonitorAvailableConfigResponse:
         """
-        @summary Queries available monitored nodes.
+        @summary Queries the configuration items that can be set for a health check task.
         
         @param request: DescribeDnsGtmMonitorAvailableConfigRequest
         @return: DescribeDnsGtmMonitorAvailableConfigResponse
@@ -7281,7 +7425,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmMonitorConfigResponse:
         """
-        @summary Queries the health check configurations of an address pool of a Global Traffic Manager (GTM) instance.
+        @summary Queries the health check configuration of an address pool.
         
         @param request: DescribeDnsGtmMonitorConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7318,7 +7462,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmMonitorConfigResponse:
         """
-        @summary Queries the health check configurations of an address pool of a Global Traffic Manager (GTM) instance.
+        @summary Queries the health check configuration of an address pool.
         
         @param request: DescribeDnsGtmMonitorConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7354,7 +7498,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmMonitorConfigRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmMonitorConfigResponse:
         """
-        @summary Queries the health check configurations of an address pool of a Global Traffic Manager (GTM) instance.
+        @summary Queries the health check configuration of an address pool.
         
         @param request: DescribeDnsGtmMonitorConfigRequest
         @return: DescribeDnsGtmMonitorConfigResponse
@@ -7367,7 +7511,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmMonitorConfigRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmMonitorConfigResponse:
         """
-        @summary Queries the health check configurations of an address pool of a Global Traffic Manager (GTM) instance.
+        @summary Queries the health check configuration of an address pool.
         
         @param request: DescribeDnsGtmMonitorConfigRequest
         @return: DescribeDnsGtmMonitorConfigResponse
@@ -10301,7 +10445,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmInstanceStatusResponse:
         """
-        @summary Queries the current status of a Global Traffic Manager (GTM) instance.
+        @summary Queries the status of a Global Traffic Manager (GTM) instance.
         
         @param request: DescribeGtmInstanceStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10338,7 +10482,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmInstanceStatusResponse:
         """
-        @summary Queries the current status of a Global Traffic Manager (GTM) instance.
+        @summary Queries the status of a Global Traffic Manager (GTM) instance.
         
         @param request: DescribeGtmInstanceStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10374,7 +10518,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmInstanceStatusRequest,
     ) -> alidns_20150109_models.DescribeGtmInstanceStatusResponse:
         """
-        @summary Queries the current status of a Global Traffic Manager (GTM) instance.
+        @summary Queries the status of a Global Traffic Manager (GTM) instance.
         
         @param request: DescribeGtmInstanceStatusRequest
         @return: DescribeGtmInstanceStatusResponse
@@ -10387,7 +10531,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmInstanceStatusRequest,
     ) -> alidns_20150109_models.DescribeGtmInstanceStatusResponse:
         """
-        @summary Queries the current status of a Global Traffic Manager (GTM) instance.
+        @summary Queries the status of a Global Traffic Manager (GTM) instance.
         
         @param request: DescribeGtmInstanceStatusRequest
         @return: DescribeGtmInstanceStatusResponse
@@ -10925,7 +11069,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmRecoveryPlanResponse:
         """
-        @summary You can call this operation to query the detailed information of a disaster recovery plan for a Global Traffic Manager (GTM) instance.
+        @summary Queries the details of a disaster recovery plan.
         
         @param request: DescribeGtmRecoveryPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10962,7 +11106,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmRecoveryPlanResponse:
         """
-        @summary You can call this operation to query the detailed information of a disaster recovery plan for a Global Traffic Manager (GTM) instance.
+        @summary Queries the details of a disaster recovery plan.
         
         @param request: DescribeGtmRecoveryPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10998,7 +11142,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmRecoveryPlanRequest,
     ) -> alidns_20150109_models.DescribeGtmRecoveryPlanResponse:
         """
-        @summary You can call this operation to query the detailed information of a disaster recovery plan for a Global Traffic Manager (GTM) instance.
+        @summary Queries the details of a disaster recovery plan.
         
         @param request: DescribeGtmRecoveryPlanRequest
         @return: DescribeGtmRecoveryPlanResponse
@@ -11011,7 +11155,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmRecoveryPlanRequest,
     ) -> alidns_20150109_models.DescribeGtmRecoveryPlanResponse:
         """
-        @summary You can call this operation to query the detailed information of a disaster recovery plan for a Global Traffic Manager (GTM) instance.
+        @summary Queries the details of a disaster recovery plan.
         
         @param request: DescribeGtmRecoveryPlanRequest
         @return: DescribeGtmRecoveryPlanResponse
@@ -11025,7 +11169,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmRecoveryPlanAvailableConfigResponse:
         """
-        @summary You can call this operation to query the available configurations of a disaster recovery plan of a Global Traffic Manager (GTM) instance.
+        @summary Queries the configuration items that can be set for a disaster recovery plan.
         
         @param request: DescribeGtmRecoveryPlanAvailableConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11060,7 +11204,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmRecoveryPlanAvailableConfigResponse:
         """
-        @summary You can call this operation to query the available configurations of a disaster recovery plan of a Global Traffic Manager (GTM) instance.
+        @summary Queries the configuration items that can be set for a disaster recovery plan.
         
         @param request: DescribeGtmRecoveryPlanAvailableConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11094,7 +11238,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmRecoveryPlanAvailableConfigRequest,
     ) -> alidns_20150109_models.DescribeGtmRecoveryPlanAvailableConfigResponse:
         """
-        @summary You can call this operation to query the available configurations of a disaster recovery plan of a Global Traffic Manager (GTM) instance.
+        @summary Queries the configuration items that can be set for a disaster recovery plan.
         
         @param request: DescribeGtmRecoveryPlanAvailableConfigRequest
         @return: DescribeGtmRecoveryPlanAvailableConfigResponse
@@ -11107,7 +11251,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmRecoveryPlanAvailableConfigRequest,
     ) -> alidns_20150109_models.DescribeGtmRecoveryPlanAvailableConfigResponse:
         """
-        @summary You can call this operation to query the available configurations of a disaster recovery plan of a Global Traffic Manager (GTM) instance.
+        @summary Queries the configuration items that can be set for a disaster recovery plan.
         
         @param request: DescribeGtmRecoveryPlanAvailableConfigRequest
         @return: DescribeGtmRecoveryPlanAvailableConfigResponse
@@ -12343,6 +12487,8 @@ class Client(OpenApiClient):
             query['StartDate'] = request.start_date
         if not UtilClient.is_unset(request.sub_domain):
             query['SubDomain'] = request.sub_domain
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12386,6 +12532,8 @@ class Client(OpenApiClient):
             query['StartDate'] = request.start_date
         if not UtilClient.is_unset(request.sub_domain):
             query['SubDomain'] = request.sub_domain
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13781,8 +13929,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeSupportLinesResponse:
         """
-        @summary 查询云解析支持的所有线路列表。
-        
         @param request: DescribeSupportLinesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSupportLinesResponse
@@ -13820,8 +13966,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeSupportLinesResponse:
         """
-        @summary 查询云解析支持的所有线路列表。
-        
         @param request: DescribeSupportLinesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSupportLinesResponse
@@ -13858,8 +14002,6 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeSupportLinesRequest,
     ) -> alidns_20150109_models.DescribeSupportLinesResponse:
         """
-        @summary 查询云解析支持的所有线路列表。
-        
         @param request: DescribeSupportLinesRequest
         @return: DescribeSupportLinesResponse
         """
@@ -13871,8 +14013,6 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeSupportLinesRequest,
     ) -> alidns_20150109_models.DescribeSupportLinesResponse:
         """
-        @summary 查询云解析支持的所有线路列表。
-        
         @param request: DescribeSupportLinesRequest
         @return: DescribeSupportLinesResponse
         """
@@ -14113,6 +14253,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ExecuteGtmRecoveryPlanResponse:
         """
+        @summary Executes a disaster recovery plan.
+        
         @param request: ExecuteGtmRecoveryPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ExecuteGtmRecoveryPlanResponse
@@ -14148,6 +14290,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ExecuteGtmRecoveryPlanResponse:
         """
+        @summary Executes a disaster recovery plan.
+        
         @param request: ExecuteGtmRecoveryPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ExecuteGtmRecoveryPlanResponse
@@ -14182,6 +14326,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ExecuteGtmRecoveryPlanRequest,
     ) -> alidns_20150109_models.ExecuteGtmRecoveryPlanResponse:
         """
+        @summary Executes a disaster recovery plan.
+        
         @param request: ExecuteGtmRecoveryPlanRequest
         @return: ExecuteGtmRecoveryPlanResponse
         """
@@ -14193,6 +14339,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ExecuteGtmRecoveryPlanRequest,
     ) -> alidns_20150109_models.ExecuteGtmRecoveryPlanResponse:
         """
+        @summary Executes a disaster recovery plan.
+        
         @param request: ExecuteGtmRecoveryPlanRequest
         @return: ExecuteGtmRecoveryPlanResponse
         """
@@ -14421,6 +14569,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ListCloudGtmAddressPoolsResponse:
         """
+        @summary Queries a list of address pools.
+        
         @param request: ListCloudGtmAddressPoolsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListCloudGtmAddressPoolsResponse
@@ -14468,6 +14618,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ListCloudGtmAddressPoolsResponse:
         """
+        @summary Queries a list of address pools.
+        
         @param request: ListCloudGtmAddressPoolsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListCloudGtmAddressPoolsResponse
@@ -14514,6 +14666,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ListCloudGtmAddressPoolsRequest,
     ) -> alidns_20150109_models.ListCloudGtmAddressPoolsResponse:
         """
+        @summary Queries a list of address pools.
+        
         @param request: ListCloudGtmAddressPoolsRequest
         @return: ListCloudGtmAddressPoolsResponse
         """
@@ -14525,6 +14679,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ListCloudGtmAddressPoolsRequest,
     ) -> alidns_20150109_models.ListCloudGtmAddressPoolsResponse:
         """
+        @summary Queries a list of address pools.
+        
         @param request: ListCloudGtmAddressPoolsRequest
         @return: ListCloudGtmAddressPoolsResponse
         """
@@ -14537,6 +14693,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ListCloudGtmAddressesResponse:
         """
+        @summary Queries a list of addresses.
+        
         @param request: ListCloudGtmAddressesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListCloudGtmAddressesResponse
@@ -14590,6 +14748,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ListCloudGtmAddressesResponse:
         """
+        @summary Queries a list of addresses.
+        
         @param request: ListCloudGtmAddressesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListCloudGtmAddressesResponse
@@ -14642,6 +14802,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ListCloudGtmAddressesRequest,
     ) -> alidns_20150109_models.ListCloudGtmAddressesResponse:
         """
+        @summary Queries a list of addresses.
+        
         @param request: ListCloudGtmAddressesRequest
         @return: ListCloudGtmAddressesResponse
         """
@@ -14653,6 +14815,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ListCloudGtmAddressesRequest,
     ) -> alidns_20150109_models.ListCloudGtmAddressesResponse:
         """
+        @summary Queries a list of addresses.
+        
         @param request: ListCloudGtmAddressesRequest
         @return: ListCloudGtmAddressesResponse
         """
@@ -14869,6 +15033,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ListCloudGtmInstanceConfigsResponse:
         """
+        @summary Queries the configurations of a Global Traffic Manager (GTM) instance, including the information about access domain names and address pools.
+        
         @param request: ListCloudGtmInstanceConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListCloudGtmInstanceConfigsResponse
@@ -14918,6 +15084,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ListCloudGtmInstanceConfigsResponse:
         """
+        @summary Queries the configurations of a Global Traffic Manager (GTM) instance, including the information about access domain names and address pools.
+        
         @param request: ListCloudGtmInstanceConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListCloudGtmInstanceConfigsResponse
@@ -14966,6 +15134,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ListCloudGtmInstanceConfigsRequest,
     ) -> alidns_20150109_models.ListCloudGtmInstanceConfigsResponse:
         """
+        @summary Queries the configurations of a Global Traffic Manager (GTM) instance, including the information about access domain names and address pools.
+        
         @param request: ListCloudGtmInstanceConfigsRequest
         @return: ListCloudGtmInstanceConfigsResponse
         """
@@ -14977,6 +15147,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ListCloudGtmInstanceConfigsRequest,
     ) -> alidns_20150109_models.ListCloudGtmInstanceConfigsResponse:
         """
+        @summary Queries the configurations of a Global Traffic Manager (GTM) instance, including the information about access domain names and address pools.
+        
         @param request: ListCloudGtmInstanceConfigsRequest
         @return: ListCloudGtmInstanceConfigsResponse
         """
@@ -14989,6 +15161,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ListCloudGtmInstancesResponse:
         """
+        @summary Queries a list of Global Traffic Manager (GTM) 3.0 instances.
+        
         @param request: ListCloudGtmInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListCloudGtmInstancesResponse
@@ -15032,6 +15206,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ListCloudGtmInstancesResponse:
         """
+        @summary Queries a list of Global Traffic Manager (GTM) 3.0 instances.
+        
         @param request: ListCloudGtmInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListCloudGtmInstancesResponse
@@ -15074,6 +15250,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ListCloudGtmInstancesRequest,
     ) -> alidns_20150109_models.ListCloudGtmInstancesResponse:
         """
+        @summary Queries a list of Global Traffic Manager (GTM) 3.0 instances.
+        
         @param request: ListCloudGtmInstancesRequest
         @return: ListCloudGtmInstancesResponse
         """
@@ -15085,6 +15263,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ListCloudGtmInstancesRequest,
     ) -> alidns_20150109_models.ListCloudGtmInstancesResponse:
         """
+        @summary Queries a list of Global Traffic Manager (GTM) 3.0 instances.
+        
         @param request: ListCloudGtmInstancesRequest
         @return: ListCloudGtmInstancesResponse
         """
@@ -15097,6 +15277,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ListCloudGtmMonitorNodesResponse:
         """
+        @summary Queries a list of health check nodes.
+        
         @param request: ListCloudGtmMonitorNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListCloudGtmMonitorNodesResponse
@@ -15130,6 +15312,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ListCloudGtmMonitorNodesResponse:
         """
+        @summary Queries a list of health check nodes.
+        
         @param request: ListCloudGtmMonitorNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListCloudGtmMonitorNodesResponse
@@ -15162,6 +15346,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ListCloudGtmMonitorNodesRequest,
     ) -> alidns_20150109_models.ListCloudGtmMonitorNodesResponse:
         """
+        @summary Queries a list of health check nodes.
+        
         @param request: ListCloudGtmMonitorNodesRequest
         @return: ListCloudGtmMonitorNodesResponse
         """
@@ -15173,6 +15359,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ListCloudGtmMonitorNodesRequest,
     ) -> alidns_20150109_models.ListCloudGtmMonitorNodesResponse:
         """
+        @summary Queries a list of health check nodes.
+        
         @param request: ListCloudGtmMonitorNodesRequest
         @return: ListCloudGtmMonitorNodesResponse
         """
@@ -15185,6 +15373,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ListCloudGtmMonitorTemplatesResponse:
         """
+        @summary Queries a list of health check templates.
+        
         @param request: ListCloudGtmMonitorTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListCloudGtmMonitorTemplatesResponse
@@ -15228,6 +15418,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ListCloudGtmMonitorTemplatesResponse:
         """
+        @summary Queries a list of health check templates.
+        
         @param request: ListCloudGtmMonitorTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListCloudGtmMonitorTemplatesResponse
@@ -15270,6 +15462,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ListCloudGtmMonitorTemplatesRequest,
     ) -> alidns_20150109_models.ListCloudGtmMonitorTemplatesResponse:
         """
+        @summary Queries a list of health check templates.
+        
         @param request: ListCloudGtmMonitorTemplatesRequest
         @return: ListCloudGtmMonitorTemplatesResponse
         """
@@ -15281,6 +15475,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ListCloudGtmMonitorTemplatesRequest,
     ) -> alidns_20150109_models.ListCloudGtmMonitorTemplatesResponse:
         """
+        @summary Queries a list of health check templates.
+        
         @param request: ListCloudGtmMonitorTemplatesRequest
         @return: ListCloudGtmMonitorTemplatesResponse
         """
@@ -15425,10 +15621,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ModifyHichinaDomainDNSResponse:
         """
-        @summary Calls the ModifyHichinaDomainDNS operation to change the name of a DNS server based on input parameters.
+        @summary Changes the names of DNS servers bound to a domain name from DNS server names provided by a third-party service provider to DNS server names provided by Alibaba Cloud DNS.
         
-        @description If the operation succeeds, the name of the DNS server changes to that of an Alibaba Cloud DNS server (ending with hichina.com).
-        >  Before you call this operation, make sure that your domain name has been registered with Alibaba Cloud and the DNS server in use is not an Alibaba Cloud DNS server.
+        @description If the operation succeeds, the names of DNS servers change to those of Alibaba Cloud DNS servers (ending with hichina.com).
+        >  *Before you call this operation, make sure that your domain name has been registered with Alibaba Cloud and the DNS servers in use are not Alibaba Cloud DNS servers.
         
         @param request: ModifyHichinaDomainDNSRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15467,10 +15663,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ModifyHichinaDomainDNSResponse:
         """
-        @summary Calls the ModifyHichinaDomainDNS operation to change the name of a DNS server based on input parameters.
+        @summary Changes the names of DNS servers bound to a domain name from DNS server names provided by a third-party service provider to DNS server names provided by Alibaba Cloud DNS.
         
-        @description If the operation succeeds, the name of the DNS server changes to that of an Alibaba Cloud DNS server (ending with hichina.com).
-        >  Before you call this operation, make sure that your domain name has been registered with Alibaba Cloud and the DNS server in use is not an Alibaba Cloud DNS server.
+        @description If the operation succeeds, the names of DNS servers change to those of Alibaba Cloud DNS servers (ending with hichina.com).
+        >  *Before you call this operation, make sure that your domain name has been registered with Alibaba Cloud and the DNS servers in use are not Alibaba Cloud DNS servers.
         
         @param request: ModifyHichinaDomainDNSRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15508,10 +15704,10 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ModifyHichinaDomainDNSRequest,
     ) -> alidns_20150109_models.ModifyHichinaDomainDNSResponse:
         """
-        @summary Calls the ModifyHichinaDomainDNS operation to change the name of a DNS server based on input parameters.
+        @summary Changes the names of DNS servers bound to a domain name from DNS server names provided by a third-party service provider to DNS server names provided by Alibaba Cloud DNS.
         
-        @description If the operation succeeds, the name of the DNS server changes to that of an Alibaba Cloud DNS server (ending with hichina.com).
-        >  Before you call this operation, make sure that your domain name has been registered with Alibaba Cloud and the DNS server in use is not an Alibaba Cloud DNS server.
+        @description If the operation succeeds, the names of DNS servers change to those of Alibaba Cloud DNS servers (ending with hichina.com).
+        >  *Before you call this operation, make sure that your domain name has been registered with Alibaba Cloud and the DNS servers in use are not Alibaba Cloud DNS servers.
         
         @param request: ModifyHichinaDomainDNSRequest
         @return: ModifyHichinaDomainDNSResponse
@@ -15524,10 +15720,10 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ModifyHichinaDomainDNSRequest,
     ) -> alidns_20150109_models.ModifyHichinaDomainDNSResponse:
         """
-        @summary Calls the ModifyHichinaDomainDNS operation to change the name of a DNS server based on input parameters.
+        @summary Changes the names of DNS servers bound to a domain name from DNS server names provided by a third-party service provider to DNS server names provided by Alibaba Cloud DNS.
         
-        @description If the operation succeeds, the name of the DNS server changes to that of an Alibaba Cloud DNS server (ending with hichina.com).
-        >  Before you call this operation, make sure that your domain name has been registered with Alibaba Cloud and the DNS server in use is not an Alibaba Cloud DNS server.
+        @description If the operation succeeds, the names of DNS servers change to those of Alibaba Cloud DNS servers (ending with hichina.com).
+        >  *Before you call this operation, make sure that your domain name has been registered with Alibaba Cloud and the DNS servers in use are not Alibaba Cloud DNS servers.
         
         @param request: ModifyHichinaDomainDNSRequest
         @return: ModifyHichinaDomainDNSResponse
@@ -16261,6 +16457,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ReplaceCloudGtmAddressPoolAddressResponse:
         """
+        @summary Replaces the addresses referenced by an address pool.
+        
         @param tmp_req: ReplaceCloudGtmAddressPoolAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ReplaceCloudGtmAddressPoolAddressResponse
@@ -16304,6 +16502,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ReplaceCloudGtmAddressPoolAddressResponse:
         """
+        @summary Replaces the addresses referenced by an address pool.
+        
         @param tmp_req: ReplaceCloudGtmAddressPoolAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ReplaceCloudGtmAddressPoolAddressResponse
@@ -16346,6 +16546,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ReplaceCloudGtmAddressPoolAddressRequest,
     ) -> alidns_20150109_models.ReplaceCloudGtmAddressPoolAddressResponse:
         """
+        @summary Replaces the addresses referenced by an address pool.
+        
         @param request: ReplaceCloudGtmAddressPoolAddressRequest
         @return: ReplaceCloudGtmAddressPoolAddressResponse
         """
@@ -16357,6 +16559,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ReplaceCloudGtmAddressPoolAddressRequest,
     ) -> alidns_20150109_models.ReplaceCloudGtmAddressPoolAddressResponse:
         """
+        @summary Replaces the addresses referenced by an address pool.
+        
         @param request: ReplaceCloudGtmAddressPoolAddressRequest
         @return: ReplaceCloudGtmAddressPoolAddressResponse
         """
@@ -16369,6 +16573,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ReplaceCloudGtmInstanceConfigAddressPoolResponse:
         """
+        @summary Replaces address pools that are associated with a Global Traffic Manager (GTM) 3.0 instance with new address pools.
+        
         @param tmp_req: ReplaceCloudGtmInstanceConfigAddressPoolRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ReplaceCloudGtmInstanceConfigAddressPoolResponse
@@ -16414,6 +16620,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ReplaceCloudGtmInstanceConfigAddressPoolResponse:
         """
+        @summary Replaces address pools that are associated with a Global Traffic Manager (GTM) 3.0 instance with new address pools.
+        
         @param tmp_req: ReplaceCloudGtmInstanceConfigAddressPoolRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ReplaceCloudGtmInstanceConfigAddressPoolResponse
@@ -16458,6 +16666,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ReplaceCloudGtmInstanceConfigAddressPoolRequest,
     ) -> alidns_20150109_models.ReplaceCloudGtmInstanceConfigAddressPoolResponse:
         """
+        @summary Replaces address pools that are associated with a Global Traffic Manager (GTM) 3.0 instance with new address pools.
+        
         @param request: ReplaceCloudGtmInstanceConfigAddressPoolRequest
         @return: ReplaceCloudGtmInstanceConfigAddressPoolResponse
         """
@@ -16469,6 +16679,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ReplaceCloudGtmInstanceConfigAddressPoolRequest,
     ) -> alidns_20150109_models.ReplaceCloudGtmInstanceConfigAddressPoolResponse:
         """
+        @summary Replaces address pools that are associated with a Global Traffic Manager (GTM) 3.0 instance with new address pools.
+        
         @param request: ReplaceCloudGtmInstanceConfigAddressPoolRequest
         @return: ReplaceCloudGtmInstanceConfigAddressPoolResponse
         """
@@ -16583,7 +16795,7 @@ class Client(OpenApiClient):
         """
         @summary Retrieves a domain name.
         
-        @description To retrieve a domain name, you must verify a text (TXT) record. Therefore, before you call this API operation to retrieve a domain name, call the [GetTxtRecordForVerify](https://www.alibabacloud.com/help/zh/alibaba-cloud-dns/latest/generating-a-txt-record) operation to generate a TXT record.
+        @description To retrieve a domain name, you must verify a text (TXT) record. Therefore, before you call this API operation to retrieve a domain name, call the [GetTxtRecordForVerify](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/generating-a-txt-record) operation to generate a TXT record.
         
         @param request: RetrieveDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16622,7 +16834,7 @@ class Client(OpenApiClient):
         """
         @summary Retrieves a domain name.
         
-        @description To retrieve a domain name, you must verify a text (TXT) record. Therefore, before you call this API operation to retrieve a domain name, call the [GetTxtRecordForVerify](https://www.alibabacloud.com/help/zh/alibaba-cloud-dns/latest/generating-a-txt-record) operation to generate a TXT record.
+        @description To retrieve a domain name, you must verify a text (TXT) record. Therefore, before you call this API operation to retrieve a domain name, call the [GetTxtRecordForVerify](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/generating-a-txt-record) operation to generate a TXT record.
         
         @param request: RetrieveDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16660,7 +16872,7 @@ class Client(OpenApiClient):
         """
         @summary Retrieves a domain name.
         
-        @description To retrieve a domain name, you must verify a text (TXT) record. Therefore, before you call this API operation to retrieve a domain name, call the [GetTxtRecordForVerify](https://www.alibabacloud.com/help/zh/alibaba-cloud-dns/latest/generating-a-txt-record) operation to generate a TXT record.
+        @description To retrieve a domain name, you must verify a text (TXT) record. Therefore, before you call this API operation to retrieve a domain name, call the [GetTxtRecordForVerify](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/generating-a-txt-record) operation to generate a TXT record.
         
         @param request: RetrieveDomainRequest
         @return: RetrieveDomainResponse
@@ -16675,7 +16887,7 @@ class Client(OpenApiClient):
         """
         @summary Retrieves a domain name.
         
-        @description To retrieve a domain name, you must verify a text (TXT) record. Therefore, before you call this API operation to retrieve a domain name, call the [GetTxtRecordForVerify](https://www.alibabacloud.com/help/zh/alibaba-cloud-dns/latest/generating-a-txt-record) operation to generate a TXT record.
+        @description To retrieve a domain name, you must verify a text (TXT) record. Therefore, before you call this API operation to retrieve a domain name, call the [GetTxtRecordForVerify](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/generating-a-txt-record) operation to generate a TXT record.
         
         @param request: RetrieveDomainRequest
         @return: RetrieveDomainResponse
@@ -16689,6 +16901,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.RollbackGtmRecoveryPlanResponse:
         """
+        @summary Rolls back a disaster recovery plan.
+        
         @param request: RollbackGtmRecoveryPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RollbackGtmRecoveryPlanResponse
@@ -16724,6 +16938,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.RollbackGtmRecoveryPlanResponse:
         """
+        @summary Rolls back a disaster recovery plan.
+        
         @param request: RollbackGtmRecoveryPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RollbackGtmRecoveryPlanResponse
@@ -16758,6 +16974,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.RollbackGtmRecoveryPlanRequest,
     ) -> alidns_20150109_models.RollbackGtmRecoveryPlanResponse:
         """
+        @summary Rolls back a disaster recovery plan.
+        
         @param request: RollbackGtmRecoveryPlanRequest
         @return: RollbackGtmRecoveryPlanResponse
         """
@@ -16769,6 +16987,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.RollbackGtmRecoveryPlanRequest,
     ) -> alidns_20150109_models.RollbackGtmRecoveryPlanResponse:
         """
+        @summary Rolls back a disaster recovery plan.
+        
         @param request: RollbackGtmRecoveryPlanRequest
         @return: RollbackGtmRecoveryPlanResponse
         """
@@ -16781,6 +17001,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SearchCloudGtmAddressPoolsResponse:
         """
+        @summary Queries a list of address pools.
+        
         @param request: SearchCloudGtmAddressPoolsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SearchCloudGtmAddressPoolsResponse
@@ -16832,6 +17054,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SearchCloudGtmAddressPoolsResponse:
         """
+        @summary Queries a list of address pools.
+        
         @param request: SearchCloudGtmAddressPoolsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SearchCloudGtmAddressPoolsResponse
@@ -16882,6 +17106,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SearchCloudGtmAddressPoolsRequest,
     ) -> alidns_20150109_models.SearchCloudGtmAddressPoolsResponse:
         """
+        @summary Queries a list of address pools.
+        
         @param request: SearchCloudGtmAddressPoolsRequest
         @return: SearchCloudGtmAddressPoolsResponse
         """
@@ -16893,6 +17119,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SearchCloudGtmAddressPoolsRequest,
     ) -> alidns_20150109_models.SearchCloudGtmAddressPoolsResponse:
         """
+        @summary Queries a list of address pools.
+        
         @param request: SearchCloudGtmAddressPoolsRequest
         @return: SearchCloudGtmAddressPoolsResponse
         """
@@ -16905,6 +17133,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SearchCloudGtmAddressesResponse:
         """
+        @summary Queries a list of addresses based on address names, descriptions, health check templates referenced by the addresses, or address IDs.
+        
         @param request: SearchCloudGtmAddressesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SearchCloudGtmAddressesResponse
@@ -16964,6 +17194,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SearchCloudGtmAddressesResponse:
         """
+        @summary Queries a list of addresses based on address names, descriptions, health check templates referenced by the addresses, or address IDs.
+        
         @param request: SearchCloudGtmAddressesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SearchCloudGtmAddressesResponse
@@ -17022,6 +17254,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SearchCloudGtmAddressesRequest,
     ) -> alidns_20150109_models.SearchCloudGtmAddressesResponse:
         """
+        @summary Queries a list of addresses based on address names, descriptions, health check templates referenced by the addresses, or address IDs.
+        
         @param request: SearchCloudGtmAddressesRequest
         @return: SearchCloudGtmAddressesResponse
         """
@@ -17033,6 +17267,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SearchCloudGtmAddressesRequest,
     ) -> alidns_20150109_models.SearchCloudGtmAddressesResponse:
         """
+        @summary Queries a list of addresses based on address names, descriptions, health check templates referenced by the addresses, or address IDs.
+        
         @param request: SearchCloudGtmAddressesRequest
         @return: SearchCloudGtmAddressesResponse
         """
@@ -17045,6 +17281,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SearchCloudGtmInstanceConfigsResponse:
         """
+        @summary Queries the configurations of an access domain name.
+        
         @param request: SearchCloudGtmInstanceConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SearchCloudGtmInstanceConfigsResponse
@@ -17098,6 +17336,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SearchCloudGtmInstanceConfigsResponse:
         """
+        @summary Queries the configurations of an access domain name.
+        
         @param request: SearchCloudGtmInstanceConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SearchCloudGtmInstanceConfigsResponse
@@ -17150,6 +17390,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SearchCloudGtmInstanceConfigsRequest,
     ) -> alidns_20150109_models.SearchCloudGtmInstanceConfigsResponse:
         """
+        @summary Queries the configurations of an access domain name.
+        
         @param request: SearchCloudGtmInstanceConfigsRequest
         @return: SearchCloudGtmInstanceConfigsResponse
         """
@@ -17161,6 +17403,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SearchCloudGtmInstanceConfigsRequest,
     ) -> alidns_20150109_models.SearchCloudGtmInstanceConfigsResponse:
         """
+        @summary Queries the configurations of an access domain name.
+        
         @param request: SearchCloudGtmInstanceConfigsRequest
         @return: SearchCloudGtmInstanceConfigsResponse
         """
@@ -17173,6 +17417,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SearchCloudGtmInstancesResponse:
         """
+        @summary Queries a list of instances.
+        
         @param request: SearchCloudGtmInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SearchCloudGtmInstancesResponse
@@ -17216,6 +17462,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SearchCloudGtmInstancesResponse:
         """
+        @summary Queries a list of instances.
+        
         @param request: SearchCloudGtmInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SearchCloudGtmInstancesResponse
@@ -17258,6 +17506,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SearchCloudGtmInstancesRequest,
     ) -> alidns_20150109_models.SearchCloudGtmInstancesResponse:
         """
+        @summary Queries a list of instances.
+        
         @param request: SearchCloudGtmInstancesRequest
         @return: SearchCloudGtmInstancesResponse
         """
@@ -17269,6 +17519,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SearchCloudGtmInstancesRequest,
     ) -> alidns_20150109_models.SearchCloudGtmInstancesResponse:
         """
+        @summary Queries a list of instances.
+        
         @param request: SearchCloudGtmInstancesRequest
         @return: SearchCloudGtmInstancesResponse
         """
@@ -17281,6 +17533,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SearchCloudGtmMonitorTemplatesResponse:
         """
+        @summary Queries the list of health check templates.
+        
         @param request: SearchCloudGtmMonitorTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SearchCloudGtmMonitorTemplatesResponse
@@ -17324,6 +17578,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SearchCloudGtmMonitorTemplatesResponse:
         """
+        @summary Queries the list of health check templates.
+        
         @param request: SearchCloudGtmMonitorTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SearchCloudGtmMonitorTemplatesResponse
@@ -17366,6 +17622,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SearchCloudGtmMonitorTemplatesRequest,
     ) -> alidns_20150109_models.SearchCloudGtmMonitorTemplatesResponse:
         """
+        @summary Queries the list of health check templates.
+        
         @param request: SearchCloudGtmMonitorTemplatesRequest
         @return: SearchCloudGtmMonitorTemplatesResponse
         """
@@ -17377,6 +17635,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SearchCloudGtmMonitorTemplatesRequest,
     ) -> alidns_20150109_models.SearchCloudGtmMonitorTemplatesResponse:
         """
+        @summary Queries the list of health check templates.
+        
         @param request: SearchCloudGtmMonitorTemplatesRequest
         @return: SearchCloudGtmMonitorTemplatesResponse
         """
@@ -17509,6 +17769,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SetDnsGtmAccessModeResponse:
         """
+        @summary Modifies an access policy.
+        
         @description ***\
         
         @param request: SetDnsGtmAccessModeRequest
@@ -17548,6 +17810,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SetDnsGtmAccessModeResponse:
         """
+        @summary Modifies an access policy.
+        
         @description ***\
         
         @param request: SetDnsGtmAccessModeRequest
@@ -17586,6 +17850,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SetDnsGtmAccessModeRequest,
     ) -> alidns_20150109_models.SetDnsGtmAccessModeResponse:
         """
+        @summary Modifies an access policy.
+        
         @description ***\
         
         @param request: SetDnsGtmAccessModeRequest
@@ -17599,6 +17865,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SetDnsGtmAccessModeRequest,
     ) -> alidns_20150109_models.SetDnsGtmAccessModeResponse:
         """
+        @summary Modifies an access policy.
+        
         @description ***\
         
         @param request: SetDnsGtmAccessModeRequest
@@ -17717,7 +17985,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SetDomainDnssecStatusResponse:
         """
-        @summary Sets the Domain Name System Security Extensions (DNSSEC) status of a domain name.
+        @summary Enables or disables the Domain Name System Security Extensions (DNSSEC) for a domain name. This feature is available only for the users of the paid editions of Alibaba Cloud DNS.
         
         @param request: SetDomainDnssecStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17756,7 +18024,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SetDomainDnssecStatusResponse:
         """
-        @summary Sets the Domain Name System Security Extensions (DNSSEC) status of a domain name.
+        @summary Enables or disables the Domain Name System Security Extensions (DNSSEC) for a domain name. This feature is available only for the users of the paid editions of Alibaba Cloud DNS.
         
         @param request: SetDomainDnssecStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17794,7 +18062,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SetDomainDnssecStatusRequest,
     ) -> alidns_20150109_models.SetDomainDnssecStatusResponse:
         """
-        @summary Sets the Domain Name System Security Extensions (DNSSEC) status of a domain name.
+        @summary Enables or disables the Domain Name System Security Extensions (DNSSEC) for a domain name. This feature is available only for the users of the paid editions of Alibaba Cloud DNS.
         
         @param request: SetDomainDnssecStatusRequest
         @return: SetDomainDnssecStatusResponse
@@ -17807,7 +18075,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SetDomainDnssecStatusRequest,
     ) -> alidns_20150109_models.SetDomainDnssecStatusResponse:
         """
-        @summary Sets the Domain Name System Security Extensions (DNSSEC) status of a domain name.
+        @summary Enables or disables the Domain Name System Security Extensions (DNSSEC) for a domain name. This feature is available only for the users of the paid editions of Alibaba Cloud DNS.
         
         @param request: SetDomainDnssecStatusRequest
         @return: SetDomainDnssecStatusResponse
@@ -17929,6 +18197,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SetGtmAccessModeResponse:
         """
+        @summary Modifies a policy for switchover between address pool sets.
+        
         @param request: SetGtmAccessModeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetGtmAccessModeResponse
@@ -17966,6 +18236,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SetGtmAccessModeResponse:
         """
+        @summary Modifies a policy for switchover between address pool sets.
+        
         @param request: SetGtmAccessModeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetGtmAccessModeResponse
@@ -18002,6 +18274,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SetGtmAccessModeRequest,
     ) -> alidns_20150109_models.SetGtmAccessModeResponse:
         """
+        @summary Modifies a policy for switchover between address pool sets.
+        
         @param request: SetGtmAccessModeRequest
         @return: SetGtmAccessModeResponse
         """
@@ -18013,6 +18287,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SetGtmAccessModeRequest,
     ) -> alidns_20150109_models.SetGtmAccessModeResponse:
         """
+        @summary Modifies a policy for switchover between address pool sets.
+        
         @param request: SetGtmAccessModeRequest
         @return: SetGtmAccessModeResponse
         """
@@ -18881,6 +19157,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressResponse:
         """
+        @summary Modifies the condition for determining the health status of a specified address.
+        
         @param tmp_req: UpdateCloudGtmAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudGtmAddressResponse
@@ -18932,6 +19210,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressResponse:
         """
+        @summary Modifies the condition for determining the health status of a specified address.
+        
         @param tmp_req: UpdateCloudGtmAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudGtmAddressResponse
@@ -18982,6 +19262,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateCloudGtmAddressRequest,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressResponse:
         """
+        @summary Modifies the condition for determining the health status of a specified address.
+        
         @param request: UpdateCloudGtmAddressRequest
         @return: UpdateCloudGtmAddressResponse
         """
@@ -18993,6 +19275,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateCloudGtmAddressRequest,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressResponse:
         """
+        @summary Modifies the condition for determining the health status of a specified address.
+        
         @param request: UpdateCloudGtmAddressRequest
         @return: UpdateCloudGtmAddressResponse
         """
@@ -19005,6 +19289,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressEnableStatusResponse:
         """
+        @summary Modifies the enabling status of an address.
+        
+        @description    If an address is **enabled** and the health status of the address is **Normal**, the availability status of the address is **Available**.
+        If an address is **disabled** or the health status of the address is **Abnormal**, the availability status of the address is **Unavailable**.
+        
         @param request: UpdateCloudGtmAddressEnableStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudGtmAddressEnableStatusResponse
@@ -19044,6 +19333,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressEnableStatusResponse:
         """
+        @summary Modifies the enabling status of an address.
+        
+        @description    If an address is **enabled** and the health status of the address is **Normal**, the availability status of the address is **Available**.
+        If an address is **disabled** or the health status of the address is **Abnormal**, the availability status of the address is **Unavailable**.
+        
         @param request: UpdateCloudGtmAddressEnableStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudGtmAddressEnableStatusResponse
@@ -19082,6 +19376,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateCloudGtmAddressEnableStatusRequest,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressEnableStatusResponse:
         """
+        @summary Modifies the enabling status of an address.
+        
+        @description    If an address is **enabled** and the health status of the address is **Normal**, the availability status of the address is **Available**.
+        If an address is **disabled** or the health status of the address is **Abnormal**, the availability status of the address is **Unavailable**.
+        
         @param request: UpdateCloudGtmAddressEnableStatusRequest
         @return: UpdateCloudGtmAddressEnableStatusResponse
         """
@@ -19093,6 +19392,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateCloudGtmAddressEnableStatusRequest,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressEnableStatusResponse:
         """
+        @summary Modifies the enabling status of an address.
+        
+        @description    If an address is **enabled** and the health status of the address is **Normal**, the availability status of the address is **Available**.
+        If an address is **disabled** or the health status of the address is **Abnormal**, the availability status of the address is **Unavailable**.
+        
         @param request: UpdateCloudGtmAddressEnableStatusRequest
         @return: UpdateCloudGtmAddressEnableStatusResponse
         """
@@ -19105,6 +19409,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressManualAvailableStatusResponse:
         """
+        @summary Modifies the failover mode that is used when address exceptions are identified.
+        
         @param request: UpdateCloudGtmAddressManualAvailableStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudGtmAddressManualAvailableStatusResponse
@@ -19146,6 +19452,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressManualAvailableStatusResponse:
         """
+        @summary Modifies the failover mode that is used when address exceptions are identified.
+        
         @param request: UpdateCloudGtmAddressManualAvailableStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudGtmAddressManualAvailableStatusResponse
@@ -19186,6 +19494,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateCloudGtmAddressManualAvailableStatusRequest,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressManualAvailableStatusResponse:
         """
+        @summary Modifies the failover mode that is used when address exceptions are identified.
+        
         @param request: UpdateCloudGtmAddressManualAvailableStatusRequest
         @return: UpdateCloudGtmAddressManualAvailableStatusResponse
         """
@@ -19197,6 +19507,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateCloudGtmAddressManualAvailableStatusRequest,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressManualAvailableStatusResponse:
         """
+        @summary Modifies the failover mode that is used when address exceptions are identified.
+        
         @param request: UpdateCloudGtmAddressManualAvailableStatusRequest
         @return: UpdateCloudGtmAddressManualAvailableStatusResponse
         """
@@ -19209,6 +19521,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolBasicConfigResponse:
         """
+        @summary Modifies the condition for determining the health status of an address pool.
+        
         @param request: UpdateCloudGtmAddressPoolBasicConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudGtmAddressPoolBasicConfigResponse
@@ -19250,6 +19564,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolBasicConfigResponse:
         """
+        @summary Modifies the condition for determining the health status of an address pool.
+        
         @param request: UpdateCloudGtmAddressPoolBasicConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudGtmAddressPoolBasicConfigResponse
@@ -19290,6 +19606,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateCloudGtmAddressPoolBasicConfigRequest,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolBasicConfigResponse:
         """
+        @summary Modifies the condition for determining the health status of an address pool.
+        
         @param request: UpdateCloudGtmAddressPoolBasicConfigRequest
         @return: UpdateCloudGtmAddressPoolBasicConfigResponse
         """
@@ -19301,6 +19619,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateCloudGtmAddressPoolBasicConfigRequest,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolBasicConfigResponse:
         """
+        @summary Modifies the condition for determining the health status of an address pool.
+        
         @param request: UpdateCloudGtmAddressPoolBasicConfigRequest
         @return: UpdateCloudGtmAddressPoolBasicConfigResponse
         """
@@ -19313,6 +19633,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolEnableStatusResponse:
         """
+        @summary Modifies the enabling status of an address pool.
+        
+        @description    If an address pool is **enabled** and the health status of the address pool is **Normal**, the availability status of the address pool is **Available**.
+        If an address pool is **disabled** or the health status of the address pool is **Abnormal**, the availability status of the address pool is **unavailable**.
+        
         @param request: UpdateCloudGtmAddressPoolEnableStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudGtmAddressPoolEnableStatusResponse
@@ -19352,6 +19677,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolEnableStatusResponse:
         """
+        @summary Modifies the enabling status of an address pool.
+        
+        @description    If an address pool is **enabled** and the health status of the address pool is **Normal**, the availability status of the address pool is **Available**.
+        If an address pool is **disabled** or the health status of the address pool is **Abnormal**, the availability status of the address pool is **unavailable**.
+        
         @param request: UpdateCloudGtmAddressPoolEnableStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudGtmAddressPoolEnableStatusResponse
@@ -19390,6 +19720,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateCloudGtmAddressPoolEnableStatusRequest,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolEnableStatusResponse:
         """
+        @summary Modifies the enabling status of an address pool.
+        
+        @description    If an address pool is **enabled** and the health status of the address pool is **Normal**, the availability status of the address pool is **Available**.
+        If an address pool is **disabled** or the health status of the address pool is **Abnormal**, the availability status of the address pool is **unavailable**.
+        
         @param request: UpdateCloudGtmAddressPoolEnableStatusRequest
         @return: UpdateCloudGtmAddressPoolEnableStatusResponse
         """
@@ -19401,6 +19736,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateCloudGtmAddressPoolEnableStatusRequest,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolEnableStatusResponse:
         """
+        @summary Modifies the enabling status of an address pool.
+        
+        @description    If an address pool is **enabled** and the health status of the address pool is **Normal**, the availability status of the address pool is **Available**.
+        If an address pool is **disabled** or the health status of the address pool is **Abnormal**, the availability status of the address pool is **unavailable**.
+        
         @param request: UpdateCloudGtmAddressPoolEnableStatusRequest
         @return: UpdateCloudGtmAddressPoolEnableStatusResponse
         """
@@ -19413,6 +19753,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolLbStrategyResponse:
         """
+        @summary Modifies the load balancing policy of an address pool.
+        
         @param request: UpdateCloudGtmAddressPoolLbStrategyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudGtmAddressPoolLbStrategyResponse
@@ -19454,6 +19796,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolLbStrategyResponse:
         """
+        @summary Modifies the load balancing policy of an address pool.
+        
         @param request: UpdateCloudGtmAddressPoolLbStrategyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudGtmAddressPoolLbStrategyResponse
@@ -19494,6 +19838,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateCloudGtmAddressPoolLbStrategyRequest,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolLbStrategyResponse:
         """
+        @summary Modifies the load balancing policy of an address pool.
+        
         @param request: UpdateCloudGtmAddressPoolLbStrategyRequest
         @return: UpdateCloudGtmAddressPoolLbStrategyResponse
         """
@@ -19505,6 +19851,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateCloudGtmAddressPoolLbStrategyRequest,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolLbStrategyResponse:
         """
+        @summary Modifies the load balancing policy of an address pool.
+        
         @param request: UpdateCloudGtmAddressPoolLbStrategyRequest
         @return: UpdateCloudGtmAddressPoolLbStrategyResponse
         """
@@ -19517,6 +19865,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolRemarkResponse:
         """
+        @summary Modifies the remarks of an address pool.
+        
         @param request: UpdateCloudGtmAddressPoolRemarkRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudGtmAddressPoolRemarkResponse
@@ -19556,6 +19906,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolRemarkResponse:
         """
+        @summary Modifies the remarks of an address pool.
+        
         @param request: UpdateCloudGtmAddressPoolRemarkRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudGtmAddressPoolRemarkResponse
@@ -19594,6 +19946,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateCloudGtmAddressPoolRemarkRequest,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolRemarkResponse:
         """
+        @summary Modifies the remarks of an address pool.
+        
         @param request: UpdateCloudGtmAddressPoolRemarkRequest
         @return: UpdateCloudGtmAddressPoolRemarkResponse
         """
@@ -19605,6 +19959,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateCloudGtmAddressPoolRemarkRequest,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolRemarkResponse:
         """
+        @summary Modifies the remarks of an address pool.
+        
         @param request: UpdateCloudGtmAddressPoolRemarkRequest
         @return: UpdateCloudGtmAddressPoolRemarkResponse
         """
@@ -19617,6 +19973,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressRemarkResponse:
         """
+        @summary Modifies the remarks of an address.
+        
         @param request: UpdateCloudGtmAddressRemarkRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudGtmAddressRemarkResponse
@@ -19656,6 +20014,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressRemarkResponse:
         """
+        @summary Modifies the remarks of an address.
+        
         @param request: UpdateCloudGtmAddressRemarkRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudGtmAddressRemarkResponse
@@ -19694,6 +20054,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateCloudGtmAddressRemarkRequest,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressRemarkResponse:
         """
+        @summary Modifies the remarks of an address.
+        
         @param request: UpdateCloudGtmAddressRemarkRequest
         @return: UpdateCloudGtmAddressRemarkResponse
         """
@@ -19705,6 +20067,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateCloudGtmAddressRemarkRequest,
     ) -> alidns_20150109_models.UpdateCloudGtmAddressRemarkResponse:
         """
+        @summary Modifies the remarks of an address.
+        
         @param request: UpdateCloudGtmAddressRemarkRequest
         @return: UpdateCloudGtmAddressRemarkResponse
         """
@@ -19953,6 +20317,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigBasicResponse:
         """
+        @summary Updates the global time-to-live (TTL) configuration of a GTM 3.0 instance.
+        
         @param request: UpdateCloudGtmInstanceConfigBasicRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudGtmInstanceConfigBasicResponse
@@ -19998,6 +20364,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigBasicResponse:
         """
+        @summary Updates the global time-to-live (TTL) configuration of a GTM 3.0 instance.
+        
         @param request: UpdateCloudGtmInstanceConfigBasicRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudGtmInstanceConfigBasicResponse
@@ -20042,6 +20410,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateCloudGtmInstanceConfigBasicRequest,
     ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigBasicResponse:
         """
+        @summary Updates the global time-to-live (TTL) configuration of a GTM 3.0 instance.
+        
         @param request: UpdateCloudGtmInstanceConfigBasicRequest
         @return: UpdateCloudGtmInstanceConfigBasicResponse
         """
@@ -20053,6 +20423,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateCloudGtmInstanceConfigBasicRequest,
     ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigBasicResponse:
         """
+        @summary Updates the global time-to-live (TTL) configuration of a GTM 3.0 instance.
+        
         @param request: UpdateCloudGtmInstanceConfigBasicRequest
         @return: UpdateCloudGtmInstanceConfigBasicResponse
         """
@@ -20065,6 +20437,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigEnableStatusResponse:
         """
+        @summary Modifies the enabling status of an access domain name.
+        
+        @description    If an access domain name is **enabled** and the health state is **normal**, the access domain name is deemed **available**.
+        If an access domain name is **disabled** or the health state is **abnormal**, the access domain name is deemed **unavailable**.
+        
         @param request: UpdateCloudGtmInstanceConfigEnableStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudGtmInstanceConfigEnableStatusResponse
@@ -20106,6 +20483,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigEnableStatusResponse:
         """
+        @summary Modifies the enabling status of an access domain name.
+        
+        @description    If an access domain name is **enabled** and the health state is **normal**, the access domain name is deemed **available**.
+        If an access domain name is **disabled** or the health state is **abnormal**, the access domain name is deemed **unavailable**.
+        
         @param request: UpdateCloudGtmInstanceConfigEnableStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudGtmInstanceConfigEnableStatusResponse
@@ -20146,6 +20528,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateCloudGtmInstanceConfigEnableStatusRequest,
     ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigEnableStatusResponse:
         """
+        @summary Modifies the enabling status of an access domain name.
+        
+        @description    If an access domain name is **enabled** and the health state is **normal**, the access domain name is deemed **available**.
+        If an access domain name is **disabled** or the health state is **abnormal**, the access domain name is deemed **unavailable**.
+        
         @param request: UpdateCloudGtmInstanceConfigEnableStatusRequest
         @return: UpdateCloudGtmInstanceConfigEnableStatusResponse
         """
@@ -20157,6 +20544,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateCloudGtmInstanceConfigEnableStatusRequest,
     ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigEnableStatusResponse:
         """
+        @summary Modifies the enabling status of an access domain name.
+        
+        @description    If an access domain name is **enabled** and the health state is **normal**, the access domain name is deemed **available**.
+        If an access domain name is **disabled** or the health state is **abnormal**, the access domain name is deemed **unavailable**.
+        
         @param request: UpdateCloudGtmInstanceConfigEnableStatusRequest
         @return: UpdateCloudGtmInstanceConfigEnableStatusResponse
         """
@@ -20169,6 +20561,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigLbStrategyResponse:
         """
+        @summary Modifies the load balancing policy of a Global Traffic Manager (GTM) 3.0 instance.
+        
         @param request: UpdateCloudGtmInstanceConfigLbStrategyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudGtmInstanceConfigLbStrategyResponse
@@ -20212,6 +20606,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigLbStrategyResponse:
         """
+        @summary Modifies the load balancing policy of a Global Traffic Manager (GTM) 3.0 instance.
+        
         @param request: UpdateCloudGtmInstanceConfigLbStrategyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudGtmInstanceConfigLbStrategyResponse
@@ -20254,6 +20650,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateCloudGtmInstanceConfigLbStrategyRequest,
     ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigLbStrategyResponse:
         """
+        @summary Modifies the load balancing policy of a Global Traffic Manager (GTM) 3.0 instance.
+        
         @param request: UpdateCloudGtmInstanceConfigLbStrategyRequest
         @return: UpdateCloudGtmInstanceConfigLbStrategyResponse
         """
@@ -20265,6 +20663,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateCloudGtmInstanceConfigLbStrategyRequest,
     ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigLbStrategyResponse:
         """
+        @summary Modifies the load balancing policy of a Global Traffic Manager (GTM) 3.0 instance.
+        
         @param request: UpdateCloudGtmInstanceConfigLbStrategyRequest
         @return: UpdateCloudGtmInstanceConfigLbStrategyResponse
         """
@@ -20277,6 +20677,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigRemarkResponse:
         """
+        @summary Modifies the description of a Global Traffic Manager (GTM) 3.0 instance.
+        
         @param request: UpdateCloudGtmInstanceConfigRemarkRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudGtmInstanceConfigRemarkResponse
@@ -20318,6 +20720,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigRemarkResponse:
         """
+        @summary Modifies the description of a Global Traffic Manager (GTM) 3.0 instance.
+        
         @param request: UpdateCloudGtmInstanceConfigRemarkRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudGtmInstanceConfigRemarkResponse
@@ -20358,6 +20762,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateCloudGtmInstanceConfigRemarkRequest,
     ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigRemarkResponse:
         """
+        @summary Modifies the description of a Global Traffic Manager (GTM) 3.0 instance.
+        
         @param request: UpdateCloudGtmInstanceConfigRemarkRequest
         @return: UpdateCloudGtmInstanceConfigRemarkResponse
         """
@@ -20369,6 +20775,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateCloudGtmInstanceConfigRemarkRequest,
     ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigRemarkResponse:
         """
+        @summary Modifies the description of a Global Traffic Manager (GTM) 3.0 instance.
+        
         @param request: UpdateCloudGtmInstanceConfigRemarkRequest
         @return: UpdateCloudGtmInstanceConfigRemarkResponse
         """
@@ -20481,6 +20889,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateCloudGtmMonitorTemplateResponse:
         """
+        @summary Modifies the information about a health check template.
+        
         @param tmp_req: UpdateCloudGtmMonitorTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudGtmMonitorTemplateResponse
@@ -20536,6 +20946,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateCloudGtmMonitorTemplateResponse:
         """
+        @summary Modifies the information about a health check template.
+        
         @param tmp_req: UpdateCloudGtmMonitorTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudGtmMonitorTemplateResponse
@@ -20590,6 +21002,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateCloudGtmMonitorTemplateRequest,
     ) -> alidns_20150109_models.UpdateCloudGtmMonitorTemplateResponse:
         """
+        @summary Modifies the information about a health check template.
+        
         @param request: UpdateCloudGtmMonitorTemplateRequest
         @return: UpdateCloudGtmMonitorTemplateResponse
         """
@@ -20601,6 +21015,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateCloudGtmMonitorTemplateRequest,
     ) -> alidns_20150109_models.UpdateCloudGtmMonitorTemplateResponse:
         """
+        @summary Modifies the information about a health check template.
+        
         @param request: UpdateCloudGtmMonitorTemplateRequest
         @return: UpdateCloudGtmMonitorTemplateResponse
         """
@@ -21313,7 +21729,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateDnsGtmAddressPoolResponse:
         """
-        @summary Modifies the configurations of address pools for a GTM instance.
+        @summary Modifies an address pool.
         
         @param request: UpdateDnsGtmAddressPoolRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21356,7 +21772,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateDnsGtmAddressPoolResponse:
         """
-        @summary Modifies the configurations of address pools for a GTM instance.
+        @summary Modifies an address pool.
         
         @param request: UpdateDnsGtmAddressPoolRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21398,7 +21814,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateDnsGtmAddressPoolRequest,
     ) -> alidns_20150109_models.UpdateDnsGtmAddressPoolResponse:
         """
-        @summary Modifies the configurations of address pools for a GTM instance.
+        @summary Modifies an address pool.
         
         @param request: UpdateDnsGtmAddressPoolRequest
         @return: UpdateDnsGtmAddressPoolResponse
@@ -21411,7 +21827,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateDnsGtmAddressPoolRequest,
     ) -> alidns_20150109_models.UpdateDnsGtmAddressPoolResponse:
         """
-        @summary Modifies the configurations of address pools for a GTM instance.
+        @summary Modifies an address pool.
         
         @param request: UpdateDnsGtmAddressPoolRequest
         @return: UpdateDnsGtmAddressPoolResponse
@@ -21691,6 +22107,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies the name of a domain name group based on the specified parameters.
         
+        @description Modifies the name of an existing domain name group.
+        
         @param request: UpdateDomainGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateDomainGroupResponse
@@ -21730,6 +22148,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies the name of a domain name group based on the specified parameters.
         
+        @description Modifies the name of an existing domain name group.
+        
         @param request: UpdateDomainGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateDomainGroupResponse
@@ -21768,6 +22188,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies the name of a domain name group based on the specified parameters.
         
+        @description Modifies the name of an existing domain name group.
+        
         @param request: UpdateDomainGroupRequest
         @return: UpdateDomainGroupResponse
         """
@@ -21780,6 +22202,8 @@ class Client(OpenApiClient):
     ) -> alidns_20150109_models.UpdateDomainGroupResponse:
         """
         @summary Modifies the name of a domain name group based on the specified parameters.
+        
+        @description Modifies the name of an existing domain name group.
         
         @param request: UpdateDomainGroupRequest
         @return: UpdateDomainGroupResponse
@@ -22601,7 +23025,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateGtmRecoveryPlanResponse:
         """
-        @summary Modifies a disaster recovery plan for a Global Traffic Manager (GTM) instance.
+        @summary Modifies a disaster recovery plan.
         
         @param request: UpdateGtmRecoveryPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22644,7 +23068,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateGtmRecoveryPlanResponse:
         """
-        @summary Modifies a disaster recovery plan for a Global Traffic Manager (GTM) instance.
+        @summary Modifies a disaster recovery plan.
         
         @param request: UpdateGtmRecoveryPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22686,7 +23110,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateGtmRecoveryPlanRequest,
     ) -> alidns_20150109_models.UpdateGtmRecoveryPlanResponse:
         """
-        @summary Modifies a disaster recovery plan for a Global Traffic Manager (GTM) instance.
+        @summary Modifies a disaster recovery plan.
         
         @param request: UpdateGtmRecoveryPlanRequest
         @return: UpdateGtmRecoveryPlanResponse
@@ -22699,7 +23123,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateGtmRecoveryPlanRequest,
     ) -> alidns_20150109_models.UpdateGtmRecoveryPlanResponse:
         """
-        @summary Modifies a disaster recovery plan for a Global Traffic Manager (GTM) instance.
+        @summary Modifies a disaster recovery plan.
         
         @param request: UpdateGtmRecoveryPlanRequest
         @return: UpdateGtmRecoveryPlanResponse

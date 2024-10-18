@@ -890,21 +890,21 @@ class AddDnsGtmAddressPoolRequest(TeaModel):
         # 
         # This parameter is required.
         self.lba_strategy = lba_strategy
-        # The extended information. The required parameters vary based on the value of ProtocolType.
+        # The extended information. The required parameters vary based on the health check protocol.
         # 
-        # *   HTTP or HTTPS
+        # *   HTTP or HTTPS:
         # 
         #     *   port: the port that you want to check
         # 
         #     *   host: the host settings
         # 
-        #     *   path: the URL path
+        #     *   path: the URL
         # 
-        #     *   code: the response code. The health check result is deemed abnormal if the returned value is greater than the specified value. Values: 400, 500.
+        #     *   code: the return code. The health check result is deemed abnormal if the returned value is greater than the specified value. Valid values: 400 and 500.
         # 
         #     *   failureRate: the failure rate
         # 
-        #     *   sni: specifies whether to enable server name indication (SNI). This parameter is available only when ProtocolType is set to HTTPS. Valid values:
+        #     *   sni: specifies whether to enable Server Name Indication (SNI). This parameter is available only when ProtocolType is set to HTTPS. Valid values:
         # 
         #         *   true: enables SNI.
         #         *   other: disables SNI.
@@ -914,7 +914,7 @@ class AddDnsGtmAddressPoolRequest(TeaModel):
         #         *   IPV4
         #         *   IPV6
         # 
-        # *   PING
+        # *   ping:
         # 
         #     *   failureRate: the failure rate
         # 
@@ -927,7 +927,7 @@ class AddDnsGtmAddressPoolRequest(TeaModel):
         #         *   IPV4
         #         *   IPV6
         # 
-        # *   TCP
+        # *   TCP:
         # 
         #     *   port: the port that you want to check
         # 
@@ -1198,57 +1198,57 @@ class AddDnsGtmMonitorRequest(TeaModel):
         self.isp_city_node = isp_city_node
         # The language of the values of specific response parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
-        # The extended information, that is, the parameters required for the protocol. Different protocols require different parameters:
+        # The extended information. The required parameters vary based on the value of ProtocolType.
         # 
-        # *   HTTP or HTTPS:
+        # *   HTTP or HTTPS
         # 
-        #     *   port: the port to check.
+        #     *   port: the port that you want to check
         # 
-        #     *   host: the host configuration.
+        #     *   host: the host settings
         # 
-        #     *   path: the health check URL.
+        #     *   path: the URL path
         # 
-        #     *   code: the status code threshold. If the returned status code is greater than the specified threshold, the application service is deemed abnormal.
+        #     *   code: the response code. The health check result is deemed abnormal if the returned value is greater than the specified value.
         # 
-        #     *   failureRate: the failure rate.
+        #     *   failureRate: the failure rate
         # 
-        #     *   sni: specifies whether to enable Server Name Indication (SNI). This parameter is only required for the HTTPS protocol. Valid values:
+        #     *   sni: specifies whether to enable server name indication (SNI). This parameter is available only when ProtocolType is set to HTTPS. Valid values:
         # 
         #         *   true: enables SNI.
         #         *   false: disables SNI.
         # 
-        #     *   nodeType: the type of the monitored node when the address pool type is DOMAIN. Valid values:
+        #     *   nodeType: the type of the node for monitoring when Type is set to DOMAIN. Valid values:
         # 
         #         *   IPV4
         #         *   IPV6
         # 
-        # *   PING:
+        # *   PING
         # 
-        #     *   failureRate: the failure rate.
+        #     *   failureRate: the failure rate
         # 
-        #     *   packetNum: the number of ping packets.
+        #     *   packetNum: the number of ping packets
         # 
-        #     *   packetLossRate: the loss rate of ping packets.
+        #     *   packetLossRate: the loss rate of ping packets
         # 
-        #     *   nodeType: the type of the monitored node when the address pool type is DOMAIN. Valid values:
+        #     *   nodeType: the type of the node for monitoring when Type is set to DOMAIN. Valid values:
         # 
         #         *   IPV4
         #         *   IPV6
         # 
-        # *   TCP:
+        # *   TCP
         # 
-        #     *   port: the port to check.
+        #     *   port: the port that you want to check
         # 
-        #     *   failureRate: the failure rate.
+        #     *   failureRate: the failure rate
         # 
-        #     *   nodeType: the type of the monitored node when the address pool type is DOMAIN. Valid values:
+        #     *   nodeType: the type of the node for monitoring when Type is set to DOMAIN. Valid values:
         # 
         #         *   IPV4
         #         *   IPV6
         # 
         # This parameter is required.
         self.monitor_extend_info = monitor_extend_info
-        # The protocol used for the health check. Valid values:
+        # The health check protocol. Valid values:
         # 
         # *   HTTP
         # *   HTTPS
@@ -1257,7 +1257,7 @@ class AddDnsGtmMonitorRequest(TeaModel):
         # 
         # This parameter is required.
         self.protocol_type = protocol_type
-        # The health check timeout period. Unit: milliseconds.
+        # The timeout period. Unit: milliseconds.
         # 
         # This parameter is required.
         self.timeout = timeout
@@ -1408,7 +1408,12 @@ class AddDomainRequest(TeaModel):
         self.domain_name = domain_name
         # The ID of the group to which the domain name will belong. The default value is the ID of the default group.
         self.group_id = group_id
-        # The language.
+        # The language of the response. Valid values:
+        # 
+        # *   zh: Chinese
+        # *   en: English
+        # 
+        # Default value: en.
         self.lang = lang
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -1596,12 +1601,17 @@ class AddDomainBackupRequest(TeaModel):
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages.
+        # The language of the response. Valid values:
+        # 
+        # *   zh: Chinese
+        # *   en: English
+        # 
+        # Default value: en.
         self.lang = lang
         # The backup cycle. Valid values:
         # 
-        # *   **DAY**: Backs up data once every day.
-        # *   **HOUR**: Backs up data once every hour.
+        # *   DAY: backs up data on a daily basis.
+        # *   HOUR: backs up data on an hourly basis.
         # 
         # This parameter is required.
         self.period_type = period_type
@@ -1727,7 +1737,12 @@ class AddDomainGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.group_name = group_name
-        # The language.
+        # The language of the response. Valid values:
+        # 
+        # *   zh: Chinese
+        # *   en: English
+        # 
+        # Default value: en.
         self.lang = lang
 
     def validate(self):
@@ -1856,13 +1871,13 @@ class AddDomainRecordRequest(TeaModel):
         self.domain_name = domain_name
         # The language.
         self.lang = lang
-        # The DNS resolution line. Default value: **default**. For more information, see
+        # The resolution line. Default value: **default**. For more information, see
         # 
-        # [DNS lines](https://www.alibabacloud.com/help/zh/doc-detail/29807.htm).
+        # [DNS resolution lines](https://www.alibabacloud.com/help/zh/doc-detail/29807.htm).
         self.line = line
         # The priority of the mail exchanger (MX) record. Valid values: `1 to 50`.
         # 
-        # This parameter must be specified if the type of the DNS record is MX. A smaller value indicates a higher priority.
+        # This parameter is required if the type of the DNS record is MX. A smaller value indicates a higher priority.
         self.priority = priority
         # The hostname.
         # 
@@ -1870,7 +1885,7 @@ class AddDomainRecordRequest(TeaModel):
         # 
         # This parameter is required.
         self.rr = rr
-        # The time-to-live (TTL) of the DNS record. Default value: 600. Unit: seconds. For more information, see
+        # The time to live (TTL) period of the Domain Name System (DNS) record. Default value: 600. Unit: seconds. For more information, see
         # 
         # [TTL definition](https://www.alibabacloud.com/help/zh/doc-detail/29806.htm).
         self.ttl = ttl
@@ -2748,17 +2763,17 @@ class AddGtmRecoveryPlanRequest(TeaModel):
         name: str = None,
         remark: str = None,
     ):
-        # The list of IDs of faulty address pools.
+        # The IDs of faulty address pools.
         # 
         # This parameter is required.
         self.fault_addr_pool = fault_addr_pool
-        # The language used by the user.
+        # The language.
         self.lang = lang
-        # The name of the disaster recovery plan that you want to create.
+        # The name of the disaster recovery plan.
         # 
         # This parameter is required.
         self.name = name
-        # The remarks on the disaster recovery plan.
+        # The description of the disaster recovery plan.
         self.remark = remark
 
     def validate(self):
@@ -2799,9 +2814,9 @@ class AddGtmRecoveryPlanResponseBody(TeaModel):
         recovery_plan_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the disaster recovery plan created.
+        # The ID of the disaster recovery plan.
         self.recovery_plan_id = recovery_plan_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3011,14 +3026,19 @@ class ChangeDomainGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The ID of the destination domain name group.
+        # The ID of the target domain name group.
         # 
-        # *   If you do not specify GroupId, the domain name is moved to the default group.
-        # *   If you set GroupId to an empty string, the domain name is moved to the default group.
-        # *   If you set GroupId to defaultGroup, the domain name is moved to the default group.
-        # *   If you do not set GroupId to one of the preceding values and set GroupId to an existing group ID, the domain name is moved to the existing group. If you set GroupId to a group ID that does not exist, the domain name remains in the original group.
+        # *   If you do not specify GroupId, the domain name belongs to the default group.
+        # *   If you specify an empty string "" for GroupId, the domain name belongs to the default group.
+        # *   If you set GroupId to defaultGroup, the domain name belongs to the default group.
+        # *   If you specify GroupId to another value and the value is verified existent, the value of GroupId for the target domain name is updated. If the value is verified inexistent, the value of GroupId for the target domain name is not updated.
         self.group_id = group_id
-        # The language.
+        # The language of the response. Valid values:
+        # 
+        # *   zh: Chinese
+        # *   en: English
+        # 
+        # Default value: en
         self.lang = lang
 
     def validate(self):
@@ -3056,7 +3076,7 @@ class ChangeDomainGroupResponseBody(TeaModel):
         group_name: str = None,
         request_id: str = None,
     ):
-        # The ID of the destination domain name group.
+        # The ID of the target domain name group.
         self.group_id = group_id
         # The name of the destination domain name group.
         self.group_name = group_name
@@ -3149,7 +3169,7 @@ class ChangeDomainOfDnsProductRequest(TeaModel):
         self.instance_id = instance_id
         # The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages.
         self.lang = lang
-        # The domain name that you want to bind to the instance. If you do not specify this parameter, this operation unbinds the original domain name from the instance.
+        # The domain name that you want to bind to the instance. If you leave this parameter empty, the domain name that is bound to the instance is unbound from the instance.
         self.new_domain = new_domain
         # The IP address of the client.
         self.user_client_ip = user_client_ip
@@ -3196,9 +3216,9 @@ class ChangeDomainOfDnsProductResponseBody(TeaModel):
         original_domain: str = None,
         request_id: str = None,
     ):
-        # The original domain name that was bound to the instance. If the value of this parameter is empty, the instance is bound with a domain name for the first time.
+        # The domain name that is originally bound to the instance. If no value is returned for this parameter, the instance is bound to a domain name for the first time.
         self.original_domain = original_domain
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3274,11 +3294,11 @@ class CopyGtmConfigRequest(TeaModel):
         source_id: str = None,
         target_id: str = None,
     ):
-        # The type of the object that you want to copy. Only the INSTANCE type is supported.
+        # The type of the object that is copied. Only the INSTANCE type is supported.
         # 
         # This parameter is required.
         self.copy_type = copy_type
-        # The language that specific response parameters will use.
+        # The language.
         self.lang = lang
         # The ID of the source object. Only instance IDs are supported.
         # 
@@ -3326,7 +3346,7 @@ class CopyGtmConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3396,7 +3416,9 @@ class CreateCloudGtmAddressRequestHealthTasks(TeaModel):
         port: int = None,
         template_id: str = None,
     ):
+        # The service port of the address on which health check tasks are performed. If the ping protocol is used for health checks, the configuration of the service port is not supported.
         self.port = port
+        # The ID of the health check template associated with the address.
         self.template_id = template_id
 
     def validate(self):
@@ -3439,22 +3461,60 @@ class CreateCloudGtmAddressRequest(TeaModel):
         remark: str = None,
         type: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # IP address or domain name.
+        # 
         # This parameter is required.
         self.address = address
+        # Address ownership information.
         self.attribute_info = attribute_info
+        # The failover mode that is used when address exceptions are identified. Valid values:
+        # 
+        # *   auto: the automatic mode. The system determines whether to return an address based on the health check results. If the address fails health checks, the system does not return the address. If the address passes health checks, the system returns the address.
+        # *   manual: the manual mode. If an address is in the unavailable state, the address is not returned for DNS requests even if the address passes health checks. If an address is in the available state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+        # 
         # This parameter is required.
         self.available_mode = available_mode
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # Indicates the current enabled status of the address:
+        # - enable: Enabled status 
+        # - disable: Disabled status
+        # 
         # This parameter is required.
         self.enable_status = enable_status
+        # The condition for determining the health status of the address. This parameter is required when HealthTasks is specified. Valid values:
+        # 
+        # *   any_ok: The health check results of at least one health check template are normal.
+        # *   p30_ok: The health check results of at least 30% of health check templates are normal.
+        # *   p50_ok: The health check results of at least 50% of health check templates are normal.
+        # *   p70_ok: The health check results of at least 70% of health check templates are normal.
+        # *   all_ok: The health check results of all health check templates are normal.
+        # 
         # This parameter is required.
         self.health_judgement = health_judgement
+        # The health check tasks associated with the address.
         self.health_tasks = health_tasks
+        # The availability state of the address. This parameter is required when AvailableMode is set to **manual**. Valid values:
+        # 
+        # *   available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+        # *   unavailable: The address is abnormal. In this state, the address is not returned for DNS requests even if the address passes health checks.
         self.manual_available_status = manual_available_status
+        # Address name.
+        # 
         # This parameter is required.
         self.name = name
+        # Remarks.
         self.remark = remark
+        # Address type:
+        # - IPv4
+        # - IPv6
+        # - domain
+        # 
         # This parameter is required.
         self.type = type
 
@@ -3546,22 +3606,60 @@ class CreateCloudGtmAddressShrinkRequest(TeaModel):
         remark: str = None,
         type: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # IP address or domain name.
+        # 
         # This parameter is required.
         self.address = address
+        # Address ownership information.
         self.attribute_info = attribute_info
+        # The failover mode that is used when address exceptions are identified. Valid values:
+        # 
+        # *   auto: the automatic mode. The system determines whether to return an address based on the health check results. If the address fails health checks, the system does not return the address. If the address passes health checks, the system returns the address.
+        # *   manual: the manual mode. If an address is in the unavailable state, the address is not returned for DNS requests even if the address passes health checks. If an address is in the available state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+        # 
         # This parameter is required.
         self.available_mode = available_mode
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # Indicates the current enabled status of the address:
+        # - enable: Enabled status 
+        # - disable: Disabled status
+        # 
         # This parameter is required.
         self.enable_status = enable_status
+        # The condition for determining the health status of the address. This parameter is required when HealthTasks is specified. Valid values:
+        # 
+        # *   any_ok: The health check results of at least one health check template are normal.
+        # *   p30_ok: The health check results of at least 30% of health check templates are normal.
+        # *   p50_ok: The health check results of at least 50% of health check templates are normal.
+        # *   p70_ok: The health check results of at least 70% of health check templates are normal.
+        # *   all_ok: The health check results of all health check templates are normal.
+        # 
         # This parameter is required.
         self.health_judgement = health_judgement
+        # The health check tasks associated with the address.
         self.health_tasks_shrink = health_tasks_shrink
+        # The availability state of the address. This parameter is required when AvailableMode is set to **manual**. Valid values:
+        # 
+        # *   available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+        # *   unavailable: The address is abnormal. In this state, the address is not returned for DNS requests even if the address passes health checks.
         self.manual_available_status = manual_available_status
+        # Address name.
+        # 
         # This parameter is required.
         self.name = name
+        # Remarks.
         self.remark = remark
+        # Address type:
+        # - IPv4
+        # - IPv6
+        # - domain
+        # 
         # This parameter is required.
         self.type = type
 
@@ -3636,8 +3734,13 @@ class CreateCloudGtmAddressResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The address ID. This ID uniquely identifies the address.
         self.address_id = address_id
+        # Unique request identification code.
         self.request_id = request_id
+        # Indicates whether the address creation operation is successful:
+        # - true: Operation was successful
+        # - false: Operation was failed
         self.success = success
 
     def validate(self):
@@ -3720,12 +3823,35 @@ class CreateCloudGtmAddressPoolRequest(TeaModel):
         health_judgement: str = None,
         remark: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # Address pool name, helping users distinguish the purpose of address pools.
         self.address_pool_name = address_pool_name
+        # The type of the address pool. Valid values:
+        # 
+        # *   IPv4: IPv4 addresses are returned for Domain Name System (DNS) resolution.
+        # *   IPv6: IPv6 addresses are returned for DNS resolution.
+        # *   domain: Domain names are returned for DNS resolution.
         self.address_pool_type = address_pool_type
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The enabling state of the address pool. Valid values:
+        # 
+        # *   enable: The address pool is enabled, and the addresses in the address pool are returned for DNS resolution when the health check results are normal.
+        # *   disable: The address pool is disabled, and the addresses in the address pool are not returned for DNS resolution regardless of whether the health check results are normal or not.
         self.enable_status = enable_status
+        # The condition for determining the health status of the address pool. Valid values:
+        # 
+        # *   any_ok: At least one address in the address pool is available.
+        # *   p30_ok: At least 30% of the addresses in the address pool are available.
+        # *   p50_ok: At least 50% of the addresses in the address pool are available.
+        # *   p70_ok: At least 70% of the addresses in the address pool are available.
+        # *   all_ok: All addresses in the address pool are available.
         self.health_judgement = health_judgement
+        # Remarks for the address pool, helping users distinguish the usage scenarios of different address pools.
         self.remark = remark
 
     def validate(self):
@@ -3779,8 +3905,13 @@ class CreateCloudGtmAddressPoolResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the address pool. This ID uniquely identifies the address pool.
         self.address_pool_id = address_pool_id
+        # Unique request identification code.
         self.request_id = request_id
+        # Indicates whether the address pool creation operation was successful:
+        # - true: Operation was successful
+        # - false: Operation was failed
         self.success = success
 
     def validate(self):
@@ -3866,15 +3997,38 @@ class CreateCloudGtmInstanceConfigRequest(TeaModel):
         schedule_zone_name: str = None,
         ttl: int = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US: English
         self.accept_language = accept_language
+        # The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The enabling state of the access domain name. Valid values:
+        # 
+        # *   enable: The access domain name is enabled and the intelligent scheduling policy of the corresponding GTM instance takes effect.
+        # *   disable: The access domain name is disabled and the intelligent scheduling policy of the corresponding GTM instance is unavailable.
         self.enable_status = enable_status
+        # The ID of the Global Traffic Manager (GTM) 3.0 instance. This ID uniquely identifies a GTM 3.0 instance.
         self.instance_id = instance_id
+        # The description of the access domain name.
         self.remark = remark
+        # The hostname of the access domain name.
         self.schedule_hostname = schedule_hostname
+        # The type of the Domain Name System (DNS) record configured for the access domain name. Valid values:
+        # 
+        # *   A: IPv4 address
+        # *   AAAA: IPv6 address
+        # *   CNAME: domain name
         self.schedule_rr_type = schedule_rr_type
+        # The configuration mode of the access domain name. Valid values:
+        # 
+        # *   sys_assign: system allocation. This mode is not supported.
+        # *   custom: custom allocation. You must select a zone within the account to which the instance belongs and enter a hostname to generate an access domain name.
         self.schedule_zone_mode = schedule_zone_mode
+        # The name of the parent zone for the access domain name configured in GTM. In most cases, the value of this parameter is the name of a zone hosted by Alibaba Cloud DNS. This zone belongs to the account to which the GTM instance belongs. You can specify the name of a zone or subzone.
         self.schedule_zone_name = schedule_zone_name
+        # The global time to live (TTL) period. Unit: seconds. The global TTL period affects how long the DNS records that map the access domain name to the addresses in the address pools are cached in the local DNS servers of Internet service providers (ISPs). You can specify a custom value.
         self.ttl = ttl
 
     def validate(self):
@@ -3940,8 +4094,14 @@ class CreateCloudGtmInstanceConfigResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
         self.config_id = config_id
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -4019,7 +4179,9 @@ class CreateCloudGtmMonitorTemplateRequestIspCityNodes(TeaModel):
         city_code: str = None,
         isp_code: str = None,
     ):
+        # The city code of the health check node.
         self.city_code = city_code
+        # The Internet service provider (ISP) code of the health check node.
         self.isp_code = isp_code
 
     def validate(self):
@@ -4061,19 +4223,61 @@ class CreateCloudGtmMonitorTemplateRequest(TeaModel):
         protocol: str = None,
         timeout: int = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # This parameter is required.
         self.evaluation_count = evaluation_count
+        # The extended information. The value of this parameter is a JSON string. The required parameters vary based on the health check protocol.
+        # 
+        # *   HTTP or HTTPS:
+        # 
+        #     **host**: the Host field of an HTTP or HTTPS request header during an HTTP or HTTPS health check. The parameter value indicates the HTTP website that you want to visit. By default, the value is the primary domain name. You can change the value based on your business requirements.
+        # 
+        #     **path**: the URL for HTTP or HTTPS health checks. Default value: /.
+        # 
+        #     **code**: the alert threshold. During an HTTP or HTTPS health check, the system checks whether a web server functions as expected based on the status code that is returned from the web server. If the returned status code is greater than the specified threshold, the corresponding application service address is deemed abnormal. Valid values:
+        # 
+        #     *   400: specifies an invalid request. If an HTTP or HTTPS request contains invalid request parameters, a web server returns a status code that is greater than 400. You must set path to an exact URL if you set code to 400.
+        #     *   500: specifies a server error. If some exceptions occur on a web server, the web server returns a status code that is greater than 500. This value is used by default.
+        # 
+        #     **sni**: specifies whether to enable Server Name Indication (SNI). This parameter is used only when the health check protocol is HTTPS. SNI is an extension to the Transport Layer Security (TLS) protocol, which allows a client to specify the host to be connected when the client sends a TLS handshake request. TLS handshakes occur before any data of HTTP requests is sent. Therefore, SNI enables servers to identify the services that clients are attempting to access before certificates are sent. This allows the servers to present correct certificates to the clients. Valid values:
+        # 
+        #     *   true: enables SNI.
+        #     *   false: disables SNI.
+        # 
+        #     **followRedirect**: specifies whether to follow 3XX redirects. Valid values:
+        # 
+        #     *   true: follows 3XX redirects. You are redirected to the destination address if a 3XX status code such as 301, 302, 303, 307, or 308 is returned.
+        #     *   false: does not follow 3XX redirects.
+        # 
+        # *   ping:
+        # 
+        #     **packetNum**: the total number of Internet Control Message Protocol (ICMP) packets that are sent to the address for each ping-based health check. Valid values: 20, 50, and 100.
+        # 
+        #     **packetLossRate**: the ICMP packet loss rate for each ping-based health check. The packet loss rate in a health check can be calculated by using the following formula: Packet loss rate in a health check = (Number of lost packets/Total number of sent ICMP packets) × 100%. If the packet loss rate reaches the threshold, an alert is triggered. Valid values: 10, 30, 40, 80, 90, and 100.
         self.extend_info = extend_info
         # This parameter is required.
         self.failure_rate = failure_rate
         # This parameter is required.
         self.interval = interval
+        # The IP address type of health check nodes. Valid values:
+        # 
+        # *   IPv4: You can set IpVersion to IPv4 to perform health checks on IPv4 addresses.
+        # *   IPv6: You can set IpVersion to IPv6 to perform health checks on IPv6 addresses.
+        # 
         # This parameter is required.
         self.ip_version = ip_version
+        # The health check nodes. You can call the [ListCloudGtmMonitorNodes](~~ListCloudGtmMonitorNodes~~) operation to obtain the health check nodes.
+        # 
         # This parameter is required.
         self.isp_city_nodes = isp_city_nodes
+        # The name of the health check template. We recommend that you use a name that distinguishes the type of health check protocol used.
+        # 
         # This parameter is required.
         self.name = name
         # This parameter is required.
@@ -4164,19 +4368,61 @@ class CreateCloudGtmMonitorTemplateShrinkRequest(TeaModel):
         protocol: str = None,
         timeout: int = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # This parameter is required.
         self.evaluation_count = evaluation_count
+        # The extended information. The value of this parameter is a JSON string. The required parameters vary based on the health check protocol.
+        # 
+        # *   HTTP or HTTPS:
+        # 
+        #     **host**: the Host field of an HTTP or HTTPS request header during an HTTP or HTTPS health check. The parameter value indicates the HTTP website that you want to visit. By default, the value is the primary domain name. You can change the value based on your business requirements.
+        # 
+        #     **path**: the URL for HTTP or HTTPS health checks. Default value: /.
+        # 
+        #     **code**: the alert threshold. During an HTTP or HTTPS health check, the system checks whether a web server functions as expected based on the status code that is returned from the web server. If the returned status code is greater than the specified threshold, the corresponding application service address is deemed abnormal. Valid values:
+        # 
+        #     *   400: specifies an invalid request. If an HTTP or HTTPS request contains invalid request parameters, a web server returns a status code that is greater than 400. You must set path to an exact URL if you set code to 400.
+        #     *   500: specifies a server error. If some exceptions occur on a web server, the web server returns a status code that is greater than 500. This value is used by default.
+        # 
+        #     **sni**: specifies whether to enable Server Name Indication (SNI). This parameter is used only when the health check protocol is HTTPS. SNI is an extension to the Transport Layer Security (TLS) protocol, which allows a client to specify the host to be connected when the client sends a TLS handshake request. TLS handshakes occur before any data of HTTP requests is sent. Therefore, SNI enables servers to identify the services that clients are attempting to access before certificates are sent. This allows the servers to present correct certificates to the clients. Valid values:
+        # 
+        #     *   true: enables SNI.
+        #     *   false: disables SNI.
+        # 
+        #     **followRedirect**: specifies whether to follow 3XX redirects. Valid values:
+        # 
+        #     *   true: follows 3XX redirects. You are redirected to the destination address if a 3XX status code such as 301, 302, 303, 307, or 308 is returned.
+        #     *   false: does not follow 3XX redirects.
+        # 
+        # *   ping:
+        # 
+        #     **packetNum**: the total number of Internet Control Message Protocol (ICMP) packets that are sent to the address for each ping-based health check. Valid values: 20, 50, and 100.
+        # 
+        #     **packetLossRate**: the ICMP packet loss rate for each ping-based health check. The packet loss rate in a health check can be calculated by using the following formula: Packet loss rate in a health check = (Number of lost packets/Total number of sent ICMP packets) × 100%. If the packet loss rate reaches the threshold, an alert is triggered. Valid values: 10, 30, 40, 80, 90, and 100.
         self.extend_info = extend_info
         # This parameter is required.
         self.failure_rate = failure_rate
         # This parameter is required.
         self.interval = interval
+        # The IP address type of health check nodes. Valid values:
+        # 
+        # *   IPv4: You can set IpVersion to IPv4 to perform health checks on IPv4 addresses.
+        # *   IPv6: You can set IpVersion to IPv6 to perform health checks on IPv6 addresses.
+        # 
         # This parameter is required.
         self.ip_version = ip_version
+        # The health check nodes. You can call the [ListCloudGtmMonitorNodes](~~ListCloudGtmMonitorNodes~~) operation to obtain the health check nodes.
+        # 
         # This parameter is required.
         self.isp_city_nodes_shrink = isp_city_nodes_shrink
+        # The name of the health check template. We recommend that you use a name that distinguishes the type of health check protocol used.
+        # 
         # This parameter is required.
         self.name = name
         # This parameter is required.
@@ -4253,6 +4499,7 @@ class CreateCloudGtmMonitorTemplateResponseBody(TeaModel):
     ):
         self.request_id = request_id
         self.success = success
+        # The ID of the health check template. This ID uniquely identifies the health check template.
         self.template_id = template_id
 
     def validate(self):
@@ -4328,8 +4575,10 @@ class CreatePdnsAppKeyRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
+        remark: str = None,
     ):
         self.lang = lang
+        self.remark = remark
 
     def validate(self):
         pass
@@ -4342,12 +4591,16 @@ class CreatePdnsAppKeyRequest(TeaModel):
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
+        if self.remark is not None:
+            result['Remark'] = self.remark
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
         return self
 
 
@@ -4545,9 +4798,16 @@ class DeleteCloudGtmAddressRequest(TeaModel):
         address_id: str = None,
         client_token: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # The address ID. This ID uniquely identifies the address.
+        # 
         # This parameter is required.
         self.address_id = address_id
+        # The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -4584,7 +4844,11 @@ class DeleteCloudGtmAddressResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Unique request identification code.
         self.request_id = request_id
+        # Indicates whether the address deletion operation was successful:
+        # - true: Operation successful
+        # - false: Operation failed
         self.success = success
 
     def validate(self):
@@ -4659,8 +4923,14 @@ class DeleteCloudGtmAddressPoolRequest(TeaModel):
         address_pool_id: str = None,
         client_token: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # The ID of the address pool. This ID uniquely identifies the address pool.
         self.address_pool_id = address_pool_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -4698,6 +4968,7 @@ class DeleteCloudGtmAddressPoolResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the address pool. This ID uniquely identifies the address pool.
         self.address_pool_id = address_pool_id
         self.request_id = request_id
         self.success = success
@@ -4779,9 +5050,16 @@ class DeleteCloudGtmInstanceConfigRequest(TeaModel):
         config_id: str = None,
         instance_id: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration. You can call the [ListCloudGtmInstanceConfigs](~~ListCloudGtmInstanceConfigs~~) operation to query the configuration ID of the access domain name.
         self.config_id = config_id
+        # The access domain name that is configured for the desired GTM 3.0 instance. You can delete only one access domain name.
         self.instance_id = instance_id
 
     def validate(self):
@@ -4822,7 +5100,10 @@ class DeleteCloudGtmInstanceConfigResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Unique request identification code.
         self.request_id = request_id
+        # Indicates whether the operation to delete domain instance configurations was successful:
+        # - true: Operation successful - false: Operation failed
         self.success = success
 
     def validate(self):
@@ -4897,8 +5178,15 @@ class DeleteCloudGtmMonitorTemplateRequest(TeaModel):
         client_token: str = None,
         template_id: str = None,
     ):
+        # The language in which the returned results are displayed. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The ID of the health check template. This ID uniquely identifies a health check template.
+        # 
         # This parameter is required.
         self.template_id = template_id
 
@@ -4936,7 +5224,11 @@ class DeleteCloudGtmMonitorTemplateResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Unique request identification code.
         self.request_id = request_id
+        # Indicates whether the operation to delete the health check template was successful:
+        # - true: Operation successful
+        # - false: Operation failed
         self.success = success
 
     def validate(self):
@@ -5438,7 +5730,12 @@ class DeleteDomainRequest(TeaModel):
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The language.
+        # The language of the response. Valid values:
+        # 
+        # *   zh: Chinese
+        # *   en: English
+        # 
+        # Default value: en.
         self.lang = lang
 
     def validate(self):
@@ -5551,7 +5848,12 @@ class DeleteDomainGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The language type.
+        # The language of the response. Valid values:
+        # 
+        # *   zh: Chinese
+        # *   en: English
+        # 
+        # Default value: en.
         self.lang = lang
 
     def validate(self):
@@ -6250,12 +6552,12 @@ class DescribeBatchResultCountRequest(TeaModel):
         # 
         # *   **DOMAIN_ADD**: adds domain names in batches.
         # *   **DOMAIN_DEL**: deletes domain names in batches.
-        # *   **RR_ADD**: adds DNS records in batches.
+        # *   **RR_ADD**: adds Domain Name System (DNS) records in batches.
         # *   **RR_DEL**: deletes DNS records in batches.
         self.batch_type = batch_type
-        # The language type.
+        # The language.
         self.lang = lang
-        # The ID of the task.
+        # The task ID.
         # 
         # If you specify TaskId, the execution result of the specified task is returned. If you do not specify TaskId, the execution result of the last task is returned.
         self.task_id = task_id
@@ -6306,16 +6608,16 @@ class DescribeBatchResultCountResponseBody(TeaModel):
         self.failed_count = failed_count
         # The cause of the execution failure.
         self.reason = reason
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The status of the task. Valid values:
+        # The state of the task. Valid values:
         # 
         # *   **-1**: No task for importing domain names or DNS records is submitted.
         # *   **0**: The task is being processed.
-        # *   **1**: The task is completed.
+        # *   **1**: The task is complete.
         # *   **2**: The task failed.
         self.status = status
-        # The total number of successfully processed domain names or DNS records.
+        # The total number of domain names or DNS records that were processed.
         self.success_count = success_count
         # The ID of the last task.
         self.task_id = task_id
@@ -6753,9 +7055,16 @@ class DescribeCloudGtmAddressRequest(TeaModel):
         address_id: str = None,
         client_token: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # The address ID. This ID uniquely identifies the address.
+        # 
         # This parameter is required.
         self.address_id = address_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -6794,9 +7103,17 @@ class DescribeCloudGtmAddressResponseBodyHealthTasksHealthTask(TeaModel):
         template_id: str = None,
         template_name: str = None,
     ):
+        # The state of the health check task. Valid values:
+        # 
+        # *   ok: The task is normal.
+        # *   alert: An alert is triggered.
+        # *   no_data: No data is available. In most cases, the health check task is newly created and no data is collected.
         self.monitor_status = monitor_status
+        # The target service port for health checks. When the Ping protocol is selected for health checks, configuration of the service port is not supported.
         self.port = port
+        # The ID of the health check template associated with the address.
         self.template_id = template_id
+        # The name of the health check template.
         self.template_name = template_name
 
     def validate(self):
@@ -6888,23 +7205,65 @@ class DescribeCloudGtmAddressResponseBody(TeaModel):
         update_time: str = None,
         update_timestamp: int = None,
     ):
+        # IP address or domain name.
         self.address = address
+        # The address ID. This ID uniquely identifies the address.
         self.address_id = address_id
+        # Address ownership information.
         self.attribute_info = attribute_info
+        # The failover method that is used if the address fails health checks. Valid values:
+        # 
+        # *   auto: the automatic mode. The system determines whether to return an address based on the health check results. If the address fails health checks, the system does not return the address. If the address passes health checks, the system returns the address.
+        # *   manual: the manual mode. If an address is in the unavailable state, the address is not returned for Domain Name System (DNS) requests even if the address passes health checks. If an address is in the available state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
         self.available_mode = available_mode
+        # Address availability status:
+        # - available: Available
+        # - unavailable: Unavailable
         self.available_status = available_status
+        # Address creation time.
         self.create_time = create_time
+        # Creation time (timestamp).
         self.create_timestamp = create_timestamp
+        # Indicates the current enabled status of the address:
+        # enabled: enabled state
+        # disabled: disabled state
         self.enable_status = enable_status
+        # The condition for determining the health status of the address. Valid values:
+        # 
+        # *   any_ok: The health check results of at least one health check template are normal.
+        # *   p30_ok: The health check results of at least 30% of health check templates are normal.
+        # *   p50_ok: The health check results of at least 50% of health check templates are normal.
+        # *   p70_ok: The health check results of at least 70% of health check templates are normal.
+        # *   all_ok: The health check results of all health check templates are normal.
         self.health_judgement = health_judgement
+        # The health check state of the address. Valid values:
+        # 
+        # *   ok: The address passes all health checks of the referenced health check templates.
+        # *   ok_alert: The address fails some health checks of the referenced health check templates but the address is deemed normal.
+        # *   ok_no_monitor: The address does not reference a health check template.
+        # *   exceptional: The address fails some or all health checks of the referenced health check templates and the address is deemed abnormal.
         self.health_status = health_status
+        # The health check tasks referenced by the address.
         self.health_tasks = health_tasks
+        # The availability state of the address when AvailableMode is set to manual. Valid values:
+        # 
+        # *   available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+        # *   unavailable: The address is abnormal. In this state, the address is not returned for DNS requests even if the address passes health checks.
         self.manual_available_status = manual_available_status
+        # Address name.
         self.name = name
+        # Remarks.
         self.remark = remark
+        # Unique request identification code.
         self.request_id = request_id
+        # Address type:
+        # - IPv4
+        # - IPv6
+        # - domain
         self.type = type
+        # The last modification time of the address configuration.
         self.update_time = update_time
+        # Modified time (timestamp).
         self.update_timestamp = update_timestamp
 
     def validate(self):
@@ -7045,8 +7404,14 @@ class DescribeCloudGtmAddressPoolRequest(TeaModel):
         address_pool_id: str = None,
         client_token: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # The ID of the address pool. This ID uniquely identifies the address pool.
         self.address_pool_id = address_pool_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -7084,8 +7449,11 @@ class DescribeCloudGtmAddressPoolResponseBodyAddressesAddressHealthTasksHealthTa
         template_id: str = None,
         template_name: str = None,
     ):
+        # The target service port for health check probes. When the health check protocol is set to Ping, configuration of the service port is not supported.
         self.port = port
+        # ID of the health check template associated with the address.
         self.template_id = template_id
+        # Health check template name.
         self.template_name = template_name
 
     def validate(self):
@@ -7203,26 +7571,72 @@ class DescribeCloudGtmAddressPoolResponseBodyAddressesAddress(TeaModel):
         update_timestamp: int = None,
         weight_value: int = None,
     ):
+        # IP address or domain name.
         self.address = address
+        # The address ID. This ID uniquely identifies the address.
         self.address_id = address_id
+        # Address ownership information, not supported in the current version.
         self.attribute_info = attribute_info
+        # The failover method that is used if the address fails health checks. Valid values:
+        # 
+        # *   auto: the automatic mode. The system determines whether to return an address based on the health check results. If the address fails health checks, the system does not return the address. If the address passes health checks, the system returns the address.
+        # *   manual: the manual mode. If an address is in the unavailable state, the address is not returned for DNS requests even if the address passes health checks. If an address is in the available state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
         self.available_mode = available_mode
+        # Address availability status:
+        # - available: Address available
+        # - unavailable: Address unavailable
         self.available_status = available_status
+        # Address creation time.
         self.create_time = create_time
+        # Address creation time (timestamp).
         self.create_timestamp = create_timestamp
+        # Address enable status, indicating whether the address is currently available:
+        # - enable: Enabled status
+        # - disable: Disabled status
         self.enable_status = enable_status
+        # The condition for determining the health status of the address. Valid values:
+        # 
+        # *   any_ok: The health check results of at least one health check template are normal.
+        # *   p30_ok: The health check results of at least 30% of health check templates are normal.
+        # *   p50_ok: The health check results of at least 50% of health check templates are normal.
+        # *   p70_ok: The health check results of at least 70% of health check templates are normal.
+        # *   all_ok: The health check results of all health check templates are normal.
         self.health_judgement = health_judgement
+        # The health check state of the address. Valid values:
+        # 
+        # *   ok: The address passes all health checks of the referenced health check templates.
+        # *   ok_alert: The address fails some health checks of the referenced health check templates but the address is deemed normal.
+        # *   ok_no_monitor: The address does not reference a health check template and is normal.
+        # *   exceptional: The address fails some or all health checks of the referenced health check templates and the address is deemed abnormal.
         self.health_status = health_status
+        # Health check task list.
         self.health_tasks = health_tasks
+        # The availability state of the address when AvailableMode is set to manual. Valid values:
+        # 
+        # *   available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+        # *   unavailable: The address is abnormal. In this state, the address is not returned for DNS requests even if the address passes health checks.
         self.manual_available_status = manual_available_status
+        # Address name.
         self.name = name
+        # Remarks for the address.
         self.remark = remark
+        # The request source list.
         self.request_source = request_source
+        # Indicates whether it is a sequential (non-preemptive) scheduling object for hybrid cloud management scenarios: - true: yes - false: no
         self.seq_non_preemptive_schedule = seq_non_preemptive_schedule
+        # Sequence number, indicating the priority of address return, where smaller numbers have higher priority.
         self.serial_number = serial_number
+        # The address type. Valid values:
+        # 
+        # *   IPv4: IPv4 address
+        # *   IPv6: IPv6 address
+        # *   domain: domain name
         self.type = type
+        # The last time the address was modified.
         self.update_time = update_time
+        # The last modification time of the address (timestamp).
         self.update_timestamp = update_timestamp
+        # Weight value (an integer between 1 and 100, inclusive), allowing different weight values to be set for each address, enabling resolution queries to return addresses according to the weighted ratio.
         self.weight_value = weight_value
 
     def validate(self):
@@ -7385,21 +7799,61 @@ class DescribeCloudGtmAddressPoolResponseBody(TeaModel):
         update_time: str = None,
         update_timestamp: int = None,
     ):
+        # Load balancing policy among addresses in the address pool:
+        # - round_robin: Round-robin, where for any source of DNS resolution requests, all addresses are returned, with a rotation of the order for every request.
+        # - sequence: Sequential, where for any source of DNS resolution requests, the address with the lower sequence number (indicating a higher priority, the smaller the number, the higher the priority) is returned. If the address with the lower sequence number is unavailable, the next address with a lower sequence number is returned.
+        # - weight: Weighted, supporting the setting of different weight values for each address to realize returning addresses according to the weight ratio of query resolutions.
+        # - source_nearest: Source-nearest, also known as intelligent resolution, where GTM can return different addresses based on the source of different DNS resolution requests, achieving the effect of users accessing nearby servers.
         self.address_lb_strategy = address_lb_strategy
+        # The ID of the address pool. This ID uniquely identifies the address pool.
         self.address_pool_id = address_pool_id
+        # Address pool name.
         self.address_pool_name = address_pool_name
+        # Address pool type:
+        # - IPv4
+        # - IPv6
+        # - domain
         self.address_pool_type = address_pool_type
+        # The addresses.
         self.addresses = addresses
+        # Address pool availability status:
+        # - available: Available
+        # - unavailable: Unavailable
         self.available_status = available_status
+        # Address pool creation time.
         self.create_time = create_time
+        # Address pool creation time (timestamp).
         self.create_timestamp = create_timestamp
+        # Address pool status:
+        # - enable: Enabled status
+        # - disable: Disabled status
         self.enable_status = enable_status
+        # The condition for determining the health status of the address pool. Valid values:
+        # 
+        # *   any_ok: At least one address in the address pool is available.
+        # *   p30_ok: At least 30% of the addresses in the address pool are available.
+        # *   p50_ok: At least 50% of the addresses in the address pool are available.
+        # *   p70_ok: At least 70% of the addresses in the address pool are available.
+        # *   all_ok: All addresses in the address pool are available.
         self.health_judgement = health_judgement
+        # The health state of the address pool. Valid values:
+        # 
+        # *   ok: The health state of the address pool is normal and all addresses that are referenced by the address pool are available.
+        # *   ok_alert: The health state of the address pool is warning and some of the addresses that are referenced by the address pool are unavailable. However, the address pool is deemed normal. In this case, only the available addresses are returned for Domain Name System (DNS) requests.
+        # *   exceptional: The health state of the address pool is abnormal and some or all of the addresses that are referenced by the address pool are unavailable. In this case, the address pool is deemed abnormal.
         self.health_status = health_status
+        # Remarks for the address.
         self.remark = remark
+        # Unique request identification code.
         self.request_id = request_id
+        # The mode used if the address with the smallest sequence number is recovered. This parameter is returned only when the policy for load balancing between addresses is sequence. Valid values:
+        # 
+        # *   preemptive: The address with the smallest sequence number is preferentially used if this address is recovered.
+        # *   non_preemptive: The current address is still used even if the address with the smallest sequence number is recovered.
         self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
+        # The last modification time of the address pool.
         self.update_time = update_time
+        # Last modification time of the address pool (timestamp).
         self.update_timestamp = update_timestamp
 
     def validate(self):
@@ -7532,8 +7986,14 @@ class DescribeCloudGtmAddressPoolReferenceRequest(TeaModel):
         address_pool_id: str = None,
         client_token: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # The ID of the address pool. This ID uniquely identifies the address pool.
         self.address_pool_id = address_pool_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -7583,20 +8043,58 @@ class DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceCon
         ttl: int = None,
         version_code: str = None,
     ):
+        # The policy for load balancing between address pools. Valid values:
+        # 
+        # *   round_robin: All address pools are returned for Domain Name System (DNS) requests from any source. All address pools are sorted in round-robin mode each time they are returned.
+        # *   sequence: The address pool with the smallest sequence number is preferentially returned for DNS requests from any source. The sequence number indicates the priority for returning the address pool. A smaller sequence number indicates a higher priority. If the address pool with the smallest sequence number is unavailable, the address pool with the second smallest sequence number is returned.
+        # *   weight: You can set a different weight value for each address pool. This way, address pools are returned based on the weight values.
+        # *   source_nearest: Different address pools are returned based on the sources of DNS requests. This way, users can access nearby address pools.
         self.address_pool_lb_strategy = address_pool_lb_strategy
+        # The availability state of the access domain name. Valid values:
+        # 
+        # *   available: If the access domain name is **enabled** and the health state is **normal**, the access domain name is deemed **available**.
+        # *   unavailable: If the access domain name is **disabled** or the health state is **abnormal**, the access domain name is deemed **unavailable**.
         self.available_status = available_status
+        # The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
         self.config_id = config_id
+        # The enabling state of the access domain name. Valid values:
+        # 
+        # *   enable: The access domain name is enabled and the intelligent scheduling policy of the corresponding GTM instance takes effect.
+        # *   disable: The access domain name is disabled and the intelligent scheduling policy of the corresponding GTM instance does not take effect.
         self.enable_status = enable_status
+        # The health state of the access domain name. Valid values:
+        # 
+        # *   ok: The health state of the access domain name is normal and all address pools that are referenced by the access domain name are available.
+        # *   ok_alert: The health state of the access domain name is warning and some of the address pools that are referenced by the access domain name are unavailable. In this case, only the available address pools are returned for DNS requests.
+        # *   exceptional: The health state of the access domain name is abnormal and all address pools that are referenced by the access domain name are unavailable. In this case, addresses in the non-empty address pool with the smallest sequence number are preferentially used for fallback resolution. This returns DNS results for clients as much as possible.
         self.health_status = health_status
+        # The ID of the Global Traffic Manager (GTM) 3.0 instance.
         self.instance_id = instance_id
+        # Instance name.
         self.instance_name = instance_name
+        # Remarks.
         self.remark = remark
+        # The access domain name. The value of this parameter is composed of the value of ScheduleHostname and the value of ScheduleZoneName.
         self.schedule_domain_name = schedule_domain_name
+        # Host record of the domain accessed by GTM.
         self.schedule_hostname = schedule_hostname
+        # DNS record types for scheduling domains:
+        # - A: IPv4 address
+        # - AAAA: IPv6 address
+        # - CNAME: Domain name
         self.schedule_rr_type = schedule_rr_type
+        # The zone such as example.com or subzone such as a.example.com of the access domain name. In most cases, the zone or subzone is hosted by the Public Authoritative DNS module of Alibaba Cloud DNS. This zone belongs to the account to which the GTM instance belongs.
         self.schedule_zone_name = schedule_zone_name
+        # The mode used if the address pool with the smallest sequence number is recovered. This parameter is returned when AddressPoolLbStrategy is set to sequence. Valid values:
+        # 
+        # *   preemptive: The address pool with the smallest sequence number is preferentially used if this address pool is recovered.
+        # *   non_preemptive: The current address pool is still used even if the address pool with the smallest sequence number is recovered.
         self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
+        # Global TTL, the TTL value for resolving the accessed domain name to addresses in the address pool, which affects the caching time of DNS records in the operator\\"s LocalDNS. Supports custom TTL values.
         self.ttl = ttl
+        # Global Traffic Management version 3.0 instance types:
+        # - standard: Standard Edition
+        # - ultimate: Ultimate Edition
         self.version_code = version_code
 
     def validate(self):
@@ -7718,9 +8216,13 @@ class DescribeCloudGtmAddressPoolReferenceResponseBody(TeaModel):
         instance_configs: DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigs = None,
         request_id: str = None,
     ):
+        # The ID of the address pool. This ID uniquely identifies the address pool.
         self.address_pool_id = address_pool_id
+        # Address pool name.
         self.address_pool_name = address_pool_name
+        # The access domain names that reference the address pool.
         self.instance_configs = instance_configs
+        # Unique request identification code.
         self.request_id = request_id
 
     def validate(self):
@@ -7805,8 +8307,14 @@ class DescribeCloudGtmAddressReferenceRequest(TeaModel):
         address_id: str = None,
         client_token: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # The address ID. This ID uniquely identifies the address.
         self.address_id = address_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -7856,20 +8364,58 @@ class DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanc
         ttl: int = None,
         version_code: str = None,
     ):
+        # The policy for load balancing between address pools. Valid values:
+        # 
+        # *   round_robin: All address pools are returned for Domain Name System (DNS) requests from any source. All address pools are sorted in round-robin mode each time they are returned.
+        # *   sequence: The address pool with the smallest sequence number is preferentially returned for DNS requests from any source. The sequence number indicates the priority for returning the address pool. A smaller sequence number indicates a higher priority. If the address pool with the smallest sequence number is unavailable, the address pool with the second smallest sequence number is returned.
+        # *   weight: You can set a different weight value for each address pool. This way, address pools are returned based on the weight values.
+        # *   source_nearest: Different address pools are returned based on the sources of DNS requests. This way, users can access nearby address pools.
         self.address_pool_lb_strategy = address_pool_lb_strategy
+        # The availability state of the access domain name. Valid values:
+        # 
+        # *   available: If the access domain name is **enabled** and the health state is normal, the access domain name is deemed **available**.
+        # *   unavailable: If the access domain name is **disabled** or the health state is **abnormal**, the access domain name is deemed **unavailable**.
         self.available_status = available_status
+        # The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
         self.config_id = config_id
+        # The enabling state of the access domain name. Valid values:
+        # 
+        # *   enable: The access domain name is enabled and the intelligent scheduling policy of the corresponding GTM instance takes effect.
+        # *   disable: The access domain name is disabled and the intelligent scheduling policy of the corresponding GTM instance does not take effect.
         self.enable_status = enable_status
+        # The health state of the access domain name. Valid values:
+        # 
+        # *   ok: The health state of the access domain name is normal and all address pools that are referenced by the access domain name are available.
+        # *   ok_alert: The health state of the access domain name is warning and some of the address pools that are referenced by the access domain name are unavailable. In this case, only the available address pools are returned for DNS requests.
+        # *   exceptional: The health state of the access domain name is abnormal and all address pools that are referenced by the access domain name are unavailable. In this case, addresses in the non-empty address pool with the smallest sequence number are preferentially used for fallback resolution. This returns DNS results for clients as much as possible.
         self.health_status = health_status
+        # The ID of the GTM 3.0 instance.
         self.instance_id = instance_id
+        # Instance name.
         self.instance_name = instance_name
+        # Remarks.
         self.remark = remark
+        # The access domain name. The value of this parameter is composed of the value of ScheduleHostname and the value of ScheduleZoneName.
         self.schedule_domain_name = schedule_domain_name
+        # Host record of the domain accessed by GTM.
         self.schedule_hostname = schedule_hostname
+        # DNS record types for the scheduling domain:
+        # - A: IPv4 address
+        # - AAAA: IPv6 address
+        # - CNAME: Domain name
         self.schedule_rr_type = schedule_rr_type
+        # The zone such as example.com or subzone such as a.example.com of the access domain name. In most cases, the zone or subzone is hosted by the Public Authoritative DNS module of Alibaba Cloud DNS. This zone belongs to the account to which the GTM instance belongs.
         self.schedule_zone_name = schedule_zone_name
+        # The mode used if the address pool with the smallest sequence number is recovered. This parameter is returned when AddressPoolLbStrategy is set to sequence. Valid values:
+        # 
+        # *   preemptive: The address pool with the smallest sequence number is preferentially used if this address pool is recovered.
+        # *   non_preemptive: The current address pool is still used even if the address pool with the smallest sequence number is recovered.
         self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
+        # Global TTL (in seconds), the TTL value for domain name resolution to addresses in the address pool, which affects the caching time of DNS records in the ISP\\"s LocalDNS. Custom TTL values are supported.
         self.ttl = ttl
+        # Global Traffic Management version 3.0 instance types:
+        # - standard: Standard Edition
+        # - ultimate: Ultimate Edition
         self.version_code = version_code
 
     def validate(self):
@@ -7998,16 +8544,50 @@ class DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool(TeaMod
         remark: str = None,
         sequence_lb_strategy_mode: str = None,
     ):
+        # Load balancing policy among addresses in the address pool:
+        # - round_robin: Round-robin, for any source of DNS resolution requests, all addresses are returned, with a rotation sort applied to all addresses each time.
+        # - sequence: Sequential, for any source of DNS resolution requests, returns the address with the smaller sequence number (the sequence number indicates the priority of address return, with smaller numbers having higher priority). If the address with the smaller sequence number is unavailable, the next address with a smaller sequence number is returned.
+        # - weight: Weighted, supports setting different weight values for each address, realizing the return of addresses according to the ratio of weight for DNS query resolutions.
+        # - source_nearest: Source-nearest, i.e., intelligent resolution function, where GTM can return different addresses based on the source of different DNS resolution requests, achieving the effect of users accessing nearby.
         self.address_lb_strategy = address_lb_strategy
+        # The ID of the address pool.
         self.address_pool_id = address_pool_id
+        # Address pool name.
         self.address_pool_name = address_pool_name
+        # Address pool type:
+        # - IPv4
+        # - IPv6
+        # - domain
         self.address_pool_type = address_pool_type
+        # Address pool availability status:
+        # - available
+        # - unavailable
         self.available_status = available_status
+        # Address pool status:
+        # - enable: Enabled status
+        # - disable: Disabled status
         self.enable_status = enable_status
+        # The condition for determining the health status of the address pool. Valid values:
+        # 
+        # *   any_ok: At least one address in the address pool is available.
+        # *   p30_ok: At least 30% of the addresses in the address pool are available.
+        # *   p50_ok: At least 50% of the addresses in the address pool are available.
+        # *   p70_ok: At least 70% of the addresses in the address pool are available.
+        # *   all_ok: All addresses in the address pool are available.
         self.health_judgement = health_judgement
+        # The health state of the address pool. Valid values:
+        # 
+        # *   ok: The health state of the address pool is normal and all addresses that are referenced by the address pool are available.
+        # *   ok_alert: The health state of the address pool is warning and some of the addresses that are referenced by the address pool are unavailable. However, the address pool is deemed normal. In this case, only the available addresses are returned for DNS requests.
+        # *   exceptional: The health state of the address pool is abnormal and some or all of the addresses that are referenced by the address pool are unavailable. In this case, the address pool is deemed abnormal.
         self.health_status = health_status
+        # The instances that reference the address pool.
         self.instance_configs = instance_configs
+        # Remarks for the address pool.
         self.remark = remark
+        # Load balancing policy between addresses in sequential mode during the recovery of preceding resources service mode:
+        # - preemptive: Preemption mode, where upon recovery of preceding resources, priority is given to using addresses with smaller sequence numbers;
+        # - non_preemptive: Non-preemption mode, where upon recovery of preceding resources, the current address continues to be used;
         self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
 
     def validate(self):
@@ -8116,10 +8696,15 @@ class DescribeCloudGtmAddressReferenceResponseBody(TeaModel):
         name: str = None,
         request_id: str = None,
     ):
+        # IP address or domain name.
         self.address = address
+        # The address ID. This ID uniquely identifies the address.
         self.address_id = address_id
+        # The address pools.
         self.address_pools = address_pools
+        # Address name.
         self.name = name
+        # Unique request identification code.
         self.request_id = request_id
 
     def validate(self):
@@ -8207,7 +8792,12 @@ class DescribeCloudGtmGlobalAlertRequest(TeaModel):
         accept_language: str = None,
         client_token: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US: English
         self.accept_language = accept_language
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -8242,9 +8832,29 @@ class DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig(TeaModel):
         notice_type: str = None,
         sms_notice: bool = None,
     ):
+        # Indicates whether DingTalk notifications are configured. Valid values:
+        # 
+        # *   true: DingTalk notifications are configured. DingTalk notifications are sent when alerts are triggered.
+        # *   false: DingTalk notifications are not configured.
         self.dingtalk_notice = dingtalk_notice
+        # Indicates whether email notifications are configured. Valid values:
+        # 
+        # *   true: Email notifications are configured. Emails are sent when alerts are triggered.
+        # *   false: Email notifications are not configured.
         self.email_notice = email_notice
+        # The type of the alert event. Valid values:
+        # 
+        # *   addr_alert: The address is unavailable.
+        # *   addr_resume: The address becomes available.
+        # *   addr_pool_unavailable: The address pool is unavailable.
+        # *   addr_pool_available: The address pool becomes available.
         self.notice_type = notice_type
+        # Indicates whether text message notifications are configured. Valid values:
+        # 
+        # *   true: Text message notifications are configured. Text messages are sent when alerts are triggered.
+        # *   false: Text message notifications are not configured.
+        # 
+        # Only the China site (aliyun.com) supports text message notifications.
         self.sms_notice = sms_notice
 
     def validate(self):
@@ -8348,8 +8958,11 @@ class DescribeCloudGtmGlobalAlertResponseBody(TeaModel):
         alert_group: DescribeCloudGtmGlobalAlertResponseBodyAlertGroup = None,
         request_id: str = None,
     ):
+        # The alert configurations.
         self.alert_config = alert_config
+        # The alert contact groups.
         self.alert_group = alert_group
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8434,9 +9047,16 @@ class DescribeCloudGtmInstanceConfigAlertRequest(TeaModel):
         config_id: str = None,
         instance_id: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   **zh-CN**: Chinese
+        # *   **en-US**: English
         self.accept_language = accept_language
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
         self.config_id = config_id
+        # The ID of the Global Traffic Manager (GTM) 3.0 instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -8479,9 +9099,29 @@ class DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfigAlertConfig(TeaM
         notice_type: str = None,
         sms_notice: bool = None,
     ):
+        # Indicates whether DingTalk notifications are configured. Valid values:
+        # 
+        # *   true: DingTalk notifications are configured. DingTalk notifications are sent after alerts are triggered.
+        # *   false: DingTalk notifications are not configured.
         self.dingtalk_notice = dingtalk_notice
+        # Indicates whether email notifications are configured. Valid values:
+        # 
+        # *   true: Email notifications are configured. Emails are sent after alerts are triggered.
+        # *   false: Email notifications are not configured.
         self.email_notice = email_notice
+        # The type of the alert event. Valid values:
+        # 
+        # *   addr_alert: The address is unavailable.
+        # *   addr_resume: The address becomes available.
+        # *   addr_pool_unavailable: The address pool is unavailable.
+        # *   addr_pool_available: The address pool becomes available.
         self.notice_type = notice_type
+        # Indicates whether text message notifications are configured. Valid values:
+        # 
+        # *   true: Text message notifications are configured. Text messages are sent after alerts are triggered.
+        # *   false: Text message notifications are not configured.
+        # 
+        # Only the China site (aliyun.com) supports text message notifications.
         self.sms_notice = sms_notice
 
     def validate(self):
@@ -8588,11 +9228,20 @@ class DescribeCloudGtmInstanceConfigAlertResponseBody(TeaModel):
         instance_id: str = None,
         request_id: str = None,
     ):
+        # The alert configurations.
         self.alert_config = alert_config
+        # The alert contact groups.
         self.alert_group = alert_group
+        # The alert configuration mode of the instance. Valid values:
+        # 
+        # *   global: global alert configuration
+        # *   instance_config: custom alert configuration
         self.alert_mode = alert_mode
+        # The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
         self.config_id = config_id
+        # The ID of the GTM 3.0 instance.
         self.instance_id = instance_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9505,7 +10154,13 @@ class DescribeCloudGtmMonitorTemplateRequest(TeaModel):
         accept_language: str = None,
         template_id: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   **zh-CN**: Chinese
+        # *   **en-US** (default): English
         self.accept_language = accept_language
+        # The ID of the health check template that you want to query. This ID uniquely identifies the health check template.
+        # 
         # This parameter is required.
         self.template_id = template_id
 
@@ -9545,13 +10200,24 @@ class DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode(TeaMode
         isp_code: str = None,
         isp_name: str = None,
     ):
+        # City code
         self.city_code = city_code
+        # City name
         self.city_name = city_name
+        # Country Code
         self.country_code = country_code
+        # Country Name
         self.country_name = country_name
+        # Probe node group type name
         self.group_name = group_name
+        # Probe node group types:
+        # - BGP: BGP nodes
+        # - OVERSEAS: International nodes
+        # - ISP: Carrier nodes
         self.group_type = group_type
+        # Operator Code
         self.isp_code = isp_code
+        # Operator Name
         self.isp_name = isp_name
 
     def validate(self):
@@ -9657,21 +10323,81 @@ class DescribeCloudGtmMonitorTemplateResponseBody(TeaModel):
         update_time: str = None,
         update_timestamp: int = None,
     ):
+        # Health check template creation time.
         self.create_time = create_time
+        # Health check template creation time (timestamp).
         self.create_timestamp = create_timestamp
+        # Retries count. The system will only judge the application service as abnormal after consecutive monitoring failures to prevent inaccurate monitoring results due to momentary network fluctuations or other reasons. Available retry counts are:
+        # - 1
+        # - 2
+        # - 3
         self.evaluation_count = evaluation_count
+        # The extended information. The value of this parameter is a JSON string. The required parameters vary based on the health check protocol.
+        # 
+        # *   HTTP or HTTPS:
+        # 
+        #     **host**: the Host field of an HTTP or HTTPS request header during an HTTP or HTTPS health check. The parameter value indicates the HTTP website that you want to visit. By default, the value is the primary domain name. You can change the value based on your business requirements.
+        # 
+        #     **path**: the URL for HTTP or HTTPS health checks. Default value: /.
+        # 
+        #     **code**: the alert threshold. During an HTTP or HTTPS health check, the system checks whether a web server functions as expected based on the status code that is returned from the web server. If the returned status code is greater than the specified threshold, the corresponding application service address is deemed abnormal. Valid values:
+        # 
+        #     *   400: indicates an invalid request. If an HTTP or HTTPS request contains invalid request parameters, a web server returns a status code that is greater than 400. You must specify an exact URL for path if you set code to 400.
+        #     *   500: indicates a server error. If some exceptions occur on a web server, the web server returns a status code that is greater than 500. This value is used by default.
+        # 
+        #     **sni**: indicates whether Server Name Indication (SNI) is enabled. This parameter is used only when the health check protocol is HTTPS. SNI is an extension to the Transport Layer Security (TLS) protocol, which allows a client to specify the host to be connected when the client sends a TLS handshake request. TLS handshakes occur before any data of HTTP requests is sent. Therefore, SNI enables servers to identify the services that clients are attempting to access before certificates are sent. This allows the servers to present correct certificates to the clients. Valid values:
+        # 
+        #     *   true: SNI is enabled.
+        #     *   false: SNI is disabled.
+        # 
+        #     **followRedirect**: indicates whether 3XX redirects are followed. Valid values:
+        # 
+        #     *   true: 3XX redirects are followed. You are redirected to the destination address if a 3XX status code such as 301, 302, 303, 307, or 308 is returned.
+        #     *   false: 3XX redirects are not followed.
+        # 
+        # *   ping:
+        # 
+        #     **packetNum**: the total number of Internet Control Message Protocol (ICMP) packets that are sent to the address for each ping-based health check. Valid values: 20, 50, and 100.
+        # 
+        #     **packetLossRate**: the ICMP packet loss rate for each ping-based health check. The packet loss rate in a health check can be calculated by using the following formula: Packet loss rate in a health check = (Number of lost packets/Total number of sent ICMP packets) × 100%. If the packet loss rate reaches the threshold, an alert is triggered. Valid values: 10, 30, 40, 80, 90, and 100.
         self.extend_info = extend_info
+        # Percentage of selected node probe failures (%), that is, the percentage of abnormal detection points among the total detection points. When the failure ratio exceeds the set threshold, the service address is judged as abnormal. The available failure ratio thresholds are:
+        # - 20
+        # - 50
+        # - 80
+        # - 100
         self.failure_rate = failure_rate
+        # The time interval (in seconds) between each check, with a default interval of 1 minute. The minimum supported health check interval is 15 seconds, available for flagship edition instances.
         self.interval = interval
+        # Detect the type of the node IP address:
+        # - IPv4: Applicable when the target address type is IPv4;
+        # - IPv6: Applicable when the target address type is IPv6.
         self.ip_version = ip_version
+        # Probe node list, detailed information can be obtained by calling ListCloudGtmMonitorNodes.
         self.isp_city_nodes = isp_city_nodes
+        # The name of the health check probe template, which is recommended to be distinguishable for configuration personnel to differentiate and remember, ideally indicating the health check protocol.
         self.name = name
+        # Protocol types to initiate probes to the target IP address:
+        # - ping
+        # - tcp
+        # - http
+        # - https
         self.protocol = protocol
+        # Remarks for the health check template.
         self.remark = remark
+        # Unique request identification code.
         self.request_id = request_id
+        # The ID of the health check template. This ID uniquely identifies the health check template.
         self.template_id = template_id
+        # Probe timeout (in milliseconds), data packets not returned within the timeout period are deemed as health check timeouts:
+        # - 2000
+        # - 3000
+        # - 5000
+        # - 10000
         self.timeout = timeout
+        # Health check template configuration modification time.
         self.update_time = update_time
+        # Health check template configuration modification time (timestamp).
         self.update_timestamp = update_timestamp
 
     def validate(self):
@@ -9927,10 +10653,18 @@ class DescribeCloudGtmSystemLinesResponseBodySystemLinesSystemLine(TeaModel):
         name: str = None,
         parent_code: str = None,
     ):
+        # The line code.
         self.code = code
+        # The display name of the line.
         self.display_name = display_name
+        # Indicates whether the line can be selected as the source of a Domain Name System (DNS) request. Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_available = is_available
+        # The name of the line.
         self.name = name
+        # The code of the parent line.
         self.parent_code = parent_code
 
     def validate(self):
@@ -10011,8 +10745,11 @@ class DescribeCloudGtmSystemLinesResponseBody(TeaModel):
         system_lines: DescribeCloudGtmSystemLinesResponseBodySystemLines = None,
         system_lines_tree: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The system lines.
         self.system_lines = system_lines
+        # The system lines, which are in a tree structure. Only a system line is listed in this example.
         self.system_lines_tree = system_lines_tree
 
     def validate(self):
@@ -10817,7 +11554,7 @@ class DescribeDnsCacheDomainsRequest(TeaModel):
         self.lang = lang
         # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Valid values: **1 to 100**. Default value: **20**.
+        # The number of entries per page. Maximum value: **100**. Default value: **20**.
         self.page_size = page_size
 
     def validate(self):
@@ -12782,16 +13519,16 @@ class DescribeDnsGtmAddrAttributeInfoRequest(TeaModel):
         lang: str = None,
         type: str = None,
     ):
-        # The addresses whose source regions you want to query.
+        # The addresses.
         # 
         # This parameter is required.
         self.addrs = addrs
-        # The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+        # The language of the values for specific response parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
-        # The type of the addresses. Valid values:
+        # The type of addresses. Valid values:
         # 
         # *   IPV4: IPv4 address
-        # *   IPV6: IPv6 address
+        # *   IPv6: IPv6 address
         # *   DOMAIN: domain name
         # 
         # This parameter is required.
@@ -12887,9 +13624,9 @@ class DescribeDnsGtmAddrAttributeInfoResponseBodyAddrAddr(TeaModel):
         addr: str = None,
         attribute_info: DescribeDnsGtmAddrAttributeInfoResponseBodyAddrAddrAttributeInfo = None,
     ):
-        # The address that was queried.
+        # The address in the address pool.
         self.addr = addr
-        # The source region of the address.
+        # The information about the source region of the address.
         self.attribute_info = attribute_info
 
     def validate(self):
@@ -12959,9 +13696,9 @@ class DescribeDnsGtmAddrAttributeInfoResponseBody(TeaModel):
         addr: DescribeDnsGtmAddrAttributeInfoResponseBodyAddr = None,
         request_id: str = None,
     ):
-        # The addresses that were queried.
+        # The address in the address pool.
         self.addr = addr
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14687,15 +15424,15 @@ class DescribeDnsGtmInstancesRequest(TeaModel):
         page_size: int = None,
         resource_group_id: str = None,
     ):
-        # The keyword that you use for query. Fuzzy search by instance ID or instance name is supported.
+        # The keyword that you use for the query. Fuzzy search by instance ID or instance name is supported.
         self.keyword = keyword
-        # The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+        # The language of the values for specific response parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
-        # The number of the page to return.
+        # The page number. Pages start from page **1**. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page. Maximum value: **100**. Default value: **20**.
         self.page_size = page_size
-        # The ID of the resource group where you want to query instances.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -14742,24 +15479,28 @@ class DescribeDnsGtmInstancesResponseBodyGtmInstancesConfigAlertConfig(TeaModel)
         notice_type: str = None,
         sms_notice: str = None,
     ):
-        self.dingtalk_notice = dingtalk_notice
-        # Indicates whether email notifications were configured. Valid values:
+        # Indicates whether DingTalk alert notifications are configured. Valid values:
         # 
-        # *   true: configured
-        # *   false | null: not configured
+        # *   true
+        # *   false | null
+        self.dingtalk_notice = dingtalk_notice
+        # Indicates whether email notifications are configured. Valid values:
+        # 
+        # *   true
+        # *   false | null
         self.email_notice = email_notice
         # The type of the alert event. Valid values:
         # 
         # *   ADDR_ALERT: The address is unavailable.
-        # *   ADDR_RESUME: The address is restored and becomes available.
-        # *   ADDR_POOL_GROUP_UNAVAILABLE: The address pool group is unavailable.
-        # *   ADDR_POOL_GROUP_AVAILABLE: The address pool group is restored and becomes available.
+        # *   ADDR_RESUME: The address becomes available.
+        # *   ADDR_POOL_GROUP_UNAVAILABLE: The address pool set is unavailable.
+        # *   ADDR_POOL_GROUP_AVAILABLE: The address pool set becomes available.
         # *   ACCESS_STRATEGY_POOL_GROUP_SWITCH: Switchover is triggered between the primary and secondary address pools.
         self.notice_type = notice_type
-        # Indicates whether SMS notifications were configured. Valid values:
+        # Indicates whether SMS notifications are configured. Valid values:
         # 
-        # *   true: configured
-        # *   false | null: not configured
+        # *   true
+        # *   false | null
         self.sms_notice = sms_notice
 
     def validate(self):
@@ -14808,30 +15549,31 @@ class DescribeDnsGtmInstancesResponseBodyGtmInstancesConfig(TeaModel):
         strategy_mode: str = None,
         ttl: int = None,
     ):
-        # The alert notification methods.
+        # The alert notification method.
         self.alert_config = alert_config
-        # The alert group.
+        # The alert contact groups. The value is in the JSON format.
         self.alert_group = alert_group
-        # The access type of the CNAME domain name.
+        # The type of the CNAME. Valid value:
         # 
-        # *   The value was set to PUBLIC, which indicates Internet access.
+        # *   PUBLIC
         self.cname_type = cname_type
         # The name of the instance.
         self.instance_name = instance_name
-        # Indicates whether a custom CNAME domain name or a CNAME domain name assigned by the system is used to access GTM over the Internet. Valid values:
+        # Specifies whether to use a custom CNAME or a system-assigned CNAME to access GTM over the Internet. Valid values:
         # 
-        # *   CUSTOM: a custom CNAME domain name
-        # *   SYSTEM_ASSIGN: a CNAME domain name assigned by the system
+        # *   CUSTOM: a custom CNAME
+        # *   SYSTEM_ASSIGN: a system-assigned CNAME. You cannot set PublicCnameMode to this value.
         self.public_cname_mode = public_cname_mode
+        # The hostname of the domain name that is used to access GTM over the Internet.
         self.public_rr = public_rr
-        # The website domain name that the user uses on the Internet.
-        self.public_user_domain_name = public_user_domain_name
         # The domain name that is used to access GTM over the Internet.
+        self.public_user_domain_name = public_user_domain_name
+        # The canonical name (CNAME) that is used to access GTM over the Internet.
         self.public_zone_name = public_zone_name
         # The type of the access policy. Valid values:
         # 
-        # *   LATENCY: latency-based
-        # *   GEO: geographical location-based
+        # *   LATENCY: latency-based access policy
+        # *   GEO: geographical location-based access policy
         self.strategy_mode = strategy_mode
         # The global time to live (TTL).
         self.ttl = ttl
@@ -14908,12 +15650,13 @@ class DescribeDnsGtmInstancesResponseBodyGtmInstancesUsedQuota(TeaModel):
         sms_used_count: int = None,
         task_used_count: int = None,
     ):
+        # The total number of sent DingTalk notifications.
         self.dingtalk_used_count = dingtalk_used_count
-        # The total number of email notifications that were sent.
+        # The total number of sent email notifications.
         self.email_used_count = email_used_count
-        # The total number of SMS notifications that were sent.
+        # The total number of sent SMS notifications.
         self.sms_used_count = sms_used_count
-        # The number of detection tasks that were created.
+        # The number of created detection tasks.
         self.task_used_count = task_used_count
 
     def validate(self):
@@ -14966,23 +15709,23 @@ class DescribeDnsGtmInstancesResponseBodyGtmInstances(TeaModel):
     ):
         # The configurations of the instance.
         self.config = config
-        # The time when the instance was created.
+        # The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
-        # The timestamp that indicates when the instance was created.
+        # The time when the instance was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_timestamp = create_timestamp
-        # The time when the instance expires.
+        # The time when the instance expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.expire_time = expire_time
-        # The timestamp that indicates when the instance expires.
+        # The time when the instance expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.expire_timestamp = expire_timestamp
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The billing method of the instance.
+        # The billing method of the GTM instance. Valid value:
         # 
-        # *   The value is set to Subscription.
+        # *   Subscription.
         self.payment_type = payment_type
-        # The ID of the resource group to which the instance belongs.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The total number of SMS notifications.
+        # The total number of Short Message Service (SMS) notifications.
         self.sms_quota = sms_quota
         # The total number of detection tasks.
         self.task_quota = task_quota
@@ -15070,17 +15813,17 @@ class DescribeDnsGtmInstancesResponseBody(TeaModel):
         total_items: int = None,
         total_pages: int = None,
     ):
-        # The returned instances.
+        # The Global Traffic Manager (GTM) instances.
         self.gtm_instances = gtm_instances
-        # The page number of the returned page.
+        # The page number. Pages start from page **1**. Default value: **1**.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page. Maximum value: 100. Default value: 20.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned on all pages.
+        # The total number of entries returned.
         self.total_items = total_items
-        # The total number of returned pages.
+        # The total number of pages returned.
         self.total_pages = total_pages
 
     def validate(self):
@@ -15529,24 +16272,25 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodesDoma
         isp_code: str = None,
         isp_name: str = None,
     ):
-        # The code of the city where the monitored node is deployed.
+        # The city code.
         self.city_code = city_code
-        # The display name of the city where the monitored node is deployed.
+        # The display name of the city.
         self.city_name = city_name
-        # Indicates whether the monitored node is selected for the health check by default.
+        # Indicates whether the health check node is selected by default.
         self.default_selected = default_selected
-        # The name of the group to which the monitored node belongs.
+        # The name of the node group.
         self.group_name = group_name
-        # The type of the group to which the monitored node belongs. Valid values:
+        # The type of the node group. Valid values:
         # 
-        # *   BGP: BGP nodes
-        # *   OVERSEAS: nodes outside the Chinese mainland
-        # *   ISP: ISP nodes
+        # *   BGP: BGP node
+        # *   OVERSEAS: node outside the Chinese mainland
+        # *   ISP: ISP node
         self.group_type = group_type
+        # The IP addresses of the health check nodes.
         self.ips = ips
-        # The code of the ISP to which the monitored node belongs.
+        # The ISP code.
         self.isp_code = isp_code
-        # The display name of the ISP to which the monitored node belongs.
+        # The display name of the ISP.
         self.isp_name = isp_name
 
     def validate(self):
@@ -15673,24 +16417,25 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodesDoma
         isp_code: str = None,
         isp_name: str = None,
     ):
-        # The code of the city where the monitored node is deployed.
+        # The city code.
         self.city_code = city_code
-        # The display name of the city where the monitored node is deployed.
+        # The display name of the city.
         self.city_name = city_name
-        # Indicates whether the monitored node is selected for the health check by default.
+        # Indicates whether the health check node is selected by default.
         self.default_selected = default_selected
-        # The name of the group to which the monitored node belongs.
+        # The name of the node group.
         self.group_name = group_name
-        # The type of the group to which the monitored node belongs. Valid values:
+        # The type of the node group. Valid values:
         # 
-        # *   BGP: BGP nodes
-        # *   OVERSEAS: nodes outside the Chinese mainland
-        # *   ISP: ISP nodes
+        # *   BGP: BGP node
+        # *   OVERSEAS: node outside the Chinese mainland
+        # *   ISP: ISP node
         self.group_type = group_type
+        # This parameter is not returned.
         self.ips = ips
-        # The code of the ISP to which the monitored node belongs.
+        # The ISP code.
         self.isp_code = isp_code
-        # The display name of the ISP to which the monitored node belongs.
+        # The display name of the ISP.
         self.isp_name = isp_name
 
     def validate(self):
@@ -15817,24 +16562,25 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodesIpv4IspCit
         isp_code: str = None,
         isp_name: str = None,
     ):
-        # The code of the city where the monitored node is deployed.
+        # The city code.
         self.city_code = city_code
-        # The display name of the city where the monitored node is deployed.
+        # The display name of the city.
         self.city_name = city_name
-        # Indicates whether the monitored node is selected for the health check by default.
+        # Indicates whether the health check node is selected by default.
         self.default_selected = default_selected
-        # The name of the group to which the monitored node belongs.
+        # The name of the node group.
         self.group_name = group_name
-        # The type of the group to which the monitored node belongs. Valid values:
+        # The type of the node group. Valid values:
         # 
-        # *   BGP: Border Gateway Protocol (BGP) nodes
-        # *   OVERSEAS: nodes outside the Chinese mainland
-        # *   ISP: ISP nodes
+        # *   BGP: Border Gateway Protocol (BGP) node
+        # *   OVERSEAS: node outside the Chinese mainland
+        # *   ISP: ISP node
         self.group_type = group_type
+        # The IP addresses of the health check nodes.
         self.ips = ips
-        # The code of the Internet service provider (ISP) to which the monitored node belongs.
+        # The Internet service provider (ISP) code.
         self.isp_code = isp_code
-        # The display name of the ISP to which the monitored node belongs.
+        # The display name of the ISP.
         self.isp_name = isp_name
 
     def validate(self):
@@ -15961,24 +16707,25 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodesIpv6IspCit
         isp_code: str = None,
         isp_name: str = None,
     ):
-        # The code of the city where the monitored node is deployed.
+        # The city code.
         self.city_code = city_code
-        # The display name of the city where the monitored node is deployed.
+        # The display name of the city.
         self.city_name = city_name
-        # Indicates whether the monitored node is selected for the health check by default.
+        # Indicates whether the health check node is selected by default.
         self.default_selected = default_selected
-        # The name of the group to which the monitored node belongs.
+        # The name of the node group.
         self.group_name = group_name
-        # The type of the group to which the monitored node belongs. Valid values:
+        # The type of the node group. Valid values:
         # 
-        # *   BGP: BGP nodes
-        # *   OVERSEAS: nodes outside the Chinese mainland
-        # *   ISP: ISP nodes
+        # *   BGP: BGP node
+        # *   OVERSEAS: node outside the Chinese mainland
+        # *   ISP: ISP node
         self.group_type = group_type
+        # This parameter is not returned.
         self.ips = ips
-        # The code of the ISP to which the monitored node belongs.
+        # The ISP code.
         self.isp_code = isp_code
-        # The display name of the ISP to which the monitored node belongs.
+        # The display name of the ISP.
         self.isp_name = isp_name
 
     def validate(self):
@@ -16075,15 +16822,15 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBody(TeaModel):
         ipv_6isp_city_nodes: DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodes = None,
         request_id: str = None,
     ):
-        # The monitored nodes that can be used to perform health checks on address pools that contain public domain names that are resolved to IPv4 addresses.
+        # The nodes that perform health checks on domain names that use public IPv4 addresses.
         self.domain_ipv_4isp_city_nodes = domain_ipv_4isp_city_nodes
-        # The monitored nodes that can be used to perform health checks on address pools that contain public domain names that are resolved to IPv6 addresses.
+        # The nodes that perform health checks on domain names that use public IPv6 addresses.
         self.domain_ipv_6isp_city_nodes = domain_ipv_6isp_city_nodes
-        # The monitored nodes that can be used to perform health checks on address pools that contain public IPv4 addresses.
+        # The nodes that perform health checks on public IPv4 addresses.
         self.ipv_4isp_city_nodes = ipv_4isp_city_nodes
-        # The monitored nodes that can be used to perform health checks on address pools that contain public IPv6 addresses.
+        # The nodes that perform health checks on public IPv6 addresses.
         self.ipv_6isp_city_nodes = ipv_6isp_city_nodes
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16221,17 +16968,17 @@ class DescribeDnsGtmMonitorConfigResponseBodyIspCityNodesIspCityNode(TeaModel):
         isp_code: str = None,
         isp_name: str = None,
     ):
-        # The code of the monitored city node.
+        # The city code.
         self.city_code = city_code
-        # The display name of the monitored city node.
+        # The display name of the city.
         self.city_name = city_name
         # The code of the country or region.
         self.country_code = country_code
         # The display name of the country or region.
         self.country_name = country_name
-        # The code of the monitored Internet service provider (ISP) node.
+        # The Internet service provider (ISP) code.
         self.isp_code = isp_code
-        # The name of the ISP.
+        # The display name of the ISP.
         self.isp_name = isp_name
 
     def validate(self):
@@ -16325,62 +17072,62 @@ class DescribeDnsGtmMonitorConfigResponseBody(TeaModel):
         update_time: str = None,
         update_timestamp: int = None,
     ):
-        # The time when the health check task was created.
+        # The time when the health check configuration was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.create_time = create_time
-        # The timestamp that indicates when the health check task was created.
+        # The time when the health check configuration was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_timestamp = create_timestamp
-        # The number of consecutive times of failed health check attempts.
+        # The number of consecutive failures.
         self.evaluation_count = evaluation_count
-        # The interval at which the health check task is executed. Unit: seconds.
+        # The health check interval. Unit: seconds.
         self.interval = interval
-        # The monitored node.
+        # The health check nodes.
         self.isp_city_nodes = isp_city_nodes
-        # The ID of the health check task.
+        # The ID of the health check configuration.
         self.monitor_config_id = monitor_config_id
-        # The extended information. The following parameters are required for different health check protocols:
+        # The extended information. The required parameters vary based on the value of ProtocolType.
         # 
-        # *   HTTP or HTTPS:
+        # *   HTTP or HTTPS
         # 
-        #     *   port: the check port.
+        #     *   port: the port that you want to check
         # 
-        #     *   host: the host settings.
+        #     *   host: the host settings
         # 
-        #     *   path: the URL path.
+        #     *   path: the URL path
         # 
-        #     *   code: the return code greater than the specified value.
+        #     *   code: the response code. The health check result is deemed abnormal if the returned value is greater than the specified value.
         # 
-        #     *   failureRate: the failure rate.
+        #     *   failureRate: the failure rate
         # 
-        #     *   sni: specifies whether to enable server name indication (SNI). This parameter is used only for the HTTPS protocol. Valid values:
+        #     *   sni: specifies whether to enable server name indication (SNI). This parameter is available only when ProtocolType is set to HTTPS. Valid values:
         # 
-        #         *   true: enable SNI.
-        #         *   false: disable SNI.
+        #         *   true: enables SNI.
+        #         *   false: disables SNI.
         # 
-        #     *   nodeType: the type of the node to monitor when the address pool type is DOMAIN. Valid values:
+        #     *   nodeType: the type of the node for monitoring when the address pool type is domain name. Valid values:
         # 
         #         *   IPV4
         #         *   IPV6
         # 
         # *   PING:
         # 
-        #     *   failureRate: the failure rate.
+        #     *   failureRate: the failure rate
         # 
-        #     *   packetNum: the number of ping packets.
+        #     *   packetNum: the number of ping packets
         # 
-        #     *   packetLossRate: the loss rate of ping packets.
+        #     *   packetLossRate: the loss rate of ping packets
         # 
-        #     *   nodeType: the type of the node to monitor when the address pool type is DOMAIN. Valid values:
+        #     *   nodeType: the type of the node for monitoring when the address pool type is domain name. Valid values:
         # 
         #         *   IPV4
         #         *   IPV6
         # 
-        # *   TCP:
+        # *   TCP
         # 
-        #     *   port: the check port.
+        #     *   port: the port that you want to check
         # 
-        #     *   failureRate: the failure rate.
+        #     *   failureRate: the failure rate
         # 
-        #     *   nodeType: the type of the node to monitor when the address pool type is DOMAIN. Valid values:
+        #     *   nodeType: the type of the node for monitoring when the address pool type is domain name. Valid values:
         # 
         #         *   IPV4
         #         *   IPV6
@@ -16392,13 +17139,13 @@ class DescribeDnsGtmMonitorConfigResponseBody(TeaModel):
         # *   PING
         # *   TCP
         self.protocol_type = protocol_type
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The timeout period. Unit: milliseconds.
         self.timeout = timeout
-        # The time when the information about the health check task was updated.
+        # The time when the health check configuration was updated. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.update_time = update_time
-        # The timestamp that indicates when the information about the health check task was updated.
+        # The time when the health check configuration was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.update_timestamp = update_timestamp
 
     def validate(self):
@@ -16519,7 +17266,12 @@ class DescribeDnsProductInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The language.
+        # The language of the response. Valid values:
+        # 
+        # *   zh: Chinese
+        # *   en: English
+        # 
+        # Default value: en
         self.lang = lang
         # The IP address of the client.
         self.user_client_ip = user_client_ip
@@ -16619,10 +17371,10 @@ class DescribeDnsProductInstanceResponseBody(TeaModel):
         version_code: str = None,
         version_name: str = None,
     ):
-        # The auto-renewal status of the instance. Valid values:
+        # Indicates whether auto-renewal was enabled. Valid values:
         # 
-        # *   **true**: Auto-renewal is enabled.
-        # *   **false**: Auto-renewal is disabled.
+        # *   true: Auto-renewal was enabled.
+        # *   false: Auto-renewal was not enabled.
         self.auto_renewal = auto_renewal
         # The number of times that you can change the domain names that are bound to the paid Alibaba Cloud DNS instance. This parameter applies to Alibaba Cloud DNS instances of the custom edition.
         self.bind_count = bind_count
@@ -16638,11 +17390,11 @@ class DescribeDnsProductInstanceResponseBody(TeaModel):
         self.ddos_defend_query = ddos_defend_query
         # The maximum number of IP addresses that are used for load balancing in a single line of a domain name.
         self.dns_slbcount = dns_slbcount
-        # The DNS protection level. Valid values:
+        # The level of DNS protection. Valid values:
         # 
-        # *   **no**: DNS protection is not provided.
-        # *   **basic**: Basic DNS attack defense is provided.
-        # *   **advanced**: Advanced DNS attack defense is provided.
+        # *   no: No DNS protection is provided.
+        # *   basic: Basic DNS protection is provided.
+        # *   advanced: Advanced DNS protection is provided.
         self.dns_security = dns_security
         # The DNS servers configured for the domain names.
         self.dns_servers = dns_servers
@@ -16659,15 +17411,36 @@ class DescribeDnsProductInstanceResponseBody(TeaModel):
         self.end_time = end_time
         # The time when the instance expired. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end_timestamp = end_timestamp
-        # Indicates whether global server load balancing (GSLB) is supported.
+        # Indicates whether global server load balancing (GSLB) is supported. Valid values:
+        # 
+        # *   true: GSLB is supported.
+        # *   false: GSLB is not supported.
         self.gslb = gslb
-        # The Internet service provider (ISP) lines for DNS resolution.
+        # The ISP resolution lines. Valid values:
+        # 
+        # *   China Telecom
+        # *   China Mobile
+        # *   China Unicom
+        # *   China Education and Research Network (CERNET)
+        # *   China Broadcasting Network (CBN)
+        # *   Dr Peng Telecom & Media Group
         self.isplines = isplines
-        # The regional ISP lines for DNS resolution.
+        # The regional ISP resolution lines. Valid values:
+        # 
+        # *   China Telecom (province)
+        # *   China Mobile (province)
+        # *   China Unicom (province)
+        # *   CERNET (province)
         self.ispregion_lines = ispregion_lines
-        # Indicates whether the Domain Name System (DNS) servers stopped responding to all requests sent to the domain names.
+        # Indicates whether the Domain Name System (DNS) servers stopped responding to all DNS requests. Valid values:
+        # 
+        # *   true: The DNS servers stopped responding to all DNS requests.
+        # *   false: The DNS servers did not stop responding to all DNS requests.
         self.in_black_hole = in_black_hole
         # Indicates whether the DNS servers stopped responding to abnormal requests sent to the domain names.
+        # 
+        # *   true: The DNS servers stopped responding to abnormal requests sent to the domain names.
+        # *   false: The DNS servers did not stop responding to abnormal requests sent to the domain names.
         self.in_clean = in_clean
         # The ID of the Alibaba Cloud DNS instance.
         self.instance_id = instance_id
@@ -16683,11 +17456,19 @@ class DescribeDnsProductInstanceResponseBody(TeaModel):
         self.oversea_line = oversea_line
         # The billing method.
         self.payment_type = payment_type
-        # Indicates whether regional lines are supported.
+        # Indicates whether the DNS request lines are regional lines. Valid values:
+        # 
+        # *   true: The DNS request lines are regional lines.
+        # *   false: The DNS request lines are not regional lines.
         self.region_lines = region_lines
         # The request ID.
         self.request_id = request_id
-        # The search engine lines for DNS resolution.
+        # The search engine resolution lines. Valid values:
+        # 
+        # *   Google
+        # *   Baidu
+        # *   Bing
+        # *   Youdao
         self.search_engine_lines = search_engine_lines
         # The time when the instance was purchased. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
@@ -16919,23 +17700,27 @@ class DescribeDnsProductInstancesRequest(TeaModel):
         user_client_ip: str = None,
         version_code: str = None,
     ):
-        # The Sorting direction. Values:
-        # * **DESC**: Descending (if not specified, the default is descending order)
-        # * **ASC**: Ascending
+        # The order in which you want to sort returned entries. Valid values:
+        # 
+        # *   DESC: Returned entries are sorted in descending order. If this parameter is left empty, returned entries are sorted in descending order by default.
+        # *   ASC: Returned entries are sorted in ascending order.
         self.direction = direction
         # The type of the domain name. Valid values:
         # 
         # *   PUBLIC (default): hosted public domain name
         # *   CACHE: cached public domain name
         self.domain_type = domain_type
-        # The language of the content within the request and response. Valid values:
+        # The language of the response. Valid values:
         # 
-        # *   **zh** : Chinese
-        # *   **en** (default) : English
+        # *   zh: Chinese
+        # *   en: English
+        # 
+        # Default value: en
         self.lang = lang
-        # The Sorting parameter. Values:
-        # * createDate: Sort by creation time (if not specified, the default is to sort by creation time)
-        # * expireDate: Sort by expiration time
+        # The method that is used to sort returned entries. Valid values:
+        # 
+        # *   createDate: sorts returned entries by creation time. If this parameter is left empty, returned entries are sorted by creation time by default.
+        # *   expireDate: sorts returned entries by expiration time.
         self.order_by = order_by
         # The number of the page to return. Pages start from page **1**. Default value: **1**.
         self.page_number = page_number
@@ -17031,12 +17816,10 @@ class DescribeDnsProductInstancesResponseBodyDnsProductsDnsProduct(TeaModel):
         version_code: str = None,
         version_name: str = None,
     ):
-        # Indicates whether auto-renewal is enabled for the extra internal bandwidth that you purchased. Valid values:
+        # Indicates whether auto-renewal was enabled. Valid values:
         # 
-        # *   **true**: Auto-renewal is enabled.
-        # *   **false**: Auto-renewal is disabled.
-        # 
-        # > If no extra internal bandwidth is purchased, this parameter is not returned.
+        # *   true: Auto-renewal was enabled.
+        # *   false: Auto-renewal was not enabled.
         self.auto_renewal = auto_renewal
         # The number of times you can change domain names that are bound to the DNS instance. It can be specified by the user who uses Alibaba Cloud DNS of the custom version.
         self.bind_count = bind_count
@@ -17052,11 +17835,11 @@ class DescribeDnsProductInstancesResponseBodyDnsProductsDnsProduct(TeaModel):
         self.ddos_defend_query = ddos_defend_query
         # The number of IP addresses supported by a domain name or line.
         self.dns_slbcount = dns_slbcount
-        # The DNS security policy. Valid values:
+        # The level of DNS protection. Valid values:
         # 
-        # *   **no**: not required.
-        # *   **basic**: anti-DDoS basic.
-        # *   **advanced**: anti-DDoS advanced.
+        # *   no: No DNS protection is provided.
+        # *   basic: Basic DNS protection is provided.
+        # *   advanced: Advanced DNS protection is provided.
         self.dns_security = dns_security
         # The bound domain name.
         self.domain = domain
@@ -17064,13 +17847,31 @@ class DescribeDnsProductInstancesResponseBodyDnsProductsDnsProduct(TeaModel):
         self.end_time = end_time
         # The UNIX timestamp representing the expiration time of the instance.
         self.end_timestamp = end_timestamp
-        # Indicates whether global server load balancing (GSLB) was allowed.
+        # Indicates whether global server load balancing (GSLB) is supported.
+        # 
+        # *   true: GSLB is supported.
+        # *   false: GSLB is not supported.
         self.gslb = gslb
-        # The list of ISP lines.
+        # The ISP resolution lines.
+        # 
+        # *   China Telecom
+        # *   China Mobile
+        # *   China Unicom
+        # *   CERNET
+        # *   China Broadcasting Network (CBN)
+        # *   Dr Peng Telecom & Media Group
         self.isplines = isplines
-        # The list of ISP line subdivisions.
+        # The regional ISP resolution lines. Valid values:
+        # 
+        # *   China Telecom (province)
+        # *   China Mobile (province)
+        # *   China Unicom (province)
+        # *   China Education and Research Network (CERNET) (province)
         self.ispregion_lines = ispregion_lines
-        # Indicates whether the request for domain name resolution was in the black hole.
+        # Indicates whether the Domain Name System (DNS) servers stopped responding to all requests. Valid values:
+        # 
+        # *   true: The DNS servers stopped responding to all requests.
+        # *   false: The DNS servers did not stop responding to all requests.
         self.in_black_hole = in_black_hole
         # Indicates whether the request for domain name resolution was being cleared.
         self.in_clean = in_clean
@@ -17086,13 +17887,19 @@ class DescribeDnsProductInstancesResponseBodyDnsProductsDnsProduct(TeaModel):
         self.oversea_ddos_defend_flow = oversea_ddos_defend_flow
         # The type of the overseas line.
         self.oversea_line = oversea_line
-        # The billing method. Valid value:
-        # 
-        # *   Subscription: You can pay in advance for the use of resources.
+        # The billing method.
         self.payment_type = payment_type
-        # Indicates whether regional lines were allowed.
+        # Indicates whether the DNS request lines are regional lines.
+        # 
+        # *   true: The DNS request lines are regional lines.
+        # *   false: The DNS request lines are not regional lines.
         self.region_lines = region_lines
-        # The list of search engine lines.
+        # The search engine resolution lines. Valid values:
+        # 
+        # *   Google
+        # *   Baidu
+        # *   Bing
+        # *   Youdao
         self.search_engine_lines = search_engine_lines
         # The time when the DNS instance was purchased.
         self.start_time = start_time
@@ -17302,7 +18109,7 @@ class DescribeDnsProductInstancesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of Alibaba Cloud DNS instances obtained by this operation.
+        # The paid Alibaba Cloud DNS instances.
         self.dns_products = dns_products
         # The type of the domain name. Valid values:
         # 
@@ -17313,7 +18120,7 @@ class DescribeDnsProductInstancesResponseBody(TeaModel):
         self.page_number = page_number
         # The number of entries returned per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of domain names.
         self.total_count = total_count
@@ -19290,6 +20097,7 @@ class DescribeDomainInfoResponseBody(TeaModel):
         self.dns_servers = dns_servers
         # The ID of the domain name.
         self.domain_id = domain_id
+        # Indicates whether the DNS traffic analysis feature is enabled. Valid values:
         self.domain_logging_switch_status = domain_logging_switch_status
         # The domain name.
         self.domain_name = domain_name
@@ -21103,7 +21911,7 @@ class DescribeDomainStatisticsSummaryRequest(TeaModel):
         self.lang = lang
         # The number of the page to return. Pages start from page **1**. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **100**. Minimum value: **1**. Default value: **20**.
+        # The number of entries per page. Valid values: **1 to 100**. Default value: **20**.
         self.page_size = page_size
         # The search mode of the keyword. Valid values:
         # 
@@ -21477,9 +22285,9 @@ class DescribeDomainsResponseBodyDomainsDomainTagsTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag added to the resource.
+        # The key of tag N added to the resource.
         self.key = key
-        # The value of the tag added to the resource.
+        # The value of tag N added to the resource.
         self.value = value
 
     def validate(self):
@@ -21566,16 +22374,20 @@ class DescribeDomainsResponseBodyDomainsDomain(TeaModel):
         version_code: str = None,
         version_name: str = None,
     ):
-        # Indicates whether the domain name was registered in Alibaba Cloud.
+        # Indicates whether the domain name was registered with Alibaba Cloud.
         self.ali_domain = ali_domain
-        # The time when the domain name was added.
+        # The time when the domain name was added. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.create_time = create_time
         # The time when the domain name was added. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_timestamp = create_timestamp
-        # The names of the DNS servers configured for the domain name.
+        # The names of the DNS servers configured for the domain name assigned by Alibaba Cloud DNS.
         self.dns_servers = dns_servers
         # The ID of the domain name.
         self.domain_id = domain_id
+        # Indicates whether the DNS traffic analysis feature is enabled for the domain name. Valid values:
+        # 
+        # *   OPEN
+        # *   CLOSE
         self.domain_logging_switch_status = domain_logging_switch_status
         # The domain name.
         self.domain_name = domain_name
@@ -21583,7 +22395,7 @@ class DescribeDomainsResponseBodyDomainsDomain(TeaModel):
         self.group_id = group_id
         # The name of the domain name group.
         self.group_name = group_name
-        # The time when the Alibaba Cloud DNS instance expires.
+        # The time when the Alibaba Cloud DNS instance expires. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.instance_end_time = instance_end_time
         # Indicates whether the Alibaba Cloud DNS instance expires.
         self.instance_expired = instance_expired
@@ -23859,11 +24671,11 @@ class DescribeGtmInstanceStatusRequest(TeaModel):
         instance_id: str = None,
         lang: str = None,
     ):
-        # The ID of the instance to query.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages.
+        # The language.
         self.lang = lang
 
     def validate(self):
@@ -23905,21 +24717,21 @@ class DescribeGtmInstanceStatusResponseBody(TeaModel):
         self.addr_not_available_num = addr_not_available_num
         # The number of unavailable address pools.
         self.addr_pool_not_available_num = addr_pool_not_available_num
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The status of the instance. Valid values:
+        # The state of the instance. Valid values:
         # 
-        # *   ALLOW: Operations on the instance are allowed.
-        # *   DENY: Operations on the instance are not allowed.
+        # *   ALLOW: The operation on the instance is allowed.
+        # *   DENY: The operation on the instance is not allowed.
         self.status = status
-        # List of reasons for an instance status. Valid values:
+        # The reasons why the instance is in the current state. Valid values:
         # 
-        # *   INSTANCE_OPERATE_BLACK_LIST: The instance is in the blacklist.
+        # *   INSTANCE_OPERATE_BLACK_LIST: The operation on the instance is not allowed.
         # *   BETA_INSTANCE: The instance is in public preview.
         self.status_reason = status_reason
-        # The number of access policies that are unavailable in the active address pool.
+        # The number of unavailable access policies.
         self.strategy_not_available_num = strategy_not_available_num
-        # The number of access policies that fail over to the secondary address pool.
+        # The number of access policies switched to the secondary address pool.
         self.switch_to_failover_strategy_num = switch_to_failover_strategy_num
 
     def validate(self):
@@ -25291,9 +26103,14 @@ class DescribeGtmRecoveryPlanRequest(TeaModel):
         lang: str = None,
         recovery_plan_id: int = None,
     ):
-        # The language used by the user.
+        # The language of the response. Valid values:
+        # 
+        # *   zh: Chinese
+        # *   en: English
+        # 
+        # Default value: en.
         self.lang = lang
-        # The ID of the disaster recovery plan that you want to query.
+        # The ID of the disaster recovery plan.
         # 
         # This parameter is required.
         self.recovery_plan_id = recovery_plan_id
@@ -25329,11 +26146,11 @@ class DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPoolAddrsAddr(Te
         mode: str = None,
         value: str = None,
     ):
-        # The ID of the address.
+        # The address ID.
         self.id = id
-        # The address work mode. It is the mode that was set for the IP address to work.
+        # The address mode.
         self.mode = mode
-        # The address value.
+        # The address.
         self.value = value
 
     def validate(self):
@@ -25407,13 +26224,12 @@ class DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPool(TeaModel):
         addrs: DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPoolAddrs = None,
         instance_id: str = None,
     ):
-        # The ID of the address pool.
+        # The address pool ID.
         self.addr_pool_id = addr_pool_id
-        # The name of the address pool.
+        # The address pool name.
         self.addr_pool_name = addr_pool_name
-        # The list of addresses in the address pool.
         self.addrs = addrs
-        # The ID of the GTM instance.
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):
@@ -25504,34 +26320,35 @@ class DescribeGtmRecoveryPlanResponseBody(TeaModel):
         update_time: str = None,
         update_timestamp: int = None,
     ):
-        # The time when the disaster recovery plan was created.
+        # The time when the disaster recovery plan was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The time when the disaster recovery plan was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_timestamp = create_timestamp
         # The number of faulty address pools.
         self.fault_addr_pool_num = fault_addr_pool_num
-        # The list of faulty address pools.
+        # The faulty address pools.
         self.fault_addr_pools = fault_addr_pools
-        # The last time when the recovery plan was executed.
+        # The time when the disaster recovery plan was last executed. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.last_execute_time = last_execute_time
-        # A timestamp that indicates the last time when the recovery plan was executed.
+        # The time when the disaster recovery plan was last executed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.last_execute_timestamp = last_execute_timestamp
-        # The last time when the disaster recovery plan was rolled back.
+        # The time when the disaster recovery plan was last rolled back. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.last_rollback_time = last_rollback_time
-        # A timestamp that indicates the last time when the disaster recovery plan was rolled back.
+        # The time when the disaster recovery plan was last rolled back. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.last_rollback_timestamp = last_rollback_timestamp
-        # The name of the disaster recovery plan queried.
+        # The name of the disaster recovery plan.
         self.name = name
-        # The ID of the disaster recovery plan queried.
+        # The ID of the disaster recovery plan.
         self.recovery_plan_id = recovery_plan_id
-        # The remarks on the disaster recovery plan.
+        # The description of the disaster recovery plan.
         self.remark = remark
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The status of the disaster recovery plan queried.
+        # The status of the disaster recovery plan.
         self.status = status
-        # The last time when the disaster recovery plan was updated.
+        # The time when the disaster recovery plan was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.update_time = update_time
-        # A timestamp that indicates the last time when the disaster recovery plan was updated.
+        # The time when the disaster recovery plan was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.update_timestamp = update_timestamp
 
     def validate(self):
@@ -25658,7 +26475,12 @@ class DescribeGtmRecoveryPlanAvailableConfigRequest(TeaModel):
         self,
         lang: str = None,
     ):
-        # The language used by the user.
+        # The language in which the returned results are displayed. Valid values:
+        # 
+        # *   zh: Chinese
+        # *   en: English
+        # 
+        # Default value: en.
         self.lang = lang
 
     def validate(self):
@@ -25687,7 +26509,7 @@ class DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstanceAddrPoo
         addr_pool_id: str = None,
         name: str = None,
     ):
-        # The ID of the address pool.
+        # The address pool ID.
         self.addr_pool_id = addr_pool_id
         # The name of the address pool.
         self.name = name
@@ -25758,11 +26580,11 @@ class DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstance(TeaMod
         instance_id: str = None,
         instance_name: str = None,
     ):
-        # The list of address pools for the GTM instance.
+        # The address pools.
         self.addr_pools = addr_pools
-        # The ID of the GTM instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The name of the GTM instance.
+        # The instance name.
         self.instance_name = instance_name
 
     def validate(self):
@@ -25836,9 +26658,9 @@ class DescribeGtmRecoveryPlanAvailableConfigResponseBody(TeaModel):
         instances: DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstances = None,
         request_id: str = None,
     ):
-        # The list of GTM instances involved in the disaster recovery plan.
+        # The instances.
         self.instances = instances
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -26432,7 +27254,9 @@ class DescribeInternetDnsLogsRequest(TeaModel):
         query_condition: str = None,
         start_timestamp: int = None,
     ):
+        # The account ID displayed on the Recursive Resolution (Public DNS) page after you activate Alibaba Cloud Public DNS.
         self.account_id = account_id
+        # The domain name.
         self.domain_name = domain_name
         self.end_timestamp = end_timestamp
         self.lang = lang
@@ -26540,6 +27364,7 @@ class DescribeInternetDnsLogsResponseBodyLogsLog(TeaModel):
         self.dns_msg_id = dns_msg_id
         self.log_time = log_time
         self.protocol = protocol
+        # The domain name for which you want to query Domain Name System (DNS) records.
         self.query_name = query_name
         self.query_type = query_type
         self.rt = rt
@@ -26548,6 +27373,7 @@ class DescribeInternetDnsLogsResponseBodyLogsLog(TeaModel):
         self.status = status
         self.subnet_ip = subnet_ip
         self.value = value
+        # The zone name.
         self.zone_name = zone_name
 
     def validate(self):
@@ -26664,6 +27490,7 @@ class DescribeInternetDnsLogsResponseBody(TeaModel):
     ):
         self.complete = complete
         self.cur_page = cur_page
+        # The logs.
         self.logs = logs
         self.page_size = page_size
         self.request_id = request_id
@@ -27908,12 +28735,14 @@ class DescribePdnsAppKeyResponseBodyAppKey(TeaModel):
         app_key_secret: str = None,
         create_date: str = None,
         create_timestamp: int = None,
+        remark: str = None,
         state: str = None,
     ):
         self.app_key_id = app_key_id
         self.app_key_secret = app_key_secret
         self.create_date = create_date
         self.create_timestamp = create_timestamp
+        self.remark = remark
         self.state = state
 
     def validate(self):
@@ -27933,6 +28762,8 @@ class DescribePdnsAppKeyResponseBodyAppKey(TeaModel):
             result['CreateDate'] = self.create_date
         if self.create_timestamp is not None:
             result['CreateTimestamp'] = self.create_timestamp
+        if self.remark is not None:
+            result['Remark'] = self.remark
         if self.state is not None:
             result['State'] = self.state
         return result
@@ -27947,6 +28778,8 @@ class DescribePdnsAppKeyResponseBodyAppKey(TeaModel):
             self.create_date = m.get('CreateDate')
         if m.get('CreateTimestamp') is not None:
             self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
         if m.get('State') is not None:
             self.state = m.get('State')
         return self
@@ -28061,11 +28894,13 @@ class DescribePdnsAppKeysResponseBodyAppKeys(TeaModel):
         app_key_id: str = None,
         create_date: str = None,
         create_timestamp: int = None,
+        remark: str = None,
         state: str = None,
     ):
         self.app_key_id = app_key_id
         self.create_date = create_date
         self.create_timestamp = create_timestamp
+        self.remark = remark
         self.state = state
 
     def validate(self):
@@ -28083,6 +28918,8 @@ class DescribePdnsAppKeysResponseBodyAppKeys(TeaModel):
             result['CreateDate'] = self.create_date
         if self.create_timestamp is not None:
             result['CreateTimestamp'] = self.create_timestamp
+        if self.remark is not None:
+            result['Remark'] = self.remark
         if self.state is not None:
             result['State'] = self.state
         return result
@@ -28095,6 +28932,8 @@ class DescribePdnsAppKeysResponseBodyAppKeys(TeaModel):
             self.create_date = m.get('CreateDate')
         if m.get('CreateTimestamp') is not None:
             self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
         if m.get('State') is not None:
             self.state = m.get('State')
         return self
@@ -28398,12 +29237,14 @@ class DescribePdnsRequestStatisticRequest(TeaModel):
         lang: str = None,
         start_date: str = None,
         sub_domain: str = None,
+        type: str = None,
     ):
         self.domain_name = domain_name
         self.end_date = end_date
         self.lang = lang
         self.start_date = start_date
         self.sub_domain = sub_domain
+        self.type = type
 
     def validate(self):
         pass
@@ -28424,6 +29265,8 @@ class DescribePdnsRequestStatisticRequest(TeaModel):
             result['StartDate'] = self.start_date
         if self.sub_domain is not None:
             result['SubDomain'] = self.sub_domain
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
@@ -28438,6 +29281,8 @@ class DescribePdnsRequestStatisticRequest(TeaModel):
             self.start_date = m.get('StartDate')
         if m.get('SubDomain') is not None:
             self.sub_domain = m.get('SubDomain')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
@@ -30599,7 +31444,7 @@ class DescribeRecordStatisticsRequest(TeaModel):
         rr: str = None,
         start_date: str = None,
     ):
-        # The domain name.
+        # The primary domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
@@ -30614,7 +31459,7 @@ class DescribeRecordStatisticsRequest(TeaModel):
         self.end_date = end_date
         # The language.
         self.lang = lang
-        # The hostname. If you want to resolve the subdomain name www.dns-exmaple.top, set this parameter to www.
+        # The hostname. If you want to resolve www.dns-exmaple.top, set Rr to www.
         # 
         # This parameter is required.
         self.rr = rr
@@ -31427,11 +32272,8 @@ class DescribeSupportLinesRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
-        # 域名名称。
         self.domain_name = domain_name
-        # 语言。
         self.lang = lang
-        # 用户端IP。
         self.user_client_ip = user_client_ip
 
     def validate(self):
@@ -31470,13 +32312,13 @@ class DescribeSupportLinesResponseBodyRecordLinesRecordLine(TeaModel):
         line_display_name: str = None,
         line_name: str = None,
     ):
-        # 2021-12-06T02:47:26.000+0000
+        # The code of the parent line. This parameter is not returned if the line has no parent line.
         self.father_code = father_code
-        # 子线路Code。
+        # The code of the line.
         self.line_code = line_code
-        # 父线路展示名称。
+        # The display name of the parent line.
         self.line_display_name = line_display_name
-        # 子线路展示名称。
+        # The display name of the line.
         self.line_name = line_name
 
     def validate(self):
@@ -31552,9 +32394,8 @@ class DescribeSupportLinesResponseBody(TeaModel):
         record_lines: DescribeSupportLinesResponseBodyRecordLines = None,
         request_id: str = None,
     ):
-        # 云解析线路列表。
+        # The Alibaba Cloud DNS lines.
         self.record_lines = record_lines
-        # 请求ID。
         self.request_id = request_id
 
     def validate(self):
@@ -32093,9 +32934,14 @@ class ExecuteGtmRecoveryPlanRequest(TeaModel):
         lang: str = None,
         recovery_plan_id: int = None,
     ):
-        # The language used by the user.
+        # The language of the response. Valid values:
+        # 
+        # *   zh: Chinese
+        # *   en: English
+        # 
+        # Default value: English.
         self.lang = lang
-        # The ID of the disaster recovery plan that you want to executed.
+        # The ID of the disaster recovery plan.
         # 
         # This parameter is required.
         self.recovery_plan_id = recovery_plan_id
@@ -32129,7 +32975,7 @@ class ExecuteGtmRecoveryPlanResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -32479,13 +33325,31 @@ class ListCloudGtmAddressPoolsRequest(TeaModel):
         page_size: int = None,
         remark: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # Address pool name.
         self.address_pool_name = address_pool_name
+        # The type of the address pool. Valid values:
+        # 
+        # *   IPv4: indicates that the service address to be resolved is an IPv4 address.
+        # *   IPv6: indicates that the service address to be resolved is an IPv6 address.
+        # *   domain: indicates that the service address to be resolved is a domain name.
         self.address_pool_type = address_pool_type
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The enabling state of the address pool. Valid values:
+        # 
+        # *   enable: The address pool is enabled.
+        # *   disable: The address pool is disabled.
         self.enable_status = enable_status
+        # Current page number, starting at **1**, default is **1**.
         self.page_number = page_number
+        # The number of rows per page when paginating queries, with a maximum value of **100**, and a default of **20**.
         self.page_size = page_size
+        # The additional description of the address pool.
         self.remark = remark
 
     def validate(self):
@@ -32543,8 +33407,11 @@ class ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddres
         template_id: str = None,
         template_name: str = None,
     ):
+        # The target service port for health checks. When the Ping protocol is selected for health checks, configuration of the service port is not supported.
         self.port = port
+        # The ID of the health check template.
         self.template_id = template_id
+        # Health check template name.
         self.template_name = template_name
 
     def validate(self):
@@ -32662,26 +33529,75 @@ class ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddres
         update_timestamp: int = None,
         weight_value: int = None,
     ):
+        # IP address or domain name.
         self.address = address
+        # The address ID. This ID uniquely identifies the address.
         self.address_id = address_id
+        # Address ownership information, not supported in the current version.
         self.attribute_info = attribute_info
+        # The failover mode that is used when address exceptions are identified. Valid values:
+        # 
+        # *   auto: the automatic mode. The system determines whether to return an address based on the health check results. If the address fails health checks, the system does not return the address. If the address passes health checks, the system returns the address.
+        # *   manual: the manual mode. If an address is in the unavailable state, the address is not returned for DNS requests even if the address passes health checks. If an address is in the available state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
         self.available_mode = available_mode
+        # The availability state of the address. Valid values:
+        # 
+        # *   available: The address is available.
+        # *   unavailable: The address is unavailable.
         self.available_status = available_status
+        # Address creation time.
         self.create_time = create_time
+        # Address creation time (timestamp).
         self.create_timestamp = create_timestamp
+        # Address enable status:
+        # - enable: Enabled status
+        # - disable: Disabled status
         self.enable_status = enable_status
+        # The condition for determining the health status of the address. Valid values:
+        # 
+        # *   any_ok: The health check results of at least one health check template are normal.
+        # *   p30_ok: The health check results of at least 30% of health check templates are normal.
+        # *   p50_ok: The health check results of at least 50% of health check templates are normal.
+        # *   p70_ok: The health check results of at least 70% of health check templates are normal.
+        # *   all_ok: The health check results of all health check templates are normal.
         self.health_judgement = health_judgement
+        # The health check state of the address. Valid values:
+        # 
+        # *   ok: The address passes all health checks of the referenced health check templates.
+        # *   ok_alert: The address fails some health checks of the referenced health check templates but the address is deemed normal.
+        # *   ok_no_monitor: The address does not reference any health check template and is normal.
+        # *   exceptional: The address fails some or all health checks of the referenced health check templates and the address is deemed abnormal.
         self.health_status = health_status
+        # The health check tasks.
         self.health_tasks = health_tasks
+        # The availability state of the address when AvailableMode is set to manual for the address. Valid values:
+        # 
+        # *   available: The address is available. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+        # *   unavailable: The address is unavailable. In this state, the address is not returned for DNS requests even if the address passes health checks.
         self.manual_available_status = manual_available_status
+        # Address name.
         self.name = name
+        # Address remarks.
         self.remark = remark
+        # List of request sources.
         self.request_source = request_source
+        # Indicates whether the mode of the sequence policy for load balancing between address pools is non-preemptive. This parameter is available only for the multicloud integration scenario. Valid values:
+        # 
+        # *   true
+        # *   false
         self.seq_non_preemptive_schedule = seq_non_preemptive_schedule
+        # Sequence number, indicating the priority of address return, where smaller numbers have higher priority.
         self.serial_number = serial_number
+        # Address type:
+        # - IPv4: IPv4 address
+        # - IPv6: IPv6 address
+        # - domain: Domain name
         self.type = type
+        # The last time the address was modified.
         self.update_time = update_time
+        # The last modification time of the address (timestamp).
         self.update_timestamp = update_timestamp
+        # Weight value (integer between 1 and 100), supports setting different weight values for each address, enabling resolution queries to return addresses according to the weight ratio.
         self.weight_value = weight_value
 
     def validate(self):
@@ -32843,20 +33759,61 @@ class ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool(TeaModel):
         update_time: str = None,
         update_timestamp: int = None,
     ):
+        # Load balancing policy among addresses in the address pool:
+        # - round_robin: Round-robin, for any source of DNS resolution requests, all addresses are returned. The order of all addresses is rotated each time.
+        # - sequence: Sequential, for any source of DNS resolution requests, the address with the smaller sequence number (the sequence number indicates the priority of address returns, with smaller numbers having higher priority) is returned. If the address with the smaller sequence number is unavailable, the next address with a smaller sequence number is returned.
+        # - weight: Weighted, supports setting different weight values for each address, realizing the return of addresses according to the ratio of weights in resolution queries.
+        # - source_nearest: Source-nearest, i.e., intelligent resolution function, where GTM can return different addresses based on the source of different DNS resolution requests, achieving the effect of users accessing nearby.
         self.address_lb_strategy = address_lb_strategy
+        # The ID of the address pool. This ID uniquely identifies the address pool.
         self.address_pool_id = address_pool_id
+        # Address pool name.
         self.address_pool_name = address_pool_name
+        # Address pool type:
+        # - IPv4
+        # - IPv6
+        # - domain
         self.address_pool_type = address_pool_type
+        # The addresses.
         self.addresses = addresses
+        # The availability state of the address pool. Valid values:
+        # 
+        # *   Available: The address pool is available.
+        # *   unavailable: The address pool is unavailable.
         self.available_status = available_status
+        # Address pool creation time.
         self.create_time = create_time
+        # Address pool creation time (timestamp).
         self.create_timestamp = create_timestamp
+        # The enabling state of the address pool. Valid values:
+        # 
+        # *   enable: The address pool is enabled.
+        # *   disable: The address pool is disabled.
         self.enable_status = enable_status
+        # The condition for determining the health state of the address. Valid values:
+        # 
+        # *   any_ok: The health check results of at least one health check template are normal.
+        # *   p30_ok: The health check results of at least 30% of health check templates are normal.
+        # *   p50_ok: The health check results of at least 50% of health check templates are normal.
+        # *   p70_ok: The health check results of at least 70% of health check templates are normal.
+        # *   all_ok: The health check results of all health check templates are normal.
         self.health_judgement = health_judgement
+        # The health state of the address pool. Valid values:
+        # 
+        # *   ok: The health state of the address pool is Normal and all addresses that are referenced by the address pool are available.
+        # *   ok_alert: The health state of the address pool is Warning and some of the addresses that are referenced by the address pool are unavailable. However, the address pool is deemed normal. In this state, available address pools are normally used for DNS resolution, but unavailable address pools cannot be used for DNS resolution.
+        # *   exceptional: The health state of the address pool is Abnormal and some or all of the addresses that are referenced by the address pool are unavailable. In this case, the address pool is deemed abnormal.
         self.health_status = health_status
+        # Remark
         self.remark = remark
+        # The mode used if the address with the smallest sequence number is recovered. This parameter is required only when AddressLbStrategy is set to sequence. Valid values:
+        # 
+        # *   preemptive: The address with the smallest sequence number is preferentially used if this address is recovered.
+        # *   non_preemptive: The current address is still used even if the address with the smallest sequence number is recovered.
         self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
+        # Last modification time of the address pool.
         self.update_time = update_time
+        # Last modification time of the address pool (timestamp).
         self.update_timestamp = update_timestamp
 
     def validate(self):
@@ -32982,11 +33939,17 @@ class ListCloudGtmAddressPoolsResponseBody(TeaModel):
         total_items: int = None,
         total_pages: int = None,
     ):
+        # The address pools.
         self.address_pools = address_pools
+        # Current page number, starting at **1**, default is **1**.
         self.page_number = page_number
+        # The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
         self.page_size = page_size
+        # Unique request identification code.
         self.request_id = request_id
+        # Total number of entries in the address pool.
         self.total_items = total_items
+        # Total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -33087,18 +34050,43 @@ class ListCloudGtmAddressesRequest(TeaModel):
         page_size: int = None,
         type: str = None,
     ):
+        # Return language value, options:
+        # - zh-CN: Chinese.
+        # - en-US: English.
         self.accept_language = accept_language
+        # IP address or domain name.
         self.address = address
+        # The address ID. This ID uniquely identifies the address.
         self.address_id = address_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # Indicates the current availability of the address:
+        # - enable: Enabled status
+        # - disable: Disabled status
         self.enable_status = enable_status
+        # The health check state of the address. Valid values:
+        # 
+        # *   ok: The address passes all health checks of the referenced health check templates.
+        # *   ok_alert: The address fails some health checks of the referenced health check templates but the address is deemed normal.
+        # *   ok_no_monitor: The address does not reference a health check template.
+        # *   exceptional: The address fails some or all health checks of the referenced health check templates and the address is deemed abnormal.
         self.health_status = health_status
+        # The ID of the health check template. This ID uniquely identifies the health check template.
         self.monitor_template_id = monitor_template_id
+        # Address name.
         self.name = name
+        # Current page number, starting from **1**, default is **1**.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Address type:
+        # - IPv4
+        # - IPv6
+        # - domain
         self.type = type
 
     def validate(self):
@@ -33169,9 +34157,17 @@ class ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask(Tea
         template_id: str = None,
         template_name: str = None,
     ):
+        # The state of the health check task. Valid values:
+        # 
+        # *   ok: The task is normal.
+        # *   alert: An alert is triggered.
+        # *   no_data: No data is available. In most cases, the health check task is newly created and no data is collected.
         self.monitor_status = monitor_status
+        # The target service port for health check probes. When the health check protocol is set to Ping, configuration of the service port is not supported.
         self.port = port
+        # The ID of the health check template associated with the address.
         self.template_id = template_id
+        # Health check template name.
         self.template_name = template_name
 
     def validate(self):
@@ -33262,22 +34258,66 @@ class ListCloudGtmAddressesResponseBodyAddressesAddress(TeaModel):
         update_time: str = None,
         update_timestamp: int = None,
     ):
+        # IP address or domain name.
         self.address = address
+        # The address ID. This ID uniquely identifies the address.
         self.address_id = address_id
+        # Address ownership information.
         self.attribute_info = attribute_info
+        # The failover method that is used if the address fails health checks. Valid values:
+        # 
+        # auto: the automatic mode. The system determines whether to return an address based on the health check results. If the address fails health checks, the system does not return the address. If the address passes health checks, the system returns the address.
+        # 
+        # manual: the manual mode. If an address is in the unavailable state, the address is not returned for Domain Name System (DNS) requests even if the address passes health checks. If an address is in the available state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
         self.available_mode = available_mode
+        # The availability state of the address. Valid values:
+        # 
+        # *   available: The address is available.
+        # *   unavailable: The address is unavailable.
         self.available_status = available_status
+        # Address creation time.
         self.create_time = create_time
+        # Creation time (timestamp).
         self.create_timestamp = create_timestamp
+        # Indicates the current availability of the address:
+        # - enable: Enabled status 
+        # - disable: Disabled status
         self.enable_status = enable_status
+        # The condition for determining the health status of the address. Valid values:
+        # 
+        # *   any_ok: The health check results of at least one health check template are normal.
+        # *   p30_ok: The health check results of at least 30% of health check templates are normal.
+        # *   p50_ok: The health check results of at least 50% of health check templates are normal.
+        # *   p70_ok: The health check results of at least 70% of health check templates are normal.
+        # *   all_ok: The health check results of all health check templates are normal.
         self.health_judgement = health_judgement
+        # The health check state of the address. Valid values:
+        # 
+        # *   ok: The address passes all health checks of the referenced health check templates.
+        # *   ok_alert: The address fails some health checks of the referenced health check templates but the address is deemed normal.
+        # *   ok_no_monitor: The address does not reference a health check template.
+        # *   exceptional: The address fails some or all health checks of the referenced health check templates and the address is deemed abnormal.
         self.health_status = health_status
+        # The health check tasks referenced by the address.
         self.health_tasks = health_tasks
+        # The availability state of the address when AvailableMode is set to manual. Valid values:
+        # 
+        # available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+        # 
+        # unavailable: The address is abnormal. In this state, the address is not returned for DNS requests even if the address passes health checks.
         self.manual_available_status = manual_available_status
+        # Address name.
         self.name = name
+        # Remarks.
         self.remark = remark
+        # Address type:
+        # - IPv4
+        # - IPv6
+        # - domain
         self.type = type
+        # Address modification time.
         self.update_time = update_time
+        # Update time (timestamp).
         self.update_timestamp = update_timestamp
 
     def validate(self):
@@ -33411,11 +34451,17 @@ class ListCloudGtmAddressesResponseBody(TeaModel):
         total_items: int = None,
         total_pages: int = None,
     ):
+        # The addresses.
         self.addresses = addresses
+        # Current page number, starting from **1**, default is **1**.
         self.page_number = page_number
+        # The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
         self.page_size = page_size
+        # Unique request identification code.
         self.request_id = request_id
+        # Get the total number of addresses in the address list.
         self.total_items = total_items
+        # Total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -33513,16 +34559,36 @@ class ListCloudGtmAlertLogsRequest(TeaModel):
         page_size: int = None,
         start_timestamp: int = None,
     ):
+        # Alert type:
+        # - ALERT
+        # - RESUME
         self.action_type = action_type
+        # The end time of the query (timestamp).
+        # 
         # This parameter is required.
         self.end_timestamp = end_timestamp
+        # Alarm object types:
+        # - GTM_ADDRESS: Address
+        # - GTM_ADDRESS_POOL: Address Pool
+        # - GTM_INSTANCE: Instance
+        # - GTM_MONITOR_TEMPLATE: Health Check Template
         self.entity_type = entity_type
+        # Search keyword, usually an address ID, address pool ID, domain information, etc.
         self.keyword = keyword
+        # Language type of the returned information:
+        # - zh-CN: Chinese
+        # - en-US: English
         self.lang = lang
+        # Current page number, starting from **1**, default is **1**.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The start time of the query (timestamp).
+        # 
         # This parameter is required.
         self.start_timestamp = start_timestamp
 
@@ -33582,9 +34648,19 @@ class ListCloudGtmAlertLogsResponseBodyLogsLog(TeaModel):
         entity_type: str = None,
         timestamp: int = None,
     ):
+        # Alert type:
+        # - ALERT
+        # - RESUME
         self.action_type = action_type
+        # The alert content.
         self.content = content
+        # Alarm object types:
+        # - GTM_ADDRESS: Address
+        # - GTM_ADDRESS_POOL: Address Pool
+        # - GTM_INSTANCE: Instance
+        # - GTM_MONITOR_TEMPLATE: Health Check Template
         self.entity_type = entity_type
+        # Alert log time (timestamp).
         self.timestamp = timestamp
 
     def validate(self):
@@ -33664,11 +34740,17 @@ class ListCloudGtmAlertLogsResponseBody(TeaModel):
         total_items: int = None,
         total_pages: int = None,
     ):
+        # The alert logs.
         self.logs = logs
+        # Current page number, starting from 1, default is 1.
         self.page_number = page_number
+        # The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
         self.page_size = page_size
+        # Unique request identification code.
         self.request_id = request_id
+        # Total number of alarm log entries.
         self.total_items = total_items
+        # Total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -33759,6 +34841,10 @@ class ListCloudGtmAvailableAlertGroupsRequest(TeaModel):
         self,
         accept_language: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   **zh-CN**: Chinese
+        # *   **en-US**: English
         self.accept_language = accept_language
 
     def validate(self):
@@ -33786,6 +34872,7 @@ class ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroupsAlertGroup(TeaModel
         self,
         group_name: str = None,
     ):
+        # The name of the alert contact group.
         self.group_name = group_name
 
     def validate(self):
@@ -33849,7 +34936,9 @@ class ListCloudGtmAvailableAlertGroupsResponseBody(TeaModel):
         alert_groups: ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroups = None,
         request_id: str = None,
     ):
+        # The alert contact groups.
         self.alert_groups = alert_groups
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -33932,14 +35021,29 @@ class ListCloudGtmInstanceConfigsRequest(TeaModel):
         schedule_domain_name: str = None,
         schedule_zone_name: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The enabling state of the access domain name. Valid values:
+        # 
+        # *   enable: The access domain name is enabled and the intelligent scheduling policy of the GTM instance takes effect.
+        # *   disable: The access domain name is disabled and the intelligent scheduling policy of the GTM instance does not take effect.
         self.enable_status = enable_status
+        # The ID of the GTM 3.0 instance.
         self.instance_id = instance_id
+        # Current page number, starting at **1**, default is **1**.
         self.page_number = page_number
+        # The number of rows per page when paginating queries, with a maximum value of **100**, and a default of **20**.
         self.page_size = page_size
+        # Remarks.
         self.remark = remark
+        # The GTM access domain name. The value of this parameter is composed of the value of ScheduleHostname and the value of ScheduleZoneName.
         self.schedule_domain_name = schedule_domain_name
+        # The zone (such as example.com) or subzone (such as a.example.com) of the GTM access domain name. In most cases, the zone or subzone is hosted in Authoritative DNS Resolution of the Alibaba Cloud DNS console within the account to which the GTM instance belongs.
         self.schedule_zone_name = schedule_zone_name
 
     def validate(self):
@@ -34042,22 +35146,64 @@ class ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddres
         update_timestamp: int = None,
         weight_value: int = None,
     ):
+        # Load balancing policy among addresses in the address pool:
+        # - round_robin: Round-robin, for any source of DNS resolution requests, returns all addresses and rotates the order of all addresses each time.
+        # - sequence: Sequential, for any source of DNS resolution requests, returns the address with the smaller sequence number (the sequence number indicates the priority of the address return, the smaller the higher the priority). If the address with the smaller sequence number is unavailable, return the next address with a smaller sequence number.
+        # - weight: Weighted, supports setting different weight values for each address to realize returning addresses according to the weight ratio for resolution queries.
+        # - source_nearest: Source-nearest, i.e., intelligent resolution function, where GTM can return different addresses based on the source of different DNS resolution requests, achieving the effect of users accessing nearby.
         self.address_lb_strategy = address_lb_strategy
+        # The ID of the address pool. This ID uniquely identifies the address pool.
         self.address_pool_id = address_pool_id
+        # Address pool name.
         self.address_pool_name = address_pool_name
+        # Address pool type:
+        # - IPv4
+        # - IPv6
+        # - domain
         self.address_pool_type = address_pool_type
+        # Address pool availability status:
+        # - available: Available
+        # - unavailable: Unavailable
         self.available_status = available_status
+        # Address pool creation time.
         self.create_time = create_time
+        # Address pool creation time (timestamp).
         self.create_timestamp = create_timestamp
+        # Address pool status:
+        # - enable: Enabled status
+        # - disable: Disabled status
         self.enable_status = enable_status
+        # The health state of the address pool. Valid values:
+        # 
+        # *   ok: The health state of the address pool is Normal and all addresses that are referenced by the address pool are available.
+        # *   ok_alert: The health state of the address pool is Warning and some of the addresses that are referenced by the address pool are unavailable. However, the address pool is deemed normal. In this case, available address pools are normally used for DNS resolution, but unavailable address pools cannot be used for DNS resolution.
+        # *   exceptional: The health state of the address pool is Abnormal and some or all of the addresses that are referenced by the address pool are unavailable. In this case, the address pool is deemed abnormal.
         self.health_judgement = health_judgement
+        # The health state of the address pool. Valid values:
+        # 
+        # *   ok: The health state of the address pool is Normal and all addresses that are referenced by the address pool are available.
+        # *   ok_alert: The health state of the address pool is Warning and some of the addresses that are referenced by the address pool are unavailable. However, the address pool is deemed normal. In this case, available address pools are normally used for DNS resolution, but unavailable address pools cannot be used for DNS resolution.
+        # *   exceptional: The health state of the address pool is Abnormal and some or all of the addresses that are referenced by the address pool are unavailable. In this case, the address pool is deemed abnormal.
         self.health_status = health_status
+        # Parse the request source list.
         self.request_source = request_source
+        # Indicates whether the mode of the sequence policy for load balancing between address pools is non-preemptive. This parameter is available only for the multicloud integration scenario. Valid values:
+        # 
+        # *   true
+        # *   false
         self.seq_non_preemptive_schedule = seq_non_preemptive_schedule
+        # The mode used if the address with the smallest sequence number is recovered. This parameter is required only when AddressLbStrategy is set to sequence. Valid values:
+        # 
+        # *   preemptive: The address with the smallest sequence number is preferentially used if this address is recovered.
+        # *   non_preemptive: The current address is still used even if the address with the smallest sequence number is recovered.
         self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
+        # Sequence number. For any parsing request, the address pool with the smaller sequence number (indicating the priority of the address pool returned, with smaller numbers having higher priority) is returned.
         self.serial_number = serial_number
+        # Last modification time of the address pool.
         self.update_time = update_time
+        # Last modification time of the address pool (timestamp).
         self.update_timestamp = update_timestamp
+        # Weight value (an integer between 1 and 100, including both 1 and 100), which supports setting different weight values for each address pool, enabling the resolution query to return address pools according to the weighted ratio.
         self.weight_value = weight_value
 
     def validate(self):
@@ -34206,26 +35352,77 @@ class ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig(TeaMo
         update_timestamp: int = None,
         version_code: str = None,
     ):
+        # The policy for load balancing between address pools. Valid values:
+        # 
+        # *   round_robin: All address pools are returned for DNS requests from any source. All address pools are sorted in round-robin mode each time they are returned.
+        # *   sequence: The address pool with the smallest sequence number is preferentially returned for DNS requests from any source. The sequence number indicates the priority for returning the address pool. A smaller sequence number indicates a higher priority. If the address pool with the smallest sequence number is unavailable, the address pool with the second smallest sequence number is returned.
+        # *   weight: You can set a different weight value for each address pool. This way, address pools are returned based on the weight values.
+        # *   source_nearest: GTM returns different address pools based on the sources of DNS requests. This way, users can access nearby addresses.
         self.address_pool_lb_strategy = address_pool_lb_strategy
+        # The address pools.
         self.address_pools = address_pools
+        # The availability state of the access domain name. Valid values:
+        # 
+        # *   available: If the access domain name is **enabled** and the health state of the access domain name is **Normal**, the access domain name is deemed **Available**.
+        # *   unavailable: If the access domain name is **disabled** or the health state of the access domain name is **Abnormal**, the access domain name is deemed **Unavailable**.
         self.available_status = available_status
+        # The commodity code. Valid values:
+        # 
+        # *   dns_gtm_public_cn: the commodity code on the China site (aliyun.com)
+        # *   dns_gtm_public_intl: the commodity code on the international site (alibabacloud.com)
         self.commodity_code = commodity_code
+        # The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
         self.config_id = config_id
+        # Instance configuration creation time.
         self.create_time = create_time
+        # Instance creation time (timestamp).
         self.create_timestamp = create_timestamp
+        # The enabling state of the access domain name. Valid values:
+        # 
+        # *   enable: The access domain name is enabled and the intelligent scheduling policy of the GTM instance takes effect.
+        # *   disable: The access domain name is disabled and the intelligent scheduling policy of the GTM instance does not take effect.
         self.enable_status = enable_status
+        # The health state of the access domain name. Valid values:
+        # 
+        # *   ok: The health state of the access domain name is Normal and all address pools that are referenced by the access domain name are available.
+        # *   ok_alert: The health state of the access domain name is Warning and some of the address pools that are referenced by the access domain name are unavailable. In this case, available address pools are normally used for DNS resolution, but unavailable address pools cannot be used for DNS resolution.
+        # *   exceptional: The health state of the access domain name is Abnormal and all address pools that are referenced by the access domain name are unavailable. In this case, addresses in the non-empty address pool with the smallest sequence number are preferentially used for fallback resolution. This returns DNS results for clients as much as possible.
         self.health_status = health_status
+        # The ID of the GTM 3.0 instance.
         self.instance_id = instance_id
+        # Remarks on the configuration of domain instance.
         self.remark = remark
+        # The GTM access domain name. The value of this parameter is composed of the value of ScheduleHostname and the value of ScheduleZoneName.
         self.schedule_domain_name = schedule_domain_name
+        # Host record of the domain accessed by GTM.
         self.schedule_hostname = schedule_hostname
+        # DNS record types for the scheduling domain:
+        # - A: IPv4 address
+        # - AAAA: IPv6 address
+        # - CNAME: Domain name
         self.schedule_rr_type = schedule_rr_type
+        # The allocation mode of the access domain name. Valid values:
+        # 
+        # *   custom: custom allocation. You must specify a custom hostname and associate the hostname with a zone within the account to which the GTM instance belongs to generate an access domain name.
+        # *   sys_assign: system allocation. This mode is not supported. Do not set ScheduleZoneMode to sys_assign.
         self.schedule_zone_mode = schedule_zone_mode
+        # The zone (such as example.com) or subzone (such as a.example.com) of the GTM access domain name. In most cases, the zone or subzone is hosted in Authoritative DNS Resolution of the Alibaba Cloud DNS console within the account to which the GTM instance belongs.
         self.schedule_zone_name = schedule_zone_name
+        # The mode used if the address pool with the smallest sequence number is recovered. This parameter is required when AddressPoolLbStrategy is set to sequence. Valid values:
+        # 
+        # *   preemptive: The address pool with the smallest sequence number is preferentially used if this address pool is recovered.
+        # *   non_preemptive: The current address pool is still used even if the address pool with the smallest sequence number is recovered.
         self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
+        # Global TTL (in seconds), the TTL value for domain resolution to addresses in the address pool, affecting the caching time of DNS records in the ISP\\"s LocalDNS. Supports custom TTL values.
         self.ttl = ttl
+        # The last modified time of the instance configuration.
         self.update_time = update_time
+        # The last modification time of the instance configuration (timestamp).
         self.update_timestamp = update_timestamp
+        # The edition of the GTM 3.0 instance. Valid values:
+        # 
+        # *   standard: Standard Edition
+        # *   ultimate: Ultimate Edition
         self.version_code = version_code
 
     def validate(self):
@@ -34375,11 +35572,17 @@ class ListCloudGtmInstanceConfigsResponseBody(TeaModel):
         total_items: int = None,
         total_pages: int = None,
     ):
+        # The configurations of the instance.
         self.instance_configs = instance_configs
+        # Current page number, starting from **1**, default is **1**.
         self.page_number = page_number
+        # The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
         self.page_size = page_size
+        # Unique request identification code.
         self.request_id = request_id
+        # Total number of entries for domain instance configurations.
         self.total_items = total_items
+        # Total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -34475,11 +35678,19 @@ class ListCloudGtmInstancesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # Return language value. Options:
+        # - zh-CN: Chinese.
+        # - en-US: English.
         self.accept_language = accept_language
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The ID of the GTM instance.
         self.instance_id = instance_id
+        # Instance name, used to distinguish the business purpose of the instance.
         self.instance_name = instance_name
+        # Current page number, starting from **1**, default is **1**.
         self.page_number = page_number
+        # The number of rows per page when paginating queries, with a maximum value of **100**, and a default of **20**.
         self.page_size = page_size
 
     def validate(self):
@@ -34542,21 +35753,42 @@ class ListCloudGtmInstancesResponseBodyInstancesInstance(TeaModel):
         update_timestamp: int = None,
         version_code: str = None,
     ):
+        # The commodity code. Valid values:
+        # 
+        # *   dns_gtm_public_cn: commodity code on the China site (aliyun.com)
+        # *   dns_gtm_public_intl: commodity code on the international site (alibabacloud.com)
         self.commodity_code = commodity_code
+        # Instance creation time.
         self.create_time = create_time
+        # Instance creation time (timestamp).
         self.create_timestamp = create_timestamp
+        # Instance expiration time.
         self.expire_time = expire_time
+        # Instance expiration time (timestamp).
         self.expire_timestamp = expire_timestamp
+        # The ID of the GTM instance.
         self.instance_id = instance_id
+        # Instance name.
         self.instance_name = instance_name
+        # Monitor probe task quota.
         self.monitor_task_quota = monitor_task_quota
+        # Monthly email sending volume.
         self.monthly_email_used = monthly_email_used
+        # SMS quota, only supported on the China site as international sites do not support SMS.
         self.monthly_sms_quota = monthly_sms_quota
+        # Monthly SMS sending volume, only supported by the China site as international sites do not support SMS.
         self.monthly_sms_used = monthly_sms_used
+        # Monthly webhook send volume.
         self.monthly_webhook_used = monthly_webhook_used
+        # The access domain name, which consists of a hostname and a zone or a subzone.
         self.schedule_domain_name = schedule_domain_name
+        # The last time the instance was modified.
         self.update_time = update_time
+        # The last modification time of the instance (timestamp).
         self.update_timestamp = update_timestamp
+        # GTM instance version:
+        # - standard: Standard Edition
+        # - ultimate: Ultimate Edition
         self.version_code = version_code
 
     def validate(self):
@@ -34684,11 +35916,17 @@ class ListCloudGtmInstancesResponseBody(TeaModel):
         total_items: int = None,
         total_pages: int = None,
     ):
+        # The instances.
         self.instances = instances
+        # Current page number, starting with **1**, default is **1**.
         self.page_number = page_number
+        # The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
         self.page_size = page_size
+        # Unique request identification code.
         self.request_id = request_id
+        # Total number of instance entries.
         self.total_items = total_items
+        # Total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -34779,6 +36017,10 @@ class ListCloudGtmMonitorNodesRequest(TeaModel):
         self,
         accept_language: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   **zh-CN**: Chinese
+        # *   **en-US** (default): English
         self.accept_language = accept_language
 
     def validate(self):
@@ -34843,16 +36085,32 @@ class ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode(TeaMod
         isp_name: str = None,
         node_id: str = None,
     ):
+        # City code.
         self.city_code = city_code
+        # City name.
         self.city_name = city_name
+        # Country code.
         self.country_code = country_code
+        # Country name.
         self.country_name = country_name
+        # Monitor node default selection:
+        # - true: Selected by default
+        # - false: Not selected by default
         self.default_selected = default_selected
+        # Monitor probe group name.
         self.group_name = group_name
+        # Monitoring node group type, currently supported:
+        # - BGP: BGP node
+        # - OVERSEAS: International node
+        # - ISP: Carrier node
         self.group_type = group_type
+        # List of node IP addresses.
         self.ips = ips
+        # Operator code.
         self.isp_code = isp_code
+        # Operator name.
         self.isp_name = isp_name
+        # Unique identifier ID of the probe node.
         self.node_id = node_id
 
     def validate(self):
@@ -34994,16 +36252,32 @@ class ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode(TeaMod
         isp_name: str = None,
         node_id: str = None,
     ):
+        # City code.
         self.city_code = city_code
+        # City name.
         self.city_name = city_name
+        # Country code.
         self.country_code = country_code
+        # Country name.
         self.country_name = country_name
+        # Monitor node default selection:
+        # - true: Selected by default
+        # - false: Not selected by default
         self.default_selected = default_selected
+        # Monitoring probe group name.
         self.group_name = group_name
+        # Monitoring node group type, currently supported:
+        # - BGP: BGP node
+        # - OVERSEAS: International node
+        # - ISP: Carrier node
         self.group_type = group_type
+        # List of node IP addresses.
         self.ips = ips
+        # Operator code.
         self.isp_code = isp_code
+        # Operator name.
         self.isp_name = isp_name
+        # Unique identifier ID of the probe node.
         self.node_id = node_id
 
     def validate(self):
@@ -35110,8 +36384,11 @@ class ListCloudGtmMonitorNodesResponseBody(TeaModel):
         ipv_6isp_city_nodes: ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodes = None,
         request_id: str = None,
     ):
+        # Public IPv4 monitoring node list.
         self.ipv_4isp_city_nodes = ipv_4isp_city_nodes
+        # List of public IPv6 monitoring nodes.
         self.ipv_6isp_city_nodes = ipv_6isp_city_nodes
+        # Unique request identification code.
         self.request_id = request_id
 
     def validate(self):
@@ -35198,13 +36475,31 @@ class ListCloudGtmMonitorTemplatesRequest(TeaModel):
         page_size: int = None,
         protocol: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # The IP address type of health check nodes. Valid values:
+        # 
+        # *   IPv4: applicable when health checks are performed on IPv4 addresses.
+        # *   IPv6: applicable when health checks are performed on IPv6 addresses.
         self.ip_version = ip_version
+        # The name of the health check probe template, which is recommended to be distinguishable for configuration personnel to differentiate and remember, ideally indicating the health check protocol.
         self.name = name
+        # Current page number, starting from **1**, default is **1**.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Protocol types for initiating probes to the target IP address:
+        # - ping
+        # - tcp
+        # - http
+        # - https
         self.protocol = protocol
 
     def validate(self):
@@ -35259,13 +36554,24 @@ class ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCi
         isp_code: str = None,
         isp_name: str = None,
     ):
+        # City code.
         self.city_code = city_code
+        # City name.
         self.city_name = city_name
+        # Country code.
         self.country_code = country_code
+        # Country name.
         self.country_name = country_name
+        # Probe node group name.
         self.group_name = group_name
+        # Probe node group types:
+        # - BGP: BGP nodes
+        # - OVERSEAS: International nodes
+        # - ISP: Carrier nodes
         self.group_type = group_type
+        # Operator code.
         self.isp_code = isp_code
+        # Operator name.
         self.isp_name = isp_name
 
     def validate(self):
@@ -35370,20 +36676,78 @@ class ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate(TeaModel):
         update_time: str = None,
         update_timestamp: int = None,
     ):
+        # Health check template creation time.
         self.create_time = create_time
+        # Health check template creation time (timestamp).
         self.create_timestamp = create_timestamp
+        # The number of retries. The system will only judge the application service as abnormal after consecutive monitoring failures to prevent inaccurate monitoring results due to momentary network fluctuations or other reasons. Available retry options are:
+        # - 1 - 2 - 3
         self.evaluation_count = evaluation_count
+        # The extended information. The value of this parameter is a JSON string. The required parameters vary based on the health check protocol.
+        # 
+        # *   HTTP or HTTPS:
+        # 
+        #     **host**: the Host field of an HTTP or HTTPS request header during an HTTP or HTTPS health check. The parameter value indicates the HTTP website that you want to visit. By default, the value is the primary domain name. You can change the value based on your business requirements.
+        # 
+        #     **path**: the URL for HTTP or HTTPS health checks. Default value: /.
+        # 
+        #     **code**: the alert threshold. During an HTTP or HTTPS health check, the system checks whether a web server functions as expected based on the status code that is returned from the web server. If the returned status code is greater than the specified threshold, the corresponding application service address is deemed abnormal. Valid values:
+        # 
+        #     *   400: indicates an invalid request. If an HTTP or HTTPS request contains invalid request parameters, a web server returns a status code that is greater than 400. You must specify an exact URL for path if you set code to 400.
+        #     *   500: indicates a server error. If some exceptions occur on a web server, the web server returns a status code that is greater than 500. This value is used by default.
+        # 
+        #     **sni**: indicates whether Server Name Indication (SNI) is enabled. This parameter is used only when the health check protocol is HTTPS. SNI is an extension to the Transport Layer Security (TLS) protocol, which allows a client to specify the host to be connected when the client sends a TLS handshake request. TLS handshakes occur before any data of HTTP requests is sent. Therefore, SNI enables servers to identify the services that clients are attempting to access before certificates are sent. This allows the servers to present correct certificates to the clients. Valid values:
+        # 
+        #     *   true: SNI is enabled.
+        #     *   false: SNI is disabled.
+        # 
+        #     **followRedirect**: indicates whether 3XX redirects are followed. Valid values:
+        # 
+        #     *   true: 3XX redirects are followed. You are redirected to the destination address if a 3XX status code such as 301, 302, 303, 307, or 308 is returned.
+        #     *   false: 3XX redirects are not followed.
+        # 
+        # *   ping:
+        # 
+        #     **packetNum**: the total number of Internet Control Message Protocol (ICMP) packets that are sent to the address for each ping-based health check. Valid values: 20, 50, and 100.
+        # 
+        #     **packetLossRate**: the ICMP packet loss rate for each ping-based health check. The packet loss rate in a health check can be calculated by using the following formula: Packet loss rate in a health check = (Number of lost packets/Total number of sent ICMP packets) × 100%. If the packet loss rate reaches the threshold, an alert is triggered. Valid values: 10, 30, 40, 80, 90, and 100.
         self.extend_info = extend_info
+        # Percentage of selected node probe failures (%), that is, the percentage of unhealthy check points among total probe points. When the failure ratio exceeds the set threshold, the service address is judged as abnormal. The available failure ratio thresholds are:
+        # - 20
+        # - 50
+        # - 80
+        # - 100
         self.failure_rate = failure_rate
+        # The time interval between each check (in seconds), with a default of probing once every minute. The minimum supported health check interval is 15 seconds, available for flagship edition instances.
         self.interval = interval
+        # The IP address type of health check nodes. Valid values:
+        # 
+        # *   IPv4: applicable when health checks are performed on IPv4 addresses.
+        # *   IPv6: applicable when health checks are performed on IPv6 addresses.
         self.ip_version = ip_version
+        # The health check nodes. You can call the [ListCloudGtmMonitorNodes](~~ListCloudGtmMonitorNodes~~) operation to obtain the health check nodes.
         self.isp_city_nodes = isp_city_nodes
+        # The name of the health check probe template, generally for the convenience of configuration personnel to distinguish and remember.
         self.name = name
+        # Protocol types for initiating probes to the target IP address:
+        # - ping
+        # - tcp
+        # - http
+        # - https
         self.protocol = protocol
+        # Remarks for the health check template.
         self.remark = remark
+        # The ID of the health check template. This ID uniquely identifies the health check template.
         self.template_id = template_id
+        # Probe timeout (in milliseconds), data packets not returned within the timeout period are deemed as health check timeouts:
+        # - 2000
+        # - 3000
+        # - 5000
+        # - 10000
         self.timeout = timeout
+        # Last modification time of the health check template.
         self.update_time = update_time
+        # Health check template configuration modification time (timestamp).
         self.update_timestamp = update_timestamp
 
     def validate(self):
@@ -35509,11 +36873,17 @@ class ListCloudGtmMonitorTemplatesResponseBody(TeaModel):
         total_items: int = None,
         total_pages: int = None,
     ):
+        # Current page number, starting from 1, default is 1.
         self.page_number = page_number
+        # The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
         self.page_size = page_size
+        # Unique request identification code.
         self.request_id = request_id
+        # The health check templates.
         self.templates = templates
+        # Total number of health check template entries retrieved.
         self.total_items = total_items
+        # Total number of pages after data pagination.
         self.total_pages = total_pages
 
     def validate(self):
@@ -35851,7 +37221,12 @@ class ModifyHichinaDomainDNSRequest(TeaModel):
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The language type.
+        # The language of the response. Valid values:
+        # 
+        # *   zh: Chinese
+        # *   en: English
+        # 
+        # Default value: en
         self.lang = lang
         # The IP address of the client.
         self.user_client_ip = user_client_ip
@@ -35945,11 +37320,11 @@ class ModifyHichinaDomainDNSResponseBody(TeaModel):
         original_dns_servers: ModifyHichinaDomainDNSResponseBodyOriginalDnsServers = None,
         request_id: str = None,
     ):
-        # The list of DNS servers after the domain name is changed.
+        # The DNS server names after modification.
         self.new_dns_servers = new_dns_servers
-        # The list of DNS servers before the domain name is changed.
+        # The DNS server names before modification.
         self.original_dns_servers = original_dns_servers
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -36036,6 +37411,8 @@ class MoveDomainResourceGroupRequest(TeaModel):
         # The language of the values of specific response parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
         # The ID of the new resource group.
+        # 
+        # You can view the ID of the resource group in the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?) or call the ListResourceGroups operation.
         # 
         # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
@@ -36270,7 +37647,7 @@ class OperateBatchDomainRequestDomainRecordInfo(TeaModel):
         # 
         # This parameter is required.
         self.domain = domain
-        # The resolution line. Default value: default.
+        # The DNS request source. Default value: default.
         self.line = line
         self.new_rr = new_rr
         self.new_type = new_type
@@ -36357,7 +37734,7 @@ class OperateBatchDomainRequest(TeaModel):
         lang: str = None,
         type: str = None,
     ):
-        # The DNS records. You can submit up to 1000 DNS records.
+        # The Domain Name System (DNS) records. You can submit up to 1,000 DNS records.
         # 
         # This parameter is required.
         self.domain_record_info = domain_record_info
@@ -37109,9 +38486,16 @@ class ReplaceCloudGtmAddressPoolAddressRequestAddresses(TeaModel):
         serial_number: int = None,
         weight_value: int = None,
     ):
+        # The ID of the new address. This ID uniquely identifies the address.
+        # 
+        # *   If you specify this parameter, the original addresses in the address pool will be deleted and replaced with new addresses.
+        # *   If you do not specify this parameter, all addresses in the address pool will be deleted and the address pool will be left empty.
         self.address_id = address_id
+        # The DNS request sources.
         self.request_source = request_source
+        # The sequence number that specifies the priority for returning the new address. A smaller sequence number specifies a higher priority. This setting takes effect for new addresses.
         self.serial_number = serial_number
+        # The weight value of the new address. You can set a different weight value for each address. This way, addresses are returned based on the weight values for Domain Name System (DNS) requests. A weight value must be an integer that ranges from 1 to 100. This setting takes effect for new addresses.
         self.weight_value = weight_value
 
     def validate(self):
@@ -37154,9 +38538,16 @@ class ReplaceCloudGtmAddressPoolAddressRequest(TeaModel):
         addresses: List[ReplaceCloudGtmAddressPoolAddressRequestAddresses] = None,
         client_token: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   **zh-CN**: Chinese
+        # *   **en-US (default)**: English
         self.accept_language = accept_language
+        # The ID of the address pool for which you want to replace addresses. This ID uniquely identifies the address pool.
         self.address_pool_id = address_pool_id
+        # The addresses.
         self.addresses = addresses
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -37207,9 +38598,16 @@ class ReplaceCloudGtmAddressPoolAddressShrinkRequest(TeaModel):
         addresses_shrink: str = None,
         client_token: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   **zh-CN**: Chinese
+        # *   **en-US (default)**: English
         self.accept_language = accept_language
+        # The ID of the address pool for which you want to replace addresses. This ID uniquely identifies the address pool.
         self.address_pool_id = address_pool_id
+        # The addresses.
         self.addresses_shrink = addresses_shrink
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -37251,8 +38649,12 @@ class ReplaceCloudGtmAddressPoolAddressResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the address pool. This ID uniquely identifies the address pool.
         self.address_pool_id = address_pool_id
+        # Unique request identification code.
         self.request_id = request_id
+        # Indicates whether the operation was successful:
+        # - true: Successful. - false: Failed.
         self.success = success
 
     def validate(self):
@@ -37332,9 +38734,16 @@ class ReplaceCloudGtmInstanceConfigAddressPoolRequestAddressPools(TeaModel):
         serial_number: int = None,
         weight_value: int = None,
     ):
+        # The ID of the address pool. This ID uniquely identifies the address pool.
+        # 
+        # *   If you specify this parameter, the address pools that are associated with the desired instance are removed and the instance is associated with new address pools.
+        # *   If this parameter is left empty, the address pools that are associated with the desired instance are removed and no address pool is associated with the instance.
         self.address_pool_id = address_pool_id
+        # The DNS request sources.
         self.request_source = request_source
+        # The sequence number of the new address pool. The address pool with the smallest sequence number is preferentially returned for DNS requests from any source. The sequence number specifies the priority for returning the address pool. A smaller sequence number specifies a higher priority.
         self.serial_number = serial_number
+        # The weight value of the new address pool. You can set a different weight value for each address pool. This way, address pools are returned based on the weight values for Domain Name System (DNS) requests. A weight value must be an integer that ranges from 1 to 100.
         self.weight_value = weight_value
 
     def validate(self):
@@ -37378,10 +38787,20 @@ class ReplaceCloudGtmInstanceConfigAddressPoolRequest(TeaModel):
         config_id: str = None,
         instance_id: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # The address pools.
         self.address_pools = address_pools
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
+        # 
+        # You can call the [ListCloudGtmInstanceConfigs](~~ListCloudGtmInstanceConfigs~~) operation to query the configuration ID of the access domain name.
         self.config_id = config_id
+        # The ID of the GTM 3.0 instance for which you want to change address pools.
         self.instance_id = instance_id
 
     def validate(self):
@@ -37437,10 +38856,20 @@ class ReplaceCloudGtmInstanceConfigAddressPoolShrinkRequest(TeaModel):
         config_id: str = None,
         instance_id: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # The address pools.
         self.address_pools_shrink = address_pools_shrink
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
+        # 
+        # You can call the [ListCloudGtmInstanceConfigs](~~ListCloudGtmInstanceConfigs~~) operation to query the configuration ID of the access domain name.
         self.config_id = config_id
+        # The ID of the GTM 3.0 instance for which you want to change address pools.
         self.instance_id = instance_id
 
     def validate(self):
@@ -37485,7 +38914,11 @@ class ReplaceCloudGtmInstanceConfigAddressPoolResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Unique request identification code.
         self.request_id = request_id
+        # Indicates whether the operation was successful, with values: 
+        # - true: Success. 
+        # - false: Failure.
         self.success = success
 
     def validate(self):
@@ -37766,9 +39199,14 @@ class RollbackGtmRecoveryPlanRequest(TeaModel):
         lang: str = None,
         recovery_plan_id: int = None,
     ):
-        # The language used by the user.
+        # The language of the response. Valid values:
+        # 
+        # *   zh: Chinese
+        # *   en: English
+        # 
+        # Default value: en.
         self.lang = lang
-        # The ID of the disaster recovery plan that you want to roll back.
+        # The ID of the disaster recovery plan.
         # 
         # This parameter is required.
         self.recovery_plan_id = recovery_plan_id
@@ -37802,7 +39240,7 @@ class RollbackGtmRecoveryPlanResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -37880,15 +39318,41 @@ class SearchCloudGtmAddressPoolsRequest(TeaModel):
         page_size: int = None,
         remark: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # Address pool name, supports fuzzy search for the entered address pool name.
         self.address_pool_name = address_pool_name
+        # Address pool type, supports precise query for address pool types:
+        # - IPv4
+        # - IPv6
+        # - domain
         self.address_pool_type = address_pool_type
+        # Address pool availability status, supporting precise queries for address pool availability:
+        # - available: Available
+        # - unavailable: Unavailable
         self.available_status = available_status
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # Address pool enable status, supports precise query of address pool enable status:
+        # - enable: Enabled status
+        # - disable: Disabled status
         self.enable_status = enable_status
+        # The health state of the address pool. You can enter a health state for exact search. Valid values:
+        # 
+        # ok: The health state of the address pool is normal and all addresses that are referenced by the address pool are available.
+        # 
+        # ok_alert: The health state of the address pool is warning and some of the addresses that are referenced by the address pool are unavailable. However, the address pool is deemed normal. In this case, only the available addresses are returned for Domain Name System (DNS) requests.
+        # 
+        # exceptional: The health state of the address pool is abnormal and some or all of the addresses that are referenced by the address pool are unavailable. In this case, the address pool is deemed abnormal.
         self.health_status = health_status
+        # Current page number, starting from 1, default is 1.
         self.page_number = page_number
+        # The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
         self.page_size = page_size
+        # Address pool remarks, supporting fuzzy search for the input remarks.
         self.remark = remark
 
     def validate(self):
@@ -37954,8 +39418,11 @@ class SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddr
         template_id: str = None,
         template_name: str = None,
     ):
+        # The target service port for health checks. When the Ping protocol is selected for health checks, configuration of the service port is not supported.
         self.port = port
+        # The ID of the health check template associated with the address.
         self.template_id = template_id
+        # Health check template name.
         self.template_name = template_name
 
     def validate(self):
@@ -38045,25 +39512,67 @@ class SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddr
         update_timestamp: int = None,
         weight_value: int = None,
     ):
+        # IP address or domain name.
         self.address = address
+        # The address ID. This ID uniquely identifies the address.
         self.address_id = address_id
+        # Address ownership information, not supported in the current version.
         self.attribute_info = attribute_info
+        # The failover method that is used if the address fails health checks. Valid values:
+        # 
+        # *   auto: the automatic mode. The system determines whether to return an address based on the health check results. If the address fails health checks, the system does not return the address. If the address passes health checks, the system returns the address.
+        # *   manual: the manual mode. If an address is in the unavailable state, the address is not returned for DNS requests even if the address passes health checks. If an address is in the available state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
         self.available_mode = available_mode
+        # Address availability status:
+        # - available: Address is available
+        # - unavailable: Address is unavailable
         self.available_status = available_status
+        # Address creation time.
         self.create_time = create_time
+        # Address creation time (timestamp).
         self.create_timestamp = create_timestamp
+        # Address enable status, indicating whether the address is currently available:
+        # - enable: Enabled status 
+        # - disable: Disabled status
         self.enable_status = enable_status
+        # The condition for determining the health status of the address. Valid values:
+        # 
+        # *   any_ok: The health check results of at least one health check template are normal.
+        # *   p30_ok: The health check results of at least 30% of health check templates are normal.
+        # *   p50_ok: The health check results of at least 50% of health check templates are normal.
+        # *   p70_ok: The health check results of at least 70% of health check templates are normal.
+        # *   all_ok: The health check results of all health check templates are normal.
         self.health_judgement = health_judgement
+        # The health check state of the address. Valid values:
+        # 
+        # *   ok: The address passes all health checks of the referenced health check templates.
+        # *   ok_alert: The address fails some health checks of the referenced health check templates but the address is deemed normal.
+        # *   ok_no_monitor: The address does not reference a health check template and is normal.
+        # *   exceptional: The address fails some or all health checks of the referenced health check templates and the address is deemed abnormal.
         self.health_status = health_status
+        # The health check tasks.
         self.health_tasks = health_tasks
+        # The availability state of the address when AvailableMode is set to manual. Valid values:
+        # 
+        # *   available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+        # *   unavailable: The address is abnormal. In this state, the address is not returned for DNS requests even if the address passes health checks.
         self.manual_available_status = manual_available_status
+        # Address name.
         self.name = name
+        # Remarks.
         self.remark = remark
+        # Request source, referring to the source of the request. GTM schedules based on the exit IP of the LocalDNS used by the terminal. If the LocalDNS supports ECS (edns-client-subnet), intelligent scheduling can also be performed based on the IP of the visiting terminal.
         self.request_source = request_source
+        # Sequence number, indicating the priority of address return, where smaller numbers have higher priority.
         self.serial_number = serial_number
+        # Address type:
+        # - IPv4: ipv4 address - IPv6: ipv6 address - domain: domain name
         self.type = type
+        # The last time the address was modified.
         self.update_time = update_time
+        # The last modification time of the address (timestamp).
         self.update_timestamp = update_timestamp
+        # Weight value (an integer between 1 and 100), allowing different weight values to be set for each address, enabling resolution queries to return addresses according to the weighted ratio.
         self.weight_value = weight_value
 
     def validate(self):
@@ -38218,20 +39727,59 @@ class SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool(TeaModel):
         update_time: str = None,
         update_timestamp: int = None,
     ):
+        # Load balancing policy among addresses in the address pool:
+        # - round_robin: Round-robin, for any source of DNS resolution requests, returns all addresses and rotates the order of all addresses each time.
+        # - sequence: Sequential, for any source of DNS resolution requests, returns the address with the smaller sequence number (the sequence number indicates the priority of the address return, the smaller the higher the priority). If the address with the smaller sequence number is unavailable, return the next address with a smaller sequence number.
+        # - weight: Weighted, supports setting different weight values for each address to realize returning addresses according to the weight ratio for resolution queries.
+        # - source_nearest: Source-nearest, i.e., intelligent resolution function, where GTM can return different addresses based on the source of different DNS resolution requests, achieving the effect of users accessing nearby.
         self.address_lb_strategy = address_lb_strategy
+        # The ID of the address pool. This ID uniquely identifies the address pool.
         self.address_pool_id = address_pool_id
+        # Address pool name.
         self.address_pool_name = address_pool_name
+        # Address pool type:
+        # - IPv4
+        # - IPv6
+        # - domain
         self.address_pool_type = address_pool_type
+        # The IP addresses or domain names.
         self.addresses = addresses
+        # Address pool availability status:
+        # - available: Available
+        # - unavailable: Unavailable
         self.available_status = available_status
+        # Address pool creation time.
         self.create_time = create_time
+        # Address pool creation time (timestamp).
         self.create_timestamp = create_timestamp
+        # Address pool status:
+        # - enable: Enabled status
+        # - disable: Disabled status
         self.enable_status = enable_status
+        # The condition for determining the health status of the address pool. Valid values:
+        # 
+        # *   any_ok: At least one address in the address pool is available.
+        # *   p30_ok: At least 30% of the addresses in the address pool are available.
+        # *   p50_ok: At least 50% of the addresses in the address pool are available.
+        # *   p70_ok: At least 70% of the addresses in the address pool are available.
+        # *   all_ok: All addresses in the address pool are available.
         self.health_judgement = health_judgement
+        # The health state of the address pool. Valid values:
+        # 
+        # *   ok: The health state of the address pool is normal and all addresses that are referenced by the address pool are available.
+        # *   ok_alert: The health state of the address pool is warning and some of the addresses that are referenced by the address pool are unavailable. However, the address pool is deemed normal. In this case, only the available addresses are returned for DNS requests.
+        # *   exceptional: The health state of the address pool is abnormal and some or all of the addresses that are referenced by the address pool are unavailable. In this case, the address pool is deemed abnormal.
         self.health_status = health_status
+        # Address remarks.
         self.remark = remark
+        # The mode used if the address with the smallest sequence number is recovered. This parameter is returned only when the policy for load balancing between addresses is sequence. Valid values:
+        # 
+        # *   preemptive: The address with the smallest sequence number is preferentially used if this address is recovered.
+        # *   non_preemptive: The current address is still used even if the address with the smallest sequence number is recovered.
         self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
+        # Last modification time of the address pool.
         self.update_time = update_time
+        # Last modification time of the address pool (timestamp).
         self.update_timestamp = update_timestamp
 
     def validate(self):
@@ -38357,11 +39905,17 @@ class SearchCloudGtmAddressPoolsResponseBody(TeaModel):
         total_items: int = None,
         total_pages: int = None,
     ):
+        # The address pools.
         self.address_pools = address_pools
+        # Current page number, starting from 1, default is 1.
         self.page_number = page_number
+        # The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
         self.page_size = page_size
+        # Unique request identification code.
         self.request_id = request_id
+        # Total number of address pools matching the query conditions.
         self.total_items = total_items
+        # Total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -38465,21 +40019,59 @@ class SearchCloudGtmAddressesRequest(TeaModel):
         remarks: List[str] = None,
         type: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # Query by service address with precise conditions, supporting IP addresses or domain names.
         self.address = address
+        # The address ID. This ID uniquely identifies the address.
         self.address_id = address_id
+        # Search by address availability status with precise conditions:
+        # - available
+        # - unavailable
         self.available_status = available_status
+        # Query by exact address enable status:
+        # - enable: enabled status
+        # - disable: disabled status
         self.enable_status = enable_status
+        # The health state of the addresses that you want to query. Valid values:
+        # 
+        # *   ok: The addresses pass all health checks of the referenced health check templates.
+        # *   ok_alert: The addresses fail some health checks of the referenced health check templates, but the addresses are deemed available.
+        # *   ok_no_monitor: The addresses do not reference any health check template.
+        # *   exceptional: The addresses fail some or all health checks of the referenced health check templates, and the addresses are deemed unavailable.
         self.health_status = health_status
+        # Health check template name.
         self.monitor_template_name = monitor_template_name
+        # The logical condition for querying addresses by name. This parameter is required if you want to query addresses by name. Valid values:
+        # 
+        # *   and: displays the results that match all search conditions.
+        # *   or: displays the results that match some or all search conditions.
         self.name_search_condition = name_search_condition
+        # Address name, usually for users to distinguish between different addresses.
         self.names = names
+        # Current page number, starting from 1, default is 1.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The logical condition for querying addresses by additional description. This parameter is required if you want to query addresses by additional description. Valid values:
+        # 
+        # and: displays the results that match all search conditions.
+        # 
+        # or: displays the results that match some or all search conditions.
         self.remark_search_condition = remark_search_condition
+        # Remarks for the address.
         self.remarks = remarks
+        # Search precisely by address type conditions:
+        # - IPv4
+        # - IPv6
+        # - domain
         self.type = type
 
     def validate(self):
@@ -38562,9 +40154,17 @@ class SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask(T
         template_id: str = None,
         template_name: str = None,
     ):
+        # The state of the health check task. Valid values:
+        # 
+        # *   ok: The task is normal.
+        # *   alert: The task has an alert.
+        # *   no_data: No data is available. In most cases, the health check task is newly created and no data is collected.
         self.monitor_status = monitor_status
+        # The target service port for health check probes. When the health check protocol is set to Ping, configuration of the service port is not supported.
         self.port = port
+        # The ID of the health check template associated with the address.
         self.template_id = template_id
+        # Health check template name.
         self.template_name = template_name
 
     def validate(self):
@@ -38655,22 +40255,62 @@ class SearchCloudGtmAddressesResponseBodyAddressesAddress(TeaModel):
         update_time: str = None,
         update_timestamp: int = None,
     ):
+        # IP address or domain name.
         self.address = address
+        # ID of the address, unique identifier for the address.
         self.address_id = address_id
+        # Address ownership information, not supported in the current version.
         self.attribute_info = attribute_info
+        # The failover method that is used if the address fails health checks. Valid values:
+        # 
+        # *   auto: the automatic mode. The system determines whether to return an address based on the health check results. If the address fails health checks, the system does not return the address. If the address passes health checks, the system returns the address.
+        # *   manual: the manual mode. If an address is in the unavailable state, the address is not returned for Domain Name System (DNS) requests even if the address passes health checks. If an address is in the available state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
         self.available_mode = available_mode
+        # The availability state of the address when AvailableMode is set to manual. Valid values:
+        # 
+        # *   available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+        # *   unavailable: The address is abnormal. In this state, the address is not returned for DNS requests even if the address passes health checks.
         self.available_status = available_status
+        # Creation time of the address.
         self.create_time = create_time
+        # Creation time of the address (timestamp).
         self.create_timestamp = create_timestamp
+        # Current activation status of the address:
+        # - enable: Enabled status
+        # - disable: Disabled status
         self.enable_status = enable_status
+        # The condition for determining the health status of the address. Valid values:
+        # 
+        # *   any_ok: The health check results of at least one health check template are normal.
+        # *   p30_ok: The health check results of at least 30% of health check templates are normal.
+        # *   p50_ok: The health check results of at least 50% of health check templates are normal.
+        # *   p70_ok: The health check results of at least 70% of health check templates are normal.
+        # *   all_ok: The health check results of all health check templates are normal.
         self.health_judgement = health_judgement
+        # The health check state of the address. Valid values:
+        # 
+        # *   ok: The address passes all health checks of the referenced health check templates.
+        # *   ok_alert: The address fails some health checks of the referenced health check templates, but the address is deemed available.
+        # *   ok_no_monitor: The address does not reference any health check template.
+        # *   exceptional: The address fails some or all health checks of the referenced health check templates, and the address is deemed unavailable.
         self.health_status = health_status
+        # The health check tasks.
         self.health_tasks = health_tasks
+        # The availability state of the address when AvailableMode is set to manual. Valid values:
+        # 
+        # *   available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+        # *   unavailable: The address is abnormal. In this state, the address is not returned for DNS requests even if the address passes health checks.
         self.manual_available_status = manual_available_status
+        # Address name.
         self.name = name
+        # Remarks.
         self.remark = remark
+        # Address type:
+        # - IPv4: ipv4 address - IPv6: ipv6 address - domain: domain name
         self.type = type
+        # The last modification time of the address.
         self.update_time = update_time
+        # The last modification time of the address (timestamp).
         self.update_timestamp = update_timestamp
 
     def validate(self):
@@ -38804,11 +40444,17 @@ class SearchCloudGtmAddressesResponseBody(TeaModel):
         total_items: int = None,
         total_pages: int = None,
     ):
+        # The addresses.
         self.addresses = addresses
+        # Current page number, starting from **1**, default is **1**.
         self.page_number = page_number
+        # The number of rows per page when paginating queries, with a maximum value of **100** and a default of **20**.
         self.page_size = page_size
+        # Unique request identification code.
         self.request_id = request_id
+        # Total number of address entries that meet the query conditions.
         self.total_items = total_items
+        # Total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -38909,16 +40555,40 @@ class SearchCloudGtmInstanceConfigsRequest(TeaModel):
         schedule_domain_name: str = None,
         schedule_zone_name: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # The availability state of the access domain name. Valid values:
+        # 
+        # *   available: If the access domain name is **enabled** and the health state is **normal**, the access domain name is deemed **available**.
+        # *   unavailable: If the access domain name is **disabled** or the health state is **abnormal**, the access domain name is deemed **unavailable**.
         self.available_status = available_status
+        # The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The enabling state of the access domain name. Valid values:
+        # 
+        # *   enable: The access domain name is enabled and the intelligent scheduling policy of the corresponding GTM instance takes effect.
+        # *   disable: The access domain name is disabled and the intelligent scheduling policy of the corresponding GTM instance does not take effect.
         self.enable_status = enable_status
+        # The health state of the access domain name. Valid values:
+        # 
+        # *   ok: The health state of the access domain name is normal and all address pools that are referenced by the access domain name are available.
+        # *   ok_alert: The health state of the access domain name is warning and some of the address pools that are referenced by the access domain name are unavailable. In this case, only the available address pools are returned for Domain Name System (DNS) requests.
+        # *   exceptional: The health state of the access domain name is abnormal and all address pools that are referenced by the access domain name are unavailable. In this case, addresses in the non-empty address pool with the smallest sequence number are preferentially used for fallback resolution. This returns DNS results for clients as much as possible.
         self.health_status = health_status
+        # The ID of the Global Traffic Manager (GTM) 3.0 instance.
         self.instance_id = instance_id
+        # Current page number, starting from 1, default is 1.
         self.page_number = page_number
+        # The number of rows per page when paginating queries, with a maximum value of **100**, and a default of **20**.
         self.page_size = page_size
+        # Remarks for the domain instance.
         self.remark = remark
+        # The access domain name. The value of this parameter is composed of the value of ScheduleHostname and the value of ScheduleZoneName.
         self.schedule_domain_name = schedule_domain_name
+        # The zone such as example.com or subzone such as a.example.com of the access domain name. In most cases, the zone or subzone is hosted by the Public Authoritative DNS module of Alibaba Cloud DNS. This zone belongs to the account to which the GTM instance belongs.
         self.schedule_zone_name = schedule_zone_name
 
     def validate(self):
@@ -39029,22 +40699,65 @@ class SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddr
         update_timestamp: int = None,
         weight_value: int = None,
     ):
+        # Load balancing policy among addresses in the address pool:
+        # - round_robin: Round-robin, where for any source of DNS resolution requests, all addresses are returned, with a rotation of the order for every request.
+        # - sequence: Sequential, where for any source of DNS resolution requests, the address with the lower sequence number (indicating a higher priority, the smaller the number, the higher the priority) is returned. If the address with the lower sequence number is unavailable, the next address with a lower sequence number is returned.
+        # - weight: Weighted, supporting the setting of different weight values for each address to realize returning addresses according to the ratio of weights in DNS query resolutions.
+        # - source_nearest: Source-nearest, referring to the intelligent resolution feature, where GTM can return different addresses based on the source of different DNS resolution requests, achieving the effect of users accessing the nearest server.
         self.address_lb_strategy = address_lb_strategy
+        # Address pool ID, uniquely identifying the address pool.
         self.address_pool_id = address_pool_id
+        # Address pool name.
         self.address_pool_name = address_pool_name
+        # Address pool type:
+        # - IPv4
+        # - IPv6
+        # - domain
         self.address_pool_type = address_pool_type
+        # Address pool availability status:
+        # - available: Available
+        # - unavailable: Unavailable
         self.available_status = available_status
+        # Address pool creation time.
         self.create_time = create_time
+        # Address pool creation time (timestamp).
         self.create_timestamp = create_timestamp
+        # Address pool status:
+        # - enable: Enabled status
+        # - disable: Disabled status
         self.enable_status = enable_status
+        # The condition for determining the health status of the address pool. Valid values:
+        # 
+        # *   any_ok: At least one address in the address pool is available.
+        # *   p30_ok: At least 30% of the addresses in the address pool are available.
+        # *   p50_ok: At least 50% of the addresses in the address pool are available.
+        # *   p70_ok: At least 70% of the addresses in the address pool are available.
+        # *   all_ok: All addresses in the address pool are available.
         self.health_judgement = health_judgement
+        # The health state of the address pool. Valid values:
+        # 
+        # *   ok: The health state of the address pool is normal and all addresses that are referenced by the address pool are available.
+        # *   ok_alert: The health state of the address pool is warning and some of the addresses that are referenced by the address pool are unavailable. However, the address pool is deemed normal. In this case, only the available addresses are returned for DNS requests.
+        # *   exceptional: The health state of the address pool is abnormal and some or all of the addresses that are referenced by the address pool are unavailable. In this case, the address pool is deemed abnormal.
         self.health_status = health_status
+        # Parse the request source list.
         self.request_source = request_source
+        # Indicates whether it is a sequential (non-preemptive) scheduling object for hybrid cloud management scenarios: 
+        # - true: yes 
+        # - false: no
         self.seq_non_preemptive_schedule = seq_non_preemptive_schedule
+        # The mode used if the address with the smallest sequence number is recovered. This parameter is required only when the policy for load balancing between addresses is sequence. Valid values:
+        # 
+        # *   preemptive: The address with the smallest sequence number is preferentially used if this address is recovered.
+        # *   non_preemptive: The current address is still used even if the address with the smallest sequence number is recovered.
         self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
+        # Sequence number. For any parsing request, the address pool with the smaller sequence number (indicating the priority of the address pool returned, with smaller numbers having higher priority) will be returned.
         self.serial_number = serial_number
+        # Last modification time of the address pool.
         self.update_time = update_time
+        # Update time (timestamp).
         self.update_timestamp = update_timestamp
+        # Weight value (an integer between 1 and 100, inclusive), allowing different weight values to be set for each address pool, implementing the return of address pools according to weight ratios in resolution queries.
         self.weight_value = weight_value
 
     def validate(self):
@@ -39193,26 +40906,76 @@ class SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig(Tea
         update_timestamp: int = None,
         version_code: str = None,
     ):
+        # The policy for load balancing between address pools. Valid values:
+        # 
+        # *   round_robin: All address pools are returned for DNS requests from any source. All address pools are sorted in round-robin mode each time they are returned.
+        # *   sequence: The address pool with the smallest sequence number is preferentially returned for DNS requests from any source. The sequence number indicates the priority for returning the address pool. A smaller sequence number indicates a higher priority. If the address pool with the smallest sequence number is unavailable, the address pool with the second smallest sequence number is returned.
+        # *   weight: You can set a different weight value for each address pool. This way, address pools are returned based on the weight values.
+        # *   source_nearest: Different address pools are returned based on the sources of DNS requests. This way, users can access nearby address pools.
         self.address_pool_lb_strategy = address_pool_lb_strategy
+        # The address pools.
         self.address_pools = address_pools
+        # The availability state of the access domain name. Valid values:
+        # 
+        # *   available: If the access domain name is **enabled** and the health state is **normal**, the access domain name is deemed **available**.
+        # *   unavailable: If the access domain name is **disabled** or the health state is **abnormal**, the access domain name is deemed **unavailable**.
         self.available_status = available_status
+        # The commodity code. Valid values:
+        # 
+        # *   dns_gtm_public_cn: the commodity code on the China site (aliyun.com)
+        # *   dns_gtm_public_intl: the commodity code on the international site (alibabacloud.com)
         self.commodity_code = commodity_code
+        # The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
         self.config_id = config_id
+        # Domain instance creation time.
         self.create_time = create_time
+        # Domain instance creation time (timestamp).
         self.create_timestamp = create_timestamp
+        # The enabling state of the access domain name. Valid values:
+        # 
+        # *   enable: The access domain name is enabled and the intelligent scheduling policy of the corresponding GTM instance takes effect.
+        # *   disable: The access domain name is disabled and the intelligent scheduling policy of the corresponding GTM instance does not take effect.
         self.enable_status = enable_status
+        # The health state of the access domain name. Valid values:
+        # 
+        # *   ok: The health state of the access domain name is normal and all address pools that are referenced by the access domain name are available.
+        # *   ok_alert: The health state of the access domain name is warning and some of the address pools that are referenced by the access domain name are unavailable. In this case, only the available address pools are returned for DNS requests.
+        # *   exceptional: The health state of the access domain name is abnormal and all address pools that are referenced by the access domain name are unavailable. In this case, addresses in the non-empty address pool with the smallest sequence number are preferentially used for fallback resolution. This returns DNS results for clients as much as possible.
         self.health_status = health_status
+        # The ID of the GTM 3.0 instance.
         self.instance_id = instance_id
+        # Remarks for the domain instance.
         self.remark = remark
+        # The access domain name. The value of this parameter is composed of the value of ScheduleHostname and the value of ScheduleZoneName.
         self.schedule_domain_name = schedule_domain_name
+        # Host record of the domain accessed by GTM.
         self.schedule_hostname = schedule_hostname
+        # DNS record types for the scheduling domain:
+        # - A: IPv4 address
+        # - AAAA: IPv6 address
+        # - CNAME: Domain name
         self.schedule_rr_type = schedule_rr_type
+        # The allocation mode of the access domain name. Valid values:
+        # 
+        # *   custom: custom allocation. You must specify a custom hostname and associate the hostname with a zone that is hosted by the Public Authoritative DNS module within the account to which the GTM instance belongs to generate an access domain name.
+        # *   sys_assign: system allocation. This mode is not supported. Do not set ScheduleZoneMode to sys_assign.
         self.schedule_zone_mode = schedule_zone_mode
+        # The zone such as example.com or subzone such as a.example.com of the access domain name. In most cases, the zone or subzone is hosted by the Public Authoritative DNS module of Alibaba Cloud DNS. This zone belongs to the account to which the GTM instance belongs.
         self.schedule_zone_name = schedule_zone_name
+        # The mode used if the address pool with the smallest sequence number is recovered. This parameter is returned when AddressPoolLbStrategy is set to sequence. Valid values:
+        # 
+        # *   preemptive: The address pool with the smallest sequence number is preferentially used if this address pool is recovered.
+        # *   non_preemptive: The current address pool is still used even if the address pool with the smallest sequence number is recovered.
         self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
+        # Global TTL (in seconds), the TTL value for resolving the access domain name to the address pool, which affects the caching time of DNS records in the operator\\"s LocalDNS. Supports custom TTL values.
         self.ttl = ttl
+        # The last modification time of the domain instance.
         self.update_time = update_time
+        # The last modification time of the domain instance (timestamp).
         self.update_timestamp = update_timestamp
+        # Global Traffic Management version 3.0 instance types:
+        # - standard: Standard Edition
+        # - ultimate: Ultimate Edition
         self.version_code = version_code
 
     def validate(self):
@@ -39362,11 +41125,17 @@ class SearchCloudGtmInstanceConfigsResponseBody(TeaModel):
         total_items: int = None,
         total_pages: int = None,
     ):
+        # The instances list.
         self.instance_configs = instance_configs
+        # Current page number, starting from 1, default is 1.
         self.page_number = page_number
+        # The number of rows per page when paginating queries, with a maximum value of **100**, and a default of **20**.
         self.page_size = page_size
+        # Unique request identification code.
         self.request_id = request_id
+        # Total number of instance configuration entries.
         self.total_items = total_items
+        # Total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -39462,11 +41231,19 @@ class SearchCloudGtmInstancesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The language of the return value. Options are:
+        # - **zh-CN**: Chinese. 
+        # - **en-US**: English.
         self.accept_language = accept_language
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see How to ensure idempotence.
         self.client_token = client_token
+        # The ID of the Global Traffic Manager (GTM) 3.0 instance.
         self.instance_id = instance_id
+        # Schedule instance name, supports fuzzy search.
         self.instance_name = instance_name
+        # Current page number, starting from 1, default is 1.
         self.page_number = page_number
+        # The number of rows per page when paginating queries, with a maximum value of **100**, and a default of **20**.
         self.page_size = page_size
 
     def validate(self):
@@ -39529,21 +41306,42 @@ class SearchCloudGtmInstancesResponseBodyInstancesInstance(TeaModel):
         update_timestamp: int = None,
         version_code: str = None,
     ):
+        # The commodity code. Valid values:
+        # 
+        # *   dns_gtm_public_cn: commodity code on the China site (aliyun.com)
+        # *   dns_gtm_public_intl: commodity code on the international site (alibabacloud.com)
         self.commodity_code = commodity_code
+        # Instance creation time.
         self.create_time = create_time
+        # Instance creation time (timestamp).
         self.create_timestamp = create_timestamp
+        # Instance expiration time.
         self.expire_time = expire_time
+        # Instance expiration time (timestamp).
         self.expire_timestamp = expire_timestamp
+        # The ID of the GTM 3.0 instance.
         self.instance_id = instance_id
+        # Schedule instance name.
         self.instance_name = instance_name
+        # Monitor probe task quota.
         self.monitor_task_quota = monitor_task_quota
+        # Monthly email sending volume.
         self.monthly_email_used = monthly_email_used
+        # SMS quota, only supported on the China site. International site does not support SMS.
         self.monthly_sms_quota = monthly_sms_quota
+        # Monthly SMS sending volume, only supported by the China site as international sites do not support SMS.
         self.monthly_sms_used = monthly_sms_used
+        # Monthly webhook dispatch volume.
         self.monthly_webhook_used = monthly_webhook_used
+        # The access domain name, which consists of a hostname and a zone or a subzone.
         self.schedule_domain_name = schedule_domain_name
+        # The last modified time of the instance.
         self.update_time = update_time
+        # The last modified time of the instance (timestamp).
         self.update_timestamp = update_timestamp
+        # Global Traffic Management version 3.0 instance types:
+        # - standard: Standard Edition
+        # - ultimate: Ultimate Edition
         self.version_code = version_code
 
     def validate(self):
@@ -39671,11 +41469,17 @@ class SearchCloudGtmInstancesResponseBody(TeaModel):
         total_items: int = None,
         total_pages: int = None,
     ):
+        # The instances.
         self.instances = instances
+        # Current page number, starting at **1**, default is **1**.
         self.page_number = page_number
+        # The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
         self.page_size = page_size
+        # Unique request identification code.
         self.request_id = request_id
+        # Total number of instances found from the search.
         self.total_items = total_items
+        # Total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -39771,7 +41575,15 @@ class SearchCloudGtmMonitorTemplatesRequest(TeaModel):
         page_size: int = None,
         protocol: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # The IP address type of health check nodes. An exact search is performed based on the IP address type. Valid values:
+        # 
+        # *   IPv4: applicable when the destination address of health checks is an IPv4 address
+        # *   IPv6: applicable when the destination address of health checks is an IPv6 address
         self.ip_version = ip_version
         self.name = name
         # This parameter is required.
@@ -39837,6 +41649,11 @@ class SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIsp
         self.country_code = country_code
         self.country_name = country_name
         self.group_name = group_name
+        # The group type of health check nodes. Valid values:
+        # 
+        # *   BGP: BGP node
+        # *   OVERSEAS: node outside the Chinese mainland
+        # *   ISP: Internet service provider (ISP) node
         self.group_type = group_type
         self.isp_code = isp_code
         self.isp_name = isp_name
@@ -39946,10 +41763,43 @@ class SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate(TeaModel):
         self.create_time = create_time
         self.create_timestamp = create_timestamp
         self.evaluation_count = evaluation_count
+        # The extended information. The value of this parameter is a JSON string. The required parameters vary based on the health check protocol. Valid values:
+        # 
+        # *   **http(s)**:
+        # 
+        #     **host**: indicates the Host field of an HTTP or HTTPS request header during an HTTP or HTTPS health check. The parameter value indicates the HTTP website that you want to visit. By default, the value is the primary domain name. You can change the value based on your business requirements.
+        # 
+        #     **path**: the URL for HTTP or HTTPS health checks. Default value: /.
+        # 
+        #     **code**: indicates the alert threshold. During an HTTP or HTTPS health check, the system checks whether a web server functions as expected based on the status code that is returned from the web server. If the returned status code is greater than the specified threshold, the corresponding application service address is deemed abnormal. Valid values:
+        # 
+        #     *   400: indicates an invalid request. If an HTTP or HTTPS request contains invalid request parameters, a web server returns a status code that is greater than 400. If Verification Content is set to "The error code is greater than 400", you must specify an exact URL for the path parameter.
+        #     *   500: indicates a server error. If some exceptions occur on a web server, the web server returns a status code that is greater than 500. The error code that is greater than 500 is used as the alert threshold by default.
+        # 
+        #     **sni**: indicates whether Server Name Indication (SNI) is enabled for HTTPS. SNI is an extension to the Transport Layer Security (TLS) protocol, which allows a client to specify the host to be connected when the client sends a TLS handshake request. TLS handshakes occur before any data of HTTP requests is sent. Therefore, SNI enables servers to identify the services that clients are attempting to access before certificates are sent. This allows the servers to present correct certificates to the clients. Valid values:
+        # 
+        #     *   true: SNI is enabled.
+        #     *   false: SNI is disabled.
+        # 
+        #     **followRedirect**: indicates whether 3XX redirection is followed. Valid values:
+        # 
+        #     *   true: You are redirected to the destination address if a status code 3XX, such as 301, 302, 303, 307, or 308, is returned.
+        #     *   false: You are not redirected to the destination address.
+        # 
+        # *   **ping**:
+        # 
+        #     **packetNum**: The total number of Internet Control Message Protocol (ICMP) packets that are sent to the address for each ping-based health check. Valid values: 20, 50, and 100.
+        # 
+        #     **packetLossRate**: The packet loss rate for each ping-based health check. The packet loss rate in a check can be calculated by using the following formula: Packet loss rate = (Number of lost packets/Total number of sent ICMP packets) × 100%. If the packet loss rate reaches the threshold, an alert is triggered. Valid values: 10, 30, 40, 80, 90, and 100.
         self.extend_info = extend_info
         self.failure_rate = failure_rate
         self.interval = interval
+        # The IP address type of health check nodes. Valid values:
+        # 
+        # *   IPv4: applicable when the destination address of health checks is an IPv4 address
+        # *   IPv6: applicable when the destination address of health checks is an IPv6 address
         self.ip_version = ip_version
+        # The health check nodes.
         self.isp_city_nodes = isp_city_nodes
         self.name = name
         self.protocol = protocol
@@ -40085,6 +41935,7 @@ class SearchCloudGtmMonitorTemplatesResponseBody(TeaModel):
         self.page_number = page_number
         self.page_size = page_size
         self.request_id = request_id
+        # The health check templates.
         self.templates = templates
         self.total_items = total_items
         self.total_pages = total_pages
@@ -40337,17 +42188,17 @@ class SetDnsGtmAccessModeRequest(TeaModel):
         lang: str = None,
         strategy_id: str = None,
     ):
-        # The primary/secondary switchover policy for address pool groups. Valid values:
+        # The switchover policy for primary and secondary address pool sets. Valid values:
         # 
-        # *   AUTO: performs automatic switchover between the primary and secondary address pool groups upon failures.
-        # *   DEFAULT: uses the primary address pool group.
-        # *   FAILOVER: uses the secondary address pool group.
+        # *   AUTO: performs automatic switchover between the primary and secondary address pool sets upon failures.
+        # *   DEFAULT: the primary address pool set
+        # *   FAILOVER: the secondary address pool set
         # 
         # This parameter is required.
         self.access_mode = access_mode
-        # The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+        # The language of the values for specific response parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
-        # The ID of the policy.
+        # The policy ID.
         # 
         # This parameter is required.
         self.strategy_id = strategy_id
@@ -40385,7 +42236,7 @@ class SetDnsGtmAccessModeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -40574,11 +42425,16 @@ class SetDomainDnssecStatusRequest(TeaModel):
         lang: str = None,
         status: str = None,
     ):
-        # The domain name for which you want to set the DNSSEC status.
+        # The domain name for which you want to enable the DNSSEC. Only the users of the paid editions of Alibaba Cloud DNS can enable this feature.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages. Default value: en. Valid values: en, zh, and ja.
+        # The language of the response. Valid values:
+        # 
+        # *   zh: Chinese
+        # *   en: English
+        # 
+        # Default value: en.
         self.lang = lang
         # The DNSSEC status. Valid values:
         # 
@@ -40831,15 +42687,15 @@ class SetGtmAccessModeRequest(TeaModel):
         lang: str = None,
         strategy_id: str = None,
     ):
-        # The target access policy of the GTM instance. Valid values:
+        # The desired access policy. Valid values:
         # 
-        # *   **AUTO**: Automatic switch
-        # *   **DEFAULT**: Default address pool
-        # *   **FAILOVER**: Failover address pool
+        # *   **AUTO: performs automatic switchover between the primary and secondary address pool sets upon failures.**\
+        # *   **DEFAULT: specifies the primary address pool set.**\
+        # *   **FAILOVER: specifies the secondary address pool set.
         # 
         # This parameter is required.
         self.access_mode = access_mode
-        # The language used by the user.
+        # The language.
         self.lang = lang
         # The ID of the access policy.
         # 
@@ -40879,7 +42735,7 @@ class SetGtmAccessModeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -41967,7 +43823,13 @@ class UpdateCloudGtmAddressRequestHealthTasks(TeaModel):
         port: int = None,
         template_id: str = None,
     ):
+        # The target service port for health checks. When the Ping protocol is selected for health checks, configuration of the service port is not supported.
+        # - If the input parameter is empty: Delete the currently configured port number;
+        # - If the input parameter is not empty: Update the port number based on the input parameter;
         self.port = port
+        # ID of the health check template associated with the address. This parameter is required if a health check port is configured.
+        # - If the input parameter is empty: Delete the currently configured detection template;
+        # - If the input parameter is not empty: Update the detection template based on the input parameter;
         self.template_id = template_id
 
     def validate(self):
@@ -42006,14 +43868,32 @@ class UpdateCloudGtmAddressRequest(TeaModel):
         health_tasks: List[UpdateCloudGtmAddressRequestHealthTasks] = None,
         name: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # Modified IP address or domain name.
         self.address = address
+        # The ID of the address. This ID uniquely identifies the address.
+        # 
         # This parameter is required.
         self.address_id = address_id
+        # Address Attribution information.
         self.attribute_info = attribute_info
+        # The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The condition for determining the health status of the address. This parameter is required when HealthTasks is specified. Valid values:
+        # 
+        # *   any_ok: The health check results of at least one health check template are normal.
+        # *   p30_ok: The health check results of at least 30% of health check templates are normal.
+        # *   p50_ok: The health check results of at least 50% of health check templates are normal.
+        # *   p70_ok: The health check results of at least 70% of health check templates are normal.
+        # *   all_ok: The health check results of all health check templates are normal.
         self.health_judgement = health_judgement
+        # The health check tasks.
         self.health_tasks = health_tasks
+        # Modified address name.
         self.name = name
 
     def validate(self):
@@ -42084,14 +43964,32 @@ class UpdateCloudGtmAddressShrinkRequest(TeaModel):
         health_tasks_shrink: str = None,
         name: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # Modified IP address or domain name.
         self.address = address
+        # The ID of the address. This ID uniquely identifies the address.
+        # 
         # This parameter is required.
         self.address_id = address_id
+        # Address Attribution information.
         self.attribute_info = attribute_info
+        # The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The condition for determining the health status of the address. This parameter is required when HealthTasks is specified. Valid values:
+        # 
+        # *   any_ok: The health check results of at least one health check template are normal.
+        # *   p30_ok: The health check results of at least 30% of health check templates are normal.
+        # *   p50_ok: The health check results of at least 50% of health check templates are normal.
+        # *   p70_ok: The health check results of at least 70% of health check templates are normal.
+        # *   all_ok: The health check results of all health check templates are normal.
         self.health_judgement = health_judgement
+        # The health check tasks.
         self.health_tasks_shrink = health_tasks_shrink
+        # Modified address name.
         self.name = name
 
     def validate(self):
@@ -42148,7 +44046,11 @@ class UpdateCloudGtmAddressResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Unique request identification code.
         self.request_id = request_id
+        # Modify address base configuration operation status:
+        # - true: Operation was successful
+        # - false: Operation was failed
         self.success = success
 
     def validate(self):
@@ -42224,10 +44126,23 @@ class UpdateCloudGtmAddressEnableStatusRequest(TeaModel):
         client_token: str = None,
         enable_status: str = None,
     ):
+        # 返回结果显示的语言。取值：
+        # 
+        # - zh-CN：中文
+        # 
+        # - en-US：英文
         self.accept_language = accept_language
+        # The ID of the address. This ID uniquely identifies the address.
+        # 
         # This parameter is required.
         self.address_id = address_id
+        # The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The enabling state of the address. Valid values:
+        # 
+        # *   enable: The address is enabled and the address can be used for Domain Name System (DNS) resolution if the address passes health checks.
+        # *   disable: The address is disabled and the address cannot be used for DNS resolution regardless of whether the address passes health checks or not.
+        # 
         # This parameter is required.
         self.enable_status = enable_status
 
@@ -42269,7 +44184,12 @@ class UpdateCloudGtmAddressEnableStatusResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Unique request identification code.
         self.request_id = request_id
+        # Indicates whether the operation was successful. Valid values:
+        # 
+        # *   true: The operation was successful.
+        # *   false: The operation was failed.
         self.success = success
 
     def validate(self):
@@ -42346,11 +44266,26 @@ class UpdateCloudGtmAddressManualAvailableStatusRequest(TeaModel):
         client_token: str = None,
         manual_available_status: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # The ID of the address. This ID uniquely identifies the address.
+        # 
         # This parameter is required.
         self.address_id = address_id
+        # The failover mode that is used when address exceptions are identified. Valid values:
+        # 
+        # *   auto: the automatic mode. The system determines whether to return an address based on health check results. If the address fails health checks, the system does not return the address. If the address passes health checks, the system returns the address.
+        # *   manual: the manual mode. If an address is in the unavailable state, the address is not returned for DNS requests even if the address passes health checks. If an address is in the available state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
         self.available_mode = available_mode
+        # The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The availability state of the address when AvailableMode is set to manual. Valid values:
+        # 
+        # *   available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+        # *   unavailable: The address is abnormal. In this state, the address is not returned for DNS requests even if the address passes health checks.
         self.manual_available_status = manual_available_status
 
     def validate(self):
@@ -42395,7 +44330,12 @@ class UpdateCloudGtmAddressManualAvailableStatusResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Unique request identification code.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.success = success
 
     def validate(self):
@@ -42472,10 +44412,24 @@ class UpdateCloudGtmAddressPoolBasicConfigRequest(TeaModel):
         client_token: str = None,
         health_judgement: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # The ID of the address pool. This ID uniquely identifies the address pool.
         self.address_pool_id = address_pool_id
+        # Address pool name, helping users distinguish the purpose of address pools.
         self.address_pool_name = address_pool_name
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The condition for determining the health status of the address pool. Valid values:
+        # 
+        # *   any_ok: At least one address in the address pool is available.
+        # *   p30_ok: At least 30% of the addresses in the address pool are available.
+        # *   p50_ok: At least 50% of the addresses in the address pool are available.
+        # *   p70_ok: At least 70% of the addresses in the address pool are available.
+        # *   all_ok: All addresses in the address pool are available.
         self.health_judgement = health_judgement
 
     def validate(self):
@@ -42521,8 +44475,13 @@ class UpdateCloudGtmAddressPoolBasicConfigResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the address pool. This ID uniquely identifies the address pool.
         self.address_pool_id = address_pool_id
+        # Unique request identification code.
         self.request_id = request_id
+        # Modify the basic configuration of the address pool operation success:
+        # - true: Operation successful
+        # - false: Operation failed
         self.success = success
 
     def validate(self):
@@ -42602,9 +44561,19 @@ class UpdateCloudGtmAddressPoolEnableStatusRequest(TeaModel):
         client_token: str = None,
         enable_status: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # The ID of the address pool. This ID uniquely identifies the address pool.
         self.address_pool_id = address_pool_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The enabling state of the address pool. Valid values:
+        # 
+        # *   enable: The address pool is enabled, and the addresses in the address pool are returned for DNS resolution when the health check results are normal.
+        # *   disable: The address pool is disabled, and the addresses in the address pool are not returned for DNS resolution regardless of whether the health check results are normal or not.
         self.enable_status = enable_status
 
     def validate(self):
@@ -42646,8 +44615,13 @@ class UpdateCloudGtmAddressPoolEnableStatusResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the address pool. This ID uniquely identifies the address pool.
         self.address_pool_id = address_pool_id
+        # Unique request identification code.
         self.request_id = request_id
+        # Indicates whether the modification operation was successful:
+        # - true: Operation was successful
+        # - false: Operation failed
         self.success = success
 
     def validate(self):
@@ -42728,10 +44702,25 @@ class UpdateCloudGtmAddressPoolLbStrategyRequest(TeaModel):
         client_token: str = None,
         sequence_lb_strategy_mode: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # Load balancing policy among addresses in the address pool:
+        # - round_robin: Round-robin, for any source of DNS resolution requests, all addresses are returned. The order of all addresses is rotated each time.
+        # - sequence: Sequential, for any source of DNS resolution requests, the address with the smaller sequence number (the sequence number indicates the priority of address returns, with smaller numbers having higher priority) is returned. If the address with the smaller sequence number is unavailable, the next address with a smaller sequence number is returned.
+        # - weight: Weighted, supports setting different weight values for each address, realizing the return of addresses according to the weight ratio for resolution queries.
+        # - source_nearest: Source-nearest, i.e., intelligent resolution function, where GTM can return different addresses based on the source of different DNS resolution requests, achieving the effect of users accessing nearby.
         self.address_lb_strategy = address_lb_strategy
+        # The ID of the address pool. This ID uniquely identifies the address pool.
         self.address_pool_id = address_pool_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The mode used if the address with the smallest sequence number is recovered. This parameter is required only when AddressLbStrategy is set to sequence. Valid values:
+        # 
+        # *   preemptive: The address with the smallest sequence number is preferentially used if this address is recovered.
+        # *   non_preemptive: The current address is still used even if the address with the smallest sequence number is recovered.
         self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
 
     def validate(self):
@@ -42777,8 +44766,13 @@ class UpdateCloudGtmAddressPoolLbStrategyResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the address pool. This ID uniquely identifies the address pool.
         self.address_pool_id = address_pool_id
+        # Unique request identification code.
         self.request_id = request_id
+        # Indicates whether the modification operation was successful:
+        # - true: Operation successful
+        # - false: Operation failed
         self.success = success
 
     def validate(self):
@@ -42858,9 +44852,16 @@ class UpdateCloudGtmAddressPoolRemarkRequest(TeaModel):
         client_token: str = None,
         remark: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # The ID of the address pool. This ID uniquely identifies the address pool.
         self.address_pool_id = address_pool_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The input parameter serves as the updated note; if an empty value is passed, the note will be deleted.
         self.remark = remark
 
     def validate(self):
@@ -42902,8 +44903,13 @@ class UpdateCloudGtmAddressPoolRemarkResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the address pool. This ID uniquely identifies the address pool.
         self.address_pool_id = address_pool_id
+        # Unique request identification code.
         self.request_id = request_id
+        # Indicates whether the modification operation was successful:
+        # - true: Operation successful
+        # - false: Operation failed
         self.success = success
 
     def validate(self):
@@ -42983,10 +44989,18 @@ class UpdateCloudGtmAddressRemarkRequest(TeaModel):
         client_token: str = None,
         remark: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # The ID of the address. This ID uniquely identifies the address.
+        # 
         # This parameter is required.
         self.address_id = address_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The input parameter serves as the updated note; if an empty value is passed, the note will be deleted.
         self.remark = remark
 
     def validate(self):
@@ -43027,7 +45041,11 @@ class UpdateCloudGtmAddressRemarkResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Unique request identification code.
         self.request_id = request_id
+        # Indicates whether the modification operation was successful:
+        # - true: Operation was successful
+        # - false: Operation was failed
         self.success = success
 
     def validate(self):
@@ -43103,9 +45121,29 @@ class UpdateCloudGtmGlobalAlertRequestAlertConfig(TeaModel):
         notice_type: str = None,
         sms_notice: bool = None,
     ):
+        # Specifies whether to configure DingTalk notifications. Valid values:
+        # 
+        # *   true: configures DingTalk notifications. DingTalk notifications are sent when alerts are triggered.
+        # *   false: does not configure DingTalk notifications.
         self.dingtalk_notice = dingtalk_notice
+        # Specifies whether to configure email notifications. Valid values:
+        # 
+        # *   true: configures email notifications. Emails are sent when alerts are triggered.
+        # *   false｜null: does not configure email notifications.
         self.email_notice = email_notice
+        # The type of the alert event. Valid values:
+        # 
+        # *   addr_alert: The address is unavailable.
+        # *   addr_resume: The address becomes available.
+        # *   addr_pool_unavailable: The address pool is unavailable.
+        # *   addr_pool_available: The address pool becomes available.
         self.notice_type = notice_type
+        # Specifies whether to configure text message notifications. Valid values:
+        # 
+        # *   true: configures text message notifications. Text messages are sent when alerts are triggered.
+        # *   false｜null: does not configure text message notifications.
+        # 
+        # Only the China site (aliyun.com) supports text message notifications.
         self.sms_notice = sms_notice
 
     def validate(self):
@@ -43148,9 +45186,16 @@ class UpdateCloudGtmGlobalAlertRequest(TeaModel):
         alert_group: List[str] = None,
         client_token: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US: English
         self.accept_language = accept_language
+        # The alert configurations.
         self.alert_config = alert_config
+        # The alert contact groups.
         self.alert_group = alert_group
+        # The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -43201,9 +45246,16 @@ class UpdateCloudGtmGlobalAlertShrinkRequest(TeaModel):
         alert_group_shrink: str = None,
         client_token: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US: English
         self.accept_language = accept_language
+        # The alert configurations.
         self.alert_config_shrink = alert_config_shrink
+        # The alert contact groups.
         self.alert_group_shrink = alert_group_shrink
+        # The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -43244,7 +45296,12 @@ class UpdateCloudGtmGlobalAlertResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -43322,13 +45379,13 @@ class UpdateCloudGtmInstanceConfigAlertRequestAlertConfig(TeaModel):
     ):
         # Specifies whether to configure DingTalk notifications. Valid values:
         # 
-        # *   true: DingTalk notifications are configured. DingTalk notifications are sent when alerts are triggered.
-        # *   false: DingTalk notifications are not configured.
+        # *   true: configures DingTalk notifications. DingTalk notifications are sent when alerts are triggered.
+        # *   false: does not configure DingTalk notifications.
         self.dingtalk_notice = dingtalk_notice
         # Specifies whether to configure email notifications. Valid values:
         # 
-        # *   true: Email notifications are configured. Emails are sent when alerts are triggered.
-        # *   false: Email notifications are not configured.
+        # *   true: configures email notifications. Emails are sent when alerts are triggered.
+        # *   false: does not configure email notifications.
         self.email_notice = email_notice
         # The type of the alert event. Valid values:
         # 
@@ -43339,8 +45396,8 @@ class UpdateCloudGtmInstanceConfigAlertRequestAlertConfig(TeaModel):
         self.notice_type = notice_type
         # Specifies whether to configure text message notifications. Valid values:
         # 
-        # *   true: Text message notifications are configured. Text messages are sent when alerts are triggered.
-        # *   false: Text message notifications are not configured.
+        # *   true: configures text message notifications. Text messages are sent when alerts are triggered.
+        # *   false: does not configure text message notifications.
         # 
         # Only the China site (aliyun.com) supports text message notifications.
         self.sms_notice = sms_notice
@@ -43627,12 +45684,24 @@ class UpdateCloudGtmInstanceConfigBasicRequest(TeaModel):
         schedule_zone_name: str = None,
         ttl: int = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   **zh-CN**: Chinese
+        # *   **en-US** (default): English
         self.accept_language = accept_language
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
+        # 
+        # You can call the [ListCloudGtmInstanceConfigs](~~ListCloudGtmInstanceConfigs~~) operation to query the value of ConfigId for the access domain name.
         self.config_id = config_id
+        # The ID of the GTM 3.0 instance for which you want to modify the TTL configuration.
         self.instance_id = instance_id
+        # Host record of the domain accessed by GTM.
         self.schedule_hostname = schedule_hostname
+        # The zone (such as example.com) or subzone (such as a.example.com) of the GTM access domain name. In most cases, the zone or subzone is hosted in Authoritative DNS Resolution of the Alibaba Cloud DNS console within the account to which the GTM instance belongs.
         self.schedule_zone_name = schedule_zone_name
+        # The global TTL value, in seconds. The global TTL value affects how long the DNS records that map the access domain name to the addresses in the address pools are cached in the local DNS servers of Internet service providers (ISPs).
         self.ttl = ttl
 
     def validate(self):
@@ -43685,7 +45754,11 @@ class UpdateCloudGtmInstanceConfigBasicResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Unique request identification code.
         self.request_id = request_id
+        # Indicates whether the operation was successful: 
+        # - **true**: The call succeeded. 
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -43762,10 +45835,23 @@ class UpdateCloudGtmInstanceConfigEnableStatusRequest(TeaModel):
         enable_status: str = None,
         instance_id: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   **zh-CN**: Chinese
+        # *   **en-US** (default): English
         self.accept_language = accept_language
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
+        # 
+        # You can call the [ListCloudGtmInstanceConfigs](~~ListCloudGtmInstanceConfigs~~) operation to query the configuration ID of the access domain name.
         self.config_id = config_id
+        # The enabling state of the access domain name. Valid values:
+        # 
+        # *   enable
+        # *   disable
         self.enable_status = enable_status
+        # The ID of the Global Traffic Manager (GTM) 3.0 instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -43810,7 +45896,11 @@ class UpdateCloudGtmInstanceConfigEnableStatusResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Unique request identification code.
         self.request_id = request_id
+        # Indicates whether the operation was successful: 
+        # - **true**: The call succeeded. 
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -43888,11 +45978,30 @@ class UpdateCloudGtmInstanceConfigLbStrategyRequest(TeaModel):
         instance_id: str = None,
         sequence_lb_strategy_mode: str = None,
     ):
+        # The language in which the returned results are displayed. Valid values:
+        # 
+        # *   **zh-CN**: Chinese
+        # *   **en-US** (default): English
         self.accept_language = accept_language
+        # The new policy for load balancing between address pools. Valid values:
+        # 
+        # *   round_robin: All address pools are returned for Domain Name System (DNS) requests from any source. All address pools are sorted in round-robin mode each time they are returned.
+        # *   sequence: The address pool with the smallest sequence number is preferentially returned for DNS requests from any source. The sequence number indicates the priority for returning the address pool. A smaller sequence number indicates a higher priority. If the address pool with the smallest sequence number is unavailable, the address pool with the second smallest sequence number is returned.
+        # *   weight: You can set a different weight value for each address pool. This way, address pools are returned based on the weight values.
+        # *   source_nearest: GTM returns different address pools based on the sources of DNS requests. This way, users can access nearby address pools.
         self.address_pool_lb_strategy = address_pool_lb_strategy
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
+        # 
+        # You can call the [ListCloudGtmInstanceConfigs](~~ListCloudGtmInstanceConfigs~~) operation to query the configuration ID of the desired access domain name.
         self.config_id = config_id
+        # The ID of the GTM 3.0 instance for which you want to modify the load balancing policy.
         self.instance_id = instance_id
+        # The mode used if the address pool with the smallest sequence number is recovered. This parameter is required when AddressPoolLbStrategy is set to sequence. Valid values:
+        # 
+        # *   preemptive: The address pool with the smallest sequence number is preferentially used if this address pool is recovered.
+        # *   non_preemptive: The current address pool is still used even if the address pool with the smallest sequence number is recovered.
         self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
 
     def validate(self):
@@ -44018,9 +46127,18 @@ class UpdateCloudGtmInstanceConfigRemarkRequest(TeaModel):
         instance_id: str = None,
         remark: str = None,
     ):
+        # The language in which the returned results are displayed. Valid values:
+        # 
+        # *   **zh-CN**: Chinese
+        # *   **en-US** (default): English
         self.accept_language = accept_language
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
+        # 
+        # You can call the [ListCloudGtmInstanceConfigs](~~ListCloudGtmInstanceConfigs~~) operation to query the configuration ID of the access domain name.
         self.config_id = config_id
+        # The ID of the GTM 3.0 instance for which you want to modify the description.
         self.instance_id = instance_id
         self.remark = remark
 
@@ -44142,9 +46260,16 @@ class UpdateCloudGtmInstanceNameRequest(TeaModel):
         instance_id: str = None,
         instance_name: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US: English
         self.accept_language = accept_language
+        # The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The ID of the Global Traffic Manager (GTM) instance.
         self.instance_id = instance_id
+        # The name of the instance. You cannot leave this parameter empty.
         self.instance_name = instance_name
 
     def validate(self):
@@ -44185,7 +46310,12 @@ class UpdateCloudGtmInstanceNameResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -44259,7 +46389,9 @@ class UpdateCloudGtmMonitorTemplateRequestIspCityNodes(TeaModel):
         city_code: str = None,
         isp_code: str = None,
     ):
+        # The city code of the health check node.
         self.city_code = city_code
+        # The Internet service provider (ISP) code of the health check node.
         self.isp_code = isp_code
 
     def validate(self):
@@ -44300,16 +46432,68 @@ class UpdateCloudGtmMonitorTemplateRequest(TeaModel):
         template_id: str = None,
         timeout: int = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The number of retries. The system will only judge the application service as abnormal after consecutive monitoring failures to prevent inaccurate monitoring results due to momentary network fluctuations or other reasons. Available retry options are:
+        # - 1 
+        # - 2 
+        # - 3
         self.evaluation_count = evaluation_count
+        # The extended information. The value of this parameter is a JSON string. The required parameters vary based on the health check protocol.
+        # 
+        # *   HTTP or HTTPS:
+        # 
+        #     host: the Host field of an HTTP or HTTPS request header during an HTTP or HTTPS health check. The parameter value indicates the HTTP website that you want to visit. By default, the value is the primary domain name. You can change the value based on your business requirements.
+        # 
+        #     path: the URL for HTTP or HTTPS health checks. Default value: /.
+        # 
+        #     code: the alert threshold. During an HTTP or HTTPS health check, the system checks whether a web server functions as expected based on the status code that is returned from the web server. If the returned status code is greater than the specified threshold, the corresponding application service address is deemed abnormal. Valid values:
+        # 
+        #     *   400: specifies an invalid request. If an HTTP or HTTPS request contains invalid request parameters, a web server returns a status code that is greater than 400. You must set path to an exact URL if you set code to 400.
+        #     *   500: specifies a server error. If some exceptions occur on a web server, the web server returns a status code that is greater than 500. This value is used by default.
+        # 
+        #     sni: specifies whether to enable Server Name Indication (SNI). This parameter is used only when the health check protocol is HTTPS. SNI is an extension to the Transport Layer Security (TLS) protocol, which allows a client to specify the host to be connected when the client sends a TLS handshake request. TLS handshakes occur before any data of HTTP requests is sent. Therefore, SNI enables servers to identify the services that clients are attempting to access before certificates are sent. This allows the servers to present correct certificates to the clients. Valid values:
+        # 
+        #     *   true: enables SNI.
+        #     *   false: disables SNI.
+        # 
+        #     followRedirect: specifies whether to follow 3XX redirects. Valid values:
+        # 
+        #     *   true: follows 3XX redirects. You are redirected to the destination address if a 3XX status code such as 301, 302, 303, 307, or 308 is returned.
+        #     *   false: does not follow 3XX redirects.
+        # 
+        # *   ping:
+        # 
+        #     packetNum: the total number of Internet Control Message Protocol (ICMP) packets that are sent to the address for each ping-based health check. Valid values: 20, 50, and 100.
+        # 
+        #     packetLossRate: the ICMP packet loss rate for each ping-based health check. The packet loss rate in a health check can be calculated by using the following formula: Packet loss rate in a health check = (Number of lost packets/Total number of sent ICMP packets) × 100%. If the packet loss rate reaches the threshold, an alert is triggered. Valid values: 10, 30, 40, 80, 90, and 100.
         self.extend_info = extend_info
+        # Percentage of selected node probe failures (%), that is, the percentage of abnormal detection points among the total detection points. When the failure ratio exceeds the set threshold, the service address is judged as abnormal. The available failure ratio thresholds are:
+        # - 20
+        # - 50
+        # - 80
+        # - 100
         self.failure_rate = failure_rate
+        # The time interval (in seconds) for each health check probe. By default, it probes every 60 seconds. The minimum supported interval for health checks is 15 seconds, available for flagship edition instances.
         self.interval = interval
+        # The health check nodes. You can call the [ListCloudGtmMonitorNodes](~~ListCloudGtmMonitorNodes~~) operation to obtain the health check nodes.
         self.isp_city_nodes = isp_city_nodes
+        # The name of the health check probe template, which is generally recommended to be distinguishable and memorable for configuration personnel, ideally indicating the health check protocol for easier identification.
         self.name = name
+        # The ID of the health check template that you want to modify. This ID uniquely identifies the health check template.
+        # 
         # This parameter is required.
         self.template_id = template_id
+        # Probe timeout (in milliseconds), data packets not returned within the timeout period are considered as health check timeouts:
+        # - 2000
+        # - 3000
+        # - 5000
+        # - 10000
         self.timeout = timeout
 
     def validate(self):
@@ -44390,16 +46574,68 @@ class UpdateCloudGtmMonitorTemplateShrinkRequest(TeaModel):
         template_id: str = None,
         timeout: int = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The number of retries. The system will only judge the application service as abnormal after consecutive monitoring failures to prevent inaccurate monitoring results due to momentary network fluctuations or other reasons. Available retry options are:
+        # - 1 
+        # - 2 
+        # - 3
         self.evaluation_count = evaluation_count
+        # The extended information. The value of this parameter is a JSON string. The required parameters vary based on the health check protocol.
+        # 
+        # *   HTTP or HTTPS:
+        # 
+        #     host: the Host field of an HTTP or HTTPS request header during an HTTP or HTTPS health check. The parameter value indicates the HTTP website that you want to visit. By default, the value is the primary domain name. You can change the value based on your business requirements.
+        # 
+        #     path: the URL for HTTP or HTTPS health checks. Default value: /.
+        # 
+        #     code: the alert threshold. During an HTTP or HTTPS health check, the system checks whether a web server functions as expected based on the status code that is returned from the web server. If the returned status code is greater than the specified threshold, the corresponding application service address is deemed abnormal. Valid values:
+        # 
+        #     *   400: specifies an invalid request. If an HTTP or HTTPS request contains invalid request parameters, a web server returns a status code that is greater than 400. You must set path to an exact URL if you set code to 400.
+        #     *   500: specifies a server error. If some exceptions occur on a web server, the web server returns a status code that is greater than 500. This value is used by default.
+        # 
+        #     sni: specifies whether to enable Server Name Indication (SNI). This parameter is used only when the health check protocol is HTTPS. SNI is an extension to the Transport Layer Security (TLS) protocol, which allows a client to specify the host to be connected when the client sends a TLS handshake request. TLS handshakes occur before any data of HTTP requests is sent. Therefore, SNI enables servers to identify the services that clients are attempting to access before certificates are sent. This allows the servers to present correct certificates to the clients. Valid values:
+        # 
+        #     *   true: enables SNI.
+        #     *   false: disables SNI.
+        # 
+        #     followRedirect: specifies whether to follow 3XX redirects. Valid values:
+        # 
+        #     *   true: follows 3XX redirects. You are redirected to the destination address if a 3XX status code such as 301, 302, 303, 307, or 308 is returned.
+        #     *   false: does not follow 3XX redirects.
+        # 
+        # *   ping:
+        # 
+        #     packetNum: the total number of Internet Control Message Protocol (ICMP) packets that are sent to the address for each ping-based health check. Valid values: 20, 50, and 100.
+        # 
+        #     packetLossRate: the ICMP packet loss rate for each ping-based health check. The packet loss rate in a health check can be calculated by using the following formula: Packet loss rate in a health check = (Number of lost packets/Total number of sent ICMP packets) × 100%. If the packet loss rate reaches the threshold, an alert is triggered. Valid values: 10, 30, 40, 80, 90, and 100.
         self.extend_info = extend_info
+        # Percentage of selected node probe failures (%), that is, the percentage of abnormal detection points among the total detection points. When the failure ratio exceeds the set threshold, the service address is judged as abnormal. The available failure ratio thresholds are:
+        # - 20
+        # - 50
+        # - 80
+        # - 100
         self.failure_rate = failure_rate
+        # The time interval (in seconds) for each health check probe. By default, it probes every 60 seconds. The minimum supported interval for health checks is 15 seconds, available for flagship edition instances.
         self.interval = interval
+        # The health check nodes. You can call the [ListCloudGtmMonitorNodes](~~ListCloudGtmMonitorNodes~~) operation to obtain the health check nodes.
         self.isp_city_nodes_shrink = isp_city_nodes_shrink
+        # The name of the health check probe template, which is generally recommended to be distinguishable and memorable for configuration personnel, ideally indicating the health check protocol for easier identification.
         self.name = name
+        # The ID of the health check template that you want to modify. This ID uniquely identifies the health check template.
+        # 
         # This parameter is required.
         self.template_id = template_id
+        # Probe timeout (in milliseconds), data packets not returned within the timeout period are considered as health check timeouts:
+        # - 2000
+        # - 3000
+        # - 5000
+        # - 10000
         self.timeout = timeout
 
     def validate(self):
@@ -44464,7 +46700,11 @@ class UpdateCloudGtmMonitorTemplateResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Unique request identification code.
         self.request_id = request_id
+        # Modify the health check template operation status:
+        # - true: Operation successful
+        # - false: Operation failed
         self.success = success
 
     def validate(self):
@@ -44540,9 +46780,17 @@ class UpdateCloudGtmMonitorTemplateRemarkRequest(TeaModel):
         remark: str = None,
         template_id: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US: English
         self.accept_language = accept_language
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The new description of the template. If you do not specify this parameter, the original description is deleted.
         self.remark = remark
+        # The ID of the health check template. This ID uniquely identifies a health check template.
+        # 
         # This parameter is required.
         self.template_id = template_id
 
@@ -44584,7 +46832,11 @@ class UpdateCloudGtmMonitorTemplateRemarkResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Modify the health check template remark operation status:
+        # - true: Operation successful
+        # - false: Operation failed
         self.success = success
 
     def validate(self):
@@ -45605,29 +47857,29 @@ class UpdateDnsGtmAddressPoolRequestAddr(TeaModel):
         # 
         # This parameter is required.
         self.addr = addr
-        # The source region of the address, in JSON-formatted string.
+        # The information about the source region of the address. The value of the parameter is a string in the JSON format. Valid values:
         # 
-        # *   LineCode: the line code of the source region of the address. The LineCode field is deprecated, and the lineCodes field is used as a substitute.
+        # *   LineCode: the line code of the source region. This parameter is deprecated. Use lineCodes instead.
         # 
-        # *   LineCodes: the line code list of the source regions of addresses.
+        # *   lineCodes: the line codes of the source region
         # 
-        # *   lineCodeRectifyType: the rectification type of the line codes. Default value: AUTO. Valid values:
+        # *   lineCodeRectifyType: the rectification type of the line code. Default value: AUTO. Valid values:
         # 
-        #     *   NO_NEED: no need for rectification.
-        #     *   RECTIFIED: rectified.
-        #     *   AUTO: automatic rectification.
+        #     *   NO_NEED: no need for rectification
+        #     *   RECTIFIED: rectified
+        #     *   AUTO: automatic rectification
         self.attribute_info = attribute_info
         # The weight of the address.
         self.lba_weight = lba_weight
-        # The response mode: Valid values:
+        # The return mode of the addresses. Valid values:
         # 
-        # *   SMART: smart return.
-        # *   ONLINE: always online.
-        # *   OFFLINE: always offline.
+        # *   SMART: smart return
+        # *   ONLINE: always online
+        # *   OFFLINE: always offline
         # 
         # This parameter is required.
         self.mode = mode
-        # The additional information about the address.
+        # The description of the address pool.
         self.remark = remark
 
     def validate(self):
@@ -46166,7 +48418,7 @@ class UpdateDnsGtmMonitorRequest(TeaModel):
         # 
         # This parameter is required.
         self.protocol_type = protocol_type
-        # The health check timeout period. Unit: milliseconds.
+        # The timeout period. Unit: milliseconds.
         self.timeout = timeout
 
     def validate(self):
@@ -46301,7 +48553,7 @@ class UpdateDomainGroupRequest(TeaModel):
         group_name: str = None,
         lang: str = None,
     ):
-        # The ID of the domain name group.
+        # The ID of the domain name group whose name you want to modify.
         # 
         # This parameter is required.
         self.group_id = group_id
@@ -46309,7 +48561,12 @@ class UpdateDomainGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.group_name = group_name
-        # The language.
+        # The language of the response. Valid values:
+        # 
+        # *   zh: Chinese
+        # *   en: English
+        # 
+        # Default value: en.
         self.lang = lang
 
     def validate(self):
@@ -46438,15 +48695,15 @@ class UpdateDomainRecordRequest(TeaModel):
     ):
         # The language.
         self.lang = lang
-        # The DNS resolution line. Default value: **default**.
+        # The resolution line. Default value: **default**.
         # 
         # For more information, see
         # 
-        # [DNS lines](https://www.alibabacloud.com/help/zh/doc-detail/29807.htm).
+        # [DNS resolution lines](https://www.alibabacloud.com/help/zh/doc-detail/29807.htm).
         self.line = line
         # The priority of the mail exchanger (MX) record. Valid values: `1 to 50`.
         # 
-        # This parameter must be specified if the type of the DNS record is MX.
+        # This parameter is required if the type of the DNS record is MX.
         self.priority = priority
         # The hostname.
         # 
@@ -46458,7 +48715,7 @@ class UpdateDomainRecordRequest(TeaModel):
         # 
         # This parameter is required.
         self.record_id = record_id
-        # The time-to-live (TTL) of the DNS record. Default value: 600. Unit: seconds.
+        # The time to live (TTL) value of the Domain Name System (DNS) record. Default value: 600. Unit: seconds.
         # 
         # For more information, see
         # 
@@ -46736,9 +48993,16 @@ class UpdateDomainRemarkRequest(TeaModel):
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The language.
+        # The language of the response. Valid values:
+        # 
+        # *   zh: Chinese
+        # *   en: English
+        # 
+        # Default value: en
         self.lang = lang
         # The description of your domain name.
+        # 
+        # It can be up to 50 characters in length and can contain digits, letters, and the following special characters: _ - , .
         self.remark = remark
 
     def validate(self):
