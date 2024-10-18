@@ -73,7 +73,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.AbolishDeploymentResponse:
         """
-        @summary 终止发布流程
+        @summary Terminates the process for deploying or undeploying an entity. The process is not deleted and can still be queried by calling query operations.
         
         @param request: AbolishDeploymentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -110,7 +110,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.AbolishDeploymentResponse:
         """
-        @summary 终止发布流程
+        @summary Terminates the process for deploying or undeploying an entity. The process is not deleted and can still be queried by calling query operations.
         
         @param request: AbolishDeploymentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -146,7 +146,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.AbolishDeploymentRequest,
     ) -> dataworks_public_20240518_models.AbolishDeploymentResponse:
         """
-        @summary 终止发布流程
+        @summary Terminates the process for deploying or undeploying an entity. The process is not deleted and can still be queried by calling query operations.
         
         @param request: AbolishDeploymentRequest
         @return: AbolishDeploymentResponse
@@ -159,13 +159,113 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.AbolishDeploymentRequest,
     ) -> dataworks_public_20240518_models.AbolishDeploymentResponse:
         """
-        @summary 终止发布流程
+        @summary Terminates the process for deploying or undeploying an entity. The process is not deleted and can still be queried by calling query operations.
         
         @param request: AbolishDeploymentRequest
         @return: AbolishDeploymentResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.abolish_deployment_with_options_async(request, runtime)
+
+    def associate_project_to_resource_group_with_options(
+        self,
+        request: dataworks_public_20240518_models.AssociateProjectToResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.AssociateProjectToResourceGroupResponse:
+        """
+        @summary 关联资源组到某个工作空间。
+        
+        @param request: AssociateProjectToResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateProjectToResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AssociateProjectToResourceGroup',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.AssociateProjectToResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def associate_project_to_resource_group_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.AssociateProjectToResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.AssociateProjectToResourceGroupResponse:
+        """
+        @summary 关联资源组到某个工作空间。
+        
+        @param request: AssociateProjectToResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateProjectToResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AssociateProjectToResourceGroup',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.AssociateProjectToResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def associate_project_to_resource_group(
+        self,
+        request: dataworks_public_20240518_models.AssociateProjectToResourceGroupRequest,
+    ) -> dataworks_public_20240518_models.AssociateProjectToResourceGroupResponse:
+        """
+        @summary 关联资源组到某个工作空间。
+        
+        @param request: AssociateProjectToResourceGroupRequest
+        @return: AssociateProjectToResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.associate_project_to_resource_group_with_options(request, runtime)
+
+    async def associate_project_to_resource_group_async(
+        self,
+        request: dataworks_public_20240518_models.AssociateProjectToResourceGroupRequest,
+    ) -> dataworks_public_20240518_models.AssociateProjectToResourceGroupResponse:
+        """
+        @summary 关联资源组到某个工作空间。
+        
+        @param request: AssociateProjectToResourceGroupRequest
+        @return: AssociateProjectToResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.associate_project_to_resource_group_with_options_async(request, runtime)
 
     def clone_data_source_with_options(
         self,
@@ -266,6 +366,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.clone_data_source_with_options_async(request, runtime)
+
+    def create_dialarm_rule_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateDIAlarmRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDIAlarmRuleResponse:
+        """
+        @summary 创建数据集成报警规则
+        
+        @param tmp_req: CreateDIAlarmRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDIAlarmRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateDIAlarmRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notification_settings):
+            request.notification_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification_settings, 'NotificationSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.trigger_conditions):
+            request.trigger_conditions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.trigger_conditions, 'TriggerConditions', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDIAlarmRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDIAlarmRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dialarm_rule_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateDIAlarmRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDIAlarmRuleResponse:
+        """
+        @summary 创建数据集成报警规则
+        
+        @param tmp_req: CreateDIAlarmRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDIAlarmRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateDIAlarmRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notification_settings):
+            request.notification_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification_settings, 'NotificationSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.trigger_conditions):
+            request.trigger_conditions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.trigger_conditions, 'TriggerConditions', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDIAlarmRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDIAlarmRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dialarm_rule(
+        self,
+        request: dataworks_public_20240518_models.CreateDIAlarmRuleRequest,
+    ) -> dataworks_public_20240518_models.CreateDIAlarmRuleResponse:
+        """
+        @summary 创建数据集成报警规则
+        
+        @param request: CreateDIAlarmRuleRequest
+        @return: CreateDIAlarmRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_dialarm_rule_with_options(request, runtime)
+
+    async def create_dialarm_rule_async(
+        self,
+        request: dataworks_public_20240518_models.CreateDIAlarmRuleRequest,
+    ) -> dataworks_public_20240518_models.CreateDIAlarmRuleResponse:
+        """
+        @summary 创建数据集成报警规则
+        
+        @param request: CreateDIAlarmRuleRequest
+        @return: CreateDIAlarmRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_dialarm_rule_with_options_async(request, runtime)
 
     def create_dijob_with_options(
         self,
@@ -617,7 +821,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateDeploymentResponse:
         """
-        @summary 创建发布流程
+        @summary Creates a process for deploying or undeploying an entity in DataStudio.
+        
+        @description >  You cannot use this API operation to create a process for multiple entities at a time. If you specify multiple entities in a request, the system creates a process only for the first entity.
         
         @param tmp_req: CreateDeploymentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -662,7 +868,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateDeploymentResponse:
         """
-        @summary 创建发布流程
+        @summary Creates a process for deploying or undeploying an entity in DataStudio.
+        
+        @description >  You cannot use this API operation to create a process for multiple entities at a time. If you specify multiple entities in a request, the system creates a process only for the first entity.
         
         @param tmp_req: CreateDeploymentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -706,7 +914,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateDeploymentRequest,
     ) -> dataworks_public_20240518_models.CreateDeploymentResponse:
         """
-        @summary 创建发布流程
+        @summary Creates a process for deploying or undeploying an entity in DataStudio.
+        
+        @description >  You cannot use this API operation to create a process for multiple entities at a time. If you specify multiple entities in a request, the system creates a process only for the first entity.
         
         @param request: CreateDeploymentRequest
         @return: CreateDeploymentResponse
@@ -719,7 +929,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateDeploymentRequest,
     ) -> dataworks_public_20240518_models.CreateDeploymentResponse:
         """
-        @summary 创建发布流程
+        @summary Creates a process for deploying or undeploying an entity in DataStudio.
+        
+        @description >  You cannot use this API operation to create a process for multiple entities at a time. If you specify multiple entities in a request, the system creates a process only for the first entity.
         
         @param request: CreateDeploymentRequest
         @return: CreateDeploymentResponse
@@ -733,7 +945,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateFunctionResponse:
         """
-        @summary 创建udf函数
+        @summary Creates a user-defined function (UDF) in DataStudio. The information about the UDF is described by using FlowSpec.
+        
+        @description >  You cannot use this API operation to create multiple UDFs at a time. If you specify multiple UDFs by using FlowSpec, the system creates only the first specified UDF.
         
         @param request: CreateFunctionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -770,7 +984,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateFunctionResponse:
         """
-        @summary 创建udf函数
+        @summary Creates a user-defined function (UDF) in DataStudio. The information about the UDF is described by using FlowSpec.
+        
+        @description >  You cannot use this API operation to create multiple UDFs at a time. If you specify multiple UDFs by using FlowSpec, the system creates only the first specified UDF.
         
         @param request: CreateFunctionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -806,7 +1022,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateFunctionRequest,
     ) -> dataworks_public_20240518_models.CreateFunctionResponse:
         """
-        @summary 创建udf函数
+        @summary Creates a user-defined function (UDF) in DataStudio. The information about the UDF is described by using FlowSpec.
+        
+        @description >  You cannot use this API operation to create multiple UDFs at a time. If you specify multiple UDFs by using FlowSpec, the system creates only the first specified UDF.
         
         @param request: CreateFunctionRequest
         @return: CreateFunctionResponse
@@ -819,7 +1037,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateFunctionRequest,
     ) -> dataworks_public_20240518_models.CreateFunctionResponse:
         """
-        @summary 创建udf函数
+        @summary Creates a user-defined function (UDF) in DataStudio. The information about the UDF is described by using FlowSpec.
+        
+        @description >  You cannot use this API operation to create multiple UDFs at a time. If you specify multiple UDFs by using FlowSpec, the system creates only the first specified UDF.
         
         @param request: CreateFunctionRequest
         @return: CreateFunctionResponse
@@ -827,13 +1047,123 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_function_with_options_async(request, runtime)
 
+    def create_network_with_options(
+        self,
+        request: dataworks_public_20240518_models.CreateNetworkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateNetworkResponse:
+        """
+        @summary 创建并绑定通用资源组网络资源。
+        
+        @param request: CreateNetworkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNetworkResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.vpc_id):
+            body['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.vswitch_id):
+            body['VswitchId'] = request.vswitch_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateNetwork',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateNetworkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_network_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.CreateNetworkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateNetworkResponse:
+        """
+        @summary 创建并绑定通用资源组网络资源。
+        
+        @param request: CreateNetworkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNetworkResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.vpc_id):
+            body['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.vswitch_id):
+            body['VswitchId'] = request.vswitch_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateNetwork',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateNetworkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_network(
+        self,
+        request: dataworks_public_20240518_models.CreateNetworkRequest,
+    ) -> dataworks_public_20240518_models.CreateNetworkResponse:
+        """
+        @summary 创建并绑定通用资源组网络资源。
+        
+        @param request: CreateNetworkRequest
+        @return: CreateNetworkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_network_with_options(request, runtime)
+
+    async def create_network_async(
+        self,
+        request: dataworks_public_20240518_models.CreateNetworkRequest,
+    ) -> dataworks_public_20240518_models.CreateNetworkResponse:
+        """
+        @summary 创建并绑定通用资源组网络资源。
+        
+        @param request: CreateNetworkRequest
+        @return: CreateNetworkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_network_with_options_async(request, runtime)
+
     def create_node_with_options(
         self,
         request: dataworks_public_20240518_models.CreateNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateNodeResponse:
         """
-        @summary 创建节点
+        @summary Creates a node in DataStudio. The information about the node is described by using FlowSpec.
+        
+        @description >  You cannot use this API operation to create multiple nodes at a time. If you specify multiple nodes by using FlowSpec, the system creates only the first specified node.
         
         @param request: CreateNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -874,7 +1204,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateNodeResponse:
         """
-        @summary 创建节点
+        @summary Creates a node in DataStudio. The information about the node is described by using FlowSpec.
+        
+        @description >  You cannot use this API operation to create multiple nodes at a time. If you specify multiple nodes by using FlowSpec, the system creates only the first specified node.
         
         @param request: CreateNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -914,7 +1246,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateNodeRequest,
     ) -> dataworks_public_20240518_models.CreateNodeResponse:
         """
-        @summary 创建节点
+        @summary Creates a node in DataStudio. The information about the node is described by using FlowSpec.
+        
+        @description >  You cannot use this API operation to create multiple nodes at a time. If you specify multiple nodes by using FlowSpec, the system creates only the first specified node.
         
         @param request: CreateNodeRequest
         @return: CreateNodeResponse
@@ -927,7 +1261,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateNodeRequest,
     ) -> dataworks_public_20240518_models.CreateNodeResponse:
         """
-        @summary 创建节点
+        @summary Creates a node in DataStudio. The information about the node is described by using FlowSpec.
+        
+        @description >  You cannot use this API operation to create multiple nodes at a time. If you specify multiple nodes by using FlowSpec, the system creates only the first specified node.
         
         @param request: CreateNodeRequest
         @return: CreateNodeResponse
@@ -1073,7 +1409,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateResourceResponse:
         """
-        @summary 创建资源文件
+        @summary Creates a file resource in DataStudio. The information about the file resource is described by using FlowSpec.
+        
+        @description >  You cannot use this API operation to create multiple file resources at a time. If you specify multiple file resources by using FlowSpec, the system creates only the first specified resource.
         
         @param request: CreateResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1110,7 +1448,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateResourceResponse:
         """
-        @summary 创建资源文件
+        @summary Creates a file resource in DataStudio. The information about the file resource is described by using FlowSpec.
+        
+        @description >  You cannot use this API operation to create multiple file resources at a time. If you specify multiple file resources by using FlowSpec, the system creates only the first specified resource.
         
         @param request: CreateResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1146,7 +1486,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateResourceRequest,
     ) -> dataworks_public_20240518_models.CreateResourceResponse:
         """
-        @summary 创建资源文件
+        @summary Creates a file resource in DataStudio. The information about the file resource is described by using FlowSpec.
+        
+        @description >  You cannot use this API operation to create multiple file resources at a time. If you specify multiple file resources by using FlowSpec, the system creates only the first specified resource.
         
         @param request: CreateResourceRequest
         @return: CreateResourceResponse
@@ -1159,7 +1501,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateResourceRequest,
     ) -> dataworks_public_20240518_models.CreateResourceResponse:
         """
-        @summary 创建资源文件
+        @summary Creates a file resource in DataStudio. The information about the file resource is described by using FlowSpec.
+        
+        @description >  You cannot use this API operation to create multiple file resources at a time. If you specify multiple file resources by using FlowSpec, the system creates only the first specified resource.
         
         @param request: CreateResourceRequest
         @return: CreateResourceResponse
@@ -1167,13 +1511,247 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_resource_with_options_async(request, runtime)
 
+    def create_resource_group_with_options(
+        self,
+        request: dataworks_public_20240518_models.CreateResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateResourceGroupResponse:
+        """
+        @summary 创建通用资源组。
+        
+        @param request: CreateResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auto_renew):
+            body['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.payment_duration):
+            body['PaymentDuration'] = request.payment_duration
+        if not UtilClient.is_unset(request.payment_duration_unit):
+            body['PaymentDurationUnit'] = request.payment_duration_unit
+        if not UtilClient.is_unset(request.payment_type):
+            body['PaymentType'] = request.payment_type
+        if not UtilClient.is_unset(request.remark):
+            body['Remark'] = request.remark
+        if not UtilClient.is_unset(request.spec):
+            body['Spec'] = request.spec
+        if not UtilClient.is_unset(request.vpc_id):
+            body['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.vswitch_id):
+            body['VswitchId'] = request.vswitch_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateResourceGroup',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_resource_group_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.CreateResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateResourceGroupResponse:
+        """
+        @summary 创建通用资源组。
+        
+        @param request: CreateResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auto_renew):
+            body['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.payment_duration):
+            body['PaymentDuration'] = request.payment_duration
+        if not UtilClient.is_unset(request.payment_duration_unit):
+            body['PaymentDurationUnit'] = request.payment_duration_unit
+        if not UtilClient.is_unset(request.payment_type):
+            body['PaymentType'] = request.payment_type
+        if not UtilClient.is_unset(request.remark):
+            body['Remark'] = request.remark
+        if not UtilClient.is_unset(request.spec):
+            body['Spec'] = request.spec
+        if not UtilClient.is_unset(request.vpc_id):
+            body['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.vswitch_id):
+            body['VswitchId'] = request.vswitch_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateResourceGroup',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_resource_group(
+        self,
+        request: dataworks_public_20240518_models.CreateResourceGroupRequest,
+    ) -> dataworks_public_20240518_models.CreateResourceGroupResponse:
+        """
+        @summary 创建通用资源组。
+        
+        @param request: CreateResourceGroupRequest
+        @return: CreateResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_resource_group_with_options(request, runtime)
+
+    async def create_resource_group_async(
+        self,
+        request: dataworks_public_20240518_models.CreateResourceGroupRequest,
+    ) -> dataworks_public_20240518_models.CreateResourceGroupResponse:
+        """
+        @summary 创建通用资源组。
+        
+        @param request: CreateResourceGroupRequest
+        @return: CreateResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_resource_group_with_options_async(request, runtime)
+
+    def create_route_with_options(
+        self,
+        request: dataworks_public_20240518_models.CreateRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateRouteResponse:
+        """
+        @summary 创建网络资源的路由。
+        
+        @param request: CreateRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRouteResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.destination_cidr):
+            body['DestinationCidr'] = request.destination_cidr
+        if not UtilClient.is_unset(request.network_id):
+            body['NetworkId'] = request.network_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateRoute',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_route_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.CreateRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateRouteResponse:
+        """
+        @summary 创建网络资源的路由。
+        
+        @param request: CreateRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRouteResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.destination_cidr):
+            body['DestinationCidr'] = request.destination_cidr
+        if not UtilClient.is_unset(request.network_id):
+            body['NetworkId'] = request.network_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateRoute',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_route(
+        self,
+        request: dataworks_public_20240518_models.CreateRouteRequest,
+    ) -> dataworks_public_20240518_models.CreateRouteResponse:
+        """
+        @summary 创建网络资源的路由。
+        
+        @param request: CreateRouteRequest
+        @return: CreateRouteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_route_with_options(request, runtime)
+
+    async def create_route_async(
+        self,
+        request: dataworks_public_20240518_models.CreateRouteRequest,
+    ) -> dataworks_public_20240518_models.CreateRouteResponse:
+        """
+        @summary 创建网络资源的路由。
+        
+        @param request: CreateRouteRequest
+        @return: CreateRouteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_route_with_options_async(request, runtime)
+
     def create_workflow_definition_with_options(
         self,
         request: dataworks_public_20240518_models.CreateWorkflowDefinitionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateWorkflowDefinitionResponse:
         """
-        @summary 创建工作流
+        @summary Creates a workflow in a directory of DataStudio.
+        
+        @description > You cannot use this API operation to create multiple workflows at a time. If you specify multiple workflows by using FlowSpec, the system creates only the first specified workflow. Other specified workflows and the nodes in the workflows are ignored. You can call the CreateNode operation to create a node.
         
         @param request: CreateWorkflowDefinitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1210,7 +1788,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateWorkflowDefinitionResponse:
         """
-        @summary 创建工作流
+        @summary Creates a workflow in a directory of DataStudio.
+        
+        @description > You cannot use this API operation to create multiple workflows at a time. If you specify multiple workflows by using FlowSpec, the system creates only the first specified workflow. Other specified workflows and the nodes in the workflows are ignored. You can call the CreateNode operation to create a node.
         
         @param request: CreateWorkflowDefinitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1246,7 +1826,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateWorkflowDefinitionRequest,
     ) -> dataworks_public_20240518_models.CreateWorkflowDefinitionResponse:
         """
-        @summary 创建工作流
+        @summary Creates a workflow in a directory of DataStudio.
+        
+        @description > You cannot use this API operation to create multiple workflows at a time. If you specify multiple workflows by using FlowSpec, the system creates only the first specified workflow. Other specified workflows and the nodes in the workflows are ignored. You can call the CreateNode operation to create a node.
         
         @param request: CreateWorkflowDefinitionRequest
         @return: CreateWorkflowDefinitionResponse
@@ -1259,13 +1841,107 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateWorkflowDefinitionRequest,
     ) -> dataworks_public_20240518_models.CreateWorkflowDefinitionResponse:
         """
-        @summary 创建工作流
+        @summary Creates a workflow in a directory of DataStudio.
+        
+        @description > You cannot use this API operation to create multiple workflows at a time. If you specify multiple workflows by using FlowSpec, the system creates only the first specified workflow. Other specified workflows and the nodes in the workflows are ignored. You can call the CreateNode operation to create a node.
         
         @param request: CreateWorkflowDefinitionRequest
         @return: CreateWorkflowDefinitionResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_workflow_definition_with_options_async(request, runtime)
+
+    def delete_dialarm_rule_with_options(
+        self,
+        request: dataworks_public_20240518_models.DeleteDIAlarmRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteDIAlarmRuleResponse:
+        """
+        @summary Deletes an alert rule configured for a synchronization task.
+        
+        @param request: DeleteDIAlarmRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDIAlarmRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDIAlarmRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDIAlarmRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_dialarm_rule_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteDIAlarmRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteDIAlarmRuleResponse:
+        """
+        @summary Deletes an alert rule configured for a synchronization task.
+        
+        @param request: DeleteDIAlarmRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDIAlarmRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDIAlarmRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDIAlarmRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_dialarm_rule(
+        self,
+        request: dataworks_public_20240518_models.DeleteDIAlarmRuleRequest,
+    ) -> dataworks_public_20240518_models.DeleteDIAlarmRuleResponse:
+        """
+        @summary Deletes an alert rule configured for a synchronization task.
+        
+        @param request: DeleteDIAlarmRuleRequest
+        @return: DeleteDIAlarmRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_dialarm_rule_with_options(request, runtime)
+
+    async def delete_dialarm_rule_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteDIAlarmRuleRequest,
+    ) -> dataworks_public_20240518_models.DeleteDIAlarmRuleResponse:
+        """
+        @summary Deletes an alert rule configured for a synchronization task.
+        
+        @param request: DeleteDIAlarmRuleRequest
+        @return: DeleteDIAlarmRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_dialarm_rule_with_options_async(request, runtime)
 
     def delete_dijob_with_options(
         self,
@@ -1553,7 +2229,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteFunctionResponse:
         """
-        @summary 删除udf函数
+        @summary Deletes a user-defined function (UDF) in DataStudio.
+        
+        @description >  A UDF that is deployed cannot be deleted. If you want to delete such a UDF, you must first undeploy the UDF.
         
         @param request: DeleteFunctionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1590,7 +2268,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteFunctionResponse:
         """
-        @summary 删除udf函数
+        @summary Deletes a user-defined function (UDF) in DataStudio.
+        
+        @description >  A UDF that is deployed cannot be deleted. If you want to delete such a UDF, you must first undeploy the UDF.
         
         @param request: DeleteFunctionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1626,7 +2306,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteFunctionRequest,
     ) -> dataworks_public_20240518_models.DeleteFunctionResponse:
         """
-        @summary 删除udf函数
+        @summary Deletes a user-defined function (UDF) in DataStudio.
+        
+        @description >  A UDF that is deployed cannot be deleted. If you want to delete such a UDF, you must first undeploy the UDF.
         
         @param request: DeleteFunctionRequest
         @return: DeleteFunctionResponse
@@ -1639,7 +2321,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteFunctionRequest,
     ) -> dataworks_public_20240518_models.DeleteFunctionResponse:
         """
-        @summary 删除udf函数
+        @summary Deletes a user-defined function (UDF) in DataStudio.
+        
+        @description >  A UDF that is deployed cannot be deleted. If you want to delete such a UDF, you must first undeploy the UDF.
         
         @param request: DeleteFunctionRequest
         @return: DeleteFunctionResponse
@@ -1647,13 +2331,111 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_function_with_options_async(request, runtime)
 
+    def delete_network_with_options(
+        self,
+        request: dataworks_public_20240518_models.DeleteNetworkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteNetworkResponse:
+        """
+        @summary 解绑并删除通用资源组网络资源。
+        
+        @param request: DeleteNetworkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNetworkResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteNetwork',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteNetworkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_network_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteNetworkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteNetworkResponse:
+        """
+        @summary 解绑并删除通用资源组网络资源。
+        
+        @param request: DeleteNetworkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNetworkResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteNetwork',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteNetworkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_network(
+        self,
+        request: dataworks_public_20240518_models.DeleteNetworkRequest,
+    ) -> dataworks_public_20240518_models.DeleteNetworkResponse:
+        """
+        @summary 解绑并删除通用资源组网络资源。
+        
+        @param request: DeleteNetworkRequest
+        @return: DeleteNetworkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_network_with_options(request, runtime)
+
+    async def delete_network_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteNetworkRequest,
+    ) -> dataworks_public_20240518_models.DeleteNetworkResponse:
+        """
+        @summary 解绑并删除通用资源组网络资源。
+        
+        @param request: DeleteNetworkRequest
+        @return: DeleteNetworkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_network_with_options_async(request, runtime)
+
     def delete_node_with_options(
         self,
         request: dataworks_public_20240518_models.DeleteNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteNodeResponse:
         """
-        @summary 删除节点
+        @summary Deletes a node from DataStudio.
+        
+        @description >  A node that is deployed cannot be deleted. If you want to delete such a node, you must first undeploy the node.
         
         @param request: DeleteNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1690,7 +2472,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteNodeResponse:
         """
-        @summary 删除节点
+        @summary Deletes a node from DataStudio.
+        
+        @description >  A node that is deployed cannot be deleted. If you want to delete such a node, you must first undeploy the node.
         
         @param request: DeleteNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1726,7 +2510,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteNodeRequest,
     ) -> dataworks_public_20240518_models.DeleteNodeResponse:
         """
-        @summary 删除节点
+        @summary Deletes a node from DataStudio.
+        
+        @description >  A node that is deployed cannot be deleted. If you want to delete such a node, you must first undeploy the node.
         
         @param request: DeleteNodeRequest
         @return: DeleteNodeResponse
@@ -1739,7 +2525,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteNodeRequest,
     ) -> dataworks_public_20240518_models.DeleteNodeResponse:
         """
-        @summary 删除节点
+        @summary Deletes a node from DataStudio.
+        
+        @description >  A node that is deployed cannot be deleted. If you want to delete such a node, you must first undeploy the node.
         
         @param request: DeleteNodeRequest
         @return: DeleteNodeResponse
@@ -1849,7 +2637,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteResourceResponse:
         """
-        @summary 删除资源文件
+        @summary Deletes a file resource from DataStudio.
+        
+        @description >  A file resource that is deployed cannot be deleted. If you want to delete such a file resource, you must first undeploy the file resource.
         
         @param request: DeleteResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1886,7 +2676,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteResourceResponse:
         """
-        @summary 删除资源文件
+        @summary Deletes a file resource from DataStudio.
+        
+        @description >  A file resource that is deployed cannot be deleted. If you want to delete such a file resource, you must first undeploy the file resource.
         
         @param request: DeleteResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1922,7 +2714,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteResourceRequest,
     ) -> dataworks_public_20240518_models.DeleteResourceResponse:
         """
-        @summary 删除资源文件
+        @summary Deletes a file resource from DataStudio.
+        
+        @description >  A file resource that is deployed cannot be deleted. If you want to delete such a file resource, you must first undeploy the file resource.
         
         @param request: DeleteResourceRequest
         @return: DeleteResourceResponse
@@ -1935,7 +2729,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteResourceRequest,
     ) -> dataworks_public_20240518_models.DeleteResourceResponse:
         """
-        @summary 删除资源文件
+        @summary Deletes a file resource from DataStudio.
+        
+        @description >  A file resource that is deployed cannot be deleted. If you want to delete such a file resource, you must first undeploy the file resource.
         
         @param request: DeleteResourceRequest
         @return: DeleteResourceResponse
@@ -1943,13 +2739,207 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_resource_with_options_async(request, runtime)
 
+    def delete_resource_group_with_options(
+        self,
+        request: dataworks_public_20240518_models.DeleteResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteResourceGroupResponse:
+        """
+        @summary 删除通用资源组。
+        
+        @param request: DeleteResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteResourceGroup',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_resource_group_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteResourceGroupResponse:
+        """
+        @summary 删除通用资源组。
+        
+        @param request: DeleteResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteResourceGroup',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_resource_group(
+        self,
+        request: dataworks_public_20240518_models.DeleteResourceGroupRequest,
+    ) -> dataworks_public_20240518_models.DeleteResourceGroupResponse:
+        """
+        @summary 删除通用资源组。
+        
+        @param request: DeleteResourceGroupRequest
+        @return: DeleteResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_resource_group_with_options(request, runtime)
+
+    async def delete_resource_group_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteResourceGroupRequest,
+    ) -> dataworks_public_20240518_models.DeleteResourceGroupResponse:
+        """
+        @summary 删除通用资源组。
+        
+        @param request: DeleteResourceGroupRequest
+        @return: DeleteResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_resource_group_with_options_async(request, runtime)
+
+    def delete_route_with_options(
+        self,
+        request: dataworks_public_20240518_models.DeleteRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteRouteResponse:
+        """
+        @summary 删除网络资源的路由。
+        
+        @param request: DeleteRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRouteResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteRoute',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_route_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteRouteResponse:
+        """
+        @summary 删除网络资源的路由。
+        
+        @param request: DeleteRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRouteResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteRoute',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_route(
+        self,
+        request: dataworks_public_20240518_models.DeleteRouteRequest,
+    ) -> dataworks_public_20240518_models.DeleteRouteResponse:
+        """
+        @summary 删除网络资源的路由。
+        
+        @param request: DeleteRouteRequest
+        @return: DeleteRouteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_route_with_options(request, runtime)
+
+    async def delete_route_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteRouteRequest,
+    ) -> dataworks_public_20240518_models.DeleteRouteResponse:
+        """
+        @summary 删除网络资源的路由。
+        
+        @param request: DeleteRouteRequest
+        @return: DeleteRouteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_route_with_options_async(request, runtime)
+
     def delete_workflow_definition_with_options(
         self,
         request: dataworks_public_20240518_models.DeleteWorkflowDefinitionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteWorkflowDefinitionResponse:
         """
-        @summary 删除工作流
+        @summary Deletes a workflow from DataStudio.
+        
+        @description >  A workflow that is deployed cannot be deleted. If you want to delete such a workflow, you must first undeploy the workflow.
         
         @param request: DeleteWorkflowDefinitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1986,7 +2976,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteWorkflowDefinitionResponse:
         """
-        @summary 删除工作流
+        @summary Deletes a workflow from DataStudio.
+        
+        @description >  A workflow that is deployed cannot be deleted. If you want to delete such a workflow, you must first undeploy the workflow.
         
         @param request: DeleteWorkflowDefinitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2022,7 +3014,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteWorkflowDefinitionRequest,
     ) -> dataworks_public_20240518_models.DeleteWorkflowDefinitionResponse:
         """
-        @summary 删除工作流
+        @summary Deletes a workflow from DataStudio.
+        
+        @description >  A workflow that is deployed cannot be deleted. If you want to delete such a workflow, you must first undeploy the workflow.
         
         @param request: DeleteWorkflowDefinitionRequest
         @return: DeleteWorkflowDefinitionResponse
@@ -2035,7 +3029,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteWorkflowDefinitionRequest,
     ) -> dataworks_public_20240518_models.DeleteWorkflowDefinitionResponse:
         """
-        @summary 删除工作流
+        @summary Deletes a workflow from DataStudio.
+        
+        @description >  A workflow that is deployed cannot be deleted. If you want to delete such a workflow, you must first undeploy the workflow.
         
         @param request: DeleteWorkflowDefinitionRequest
         @return: DeleteWorkflowDefinitionResponse
@@ -2043,13 +3039,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_workflow_definition_with_options_async(request, runtime)
 
+    def dissociate_project_from_resource_group_with_options(
+        self,
+        request: dataworks_public_20240518_models.DissociateProjectFromResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DissociateProjectFromResourceGroupResponse:
+        """
+        @summary 将资源组和某个工作空间解除关联。
+        
+        @param request: DissociateProjectFromResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DissociateProjectFromResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DissociateProjectFromResourceGroup',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DissociateProjectFromResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dissociate_project_from_resource_group_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.DissociateProjectFromResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DissociateProjectFromResourceGroupResponse:
+        """
+        @summary 将资源组和某个工作空间解除关联。
+        
+        @param request: DissociateProjectFromResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DissociateProjectFromResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DissociateProjectFromResourceGroup',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DissociateProjectFromResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dissociate_project_from_resource_group(
+        self,
+        request: dataworks_public_20240518_models.DissociateProjectFromResourceGroupRequest,
+    ) -> dataworks_public_20240518_models.DissociateProjectFromResourceGroupResponse:
+        """
+        @summary 将资源组和某个工作空间解除关联。
+        
+        @param request: DissociateProjectFromResourceGroupRequest
+        @return: DissociateProjectFromResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dissociate_project_from_resource_group_with_options(request, runtime)
+
+    async def dissociate_project_from_resource_group_async(
+        self,
+        request: dataworks_public_20240518_models.DissociateProjectFromResourceGroupRequest,
+    ) -> dataworks_public_20240518_models.DissociateProjectFromResourceGroupResponse:
+        """
+        @summary 将资源组和某个工作空间解除关联。
+        
+        @param request: DissociateProjectFromResourceGroupRequest
+        @return: DissociateProjectFromResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dissociate_project_from_resource_group_with_options_async(request, runtime)
+
     def exec_deployment_stage_with_options(
         self,
         request: dataworks_public_20240518_models.ExecDeploymentStageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ExecDeploymentStageResponse:
         """
-        @summary 执行Deployment一个阶段
+        @summary Executes a stage in a process.
+        
+        @description >  The stages in a process are sequential. For more information, see the GetDeployment operation. Skipping or repeating a stage is not allowed.
+        >  The execution of a stage is asynchronous. The response of this operation indicates only whether a stage is triggered but does not indicate whether the execution of the stage is successful. You can call the GetDeployment operation to check whether the execution is successful.
         
         @param request: ExecDeploymentStageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2090,7 +3189,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ExecDeploymentStageResponse:
         """
-        @summary 执行Deployment一个阶段
+        @summary Executes a stage in a process.
+        
+        @description >  The stages in a process are sequential. For more information, see the GetDeployment operation. Skipping or repeating a stage is not allowed.
+        >  The execution of a stage is asynchronous. The response of this operation indicates only whether a stage is triggered but does not indicate whether the execution of the stage is successful. You can call the GetDeployment operation to check whether the execution is successful.
         
         @param request: ExecDeploymentStageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2130,7 +3232,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ExecDeploymentStageRequest,
     ) -> dataworks_public_20240518_models.ExecDeploymentStageResponse:
         """
-        @summary 执行Deployment一个阶段
+        @summary Executes a stage in a process.
+        
+        @description >  The stages in a process are sequential. For more information, see the GetDeployment operation. Skipping or repeating a stage is not allowed.
+        >  The execution of a stage is asynchronous. The response of this operation indicates only whether a stage is triggered but does not indicate whether the execution of the stage is successful. You can call the GetDeployment operation to check whether the execution is successful.
         
         @param request: ExecDeploymentStageRequest
         @return: ExecDeploymentStageResponse
@@ -2143,7 +3248,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ExecDeploymentStageRequest,
     ) -> dataworks_public_20240518_models.ExecDeploymentStageResponse:
         """
-        @summary 执行Deployment一个阶段
+        @summary Executes a stage in a process.
+        
+        @description >  The stages in a process are sequential. For more information, see the GetDeployment operation. Skipping or repeating a stage is not allowed.
+        >  The execution of a stage is asynchronous. The response of this operation indicates only whether a stage is triggered but does not indicate whether the execution of the stage is successful. You can call the GetDeployment operation to check whether the execution is successful.
         
         @param request: ExecDeploymentStageRequest
         @return: ExecDeploymentStageResponse
@@ -2249,7 +3357,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetDIJobLogResponse:
         """
-        @summary 获取数据集成任务日志
+        @summary Obtains logs generated for a synchronization task.
         
         @param request: GetDIJobLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2282,7 +3390,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetDIJobLogResponse:
         """
-        @summary 获取数据集成任务日志
+        @summary Obtains logs generated for a synchronization task.
         
         @param request: GetDIJobLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2314,7 +3422,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetDIJobLogRequest,
     ) -> dataworks_public_20240518_models.GetDIJobLogResponse:
         """
-        @summary 获取数据集成任务日志
+        @summary Obtains logs generated for a synchronization task.
         
         @param request: GetDIJobLogRequest
         @return: GetDIJobLogResponse
@@ -2327,7 +3435,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetDIJobLogRequest,
     ) -> dataworks_public_20240518_models.GetDIJobLogResponse:
         """
-        @summary 获取数据集成任务日志
+        @summary Obtains logs generated for a synchronization task.
         
         @param request: GetDIJobLogRequest
         @return: GetDIJobLogResponse
@@ -2433,7 +3541,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetDeploymentResponse:
         """
-        @summary 获取发布流程详情
+        @summary Queries the information about a process for deploying or undeploying an entity.
         
         @param request: GetDeploymentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2466,7 +3574,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetDeploymentResponse:
         """
-        @summary 获取发布流程详情
+        @summary Queries the information about a process for deploying or undeploying an entity.
         
         @param request: GetDeploymentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2498,7 +3606,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetDeploymentRequest,
     ) -> dataworks_public_20240518_models.GetDeploymentResponse:
         """
-        @summary 获取发布流程详情
+        @summary Queries the information about a process for deploying or undeploying an entity.
         
         @param request: GetDeploymentRequest
         @return: GetDeploymentResponse
@@ -2511,7 +3619,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetDeploymentRequest,
     ) -> dataworks_public_20240518_models.GetDeploymentResponse:
         """
-        @summary 获取发布流程详情
+        @summary Queries the information about a process for deploying or undeploying an entity.
         
         @param request: GetDeploymentRequest
         @return: GetDeploymentResponse
@@ -2525,7 +3633,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetFunctionResponse:
         """
-        @summary 获取函数信息
+        @summary Queries the information about a user-defined function (UDF) in DataStudio.
         
         @param request: GetFunctionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2558,7 +3666,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetFunctionResponse:
         """
-        @summary 获取函数信息
+        @summary Queries the information about a user-defined function (UDF) in DataStudio.
         
         @param request: GetFunctionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2590,7 +3698,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetFunctionRequest,
     ) -> dataworks_public_20240518_models.GetFunctionResponse:
         """
-        @summary 获取函数信息
+        @summary Queries the information about a user-defined function (UDF) in DataStudio.
         
         @param request: GetFunctionRequest
         @return: GetFunctionResponse
@@ -2603,7 +3711,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetFunctionRequest,
     ) -> dataworks_public_20240518_models.GetFunctionResponse:
         """
-        @summary 获取函数信息
+        @summary Queries the information about a user-defined function (UDF) in DataStudio.
         
         @param request: GetFunctionRequest
         @return: GetFunctionResponse
@@ -2611,12 +3719,198 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_function_with_options_async(request, runtime)
 
+    def get_job_status_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetJobStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetJobStatusResponse:
+        """
+        @summary 返回异步任务的状态信息
+        
+        @param request: GetJobStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetJobStatus',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetJobStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_job_status_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetJobStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetJobStatusResponse:
+        """
+        @summary 返回异步任务的状态信息
+        
+        @param request: GetJobStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetJobStatus',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetJobStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_job_status(
+        self,
+        request: dataworks_public_20240518_models.GetJobStatusRequest,
+    ) -> dataworks_public_20240518_models.GetJobStatusResponse:
+        """
+        @summary 返回异步任务的状态信息
+        
+        @param request: GetJobStatusRequest
+        @return: GetJobStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_job_status_with_options(request, runtime)
+
+    async def get_job_status_async(
+        self,
+        request: dataworks_public_20240518_models.GetJobStatusRequest,
+    ) -> dataworks_public_20240518_models.GetJobStatusResponse:
+        """
+        @summary 返回异步任务的状态信息
+        
+        @param request: GetJobStatusRequest
+        @return: GetJobStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_job_status_with_options_async(request, runtime)
+
+    def get_network_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetNetworkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetNetworkResponse:
+        """
+        @summary 获取某个网络资源详细信息。
+        
+        @param request: GetNetworkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNetworkResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetNetwork',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetNetworkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_network_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetNetworkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetNetworkResponse:
+        """
+        @summary 获取某个网络资源详细信息。
+        
+        @param request: GetNetworkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNetworkResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetNetwork',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetNetworkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_network(
+        self,
+        request: dataworks_public_20240518_models.GetNetworkRequest,
+    ) -> dataworks_public_20240518_models.GetNetworkResponse:
+        """
+        @summary 获取某个网络资源详细信息。
+        
+        @param request: GetNetworkRequest
+        @return: GetNetworkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_network_with_options(request, runtime)
+
+    async def get_network_async(
+        self,
+        request: dataworks_public_20240518_models.GetNetworkRequest,
+    ) -> dataworks_public_20240518_models.GetNetworkResponse:
+        """
+        @summary 获取某个网络资源详细信息。
+        
+        @param request: GetNetworkRequest
+        @return: GetNetworkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_network_with_options_async(request, runtime)
+
     def get_node_with_options(
         self,
         request: dataworks_public_20240518_models.GetNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetNodeResponse:
         """
+        @summary Queries the information about a node in DataStudio.
+        
         @param request: GetNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetNodeResponse
@@ -2648,6 +3942,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetNodeResponse:
         """
+        @summary Queries the information about a node in DataStudio.
+        
         @param request: GetNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetNodeResponse
@@ -2678,6 +3974,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetNodeRequest,
     ) -> dataworks_public_20240518_models.GetNodeResponse:
         """
+        @summary Queries the information about a node in DataStudio.
+        
         @param request: GetNodeRequest
         @return: GetNodeResponse
         """
@@ -2689,6 +3987,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetNodeRequest,
     ) -> dataworks_public_20240518_models.GetNodeResponse:
         """
+        @summary Queries the information about a node in DataStudio.
+        
         @param request: GetNodeRequest
         @return: GetNodeResponse
         """
@@ -2787,13 +4087,113 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_project_with_options_async(request, runtime)
 
+    def get_project_role_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetProjectRoleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetProjectRoleResponse:
+        """
+        @summary 查询工作空间角色详情
+        
+        @param request: GetProjectRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectRoleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.code):
+            query['Code'] = request.code
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetProjectRole',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetProjectRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_project_role_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetProjectRoleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetProjectRoleResponse:
+        """
+        @summary 查询工作空间角色详情
+        
+        @param request: GetProjectRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectRoleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.code):
+            query['Code'] = request.code
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetProjectRole',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetProjectRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_project_role(
+        self,
+        request: dataworks_public_20240518_models.GetProjectRoleRequest,
+    ) -> dataworks_public_20240518_models.GetProjectRoleResponse:
+        """
+        @summary 查询工作空间角色详情
+        
+        @param request: GetProjectRoleRequest
+        @return: GetProjectRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_project_role_with_options(request, runtime)
+
+    async def get_project_role_async(
+        self,
+        request: dataworks_public_20240518_models.GetProjectRoleRequest,
+    ) -> dataworks_public_20240518_models.GetProjectRoleResponse:
+        """
+        @summary 查询工作空间角色详情
+        
+        @param request: GetProjectRoleRequest
+        @return: GetProjectRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_project_role_with_options_async(request, runtime)
+
     def get_resource_with_options(
         self,
         request: dataworks_public_20240518_models.GetResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetResourceResponse:
         """
-        @summary 获取资源文件
+        @summary Queries the information about a file resource.
         
         @param request: GetResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2826,7 +4226,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetResourceResponse:
         """
-        @summary 获取资源文件
+        @summary Queries the information about a file resource.
         
         @param request: GetResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2858,7 +4258,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetResourceRequest,
     ) -> dataworks_public_20240518_models.GetResourceResponse:
         """
-        @summary 获取资源文件
+        @summary Queries the information about a file resource.
         
         @param request: GetResourceRequest
         @return: GetResourceResponse
@@ -2871,7 +4271,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetResourceRequest,
     ) -> dataworks_public_20240518_models.GetResourceResponse:
         """
-        @summary 获取资源文件
+        @summary Queries the information about a file resource.
         
         @param request: GetResourceRequest
         @return: GetResourceResponse
@@ -2879,13 +4279,197 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_resource_with_options_async(request, runtime)
 
+    def get_resource_group_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetResourceGroupResponse:
+        """
+        @summary 根据id获取指定资源组。
+        
+        @param request: GetResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetResourceGroup',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_resource_group_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetResourceGroupResponse:
+        """
+        @summary 根据id获取指定资源组。
+        
+        @param request: GetResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetResourceGroup',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_resource_group(
+        self,
+        request: dataworks_public_20240518_models.GetResourceGroupRequest,
+    ) -> dataworks_public_20240518_models.GetResourceGroupResponse:
+        """
+        @summary 根据id获取指定资源组。
+        
+        @param request: GetResourceGroupRequest
+        @return: GetResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_resource_group_with_options(request, runtime)
+
+    async def get_resource_group_async(
+        self,
+        request: dataworks_public_20240518_models.GetResourceGroupRequest,
+    ) -> dataworks_public_20240518_models.GetResourceGroupResponse:
+        """
+        @summary 根据id获取指定资源组。
+        
+        @param request: GetResourceGroupRequest
+        @return: GetResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_resource_group_with_options_async(request, runtime)
+
+    def get_route_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetRouteResponse:
+        """
+        @summary 根据id获取指定路由。
+        
+        @param request: GetRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRouteResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRoute',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_route_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetRouteResponse:
+        """
+        @summary 根据id获取指定路由。
+        
+        @param request: GetRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRouteResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRoute',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_route(
+        self,
+        request: dataworks_public_20240518_models.GetRouteRequest,
+    ) -> dataworks_public_20240518_models.GetRouteResponse:
+        """
+        @summary 根据id获取指定路由。
+        
+        @param request: GetRouteRequest
+        @return: GetRouteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_route_with_options(request, runtime)
+
+    async def get_route_async(
+        self,
+        request: dataworks_public_20240518_models.GetRouteRequest,
+    ) -> dataworks_public_20240518_models.GetRouteResponse:
+        """
+        @summary 根据id获取指定路由。
+        
+        @param request: GetRouteRequest
+        @return: GetRouteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_route_with_options_async(request, runtime)
+
     def get_workflow_definition_with_options(
         self,
         request: dataworks_public_20240518_models.GetWorkflowDefinitionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetWorkflowDefinitionResponse:
         """
-        @summary 获取工作流详情
+        @summary Queries the infomation about a workflow.
         
         @param request: GetWorkflowDefinitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2918,7 +4502,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetWorkflowDefinitionResponse:
         """
-        @summary 获取工作流详情
+        @summary Queries the infomation about a workflow.
         
         @param request: GetWorkflowDefinitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2950,7 +4534,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetWorkflowDefinitionRequest,
     ) -> dataworks_public_20240518_models.GetWorkflowDefinitionResponse:
         """
-        @summary 获取工作流详情
+        @summary Queries the infomation about a workflow.
         
         @param request: GetWorkflowDefinitionRequest
         @return: GetWorkflowDefinitionResponse
@@ -2963,13 +4547,205 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetWorkflowDefinitionRequest,
     ) -> dataworks_public_20240518_models.GetWorkflowDefinitionResponse:
         """
-        @summary 获取工作流详情
+        @summary Queries the infomation about a workflow.
         
         @param request: GetWorkflowDefinitionRequest
         @return: GetWorkflowDefinitionResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_workflow_definition_with_options_async(request, runtime)
+
+    def import_workflow_definition_with_options(
+        self,
+        request: dataworks_public_20240518_models.ImportWorkflowDefinitionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ImportWorkflowDefinitionResponse:
+        """
+        @summary 调用此接口，可以将通过FlowSpec定义的工作流节点和其内部的子节点都导入到数据开发中
+        
+        @param request: ImportWorkflowDefinitionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportWorkflowDefinitionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.spec):
+            body['Spec'] = request.spec
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ImportWorkflowDefinition',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ImportWorkflowDefinitionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_workflow_definition_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ImportWorkflowDefinitionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ImportWorkflowDefinitionResponse:
+        """
+        @summary 调用此接口，可以将通过FlowSpec定义的工作流节点和其内部的子节点都导入到数据开发中
+        
+        @param request: ImportWorkflowDefinitionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportWorkflowDefinitionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.spec):
+            body['Spec'] = request.spec
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ImportWorkflowDefinition',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ImportWorkflowDefinitionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_workflow_definition(
+        self,
+        request: dataworks_public_20240518_models.ImportWorkflowDefinitionRequest,
+    ) -> dataworks_public_20240518_models.ImportWorkflowDefinitionResponse:
+        """
+        @summary 调用此接口，可以将通过FlowSpec定义的工作流节点和其内部的子节点都导入到数据开发中
+        
+        @param request: ImportWorkflowDefinitionRequest
+        @return: ImportWorkflowDefinitionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.import_workflow_definition_with_options(request, runtime)
+
+    async def import_workflow_definition_async(
+        self,
+        request: dataworks_public_20240518_models.ImportWorkflowDefinitionRequest,
+    ) -> dataworks_public_20240518_models.ImportWorkflowDefinitionResponse:
+        """
+        @summary 调用此接口，可以将通过FlowSpec定义的工作流节点和其内部的子节点都导入到数据开发中
+        
+        @param request: ImportWorkflowDefinitionRequest
+        @return: ImportWorkflowDefinitionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.import_workflow_definition_with_options_async(request, runtime)
+
+    def list_dialarm_rules_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListDIAlarmRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDIAlarmRulesResponse:
+        """
+        @summary 查看数据集成报警规则
+        
+        @param request: ListDIAlarmRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDIAlarmRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDIAlarmRules',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDIAlarmRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_dialarm_rules_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListDIAlarmRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDIAlarmRulesResponse:
+        """
+        @summary 查看数据集成报警规则
+        
+        @param request: ListDIAlarmRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDIAlarmRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDIAlarmRules',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDIAlarmRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_dialarm_rules(
+        self,
+        request: dataworks_public_20240518_models.ListDIAlarmRulesRequest,
+    ) -> dataworks_public_20240518_models.ListDIAlarmRulesResponse:
+        """
+        @summary 查看数据集成报警规则
+        
+        @param request: ListDIAlarmRulesRequest
+        @return: ListDIAlarmRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_dialarm_rules_with_options(request, runtime)
+
+    async def list_dialarm_rules_async(
+        self,
+        request: dataworks_public_20240518_models.ListDIAlarmRulesRequest,
+    ) -> dataworks_public_20240518_models.ListDIAlarmRulesResponse:
+        """
+        @summary 查看数据集成报警规则
+        
+        @param request: ListDIAlarmRulesRequest
+        @return: ListDIAlarmRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_dialarm_rules_with_options_async(request, runtime)
 
     def list_dijob_events_with_options(
         self,
@@ -3163,13 +4939,105 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_dijob_metrics_with_options_async(request, runtime)
 
+    def list_dijob_run_details_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListDIJobRunDetailsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDIJobRunDetailsResponse:
+        """
+        @summary 获取数据集成运行信息
+        
+        @param request: ListDIJobRunDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDIJobRunDetailsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDIJobRunDetails',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDIJobRunDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_dijob_run_details_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListDIJobRunDetailsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDIJobRunDetailsResponse:
+        """
+        @summary 获取数据集成运行信息
+        
+        @param request: ListDIJobRunDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDIJobRunDetailsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDIJobRunDetails',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDIJobRunDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_dijob_run_details(
+        self,
+        request: dataworks_public_20240518_models.ListDIJobRunDetailsRequest,
+    ) -> dataworks_public_20240518_models.ListDIJobRunDetailsResponse:
+        """
+        @summary 获取数据集成运行信息
+        
+        @param request: ListDIJobRunDetailsRequest
+        @return: ListDIJobRunDetailsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_dijob_run_details_with_options(request, runtime)
+
+    async def list_dijob_run_details_async(
+        self,
+        request: dataworks_public_20240518_models.ListDIJobRunDetailsRequest,
+    ) -> dataworks_public_20240518_models.ListDIJobRunDetailsResponse:
+        """
+        @summary 获取数据集成运行信息
+        
+        @param request: ListDIJobRunDetailsRequest
+        @return: ListDIJobRunDetailsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_dijob_run_details_with_options_async(request, runtime)
+
     def list_dijobs_with_options(
         self,
         request: dataworks_public_20240518_models.ListDIJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDIJobsResponse:
         """
-        @summary 获取数据集成任务
+        @summary Queries a list of synchronization tasks.
         
         @param request: ListDIJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3202,7 +5070,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDIJobsResponse:
         """
-        @summary 获取数据集成任务
+        @summary Queries a list of synchronization tasks.
         
         @param request: ListDIJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3234,7 +5102,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDIJobsRequest,
     ) -> dataworks_public_20240518_models.ListDIJobsResponse:
         """
-        @summary 获取数据集成任务
+        @summary Queries a list of synchronization tasks.
         
         @param request: ListDIJobsRequest
         @return: ListDIJobsResponse
@@ -3247,7 +5115,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDIJobsRequest,
     ) -> dataworks_public_20240518_models.ListDIJobsResponse:
         """
-        @summary 获取数据集成任务
+        @summary Queries a list of synchronization tasks.
         
         @param request: ListDIJobsRequest
         @return: ListDIJobsResponse
@@ -3453,7 +5321,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDeploymentsResponse:
         """
-        @summary 分页获取发布流程
+        @summary Queries a list of processes that are used to deploy or undeploy entities in DataStudio. You can also specify filter conditions to query specific processes.
         
         @param request: ListDeploymentsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3486,7 +5354,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListDeploymentsResponse:
         """
-        @summary 分页获取发布流程
+        @summary Queries a list of processes that are used to deploy or undeploy entities in DataStudio. You can also specify filter conditions to query specific processes.
         
         @param request: ListDeploymentsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3518,7 +5386,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDeploymentsRequest,
     ) -> dataworks_public_20240518_models.ListDeploymentsResponse:
         """
-        @summary 分页获取发布流程
+        @summary Queries a list of processes that are used to deploy or undeploy entities in DataStudio. You can also specify filter conditions to query specific processes.
         
         @param request: ListDeploymentsRequest
         @return: ListDeploymentsResponse
@@ -3531,7 +5399,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListDeploymentsRequest,
     ) -> dataworks_public_20240518_models.ListDeploymentsResponse:
         """
-        @summary 分页获取发布流程
+        @summary Queries a list of processes that are used to deploy or undeploy entities in DataStudio. You can also specify filter conditions to query specific processes.
         
         @param request: ListDeploymentsRequest
         @return: ListDeploymentsResponse
@@ -3545,7 +5413,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListFunctionsResponse:
         """
-        @summary 获取udf函数列表
+        @summary Queries a list of user-defined functions (UDFs) in DataStudio. You can also specify filter conditions to query specific UDFs.
         
         @param request: ListFunctionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3578,7 +5446,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListFunctionsResponse:
         """
-        @summary 获取udf函数列表
+        @summary Queries a list of user-defined functions (UDFs) in DataStudio. You can also specify filter conditions to query specific UDFs.
         
         @param request: ListFunctionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3610,7 +5478,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListFunctionsRequest,
     ) -> dataworks_public_20240518_models.ListFunctionsResponse:
         """
-        @summary 获取udf函数列表
+        @summary Queries a list of user-defined functions (UDFs) in DataStudio. You can also specify filter conditions to query specific UDFs.
         
         @param request: ListFunctionsRequest
         @return: ListFunctionsResponse
@@ -3623,7 +5491,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListFunctionsRequest,
     ) -> dataworks_public_20240518_models.ListFunctionsResponse:
         """
-        @summary 获取udf函数列表
+        @summary Queries a list of user-defined functions (UDFs) in DataStudio. You can also specify filter conditions to query specific UDFs.
         
         @param request: ListFunctionsRequest
         @return: ListFunctionsResponse
@@ -3631,13 +5499,105 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_functions_with_options_async(request, runtime)
 
+    def list_networks_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListNetworksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListNetworksResponse:
+        """
+        @summary 获取通用资源组网络资源列表。
+        
+        @param request: ListNetworksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNetworksResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListNetworks',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListNetworksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_networks_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListNetworksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListNetworksResponse:
+        """
+        @summary 获取通用资源组网络资源列表。
+        
+        @param request: ListNetworksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNetworksResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListNetworks',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListNetworksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_networks(
+        self,
+        request: dataworks_public_20240518_models.ListNetworksRequest,
+    ) -> dataworks_public_20240518_models.ListNetworksResponse:
+        """
+        @summary 获取通用资源组网络资源列表。
+        
+        @param request: ListNetworksRequest
+        @return: ListNetworksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_networks_with_options(request, runtime)
+
+    async def list_networks_async(
+        self,
+        request: dataworks_public_20240518_models.ListNetworksRequest,
+    ) -> dataworks_public_20240518_models.ListNetworksResponse:
+        """
+        @summary 获取通用资源组网络资源列表。
+        
+        @param request: ListNetworksRequest
+        @return: ListNetworksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_networks_with_options_async(request, runtime)
+
     def list_node_dependencies_with_options(
         self,
         request: dataworks_public_20240518_models.ListNodeDependenciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListNodeDependenciesResponse:
         """
-        @summary 获取节点依赖列表
+        @summary Queries a list of descendant nodes of a node in DataStudio.
         
         @param request: ListNodeDependenciesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3670,7 +5630,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListNodeDependenciesResponse:
         """
-        @summary 获取节点依赖列表
+        @summary Queries a list of descendant nodes of a node in DataStudio.
         
         @param request: ListNodeDependenciesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3702,7 +5662,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListNodeDependenciesRequest,
     ) -> dataworks_public_20240518_models.ListNodeDependenciesResponse:
         """
-        @summary 获取节点依赖列表
+        @summary Queries a list of descendant nodes of a node in DataStudio.
         
         @param request: ListNodeDependenciesRequest
         @return: ListNodeDependenciesResponse
@@ -3715,7 +5675,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListNodeDependenciesRequest,
     ) -> dataworks_public_20240518_models.ListNodeDependenciesResponse:
         """
-        @summary 获取节点依赖列表
+        @summary Queries a list of descendant nodes of a node in DataStudio.
         
         @param request: ListNodeDependenciesRequest
         @return: ListNodeDependenciesResponse
@@ -3729,7 +5689,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListNodesResponse:
         """
-        @summary 获取节点列表
+        @summary Queries a list of nodes in DataStudio. You can also specify filter conditions to query specific nodes.
         
         @param request: ListNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3762,7 +5722,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListNodesResponse:
         """
-        @summary 获取节点列表
+        @summary Queries a list of nodes in DataStudio. You can also specify filter conditions to query specific nodes.
         
         @param request: ListNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3794,7 +5754,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListNodesRequest,
     ) -> dataworks_public_20240518_models.ListNodesResponse:
         """
-        @summary 获取节点列表
+        @summary Queries a list of nodes in DataStudio. You can also specify filter conditions to query specific nodes.
         
         @param request: ListNodesRequest
         @return: ListNodesResponse
@@ -3807,13 +5767,141 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListNodesRequest,
     ) -> dataworks_public_20240518_models.ListNodesResponse:
         """
-        @summary 获取节点列表
+        @summary Queries a list of nodes in DataStudio. You can also specify filter conditions to query specific nodes.
         
         @param request: ListNodesRequest
         @return: ListNodesResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_nodes_with_options_async(request, runtime)
+
+    def list_project_roles_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.ListProjectRolesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListProjectRolesResponse:
+        """
+        @summary 分页查询工作空间角色详情
+        
+        @param tmp_req: ListProjectRolesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectRolesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.ListProjectRolesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.codes):
+            request.codes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.codes, 'Codes', 'json')
+        if not UtilClient.is_unset(tmp_req.names):
+            request.names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.names, 'Names', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.codes_shrink):
+            body['Codes'] = request.codes_shrink
+        if not UtilClient.is_unset(request.names_shrink):
+            body['Names'] = request.names_shrink
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListProjectRoles',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListProjectRolesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_project_roles_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.ListProjectRolesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListProjectRolesResponse:
+        """
+        @summary 分页查询工作空间角色详情
+        
+        @param tmp_req: ListProjectRolesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectRolesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.ListProjectRolesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.codes):
+            request.codes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.codes, 'Codes', 'json')
+        if not UtilClient.is_unset(tmp_req.names):
+            request.names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.names, 'Names', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.codes_shrink):
+            body['Codes'] = request.codes_shrink
+        if not UtilClient.is_unset(request.names_shrink):
+            body['Names'] = request.names_shrink
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListProjectRoles',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListProjectRolesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_project_roles(
+        self,
+        request: dataworks_public_20240518_models.ListProjectRolesRequest,
+    ) -> dataworks_public_20240518_models.ListProjectRolesResponse:
+        """
+        @summary 分页查询工作空间角色详情
+        
+        @param request: ListProjectRolesRequest
+        @return: ListProjectRolesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_project_roles_with_options(request, runtime)
+
+    async def list_project_roles_async(
+        self,
+        request: dataworks_public_20240518_models.ListProjectRolesRequest,
+    ) -> dataworks_public_20240518_models.ListProjectRolesResponse:
+        """
+        @summary 分页查询工作空间角色详情
+        
+        @param request: ListProjectRolesRequest
+        @return: ListProjectRolesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_project_roles_with_options_async(request, runtime)
 
     def list_projects_with_options(
         self,
@@ -3963,13 +6051,117 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_projects_with_options_async(request, runtime)
 
+    def list_resource_groups_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.ListResourceGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListResourceGroupsResponse:
+        """
+        @summary 获取资源组列表。
+        
+        @param tmp_req: ListResourceGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceGroupsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.ListResourceGroupsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_group_types):
+            request.resource_group_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_group_types, 'ResourceGroupTypes', 'json')
+        if not UtilClient.is_unset(tmp_req.statuses):
+            request.statuses_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.statuses, 'Statuses', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListResourceGroups',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListResourceGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_resource_groups_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.ListResourceGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListResourceGroupsResponse:
+        """
+        @summary 获取资源组列表。
+        
+        @param tmp_req: ListResourceGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceGroupsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.ListResourceGroupsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_group_types):
+            request.resource_group_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_group_types, 'ResourceGroupTypes', 'json')
+        if not UtilClient.is_unset(tmp_req.statuses):
+            request.statuses_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.statuses, 'Statuses', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListResourceGroups',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListResourceGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_resource_groups(
+        self,
+        request: dataworks_public_20240518_models.ListResourceGroupsRequest,
+    ) -> dataworks_public_20240518_models.ListResourceGroupsResponse:
+        """
+        @summary 获取资源组列表。
+        
+        @param request: ListResourceGroupsRequest
+        @return: ListResourceGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_resource_groups_with_options(request, runtime)
+
+    async def list_resource_groups_async(
+        self,
+        request: dataworks_public_20240518_models.ListResourceGroupsRequest,
+    ) -> dataworks_public_20240518_models.ListResourceGroupsResponse:
+        """
+        @summary 获取资源组列表。
+        
+        @param request: ListResourceGroupsRequest
+        @return: ListResourceGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_resource_groups_with_options_async(request, runtime)
+
     def list_resources_with_options(
         self,
         request: dataworks_public_20240518_models.ListResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListResourcesResponse:
         """
-        @summary 分页获取资源文件
+        @summary Queries a list of file resources in DataStudio. You can also specify filter conditions to query specific file resources.
         
         @param request: ListResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4002,7 +6194,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListResourcesResponse:
         """
-        @summary 分页获取资源文件
+        @summary Queries a list of file resources in DataStudio. You can also specify filter conditions to query specific file resources.
         
         @param request: ListResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4034,7 +6226,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListResourcesRequest,
     ) -> dataworks_public_20240518_models.ListResourcesResponse:
         """
-        @summary 分页获取资源文件
+        @summary Queries a list of file resources in DataStudio. You can also specify filter conditions to query specific file resources.
         
         @param request: ListResourcesRequest
         @return: ListResourcesResponse
@@ -4047,7 +6239,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListResourcesRequest,
     ) -> dataworks_public_20240518_models.ListResourcesResponse:
         """
-        @summary 分页获取资源文件
+        @summary Queries a list of file resources in DataStudio. You can also specify filter conditions to query specific file resources.
         
         @param request: ListResourcesRequest
         @return: ListResourcesResponse
@@ -4055,13 +6247,105 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_resources_with_options_async(request, runtime)
 
+    def list_routes_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListRoutesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListRoutesResponse:
+        """
+        @summary 获取网络资源的路由列表。
+        
+        @param request: ListRoutesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRoutesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRoutes',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListRoutesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_routes_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListRoutesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListRoutesResponse:
+        """
+        @summary 获取网络资源的路由列表。
+        
+        @param request: ListRoutesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRoutesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRoutes',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListRoutesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_routes(
+        self,
+        request: dataworks_public_20240518_models.ListRoutesRequest,
+    ) -> dataworks_public_20240518_models.ListRoutesResponse:
+        """
+        @summary 获取网络资源的路由列表。
+        
+        @param request: ListRoutesRequest
+        @return: ListRoutesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_routes_with_options(request, runtime)
+
+    async def list_routes_async(
+        self,
+        request: dataworks_public_20240518_models.ListRoutesRequest,
+    ) -> dataworks_public_20240518_models.ListRoutesResponse:
+        """
+        @summary 获取网络资源的路由列表。
+        
+        @param request: ListRoutesRequest
+        @return: ListRoutesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_routes_with_options_async(request, runtime)
+
     def list_workflow_definitions_with_options(
         self,
         request: dataworks_public_20240518_models.ListWorkflowDefinitionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListWorkflowDefinitionsResponse:
         """
-        @summary 获取workflowDefinition的列表
+        @summary Queries a list of workflows in DataStudio. You can also specify filter conditions to query specific workflows.
         
         @param request: ListWorkflowDefinitionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4094,7 +6378,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.ListWorkflowDefinitionsResponse:
         """
-        @summary 获取workflowDefinition的列表
+        @summary Queries a list of workflows in DataStudio. You can also specify filter conditions to query specific workflows.
         
         @param request: ListWorkflowDefinitionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4126,7 +6410,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListWorkflowDefinitionsRequest,
     ) -> dataworks_public_20240518_models.ListWorkflowDefinitionsResponse:
         """
-        @summary 获取workflowDefinition的列表
+        @summary Queries a list of workflows in DataStudio. You can also specify filter conditions to query specific workflows.
         
         @param request: ListWorkflowDefinitionsRequest
         @return: ListWorkflowDefinitionsResponse
@@ -4139,7 +6423,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.ListWorkflowDefinitionsRequest,
     ) -> dataworks_public_20240518_models.ListWorkflowDefinitionsResponse:
         """
-        @summary 获取workflowDefinition的列表
+        @summary Queries a list of workflows in DataStudio. You can also specify filter conditions to query specific workflows.
         
         @param request: ListWorkflowDefinitionsRequest
         @return: ListWorkflowDefinitionsResponse
@@ -4153,7 +6437,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.MoveFunctionResponse:
         """
-        @summary 移动funciton的路径
+        @summary Moves a user-defined function (UDF) to a path in DataStudio.
         
         @param request: MoveFunctionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4192,7 +6476,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.MoveFunctionResponse:
         """
-        @summary 移动funciton的路径
+        @summary Moves a user-defined function (UDF) to a path in DataStudio.
         
         @param request: MoveFunctionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4230,7 +6514,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.MoveFunctionRequest,
     ) -> dataworks_public_20240518_models.MoveFunctionResponse:
         """
-        @summary 移动funciton的路径
+        @summary Moves a user-defined function (UDF) to a path in DataStudio.
         
         @param request: MoveFunctionRequest
         @return: MoveFunctionResponse
@@ -4243,7 +6527,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.MoveFunctionRequest,
     ) -> dataworks_public_20240518_models.MoveFunctionResponse:
         """
-        @summary 移动funciton的路径
+        @summary Moves a user-defined function (UDF) to a path in DataStudio.
         
         @param request: MoveFunctionRequest
         @return: MoveFunctionResponse
@@ -4257,7 +6541,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.MoveNodeResponse:
         """
-        @summary 移动节点路径
+        @summary Moves a node to a path in DataStudio.
         
         @param request: MoveNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4296,7 +6580,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.MoveNodeResponse:
         """
-        @summary 移动节点路径
+        @summary Moves a node to a path in DataStudio.
         
         @param request: MoveNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4334,7 +6618,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.MoveNodeRequest,
     ) -> dataworks_public_20240518_models.MoveNodeResponse:
         """
-        @summary 移动节点路径
+        @summary Moves a node to a path in DataStudio.
         
         @param request: MoveNodeRequest
         @return: MoveNodeResponse
@@ -4347,7 +6631,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.MoveNodeRequest,
     ) -> dataworks_public_20240518_models.MoveNodeResponse:
         """
-        @summary 移动节点路径
+        @summary Moves a node to a path in DataStudio.
         
         @param request: MoveNodeRequest
         @return: MoveNodeResponse
@@ -4361,7 +6645,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.MoveResourceResponse:
         """
-        @summary 移动资源文件路径
+        @summary Moves a file resource to a path in DataStudio.
         
         @param request: MoveResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4400,7 +6684,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.MoveResourceResponse:
         """
-        @summary 移动资源文件路径
+        @summary Moves a file resource to a path in DataStudio.
         
         @param request: MoveResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4438,7 +6722,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.MoveResourceRequest,
     ) -> dataworks_public_20240518_models.MoveResourceResponse:
         """
-        @summary 移动资源文件路径
+        @summary Moves a file resource to a path in DataStudio.
         
         @param request: MoveResourceRequest
         @return: MoveResourceResponse
@@ -4451,7 +6735,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.MoveResourceRequest,
     ) -> dataworks_public_20240518_models.MoveResourceResponse:
         """
-        @summary 移动资源文件路径
+        @summary Moves a file resource to a path in DataStudio.
         
         @param request: MoveResourceRequest
         @return: MoveResourceResponse
@@ -4465,7 +6749,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.MoveWorkflowDefinitionResponse:
         """
-        @summary 移动工作流的路径
+        @summary Moves a workflow to a path in DataStudio.
         
         @param request: MoveWorkflowDefinitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4504,7 +6788,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.MoveWorkflowDefinitionResponse:
         """
-        @summary 移动工作流的路径
+        @summary Moves a workflow to a path in DataStudio.
         
         @param request: MoveWorkflowDefinitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4542,7 +6826,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.MoveWorkflowDefinitionRequest,
     ) -> dataworks_public_20240518_models.MoveWorkflowDefinitionResponse:
         """
-        @summary 移动工作流的路径
+        @summary Moves a workflow to a path in DataStudio.
         
         @param request: MoveWorkflowDefinitionRequest
         @return: MoveWorkflowDefinitionResponse
@@ -4555,7 +6839,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.MoveWorkflowDefinitionRequest,
     ) -> dataworks_public_20240518_models.MoveWorkflowDefinitionResponse:
         """
-        @summary 移动工作流的路径
+        @summary Moves a workflow to a path in DataStudio.
         
         @param request: MoveWorkflowDefinitionRequest
         @return: MoveWorkflowDefinitionResponse
@@ -4569,7 +6853,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.RenameFunctionResponse:
         """
-        @summary 对function重命名
+        @summary Renames a user-defined function (UDF) in DataStudio.
         
         @param request: RenameFunctionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4608,7 +6892,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.RenameFunctionResponse:
         """
-        @summary 对function重命名
+        @summary Renames a user-defined function (UDF) in DataStudio.
         
         @param request: RenameFunctionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4646,7 +6930,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.RenameFunctionRequest,
     ) -> dataworks_public_20240518_models.RenameFunctionResponse:
         """
-        @summary 对function重命名
+        @summary Renames a user-defined function (UDF) in DataStudio.
         
         @param request: RenameFunctionRequest
         @return: RenameFunctionResponse
@@ -4659,7 +6943,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.RenameFunctionRequest,
     ) -> dataworks_public_20240518_models.RenameFunctionResponse:
         """
-        @summary 对function重命名
+        @summary Renames a user-defined function (UDF) in DataStudio.
         
         @param request: RenameFunctionRequest
         @return: RenameFunctionResponse
@@ -4673,7 +6957,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.RenameNodeResponse:
         """
-        @summary 重命名节点
+        @summary Renames a node in DataStudio.
         
         @param request: RenameNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4712,7 +6996,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.RenameNodeResponse:
         """
-        @summary 重命名节点
+        @summary Renames a node in DataStudio.
         
         @param request: RenameNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4750,7 +7034,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.RenameNodeRequest,
     ) -> dataworks_public_20240518_models.RenameNodeResponse:
         """
-        @summary 重命名节点
+        @summary Renames a node in DataStudio.
         
         @param request: RenameNodeRequest
         @return: RenameNodeResponse
@@ -4763,7 +7047,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.RenameNodeRequest,
     ) -> dataworks_public_20240518_models.RenameNodeResponse:
         """
-        @summary 重命名节点
+        @summary Renames a node in DataStudio.
         
         @param request: RenameNodeRequest
         @return: RenameNodeResponse
@@ -4777,7 +7061,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.RenameResourceResponse:
         """
-        @summary 对资源文件重命名
+        @summary Renames a file resource in DataStudio.
         
         @param request: RenameResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4816,7 +7100,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.RenameResourceResponse:
         """
-        @summary 对资源文件重命名
+        @summary Renames a file resource in DataStudio.
         
         @param request: RenameResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4854,7 +7138,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.RenameResourceRequest,
     ) -> dataworks_public_20240518_models.RenameResourceResponse:
         """
-        @summary 对资源文件重命名
+        @summary Renames a file resource in DataStudio.
         
         @param request: RenameResourceRequest
         @return: RenameResourceResponse
@@ -4867,7 +7151,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.RenameResourceRequest,
     ) -> dataworks_public_20240518_models.RenameResourceResponse:
         """
-        @summary 对资源文件重命名
+        @summary Renames a file resource in DataStudio.
         
         @param request: RenameResourceRequest
         @return: RenameResourceResponse
@@ -4881,7 +7165,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.RenameWorkflowDefinitionResponse:
         """
-        @summary 重命名工作流
+        @summary Renames a workflow in DataStudio.
         
         @param request: RenameWorkflowDefinitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4920,7 +7204,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.RenameWorkflowDefinitionResponse:
         """
-        @summary 重命名工作流
+        @summary Renames a workflow in DataStudio.
         
         @param request: RenameWorkflowDefinitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4958,7 +7242,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.RenameWorkflowDefinitionRequest,
     ) -> dataworks_public_20240518_models.RenameWorkflowDefinitionResponse:
         """
-        @summary 重命名工作流
+        @summary Renames a workflow in DataStudio.
         
         @param request: RenameWorkflowDefinitionRequest
         @return: RenameWorkflowDefinitionResponse
@@ -4971,7 +7255,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.RenameWorkflowDefinitionRequest,
     ) -> dataworks_public_20240518_models.RenameWorkflowDefinitionResponse:
         """
-        @summary 重命名工作流
+        @summary Renames a workflow in DataStudio.
         
         @param request: RenameWorkflowDefinitionRequest
         @return: RenameWorkflowDefinitionResponse
@@ -5078,6 +7362,202 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.start_dijob_with_options_async(request, runtime)
+
+    def stop_dijob_with_options(
+        self,
+        request: dataworks_public_20240518_models.StopDIJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.StopDIJobResponse:
+        """
+        @summary Stops a synchronization task.
+        
+        @param request: StopDIJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopDIJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopDIJob',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.StopDIJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_dijob_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.StopDIJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.StopDIJobResponse:
+        """
+        @summary Stops a synchronization task.
+        
+        @param request: StopDIJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopDIJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopDIJob',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.StopDIJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_dijob(
+        self,
+        request: dataworks_public_20240518_models.StopDIJobRequest,
+    ) -> dataworks_public_20240518_models.StopDIJobResponse:
+        """
+        @summary Stops a synchronization task.
+        
+        @param request: StopDIJobRequest
+        @return: StopDIJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.stop_dijob_with_options(request, runtime)
+
+    async def stop_dijob_async(
+        self,
+        request: dataworks_public_20240518_models.StopDIJobRequest,
+    ) -> dataworks_public_20240518_models.StopDIJobResponse:
+        """
+        @summary Stops a synchronization task.
+        
+        @param request: StopDIJobRequest
+        @return: StopDIJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_dijob_with_options_async(request, runtime)
+
+    def update_dialarm_rule_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.UpdateDIAlarmRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateDIAlarmRuleResponse:
+        """
+        @summary 更新数据集成报警规则
+        
+        @param tmp_req: UpdateDIAlarmRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDIAlarmRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.UpdateDIAlarmRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notification_settings):
+            request.notification_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification_settings, 'NotificationSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.trigger_conditions):
+            request.trigger_conditions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.trigger_conditions, 'TriggerConditions', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDIAlarmRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDIAlarmRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_dialarm_rule_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.UpdateDIAlarmRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateDIAlarmRuleResponse:
+        """
+        @summary 更新数据集成报警规则
+        
+        @param tmp_req: UpdateDIAlarmRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDIAlarmRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.UpdateDIAlarmRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notification_settings):
+            request.notification_settings_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification_settings, 'NotificationSettings', 'json')
+        if not UtilClient.is_unset(tmp_req.trigger_conditions):
+            request.trigger_conditions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.trigger_conditions, 'TriggerConditions', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDIAlarmRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDIAlarmRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_dialarm_rule(
+        self,
+        request: dataworks_public_20240518_models.UpdateDIAlarmRuleRequest,
+    ) -> dataworks_public_20240518_models.UpdateDIAlarmRuleResponse:
+        """
+        @summary 更新数据集成报警规则
+        
+        @param request: UpdateDIAlarmRuleRequest
+        @return: UpdateDIAlarmRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_dialarm_rule_with_options(request, runtime)
+
+    async def update_dialarm_rule_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateDIAlarmRuleRequest,
+    ) -> dataworks_public_20240518_models.UpdateDIAlarmRuleResponse:
+        """
+        @summary 更新数据集成报警规则
+        
+        @param request: UpdateDIAlarmRuleRequest
+        @return: UpdateDIAlarmRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_dialarm_rule_with_options_async(request, runtime)
 
     def update_dijob_with_options(
         self,
@@ -5309,7 +7789,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateFunctionResponse:
         """
-        @summary 更新udf函数
+        @summary Updates the basic information about a user-defined function (UDF) in DataStudio. This API operation performs an incremental update. The update information is described by using FlowSpec.
         
         @param request: UpdateFunctionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5348,7 +7828,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateFunctionResponse:
         """
-        @summary 更新udf函数
+        @summary Updates the basic information about a user-defined function (UDF) in DataStudio. This API operation performs an incremental update. The update information is described by using FlowSpec.
         
         @param request: UpdateFunctionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5386,7 +7866,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateFunctionRequest,
     ) -> dataworks_public_20240518_models.UpdateFunctionResponse:
         """
-        @summary 更新udf函数
+        @summary Updates the basic information about a user-defined function (UDF) in DataStudio. This API operation performs an incremental update. The update information is described by using FlowSpec.
         
         @param request: UpdateFunctionRequest
         @return: UpdateFunctionResponse
@@ -5399,7 +7879,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateFunctionRequest,
     ) -> dataworks_public_20240518_models.UpdateFunctionResponse:
         """
-        @summary 更新udf函数
+        @summary Updates the basic information about a user-defined function (UDF) in DataStudio. This API operation performs an incremental update. The update information is described by using FlowSpec.
         
         @param request: UpdateFunctionRequest
         @return: UpdateFunctionResponse
@@ -5413,7 +7893,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateNodeResponse:
         """
-        @summary 更新节点
+        @summary Updates the basic information about a node in DataStudio. This API operation performs an incremental update. The update information is described by using FlowSpec.
         
         @param request: UpdateNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5452,7 +7932,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateNodeResponse:
         """
-        @summary 更新节点
+        @summary Updates the basic information about a node in DataStudio. This API operation performs an incremental update. The update information is described by using FlowSpec.
         
         @param request: UpdateNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5490,7 +7970,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateNodeRequest,
     ) -> dataworks_public_20240518_models.UpdateNodeResponse:
         """
-        @summary 更新节点
+        @summary Updates the basic information about a node in DataStudio. This API operation performs an incremental update. The update information is described by using FlowSpec.
         
         @param request: UpdateNodeRequest
         @return: UpdateNodeResponse
@@ -5503,7 +7983,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateNodeRequest,
     ) -> dataworks_public_20240518_models.UpdateNodeResponse:
         """
-        @summary 更新节点
+        @summary Updates the basic information about a node in DataStudio. This API operation performs an incremental update. The update information is described by using FlowSpec.
         
         @param request: UpdateNodeRequest
         @return: UpdateNodeResponse
@@ -5637,7 +8117,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateResourceResponse:
         """
-        @summary 更新资源文件
+        @summary Updates the basic information about a file resource in DataStudio. This API operation performs an incremental update. The update information is described by using FlowSpec.
         
         @param request: UpdateResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5676,7 +8156,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateResourceResponse:
         """
-        @summary 更新资源文件
+        @summary Updates the basic information about a file resource in DataStudio. This API operation performs an incremental update. The update information is described by using FlowSpec.
         
         @param request: UpdateResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5714,7 +8194,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateResourceRequest,
     ) -> dataworks_public_20240518_models.UpdateResourceResponse:
         """
-        @summary 更新资源文件
+        @summary Updates the basic information about a file resource in DataStudio. This API operation performs an incremental update. The update information is described by using FlowSpec.
         
         @param request: UpdateResourceRequest
         @return: UpdateResourceResponse
@@ -5727,7 +8207,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateResourceRequest,
     ) -> dataworks_public_20240518_models.UpdateResourceResponse:
         """
-        @summary 更新资源文件
+        @summary Updates the basic information about a file resource in DataStudio. This API operation performs an incremental update. The update information is described by using FlowSpec.
         
         @param request: UpdateResourceRequest
         @return: UpdateResourceResponse
@@ -5735,13 +8215,217 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_resource_with_options_async(request, runtime)
 
+    def update_resource_group_with_options(
+        self,
+        request: dataworks_public_20240518_models.UpdateResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateResourceGroupResponse:
+        """
+        @summary 更新通用资源组基本信息。
+        
+        @param request: UpdateResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.remark):
+            body['Remark'] = request.remark
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateResourceGroup',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_resource_group_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateResourceGroupResponse:
+        """
+        @summary 更新通用资源组基本信息。
+        
+        @param request: UpdateResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.remark):
+            body['Remark'] = request.remark
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateResourceGroup',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_resource_group(
+        self,
+        request: dataworks_public_20240518_models.UpdateResourceGroupRequest,
+    ) -> dataworks_public_20240518_models.UpdateResourceGroupResponse:
+        """
+        @summary 更新通用资源组基本信息。
+        
+        @param request: UpdateResourceGroupRequest
+        @return: UpdateResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_resource_group_with_options(request, runtime)
+
+    async def update_resource_group_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateResourceGroupRequest,
+    ) -> dataworks_public_20240518_models.UpdateResourceGroupResponse:
+        """
+        @summary 更新通用资源组基本信息。
+        
+        @param request: UpdateResourceGroupRequest
+        @return: UpdateResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_resource_group_with_options_async(request, runtime)
+
+    def update_route_with_options(
+        self,
+        request: dataworks_public_20240518_models.UpdateRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateRouteResponse:
+        """
+        @summary 更新网络资源的路由。
+        
+        @param request: UpdateRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRouteResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.destination_cidr):
+            body['DestinationCidr'] = request.destination_cidr
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateRoute',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_route_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateRouteResponse:
+        """
+        @summary 更新网络资源的路由。
+        
+        @param request: UpdateRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRouteResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.destination_cidr):
+            body['DestinationCidr'] = request.destination_cidr
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateRoute',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_route(
+        self,
+        request: dataworks_public_20240518_models.UpdateRouteRequest,
+    ) -> dataworks_public_20240518_models.UpdateRouteResponse:
+        """
+        @summary 更新网络资源的路由。
+        
+        @param request: UpdateRouteRequest
+        @return: UpdateRouteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_route_with_options(request, runtime)
+
+    async def update_route_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateRouteRequest,
+    ) -> dataworks_public_20240518_models.UpdateRouteResponse:
+        """
+        @summary 更新网络资源的路由。
+        
+        @param request: UpdateRouteRequest
+        @return: UpdateRouteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_route_with_options_async(request, runtime)
+
     def update_workflow_definition_with_options(
         self,
         request: dataworks_public_20240518_models.UpdateWorkflowDefinitionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateWorkflowDefinitionResponse:
         """
-        @summary 更新工作流
+        @summary Updates the basic information about a workflow in DataStudio. This API operation performs an incremental update. The update information is described by using FlowSpec.
         
         @param request: UpdateWorkflowDefinitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5780,7 +8464,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateWorkflowDefinitionResponse:
         """
-        @summary 更新工作流
+        @summary Updates the basic information about a workflow in DataStudio. This API operation performs an incremental update. The update information is described by using FlowSpec.
         
         @param request: UpdateWorkflowDefinitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5818,7 +8502,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateWorkflowDefinitionRequest,
     ) -> dataworks_public_20240518_models.UpdateWorkflowDefinitionResponse:
         """
-        @summary 更新工作流
+        @summary Updates the basic information about a workflow in DataStudio. This API operation performs an incremental update. The update information is described by using FlowSpec.
         
         @param request: UpdateWorkflowDefinitionRequest
         @return: UpdateWorkflowDefinitionResponse
@@ -5831,7 +8515,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateWorkflowDefinitionRequest,
     ) -> dataworks_public_20240518_models.UpdateWorkflowDefinitionResponse:
         """
-        @summary 更新工作流
+        @summary Updates the basic information about a workflow in DataStudio. This API operation performs an incremental update. The update information is described by using FlowSpec.
         
         @param request: UpdateWorkflowDefinitionRequest
         @return: UpdateWorkflowDefinitionResponse

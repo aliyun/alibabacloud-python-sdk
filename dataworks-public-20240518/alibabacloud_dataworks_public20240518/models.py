@@ -10,8 +10,14 @@ class AbolishDeploymentRequest(TeaModel):
         id: str = None,
         project_id: str = None,
     ):
+        # The ID of the process.
+        # 
         # This parameter is required.
         self.id = id
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
+        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -45,7 +51,12 @@ class AbolishDeploymentResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -109,6 +120,115 @@ class AbolishDeploymentResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AbolishDeploymentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AssociateProjectToResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        project_id: int = None,
+        resource_group_id: str = None,
+    ):
+        # This parameter is required.
+        self.project_id = project_id
+        # This parameter is required.
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class AssociateProjectToResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AssociateProjectToResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AssociateProjectToResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AssociateProjectToResourceGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -216,6 +336,425 @@ class CloneDataSourceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CloneDataSourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels(TeaModel):
+    def __init__(
+        self,
+        channels: List[str] = None,
+        severity: str = None,
+    ):
+        self.channels = channels
+        self.severity = severity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channels is not None:
+            result['Channels'] = self.channels
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Channels') is not None:
+            self.channels = m.get('Channels')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        return self
+
+
+class CreateDIAlarmRuleRequestNotificationSettingsNotificationReceivers(TeaModel):
+    def __init__(
+        self,
+        receiver_type: str = None,
+        receiver_values: List[str] = None,
+    ):
+        self.receiver_type = receiver_type
+        self.receiver_values = receiver_values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.receiver_type is not None:
+            result['ReceiverType'] = self.receiver_type
+        if self.receiver_values is not None:
+            result['ReceiverValues'] = self.receiver_values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReceiverType') is not None:
+            self.receiver_type = m.get('ReceiverType')
+        if m.get('ReceiverValues') is not None:
+            self.receiver_values = m.get('ReceiverValues')
+        return self
+
+
+class CreateDIAlarmRuleRequestNotificationSettings(TeaModel):
+    def __init__(
+        self,
+        inhibition_interval: int = None,
+        notification_channels: List[CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels] = None,
+        notification_receivers: List[CreateDIAlarmRuleRequestNotificationSettingsNotificationReceivers] = None,
+    ):
+        self.inhibition_interval = inhibition_interval
+        self.notification_channels = notification_channels
+        self.notification_receivers = notification_receivers
+
+    def validate(self):
+        if self.notification_channels:
+            for k in self.notification_channels:
+                if k:
+                    k.validate()
+        if self.notification_receivers:
+            for k in self.notification_receivers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.inhibition_interval is not None:
+            result['InhibitionInterval'] = self.inhibition_interval
+        result['NotificationChannels'] = []
+        if self.notification_channels is not None:
+            for k in self.notification_channels:
+                result['NotificationChannels'].append(k.to_map() if k else None)
+        result['NotificationReceivers'] = []
+        if self.notification_receivers is not None:
+            for k in self.notification_receivers:
+                result['NotificationReceivers'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InhibitionInterval') is not None:
+            self.inhibition_interval = m.get('InhibitionInterval')
+        self.notification_channels = []
+        if m.get('NotificationChannels') is not None:
+            for k in m.get('NotificationChannels'):
+                temp_model = CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels()
+                self.notification_channels.append(temp_model.from_map(k))
+        self.notification_receivers = []
+        if m.get('NotificationReceivers') is not None:
+            for k in m.get('NotificationReceivers'):
+                temp_model = CreateDIAlarmRuleRequestNotificationSettingsNotificationReceivers()
+                self.notification_receivers.append(temp_model.from_map(k))
+        return self
+
+
+class CreateDIAlarmRuleRequestTriggerConditions(TeaModel):
+    def __init__(
+        self,
+        ddl_report_tags: List[str] = None,
+        duration: int = None,
+        severity: str = None,
+        threshold: int = None,
+    ):
+        self.ddl_report_tags = ddl_report_tags
+        self.duration = duration
+        self.severity = severity
+        self.threshold = threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ddl_report_tags is not None:
+            result['DdlReportTags'] = self.ddl_report_tags
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DdlReportTags') is not None:
+            self.ddl_report_tags = m.get('DdlReportTags')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        return self
+
+
+class CreateDIAlarmRuleRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dijob_id: int = None,
+        description: str = None,
+        enabled: bool = None,
+        metric_type: str = None,
+        name: str = None,
+        notification_settings: CreateDIAlarmRuleRequestNotificationSettings = None,
+        trigger_conditions: List[CreateDIAlarmRuleRequestTriggerConditions] = None,
+    ):
+        self.client_token = client_token
+        # 任务ID，是告警规则关联的任务ID。
+        # 
+        # This parameter is required.
+        self.dijob_id = dijob_id
+        # 描述。
+        self.description = description
+        # 告警规则是否启用，默认不开启。
+        self.enabled = enabled
+        # 告警指标类型，可选的枚举值：
+        # - Heartbeat（任务状态报警）
+        # - FailoverCount（failover次数报警）
+        # - Delay（任务延迟报警）
+        # 
+        # This parameter is required.
+        self.metric_type = metric_type
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.notification_settings = notification_settings
+        # This parameter is required.
+        self.trigger_conditions = trigger_conditions
+
+    def validate(self):
+        if self.notification_settings:
+            self.notification_settings.validate()
+        if self.trigger_conditions:
+            for k in self.trigger_conditions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dijob_id is not None:
+            result['DIJobId'] = self.dijob_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.metric_type is not None:
+            result['MetricType'] = self.metric_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.notification_settings is not None:
+            result['NotificationSettings'] = self.notification_settings.to_map()
+        result['TriggerConditions'] = []
+        if self.trigger_conditions is not None:
+            for k in self.trigger_conditions:
+                result['TriggerConditions'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DIJobId') is not None:
+            self.dijob_id = m.get('DIJobId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('MetricType') is not None:
+            self.metric_type = m.get('MetricType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NotificationSettings') is not None:
+            temp_model = CreateDIAlarmRuleRequestNotificationSettings()
+            self.notification_settings = temp_model.from_map(m['NotificationSettings'])
+        self.trigger_conditions = []
+        if m.get('TriggerConditions') is not None:
+            for k in m.get('TriggerConditions'):
+                temp_model = CreateDIAlarmRuleRequestTriggerConditions()
+                self.trigger_conditions.append(temp_model.from_map(k))
+        return self
+
+
+class CreateDIAlarmRuleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dijob_id: int = None,
+        description: str = None,
+        enabled: bool = None,
+        metric_type: str = None,
+        name: str = None,
+        notification_settings_shrink: str = None,
+        trigger_conditions_shrink: str = None,
+    ):
+        self.client_token = client_token
+        # 任务ID，是告警规则关联的任务ID。
+        # 
+        # This parameter is required.
+        self.dijob_id = dijob_id
+        # 描述。
+        self.description = description
+        # 告警规则是否启用，默认不开启。
+        self.enabled = enabled
+        # 告警指标类型，可选的枚举值：
+        # - Heartbeat（任务状态报警）
+        # - FailoverCount（failover次数报警）
+        # - Delay（任务延迟报警）
+        # 
+        # This parameter is required.
+        self.metric_type = metric_type
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.notification_settings_shrink = notification_settings_shrink
+        # This parameter is required.
+        self.trigger_conditions_shrink = trigger_conditions_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dijob_id is not None:
+            result['DIJobId'] = self.dijob_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.metric_type is not None:
+            result['MetricType'] = self.metric_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.notification_settings_shrink is not None:
+            result['NotificationSettings'] = self.notification_settings_shrink
+        if self.trigger_conditions_shrink is not None:
+            result['TriggerConditions'] = self.trigger_conditions_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DIJobId') is not None:
+            self.dijob_id = m.get('DIJobId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('MetricType') is not None:
+            self.metric_type = m.get('MetricType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NotificationSettings') is not None:
+            self.notification_settings_shrink = m.get('NotificationSettings')
+        if m.get('TriggerConditions') is not None:
+            self.trigger_conditions_shrink = m.get('TriggerConditions')
+        return self
+
+
+class CreateDIAlarmRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        dialarm_rule_id: str = None,
+        request_id: str = None,
+    ):
+        # 代表资源一级ID的资源属性字段
+        self.dialarm_rule_id = dialarm_rule_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dialarm_rule_id is not None:
+            result['DIAlarmRuleId'] = self.dialarm_rule_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DIAlarmRuleId') is not None:
+            self.dialarm_rule_id = m.get('DIAlarmRuleId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateDIAlarmRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDIAlarmRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDIAlarmRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1435,13 +1974,25 @@ class CreateDeploymentRequest(TeaModel):
         project_id: str = None,
         type: str = None,
     ):
+        # The description of the process.
         self.description = description
+        # The IDs of entities to which you want to apply the process.
+        # 
+        # >  A process can be applied to only a single entity and its child entities. If you specify multiple entities in the array, the process is applied only to the first entity in the array and its child entities. Make sure that the array in your request contains only one element. Extra elements will be ignored.
+        # 
         # This parameter is required.
         self.object_ids = object_ids
-        # 项目Id
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
+        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
         # 
         # This parameter is required.
         self.project_id = project_id
+        # Specifies whether to deploy or undeploy the entity. Valid values:
+        # 
+        # *   Online: deploys the entity.
+        # *   Offline: undeploys the entity.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -1485,13 +2036,25 @@ class CreateDeploymentShrinkRequest(TeaModel):
         project_id: str = None,
         type: str = None,
     ):
+        # The description of the process.
         self.description = description
+        # The IDs of entities to which you want to apply the process.
+        # 
+        # >  A process can be applied to only a single entity and its child entities. If you specify multiple entities in the array, the process is applied only to the first entity in the array and its child entities. Make sure that the array in your request contains only one element. Extra elements will be ignored.
+        # 
         # This parameter is required.
         self.object_ids_shrink = object_ids_shrink
-        # 项目Id
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
+        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
         # 
         # This parameter is required.
         self.project_id = project_id
+        # Specifies whether to deploy or undeploy the entity. Valid values:
+        # 
+        # *   Online: deploys the entity.
+        # *   Offline: undeploys the entity.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -1533,7 +2096,9 @@ class CreateDeploymentResponseBody(TeaModel):
         id: str = None,
         request_id: str = None,
     ):
+        # The ID of the process.
         self.id = id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1607,8 +2172,12 @@ class CreateFunctionRequest(TeaModel):
         project_id: str = None,
         spec: str = None,
     ):
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The FlowSpec field information about the UDF. For more information, see [FlowSpec](https://github.com/aliyun/dataworks-spec/blob/master/README_zh_CN.md).
+        # 
         # This parameter is required.
         self.spec = spec
 
@@ -1642,7 +2211,9 @@ class CreateFunctionResponseBody(TeaModel):
         id: str = None,
         request_id: str = None,
     ):
+        # The ID of the UDF.
         self.id = id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1710,6 +2281,135 @@ class CreateFunctionResponse(TeaModel):
         return self
 
 
+class CreateNetworkRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        resource_group_id: str = None,
+        vpc_id: str = None,
+        vswitch_id: str = None,
+    ):
+        # This parameter is required.
+        self.client_token = client_token
+        # This parameter is required.
+        self.resource_group_id = resource_group_id
+        # This parameter is required.
+        self.vpc_id = vpc_id
+        # This parameter is required.
+        self.vswitch_id = vswitch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.vswitch_id is not None:
+            result['VswitchId'] = self.vswitch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('VswitchId') is not None:
+            self.vswitch_id = m.get('VswitchId')
+        return self
+
+
+class CreateNetworkResponseBody(TeaModel):
+    def __init__(
+        self,
+        network_id: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.network_id = network_id
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.network_id is not None:
+            result['NetworkId'] = self.network_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NetworkId') is not None:
+            self.network_id = m.get('NetworkId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateNetworkResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateNetworkResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateNetworkResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateNodeRequest(TeaModel):
     def __init__(
         self,
@@ -1718,11 +2418,28 @@ class CreateNodeRequest(TeaModel):
         scene: str = None,
         spec: str = None,
     ):
+        # The container ID. If you want to create a node in a container, you must configure this parameter to specify the container. The container can be a workflow or a node in a container.
+        # 
+        # >  If you configure this parameter, the path field defined in FlowSpec becomes invalid.
         self.container_id = container_id
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
+        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The scene of the node. This parameter determines the location (the DataStudio pane or the Manual pane) of the node. You can set this parameter to DATAWORKS_MANUAL_WORKFLOW only if the ContainerId parameter is configured and the container specified by ContainerId is a manually triggered workflow.
+        # 
+        # Valid values:
+        # 
+        # *   DATAWORKS_PROJECT
+        # *   DATAWORKS_MANUAL_WORKFLOW
+        # *   DATAWORKS_MANUAL_TASK
+        # 
         # This parameter is required.
         self.scene = scene
+        # The FlowSpec field information about the node. For more information, see [FlowSpec](https://github.com/aliyun/dataworks-spec/blob/master/README_zh_CN.md).
+        # 
         # This parameter is required.
         self.spec = spec
 
@@ -1764,7 +2481,9 @@ class CreateNodeResponseBody(TeaModel):
         id: str = None,
         request_id: str = None,
     ):
+        # The ID of the node.
         self.id = id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1879,7 +2598,6 @@ class CreateProjectRequest(TeaModel):
     ):
         self.aliyun_resource_group_id = aliyun_resource_group_id
         self.aliyun_resource_tags = aliyun_resource_tags
-        # This parameter is required.
         self.description = description
         self.dev_environment_enabled = dev_environment_enabled
         self.dev_role_disabled = dev_role_disabled
@@ -1959,7 +2677,6 @@ class CreateProjectShrinkRequest(TeaModel):
     ):
         self.aliyun_resource_group_id = aliyun_resource_group_id
         self.aliyun_resource_tags_shrink = aliyun_resource_tags_shrink
-        # This parameter is required.
         self.description = description
         self.dev_environment_enabled = dev_environment_enabled
         self.dev_role_disabled = dev_role_disabled
@@ -2097,10 +2814,12 @@ class CreateResourceRequest(TeaModel):
         project_id: str = None,
         spec: str = None,
     ):
-        # 资源文件的项目id
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
         # 
         # This parameter is required.
         self.project_id = project_id
+        # The FlowSpec field information about the file resource. For more information, see [FlowSpec](https://github.com/aliyun/dataworks-spec/blob/master/README_zh_CN.md).
+        # 
         # This parameter is required.
         self.spec = spec
 
@@ -2134,7 +2853,9 @@ class CreateResourceResponseBody(TeaModel):
         id: str = None,
         request_id: str = None,
     ):
+        # The ID of the file resource.
         self.id = id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2202,14 +2923,340 @@ class CreateResourceResponse(TeaModel):
         return self
 
 
+class CreateResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        auto_renew: bool = None,
+        client_token: str = None,
+        name: str = None,
+        payment_duration: int = None,
+        payment_duration_unit: str = None,
+        payment_type: str = None,
+        remark: str = None,
+        spec: int = None,
+        vpc_id: str = None,
+        vswitch_id: str = None,
+    ):
+        self.auto_renew = auto_renew
+        # This parameter is required.
+        self.client_token = client_token
+        # This parameter is required.
+        self.name = name
+        self.payment_duration = payment_duration
+        self.payment_duration_unit = payment_duration_unit
+        # This parameter is required.
+        self.payment_type = payment_type
+        self.remark = remark
+        self.spec = spec
+        # This parameter is required.
+        self.vpc_id = vpc_id
+        # This parameter is required.
+        self.vswitch_id = vswitch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.payment_duration is not None:
+            result['PaymentDuration'] = self.payment_duration
+        if self.payment_duration_unit is not None:
+            result['PaymentDurationUnit'] = self.payment_duration_unit
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.spec is not None:
+            result['Spec'] = self.spec
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.vswitch_id is not None:
+            result['VswitchId'] = self.vswitch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PaymentDuration') is not None:
+            self.payment_duration = m.get('PaymentDuration')
+        if m.get('PaymentDurationUnit') is not None:
+            self.payment_duration_unit = m.get('PaymentDurationUnit')
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('Spec') is not None:
+            self.spec = m.get('Spec')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('VswitchId') is not None:
+            self.vswitch_id = m.get('VswitchId')
+        return self
+
+
+class CreateResourceGroupResponseBodyResourceGroupOrder(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        order_id: int = None,
+        order_instance_id: str = None,
+    ):
+        self.id = id
+        self.order_id = order_id
+        self.order_instance_id = order_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.order_instance_id is not None:
+            result['OrderInstanceId'] = self.order_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('OrderInstanceId') is not None:
+            self.order_instance_id = m.get('OrderInstanceId')
+        return self
+
+
+class CreateResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        resource_group_order: CreateResourceGroupResponseBodyResourceGroupOrder = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.resource_group_order = resource_group_order
+        self.success = success
+
+    def validate(self):
+        if self.resource_group_order:
+            self.resource_group_order.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_group_order is not None:
+            result['ResourceGroupOrder'] = self.resource_group_order.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupOrder') is not None:
+            temp_model = CreateResourceGroupResponseBodyResourceGroupOrder()
+            self.resource_group_order = temp_model.from_map(m['ResourceGroupOrder'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateRouteRequest(TeaModel):
+    def __init__(
+        self,
+        destination_cidr: str = None,
+        network_id: int = None,
+    ):
+        # This parameter is required.
+        self.destination_cidr = destination_cidr
+        # This parameter is required.
+        self.network_id = network_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_cidr is not None:
+            result['DestinationCidr'] = self.destination_cidr
+        if self.network_id is not None:
+            result['NetworkId'] = self.network_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestinationCidr') is not None:
+            self.destination_cidr = m.get('DestinationCidr')
+        if m.get('NetworkId') is not None:
+            self.network_id = m.get('NetworkId')
+        return self
+
+
+class CreateRouteResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        route_id: int = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.route_id = route_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.route_id is not None:
+            result['RouteId'] = self.route_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RouteId') is not None:
+            self.route_id = m.get('RouteId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateRouteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateRouteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateWorkflowDefinitionRequest(TeaModel):
     def __init__(
         self,
         project_id: str = None,
         spec: str = None,
     ):
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The FlowSpec field information about the workflow. For more information, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow/).
+        # 
         # This parameter is required.
         self.spec = spec
 
@@ -2243,7 +3290,9 @@ class CreateWorkflowDefinitionResponseBody(TeaModel):
         id: str = None,
         request_id: str = None,
     ):
+        # The ID of the workflow.
         self.id = id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2311,13 +3360,129 @@ class CreateWorkflowDefinitionResponse(TeaModel):
         return self
 
 
+class DeleteDIAlarmRuleRequest(TeaModel):
+    def __init__(
+        self,
+        dialarm_rule_id: int = None,
+        dijob_id: int = None,
+    ):
+        # The ID of the alert rule.
+        self.dialarm_rule_id = dialarm_rule_id
+        # The ID of the synchronization task.
+        self.dijob_id = dijob_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dialarm_rule_id is not None:
+            result['DIAlarmRuleId'] = self.dialarm_rule_id
+        if self.dijob_id is not None:
+            result['DIJobId'] = self.dijob_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DIAlarmRuleId') is not None:
+            self.dialarm_rule_id = m.get('DIAlarmRuleId')
+        if m.get('DIJobId') is not None:
+            self.dijob_id = m.get('DIJobId')
+        return self
+
+
+class DeleteDIAlarmRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
+        self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteDIAlarmRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDIAlarmRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDIAlarmRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteDIJobRequest(TeaModel):
     def __init__(
         self,
         dijob_id: int = None,
+        project_id: int = None,
     ):
         # This parameter is required.
         self.dijob_id = dijob_id
+        self.project_id = project_id
 
     def validate(self):
         pass
@@ -2330,12 +3495,16 @@ class DeleteDIJobRequest(TeaModel):
         result = dict()
         if self.dijob_id is not None:
             result['DIJobId'] = self.dijob_id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('DIJobId') is not None:
             self.dijob_id = m.get('DIJobId')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
         return self
 
 
@@ -2622,8 +3791,12 @@ class DeleteFunctionRequest(TeaModel):
         id: str = None,
         project_id: str = None,
     ):
+        # The ID of the UDF.
+        # 
         # This parameter is required.
         self.id = id
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID. You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -2657,7 +3830,12 @@ class DeleteFunctionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -2725,14 +3903,122 @@ class DeleteFunctionResponse(TeaModel):
         return self
 
 
+class DeleteNetworkRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+    ):
+        # This parameter is required.
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class DeleteNetworkResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteNetworkResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteNetworkResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteNetworkResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteNodeRequest(TeaModel):
     def __init__(
         self,
         id: str = None,
         project_id: str = None,
     ):
+        # The ID of the node.
+        # 
         # This parameter is required.
         self.id = id
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
+        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -2766,7 +4052,12 @@ class DeleteNodeResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # true\\
+        # false
         self.success = success
 
     def validate(self):
@@ -2936,8 +4227,12 @@ class DeleteResourceRequest(TeaModel):
         id: str = None,
         project_id: str = None,
     ):
+        # The ID of the file resource.
+        # 
         # This parameter is required.
         self.id = id
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID. You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -2971,7 +4266,12 @@ class DeleteResourceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -3039,14 +4339,222 @@ class DeleteResourceResponse(TeaModel):
         return self
 
 
+class DeleteResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        # This parameter is required.
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class DeleteResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteRouteRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+    ):
+        # This parameter is required.
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class DeleteRouteResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteRouteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteRouteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteWorkflowDefinitionRequest(TeaModel):
     def __init__(
         self,
         id: str = None,
         project_id: str = None,
     ):
+        # The ID of the workflow.
+        # 
         # This parameter is required.
         self.id = id
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -3080,7 +4588,12 @@ class DeleteWorkflowDefinitionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -3148,6 +4661,115 @@ class DeleteWorkflowDefinitionResponse(TeaModel):
         return self
 
 
+class DissociateProjectFromResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        project_id: int = None,
+        resource_group_id: str = None,
+    ):
+        # This parameter is required.
+        self.project_id = project_id
+        # This parameter is required.
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class DissociateProjectFromResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DissociateProjectFromResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DissociateProjectFromResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DissociateProjectFromResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ExecDeploymentStageRequest(TeaModel):
     def __init__(
         self,
@@ -3155,10 +4777,18 @@ class ExecDeploymentStageRequest(TeaModel):
         id: str = None,
         project_id: str = None,
     ):
+        # The code of the stage in the process. You can call the GetDeployment operation to query the code.
+        # 
         # This parameter is required.
         self.code = code
+        # The ID of the process.
+        # 
         # This parameter is required.
         self.id = id
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
+        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -3196,7 +4826,17 @@ class ExecDeploymentStageResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # 
+        # *   false
+        # 
+        #     **\
+        # 
+        #     **Note:** The value of this parameter indicates only whether the stage is triggered but does not indicate whether the execution of the stage is successful.
         self.success = success
 
     def validate(self):
@@ -3267,11 +4907,12 @@ class ExecDeploymentStageResponse(TeaModel):
 class GetDIJobRequest(TeaModel):
     def __init__(
         self,
-        dijob_id: str = None,
+        dijob_id: int = None,
+        project_id: int = None,
         with_details: bool = None,
     ):
-        # This parameter is required.
         self.dijob_id = dijob_id
+        self.project_id = project_id
         self.with_details = with_details
 
     def validate(self):
@@ -3285,6 +4926,8 @@ class GetDIJobRequest(TeaModel):
         result = dict()
         if self.dijob_id is not None:
             result['DIJobId'] = self.dijob_id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
         if self.with_details is not None:
             result['WithDetails'] = self.with_details
         return result
@@ -3293,6 +4936,8 @@ class GetDIJobRequest(TeaModel):
         m = m or dict()
         if m.get('DIJobId') is not None:
             self.dijob_id = m.get('DIJobId')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
         if m.get('WithDetails') is not None:
             self.with_details = m.get('WithDetails')
         return self
@@ -3939,6 +5584,7 @@ class GetDIJobResponseBodyPagingInfo(TeaModel):
         destination_data_source_type: str = None,
         job_name: str = None,
         job_settings: GetDIJobResponseBodyPagingInfoJobSettings = None,
+        job_status: str = None,
         migration_type: str = None,
         project_id: int = None,
         resource_settings: GetDIJobResponseBodyPagingInfoResourceSettings = None,
@@ -3953,6 +5599,7 @@ class GetDIJobResponseBodyPagingInfo(TeaModel):
         self.destination_data_source_type = destination_data_source_type
         self.job_name = job_name
         self.job_settings = job_settings
+        self.job_status = job_status
         self.migration_type = migration_type
         self.project_id = project_id
         self.resource_settings = resource_settings
@@ -4003,6 +5650,8 @@ class GetDIJobResponseBodyPagingInfo(TeaModel):
             result['JobName'] = self.job_name
         if self.job_settings is not None:
             result['JobSettings'] = self.job_settings.to_map()
+        if self.job_status is not None:
+            result['JobStatus'] = self.job_status
         if self.migration_type is not None:
             result['MigrationType'] = self.migration_type
         if self.project_id is not None:
@@ -4043,6 +5692,8 @@ class GetDIJobResponseBodyPagingInfo(TeaModel):
         if m.get('JobSettings') is not None:
             temp_model = GetDIJobResponseBodyPagingInfoJobSettings()
             self.job_settings = temp_model.from_map(m['JobSettings'])
+        if m.get('JobStatus') is not None:
+            self.job_status = m.get('JobStatus')
         if m.get('MigrationType') is not None:
             self.migration_type = m.get('MigrationType')
         if m.get('ProjectId') is not None:
@@ -4154,9 +5805,13 @@ class GetDIJobLogRequest(TeaModel):
         failover_id: int = None,
         instance_id: int = None,
     ):
+        # The ID of the synchronization task.
+        # 
         # This parameter is required.
         self.dijob_id = dijob_id
+        # The failover ID.
         self.failover_id = failover_id
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):
@@ -4193,8 +5848,9 @@ class GetDIJobLogResponseBody(TeaModel):
         log: str = None,
         request_id: str = None,
     ):
-        # 代表资源一级ID的资源属性字段
+        # The log.
         self.log = log
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -4465,8 +6121,14 @@ class GetDeploymentRequest(TeaModel):
         id: str = None,
         project_id: str = None,
     ):
+        # The ID of the process.
+        # 
         # This parameter is required.
         self.id = id
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
+        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -4506,20 +6168,38 @@ class GetDeploymentResponseBodyPipelineStages(TeaModel):
         step: int = None,
         type: str = None,
     ):
-        # 阶段代号
+        # The code of the stage.
         self.code = code
-        # 阶段描述
+        # The description of the stage.
         self.description = description
+        # The details of the stage.
         self.detail = detail
-        # 阶段信息
+        # The error message returned for the stage.
         self.message = message
-        # 阶段名称
+        # The name of the stage.
         self.name = name
-        # 阶段状态
+        # The status of the stage.
+        # 
+        # Valid values:
+        # 
+        # *   INIT
+        # *   RUNNING
+        # *   SUCCESS
+        # *   FAIL
+        # *   TERMINATION
+        # *   CANCEL
         self.status = status
-        # 步骤
+        # The step number of the stage.
         self.step = step
-        # 阶段类型
+        # The type of the stage.
+        # 
+        # Valid values:
+        # 
+        # *   DELETE
+        # *   BUILD
+        # *   CHECK
+        # *   DEPLOY
+        # *   OFFLINE
         self.type = type
 
     def validate(self):
@@ -4582,19 +6262,30 @@ class GetDeploymentResponseBodyPipeline(TeaModel):
         stages: List[GetDeploymentResponseBodyPipelineStages] = None,
         status: str = None,
     ):
-        # 发布包创建时间戳
+        # The time when the process was created. This value is a UNIX timestamp.
         self.create_time = create_time
-        # 创建人
+        # The creator of the process.
         self.creator = creator
-        # 发布流程Id
+        # The ID of the process.
         self.id = id
+        # The error message returned when the process fails.
         self.message = message
-        # 修改时间
+        # The time when the process was modified. This value is a UNIX timestamp.
         self.modify_time = modify_time
+        # The DataWorks workspace ID.
         self.project_id = project_id
-        # 步骤详情
+        # The information about stages in the process.
         self.stages = stages
-        # 发布流程状态
+        # The status of the process.
+        # 
+        # Valid values:
+        # 
+        # *   INIT
+        # *   RUNNING
+        # *   SUCCESS
+        # *   FAIL
+        # *   TERMINATION
+        # *   CANCEL
         self.status = status
 
     def validate(self):
@@ -4659,7 +6350,9 @@ class GetDeploymentResponseBody(TeaModel):
         pipeline: GetDeploymentResponseBodyPipeline = None,
         request_id: str = None,
     ):
+        # The information about the process.
         self.pipeline = pipeline
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4735,8 +6428,13 @@ class GetFunctionRequest(TeaModel):
         id: str = None,
         project_id: str = None,
     ):
+        # The ID of the UDF.
+        # 
         # This parameter is required.
         self.id = id
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
+        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
         self.project_id = project_id
 
     def validate(self):
@@ -4774,12 +6472,19 @@ class GetFunctionResponseBodyFunction(TeaModel):
         project_id: str = None,
         spec: str = None,
     ):
+        # The time when the UDF was created. This value is a UNIX timestamp.
         self.create_time = create_time
+        # The ID of the UDF.
         self.id = id
+        # The time when the UDF was last modified. This value is a UNIX timestamp.
         self.modify_time = modify_time
+        # The name of the UDF.
         self.name = name
+        # The owner of the UDF.
         self.owner = owner
+        # The ID of the DataWorks workspace to which the UDF belongs.
         self.project_id = project_id
+        # The FlowSpec field information about the UDF. For more information, see [FlowSpec](https://github.com/aliyun/dataworks-spec/blob/master/README_zh_CN.md).
         self.spec = spec
 
     def validate(self):
@@ -4832,7 +6537,9 @@ class GetFunctionResponseBody(TeaModel):
         function: GetFunctionResponseBodyFunction = None,
         request_id: str = None,
     ):
+        # The information about the UDF.
         self.function = function
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4902,14 +6609,359 @@ class GetFunctionResponse(TeaModel):
         return self
 
 
+class GetJobStatusRequest(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+    ):
+        # This parameter is required.
+        self.job_id = job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        return self
+
+
+class GetJobStatusResponseBodyJobStatus(TeaModel):
+    def __init__(
+        self,
+        completed: str = None,
+        create_time: str = None,
+        error: str = None,
+        job_id: str = None,
+        job_type: str = None,
+        status: str = None,
+    ):
+        self.completed = completed
+        self.create_time = create_time
+        self.error = error
+        self.job_id = job_id
+        self.job_type = job_type
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.completed is not None:
+            result['Completed'] = self.completed
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.error is not None:
+            result['Error'] = self.error
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.job_type is not None:
+            result['JobType'] = self.job_type
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Completed') is not None:
+            self.completed = m.get('Completed')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Error') is not None:
+            self.error = m.get('Error')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('JobType') is not None:
+            self.job_type = m.get('JobType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetJobStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        job_status: GetJobStatusResponseBodyJobStatus = None,
+        request_id: str = None,
+    ):
+        self.job_status = job_status
+        self.request_id = request_id
+
+    def validate(self):
+        if self.job_status:
+            self.job_status.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_status is not None:
+            result['JobStatus'] = self.job_status.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobStatus') is not None:
+            temp_model = GetJobStatusResponseBodyJobStatus()
+            self.job_status = temp_model.from_map(m['JobStatus'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetJobStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetJobStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetJobStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetNetworkRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+    ):
+        # This parameter is required.
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class GetNetworkResponseBodyNetwork(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        create_user: str = None,
+        id: int = None,
+        resource_group_id: str = None,
+        security_group_id: str = None,
+        status: str = None,
+        vpc_id: str = None,
+        vswitch_id: str = None,
+    ):
+        self.create_time = create_time
+        self.create_user = create_user
+        self.id = id
+        self.resource_group_id = resource_group_id
+        self.security_group_id = security_group_id
+        self.status = status
+        self.vpc_id = vpc_id
+        self.vswitch_id = vswitch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.vswitch_id is not None:
+            result['VswitchId'] = self.vswitch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('VswitchId') is not None:
+            self.vswitch_id = m.get('VswitchId')
+        return self
+
+
+class GetNetworkResponseBody(TeaModel):
+    def __init__(
+        self,
+        network: GetNetworkResponseBodyNetwork = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.network = network
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.network:
+            self.network.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.network is not None:
+            result['Network'] = self.network.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Network') is not None:
+            temp_model = GetNetworkResponseBodyNetwork()
+            self.network = temp_model.from_map(m['Network'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetNetworkResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetNetworkResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetNetworkResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetNodeRequest(TeaModel):
     def __init__(
         self,
         id: str = None,
         project_id: str = None,
     ):
+        # The ID of the node.
+        # 
         # This parameter is required.
         self.id = id
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the workspace ID.
+        # 
+        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
         self.project_id = project_id
 
     def validate(self):
@@ -4947,12 +6999,19 @@ class GetNodeResponseBodyNode(TeaModel):
         project_id: str = None,
         spec: str = None,
     ):
+        # The time when the node was created. This value is a UNIX timestamp.
         self.create_time = create_time
+        # The ID of the node.
         self.id = id
+        # The time when the node was last modified. This value is a UNIX timestamp.
         self.modify_time = modify_time
+        # The name of the node.
         self.name = name
+        # The owner of the node.
         self.owner = owner
+        # The DataWorks workspace ID.
         self.project_id = project_id
+        # The FlowSpec field information about this node. For more information, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow).
         self.spec = spec
 
     def validate(self):
@@ -5005,7 +7064,9 @@ class GetNodeResponseBody(TeaModel):
         node: GetNodeResponseBodyNode = None,
         request_id: str = None,
     ):
+        # The information about the node.
         self.node = node
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5307,14 +7368,175 @@ class GetProjectResponse(TeaModel):
         return self
 
 
+class GetProjectRoleRequest(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        project_id: int = None,
+    ):
+        # This parameter is required.
+        self.code = code
+        # This parameter is required.
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class GetProjectRoleResponseBodyProjectRole(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        name: str = None,
+        project_id: int = None,
+        type: str = None,
+    ):
+        self.code = code
+        self.name = name
+        self.project_id = project_id
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetProjectRoleResponseBody(TeaModel):
+    def __init__(
+        self,
+        project_role: GetProjectRoleResponseBodyProjectRole = None,
+        request_id: str = None,
+    ):
+        self.project_role = project_role
+        self.request_id = request_id
+
+    def validate(self):
+        if self.project_role:
+            self.project_role.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_role is not None:
+            result['ProjectRole'] = self.project_role.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectRole') is not None:
+            temp_model = GetProjectRoleResponseBodyProjectRole()
+            self.project_role = temp_model.from_map(m['ProjectRole'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetProjectRoleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetProjectRoleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetProjectRoleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetResourceRequest(TeaModel):
     def __init__(
         self,
         id: str = None,
         project_id: str = None,
     ):
+        # The ID of the file resource.
+        # 
         # This parameter is required.
         self.id = id
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
+        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
         self.project_id = project_id
 
     def validate(self):
@@ -5352,12 +7574,19 @@ class GetResourceResponseBodyResource(TeaModel):
         project_id: str = None,
         spec: str = None,
     ):
+        # The time when the file resource was created. This value is a UNIX timestamp.
         self.create_time = create_time
+        # The ID of the file resource.
         self.id = id
+        # The time when the file resource was last modified. This value is a UNIX timestamp.
         self.modify_time = modify_time
+        # The name of the file resource.
         self.name = name
+        # The owner of the file resource.
         self.owner = owner
+        # The ID of the workspace to which the file resource belongs.
         self.project_id = project_id
+        # The FlowSpec field information about the file resource. For more information, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow).
         self.spec = spec
 
     def validate(self):
@@ -5410,7 +7639,9 @@ class GetResourceResponseBody(TeaModel):
         request_id: str = None,
         resource: GetResourceResponseBodyResource = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The information about the file resource.
         self.resource = resource
 
     def validate(self):
@@ -5480,14 +7711,424 @@ class GetResourceResponse(TeaModel):
         return self
 
 
+class GetResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        # This parameter is required.
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class GetResourceGroupResponseBodyResourceGroupSpec(TeaModel):
+    def __init__(
+        self,
+        amount: int = None,
+        standard: str = None,
+    ):
+        self.amount = amount
+        self.standard = standard
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.standard is not None:
+            result['Standard'] = self.standard
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('Standard') is not None:
+            self.standard = m.get('Standard')
+        return self
+
+
+class GetResourceGroupResponseBodyResourceGroup(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        create_user: str = None,
+        default_vpc_id: str = None,
+        default_vswitch_id: str = None,
+        id: str = None,
+        name: str = None,
+        order_instance_id: str = None,
+        payment_type: str = None,
+        remark: str = None,
+        resource_group_type: str = None,
+        spec: GetResourceGroupResponseBodyResourceGroupSpec = None,
+        status: str = None,
+    ):
+        self.create_time = create_time
+        self.create_user = create_user
+        self.default_vpc_id = default_vpc_id
+        self.default_vswitch_id = default_vswitch_id
+        self.id = id
+        self.name = name
+        self.order_instance_id = order_instance_id
+        self.payment_type = payment_type
+        self.remark = remark
+        self.resource_group_type = resource_group_type
+        self.spec = spec
+        self.status = status
+
+    def validate(self):
+        if self.spec:
+            self.spec.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.default_vpc_id is not None:
+            result['DefaultVpcId'] = self.default_vpc_id
+        if self.default_vswitch_id is not None:
+            result['DefaultVswitchId'] = self.default_vswitch_id
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.order_instance_id is not None:
+            result['OrderInstanceId'] = self.order_instance_id
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_group_type is not None:
+            result['ResourceGroupType'] = self.resource_group_type
+        if self.spec is not None:
+            result['Spec'] = self.spec.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('DefaultVpcId') is not None:
+            self.default_vpc_id = m.get('DefaultVpcId')
+        if m.get('DefaultVswitchId') is not None:
+            self.default_vswitch_id = m.get('DefaultVswitchId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OrderInstanceId') is not None:
+            self.order_instance_id = m.get('OrderInstanceId')
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceGroupType') is not None:
+            self.resource_group_type = m.get('ResourceGroupType')
+        if m.get('Spec') is not None:
+            temp_model = GetResourceGroupResponseBodyResourceGroupSpec()
+            self.spec = temp_model.from_map(m['Spec'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        resource_group: GetResourceGroupResponseBodyResourceGroup = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.resource_group = resource_group
+        self.success = success
+
+    def validate(self):
+        if self.resource_group:
+            self.resource_group.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_group is not None:
+            result['ResourceGroup'] = self.resource_group.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceGroup') is not None:
+            temp_model = GetResourceGroupResponseBodyResourceGroup()
+            self.resource_group = temp_model.from_map(m['ResourceGroup'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetRouteRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+    ):
+        # This parameter is required.
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class GetRouteResponseBodyRoute(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        destination_cidr: str = None,
+        id: int = None,
+        network_id: int = None,
+        resource_group_id: str = None,
+        resource_id: str = None,
+    ):
+        self.create_time = create_time
+        self.destination_cidr = destination_cidr
+        self.id = id
+        self.network_id = network_id
+        self.resource_group_id = resource_group_id
+        self.resource_id = resource_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.destination_cidr is not None:
+            result['DestinationCidr'] = self.destination_cidr
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.network_id is not None:
+            result['NetworkId'] = self.network_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DestinationCidr') is not None:
+            self.destination_cidr = m.get('DestinationCidr')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('NetworkId') is not None:
+            self.network_id = m.get('NetworkId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        return self
+
+
+class GetRouteResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        route: GetRouteResponseBodyRoute = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.route = route
+        self.success = success
+
+    def validate(self):
+        if self.route:
+            self.route.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.route is not None:
+            result['Route'] = self.route.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Route') is not None:
+            temp_model = GetRouteResponseBodyRoute()
+            self.route = temp_model.from_map(m['Route'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetRouteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetRouteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetWorkflowDefinitionRequest(TeaModel):
     def __init__(
         self,
         id: str = None,
         project_id: str = None,
     ):
+        # The ID of the workflow.
+        # 
         # This parameter is required.
         self.id = id
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
+        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
         self.project_id = project_id
 
     def validate(self):
@@ -5525,12 +8166,19 @@ class GetWorkflowDefinitionResponseBodyWorkflowDefinition(TeaModel):
         project_id: str = None,
         spec: str = None,
     ):
+        # The time when the workflow was created. This value is a UNIX timestamp.
         self.create_time = create_time
+        # The ID of the workflow.
         self.id = id
+        # The time when the workflow was last modified. This value is a UNIX timestamp.
         self.modify_time = modify_time
+        # The name of the workflow.
         self.name = name
+        # The owner of the workflow.
         self.owner = owner
+        # The ID of the workspace to which the workflow belongs.
         self.project_id = project_id
+        # The FlowSpec field information about the workflow. For more information, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow/).
         self.spec = spec
 
     def validate(self):
@@ -5583,7 +8231,9 @@ class GetWorkflowDefinitionResponseBody(TeaModel):
         request_id: str = None,
         workflow_definition: GetWorkflowDefinitionResponseBodyWorkflowDefinition = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The information about the workflow.
         self.workflow_definition = workflow_definition
 
     def validate(self):
@@ -5653,17 +8303,617 @@ class GetWorkflowDefinitionResponse(TeaModel):
         return self
 
 
+class ImportWorkflowDefinitionRequest(TeaModel):
+    def __init__(
+        self,
+        project_id: str = None,
+        spec: str = None,
+    ):
+        # This parameter is required.
+        self.project_id = project_id
+        # This parameter is required.
+        self.spec = spec
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.spec is not None:
+            result['Spec'] = self.spec
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Spec') is not None:
+            self.spec = m.get('Spec')
+        return self
+
+
+class ImportWorkflowDefinitionResponseBodyAsyncJob(TeaModel):
+    def __init__(
+        self,
+        completed: bool = None,
+        create_time: int = None,
+        error: str = None,
+        id: str = None,
+        progress: int = None,
+        response: str = None,
+        status: str = None,
+        type: str = None,
+    ):
+        self.completed = completed
+        self.create_time = create_time
+        self.error = error
+        self.id = id
+        self.progress = progress
+        self.response = response
+        self.status = status
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.completed is not None:
+            result['Completed'] = self.completed
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.error is not None:
+            result['Error'] = self.error
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.response is not None:
+            result['Response'] = self.response
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Completed') is not None:
+            self.completed = m.get('Completed')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Error') is not None:
+            self.error = m.get('Error')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('Response') is not None:
+            self.response = m.get('Response')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ImportWorkflowDefinitionResponseBody(TeaModel):
+    def __init__(
+        self,
+        async_job: ImportWorkflowDefinitionResponseBodyAsyncJob = None,
+        request_id: str = None,
+    ):
+        self.async_job = async_job
+        self.request_id = request_id
+
+    def validate(self):
+        if self.async_job:
+            self.async_job.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.async_job is not None:
+            result['AsyncJob'] = self.async_job.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AsyncJob') is not None:
+            temp_model = ImportWorkflowDefinitionResponseBodyAsyncJob()
+            self.async_job = temp_model.from_map(m['AsyncJob'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ImportWorkflowDefinitionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ImportWorkflowDefinitionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ImportWorkflowDefinitionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDIAlarmRulesRequest(TeaModel):
+    def __init__(
+        self,
+        dialarm_rule_id: int = None,
+        job_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.dialarm_rule_id = dialarm_rule_id
+        self.job_id = job_id
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dialarm_rule_id is not None:
+            result['DIAlarmRuleId'] = self.dialarm_rule_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DIAlarmRuleId') is not None:
+            self.dialarm_rule_id = m.get('DIAlarmRuleId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettingsNotificationChannels(TeaModel):
+    def __init__(
+        self,
+        channels: List[str] = None,
+        severity: str = None,
+    ):
+        self.channels = channels
+        self.severity = severity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channels is not None:
+            result['Channels'] = self.channels
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Channels') is not None:
+            self.channels = m.get('Channels')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        return self
+
+
+class ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettingsNotificationReceivers(TeaModel):
+    def __init__(
+        self,
+        receiver_type: str = None,
+        receiver_values: List[str] = None,
+    ):
+        self.receiver_type = receiver_type
+        self.receiver_values = receiver_values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.receiver_type is not None:
+            result['ReceiverType'] = self.receiver_type
+        if self.receiver_values is not None:
+            result['ReceiverValues'] = self.receiver_values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReceiverType') is not None:
+            self.receiver_type = m.get('ReceiverType')
+        if m.get('ReceiverValues') is not None:
+            self.receiver_values = m.get('ReceiverValues')
+        return self
+
+
+class ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettings(TeaModel):
+    def __init__(
+        self,
+        inhibition_interval: int = None,
+        notification_channels: List[ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettingsNotificationChannels] = None,
+        notification_receivers: List[ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettingsNotificationReceivers] = None,
+    ):
+        self.inhibition_interval = inhibition_interval
+        self.notification_channels = notification_channels
+        self.notification_receivers = notification_receivers
+
+    def validate(self):
+        if self.notification_channels:
+            for k in self.notification_channels:
+                if k:
+                    k.validate()
+        if self.notification_receivers:
+            for k in self.notification_receivers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.inhibition_interval is not None:
+            result['InhibitionInterval'] = self.inhibition_interval
+        result['NotificationChannels'] = []
+        if self.notification_channels is not None:
+            for k in self.notification_channels:
+                result['NotificationChannels'].append(k.to_map() if k else None)
+        result['NotificationReceivers'] = []
+        if self.notification_receivers is not None:
+            for k in self.notification_receivers:
+                result['NotificationReceivers'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InhibitionInterval') is not None:
+            self.inhibition_interval = m.get('InhibitionInterval')
+        self.notification_channels = []
+        if m.get('NotificationChannels') is not None:
+            for k in m.get('NotificationChannels'):
+                temp_model = ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettingsNotificationChannels()
+                self.notification_channels.append(temp_model.from_map(k))
+        self.notification_receivers = []
+        if m.get('NotificationReceivers') is not None:
+            for k in m.get('NotificationReceivers'):
+                temp_model = ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettingsNotificationReceivers()
+                self.notification_receivers.append(temp_model.from_map(k))
+        return self
+
+
+class ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesTriggerConditions(TeaModel):
+    def __init__(
+        self,
+        ddl_report_tags: List[str] = None,
+        duration: int = None,
+        severity: str = None,
+        threshold: int = None,
+    ):
+        self.ddl_report_tags = ddl_report_tags
+        self.duration = duration
+        self.severity = severity
+        self.threshold = threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ddl_report_tags is not None:
+            result['DdlReportTags'] = self.ddl_report_tags
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DdlReportTags') is not None:
+            self.ddl_report_tags = m.get('DdlReportTags')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        return self
+
+
+class ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRules(TeaModel):
+    def __init__(
+        self,
+        dialarm_rule_id: int = None,
+        dijob_id: int = None,
+        description: str = None,
+        enabled: bool = None,
+        metric_type: str = None,
+        name: str = None,
+        notification_settings: ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettings = None,
+        trigger_conditions: List[ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesTriggerConditions] = None,
+    ):
+        self.dialarm_rule_id = dialarm_rule_id
+        self.dijob_id = dijob_id
+        self.description = description
+        self.enabled = enabled
+        self.metric_type = metric_type
+        self.name = name
+        self.notification_settings = notification_settings
+        self.trigger_conditions = trigger_conditions
+
+    def validate(self):
+        if self.notification_settings:
+            self.notification_settings.validate()
+        if self.trigger_conditions:
+            for k in self.trigger_conditions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dialarm_rule_id is not None:
+            result['DIAlarmRuleId'] = self.dialarm_rule_id
+        if self.dijob_id is not None:
+            result['DIJobId'] = self.dijob_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.metric_type is not None:
+            result['MetricType'] = self.metric_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.notification_settings is not None:
+            result['NotificationSettings'] = self.notification_settings.to_map()
+        result['TriggerConditions'] = []
+        if self.trigger_conditions is not None:
+            for k in self.trigger_conditions:
+                result['TriggerConditions'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DIAlarmRuleId') is not None:
+            self.dialarm_rule_id = m.get('DIAlarmRuleId')
+        if m.get('DIJobId') is not None:
+            self.dijob_id = m.get('DIJobId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('MetricType') is not None:
+            self.metric_type = m.get('MetricType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NotificationSettings') is not None:
+            temp_model = ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettings()
+            self.notification_settings = temp_model.from_map(m['NotificationSettings'])
+        self.trigger_conditions = []
+        if m.get('TriggerConditions') is not None:
+            for k in m.get('TriggerConditions'):
+                temp_model = ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesTriggerConditions()
+                self.trigger_conditions.append(temp_model.from_map(k))
+        return self
+
+
+class ListDIAlarmRulesResponseBodyPagingInfo(TeaModel):
+    def __init__(
+        self,
+        dijob_alarm_rules: List[ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRules] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.dijob_alarm_rules = dijob_alarm_rules
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.dijob_alarm_rules:
+            for k in self.dijob_alarm_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DIJobAlarmRules'] = []
+        if self.dijob_alarm_rules is not None:
+            for k in self.dijob_alarm_rules:
+                result['DIJobAlarmRules'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dijob_alarm_rules = []
+        if m.get('DIJobAlarmRules') is not None:
+            for k in m.get('DIJobAlarmRules'):
+                temp_model = ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRules()
+                self.dijob_alarm_rules.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListDIAlarmRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        paging_info: ListDIAlarmRulesResponseBodyPagingInfo = None,
+        request_id: str = None,
+    ):
+        self.paging_info = paging_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.paging_info:
+            self.paging_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.paging_info is not None:
+            result['PagingInfo'] = self.paging_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PagingInfo') is not None:
+            temp_model = ListDIAlarmRulesResponseBodyPagingInfo()
+            self.paging_info = temp_model.from_map(m['PagingInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListDIAlarmRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDIAlarmRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDIAlarmRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListDIJobEventsRequest(TeaModel):
     def __init__(
         self,
-        dijob_id: str = None,
+        dijob_id: int = None,
         end_time: int = None,
         event_type: str = None,
         page_number: int = None,
         page_size: int = None,
         start_time: int = None,
     ):
-        # This parameter is required.
         self.dijob_id = dijob_id
         # This parameter is required.
         self.end_time = end_time
@@ -5945,12 +9195,11 @@ class ListDIJobEventsResponse(TeaModel):
 class ListDIJobMetricsRequest(TeaModel):
     def __init__(
         self,
-        dijob_id: str = None,
+        dijob_id: int = None,
         end_time: int = None,
         metric_name: List[str] = None,
         start_time: int = None,
     ):
-        # This parameter is required.
         self.dijob_id = dijob_id
         # This parameter is required.
         self.end_time = end_time
@@ -5994,12 +9243,11 @@ class ListDIJobMetricsRequest(TeaModel):
 class ListDIJobMetricsShrinkRequest(TeaModel):
     def __init__(
         self,
-        dijob_id: str = None,
+        dijob_id: int = None,
         end_time: int = None,
         metric_name_shrink: str = None,
         start_time: int = None,
     ):
-        # This parameter is required.
         self.dijob_id = dijob_id
         # This parameter is required.
         self.end_time = end_time
@@ -6225,6 +9473,328 @@ class ListDIJobMetricsResponse(TeaModel):
         return self
 
 
+class ListDIJobRunDetailsRequest(TeaModel):
+    def __init__(
+        self,
+        dijob_id: int = None,
+        instance_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        source_data_source_name: str = None,
+        source_database_name: str = None,
+        source_schema_name: str = None,
+        source_table_name: str = None,
+    ):
+        # This parameter is required.
+        self.dijob_id = dijob_id
+        self.instance_id = instance_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.source_data_source_name = source_data_source_name
+        self.source_database_name = source_database_name
+        self.source_schema_name = source_schema_name
+        self.source_table_name = source_table_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dijob_id is not None:
+            result['DIJobId'] = self.dijob_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.source_data_source_name is not None:
+            result['SourceDataSourceName'] = self.source_data_source_name
+        if self.source_database_name is not None:
+            result['SourceDatabaseName'] = self.source_database_name
+        if self.source_schema_name is not None:
+            result['SourceSchemaName'] = self.source_schema_name
+        if self.source_table_name is not None:
+            result['SourceTableName'] = self.source_table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DIJobId') is not None:
+            self.dijob_id = m.get('DIJobId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SourceDataSourceName') is not None:
+            self.source_data_source_name = m.get('SourceDataSourceName')
+        if m.get('SourceDatabaseName') is not None:
+            self.source_database_name = m.get('SourceDatabaseName')
+        if m.get('SourceSchemaName') is not None:
+            self.source_schema_name = m.get('SourceSchemaName')
+        if m.get('SourceTableName') is not None:
+            self.source_table_name = m.get('SourceTableName')
+        return self
+
+
+class ListDIJobRunDetailsResponseBodyPagingInfoJobRunInfos(TeaModel):
+    def __init__(
+        self,
+        destination_database_name: str = None,
+        destination_datasource_name: str = None,
+        destination_schema_name: str = None,
+        destination_table_name: str = None,
+        full_migration_error_message: str = None,
+        full_migration_status: str = None,
+        offline_error_records: int = None,
+        offline_total_bytes: int = None,
+        offline_total_records: int = None,
+        realtime_migration_error_message: str = None,
+        realtime_migration_status: str = None,
+        source_database_name: str = None,
+        source_datasource_name: str = None,
+        source_schema_name: str = None,
+        source_table_name: str = None,
+        structure_migration_error_message: str = None,
+        structure_migration_status: str = None,
+    ):
+        self.destination_database_name = destination_database_name
+        self.destination_datasource_name = destination_datasource_name
+        self.destination_schema_name = destination_schema_name
+        self.destination_table_name = destination_table_name
+        self.full_migration_error_message = full_migration_error_message
+        self.full_migration_status = full_migration_status
+        self.offline_error_records = offline_error_records
+        self.offline_total_bytes = offline_total_bytes
+        self.offline_total_records = offline_total_records
+        self.realtime_migration_error_message = realtime_migration_error_message
+        self.realtime_migration_status = realtime_migration_status
+        self.source_database_name = source_database_name
+        self.source_datasource_name = source_datasource_name
+        self.source_schema_name = source_schema_name
+        self.source_table_name = source_table_name
+        self.structure_migration_error_message = structure_migration_error_message
+        self.structure_migration_status = structure_migration_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_database_name is not None:
+            result['DestinationDatabaseName'] = self.destination_database_name
+        if self.destination_datasource_name is not None:
+            result['DestinationDatasourceName'] = self.destination_datasource_name
+        if self.destination_schema_name is not None:
+            result['DestinationSchemaName'] = self.destination_schema_name
+        if self.destination_table_name is not None:
+            result['DestinationTableName'] = self.destination_table_name
+        if self.full_migration_error_message is not None:
+            result['FullMigrationErrorMessage'] = self.full_migration_error_message
+        if self.full_migration_status is not None:
+            result['FullMigrationStatus'] = self.full_migration_status
+        if self.offline_error_records is not None:
+            result['OfflineErrorRecords'] = self.offline_error_records
+        if self.offline_total_bytes is not None:
+            result['OfflineTotalBytes'] = self.offline_total_bytes
+        if self.offline_total_records is not None:
+            result['OfflineTotalRecords'] = self.offline_total_records
+        if self.realtime_migration_error_message is not None:
+            result['RealtimeMigrationErrorMessage'] = self.realtime_migration_error_message
+        if self.realtime_migration_status is not None:
+            result['RealtimeMigrationStatus'] = self.realtime_migration_status
+        if self.source_database_name is not None:
+            result['SourceDatabaseName'] = self.source_database_name
+        if self.source_datasource_name is not None:
+            result['SourceDatasourceName'] = self.source_datasource_name
+        if self.source_schema_name is not None:
+            result['SourceSchemaName'] = self.source_schema_name
+        if self.source_table_name is not None:
+            result['SourceTableName'] = self.source_table_name
+        if self.structure_migration_error_message is not None:
+            result['StructureMigrationErrorMessage'] = self.structure_migration_error_message
+        if self.structure_migration_status is not None:
+            result['StructureMigrationStatus'] = self.structure_migration_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestinationDatabaseName') is not None:
+            self.destination_database_name = m.get('DestinationDatabaseName')
+        if m.get('DestinationDatasourceName') is not None:
+            self.destination_datasource_name = m.get('DestinationDatasourceName')
+        if m.get('DestinationSchemaName') is not None:
+            self.destination_schema_name = m.get('DestinationSchemaName')
+        if m.get('DestinationTableName') is not None:
+            self.destination_table_name = m.get('DestinationTableName')
+        if m.get('FullMigrationErrorMessage') is not None:
+            self.full_migration_error_message = m.get('FullMigrationErrorMessage')
+        if m.get('FullMigrationStatus') is not None:
+            self.full_migration_status = m.get('FullMigrationStatus')
+        if m.get('OfflineErrorRecords') is not None:
+            self.offline_error_records = m.get('OfflineErrorRecords')
+        if m.get('OfflineTotalBytes') is not None:
+            self.offline_total_bytes = m.get('OfflineTotalBytes')
+        if m.get('OfflineTotalRecords') is not None:
+            self.offline_total_records = m.get('OfflineTotalRecords')
+        if m.get('RealtimeMigrationErrorMessage') is not None:
+            self.realtime_migration_error_message = m.get('RealtimeMigrationErrorMessage')
+        if m.get('RealtimeMigrationStatus') is not None:
+            self.realtime_migration_status = m.get('RealtimeMigrationStatus')
+        if m.get('SourceDatabaseName') is not None:
+            self.source_database_name = m.get('SourceDatabaseName')
+        if m.get('SourceDatasourceName') is not None:
+            self.source_datasource_name = m.get('SourceDatasourceName')
+        if m.get('SourceSchemaName') is not None:
+            self.source_schema_name = m.get('SourceSchemaName')
+        if m.get('SourceTableName') is not None:
+            self.source_table_name = m.get('SourceTableName')
+        if m.get('StructureMigrationErrorMessage') is not None:
+            self.structure_migration_error_message = m.get('StructureMigrationErrorMessage')
+        if m.get('StructureMigrationStatus') is not None:
+            self.structure_migration_status = m.get('StructureMigrationStatus')
+        return self
+
+
+class ListDIJobRunDetailsResponseBodyPagingInfo(TeaModel):
+    def __init__(
+        self,
+        job_run_infos: List[ListDIJobRunDetailsResponseBodyPagingInfoJobRunInfos] = None,
+        page_number: str = None,
+        page_size: str = None,
+        total_count: str = None,
+    ):
+        self.job_run_infos = job_run_infos
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.job_run_infos:
+            for k in self.job_run_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['JobRunInfos'] = []
+        if self.job_run_infos is not None:
+            for k in self.job_run_infos:
+                result['JobRunInfos'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.job_run_infos = []
+        if m.get('JobRunInfos') is not None:
+            for k in m.get('JobRunInfos'):
+                temp_model = ListDIJobRunDetailsResponseBodyPagingInfoJobRunInfos()
+                self.job_run_infos.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListDIJobRunDetailsResponseBody(TeaModel):
+    def __init__(
+        self,
+        paging_info: ListDIJobRunDetailsResponseBodyPagingInfo = None,
+        request_id: str = None,
+    ):
+        self.paging_info = paging_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.paging_info:
+            self.paging_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.paging_info is not None:
+            result['PagingInfo'] = self.paging_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PagingInfo') is not None:
+            temp_model = ListDIJobRunDetailsResponseBodyPagingInfo()
+            self.paging_info = temp_model.from_map(m['PagingInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListDIJobRunDetailsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDIJobRunDetailsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDIJobRunDetailsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListDIJobsRequest(TeaModel):
     def __init__(
         self,
@@ -6236,13 +9806,29 @@ class ListDIJobsRequest(TeaModel):
         project_id: int = None,
         source_data_source_type: str = None,
     ):
+        # The destination type. If you do not configure this parameter, no limits are imposed on the tasks.
         self.destination_data_source_type = destination_data_source_type
+        # The synchronization type. Valid values:
+        # 
+        # *   FullAndRealtimeIncremental: one-time full synchronization and real-time incremental synchronization
+        # *   RealtimeIncremental: real-time incremental synchronization
+        # *   Full: full synchronization
+        # *   OfflineIncremental: batch incremental synchronization
+        # *   FullAndOfflineIncremental: one-time full synchronization and batch incremental synchronization
         self.migration_type = migration_type
+        # The name of the export task.
+        # 
+        # The name of each export task must be unique. You must make sure that the names of the export tasks in the current workspace are unique.
         self.name = name
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
+        # The DataWorks workspace ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The source type. If you do not configure this parameter, no limits are imposed on the tasks.
         self.source_data_source_type = source_data_source_type
 
     def validate(self):
@@ -6300,12 +9886,32 @@ class ListDIJobsResponseBodyPagingInfoDIJobs(TeaModel):
         project_id: int = None,
         source_data_source_type: str = None,
     ):
+        # The ID of the synchronization task.
         self.dijob_id = dijob_id
+        # The destination type. Valid values: Hologres and Hive.
         self.destination_data_source_type = destination_data_source_type
+        # The name of the synchronization task.
         self.job_name = job_name
+        # The status of the synchronization task. Valid values:
+        # 
+        # *   Finished
+        # *   Initialized
+        # *   Stopped
+        # *   Failed
+        # *   Running
+        # *   Stopping
         self.job_status = job_status
+        # The synchronization type. Valid values:
+        # 
+        # *   FullAndRealtimeIncremental: one-time full synchronization and real-time incremental synchronization
+        # *   RealtimeIncremental: real-time incremental synchronization
+        # *   Full: full synchronization
+        # *   OfflineIncremental: batch incremental synchronization
+        # *   FullAndOfflineIncremental: one-time full synchronization and batch incremental synchronization
         self.migration_type = migration_type
+        # The ID of the DataWorks workspace to which the synchronization task belongs.
         self.project_id = project_id
+        # The source type. The value MySQL is returned.
         self.source_data_source_type = source_data_source_type
 
     def validate(self):
@@ -6360,9 +9966,13 @@ class ListDIJobsResponseBodyPagingInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The synchronization tasks that are returned.
         self.dijobs = dijobs
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -6411,8 +10021,9 @@ class ListDIJobsResponseBody(TeaModel):
         paging_info: ListDIJobsResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.paging_info = paging_info
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7086,11 +10697,28 @@ class ListDeploymentsRequest(TeaModel):
         project_id: str = None,
         status: str = None,
     ):
+        # The ID of the user who creates the processes. This parameter specifies a filter condition.
         self.creator = creator
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
+        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The status of the processes. This parameter specifies a filter condition.
+        # 
+        # Valid values:
+        # 
+        # *   INIT
+        # *   RUNNING
+        # *   SUCCESS
+        # *   FAIL
+        # *   TERMINATION
+        # *   CANCEL
         self.status = status
 
     def validate(self):
@@ -7141,21 +10769,38 @@ class ListDeploymentsResponseBodyPagingInfoDeploymentsStages(TeaModel):
         step: int = None,
         type: str = None,
     ):
-        # 阶段代号
+        # The code of the stage.
         self.code = code
-        # 阶段描述
+        # The description of the stage.
         self.description = description
-        # 阶段详细信息
+        # The additional information about the stage.
         self.detail = detail
-        # 阶段信息
+        # The error message returned during the stage.
         self.message = message
-        # 阶段名称
+        # The name of the stage.
         self.name = name
-        # 阶段状态
+        # The status of the stage.
+        # 
+        # Valid values:
+        # 
+        # *   INIT
+        # *   RUNNING
+        # *   SUCCESS
+        # *   FAIL
+        # *   TERMINATION
+        # *   CANCEL
         self.status = status
-        # 步骤
+        # The step number of the stage.
         self.step = step
-        # 阶段类型
+        # The type of the stage. This parameter indicates the operation type in the stage.
+        # 
+        # Valid values:
+        # 
+        # *   DEPLOY
+        # *   CHECK
+        # *   OFFLINE.
+        # *   BUILD
+        # *   DELETE
         self.type = type
 
     def validate(self):
@@ -7218,20 +10863,30 @@ class ListDeploymentsResponseBodyPagingInfoDeployments(TeaModel):
         stages: List[ListDeploymentsResponseBodyPagingInfoDeploymentsStages] = None,
         status: str = None,
     ):
-        # 发布包创建时间戳
+        # The time when the process was created. This value is a UNIX timestamp.
         self.create_time = create_time
-        # 创建人
+        # The ID of the user who creates the process.
         self.creator = creator
-        # 发布流程Id
+        # The process ID.
         self.id = id
+        # The error message returned if the process fails.
         self.message = message
-        # 修改时间
+        # The time when the process was last modified. This value is a UNIX timestamp.
         self.modify_time = modify_time
-        # 项目Id
+        # The DataWorks workspace ID.
         self.project_id = project_id
-        # 步骤详情
+        # The stages of the process.
         self.stages = stages
-        # 发布流程状态
+        # The status of the process.
+        # 
+        # Valid values:
+        # 
+        # *   INIT
+        # *   RUNNING
+        # *   FAIL
+        # *   SUCCESS
+        # *   TERMINATION
+        # *   CANCEL
         self.status = status
 
     def validate(self):
@@ -7298,9 +10953,13 @@ class ListDeploymentsResponseBodyPagingInfo(TeaModel):
         page_size: str = None,
         total_count: str = None,
     ):
+        # The processes.
         self.deployments = deployments
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -7349,7 +11008,9 @@ class ListDeploymentsResponseBody(TeaModel):
         paging_info: ListDeploymentsResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.paging_info = paging_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7428,11 +11089,28 @@ class ListFunctionsRequest(TeaModel):
         project_id: str = None,
         type: str = None,
     ):
+        # The ID of the owner of the UDF. This parameter specifies a filter condition.
         self.owner = owner
+        # The page number. Default value: 1. Minimum value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
+        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The UDF type. This parameter specifies a filter condition.
+        # 
+        # Valid values:
+        # 
+        # *   MATH: mathematical operation function
+        # *   AGGREGATE: aggregate function
+        # *   STRING: string processing function
+        # *   DATE: date function
+        # *   ANALYTIC: window function
+        # *   OTHER: others
         self.type = type
 
     def validate(self):
@@ -7477,9 +11155,9 @@ class ListFunctionsResponseBodyPagingInfoFunctionsDataSource(TeaModel):
         name: str = None,
         type: str = None,
     ):
-        # 数据源名称
+        # The name of the data source.
         self.name = name
-        # 数据源类型
+        # The type of the data source.
         self.type = type
 
     def validate(self):
@@ -7511,7 +11189,7 @@ class ListFunctionsResponseBodyPagingInfoFunctionsRuntimeResource(TeaModel):
         self,
         resource_group_id: str = None,
     ):
-        # 运行时资源组Id
+        # The ID of the resource group used when you run the UDF.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -7539,7 +11217,7 @@ class ListFunctionsResponseBodyPagingInfoFunctionsScriptRuntime(TeaModel):
         self,
         command: str = None,
     ):
-        # 脚本所属类型
+        # The command.
         self.command = command
 
     def validate(self):
@@ -7569,11 +11247,11 @@ class ListFunctionsResponseBodyPagingInfoFunctionsScript(TeaModel):
         path: str = None,
         runtime: ListFunctionsResponseBodyPagingInfoFunctionsScriptRuntime = None,
     ):
-        # 脚本的id
+        # The script ID.
         self.id = id
-        # 脚本路径
+        # The script path.
         self.path = path
-        # 脚本的运行时信息
+        # The runtime.
         self.runtime = runtime
 
     def validate(self):
@@ -7632,49 +11310,71 @@ class ListFunctionsResponseBodyPagingInfoFunctions(TeaModel):
         script: ListFunctionsResponseBodyPagingInfoFunctionsScript = None,
         type: str = None,
     ):
-        # ARM集群资源文件列表
+        # The file resources in an Advanced RISC Machines (ARM) cluster.
         self.arm_resource = arm_resource
-        # 函数实现类名
+        # The fully qualified class name of the UDF.
         self.class_name = class_name
-        # 命令描述
+        # The description of the command.
         self.command_description = command_description
-        # 代表创建时间的资源属性字段
+        # The time when the UDF was created. This value is a UNIX timestamp.
         self.create_time = create_time
-        # 函数注册到的数据源信息
+        # The data source information about the UDF.
         self.data_source = data_source
-        # 数据库名，可选
+        # The name of the database. This parameter is returned for E-MapReduce (EMR) functions.
         self.database_name = database_name
-        # 对funciotn的描述
+        # The overall description of the UDF.
         self.description = description
-        # 嵌套函数代码内容
+        # The code of the embedded UDF.
         self.embedded_code = embedded_code
-        # 嵌套代码类型
+        # The type of the nested code.
+        # 
+        # Valid values:
+        # 
+        # *   Python2
+        # *   Python3
+        # *   Java8
+        # *   Java11
+        # *   Java17
         self.embedded_code_type = embedded_code_type
-        # 嵌套资源类型
+        # The type of the nested resource.
+        # 
+        # Valid values:
+        # 
+        # *   File: general resources
+        # *   Embedded: embedded resources
         self.embedded_resource_type = embedded_resource_type
-        # 示例说明
+        # The description of the example.
         self.example_description = example_description
-        # 函数的实现代码
+        # The files resources.
         self.file_resource = file_resource
-        # 代表资源一级ID的资源属性字段
+        # The ID of the UDF.
         self.id = id
-        # 修改时间
+        # The time when the UDF was last modified. This value is a UNIX timestamp.
         self.modify_time = modify_time
-        # 代表资源名称的资源属性字段
+        # The name of the UDF.
         self.name = name
-        # 函数责任人
+        # The owner of the UDF.
         self.owner = owner
-        # 命令描述
+        # The description of the parameter.
         self.parameter_description = parameter_description
-        # 项目Id
+        # The ID of the workspace to which the UDF belongs.
         self.project_id = project_id
-        # 返回值说明
+        # The description of the return value.
         self.return_value_description = return_value_description
-        # 运行时资源组信息
+        # The information about the resource group used when you run the UDF.
         self.runtime_resource = runtime_resource
-        # 工作流的脚本信息
+        # The script information about the UDF.
         self.script = script
-        # 函数类型
+        # The UDF type.
+        # 
+        # Valid values:
+        # 
+        # *   MATH: mathematical operation function
+        # *   AGGREGATE: aggregate function
+        # *   STRING: string processing function
+        # *   DATE: date function
+        # *   ANALYTIC: window function
+        # *   OTHER: others
         self.type = type
 
     def validate(self):
@@ -7797,9 +11497,13 @@ class ListFunctionsResponseBodyPagingInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The UDFs.
         self.functions = functions
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -7848,7 +11552,9 @@ class ListFunctionsResponseBody(TeaModel):
         paging_info: ListFunctionsResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.paging_info = paging_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7918,6 +11624,191 @@ class ListFunctionsResponse(TeaModel):
         return self
 
 
+class ListNetworksRequest(TeaModel):
+    def __init__(
+        self,
+        resource_group_id: str = None,
+    ):
+        # This parameter is required.
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class ListNetworksResponseBodyNetworkList(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        create_user: str = None,
+        id: int = None,
+        resource_group_id: str = None,
+        security_group_id: str = None,
+        status: str = None,
+        vpc_id: str = None,
+        vswitch_id: str = None,
+    ):
+        self.create_time = create_time
+        self.create_user = create_user
+        self.id = id
+        self.resource_group_id = resource_group_id
+        self.security_group_id = security_group_id
+        self.status = status
+        self.vpc_id = vpc_id
+        self.vswitch_id = vswitch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.vswitch_id is not None:
+            result['VswitchId'] = self.vswitch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('VswitchId') is not None:
+            self.vswitch_id = m.get('VswitchId')
+        return self
+
+
+class ListNetworksResponseBody(TeaModel):
+    def __init__(
+        self,
+        network_list: List[ListNetworksResponseBodyNetworkList] = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.network_list = network_list
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.network_list:
+            for k in self.network_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['NetworkList'] = []
+        if self.network_list is not None:
+            for k in self.network_list:
+                result['NetworkList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.network_list = []
+        if m.get('NetworkList') is not None:
+            for k in m.get('NetworkList'):
+                temp_model = ListNetworksResponseBodyNetworkList()
+                self.network_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListNetworksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListNetworksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListNetworksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListNodeDependenciesRequest(TeaModel):
     def __init__(
         self,
@@ -7926,10 +11817,18 @@ class ListNodeDependenciesRequest(TeaModel):
         page_size: int = None,
         project_id: str = None,
     ):
+        # The ID of the node.
+        # 
         # This parameter is required.
         self.id = id
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
+        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -7971,9 +11870,9 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesDataSource(TeaModel):
         name: str = None,
         type: str = None,
     ):
-        # 数据源名称
+        # The name of the data source.
         self.name = name
-        # 数据源类型
+        # The type of the data source.
         self.type = type
 
     def validate(self):
@@ -8005,7 +11904,7 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesInputsNodeOutputs(TeaModel)
         self,
         data: str = None,
     ):
-        # 节点输出
+        # The node output.
         self.data = data
 
     def validate(self):
@@ -8033,7 +11932,7 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesInputsTables(TeaModel):
         self,
         guid: str = None,
     ):
-        # 表id
+        # The table ID.
         self.guid = guid
 
     def validate(self):
@@ -8061,7 +11960,7 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariablesNode(TeaMode
         self,
         output: str = None,
     ):
-        # 节点输出
+        # The output of the node.
         self.output = output
 
     def validate(self):
@@ -8095,19 +11994,34 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables(TeaModel):
         type: str = None,
         value: str = None,
     ):
-        # 制品类型
+        # The artifact type.
         self.artifact_type = artifact_type
-        # 变量id
+        # The variable ID.
         self.id = id
-        # 变量名
+        # The name of the variable.
         self.name = name
-        # 变量所属节点
+        # The node to which the variable belongs.
         self.node = node
-        # 范围
+        # The scope of the variable.
+        # 
+        # Valid values:
+        # 
+        # *   NodeParameter
+        # *   NodeContext
+        # *   Workflow
+        # *   Workspace
         self.scope = scope
-        # 类型
+        # The type of the variable.
+        # 
+        # Valid values:
+        # 
+        # *   NoKvVariableExpression
+        # *   Constant
+        # *   PassThrough
+        # *   System
+        # *   NodeOutput
         self.type = type
-        # 变量值
+        # The value of the variable.
         self.value = value
 
     def validate(self):
@@ -8163,11 +12077,11 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesInputs(TeaModel):
         tables: List[ListNodeDependenciesResponseBodyPagingInfoNodesInputsTables] = None,
         variables: List[ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables] = None,
     ):
-        # 节点输出列表
+        # The node outputs.
         self.node_outputs = node_outputs
-        # 表列表
+        # The tables.
         self.tables = tables
-        # 变量列表
+        # The variables.
         self.variables = variables
 
     def validate(self):
@@ -8229,7 +12143,7 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesOutputsNodeOutputs(TeaModel
         self,
         data: str = None,
     ):
-        # 节点输出
+        # The node output.
         self.data = data
 
     def validate(self):
@@ -8257,7 +12171,7 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesOutputsTables(TeaModel):
         self,
         guid: str = None,
     ):
-        # 表id
+        # The table ID.
         self.guid = guid
 
     def validate(self):
@@ -8285,7 +12199,7 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariablesNode(TeaMod
         self,
         output: str = None,
     ):
-        # 节点输出
+        # The output of the node to which the variable belongs.
         self.output = output
 
     def validate(self):
@@ -8319,19 +12233,34 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables(TeaModel):
         type: str = None,
         value: str = None,
     ):
-        # 制品类型
+        # The artifact type.
         self.artifact_type = artifact_type
-        # 变量id
+        # The variable ID.
         self.id = id
-        # 变量名
+        # The name of the variable.
         self.name = name
-        # 变量所属节点
+        # The node to which the variable belongs.
         self.node = node
-        # 范围
+        # The scope of the variable.
+        # 
+        # Valid values:
+        # 
+        # *   NodeParameter
+        # *   NodeContext
+        # *   Workflow
+        # *   Workspace
         self.scope = scope
-        # 类型
+        # The type of the variable.
+        # 
+        # Valid values:
+        # 
+        # *   NoKvVariableExpression
+        # *   Constant
+        # *   PassThrough
+        # *   System
+        # *   NodeOutput
         self.type = type
-        # 变量值
+        # The value of the variable.
         self.value = value
 
     def validate(self):
@@ -8387,11 +12316,11 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesOutputs(TeaModel):
         tables: List[ListNodeDependenciesResponseBodyPagingInfoNodesOutputsTables] = None,
         variables: List[ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables] = None,
     ):
-        # 节点输出列表
+        # The node outputs.
         self.node_outputs = node_outputs
-        # 表列表
+        # The tables.
         self.tables = tables
-        # 变量列表
+        # The variables.
         self.variables = variables
 
     def validate(self):
@@ -8453,7 +12382,7 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesRuntimeResource(TeaModel):
         self,
         resource_group_id: str = None,
     ):
-        # 资源组id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -8481,7 +12410,7 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesScriptRuntime(TeaModel):
         self,
         command: str = None,
     ):
-        # 脚本所属类型
+        # The command used to distinguish node types.
         self.command = command
 
     def validate(self):
@@ -8511,11 +12440,11 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesScript(TeaModel):
         path: str = None,
         runtime: ListNodeDependenciesResponseBodyPagingInfoNodesScriptRuntime = None,
     ):
-        # 脚本的id
+        # The script ID.
         self.id = id
-        # 脚本路径
+        # The script path.
         self.path = path
-        # 脚本的运行时信息
+        # The runtime.
         self.runtime = runtime
 
     def validate(self):
@@ -8557,15 +12486,15 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesStrategy(TeaModel):
         rerun_times: int = None,
         timeout: int = None,
     ):
-        # 生成实例的模式
+        # The instance generation mode.
         self.instance_mode = instance_mode
-        # 重试时间间隔
+        # The rerun interval after a failure. Unit: milliseconds.
         self.rerun_interval = rerun_interval
-        # 允许重跑的模式
+        # The rerun mode.
         self.rerun_mode = rerun_mode
-        # 重试次数
+        # The number of reruns after a failure.
         self.rerun_times = rerun_times
-        # 超时时间
+        # The timeout period. Unit: milliseconds.
         self.timeout = timeout
 
     def validate(self):
@@ -8610,9 +12539,9 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # 标签键
+        # The tag key.
         self.key = key
-        # 标签值
+        # The tag value
         self.value = value
 
     def validate(self):
@@ -8649,17 +12578,23 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesTrigger(TeaModel):
         timezone: str = None,
         type: str = None,
     ):
-        # 触发器的cron表达式
+        # The CRON expression for scheduling.
         self.cron = cron
-        # 结束时间，格式为yyyy-MM-dd HH:mm:ss
+        # The end time of the validity period of the scheduling. The time is in the yyyy-MM-dd HH:mm:ss format.
         self.end_time = end_time
-        # 触发器id
+        # The trigger ID.
         self.id = id
-        # 开始时间，格式为yyyy-MM-dd HH:mm:ss
+        # The start time of the validity period of the scheduling. The time is in the yyyy-MM-dd HH:mm:ss format.
         self.start_time = start_time
-        # 时区
+        # The time zone.
         self.timezone = timezone
-        # 触发器类型
+        # The type of the trigger.
+        # 
+        # Valid values:
+        # 
+        # *   Scheduler
+        # *   Manual
+        # *   Streaming
         self.type = type
 
     def validate(self):
@@ -8723,36 +12658,45 @@ class ListNodeDependenciesResponseBodyPagingInfoNodes(TeaModel):
         task_id: str = None,
         trigger: ListNodeDependenciesResponseBodyPagingInfoNodesTrigger = None,
     ):
-        # 节点的创建时间
+        # The time when the node was created. This value is a UNIX timestamp.
         self.create_time = create_time
-        # 数据源信息
+        # The information about the data source.
         self.data_source = data_source
-        # 描述
+        # The description of the node.
         self.description = description
+        # The ID of the node.
         self.id = id
-        # 节点输入
+        # The input of the node.
         self.inputs = inputs
-        # 属性修改时间
+        # The time when the node was last modified. This value is a UNIX timestamp.
         self.modify_time = modify_time
-        # 节点名
+        # The name of the node.
         self.name = name
-        # 节点输出
+        # The output of the node.
         self.outputs = outputs
-        # 节点的责任人
+        # The owner of the node.
         self.owner = owner
+        # The ID of the workspace to which the node belongs.
         self.project_id = project_id
+        # The scheduling type.
+        # 
+        # Valid values:
+        # 
+        # *   Normal: The node is scheduled as expected.
+        # *   Pause: The node is paused, and the running of its descendant nodes is blocked.
+        # *   Skip: The node is dry run. The system does not actually run the node but directly prompts that the node is successfully run. The running duration of the node is 0 seconds. In addition, the node does not occupy resources or block the running of its descendant nodes.
         self.recurrence = recurrence
-        # 资源组信息
+        # The information about the resource group.
         self.runtime_resource = runtime_resource
-        # 工作流的脚本信息
+        # The script information.
         self.script = script
-        # 调度策略
+        # The scheduling policy.
         self.strategy = strategy
-        # 标签信息
+        # The tags. This parameter is not in use.
         self.tags = tags
-        # 调度任务Id
+        # The scheduling task ID.
         self.task_id = task_id
-        # 触发器信息
+        # The trigger.
         self.trigger = trigger
 
     def validate(self):
@@ -8876,9 +12820,13 @@ class ListNodeDependenciesResponseBodyPagingInfo(TeaModel):
         page_size: str = None,
         total_count: str = None,
     ):
+        # The descendant nodes.
         self.nodes = nodes
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -8927,7 +12875,9 @@ class ListNodeDependenciesResponseBody(TeaModel):
         paging_info: ListNodeDependenciesResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.paging_info = paging_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9004,17 +12954,34 @@ class ListNodesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         project_id: str = None,
+        recurrence: str = None,
         rerun_mode: str = None,
-        rerurrence: str = None,
         scene: str = None,
     ):
+        # The container ID. This parameter specifies a filter condition.
         self.container_id = container_id
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        self.recurrence = recurrence
+        # The rerun mode. Valid values:
+        # 
+        # *   Allowed: The nodes can be rerun regardless of whether they are successfully run or fail to run.
+        # *   FailureAllowed: The nodes can be rerun only after they fail to run.
+        # *   Denied: The nodes cannot be rerun regardless of whether they are successfully run or fail to run.
         self.rerun_mode = rerun_mode
-        self.rerurrence = rerurrence
+        # The scene of nodes. This parameter specifies a filter condition.
+        # 
+        # Valid values:
+        # 
+        # *   DATAWORKS_PROJECT
+        # *   MANUAL_WORKFLOW
+        # *   MANUAL_NODE
         self.scene = scene
 
     def validate(self):
@@ -9034,10 +13001,10 @@ class ListNodesRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
+        if self.recurrence is not None:
+            result['Recurrence'] = self.recurrence
         if self.rerun_mode is not None:
             result['RerunMode'] = self.rerun_mode
-        if self.rerurrence is not None:
-            result['Rerurrence'] = self.rerurrence
         if self.scene is not None:
             result['Scene'] = self.scene
         return result
@@ -9052,10 +13019,10 @@ class ListNodesRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
+        if m.get('Recurrence') is not None:
+            self.recurrence = m.get('Recurrence')
         if m.get('RerunMode') is not None:
             self.rerun_mode = m.get('RerunMode')
-        if m.get('Rerurrence') is not None:
-            self.rerurrence = m.get('Rerurrence')
         if m.get('Scene') is not None:
             self.scene = m.get('Scene')
         return self
@@ -9067,9 +13034,9 @@ class ListNodesResponseBodyPagingInfoNodesDataSource(TeaModel):
         name: str = None,
         type: str = None,
     ):
-        # 数据源名称
+        # The name of the data source.
         self.name = name
-        # 数据源类型
+        # The type of the data source.
         self.type = type
 
     def validate(self):
@@ -9101,7 +13068,7 @@ class ListNodesResponseBodyPagingInfoNodesInputsNodeOutputs(TeaModel):
         self,
         data: str = None,
     ):
-        # 节点输出
+        # The node output.
         self.data = data
 
     def validate(self):
@@ -9129,7 +13096,7 @@ class ListNodesResponseBodyPagingInfoNodesInputsTables(TeaModel):
         self,
         guid: str = None,
     ):
-        # 表id
+        # The table ID.
         self.guid = guid
 
     def validate(self):
@@ -9157,7 +13124,7 @@ class ListNodesResponseBodyPagingInfoNodesInputsVariablesNode(TeaModel):
         self,
         output: str = None,
     ):
-        # 节点输出
+        # The output of the node.
         self.output = output
 
     def validate(self):
@@ -9191,19 +13158,34 @@ class ListNodesResponseBodyPagingInfoNodesInputsVariables(TeaModel):
         type: str = None,
         value: str = None,
     ):
-        # 制品类型
+        # The artifact type.
         self.artifact_type = artifact_type
-        # 变量id
+        # The variable ID.
         self.id = id
-        # 变量名
+        # The name of the variable.
         self.name = name
-        # 变量所属节点
+        # The node to which the variable belongs.
         self.node = node
-        # 范围
+        # The scope of the variable.
+        # 
+        # Valid values:
+        # 
+        # *   WorkSpace
+        # *   NodeParameter
+        # *   NodeContext
+        # *   Workflow
         self.scope = scope
-        # 类型
+        # The type of the variable.
+        # 
+        # Valid values:
+        # 
+        # *   NoKvVariableExpression
+        # *   Constant
+        # *   PassThrough
+        # *   System
+        # *   NodeOutput
         self.type = type
-        # 变量值
+        # The value of the variable.
         self.value = value
 
     def validate(self):
@@ -9259,11 +13241,11 @@ class ListNodesResponseBodyPagingInfoNodesInputs(TeaModel):
         tables: List[ListNodesResponseBodyPagingInfoNodesInputsTables] = None,
         variables: List[ListNodesResponseBodyPagingInfoNodesInputsVariables] = None,
     ):
-        # 节点输出列表
+        # The node outputs.
         self.node_outputs = node_outputs
-        # 表列表
+        # The tables.
         self.tables = tables
-        # 变量列表
+        # The variables.
         self.variables = variables
 
     def validate(self):
@@ -9325,7 +13307,7 @@ class ListNodesResponseBodyPagingInfoNodesOutputsNodeOutputs(TeaModel):
         self,
         data: str = None,
     ):
-        # 节点输出
+        # The node output.
         self.data = data
 
     def validate(self):
@@ -9353,7 +13335,7 @@ class ListNodesResponseBodyPagingInfoNodesOutputsTables(TeaModel):
         self,
         guid: str = None,
     ):
-        # 表id
+        # The table ID.
         self.guid = guid
 
     def validate(self):
@@ -9381,7 +13363,7 @@ class ListNodesResponseBodyPagingInfoNodesOutputsVariablesNode(TeaModel):
         self,
         output: str = None,
     ):
-        # 节点输出
+        # The output of the node.
         self.output = output
 
     def validate(self):
@@ -9415,19 +13397,34 @@ class ListNodesResponseBodyPagingInfoNodesOutputsVariables(TeaModel):
         type: str = None,
         value: str = None,
     ):
-        # 制品类型
+        # The artifact type.
         self.artifact_type = artifact_type
-        # 变量id
+        # The variable ID.
         self.id = id
-        # 变量名
+        # The name of the variable.
         self.name = name
-        # 变量所属节点
+        # The node to which the variable belongs.
         self.node = node
-        # 范围
+        # The scope of the variable.
+        # 
+        # Valid values:
+        # 
+        # *   NodeParameter
+        # *   NodeContext
+        # *   Workflow
+        # *   Workspace
         self.scope = scope
-        # 类型
+        # The type of the variable.
+        # 
+        # Valid values:
+        # 
+        # *   NoKvVariableExpression
+        # *   Constant
+        # *   PassThrough
+        # *   System
+        # *   NodeOutput
         self.type = type
-        # 变量值
+        # The value of the variable.
         self.value = value
 
     def validate(self):
@@ -9483,11 +13480,11 @@ class ListNodesResponseBodyPagingInfoNodesOutputs(TeaModel):
         tables: List[ListNodesResponseBodyPagingInfoNodesOutputsTables] = None,
         variables: List[ListNodesResponseBodyPagingInfoNodesOutputsVariables] = None,
     ):
-        # 节点输出列表
+        # The node outputs.
         self.node_outputs = node_outputs
-        # 表列表
+        # The tables.
         self.tables = tables
-        # 变量列表
+        # The variables.
         self.variables = variables
 
     def validate(self):
@@ -9549,7 +13546,7 @@ class ListNodesResponseBodyPagingInfoNodesRuntimeResource(TeaModel):
         self,
         resource_group_id: str = None,
     ):
-        # 资源组id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -9577,7 +13574,7 @@ class ListNodesResponseBodyPagingInfoNodesScriptRuntime(TeaModel):
         self,
         command: str = None,
     ):
-        # 脚本所属类型
+        # The command used to distinguish node types.
         self.command = command
 
     def validate(self):
@@ -9607,11 +13604,11 @@ class ListNodesResponseBodyPagingInfoNodesScript(TeaModel):
         path: str = None,
         runtime: ListNodesResponseBodyPagingInfoNodesScriptRuntime = None,
     ):
-        # 脚本的id
+        # The script ID.
         self.id = id
-        # 脚本路径
+        # The script path.
         self.path = path
-        # 脚本的运行时信息
+        # The runtime.
         self.runtime = runtime
 
     def validate(self):
@@ -9653,15 +13650,15 @@ class ListNodesResponseBodyPagingInfoNodesStrategy(TeaModel):
         rerun_times: int = None,
         timeout: int = None,
     ):
-        # 生成实例的模式
+        # The instance generation mode.
         self.instance_mode = instance_mode
-        # 重试时间间隔
+        # The rerun interval. Unit: milliseconds.
         self.rerun_interval = rerun_interval
-        # 允许重跑的模式
+        # The rerun mode.
         self.rerun_mode = rerun_mode
-        # 重试次数
+        # The number of reruns.
         self.rerun_times = rerun_times
-        # 超时时间
+        # The timeout period.
         self.timeout = timeout
 
     def validate(self):
@@ -9706,9 +13703,9 @@ class ListNodesResponseBodyPagingInfoNodesTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # 标签键
+        # The tag key.
         self.key = key
-        # 标签值
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -9745,17 +13742,29 @@ class ListNodesResponseBodyPagingInfoNodesTrigger(TeaModel):
         timezone: str = None,
         type: str = None,
     ):
-        # 触发器的cron表达式
+        # The CRON expression for scheduling.
         self.cron = cron
-        # 结束时间，格式为yyyy-MM-dd HH:mm:ss
+        # The end time of the validity period of the trigger.
         self.end_time = end_time
-        # 触发器id
+        # The trigger ID.
         self.id = id
-        # 开始时间，格式为yyyy-MM-dd HH:mm:ss
+        # The start time of the validity period of the trigger.
         self.start_time = start_time
-        # 时区
+        # The time zone.
         self.timezone = timezone
-        # 触发器类型
+        # The type of the trigger.
+        # 
+        # Valid values:
+        # 
+        # *   Scheduler
+        # *   Manual
+        # *   Steaming
+        # 
+        # <!---->
+        # 
+        # *\
+        # *\
+        # *\
         self.type = type
 
     def validate(self):
@@ -9819,36 +13828,45 @@ class ListNodesResponseBodyPagingInfoNodes(TeaModel):
         task_id: str = None,
         trigger: ListNodesResponseBodyPagingInfoNodesTrigger = None,
     ):
-        # 节点的创建时间
+        # The time when the node was created. This value is a UNIX timestamp.
         self.create_time = create_time
-        # 数据源信息
+        # The information about the data source.
         self.data_source = data_source
-        # 描述
+        # The description of the node.
         self.description = description
+        # The ID of the node.
         self.id = id
-        # 节点输入
+        # The input of the node.
         self.inputs = inputs
-        # 属性修改时间
+        # The time when the node was last modified. This value is a UNIX timestamp.
         self.modify_time = modify_time
-        # 节点名
+        # The name of the node.
         self.name = name
-        # 节点输出
+        # The output of the node.
         self.outputs = outputs
-        # 节点的责任人
+        # The owner of the node.
         self.owner = owner
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
         self.project_id = project_id
+        # The scheduling type.
+        # 
+        # Valid values:
+        # 
+        # *   Normal: The node is scheduled as expected.
+        # *   Pause: The node is paused, and the running of its descendant nodes is blocked.
+        # *   Skip: The node is dry run. The system does not actually run the node but directly prompts that the node is successfully run. The running duration of the node is 0 seconds. In addition, the node does not occupy resources or block the running of its descendant nodes.
         self.recurrence = recurrence
-        # 资源组信息
+        # The information about the resource group.
         self.runtime_resource = runtime_resource
-        # 工作流的脚本信息
+        # The script information.
         self.script = script
-        # 调度策略
+        # The scheduling policy.
         self.strategy = strategy
-        # 标签信息
+        # The tags. This parameter is not in use.
         self.tags = tags
-        # 调度任务Id
+        # The scheduling task ID.
         self.task_id = task_id
-        # 触发器信息
+        # The trigger.
         self.trigger = trigger
 
     def validate(self):
@@ -9972,9 +13990,13 @@ class ListNodesResponseBodyPagingInfo(TeaModel):
         page_size: str = None,
         total_count: str = None,
     ):
+        # The nodes.
         self.nodes = nodes
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -10023,7 +14045,9 @@ class ListNodesResponseBody(TeaModel):
         paging_info: ListNodesResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.paging_info = paging_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10089,6 +14113,296 @@ class ListNodesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListNodesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListProjectRolesRequest(TeaModel):
+    def __init__(
+        self,
+        codes: List[str] = None,
+        names: List[str] = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: int = None,
+        type: str = None,
+    ):
+        self.codes = codes
+        self.names = names
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.project_id = project_id
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.codes is not None:
+            result['Codes'] = self.codes
+        if self.names is not None:
+            result['Names'] = self.names
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Codes') is not None:
+            self.codes = m.get('Codes')
+        if m.get('Names') is not None:
+            self.names = m.get('Names')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListProjectRolesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        codes_shrink: str = None,
+        names_shrink: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: int = None,
+        type: str = None,
+    ):
+        self.codes_shrink = codes_shrink
+        self.names_shrink = names_shrink
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.project_id = project_id
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.codes_shrink is not None:
+            result['Codes'] = self.codes_shrink
+        if self.names_shrink is not None:
+            result['Names'] = self.names_shrink
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Codes') is not None:
+            self.codes_shrink = m.get('Codes')
+        if m.get('Names') is not None:
+            self.names_shrink = m.get('Names')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListProjectRolesResponseBodyPagingInfoProjectRoles(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        name: str = None,
+        project_id: int = None,
+        type: str = None,
+    ):
+        self.code = code
+        self.name = name
+        self.project_id = project_id
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListProjectRolesResponseBodyPagingInfo(TeaModel):
+    def __init__(
+        self,
+        page_number: str = None,
+        page_size: str = None,
+        project_roles: List[ListProjectRolesResponseBodyPagingInfoProjectRoles] = None,
+        total_count: str = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.project_roles = project_roles
+        self.total_count = total_count
+
+    def validate(self):
+        if self.project_roles:
+            for k in self.project_roles:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['ProjectRoles'] = []
+        if self.project_roles is not None:
+            for k in self.project_roles:
+                result['ProjectRoles'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.project_roles = []
+        if m.get('ProjectRoles') is not None:
+            for k in m.get('ProjectRoles'):
+                temp_model = ListProjectRolesResponseBodyPagingInfoProjectRoles()
+                self.project_roles.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListProjectRolesResponseBody(TeaModel):
+    def __init__(
+        self,
+        paging_info: ListProjectRolesResponseBodyPagingInfo = None,
+        request_id: str = None,
+    ):
+        self.paging_info = paging_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.paging_info:
+            self.paging_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.paging_info is not None:
+            result['PagingInfo'] = self.paging_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PagingInfo') is not None:
+            temp_model = ListProjectRolesResponseBodyPagingInfo()
+            self.paging_info = temp_model.from_map(m['PagingInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListProjectRolesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListProjectRolesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListProjectRolesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10553,6 +14867,324 @@ class ListProjectsResponse(TeaModel):
         return self
 
 
+class ListResourceGroupsRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        payment_type: str = None,
+        project_id: int = None,
+        resource_group_types: List[str] = None,
+        statuses: List[str] = None,
+    ):
+        self.name = name
+        self.payment_type = payment_type
+        self.project_id = project_id
+        self.resource_group_types = resource_group_types
+        self.statuses = statuses
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.resource_group_types is not None:
+            result['ResourceGroupTypes'] = self.resource_group_types
+        if self.statuses is not None:
+            result['Statuses'] = self.statuses
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ResourceGroupTypes') is not None:
+            self.resource_group_types = m.get('ResourceGroupTypes')
+        if m.get('Statuses') is not None:
+            self.statuses = m.get('Statuses')
+        return self
+
+
+class ListResourceGroupsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        payment_type: str = None,
+        project_id: int = None,
+        resource_group_types_shrink: str = None,
+        statuses_shrink: str = None,
+    ):
+        self.name = name
+        self.payment_type = payment_type
+        self.project_id = project_id
+        self.resource_group_types_shrink = resource_group_types_shrink
+        self.statuses_shrink = statuses_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.resource_group_types_shrink is not None:
+            result['ResourceGroupTypes'] = self.resource_group_types_shrink
+        if self.statuses_shrink is not None:
+            result['Statuses'] = self.statuses_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ResourceGroupTypes') is not None:
+            self.resource_group_types_shrink = m.get('ResourceGroupTypes')
+        if m.get('Statuses') is not None:
+            self.statuses_shrink = m.get('Statuses')
+        return self
+
+
+class ListResourceGroupsResponseBodyResourceGroupListSpec(TeaModel):
+    def __init__(
+        self,
+        amount: int = None,
+        standard: str = None,
+    ):
+        self.amount = amount
+        self.standard = standard
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.standard is not None:
+            result['Standard'] = self.standard
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('Standard') is not None:
+            self.standard = m.get('Standard')
+        return self
+
+
+class ListResourceGroupsResponseBodyResourceGroupList(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        create_user: str = None,
+        default_vpc_id: str = None,
+        default_vswicth_id: str = None,
+        id: str = None,
+        name: str = None,
+        order_instance_id: str = None,
+        payment_type: str = None,
+        remark: str = None,
+        resource_group_type: str = None,
+        spec: ListResourceGroupsResponseBodyResourceGroupListSpec = None,
+        status: str = None,
+    ):
+        self.create_time = create_time
+        self.create_user = create_user
+        self.default_vpc_id = default_vpc_id
+        self.default_vswicth_id = default_vswicth_id
+        self.id = id
+        self.name = name
+        self.order_instance_id = order_instance_id
+        self.payment_type = payment_type
+        self.remark = remark
+        self.resource_group_type = resource_group_type
+        self.spec = spec
+        self.status = status
+
+    def validate(self):
+        if self.spec:
+            self.spec.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.default_vpc_id is not None:
+            result['DefaultVpcId'] = self.default_vpc_id
+        if self.default_vswicth_id is not None:
+            result['DefaultVswicthId'] = self.default_vswicth_id
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.order_instance_id is not None:
+            result['OrderInstanceId'] = self.order_instance_id
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_group_type is not None:
+            result['ResourceGroupType'] = self.resource_group_type
+        if self.spec is not None:
+            result['Spec'] = self.spec.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('DefaultVpcId') is not None:
+            self.default_vpc_id = m.get('DefaultVpcId')
+        if m.get('DefaultVswicthId') is not None:
+            self.default_vswicth_id = m.get('DefaultVswicthId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OrderInstanceId') is not None:
+            self.order_instance_id = m.get('OrderInstanceId')
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceGroupType') is not None:
+            self.resource_group_type = m.get('ResourceGroupType')
+        if m.get('Spec') is not None:
+            temp_model = ListResourceGroupsResponseBodyResourceGroupListSpec()
+            self.spec = temp_model.from_map(m['Spec'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListResourceGroupsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        resource_group_list: List[ListResourceGroupsResponseBodyResourceGroupList] = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.resource_group_list = resource_group_list
+        self.success = success
+
+    def validate(self):
+        if self.resource_group_list:
+            for k in self.resource_group_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ResourceGroupList'] = []
+        if self.resource_group_list is not None:
+            for k in self.resource_group_list:
+                result['ResourceGroupList'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.resource_group_list = []
+        if m.get('ResourceGroupList') is not None:
+            for k in m.get('ResourceGroupList'):
+                temp_model = ListResourceGroupsResponseBodyResourceGroupList()
+                self.resource_group_list.append(temp_model.from_map(k))
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListResourceGroupsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListResourceGroupsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListResourceGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListResourcesRequest(TeaModel):
     def __init__(
         self,
@@ -10562,11 +15194,26 @@ class ListResourcesRequest(TeaModel):
         project_id: str = None,
         type: str = None,
     ):
+        # The ID of the Alibaba Cloud account used by the workspace administrator. You can log on to the Alibaba Cloud Management Console and view the ID on the Security Settings page.
         self.owner = owner
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
+        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The resource type. This parameter specifies a filter condition.
+        # 
+        # Valid values:
+        # 
+        # *   python
+        # *   jar
+        # *   archive
+        # *   file
         self.type = type
 
     def validate(self):
@@ -10611,9 +15258,9 @@ class ListResourcesResponseBodyPagingInfoResourcesDataSource(TeaModel):
         name: str = None,
         type: str = None,
     ):
-        # 数据源名称
+        # The name of the data source.
         self.name = name
-        # 数据源类型
+        # The type of the data source.
         self.type = type
 
     def validate(self):
@@ -10645,7 +15292,7 @@ class ListResourcesResponseBodyPagingInfoResourcesScriptRuntime(TeaModel):
         self,
         command: str = None,
     ):
-        # 脚本所属类型
+        # The command used to distinguish file resource types.
         self.command = command
 
     def validate(self):
@@ -10675,11 +15322,11 @@ class ListResourcesResponseBodyPagingInfoResourcesScript(TeaModel):
         path: str = None,
         runtime: ListResourcesResponseBodyPagingInfoResourcesScriptRuntime = None,
     ):
-        # 工作流脚本的id
+        # The script ID.
         self.id = id
-        # 工作流的脚本路径
+        # The script path.
         self.path = path
-        # 脚本的运行时信息
+        # The runtime.
         self.runtime = runtime
 
     def validate(self):
@@ -10729,30 +15376,38 @@ class ListResourcesResponseBodyPagingInfoResources(TeaModel):
         target_type: str = None,
         type: str = None,
     ):
+        # The time when the file resource was created. This value is a UNIX timestamp.
         self.create_time = create_time
-        # 函数注册到的数据源信息
+        # The information about the data source.
         self.data_source = data_source
-        # 代表资源组的资源属性字段
+        # The ID of the file resource.
         self.id = id
-        # 资源文件的最近修改时间
+        # The times when the file resource was last modified. This value is a UNIX timestamp.
         self.modify_time = modify_time
-        # 代表资源名称的资源属性字段
+        # The name of the file resource.
         self.name = name
-        # 资源文件的责任人
+        # The owner of the file resource.
         self.owner = owner
-        # 资源文件的项目id
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
         self.project_id = project_id
-        # 工作流的脚本信息
+        # The script information.
         self.script = script
-        # 文件目标存储路径
+        # The storage path of the source of the file resource. If the value of the SourecType parameter is local, this parameter is empty.
         self.source_path = source_path
-        # 文件资源来源存储类型
+        # The storage type of the source of the file resource.
         self.source_type = source_type
-        # 文件来源路径
+        # The storage path of the destination of the file resource.
         self.target_path = target_path
-        # 文件目标存储类型
+        # The storage type of the destination of the file resource.
         self.target_type = target_type
-        # 资源类型
+        # The type of the file resource.
+        # 
+        # Valid values:
+        # 
+        # *   jar
+        # *   python
+        # *   file
+        # *   archive
         self.type = type
 
     def validate(self):
@@ -10836,9 +15491,13 @@ class ListResourcesResponseBodyPagingInfo(TeaModel):
         resources: List[ListResourcesResponseBodyPagingInfoResources] = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The file resources.
         self.resources = resources
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -10887,7 +15546,9 @@ class ListResourcesResponseBody(TeaModel):
         paging_info: ListResourcesResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.paging_info = paging_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10957,6 +15618,179 @@ class ListResourcesResponse(TeaModel):
         return self
 
 
+class ListRoutesRequest(TeaModel):
+    def __init__(
+        self,
+        network_id: int = None,
+    ):
+        # This parameter is required.
+        self.network_id = network_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.network_id is not None:
+            result['NetworkId'] = self.network_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NetworkId') is not None:
+            self.network_id = m.get('NetworkId')
+        return self
+
+
+class ListRoutesResponseBodyRouteList(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        destination_cidr: str = None,
+        id: int = None,
+        network_id: int = None,
+        resource_group_id: str = None,
+        resource_id: str = None,
+    ):
+        self.create_time = create_time
+        self.destination_cidr = destination_cidr
+        self.id = id
+        self.network_id = network_id
+        self.resource_group_id = resource_group_id
+        self.resource_id = resource_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.destination_cidr is not None:
+            result['DestinationCidr'] = self.destination_cidr
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.network_id is not None:
+            result['NetworkId'] = self.network_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DestinationCidr') is not None:
+            self.destination_cidr = m.get('DestinationCidr')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('NetworkId') is not None:
+            self.network_id = m.get('NetworkId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        return self
+
+
+class ListRoutesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        route_list: List[ListRoutesResponseBodyRouteList] = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.route_list = route_list
+        self.success = success
+
+    def validate(self):
+        if self.route_list:
+            for k in self.route_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['RouteList'] = []
+        if self.route_list is not None:
+            for k in self.route_list:
+                result['RouteList'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.route_list = []
+        if m.get('RouteList') is not None:
+            for k in m.get('RouteList'):
+                temp_model = ListRoutesResponseBodyRouteList()
+                self.route_list.append(temp_model.from_map(k))
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListRoutesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListRoutesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListRoutesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListWorkflowDefinitionsRequest(TeaModel):
     def __init__(
         self,
@@ -10966,11 +15800,24 @@ class ListWorkflowDefinitionsRequest(TeaModel):
         project_id: str = None,
         type: str = None,
     ):
+        # The ID of the Alibaba Cloud account used by the workspace administrator. You can log on to the Alibaba Cloud Management Console and view the ID on the Security Settings page.
         self.owner = owner
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
+        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The workflow type. This parameter specifies a filter condition.
+        # 
+        # Valid values:
+        # 
+        # *   CycleWorkflow
+        # *   ManualWorkflow
         self.type = type
 
     def validate(self):
@@ -11014,7 +15861,7 @@ class ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScriptRunt
         self,
         command: str = None,
     ):
-        # 脚本所属类型
+        # The command.
         self.command = command
 
     def validate(self):
@@ -11044,11 +15891,11 @@ class ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScript(Tea
         path: str = None,
         runtime: ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScriptRuntime = None,
     ):
-        # 工作流脚本的id
+        # The script ID.
         self.id = id
-        # 工作流的脚本路径
+        # The script path.
         self.path = path
-        # 脚本的运行时信息
+        # The runtime.
         self.runtime = runtime
 
     def validate(self):
@@ -11094,25 +15941,30 @@ class ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions(TeaModel)
         script: ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScript = None,
         type: str = None,
     ):
-        # 工作流的创建时间
+        # The time when the workflow was created. This value is a UNIX timestamp.
         self.create_time = create_time
-        # 工作流的描述
+        # The description of the workflow.
         self.description = description
-        # 工作流定义的唯一ID
+        # The ID of the workflow.
         self.id = id
-        # 工作流的最近修改时间
+        # The times when the workflow was last modified. This value is a UNIX timestamp.
         self.modify_time = modify_time
-        # 工作流的名称
+        # The name of the workflow.
         self.name = name
-        # 工作流的责任人
+        # The owner.
         self.owner = owner
-        # 工作流定义的所属项目空间
+        # The ID of the DataWorks workspace to which the workflow belongs.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # 工作流的脚本信息
+        # The script information.
         self.script = script
-        # 工作流类型，可选值：CycleWorkflow、ManualWorkflow，分别表示周期工作流和手动工作流
+        # The type of the workflow.
+        # 
+        # Valid values:
+        # 
+        # *   CycleWorkflow
+        # *   ManualWorkflow
         self.type = type
 
     def validate(self):
@@ -11177,9 +16029,13 @@ class ListWorkflowDefinitionsResponseBodyPagingInfo(TeaModel):
         total_count: int = None,
         workflow_definitions: List[ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions] = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
+        # The workflows.
         self.workflow_definitions = workflow_definitions
 
     def validate(self):
@@ -11228,7 +16084,9 @@ class ListWorkflowDefinitionsResponseBody(TeaModel):
         paging_info: ListWorkflowDefinitionsResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.paging_info = paging_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11305,10 +16163,20 @@ class MoveFunctionRequest(TeaModel):
         path: str = None,
         project_id: str = None,
     ):
+        # The ID of the UDF.
+        # 
         # This parameter is required.
         self.id = id
+        # The path to which you want to move the UDF. You do not need to specify a UDF name in the path.
+        # 
+        # For example, if you want to move the test UDF to root/demo/test, you must set this parameter to root/demo.
+        # 
         # This parameter is required.
         self.path = path
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
+        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -11346,7 +16214,12 @@ class MoveFunctionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -11421,10 +16294,20 @@ class MoveNodeRequest(TeaModel):
         path: str = None,
         project_id: str = None,
     ):
+        # The ID of the node.
+        # 
         # This parameter is required.
         self.id = id
+        # The path to which you want to move the node. You do not need to specify a node name in the path.
+        # 
+        # For example, if you want to move the test node to root/demo/test, you must set this parameter to root/demo.
+        # 
         # This parameter is required.
         self.path = path
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
+        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -11462,7 +16345,12 @@ class MoveNodeResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -11537,10 +16425,20 @@ class MoveResourceRequest(TeaModel):
         path: str = None,
         project_id: str = None,
     ):
+        # The ID of the file resource.
+        # 
         # This parameter is required.
         self.id = id
+        # The path to which you want to move the file resource. You do not need to specify a file resource name in the path.
+        # 
+        # For example, if you want to move the test file resource to root/demo/test, you must set this parameter to root/demo.
+        # 
         # This parameter is required.
         self.path = path
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
+        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -11578,7 +16476,12 @@ class MoveResourceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -11653,10 +16556,18 @@ class MoveWorkflowDefinitionRequest(TeaModel):
         path: str = None,
         project_id: str = None,
     ):
+        # The ID of the workflow.
+        # 
         # This parameter is required.
         self.id = id
+        # The path to which you want to move the workflow. You do not need to specify a workflow name in the path.
+        # 
+        # For example, if you want to move the test workflow to root/demo/test, you must set this parameter to root/demo.
+        # 
         # This parameter is required.
         self.path = path
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID. You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -11694,7 +16605,12 @@ class MoveWorkflowDefinitionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -11769,10 +16685,16 @@ class RenameFunctionRequest(TeaModel):
         name: str = None,
         project_id: str = None,
     ):
+        # The ID of the UDF.
+        # 
         # This parameter is required.
         self.id = id
+        # The new name.
+        # 
         # This parameter is required.
         self.name = name
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -11810,7 +16732,12 @@ class RenameFunctionResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -11885,10 +16812,16 @@ class RenameNodeRequest(TeaModel):
         name: str = None,
         project_id: str = None,
     ):
+        # The ID of the node.
+        # 
         # This parameter is required.
         self.id = id
+        # The new name.
+        # 
         # This parameter is required.
         self.name = name
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -11926,7 +16859,12 @@ class RenameNodeResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -12001,10 +16939,18 @@ class RenameResourceRequest(TeaModel):
         name: str = None,
         project_id: str = None,
     ):
+        # The ID of the file resource.
+        # 
         # This parameter is required.
         self.id = id
+        # The new name.
+        # 
         # This parameter is required.
         self.name = name
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
+        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -12042,7 +16988,12 @@ class RenameResourceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -12117,10 +17068,16 @@ class RenameWorkflowDefinitionRequest(TeaModel):
         name: str = None,
         project_id: str = None,
     ):
+        # The unique identifier of the workflow.
+        # 
         # This parameter is required.
         self.id = id
+        # The new name.
+        # 
         # This parameter is required.
         self.name = name
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the ID. You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -12158,7 +17115,12 @@ class RenameWorkflowDefinitionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID. You can troubleshoot issues based on the ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -12297,11 +17259,11 @@ class StartDIJobRequestRealtimeStartSettings(TeaModel):
 class StartDIJobRequest(TeaModel):
     def __init__(
         self,
-        dijob_id: str = None,
+        dijob_id: int = None,
         force_to_rerun: bool = None,
         realtime_start_settings: StartDIJobRequestRealtimeStartSettings = None,
     ):
-        # This parameter is required.
+        # The instance ID.
         self.dijob_id = dijob_id
         self.force_to_rerun = force_to_rerun
         self.realtime_start_settings = realtime_start_settings
@@ -12339,11 +17301,11 @@ class StartDIJobRequest(TeaModel):
 class StartDIJobShrinkRequest(TeaModel):
     def __init__(
         self,
-        dijob_id: str = None,
+        dijob_id: int = None,
         force_to_rerun: bool = None,
         realtime_start_settings_shrink: str = None,
     ):
-        # This parameter is required.
+        # The instance ID.
         self.dijob_id = dijob_id
         self.force_to_rerun = force_to_rerun
         self.realtime_start_settings_shrink = realtime_start_settings_shrink
@@ -12446,6 +17408,512 @@ class StartDIJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StartDIJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StopDIJobRequest(TeaModel):
+    def __init__(
+        self,
+        dijob_id: int = None,
+        instance_id: int = None,
+    ):
+        # The ID of the synchronization task.
+        self.dijob_id = dijob_id
+        # The instance ID.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dijob_id is not None:
+            result['DIJobId'] = self.dijob_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DIJobId') is not None:
+            self.dijob_id = m.get('DIJobId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class StopDIJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
+        self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class StopDIJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopDIJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopDIJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateDIAlarmRuleRequestNotificationSettingsNotificationChannels(TeaModel):
+    def __init__(
+        self,
+        channels: List[str] = None,
+        severity: str = None,
+    ):
+        self.channels = channels
+        self.severity = severity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channels is not None:
+            result['Channels'] = self.channels
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Channels') is not None:
+            self.channels = m.get('Channels')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        return self
+
+
+class UpdateDIAlarmRuleRequestNotificationSettingsNotificationReceivers(TeaModel):
+    def __init__(
+        self,
+        receiver_type: str = None,
+        receiver_values: List[str] = None,
+    ):
+        self.receiver_type = receiver_type
+        self.receiver_values = receiver_values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.receiver_type is not None:
+            result['ReceiverType'] = self.receiver_type
+        if self.receiver_values is not None:
+            result['ReceiverValues'] = self.receiver_values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReceiverType') is not None:
+            self.receiver_type = m.get('ReceiverType')
+        if m.get('ReceiverValues') is not None:
+            self.receiver_values = m.get('ReceiverValues')
+        return self
+
+
+class UpdateDIAlarmRuleRequestNotificationSettings(TeaModel):
+    def __init__(
+        self,
+        inhibition_interval: int = None,
+        notification_channels: List[UpdateDIAlarmRuleRequestNotificationSettingsNotificationChannels] = None,
+        notification_receivers: List[UpdateDIAlarmRuleRequestNotificationSettingsNotificationReceivers] = None,
+    ):
+        self.inhibition_interval = inhibition_interval
+        self.notification_channels = notification_channels
+        self.notification_receivers = notification_receivers
+
+    def validate(self):
+        if self.notification_channels:
+            for k in self.notification_channels:
+                if k:
+                    k.validate()
+        if self.notification_receivers:
+            for k in self.notification_receivers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.inhibition_interval is not None:
+            result['InhibitionInterval'] = self.inhibition_interval
+        result['NotificationChannels'] = []
+        if self.notification_channels is not None:
+            for k in self.notification_channels:
+                result['NotificationChannels'].append(k.to_map() if k else None)
+        result['NotificationReceivers'] = []
+        if self.notification_receivers is not None:
+            for k in self.notification_receivers:
+                result['NotificationReceivers'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InhibitionInterval') is not None:
+            self.inhibition_interval = m.get('InhibitionInterval')
+        self.notification_channels = []
+        if m.get('NotificationChannels') is not None:
+            for k in m.get('NotificationChannels'):
+                temp_model = UpdateDIAlarmRuleRequestNotificationSettingsNotificationChannels()
+                self.notification_channels.append(temp_model.from_map(k))
+        self.notification_receivers = []
+        if m.get('NotificationReceivers') is not None:
+            for k in m.get('NotificationReceivers'):
+                temp_model = UpdateDIAlarmRuleRequestNotificationSettingsNotificationReceivers()
+                self.notification_receivers.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateDIAlarmRuleRequestTriggerConditions(TeaModel):
+    def __init__(
+        self,
+        ddl_report_tags: List[str] = None,
+        duration: int = None,
+        severity: str = None,
+        threshold: int = None,
+    ):
+        self.ddl_report_tags = ddl_report_tags
+        self.duration = duration
+        self.severity = severity
+        self.threshold = threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ddl_report_tags is not None:
+            result['DdlReportTags'] = self.ddl_report_tags
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DdlReportTags') is not None:
+            self.ddl_report_tags = m.get('DdlReportTags')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        return self
+
+
+class UpdateDIAlarmRuleRequest(TeaModel):
+    def __init__(
+        self,
+        dialarm_rule_id: int = None,
+        dijob_id: int = None,
+        description: str = None,
+        enabled: bool = None,
+        metric_type: str = None,
+        name: str = None,
+        notification_settings: UpdateDIAlarmRuleRequestNotificationSettings = None,
+        trigger_conditions: List[UpdateDIAlarmRuleRequestTriggerConditions] = None,
+    ):
+        # This parameter is required.
+        self.dialarm_rule_id = dialarm_rule_id
+        self.dijob_id = dijob_id
+        self.description = description
+        self.enabled = enabled
+        self.metric_type = metric_type
+        self.name = name
+        self.notification_settings = notification_settings
+        self.trigger_conditions = trigger_conditions
+
+    def validate(self):
+        if self.notification_settings:
+            self.notification_settings.validate()
+        if self.trigger_conditions:
+            for k in self.trigger_conditions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dialarm_rule_id is not None:
+            result['DIAlarmRuleId'] = self.dialarm_rule_id
+        if self.dijob_id is not None:
+            result['DIJobId'] = self.dijob_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.metric_type is not None:
+            result['MetricType'] = self.metric_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.notification_settings is not None:
+            result['NotificationSettings'] = self.notification_settings.to_map()
+        result['TriggerConditions'] = []
+        if self.trigger_conditions is not None:
+            for k in self.trigger_conditions:
+                result['TriggerConditions'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DIAlarmRuleId') is not None:
+            self.dialarm_rule_id = m.get('DIAlarmRuleId')
+        if m.get('DIJobId') is not None:
+            self.dijob_id = m.get('DIJobId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('MetricType') is not None:
+            self.metric_type = m.get('MetricType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NotificationSettings') is not None:
+            temp_model = UpdateDIAlarmRuleRequestNotificationSettings()
+            self.notification_settings = temp_model.from_map(m['NotificationSettings'])
+        self.trigger_conditions = []
+        if m.get('TriggerConditions') is not None:
+            for k in m.get('TriggerConditions'):
+                temp_model = UpdateDIAlarmRuleRequestTriggerConditions()
+                self.trigger_conditions.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateDIAlarmRuleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dialarm_rule_id: int = None,
+        dijob_id: int = None,
+        description: str = None,
+        enabled: bool = None,
+        metric_type: str = None,
+        name: str = None,
+        notification_settings_shrink: str = None,
+        trigger_conditions_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.dialarm_rule_id = dialarm_rule_id
+        self.dijob_id = dijob_id
+        self.description = description
+        self.enabled = enabled
+        self.metric_type = metric_type
+        self.name = name
+        self.notification_settings_shrink = notification_settings_shrink
+        self.trigger_conditions_shrink = trigger_conditions_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dialarm_rule_id is not None:
+            result['DIAlarmRuleId'] = self.dialarm_rule_id
+        if self.dijob_id is not None:
+            result['DIJobId'] = self.dijob_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.metric_type is not None:
+            result['MetricType'] = self.metric_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.notification_settings_shrink is not None:
+            result['NotificationSettings'] = self.notification_settings_shrink
+        if self.trigger_conditions_shrink is not None:
+            result['TriggerConditions'] = self.trigger_conditions_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DIAlarmRuleId') is not None:
+            self.dialarm_rule_id = m.get('DIAlarmRuleId')
+        if m.get('DIJobId') is not None:
+            self.dijob_id = m.get('DIJobId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('MetricType') is not None:
+            self.metric_type = m.get('MetricType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NotificationSettings') is not None:
+            self.notification_settings_shrink = m.get('NotificationSettings')
+        if m.get('TriggerConditions') is not None:
+            self.trigger_conditions_shrink = m.get('TriggerConditions')
+        return self
+
+
+class UpdateDIAlarmRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateDIAlarmRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateDIAlarmRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateDIAlarmRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12987,6 +18455,7 @@ class UpdateDIJobRequest(TeaModel):
         dijob_id: int = None,
         description: str = None,
         job_settings: UpdateDIJobRequestJobSettings = None,
+        project_id: int = None,
         resource_settings: UpdateDIJobRequestResourceSettings = None,
         table_mappings: List[UpdateDIJobRequestTableMappings] = None,
         transformation_rules: List[UpdateDIJobRequestTransformationRules] = None,
@@ -12995,6 +18464,7 @@ class UpdateDIJobRequest(TeaModel):
         self.dijob_id = dijob_id
         self.description = description
         self.job_settings = job_settings
+        self.project_id = project_id
         self.resource_settings = resource_settings
         self.table_mappings = table_mappings
         self.transformation_rules = transformation_rules
@@ -13025,6 +18495,8 @@ class UpdateDIJobRequest(TeaModel):
             result['Description'] = self.description
         if self.job_settings is not None:
             result['JobSettings'] = self.job_settings.to_map()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
         if self.resource_settings is not None:
             result['ResourceSettings'] = self.resource_settings.to_map()
         result['TableMappings'] = []
@@ -13046,6 +18518,8 @@ class UpdateDIJobRequest(TeaModel):
         if m.get('JobSettings') is not None:
             temp_model = UpdateDIJobRequestJobSettings()
             self.job_settings = temp_model.from_map(m['JobSettings'])
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
         if m.get('ResourceSettings') is not None:
             temp_model = UpdateDIJobRequestResourceSettings()
             self.resource_settings = temp_model.from_map(m['ResourceSettings'])
@@ -13068,6 +18542,7 @@ class UpdateDIJobShrinkRequest(TeaModel):
         dijob_id: int = None,
         description: str = None,
         job_settings_shrink: str = None,
+        project_id: int = None,
         resource_settings_shrink: str = None,
         table_mappings_shrink: str = None,
         transformation_rules_shrink: str = None,
@@ -13076,6 +18551,7 @@ class UpdateDIJobShrinkRequest(TeaModel):
         self.dijob_id = dijob_id
         self.description = description
         self.job_settings_shrink = job_settings_shrink
+        self.project_id = project_id
         self.resource_settings_shrink = resource_settings_shrink
         self.table_mappings_shrink = table_mappings_shrink
         self.transformation_rules_shrink = transformation_rules_shrink
@@ -13095,6 +18571,8 @@ class UpdateDIJobShrinkRequest(TeaModel):
             result['Description'] = self.description
         if self.job_settings_shrink is not None:
             result['JobSettings'] = self.job_settings_shrink
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
         if self.resource_settings_shrink is not None:
             result['ResourceSettings'] = self.resource_settings_shrink
         if self.table_mappings_shrink is not None:
@@ -13111,6 +18589,8 @@ class UpdateDIJobShrinkRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('JobSettings') is not None:
             self.job_settings_shrink = m.get('JobSettings')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
         if m.get('ResourceSettings') is not None:
             self.resource_settings_shrink = m.get('ResourceSettings')
         if m.get('TableMappings') is not None:
@@ -13329,10 +18809,16 @@ class UpdateFunctionRequest(TeaModel):
         project_id: str = None,
         spec: str = None,
     ):
+        # The ID of the UDF.
+        # 
         # This parameter is required.
         self.id = id
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The FlowSpec field information about the UDF. For more information, see [FlowSpec](https://github.com/aliyun/dataworks-spec/blob/master/README_zh_CN.md).
+        # 
         # This parameter is required.
         self.spec = spec
 
@@ -13370,7 +18856,13 @@ class UpdateFunctionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # true
+        # 
+        # false
         self.success = success
 
     def validate(self):
@@ -13445,10 +18937,16 @@ class UpdateNodeRequest(TeaModel):
         project_id: str = None,
         spec: str = None,
     ):
+        # The ID of the node.
+        # 
         # This parameter is required.
         self.id = id
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The FlowSpec field information about the node. For more information, see [FlowSpec](https://github.com/aliyun/dataworks-spec/blob/master/README_zh_CN.md).
+        # 
         # This parameter is required.
         self.spec = spec
 
@@ -13486,7 +18984,12 @@ class UpdateNodeResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -13693,10 +19196,16 @@ class UpdateResourceRequest(TeaModel):
         project_id: str = None,
         spec: str = None,
     ):
+        # The ID of the file resource.
+        # 
         # This parameter is required.
         self.id = id
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The FlowSpec field information about the file resource. For more information, see [FlowSpec](https://github.com/aliyun/dataworks-spec/blob/master/README_zh_CN.md).
+        # 
         # This parameter is required.
         self.spec = spec
 
@@ -13734,7 +19243,12 @@ class UpdateResourceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -13802,6 +19316,229 @@ class UpdateResourceResponse(TeaModel):
         return self
 
 
+class UpdateResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        name: str = None,
+        remark: str = None,
+    ):
+        # This parameter is required.
+        self.id = id
+        self.name = name
+        self.remark = remark
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        return self
+
+
+class UpdateResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateRouteRequest(TeaModel):
+    def __init__(
+        self,
+        destination_cidr: str = None,
+        id: int = None,
+    ):
+        # This parameter is required.
+        self.destination_cidr = destination_cidr
+        # This parameter is required.
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_cidr is not None:
+            result['DestinationCidr'] = self.destination_cidr
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestinationCidr') is not None:
+            self.destination_cidr = m.get('DestinationCidr')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class UpdateRouteResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateRouteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateRouteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateWorkflowDefinitionRequest(TeaModel):
     def __init__(
         self,
@@ -13809,10 +19546,16 @@ class UpdateWorkflowDefinitionRequest(TeaModel):
         project_id: str = None,
         spec: str = None,
     ):
+        # The ID of the workflow.
+        # 
         # This parameter is required.
         self.id = id
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The FlowSpec field information about the workflow. For more information, see [FlowSpec](https://github.com/aliyun/dataworks-spec/blob/master/README_zh_CN.md).
+        # 
         # This parameter is required.
         self.spec = spec
 
@@ -13850,7 +19593,12 @@ class UpdateWorkflowDefinitionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
