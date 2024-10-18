@@ -2257,69 +2257,6 @@ class CancelTaskResponse(TeaModel):
         return self
 
 
-class CancelWorkflowRequest(TeaModel):
-    def __init__(
-        self,
-        action: str = None,
-    ):
-        # The operation that you want to perform. Set the value to cancel.
-        # 
-        # This parameter is required.
-        self.action = action
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.action is not None:
-            result['action'] = self.action
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('action') is not None:
-            self.action = m.get('action')
-        return self
-
-
-class CancelWorkflowResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        return self
-
-
 class CheckControlPlaneLogEnableResponseBody(TeaModel):
     def __init__(
         self,
@@ -7735,145 +7672,6 @@ class DeployPolicyInstanceResponse(TeaModel):
         return self
 
 
-class DescirbeWorkflowResponseBody(TeaModel):
-    def __init__(
-        self,
-        create_time: str = None,
-        duration: str = None,
-        finish_time: str = None,
-        input_data_size: str = None,
-        job_name: str = None,
-        job_namespace: str = None,
-        output_data_size: str = None,
-        status: str = None,
-        total_bases: str = None,
-        total_reads: str = None,
-        user_input_data: str = None,
-    ):
-        # The time when the workflow was created.
-        self.create_time = create_time
-        # The duration of the workflow.
-        self.duration = duration
-        # The end time of the task.
-        self.finish_time = finish_time
-        # The size of the input data.
-        self.input_data_size = input_data_size
-        # The name of the workflow.
-        self.job_name = job_name
-        # The namespace to which the workflow belongs.
-        self.job_namespace = job_namespace
-        # The size of the output data.
-        self.output_data_size = output_data_size
-        # The current state of the workflow.
-        self.status = status
-        # The number of base pairs.
-        self.total_bases = total_bases
-        # The number of reads.
-        self.total_reads = total_reads
-        # The user input parameters.
-        self.user_input_data = user_input_data
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.create_time is not None:
-            result['create_time'] = self.create_time
-        if self.duration is not None:
-            result['duration'] = self.duration
-        if self.finish_time is not None:
-            result['finish_time'] = self.finish_time
-        if self.input_data_size is not None:
-            result['input_data_size'] = self.input_data_size
-        if self.job_name is not None:
-            result['job_name'] = self.job_name
-        if self.job_namespace is not None:
-            result['job_namespace'] = self.job_namespace
-        if self.output_data_size is not None:
-            result['output_data_size'] = self.output_data_size
-        if self.status is not None:
-            result['status'] = self.status
-        if self.total_bases is not None:
-            result['total_bases'] = self.total_bases
-        if self.total_reads is not None:
-            result['total_reads'] = self.total_reads
-        if self.user_input_data is not None:
-            result['user_input_data'] = self.user_input_data
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('create_time') is not None:
-            self.create_time = m.get('create_time')
-        if m.get('duration') is not None:
-            self.duration = m.get('duration')
-        if m.get('finish_time') is not None:
-            self.finish_time = m.get('finish_time')
-        if m.get('input_data_size') is not None:
-            self.input_data_size = m.get('input_data_size')
-        if m.get('job_name') is not None:
-            self.job_name = m.get('job_name')
-        if m.get('job_namespace') is not None:
-            self.job_namespace = m.get('job_namespace')
-        if m.get('output_data_size') is not None:
-            self.output_data_size = m.get('output_data_size')
-        if m.get('status') is not None:
-            self.status = m.get('status')
-        if m.get('total_bases') is not None:
-            self.total_bases = m.get('total_bases')
-        if m.get('total_reads') is not None:
-            self.total_reads = m.get('total_reads')
-        if m.get('user_input_data') is not None:
-            self.user_input_data = m.get('user_input_data')
-        return self
-
-
-class DescirbeWorkflowResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescirbeWorkflowResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescirbeWorkflowResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeAddonRequest(TeaModel):
     def __init__(
         self,
@@ -8933,38 +8731,47 @@ class DescribeClusterDetailResponseBodyOperationPolicy(TeaModel):
 class DescribeClusterDetailResponseBody(TeaModel):
     def __init__(
         self,
+        cluster_domain: str = None,
         cluster_id: str = None,
         cluster_spec: str = None,
         cluster_type: str = None,
+        container_cidr: str = None,
         created: str = None,
         current_version: str = None,
         deletion_protection: bool = None,
         docker_version: str = None,
         external_loadbalancer_id: str = None,
         init_version: str = None,
+        ip_stack: str = None,
         maintenance_window: MaintenanceWindow = None,
         master_url: str = None,
         meta_data: str = None,
         name: str = None,
         network_mode: str = None,
         next_version: str = None,
+        node_cidr_mask: str = None,
         operation_policy: DescribeClusterDetailResponseBodyOperationPolicy = None,
         parameters: Dict[str, str] = None,
         private_zone: bool = None,
         profile: str = None,
+        proxy_mode: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         security_group_id: str = None,
+        service_cidr: str = None,
         size: int = None,
         state: str = None,
         subnet_cidr: str = None,
         tags: List[Tag] = None,
+        timezone: str = None,
         updated: str = None,
         vpc_id: str = None,
         vswitch_id: str = None,
+        vswitch_ids: List[str] = None,
         worker_ram_role_name: str = None,
         zone_id: str = None,
     ):
+        self.cluster_domain = cluster_domain
         # The cluster ID.
         self.cluster_id = cluster_id
         # After you set `cluster_type` to `ManagedKubernetes` and configure the `profile` parameter, you can further specify the edition of the cluster.
@@ -8976,6 +8783,7 @@ class DescribeClusterDetailResponseBody(TeaModel):
         # *   `ManagedKubernetes`: ACK managed cluster. ACK managed clusters include ACK Basic clusters, ACK Pro clusters, ACK Serverless clusters (Basic and Pro), ACK Edge clusters (Basic and Pro), and ACK Lingjun clusters (Pro).
         # *   `ExternalKubernetes`: registered cluster.
         self.cluster_type = cluster_type
+        self.container_cidr = container_cidr
         # The time when the cluster was created.
         self.created = created
         # The current Kubernetes version of the cluster. For more information about the Kubernetes versions supported by ACK, see [Release notes for Kubernetes versions](https://help.aliyun.com/document_detail/185269.html).
@@ -8990,6 +8798,7 @@ class DescribeClusterDetailResponseBody(TeaModel):
         self.external_loadbalancer_id = external_loadbalancer_id
         # The initial Kubernetes version of the cluster.
         self.init_version = init_version
+        self.ip_stack = ip_stack
         # The maintenance window of the cluster. This feature is available only in ACK Pro clusters.
         self.maintenance_window = maintenance_window
         # The endpoints of the cluster, including an internal endpoint and a public endpoint.
@@ -9002,6 +8811,7 @@ class DescribeClusterDetailResponseBody(TeaModel):
         self.name = name
         self.network_mode = network_mode
         self.next_version = next_version
+        self.node_cidr_mask = node_cidr_mask
         self.operation_policy = operation_policy
         # The ROS parameters of the cluster.
         self.parameters = parameters
@@ -9013,12 +8823,15 @@ class DescribeClusterDetailResponseBody(TeaModel):
         # *   `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
         # *   `Lingjun`: ACK Lingjun Pro cluster.
         self.profile = profile
+        self.proxy_mode = proxy_mode
         # The region ID of the cluster.
         self.region_id = region_id
         # The ID of the resource group to which the cluster belongs.
         self.resource_group_id = resource_group_id
         # The ID of the security group to which the cluster belongs.
         self.security_group_id = security_group_id
+        # This parameter is required.
+        self.service_cidr = service_cidr
         # The number of nodes in the cluster. Master nodes and worker nodes are included.
         self.size = size
         # The status of the cluster. Valid values:
@@ -9048,12 +8861,14 @@ class DescribeClusterDetailResponseBody(TeaModel):
         self.subnet_cidr = subnet_cidr
         # The resource tags of the cluster.
         self.tags = tags
+        self.timezone = timezone
         # The time when the cluster was updated.
         self.updated = updated
         # The ID of the VPC where the cluster is deployed. This parameter is required when you create a cluster.
         self.vpc_id = vpc_id
         # The IDs of the vSwitches. You can select one to three vSwitches when you create a cluster. We recommend that you select vSwitches in different zones to ensure high availability.
         self.vswitch_id = vswitch_id
+        self.vswitch_ids = vswitch_ids
         # The name of the worker Resource Access Management (RAM) role. The RAM role is assigned to the worker nodes of the cluster to allow the worker nodes to manage Elastic Compute Service (ECS) instances.
         self.worker_ram_role_name = worker_ram_role_name
         self.zone_id = zone_id
@@ -9074,12 +8889,16 @@ class DescribeClusterDetailResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.cluster_domain is not None:
+            result['cluster_domain'] = self.cluster_domain
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
         if self.cluster_spec is not None:
             result['cluster_spec'] = self.cluster_spec
         if self.cluster_type is not None:
             result['cluster_type'] = self.cluster_type
+        if self.container_cidr is not None:
+            result['container_cidr'] = self.container_cidr
         if self.created is not None:
             result['created'] = self.created
         if self.current_version is not None:
@@ -9092,6 +8911,8 @@ class DescribeClusterDetailResponseBody(TeaModel):
             result['external_loadbalancer_id'] = self.external_loadbalancer_id
         if self.init_version is not None:
             result['init_version'] = self.init_version
+        if self.ip_stack is not None:
+            result['ip_stack'] = self.ip_stack
         if self.maintenance_window is not None:
             result['maintenance_window'] = self.maintenance_window.to_map()
         if self.master_url is not None:
@@ -9104,6 +8925,8 @@ class DescribeClusterDetailResponseBody(TeaModel):
             result['network_mode'] = self.network_mode
         if self.next_version is not None:
             result['next_version'] = self.next_version
+        if self.node_cidr_mask is not None:
+            result['node_cidr_mask'] = self.node_cidr_mask
         if self.operation_policy is not None:
             result['operation_policy'] = self.operation_policy.to_map()
         if self.parameters is not None:
@@ -9112,12 +8935,16 @@ class DescribeClusterDetailResponseBody(TeaModel):
             result['private_zone'] = self.private_zone
         if self.profile is not None:
             result['profile'] = self.profile
+        if self.proxy_mode is not None:
+            result['proxy_mode'] = self.proxy_mode
         if self.region_id is not None:
             result['region_id'] = self.region_id
         if self.resource_group_id is not None:
             result['resource_group_id'] = self.resource_group_id
         if self.security_group_id is not None:
             result['security_group_id'] = self.security_group_id
+        if self.service_cidr is not None:
+            result['service_cidr'] = self.service_cidr
         if self.size is not None:
             result['size'] = self.size
         if self.state is not None:
@@ -9128,12 +8955,16 @@ class DescribeClusterDetailResponseBody(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['tags'].append(k.to_map() if k else None)
+        if self.timezone is not None:
+            result['timezone'] = self.timezone
         if self.updated is not None:
             result['updated'] = self.updated
         if self.vpc_id is not None:
             result['vpc_id'] = self.vpc_id
         if self.vswitch_id is not None:
             result['vswitch_id'] = self.vswitch_id
+        if self.vswitch_ids is not None:
+            result['vswitch_ids'] = self.vswitch_ids
         if self.worker_ram_role_name is not None:
             result['worker_ram_role_name'] = self.worker_ram_role_name
         if self.zone_id is not None:
@@ -9142,12 +8973,16 @@ class DescribeClusterDetailResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('cluster_domain') is not None:
+            self.cluster_domain = m.get('cluster_domain')
         if m.get('cluster_id') is not None:
             self.cluster_id = m.get('cluster_id')
         if m.get('cluster_spec') is not None:
             self.cluster_spec = m.get('cluster_spec')
         if m.get('cluster_type') is not None:
             self.cluster_type = m.get('cluster_type')
+        if m.get('container_cidr') is not None:
+            self.container_cidr = m.get('container_cidr')
         if m.get('created') is not None:
             self.created = m.get('created')
         if m.get('current_version') is not None:
@@ -9160,6 +8995,8 @@ class DescribeClusterDetailResponseBody(TeaModel):
             self.external_loadbalancer_id = m.get('external_loadbalancer_id')
         if m.get('init_version') is not None:
             self.init_version = m.get('init_version')
+        if m.get('ip_stack') is not None:
+            self.ip_stack = m.get('ip_stack')
         if m.get('maintenance_window') is not None:
             temp_model = MaintenanceWindow()
             self.maintenance_window = temp_model.from_map(m['maintenance_window'])
@@ -9173,6 +9010,8 @@ class DescribeClusterDetailResponseBody(TeaModel):
             self.network_mode = m.get('network_mode')
         if m.get('next_version') is not None:
             self.next_version = m.get('next_version')
+        if m.get('node_cidr_mask') is not None:
+            self.node_cidr_mask = m.get('node_cidr_mask')
         if m.get('operation_policy') is not None:
             temp_model = DescribeClusterDetailResponseBodyOperationPolicy()
             self.operation_policy = temp_model.from_map(m['operation_policy'])
@@ -9182,12 +9021,16 @@ class DescribeClusterDetailResponseBody(TeaModel):
             self.private_zone = m.get('private_zone')
         if m.get('profile') is not None:
             self.profile = m.get('profile')
+        if m.get('proxy_mode') is not None:
+            self.proxy_mode = m.get('proxy_mode')
         if m.get('region_id') is not None:
             self.region_id = m.get('region_id')
         if m.get('resource_group_id') is not None:
             self.resource_group_id = m.get('resource_group_id')
         if m.get('security_group_id') is not None:
             self.security_group_id = m.get('security_group_id')
+        if m.get('service_cidr') is not None:
+            self.service_cidr = m.get('service_cidr')
         if m.get('size') is not None:
             self.size = m.get('size')
         if m.get('state') is not None:
@@ -9199,12 +9042,16 @@ class DescribeClusterDetailResponseBody(TeaModel):
             for k in m.get('tags'):
                 temp_model = Tag()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('timezone') is not None:
+            self.timezone = m.get('timezone')
         if m.get('updated') is not None:
             self.updated = m.get('updated')
         if m.get('vpc_id') is not None:
             self.vpc_id = m.get('vpc_id')
         if m.get('vswitch_id') is not None:
             self.vswitch_id = m.get('vswitch_id')
+        if m.get('vswitch_ids') is not None:
+            self.vswitch_ids = m.get('vswitch_ids')
         if m.get('worker_ram_role_name') is not None:
             self.worker_ram_role_name = m.get('worker_ram_role_name')
         if m.get('zone_id') is not None:
@@ -14445,15 +14292,18 @@ class DescribeClustersV1ResponseBodyClustersOperationPolicy(TeaModel):
 class DescribeClustersV1ResponseBodyClusters(TeaModel):
     def __init__(
         self,
+        cluster_domain: str = None,
         cluster_id: str = None,
         cluster_spec: str = None,
         cluster_type: str = None,
+        container_cidr: str = None,
         created: str = None,
         current_version: str = None,
         deletion_protection: bool = None,
         docker_version: str = None,
         external_loadbalancer_id: str = None,
         init_version: str = None,
+        ip_stack: str = None,
         maintenance_window: MaintenanceWindow = None,
         master_url: str = None,
         meta_data: str = None,
@@ -14463,19 +14313,24 @@ class DescribeClustersV1ResponseBodyClusters(TeaModel):
         operation_policy: DescribeClustersV1ResponseBodyClustersOperationPolicy = None,
         private_zone: bool = None,
         profile: str = None,
+        proxy_mode: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         security_group_id: str = None,
+        service_cidr: str = None,
         size: int = None,
         state: str = None,
         subnet_cidr: str = None,
         tags: List[Tag] = None,
+        timezone: str = None,
         updated: str = None,
         vpc_id: str = None,
         vswitch_id: str = None,
+        vswitch_ids: List[str] = None,
         worker_ram_role_name: str = None,
         zone_id: str = None,
     ):
+        self.cluster_domain = cluster_domain
         # The cluster ID.
         self.cluster_id = cluster_id
         # After you set `cluster_type` to `ManagedKubernetes` and configure the `profile` parameter, you can further specify the edition of the cluster. Valid values:
@@ -14487,6 +14342,7 @@ class DescribeClustersV1ResponseBodyClusters(TeaModel):
         # *   `ManagedKubernetes`: ACK managed cluster. ACK managed clusters include ACK Basic clusters, ACK Pro clusters, ACK Serverless Basic clusters, ACK Serverless Pro clusters, ACK Edge Basic clusters, ACK Edge Pro clusters, and ACK Lingjun Pro clusters.
         # *   `ExternalKubernetes`: registered cluster.
         self.cluster_type = cluster_type
+        self.container_cidr = container_cidr
         # The time when the cluster was created.
         self.created = created
         # The Kubernetes version of the cluster.
@@ -14506,6 +14362,7 @@ class DescribeClustersV1ResponseBodyClusters(TeaModel):
         # 
         # You can create clusters that run the latest two Kubernetes versions in the ACK console. You can call the API operation to create clusters of other Kubernetes versions. For more information about the Kubernetes versions supported by ACK, see [Release notes for Kubernetes versions](https://help.aliyun.com/document_detail/185269.html).
         self.init_version = init_version
+        self.ip_stack = ip_stack
         # The maintenance window of the cluster. This feature is available only for ACK managed clusters and ACK Serverless clusters.
         self.maintenance_window = maintenance_window
         # The address of the cluster API server. It includes an internal endpoint and a public endpoint.
@@ -14538,12 +14395,15 @@ class DescribeClustersV1ResponseBodyClusters(TeaModel):
         # *   `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
         # *   `Lingjun`: ACK Lingjun Pro cluster.
         self.profile = profile
+        self.proxy_mode = proxy_mode
         # The region ID of the cluster.
         self.region_id = region_id
         # The ID of the resource group to which the cluster belongs.
         self.resource_group_id = resource_group_id
         # The ID of the security group of the cluster.
         self.security_group_id = security_group_id
+        # This parameter is required.
+        self.service_cidr = service_cidr
         # The number of nodes in the cluster, including master nodes and worker nodes.
         self.size = size
         # The status of the cluster. Valid values:
@@ -14571,12 +14431,14 @@ class DescribeClustersV1ResponseBodyClusters(TeaModel):
         self.subnet_cidr = subnet_cidr
         # The resource labels of the cluster.
         self.tags = tags
+        self.timezone = timezone
         # The time when the cluster was updated.
         self.updated = updated
         # The ID of the VPC where the cluster is deployed. This parameter is required when you create a cluster.
         self.vpc_id = vpc_id
         # The IDs of the vSwitches. You can select one to three vSwitches when you create a cluster. We recommend that you select vSwitches in different zones to ensure high availability.
         self.vswitch_id = vswitch_id
+        self.vswitch_ids = vswitch_ids
         # The name of the worker Resource Access Management (RAM) role. The RAM role is assigned to the worker nodes of the cluster to allow the worker nodes to manage ECS instances.
         self.worker_ram_role_name = worker_ram_role_name
         # The ID of the zone where the cluster is deployed.
@@ -14598,12 +14460,16 @@ class DescribeClustersV1ResponseBodyClusters(TeaModel):
             return _map
 
         result = dict()
+        if self.cluster_domain is not None:
+            result['cluster_domain'] = self.cluster_domain
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
         if self.cluster_spec is not None:
             result['cluster_spec'] = self.cluster_spec
         if self.cluster_type is not None:
             result['cluster_type'] = self.cluster_type
+        if self.container_cidr is not None:
+            result['container_cidr'] = self.container_cidr
         if self.created is not None:
             result['created'] = self.created
         if self.current_version is not None:
@@ -14616,6 +14482,8 @@ class DescribeClustersV1ResponseBodyClusters(TeaModel):
             result['external_loadbalancer_id'] = self.external_loadbalancer_id
         if self.init_version is not None:
             result['init_version'] = self.init_version
+        if self.ip_stack is not None:
+            result['ip_stack'] = self.ip_stack
         if self.maintenance_window is not None:
             result['maintenance_window'] = self.maintenance_window.to_map()
         if self.master_url is not None:
@@ -14634,12 +14502,16 @@ class DescribeClustersV1ResponseBodyClusters(TeaModel):
             result['private_zone'] = self.private_zone
         if self.profile is not None:
             result['profile'] = self.profile
+        if self.proxy_mode is not None:
+            result['proxy_mode'] = self.proxy_mode
         if self.region_id is not None:
             result['region_id'] = self.region_id
         if self.resource_group_id is not None:
             result['resource_group_id'] = self.resource_group_id
         if self.security_group_id is not None:
             result['security_group_id'] = self.security_group_id
+        if self.service_cidr is not None:
+            result['service_cidr'] = self.service_cidr
         if self.size is not None:
             result['size'] = self.size
         if self.state is not None:
@@ -14650,12 +14522,16 @@ class DescribeClustersV1ResponseBodyClusters(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['tags'].append(k.to_map() if k else None)
+        if self.timezone is not None:
+            result['timezone'] = self.timezone
         if self.updated is not None:
             result['updated'] = self.updated
         if self.vpc_id is not None:
             result['vpc_id'] = self.vpc_id
         if self.vswitch_id is not None:
             result['vswitch_id'] = self.vswitch_id
+        if self.vswitch_ids is not None:
+            result['vswitch_ids'] = self.vswitch_ids
         if self.worker_ram_role_name is not None:
             result['worker_ram_role_name'] = self.worker_ram_role_name
         if self.zone_id is not None:
@@ -14664,12 +14540,16 @@ class DescribeClustersV1ResponseBodyClusters(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('cluster_domain') is not None:
+            self.cluster_domain = m.get('cluster_domain')
         if m.get('cluster_id') is not None:
             self.cluster_id = m.get('cluster_id')
         if m.get('cluster_spec') is not None:
             self.cluster_spec = m.get('cluster_spec')
         if m.get('cluster_type') is not None:
             self.cluster_type = m.get('cluster_type')
+        if m.get('container_cidr') is not None:
+            self.container_cidr = m.get('container_cidr')
         if m.get('created') is not None:
             self.created = m.get('created')
         if m.get('current_version') is not None:
@@ -14682,6 +14562,8 @@ class DescribeClustersV1ResponseBodyClusters(TeaModel):
             self.external_loadbalancer_id = m.get('external_loadbalancer_id')
         if m.get('init_version') is not None:
             self.init_version = m.get('init_version')
+        if m.get('ip_stack') is not None:
+            self.ip_stack = m.get('ip_stack')
         if m.get('maintenance_window') is not None:
             temp_model = MaintenanceWindow()
             self.maintenance_window = temp_model.from_map(m['maintenance_window'])
@@ -14702,12 +14584,16 @@ class DescribeClustersV1ResponseBodyClusters(TeaModel):
             self.private_zone = m.get('private_zone')
         if m.get('profile') is not None:
             self.profile = m.get('profile')
+        if m.get('proxy_mode') is not None:
+            self.proxy_mode = m.get('proxy_mode')
         if m.get('region_id') is not None:
             self.region_id = m.get('region_id')
         if m.get('resource_group_id') is not None:
             self.resource_group_id = m.get('resource_group_id')
         if m.get('security_group_id') is not None:
             self.security_group_id = m.get('security_group_id')
+        if m.get('service_cidr') is not None:
+            self.service_cidr = m.get('service_cidr')
         if m.get('size') is not None:
             self.size = m.get('size')
         if m.get('state') is not None:
@@ -14719,12 +14605,16 @@ class DescribeClustersV1ResponseBodyClusters(TeaModel):
             for k in m.get('tags'):
                 temp_model = Tag()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('timezone') is not None:
+            self.timezone = m.get('timezone')
         if m.get('updated') is not None:
             self.updated = m.get('updated')
         if m.get('vpc_id') is not None:
             self.vpc_id = m.get('vpc_id')
         if m.get('vswitch_id') is not None:
             self.vswitch_id = m.get('vswitch_id')
+        if m.get('vswitch_ids') is not None:
+            self.vswitch_ids = m.get('vswitch_ids')
         if m.get('worker_ram_role_name') is not None:
             self.worker_ram_role_name = m.get('worker_ram_role_name')
         if m.get('zone_id') is not None:
@@ -19194,125 +19084,6 @@ class DescribeUserQuotaResponse(TeaModel):
         return self
 
 
-class DescribeWorkflowsResponseBodyJobs(TeaModel):
-    def __init__(
-        self,
-        cluster_id: str = None,
-        create_time: str = None,
-        job_name: str = None,
-    ):
-        # The cluster ID.
-        self.cluster_id = cluster_id
-        # The time when the workflow was created.
-        self.create_time = create_time
-        # The name of the workflow.
-        self.job_name = job_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cluster_id is not None:
-            result['cluster_id'] = self.cluster_id
-        if self.create_time is not None:
-            result['create_time'] = self.create_time
-        if self.job_name is not None:
-            result['job_name'] = self.job_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('cluster_id') is not None:
-            self.cluster_id = m.get('cluster_id')
-        if m.get('create_time') is not None:
-            self.create_time = m.get('create_time')
-        if m.get('job_name') is not None:
-            self.job_name = m.get('job_name')
-        return self
-
-
-class DescribeWorkflowsResponseBody(TeaModel):
-    def __init__(
-        self,
-        jobs: List[DescribeWorkflowsResponseBodyJobs] = None,
-    ):
-        # The list of jobs.
-        self.jobs = jobs
-
-    def validate(self):
-        if self.jobs:
-            for k in self.jobs:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['jobs'] = []
-        if self.jobs is not None:
-            for k in self.jobs:
-                result['jobs'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.jobs = []
-        if m.get('jobs') is not None:
-            for k in m.get('jobs'):
-                temp_model = DescribeWorkflowsResponseBodyJobs()
-                self.jobs.append(temp_model.from_map(k))
-        return self
-
-
-class DescribeWorkflowsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeWorkflowsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeWorkflowsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class EdgeClusterAddEdgeMachineRequest(TeaModel):
     def __init__(
         self,
@@ -22662,6 +22433,7 @@ class ModifyClusterRequest(TeaModel):
         operation_policy: ModifyClusterRequestOperationPolicy = None,
         resource_group_id: str = None,
         system_events_logging: ModifyClusterRequestSystemEventsLogging = None,
+        vswitch_ids: List[str] = None,
     ):
         # The network access control lists (ACLs) of the SLB instance associated with the API server if the cluster is a registered cluster.
         self.access_control_list = access_control_list
@@ -22714,6 +22486,7 @@ class ModifyClusterRequest(TeaModel):
         self.resource_group_id = resource_group_id
         # The storage configurations of system events.
         self.system_events_logging = system_events_logging
+        self.vswitch_ids = vswitch_ids
 
     def validate(self):
         if self.api_server_custom_cert_sans:
@@ -22759,6 +22532,8 @@ class ModifyClusterRequest(TeaModel):
             result['resource_group_id'] = self.resource_group_id
         if self.system_events_logging is not None:
             result['system_events_logging'] = self.system_events_logging.to_map()
+        if self.vswitch_ids is not None:
+            result['vswitch_ids'] = self.vswitch_ids
         return result
 
     def from_map(self, m: dict = None):
@@ -22795,6 +22570,8 @@ class ModifyClusterRequest(TeaModel):
         if m.get('system_events_logging') is not None:
             temp_model = ModifyClusterRequestSystemEventsLogging()
             self.system_events_logging = temp_model.from_map(m['system_events_logging'])
+        if m.get('vswitch_ids') is not None:
+            self.vswitch_ids = m.get('vswitch_ids')
         return self
 
 
@@ -25168,39 +24945,6 @@ class RemoveNodePoolNodesResponse(TeaModel):
         return self
 
 
-class RemoveWorkflowResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        return self
-
-
 class RepairClusterNodePoolRequestOperations(TeaModel):
     def __init__(
         self,
@@ -26658,235 +26402,6 @@ class StartAlertResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StartAlertResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class StartWorkflowRequest(TeaModel):
-    def __init__(
-        self,
-        mapping_bam_out_filename: str = None,
-        mapping_bam_out_path: str = None,
-        mapping_bucket_name: str = None,
-        mapping_fastq_first_filename: str = None,
-        mapping_fastq_path: str = None,
-        mapping_fastq_second_filename: str = None,
-        mapping_is_mark_dup: str = None,
-        mapping_oss_region: str = None,
-        mapping_reference_path: str = None,
-        service: str = None,
-        wgs_bucket_name: str = None,
-        wgs_fastq_first_filename: str = None,
-        wgs_fastq_path: str = None,
-        wgs_fastq_second_filename: str = None,
-        wgs_oss_region: str = None,
-        wgs_reference_path: str = None,
-        wgs_vcf_out_filename: str = None,
-        wgs_vcf_out_path: str = None,
-        workflow_type: str = None,
-    ):
-        # The name of the output BAM file.
-        self.mapping_bam_out_filename = mapping_bam_out_filename
-        # The output path of the Binary Alignment Map (BAM) file.
-        self.mapping_bam_out_path = mapping_bam_out_path
-        # The name of the OSS bucket that stores the data of the mapping workflow.
-        self.mapping_bucket_name = mapping_bucket_name
-        # The name of the first FASTQ file of the mapping workflow.
-        self.mapping_fastq_first_filename = mapping_fastq_first_filename
-        # The path of the FASTQ files of the mapping workflow.
-        self.mapping_fastq_path = mapping_fastq_path
-        # The name of the second FASTQ file of the mapping workflow.
-        self.mapping_fastq_second_filename = mapping_fastq_second_filename
-        # Specifies whether to mark duplicate values.
-        self.mapping_is_mark_dup = mapping_is_mark_dup
-        # The region where the Object Storage Service (OSS) bucket that stores the data of the mapping workflow is deployed.
-        self.mapping_oss_region = mapping_oss_region
-        # The path of the reference files of the mapping workflow.
-        self.mapping_reference_path = mapping_reference_path
-        # The type of service-level agreement (SLA). Valid values:
-        # 
-        # *   s: the silver level (S-level). It requires 1 extra minute to process every 1.5 billion base pairs beyond the limit of 90 billion base pairs.
-        # *   g: the gold level (G-level). It requires 1 extra minute to process every 2 billion base pairs beyond the limit of 90 billion base pairs.
-        # *   p: the platinum level (P-level). It requires 1 extra minute to process every 3 billion base pairs beyond the limit of 90 billion base pairs.
-        self.service = service
-        # The name of the OSS bucket that stores the data of the WGS workflow.
-        self.wgs_bucket_name = wgs_bucket_name
-        # The name of the first FASTQ file of the WGS workflow.
-        self.wgs_fastq_first_filename = wgs_fastq_first_filename
-        # The path of the FASTQ files of the WGS workflow.
-        self.wgs_fastq_path = wgs_fastq_path
-        # The name of the second FASTQ file of the WGS workflow.
-        self.wgs_fastq_second_filename = wgs_fastq_second_filename
-        # The region where the OSS bucket that stores the data of the whole genome sequencing (WGS) workflow is deployed.
-        self.wgs_oss_region = wgs_oss_region
-        # The path of the reference files of the WGS workflow.
-        self.wgs_reference_path = wgs_reference_path
-        # The name of the output VCF file.
-        self.wgs_vcf_out_filename = wgs_vcf_out_filename
-        # The output path of the Variant Call Format (VCF) file.
-        self.wgs_vcf_out_path = wgs_vcf_out_path
-        # The type of workflow. Valid values: wgs and mapping.
-        # 
-        # This parameter is required.
-        self.workflow_type = workflow_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.mapping_bam_out_filename is not None:
-            result['mapping_bam_out_filename'] = self.mapping_bam_out_filename
-        if self.mapping_bam_out_path is not None:
-            result['mapping_bam_out_path'] = self.mapping_bam_out_path
-        if self.mapping_bucket_name is not None:
-            result['mapping_bucket_name'] = self.mapping_bucket_name
-        if self.mapping_fastq_first_filename is not None:
-            result['mapping_fastq_first_filename'] = self.mapping_fastq_first_filename
-        if self.mapping_fastq_path is not None:
-            result['mapping_fastq_path'] = self.mapping_fastq_path
-        if self.mapping_fastq_second_filename is not None:
-            result['mapping_fastq_second_filename'] = self.mapping_fastq_second_filename
-        if self.mapping_is_mark_dup is not None:
-            result['mapping_is_mark_dup'] = self.mapping_is_mark_dup
-        if self.mapping_oss_region is not None:
-            result['mapping_oss_region'] = self.mapping_oss_region
-        if self.mapping_reference_path is not None:
-            result['mapping_reference_path'] = self.mapping_reference_path
-        if self.service is not None:
-            result['service'] = self.service
-        if self.wgs_bucket_name is not None:
-            result['wgs_bucket_name'] = self.wgs_bucket_name
-        if self.wgs_fastq_first_filename is not None:
-            result['wgs_fastq_first_filename'] = self.wgs_fastq_first_filename
-        if self.wgs_fastq_path is not None:
-            result['wgs_fastq_path'] = self.wgs_fastq_path
-        if self.wgs_fastq_second_filename is not None:
-            result['wgs_fastq_second_filename'] = self.wgs_fastq_second_filename
-        if self.wgs_oss_region is not None:
-            result['wgs_oss_region'] = self.wgs_oss_region
-        if self.wgs_reference_path is not None:
-            result['wgs_reference_path'] = self.wgs_reference_path
-        if self.wgs_vcf_out_filename is not None:
-            result['wgs_vcf_out_filename'] = self.wgs_vcf_out_filename
-        if self.wgs_vcf_out_path is not None:
-            result['wgs_vcf_out_path'] = self.wgs_vcf_out_path
-        if self.workflow_type is not None:
-            result['workflow_type'] = self.workflow_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('mapping_bam_out_filename') is not None:
-            self.mapping_bam_out_filename = m.get('mapping_bam_out_filename')
-        if m.get('mapping_bam_out_path') is not None:
-            self.mapping_bam_out_path = m.get('mapping_bam_out_path')
-        if m.get('mapping_bucket_name') is not None:
-            self.mapping_bucket_name = m.get('mapping_bucket_name')
-        if m.get('mapping_fastq_first_filename') is not None:
-            self.mapping_fastq_first_filename = m.get('mapping_fastq_first_filename')
-        if m.get('mapping_fastq_path') is not None:
-            self.mapping_fastq_path = m.get('mapping_fastq_path')
-        if m.get('mapping_fastq_second_filename') is not None:
-            self.mapping_fastq_second_filename = m.get('mapping_fastq_second_filename')
-        if m.get('mapping_is_mark_dup') is not None:
-            self.mapping_is_mark_dup = m.get('mapping_is_mark_dup')
-        if m.get('mapping_oss_region') is not None:
-            self.mapping_oss_region = m.get('mapping_oss_region')
-        if m.get('mapping_reference_path') is not None:
-            self.mapping_reference_path = m.get('mapping_reference_path')
-        if m.get('service') is not None:
-            self.service = m.get('service')
-        if m.get('wgs_bucket_name') is not None:
-            self.wgs_bucket_name = m.get('wgs_bucket_name')
-        if m.get('wgs_fastq_first_filename') is not None:
-            self.wgs_fastq_first_filename = m.get('wgs_fastq_first_filename')
-        if m.get('wgs_fastq_path') is not None:
-            self.wgs_fastq_path = m.get('wgs_fastq_path')
-        if m.get('wgs_fastq_second_filename') is not None:
-            self.wgs_fastq_second_filename = m.get('wgs_fastq_second_filename')
-        if m.get('wgs_oss_region') is not None:
-            self.wgs_oss_region = m.get('wgs_oss_region')
-        if m.get('wgs_reference_path') is not None:
-            self.wgs_reference_path = m.get('wgs_reference_path')
-        if m.get('wgs_vcf_out_filename') is not None:
-            self.wgs_vcf_out_filename = m.get('wgs_vcf_out_filename')
-        if m.get('wgs_vcf_out_path') is not None:
-            self.wgs_vcf_out_path = m.get('wgs_vcf_out_path')
-        if m.get('workflow_type') is not None:
-            self.workflow_type = m.get('workflow_type')
-        return self
-
-
-class StartWorkflowResponseBody(TeaModel):
-    def __init__(
-        self,
-        job_name: str = None,
-    ):
-        # The name of the workflow.
-        self.job_name = job_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.job_name is not None:
-            result['JobName'] = self.job_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('JobName') is not None:
-            self.job_name = m.get('JobName')
-        return self
-
-
-class StartWorkflowResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: StartWorkflowResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = StartWorkflowResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
