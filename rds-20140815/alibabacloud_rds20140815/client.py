@@ -1076,6 +1076,190 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.calculate_dbinstance_weight_with_options_async(request, runtime)
 
+    def cancel_active_operation_tasks_with_options(
+        self,
+        request: rds_20140815_models.CancelActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.CancelActiveOperationTasksResponse:
+        """
+        @summary This interface is used to cancel maintenance tasks that have not yet started.
+        
+        @description ### Supported Engines
+        - RDS MySQL
+        - RDS PostgreSQL
+        - RDS SQL Server
+        - RDS MariaDB
+        ### Related Function Documentation
+        >Notice: Before using this interface, please carefully read the function documentation to ensure you fully understand the prerequisites and the impact of using the interface before proceeding with the operation.
+        - [RDS MySQL Scheduled Events](https://help.aliyun.com/document_detail/104183.html)
+        - [RDS PostgreSQL Scheduled Events](https://help.aliyun.com/document_detail/104452.html)
+        - [RDS SQL Server Scheduled Events](https://help.aliyun.com/document_detail/104451.html)
+        - [RDS MariaDB Scheduled Events](https://help.aliyun.com/document_detail/104454.html)
+        ### Usage Restrictions
+        The task cannot be canceled under the following conditions:
+        - `allowCancel` is 0.
+        - The current time is later than the task start time.
+        - The task status is not 3 (waiting for execution).
+        
+        @param request: CancelActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelActiveOperationTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelActiveOperationTasks',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.CancelActiveOperationTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_active_operation_tasks_with_options_async(
+        self,
+        request: rds_20140815_models.CancelActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.CancelActiveOperationTasksResponse:
+        """
+        @summary This interface is used to cancel maintenance tasks that have not yet started.
+        
+        @description ### Supported Engines
+        - RDS MySQL
+        - RDS PostgreSQL
+        - RDS SQL Server
+        - RDS MariaDB
+        ### Related Function Documentation
+        >Notice: Before using this interface, please carefully read the function documentation to ensure you fully understand the prerequisites and the impact of using the interface before proceeding with the operation.
+        - [RDS MySQL Scheduled Events](https://help.aliyun.com/document_detail/104183.html)
+        - [RDS PostgreSQL Scheduled Events](https://help.aliyun.com/document_detail/104452.html)
+        - [RDS SQL Server Scheduled Events](https://help.aliyun.com/document_detail/104451.html)
+        - [RDS MariaDB Scheduled Events](https://help.aliyun.com/document_detail/104454.html)
+        ### Usage Restrictions
+        The task cannot be canceled under the following conditions:
+        - `allowCancel` is 0.
+        - The current time is later than the task start time.
+        - The task status is not 3 (waiting for execution).
+        
+        @param request: CancelActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelActiveOperationTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelActiveOperationTasks',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.CancelActiveOperationTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_active_operation_tasks(
+        self,
+        request: rds_20140815_models.CancelActiveOperationTasksRequest,
+    ) -> rds_20140815_models.CancelActiveOperationTasksResponse:
+        """
+        @summary This interface is used to cancel maintenance tasks that have not yet started.
+        
+        @description ### Supported Engines
+        - RDS MySQL
+        - RDS PostgreSQL
+        - RDS SQL Server
+        - RDS MariaDB
+        ### Related Function Documentation
+        >Notice: Before using this interface, please carefully read the function documentation to ensure you fully understand the prerequisites and the impact of using the interface before proceeding with the operation.
+        - [RDS MySQL Scheduled Events](https://help.aliyun.com/document_detail/104183.html)
+        - [RDS PostgreSQL Scheduled Events](https://help.aliyun.com/document_detail/104452.html)
+        - [RDS SQL Server Scheduled Events](https://help.aliyun.com/document_detail/104451.html)
+        - [RDS MariaDB Scheduled Events](https://help.aliyun.com/document_detail/104454.html)
+        ### Usage Restrictions
+        The task cannot be canceled under the following conditions:
+        - `allowCancel` is 0.
+        - The current time is later than the task start time.
+        - The task status is not 3 (waiting for execution).
+        
+        @param request: CancelActiveOperationTasksRequest
+        @return: CancelActiveOperationTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_active_operation_tasks_with_options(request, runtime)
+
+    async def cancel_active_operation_tasks_async(
+        self,
+        request: rds_20140815_models.CancelActiveOperationTasksRequest,
+    ) -> rds_20140815_models.CancelActiveOperationTasksResponse:
+        """
+        @summary This interface is used to cancel maintenance tasks that have not yet started.
+        
+        @description ### Supported Engines
+        - RDS MySQL
+        - RDS PostgreSQL
+        - RDS SQL Server
+        - RDS MariaDB
+        ### Related Function Documentation
+        >Notice: Before using this interface, please carefully read the function documentation to ensure you fully understand the prerequisites and the impact of using the interface before proceeding with the operation.
+        - [RDS MySQL Scheduled Events](https://help.aliyun.com/document_detail/104183.html)
+        - [RDS PostgreSQL Scheduled Events](https://help.aliyun.com/document_detail/104452.html)
+        - [RDS SQL Server Scheduled Events](https://help.aliyun.com/document_detail/104451.html)
+        - [RDS MariaDB Scheduled Events](https://help.aliyun.com/document_detail/104454.html)
+        ### Usage Restrictions
+        The task cannot be canceled under the following conditions:
+        - `allowCancel` is 0.
+        - The current time is later than the task start time.
+        - The task status is not 3 (waiting for execution).
+        
+        @param request: CancelActiveOperationTasksRequest
+        @return: CancelActiveOperationTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_active_operation_tasks_with_options_async(request, runtime)
+
     def check_account_name_available_with_options(
         self,
         request: rds_20140815_models.CheckAccountNameAvailableRequest,
@@ -1986,6 +2170,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbinstance_class):
             query['DBInstanceClass'] = request.dbinstance_class
+        if not UtilClient.is_unset(request.dbinstance_description):
+            query['DBInstanceDescription'] = request.dbinstance_description
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.dbinstance_storage):
@@ -2097,6 +2283,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbinstance_class):
             query['DBInstanceClass'] = request.dbinstance_class
+        if not UtilClient.is_unset(request.dbinstance_description):
+            query['DBInstanceDescription'] = request.dbinstance_description
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.dbinstance_storage):
@@ -2981,13 +3169,13 @@ class Client(OpenApiClient):
         PostgreSQL
         SQL Server
         MariaDB
-        ### [](#)Usage notes
-        This operation uses the backup feature of ApsaraDB RDS to create a backup set. You can also use an operation of Database Backup (DBS) to create a backup set. For more information, see [List of operations by function of DBS](https://help.aliyun.com/document_detail/437245.html).
-        ### [](#)Precautions
+        ### [](#)Feature description
+        This operation uses the backup feature of ApsaraDB RDS to create a backup set. You can also call an operation of Database Backup (DBS) to create a backup set. For more information, see [List of operations by function](https://help.aliyun.com/document_detail/2402073.html).
+        ### [](#)Prerequisites
         Before you call this operation, make sure that the following requirements are met:
         The instance is in the Running state.
         The instance does not have ongoing backup tasks.
-        The number of backup files that are created per day for an instance cannot exceed 20.
+        The number of backup sets that can be created for an instance per day cannot exceed 20.
         ### [](#)References
         [Use the data backup feature for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/378074.html)
         [Use the data backup feature for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96772.html)
@@ -3044,13 +3232,13 @@ class Client(OpenApiClient):
         PostgreSQL
         SQL Server
         MariaDB
-        ### [](#)Usage notes
-        This operation uses the backup feature of ApsaraDB RDS to create a backup set. You can also use an operation of Database Backup (DBS) to create a backup set. For more information, see [List of operations by function of DBS](https://help.aliyun.com/document_detail/437245.html).
-        ### [](#)Precautions
+        ### [](#)Feature description
+        This operation uses the backup feature of ApsaraDB RDS to create a backup set. You can also call an operation of Database Backup (DBS) to create a backup set. For more information, see [List of operations by function](https://help.aliyun.com/document_detail/2402073.html).
+        ### [](#)Prerequisites
         Before you call this operation, make sure that the following requirements are met:
         The instance is in the Running state.
         The instance does not have ongoing backup tasks.
-        The number of backup files that are created per day for an instance cannot exceed 20.
+        The number of backup sets that can be created for an instance per day cannot exceed 20.
         ### [](#)References
         [Use the data backup feature for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/378074.html)
         [Use the data backup feature for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96772.html)
@@ -3106,13 +3294,13 @@ class Client(OpenApiClient):
         PostgreSQL
         SQL Server
         MariaDB
-        ### [](#)Usage notes
-        This operation uses the backup feature of ApsaraDB RDS to create a backup set. You can also use an operation of Database Backup (DBS) to create a backup set. For more information, see [List of operations by function of DBS](https://help.aliyun.com/document_detail/437245.html).
-        ### [](#)Precautions
+        ### [](#)Feature description
+        This operation uses the backup feature of ApsaraDB RDS to create a backup set. You can also call an operation of Database Backup (DBS) to create a backup set. For more information, see [List of operations by function](https://help.aliyun.com/document_detail/2402073.html).
+        ### [](#)Prerequisites
         Before you call this operation, make sure that the following requirements are met:
         The instance is in the Running state.
         The instance does not have ongoing backup tasks.
-        The number of backup files that are created per day for an instance cannot exceed 20.
+        The number of backup sets that can be created for an instance per day cannot exceed 20.
         ### [](#)References
         [Use the data backup feature for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/378074.html)
         [Use the data backup feature for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96772.html)
@@ -3137,13 +3325,13 @@ class Client(OpenApiClient):
         PostgreSQL
         SQL Server
         MariaDB
-        ### [](#)Usage notes
-        This operation uses the backup feature of ApsaraDB RDS to create a backup set. You can also use an operation of Database Backup (DBS) to create a backup set. For more information, see [List of operations by function of DBS](https://help.aliyun.com/document_detail/437245.html).
-        ### [](#)Precautions
+        ### [](#)Feature description
+        This operation uses the backup feature of ApsaraDB RDS to create a backup set. You can also call an operation of Database Backup (DBS) to create a backup set. For more information, see [List of operations by function](https://help.aliyun.com/document_detail/2402073.html).
+        ### [](#)Prerequisites
         Before you call this operation, make sure that the following requirements are met:
         The instance is in the Running state.
         The instance does not have ongoing backup tasks.
-        The number of backup files that are created per day for an instance cannot exceed 20.
+        The number of backup sets that can be created for an instance per day cannot exceed 20.
         ### [](#)References
         [Use the data backup feature for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/378074.html)
         [Use the data backup feature for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96772.html)
@@ -6718,7 +6906,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.CreateRCDeploymentSetResponse:
         """
-        @summary 创建RDS CUSTOM部署集
+        @summary Creates a deployment set for an RDS Custom instance in a region. Before you call this operation, you must specify parameters such as OnUnableToRedeployFailedInstance, DeploymentSetName, and Strategy.
         
         @param request: CreateRCDeploymentSetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6765,7 +6953,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.CreateRCDeploymentSetResponse:
         """
-        @summary 创建RDS CUSTOM部署集
+        @summary Creates a deployment set for an RDS Custom instance in a region. Before you call this operation, you must specify parameters such as OnUnableToRedeployFailedInstance, DeploymentSetName, and Strategy.
         
         @param request: CreateRCDeploymentSetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6811,7 +6999,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.CreateRCDeploymentSetRequest,
     ) -> rds_20140815_models.CreateRCDeploymentSetResponse:
         """
-        @summary 创建RDS CUSTOM部署集
+        @summary Creates a deployment set for an RDS Custom instance in a region. Before you call this operation, you must specify parameters such as OnUnableToRedeployFailedInstance, DeploymentSetName, and Strategy.
         
         @param request: CreateRCDeploymentSetRequest
         @return: CreateRCDeploymentSetResponse
@@ -6824,7 +7012,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.CreateRCDeploymentSetRequest,
     ) -> rds_20140815_models.CreateRCDeploymentSetResponse:
         """
-        @summary 创建RDS CUSTOM部署集
+        @summary Creates a deployment set for an RDS Custom instance in a region. Before you call this operation, you must specify parameters such as OnUnableToRedeployFailedInstance, DeploymentSetName, and Strategy.
         
         @param request: CreateRCDeploymentSetRequest
         @return: CreateRCDeploymentSetResponse
@@ -9990,7 +10178,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DeleteRCDeploymentSetResponse:
         """
-        @summary 删除RDS CUSTOM部署集
+        @summary Deletes a deployment set for an RDS Custom instance. Before you call this operation, you must specify parameters such as RegionId and DeploymentSetId.
         
         @param request: DeleteRCDeploymentSetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10027,7 +10215,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DeleteRCDeploymentSetResponse:
         """
-        @summary 删除RDS CUSTOM部署集
+        @summary Deletes a deployment set for an RDS Custom instance. Before you call this operation, you must specify parameters such as RegionId and DeploymentSetId.
         
         @param request: DeleteRCDeploymentSetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10063,7 +10251,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DeleteRCDeploymentSetRequest,
     ) -> rds_20140815_models.DeleteRCDeploymentSetResponse:
         """
-        @summary 删除RDS CUSTOM部署集
+        @summary Deletes a deployment set for an RDS Custom instance. Before you call this operation, you must specify parameters such as RegionId and DeploymentSetId.
         
         @param request: DeleteRCDeploymentSetRequest
         @return: DeleteRCDeploymentSetResponse
@@ -10076,7 +10264,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DeleteRCDeploymentSetRequest,
     ) -> rds_20140815_models.DeleteRCDeploymentSetResponse:
         """
-        @summary 删除RDS CUSTOM部署集
+        @summary Deletes a deployment set for an RDS Custom instance. Before you call this operation, you must specify parameters such as RegionId and DeploymentSetId.
         
         @param request: DeleteRCDeploymentSetRequest
         @return: DeleteRCDeploymentSetResponse
@@ -10194,7 +10382,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DeleteRCInstancesResponse:
         """
-        @summary 批量删除RDS用户专属主机实例
+        @summary Releases a subscription RDS Custom instance.
+        
+        @description After an instance is released, all physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
         
         @param tmp_req: DeleteRCInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10241,7 +10431,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DeleteRCInstancesResponse:
         """
-        @summary 批量删除RDS用户专属主机实例
+        @summary Releases a subscription RDS Custom instance.
+        
+        @description After an instance is released, all physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
         
         @param tmp_req: DeleteRCInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10287,7 +10479,9 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DeleteRCInstancesRequest,
     ) -> rds_20140815_models.DeleteRCInstancesResponse:
         """
-        @summary 批量删除RDS用户专属主机实例
+        @summary Releases a subscription RDS Custom instance.
+        
+        @description After an instance is released, all physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
         
         @param request: DeleteRCInstancesRequest
         @return: DeleteRCInstancesResponse
@@ -10300,7 +10494,9 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DeleteRCInstancesRequest,
     ) -> rds_20140815_models.DeleteRCInstancesResponse:
         """
-        @summary 批量删除RDS用户专属主机实例
+        @summary Releases a subscription RDS Custom instance.
+        
+        @description After an instance is released, all physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
         
         @param request: DeleteRCInstancesRequest
         @return: DeleteRCInstancesResponse
@@ -24962,7 +25158,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeRCDeploymentSetsResponse:
         """
-        @summary 描述RDS CUSTOM部署集
+        @summary Queries the details of one or more deployment sets for RDS Custom instances. Before you call this operation, you must specify parameters such as DeploymentSetIds, Strategy, and DeploymentSetName.
         
         @param request: DescribeRCDeploymentSetsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24995,7 +25191,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeRCDeploymentSetsResponse:
         """
-        @summary 描述RDS CUSTOM部署集
+        @summary Queries the details of one or more deployment sets for RDS Custom instances. Before you call this operation, you must specify parameters such as DeploymentSetIds, Strategy, and DeploymentSetName.
         
         @param request: DescribeRCDeploymentSetsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25027,7 +25223,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeRCDeploymentSetsRequest,
     ) -> rds_20140815_models.DescribeRCDeploymentSetsResponse:
         """
-        @summary 描述RDS CUSTOM部署集
+        @summary Queries the details of one or more deployment sets for RDS Custom instances. Before you call this operation, you must specify parameters such as DeploymentSetIds, Strategy, and DeploymentSetName.
         
         @param request: DescribeRCDeploymentSetsRequest
         @return: DescribeRCDeploymentSetsResponse
@@ -25040,7 +25236,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeRCDeploymentSetsRequest,
     ) -> rds_20140815_models.DescribeRCDeploymentSetsResponse:
         """
-        @summary 描述RDS CUSTOM部署集
+        @summary Queries the details of one or more deployment sets for RDS Custom instances. Before you call this operation, you must specify parameters such as DeploymentSetIds, Strategy, and DeploymentSetName.
         
         @param request: DescribeRCDeploymentSetsRequest
         @return: DescribeRCDeploymentSetsResponse
@@ -25054,7 +25250,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeRCImageListResponse:
         """
-        @summary 查询镜像资源
+        @summary Queries custom images that can be used to create an RDS Custom instance. Before you call this operation, you must specify parameters such as RegionId.
         
         @param request: DescribeRCImageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25087,7 +25283,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeRCImageListResponse:
         """
-        @summary 查询镜像资源
+        @summary Queries custom images that can be used to create an RDS Custom instance. Before you call this operation, you must specify parameters such as RegionId.
         
         @param request: DescribeRCImageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25119,7 +25315,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeRCImageListRequest,
     ) -> rds_20140815_models.DescribeRCImageListResponse:
         """
-        @summary 查询镜像资源
+        @summary Queries custom images that can be used to create an RDS Custom instance. Before you call this operation, you must specify parameters such as RegionId.
         
         @param request: DescribeRCImageListRequest
         @return: DescribeRCImageListResponse
@@ -25132,7 +25328,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeRCImageListRequest,
     ) -> rds_20140815_models.DescribeRCImageListResponse:
         """
-        @summary 查询镜像资源
+        @summary Queries custom images that can be used to create an RDS Custom instance. Before you call this operation, you must specify parameters such as RegionId.
         
         @param request: DescribeRCImageListRequest
         @return: DescribeRCImageListResponse
@@ -25146,7 +25342,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeRCInstanceAttributeResponse:
         """
-        @summary 查询RDS用户专属主机实例
+        @summary Queries the details of an RDS Custom instance.
         
         @param request: DescribeRCInstanceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25179,7 +25375,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeRCInstanceAttributeResponse:
         """
-        @summary 查询RDS用户专属主机实例
+        @summary Queries the details of an RDS Custom instance.
         
         @param request: DescribeRCInstanceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25211,7 +25407,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeRCInstanceAttributeRequest,
     ) -> rds_20140815_models.DescribeRCInstanceAttributeResponse:
         """
-        @summary 查询RDS用户专属主机实例
+        @summary Queries the details of an RDS Custom instance.
         
         @param request: DescribeRCInstanceAttributeRequest
         @return: DescribeRCInstanceAttributeResponse
@@ -25224,7 +25420,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeRCInstanceAttributeRequest,
     ) -> rds_20140815_models.DescribeRCInstanceAttributeResponse:
         """
-        @summary 查询RDS用户专属主机实例
+        @summary Queries the details of an RDS Custom instance.
         
         @param request: DescribeRCInstanceAttributeRequest
         @return: DescribeRCInstanceAttributeResponse
@@ -25238,7 +25434,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeRCInstancesResponse:
         """
-        @summary 查询RC实例列表
+        @summary Queries the details of an RDS Custom instance.
         
         @param request: DescribeRCInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25281,7 +25477,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeRCInstancesResponse:
         """
-        @summary 查询RC实例列表
+        @summary Queries the details of an RDS Custom instance.
         
         @param request: DescribeRCInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25323,7 +25519,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeRCInstancesRequest,
     ) -> rds_20140815_models.DescribeRCInstancesResponse:
         """
-        @summary 查询RC实例列表
+        @summary Queries the details of an RDS Custom instance.
         
         @param request: DescribeRCInstancesRequest
         @return: DescribeRCInstancesResponse
@@ -25336,7 +25532,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeRCInstancesRequest,
     ) -> rds_20140815_models.DescribeRCInstancesResponse:
         """
-        @summary 查询RC实例列表
+        @summary Queries the details of an RDS Custom instance.
         
         @param request: DescribeRCInstancesRequest
         @return: DescribeRCInstancesResponse
@@ -25350,7 +25546,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeRCMetricListResponse:
         """
-        @summary 查询指定云产品的指定监控项的监控数据
+        @summary Queries the monitoring data of a metric for an RDS Custom instance.
         
         @param request: DescribeRCMetricListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25383,7 +25579,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeRCMetricListResponse:
         """
-        @summary 查询指定云产品的指定监控项的监控数据
+        @summary Queries the monitoring data of a metric for an RDS Custom instance.
         
         @param request: DescribeRCMetricListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25415,7 +25611,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeRCMetricListRequest,
     ) -> rds_20140815_models.DescribeRCMetricListResponse:
         """
-        @summary 查询指定云产品的指定监控项的监控数据
+        @summary Queries the monitoring data of a metric for an RDS Custom instance.
         
         @param request: DescribeRCMetricListRequest
         @return: DescribeRCMetricListResponse
@@ -25428,7 +25624,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeRCMetricListRequest,
     ) -> rds_20140815_models.DescribeRCMetricListResponse:
         """
-        @summary 查询指定云产品的指定监控项的监控数据
+        @summary Queries the monitoring data of a metric for an RDS Custom instance.
         
         @param request: DescribeRCMetricListRequest
         @return: DescribeRCMetricListResponse
@@ -26138,7 +26334,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeReplicationLinkLogsResponse:
         """
-        @summary Queries the details of the task that is used to create a disaster recovery instance for an ApsaraDB RDS instance.
+        @summary Queries the operation logs of the data synchronization task for a specified ApsaraDB RDS instance.
         
         @description ### [](#)Supported database engine
         PostgreSQL
@@ -26186,7 +26382,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeReplicationLinkLogsResponse:
         """
-        @summary Queries the details of the task that is used to create a disaster recovery instance for an ApsaraDB RDS instance.
+        @summary Queries the operation logs of the data synchronization task for a specified ApsaraDB RDS instance.
         
         @description ### [](#)Supported database engine
         PostgreSQL
@@ -26233,7 +26429,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeReplicationLinkLogsRequest,
     ) -> rds_20140815_models.DescribeReplicationLinkLogsResponse:
         """
-        @summary Queries the details of the task that is used to create a disaster recovery instance for an ApsaraDB RDS instance.
+        @summary Queries the operation logs of the data synchronization task for a specified ApsaraDB RDS instance.
         
         @description ### [](#)Supported database engine
         PostgreSQL
@@ -26249,7 +26445,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeReplicationLinkLogsRequest,
     ) -> rds_20140815_models.DescribeReplicationLinkLogsResponse:
         """
-        @summary Queries the details of the task that is used to create a disaster recovery instance for an ApsaraDB RDS instance.
+        @summary Queries the operation logs of the data synchronization task for a specified ApsaraDB RDS instance.
         
         @description ### [](#)Supported database engine
         PostgreSQL
@@ -30506,6 +30702,8 @@ class Client(OpenApiClient):
             query['CommodityCode'] = request.commodity_code
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
         if not UtilClient.is_unset(request.order_type):
             query['OrderType'] = request.order_type
         if not UtilClient.is_unset(request.owner_id):
@@ -30561,6 +30759,8 @@ class Client(OpenApiClient):
             query['CommodityCode'] = request.commodity_code
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
         if not UtilClient.is_unset(request.order_type):
             query['OrderType'] = request.order_type
         if not UtilClient.is_unset(request.owner_id):
@@ -31874,7 +32074,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyAccountCheckPolicyResponse:
         """
-        @summary 修改账号检查策略
+        @summary Checks whether a password policy is applied to an account.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
         
         @param request: ModifyAccountCheckPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31925,7 +32128,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyAccountCheckPolicyResponse:
         """
-        @summary 修改账号检查策略
+        @summary Checks whether a password policy is applied to an account.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
         
         @param request: ModifyAccountCheckPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31975,7 +32181,10 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifyAccountCheckPolicyRequest,
     ) -> rds_20140815_models.ModifyAccountCheckPolicyResponse:
         """
-        @summary 修改账号检查策略
+        @summary Checks whether a password policy is applied to an account.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
         
         @param request: ModifyAccountCheckPolicyRequest
         @return: ModifyAccountCheckPolicyResponse
@@ -31988,7 +32197,10 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifyAccountCheckPolicyRequest,
     ) -> rds_20140815_models.ModifyAccountCheckPolicyResponse:
         """
-        @summary 修改账号检查策略
+        @summary Checks whether a password policy is applied to an account.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
         
         @param request: ModifyAccountCheckPolicyRequest
         @return: ModifyAccountCheckPolicyResponse
@@ -32162,6 +32374,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.privilege):
             query['Privilege'] = request.privilege
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -32209,6 +32423,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.privilege):
             query['Privilege'] = request.privilege
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -32266,7 +32482,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyAccountSecurityPolicyResponse:
         """
-        @summary 修改密码策略
+        @summary Modifies the password policy for an account of an ApsaraDB RDS for SQL Server instance.
+        
+        @description ### [](#)Supported database engines
+        SQL Server (This parameter is unavailable for ApsaraDB RDS for SQL Server instances that belong to the shared instance family and run SQL Server 2008 R2.)
+        ### [](#)References
+        >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+        [Create a custom password policy for an account of an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95640.html)
         
         @param request: ModifyAccountSecurityPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32315,7 +32537,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyAccountSecurityPolicyResponse:
         """
-        @summary 修改密码策略
+        @summary Modifies the password policy for an account of an ApsaraDB RDS for SQL Server instance.
+        
+        @description ### [](#)Supported database engines
+        SQL Server (This parameter is unavailable for ApsaraDB RDS for SQL Server instances that belong to the shared instance family and run SQL Server 2008 R2.)
+        ### [](#)References
+        >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+        [Create a custom password policy for an account of an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95640.html)
         
         @param request: ModifyAccountSecurityPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32363,7 +32591,13 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifyAccountSecurityPolicyRequest,
     ) -> rds_20140815_models.ModifyAccountSecurityPolicyResponse:
         """
-        @summary 修改密码策略
+        @summary Modifies the password policy for an account of an ApsaraDB RDS for SQL Server instance.
+        
+        @description ### [](#)Supported database engines
+        SQL Server (This parameter is unavailable for ApsaraDB RDS for SQL Server instances that belong to the shared instance family and run SQL Server 2008 R2.)
+        ### [](#)References
+        >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+        [Create a custom password policy for an account of an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95640.html)
         
         @param request: ModifyAccountSecurityPolicyRequest
         @return: ModifyAccountSecurityPolicyResponse
@@ -32376,7 +32610,13 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifyAccountSecurityPolicyRequest,
     ) -> rds_20140815_models.ModifyAccountSecurityPolicyResponse:
         """
-        @summary 修改密码策略
+        @summary Modifies the password policy for an account of an ApsaraDB RDS for SQL Server instance.
+        
+        @description ### [](#)Supported database engines
+        SQL Server (This parameter is unavailable for ApsaraDB RDS for SQL Server instances that belong to the shared instance family and run SQL Server 2008 R2.)
+        ### [](#)References
+        >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+        [Create a custom password policy for an account of an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95640.html)
         
         @param request: ModifyAccountSecurityPolicyRequest
         @return: ModifyAccountSecurityPolicyResponse
@@ -36618,7 +36858,7 @@ class Client(OpenApiClient):
 
     def modify_dbproxy_with_options(
         self,
-        request: rds_20140815_models.ModifyDBProxyRequest,
+        tmp_req: rds_20140815_models.ModifyDBProxyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyDBProxyResponse:
         """
@@ -36633,11 +36873,15 @@ class Client(OpenApiClient):
         [Enable and configure the dedicated proxy feature for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/197456.html)
         [Enable and configure the dedicated proxy feature for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/418272.html)
         
-        @param request: ModifyDBProxyRequest
+        @param tmp_req: ModifyDBProxyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyDBProxyResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = rds_20140815_models.ModifyDBProxyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dbproxy_nodes):
+            request.dbproxy_nodes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dbproxy_nodes, 'DBProxyNodes', 'json')
         query = {}
         if not UtilClient.is_unset(request.config_dbproxy_service):
             query['ConfigDBProxyService'] = request.config_dbproxy_service
@@ -36651,6 +36895,8 @@ class Client(OpenApiClient):
             query['DBProxyInstanceNum'] = request.dbproxy_instance_num
         if not UtilClient.is_unset(request.dbproxy_instance_type):
             query['DBProxyInstanceType'] = request.dbproxy_instance_type
+        if not UtilClient.is_unset(request.dbproxy_nodes_shrink):
+            query['DBProxyNodes'] = request.dbproxy_nodes_shrink
         if not UtilClient.is_unset(request.instance_network_type):
             query['InstanceNetworkType'] = request.instance_network_type
         if not UtilClient.is_unset(request.owner_id):
@@ -36690,7 +36936,7 @@ class Client(OpenApiClient):
 
     async def modify_dbproxy_with_options_async(
         self,
-        request: rds_20140815_models.ModifyDBProxyRequest,
+        tmp_req: rds_20140815_models.ModifyDBProxyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyDBProxyResponse:
         """
@@ -36705,11 +36951,15 @@ class Client(OpenApiClient):
         [Enable and configure the dedicated proxy feature for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/197456.html)
         [Enable and configure the dedicated proxy feature for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/418272.html)
         
-        @param request: ModifyDBProxyRequest
+        @param tmp_req: ModifyDBProxyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyDBProxyResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = rds_20140815_models.ModifyDBProxyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dbproxy_nodes):
+            request.dbproxy_nodes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dbproxy_nodes, 'DBProxyNodes', 'json')
         query = {}
         if not UtilClient.is_unset(request.config_dbproxy_service):
             query['ConfigDBProxyService'] = request.config_dbproxy_service
@@ -36723,6 +36973,8 @@ class Client(OpenApiClient):
             query['DBProxyInstanceNum'] = request.dbproxy_instance_num
         if not UtilClient.is_unset(request.dbproxy_instance_type):
             query['DBProxyInstanceType'] = request.dbproxy_instance_type
+        if not UtilClient.is_unset(request.dbproxy_nodes_shrink):
+            query['DBProxyNodes'] = request.dbproxy_nodes_shrink
         if not UtilClient.is_unset(request.instance_network_type):
             query['InstanceNetworkType'] = request.instance_network_type
         if not UtilClient.is_unset(request.owner_id):
@@ -36844,6 +37096,10 @@ class Client(OpenApiClient):
             query['DbEndpointReadWriteMode'] = request.db_endpoint_read_write_mode
         if not UtilClient.is_unset(request.db_endpoint_type):
             query['DbEndpointType'] = request.db_endpoint_type
+        if not UtilClient.is_unset(request.effective_specific_time):
+            query['EffectiveSpecificTime'] = request.effective_specific_time
+        if not UtilClient.is_unset(request.effective_time):
+            query['EffectiveTime'] = request.effective_time
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.read_only_instance_distribution_type):
@@ -36858,6 +37114,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -36917,6 +37175,10 @@ class Client(OpenApiClient):
             query['DbEndpointReadWriteMode'] = request.db_endpoint_read_write_mode
         if not UtilClient.is_unset(request.db_endpoint_type):
             query['DbEndpointType'] = request.db_endpoint_type
+        if not UtilClient.is_unset(request.effective_specific_time):
+            query['EffectiveSpecificTime'] = request.effective_specific_time
+        if not UtilClient.is_unset(request.effective_time):
+            query['EffectiveTime'] = request.effective_time
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.read_only_instance_distribution_type):
@@ -36931,6 +37193,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -37158,7 +37422,7 @@ class Client(OpenApiClient):
 
     def modify_dbproxy_instance_with_options(
         self,
-        request: rds_20140815_models.ModifyDBProxyInstanceRequest,
+        tmp_req: rds_20140815_models.ModifyDBProxyInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyDBProxyInstanceResponse:
         """
@@ -37169,11 +37433,17 @@ class Client(OpenApiClient):
         PostgreSQL
         >  Starting October 17, 2023, ApsaraDB RDS for MySQL instances that run RDS Cluster Edition offer one free-of-charge dedicated database proxy for each unit in phases. For more information, see [[Special offers/Price changes\\] One dedicated proxy is provided free of charge for ApsaraDB RDS for MySQL instances on RDS Cluster Edition](~~2555466~~).
         
-        @param request: ModifyDBProxyInstanceRequest
+        @param tmp_req: ModifyDBProxyInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyDBProxyInstanceResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = rds_20140815_models.ModifyDBProxyInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dbproxy_nodes):
+            request.dbproxy_nodes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dbproxy_nodes, 'DBProxyNodes', 'json')
+        if not UtilClient.is_unset(tmp_req.migrate_az):
+            request.migrate_azshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.migrate_az, 'MigrateAZ', 'json')
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
@@ -37185,10 +37455,14 @@ class Client(OpenApiClient):
             query['DBProxyInstanceNum'] = request.dbproxy_instance_num
         if not UtilClient.is_unset(request.dbproxy_instance_type):
             query['DBProxyInstanceType'] = request.dbproxy_instance_type
+        if not UtilClient.is_unset(request.dbproxy_nodes_shrink):
+            query['DBProxyNodes'] = request.dbproxy_nodes_shrink
         if not UtilClient.is_unset(request.effective_specific_time):
             query['EffectiveSpecificTime'] = request.effective_specific_time
         if not UtilClient.is_unset(request.effective_time):
             query['EffectiveTime'] = request.effective_time
+        if not UtilClient.is_unset(request.migrate_azshrink):
+            query['MigrateAZ'] = request.migrate_azshrink
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
@@ -37220,7 +37494,7 @@ class Client(OpenApiClient):
 
     async def modify_dbproxy_instance_with_options_async(
         self,
-        request: rds_20140815_models.ModifyDBProxyInstanceRequest,
+        tmp_req: rds_20140815_models.ModifyDBProxyInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyDBProxyInstanceResponse:
         """
@@ -37231,11 +37505,17 @@ class Client(OpenApiClient):
         PostgreSQL
         >  Starting October 17, 2023, ApsaraDB RDS for MySQL instances that run RDS Cluster Edition offer one free-of-charge dedicated database proxy for each unit in phases. For more information, see [[Special offers/Price changes\\] One dedicated proxy is provided free of charge for ApsaraDB RDS for MySQL instances on RDS Cluster Edition](~~2555466~~).
         
-        @param request: ModifyDBProxyInstanceRequest
+        @param tmp_req: ModifyDBProxyInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyDBProxyInstanceResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = rds_20140815_models.ModifyDBProxyInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dbproxy_nodes):
+            request.dbproxy_nodes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dbproxy_nodes, 'DBProxyNodes', 'json')
+        if not UtilClient.is_unset(tmp_req.migrate_az):
+            request.migrate_azshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.migrate_az, 'MigrateAZ', 'json')
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
@@ -37247,10 +37527,14 @@ class Client(OpenApiClient):
             query['DBProxyInstanceNum'] = request.dbproxy_instance_num
         if not UtilClient.is_unset(request.dbproxy_instance_type):
             query['DBProxyInstanceType'] = request.dbproxy_instance_type
+        if not UtilClient.is_unset(request.dbproxy_nodes_shrink):
+            query['DBProxyNodes'] = request.dbproxy_nodes_shrink
         if not UtilClient.is_unset(request.effective_specific_time):
             query['EffectiveSpecificTime'] = request.effective_specific_time
         if not UtilClient.is_unset(request.effective_time):
             query['EffectiveTime'] = request.effective_time
+        if not UtilClient.is_unset(request.migrate_azshrink):
+            query['MigrateAZ'] = request.migrate_azshrink
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
@@ -38728,6 +39012,8 @@ class Client(OpenApiClient):
             query['MaskingAlgo'] = request.masking_algo
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -38783,6 +39069,8 @@ class Client(OpenApiClient):
             query['MaskingAlgo'] = request.masking_algo
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -39342,7 +39630,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyRCInstanceResponse:
         """
-        @summary ModifyRCInstance
+        @summary Upgrades or downgrades the instance type of a subscription RDS Custom instance. The new instance type takes effect for the remaining lifecycle of the instance.
+        
+        @description Before you call this operation, make sure that you are familiar with the billing methods, pricing, and refund rules of RDS Custom.
+        Before you call this operation, take note of the following items:
+        You cannot change the instance type of an expired instance. You can renew the instance and try again.
+        When you downgrade the instance type of an instance, take note of the following items:
+        The instance must be in the Stopped state.
+        The price difference is refunded to the payment account you used. Vouchers that have been redeemed are not refundable.
+        The operation is asynchronous. Wait 5 to 10 seconds for the instance type change to complete. Then, restart the instance by calling the RebootInstance operation or by using the console for the instance type change to take effect. If you restart only the operating system of the instance, the instance type change does not take effect. If the instance is in the Stopped state, you need only to start the instance. You do not need to restart the instance after it enters the Running state.
         
         @param request: ModifyRCInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -39387,7 +39683,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyRCInstanceResponse:
         """
-        @summary ModifyRCInstance
+        @summary Upgrades or downgrades the instance type of a subscription RDS Custom instance. The new instance type takes effect for the remaining lifecycle of the instance.
+        
+        @description Before you call this operation, make sure that you are familiar with the billing methods, pricing, and refund rules of RDS Custom.
+        Before you call this operation, take note of the following items:
+        You cannot change the instance type of an expired instance. You can renew the instance and try again.
+        When you downgrade the instance type of an instance, take note of the following items:
+        The instance must be in the Stopped state.
+        The price difference is refunded to the payment account you used. Vouchers that have been redeemed are not refundable.
+        The operation is asynchronous. Wait 5 to 10 seconds for the instance type change to complete. Then, restart the instance by calling the RebootInstance operation or by using the console for the instance type change to take effect. If you restart only the operating system of the instance, the instance type change does not take effect. If the instance is in the Stopped state, you need only to start the instance. You do not need to restart the instance after it enters the Running state.
         
         @param request: ModifyRCInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -39431,7 +39735,15 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifyRCInstanceRequest,
     ) -> rds_20140815_models.ModifyRCInstanceResponse:
         """
-        @summary ModifyRCInstance
+        @summary Upgrades or downgrades the instance type of a subscription RDS Custom instance. The new instance type takes effect for the remaining lifecycle of the instance.
+        
+        @description Before you call this operation, make sure that you are familiar with the billing methods, pricing, and refund rules of RDS Custom.
+        Before you call this operation, take note of the following items:
+        You cannot change the instance type of an expired instance. You can renew the instance and try again.
+        When you downgrade the instance type of an instance, take note of the following items:
+        The instance must be in the Stopped state.
+        The price difference is refunded to the payment account you used. Vouchers that have been redeemed are not refundable.
+        The operation is asynchronous. Wait 5 to 10 seconds for the instance type change to complete. Then, restart the instance by calling the RebootInstance operation or by using the console for the instance type change to take effect. If you restart only the operating system of the instance, the instance type change does not take effect. If the instance is in the Stopped state, you need only to start the instance. You do not need to restart the instance after it enters the Running state.
         
         @param request: ModifyRCInstanceRequest
         @return: ModifyRCInstanceResponse
@@ -39444,7 +39756,15 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifyRCInstanceRequest,
     ) -> rds_20140815_models.ModifyRCInstanceResponse:
         """
-        @summary ModifyRCInstance
+        @summary Upgrades or downgrades the instance type of a subscription RDS Custom instance. The new instance type takes effect for the remaining lifecycle of the instance.
+        
+        @description Before you call this operation, make sure that you are familiar with the billing methods, pricing, and refund rules of RDS Custom.
+        Before you call this operation, take note of the following items:
+        You cannot change the instance type of an expired instance. You can renew the instance and try again.
+        When you downgrade the instance type of an instance, take note of the following items:
+        The instance must be in the Stopped state.
+        The price difference is refunded to the payment account you used. Vouchers that have been redeemed are not refundable.
+        The operation is asynchronous. Wait 5 to 10 seconds for the instance type change to complete. Then, restart the instance by calling the RebootInstance operation or by using the console for the instance type change to take effect. If you restart only the operating system of the instance, the instance type change does not take effect. If the instance is in the Stopped state, you need only to start the instance. You do not need to restart the instance after it enters the Running state.
         
         @param request: ModifyRCInstanceRequest
         @return: ModifyRCInstanceResponse
@@ -41530,7 +41850,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.RebootRCInstanceResponse:
         """
-        @summary 重启RDS用户专属主机实例
+        @summary Restarts an RDS Custom instance that is in the Running state.
         
         @param request: RebootRCInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -41571,7 +41891,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.RebootRCInstanceResponse:
         """
-        @summary 重启RDS用户专属主机实例
+        @summary Restarts an RDS Custom instance that is in the Running state.
         
         @param request: RebootRCInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -41611,7 +41931,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.RebootRCInstanceRequest,
     ) -> rds_20140815_models.RebootRCInstanceResponse:
         """
-        @summary 重启RDS用户专属主机实例
+        @summary Restarts an RDS Custom instance that is in the Running state.
         
         @param request: RebootRCInstanceRequest
         @return: RebootRCInstanceResponse
@@ -41624,7 +41944,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.RebootRCInstanceRequest,
     ) -> rds_20140815_models.RebootRCInstanceResponse:
         """
-        @summary 重启RDS用户专属主机实例
+        @summary Restarts an RDS Custom instance that is in the Running state.
         
         @param request: RebootRCInstanceRequest
         @return: RebootRCInstanceResponse
@@ -43342,7 +43662,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ResizeRCInstanceDiskResponse:
         """
-        @summary ResizeRCInstanceDisk
+        @summary Expand the storage capacity of an RDS Custom instance.
         
         @param request: ResizeRCInstanceDiskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -43387,7 +43707,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ResizeRCInstanceDiskResponse:
         """
-        @summary ResizeRCInstanceDisk
+        @summary Expand the storage capacity of an RDS Custom instance.
         
         @param request: ResizeRCInstanceDiskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -43431,7 +43751,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ResizeRCInstanceDiskRequest,
     ) -> rds_20140815_models.ResizeRCInstanceDiskResponse:
         """
-        @summary ResizeRCInstanceDisk
+        @summary Expand the storage capacity of an RDS Custom instance.
         
         @param request: ResizeRCInstanceDiskRequest
         @return: ResizeRCInstanceDiskResponse
@@ -43444,7 +43764,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ResizeRCInstanceDiskRequest,
     ) -> rds_20140815_models.ResizeRCInstanceDiskResponse:
         """
-        @summary ResizeRCInstanceDisk
+        @summary Expand the storage capacity of an RDS Custom instance.
         
         @param request: ResizeRCInstanceDiskRequest
         @return: ResizeRCInstanceDiskResponse
@@ -44274,7 +44594,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.RunRCInstancesResponse:
         """
-        @summary 创建RDS用户专属主机实例
+        @summary Creates one or more subscription RDS Custom instances. Before you call this operation, you must specify parameters such as ImageId, InstanceType, VSwitchId, and SecurityGroupId.
+        
+        @description    Before you create RDS Custom instances, you must submit a ticket to add your Alibaba Cloud account to a whitelist.
+        You can create only subscription RDS Custom instances.
+        Subscription RDS Custom instances are supported in the China (Shanghai), China (Shenzhen), China (Beijing), and China (Hangzhou) regions.
         
         @param tmp_req: RunRCInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -44363,7 +44687,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.RunRCInstancesResponse:
         """
-        @summary 创建RDS用户专属主机实例
+        @summary Creates one or more subscription RDS Custom instances. Before you call this operation, you must specify parameters such as ImageId, InstanceType, VSwitchId, and SecurityGroupId.
+        
+        @description    Before you create RDS Custom instances, you must submit a ticket to add your Alibaba Cloud account to a whitelist.
+        You can create only subscription RDS Custom instances.
+        Subscription RDS Custom instances are supported in the China (Shanghai), China (Shenzhen), China (Beijing), and China (Hangzhou) regions.
         
         @param tmp_req: RunRCInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -44451,7 +44779,11 @@ class Client(OpenApiClient):
         request: rds_20140815_models.RunRCInstancesRequest,
     ) -> rds_20140815_models.RunRCInstancesResponse:
         """
-        @summary 创建RDS用户专属主机实例
+        @summary Creates one or more subscription RDS Custom instances. Before you call this operation, you must specify parameters such as ImageId, InstanceType, VSwitchId, and SecurityGroupId.
+        
+        @description    Before you create RDS Custom instances, you must submit a ticket to add your Alibaba Cloud account to a whitelist.
+        You can create only subscription RDS Custom instances.
+        Subscription RDS Custom instances are supported in the China (Shanghai), China (Shenzhen), China (Beijing), and China (Hangzhou) regions.
         
         @param request: RunRCInstancesRequest
         @return: RunRCInstancesResponse
@@ -44464,7 +44796,11 @@ class Client(OpenApiClient):
         request: rds_20140815_models.RunRCInstancesRequest,
     ) -> rds_20140815_models.RunRCInstancesResponse:
         """
-        @summary 创建RDS用户专属主机实例
+        @summary Creates one or more subscription RDS Custom instances. Before you call this operation, you must specify parameters such as ImageId, InstanceType, VSwitchId, and SecurityGroupId.
+        
+        @description    Before you create RDS Custom instances, you must submit a ticket to add your Alibaba Cloud account to a whitelist.
+        You can create only subscription RDS Custom instances.
+        Subscription RDS Custom instances are supported in the China (Shanghai), China (Shenzhen), China (Beijing), and China (Hangzhou) regions.
         
         @param request: RunRCInstancesRequest
         @return: RunRCInstancesResponse
@@ -44678,7 +45014,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.StartRCInstanceResponse:
         """
-        @summary 启动RDS用户专属主机实例
+        @summary Starts RDS Custom instances that are in the Stopped state. After the operation is successfully called, the instances enter the Starting state.
         
         @param request: StartRCInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -44715,7 +45051,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.StartRCInstanceResponse:
         """
-        @summary 启动RDS用户专属主机实例
+        @summary Starts RDS Custom instances that are in the Stopped state. After the operation is successfully called, the instances enter the Starting state.
         
         @param request: StartRCInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -44751,7 +45087,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.StartRCInstanceRequest,
     ) -> rds_20140815_models.StartRCInstanceResponse:
         """
-        @summary 启动RDS用户专属主机实例
+        @summary Starts RDS Custom instances that are in the Stopped state. After the operation is successfully called, the instances enter the Starting state.
         
         @param request: StartRCInstanceRequest
         @return: StartRCInstanceResponse
@@ -44764,7 +45100,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.StartRCInstanceRequest,
     ) -> rds_20140815_models.StartRCInstanceResponse:
         """
-        @summary 启动RDS用户专属主机实例
+        @summary Starts RDS Custom instances that are in the Stopped state. After the operation is successfully called, the instances enter the Starting state.
         
         @param request: StartRCInstanceRequest
         @return: StartRCInstanceResponse
@@ -44930,7 +45266,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.StopRCInstanceResponse:
         """
-        @summary 停止RDS用户专属主机实例
+        @summary Stops an RDS Custom instance that is in the Running state. After the operation is successfully called, the status of the RDS Custom instance changes from Stopping to Stopped.
         
         @param request: StopRCInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -44969,7 +45305,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.StopRCInstanceResponse:
         """
-        @summary 停止RDS用户专属主机实例
+        @summary Stops an RDS Custom instance that is in the Running state. After the operation is successfully called, the status of the RDS Custom instance changes from Stopping to Stopped.
         
         @param request: StopRCInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -45007,7 +45343,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.StopRCInstanceRequest,
     ) -> rds_20140815_models.StopRCInstanceResponse:
         """
-        @summary 停止RDS用户专属主机实例
+        @summary Stops an RDS Custom instance that is in the Running state. After the operation is successfully called, the status of the RDS Custom instance changes from Stopping to Stopped.
         
         @param request: StopRCInstanceRequest
         @return: StopRCInstanceResponse
@@ -45020,7 +45356,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.StopRCInstanceRequest,
     ) -> rds_20140815_models.StopRCInstanceResponse:
         """
-        @summary 停止RDS用户专属主机实例
+        @summary Stops an RDS Custom instance that is in the Running state. After the operation is successfully called, the status of the RDS Custom instance changes from Stopping to Stopped.
         
         @param request: StopRCInstanceRequest
         @return: StopRCInstanceResponse
@@ -45530,7 +45866,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.SyncRCKeyPairResponse:
         """
-        @summary 同步密钥对
+        @summary Synchronizes a custom key pair to an RDS Custom instance. If you change the key pair that you created for your RDS Custom instance and you want the change to immediately take effect on the RDS Custom instance, you can call this operation to synchronize the new key pair to the RDS Custom instance. For example, you delete a key pair that has the same name as another key pair and recreate the key pair.
         
         @param request: SyncRCKeyPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -45542,6 +45878,8 @@ class Client(OpenApiClient):
             query['KeyPairName'] = request.key_pair_name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sync_mode):
+            query['SyncMode'] = request.sync_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -45567,7 +45905,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.SyncRCKeyPairResponse:
         """
-        @summary 同步密钥对
+        @summary Synchronizes a custom key pair to an RDS Custom instance. If you change the key pair that you created for your RDS Custom instance and you want the change to immediately take effect on the RDS Custom instance, you can call this operation to synchronize the new key pair to the RDS Custom instance. For example, you delete a key pair that has the same name as another key pair and recreate the key pair.
         
         @param request: SyncRCKeyPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -45579,6 +45917,8 @@ class Client(OpenApiClient):
             query['KeyPairName'] = request.key_pair_name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sync_mode):
+            query['SyncMode'] = request.sync_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -45603,7 +45943,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.SyncRCKeyPairRequest,
     ) -> rds_20140815_models.SyncRCKeyPairResponse:
         """
-        @summary 同步密钥对
+        @summary Synchronizes a custom key pair to an RDS Custom instance. If you change the key pair that you created for your RDS Custom instance and you want the change to immediately take effect on the RDS Custom instance, you can call this operation to synchronize the new key pair to the RDS Custom instance. For example, you delete a key pair that has the same name as another key pair and recreate the key pair.
         
         @param request: SyncRCKeyPairRequest
         @return: SyncRCKeyPairResponse
@@ -45616,7 +45956,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.SyncRCKeyPairRequest,
     ) -> rds_20140815_models.SyncRCKeyPairResponse:
         """
-        @summary 同步密钥对
+        @summary Synchronizes a custom key pair to an RDS Custom instance. If you change the key pair that you created for your RDS Custom instance and you want the change to immediately take effect on the RDS Custom instance, you can call this operation to synchronize the new key pair to the RDS Custom instance. For example, you delete a key pair that has the same name as another key pair and recreate the key pair.
         
         @param request: SyncRCKeyPairRequest
         @return: SyncRCKeyPairResponse

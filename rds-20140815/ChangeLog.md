@@ -1,3 +1,25 @@
+2024-10-18 Version: 7.3.0
+- Support API CancelActiveOperationTasks.
+- Update API CloneDBInstance: add param DBInstanceDescription.
+- Update API CreateDBInstance: update param Period.
+- Update API DescribeAvailableClasses: update param DBInstanceStorageType.
+- Update API DescribeDBInstanceAttribute: update response param.
+- Update API DescribeDBProxy: update response param.
+- Update API DescribeDBProxyEndpoint: update response param.
+- Update API DescribeModifyParameterLog: update response param.
+- Update API ListClasses: add param Engine.
+- Update API ListClasses: update response param.
+- Update API ModifyAccountMaskingPrivilege: add param RegionId.
+- Update API ModifyDBProxy: add param DBProxyNodes.
+- Update API ModifyDBProxyEndpoint: add param EffectiveSpecificTime.
+- Update API ModifyDBProxyEndpoint: add param EffectiveTime.
+- Update API ModifyDBProxyEndpoint: add param VSwitchId.
+- Update API ModifyDBProxyInstance: add param DBProxyNodes.
+- Update API ModifyDBProxyInstance: add param MigrateAZ.
+- Update API ModifyMaskingRules: add param RegionId.
+- Update API SyncRCKeyPair: add param SyncMode.
+
+
 2024-09-10 Version: 7.2.0
 - Support API ModifyAccountCheckPolicy.
 - Support API ModifyAccountSecurityPolicy.
