@@ -727,6 +727,152 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.AddScenegroupMemberHeaders()
         return await self.add_scenegroup_member_with_options_async(request, headers, runtime)
 
+    def add_ticket_memo_with_options(
+        self,
+        tmp_req: aliding_20230426_models.AddTicketMemoRequest,
+        tmp_header: aliding_20230426_models.AddTicketMemoHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.AddTicketMemoResponse:
+        """
+        @summary 工单添加备注
+        
+        @param tmp_req: AddTicketMemoRequest
+        @param tmp_header: AddTicketMemoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddTicketMemoResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.AddTicketMemoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.AddTicketMemoShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not UtilClient.is_unset(tmp_req.ticket_memo):
+            request.ticket_memo_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ticket_memo, 'TicketMemo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.open_team_id):
+            body['OpenTeamId'] = request.open_team_id
+        if not UtilClient.is_unset(request.open_ticket_id):
+            body['OpenTicketId'] = request.open_ticket_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.ticket_memo_shrink):
+            body['TicketMemo'] = request.ticket_memo_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddTicketMemo',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ticket/addTicketMemo',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.AddTicketMemoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_ticket_memo_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.AddTicketMemoRequest,
+        tmp_header: aliding_20230426_models.AddTicketMemoHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.AddTicketMemoResponse:
+        """
+        @summary 工单添加备注
+        
+        @param tmp_req: AddTicketMemoRequest
+        @param tmp_header: AddTicketMemoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddTicketMemoResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.AddTicketMemoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.AddTicketMemoShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not UtilClient.is_unset(tmp_req.ticket_memo):
+            request.ticket_memo_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ticket_memo, 'TicketMemo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.open_team_id):
+            body['OpenTeamId'] = request.open_team_id
+        if not UtilClient.is_unset(request.open_ticket_id):
+            body['OpenTicketId'] = request.open_ticket_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.ticket_memo_shrink):
+            body['TicketMemo'] = request.ticket_memo_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddTicketMemo',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ticket/addTicketMemo',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.AddTicketMemoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_ticket_memo(
+        self,
+        request: aliding_20230426_models.AddTicketMemoRequest,
+    ) -> aliding_20230426_models.AddTicketMemoResponse:
+        """
+        @summary 工单添加备注
+        
+        @param request: AddTicketMemoRequest
+        @return: AddTicketMemoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.AddTicketMemoHeaders()
+        return self.add_ticket_memo_with_options(request, headers, runtime)
+
+    async def add_ticket_memo_async(
+        self,
+        request: aliding_20230426_models.AddTicketMemoRequest,
+    ) -> aliding_20230426_models.AddTicketMemoResponse:
+        """
+        @summary 工单添加备注
+        
+        @param request: AddTicketMemoRequest
+        @return: AddTicketMemoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.AddTicketMemoHeaders()
+        return await self.add_ticket_memo_with_options_async(request, headers, runtime)
+
     def add_workspace_with_options(
         self,
         tmp_req: aliding_20230426_models.AddWorkspaceRequest,
@@ -1156,6 +1302,168 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.AddWorkspaceMembersHeaders()
         return await self.add_workspace_members_with_options_async(request, headers, runtime)
+
+    def assign_ticket_with_options(
+        self,
+        tmp_req: aliding_20230426_models.AssignTicketRequest,
+        tmp_header: aliding_20230426_models.AssignTicketHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.AssignTicketResponse:
+        """
+        @summary 指派工单
+        
+        @param tmp_req: AssignTicketRequest
+        @param tmp_header: AssignTicketHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssignTicketResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.AssignTicketShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.AssignTicketShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.notify):
+            request.notify_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notify, 'Notify', 'json')
+        if not UtilClient.is_unset(tmp_req.processor_user_ids):
+            request.processor_user_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.processor_user_ids, 'ProcessorUserIds', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not UtilClient.is_unset(tmp_req.ticket_memo):
+            request.ticket_memo_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ticket_memo, 'TicketMemo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.notify_shrink):
+            body['Notify'] = request.notify_shrink
+        if not UtilClient.is_unset(request.open_team_id):
+            body['OpenTeamId'] = request.open_team_id
+        if not UtilClient.is_unset(request.open_ticket_id):
+            body['OpenTicketId'] = request.open_ticket_id
+        if not UtilClient.is_unset(request.processor_user_ids_shrink):
+            body['ProcessorUserIds'] = request.processor_user_ids_shrink
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.ticket_memo_shrink):
+            body['TicketMemo'] = request.ticket_memo_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AssignTicket',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ticket/assignTicket',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.AssignTicketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def assign_ticket_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.AssignTicketRequest,
+        tmp_header: aliding_20230426_models.AssignTicketHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.AssignTicketResponse:
+        """
+        @summary 指派工单
+        
+        @param tmp_req: AssignTicketRequest
+        @param tmp_header: AssignTicketHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssignTicketResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.AssignTicketShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.AssignTicketShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.notify):
+            request.notify_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notify, 'Notify', 'json')
+        if not UtilClient.is_unset(tmp_req.processor_user_ids):
+            request.processor_user_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.processor_user_ids, 'ProcessorUserIds', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not UtilClient.is_unset(tmp_req.ticket_memo):
+            request.ticket_memo_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ticket_memo, 'TicketMemo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.notify_shrink):
+            body['Notify'] = request.notify_shrink
+        if not UtilClient.is_unset(request.open_team_id):
+            body['OpenTeamId'] = request.open_team_id
+        if not UtilClient.is_unset(request.open_ticket_id):
+            body['OpenTicketId'] = request.open_ticket_id
+        if not UtilClient.is_unset(request.processor_user_ids_shrink):
+            body['ProcessorUserIds'] = request.processor_user_ids_shrink
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.ticket_memo_shrink):
+            body['TicketMemo'] = request.ticket_memo_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AssignTicket',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ticket/assignTicket',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.AssignTicketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def assign_ticket(
+        self,
+        request: aliding_20230426_models.AssignTicketRequest,
+    ) -> aliding_20230426_models.AssignTicketResponse:
+        """
+        @summary 指派工单
+        
+        @param request: AssignTicketRequest
+        @return: AssignTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.AssignTicketHeaders()
+        return self.assign_ticket_with_options(request, headers, runtime)
+
+    async def assign_ticket_async(
+        self,
+        request: aliding_20230426_models.AssignTicketRequest,
+    ) -> aliding_20230426_models.AssignTicketResponse:
+        """
+        @summary 指派工单
+        
+        @param request: AssignTicketRequest
+        @return: AssignTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.AssignTicketHeaders()
+        return await self.assign_ticket_with_options_async(request, headers, runtime)
 
     def batch_get_form_data_by_id_list_with_options(
         self,
@@ -8869,6 +9177,160 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.ExpandGroupCapacityHeaders()
         return await self.expand_group_capacity_with_options_async(request, headers, runtime)
 
+    def finish_ticket_with_options(
+        self,
+        tmp_req: aliding_20230426_models.FinishTicketRequest,
+        tmp_header: aliding_20230426_models.FinishTicketHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.FinishTicketResponse:
+        """
+        @summary 完结工单
+        
+        @param tmp_req: FinishTicketRequest
+        @param tmp_header: FinishTicketHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FinishTicketResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.FinishTicketShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.FinishTicketShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.notify):
+            request.notify_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notify, 'Notify', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not UtilClient.is_unset(tmp_req.ticket_memo):
+            request.ticket_memo_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ticket_memo, 'TicketMemo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.notify_shrink):
+            body['Notify'] = request.notify_shrink
+        if not UtilClient.is_unset(request.open_team_id):
+            body['OpenTeamId'] = request.open_team_id
+        if not UtilClient.is_unset(request.open_ticket_id):
+            body['OpenTicketId'] = request.open_ticket_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.ticket_memo_shrink):
+            body['TicketMemo'] = request.ticket_memo_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='FinishTicket',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ticket/finishTicket',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.FinishTicketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def finish_ticket_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.FinishTicketRequest,
+        tmp_header: aliding_20230426_models.FinishTicketHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.FinishTicketResponse:
+        """
+        @summary 完结工单
+        
+        @param tmp_req: FinishTicketRequest
+        @param tmp_header: FinishTicketHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FinishTicketResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.FinishTicketShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.FinishTicketShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.notify):
+            request.notify_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notify, 'Notify', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not UtilClient.is_unset(tmp_req.ticket_memo):
+            request.ticket_memo_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ticket_memo, 'TicketMemo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.notify_shrink):
+            body['Notify'] = request.notify_shrink
+        if not UtilClient.is_unset(request.open_team_id):
+            body['OpenTeamId'] = request.open_team_id
+        if not UtilClient.is_unset(request.open_ticket_id):
+            body['OpenTicketId'] = request.open_ticket_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.ticket_memo_shrink):
+            body['TicketMemo'] = request.ticket_memo_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='FinishTicket',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ticket/finishTicket',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.FinishTicketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def finish_ticket(
+        self,
+        request: aliding_20230426_models.FinishTicketRequest,
+    ) -> aliding_20230426_models.FinishTicketResponse:
+        """
+        @summary 完结工单
+        
+        @param request: FinishTicketRequest
+        @return: FinishTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.FinishTicketHeaders()
+        return self.finish_ticket_with_options(request, headers, runtime)
+
+    async def finish_ticket_async(
+        self,
+        request: aliding_20230426_models.FinishTicketRequest,
+    ) -> aliding_20230426_models.FinishTicketResponse:
+        """
+        @summary 完结工单
+        
+        @param request: FinishTicketRequest
+        @return: FinishTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.FinishTicketHeaders()
+        return await self.finish_ticket_with_options_async(request, headers, runtime)
+
     def get_activity_list_with_options(
         self,
         request: aliding_20230426_models.GetActivityListRequest,
@@ -10833,6 +11295,148 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.GetFormListInAppHeaders()
         return await self.get_form_list_in_app_with_options_async(request, headers, runtime)
 
+    def get_group_live_list_with_options(
+        self,
+        tmp_req: aliding_20230426_models.GetGroupLiveListRequest,
+        tmp_header: aliding_20230426_models.GetGroupLiveListHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetGroupLiveListResponse:
+        """
+        @summary 查询群内直播信息(最早支持2024年01月数据)
+        
+        @param tmp_req: GetGroupLiveListRequest
+        @param tmp_header: GetGroupLiveListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGroupLiveListResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetGroupLiveListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetGroupLiveListShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.open_conversation_id):
+            body['OpenConversationId'] = request.open_conversation_id
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetGroupLiveList',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ysp/getGroupLiveList',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetGroupLiveListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_group_live_list_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.GetGroupLiveListRequest,
+        tmp_header: aliding_20230426_models.GetGroupLiveListHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetGroupLiveListResponse:
+        """
+        @summary 查询群内直播信息(最早支持2024年01月数据)
+        
+        @param tmp_req: GetGroupLiveListRequest
+        @param tmp_header: GetGroupLiveListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGroupLiveListResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetGroupLiveListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetGroupLiveListShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.open_conversation_id):
+            body['OpenConversationId'] = request.open_conversation_id
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetGroupLiveList',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ysp/getGroupLiveList',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetGroupLiveListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_group_live_list(
+        self,
+        request: aliding_20230426_models.GetGroupLiveListRequest,
+    ) -> aliding_20230426_models.GetGroupLiveListResponse:
+        """
+        @summary 查询群内直播信息(最早支持2024年01月数据)
+        
+        @param request: GetGroupLiveListRequest
+        @return: GetGroupLiveListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetGroupLiveListHeaders()
+        return self.get_group_live_list_with_options(request, headers, runtime)
+
+    async def get_group_live_list_async(
+        self,
+        request: aliding_20230426_models.GetGroupLiveListRequest,
+    ) -> aliding_20230426_models.GetGroupLiveListResponse:
+        """
+        @summary 查询群内直播信息(最早支持2024年01月数据)
+        
+        @param request: GetGroupLiveListRequest
+        @return: GetGroupLiveListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetGroupLiveListHeaders()
+        return await self.get_group_live_list_with_options_async(request, headers, runtime)
+
     def get_inner_group_members_with_options(
         self,
         request: aliding_20230426_models.GetInnerGroupMembersRequest,
@@ -12158,6 +12762,558 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetMineWorkspaceHeaders()
         return await self.get_mine_workspace_with_options_async(request, headers, runtime)
+
+    def get_multi_dim_table_all_fields_with_options(
+        self,
+        tmp_req: aliding_20230426_models.GetMultiDimTableAllFieldsRequest,
+        tmp_header: aliding_20230426_models.GetMultiDimTableAllFieldsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetMultiDimTableAllFieldsResponse:
+        """
+        @summary 获取所有字段
+        
+        @param tmp_req: GetMultiDimTableAllFieldsRequest
+        @param tmp_header: GetMultiDimTableAllFieldsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMultiDimTableAllFieldsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetMultiDimTableAllFieldsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetMultiDimTableAllFieldsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.base_id):
+            body['BaseId'] = request.base_id
+        if not UtilClient.is_unset(request.sheet_id_or_name):
+            body['SheetIdOrName'] = request.sheet_id_or_name
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetMultiDimTableAllFields',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/table/getMultiDimTableAllFields',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetMultiDimTableAllFieldsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_multi_dim_table_all_fields_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.GetMultiDimTableAllFieldsRequest,
+        tmp_header: aliding_20230426_models.GetMultiDimTableAllFieldsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetMultiDimTableAllFieldsResponse:
+        """
+        @summary 获取所有字段
+        
+        @param tmp_req: GetMultiDimTableAllFieldsRequest
+        @param tmp_header: GetMultiDimTableAllFieldsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMultiDimTableAllFieldsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetMultiDimTableAllFieldsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetMultiDimTableAllFieldsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.base_id):
+            body['BaseId'] = request.base_id
+        if not UtilClient.is_unset(request.sheet_id_or_name):
+            body['SheetIdOrName'] = request.sheet_id_or_name
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetMultiDimTableAllFields',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/table/getMultiDimTableAllFields',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetMultiDimTableAllFieldsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_multi_dim_table_all_fields(
+        self,
+        request: aliding_20230426_models.GetMultiDimTableAllFieldsRequest,
+    ) -> aliding_20230426_models.GetMultiDimTableAllFieldsResponse:
+        """
+        @summary 获取所有字段
+        
+        @param request: GetMultiDimTableAllFieldsRequest
+        @return: GetMultiDimTableAllFieldsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetMultiDimTableAllFieldsHeaders()
+        return self.get_multi_dim_table_all_fields_with_options(request, headers, runtime)
+
+    async def get_multi_dim_table_all_fields_async(
+        self,
+        request: aliding_20230426_models.GetMultiDimTableAllFieldsRequest,
+    ) -> aliding_20230426_models.GetMultiDimTableAllFieldsResponse:
+        """
+        @summary 获取所有字段
+        
+        @param request: GetMultiDimTableAllFieldsRequest
+        @return: GetMultiDimTableAllFieldsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetMultiDimTableAllFieldsHeaders()
+        return await self.get_multi_dim_table_all_fields_with_options_async(request, headers, runtime)
+
+    def get_multi_dim_table_all_sheets_with_options(
+        self,
+        tmp_req: aliding_20230426_models.GetMultiDimTableAllSheetsRequest,
+        tmp_header: aliding_20230426_models.GetMultiDimTableAllSheetsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetMultiDimTableAllSheetsResponse:
+        """
+        @summary 获取所有数据表
+        
+        @param tmp_req: GetMultiDimTableAllSheetsRequest
+        @param tmp_header: GetMultiDimTableAllSheetsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMultiDimTableAllSheetsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetMultiDimTableAllSheetsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetMultiDimTableAllSheetsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.base_id):
+            body['BaseId'] = request.base_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetMultiDimTableAllSheets',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/table/getMultiDimTableAllSheets',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetMultiDimTableAllSheetsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_multi_dim_table_all_sheets_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.GetMultiDimTableAllSheetsRequest,
+        tmp_header: aliding_20230426_models.GetMultiDimTableAllSheetsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetMultiDimTableAllSheetsResponse:
+        """
+        @summary 获取所有数据表
+        
+        @param tmp_req: GetMultiDimTableAllSheetsRequest
+        @param tmp_header: GetMultiDimTableAllSheetsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMultiDimTableAllSheetsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetMultiDimTableAllSheetsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetMultiDimTableAllSheetsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.base_id):
+            body['BaseId'] = request.base_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetMultiDimTableAllSheets',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/table/getMultiDimTableAllSheets',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetMultiDimTableAllSheetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_multi_dim_table_all_sheets(
+        self,
+        request: aliding_20230426_models.GetMultiDimTableAllSheetsRequest,
+    ) -> aliding_20230426_models.GetMultiDimTableAllSheetsResponse:
+        """
+        @summary 获取所有数据表
+        
+        @param request: GetMultiDimTableAllSheetsRequest
+        @return: GetMultiDimTableAllSheetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetMultiDimTableAllSheetsHeaders()
+        return self.get_multi_dim_table_all_sheets_with_options(request, headers, runtime)
+
+    async def get_multi_dim_table_all_sheets_async(
+        self,
+        request: aliding_20230426_models.GetMultiDimTableAllSheetsRequest,
+    ) -> aliding_20230426_models.GetMultiDimTableAllSheetsResponse:
+        """
+        @summary 获取所有数据表
+        
+        @param request: GetMultiDimTableAllSheetsRequest
+        @return: GetMultiDimTableAllSheetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetMultiDimTableAllSheetsHeaders()
+        return await self.get_multi_dim_table_all_sheets_with_options_async(request, headers, runtime)
+
+    def get_multi_dim_table_record_with_options(
+        self,
+        tmp_req: aliding_20230426_models.GetMultiDimTableRecordRequest,
+        tmp_header: aliding_20230426_models.GetMultiDimTableRecordHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetMultiDimTableRecordResponse:
+        """
+        @summary 获取记录
+        
+        @param tmp_req: GetMultiDimTableRecordRequest
+        @param tmp_header: GetMultiDimTableRecordHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMultiDimTableRecordResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetMultiDimTableRecordShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetMultiDimTableRecordShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.base_id):
+            body['BaseId'] = request.base_id
+        if not UtilClient.is_unset(request.record_id):
+            body['RecordId'] = request.record_id
+        if not UtilClient.is_unset(request.sheet_id_or_name):
+            body['SheetIdOrName'] = request.sheet_id_or_name
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetMultiDimTableRecord',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/table/getMultiDimTableRecord',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetMultiDimTableRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_multi_dim_table_record_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.GetMultiDimTableRecordRequest,
+        tmp_header: aliding_20230426_models.GetMultiDimTableRecordHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetMultiDimTableRecordResponse:
+        """
+        @summary 获取记录
+        
+        @param tmp_req: GetMultiDimTableRecordRequest
+        @param tmp_header: GetMultiDimTableRecordHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMultiDimTableRecordResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetMultiDimTableRecordShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetMultiDimTableRecordShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.base_id):
+            body['BaseId'] = request.base_id
+        if not UtilClient.is_unset(request.record_id):
+            body['RecordId'] = request.record_id
+        if not UtilClient.is_unset(request.sheet_id_or_name):
+            body['SheetIdOrName'] = request.sheet_id_or_name
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetMultiDimTableRecord',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/table/getMultiDimTableRecord',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetMultiDimTableRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_multi_dim_table_record(
+        self,
+        request: aliding_20230426_models.GetMultiDimTableRecordRequest,
+    ) -> aliding_20230426_models.GetMultiDimTableRecordResponse:
+        """
+        @summary 获取记录
+        
+        @param request: GetMultiDimTableRecordRequest
+        @return: GetMultiDimTableRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetMultiDimTableRecordHeaders()
+        return self.get_multi_dim_table_record_with_options(request, headers, runtime)
+
+    async def get_multi_dim_table_record_async(
+        self,
+        request: aliding_20230426_models.GetMultiDimTableRecordRequest,
+    ) -> aliding_20230426_models.GetMultiDimTableRecordResponse:
+        """
+        @summary 获取记录
+        
+        @param request: GetMultiDimTableRecordRequest
+        @return: GetMultiDimTableRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetMultiDimTableRecordHeaders()
+        return await self.get_multi_dim_table_record_with_options_async(request, headers, runtime)
+
+    def get_multi_dim_table_sheet_with_options(
+        self,
+        tmp_req: aliding_20230426_models.GetMultiDimTableSheetRequest,
+        tmp_header: aliding_20230426_models.GetMultiDimTableSheetHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetMultiDimTableSheetResponse:
+        """
+        @summary 获取数据表
+        
+        @param tmp_req: GetMultiDimTableSheetRequest
+        @param tmp_header: GetMultiDimTableSheetHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMultiDimTableSheetResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetMultiDimTableSheetShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetMultiDimTableSheetShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.base_id):
+            body['BaseId'] = request.base_id
+        if not UtilClient.is_unset(request.sheet_id_or_name):
+            body['SheetIdOrName'] = request.sheet_id_or_name
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetMultiDimTableSheet',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/table/getMultiDimTableSheet',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetMultiDimTableSheetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_multi_dim_table_sheet_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.GetMultiDimTableSheetRequest,
+        tmp_header: aliding_20230426_models.GetMultiDimTableSheetHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetMultiDimTableSheetResponse:
+        """
+        @summary 获取数据表
+        
+        @param tmp_req: GetMultiDimTableSheetRequest
+        @param tmp_header: GetMultiDimTableSheetHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMultiDimTableSheetResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetMultiDimTableSheetShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetMultiDimTableSheetShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.base_id):
+            body['BaseId'] = request.base_id
+        if not UtilClient.is_unset(request.sheet_id_or_name):
+            body['SheetIdOrName'] = request.sheet_id_or_name
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetMultiDimTableSheet',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/table/getMultiDimTableSheet',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetMultiDimTableSheetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_multi_dim_table_sheet(
+        self,
+        request: aliding_20230426_models.GetMultiDimTableSheetRequest,
+    ) -> aliding_20230426_models.GetMultiDimTableSheetResponse:
+        """
+        @summary 获取数据表
+        
+        @param request: GetMultiDimTableSheetRequest
+        @return: GetMultiDimTableSheetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetMultiDimTableSheetHeaders()
+        return self.get_multi_dim_table_sheet_with_options(request, headers, runtime)
+
+    async def get_multi_dim_table_sheet_async(
+        self,
+        request: aliding_20230426_models.GetMultiDimTableSheetRequest,
+    ) -> aliding_20230426_models.GetMultiDimTableSheetResponse:
+        """
+        @summary 获取数据表
+        
+        @param request: GetMultiDimTableSheetRequest
+        @return: GetMultiDimTableSheetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetMultiDimTableSheetHeaders()
+        return await self.get_multi_dim_table_sheet_with_options_async(request, headers, runtime)
 
     def get_multipart_file_upload_infos_with_options(
         self,
@@ -15133,6 +16289,144 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.GetTemplateListByUserIdHeaders()
         return await self.get_template_list_by_user_id_with_options_async(request, headers, runtime)
 
+    def get_ticket_with_options(
+        self,
+        tmp_req: aliding_20230426_models.GetTicketRequest,
+        tmp_header: aliding_20230426_models.GetTicketHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetTicketResponse:
+        """
+        @summary 获取指定工单详情
+        
+        @param tmp_req: GetTicketRequest
+        @param tmp_header: GetTicketHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTicketResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetTicketShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetTicketShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.open_team_id):
+            body['OpenTeamId'] = request.open_team_id
+        if not UtilClient.is_unset(request.open_ticket_id):
+            body['OpenTicketId'] = request.open_ticket_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTicket',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ticket/getTicket',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetTicketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ticket_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.GetTicketRequest,
+        tmp_header: aliding_20230426_models.GetTicketHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetTicketResponse:
+        """
+        @summary 获取指定工单详情
+        
+        @param tmp_req: GetTicketRequest
+        @param tmp_header: GetTicketHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTicketResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetTicketShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetTicketShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.open_team_id):
+            body['OpenTeamId'] = request.open_team_id
+        if not UtilClient.is_unset(request.open_ticket_id):
+            body['OpenTicketId'] = request.open_ticket_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTicket',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ticket/getTicket',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetTicketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ticket(
+        self,
+        request: aliding_20230426_models.GetTicketRequest,
+    ) -> aliding_20230426_models.GetTicketResponse:
+        """
+        @summary 获取指定工单详情
+        
+        @param request: GetTicketRequest
+        @return: GetTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetTicketHeaders()
+        return self.get_ticket_with_options(request, headers, runtime)
+
+    async def get_ticket_async(
+        self,
+        request: aliding_20230426_models.GetTicketRequest,
+    ) -> aliding_20230426_models.GetTicketResponse:
+        """
+        @summary 获取指定工单详情
+        
+        @param request: GetTicketRequest
+        @return: GetTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetTicketHeaders()
+        return await self.get_ticket_with_options_async(request, headers, runtime)
+
     def get_todo_task_with_options(
         self,
         tmp_req: aliding_20230426_models.GetTodoTaskRequest,
@@ -17855,6 +19149,160 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.ListFormRemarksHeaders()
         return await self.list_form_remarks_with_options_async(request, headers, runtime)
 
+    def list_multi_dim_table_records_with_options(
+        self,
+        tmp_req: aliding_20230426_models.ListMultiDimTableRecordsRequest,
+        tmp_header: aliding_20230426_models.ListMultiDimTableRecordsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.ListMultiDimTableRecordsResponse:
+        """
+        @summary 列出多行记录
+        
+        @param tmp_req: ListMultiDimTableRecordsRequest
+        @param tmp_header: ListMultiDimTableRecordsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMultiDimTableRecordsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.ListMultiDimTableRecordsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.ListMultiDimTableRecordsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.base_id):
+            body['BaseId'] = request.base_id
+        if not UtilClient.is_unset(request.filter_shrink):
+            body['Filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.sheet_id_or_name):
+            body['SheetIdOrName'] = request.sheet_id_or_name
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListMultiDimTableRecords',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/table/listMultiDimTableRecords',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.ListMultiDimTableRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_multi_dim_table_records_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.ListMultiDimTableRecordsRequest,
+        tmp_header: aliding_20230426_models.ListMultiDimTableRecordsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.ListMultiDimTableRecordsResponse:
+        """
+        @summary 列出多行记录
+        
+        @param tmp_req: ListMultiDimTableRecordsRequest
+        @param tmp_header: ListMultiDimTableRecordsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMultiDimTableRecordsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.ListMultiDimTableRecordsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.ListMultiDimTableRecordsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.base_id):
+            body['BaseId'] = request.base_id
+        if not UtilClient.is_unset(request.filter_shrink):
+            body['Filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.sheet_id_or_name):
+            body['SheetIdOrName'] = request.sheet_id_or_name
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListMultiDimTableRecords',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/table/listMultiDimTableRecords',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.ListMultiDimTableRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_multi_dim_table_records(
+        self,
+        request: aliding_20230426_models.ListMultiDimTableRecordsRequest,
+    ) -> aliding_20230426_models.ListMultiDimTableRecordsResponse:
+        """
+        @summary 列出多行记录
+        
+        @param request: ListMultiDimTableRecordsRequest
+        @return: ListMultiDimTableRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.ListMultiDimTableRecordsHeaders()
+        return self.list_multi_dim_table_records_with_options(request, headers, runtime)
+
+    async def list_multi_dim_table_records_async(
+        self,
+        request: aliding_20230426_models.ListMultiDimTableRecordsRequest,
+    ) -> aliding_20230426_models.ListMultiDimTableRecordsResponse:
+        """
+        @summary 列出多行记录
+        
+        @param request: ListMultiDimTableRecordsRequest
+        @return: ListMultiDimTableRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.ListMultiDimTableRecordsHeaders()
+        return await self.list_multi_dim_table_records_with_options_async(request, headers, runtime)
+
     def list_navigation_by_form_type_with_options(
         self,
         request: aliding_20230426_models.ListNavigationByFormTypeRequest,
@@ -18722,6 +20170,144 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ListTemplateHeaders()
         return await self.list_template_with_options_async(request, headers, runtime)
+
+    def list_ticket_operate_record_with_options(
+        self,
+        tmp_req: aliding_20230426_models.ListTicketOperateRecordRequest,
+        tmp_header: aliding_20230426_models.ListTicketOperateRecordHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.ListTicketOperateRecordResponse:
+        """
+        @summary 查询工单操作记录
+        
+        @param tmp_req: ListTicketOperateRecordRequest
+        @param tmp_header: ListTicketOperateRecordHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTicketOperateRecordResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.ListTicketOperateRecordShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.ListTicketOperateRecordShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.open_team_id):
+            body['OpenTeamId'] = request.open_team_id
+        if not UtilClient.is_unset(request.open_ticket_id):
+            body['OpenTicketId'] = request.open_ticket_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTicketOperateRecord',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ticket/listTicketOperateRecord',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.ListTicketOperateRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_ticket_operate_record_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.ListTicketOperateRecordRequest,
+        tmp_header: aliding_20230426_models.ListTicketOperateRecordHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.ListTicketOperateRecordResponse:
+        """
+        @summary 查询工单操作记录
+        
+        @param tmp_req: ListTicketOperateRecordRequest
+        @param tmp_header: ListTicketOperateRecordHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTicketOperateRecordResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.ListTicketOperateRecordShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.ListTicketOperateRecordShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.open_team_id):
+            body['OpenTeamId'] = request.open_team_id
+        if not UtilClient.is_unset(request.open_ticket_id):
+            body['OpenTicketId'] = request.open_ticket_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTicketOperateRecord',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ticket/listTicketOperateRecord',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.ListTicketOperateRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_ticket_operate_record(
+        self,
+        request: aliding_20230426_models.ListTicketOperateRecordRequest,
+    ) -> aliding_20230426_models.ListTicketOperateRecordResponse:
+        """
+        @summary 查询工单操作记录
+        
+        @param request: ListTicketOperateRecordRequest
+        @return: ListTicketOperateRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.ListTicketOperateRecordHeaders()
+        return self.list_ticket_operate_record_with_options(request, headers, runtime)
+
+    async def list_ticket_operate_record_async(
+        self,
+        request: aliding_20230426_models.ListTicketOperateRecordRequest,
+    ) -> aliding_20230426_models.ListTicketOperateRecordResponse:
+        """
+        @summary 查询工单操作记录
+        
+        @param request: ListTicketOperateRecordRequest
+        @return: ListTicketOperateRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.ListTicketOperateRecordHeaders()
+        return await self.list_ticket_operate_record_with_options_async(request, headers, runtime)
 
     def list_workspaces_with_options(
         self,
@@ -19910,6 +21496,148 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryDentryHeaders()
         return await self.query_dentry_with_options_async(request, headers, runtime)
+
+    def query_group_live_info_with_options(
+        self,
+        tmp_req: aliding_20230426_models.QueryGroupLiveInfoRequest,
+        tmp_header: aliding_20230426_models.QueryGroupLiveInfoHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.QueryGroupLiveInfoResponse:
+        """
+        @summary 查询直播信息
+        
+        @param tmp_req: QueryGroupLiveInfoRequest
+        @param tmp_header: QueryGroupLiveInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryGroupLiveInfoResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.QueryGroupLiveInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.QueryGroupLiveInfoShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.anchor_union_id):
+            query['AnchorUnionId'] = request.anchor_union_id
+        if not UtilClient.is_unset(request.live_uuid):
+            query['LiveUuid'] = request.live_uuid
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryGroupLiveInfo',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ysp/queryGroupLiveInfo',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.QueryGroupLiveInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_group_live_info_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.QueryGroupLiveInfoRequest,
+        tmp_header: aliding_20230426_models.QueryGroupLiveInfoHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.QueryGroupLiveInfoResponse:
+        """
+        @summary 查询直播信息
+        
+        @param tmp_req: QueryGroupLiveInfoRequest
+        @param tmp_header: QueryGroupLiveInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryGroupLiveInfoResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.QueryGroupLiveInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.QueryGroupLiveInfoShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.anchor_union_id):
+            query['AnchorUnionId'] = request.anchor_union_id
+        if not UtilClient.is_unset(request.live_uuid):
+            query['LiveUuid'] = request.live_uuid
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryGroupLiveInfo',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ysp/queryGroupLiveInfo',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.QueryGroupLiveInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_group_live_info(
+        self,
+        request: aliding_20230426_models.QueryGroupLiveInfoRequest,
+    ) -> aliding_20230426_models.QueryGroupLiveInfoResponse:
+        """
+        @summary 查询直播信息
+        
+        @param request: QueryGroupLiveInfoRequest
+        @return: QueryGroupLiveInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.QueryGroupLiveInfoHeaders()
+        return self.query_group_live_info_with_options(request, headers, runtime)
+
+    async def query_group_live_info_async(
+        self,
+        request: aliding_20230426_models.QueryGroupLiveInfoRequest,
+    ) -> aliding_20230426_models.QueryGroupLiveInfoResponse:
+        """
+        @summary 查询直播信息
+        
+        @param request: QueryGroupLiveInfoRequest
+        @return: QueryGroupLiveInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.QueryGroupLiveInfoHeaders()
+        return await self.query_group_live_info_with_options_async(request, headers, runtime)
 
     def query_live_info_with_options(
         self,
@@ -22970,6 +24698,148 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.RemoveMeetingRoomsHeaders()
         return await self.remove_meeting_rooms_with_options_async(request, headers, runtime)
+
+    def respond_event_with_options(
+        self,
+        tmp_req: aliding_20230426_models.RespondEventRequest,
+        tmp_header: aliding_20230426_models.RespondEventHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.RespondEventResponse:
+        """
+        @summary 设置日程响应邀请状态
+        
+        @param tmp_req: RespondEventRequest
+        @param tmp_header: RespondEventHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RespondEventResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.RespondEventShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.RespondEventShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.calendar_id):
+            body['CalendarId'] = request.calendar_id
+        if not UtilClient.is_unset(request.event_id):
+            body['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.response_status):
+            body['ResponseStatus'] = request.response_status
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RespondEvent',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/calendar/respondEvent',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.RespondEventResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def respond_event_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.RespondEventRequest,
+        tmp_header: aliding_20230426_models.RespondEventHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.RespondEventResponse:
+        """
+        @summary 设置日程响应邀请状态
+        
+        @param tmp_req: RespondEventRequest
+        @param tmp_header: RespondEventHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RespondEventResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.RespondEventShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.RespondEventShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.calendar_id):
+            body['CalendarId'] = request.calendar_id
+        if not UtilClient.is_unset(request.event_id):
+            body['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.response_status):
+            body['ResponseStatus'] = request.response_status
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RespondEvent',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/calendar/respondEvent',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.RespondEventResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def respond_event(
+        self,
+        request: aliding_20230426_models.RespondEventRequest,
+    ) -> aliding_20230426_models.RespondEventResponse:
+        """
+        @summary 设置日程响应邀请状态
+        
+        @param request: RespondEventRequest
+        @return: RespondEventResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.RespondEventHeaders()
+        return self.respond_event_with_options(request, headers, runtime)
+
+    async def respond_event_async(
+        self,
+        request: aliding_20230426_models.RespondEventRequest,
+    ) -> aliding_20230426_models.RespondEventResponse:
+        """
+        @summary 设置日程响应邀请状态
+        
+        @param request: RespondEventRequest
+        @return: RespondEventResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.RespondEventHeaders()
+        return await self.respond_event_with_options_async(request, headers, runtime)
 
     def save_content_with_options(
         self,
@@ -26628,6 +28498,168 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.TerminateInstanceHeaders()
         return await self.terminate_instance_with_options_async(request, headers, runtime)
+
+    def transfer_ticket_with_options(
+        self,
+        tmp_req: aliding_20230426_models.TransferTicketRequest,
+        tmp_header: aliding_20230426_models.TransferTicketHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.TransferTicketResponse:
+        """
+        @summary 转交工单
+        
+        @param tmp_req: TransferTicketRequest
+        @param tmp_header: TransferTicketHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransferTicketResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.TransferTicketShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.TransferTicketShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.notify):
+            request.notify_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notify, 'Notify', 'json')
+        if not UtilClient.is_unset(tmp_req.processor_user_ids):
+            request.processor_user_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.processor_user_ids, 'ProcessorUserIds', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not UtilClient.is_unset(tmp_req.ticket_memo):
+            request.ticket_memo_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ticket_memo, 'TicketMemo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.notify_shrink):
+            body['Notify'] = request.notify_shrink
+        if not UtilClient.is_unset(request.open_team_id):
+            body['OpenTeamId'] = request.open_team_id
+        if not UtilClient.is_unset(request.open_ticket_id):
+            body['OpenTicketId'] = request.open_ticket_id
+        if not UtilClient.is_unset(request.processor_user_ids_shrink):
+            body['ProcessorUserIds'] = request.processor_user_ids_shrink
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.ticket_memo_shrink):
+            body['TicketMemo'] = request.ticket_memo_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TransferTicket',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ticket/transferTicket',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.TransferTicketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def transfer_ticket_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.TransferTicketRequest,
+        tmp_header: aliding_20230426_models.TransferTicketHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.TransferTicketResponse:
+        """
+        @summary 转交工单
+        
+        @param tmp_req: TransferTicketRequest
+        @param tmp_header: TransferTicketHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransferTicketResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.TransferTicketShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.TransferTicketShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.notify):
+            request.notify_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notify, 'Notify', 'json')
+        if not UtilClient.is_unset(tmp_req.processor_user_ids):
+            request.processor_user_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.processor_user_ids, 'ProcessorUserIds', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not UtilClient.is_unset(tmp_req.ticket_memo):
+            request.ticket_memo_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ticket_memo, 'TicketMemo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.notify_shrink):
+            body['Notify'] = request.notify_shrink
+        if not UtilClient.is_unset(request.open_team_id):
+            body['OpenTeamId'] = request.open_team_id
+        if not UtilClient.is_unset(request.open_ticket_id):
+            body['OpenTicketId'] = request.open_ticket_id
+        if not UtilClient.is_unset(request.processor_user_ids_shrink):
+            body['ProcessorUserIds'] = request.processor_user_ids_shrink
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.ticket_memo_shrink):
+            body['TicketMemo'] = request.ticket_memo_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TransferTicket',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ticket/transferTicket',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.TransferTicketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def transfer_ticket(
+        self,
+        request: aliding_20230426_models.TransferTicketRequest,
+    ) -> aliding_20230426_models.TransferTicketResponse:
+        """
+        @summary 转交工单
+        
+        @param request: TransferTicketRequest
+        @return: TransferTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.TransferTicketHeaders()
+        return self.transfer_ticket_with_options(request, headers, runtime)
+
+    async def transfer_ticket_async(
+        self,
+        request: aliding_20230426_models.TransferTicketRequest,
+    ) -> aliding_20230426_models.TransferTicketResponse:
+        """
+        @summary 转交工单
+        
+        @param request: TransferTicketRequest
+        @return: TransferTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.TransferTicketHeaders()
+        return await self.transfer_ticket_with_options_async(request, headers, runtime)
 
     def unsubscribe_calendar_with_options(
         self,

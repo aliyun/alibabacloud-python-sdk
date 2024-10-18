@@ -1,3 +1,20 @@
+2024-10-18 Version: 2.26.0
+- Support API AddTicketMemo.
+- Support API AssignTicket.
+- Support API FinishTicket.
+- Support API GetGroupLiveList.
+- Support API GetMultiDimTableAllFields.
+- Support API GetMultiDimTableAllSheets.
+- Support API GetMultiDimTableRecord.
+- Support API GetMultiDimTableSheet.
+- Support API GetTicket.
+- Support API ListMultiDimTableRecords.
+- Support API ListTicketOperateRecord.
+- Support API QueryGroupLiveInfo.
+- Support API RespondEvent.
+- Support API TransferTicket.
+
+
 2024-09-18 Version: 2.25.0
 - Support API AddRecordPermission.
 - Support API GetTodoTask.

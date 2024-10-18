@@ -1587,6 +1587,382 @@ class AddScenegroupMemberResponse(TeaModel):
         return self
 
 
+class AddTicketMemoHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class AddTicketMemoHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: AddTicketMemoHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = AddTicketMemoHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class AddTicketMemoShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class AddTicketMemoRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class AddTicketMemoRequestTicketMemoAttachments(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        key: str = None,
+    ):
+        self.file_name = file_name
+        self.key = key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.key is not None:
+            result['Key'] = self.key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        return self
+
+
+class AddTicketMemoRequestTicketMemo(TeaModel):
+    def __init__(
+        self,
+        attachments: List[AddTicketMemoRequestTicketMemoAttachments] = None,
+        memo: str = None,
+    ):
+        self.attachments = attachments
+        self.memo = memo
+
+    def validate(self):
+        if self.attachments:
+            for k in self.attachments:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Attachments'] = []
+        if self.attachments is not None:
+            for k in self.attachments:
+                result['Attachments'].append(k.to_map() if k else None)
+        if self.memo is not None:
+            result['Memo'] = self.memo
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.attachments = []
+        if m.get('Attachments') is not None:
+            for k in m.get('Attachments'):
+                temp_model = AddTicketMemoRequestTicketMemoAttachments()
+                self.attachments.append(temp_model.from_map(k))
+        if m.get('Memo') is not None:
+            self.memo = m.get('Memo')
+        return self
+
+
+class AddTicketMemoRequest(TeaModel):
+    def __init__(
+        self,
+        open_team_id: str = None,
+        open_ticket_id: str = None,
+        tenant_context: AddTicketMemoRequestTenantContext = None,
+        ticket_memo: AddTicketMemoRequestTicketMemo = None,
+    ):
+        # This parameter is required.
+        self.open_team_id = open_team_id
+        # This parameter is required.
+        self.open_ticket_id = open_ticket_id
+        self.tenant_context = tenant_context
+        self.ticket_memo = ticket_memo
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+        if self.ticket_memo:
+            self.ticket_memo.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.open_team_id is not None:
+            result['OpenTeamId'] = self.open_team_id
+        if self.open_ticket_id is not None:
+            result['OpenTicketId'] = self.open_ticket_id
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        if self.ticket_memo is not None:
+            result['TicketMemo'] = self.ticket_memo.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpenTeamId') is not None:
+            self.open_team_id = m.get('OpenTeamId')
+        if m.get('OpenTicketId') is not None:
+            self.open_ticket_id = m.get('OpenTicketId')
+        if m.get('TenantContext') is not None:
+            temp_model = AddTicketMemoRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        if m.get('TicketMemo') is not None:
+            temp_model = AddTicketMemoRequestTicketMemo()
+            self.ticket_memo = temp_model.from_map(m['TicketMemo'])
+        return self
+
+
+class AddTicketMemoShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        open_team_id: str = None,
+        open_ticket_id: str = None,
+        tenant_context_shrink: str = None,
+        ticket_memo_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.open_team_id = open_team_id
+        # This parameter is required.
+        self.open_ticket_id = open_ticket_id
+        self.tenant_context_shrink = tenant_context_shrink
+        self.ticket_memo_shrink = ticket_memo_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.open_team_id is not None:
+            result['OpenTeamId'] = self.open_team_id
+        if self.open_ticket_id is not None:
+            result['OpenTicketId'] = self.open_ticket_id
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        if self.ticket_memo_shrink is not None:
+            result['TicketMemo'] = self.ticket_memo_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpenTeamId') is not None:
+            self.open_team_id = m.get('OpenTeamId')
+        if m.get('OpenTicketId') is not None:
+            self.open_ticket_id = m.get('OpenTicketId')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        if m.get('TicketMemo') is not None:
+            self.ticket_memo_shrink = m.get('TicketMemo')
+        return self
+
+
+class AddTicketMemoResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.request_id = request_id
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class AddTicketMemoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddTicketMemoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddTicketMemoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AddWorkspaceHeadersAccountContext(TeaModel):
     def __init__(
         self,
@@ -2716,6 +3092,448 @@ class AddWorkspaceMembersResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AddWorkspaceMembersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AssignTicketHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class AssignTicketHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: AssignTicketHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = AssignTicketHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class AssignTicketShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class AssignTicketRequestNotify(TeaModel):
+    def __init__(
+        self,
+        group_notice_receiver_user_ids: List[str] = None,
+        notice_all_group_member: bool = None,
+        work_notice_receiver_user_ids: List[str] = None,
+    ):
+        self.group_notice_receiver_user_ids = group_notice_receiver_user_ids
+        self.notice_all_group_member = notice_all_group_member
+        self.work_notice_receiver_user_ids = work_notice_receiver_user_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_notice_receiver_user_ids is not None:
+            result['GroupNoticeReceiverUserIds'] = self.group_notice_receiver_user_ids
+        if self.notice_all_group_member is not None:
+            result['NoticeAllGroupMember'] = self.notice_all_group_member
+        if self.work_notice_receiver_user_ids is not None:
+            result['WorkNoticeReceiverUserIds'] = self.work_notice_receiver_user_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupNoticeReceiverUserIds') is not None:
+            self.group_notice_receiver_user_ids = m.get('GroupNoticeReceiverUserIds')
+        if m.get('NoticeAllGroupMember') is not None:
+            self.notice_all_group_member = m.get('NoticeAllGroupMember')
+        if m.get('WorkNoticeReceiverUserIds') is not None:
+            self.work_notice_receiver_user_ids = m.get('WorkNoticeReceiverUserIds')
+        return self
+
+
+class AssignTicketRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class AssignTicketRequestTicketMemoAttachments(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        key: str = None,
+    ):
+        self.file_name = file_name
+        self.key = key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.key is not None:
+            result['Key'] = self.key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        return self
+
+
+class AssignTicketRequestTicketMemo(TeaModel):
+    def __init__(
+        self,
+        attachments: List[AssignTicketRequestTicketMemoAttachments] = None,
+        memo: str = None,
+    ):
+        self.attachments = attachments
+        self.memo = memo
+
+    def validate(self):
+        if self.attachments:
+            for k in self.attachments:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Attachments'] = []
+        if self.attachments is not None:
+            for k in self.attachments:
+                result['Attachments'].append(k.to_map() if k else None)
+        if self.memo is not None:
+            result['Memo'] = self.memo
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.attachments = []
+        if m.get('Attachments') is not None:
+            for k in m.get('Attachments'):
+                temp_model = AssignTicketRequestTicketMemoAttachments()
+                self.attachments.append(temp_model.from_map(k))
+        if m.get('Memo') is not None:
+            self.memo = m.get('Memo')
+        return self
+
+
+class AssignTicketRequest(TeaModel):
+    def __init__(
+        self,
+        notify: AssignTicketRequestNotify = None,
+        open_team_id: str = None,
+        open_ticket_id: str = None,
+        processor_user_ids: List[str] = None,
+        tenant_context: AssignTicketRequestTenantContext = None,
+        ticket_memo: AssignTicketRequestTicketMemo = None,
+    ):
+        self.notify = notify
+        # This parameter is required.
+        self.open_team_id = open_team_id
+        # This parameter is required.
+        self.open_ticket_id = open_ticket_id
+        self.processor_user_ids = processor_user_ids
+        self.tenant_context = tenant_context
+        self.ticket_memo = ticket_memo
+
+    def validate(self):
+        if self.notify:
+            self.notify.validate()
+        if self.tenant_context:
+            self.tenant_context.validate()
+        if self.ticket_memo:
+            self.ticket_memo.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.notify is not None:
+            result['Notify'] = self.notify.to_map()
+        if self.open_team_id is not None:
+            result['OpenTeamId'] = self.open_team_id
+        if self.open_ticket_id is not None:
+            result['OpenTicketId'] = self.open_ticket_id
+        if self.processor_user_ids is not None:
+            result['ProcessorUserIds'] = self.processor_user_ids
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        if self.ticket_memo is not None:
+            result['TicketMemo'] = self.ticket_memo.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Notify') is not None:
+            temp_model = AssignTicketRequestNotify()
+            self.notify = temp_model.from_map(m['Notify'])
+        if m.get('OpenTeamId') is not None:
+            self.open_team_id = m.get('OpenTeamId')
+        if m.get('OpenTicketId') is not None:
+            self.open_ticket_id = m.get('OpenTicketId')
+        if m.get('ProcessorUserIds') is not None:
+            self.processor_user_ids = m.get('ProcessorUserIds')
+        if m.get('TenantContext') is not None:
+            temp_model = AssignTicketRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        if m.get('TicketMemo') is not None:
+            temp_model = AssignTicketRequestTicketMemo()
+            self.ticket_memo = temp_model.from_map(m['TicketMemo'])
+        return self
+
+
+class AssignTicketShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        notify_shrink: str = None,
+        open_team_id: str = None,
+        open_ticket_id: str = None,
+        processor_user_ids_shrink: str = None,
+        tenant_context_shrink: str = None,
+        ticket_memo_shrink: str = None,
+    ):
+        self.notify_shrink = notify_shrink
+        # This parameter is required.
+        self.open_team_id = open_team_id
+        # This parameter is required.
+        self.open_ticket_id = open_ticket_id
+        self.processor_user_ids_shrink = processor_user_ids_shrink
+        self.tenant_context_shrink = tenant_context_shrink
+        self.ticket_memo_shrink = ticket_memo_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.notify_shrink is not None:
+            result['Notify'] = self.notify_shrink
+        if self.open_team_id is not None:
+            result['OpenTeamId'] = self.open_team_id
+        if self.open_ticket_id is not None:
+            result['OpenTicketId'] = self.open_ticket_id
+        if self.processor_user_ids_shrink is not None:
+            result['ProcessorUserIds'] = self.processor_user_ids_shrink
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        if self.ticket_memo_shrink is not None:
+            result['TicketMemo'] = self.ticket_memo_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Notify') is not None:
+            self.notify_shrink = m.get('Notify')
+        if m.get('OpenTeamId') is not None:
+            self.open_team_id = m.get('OpenTeamId')
+        if m.get('OpenTicketId') is not None:
+            self.open_ticket_id = m.get('OpenTicketId')
+        if m.get('ProcessorUserIds') is not None:
+            self.processor_user_ids_shrink = m.get('ProcessorUserIds')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        if m.get('TicketMemo') is not None:
+            self.ticket_memo_shrink = m.get('TicketMemo')
+        return self
+
+
+class AssignTicketResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.request_id = request_id
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class AssignTicketResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AssignTicketResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AssignTicketResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -20469,6 +21287,436 @@ class ExpandGroupCapacityResponse(TeaModel):
         return self
 
 
+class FinishTicketHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class FinishTicketHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: FinishTicketHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = FinishTicketHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class FinishTicketShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class FinishTicketRequestNotify(TeaModel):
+    def __init__(
+        self,
+        group_notice_receiver_user_ids: List[str] = None,
+        notice_all_group_member: bool = None,
+        work_notice_receiver_user_ids: List[str] = None,
+    ):
+        self.group_notice_receiver_user_ids = group_notice_receiver_user_ids
+        self.notice_all_group_member = notice_all_group_member
+        self.work_notice_receiver_user_ids = work_notice_receiver_user_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_notice_receiver_user_ids is not None:
+            result['GroupNoticeReceiverUserIds'] = self.group_notice_receiver_user_ids
+        if self.notice_all_group_member is not None:
+            result['NoticeAllGroupMember'] = self.notice_all_group_member
+        if self.work_notice_receiver_user_ids is not None:
+            result['WorkNoticeReceiverUserIds'] = self.work_notice_receiver_user_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupNoticeReceiverUserIds') is not None:
+            self.group_notice_receiver_user_ids = m.get('GroupNoticeReceiverUserIds')
+        if m.get('NoticeAllGroupMember') is not None:
+            self.notice_all_group_member = m.get('NoticeAllGroupMember')
+        if m.get('WorkNoticeReceiverUserIds') is not None:
+            self.work_notice_receiver_user_ids = m.get('WorkNoticeReceiverUserIds')
+        return self
+
+
+class FinishTicketRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class FinishTicketRequestTicketMemoAttachments(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        key: str = None,
+    ):
+        self.file_name = file_name
+        self.key = key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.key is not None:
+            result['Key'] = self.key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        return self
+
+
+class FinishTicketRequestTicketMemo(TeaModel):
+    def __init__(
+        self,
+        attachments: List[FinishTicketRequestTicketMemoAttachments] = None,
+        memo: str = None,
+    ):
+        self.attachments = attachments
+        self.memo = memo
+
+    def validate(self):
+        if self.attachments:
+            for k in self.attachments:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Attachments'] = []
+        if self.attachments is not None:
+            for k in self.attachments:
+                result['Attachments'].append(k.to_map() if k else None)
+        if self.memo is not None:
+            result['Memo'] = self.memo
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.attachments = []
+        if m.get('Attachments') is not None:
+            for k in m.get('Attachments'):
+                temp_model = FinishTicketRequestTicketMemoAttachments()
+                self.attachments.append(temp_model.from_map(k))
+        if m.get('Memo') is not None:
+            self.memo = m.get('Memo')
+        return self
+
+
+class FinishTicketRequest(TeaModel):
+    def __init__(
+        self,
+        notify: FinishTicketRequestNotify = None,
+        open_team_id: str = None,
+        open_ticket_id: str = None,
+        tenant_context: FinishTicketRequestTenantContext = None,
+        ticket_memo: FinishTicketRequestTicketMemo = None,
+    ):
+        self.notify = notify
+        # This parameter is required.
+        self.open_team_id = open_team_id
+        # This parameter is required.
+        self.open_ticket_id = open_ticket_id
+        self.tenant_context = tenant_context
+        self.ticket_memo = ticket_memo
+
+    def validate(self):
+        if self.notify:
+            self.notify.validate()
+        if self.tenant_context:
+            self.tenant_context.validate()
+        if self.ticket_memo:
+            self.ticket_memo.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.notify is not None:
+            result['Notify'] = self.notify.to_map()
+        if self.open_team_id is not None:
+            result['OpenTeamId'] = self.open_team_id
+        if self.open_ticket_id is not None:
+            result['OpenTicketId'] = self.open_ticket_id
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        if self.ticket_memo is not None:
+            result['TicketMemo'] = self.ticket_memo.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Notify') is not None:
+            temp_model = FinishTicketRequestNotify()
+            self.notify = temp_model.from_map(m['Notify'])
+        if m.get('OpenTeamId') is not None:
+            self.open_team_id = m.get('OpenTeamId')
+        if m.get('OpenTicketId') is not None:
+            self.open_ticket_id = m.get('OpenTicketId')
+        if m.get('TenantContext') is not None:
+            temp_model = FinishTicketRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        if m.get('TicketMemo') is not None:
+            temp_model = FinishTicketRequestTicketMemo()
+            self.ticket_memo = temp_model.from_map(m['TicketMemo'])
+        return self
+
+
+class FinishTicketShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        notify_shrink: str = None,
+        open_team_id: str = None,
+        open_ticket_id: str = None,
+        tenant_context_shrink: str = None,
+        ticket_memo_shrink: str = None,
+    ):
+        self.notify_shrink = notify_shrink
+        # This parameter is required.
+        self.open_team_id = open_team_id
+        # This parameter is required.
+        self.open_ticket_id = open_ticket_id
+        self.tenant_context_shrink = tenant_context_shrink
+        self.ticket_memo_shrink = ticket_memo_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.notify_shrink is not None:
+            result['Notify'] = self.notify_shrink
+        if self.open_team_id is not None:
+            result['OpenTeamId'] = self.open_team_id
+        if self.open_ticket_id is not None:
+            result['OpenTicketId'] = self.open_ticket_id
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        if self.ticket_memo_shrink is not None:
+            result['TicketMemo'] = self.ticket_memo_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Notify') is not None:
+            self.notify_shrink = m.get('Notify')
+        if m.get('OpenTeamId') is not None:
+            self.open_team_id = m.get('OpenTeamId')
+        if m.get('OpenTicketId') is not None:
+            self.open_ticket_id = m.get('OpenTicketId')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        if m.get('TicketMemo') is not None:
+            self.ticket_memo_shrink = m.get('TicketMemo')
+        return self
+
+
+class FinishTicketResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.request_id = request_id
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class FinishTicketResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: FinishTicketResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = FinishTicketResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetActivityListHeadersAccountContext(TeaModel):
     def __init__(
         self,
@@ -25925,6 +27173,407 @@ class GetFormListInAppResponse(TeaModel):
         return self
 
 
+class GetGroupLiveListHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class GetGroupLiveListHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: GetGroupLiveListHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = GetGroupLiveListHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class GetGroupLiveListShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class GetGroupLiveListRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class GetGroupLiveListRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        open_conversation_id: str = None,
+        start_time: int = None,
+        tenant_context: GetGroupLiveListRequestTenantContext = None,
+    ):
+        # This parameter is required.
+        self.end_time = end_time
+        # This parameter is required.
+        self.open_conversation_id = open_conversation_id
+        # This parameter is required.
+        self.start_time = start_time
+        self.tenant_context = tenant_context
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.open_conversation_id is not None:
+            result['OpenConversationId'] = self.open_conversation_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('OpenConversationId') is not None:
+            self.open_conversation_id = m.get('OpenConversationId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TenantContext') is not None:
+            temp_model = GetGroupLiveListRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        return self
+
+
+class GetGroupLiveListShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        open_conversation_id: str = None,
+        start_time: int = None,
+        tenant_context_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.end_time = end_time
+        # This parameter is required.
+        self.open_conversation_id = open_conversation_id
+        # This parameter is required.
+        self.start_time = start_time
+        self.tenant_context_shrink = tenant_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.open_conversation_id is not None:
+            result['OpenConversationId'] = self.open_conversation_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('OpenConversationId') is not None:
+            self.open_conversation_id = m.get('OpenConversationId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        return self
+
+
+class GetGroupLiveListResponseBodyResultGroupLiveList(TeaModel):
+    def __init__(
+        self,
+        anchor_nickname: str = None,
+        anchor_union_id: str = None,
+        live_end_time: int = None,
+        live_start_time: int = None,
+        live_uuid: str = None,
+        title: str = None,
+    ):
+        self.anchor_nickname = anchor_nickname
+        self.anchor_union_id = anchor_union_id
+        self.live_end_time = live_end_time
+        self.live_start_time = live_start_time
+        self.live_uuid = live_uuid
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.anchor_nickname is not None:
+            result['AnchorNickname'] = self.anchor_nickname
+        if self.anchor_union_id is not None:
+            result['AnchorUnionId'] = self.anchor_union_id
+        if self.live_end_time is not None:
+            result['LiveEndTime'] = self.live_end_time
+        if self.live_start_time is not None:
+            result['LiveStartTime'] = self.live_start_time
+        if self.live_uuid is not None:
+            result['LiveUuid'] = self.live_uuid
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnchorNickname') is not None:
+            self.anchor_nickname = m.get('AnchorNickname')
+        if m.get('AnchorUnionId') is not None:
+            self.anchor_union_id = m.get('AnchorUnionId')
+        if m.get('LiveEndTime') is not None:
+            self.live_end_time = m.get('LiveEndTime')
+        if m.get('LiveStartTime') is not None:
+            self.live_start_time = m.get('LiveStartTime')
+        if m.get('LiveUuid') is not None:
+            self.live_uuid = m.get('LiveUuid')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class GetGroupLiveListResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        group_live_list: List[GetGroupLiveListResponseBodyResultGroupLiveList] = None,
+    ):
+        self.group_live_list = group_live_list
+
+    def validate(self):
+        if self.group_live_list:
+            for k in self.group_live_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['GroupLiveList'] = []
+        if self.group_live_list is not None:
+            for k in self.group_live_list:
+                result['GroupLiveList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.group_live_list = []
+        if m.get('GroupLiveList') is not None:
+            for k in m.get('GroupLiveList'):
+                temp_model = GetGroupLiveListResponseBodyResultGroupLiveList()
+                self.group_live_list.append(temp_model.from_map(k))
+        return self
+
+
+class GetGroupLiveListResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: GetGroupLiveListResponseBodyResult = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = GetGroupLiveListResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class GetGroupLiveListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetGroupLiveListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetGroupLiveListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetInnerGroupMembersHeadersAccountContext(TeaModel):
     def __init__(
         self,
@@ -29835,6 +31484,1367 @@ class GetMineWorkspaceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetMineWorkspaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetMultiDimTableAllFieldsHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class GetMultiDimTableAllFieldsHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: GetMultiDimTableAllFieldsHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = GetMultiDimTableAllFieldsHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class GetMultiDimTableAllFieldsShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class GetMultiDimTableAllFieldsRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class GetMultiDimTableAllFieldsRequest(TeaModel):
+    def __init__(
+        self,
+        base_id: str = None,
+        sheet_id_or_name: str = None,
+        tenant_context: GetMultiDimTableAllFieldsRequestTenantContext = None,
+    ):
+        # This parameter is required.
+        self.base_id = base_id
+        # This parameter is required.
+        self.sheet_id_or_name = sheet_id_or_name
+        self.tenant_context = tenant_context
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.base_id is not None:
+            result['BaseId'] = self.base_id
+        if self.sheet_id_or_name is not None:
+            result['SheetIdOrName'] = self.sheet_id_or_name
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaseId') is not None:
+            self.base_id = m.get('BaseId')
+        if m.get('SheetIdOrName') is not None:
+            self.sheet_id_or_name = m.get('SheetIdOrName')
+        if m.get('TenantContext') is not None:
+            temp_model = GetMultiDimTableAllFieldsRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        return self
+
+
+class GetMultiDimTableAllFieldsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        base_id: str = None,
+        sheet_id_or_name: str = None,
+        tenant_context_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.base_id = base_id
+        # This parameter is required.
+        self.sheet_id_or_name = sheet_id_or_name
+        self.tenant_context_shrink = tenant_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.base_id is not None:
+            result['BaseId'] = self.base_id
+        if self.sheet_id_or_name is not None:
+            result['SheetIdOrName'] = self.sheet_id_or_name
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaseId') is not None:
+            self.base_id = m.get('BaseId')
+        if m.get('SheetIdOrName') is not None:
+            self.sheet_id_or_name = m.get('SheetIdOrName')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        return self
+
+
+class GetMultiDimTableAllFieldsResponseBodyValue(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        name: str = None,
+        property: Dict[str, Any] = None,
+        type: str = None,
+    ):
+        self.id = id
+        self.name = name
+        self.property = property
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.property is not None:
+            result['Property'] = self.property
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Property') is not None:
+            self.property = m.get('Property')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetMultiDimTableAllFieldsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        value: List[GetMultiDimTableAllFieldsResponseBodyValue] = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.request_id = request_id
+        self.value = value
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        if self.value:
+            for k in self.value:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['value'] = []
+        if self.value is not None:
+            for k in self.value:
+                result['value'].append(k.to_map() if k else None)
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.value = []
+        if m.get('value') is not None:
+            for k in m.get('value'):
+                temp_model = GetMultiDimTableAllFieldsResponseBodyValue()
+                self.value.append(temp_model.from_map(k))
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class GetMultiDimTableAllFieldsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetMultiDimTableAllFieldsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetMultiDimTableAllFieldsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetMultiDimTableAllSheetsHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class GetMultiDimTableAllSheetsHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: GetMultiDimTableAllSheetsHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = GetMultiDimTableAllSheetsHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class GetMultiDimTableAllSheetsShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class GetMultiDimTableAllSheetsRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class GetMultiDimTableAllSheetsRequest(TeaModel):
+    def __init__(
+        self,
+        base_id: str = None,
+        tenant_context: GetMultiDimTableAllSheetsRequestTenantContext = None,
+    ):
+        # This parameter is required.
+        self.base_id = base_id
+        self.tenant_context = tenant_context
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.base_id is not None:
+            result['BaseId'] = self.base_id
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaseId') is not None:
+            self.base_id = m.get('BaseId')
+        if m.get('TenantContext') is not None:
+            temp_model = GetMultiDimTableAllSheetsRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        return self
+
+
+class GetMultiDimTableAllSheetsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        base_id: str = None,
+        tenant_context_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.base_id = base_id
+        self.tenant_context_shrink = tenant_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.base_id is not None:
+            result['BaseId'] = self.base_id
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaseId') is not None:
+            self.base_id = m.get('BaseId')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        return self
+
+
+class GetMultiDimTableAllSheetsResponseBodyValue(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class GetMultiDimTableAllSheetsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        value: List[GetMultiDimTableAllSheetsResponseBodyValue] = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.request_id = request_id
+        self.value = value
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        if self.value:
+            for k in self.value:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['value'] = []
+        if self.value is not None:
+            for k in self.value:
+                result['value'].append(k.to_map() if k else None)
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.value = []
+        if m.get('value') is not None:
+            for k in m.get('value'):
+                temp_model = GetMultiDimTableAllSheetsResponseBodyValue()
+                self.value.append(temp_model.from_map(k))
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class GetMultiDimTableAllSheetsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetMultiDimTableAllSheetsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetMultiDimTableAllSheetsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetMultiDimTableRecordHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class GetMultiDimTableRecordHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: GetMultiDimTableRecordHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = GetMultiDimTableRecordHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class GetMultiDimTableRecordShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class GetMultiDimTableRecordRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class GetMultiDimTableRecordRequest(TeaModel):
+    def __init__(
+        self,
+        base_id: str = None,
+        record_id: str = None,
+        sheet_id_or_name: str = None,
+        tenant_context: GetMultiDimTableRecordRequestTenantContext = None,
+    ):
+        # This parameter is required.
+        self.base_id = base_id
+        # This parameter is required.
+        self.record_id = record_id
+        # This parameter is required.
+        self.sheet_id_or_name = sheet_id_or_name
+        self.tenant_context = tenant_context
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.base_id is not None:
+            result['BaseId'] = self.base_id
+        if self.record_id is not None:
+            result['RecordId'] = self.record_id
+        if self.sheet_id_or_name is not None:
+            result['SheetIdOrName'] = self.sheet_id_or_name
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaseId') is not None:
+            self.base_id = m.get('BaseId')
+        if m.get('RecordId') is not None:
+            self.record_id = m.get('RecordId')
+        if m.get('SheetIdOrName') is not None:
+            self.sheet_id_or_name = m.get('SheetIdOrName')
+        if m.get('TenantContext') is not None:
+            temp_model = GetMultiDimTableRecordRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        return self
+
+
+class GetMultiDimTableRecordShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        base_id: str = None,
+        record_id: str = None,
+        sheet_id_or_name: str = None,
+        tenant_context_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.base_id = base_id
+        # This parameter is required.
+        self.record_id = record_id
+        # This parameter is required.
+        self.sheet_id_or_name = sheet_id_or_name
+        self.tenant_context_shrink = tenant_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.base_id is not None:
+            result['BaseId'] = self.base_id
+        if self.record_id is not None:
+            result['RecordId'] = self.record_id
+        if self.sheet_id_or_name is not None:
+            result['SheetIdOrName'] = self.sheet_id_or_name
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaseId') is not None:
+            self.base_id = m.get('BaseId')
+        if m.get('RecordId') is not None:
+            self.record_id = m.get('RecordId')
+        if m.get('SheetIdOrName') is not None:
+            self.sheet_id_or_name = m.get('SheetIdOrName')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        return self
+
+
+class GetMultiDimTableRecordResponseBodyCreatedBy(TeaModel):
+    def __init__(
+        self,
+        user_id: str = None,
+    ):
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GetMultiDimTableRecordResponseBodyLastModifiedBy(TeaModel):
+    def __init__(
+        self,
+        user_id: str = None,
+    ):
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GetMultiDimTableRecordResponseBody(TeaModel):
+    def __init__(
+        self,
+        created_by: GetMultiDimTableRecordResponseBodyCreatedBy = None,
+        created_time: int = None,
+        fields: Dict[str, Any] = None,
+        id: str = None,
+        last_modified_by: GetMultiDimTableRecordResponseBodyLastModifiedBy = None,
+        last_modified_time: int = None,
+        request_id: str = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.created_by = created_by
+        self.created_time = created_time
+        self.fields = fields
+        self.id = id
+        self.last_modified_by = last_modified_by
+        self.last_modified_time = last_modified_time
+        self.request_id = request_id
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        if self.created_by:
+            self.created_by.validate()
+        if self.last_modified_by:
+            self.last_modified_by.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_by is not None:
+            result['CreatedBy'] = self.created_by.to_map()
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.fields is not None:
+            result['Fields'] = self.fields
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.last_modified_by is not None:
+            result['LastModifiedBy'] = self.last_modified_by.to_map()
+        if self.last_modified_time is not None:
+            result['LastModifiedTime'] = self.last_modified_time
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreatedBy') is not None:
+            temp_model = GetMultiDimTableRecordResponseBodyCreatedBy()
+            self.created_by = temp_model.from_map(m['CreatedBy'])
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('Fields') is not None:
+            self.fields = m.get('Fields')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('LastModifiedBy') is not None:
+            temp_model = GetMultiDimTableRecordResponseBodyLastModifiedBy()
+            self.last_modified_by = temp_model.from_map(m['LastModifiedBy'])
+        if m.get('LastModifiedTime') is not None:
+            self.last_modified_time = m.get('LastModifiedTime')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class GetMultiDimTableRecordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetMultiDimTableRecordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetMultiDimTableRecordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetMultiDimTableSheetHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class GetMultiDimTableSheetHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: GetMultiDimTableSheetHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = GetMultiDimTableSheetHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class GetMultiDimTableSheetShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class GetMultiDimTableSheetRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class GetMultiDimTableSheetRequest(TeaModel):
+    def __init__(
+        self,
+        base_id: str = None,
+        sheet_id_or_name: str = None,
+        tenant_context: GetMultiDimTableSheetRequestTenantContext = None,
+    ):
+        # This parameter is required.
+        self.base_id = base_id
+        # This parameter is required.
+        self.sheet_id_or_name = sheet_id_or_name
+        self.tenant_context = tenant_context
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.base_id is not None:
+            result['BaseId'] = self.base_id
+        if self.sheet_id_or_name is not None:
+            result['SheetIdOrName'] = self.sheet_id_or_name
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaseId') is not None:
+            self.base_id = m.get('BaseId')
+        if m.get('SheetIdOrName') is not None:
+            self.sheet_id_or_name = m.get('SheetIdOrName')
+        if m.get('TenantContext') is not None:
+            temp_model = GetMultiDimTableSheetRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        return self
+
+
+class GetMultiDimTableSheetShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        base_id: str = None,
+        sheet_id_or_name: str = None,
+        tenant_context_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.base_id = base_id
+        # This parameter is required.
+        self.sheet_id_or_name = sheet_id_or_name
+        self.tenant_context_shrink = tenant_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.base_id is not None:
+            result['BaseId'] = self.base_id
+        if self.sheet_id_or_name is not None:
+            result['SheetIdOrName'] = self.sheet_id_or_name
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaseId') is not None:
+            self.base_id = m.get('BaseId')
+        if m.get('SheetIdOrName') is not None:
+            self.sheet_id_or_name = m.get('SheetIdOrName')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        return self
+
+
+class GetMultiDimTableSheetResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        name: str = None,
+        request_id: str = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.id = id
+        self.name = name
+        self.request_id = request_id
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class GetMultiDimTableSheetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetMultiDimTableSheetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetMultiDimTableSheetResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -38637,6 +41647,527 @@ class GetTemplateListByUserIdResponse(TeaModel):
         return self
 
 
+class GetTicketHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class GetTicketHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: GetTicketHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = GetTicketHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class GetTicketShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class GetTicketRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class GetTicketRequest(TeaModel):
+    def __init__(
+        self,
+        open_team_id: str = None,
+        open_ticket_id: str = None,
+        tenant_context: GetTicketRequestTenantContext = None,
+    ):
+        # This parameter is required.
+        self.open_team_id = open_team_id
+        # This parameter is required.
+        self.open_ticket_id = open_ticket_id
+        self.tenant_context = tenant_context
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.open_team_id is not None:
+            result['OpenTeamId'] = self.open_team_id
+        if self.open_ticket_id is not None:
+            result['OpenTicketId'] = self.open_ticket_id
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpenTeamId') is not None:
+            self.open_team_id = m.get('OpenTeamId')
+        if m.get('OpenTicketId') is not None:
+            self.open_ticket_id = m.get('OpenTicketId')
+        if m.get('TenantContext') is not None:
+            temp_model = GetTicketRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        return self
+
+
+class GetTicketShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        open_team_id: str = None,
+        open_ticket_id: str = None,
+        tenant_context_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.open_team_id = open_team_id
+        # This parameter is required.
+        self.open_ticket_id = open_ticket_id
+        self.tenant_context_shrink = tenant_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.open_team_id is not None:
+            result['OpenTeamId'] = self.open_team_id
+        if self.open_ticket_id is not None:
+            result['OpenTicketId'] = self.open_ticket_id
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpenTeamId') is not None:
+            self.open_team_id = m.get('OpenTeamId')
+        if m.get('OpenTicketId') is not None:
+            self.open_ticket_id = m.get('OpenTicketId')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        return self
+
+
+class GetTicketResponseBodyCreator(TeaModel):
+    def __init__(
+        self,
+        nick_name: str = None,
+        union_id: str = None,
+    ):
+        self.nick_name = nick_name
+        self.union_id = union_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.nick_name is not None:
+            result['NickName'] = self.nick_name
+        if self.union_id is not None:
+            result['UnionId'] = self.union_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NickName') is not None:
+            self.nick_name = m.get('NickName')
+        if m.get('UnionId') is not None:
+            self.union_id = m.get('UnionId')
+        return self
+
+
+class GetTicketResponseBodyProcessor(TeaModel):
+    def __init__(
+        self,
+        nick_name: str = None,
+        union_id: str = None,
+    ):
+        self.nick_name = nick_name
+        self.union_id = union_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.nick_name is not None:
+            result['NickName'] = self.nick_name
+        if self.union_id is not None:
+            result['UnionId'] = self.union_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NickName') is not None:
+            self.nick_name = m.get('NickName')
+        if m.get('UnionId') is not None:
+            self.union_id = m.get('UnionId')
+        return self
+
+
+class GetTicketResponseBodyTakers(TeaModel):
+    def __init__(
+        self,
+        nick_name: str = None,
+        union_id: str = None,
+    ):
+        self.nick_name = nick_name
+        self.union_id = union_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.nick_name is not None:
+            result['NickName'] = self.nick_name
+        if self.union_id is not None:
+            result['UnionId'] = self.union_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NickName') is not None:
+            self.nick_name = m.get('NickName')
+        if m.get('UnionId') is not None:
+            self.union_id = m.get('UnionId')
+        return self
+
+
+class GetTicketResponseBodyTemplate(TeaModel):
+    def __init__(
+        self,
+        open_template_biz_id: str = None,
+        open_template_id: str = None,
+        template_name: str = None,
+    ):
+        # OpenTemplateBizId
+        self.open_template_biz_id = open_template_biz_id
+        # OpenTemplateBizId
+        self.open_template_id = open_template_id
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.open_template_biz_id is not None:
+            result['OpenTemplateBizId'] = self.open_template_biz_id
+        if self.open_template_id is not None:
+            result['OpenTemplateId'] = self.open_template_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpenTemplateBizId') is not None:
+            self.open_template_biz_id = m.get('OpenTemplateBizId')
+        if m.get('OpenTemplateId') is not None:
+            self.open_template_id = m.get('OpenTemplateId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class GetTicketResponseBody(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        creator: GetTicketResponseBodyCreator = None,
+        custom_fields: str = None,
+        open_conversation_id: str = None,
+        open_ticket_id: str = None,
+        processor: GetTicketResponseBodyProcessor = None,
+        request_id: str = None,
+        scene: str = None,
+        scene_context: str = None,
+        stage: str = None,
+        takers: List[GetTicketResponseBodyTakers] = None,
+        template: GetTicketResponseBodyTemplate = None,
+        title: str = None,
+        update_time: str = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.create_time = create_time
+        self.creator = creator
+        self.custom_fields = custom_fields
+        self.open_conversation_id = open_conversation_id
+        self.open_ticket_id = open_ticket_id
+        self.processor = processor
+        self.request_id = request_id
+        self.scene = scene
+        self.scene_context = scene_context
+        self.stage = stage
+        self.takers = takers
+        self.template = template
+        self.title = title
+        self.update_time = update_time
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        if self.creator:
+            self.creator.validate()
+        if self.processor:
+            self.processor.validate()
+        if self.takers:
+            for k in self.takers:
+                if k:
+                    k.validate()
+        if self.template:
+            self.template.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.creator is not None:
+            result['creator'] = self.creator.to_map()
+        if self.custom_fields is not None:
+            result['customFields'] = self.custom_fields
+        if self.open_conversation_id is not None:
+            result['openConversationId'] = self.open_conversation_id
+        if self.open_ticket_id is not None:
+            result['openTicketId'] = self.open_ticket_id
+        if self.processor is not None:
+            result['processor'] = self.processor.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.scene is not None:
+            result['scene'] = self.scene
+        if self.scene_context is not None:
+            result['sceneContext'] = self.scene_context
+        if self.stage is not None:
+            result['stage'] = self.stage
+        result['takers'] = []
+        if self.takers is not None:
+            for k in self.takers:
+                result['takers'].append(k.to_map() if k else None)
+        if self.template is not None:
+            result['template'] = self.template.to_map()
+        if self.title is not None:
+            result['title'] = self.title
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('creator') is not None:
+            temp_model = GetTicketResponseBodyCreator()
+            self.creator = temp_model.from_map(m['creator'])
+        if m.get('customFields') is not None:
+            self.custom_fields = m.get('customFields')
+        if m.get('openConversationId') is not None:
+            self.open_conversation_id = m.get('openConversationId')
+        if m.get('openTicketId') is not None:
+            self.open_ticket_id = m.get('openTicketId')
+        if m.get('processor') is not None:
+            temp_model = GetTicketResponseBodyProcessor()
+            self.processor = temp_model.from_map(m['processor'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('scene') is not None:
+            self.scene = m.get('scene')
+        if m.get('sceneContext') is not None:
+            self.scene_context = m.get('sceneContext')
+        if m.get('stage') is not None:
+            self.stage = m.get('stage')
+        self.takers = []
+        if m.get('takers') is not None:
+            for k in m.get('takers'):
+                temp_model = GetTicketResponseBodyTakers()
+                self.takers.append(temp_model.from_map(k))
+        if m.get('template') is not None:
+            temp_model = GetTicketResponseBodyTemplate()
+            self.template = temp_model.from_map(m['template'])
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class GetTicketResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTicketResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTicketResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetTodoTaskHeadersAccountContext(TeaModel):
     def __init__(
         self,
@@ -47316,6 +50847,554 @@ class ListFormRemarksResponse(TeaModel):
         return self
 
 
+class ListMultiDimTableRecordsHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class ListMultiDimTableRecordsHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: ListMultiDimTableRecordsHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = ListMultiDimTableRecordsHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class ListMultiDimTableRecordsShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class ListMultiDimTableRecordsRequestFilterConditions(TeaModel):
+    def __init__(
+        self,
+        field: str = None,
+        operator: str = None,
+        value: List[Any] = None,
+    ):
+        self.field = field
+        self.operator = operator
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.field is not None:
+            result['Field'] = self.field
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Field') is not None:
+            self.field = m.get('Field')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListMultiDimTableRecordsRequestFilter(TeaModel):
+    def __init__(
+        self,
+        combination: str = None,
+        conditions: List[ListMultiDimTableRecordsRequestFilterConditions] = None,
+    ):
+        self.combination = combination
+        self.conditions = conditions
+
+    def validate(self):
+        if self.conditions:
+            for k in self.conditions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.combination is not None:
+            result['Combination'] = self.combination
+        result['Conditions'] = []
+        if self.conditions is not None:
+            for k in self.conditions:
+                result['Conditions'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Combination') is not None:
+            self.combination = m.get('Combination')
+        self.conditions = []
+        if m.get('Conditions') is not None:
+            for k in m.get('Conditions'):
+                temp_model = ListMultiDimTableRecordsRequestFilterConditions()
+                self.conditions.append(temp_model.from_map(k))
+        return self
+
+
+class ListMultiDimTableRecordsRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class ListMultiDimTableRecordsRequest(TeaModel):
+    def __init__(
+        self,
+        base_id: str = None,
+        filter: ListMultiDimTableRecordsRequestFilter = None,
+        max_results: int = None,
+        next_token: str = None,
+        sheet_id_or_name: str = None,
+        tenant_context: ListMultiDimTableRecordsRequestTenantContext = None,
+    ):
+        # This parameter is required.
+        self.base_id = base_id
+        self.filter = filter
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.sheet_id_or_name = sheet_id_or_name
+        self.tenant_context = tenant_context
+
+    def validate(self):
+        if self.filter:
+            self.filter.validate()
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.base_id is not None:
+            result['BaseId'] = self.base_id
+        if self.filter is not None:
+            result['Filter'] = self.filter.to_map()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.sheet_id_or_name is not None:
+            result['SheetIdOrName'] = self.sheet_id_or_name
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaseId') is not None:
+            self.base_id = m.get('BaseId')
+        if m.get('Filter') is not None:
+            temp_model = ListMultiDimTableRecordsRequestFilter()
+            self.filter = temp_model.from_map(m['Filter'])
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('SheetIdOrName') is not None:
+            self.sheet_id_or_name = m.get('SheetIdOrName')
+        if m.get('TenantContext') is not None:
+            temp_model = ListMultiDimTableRecordsRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        return self
+
+
+class ListMultiDimTableRecordsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        base_id: str = None,
+        filter_shrink: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        sheet_id_or_name: str = None,
+        tenant_context_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.base_id = base_id
+        self.filter_shrink = filter_shrink
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.sheet_id_or_name = sheet_id_or_name
+        self.tenant_context_shrink = tenant_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.base_id is not None:
+            result['BaseId'] = self.base_id
+        if self.filter_shrink is not None:
+            result['Filter'] = self.filter_shrink
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.sheet_id_or_name is not None:
+            result['SheetIdOrName'] = self.sheet_id_or_name
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaseId') is not None:
+            self.base_id = m.get('BaseId')
+        if m.get('Filter') is not None:
+            self.filter_shrink = m.get('Filter')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('SheetIdOrName') is not None:
+            self.sheet_id_or_name = m.get('SheetIdOrName')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        return self
+
+
+class ListMultiDimTableRecordsResponseBodyRecordsCreatedBy(TeaModel):
+    def __init__(
+        self,
+        user_id: str = None,
+    ):
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class ListMultiDimTableRecordsResponseBodyRecordsLastModifiedBy(TeaModel):
+    def __init__(
+        self,
+        user_id: str = None,
+    ):
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class ListMultiDimTableRecordsResponseBodyRecords(TeaModel):
+    def __init__(
+        self,
+        created_by: ListMultiDimTableRecordsResponseBodyRecordsCreatedBy = None,
+        created_time: int = None,
+        fields: Dict[str, Any] = None,
+        id: str = None,
+        last_modified_by: ListMultiDimTableRecordsResponseBodyRecordsLastModifiedBy = None,
+        last_modified_time: int = None,
+    ):
+        self.created_by = created_by
+        self.created_time = created_time
+        self.fields = fields
+        self.id = id
+        self.last_modified_by = last_modified_by
+        self.last_modified_time = last_modified_time
+
+    def validate(self):
+        if self.created_by:
+            self.created_by.validate()
+        if self.last_modified_by:
+            self.last_modified_by.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_by is not None:
+            result['CreatedBy'] = self.created_by.to_map()
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.fields is not None:
+            result['Fields'] = self.fields
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.last_modified_by is not None:
+            result['LastModifiedBy'] = self.last_modified_by.to_map()
+        if self.last_modified_time is not None:
+            result['LastModifiedTime'] = self.last_modified_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreatedBy') is not None:
+            temp_model = ListMultiDimTableRecordsResponseBodyRecordsCreatedBy()
+            self.created_by = temp_model.from_map(m['CreatedBy'])
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('Fields') is not None:
+            self.fields = m.get('Fields')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('LastModifiedBy') is not None:
+            temp_model = ListMultiDimTableRecordsResponseBodyRecordsLastModifiedBy()
+            self.last_modified_by = temp_model.from_map(m['LastModifiedBy'])
+        if m.get('LastModifiedTime') is not None:
+            self.last_modified_time = m.get('LastModifiedTime')
+        return self
+
+
+class ListMultiDimTableRecordsResponseBody(TeaModel):
+    def __init__(
+        self,
+        has_more: bool = None,
+        next_token: str = None,
+        records: List[ListMultiDimTableRecordsResponseBodyRecords] = None,
+        request_id: str = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.has_more = has_more
+        self.next_token = next_token
+        self.records = records
+        self.request_id = request_id
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        if self.records:
+            for k in self.records:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.has_more is not None:
+            result['hasMore'] = self.has_more
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        result['records'] = []
+        if self.records is not None:
+            for k in self.records:
+                result['records'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('hasMore') is not None:
+            self.has_more = m.get('hasMore')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        self.records = []
+        if m.get('records') is not None:
+            for k in m.get('records'):
+                temp_model = ListMultiDimTableRecordsResponseBodyRecords()
+                self.records.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class ListMultiDimTableRecordsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListMultiDimTableRecordsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListMultiDimTableRecordsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListNavigationByFormTypeHeadersAccountContext(TeaModel):
     def __init__(
         self,
@@ -49692,6 +53771,481 @@ class ListTemplateResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTicketOperateRecordHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class ListTicketOperateRecordHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: ListTicketOperateRecordHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = ListTicketOperateRecordHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class ListTicketOperateRecordShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class ListTicketOperateRecordRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class ListTicketOperateRecordRequest(TeaModel):
+    def __init__(
+        self,
+        open_team_id: str = None,
+        open_ticket_id: str = None,
+        tenant_context: ListTicketOperateRecordRequestTenantContext = None,
+    ):
+        # This parameter is required.
+        self.open_team_id = open_team_id
+        # This parameter is required.
+        self.open_ticket_id = open_ticket_id
+        self.tenant_context = tenant_context
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.open_team_id is not None:
+            result['OpenTeamId'] = self.open_team_id
+        if self.open_ticket_id is not None:
+            result['OpenTicketId'] = self.open_ticket_id
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpenTeamId') is not None:
+            self.open_team_id = m.get('OpenTeamId')
+        if m.get('OpenTicketId') is not None:
+            self.open_ticket_id = m.get('OpenTicketId')
+        if m.get('TenantContext') is not None:
+            temp_model = ListTicketOperateRecordRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        return self
+
+
+class ListTicketOperateRecordShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        open_team_id: str = None,
+        open_ticket_id: str = None,
+        tenant_context_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.open_team_id = open_team_id
+        # This parameter is required.
+        self.open_ticket_id = open_ticket_id
+        self.tenant_context_shrink = tenant_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.open_team_id is not None:
+            result['OpenTeamId'] = self.open_team_id
+        if self.open_ticket_id is not None:
+            result['OpenTicketId'] = self.open_ticket_id
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpenTeamId') is not None:
+            self.open_team_id = m.get('OpenTeamId')
+        if m.get('OpenTicketId') is not None:
+            self.open_ticket_id = m.get('OpenTicketId')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        return self
+
+
+class ListTicketOperateRecordResponseBodyRecordsOperator(TeaModel):
+    def __init__(
+        self,
+        nick_name: str = None,
+        union_id: str = None,
+    ):
+        self.nick_name = nick_name
+        self.union_id = union_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.nick_name is not None:
+            result['NickName'] = self.nick_name
+        if self.union_id is not None:
+            result['UnionId'] = self.union_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NickName') is not None:
+            self.nick_name = m.get('NickName')
+        if m.get('UnionId') is not None:
+            self.union_id = m.get('UnionId')
+        return self
+
+
+class ListTicketOperateRecordResponseBodyRecordsTicketMemoAttachments(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        key: str = None,
+    ):
+        self.file_name = file_name
+        self.key = key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.key is not None:
+            result['Key'] = self.key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        return self
+
+
+class ListTicketOperateRecordResponseBodyRecordsTicketMemo(TeaModel):
+    def __init__(
+        self,
+        attachments: List[ListTicketOperateRecordResponseBodyRecordsTicketMemoAttachments] = None,
+        memo: str = None,
+    ):
+        self.attachments = attachments
+        self.memo = memo
+
+    def validate(self):
+        if self.attachments:
+            for k in self.attachments:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Attachments'] = []
+        if self.attachments is not None:
+            for k in self.attachments:
+                result['Attachments'].append(k.to_map() if k else None)
+        if self.memo is not None:
+            result['Memo'] = self.memo
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.attachments = []
+        if m.get('Attachments') is not None:
+            for k in m.get('Attachments'):
+                temp_model = ListTicketOperateRecordResponseBodyRecordsTicketMemoAttachments()
+                self.attachments.append(temp_model.from_map(k))
+        if m.get('Memo') is not None:
+            self.memo = m.get('Memo')
+        return self
+
+
+class ListTicketOperateRecordResponseBodyRecords(TeaModel):
+    def __init__(
+        self,
+        open_ticket_id: str = None,
+        operate_data: str = None,
+        operate_time: str = None,
+        operation: str = None,
+        operation_display_name: str = None,
+        operator: ListTicketOperateRecordResponseBodyRecordsOperator = None,
+        ticket_memo: ListTicketOperateRecordResponseBodyRecordsTicketMemo = None,
+    ):
+        self.open_ticket_id = open_ticket_id
+        self.operate_data = operate_data
+        self.operate_time = operate_time
+        self.operation = operation
+        self.operation_display_name = operation_display_name
+        self.operator = operator
+        self.ticket_memo = ticket_memo
+
+    def validate(self):
+        if self.operator:
+            self.operator.validate()
+        if self.ticket_memo:
+            self.ticket_memo.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.open_ticket_id is not None:
+            result['OpenTicketId'] = self.open_ticket_id
+        if self.operate_data is not None:
+            result['OperateData'] = self.operate_data
+        if self.operate_time is not None:
+            result['OperateTime'] = self.operate_time
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        if self.operation_display_name is not None:
+            result['OperationDisplayName'] = self.operation_display_name
+        if self.operator is not None:
+            result['Operator'] = self.operator.to_map()
+        if self.ticket_memo is not None:
+            result['TicketMemo'] = self.ticket_memo.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpenTicketId') is not None:
+            self.open_ticket_id = m.get('OpenTicketId')
+        if m.get('OperateData') is not None:
+            self.operate_data = m.get('OperateData')
+        if m.get('OperateTime') is not None:
+            self.operate_time = m.get('OperateTime')
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        if m.get('OperationDisplayName') is not None:
+            self.operation_display_name = m.get('OperationDisplayName')
+        if m.get('Operator') is not None:
+            temp_model = ListTicketOperateRecordResponseBodyRecordsOperator()
+            self.operator = temp_model.from_map(m['Operator'])
+        if m.get('TicketMemo') is not None:
+            temp_model = ListTicketOperateRecordResponseBodyRecordsTicketMemo()
+            self.ticket_memo = temp_model.from_map(m['TicketMemo'])
+        return self
+
+
+class ListTicketOperateRecordResponseBody(TeaModel):
+    def __init__(
+        self,
+        records: List[ListTicketOperateRecordResponseBodyRecords] = None,
+        request_id: str = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.records = records
+        self.request_id = request_id
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        if self.records:
+            for k in self.records:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['records'] = []
+        if self.records is not None:
+            for k in self.records:
+                result['records'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.records = []
+        if m.get('records') is not None:
+            for k in m.get('records'):
+                temp_model = ListTicketOperateRecordResponseBodyRecords()
+                self.records.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class ListTicketOperateRecordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTicketOperateRecordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTicketOperateRecordResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -54480,6 +59034,362 @@ class QueryDentryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryDentryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryGroupLiveInfoHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class QueryGroupLiveInfoHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: QueryGroupLiveInfoHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = QueryGroupLiveInfoHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class QueryGroupLiveInfoShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class QueryGroupLiveInfoRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class QueryGroupLiveInfoRequest(TeaModel):
+    def __init__(
+        self,
+        anchor_union_id: str = None,
+        live_uuid: str = None,
+        tenant_context: QueryGroupLiveInfoRequestTenantContext = None,
+    ):
+        self.anchor_union_id = anchor_union_id
+        self.live_uuid = live_uuid
+        self.tenant_context = tenant_context
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.anchor_union_id is not None:
+            result['AnchorUnionId'] = self.anchor_union_id
+        if self.live_uuid is not None:
+            result['LiveUuid'] = self.live_uuid
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnchorUnionId') is not None:
+            self.anchor_union_id = m.get('AnchorUnionId')
+        if m.get('LiveUuid') is not None:
+            self.live_uuid = m.get('LiveUuid')
+        if m.get('TenantContext') is not None:
+            temp_model = QueryGroupLiveInfoRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        return self
+
+
+class QueryGroupLiveInfoShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        anchor_union_id: str = None,
+        live_uuid: str = None,
+        tenant_context_shrink: str = None,
+    ):
+        self.anchor_union_id = anchor_union_id
+        self.live_uuid = live_uuid
+        self.tenant_context_shrink = tenant_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.anchor_union_id is not None:
+            result['AnchorUnionId'] = self.anchor_union_id
+        if self.live_uuid is not None:
+            result['LiveUuid'] = self.live_uuid
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnchorUnionId') is not None:
+            self.anchor_union_id = m.get('AnchorUnionId')
+        if m.get('LiveUuid') is not None:
+            self.live_uuid = m.get('LiveUuid')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        return self
+
+
+class QueryGroupLiveInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        cover_url: str = None,
+        duration: int = None,
+        end_time: int = None,
+        introduction: str = None,
+        live_id: str = None,
+        live_play_url: str = None,
+        live_status: int = None,
+        playback_duration: int = None,
+        request_id: str = None,
+        start_time: int = None,
+        subscribe_count: int = None,
+        title: str = None,
+        uv: int = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.cover_url = cover_url
+        self.duration = duration
+        self.end_time = end_time
+        self.introduction = introduction
+        self.live_id = live_id
+        self.live_play_url = live_play_url
+        self.live_status = live_status
+        self.playback_duration = playback_duration
+        # requestId
+        self.request_id = request_id
+        self.start_time = start_time
+        self.subscribe_count = subscribe_count
+        self.title = title
+        self.uv = uv
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cover_url is not None:
+            result['coverUrl'] = self.cover_url
+        if self.duration is not None:
+            result['duration'] = self.duration
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.introduction is not None:
+            result['introduction'] = self.introduction
+        if self.live_id is not None:
+            result['liveId'] = self.live_id
+        if self.live_play_url is not None:
+            result['livePlayUrl'] = self.live_play_url
+        if self.live_status is not None:
+            result['liveStatus'] = self.live_status
+        if self.playback_duration is not None:
+            result['playbackDuration'] = self.playback_duration
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.subscribe_count is not None:
+            result['subscribeCount'] = self.subscribe_count
+        if self.title is not None:
+            result['title'] = self.title
+        if self.uv is not None:
+            result['uv'] = self.uv
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('coverUrl') is not None:
+            self.cover_url = m.get('coverUrl')
+        if m.get('duration') is not None:
+            self.duration = m.get('duration')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('introduction') is not None:
+            self.introduction = m.get('introduction')
+        if m.get('liveId') is not None:
+            self.live_id = m.get('liveId')
+        if m.get('livePlayUrl') is not None:
+            self.live_play_url = m.get('livePlayUrl')
+        if m.get('liveStatus') is not None:
+            self.live_status = m.get('liveStatus')
+        if m.get('playbackDuration') is not None:
+            self.playback_duration = m.get('playbackDuration')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('subscribeCount') is not None:
+            self.subscribe_count = m.get('subscribeCount')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        if m.get('uv') is not None:
+            self.uv = m.get('uv')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class QueryGroupLiveInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryGroupLiveInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryGroupLiveInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -62811,6 +67721,307 @@ class RemoveMeetingRoomsResponse(TeaModel):
         return self
 
 
+class RespondEventHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class RespondEventHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: RespondEventHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = RespondEventHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class RespondEventShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class RespondEventRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class RespondEventRequest(TeaModel):
+    def __init__(
+        self,
+        calendar_id: str = None,
+        event_id: str = None,
+        response_status: str = None,
+        tenant_context: RespondEventRequestTenantContext = None,
+    ):
+        # This parameter is required.
+        self.calendar_id = calendar_id
+        # This parameter is required.
+        self.event_id = event_id
+        # This parameter is required.
+        self.response_status = response_status
+        self.tenant_context = tenant_context
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.calendar_id is not None:
+            result['CalendarId'] = self.calendar_id
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.response_status is not None:
+            result['ResponseStatus'] = self.response_status
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CalendarId') is not None:
+            self.calendar_id = m.get('CalendarId')
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('ResponseStatus') is not None:
+            self.response_status = m.get('ResponseStatus')
+        if m.get('TenantContext') is not None:
+            temp_model = RespondEventRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        return self
+
+
+class RespondEventShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        calendar_id: str = None,
+        event_id: str = None,
+        response_status: str = None,
+        tenant_context_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.calendar_id = calendar_id
+        # This parameter is required.
+        self.event_id = event_id
+        # This parameter is required.
+        self.response_status = response_status
+        self.tenant_context_shrink = tenant_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.calendar_id is not None:
+            result['CalendarId'] = self.calendar_id
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.response_status is not None:
+            result['ResponseStatus'] = self.response_status
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CalendarId') is not None:
+            self.calendar_id = m.get('CalendarId')
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('ResponseStatus') is not None:
+            self.response_status = m.get('ResponseStatus')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        return self
+
+
+class RespondEventResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.request_id = request_id
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class RespondEventResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RespondEventResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RespondEventResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SaveContentHeadersAccountContext(TeaModel):
     def __init__(
         self,
@@ -70868,6 +76079,448 @@ class TerminateInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TerminateInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TransferTicketHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class TransferTicketHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: TransferTicketHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = TransferTicketHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class TransferTicketShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class TransferTicketRequestNotify(TeaModel):
+    def __init__(
+        self,
+        group_notice_receiver_user_ids: List[str] = None,
+        notice_all_group_member: bool = None,
+        work_notice_receiver_user_ids: List[str] = None,
+    ):
+        self.group_notice_receiver_user_ids = group_notice_receiver_user_ids
+        self.notice_all_group_member = notice_all_group_member
+        self.work_notice_receiver_user_ids = work_notice_receiver_user_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_notice_receiver_user_ids is not None:
+            result['GroupNoticeReceiverUserIds'] = self.group_notice_receiver_user_ids
+        if self.notice_all_group_member is not None:
+            result['NoticeAllGroupMember'] = self.notice_all_group_member
+        if self.work_notice_receiver_user_ids is not None:
+            result['WorkNoticeReceiverUserIds'] = self.work_notice_receiver_user_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupNoticeReceiverUserIds') is not None:
+            self.group_notice_receiver_user_ids = m.get('GroupNoticeReceiverUserIds')
+        if m.get('NoticeAllGroupMember') is not None:
+            self.notice_all_group_member = m.get('NoticeAllGroupMember')
+        if m.get('WorkNoticeReceiverUserIds') is not None:
+            self.work_notice_receiver_user_ids = m.get('WorkNoticeReceiverUserIds')
+        return self
+
+
+class TransferTicketRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class TransferTicketRequestTicketMemoAttachments(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        key: str = None,
+    ):
+        self.file_name = file_name
+        self.key = key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.key is not None:
+            result['Key'] = self.key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        return self
+
+
+class TransferTicketRequestTicketMemo(TeaModel):
+    def __init__(
+        self,
+        attachments: List[TransferTicketRequestTicketMemoAttachments] = None,
+        memo: str = None,
+    ):
+        self.attachments = attachments
+        self.memo = memo
+
+    def validate(self):
+        if self.attachments:
+            for k in self.attachments:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Attachments'] = []
+        if self.attachments is not None:
+            for k in self.attachments:
+                result['Attachments'].append(k.to_map() if k else None)
+        if self.memo is not None:
+            result['Memo'] = self.memo
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.attachments = []
+        if m.get('Attachments') is not None:
+            for k in m.get('Attachments'):
+                temp_model = TransferTicketRequestTicketMemoAttachments()
+                self.attachments.append(temp_model.from_map(k))
+        if m.get('Memo') is not None:
+            self.memo = m.get('Memo')
+        return self
+
+
+class TransferTicketRequest(TeaModel):
+    def __init__(
+        self,
+        notify: TransferTicketRequestNotify = None,
+        open_team_id: str = None,
+        open_ticket_id: str = None,
+        processor_user_ids: List[str] = None,
+        tenant_context: TransferTicketRequestTenantContext = None,
+        ticket_memo: TransferTicketRequestTicketMemo = None,
+    ):
+        self.notify = notify
+        # This parameter is required.
+        self.open_team_id = open_team_id
+        # This parameter is required.
+        self.open_ticket_id = open_ticket_id
+        self.processor_user_ids = processor_user_ids
+        self.tenant_context = tenant_context
+        self.ticket_memo = ticket_memo
+
+    def validate(self):
+        if self.notify:
+            self.notify.validate()
+        if self.tenant_context:
+            self.tenant_context.validate()
+        if self.ticket_memo:
+            self.ticket_memo.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.notify is not None:
+            result['Notify'] = self.notify.to_map()
+        if self.open_team_id is not None:
+            result['OpenTeamId'] = self.open_team_id
+        if self.open_ticket_id is not None:
+            result['OpenTicketId'] = self.open_ticket_id
+        if self.processor_user_ids is not None:
+            result['ProcessorUserIds'] = self.processor_user_ids
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        if self.ticket_memo is not None:
+            result['TicketMemo'] = self.ticket_memo.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Notify') is not None:
+            temp_model = TransferTicketRequestNotify()
+            self.notify = temp_model.from_map(m['Notify'])
+        if m.get('OpenTeamId') is not None:
+            self.open_team_id = m.get('OpenTeamId')
+        if m.get('OpenTicketId') is not None:
+            self.open_ticket_id = m.get('OpenTicketId')
+        if m.get('ProcessorUserIds') is not None:
+            self.processor_user_ids = m.get('ProcessorUserIds')
+        if m.get('TenantContext') is not None:
+            temp_model = TransferTicketRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        if m.get('TicketMemo') is not None:
+            temp_model = TransferTicketRequestTicketMemo()
+            self.ticket_memo = temp_model.from_map(m['TicketMemo'])
+        return self
+
+
+class TransferTicketShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        notify_shrink: str = None,
+        open_team_id: str = None,
+        open_ticket_id: str = None,
+        processor_user_ids_shrink: str = None,
+        tenant_context_shrink: str = None,
+        ticket_memo_shrink: str = None,
+    ):
+        self.notify_shrink = notify_shrink
+        # This parameter is required.
+        self.open_team_id = open_team_id
+        # This parameter is required.
+        self.open_ticket_id = open_ticket_id
+        self.processor_user_ids_shrink = processor_user_ids_shrink
+        self.tenant_context_shrink = tenant_context_shrink
+        self.ticket_memo_shrink = ticket_memo_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.notify_shrink is not None:
+            result['Notify'] = self.notify_shrink
+        if self.open_team_id is not None:
+            result['OpenTeamId'] = self.open_team_id
+        if self.open_ticket_id is not None:
+            result['OpenTicketId'] = self.open_ticket_id
+        if self.processor_user_ids_shrink is not None:
+            result['ProcessorUserIds'] = self.processor_user_ids_shrink
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        if self.ticket_memo_shrink is not None:
+            result['TicketMemo'] = self.ticket_memo_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Notify') is not None:
+            self.notify_shrink = m.get('Notify')
+        if m.get('OpenTeamId') is not None:
+            self.open_team_id = m.get('OpenTeamId')
+        if m.get('OpenTicketId') is not None:
+            self.open_ticket_id = m.get('OpenTicketId')
+        if m.get('ProcessorUserIds') is not None:
+            self.processor_user_ids_shrink = m.get('ProcessorUserIds')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        if m.get('TicketMemo') is not None:
+            self.ticket_memo_shrink = m.get('TicketMemo')
+        return self
+
+
+class TransferTicketResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.request_id = request_id
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class TransferTicketResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TransferTicketResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TransferTicketResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
