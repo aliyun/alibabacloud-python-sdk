@@ -1,3 +1,29 @@
+2024-10-18 Version: 2.0.2
+- Update API ExecuteWorkflow: update response param.
+- Update API GetAppGroup: update response param.
+- Update API GetJobInfo: update response param.
+- Update API GetJobInstance: update response param.
+- Update API GetJobInstanceList: update response param.
+- Update API GetLog: update response param.
+- Update API GetOverview: update response param.
+- Update API GetWorkFlow: update response param.
+- Update API GetWorkerList: update response param.
+- Update API GetWorkflowInstance: update response param.
+- Update API GrantPermission: update response param.
+- Update API ListGroups: update response param.
+- Update API ListJobs: update response param.
+- Update API ListNamespaces: update response param.
+- Update API ListWorkflowInstance: update response param.
+- Update API RetryJobInstance: update response param.
+- Update API RevokePermission: update response param.
+- Update API SetJobInstanceSuccess: update response param.
+- Update API SetWfInstanceSuccess: update response param.
+- Update API UpdateAppGroup: update response param.
+- Update API UpdateJob: update response param.
+- Update API UpdateWorkflow: update response param.
+- Update API UpdateWorkflowDag: update response param.
+
+
 2024-10-16 Version: 2.0.1
 - Update API GrantPermission: update response param.
 
