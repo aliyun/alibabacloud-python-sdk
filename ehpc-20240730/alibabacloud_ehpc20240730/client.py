@@ -47,7 +47,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.AttachSharedStoragesResponse:
         """
-        @summary 挂载共享存储
+        @summary Attaches shared storage to an Elastic High Performance Computing (E-HPC) cluster.
         
         @param tmp_req: AttachSharedStoragesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -88,7 +88,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.AttachSharedStoragesResponse:
         """
-        @summary 挂载共享存储
+        @summary Attaches shared storage to an Elastic High Performance Computing (E-HPC) cluster.
         
         @param tmp_req: AttachSharedStoragesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -128,7 +128,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.AttachSharedStoragesRequest,
     ) -> ehpc20240730_models.AttachSharedStoragesResponse:
         """
-        @summary 挂载共享存储
+        @summary Attaches shared storage to an Elastic High Performance Computing (E-HPC) cluster.
         
         @param request: AttachSharedStoragesRequest
         @return: AttachSharedStoragesResponse
@@ -141,7 +141,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.AttachSharedStoragesRequest,
     ) -> ehpc20240730_models.AttachSharedStoragesResponse:
         """
-        @summary 挂载共享存储
+        @summary Attaches shared storage to an Elastic High Performance Computing (E-HPC) cluster.
         
         @param request: AttachSharedStoragesRequest
         @return: AttachSharedStoragesResponse
@@ -361,13 +361,135 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_cluster_with_options_async(request, runtime)
 
+    def create_job_with_options(
+        self,
+        tmp_req: ehpc20240730_models.CreateJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20240730_models.CreateJobResponse:
+        """
+        @summary Creates a job for a cluster.
+        
+        @description Before you call this operation, make sure that you understand the billing and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of E-HPC.
+        
+        @param tmp_req: CreateJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ehpc20240730_models.CreateJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.job_spec):
+            request.job_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.job_spec, 'JobSpec', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.job_name):
+            query['JobName'] = request.job_name
+        if not UtilClient.is_unset(request.job_spec_shrink):
+            query['JobSpec'] = request.job_spec_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateJob',
+            version='2024-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20240730_models.CreateJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_job_with_options_async(
+        self,
+        tmp_req: ehpc20240730_models.CreateJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20240730_models.CreateJobResponse:
+        """
+        @summary Creates a job for a cluster.
+        
+        @description Before you call this operation, make sure that you understand the billing and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of E-HPC.
+        
+        @param tmp_req: CreateJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ehpc20240730_models.CreateJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.job_spec):
+            request.job_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.job_spec, 'JobSpec', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.job_name):
+            query['JobName'] = request.job_name
+        if not UtilClient.is_unset(request.job_spec_shrink):
+            query['JobSpec'] = request.job_spec_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateJob',
+            version='2024-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20240730_models.CreateJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_job(
+        self,
+        request: ehpc20240730_models.CreateJobRequest,
+    ) -> ehpc20240730_models.CreateJobResponse:
+        """
+        @summary Creates a job for a cluster.
+        
+        @description Before you call this operation, make sure that you understand the billing and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of E-HPC.
+        
+        @param request: CreateJobRequest
+        @return: CreateJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_job_with_options(request, runtime)
+
+    async def create_job_async(
+        self,
+        request: ehpc20240730_models.CreateJobRequest,
+    ) -> ehpc20240730_models.CreateJobResponse:
+        """
+        @summary Creates a job for a cluster.
+        
+        @description Before you call this operation, make sure that you understand the billing and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of E-HPC.
+        
+        @param request: CreateJobRequest
+        @return: CreateJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_job_with_options_async(request, runtime)
+
     def create_nodes_with_options(
         self,
         tmp_req: ehpc20240730_models.CreateNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.CreateNodesResponse:
         """
-        @summary 集群扩容节点
+        @summary Creates compute nodes for an Elastic High Performance Computing (E-HPC) cluster.
+        
+        @description ## [](#)
         
         @param tmp_req: CreateNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -424,7 +546,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.CreateNodesResponse:
         """
-        @summary 集群扩容节点
+        @summary Creates compute nodes for an Elastic High Performance Computing (E-HPC) cluster.
+        
+        @description ## [](#)
         
         @param tmp_req: CreateNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -480,7 +604,9 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.CreateNodesRequest,
     ) -> ehpc20240730_models.CreateNodesResponse:
         """
-        @summary 集群扩容节点
+        @summary Creates compute nodes for an Elastic High Performance Computing (E-HPC) cluster.
+        
+        @description ## [](#)
         
         @param request: CreateNodesRequest
         @return: CreateNodesResponse
@@ -493,7 +619,9 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.CreateNodesRequest,
     ) -> ehpc20240730_models.CreateNodesResponse:
         """
-        @summary 集群扩容节点
+        @summary Creates compute nodes for an Elastic High Performance Computing (E-HPC) cluster.
+        
+        @description ## [](#)
         
         @param request: CreateNodesRequest
         @return: CreateNodesResponse
@@ -615,7 +743,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.CreateUsersResponse:
         """
-        @summary 创建集群用户
+        @summary Adds users to an Elastic High Performance Computing (E-HPC) cluster.
         
         @param tmp_req: CreateUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -656,7 +784,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.CreateUsersResponse:
         """
-        @summary 创建集群用户
+        @summary Adds users to an Elastic High Performance Computing (E-HPC) cluster.
         
         @param tmp_req: CreateUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -696,7 +824,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.CreateUsersRequest,
     ) -> ehpc20240730_models.CreateUsersResponse:
         """
-        @summary 创建集群用户
+        @summary Adds users to an Elastic High Performance Computing (E-HPC) cluster.
         
         @param request: CreateUsersRequest
         @return: CreateUsersResponse
@@ -709,7 +837,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.CreateUsersRequest,
     ) -> ehpc20240730_models.CreateUsersResponse:
         """
-        @summary 创建集群用户
+        @summary Adds users to an Elastic High Performance Computing (E-HPC) cluster.
         
         @param request: CreateUsersRequest
         @return: CreateUsersResponse
@@ -812,110 +940,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_cluster_with_options_async(request, runtime)
-
-    def delete_jobs_with_options(
-        self,
-        tmp_req: ehpc20240730_models.DeleteJobsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20240730_models.DeleteJobsResponse:
-        """
-        @summary 删除作业
-        
-        @param tmp_req: DeleteJobsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteJobsResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = ehpc20240730_models.DeleteJobsShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.job_spec):
-            request.job_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.job_spec, 'JobSpec', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.job_spec_shrink):
-            query['JobSpec'] = request.job_spec_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteJobs',
-            version='2024-07-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20240730_models.DeleteJobsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_jobs_with_options_async(
-        self,
-        tmp_req: ehpc20240730_models.DeleteJobsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ehpc20240730_models.DeleteJobsResponse:
-        """
-        @summary 删除作业
-        
-        @param tmp_req: DeleteJobsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteJobsResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = ehpc20240730_models.DeleteJobsShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.job_spec):
-            request.job_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.job_spec, 'JobSpec', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.job_spec_shrink):
-            query['JobSpec'] = request.job_spec_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteJobs',
-            version='2024-07-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ehpc20240730_models.DeleteJobsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_jobs(
-        self,
-        request: ehpc20240730_models.DeleteJobsRequest,
-    ) -> ehpc20240730_models.DeleteJobsResponse:
-        """
-        @summary 删除作业
-        
-        @param request: DeleteJobsRequest
-        @return: DeleteJobsResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.delete_jobs_with_options(request, runtime)
-
-    async def delete_jobs_async(
-        self,
-        request: ehpc20240730_models.DeleteJobsRequest,
-    ) -> ehpc20240730_models.DeleteJobsResponse:
-        """
-        @summary 删除作业
-        
-        @param request: DeleteJobsRequest
-        @return: DeleteJobsResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_jobs_with_options_async(request, runtime)
 
     def delete_nodes_with_options(
         self,
@@ -1263,7 +1287,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.DescribeAddonTemplateResponse:
         """
-        @summary 查询Add-on服务组件模板详情。
+        @summary Queries the details of an addon template.
         
         @param request: DescribeAddonTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1308,7 +1332,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.DescribeAddonTemplateResponse:
         """
-        @summary 查询Add-on服务组件模板详情。
+        @summary Queries the details of an addon template.
         
         @param request: DescribeAddonTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1352,7 +1376,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.DescribeAddonTemplateRequest,
     ) -> ehpc20240730_models.DescribeAddonTemplateResponse:
         """
-        @summary 查询Add-on服务组件模板详情。
+        @summary Queries the details of an addon template.
         
         @param request: DescribeAddonTemplateRequest
         @return: DescribeAddonTemplateResponse
@@ -1365,7 +1389,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.DescribeAddonTemplateRequest,
     ) -> ehpc20240730_models.DescribeAddonTemplateResponse:
         """
-        @summary 查询Add-on服务组件模板详情。
+        @summary Queries the details of an addon template.
         
         @param request: DescribeAddonTemplateRequest
         @return: DescribeAddonTemplateResponse
@@ -1487,7 +1511,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.GetAddonResponse:
         """
-        @summary 查看已安装的Add-on服务组件详情。
+        @summary Queries the details of an installed addon.
         
         @param request: GetAddonRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1524,7 +1548,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.GetAddonResponse:
         """
-        @summary 查看已安装的Add-on服务组件详情。
+        @summary Queries the details of an installed addon.
         
         @param request: GetAddonRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1560,7 +1584,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.GetAddonRequest,
     ) -> ehpc20240730_models.GetAddonResponse:
         """
-        @summary 查看已安装的Add-on服务组件详情。
+        @summary Queries the details of an installed addon.
         
         @param request: GetAddonRequest
         @return: GetAddonResponse
@@ -1573,7 +1597,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.GetAddonRequest,
     ) -> ehpc20240730_models.GetAddonResponse:
         """
-        @summary 查看已安装的Add-on服务组件详情。
+        @summary Queries the details of an installed addon.
         
         @param request: GetAddonRequest
         @return: GetAddonResponse
@@ -1587,7 +1611,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.GetClusterResponse:
         """
-        @summary 查询单个E-HPC集群的详情信息。
+        @summary Queries information about an Elastic High Performance Computing (E-HPC) cluster.
         
         @param request: GetClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1622,7 +1646,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.GetClusterResponse:
         """
-        @summary 查询单个E-HPC集群的详情信息。
+        @summary Queries information about an Elastic High Performance Computing (E-HPC) cluster.
         
         @param request: GetClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1656,7 +1680,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.GetClusterRequest,
     ) -> ehpc20240730_models.GetClusterResponse:
         """
-        @summary 查询单个E-HPC集群的详情信息。
+        @summary Queries information about an Elastic High Performance Computing (E-HPC) cluster.
         
         @param request: GetClusterRequest
         @return: GetClusterResponse
@@ -1669,7 +1693,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.GetClusterRequest,
     ) -> ehpc20240730_models.GetClusterResponse:
         """
-        @summary 查询单个E-HPC集群的详情信息。
+        @summary Queries information about an Elastic High Performance Computing (E-HPC) cluster.
         
         @param request: GetClusterRequest
         @return: GetClusterResponse
@@ -1683,7 +1707,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.GetCommonLogDetailResponse:
         """
-        @summary 查询集群通用日志详细信息
+        @summary Query logs based on a request ID. Logs for specific actions can be queried thanks to an Action-Stage-Method three-layer log splitting structure.
         
         @param request: GetCommonLogDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1724,7 +1748,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.GetCommonLogDetailResponse:
         """
-        @summary 查询集群通用日志详细信息
+        @summary Query logs based on a request ID. Logs for specific actions can be queried thanks to an Action-Stage-Method three-layer log splitting structure.
         
         @param request: GetCommonLogDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1764,7 +1788,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.GetCommonLogDetailRequest,
     ) -> ehpc20240730_models.GetCommonLogDetailResponse:
         """
-        @summary 查询集群通用日志详细信息
+        @summary Query logs based on a request ID. Logs for specific actions can be queried thanks to an Action-Stage-Method three-layer log splitting structure.
         
         @param request: GetCommonLogDetailRequest
         @return: GetCommonLogDetailResponse
@@ -1777,7 +1801,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.GetCommonLogDetailRequest,
     ) -> ehpc20240730_models.GetCommonLogDetailResponse:
         """
-        @summary 查询集群通用日志详细信息
+        @summary Query logs based on a request ID. Logs for specific actions can be queried thanks to an Action-Stage-Method three-layer log splitting structure.
         
         @param request: GetCommonLogDetailRequest
         @return: GetCommonLogDetailResponse
@@ -1785,13 +1809,237 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_common_log_detail_with_options_async(request, runtime)
 
+    def get_job_with_options(
+        self,
+        request: ehpc20240730_models.GetJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20240730_models.GetJobResponse:
+        """
+        @summary 获取作业详情
+        
+        @param request: GetJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetJob',
+            version='2024-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20240730_models.GetJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_job_with_options_async(
+        self,
+        request: ehpc20240730_models.GetJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20240730_models.GetJobResponse:
+        """
+        @summary 获取作业详情
+        
+        @param request: GetJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetJob',
+            version='2024-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20240730_models.GetJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_job(
+        self,
+        request: ehpc20240730_models.GetJobRequest,
+    ) -> ehpc20240730_models.GetJobResponse:
+        """
+        @summary 获取作业详情
+        
+        @param request: GetJobRequest
+        @return: GetJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_job_with_options(request, runtime)
+
+    async def get_job_async(
+        self,
+        request: ehpc20240730_models.GetJobRequest,
+    ) -> ehpc20240730_models.GetJobResponse:
+        """
+        @summary 获取作业详情
+        
+        @param request: GetJobRequest
+        @return: GetJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_job_with_options_async(request, runtime)
+
+    def get_job_log_with_options(
+        self,
+        request: ehpc20240730_models.GetJobLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20240730_models.GetJobLogResponse:
+        """
+        @summary Queries the output logs of a job, including standard output logs and error output logs.
+        
+        @description ## [](#)Usage notes
+        Currently, only Slurm and PBS Pro schedulers for Standard Edition clusters are supported.
+        
+        @param request: GetJobLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobLogResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.log_type):
+            query['LogType'] = request.log_type
+        if not UtilClient.is_unset(request.offset):
+            query['Offset'] = request.offset
+        if not UtilClient.is_unset(request.size):
+            query['Size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetJobLog',
+            version='2024-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20240730_models.GetJobLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_job_log_with_options_async(
+        self,
+        request: ehpc20240730_models.GetJobLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20240730_models.GetJobLogResponse:
+        """
+        @summary Queries the output logs of a job, including standard output logs and error output logs.
+        
+        @description ## [](#)Usage notes
+        Currently, only Slurm and PBS Pro schedulers for Standard Edition clusters are supported.
+        
+        @param request: GetJobLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobLogResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.log_type):
+            query['LogType'] = request.log_type
+        if not UtilClient.is_unset(request.offset):
+            query['Offset'] = request.offset
+        if not UtilClient.is_unset(request.size):
+            query['Size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetJobLog',
+            version='2024-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20240730_models.GetJobLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_job_log(
+        self,
+        request: ehpc20240730_models.GetJobLogRequest,
+    ) -> ehpc20240730_models.GetJobLogResponse:
+        """
+        @summary Queries the output logs of a job, including standard output logs and error output logs.
+        
+        @description ## [](#)Usage notes
+        Currently, only Slurm and PBS Pro schedulers for Standard Edition clusters are supported.
+        
+        @param request: GetJobLogRequest
+        @return: GetJobLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_job_log_with_options(request, runtime)
+
+    async def get_job_log_async(
+        self,
+        request: ehpc20240730_models.GetJobLogRequest,
+    ) -> ehpc20240730_models.GetJobLogResponse:
+        """
+        @summary Queries the output logs of a job, including standard output logs and error output logs.
+        
+        @description ## [](#)Usage notes
+        Currently, only Slurm and PBS Pro schedulers for Standard Edition clusters are supported.
+        
+        @param request: GetJobLogRequest
+        @return: GetJobLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_job_log_with_options_async(request, runtime)
+
     def get_queue_with_options(
         self,
         request: ehpc20240730_models.GetQueueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.GetQueueResponse:
         """
-        @summary 查询集群的队列配置信息
+        @summary Queries the details of a queue in an Elastic High Performance Computing (E-HPC) cluster.
         
         @param request: GetQueueRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1828,7 +2076,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.GetQueueResponse:
         """
-        @summary 查询集群的队列配置信息
+        @summary Queries the details of a queue in an Elastic High Performance Computing (E-HPC) cluster.
         
         @param request: GetQueueRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1864,7 +2112,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.GetQueueRequest,
     ) -> ehpc20240730_models.GetQueueResponse:
         """
-        @summary 查询集群的队列配置信息
+        @summary Queries the details of a queue in an Elastic High Performance Computing (E-HPC) cluster.
         
         @param request: GetQueueRequest
         @return: GetQueueResponse
@@ -1877,7 +2125,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.GetQueueRequest,
     ) -> ehpc20240730_models.GetQueueResponse:
         """
-        @summary 查询集群的队列配置信息
+        @summary Queries the details of a queue in an Elastic High Performance Computing (E-HPC) cluster.
         
         @param request: GetQueueRequest
         @return: GetQueueResponse
@@ -2103,7 +2351,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.ListAddonTemplatesResponse:
         """
-        @summary 支持的Add-on服务组件模板列表查询。
+        @summary Queries supported addon templates.
         
         @param request: ListAddonTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2146,7 +2394,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.ListAddonTemplatesResponse:
         """
-        @summary 支持的Add-on服务组件模板列表查询。
+        @summary Queries supported addon templates.
         
         @param request: ListAddonTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2188,7 +2436,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.ListAddonTemplatesRequest,
     ) -> ehpc20240730_models.ListAddonTemplatesResponse:
         """
-        @summary 支持的Add-on服务组件模板列表查询。
+        @summary Queries supported addon templates.
         
         @param request: ListAddonTemplatesRequest
         @return: ListAddonTemplatesResponse
@@ -2201,7 +2449,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.ListAddonTemplatesRequest,
     ) -> ehpc20240730_models.ListAddonTemplatesResponse:
         """
-        @summary 支持的Add-on服务组件模板列表查询。
+        @summary Queries supported addon templates.
         
         @param request: ListAddonTemplatesRequest
         @return: ListAddonTemplatesResponse
@@ -2215,7 +2463,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.ListAddonsResponse:
         """
-        @summary 查看已安装的Add-on服务组件列表。
+        @summary Queries installed addons of an Elastic High Performance Computing (E-HPC) cluster.
         
         @param tmp_req: ListAddonsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2260,7 +2508,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.ListAddonsResponse:
         """
-        @summary 查看已安装的Add-on服务组件列表。
+        @summary Queries installed addons of an Elastic High Performance Computing (E-HPC) cluster.
         
         @param tmp_req: ListAddonsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2304,7 +2552,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.ListAddonsRequest,
     ) -> ehpc20240730_models.ListAddonsResponse:
         """
-        @summary 查看已安装的Add-on服务组件列表。
+        @summary Queries installed addons of an Elastic High Performance Computing (E-HPC) cluster.
         
         @param request: ListAddonsRequest
         @return: ListAddonsResponse
@@ -2317,7 +2565,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.ListAddonsRequest,
     ) -> ehpc20240730_models.ListAddonsResponse:
         """
-        @summary 查看已安装的Add-on服务组件列表。
+        @summary Queries installed addons of an Elastic High Performance Computing (E-HPC) cluster.
         
         @param request: ListAddonsRequest
         @return: ListAddonsResponse
@@ -2331,7 +2579,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.ListAvailableFileSystemsResponse:
         """
-        @summary 查询可用的共享存储
+        @summary Queries the file systems that can be attached in a region.
         
         @param request: ListAvailableFileSystemsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2368,7 +2616,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.ListAvailableFileSystemsResponse:
         """
-        @summary 查询可用的共享存储
+        @summary Queries the file systems that can be attached in a region.
         
         @param request: ListAvailableFileSystemsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2404,7 +2652,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.ListAvailableFileSystemsRequest,
     ) -> ehpc20240730_models.ListAvailableFileSystemsResponse:
         """
-        @summary 查询可用的共享存储
+        @summary Queries the file systems that can be attached in a region.
         
         @param request: ListAvailableFileSystemsRequest
         @return: ListAvailableFileSystemsResponse
@@ -2417,7 +2665,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.ListAvailableFileSystemsRequest,
     ) -> ehpc20240730_models.ListAvailableFileSystemsResponse:
         """
-        @summary 查询可用的共享存储
+        @summary Queries the file systems that can be attached in a region.
         
         @param request: ListAvailableFileSystemsRequest
         @return: ListAvailableFileSystemsResponse
@@ -2431,7 +2679,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.ListAvailableImagesResponse:
         """
-        @summary 获取可用镜像列表
+        @summary Queries images that are available for Elastic High Performance Computing (E-HPC) clusters.
         
         @param tmp_req: ListAvailableImagesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2470,7 +2718,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.ListAvailableImagesResponse:
         """
-        @summary 获取可用镜像列表
+        @summary Queries images that are available for Elastic High Performance Computing (E-HPC) clusters.
         
         @param tmp_req: ListAvailableImagesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2508,7 +2756,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.ListAvailableImagesRequest,
     ) -> ehpc20240730_models.ListAvailableImagesResponse:
         """
-        @summary 获取可用镜像列表
+        @summary Queries images that are available for Elastic High Performance Computing (E-HPC) clusters.
         
         @param request: ListAvailableImagesRequest
         @return: ListAvailableImagesResponse
@@ -2521,7 +2769,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.ListAvailableImagesRequest,
     ) -> ehpc20240730_models.ListAvailableImagesResponse:
         """
-        @summary 获取可用镜像列表
+        @summary Queries images that are available for Elastic High Performance Computing (E-HPC) clusters.
         
         @param request: ListAvailableImagesRequest
         @return: ListAvailableImagesResponse
@@ -2535,7 +2783,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.ListClustersResponse:
         """
-        @summary 查询用户账号中在每个地域拥有的所有集群的列表。
+        @summary Queries all clusters of a user in each region.
         
         @param tmp_req: ListClustersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2582,7 +2830,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.ListClustersResponse:
         """
-        @summary 查询用户账号中在每个地域拥有的所有集群的列表。
+        @summary Queries all clusters of a user in each region.
         
         @param tmp_req: ListClustersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2628,7 +2876,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.ListClustersRequest,
     ) -> ehpc20240730_models.ListClustersResponse:
         """
-        @summary 查询用户账号中在每个地域拥有的所有集群的列表。
+        @summary Queries all clusters of a user in each region.
         
         @param request: ListClustersRequest
         @return: ListClustersResponse
@@ -2641,7 +2889,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.ListClustersRequest,
     ) -> ehpc20240730_models.ListClustersResponse:
         """
-        @summary 查询用户账号中在每个地域拥有的所有集群的列表。
+        @summary Queries all clusters of a user in each region.
         
         @param request: ListClustersRequest
         @return: ListClustersResponse
@@ -2655,7 +2903,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.ListCommonLogsResponse:
         """
-        @summary 查询集群通用日志列表
+        @summary Queries the logs of a cluster that are generated within a time range.
         
         @param tmp_req: ListCommonLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2716,7 +2964,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.ListCommonLogsResponse:
         """
-        @summary 查询集群通用日志列表
+        @summary Queries the logs of a cluster that are generated within a time range.
         
         @param tmp_req: ListCommonLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2776,7 +3024,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.ListCommonLogsRequest,
     ) -> ehpc20240730_models.ListCommonLogsResponse:
         """
-        @summary 查询集群通用日志列表
+        @summary Queries the logs of a cluster that are generated within a time range.
         
         @param request: ListCommonLogsRequest
         @return: ListCommonLogsResponse
@@ -2789,7 +3037,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.ListCommonLogsRequest,
     ) -> ehpc20240730_models.ListCommonLogsResponse:
         """
-        @summary 查询集群通用日志列表
+        @summary Queries the logs of a cluster that are generated within a time range.
         
         @param request: ListCommonLogsRequest
         @return: ListCommonLogsResponse
@@ -2889,13 +3137,129 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_installed_softwares_with_options_async(request, runtime)
 
+    def list_jobs_with_options(
+        self,
+        tmp_req: ehpc20240730_models.ListJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20240730_models.ListJobsResponse:
+        """
+        @summary Queries the jobs in a cluster.
+        
+        @param tmp_req: ListJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ehpc20240730_models.ListJobsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.job_filter):
+            request.job_filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.job_filter, 'JobFilter', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.job_filter_shrink):
+            query['JobFilter'] = request.job_filter_shrink
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListJobs',
+            version='2024-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20240730_models.ListJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_jobs_with_options_async(
+        self,
+        tmp_req: ehpc20240730_models.ListJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20240730_models.ListJobsResponse:
+        """
+        @summary Queries the jobs in a cluster.
+        
+        @param tmp_req: ListJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ehpc20240730_models.ListJobsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.job_filter):
+            request.job_filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.job_filter, 'JobFilter', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.job_filter_shrink):
+            query['JobFilter'] = request.job_filter_shrink
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListJobs',
+            version='2024-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20240730_models.ListJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_jobs(
+        self,
+        request: ehpc20240730_models.ListJobsRequest,
+    ) -> ehpc20240730_models.ListJobsResponse:
+        """
+        @summary Queries the jobs in a cluster.
+        
+        @param request: ListJobsRequest
+        @return: ListJobsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_jobs_with_options(request, runtime)
+
+    async def list_jobs_async(
+        self,
+        request: ehpc20240730_models.ListJobsRequest,
+    ) -> ehpc20240730_models.ListJobsResponse:
+        """
+        @summary Queries the jobs in a cluster.
+        
+        @param request: ListJobsRequest
+        @return: ListJobsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_jobs_with_options_async(request, runtime)
+
     def list_nodes_with_options(
         self,
         tmp_req: ehpc20240730_models.ListNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.ListNodesResponse:
         """
-        @summary 查询节点列表
+        @summary Queries the nodes of an Elastic High Performance Computing (E-HPC) cluster.
         
         @param tmp_req: ListNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2956,7 +3320,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.ListNodesResponse:
         """
-        @summary 查询节点列表
+        @summary Queries the nodes of an Elastic High Performance Computing (E-HPC) cluster.
         
         @param tmp_req: ListNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3016,7 +3380,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.ListNodesRequest,
     ) -> ehpc20240730_models.ListNodesResponse:
         """
-        @summary 查询节点列表
+        @summary Queries the nodes of an Elastic High Performance Computing (E-HPC) cluster.
         
         @param request: ListNodesRequest
         @return: ListNodesResponse
@@ -3029,7 +3393,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.ListNodesRequest,
     ) -> ehpc20240730_models.ListNodesResponse:
         """
-        @summary 查询节点列表
+        @summary Queries the nodes of an Elastic High Performance Computing (E-HPC) cluster.
         
         @param request: ListNodesRequest
         @return: ListNodesResponse
@@ -3043,7 +3407,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.ListQueuesResponse:
         """
-        @summary 查询集群的队列信息。
+        @summary Queries queues in an Elastic High Performance Computing (E-HPC) cluster.
         
         @param tmp_req: ListQueuesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3084,7 +3448,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.ListQueuesResponse:
         """
-        @summary 查询集群的队列信息。
+        @summary Queries queues in an Elastic High Performance Computing (E-HPC) cluster.
         
         @param tmp_req: ListQueuesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3124,7 +3488,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.ListQueuesRequest,
     ) -> ehpc20240730_models.ListQueuesResponse:
         """
-        @summary 查询集群的队列信息。
+        @summary Queries queues in an Elastic High Performance Computing (E-HPC) cluster.
         
         @param request: ListQueuesRequest
         @return: ListQueuesResponse
@@ -3137,7 +3501,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.ListQueuesRequest,
     ) -> ehpc20240730_models.ListQueuesResponse:
         """
-        @summary 查询集群的队列信息。
+        @summary Queries queues in an Elastic High Performance Computing (E-HPC) cluster.
         
         @param request: ListQueuesRequest
         @return: ListQueuesResponse
@@ -3433,6 +3797,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_users_with_options_async(request, runtime)
 
+    def stop_jobs_with_options(
+        self,
+        tmp_req: ehpc20240730_models.StopJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20240730_models.StopJobsResponse:
+        """
+        @summary Stops uncompleted jobs in a batch in an Elastic High Performance Computing (E-HPC) cluster.
+        
+        @param tmp_req: StopJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopJobsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ehpc20240730_models.StopJobsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.job_ids):
+            request.job_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.job_ids, 'JobIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.job_ids_shrink):
+            query['JobIds'] = request.job_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopJobs',
+            version='2024-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20240730_models.StopJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_jobs_with_options_async(
+        self,
+        tmp_req: ehpc20240730_models.StopJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20240730_models.StopJobsResponse:
+        """
+        @summary Stops uncompleted jobs in a batch in an Elastic High Performance Computing (E-HPC) cluster.
+        
+        @param tmp_req: StopJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopJobsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ehpc20240730_models.StopJobsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.job_ids):
+            request.job_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.job_ids, 'JobIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.job_ids_shrink):
+            query['JobIds'] = request.job_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopJobs',
+            version='2024-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20240730_models.StopJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_jobs(
+        self,
+        request: ehpc20240730_models.StopJobsRequest,
+    ) -> ehpc20240730_models.StopJobsResponse:
+        """
+        @summary Stops uncompleted jobs in a batch in an Elastic High Performance Computing (E-HPC) cluster.
+        
+        @param request: StopJobsRequest
+        @return: StopJobsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.stop_jobs_with_options(request, runtime)
+
+    async def stop_jobs_async(
+        self,
+        request: ehpc20240730_models.StopJobsRequest,
+    ) -> ehpc20240730_models.StopJobsResponse:
+        """
+        @summary Stops uncompleted jobs in a batch in an Elastic High Performance Computing (E-HPC) cluster.
+        
+        @param request: StopJobsRequest
+        @return: StopJobsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_jobs_with_options_async(request, runtime)
+
     def un_install_addon_with_options(
         self,
         request: ehpc20240730_models.UnInstallAddonRequest,
@@ -3639,7 +4111,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.UpdateClusterResponse:
         """
-        @summary 修改指定集群的基本信息。
+        @summary Modifies the configurations of an Elastic High Performance Computing (E-HPC) cluster.
         
         @param tmp_req: UpdateClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3700,7 +4172,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.UpdateClusterResponse:
         """
-        @summary 修改指定集群的基本信息。
+        @summary Modifies the configurations of an Elastic High Performance Computing (E-HPC) cluster.
         
         @param tmp_req: UpdateClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3760,7 +4232,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.UpdateClusterRequest,
     ) -> ehpc20240730_models.UpdateClusterResponse:
         """
-        @summary 修改指定集群的基本信息。
+        @summary Modifies the configurations of an Elastic High Performance Computing (E-HPC) cluster.
         
         @param request: UpdateClusterRequest
         @return: UpdateClusterResponse
@@ -3773,7 +4245,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.UpdateClusterRequest,
     ) -> ehpc20240730_models.UpdateClusterResponse:
         """
-        @summary 修改指定集群的基本信息。
+        @summary Modifies the configurations of an Elastic High Performance Computing (E-HPC) cluster.
         
         @param request: UpdateClusterRequest
         @return: UpdateClusterResponse
@@ -3907,7 +4379,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.UpdateQueueResponse:
         """
-        @summary 更新集群的队列配置信息
+        @summary Modifies the configurations of a queue in an Elastic High Performance Computing (E-HPC) cluster.
         
         @param tmp_req: UpdateQueueRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3948,7 +4420,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.UpdateQueueResponse:
         """
-        @summary 更新集群的队列配置信息
+        @summary Modifies the configurations of a queue in an Elastic High Performance Computing (E-HPC) cluster.
         
         @param tmp_req: UpdateQueueRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3988,7 +4460,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.UpdateQueueRequest,
     ) -> ehpc20240730_models.UpdateQueueResponse:
         """
-        @summary 更新集群的队列配置信息
+        @summary Modifies the configurations of a queue in an Elastic High Performance Computing (E-HPC) cluster.
         
         @param request: UpdateQueueRequest
         @return: UpdateQueueResponse
@@ -4001,7 +4473,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.UpdateQueueRequest,
     ) -> ehpc20240730_models.UpdateQueueResponse:
         """
-        @summary 更新集群的队列配置信息
+        @summary Modifies the configurations of a queue in an Elastic High Performance Computing (E-HPC) cluster.
         
         @param request: UpdateQueueRequest
         @return: UpdateQueueResponse
@@ -4015,7 +4487,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.UpdateUserResponse:
         """
-        @summary 更新集群单个用户属性
+        @summary Updates the information of a user in an Elastic High Performance Computing (E-HPC) cluster, including the user group and password.
         
         @param request: UpdateUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4056,7 +4528,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20240730_models.UpdateUserResponse:
         """
-        @summary 更新集群单个用户属性
+        @summary Updates the information of a user in an Elastic High Performance Computing (E-HPC) cluster, including the user group and password.
         
         @param request: UpdateUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4096,7 +4568,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.UpdateUserRequest,
     ) -> ehpc20240730_models.UpdateUserResponse:
         """
-        @summary 更新集群单个用户属性
+        @summary Updates the information of a user in an Elastic High Performance Computing (E-HPC) cluster, including the user group and password.
         
         @param request: UpdateUserRequest
         @return: UpdateUserResponse
@@ -4109,7 +4581,7 @@ class Client(OpenApiClient):
         request: ehpc20240730_models.UpdateUserRequest,
     ) -> ehpc20240730_models.UpdateUserResponse:
         """
-        @summary 更新集群单个用户属性
+        @summary Updates the information of a user in an Elastic High Performance Computing (E-HPC) cluster, including the user group and password.
         
         @param request: UpdateUserRequest
         @return: UpdateUserResponse
