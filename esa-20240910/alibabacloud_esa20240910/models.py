@@ -7326,6 +7326,7 @@ class CreateSiteDeliveryTaskRequest(TeaModel):
         self.kafka_delivery = kafka_delivery
         self.oss_delivery = oss_delivery
         self.s_3delivery = s_3delivery
+        # This parameter is required.
         self.site_id = site_id
         self.sls_delivery = sls_delivery
         # This parameter is required.
@@ -7438,6 +7439,7 @@ class CreateSiteDeliveryTaskShrinkRequest(TeaModel):
         self.kafka_delivery_shrink = kafka_delivery_shrink
         self.oss_delivery_shrink = oss_delivery_shrink
         self.s_3delivery_shrink = s_3delivery_shrink
+        # This parameter is required.
         self.site_id = site_id
         self.sls_delivery_shrink = sls_delivery_shrink
         # This parameter is required.

@@ -1,3 +1,8 @@
+2024-10-18 Version: 2.3.1
+- Update API CreateSiteDeliveryTask: update param DiscardRate.
+- Update API CreateSiteDeliveryTask: update param SiteId.
+
+
 2024-10-16 Version: 2.3.0
 - Support API CommitRoutineStagingCode.
 - Support API CreateRoutine.
