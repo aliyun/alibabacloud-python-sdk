@@ -2419,6 +2419,131 @@ class ExportKeywordResponse(TeaModel):
         return self
 
 
+class ExportOssCheckStatRequest(TeaModel):
+    def __init__(
+        self,
+        by_month: bool = None,
+        end_date: str = None,
+        parent_task_id: str = None,
+        region_id: str = None,
+        start_date: str = None,
+    ):
+        self.by_month = by_month
+        self.end_date = end_date
+        self.parent_task_id = parent_task_id
+        self.region_id = region_id
+        self.start_date = start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.by_month is not None:
+            result['ByMonth'] = self.by_month
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.parent_task_id is not None:
+            result['ParentTaskId'] = self.parent_task_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ByMonth') is not None:
+            self.by_month = m.get('ByMonth')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('ParentTaskId') is not None:
+            self.parent_task_id = m.get('ParentTaskId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        return self
+
+
+class ExportOssCheckStatResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ExportOssCheckStatResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExportOssCheckStatResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExportOssCheckStatResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ExportResultRequest(TeaModel):
     def __init__(
         self,
@@ -3242,9 +3367,12 @@ class GetBackupConfigResponseBody(TeaModel):
         backup_mode: int = None,
         bucket: str = None,
         enable: bool = None,
+        enable_backup: bool = None,
+        enable_backup_voice: bool = None,
         expire_seconds: int = None,
         gmt_modified: str = None,
         path: str = None,
+        path_voice: str = None,
         region: str = None,
         request_id: str = None,
         resource_type: str = None,
@@ -3254,9 +3382,12 @@ class GetBackupConfigResponseBody(TeaModel):
         self.backup_mode = backup_mode
         self.bucket = bucket
         self.enable = enable
+        self.enable_backup = enable_backup
+        self.enable_backup_voice = enable_backup_voice
         self.expire_seconds = expire_seconds
         self.gmt_modified = gmt_modified
         self.path = path
+        self.path_voice = path_voice
         self.region = region
         self.request_id = request_id
         self.resource_type = resource_type
@@ -3279,12 +3410,18 @@ class GetBackupConfigResponseBody(TeaModel):
             result['Bucket'] = self.bucket
         if self.enable is not None:
             result['Enable'] = self.enable
+        if self.enable_backup is not None:
+            result['EnableBackup'] = self.enable_backup
+        if self.enable_backup_voice is not None:
+            result['EnableBackupVoice'] = self.enable_backup_voice
         if self.expire_seconds is not None:
             result['ExpireSeconds'] = self.expire_seconds
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
         if self.path is not None:
             result['Path'] = self.path
+        if self.path_voice is not None:
+            result['PathVoice'] = self.path_voice
         if self.region is not None:
             result['Region'] = self.region
         if self.request_id is not None:
@@ -3305,12 +3442,18 @@ class GetBackupConfigResponseBody(TeaModel):
             self.bucket = m.get('Bucket')
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
+        if m.get('EnableBackup') is not None:
+            self.enable_backup = m.get('EnableBackup')
+        if m.get('EnableBackupVoice') is not None:
+            self.enable_backup_voice = m.get('EnableBackupVoice')
         if m.get('ExpireSeconds') is not None:
             self.expire_seconds = m.get('ExpireSeconds')
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
         if m.get('Path') is not None:
             self.path = m.get('Path')
+        if m.get('PathVoice') is not None:
+            self.path_voice = m.get('PathVoice')
         if m.get('Region') is not None:
             self.region = m.get('Region')
         if m.get('RequestId') is not None:
@@ -4690,6 +4833,207 @@ class GetKeywordImportResultResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetKeywordImportResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetOssCheckStatRequest(TeaModel):
+    def __init__(
+        self,
+        by_month: bool = None,
+        end_date: str = None,
+        parent_task_id: str = None,
+        region_id: str = None,
+        start_date: str = None,
+    ):
+        self.by_month = by_month
+        self.end_date = end_date
+        self.parent_task_id = parent_task_id
+        self.region_id = region_id
+        self.start_date = start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.by_month is not None:
+            result['ByMonth'] = self.by_month
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.parent_task_id is not None:
+            result['ParentTaskId'] = self.parent_task_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ByMonth') is not None:
+            self.by_month = m.get('ByMonth')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('ParentTaskId') is not None:
+            self.parent_task_id = m.get('ParentTaskId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        return self
+
+
+class GetOssCheckStatResponseBodyBarChartY(TeaModel):
+    def __init__(
+        self,
+        data: List[int] = None,
+        name: str = None,
+    ):
+        self.data = data
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class GetOssCheckStatResponseBodyBarChart(TeaModel):
+    def __init__(
+        self,
+        x: List[str] = None,
+        y: List[GetOssCheckStatResponseBodyBarChartY] = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        if self.y:
+            for k in self.y:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        result['Y'] = []
+        if self.y is not None:
+            for k in self.y:
+                result['Y'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        self.y = []
+        if m.get('Y') is not None:
+            for k in m.get('Y'):
+                temp_model = GetOssCheckStatResponseBodyBarChartY()
+                self.y.append(temp_model.from_map(k))
+        return self
+
+
+class GetOssCheckStatResponseBody(TeaModel):
+    def __init__(
+        self,
+        bar_chart: GetOssCheckStatResponseBodyBarChart = None,
+        request_id: str = None,
+    ):
+        self.bar_chart = bar_chart
+        self.request_id = request_id
+
+    def validate(self):
+        if self.bar_chart:
+            self.bar_chart.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bar_chart is not None:
+            result['BarChart'] = self.bar_chart.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BarChart') is not None:
+            temp_model = GetOssCheckStatResponseBodyBarChart()
+            self.bar_chart = temp_model.from_map(m['BarChart'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetOssCheckStatResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetOssCheckStatResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetOssCheckStatResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

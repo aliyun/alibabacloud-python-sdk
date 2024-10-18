@@ -1725,6 +1725,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.export_keyword_with_options_async(request, runtime)
 
+    def export_oss_check_stat_with_options(
+        self,
+        request: green_20220926_models.ExportOssCheckStatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.ExportOssCheckStatResponse:
+        """
+        @summary oss用量统计导出
+        
+        @param request: ExportOssCheckStatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportOssCheckStatResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.by_month):
+            body['ByMonth'] = request.by_month
+        if not UtilClient.is_unset(request.end_date):
+            body['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.parent_task_id):
+            body['ParentTaskId'] = request.parent_task_id
+        if not UtilClient.is_unset(request.start_date):
+            body['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportOssCheckStat',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.ExportOssCheckStatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_oss_check_stat_with_options_async(
+        self,
+        request: green_20220926_models.ExportOssCheckStatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.ExportOssCheckStatResponse:
+        """
+        @summary oss用量统计导出
+        
+        @param request: ExportOssCheckStatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportOssCheckStatResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.by_month):
+            body['ByMonth'] = request.by_month
+        if not UtilClient.is_unset(request.end_date):
+            body['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.parent_task_id):
+            body['ParentTaskId'] = request.parent_task_id
+        if not UtilClient.is_unset(request.start_date):
+            body['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportOssCheckStat',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.ExportOssCheckStatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_oss_check_stat(
+        self,
+        request: green_20220926_models.ExportOssCheckStatRequest,
+    ) -> green_20220926_models.ExportOssCheckStatResponse:
+        """
+        @summary oss用量统计导出
+        
+        @param request: ExportOssCheckStatRequest
+        @return: ExportOssCheckStatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.export_oss_check_stat_with_options(request, runtime)
+
+    async def export_oss_check_stat_async(
+        self,
+        request: green_20220926_models.ExportOssCheckStatRequest,
+    ) -> green_20220926_models.ExportOssCheckStatResponse:
+        """
+        @summary oss用量统计导出
+        
+        @param request: ExportOssCheckStatRequest
+        @return: ExportOssCheckStatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.export_oss_check_stat_with_options_async(request, runtime)
+
     def export_result_with_options(
         self,
         tmp_req: green_20220926_models.ExportResultRequest,
@@ -3052,6 +3168,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_keyword_import_result_with_options_async(request, runtime)
+
+    def get_oss_check_stat_with_options(
+        self,
+        request: green_20220926_models.GetOssCheckStatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.GetOssCheckStatResponse:
+        """
+        @summary oss用量统计
+        
+        @param request: GetOssCheckStatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOssCheckStatResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.by_month):
+            body['ByMonth'] = request.by_month
+        if not UtilClient.is_unset(request.end_date):
+            body['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.parent_task_id):
+            body['ParentTaskId'] = request.parent_task_id
+        if not UtilClient.is_unset(request.start_date):
+            body['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetOssCheckStat',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.GetOssCheckStatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_oss_check_stat_with_options_async(
+        self,
+        request: green_20220926_models.GetOssCheckStatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220926_models.GetOssCheckStatResponse:
+        """
+        @summary oss用量统计
+        
+        @param request: GetOssCheckStatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOssCheckStatResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.by_month):
+            body['ByMonth'] = request.by_month
+        if not UtilClient.is_unset(request.end_date):
+            body['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.parent_task_id):
+            body['ParentTaskId'] = request.parent_task_id
+        if not UtilClient.is_unset(request.start_date):
+            body['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetOssCheckStat',
+            version='2022-09-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220926_models.GetOssCheckStatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_oss_check_stat(
+        self,
+        request: green_20220926_models.GetOssCheckStatRequest,
+    ) -> green_20220926_models.GetOssCheckStatResponse:
+        """
+        @summary oss用量统计
+        
+        @param request: GetOssCheckStatRequest
+        @return: GetOssCheckStatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_oss_check_stat_with_options(request, runtime)
+
+    async def get_oss_check_stat_async(
+        self,
+        request: green_20220926_models.GetOssCheckStatRequest,
+    ) -> green_20220926_models.GetOssCheckStatResponse:
+        """
+        @summary oss用量统计
+        
+        @param request: GetOssCheckStatRequest
+        @return: GetOssCheckStatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_oss_check_stat_with_options_async(request, runtime)
 
     def get_oss_check_status_with_options(
         self,

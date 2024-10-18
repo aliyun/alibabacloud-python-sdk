@@ -1,3 +1,9 @@
+2024-10-18 Version: 1.1.0
+- Support API ExportOssCheckStat.
+- Support API GetOssCheckStat.
+- Update API GetBackupConfig: update response param.
+
+
 2024-08-29 Version: 1.0.1
 - Generated python 2022-09-26 for Green.
 
