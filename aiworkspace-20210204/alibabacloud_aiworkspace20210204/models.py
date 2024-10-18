@@ -193,6 +193,113 @@ class Label(TeaModel):
         return self
 
 
+class DatasetVersion(TeaModel):
+    def __init__(
+        self,
+        data_count: int = None,
+        data_size: int = None,
+        data_source_type: str = None,
+        description: str = None,
+        gmt_create_time: str = None,
+        gmt_modified_time: str = None,
+        labels: List[Label] = None,
+        options: str = None,
+        property: str = None,
+        source_id: str = None,
+        source_type: str = None,
+        uri: str = None,
+        version_name: str = None,
+    ):
+        self.data_count = data_count
+        self.data_size = data_size
+        self.data_source_type = data_source_type
+        self.description = description
+        self.gmt_create_time = gmt_create_time
+        self.gmt_modified_time = gmt_modified_time
+        self.labels = labels
+        self.options = options
+        self.property = property
+        self.source_id = source_id
+        self.source_type = source_type
+        self.uri = uri
+        self.version_name = version_name
+
+    def validate(self):
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_count is not None:
+            result['DataCount'] = self.data_count
+        if self.data_size is not None:
+            result['DataSize'] = self.data_size
+        if self.data_source_type is not None:
+            result['DataSourceType'] = self.data_source_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.gmt_create_time is not None:
+            result['GmtCreateTime'] = self.gmt_create_time
+        if self.gmt_modified_time is not None:
+            result['GmtModifiedTime'] = self.gmt_modified_time
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
+        if self.options is not None:
+            result['Options'] = self.options
+        if self.property is not None:
+            result['Property'] = self.property
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        if self.uri is not None:
+            result['Uri'] = self.uri
+        if self.version_name is not None:
+            result['VersionName'] = self.version_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataCount') is not None:
+            self.data_count = m.get('DataCount')
+        if m.get('DataSize') is not None:
+            self.data_size = m.get('DataSize')
+        if m.get('DataSourceType') is not None:
+            self.data_source_type = m.get('DataSourceType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GmtCreateTime') is not None:
+            self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('GmtModifiedTime') is not None:
+            self.gmt_modified_time = m.get('GmtModifiedTime')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = Label()
+                self.labels.append(temp_model.from_map(k))
+        if m.get('Options') is not None:
+            self.options = m.get('Options')
+        if m.get('Property') is not None:
+            self.property = m.get('Property')
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
+        if m.get('VersionName') is not None:
+            self.version_name = m.get('VersionName')
+        return self
+
+
 class Dataset(TeaModel):
     def __init__(
         self,
@@ -204,13 +311,17 @@ class Dataset(TeaModel):
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
         labels: List[Label] = None,
+        latest_version: DatasetVersion = None,
         name: str = None,
         options: str = None,
         owner_id: str = None,
         property: str = None,
         provider_type: str = None,
+        source_dataset_id: str = None,
+        source_dataset_version: str = None,
         source_id: str = None,
         source_type: str = None,
+        tag_template_type: str = None,
         uri: str = None,
         user_id: str = None,
         workspace_id: str = None,
@@ -223,13 +334,17 @@ class Dataset(TeaModel):
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
         self.labels = labels
+        self.latest_version = latest_version
         self.name = name
         self.options = options
         self.owner_id = owner_id
         self.property = property
         self.provider_type = provider_type
+        self.source_dataset_id = source_dataset_id
+        self.source_dataset_version = source_dataset_version
         self.source_id = source_id
         self.source_type = source_type
+        self.tag_template_type = tag_template_type
         self.uri = uri
         self.user_id = user_id
         self.workspace_id = workspace_id
@@ -239,6 +354,8 @@ class Dataset(TeaModel):
             for k in self.labels:
                 if k:
                     k.validate()
+        if self.latest_version:
+            self.latest_version.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -264,6 +381,8 @@ class Dataset(TeaModel):
         if self.labels is not None:
             for k in self.labels:
                 result['Labels'].append(k.to_map() if k else None)
+        if self.latest_version is not None:
+            result['LatestVersion'] = self.latest_version.to_map()
         if self.name is not None:
             result['Name'] = self.name
         if self.options is not None:
@@ -274,10 +393,16 @@ class Dataset(TeaModel):
             result['Property'] = self.property
         if self.provider_type is not None:
             result['ProviderType'] = self.provider_type
+        if self.source_dataset_id is not None:
+            result['SourceDatasetId'] = self.source_dataset_id
+        if self.source_dataset_version is not None:
+            result['SourceDatasetVersion'] = self.source_dataset_version
         if self.source_id is not None:
             result['SourceId'] = self.source_id
         if self.source_type is not None:
             result['SourceType'] = self.source_type
+        if self.tag_template_type is not None:
+            result['TagTemplateType'] = self.tag_template_type
         if self.uri is not None:
             result['Uri'] = self.uri
         if self.user_id is not None:
@@ -307,6 +432,9 @@ class Dataset(TeaModel):
             for k in m.get('Labels'):
                 temp_model = Label()
                 self.labels.append(temp_model.from_map(k))
+        if m.get('LatestVersion') is not None:
+            temp_model = DatasetVersion()
+            self.latest_version = temp_model.from_map(m['LatestVersion'])
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Options') is not None:
@@ -317,10 +445,16 @@ class Dataset(TeaModel):
             self.property = m.get('Property')
         if m.get('ProviderType') is not None:
             self.provider_type = m.get('ProviderType')
+        if m.get('SourceDatasetId') is not None:
+            self.source_dataset_id = m.get('SourceDatasetId')
+        if m.get('SourceDatasetVersion') is not None:
+            self.source_dataset_version = m.get('SourceDatasetVersion')
         if m.get('SourceId') is not None:
             self.source_id = m.get('SourceId')
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')
+        if m.get('TagTemplateType') is not None:
+            self.tag_template_type = m.get('TagTemplateType')
         if m.get('Uri') is not None:
             self.uri = m.get('Uri')
         if m.get('UserId') is not None:
@@ -1814,6 +1948,8 @@ class CreateDatasetRequest(TeaModel):
     def __init__(
         self,
         accessibility: str = None,
+        data_count: int = None,
+        data_size: int = None,
         data_source_type: str = None,
         data_type: str = None,
         description: str = None,
@@ -1823,13 +1959,19 @@ class CreateDatasetRequest(TeaModel):
         property: str = None,
         provider: str = None,
         provider_type: str = None,
+        source_dataset_id: str = None,
+        source_dataset_version: str = None,
         source_id: str = None,
         source_type: str = None,
         uri: str = None,
         user_id: str = None,
+        version_description: str = None,
+        version_labels: List[Label] = None,
         workspace_id: str = None,
     ):
         self.accessibility = accessibility
+        self.data_count = data_count
+        self.data_size = data_size
         # This parameter is required.
         self.data_source_type = data_source_type
         self.data_type = data_type
@@ -1842,16 +1984,24 @@ class CreateDatasetRequest(TeaModel):
         self.property = property
         self.provider = provider
         self.provider_type = provider_type
+        self.source_dataset_id = source_dataset_id
+        self.source_dataset_version = source_dataset_version
         self.source_id = source_id
         self.source_type = source_type
         # This parameter is required.
         self.uri = uri
         self.user_id = user_id
+        self.version_description = version_description
+        self.version_labels = version_labels
         self.workspace_id = workspace_id
 
     def validate(self):
         if self.labels:
             for k in self.labels:
+                if k:
+                    k.validate()
+        if self.version_labels:
+            for k in self.version_labels:
                 if k:
                     k.validate()
 
@@ -1863,6 +2013,10 @@ class CreateDatasetRequest(TeaModel):
         result = dict()
         if self.accessibility is not None:
             result['Accessibility'] = self.accessibility
+        if self.data_count is not None:
+            result['DataCount'] = self.data_count
+        if self.data_size is not None:
+            result['DataSize'] = self.data_size
         if self.data_source_type is not None:
             result['DataSourceType'] = self.data_source_type
         if self.data_type is not None:
@@ -1883,6 +2037,10 @@ class CreateDatasetRequest(TeaModel):
             result['Provider'] = self.provider
         if self.provider_type is not None:
             result['ProviderType'] = self.provider_type
+        if self.source_dataset_id is not None:
+            result['SourceDatasetId'] = self.source_dataset_id
+        if self.source_dataset_version is not None:
+            result['SourceDatasetVersion'] = self.source_dataset_version
         if self.source_id is not None:
             result['SourceId'] = self.source_id
         if self.source_type is not None:
@@ -1891,6 +2049,12 @@ class CreateDatasetRequest(TeaModel):
             result['Uri'] = self.uri
         if self.user_id is not None:
             result['UserId'] = self.user_id
+        if self.version_description is not None:
+            result['VersionDescription'] = self.version_description
+        result['VersionLabels'] = []
+        if self.version_labels is not None:
+            for k in self.version_labels:
+                result['VersionLabels'].append(k.to_map() if k else None)
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -1899,6 +2063,10 @@ class CreateDatasetRequest(TeaModel):
         m = m or dict()
         if m.get('Accessibility') is not None:
             self.accessibility = m.get('Accessibility')
+        if m.get('DataCount') is not None:
+            self.data_count = m.get('DataCount')
+        if m.get('DataSize') is not None:
+            self.data_size = m.get('DataSize')
         if m.get('DataSourceType') is not None:
             self.data_source_type = m.get('DataSourceType')
         if m.get('DataType') is not None:
@@ -1920,6 +2088,10 @@ class CreateDatasetRequest(TeaModel):
             self.provider = m.get('Provider')
         if m.get('ProviderType') is not None:
             self.provider_type = m.get('ProviderType')
+        if m.get('SourceDatasetId') is not None:
+            self.source_dataset_id = m.get('SourceDatasetId')
+        if m.get('SourceDatasetVersion') is not None:
+            self.source_dataset_version = m.get('SourceDatasetVersion')
         if m.get('SourceId') is not None:
             self.source_id = m.get('SourceId')
         if m.get('SourceType') is not None:
@@ -1928,6 +2100,13 @@ class CreateDatasetRequest(TeaModel):
             self.uri = m.get('Uri')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
+        if m.get('VersionDescription') is not None:
+            self.version_description = m.get('VersionDescription')
+        self.version_labels = []
+        if m.get('VersionLabels') is not None:
+            for k in m.get('VersionLabels'):
+                temp_model = Label()
+                self.version_labels.append(temp_model.from_map(k))
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -5167,6 +5346,7 @@ class GetDatasetResponseBody(TeaModel):
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
         labels: List[Label] = None,
+        latest_version: DatasetVersion = None,
         name: str = None,
         options: str = None,
         owner_id: str = None,
@@ -5174,8 +5354,11 @@ class GetDatasetResponseBody(TeaModel):
         provider: str = None,
         provider_type: str = None,
         request_id: str = None,
+        source_dataset_id: str = None,
+        source_dataset_version: str = None,
         source_id: str = None,
         source_type: str = None,
+        tag_template_type: str = None,
         uri: str = None,
         user_id: str = None,
         workspace_id: str = None,
@@ -5188,6 +5371,7 @@ class GetDatasetResponseBody(TeaModel):
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
         self.labels = labels
+        self.latest_version = latest_version
         self.name = name
         self.options = options
         self.owner_id = owner_id
@@ -5195,8 +5379,11 @@ class GetDatasetResponseBody(TeaModel):
         self.provider = provider
         self.provider_type = provider_type
         self.request_id = request_id
+        self.source_dataset_id = source_dataset_id
+        self.source_dataset_version = source_dataset_version
         self.source_id = source_id
         self.source_type = source_type
+        self.tag_template_type = tag_template_type
         self.uri = uri
         self.user_id = user_id
         self.workspace_id = workspace_id
@@ -5206,6 +5393,8 @@ class GetDatasetResponseBody(TeaModel):
             for k in self.labels:
                 if k:
                     k.validate()
+        if self.latest_version:
+            self.latest_version.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5231,6 +5420,8 @@ class GetDatasetResponseBody(TeaModel):
         if self.labels is not None:
             for k in self.labels:
                 result['Labels'].append(k.to_map() if k else None)
+        if self.latest_version is not None:
+            result['LatestVersion'] = self.latest_version.to_map()
         if self.name is not None:
             result['Name'] = self.name
         if self.options is not None:
@@ -5245,10 +5436,16 @@ class GetDatasetResponseBody(TeaModel):
             result['ProviderType'] = self.provider_type
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.source_dataset_id is not None:
+            result['SourceDatasetId'] = self.source_dataset_id
+        if self.source_dataset_version is not None:
+            result['SourceDatasetVersion'] = self.source_dataset_version
         if self.source_id is not None:
             result['SourceId'] = self.source_id
         if self.source_type is not None:
             result['SourceType'] = self.source_type
+        if self.tag_template_type is not None:
+            result['TagTemplateType'] = self.tag_template_type
         if self.uri is not None:
             result['Uri'] = self.uri
         if self.user_id is not None:
@@ -5278,6 +5475,9 @@ class GetDatasetResponseBody(TeaModel):
             for k in m.get('Labels'):
                 temp_model = Label()
                 self.labels.append(temp_model.from_map(k))
+        if m.get('LatestVersion') is not None:
+            temp_model = DatasetVersion()
+            self.latest_version = temp_model.from_map(m['LatestVersion'])
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Options') is not None:
@@ -5292,10 +5492,16 @@ class GetDatasetResponseBody(TeaModel):
             self.provider_type = m.get('ProviderType')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('SourceDatasetId') is not None:
+            self.source_dataset_id = m.get('SourceDatasetId')
+        if m.get('SourceDatasetVersion') is not None:
+            self.source_dataset_version = m.get('SourceDatasetVersion')
         if m.get('SourceId') is not None:
             self.source_id = m.get('SourceId')
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')
+        if m.get('TagTemplateType') is not None:
+            self.tag_template_type = m.get('TagTemplateType')
         if m.get('Uri') is not None:
             self.uri = m.get('Uri')
         if m.get('UserId') is not None:
@@ -7003,6 +7209,7 @@ class ListDatasetsRequest(TeaModel):
         page_size: int = None,
         properties: str = None,
         provider: str = None,
+        source_dataset_id: str = None,
         source_id: str = None,
         source_types: str = None,
         workspace_id: str = None,
@@ -7016,6 +7223,7 @@ class ListDatasetsRequest(TeaModel):
         self.page_size = page_size
         self.properties = properties
         self.provider = provider
+        self.source_dataset_id = source_dataset_id
         self.source_id = source_id
         self.source_types = source_types
         self.workspace_id = workspace_id
@@ -7047,6 +7255,8 @@ class ListDatasetsRequest(TeaModel):
             result['Properties'] = self.properties
         if self.provider is not None:
             result['Provider'] = self.provider
+        if self.source_dataset_id is not None:
+            result['SourceDatasetId'] = self.source_dataset_id
         if self.source_id is not None:
             result['SourceId'] = self.source_id
         if self.source_types is not None:
@@ -7075,6 +7285,8 @@ class ListDatasetsRequest(TeaModel):
             self.properties = m.get('Properties')
         if m.get('Provider') is not None:
             self.provider = m.get('Provider')
+        if m.get('SourceDatasetId') is not None:
+            self.source_dataset_id = m.get('SourceDatasetId')
         if m.get('SourceId') is not None:
             self.source_id = m.get('SourceId')
         if m.get('SourceTypes') is not None:

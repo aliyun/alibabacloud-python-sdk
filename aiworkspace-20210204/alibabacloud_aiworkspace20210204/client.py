@@ -533,6 +533,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.accessibility):
             body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.data_count):
+            body['DataCount'] = request.data_count
+        if not UtilClient.is_unset(request.data_size):
+            body['DataSize'] = request.data_size
         if not UtilClient.is_unset(request.data_source_type):
             body['DataSourceType'] = request.data_source_type
         if not UtilClient.is_unset(request.data_type):
@@ -551,6 +555,10 @@ class Client(OpenApiClient):
             body['Provider'] = request.provider
         if not UtilClient.is_unset(request.provider_type):
             body['ProviderType'] = request.provider_type
+        if not UtilClient.is_unset(request.source_dataset_id):
+            body['SourceDatasetId'] = request.source_dataset_id
+        if not UtilClient.is_unset(request.source_dataset_version):
+            body['SourceDatasetVersion'] = request.source_dataset_version
         if not UtilClient.is_unset(request.source_id):
             body['SourceId'] = request.source_id
         if not UtilClient.is_unset(request.source_type):
@@ -559,6 +567,10 @@ class Client(OpenApiClient):
             body['Uri'] = request.uri
         if not UtilClient.is_unset(request.user_id):
             body['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.version_description):
+            body['VersionDescription'] = request.version_description
+        if not UtilClient.is_unset(request.version_labels):
+            body['VersionLabels'] = request.version_labels
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -599,6 +611,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.accessibility):
             body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.data_count):
+            body['DataCount'] = request.data_count
+        if not UtilClient.is_unset(request.data_size):
+            body['DataSize'] = request.data_size
         if not UtilClient.is_unset(request.data_source_type):
             body['DataSourceType'] = request.data_source_type
         if not UtilClient.is_unset(request.data_type):
@@ -617,6 +633,10 @@ class Client(OpenApiClient):
             body['Provider'] = request.provider
         if not UtilClient.is_unset(request.provider_type):
             body['ProviderType'] = request.provider_type
+        if not UtilClient.is_unset(request.source_dataset_id):
+            body['SourceDatasetId'] = request.source_dataset_id
+        if not UtilClient.is_unset(request.source_dataset_version):
+            body['SourceDatasetVersion'] = request.source_dataset_version
         if not UtilClient.is_unset(request.source_id):
             body['SourceId'] = request.source_id
         if not UtilClient.is_unset(request.source_type):
@@ -625,6 +645,10 @@ class Client(OpenApiClient):
             body['Uri'] = request.uri
         if not UtilClient.is_unset(request.user_id):
             body['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.version_description):
+            body['VersionDescription'] = request.version_description
+        if not UtilClient.is_unset(request.version_labels):
+            body['VersionLabels'] = request.version_labels
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -4687,6 +4711,8 @@ class Client(OpenApiClient):
             query['Properties'] = request.properties
         if not UtilClient.is_unset(request.provider):
             query['Provider'] = request.provider
+        if not UtilClient.is_unset(request.source_dataset_id):
+            query['SourceDatasetId'] = request.source_dataset_id
         if not UtilClient.is_unset(request.source_id):
             query['SourceId'] = request.source_id
         if not UtilClient.is_unset(request.source_types):
@@ -4747,6 +4773,8 @@ class Client(OpenApiClient):
             query['Properties'] = request.properties
         if not UtilClient.is_unset(request.provider):
             query['Provider'] = request.provider
+        if not UtilClient.is_unset(request.source_dataset_id):
+            query['SourceDatasetId'] = request.source_dataset_id
         if not UtilClient.is_unset(request.source_id):
             query['SourceId'] = request.source_id
         if not UtilClient.is_unset(request.source_types):
