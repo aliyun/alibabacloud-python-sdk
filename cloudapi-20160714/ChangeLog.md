@@ -1,3 +1,12 @@
+2024-10-19 Version: 4.5.0
+- Support API AssociateInstanceWithPrivateDNS.
+- Support API CreatePrivateDNS.
+- Support API DeletePrivateDNS.
+- Support API DissociateInstanceWithPrivateDNS.
+- Support API ListPrivateDNS.
+- Support API UpdatePrivateDNS.
+
+
 2024-08-27 Version: 4.4.3
 - Update API ModifyApiGroup: add param FilterAppCodeForBackend.
 

@@ -589,6 +589,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_traffic_special_control_with_options_async(request, runtime)
 
+    def associate_instance_with_private_dnswith_options(
+        self,
+        tmp_req: cloud_api20160714_models.AssociateInstanceWithPrivateDNSRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.AssociateInstanceWithPrivateDNSResponse:
+        """
+        @summary 专享实例关联内网域名解析记录
+        
+        @param tmp_req: AssociateInstanceWithPrivateDNSRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateInstanceWithPrivateDNSResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cloud_api20160714_models.AssociateInstanceWithPrivateDNSShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.intranet_domains):
+            request.intranet_domains_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.intranet_domains, 'IntranetDomains', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        body = {}
+        if not UtilClient.is_unset(request.intranet_domains_shrink):
+            body['IntranetDomains'] = request.intranet_domains_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AssociateInstanceWithPrivateDNS',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.AssociateInstanceWithPrivateDNSResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def associate_instance_with_private_dnswith_options_async(
+        self,
+        tmp_req: cloud_api20160714_models.AssociateInstanceWithPrivateDNSRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.AssociateInstanceWithPrivateDNSResponse:
+        """
+        @summary 专享实例关联内网域名解析记录
+        
+        @param tmp_req: AssociateInstanceWithPrivateDNSRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateInstanceWithPrivateDNSResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cloud_api20160714_models.AssociateInstanceWithPrivateDNSShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.intranet_domains):
+            request.intranet_domains_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.intranet_domains, 'IntranetDomains', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        body = {}
+        if not UtilClient.is_unset(request.intranet_domains_shrink):
+            body['IntranetDomains'] = request.intranet_domains_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AssociateInstanceWithPrivateDNS',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.AssociateInstanceWithPrivateDNSResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def associate_instance_with_private_dns(
+        self,
+        request: cloud_api20160714_models.AssociateInstanceWithPrivateDNSRequest,
+    ) -> cloud_api20160714_models.AssociateInstanceWithPrivateDNSResponse:
+        """
+        @summary 专享实例关联内网域名解析记录
+        
+        @param request: AssociateInstanceWithPrivateDNSRequest
+        @return: AssociateInstanceWithPrivateDNSResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.associate_instance_with_private_dnswith_options(request, runtime)
+
+    async def associate_instance_with_private_dns_async(
+        self,
+        request: cloud_api20160714_models.AssociateInstanceWithPrivateDNSRequest,
+    ) -> cloud_api20160714_models.AssociateInstanceWithPrivateDNSResponse:
+        """
+        @summary 专享实例关联内网域名解析记录
+        
+        @param request: AssociateInstanceWithPrivateDNSRequest
+        @return: AssociateInstanceWithPrivateDNSResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.associate_instance_with_private_dnswith_options_async(request, runtime)
+
     def attach_api_product_with_options(
         self,
         request: cloud_api20160714_models.AttachApiProductRequest,
@@ -3257,6 +3373,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_plugin_with_options_async(request, runtime)
 
+    def create_private_dnswith_options(
+        self,
+        tmp_req: cloud_api20160714_models.CreatePrivateDNSRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.CreatePrivateDNSResponse:
+        """
+        @summary 创建内网域名解析
+        
+        @param tmp_req: CreatePrivateDNSRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePrivateDNSResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cloud_api20160714_models.CreatePrivateDNSShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.records):
+            request.records_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.records, 'Records', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.intranet_domain):
+            query['IntranetDomain'] = request.intranet_domain
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        body = {}
+        if not UtilClient.is_unset(request.records_shrink):
+            body['Records'] = request.records_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreatePrivateDNS',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.CreatePrivateDNSResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_private_dnswith_options_async(
+        self,
+        tmp_req: cloud_api20160714_models.CreatePrivateDNSRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.CreatePrivateDNSResponse:
+        """
+        @summary 创建内网域名解析
+        
+        @param tmp_req: CreatePrivateDNSRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePrivateDNSResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cloud_api20160714_models.CreatePrivateDNSShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.records):
+            request.records_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.records, 'Records', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.intranet_domain):
+            query['IntranetDomain'] = request.intranet_domain
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        body = {}
+        if not UtilClient.is_unset(request.records_shrink):
+            body['Records'] = request.records_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreatePrivateDNS',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.CreatePrivateDNSResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_private_dns(
+        self,
+        request: cloud_api20160714_models.CreatePrivateDNSRequest,
+    ) -> cloud_api20160714_models.CreatePrivateDNSResponse:
+        """
+        @summary 创建内网域名解析
+        
+        @param request: CreatePrivateDNSRequest
+        @return: CreatePrivateDNSResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_private_dnswith_options(request, runtime)
+
+    async def create_private_dns_async(
+        self,
+        request: cloud_api20160714_models.CreatePrivateDNSRequest,
+    ) -> cloud_api20160714_models.CreatePrivateDNSResponse:
+        """
+        @summary 创建内网域名解析
+        
+        @param request: CreatePrivateDNSRequest
+        @return: CreatePrivateDNSResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_private_dnswith_options_async(request, runtime)
+
     def create_signature_with_options(
         self,
         request: cloud_api20160714_models.CreateSignatureRequest,
@@ -5788,6 +6024,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_plugin_with_options_async(request, runtime)
+
+    def delete_private_dnswith_options(
+        self,
+        request: cloud_api20160714_models.DeletePrivateDNSRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DeletePrivateDNSResponse:
+        """
+        @summary 删除内网域名解析
+        
+        @param request: DeletePrivateDNSRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePrivateDNSResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        if not UtilClient.is_unset(request.intranet_domain):
+            query['IntranetDomain'] = request.intranet_domain
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePrivateDNS',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DeletePrivateDNSResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_private_dnswith_options_async(
+        self,
+        request: cloud_api20160714_models.DeletePrivateDNSRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DeletePrivateDNSResponse:
+        """
+        @summary 删除内网域名解析
+        
+        @param request: DeletePrivateDNSRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePrivateDNSResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        if not UtilClient.is_unset(request.intranet_domain):
+            query['IntranetDomain'] = request.intranet_domain
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePrivateDNS',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DeletePrivateDNSResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_private_dns(
+        self,
+        request: cloud_api20160714_models.DeletePrivateDNSRequest,
+    ) -> cloud_api20160714_models.DeletePrivateDNSResponse:
+        """
+        @summary 删除内网域名解析
+        
+        @param request: DeletePrivateDNSRequest
+        @return: DeletePrivateDNSResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_private_dnswith_options(request, runtime)
+
+    async def delete_private_dns_async(
+        self,
+        request: cloud_api20160714_models.DeletePrivateDNSRequest,
+    ) -> cloud_api20160714_models.DeletePrivateDNSResponse:
+        """
+        @summary 删除内网域名解析
+        
+        @param request: DeletePrivateDNSRequest
+        @return: DeletePrivateDNSResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_private_dnswith_options_async(request, runtime)
 
     def delete_signature_with_options(
         self,
@@ -16525,6 +16869,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.disable_instance_access_control_with_options_async(request, runtime)
 
+    def dissociate_instance_with_private_dnswith_options(
+        self,
+        tmp_req: cloud_api20160714_models.DissociateInstanceWithPrivateDNSRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DissociateInstanceWithPrivateDNSResponse:
+        """
+        @summary 专享实例解除的关联内网域名解析记录
+        
+        @param tmp_req: DissociateInstanceWithPrivateDNSRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DissociateInstanceWithPrivateDNSResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cloud_api20160714_models.DissociateInstanceWithPrivateDNSShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.intranet_domains):
+            request.intranet_domains_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.intranet_domains, 'IntranetDomains', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        body = {}
+        if not UtilClient.is_unset(request.intranet_domains_shrink):
+            body['IntranetDomains'] = request.intranet_domains_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DissociateInstanceWithPrivateDNS',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DissociateInstanceWithPrivateDNSResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dissociate_instance_with_private_dnswith_options_async(
+        self,
+        tmp_req: cloud_api20160714_models.DissociateInstanceWithPrivateDNSRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DissociateInstanceWithPrivateDNSResponse:
+        """
+        @summary 专享实例解除的关联内网域名解析记录
+        
+        @param tmp_req: DissociateInstanceWithPrivateDNSRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DissociateInstanceWithPrivateDNSResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cloud_api20160714_models.DissociateInstanceWithPrivateDNSShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.intranet_domains):
+            request.intranet_domains_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.intranet_domains, 'IntranetDomains', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        body = {}
+        if not UtilClient.is_unset(request.intranet_domains_shrink):
+            body['IntranetDomains'] = request.intranet_domains_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DissociateInstanceWithPrivateDNS',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DissociateInstanceWithPrivateDNSResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dissociate_instance_with_private_dns(
+        self,
+        request: cloud_api20160714_models.DissociateInstanceWithPrivateDNSRequest,
+    ) -> cloud_api20160714_models.DissociateInstanceWithPrivateDNSResponse:
+        """
+        @summary 专享实例解除的关联内网域名解析记录
+        
+        @param request: DissociateInstanceWithPrivateDNSRequest
+        @return: DissociateInstanceWithPrivateDNSResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dissociate_instance_with_private_dnswith_options(request, runtime)
+
+    async def dissociate_instance_with_private_dns_async(
+        self,
+        request: cloud_api20160714_models.DissociateInstanceWithPrivateDNSRequest,
+    ) -> cloud_api20160714_models.DissociateInstanceWithPrivateDNSResponse:
+        """
+        @summary 专享实例解除的关联内网域名解析记录
+        
+        @param request: DissociateInstanceWithPrivateDNSRequest
+        @return: DissociateInstanceWithPrivateDNSResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dissociate_instance_with_private_dnswith_options_async(request, runtime)
+
     def dry_run_swagger_with_options(
         self,
         tmp_req: cloud_api20160714_models.DryRunSwaggerRequest,
@@ -17176,6 +17636,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.import_swagger_with_options_async(request, runtime)
+
+    def list_private_dnswith_options(
+        self,
+        request: cloud_api20160714_models.ListPrivateDNSRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.ListPrivateDNSResponse:
+        """
+        @summary 查询内网域名解析
+        
+        @param request: ListPrivateDNSRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPrivateDNSResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.intranet_domain):
+            query['IntranetDomain'] = request.intranet_domain
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPrivateDNS',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.ListPrivateDNSResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_private_dnswith_options_async(
+        self,
+        request: cloud_api20160714_models.ListPrivateDNSRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.ListPrivateDNSResponse:
+        """
+        @summary 查询内网域名解析
+        
+        @param request: ListPrivateDNSRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPrivateDNSResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.intranet_domain):
+            query['IntranetDomain'] = request.intranet_domain
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPrivateDNS',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.ListPrivateDNSResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_private_dns(
+        self,
+        request: cloud_api20160714_models.ListPrivateDNSRequest,
+    ) -> cloud_api20160714_models.ListPrivateDNSResponse:
+        """
+        @summary 查询内网域名解析
+        
+        @param request: ListPrivateDNSRequest
+        @return: ListPrivateDNSResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_private_dnswith_options(request, runtime)
+
+    async def list_private_dns_async(
+        self,
+        request: cloud_api20160714_models.ListPrivateDNSRequest,
+    ) -> cloud_api20160714_models.ListPrivateDNSResponse:
+        """
+        @summary 查询内网域名解析
+        
+        @param request: ListPrivateDNSRequest
+        @return: ListPrivateDNSResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_private_dnswith_options_async(request, runtime)
 
     def list_tag_resources_with_options(
         self,
@@ -24282,6 +24846,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
+
+    def update_private_dnswith_options(
+        self,
+        tmp_req: cloud_api20160714_models.UpdatePrivateDNSRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.UpdatePrivateDNSResponse:
+        """
+        @summary 更新内网域名解析
+        
+        @param tmp_req: UpdatePrivateDNSRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePrivateDNSResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cloud_api20160714_models.UpdatePrivateDNSShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.records):
+            request.records_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.records, 'Records', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.intranet_domain):
+            query['IntranetDomain'] = request.intranet_domain
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        body = {}
+        if not UtilClient.is_unset(request.records_shrink):
+            body['Records'] = request.records_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdatePrivateDNS',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.UpdatePrivateDNSResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_private_dnswith_options_async(
+        self,
+        tmp_req: cloud_api20160714_models.UpdatePrivateDNSRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.UpdatePrivateDNSResponse:
+        """
+        @summary 更新内网域名解析
+        
+        @param tmp_req: UpdatePrivateDNSRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePrivateDNSResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cloud_api20160714_models.UpdatePrivateDNSShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.records):
+            request.records_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.records, 'Records', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.intranet_domain):
+            query['IntranetDomain'] = request.intranet_domain
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        body = {}
+        if not UtilClient.is_unset(request.records_shrink):
+            body['Records'] = request.records_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdatePrivateDNS',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.UpdatePrivateDNSResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_private_dns(
+        self,
+        request: cloud_api20160714_models.UpdatePrivateDNSRequest,
+    ) -> cloud_api20160714_models.UpdatePrivateDNSResponse:
+        """
+        @summary 更新内网域名解析
+        
+        @param request: UpdatePrivateDNSRequest
+        @return: UpdatePrivateDNSResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_private_dnswith_options(request, runtime)
+
+    async def update_private_dns_async(
+        self,
+        request: cloud_api20160714_models.UpdatePrivateDNSRequest,
+    ) -> cloud_api20160714_models.UpdatePrivateDNSResponse:
+        """
+        @summary 更新内网域名解析
+        
+        @param request: UpdatePrivateDNSRequest
+        @return: UpdatePrivateDNSResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_private_dnswith_options_async(request, runtime)
 
     def validate_vpc_connectivity_with_options(
         self,

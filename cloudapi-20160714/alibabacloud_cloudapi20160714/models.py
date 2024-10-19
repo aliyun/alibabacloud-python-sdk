@@ -516,6 +516,156 @@ class AddTrafficSpecialControlResponse(TeaModel):
         return self
 
 
+class AssociateInstanceWithPrivateDNSRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        intranet_domains: List[str] = None,
+        security_token: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.intranet_domains = intranet_domains
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.intranet_domains is not None:
+            result['IntranetDomains'] = self.intranet_domains
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IntranetDomains') is not None:
+            self.intranet_domains = m.get('IntranetDomains')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class AssociateInstanceWithPrivateDNSShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        intranet_domains_shrink: str = None,
+        security_token: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.intranet_domains_shrink = intranet_domains_shrink
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.intranet_domains_shrink is not None:
+            result['IntranetDomains'] = self.intranet_domains_shrink
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IntranetDomains') is not None:
+            self.intranet_domains_shrink = m.get('IntranetDomains')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class AssociateInstanceWithPrivateDNSResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AssociateInstanceWithPrivateDNSResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AssociateInstanceWithPrivateDNSResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AssociateInstanceWithPrivateDNSResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AttachApiProductRequestApis(TeaModel):
     def __init__(
         self,
@@ -4404,6 +4554,209 @@ class CreatePluginResponse(TeaModel):
         return self
 
 
+class CreatePrivateDNSRequestRecords(TeaModel):
+    def __init__(
+        self,
+        record: str = None,
+        weight: int = None,
+    ):
+        self.record = record
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.record is not None:
+            result['Record'] = self.record
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Record') is not None:
+            self.record = m.get('Record')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        return self
+
+
+class CreatePrivateDNSRequest(TeaModel):
+    def __init__(
+        self,
+        intranet_domain: str = None,
+        records: List[CreatePrivateDNSRequestRecords] = None,
+        security_token: str = None,
+        type: str = None,
+    ):
+        # This parameter is required.
+        self.intranet_domain = intranet_domain
+        self.records = records
+        self.security_token = security_token
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        if self.records:
+            for k in self.records:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.intranet_domain is not None:
+            result['IntranetDomain'] = self.intranet_domain
+        result['Records'] = []
+        if self.records is not None:
+            for k in self.records:
+                result['Records'].append(k.to_map() if k else None)
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IntranetDomain') is not None:
+            self.intranet_domain = m.get('IntranetDomain')
+        self.records = []
+        if m.get('Records') is not None:
+            for k in m.get('Records'):
+                temp_model = CreatePrivateDNSRequestRecords()
+                self.records.append(temp_model.from_map(k))
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreatePrivateDNSShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        intranet_domain: str = None,
+        records_shrink: str = None,
+        security_token: str = None,
+        type: str = None,
+    ):
+        # This parameter is required.
+        self.intranet_domain = intranet_domain
+        self.records_shrink = records_shrink
+        self.security_token = security_token
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.intranet_domain is not None:
+            result['IntranetDomain'] = self.intranet_domain
+        if self.records_shrink is not None:
+            result['Records'] = self.records_shrink
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IntranetDomain') is not None:
+            self.intranet_domain = m.get('IntranetDomain')
+        if m.get('Records') is not None:
+            self.records_shrink = m.get('Records')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreatePrivateDNSResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreatePrivateDNSResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreatePrivateDNSResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreatePrivateDNSResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateSignatureRequest(TeaModel):
     def __init__(
         self,
@@ -7212,6 +7565,121 @@ class DeletePluginResponse(TeaModel):
         return self
 
 
+class DeletePrivateDNSRequest(TeaModel):
+    def __init__(
+        self,
+        force: bool = None,
+        intranet_domain: str = None,
+        security_token: str = None,
+        type: str = None,
+    ):
+        self.force = force
+        # This parameter is required.
+        self.intranet_domain = intranet_domain
+        self.security_token = security_token
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.force is not None:
+            result['Force'] = self.force
+        if self.intranet_domain is not None:
+            result['IntranetDomain'] = self.intranet_domain
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Force') is not None:
+            self.force = m.get('Force')
+        if m.get('IntranetDomain') is not None:
+            self.intranet_domain = m.get('IntranetDomain')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DeletePrivateDNSResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeletePrivateDNSResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeletePrivateDNSResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeletePrivateDNSResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteSignatureRequest(TeaModel):
     def __init__(
         self,
@@ -8840,6 +9308,7 @@ class DescribeApiResponseBodyRequestConfig(TeaModel):
         self.body_format = body_format
         # The body model.
         self.body_model = body_model
+        # Whether to escape the Path parameter, if true, the [param] on the Path will be treated as a regular character.
         self.escape_path_param = escape_path_param
         # The description of the request body.
         self.post_body_description = post_body_description
@@ -10420,6 +10889,7 @@ class DescribeApiDocResponseBodyRequestConfig(TeaModel):
         # 
         # The server data transmission method used for POST and PUT requests. Valid values: FORM and STREAM. FORM indicates that data in key-value pairs is transmitted as forms. STREAM indicates that data is transmitted as byte streams.
         self.body_format = body_format
+        # Whether to escape the Path parameter, if true, the [param] on the Path will be treated as a regular character.
         self.escape_path_param = escape_path_param
         # The description of the request body.
         self.post_body_description = post_body_description
@@ -12825,6 +13295,7 @@ class DescribeApiHistoryResponseBodyRequestConfig(TeaModel):
         self.body_format = body_format
         # The body model.
         self.body_model = body_model
+        # Whether to escape the Path parameter, if true, the [param] on the Path will be treated as a regular character.
         self.escape_path_param = escape_path_param
         # The description of the request body.
         self.post_body_description = post_body_description
@@ -20978,7 +21449,9 @@ class DescribeAuthorizedAppsResponseBodyAuthorizedAppsAuthorizedAppTagTagInfo(Te
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -21085,6 +21558,7 @@ class DescribeAuthorizedAppsResponseBodyAuthorizedAppsAuthorizedApp(TeaModel):
         # *   **PRE**: the staging environment
         # *   **TEST**: the test environment
         self.stage_name = stage_name
+        # The key of the tag.
         self.tag = tag
 
     def validate(self):
@@ -37342,6 +37816,156 @@ class DisableInstanceAccessControlResponse(TeaModel):
         return self
 
 
+class DissociateInstanceWithPrivateDNSRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        intranet_domains: List[str] = None,
+        security_token: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.intranet_domains = intranet_domains
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.intranet_domains is not None:
+            result['IntranetDomains'] = self.intranet_domains
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IntranetDomains') is not None:
+            self.intranet_domains = m.get('IntranetDomains')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DissociateInstanceWithPrivateDNSShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        intranet_domains_shrink: str = None,
+        security_token: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.intranet_domains_shrink = intranet_domains_shrink
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.intranet_domains_shrink is not None:
+            result['IntranetDomains'] = self.intranet_domains_shrink
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IntranetDomains') is not None:
+            self.intranet_domains_shrink = m.get('IntranetDomains')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DissociateInstanceWithPrivateDNSResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DissociateInstanceWithPrivateDNSResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DissociateInstanceWithPrivateDNSResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DissociateInstanceWithPrivateDNSResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DryRunSwaggerRequest(TeaModel):
     def __init__(
         self,
@@ -38070,13 +38694,30 @@ class ExportOASRequest(TeaModel):
         stage_name: str = None,
         with_xextensions: bool = None,
     ):
+        # The APIs that you want to export.
         self.api_id_list = api_id_list
+        # The exported format:
+        # 
+        # *   json
+        # *   yaml
         self.data_format = data_format
+        # The API group ID.
         self.group_id = group_id
+        # The OAS version. Valid values:
+        # 
+        # *   **oas2**\
+        # *   **oas3**\
         self.oas_version = oas_version
+        # The number of pages in which you want to export the APIs.
         self.page_number = page_number
         self.security_token = security_token
+        # The environment to which the API is published. Valid values:
+        # 
+        # *   **RELEASE**: the production environment
+        # *   **PRE**: the pre-release environment
+        # *   **TEST**: the test environment
         self.stage_name = stage_name
+        # Specifies whether to export API Gateway extensions at the same time.
         self.with_xextensions = with_xextensions
 
     def validate(self):
@@ -38139,13 +38780,30 @@ class ExportOASShrinkRequest(TeaModel):
         stage_name: str = None,
         with_xextensions: bool = None,
     ):
+        # The APIs that you want to export.
         self.api_id_list_shrink = api_id_list_shrink
+        # The exported format:
+        # 
+        # *   json
+        # *   yaml
         self.data_format = data_format
+        # The API group ID.
         self.group_id = group_id
+        # The OAS version. Valid values:
+        # 
+        # *   **oas2**\
+        # *   **oas3**\
         self.oas_version = oas_version
+        # The number of pages in which you want to export the APIs.
         self.page_number = page_number
         self.security_token = security_token
+        # The environment to which the API is published. Valid values:
+        # 
+        # *   **RELEASE**: the production environment
+        # *   **PRE**: the pre-release environment
+        # *   **TEST**: the test environment
         self.stage_name = stage_name
+        # Specifies whether to export API Gateway extensions at the same time.
         self.with_xextensions = with_xextensions
 
     def validate(self):
@@ -38202,7 +38860,9 @@ class ExportOASResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The Base64-encoded data of the exported Swagger file. You can obtain the file by using Base64 decoding.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -39478,6 +40138,237 @@ class ImportSwaggerResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ImportSwaggerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListPrivateDNSRequest(TeaModel):
+    def __init__(
+        self,
+        intranet_domain: str = None,
+        security_token: str = None,
+        type: str = None,
+    ):
+        self.intranet_domain = intranet_domain
+        self.security_token = security_token
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.intranet_domain is not None:
+            result['IntranetDomain'] = self.intranet_domain
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IntranetDomain') is not None:
+            self.intranet_domain = m.get('IntranetDomain')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListPrivateDNSResponseBodyPrivateDNSListRecords(TeaModel):
+    def __init__(
+        self,
+        record: str = None,
+        weight: int = None,
+    ):
+        self.record = record
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.record is not None:
+            result['Record'] = self.record
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Record') is not None:
+            self.record = m.get('Record')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        return self
+
+
+class ListPrivateDNSResponseBodyPrivateDNSList(TeaModel):
+    def __init__(
+        self,
+        bind_instances: List[str] = None,
+        created_time: str = None,
+        intranet_domain: str = None,
+        records: List[ListPrivateDNSResponseBodyPrivateDNSListRecords] = None,
+        type: str = None,
+    ):
+        self.bind_instances = bind_instances
+        self.created_time = created_time
+        self.intranet_domain = intranet_domain
+        self.records = records
+        self.type = type
+
+    def validate(self):
+        if self.records:
+            for k in self.records:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bind_instances is not None:
+            result['BindInstances'] = self.bind_instances
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.intranet_domain is not None:
+            result['IntranetDomain'] = self.intranet_domain
+        result['Records'] = []
+        if self.records is not None:
+            for k in self.records:
+                result['Records'].append(k.to_map() if k else None)
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BindInstances') is not None:
+            self.bind_instances = m.get('BindInstances')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('IntranetDomain') is not None:
+            self.intranet_domain = m.get('IntranetDomain')
+        self.records = []
+        if m.get('Records') is not None:
+            for k in m.get('Records'):
+                temp_model = ListPrivateDNSResponseBodyPrivateDNSListRecords()
+                self.records.append(temp_model.from_map(k))
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListPrivateDNSResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        private_dnslist: List[ListPrivateDNSResponseBodyPrivateDNSList] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.private_dnslist = private_dnslist
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.private_dnslist:
+            for k in self.private_dnslist:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['PrivateDNSList'] = []
+        if self.private_dnslist is not None:
+            for k in self.private_dnslist:
+                result['PrivateDNSList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.private_dnslist = []
+        if m.get('PrivateDNSList') is not None:
+            for k in m.get('PrivateDNSList'):
+                temp_model = ListPrivateDNSResponseBodyPrivateDNSList()
+                self.private_dnslist.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListPrivateDNSResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPrivateDNSResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPrivateDNSResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -48693,6 +49584,211 @@ class UntagResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UntagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdatePrivateDNSRequestRecords(TeaModel):
+    def __init__(
+        self,
+        record: str = None,
+        weight: int = None,
+    ):
+        self.record = record
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.record is not None:
+            result['Record'] = self.record
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Record') is not None:
+            self.record = m.get('Record')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        return self
+
+
+class UpdatePrivateDNSRequest(TeaModel):
+    def __init__(
+        self,
+        intranet_domain: str = None,
+        records: List[UpdatePrivateDNSRequestRecords] = None,
+        security_token: str = None,
+        type: str = None,
+    ):
+        # This parameter is required.
+        self.intranet_domain = intranet_domain
+        # This parameter is required.
+        self.records = records
+        self.security_token = security_token
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        if self.records:
+            for k in self.records:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.intranet_domain is not None:
+            result['IntranetDomain'] = self.intranet_domain
+        result['Records'] = []
+        if self.records is not None:
+            for k in self.records:
+                result['Records'].append(k.to_map() if k else None)
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IntranetDomain') is not None:
+            self.intranet_domain = m.get('IntranetDomain')
+        self.records = []
+        if m.get('Records') is not None:
+            for k in m.get('Records'):
+                temp_model = UpdatePrivateDNSRequestRecords()
+                self.records.append(temp_model.from_map(k))
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class UpdatePrivateDNSShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        intranet_domain: str = None,
+        records_shrink: str = None,
+        security_token: str = None,
+        type: str = None,
+    ):
+        # This parameter is required.
+        self.intranet_domain = intranet_domain
+        # This parameter is required.
+        self.records_shrink = records_shrink
+        self.security_token = security_token
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.intranet_domain is not None:
+            result['IntranetDomain'] = self.intranet_domain
+        if self.records_shrink is not None:
+            result['Records'] = self.records_shrink
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IntranetDomain') is not None:
+            self.intranet_domain = m.get('IntranetDomain')
+        if m.get('Records') is not None:
+            self.records_shrink = m.get('Records')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class UpdatePrivateDNSResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdatePrivateDNSResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdatePrivateDNSResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdatePrivateDNSResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
