@@ -595,11 +595,13 @@ class Client(OpenApiClient):
         """
         @summary Associates one or more ApsaraDB RDS instances with a scaling group.
         
-        @description Before you associate an ApsaraDB RDS instance with a scaling group, make sure that the ApsaraDB RDS instance meets the following requirements:
-        The ApsaraDB RDS instance and the scaling group must belong to the same Alibaba Cloud account.
-        The ApsaraDB RDS instance must be unlocked. For more information about the lock policy, see [ApsaraDB RDS usage notes](https://help.aliyun.com/document_detail/41872.html).
-        The ApsaraDB RDS instance must be in the Running state.
-        After an ApsaraDB RDS instance is associated with the scaling group, the default IP address whitelist of the ApsaraDB RDS instance can contain no more than 1,000 IP addresses. For more information, see [Set the whitelist](https://help.aliyun.com/document_detail/43185.html).
+        @description Before you attach an ApsaraDB RDS instance to a scaling group, make sure that the ApsaraDB RDS instance meets the following requirements:
+        The ApsaraDB RDS instance and the scaling group belong to the same Alibaba Cloud account.
+        The ApsaraDB RDS instance is unlocked. For information about the lock policy, see [ApsaraDB RDS usage notes](https://help.aliyun.com/document_detail/41872.html).
+        The ApsaraDB RDS instance is in the Running state.
+        The ApsaraDB RDS instance exists in the Alibaba Cloud account.
+        If you reattach an ApsaraDB RDS instance to a scaling group, the total number of attached ApsaraDB RDS instances of the scaling group remains unchanged. But Auto Scaling adds the private IP addresses of all Elastic Compute Service (ECS) instances in the scaling group to the IP address whitelist of the ApsaraDB RDS instance.
+        >  After you attach an ApsaraDB RDS instance to a scaling group, make sure that the number of IP addresses in the default whitelist of the ApsaraDB RDS instance is limited to 1,000. For information about IP address whitelists, see [Configure an IP address whitelist](https://help.aliyun.com/document_detail/96118.html).
         
         @param request: AttachDBInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -652,11 +654,13 @@ class Client(OpenApiClient):
         """
         @summary Associates one or more ApsaraDB RDS instances with a scaling group.
         
-        @description Before you associate an ApsaraDB RDS instance with a scaling group, make sure that the ApsaraDB RDS instance meets the following requirements:
-        The ApsaraDB RDS instance and the scaling group must belong to the same Alibaba Cloud account.
-        The ApsaraDB RDS instance must be unlocked. For more information about the lock policy, see [ApsaraDB RDS usage notes](https://help.aliyun.com/document_detail/41872.html).
-        The ApsaraDB RDS instance must be in the Running state.
-        After an ApsaraDB RDS instance is associated with the scaling group, the default IP address whitelist of the ApsaraDB RDS instance can contain no more than 1,000 IP addresses. For more information, see [Set the whitelist](https://help.aliyun.com/document_detail/43185.html).
+        @description Before you attach an ApsaraDB RDS instance to a scaling group, make sure that the ApsaraDB RDS instance meets the following requirements:
+        The ApsaraDB RDS instance and the scaling group belong to the same Alibaba Cloud account.
+        The ApsaraDB RDS instance is unlocked. For information about the lock policy, see [ApsaraDB RDS usage notes](https://help.aliyun.com/document_detail/41872.html).
+        The ApsaraDB RDS instance is in the Running state.
+        The ApsaraDB RDS instance exists in the Alibaba Cloud account.
+        If you reattach an ApsaraDB RDS instance to a scaling group, the total number of attached ApsaraDB RDS instances of the scaling group remains unchanged. But Auto Scaling adds the private IP addresses of all Elastic Compute Service (ECS) instances in the scaling group to the IP address whitelist of the ApsaraDB RDS instance.
+        >  After you attach an ApsaraDB RDS instance to a scaling group, make sure that the number of IP addresses in the default whitelist of the ApsaraDB RDS instance is limited to 1,000. For information about IP address whitelists, see [Configure an IP address whitelist](https://help.aliyun.com/document_detail/96118.html).
         
         @param request: AttachDBInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -708,11 +712,13 @@ class Client(OpenApiClient):
         """
         @summary Associates one or more ApsaraDB RDS instances with a scaling group.
         
-        @description Before you associate an ApsaraDB RDS instance with a scaling group, make sure that the ApsaraDB RDS instance meets the following requirements:
-        The ApsaraDB RDS instance and the scaling group must belong to the same Alibaba Cloud account.
-        The ApsaraDB RDS instance must be unlocked. For more information about the lock policy, see [ApsaraDB RDS usage notes](https://help.aliyun.com/document_detail/41872.html).
-        The ApsaraDB RDS instance must be in the Running state.
-        After an ApsaraDB RDS instance is associated with the scaling group, the default IP address whitelist of the ApsaraDB RDS instance can contain no more than 1,000 IP addresses. For more information, see [Set the whitelist](https://help.aliyun.com/document_detail/43185.html).
+        @description Before you attach an ApsaraDB RDS instance to a scaling group, make sure that the ApsaraDB RDS instance meets the following requirements:
+        The ApsaraDB RDS instance and the scaling group belong to the same Alibaba Cloud account.
+        The ApsaraDB RDS instance is unlocked. For information about the lock policy, see [ApsaraDB RDS usage notes](https://help.aliyun.com/document_detail/41872.html).
+        The ApsaraDB RDS instance is in the Running state.
+        The ApsaraDB RDS instance exists in the Alibaba Cloud account.
+        If you reattach an ApsaraDB RDS instance to a scaling group, the total number of attached ApsaraDB RDS instances of the scaling group remains unchanged. But Auto Scaling adds the private IP addresses of all Elastic Compute Service (ECS) instances in the scaling group to the IP address whitelist of the ApsaraDB RDS instance.
+        >  After you attach an ApsaraDB RDS instance to a scaling group, make sure that the number of IP addresses in the default whitelist of the ApsaraDB RDS instance is limited to 1,000. For information about IP address whitelists, see [Configure an IP address whitelist](https://help.aliyun.com/document_detail/96118.html).
         
         @param request: AttachDBInstancesRequest
         @return: AttachDBInstancesResponse
@@ -727,11 +733,13 @@ class Client(OpenApiClient):
         """
         @summary Associates one or more ApsaraDB RDS instances with a scaling group.
         
-        @description Before you associate an ApsaraDB RDS instance with a scaling group, make sure that the ApsaraDB RDS instance meets the following requirements:
-        The ApsaraDB RDS instance and the scaling group must belong to the same Alibaba Cloud account.
-        The ApsaraDB RDS instance must be unlocked. For more information about the lock policy, see [ApsaraDB RDS usage notes](https://help.aliyun.com/document_detail/41872.html).
-        The ApsaraDB RDS instance must be in the Running state.
-        After an ApsaraDB RDS instance is associated with the scaling group, the default IP address whitelist of the ApsaraDB RDS instance can contain no more than 1,000 IP addresses. For more information, see [Set the whitelist](https://help.aliyun.com/document_detail/43185.html).
+        @description Before you attach an ApsaraDB RDS instance to a scaling group, make sure that the ApsaraDB RDS instance meets the following requirements:
+        The ApsaraDB RDS instance and the scaling group belong to the same Alibaba Cloud account.
+        The ApsaraDB RDS instance is unlocked. For information about the lock policy, see [ApsaraDB RDS usage notes](https://help.aliyun.com/document_detail/41872.html).
+        The ApsaraDB RDS instance is in the Running state.
+        The ApsaraDB RDS instance exists in the Alibaba Cloud account.
+        If you reattach an ApsaraDB RDS instance to a scaling group, the total number of attached ApsaraDB RDS instances of the scaling group remains unchanged. But Auto Scaling adds the private IP addresses of all Elastic Compute Service (ECS) instances in the scaling group to the IP address whitelist of the ApsaraDB RDS instance.
+        >  After you attach an ApsaraDB RDS instance to a scaling group, make sure that the number of IP addresses in the default whitelist of the ApsaraDB RDS instance is limited to 1,000. For information about IP address whitelists, see [Configure an IP address whitelist](https://help.aliyun.com/document_detail/96118.html).
         
         @param request: AttachDBInstancesRequest
         @return: AttachDBInstancesResponse
@@ -1401,6 +1409,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.CancelInstanceRefreshResponse:
         """
+        @summary Cancels an instance refresh task. Take note that new instances that are used to replace old instances or that are scaled out still exist after you call this operation.
+        
+        @description    You cannot call this operation to cancel instance refresh tasks that are being rolled back.
+        
         @param request: CancelInstanceRefreshRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CancelInstanceRefreshResponse
@@ -1442,6 +1454,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.CancelInstanceRefreshResponse:
         """
+        @summary Cancels an instance refresh task. Take note that new instances that are used to replace old instances or that are scaled out still exist after you call this operation.
+        
+        @description    You cannot call this operation to cancel instance refresh tasks that are being rolled back.
+        
         @param request: CancelInstanceRefreshRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CancelInstanceRefreshResponse
@@ -1482,6 +1498,10 @@ class Client(OpenApiClient):
         request: ess_20220222_models.CancelInstanceRefreshRequest,
     ) -> ess_20220222_models.CancelInstanceRefreshResponse:
         """
+        @summary Cancels an instance refresh task. Take note that new instances that are used to replace old instances or that are scaled out still exist after you call this operation.
+        
+        @description    You cannot call this operation to cancel instance refresh tasks that are being rolled back.
+        
         @param request: CancelInstanceRefreshRequest
         @return: CancelInstanceRefreshResponse
         """
@@ -1493,6 +1513,10 @@ class Client(OpenApiClient):
         request: ess_20220222_models.CancelInstanceRefreshRequest,
     ) -> ess_20220222_models.CancelInstanceRefreshResponse:
         """
+        @summary Cancels an instance refresh task. Take note that new instances that are used to replace old instances or that are scaled out still exist after you call this operation.
+        
+        @description    You cannot call this operation to cancel instance refresh tasks that are being rolled back.
+        
         @param request: CancelInstanceRefreshRequest
         @return: CancelInstanceRefreshResponse
         """
@@ -5315,12 +5339,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_eci_scaling_configurations_with_options_async(request, runtime)
 
+    def describe_elastic_strength_with_options(
+        self,
+        request: ess_20220222_models.DescribeElasticStrengthRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.DescribeElasticStrengthResponse:
+        """
+        @summary DescribeElasticStrength
+        
+        @param request: DescribeElasticStrengthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeElasticStrengthResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeElasticStrength',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.DescribeElasticStrengthResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_elastic_strength_with_options_async(
+        self,
+        request: ess_20220222_models.DescribeElasticStrengthRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.DescribeElasticStrengthResponse:
+        """
+        @summary DescribeElasticStrength
+        
+        @param request: DescribeElasticStrengthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeElasticStrengthResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeElasticStrength',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.DescribeElasticStrengthResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_elastic_strength(
+        self,
+        request: ess_20220222_models.DescribeElasticStrengthRequest,
+    ) -> ess_20220222_models.DescribeElasticStrengthResponse:
+        """
+        @summary DescribeElasticStrength
+        
+        @param request: DescribeElasticStrengthRequest
+        @return: DescribeElasticStrengthResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_elastic_strength_with_options(request, runtime)
+
+    async def describe_elastic_strength_async(
+        self,
+        request: ess_20220222_models.DescribeElasticStrengthRequest,
+    ) -> ess_20220222_models.DescribeElasticStrengthResponse:
+        """
+        @summary DescribeElasticStrength
+        
+        @param request: DescribeElasticStrengthRequest
+        @return: DescribeElasticStrengthResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_elastic_strength_with_options_async(request, runtime)
+
     def describe_instance_refreshes_with_options(
         self,
         request: ess_20220222_models.DescribeInstanceRefreshesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeInstanceRefreshesResponse:
         """
+        @summary Queries instance refresh tasks. If you want to view the basic information and execution progress of an instance refresh task, you can call the DescribeInstanceRefreshes operation.
+        
         @param request: DescribeInstanceRefreshesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeInstanceRefreshesResponse
@@ -5370,6 +5488,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeInstanceRefreshesResponse:
         """
+        @summary Queries instance refresh tasks. If you want to view the basic information and execution progress of an instance refresh task, you can call the DescribeInstanceRefreshes operation.
+        
         @param request: DescribeInstanceRefreshesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeInstanceRefreshesResponse
@@ -5418,6 +5538,8 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeInstanceRefreshesRequest,
     ) -> ess_20220222_models.DescribeInstanceRefreshesResponse:
         """
+        @summary Queries instance refresh tasks. If you want to view the basic information and execution progress of an instance refresh task, you can call the DescribeInstanceRefreshes operation.
+        
         @param request: DescribeInstanceRefreshesRequest
         @return: DescribeInstanceRefreshesResponse
         """
@@ -5429,6 +5551,8 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeInstanceRefreshesRequest,
     ) -> ess_20220222_models.DescribeInstanceRefreshesResponse:
         """
+        @summary Queries instance refresh tasks. If you want to view the basic information and execution progress of an instance refresh task, you can call the DescribeInstanceRefreshes operation.
+        
         @param request: DescribeInstanceRefreshesRequest
         @return: DescribeInstanceRefreshesResponse
         """
@@ -6241,11 +6365,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeScalingActivitiesResponse:
         """
-        @summary Queries scaling activities.
+        @summary Queries scaling activities. You can call the DescribeScalingActivities operation to query the results of scaling activities triggered by scheduled tasks, event-triggered tasks, or manual execution of scaling rules. For example, you can query the status and cause of a scaling activity. You can also query the total number of instances after a scaling activity is complete.
         
-        @description You can specify a scaling group ID to query all scaling activities in the scaling group.
+        @description    You can query all scaling activities in a scaling group by specifying ScalingGroupId.
         You can filter query results based on the status of scaling activities.
-        You can query scaling activities that are executed in the previous 30 days.
+        You can query scaling activities within the last 30 days.
         
         @param request: DescribeScalingActivitiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6300,11 +6424,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeScalingActivitiesResponse:
         """
-        @summary Queries scaling activities.
+        @summary Queries scaling activities. You can call the DescribeScalingActivities operation to query the results of scaling activities triggered by scheduled tasks, event-triggered tasks, or manual execution of scaling rules. For example, you can query the status and cause of a scaling activity. You can also query the total number of instances after a scaling activity is complete.
         
-        @description You can specify a scaling group ID to query all scaling activities in the scaling group.
+        @description    You can query all scaling activities in a scaling group by specifying ScalingGroupId.
         You can filter query results based on the status of scaling activities.
-        You can query scaling activities that are executed in the previous 30 days.
+        You can query scaling activities within the last 30 days.
         
         @param request: DescribeScalingActivitiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6358,11 +6482,11 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeScalingActivitiesRequest,
     ) -> ess_20220222_models.DescribeScalingActivitiesResponse:
         """
-        @summary Queries scaling activities.
+        @summary Queries scaling activities. You can call the DescribeScalingActivities operation to query the results of scaling activities triggered by scheduled tasks, event-triggered tasks, or manual execution of scaling rules. For example, you can query the status and cause of a scaling activity. You can also query the total number of instances after a scaling activity is complete.
         
-        @description You can specify a scaling group ID to query all scaling activities in the scaling group.
+        @description    You can query all scaling activities in a scaling group by specifying ScalingGroupId.
         You can filter query results based on the status of scaling activities.
-        You can query scaling activities that are executed in the previous 30 days.
+        You can query scaling activities within the last 30 days.
         
         @param request: DescribeScalingActivitiesRequest
         @return: DescribeScalingActivitiesResponse
@@ -6375,11 +6499,11 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeScalingActivitiesRequest,
     ) -> ess_20220222_models.DescribeScalingActivitiesResponse:
         """
-        @summary Queries scaling activities.
+        @summary Queries scaling activities. You can call the DescribeScalingActivities operation to query the results of scaling activities triggered by scheduled tasks, event-triggered tasks, or manual execution of scaling rules. For example, you can query the status and cause of a scaling activity. You can also query the total number of instances after a scaling activity is complete.
         
-        @description You can specify a scaling group ID to query all scaling activities in the scaling group.
+        @description    You can query all scaling activities in a scaling group by specifying ScalingGroupId.
         You can filter query results based on the status of scaling activities.
-        You can query scaling activities that are executed in the previous 30 days.
+        You can query scaling activities within the last 30 days.
         
         @param request: DescribeScalingActivitiesRequest
         @return: DescribeScalingActivitiesResponse
@@ -6633,7 +6757,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeScalingGroupDetailResponse:
         """
-        @summary Queries a scaling group. You can call the DescribeScalingGroupDetail operation to query the basic information, instances, and scaling configurations of a scaling group. If you set OutputFormat to yaml, the output is a Kubernetes Deployment file in the YAML format.
+        @summary Queries a scaling group. You can call the DescribeScalingGroupDetail operation to query the basic information, instances, and scaling configurations of a scaling group. If you set OutputFormat to YAML for a scaling group of the Elastic Container Instance type, the output is a Kubernetes Deployment file in the YAML format.
         
         @param request: DescribeScalingGroupDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6674,7 +6798,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeScalingGroupDetailResponse:
         """
-        @summary Queries a scaling group. You can call the DescribeScalingGroupDetail operation to query the basic information, instances, and scaling configurations of a scaling group. If you set OutputFormat to yaml, the output is a Kubernetes Deployment file in the YAML format.
+        @summary Queries a scaling group. You can call the DescribeScalingGroupDetail operation to query the basic information, instances, and scaling configurations of a scaling group. If you set OutputFormat to YAML for a scaling group of the Elastic Container Instance type, the output is a Kubernetes Deployment file in the YAML format.
         
         @param request: DescribeScalingGroupDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6714,7 +6838,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeScalingGroupDetailRequest,
     ) -> ess_20220222_models.DescribeScalingGroupDetailResponse:
         """
-        @summary Queries a scaling group. You can call the DescribeScalingGroupDetail operation to query the basic information, instances, and scaling configurations of a scaling group. If you set OutputFormat to yaml, the output is a Kubernetes Deployment file in the YAML format.
+        @summary Queries a scaling group. You can call the DescribeScalingGroupDetail operation to query the basic information, instances, and scaling configurations of a scaling group. If you set OutputFormat to YAML for a scaling group of the Elastic Container Instance type, the output is a Kubernetes Deployment file in the YAML format.
         
         @param request: DescribeScalingGroupDetailRequest
         @return: DescribeScalingGroupDetailResponse
@@ -6727,7 +6851,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeScalingGroupDetailRequest,
     ) -> ess_20220222_models.DescribeScalingGroupDetailResponse:
         """
-        @summary Queries a scaling group. You can call the DescribeScalingGroupDetail operation to query the basic information, instances, and scaling configurations of a scaling group. If you set OutputFormat to yaml, the output is a Kubernetes Deployment file in the YAML format.
+        @summary Queries a scaling group. You can call the DescribeScalingGroupDetail operation to query the basic information, instances, and scaling configurations of a scaling group. If you set OutputFormat to YAML for a scaling group of the Elastic Container Instance type, the output is a Kubernetes Deployment file in the YAML format.
         
         @param request: DescribeScalingGroupDetailRequest
         @return: DescribeScalingGroupDetailResponse
@@ -11965,6 +12089,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ResumeInstanceRefreshResponse:
         """
+        @summary Resumes an instance refresh task.
+        
         @param request: ResumeInstanceRefreshRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ResumeInstanceRefreshResponse
@@ -12006,6 +12132,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ResumeInstanceRefreshResponse:
         """
+        @summary Resumes an instance refresh task.
+        
         @param request: ResumeInstanceRefreshRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ResumeInstanceRefreshResponse
@@ -12046,6 +12174,8 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ResumeInstanceRefreshRequest,
     ) -> ess_20220222_models.ResumeInstanceRefreshResponse:
         """
+        @summary Resumes an instance refresh task.
+        
         @param request: ResumeInstanceRefreshRequest
         @return: ResumeInstanceRefreshResponse
         """
@@ -12057,6 +12187,8 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ResumeInstanceRefreshRequest,
     ) -> ess_20220222_models.ResumeInstanceRefreshResponse:
         """
+        @summary Resumes an instance refresh task.
+        
         @param request: ResumeInstanceRefreshRequest
         @return: ResumeInstanceRefreshResponse
         """
@@ -12185,6 +12317,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.RollbackInstanceRefreshResponse:
         """
+        @summary Rolls back an instance refresh task. If the configurations of an instance refresh task cannot meet your business requirements, you can call this operation to roll back the task. During the rollback process, Auto Scaling creates instances based on the active scaling configuration to replace instances that are created based on the configurations of the instance refresh task.
+        
         @param request: RollbackInstanceRefreshRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RollbackInstanceRefreshResponse
@@ -12226,6 +12360,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.RollbackInstanceRefreshResponse:
         """
+        @summary Rolls back an instance refresh task. If the configurations of an instance refresh task cannot meet your business requirements, you can call this operation to roll back the task. During the rollback process, Auto Scaling creates instances based on the active scaling configuration to replace instances that are created based on the configurations of the instance refresh task.
+        
         @param request: RollbackInstanceRefreshRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RollbackInstanceRefreshResponse
@@ -12266,6 +12402,8 @@ class Client(OpenApiClient):
         request: ess_20220222_models.RollbackInstanceRefreshRequest,
     ) -> ess_20220222_models.RollbackInstanceRefreshResponse:
         """
+        @summary Rolls back an instance refresh task. If the configurations of an instance refresh task cannot meet your business requirements, you can call this operation to roll back the task. During the rollback process, Auto Scaling creates instances based on the active scaling configuration to replace instances that are created based on the configurations of the instance refresh task.
+        
         @param request: RollbackInstanceRefreshRequest
         @return: RollbackInstanceRefreshResponse
         """
@@ -12277,6 +12415,8 @@ class Client(OpenApiClient):
         request: ess_20220222_models.RollbackInstanceRefreshRequest,
     ) -> ess_20220222_models.RollbackInstanceRefreshResponse:
         """
+        @summary Rolls back an instance refresh task. If the configurations of an instance refresh task cannot meet your business requirements, you can call this operation to roll back the task. During the rollback process, Auto Scaling creates instances based on the active scaling configuration to replace instances that are created based on the configurations of the instance refresh task.
+        
         @param request: RollbackInstanceRefreshRequest
         @return: RollbackInstanceRefreshResponse
         """
@@ -12697,12 +12837,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.SetInstancesProtectionResponse:
         """
-        @summary Puts Elastic Compute Service (ECS) instances into the Protected state. When ECS instances are put into the Protected state, they become immune to manual deletion attempts by using the Auto Scaling console or API operations. This operation serves as a robust safeguard, efficiently preventing any inadvertent instance release that could lead to irreversible consequences.
+        @summary Puts or removes Elastic Compute Service (ECS) instances into or from the Protected state. After you put an ECS instance into the Protected state, the ECS instance will not be stopped or released when a scale-in event is triggered. In this case, you can manually delete the ECS instance in the Auto Scaling console or by calling the RemoveInstances operation.
         
         @description Once ECS instances enter the Protected state, they become subject to the following restrictions:
         ECS instances will persist in the Protected state, unless you deliberately remove them from this state.
-        Even in scenarios where automatic scale-in actions are initiated due to fluctuations in the number of ECS instances or the execution of event-triggered tasks, Auto Scaling does not remove ECS instances that are in the Protected state from their respective scaling groups. Only after being manually removed from their respective scaling groups can ECS instances that are in the Protected state be released. For more information, see [Remove an ECS instance](https://help.aliyun.com/document_detail/25955.html).
-        ECS instances in the Protected state maintain their existing health status even when they undergo stopping or restarting processes.
+        Even in scenarios where automatic scale-in actions are initiated due to fluctuations in the number of ECS instances or the execution of event-triggered tasks, Auto Scaling does not remove ECS instances that are in the Protected state from their respective scaling groups. Only after being manually removed from their respective scaling groups can ECS instances that are in the Protected state be released. For more information, see [Remove an ECS instance](https://help.aliyun.com/document_detail/459393.html).
+        ECS instances in the Protected state maintain their health status even when they undergo stopping or restarting processes.
         
         @param request: SetInstancesProtectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12745,12 +12885,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.SetInstancesProtectionResponse:
         """
-        @summary Puts Elastic Compute Service (ECS) instances into the Protected state. When ECS instances are put into the Protected state, they become immune to manual deletion attempts by using the Auto Scaling console or API operations. This operation serves as a robust safeguard, efficiently preventing any inadvertent instance release that could lead to irreversible consequences.
+        @summary Puts or removes Elastic Compute Service (ECS) instances into or from the Protected state. After you put an ECS instance into the Protected state, the ECS instance will not be stopped or released when a scale-in event is triggered. In this case, you can manually delete the ECS instance in the Auto Scaling console or by calling the RemoveInstances operation.
         
         @description Once ECS instances enter the Protected state, they become subject to the following restrictions:
         ECS instances will persist in the Protected state, unless you deliberately remove them from this state.
-        Even in scenarios where automatic scale-in actions are initiated due to fluctuations in the number of ECS instances or the execution of event-triggered tasks, Auto Scaling does not remove ECS instances that are in the Protected state from their respective scaling groups. Only after being manually removed from their respective scaling groups can ECS instances that are in the Protected state be released. For more information, see [Remove an ECS instance](https://help.aliyun.com/document_detail/25955.html).
-        ECS instances in the Protected state maintain their existing health status even when they undergo stopping or restarting processes.
+        Even in scenarios where automatic scale-in actions are initiated due to fluctuations in the number of ECS instances or the execution of event-triggered tasks, Auto Scaling does not remove ECS instances that are in the Protected state from their respective scaling groups. Only after being manually removed from their respective scaling groups can ECS instances that are in the Protected state be released. For more information, see [Remove an ECS instance](https://help.aliyun.com/document_detail/459393.html).
+        ECS instances in the Protected state maintain their health status even when they undergo stopping or restarting processes.
         
         @param request: SetInstancesProtectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12792,12 +12932,12 @@ class Client(OpenApiClient):
         request: ess_20220222_models.SetInstancesProtectionRequest,
     ) -> ess_20220222_models.SetInstancesProtectionResponse:
         """
-        @summary Puts Elastic Compute Service (ECS) instances into the Protected state. When ECS instances are put into the Protected state, they become immune to manual deletion attempts by using the Auto Scaling console or API operations. This operation serves as a robust safeguard, efficiently preventing any inadvertent instance release that could lead to irreversible consequences.
+        @summary Puts or removes Elastic Compute Service (ECS) instances into or from the Protected state. After you put an ECS instance into the Protected state, the ECS instance will not be stopped or released when a scale-in event is triggered. In this case, you can manually delete the ECS instance in the Auto Scaling console or by calling the RemoveInstances operation.
         
         @description Once ECS instances enter the Protected state, they become subject to the following restrictions:
         ECS instances will persist in the Protected state, unless you deliberately remove them from this state.
-        Even in scenarios where automatic scale-in actions are initiated due to fluctuations in the number of ECS instances or the execution of event-triggered tasks, Auto Scaling does not remove ECS instances that are in the Protected state from their respective scaling groups. Only after being manually removed from their respective scaling groups can ECS instances that are in the Protected state be released. For more information, see [Remove an ECS instance](https://help.aliyun.com/document_detail/25955.html).
-        ECS instances in the Protected state maintain their existing health status even when they undergo stopping or restarting processes.
+        Even in scenarios where automatic scale-in actions are initiated due to fluctuations in the number of ECS instances or the execution of event-triggered tasks, Auto Scaling does not remove ECS instances that are in the Protected state from their respective scaling groups. Only after being manually removed from their respective scaling groups can ECS instances that are in the Protected state be released. For more information, see [Remove an ECS instance](https://help.aliyun.com/document_detail/459393.html).
+        ECS instances in the Protected state maintain their health status even when they undergo stopping or restarting processes.
         
         @param request: SetInstancesProtectionRequest
         @return: SetInstancesProtectionResponse
@@ -12810,12 +12950,12 @@ class Client(OpenApiClient):
         request: ess_20220222_models.SetInstancesProtectionRequest,
     ) -> ess_20220222_models.SetInstancesProtectionResponse:
         """
-        @summary Puts Elastic Compute Service (ECS) instances into the Protected state. When ECS instances are put into the Protected state, they become immune to manual deletion attempts by using the Auto Scaling console or API operations. This operation serves as a robust safeguard, efficiently preventing any inadvertent instance release that could lead to irreversible consequences.
+        @summary Puts or removes Elastic Compute Service (ECS) instances into or from the Protected state. After you put an ECS instance into the Protected state, the ECS instance will not be stopped or released when a scale-in event is triggered. In this case, you can manually delete the ECS instance in the Auto Scaling console or by calling the RemoveInstances operation.
         
         @description Once ECS instances enter the Protected state, they become subject to the following restrictions:
         ECS instances will persist in the Protected state, unless you deliberately remove them from this state.
-        Even in scenarios where automatic scale-in actions are initiated due to fluctuations in the number of ECS instances or the execution of event-triggered tasks, Auto Scaling does not remove ECS instances that are in the Protected state from their respective scaling groups. Only after being manually removed from their respective scaling groups can ECS instances that are in the Protected state be released. For more information, see [Remove an ECS instance](https://help.aliyun.com/document_detail/25955.html).
-        ECS instances in the Protected state maintain their existing health status even when they undergo stopping or restarting processes.
+        Even in scenarios where automatic scale-in actions are initiated due to fluctuations in the number of ECS instances or the execution of event-triggered tasks, Auto Scaling does not remove ECS instances that are in the Protected state from their respective scaling groups. Only after being manually removed from their respective scaling groups can ECS instances that are in the Protected state be released. For more information, see [Remove an ECS instance](https://help.aliyun.com/document_detail/459393.html).
+        ECS instances in the Protected state maintain their health status even when they undergo stopping or restarting processes.
         
         @param request: SetInstancesProtectionRequest
         @return: SetInstancesProtectionResponse
@@ -12829,6 +12969,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.StartInstanceRefreshResponse:
         """
+        @summary Starts an instance refresh task. If you want to batch update instance images, modify information in scaling configurations, and scale out instances based on new configurations, you can call the StartInstanceRefresh.html operation. After you start an instance refresh task, Auto Scaling gradually creates new instances from the desired configurations provided by the task to replace old instances. When all replacements are complete, the configurations of instances in your scaling group perfectly match your expectations.
+        
+        @description    Only one instance refresh task can be executed at a time in a scaling group.
+        Instance refresh tasks are currently supported only by scaling groups of the Elastic Compute Service (ECS) type and using **the priority policy**. Scaling groups that use the number of vCPUs as the method to calculate the group capacity or scaling groups whose instance reclaim mode is **Economical Mode** or **Forcibly Recycle** do not support instance refresh tasks.
+        During the execution of an instance refresh task, scaling events can be complete as expected. Take note that instances that are scaled out use the desired configurations provided by the instance refresh task.
+        Instance refresh tasks does not take effect on instances that are manually added and instances that are in the Standby and Protected states.
+        
         @param request: StartInstanceRefreshRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: StartInstanceRefreshResponse
@@ -12876,6 +13023,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.StartInstanceRefreshResponse:
         """
+        @summary Starts an instance refresh task. If you want to batch update instance images, modify information in scaling configurations, and scale out instances based on new configurations, you can call the StartInstanceRefresh.html operation. After you start an instance refresh task, Auto Scaling gradually creates new instances from the desired configurations provided by the task to replace old instances. When all replacements are complete, the configurations of instances in your scaling group perfectly match your expectations.
+        
+        @description    Only one instance refresh task can be executed at a time in a scaling group.
+        Instance refresh tasks are currently supported only by scaling groups of the Elastic Compute Service (ECS) type and using **the priority policy**. Scaling groups that use the number of vCPUs as the method to calculate the group capacity or scaling groups whose instance reclaim mode is **Economical Mode** or **Forcibly Recycle** do not support instance refresh tasks.
+        During the execution of an instance refresh task, scaling events can be complete as expected. Take note that instances that are scaled out use the desired configurations provided by the instance refresh task.
+        Instance refresh tasks does not take effect on instances that are manually added and instances that are in the Standby and Protected states.
+        
         @param request: StartInstanceRefreshRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: StartInstanceRefreshResponse
@@ -12922,6 +13076,13 @@ class Client(OpenApiClient):
         request: ess_20220222_models.StartInstanceRefreshRequest,
     ) -> ess_20220222_models.StartInstanceRefreshResponse:
         """
+        @summary Starts an instance refresh task. If you want to batch update instance images, modify information in scaling configurations, and scale out instances based on new configurations, you can call the StartInstanceRefresh.html operation. After you start an instance refresh task, Auto Scaling gradually creates new instances from the desired configurations provided by the task to replace old instances. When all replacements are complete, the configurations of instances in your scaling group perfectly match your expectations.
+        
+        @description    Only one instance refresh task can be executed at a time in a scaling group.
+        Instance refresh tasks are currently supported only by scaling groups of the Elastic Compute Service (ECS) type and using **the priority policy**. Scaling groups that use the number of vCPUs as the method to calculate the group capacity or scaling groups whose instance reclaim mode is **Economical Mode** or **Forcibly Recycle** do not support instance refresh tasks.
+        During the execution of an instance refresh task, scaling events can be complete as expected. Take note that instances that are scaled out use the desired configurations provided by the instance refresh task.
+        Instance refresh tasks does not take effect on instances that are manually added and instances that are in the Standby and Protected states.
+        
         @param request: StartInstanceRefreshRequest
         @return: StartInstanceRefreshResponse
         """
@@ -12933,6 +13094,13 @@ class Client(OpenApiClient):
         request: ess_20220222_models.StartInstanceRefreshRequest,
     ) -> ess_20220222_models.StartInstanceRefreshResponse:
         """
+        @summary Starts an instance refresh task. If you want to batch update instance images, modify information in scaling configurations, and scale out instances based on new configurations, you can call the StartInstanceRefresh.html operation. After you start an instance refresh task, Auto Scaling gradually creates new instances from the desired configurations provided by the task to replace old instances. When all replacements are complete, the configurations of instances in your scaling group perfectly match your expectations.
+        
+        @description    Only one instance refresh task can be executed at a time in a scaling group.
+        Instance refresh tasks are currently supported only by scaling groups of the Elastic Compute Service (ECS) type and using **the priority policy**. Scaling groups that use the number of vCPUs as the method to calculate the group capacity or scaling groups whose instance reclaim mode is **Economical Mode** or **Forcibly Recycle** do not support instance refresh tasks.
+        During the execution of an instance refresh task, scaling events can be complete as expected. Take note that instances that are scaled out use the desired configurations provided by the instance refresh task.
+        Instance refresh tasks does not take effect on instances that are manually added and instances that are in the Standby and Protected states.
+        
         @param request: StartInstanceRefreshRequest
         @return: StartInstanceRefreshResponse
         """
@@ -12945,6 +13113,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.SuspendInstanceRefreshResponse:
         """
+        @summary Suspends an instance refresh task. You can call this operation to suspend an ongoing instance refresh task for observation.
+        
+        @description    You cannot call this operation to suspend an instance refresh task that is being rolled back.
+        
         @param request: SuspendInstanceRefreshRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SuspendInstanceRefreshResponse
@@ -12986,6 +13158,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.SuspendInstanceRefreshResponse:
         """
+        @summary Suspends an instance refresh task. You can call this operation to suspend an ongoing instance refresh task for observation.
+        
+        @description    You cannot call this operation to suspend an instance refresh task that is being rolled back.
+        
         @param request: SuspendInstanceRefreshRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SuspendInstanceRefreshResponse
@@ -13026,6 +13202,10 @@ class Client(OpenApiClient):
         request: ess_20220222_models.SuspendInstanceRefreshRequest,
     ) -> ess_20220222_models.SuspendInstanceRefreshResponse:
         """
+        @summary Suspends an instance refresh task. You can call this operation to suspend an ongoing instance refresh task for observation.
+        
+        @description    You cannot call this operation to suspend an instance refresh task that is being rolled back.
+        
         @param request: SuspendInstanceRefreshRequest
         @return: SuspendInstanceRefreshResponse
         """
@@ -13037,6 +13217,10 @@ class Client(OpenApiClient):
         request: ess_20220222_models.SuspendInstanceRefreshRequest,
     ) -> ess_20220222_models.SuspendInstanceRefreshResponse:
         """
+        @summary Suspends an instance refresh task. You can call this operation to suspend an ongoing instance refresh task for observation.
+        
+        @description    You cannot call this operation to suspend an instance refresh task that is being rolled back.
+        
         @param request: SuspendInstanceRefreshRequest
         @return: SuspendInstanceRefreshResponse
         """

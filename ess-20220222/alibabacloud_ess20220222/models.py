@@ -498,20 +498,22 @@ class AttachDBInstancesRequest(TeaModel):
         scaling_group_id: str = None,
         type: str = None,
     ):
-        # The mode in which you want to attach the ApsaraDB RDS instance to the scaling group. Valid values:
+        # The mode in which you want to attach the database to the scaling group. Valid values:
         # 
-        # *   SecurityIp: the SecurityIp mode. Auto Scaling automatically adds the private IP addresses of the scaled out instances to the IP address whitelist of the ApsaraDB RDS instance. You can select this mode only when you attach an ApsaraDB RDS instance to a scaling group.
-        # *   SecurityGroup: the security group mode. Auto Scaling adds the security group of the scaling configuration to the security group whitelist for registration and association.
+        # *   SecurityIp: adds the private IP addresses of scaled out ECS instances to the IP address whitelist of the database. Take note that you can choose this mode only when the database that you want to attach is an ApsaraDB RDS instance.
+        # *   SecurityGroup: adds the security group of the scaling configuration based on which ECS instances are created in the scaling group to the security group whitelist of the database for registration.
+        # 
+        # Default value: SecurityIp.
         self.attach_mode = attach_mode
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests.
         # 
         # The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request](https://help.aliyun.com/document_detail/25965.html).
         self.client_token = client_token
-        # The ID of the ApsaraDB RDS instance.
+        # The IDs of the ApsaraDB RDS instances that you want to attach to the scaling group.
         # 
         # This parameter is required.
         self.dbinstances = dbinstances
-        # Specifies whether to add the private IP addresses of all instances in the scaling group to the IP address whitelist of the ApsaraDB RDS instance. Valid values:
+        # Specifies whether to add the private IP addresses of all ECS instances in the scaling group to the IP address whitelist of an ApsaraDB RDS instance when you attach the ApsaraDB RDS instance to the scaling group. Valid values:
         # 
         # *   true
         # *   false
@@ -528,9 +530,9 @@ class AttachDBInstancesRequest(TeaModel):
         self.scaling_group_id = scaling_group_id
         # The type of the database that you want to attach to the scaling group. Valid values:
         # 
-        # *   ApsaraDB RDS
-        # *   ApsaraDB for Redis
-        # *   ApsaraDB for MongoDB
+        # *   RDS
+        # *   Redis
+        # *   MongoDB
         # 
         # Default value: RDS.
         self.type = type
@@ -1546,12 +1548,18 @@ class CancelInstanceRefreshRequest(TeaModel):
         resource_owner_account: str = None,
         scaling_group_id: str = None,
     ):
+        # The ID of the instance refresh task.
+        # 
         # This parameter is required.
         self.instance_refresh_task_id = instance_refresh_task_id
         self.owner_id = owner_id
+        # The region ID of the scaling group.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
+        # The ID of the scaling group.
+        # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
 
@@ -1596,6 +1604,7 @@ class CancelInstanceRefreshResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5934,6 +5943,10 @@ class CreateScalingConfigurationRequestSecurityOptions(TeaModel):
         self,
         confidential_computing_mode: str = None,
     ):
+        # The confidential computing mode. Valid values:
+        # 
+        # *   Enclave: An enclave-based confidential computing environment is built on the instance. For more information, see [Build a confidential computing environment by using Enclave](https://help.aliyun.com/document_detail/203433.html).
+        # *   TDX: A Trust Domain Extensions (TDX) confidential computing environment is built on the instance. For more information, see [Build a TDX confidential computing environment](https://help.aliyun.com/document_detail/479090.html).
         self.confidential_computing_mode = confidential_computing_mode
 
     def validate(self):
@@ -7342,6 +7355,10 @@ class CreateScalingConfigurationShrinkRequestSecurityOptions(TeaModel):
         self,
         confidential_computing_mode: str = None,
     ):
+        # The confidential computing mode. Valid values:
+        # 
+        # *   Enclave: An enclave-based confidential computing environment is built on the instance. For more information, see [Build a confidential computing environment by using Enclave](https://help.aliyun.com/document_detail/203433.html).
+        # *   TDX: A Trust Domain Extensions (TDX) confidential computing environment is built on the instance. For more information, see [Build a TDX confidential computing environment](https://help.aliyun.com/document_detail/479090.html).
         self.confidential_computing_mode = confidential_computing_mode
 
     def validate(self):
@@ -8639,22 +8656,16 @@ class CreateScalingGroupRequest(TeaModel):
         # The health check mode of the scaling group. Valid values:
         # 
         # *   NONE: Auto Scaling does not check the health status of instances.
-        # *   ECS: Auto Scaling checks the health status of ECS instances in the scaling group.
-        # *   ECI: Auto Scaling checks the health status of elastic container instances in the scaling group.
-        # *   LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of CLB instances are not supported as the health check basis for instances in the scaling group.
+        # *   ECS: Auto Scaling checks the health status of instances in the scaling group. If you want to enable instance health check, you can set the value to ECS, regardless of whether the scaling group is of ECS type or Elastic Container Instance type.
+        # *   LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of Classic Load Balancer (CLB) instances are not supported as the health check basis for instances in the scaling group.
         # 
         # Default value: ECS.
+        # 
+        # >  If you want to enable instance health check and load balancer health check at the same time, we recommend that you specify `HealthCheckTypes`.
         self.health_check_type = health_check_type
-        # The health check modes of the scaling group. Valid values:
+        # The health check mode of the scaling group.
         # 
-        # *   NONE: Auto Scaling does not check the health status of instances.
-        # *   ECS: Auto Scaling checks the health status of ECS instances in the scaling group.
-        # *   ECI: Auto Scaling checks the health status of elastic container instances in the scaling group.
-        # *   LOAD_BALANCER: Auto Scaling checks the health status of instances based on the health check results of load balancers. The health check results of CLB instances are not supported as the health check basis for instances in the scaling group.
-        # 
-        # >  HealthCheckTypes has the same effect as `HealthCheckType`. You can select one of them to specify based on your business requirements. If you specify `HealthCheckType`, `HealthCheckTypes` is ignored. HealthCheckTypes is optional.
-        # 
-        # Default value: ECS.
+        # >  You can specify multiple values for this parameter to enable multiple health check options at the same time. If you specify `HealthCheckType`, this parameter is ignored.
         self.health_check_types = health_check_types
         # The ID of the ECS instance. When you create a scaling group, you can specify an existing ECS instance. Auto Scaling obtains the configurations of the ECS instance and automatically creates a scaling configuration from the obtained configurations.
         self.instance_id = instance_id
@@ -9370,7 +9381,7 @@ class CreateScalingRuleRequest(TeaModel):
         # 
         # By default, this parameter is left empty.
         self.cooldown = cooldown
-        # Specifies whether to disable scale-in. This parameter is available only if you set the ScalingRuleType parameter to TargetTrackingScalingRule.
+        # Specifies whether to disable scale-in. This parameter is available only if you set ScalingRuleType to TargetTrackingScalingRule.
         # 
         # Default value: false.
         self.disable_scale_in = disable_scale_in
@@ -9388,7 +9399,7 @@ class CreateScalingRuleRequest(TeaModel):
         # 
         # The default value of this parameter is the value of MaxSize.
         self.initial_max_size = initial_max_size
-        # The predefined metric of the scaling rule. If you set ScalingRuleType to TargetTrackingScalingRule or PredictiveScalingRule, you must specify this parameter.
+        # The predefined metric that you want to monitor. If you set ScalingRuleType to TargetTrackingScalingRule or PredictiveScalingRule, you must specify this parameter.
         # 
         # Valid values if you set ScalingRuleType to TargetTrackingScalingRule:
         # 
@@ -9396,7 +9407,7 @@ class CreateScalingRuleRequest(TeaModel):
         # *   MemoryUtilization (recommended): the memory usage.
         # *   CpuUtilization: the average CPU utilization.
         # *   IntranetTx: the outbound traffic over an internal network.
-        # *   IntranetRx: the inbound traffic over an internal network.
+        # *   IntranetRx: the average inbound traffic over an internal network.
         # *   VpcInternetTx: the outbound traffic from a virtual private cloud (VPC) to the Internet.
         # *   VpcInternetRx: the inbound traffic from the Internet to a VPC.
         # *   LoadBalancerRealServerAverageQps:the queries per second (QPS) per Application Load Balancer (ALB) server group.
@@ -9404,10 +9415,10 @@ class CreateScalingRuleRequest(TeaModel):
         # Valid values if you set ScalingRuleType to PredictiveScalingRule:
         # 
         # *   CpuUtilization: the average CPU utilization.
-        # *   IntranetRx: the inbound traffic over an internal network.
-        # *   IntranetTx: the outbound traffic over an internal network.
+        # *   IntranetRx: the average inbound traffic over an internal network.
+        # *   IntranetTx: the average outbound traffic over an internal network.
         # 
-        # For more information, see [Event-triggered tasks of the system monitoring type](https://www.alibabacloud.com/help/zh/auto-scaling/user-guide/event-triggered-tasks-of-the-system-monitoring-type).
+        # For more information, see [Event-triggered tasks of the system monitoring type](https://help.aliyun.com/document_detail/74854.html).
         self.metric_name = metric_name
         self.metric_type = metric_type
         # The minimum number of instances that must be scaled when the AdjustmentType parameter is set to PercentChangeInCapacity. This parameter takes effect only if you set the ScalingRuleType parameter to SimpleScalingRule or StepScalingRule.
@@ -9460,12 +9471,12 @@ class CreateScalingRuleRequest(TeaModel):
         self.scaling_rule_name = scaling_rule_name
         # The type of the scaling rule. Valid values:
         # 
-        # *   SimpleScalingRule: a simple scaling rule. Once a simple scaling rule is executed, Auto Scaling adjusts the number of ECS instances or elastic container instances in the scaling group based on the values of AdjustmentType and AdjustmentValue.
-        # *   TargetTrackingScalingRule: a target tracking scaling rule. Once a target tracking scaling rule is executed, Auto Scaling dynamically calculates the number of ECS instances or elastic container instances to scale based on the predefined metric (MetricName) and attempts to maintain the metric value close to the specified target value (TargetValue).
-        # *   StepScalingRule: a step scaling rule. Once a step scaling rule is executed, Auto Scaling scales instances step by step based on the predefined thresholds and metric values.
-        # *   PredictiveScalingRule: a predictive scaling rule. Once a predictive scaling rule is executed, Auto Scaling analyzes the historical monitoring data based on the machine learning technology and predicts the trends of metric data. Auto Scaling also creates scheduled tasks to enable dynamic adjustment of the boundary values for the scaling group.
+        # *   SimpleScalingRule: a simple scaling rule. After you execute a simple scaling rule, Auto Scaling adjusts the number of ECS instances or elastic container instances in the scaling group based on the values of AdjustmentType and AdjustmentValue.
+        # *   TargetTrackingScalingRule: a target tracking scaling rule. After you execute a target tracking scaling rule, Auto Scaling dynamically calculates the number of ECS instances or elastic container instances to scale based on the predefined metric (MetricName) and attempts to maintain the metric value close to the expected value (TargetValue).
+        # *   StepScalingRule: a step scaling rule. After you execute a step scaling rule, Auto Scaling scales instances step by step based on the predefined thresholds and metric values.
+        # *   PredictiveScalingRule: uses machine learning to analyze historical monitoring data of the scaling group and predicts the future values of metrics. In addition, Auto Scaling automatically creates scheduled tasks to specify the value range for the scaling group.
         # 
-        # Default value: SimpleScalingRule.
+        # Default value: SimpleScalingRule
         self.scaling_rule_type = scaling_rule_type
         # Details of the step adjustments.
         self.step_adjustments = step_adjustments
@@ -11133,11 +11144,11 @@ class DescribeAlarmsRequest(TeaModel):
         # *   custom: custom metrics that are reported to CloudMonitor.
         self.metric_type = metric_type
         self.owner_id = owner_id
-        # The number of the page to return. Pages start from page 1.
+        # The page number. Pages start from page 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: 50.
+        # The number of entries per page. Maximum value: 50.
         # 
         # Default value: 10.
         self.page_size = page_size
@@ -15922,6 +15933,328 @@ class DescribeEciScalingConfigurationsResponse(TeaModel):
         return self
 
 
+class DescribeElasticStrengthRequest(TeaModel):
+    def __init__(
+        self,
+        instance_types: List[str] = None,
+        priority_strategy: str = None,
+        region_id: str = None,
+        scaling_group_id: str = None,
+        scaling_group_ids: List[str] = None,
+        system_disk_categories: List[str] = None,
+    ):
+        self.instance_types = instance_types
+        self.priority_strategy = priority_strategy
+        # This parameter is required.
+        self.region_id = region_id
+        self.scaling_group_id = scaling_group_id
+        self.scaling_group_ids = scaling_group_ids
+        self.system_disk_categories = system_disk_categories
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_types is not None:
+            result['InstanceTypes'] = self.instance_types
+        if self.priority_strategy is not None:
+            result['PriorityStrategy'] = self.priority_strategy
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.scaling_group_id is not None:
+            result['ScalingGroupId'] = self.scaling_group_id
+        if self.scaling_group_ids is not None:
+            result['ScalingGroupIds'] = self.scaling_group_ids
+        if self.system_disk_categories is not None:
+            result['SystemDiskCategories'] = self.system_disk_categories
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceTypes') is not None:
+            self.instance_types = m.get('InstanceTypes')
+        if m.get('PriorityStrategy') is not None:
+            self.priority_strategy = m.get('PriorityStrategy')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ScalingGroupId') is not None:
+            self.scaling_group_id = m.get('ScalingGroupId')
+        if m.get('ScalingGroupIds') is not None:
+            self.scaling_group_ids = m.get('ScalingGroupIds')
+        if m.get('SystemDiskCategories') is not None:
+            self.system_disk_categories = m.get('SystemDiskCategories')
+        return self
+
+
+class DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        instance_type: str = None,
+        msg: str = None,
+        strength: float = None,
+        v_switch_ids: List[str] = None,
+        zone_id: str = None,
+    ):
+        self.code = code
+        self.instance_type = instance_type
+        self.msg = msg
+        self.strength = strength
+        self.v_switch_ids = v_switch_ids
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.strength is not None:
+            result['Strength'] = self.strength
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('Strength') is not None:
+            self.strength = m.get('Strength')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeElasticStrengthResponseBodyElasticStrengthModels(TeaModel):
+    def __init__(
+        self,
+        resource_pools: List[DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools] = None,
+        scaling_group_id: str = None,
+        total_strength: float = None,
+    ):
+        self.resource_pools = resource_pools
+        self.scaling_group_id = scaling_group_id
+        self.total_strength = total_strength
+
+    def validate(self):
+        if self.resource_pools:
+            for k in self.resource_pools:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ResourcePools'] = []
+        if self.resource_pools is not None:
+            for k in self.resource_pools:
+                result['ResourcePools'].append(k.to_map() if k else None)
+        if self.scaling_group_id is not None:
+            result['ScalingGroupId'] = self.scaling_group_id
+        if self.total_strength is not None:
+            result['TotalStrength'] = self.total_strength
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.resource_pools = []
+        if m.get('ResourcePools') is not None:
+            for k in m.get('ResourcePools'):
+                temp_model = DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools()
+                self.resource_pools.append(temp_model.from_map(k))
+        if m.get('ScalingGroupId') is not None:
+            self.scaling_group_id = m.get('ScalingGroupId')
+        if m.get('TotalStrength') is not None:
+            self.total_strength = m.get('TotalStrength')
+        return self
+
+
+class DescribeElasticStrengthResponseBodyResourcePools(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        instance_type: str = None,
+        msg: str = None,
+        strength: float = None,
+        v_switch_ids: List[str] = None,
+        zone_id: str = None,
+    ):
+        self.code = code
+        self.instance_type = instance_type
+        self.msg = msg
+        self.strength = strength
+        self.v_switch_ids = v_switch_ids
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.strength is not None:
+            result['Strength'] = self.strength
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('Strength') is not None:
+            self.strength = m.get('Strength')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeElasticStrengthResponseBody(TeaModel):
+    def __init__(
+        self,
+        elastic_strength_models: List[DescribeElasticStrengthResponseBodyElasticStrengthModels] = None,
+        request_id: str = None,
+        resource_pools: List[DescribeElasticStrengthResponseBodyResourcePools] = None,
+        total_strength: float = None,
+    ):
+        self.elastic_strength_models = elastic_strength_models
+        self.request_id = request_id
+        self.resource_pools = resource_pools
+        self.total_strength = total_strength
+
+    def validate(self):
+        if self.elastic_strength_models:
+            for k in self.elastic_strength_models:
+                if k:
+                    k.validate()
+        if self.resource_pools:
+            for k in self.resource_pools:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ElasticStrengthModels'] = []
+        if self.elastic_strength_models is not None:
+            for k in self.elastic_strength_models:
+                result['ElasticStrengthModels'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ResourcePools'] = []
+        if self.resource_pools is not None:
+            for k in self.resource_pools:
+                result['ResourcePools'].append(k.to_map() if k else None)
+        if self.total_strength is not None:
+            result['TotalStrength'] = self.total_strength
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.elastic_strength_models = []
+        if m.get('ElasticStrengthModels') is not None:
+            for k in m.get('ElasticStrengthModels'):
+                temp_model = DescribeElasticStrengthResponseBodyElasticStrengthModels()
+                self.elastic_strength_models.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.resource_pools = []
+        if m.get('ResourcePools') is not None:
+            for k in m.get('ResourcePools'):
+                temp_model = DescribeElasticStrengthResponseBodyResourcePools()
+                self.resource_pools.append(temp_model.from_map(k))
+        if m.get('TotalStrength') is not None:
+            self.total_strength = m.get('TotalStrength')
+        return self
+
+
+class DescribeElasticStrengthResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeElasticStrengthResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeElasticStrengthResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeInstanceRefreshesRequest(TeaModel):
     def __init__(
         self,
@@ -15935,15 +16268,23 @@ class DescribeInstanceRefreshesRequest(TeaModel):
         resource_owner_id: int = None,
         scaling_group_id: str = None,
     ):
+        # The IDs of the instance refresh tasks that you want to query.
         self.instance_refresh_task_ids = instance_refresh_task_ids
+        # The maximum number of entries per page. Valid values: 1 to 50. Default value: 10.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the scaling group to which the instance refresh task belongs.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the scaling group.
+        # 
+        # >  When you call this operation, you must specify one of the following parameters: ScalingGroupId and InstanceRefreshTaskIds. You cannot specify both of them. If you specify neither of them, an error is reported.
         self.scaling_group_id = scaling_group_id
 
     def validate(self):
@@ -16004,7 +16345,9 @@ class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurat
         image_id: str = None,
         scaling_configuration_id: str = None,
     ):
+        # The ID of the image file that provides the image resource for Auto Scaling to create instances.
         self.image_id = image_id
+        # The ID of the scaling configuration.
         self.scaling_configuration_id = scaling_configuration_id
 
     def validate(self):
@@ -16047,17 +16390,40 @@ class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks(TeaModel):
         status: str = None,
         total_need_update_capacity: int = None,
     ):
+        # The desired configurations of the instance refresh task.
         self.desired_configuration = desired_configuration
+        # The reason why the instance refresh task failed to be executed.
         self.detail = detail
+        # The end time of the instance refresh task.
         self.end_time = end_time
+        # The refreshed number of instances in the scaling group.
         self.finished_update_capacity = finished_update_capacity
+        # The ID of the instance refresh task.
         self.instance_refresh_task_id = instance_refresh_task_id
+        # The ratio by which the number of instances in the scaling group can exceed the upper limit for the number of instances in the scaling group during instance refresh.
         self.max_healthy_percentage = max_healthy_percentage
+        # The ratio of the number of instances that provide services to the total number of instances in the scaling group during instance refresh.
         self.min_healthy_percentage = min_healthy_percentage
+        # The region ID of the scaling group.
         self.region_id = region_id
+        # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
+        # The start time of the instance refresh task.
         self.start_time = start_time
+        # The status of the instance refresh task. Valid values:
+        # 
+        # *   Pending: The instance refresh task is created and is waiting to be scheduled.
+        # *   InProgress: The instance refresh task is being executed.
+        # *   Paused: The instance refresh task is suspended.
+        # *   Failed: The instance refresh task failed to be executed.
+        # *   Successful: The instance refresh task is successful.
+        # *   Cancelling: The instance refresh task is being canceled.
+        # *   Cancelled: The instance refresh task is canceled.
+        # *   RollbackInProgress: The instance refresh task is being rolled back.
+        # *   RollbackSuccessful: The instance refresh task is rolled back.
+        # *   RollbackFailed: The instance refresh task fails to be rolled back.
         self.status = status
+        # The total number of instances whose configurations are refreshed.
         self.total_need_update_capacity = total_need_update_capacity
 
     def validate(self):
@@ -16135,10 +16501,15 @@ class DescribeInstanceRefreshesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The instance refresh tasks.
         self.instance_refresh_tasks = instance_refresh_tasks
+        # The maximum number of entries per page.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of instance refresh tasks.
         self.total_count = total_count
 
     def validate(self):
@@ -17921,11 +18292,11 @@ class DescribeScalingActivitiesRequest(TeaModel):
         self.instance_refresh_task_id = instance_refresh_task_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Pages start from page 1.
+        # The page number. Pages start from page 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: 50.
+        # The number of entries per page. Maximum value: 50.
         # 
         # Default value: 10.
         self.page_size = page_size
@@ -17937,11 +18308,11 @@ class DescribeScalingActivitiesRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The IDs of the scaling activities that you want to query.
         # 
-        # > When you call this operation, you must specify one of the `ScalingGroupId` and `ScalingActivityId.N` parameters. Otherwise, an error is reported.
+        # >  When you call this operation, you must specify one of the following parameters: `ScalingGroupId` and `ScalingActivityIds`. You cannot specify both of them at the same time. If you specify neither of them, an error is reported.
         self.scaling_activity_ids = scaling_activity_ids
         # The ID of the scaling group.
         # 
-        # > When you call this operation, you must specify one of the `ScalingGroupId` and `ScalingActivityId.N` parameters. Otherwise, an error is reported.
+        # >  When you call this operation, you must specify one of the following parameters: `ScalingGroupId` and `ScalingActivityIds`. You cannot specify both of them at the same time. If you specify neither of them, an error is reported.
         self.scaling_group_id = scaling_group_id
         # The status of the scaling activity. Valid values:
         # 
@@ -18018,7 +18389,7 @@ class DescribeScalingActivitiesResponseBodyScalingActivitiesLifecycleHookContext
         disable_lifecycle_hook: bool = None,
         ignored_lifecycle_hook_ids: List[str] = None,
     ):
-        # Indicates whether all lifecycle hooks are disabled. Valid values:
+        # Indicates whether all lifecycle hooks are disabled when the scaling activity is triggered. Valid values:
         # 
         # *   true
         # *   false
@@ -18085,7 +18456,7 @@ class DescribeScalingActivitiesResponseBodyScalingActivities(TeaModel):
     ):
         # The metadata of the scaling activity.
         self.activity_metadata = activity_metadata
-        # The total number of instances that are manually added to the scaling group after the scaling activity was complete.
+        # The total number of instances that are manually added to the scaling group after the scaling activity is complete.
         self.attached_capacity = attached_capacity
         # The total number of instances that are created by Auto Scaling after the scaling activity was complete.
         self.auto_created_capacity = auto_created_capacity
@@ -18118,9 +18489,8 @@ class DescribeScalingActivitiesResponseBodyScalingActivities(TeaModel):
         self.scaling_activity_id = scaling_activity_id
         # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
-        # If you query a scale-out activity, the value of this parameter indicates the number of instances that are created or the number of instances that are started from the Economical Mode during the scale-out event.
-        # 
-        # If you query a scale-in activity, the value of this parameter indicates the number of instances that are deleted or the number of instances that are stopped in the Economical Mode during the scale-in event.
+        # *   If you query a scale-out activity, the value of this parameter indicates the number of instances that are created or the number of instances that are started from Economical Mode.
+        # *   If you query a scale-in activity, the value of this parameter indicates the number of instances that are deleted or the number of instances that are stopped in Economical Mode.
         self.scaling_instance_number = scaling_instance_number
         # The time when the scaling activity was started.
         self.start_time = start_time
@@ -18144,17 +18514,17 @@ class DescribeScalingActivitiesResponseBodyScalingActivities(TeaModel):
         self.stopped_instances = stopped_instances
         # The total number of instances in the scaling group after the scaling activity was complete.
         self.total_capacity = total_capacity
-        # The ID of the trigger source of the scaling activity.
+        # The ID of the trigger source of the scaling activity. Valid values:
         # 
-        # *   If TriggerSourceType is set to Cms, the ID of the trigger source is the ID of an event-triggered task.
-        # *   If TriggerSourceType is set to Api, the ID of the trigger source is the ID of an Alibaba Cloud account or a RAM user.
-        # *   If TriggerSourceType is set to Api, the ID of the trigger source is null.
+        # *   If the scaling activity is triggered by an event-triggered task, the ID of the trigger source is the ID of the event-triggered task.
+        # *   If the scaling activity is triggered by calling an API operation, the ID of the trigger source is the ID of the Alibaba Cloud account or Resource Access Management (RAM) user that you use to call the API operation.
+        # *   If the scaling activity is triggered by Auto Scaling, the ID of the trigger source is null.
         self.trigger_source_id = trigger_source_id
-        # The type of the trigger source of the scaling activity.
+        # The type of the trigger source of the scaling activity. Valid values:
         # 
-        # *   Cms: triggered by an event-triggered task
-        # *   APIs: triggered by API calling
-        # *   Ess: triggered by a system task
+        # *   Cms: The scaling activity is triggered by an event-triggered task.
+        # *   APIs: The scaling activity is triggered by calling an API operation.
+        # *   Ess: The scaling activity is triggered by Auto Scaling.
         self.trigger_source_type = trigger_source_type
 
     def validate(self):
@@ -18306,7 +18676,7 @@ class DescribeScalingActivitiesResponseBody(TeaModel):
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # The information about the scaling activities.
+        # The scaling activities.
         self.scaling_activities = scaling_activities
         # The total number of scaling activities.
         self.total_count = total_count
@@ -19124,6 +19494,10 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsSecurityOpti
         self,
         confidential_computing_mode: str = None,
     ):
+        # The confidential computing mode. Valid values:
+        # 
+        # *   Enclave: An enclave-based confidential computing environment is built on the instance. For more information, see [Build a confidential computing environment by using Enclave](https://help.aliyun.com/document_detail/203433.html).
+        # *   TDX: A Trust Domain Extensions (TDX) confidential computing environment is built on the instance. For more information, see [Build a TDX confidential computing environment](https://help.aliyun.com/document_detail/479090.html).
         self.confidential_computing_mode = confidential_computing_mode
 
     def validate(self):
@@ -19436,6 +19810,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         self.security_group_id = security_group_id
         # The IDs of the security groups to which the ECS instances belong. ECS instances that belong to the same security group can communicate with each other.
         self.security_group_ids = security_group_ids
+        # The security options.
         self.security_options = security_options
         # The protection period of the preemptible instances. Unit: hours.
         self.spot_duration = spot_duration
@@ -20448,10 +20823,15 @@ class DescribeScalingGroupDetailResponseBodyScalingGroup(TeaModel):
         self.group_type = group_type
         # The health check mode of the scaling group. Valid values:
         # 
-        # *   NONE: Auto Scaling does not perform health checks in the scaling group.
-        # *   ECS: Auto Scaling performs health checks on ECS instances in the scaling group.
+        # *   NONE: Auto Scaling does not perform health checks.
+        # *   ECS: Auto Scaling checks the health status of instances in the scaling group. If you want to enable instance health check, you can set the value to ECS, regardless of whether the scaling group is of ECS type or Elastic Container Instance type.
+        # *   LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of Classic Load Balancer (CLB) instances are not supported as the health check basis for instances in the scaling group.
         self.health_check_type = health_check_type
-        # The health check types.
+        # The health check mode of the scaling group. Valid values:
+        # 
+        # *   NONE: Auto Scaling does not perform health checks.
+        # *   ECS: Auto Scaling checks the health status of instances in the scaling group. If you want to enable instance health check, you can set the value to ECS, regardless of whether the scaling group is of ECS type or Elastic Container Instance type.
+        # *   LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of CLB instances are not supported as the health check basis for instances in the scaling group.
         self.health_check_types = health_check_types
         # The number of instances that are in the Initialized state and not added to the scaling group.
         self.init_capacity = init_capacity
@@ -20899,7 +21279,7 @@ class DescribeScalingGroupDetailResponseBody(TeaModel):
         self.output = output
         # The request ID.
         self.request_id = request_id
-        # The information about the scaling groups.
+        # The scaling group.
         self.scaling_group = scaling_group
 
     def validate(self):
@@ -21606,14 +21986,14 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
         # The health check mode of the scaling group. Valid values:
         # 
         # *   NONE: Auto Scaling does not perform health checks.
-        # *   ECS: Auto Scaling checks the health status of ECS instances in the scaling group.
-        # *   LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of Classic Load Balancer (CLB, formerly known as Server Load Balancer or SLB) instances are not used as the basis to perform health checks on the instances in the scaling group.
+        # *   ECS: Auto Scaling checks the health status of instances in the scaling group. If you want to enable instance health check, you can set the value to ECS, regardless of whether the scaling group is of ECS type or Elastic Container Instance type.
+        # *   LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of Classic Load Balancer (CLB) instances are not supported as the health check basis for instances in the scaling group.
         self.health_check_type = health_check_type
-        # The health check modes of the scaling group. Valid values:
+        # The health check mode of the scaling group. Valid values:
         # 
         # *   NONE: Auto Scaling does not perform health checks.
-        # *   ECS: Auto Scaling checks the health status of ECS instances in the scaling group.
-        # *   LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of CLB instances are not used as the basis to perform health checks on the instances in the scaling group.
+        # *   ECS: Auto Scaling checks the health status of instances in the scaling group. If you want to enable instance health check, you can set the value to ECS, regardless of whether the scaling group is of ECS type or Elastic Container Instance type.
+        # *   LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of CLB instances are not supported as the health check basis for instances in the scaling group.
         self.health_check_types = health_check_types
         # The number of instances that are initialized before they are added into the scaling group.
         self.init_capacity = init_capacity
@@ -21710,7 +22090,7 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
         # 
         # Default value: priority.
         self.spot_allocation_strategy = spot_allocation_strategy
-        # 伸缩组中抢占式实例的数量。
+        # The number of preemptible instances in the scaling group.
         self.spot_capacity = spot_capacity
         # The number of instance types in the scaling group. Auto Scaling evenly creates preemptible instances of multiple instance types that are provided at the lowest price across the zones of the scaling group. Valid values: 0 to 10.
         self.spot_instance_pools = spot_instance_pools
@@ -22657,11 +23037,11 @@ class DescribeScalingRulesRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Pages start from page 1.
+        # The page number. Pages start from page 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: 50.
+        # The number of entries per page. Maximum value: 50.
         # 
         # Default value: 10.
         self.page_size = page_size
@@ -22686,7 +23066,7 @@ class DescribeScalingRulesRequest(TeaModel):
         # *   StepScalingRule: scales ECS instances in steps based on the specified thresholds and metric values.
         # *   PredictiveScalingRule: uses machine learning to analyze historical monitoring data of the scaling group and predicts the future values of metrics. In addition, Auto Scaling automatically creates scheduled tasks to adjust the boundary values for the scaling group.
         self.scaling_rule_type = scaling_rule_type
-        # Specifies whether to return CloudMonitor event-triggered tasks associated with scaling rules. Valid values:
+        # Specifies whether to return the event-triggered tasks that are associated with the scaling rule. Valid values:
         # 
         # *   true
         # *   false
@@ -30942,6 +31322,10 @@ class ModifyScalingConfigurationRequestSecurityOptions(TeaModel):
         self,
         confidential_computing_mode: str = None,
     ):
+        # The confidential computing mode. Valid values:
+        # 
+        # *   Enclave: An enclave-based confidential computing environment is built on the instance. For more information, see [Build a confidential computing environment by using Enclave](https://help.aliyun.com/document_detail/203433.html).
+        # *   TDX: A Trust Domain Extensions (TDX) confidential computing environment is built on the instance. For more information, see [Build a TDX confidential computing environment](https://help.aliyun.com/document_detail/479090.html).
         self.confidential_computing_mode = confidential_computing_mode
 
     def validate(self):
@@ -31165,7 +31549,7 @@ class ModifyScalingConfigurationRequest(TeaModel):
         self.memory = memory
         # The ENIs.
         self.network_interfaces = network_interfaces
-        # Specifies whether to overwrite existing data. Valid values:
+        # Specifies whether to override existing data. Valid values:
         # 
         # *   true
         # *   false
@@ -32329,6 +32713,10 @@ class ModifyScalingConfigurationShrinkRequestSecurityOptions(TeaModel):
         self,
         confidential_computing_mode: str = None,
     ):
+        # The confidential computing mode. Valid values:
+        # 
+        # *   Enclave: An enclave-based confidential computing environment is built on the instance. For more information, see [Build a confidential computing environment by using Enclave](https://help.aliyun.com/document_detail/203433.html).
+        # *   TDX: A Trust Domain Extensions (TDX) confidential computing environment is built on the instance. For more information, see [Build a TDX confidential computing environment](https://help.aliyun.com/document_detail/479090.html).
         self.confidential_computing_mode = confidential_computing_mode
 
     def validate(self):
@@ -32552,7 +32940,7 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         self.memory = memory
         # The ENIs.
         self.network_interfaces = network_interfaces
-        # Specifies whether to overwrite existing data. Valid values:
+        # Specifies whether to override existing data. Valid values:
         # 
         # *   true
         # *   false
@@ -33143,19 +33531,15 @@ class ModifyScalingGroupRequest(TeaModel):
         self.group_deletion_protection = group_deletion_protection
         # The health check mode of the scaling group. Valid values:
         # 
-        # *   NONE: Auto Scaling does not perform health checks.
-        # *   ECS: Auto Scaling checks the health status of ECS instances in the scaling group.
-        # *   ECI: Auto Scaling checks the health status of elastic container instances in the scaling group.
-        # *   LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of Classic Load Balancer (CLB) instances are not supported as the health check basis for instances in the scaling group.
+        # *   NONE: Auto Scaling does not check the health status of instances.
+        # *   ECS: Auto Scaling checks the health status of instances in the scaling group. If you want to enable instance health check, you can set the value to ECS, regardless of whether the scaling group is of ECS type or Elastic Container Instance type.
+        # *   LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of Classic Load Balancer (CLB) instances are not supported as the health check basis for instances in the scaling group. Default value: ECS.
         # 
-        # >  HealthCheckType has the same effect as `HealthCheckTypes`. You can select one of them to specify based on your business requirements. If you specify `HealthCheckTypes`, `HealthCheckType` is ignored. HealthCheckType is optional.
+        # >  If you want to enable instance health check and load balancer health check at the same time, we recommend that you specify `HealthCheckTypes`.
         self.health_check_type = health_check_type
-        # The health check modes of the scaling group. Valid values:
+        # The health check mode of the scaling group.
         # 
-        # *   NONE: Auto Scaling does not perform health checks.
-        # *   ECS: Auto Scaling checks the health status of ECS instances in the scaling group.
-        # *   ECI: Auto Scaling checks the health status of elastic container instances in the scaling group.
-        # *   LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of CLB instances are not supported as the health check basis for instances in the scaling group.
+        # >  You can specify multiple values for this parameter to enable multiple health check options at the same time. If you specify HealthCheckType, this parameter is ignored.
         self.health_check_types = health_check_types
         # The ID of the launch template that is used by Auto Scaling to create instances.
         self.launch_template_id = launch_template_id
@@ -33718,19 +34102,22 @@ class ModifyScalingRuleRequest(TeaModel):
         # 
         # Valid values if you create a target tracking scaling rule:
         # 
+        # *   CpuUtilizationAgent (recommended): the CPU utilization.
+        # *   MemoryUtilization (recommended): the memory usage.
         # *   CpuUtilization: the average CPU utilization.
-        # *   IntranetTx: the outbound traffic over an internal network.
-        # *   IntranetRx: the inbound traffic over an internal network.
-        # *   VpcInternetTx: the outbound traffic from a virtual private cloud (VPC) to the Internet.
-        # *   VpcInternetRx: the inbound traffic from the Internet to a VPC.
-        # *   MemoryUtilization: the memory usage.
+        # *   IntranetTx: the average outbound traffic over an internal network.
+        # *   IntranetRx: the average inbound traffic over an internal network.
+        # *   VpcInternetTx: the average outbound traffic from a virtual private cloud (VPC) to the Internet.
+        # *   VpcInternetRx: the average inbound traffic from the Internet to a VPC.
         # *   LoadBalancerRealServerAverageQps: the queries per second (QPS) per Application Load Balancer (ALB) server group.
         # 
         # Valid values if you create a predictive scaling rule:
         # 
         # *   CpuUtilization: the average CPU utilization.
-        # *   IntranetRx: the inbound traffic over an internal network.
-        # *   IntranetTx: the outbound traffic over an internal network.
+        # *   IntranetRx: the average inbound traffic over an internal network.
+        # *   IntranetTx: the average outbound traffic over an internal network.
+        # 
+        # For more information, see [Event-triggered tasks of the system monitoring type](https://help.aliyun.com/document_detail/74854.html).
         self.metric_name = metric_name
         self.metric_type = metric_type
         # The minimum number of instances to scale. This parameter takes effect only if you create a simple scaling rule or step scaling rule and set `AdjustmentType` to `PercentChangeInCapacity`.
@@ -34729,12 +35116,18 @@ class ResumeInstanceRefreshRequest(TeaModel):
         resource_owner_account: str = None,
         scaling_group_id: str = None,
     ):
+        # The ID of the instance refresh task.
+        # 
         # This parameter is required.
         self.instance_refresh_task_id = instance_refresh_task_id
         self.owner_id = owner_id
+        # The region ID of the scaling group.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
+        # The ID of the scaling group.
+        # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
 
@@ -34779,6 +35172,7 @@ class ResumeInstanceRefreshResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -34987,12 +35381,18 @@ class RollbackInstanceRefreshRequest(TeaModel):
         resource_owner_account: str = None,
         scaling_group_id: str = None,
     ):
+        # The ID of the instance refresh task.
+        # 
         # This parameter is required.
         self.instance_refresh_task_id = instance_refresh_task_id
         self.owner_id = owner_id
+        # The region ID of the scaling group.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
+        # The ID of the scaling group.
+        # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
 
@@ -35037,6 +35437,7 @@ class RollbackInstanceRefreshResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -36013,7 +36414,17 @@ class StartInstanceRefreshRequestDesiredConfiguration(TeaModel):
         image_id: str = None,
         scaling_configuration_id: str = None,
     ):
+        # The image ID.
+        # 
+        # > 
+        # 
+        # *   After the instance refresh task is complete, the active scaling configuration uses the image specified by this parameter.
+        # 
+        # *   If the instance configuration source of the scaling group is a launch template, you cannot specify this parameter.
         self.image_id = image_id
+        # The ID of the scaling configuration.
+        # 
+        # >  After the instance refresh task is complete, the scaling group uses the scaling configuration specified by this parameter.
         self.scaling_configuration_id = scaling_configuration_id
 
     def validate(self):
@@ -36052,14 +36463,30 @@ class StartInstanceRefreshRequest(TeaModel):
         resource_owner_account: str = None,
         scaling_group_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see "How to ensure idempotence".
         self.client_token = client_token
+        # The desired configurations of the instance refresh task.
+        # 
+        # > 
+        # 
+        # *   When you call this operation, you must specify one of the following parameters: ScalingConfigurationId and ImageId.
+        # 
+        # *   Instances whose configurations match the desired configurations of the task are ignored during instance refresh.
         self.desired_configuration = desired_configuration
+        # The ratio of instances that can exceed the upper limit of the scaling group capacity to all instances in the scaling group during instance refresh. Valid values: 100 to 200. Default value: 120.
+        # 
+        # >  If you set MinHealthyPercentage and MaxHealthyPercentage to 100, Auto Scaling refreshes the configurations of one instance each time the instance refresh task starts.
         self.max_healthy_percentage = max_healthy_percentage
+        # The ratio of instances that are in the In Service state to all instances in the scaling group during instance refresh. Valid values: 0 to 100. Default value: 80.
         self.min_healthy_percentage = min_healthy_percentage
         self.owner_id = owner_id
+        # The region ID of the scaling group.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
+        # The ID of the scaling group.
+        # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
 
@@ -36119,7 +36546,9 @@ class StartInstanceRefreshResponseBody(TeaModel):
         instance_refresh_task_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the instance refresh task.
         self.instance_refresh_task_id = instance_refresh_task_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -36196,12 +36625,18 @@ class SuspendInstanceRefreshRequest(TeaModel):
         resource_owner_account: str = None,
         scaling_group_id: str = None,
     ):
+        # The ID of the instance refresh task.
+        # 
         # This parameter is required.
         self.instance_refresh_task_id = instance_refresh_task_id
         self.owner_id = owner_id
+        # The region ID of the scaling group.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
+        # The ID of the scaling group.
+        # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
 
@@ -36246,6 +36681,7 @@ class SuspendInstanceRefreshResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
