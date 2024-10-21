@@ -2825,6 +2825,7 @@ class CreateCenRouteMapRequest(TeaModel):
         destination_cidr_blocks: List[str] = None,
         destination_instance_ids: List[str] = None,
         destination_instance_ids_reverse_match: bool = None,
+        destination_region_ids: List[str] = None,
         destination_route_table_ids: List[str] = None,
         map_result: str = None,
         match_address_type: str = None,
@@ -2926,6 +2927,7 @@ class CreateCenRouteMapRequest(TeaModel):
         # *   **false** (default): A route is a match if the destination instance ID is included in the list specified by **SourceInstanceIds.N**.
         # *   **true**: A route is a match if the destination network instance ID is not in the list specified by **SourceInstanceIds.N**.
         self.destination_instance_ids_reverse_match = destination_instance_ids_reverse_match
+        self.destination_region_ids = destination_region_ids
         # The IDs of the destination route tables to which routes are evaluated. You can enter at most 32 route table IDs.
         # 
         # > The destination route table IDs take effect only when Direction is set to Export from Regional Gateway and the destination route tables belong to network instances deployed in the current region.
@@ -3089,6 +3091,8 @@ class CreateCenRouteMapRequest(TeaModel):
             result['DestinationInstanceIds'] = self.destination_instance_ids
         if self.destination_instance_ids_reverse_match is not None:
             result['DestinationInstanceIdsReverseMatch'] = self.destination_instance_ids_reverse_match
+        if self.destination_region_ids is not None:
+            result['DestinationRegionIds'] = self.destination_region_ids
         if self.destination_route_table_ids is not None:
             result['DestinationRouteTableIds'] = self.destination_route_table_ids
         if self.map_result is not None:
@@ -3159,6 +3163,8 @@ class CreateCenRouteMapRequest(TeaModel):
             self.destination_instance_ids = m.get('DestinationInstanceIds')
         if m.get('DestinationInstanceIdsReverseMatch') is not None:
             self.destination_instance_ids_reverse_match = m.get('DestinationInstanceIdsReverseMatch')
+        if m.get('DestinationRegionIds') is not None:
+            self.destination_region_ids = m.get('DestinationRegionIds')
         if m.get('DestinationRouteTableIds') is not None:
             self.destination_route_table_ids = m.get('DestinationRouteTableIds')
         if m.get('MapResult') is not None:
@@ -15202,6 +15208,33 @@ class DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationInstanceIds(Te
         return self
 
 
+class DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRegionIds(TeaModel):
+    def __init__(
+        self,
+        destination_region_id: List[str] = None,
+    ):
+        self.destination_region_id = destination_region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_region_id is not None:
+            result['DestinationRegionId'] = self.destination_region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestinationRegionId') is not None:
+            self.destination_region_id = m.get('DestinationRegionId')
+        return self
+
+
 class DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRouteTableIds(TeaModel):
     def __init__(
         self,
@@ -15486,6 +15519,7 @@ class DescribeCenRouteMapsResponseBodyRouteMapsRouteMap(TeaModel):
         destination_cidr_blocks: DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationCidrBlocks = None,
         destination_instance_ids: DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationInstanceIds = None,
         destination_instance_ids_reverse_match: bool = None,
+        destination_region_ids: DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRegionIds = None,
         destination_route_table_ids: DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRouteTableIds = None,
         map_result: str = None,
         match_address_type: str = None,
@@ -15560,6 +15594,7 @@ class DescribeCenRouteMapsResponseBodyRouteMapsRouteMap(TeaModel):
         # *   **false** (default): A route is a match if its destination network instance ID is in the list specified by **DestinationInstanceIds.N**.
         # *   **true**: A route is a match if its destination network instance ID is not in the list specified by **DestinationInstanceIds.N**.
         self.destination_instance_ids_reverse_match = destination_instance_ids_reverse_match
+        self.destination_region_ids = destination_region_ids
         # The IDs of the destination route tables to which the routes belong. You can enter at most 32 route table IDs.
         # 
         # >  The destination route tables take effect only if the routing policy is applied to the egress gateway direction, and the destination route table IDs are in the current region.
@@ -15639,6 +15674,8 @@ class DescribeCenRouteMapsResponseBodyRouteMapsRouteMap(TeaModel):
             self.destination_cidr_blocks.validate()
         if self.destination_instance_ids:
             self.destination_instance_ids.validate()
+        if self.destination_region_ids:
+            self.destination_region_ids.validate()
         if self.destination_route_table_ids:
             self.destination_route_table_ids.validate()
         if self.match_asns:
@@ -15688,6 +15725,8 @@ class DescribeCenRouteMapsResponseBodyRouteMapsRouteMap(TeaModel):
             result['DestinationInstanceIds'] = self.destination_instance_ids.to_map()
         if self.destination_instance_ids_reverse_match is not None:
             result['DestinationInstanceIdsReverseMatch'] = self.destination_instance_ids_reverse_match
+        if self.destination_region_ids is not None:
+            result['DestinationRegionIds'] = self.destination_region_ids.to_map()
         if self.destination_route_table_ids is not None:
             result['DestinationRouteTableIds'] = self.destination_route_table_ids.to_map()
         if self.map_result is not None:
@@ -15757,6 +15796,9 @@ class DescribeCenRouteMapsResponseBodyRouteMapsRouteMap(TeaModel):
             self.destination_instance_ids = temp_model.from_map(m['DestinationInstanceIds'])
         if m.get('DestinationInstanceIdsReverseMatch') is not None:
             self.destination_instance_ids_reverse_match = m.get('DestinationInstanceIdsReverseMatch')
+        if m.get('DestinationRegionIds') is not None:
+            temp_model = DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRegionIds()
+            self.destination_region_ids = temp_model.from_map(m['DestinationRegionIds'])
         if m.get('DestinationRouteTableIds') is not None:
             temp_model = DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRouteTableIds()
             self.destination_route_table_ids = temp_model.from_map(m['DestinationRouteTableIds'])
@@ -30999,6 +31041,7 @@ class ModifyCenRouteMapRequest(TeaModel):
         destination_cidr_blocks: List[str] = None,
         destination_instance_ids: List[str] = None,
         destination_instance_ids_reverse_match: bool = None,
+        destination_region_ids: List[str] = None,
         destination_route_table_ids: List[str] = None,
         map_result: str = None,
         match_address_type: str = None,
@@ -31097,6 +31140,7 @@ class ModifyCenRouteMapRequest(TeaModel):
         # *   **false** (default value): A route is a match if its destination network instance ID is in the list specified by **DestinationInstanceIds.N**.
         # *   **true**: A route meets the match condition if its destination network instance ID is not in the list specified by **DestinationInstanceIds.N**.
         self.destination_instance_ids_reverse_match = destination_instance_ids_reverse_match
+        self.destination_region_ids = destination_region_ids
         # The IDs of the destination route tables to which the routes belong. You can enter at most 32 route table IDs.
         # 
         # > The destination route table IDs take effect only when Direction is set to Export from Regional Gateway and the destination route tables belong to network instances deployed in the current region.
@@ -31242,6 +31286,8 @@ class ModifyCenRouteMapRequest(TeaModel):
             result['DestinationInstanceIds'] = self.destination_instance_ids
         if self.destination_instance_ids_reverse_match is not None:
             result['DestinationInstanceIdsReverseMatch'] = self.destination_instance_ids_reverse_match
+        if self.destination_region_ids is not None:
+            result['DestinationRegionIds'] = self.destination_region_ids
         if self.destination_route_table_ids is not None:
             result['DestinationRouteTableIds'] = self.destination_route_table_ids
         if self.map_result is not None:
@@ -31310,6 +31356,8 @@ class ModifyCenRouteMapRequest(TeaModel):
             self.destination_instance_ids = m.get('DestinationInstanceIds')
         if m.get('DestinationInstanceIdsReverseMatch') is not None:
             self.destination_instance_ids_reverse_match = m.get('DestinationInstanceIdsReverseMatch')
+        if m.get('DestinationRegionIds') is not None:
+            self.destination_region_ids = m.get('DestinationRegionIds')
         if m.get('DestinationRouteTableIds') is not None:
             self.destination_route_table_ids = m.get('DestinationRouteTableIds')
         if m.get('MapResult') is not None:
@@ -31602,6 +31650,157 @@ class ModifyFlowLogAttributeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyFlowLogAttributeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dry_run: bool = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        traffic_marking_policy_id: str = None,
+        traffic_match_rule_description: str = None,
+        traffic_match_rule_id: str = None,
+        traffic_match_rule_name: str = None,
+    ):
+        self.client_token = client_token
+        self.dry_run = dry_run
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.traffic_marking_policy_id = traffic_marking_policy_id
+        self.traffic_match_rule_description = traffic_match_rule_description
+        # This parameter is required.
+        self.traffic_match_rule_id = traffic_match_rule_id
+        self.traffic_match_rule_name = traffic_match_rule_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.traffic_marking_policy_id is not None:
+            result['TrafficMarkingPolicyId'] = self.traffic_marking_policy_id
+        if self.traffic_match_rule_description is not None:
+            result['TrafficMatchRuleDescription'] = self.traffic_match_rule_description
+        if self.traffic_match_rule_id is not None:
+            result['TrafficMatchRuleId'] = self.traffic_match_rule_id
+        if self.traffic_match_rule_name is not None:
+            result['TrafficMatchRuleName'] = self.traffic_match_rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TrafficMarkingPolicyId') is not None:
+            self.traffic_marking_policy_id = m.get('TrafficMarkingPolicyId')
+        if m.get('TrafficMatchRuleDescription') is not None:
+            self.traffic_match_rule_description = m.get('TrafficMatchRuleDescription')
+        if m.get('TrafficMatchRuleId') is not None:
+            self.traffic_match_rule_id = m.get('TrafficMatchRuleId')
+        if m.get('TrafficMatchRuleName') is not None:
+            self.traffic_match_rule_name = m.get('TrafficMatchRuleName')
+        return self
+
+
+class ModifyTrafficMatchRuleToTrafficMarkingPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyTrafficMatchRuleToTrafficMarkingPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyTrafficMatchRuleToTrafficMarkingPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -1,3 +1,11 @@
+2024-10-21 Version: 1.2.0
+- Support API ModifyTrafficMatchRuleToTrafficMarkingPolicy.
+- Update API CreateCenRouteMap: add param DestinationRegionIds.
+- Update API CreateTransitRouterMulticastDomain: update response param.
+- Update API DescribeCenRouteMaps: update response param.
+- Update API ModifyCenRouteMap: add param DestinationRegionIds.
+
+
 2024-09-11 Version: 1.1.7
 - Update API AddTrafficMatchRuleToTrafficMarkingPolicy: update param TrafficMatchRules.
 - Update API CreateTrafficMarkingPolicy: update param TrafficMatchRules.

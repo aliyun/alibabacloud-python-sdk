@@ -2170,6 +2170,8 @@ class Client(OpenApiClient):
             query['DestinationInstanceIds'] = request.destination_instance_ids
         if not UtilClient.is_unset(request.destination_instance_ids_reverse_match):
             query['DestinationInstanceIdsReverseMatch'] = request.destination_instance_ids_reverse_match
+        if not UtilClient.is_unset(request.destination_region_ids):
+            query['DestinationRegionIds'] = request.destination_region_ids
         if not UtilClient.is_unset(request.destination_route_table_ids):
             query['DestinationRouteTableIds'] = request.destination_route_table_ids
         if not UtilClient.is_unset(request.map_result):
@@ -2274,6 +2276,8 @@ class Client(OpenApiClient):
             query['DestinationInstanceIds'] = request.destination_instance_ids
         if not UtilClient.is_unset(request.destination_instance_ids_reverse_match):
             query['DestinationInstanceIdsReverseMatch'] = request.destination_instance_ids_reverse_match
+        if not UtilClient.is_unset(request.destination_region_ids):
+            query['DestinationRegionIds'] = request.destination_region_ids
         if not UtilClient.is_unset(request.destination_route_table_ids):
             query['DestinationRouteTableIds'] = request.destination_route_table_ids
         if not UtilClient.is_unset(request.map_result):
@@ -16949,6 +16953,8 @@ class Client(OpenApiClient):
             query['DestinationInstanceIds'] = request.destination_instance_ids
         if not UtilClient.is_unset(request.destination_instance_ids_reverse_match):
             query['DestinationInstanceIdsReverseMatch'] = request.destination_instance_ids_reverse_match
+        if not UtilClient.is_unset(request.destination_region_ids):
+            query['DestinationRegionIds'] = request.destination_region_ids
         if not UtilClient.is_unset(request.destination_route_table_ids):
             query['DestinationRouteTableIds'] = request.destination_route_table_ids
         if not UtilClient.is_unset(request.map_result):
@@ -17050,6 +17056,8 @@ class Client(OpenApiClient):
             query['DestinationInstanceIds'] = request.destination_instance_ids
         if not UtilClient.is_unset(request.destination_instance_ids_reverse_match):
             query['DestinationInstanceIdsReverseMatch'] = request.destination_instance_ids_reverse_match
+        if not UtilClient.is_unset(request.destination_region_ids):
+            query['DestinationRegionIds'] = request.destination_region_ids
         if not UtilClient.is_unset(request.destination_route_table_ids):
             query['DestinationRouteTableIds'] = request.destination_route_table_ids
         if not UtilClient.is_unset(request.map_result):
@@ -17292,6 +17300,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_flow_log_attribute_with_options_async(request, runtime)
+
+    def modify_traffic_match_rule_to_traffic_marking_policy_with_options(
+        self,
+        request: cbn_20170912_models.ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse:
+        """
+        @summary 编辑流分类规则的名称和描述
+        
+        @param request: ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_marking_policy_id):
+            query['TrafficMarkingPolicyId'] = request.traffic_marking_policy_id
+        if not UtilClient.is_unset(request.traffic_match_rule_description):
+            query['TrafficMatchRuleDescription'] = request.traffic_match_rule_description
+        if not UtilClient.is_unset(request.traffic_match_rule_id):
+            query['TrafficMatchRuleId'] = request.traffic_match_rule_id
+        if not UtilClient.is_unset(request.traffic_match_rule_name):
+            query['TrafficMatchRuleName'] = request.traffic_match_rule_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyTrafficMatchRuleToTrafficMarkingPolicy',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_traffic_match_rule_to_traffic_marking_policy_with_options_async(
+        self,
+        request: cbn_20170912_models.ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse:
+        """
+        @summary 编辑流分类规则的名称和描述
+        
+        @param request: ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_marking_policy_id):
+            query['TrafficMarkingPolicyId'] = request.traffic_marking_policy_id
+        if not UtilClient.is_unset(request.traffic_match_rule_description):
+            query['TrafficMatchRuleDescription'] = request.traffic_match_rule_description
+        if not UtilClient.is_unset(request.traffic_match_rule_id):
+            query['TrafficMatchRuleId'] = request.traffic_match_rule_id
+        if not UtilClient.is_unset(request.traffic_match_rule_name):
+            query['TrafficMatchRuleName'] = request.traffic_match_rule_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyTrafficMatchRuleToTrafficMarkingPolicy',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_traffic_match_rule_to_traffic_marking_policy(
+        self,
+        request: cbn_20170912_models.ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest,
+    ) -> cbn_20170912_models.ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse:
+        """
+        @summary 编辑流分类规则的名称和描述
+        
+        @param request: ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest
+        @return: ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_traffic_match_rule_to_traffic_marking_policy_with_options(request, runtime)
+
+    async def modify_traffic_match_rule_to_traffic_marking_policy_async(
+        self,
+        request: cbn_20170912_models.ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest,
+    ) -> cbn_20170912_models.ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse:
+        """
+        @summary 编辑流分类规则的名称和描述
+        
+        @param request: ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest
+        @return: ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_traffic_match_rule_to_traffic_marking_policy_with_options_async(request, runtime)
 
     def modify_transit_router_cidr_with_options(
         self,
