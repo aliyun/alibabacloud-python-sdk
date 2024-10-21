@@ -1312,6 +1312,172 @@ class CheckDomainSunriseClaimResponse(TeaModel):
         return self
 
 
+class CheckIntlFixPriceDomainStatusRequest(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+    ):
+        self.domain = domain
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        return self
+
+
+class CheckIntlFixPriceDomainStatusResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        currency: str = None,
+        dead_date: int = None,
+        domain: str = None,
+        end_time: int = None,
+        premium: bool = None,
+        price: int = None,
+        reg_date: int = None,
+    ):
+        self.currency = currency
+        self.dead_date = dead_date
+        self.domain = domain
+        self.end_time = end_time
+        self.premium = premium
+        self.price = price
+        self.reg_date = reg_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.currency is not None:
+            result['Currency'] = self.currency
+        if self.dead_date is not None:
+            result['DeadDate'] = self.dead_date
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.premium is not None:
+            result['Premium'] = self.premium
+        if self.price is not None:
+            result['Price'] = self.price
+        if self.reg_date is not None:
+            result['RegDate'] = self.reg_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Currency') is not None:
+            self.currency = m.get('Currency')
+        if m.get('DeadDate') is not None:
+            self.dead_date = m.get('DeadDate')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Premium') is not None:
+            self.premium = m.get('Premium')
+        if m.get('Price') is not None:
+            self.price = m.get('Price')
+        if m.get('RegDate') is not None:
+            self.reg_date = m.get('RegDate')
+        return self
+
+
+class CheckIntlFixPriceDomainStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        module: CheckIntlFixPriceDomainStatusResponseBodyModule = None,
+        request_id: str = None,
+    ):
+        self.module = module
+        self.request_id = request_id
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.module is not None:
+            result['Module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Module') is not None:
+            temp_model = CheckIntlFixPriceDomainStatusResponseBodyModule()
+            self.module = temp_model.from_map(m['Module'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CheckIntlFixPriceDomainStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CheckIntlFixPriceDomainStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CheckIntlFixPriceDomainStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CheckMaxYearOfServerLockRequest(TeaModel):
     def __init__(
         self,
@@ -1873,6 +2039,172 @@ class ConfirmTransferInEmailResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ConfirmTransferInEmailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateIntlFixedPriceDomainOrderRequest(TeaModel):
+    def __init__(
+        self,
+        auto_pay: bool = None,
+        contact_id: int = None,
+        domain: str = None,
+        expected_price: int = None,
+    ):
+        self.auto_pay = auto_pay
+        self.contact_id = contact_id
+        self.domain = domain
+        self.expected_price = expected_price
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        if self.contact_id is not None:
+            result['ContactId'] = self.contact_id
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.expected_price is not None:
+            result['ExpectedPrice'] = self.expected_price
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        if m.get('ContactId') is not None:
+            self.contact_id = m.get('ContactId')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('ExpectedPrice') is not None:
+            self.expected_price = m.get('ExpectedPrice')
+        return self
+
+
+class CreateIntlFixedPriceDomainOrderResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        order_no: str = None,
+        pay_price: int = None,
+        pay_url: str = None,
+    ):
+        self.domain = domain
+        self.order_no = order_no
+        self.pay_price = pay_price
+        self.pay_url = pay_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.order_no is not None:
+            result['OrderNo'] = self.order_no
+        if self.pay_price is not None:
+            result['PayPrice'] = self.pay_price
+        if self.pay_url is not None:
+            result['PayUrl'] = self.pay_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('OrderNo') is not None:
+            self.order_no = m.get('OrderNo')
+        if m.get('PayPrice') is not None:
+            self.pay_price = m.get('PayPrice')
+        if m.get('PayUrl') is not None:
+            self.pay_url = m.get('PayUrl')
+        return self
+
+
+class CreateIntlFixedPriceDomainOrderResponseBody(TeaModel):
+    def __init__(
+        self,
+        module: CreateIntlFixedPriceDomainOrderResponseBodyModule = None,
+        request_id: str = None,
+    ):
+        self.module = module
+        self.request_id = request_id
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.module is not None:
+            result['Module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Module') is not None:
+            temp_model = CreateIntlFixedPriceDomainOrderResponseBodyModule()
+            self.module = temp_model.from_map(m['Module'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateIntlFixedPriceDomainOrderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateIntlFixedPriceDomainOrderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateIntlFixedPriceDomainOrderResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2887,6 +3219,136 @@ class FuzzyMatchDomainSensitiveWordResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = FuzzyMatchDomainSensitiveWordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetIntlFixPriceDomainListUrlRequest(TeaModel):
+    def __init__(
+        self,
+        list_date: str = None,
+    ):
+        self.list_date = list_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.list_date is not None:
+            result['ListDate'] = self.list_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ListDate') is not None:
+            self.list_date = m.get('ListDate')
+        return self
+
+
+class GetIntlFixPriceDomainListUrlResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        download_url: str = None,
+    ):
+        self.download_url = download_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.download_url is not None:
+            result['DownloadUrl'] = self.download_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DownloadUrl') is not None:
+            self.download_url = m.get('DownloadUrl')
+        return self
+
+
+class GetIntlFixPriceDomainListUrlResponseBody(TeaModel):
+    def __init__(
+        self,
+        module: GetIntlFixPriceDomainListUrlResponseBodyModule = None,
+        request_id: str = None,
+    ):
+        self.module = module
+        self.request_id = request_id
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.module is not None:
+            result['Module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Module') is not None:
+            temp_model = GetIntlFixPriceDomainListUrlResponseBodyModule()
+            self.module = temp_model.from_map(m['Module'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetIntlFixPriceDomainListUrlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetIntlFixPriceDomainListUrlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetIntlFixPriceDomainListUrlResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10788,6 +11250,255 @@ class QueryFailingReasonListForQualificationResponse(TeaModel):
         return self
 
 
+class QueryIntlFixedPriceOrderListRequest(TeaModel):
+    def __init__(
+        self,
+        biz_id: str = None,
+        current_page: int = None,
+        page_size: int = None,
+        status: int = None,
+    ):
+        self.biz_id = biz_id
+        self.current_page = current_page
+        self.page_size = page_size
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class QueryIntlFixedPriceOrderListResponseBodyModuleData(TeaModel):
+    def __init__(
+        self,
+        biz_id: str = None,
+        create_time: int = None,
+        domain: str = None,
+        order_type: int = None,
+        price: int = None,
+        status: int = None,
+        update_time: int = None,
+        user_id: str = None,
+    ):
+        self.biz_id = biz_id
+        self.create_time = create_time
+        self.domain = domain
+        self.order_type = order_type
+        self.price = price
+        self.status = status
+        self.update_time = update_time
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.order_type is not None:
+            result['OrderType'] = self.order_type
+        if self.price is not None:
+            result['Price'] = self.price
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('OrderType') is not None:
+            self.order_type = m.get('OrderType')
+        if m.get('Price') is not None:
+            self.price = m.get('Price')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class QueryIntlFixedPriceOrderListResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        current_page_num: int = None,
+        data: List[QueryIntlFixedPriceOrderListResponseBodyModuleData] = None,
+        page_size: int = None,
+        total_item_num: int = None,
+        total_page_num: int = None,
+    ):
+        self.current_page_num = current_page_num
+        self.data = data
+        self.page_size = page_size
+        self.total_item_num = total_item_num
+        self.total_page_num = total_page_num
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page_num is not None:
+            result['CurrentPageNum'] = self.current_page_num
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_item_num is not None:
+            result['TotalItemNum'] = self.total_item_num
+        if self.total_page_num is not None:
+            result['TotalPageNum'] = self.total_page_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPageNum') is not None:
+            self.current_page_num = m.get('CurrentPageNum')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = QueryIntlFixedPriceOrderListResponseBodyModuleData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalItemNum') is not None:
+            self.total_item_num = m.get('TotalItemNum')
+        if m.get('TotalPageNum') is not None:
+            self.total_page_num = m.get('TotalPageNum')
+        return self
+
+
+class QueryIntlFixedPriceOrderListResponseBody(TeaModel):
+    def __init__(
+        self,
+        module: QueryIntlFixedPriceOrderListResponseBodyModule = None,
+        request_id: str = None,
+    ):
+        self.module = module
+        self.request_id = request_id
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.module is not None:
+            result['Module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Module') is not None:
+            temp_model = QueryIntlFixedPriceOrderListResponseBodyModule()
+            self.module = temp_model.from_map(m['Module'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class QueryIntlFixedPriceOrderListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryIntlFixedPriceOrderListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryIntlFixedPriceOrderListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryLocalEnsAssociationRequest(TeaModel):
     def __init__(
         self,
@@ -16809,6 +17520,161 @@ class SaveBatchTaskForReserveDropListDomainResponse(TeaModel):
         return self
 
 
+class SaveBatchTaskForTransferOutByAuthorizationCodeRequestTransferOutParamList(TeaModel):
+    def __init__(
+        self,
+        authorization_code: str = None,
+        domain_name: str = None,
+    ):
+        self.authorization_code = authorization_code
+        self.domain_name = domain_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authorization_code is not None:
+            result['AuthorizationCode'] = self.authorization_code
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthorizationCode') is not None:
+            self.authorization_code = m.get('AuthorizationCode')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        return self
+
+
+class SaveBatchTaskForTransferOutByAuthorizationCodeRequest(TeaModel):
+    def __init__(
+        self,
+        long: str = None,
+        transfer_out_param_list: List[SaveBatchTaskForTransferOutByAuthorizationCodeRequestTransferOutParamList] = None,
+        user_client_ip: str = None,
+    ):
+        self.long = long
+        # This parameter is required.
+        self.transfer_out_param_list = transfer_out_param_list
+        self.user_client_ip = user_client_ip
+
+    def validate(self):
+        if self.transfer_out_param_list:
+            for k in self.transfer_out_param_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.long is not None:
+            result['Long'] = self.long
+        result['TransferOutParamList'] = []
+        if self.transfer_out_param_list is not None:
+            for k in self.transfer_out_param_list:
+                result['TransferOutParamList'].append(k.to_map() if k else None)
+        if self.user_client_ip is not None:
+            result['UserClientIp'] = self.user_client_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Long') is not None:
+            self.long = m.get('Long')
+        self.transfer_out_param_list = []
+        if m.get('TransferOutParamList') is not None:
+            for k in m.get('TransferOutParamList'):
+                temp_model = SaveBatchTaskForTransferOutByAuthorizationCodeRequestTransferOutParamList()
+                self.transfer_out_param_list.append(temp_model.from_map(k))
+        if m.get('UserClientIp') is not None:
+            self.user_client_ip = m.get('UserClientIp')
+        return self
+
+
+class SaveBatchTaskForTransferOutByAuthorizationCodeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_no: str = None,
+    ):
+        self.request_id = request_id
+        self.task_no = task_no
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_no is not None:
+            result['TaskNo'] = self.task_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskNo') is not None:
+            self.task_no = m.get('TaskNo')
+        return self
+
+
+class SaveBatchTaskForTransferOutByAuthorizationCodeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SaveBatchTaskForTransferOutByAuthorizationCodeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SaveBatchTaskForTransferOutByAuthorizationCodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SaveBatchTaskForTransferProhibitionLockRequest(TeaModel):
     def __init__(
         self,
@@ -21132,6 +21998,127 @@ class SaveSingleTaskForSynchronizingDnsHostResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SaveSingleTaskForSynchronizingDnsHostResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SaveSingleTaskForTransferOutByAuthorizationCodeRequest(TeaModel):
+    def __init__(
+        self,
+        authorization_code: str = None,
+        domain_name: str = None,
+        lang: str = None,
+        user_client_ip: str = None,
+    ):
+        # This parameter is required.
+        self.authorization_code = authorization_code
+        # This parameter is required.
+        self.domain_name = domain_name
+        self.lang = lang
+        self.user_client_ip = user_client_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authorization_code is not None:
+            result['AuthorizationCode'] = self.authorization_code
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.user_client_ip is not None:
+            result['UserClientIp'] = self.user_client_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthorizationCode') is not None:
+            self.authorization_code = m.get('AuthorizationCode')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('UserClientIp') is not None:
+            self.user_client_ip = m.get('UserClientIp')
+        return self
+
+
+class SaveSingleTaskForTransferOutByAuthorizationCodeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_no: str = None,
+    ):
+        self.request_id = request_id
+        self.task_no = task_no
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_no is not None:
+            result['TaskNo'] = self.task_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskNo') is not None:
+            self.task_no = m.get('TaskNo')
+        return self
+
+
+class SaveSingleTaskForTransferOutByAuthorizationCodeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SaveSingleTaskForTransferOutByAuthorizationCodeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SaveSingleTaskForTransferOutByAuthorizationCodeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

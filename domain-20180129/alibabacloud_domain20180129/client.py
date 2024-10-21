@@ -965,6 +965,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.check_domain_sunrise_claim_with_options_async(request, runtime)
 
+    def check_intl_fix_price_domain_status_with_options(
+        self,
+        request: domain_20180129_models.CheckIntlFixPriceDomainStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.CheckIntlFixPriceDomainStatusResponse:
+        """
+        @summary 校验在售国际一口价域名状态和询价
+        
+        @param request: CheckIntlFixPriceDomainStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckIntlFixPriceDomainStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckIntlFixPriceDomainStatus',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.CheckIntlFixPriceDomainStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_intl_fix_price_domain_status_with_options_async(
+        self,
+        request: domain_20180129_models.CheckIntlFixPriceDomainStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.CheckIntlFixPriceDomainStatusResponse:
+        """
+        @summary 校验在售国际一口价域名状态和询价
+        
+        @param request: CheckIntlFixPriceDomainStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckIntlFixPriceDomainStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckIntlFixPriceDomainStatus',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.CheckIntlFixPriceDomainStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_intl_fix_price_domain_status(
+        self,
+        request: domain_20180129_models.CheckIntlFixPriceDomainStatusRequest,
+    ) -> domain_20180129_models.CheckIntlFixPriceDomainStatusResponse:
+        """
+        @summary 校验在售国际一口价域名状态和询价
+        
+        @param request: CheckIntlFixPriceDomainStatusRequest
+        @return: CheckIntlFixPriceDomainStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.check_intl_fix_price_domain_status_with_options(request, runtime)
+
+    async def check_intl_fix_price_domain_status_async(
+        self,
+        request: domain_20180129_models.CheckIntlFixPriceDomainStatusRequest,
+    ) -> domain_20180129_models.CheckIntlFixPriceDomainStatusResponse:
+        """
+        @summary 校验在售国际一口价域名状态和询价
+        
+        @param request: CheckIntlFixPriceDomainStatusRequest
+        @return: CheckIntlFixPriceDomainStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.check_intl_fix_price_domain_status_with_options_async(request, runtime)
+
     def check_max_year_of_server_lock_with_options(
         self,
         request: domain_20180129_models.CheckMaxYearOfServerLockRequest,
@@ -1364,6 +1460,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.confirm_transfer_in_email_with_options_async(request, runtime)
+
+    def create_intl_fixed_price_domain_order_with_options(
+        self,
+        request: domain_20180129_models.CreateIntlFixedPriceDomainOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.CreateIntlFixedPriceDomainOrderResponse:
+        """
+        @summary 创建国际一口价订单
+        
+        @param request: CreateIntlFixedPriceDomainOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIntlFixedPriceDomainOrderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.contact_id):
+            query['ContactId'] = request.contact_id
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.expected_price):
+            query['ExpectedPrice'] = request.expected_price
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateIntlFixedPriceDomainOrder',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.CreateIntlFixedPriceDomainOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_intl_fixed_price_domain_order_with_options_async(
+        self,
+        request: domain_20180129_models.CreateIntlFixedPriceDomainOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.CreateIntlFixedPriceDomainOrderResponse:
+        """
+        @summary 创建国际一口价订单
+        
+        @param request: CreateIntlFixedPriceDomainOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIntlFixedPriceDomainOrderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.contact_id):
+            query['ContactId'] = request.contact_id
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.expected_price):
+            query['ExpectedPrice'] = request.expected_price
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateIntlFixedPriceDomainOrder',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.CreateIntlFixedPriceDomainOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_intl_fixed_price_domain_order(
+        self,
+        request: domain_20180129_models.CreateIntlFixedPriceDomainOrderRequest,
+    ) -> domain_20180129_models.CreateIntlFixedPriceDomainOrderResponse:
+        """
+        @summary 创建国际一口价订单
+        
+        @param request: CreateIntlFixedPriceDomainOrderRequest
+        @return: CreateIntlFixedPriceDomainOrderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_intl_fixed_price_domain_order_with_options(request, runtime)
+
+    async def create_intl_fixed_price_domain_order_async(
+        self,
+        request: domain_20180129_models.CreateIntlFixedPriceDomainOrderRequest,
+    ) -> domain_20180129_models.CreateIntlFixedPriceDomainOrderResponse:
+        """
+        @summary 创建国际一口价订单
+        
+        @param request: CreateIntlFixedPriceDomainOrderRequest
+        @return: CreateIntlFixedPriceDomainOrderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_intl_fixed_price_domain_order_with_options_async(request, runtime)
 
     def delete_contact_templates_with_options(
         self,
@@ -2088,6 +2292,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.fuzzy_match_domain_sensitive_word_with_options_async(request, runtime)
+
+    def get_intl_fix_price_domain_list_url_with_options(
+        self,
+        request: domain_20180129_models.GetIntlFixPriceDomainListUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.GetIntlFixPriceDomainListUrlResponse:
+        """
+        @summary 查询国际一口价在售域名列表
+        
+        @param request: GetIntlFixPriceDomainListUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIntlFixPriceDomainListUrlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.list_date):
+            query['ListDate'] = request.list_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetIntlFixPriceDomainListUrl',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.GetIntlFixPriceDomainListUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_intl_fix_price_domain_list_url_with_options_async(
+        self,
+        request: domain_20180129_models.GetIntlFixPriceDomainListUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.GetIntlFixPriceDomainListUrlResponse:
+        """
+        @summary 查询国际一口价在售域名列表
+        
+        @param request: GetIntlFixPriceDomainListUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIntlFixPriceDomainListUrlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.list_date):
+            query['ListDate'] = request.list_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetIntlFixPriceDomainListUrl',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.GetIntlFixPriceDomainListUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_intl_fix_price_domain_list_url(
+        self,
+        request: domain_20180129_models.GetIntlFixPriceDomainListUrlRequest,
+    ) -> domain_20180129_models.GetIntlFixPriceDomainListUrlResponse:
+        """
+        @summary 查询国际一口价在售域名列表
+        
+        @param request: GetIntlFixPriceDomainListUrlRequest
+        @return: GetIntlFixPriceDomainListUrlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_intl_fix_price_domain_list_url_with_options(request, runtime)
+
+    async def get_intl_fix_price_domain_list_url_async(
+        self,
+        request: domain_20180129_models.GetIntlFixPriceDomainListUrlRequest,
+    ) -> domain_20180129_models.GetIntlFixPriceDomainListUrlResponse:
+        """
+        @summary 查询国际一口价在售域名列表
+        
+        @param request: GetIntlFixPriceDomainListUrlRequest
+        @return: GetIntlFixPriceDomainListUrlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_intl_fix_price_domain_list_url_with_options_async(request, runtime)
 
     def get_operation_oss_upload_policy_with_options(
         self,
@@ -4916,6 +5216,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.query_failing_reason_list_for_qualification_with_options_async(request, runtime)
+
+    def query_intl_fixed_price_order_list_with_options(
+        self,
+        request: domain_20180129_models.QueryIntlFixedPriceOrderListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.QueryIntlFixedPriceOrderListResponse:
+        """
+        @summary 查询国际一口价订单列表
+        
+        @param request: QueryIntlFixedPriceOrderListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryIntlFixedPriceOrderListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryIntlFixedPriceOrderList',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.QueryIntlFixedPriceOrderListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_intl_fixed_price_order_list_with_options_async(
+        self,
+        request: domain_20180129_models.QueryIntlFixedPriceOrderListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.QueryIntlFixedPriceOrderListResponse:
+        """
+        @summary 查询国际一口价订单列表
+        
+        @param request: QueryIntlFixedPriceOrderListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryIntlFixedPriceOrderListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryIntlFixedPriceOrderList',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.QueryIntlFixedPriceOrderListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_intl_fixed_price_order_list(
+        self,
+        request: domain_20180129_models.QueryIntlFixedPriceOrderListRequest,
+    ) -> domain_20180129_models.QueryIntlFixedPriceOrderListResponse:
+        """
+        @summary 查询国际一口价订单列表
+        
+        @param request: QueryIntlFixedPriceOrderListRequest
+        @return: QueryIntlFixedPriceOrderListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_intl_fixed_price_order_list_with_options(request, runtime)
+
+    async def query_intl_fixed_price_order_list_async(
+        self,
+        request: domain_20180129_models.QueryIntlFixedPriceOrderListRequest,
+    ) -> domain_20180129_models.QueryIntlFixedPriceOrderListResponse:
+        """
+        @summary 查询国际一口价订单列表
+        
+        @param request: QueryIntlFixedPriceOrderListRequest
+        @return: QueryIntlFixedPriceOrderListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_intl_fixed_price_order_list_with_options_async(request, runtime)
 
     def query_local_ens_association_with_options(
         self,
@@ -7832,6 +8240,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.save_batch_task_for_reserve_drop_list_domain_with_options_async(request, runtime)
+
+    def save_batch_task_for_transfer_out_by_authorization_code_with_options(
+        self,
+        request: domain_20180129_models.SaveBatchTaskForTransferOutByAuthorizationCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.SaveBatchTaskForTransferOutByAuthorizationCodeResponse:
+        """
+        @summary 基于转移码的批量转出任务提交
+        
+        @param request: SaveBatchTaskForTransferOutByAuthorizationCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveBatchTaskForTransferOutByAuthorizationCodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.long):
+            query['Long'] = request.long
+        if not UtilClient.is_unset(request.transfer_out_param_list):
+            query['TransferOutParamList'] = request.transfer_out_param_list
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SaveBatchTaskForTransferOutByAuthorizationCode',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.SaveBatchTaskForTransferOutByAuthorizationCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_batch_task_for_transfer_out_by_authorization_code_with_options_async(
+        self,
+        request: domain_20180129_models.SaveBatchTaskForTransferOutByAuthorizationCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.SaveBatchTaskForTransferOutByAuthorizationCodeResponse:
+        """
+        @summary 基于转移码的批量转出任务提交
+        
+        @param request: SaveBatchTaskForTransferOutByAuthorizationCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveBatchTaskForTransferOutByAuthorizationCodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.long):
+            query['Long'] = request.long
+        if not UtilClient.is_unset(request.transfer_out_param_list):
+            query['TransferOutParamList'] = request.transfer_out_param_list
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SaveBatchTaskForTransferOutByAuthorizationCode',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.SaveBatchTaskForTransferOutByAuthorizationCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_batch_task_for_transfer_out_by_authorization_code(
+        self,
+        request: domain_20180129_models.SaveBatchTaskForTransferOutByAuthorizationCodeRequest,
+    ) -> domain_20180129_models.SaveBatchTaskForTransferOutByAuthorizationCodeResponse:
+        """
+        @summary 基于转移码的批量转出任务提交
+        
+        @param request: SaveBatchTaskForTransferOutByAuthorizationCodeRequest
+        @return: SaveBatchTaskForTransferOutByAuthorizationCodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.save_batch_task_for_transfer_out_by_authorization_code_with_options(request, runtime)
+
+    async def save_batch_task_for_transfer_out_by_authorization_code_async(
+        self,
+        request: domain_20180129_models.SaveBatchTaskForTransferOutByAuthorizationCodeRequest,
+    ) -> domain_20180129_models.SaveBatchTaskForTransferOutByAuthorizationCodeResponse:
+        """
+        @summary 基于转移码的批量转出任务提交
+        
+        @param request: SaveBatchTaskForTransferOutByAuthorizationCodeRequest
+        @return: SaveBatchTaskForTransferOutByAuthorizationCodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.save_batch_task_for_transfer_out_by_authorization_code_with_options_async(request, runtime)
 
     def save_batch_task_for_transfer_prohibition_lock_with_options(
         self,
@@ -11460,6 +11972,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.save_single_task_for_synchronizing_dns_host_with_options_async(request, runtime)
+
+    def save_single_task_for_transfer_out_by_authorization_code_with_options(
+        self,
+        request: domain_20180129_models.SaveSingleTaskForTransferOutByAuthorizationCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.SaveSingleTaskForTransferOutByAuthorizationCodeResponse:
+        """
+        @summary 基于转移码的单个转出任务提交
+        
+        @param request: SaveSingleTaskForTransferOutByAuthorizationCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveSingleTaskForTransferOutByAuthorizationCodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authorization_code):
+            query['AuthorizationCode'] = request.authorization_code
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SaveSingleTaskForTransferOutByAuthorizationCode',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.SaveSingleTaskForTransferOutByAuthorizationCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_single_task_for_transfer_out_by_authorization_code_with_options_async(
+        self,
+        request: domain_20180129_models.SaveSingleTaskForTransferOutByAuthorizationCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.SaveSingleTaskForTransferOutByAuthorizationCodeResponse:
+        """
+        @summary 基于转移码的单个转出任务提交
+        
+        @param request: SaveSingleTaskForTransferOutByAuthorizationCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveSingleTaskForTransferOutByAuthorizationCodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authorization_code):
+            query['AuthorizationCode'] = request.authorization_code
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SaveSingleTaskForTransferOutByAuthorizationCode',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.SaveSingleTaskForTransferOutByAuthorizationCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_single_task_for_transfer_out_by_authorization_code(
+        self,
+        request: domain_20180129_models.SaveSingleTaskForTransferOutByAuthorizationCodeRequest,
+    ) -> domain_20180129_models.SaveSingleTaskForTransferOutByAuthorizationCodeResponse:
+        """
+        @summary 基于转移码的单个转出任务提交
+        
+        @param request: SaveSingleTaskForTransferOutByAuthorizationCodeRequest
+        @return: SaveSingleTaskForTransferOutByAuthorizationCodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.save_single_task_for_transfer_out_by_authorization_code_with_options(request, runtime)
+
+    async def save_single_task_for_transfer_out_by_authorization_code_async(
+        self,
+        request: domain_20180129_models.SaveSingleTaskForTransferOutByAuthorizationCodeRequest,
+    ) -> domain_20180129_models.SaveSingleTaskForTransferOutByAuthorizationCodeResponse:
+        """
+        @summary 基于转移码的单个转出任务提交
+        
+        @param request: SaveSingleTaskForTransferOutByAuthorizationCodeRequest
+        @return: SaveSingleTaskForTransferOutByAuthorizationCodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.save_single_task_for_transfer_out_by_authorization_code_with_options_async(request, runtime)
 
     def save_single_task_for_transfer_prohibition_lock_with_options(
         self,
