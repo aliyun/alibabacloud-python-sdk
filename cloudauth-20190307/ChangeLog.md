@@ -1,3 +1,7 @@
+2024-10-21 Version: 3.1.0
+- Support API DeleteFaceVerifyResult.
+
+
 2024-10-09 Version: 3.0.0
 - Update API CredentialVerify: update response param.
 

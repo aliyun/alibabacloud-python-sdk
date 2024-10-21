@@ -1323,6 +1323,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.deepfake_detect_with_options_async(request, runtime)
 
+    def delete_face_verify_result_with_options(
+        self,
+        request: cloudauth_20190307_models.DeleteFaceVerifyResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DeleteFaceVerifyResultResponse:
+        """
+        @summary 金融级服务敏感数据删除接口
+        
+        @param request: DeleteFaceVerifyResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFaceVerifyResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.certify_id):
+            query['CertifyId'] = request.certify_id
+        if not UtilClient.is_unset(request.delete_after_query):
+            query['DeleteAfterQuery'] = request.delete_after_query
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteFaceVerifyResult',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DeleteFaceVerifyResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_face_verify_result_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DeleteFaceVerifyResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DeleteFaceVerifyResultResponse:
+        """
+        @summary 金融级服务敏感数据删除接口
+        
+        @param request: DeleteFaceVerifyResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFaceVerifyResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.certify_id):
+            query['CertifyId'] = request.certify_id
+        if not UtilClient.is_unset(request.delete_after_query):
+            query['DeleteAfterQuery'] = request.delete_after_query
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteFaceVerifyResult',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DeleteFaceVerifyResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_face_verify_result(
+        self,
+        request: cloudauth_20190307_models.DeleteFaceVerifyResultRequest,
+    ) -> cloudauth_20190307_models.DeleteFaceVerifyResultResponse:
+        """
+        @summary 金融级服务敏感数据删除接口
+        
+        @param request: DeleteFaceVerifyResultRequest
+        @return: DeleteFaceVerifyResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_face_verify_result_with_options(request, runtime)
+
+    async def delete_face_verify_result_async(
+        self,
+        request: cloudauth_20190307_models.DeleteFaceVerifyResultRequest,
+    ) -> cloudauth_20190307_models.DeleteFaceVerifyResultResponse:
+        """
+        @summary 金融级服务敏感数据删除接口
+        
+        @param request: DeleteFaceVerifyResultRequest
+        @return: DeleteFaceVerifyResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_face_verify_result_with_options_async(request, runtime)
+
     def describe_device_info_with_options(
         self,
         request: cloudauth_20190307_models.DescribeDeviceInfoRequest,
