@@ -1,3 +1,50 @@
+2024-10-21 Version: 2.0.3
+- Update API BatchDeleteJobs: update response param.
+- Update API BatchDeleteRouteStrategy: update response param.
+- Update API BatchDisableJobs: update response param.
+- Update API BatchEnableJobs: update response param.
+- Update API CreateAppGroup: update response param.
+- Update API CreateJob: update response param.
+- Update API CreateNamespace: update response param.
+- Update API CreateRouteStrategy: update response param.
+- Update API CreateWorkflow: update response param.
+- Update API DeleteAppGroup: update response param.
+- Update API DeleteJob: update response param.
+- Update API DeleteRouteStrategy: update response param.
+- Update API DeleteWorkflow: update response param.
+- Update API DesignateWorkers: update response param.
+- Update API DisableJob: update response param.
+- Update API DisableWorkflow: update response param.
+- Update API EnableJob: update response param.
+- Update API EnableWorkflow: update response param.
+- Update API ExecuteJob: update response param.
+- Update API ExecuteWorkflow: update response param.
+- Update API GetAppGroup: update response param.
+- Update API GetJobInfo: update response param.
+- Update API GetJobInstance: update response param.
+- Update API GetJobInstanceList: update response param.
+- Update API GetLog: update response param.
+- Update API GetOverview: update response param.
+- Update API GetWorkFlow: update response param.
+- Update API GetWorkerList: update response param.
+- Update API GetWorkflowInstance: update response param.
+- Update API GrantPermission: update response param.
+- Update API ListGroups: update response param.
+- Update API ListJobs: update response param.
+- Update API ListNamespaces: update response param.
+- Update API ListWorkflowInstance: update response param.
+- Update API RerunJob: update response param.
+- Update API RetryJobInstance: update response param.
+- Update API RevokePermission: update response param.
+- Update API SetJobInstanceSuccess: update response param.
+- Update API SetWfInstanceSuccess: update response param.
+- Update API StopInstance: update response param.
+- Update API UpdateAppGroup: update response param.
+- Update API UpdateJob: update response param.
+- Update API UpdateWorkflow: update response param.
+- Update API UpdateWorkflowDag: update response param.
+
+
 2024-10-18 Version: 2.0.2
 - Update API ExecuteWorkflow: update response param.
 - Update API GetAppGroup: update response param.
