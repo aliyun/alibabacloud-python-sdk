@@ -1302,6 +1302,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
+        if not UtilClient.is_unset(request.keyword_id_list):
+            body['KeywordIdList'] = request.keyword_id_list
         if not UtilClient.is_unset(request.keyword_ids):
             body['KeywordIds'] = request.keyword_ids
         if not UtilClient.is_unset(request.lib_id):
@@ -1343,6 +1345,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
+        if not UtilClient.is_unset(request.keyword_id_list):
+            body['KeywordIdList'] = request.keyword_id_list
         if not UtilClient.is_unset(request.keyword_ids):
             body['KeywordIds'] = request.keyword_ids
         if not UtilClient.is_unset(request.lib_id):

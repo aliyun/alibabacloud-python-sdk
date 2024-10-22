@@ -1880,10 +1880,12 @@ class DeleteImagesFromLibResponse(TeaModel):
 class DeleteKeywordRequest(TeaModel):
     def __init__(
         self,
+        keyword_id_list: str = None,
         keyword_ids: str = None,
         lib_id: str = None,
         region_id: str = None,
     ):
+        self.keyword_id_list = keyword_id_list
         self.keyword_ids = keyword_ids
         self.lib_id = lib_id
         self.region_id = region_id
@@ -1897,6 +1899,8 @@ class DeleteKeywordRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.keyword_id_list is not None:
+            result['KeywordIdList'] = self.keyword_id_list
         if self.keyword_ids is not None:
             result['KeywordIds'] = self.keyword_ids
         if self.lib_id is not None:
@@ -1907,6 +1911,8 @@ class DeleteKeywordRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('KeywordIdList') is not None:
+            self.keyword_id_list = m.get('KeywordIdList')
         if m.get('KeywordIds') is not None:
             self.keyword_ids = m.get('KeywordIds')
         if m.get('LibId') is not None:

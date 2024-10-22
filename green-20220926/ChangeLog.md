@@ -1,3 +1,10 @@
+2024-10-22 Version: 1.2.0
+- Support API ExportOssCheckStat.
+- Support API GetOssCheckStat.
+- Update API DeleteKeyword: add param KeywordIdList.
+- Update API GetBackupConfig: update response param.
+
+
 2024-10-18 Version: 1.1.0
 - Support API ExportOssCheckStat.
 - Support API GetOssCheckStat.
