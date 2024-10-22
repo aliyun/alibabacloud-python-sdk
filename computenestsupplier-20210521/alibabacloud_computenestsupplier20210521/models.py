@@ -1087,6 +1087,39 @@ class CreateServiceRequestServiceInfoAgreements(TeaModel):
         return self
 
 
+class CreateServiceRequestServiceInfoSoftwares(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        version: str = None,
+    ):
+        self.name = name
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
 class CreateServiceRequestServiceInfo(TeaModel):
     def __init__(
         self,
@@ -1096,6 +1129,7 @@ class CreateServiceRequestServiceInfo(TeaModel):
         long_description_url: str = None,
         name: str = None,
         short_description: str = None,
+        softwares: List[CreateServiceRequestServiceInfoSoftwares] = None,
     ):
         # Protocol document information about the service.
         self.agreements = agreements
@@ -1116,10 +1150,15 @@ class CreateServiceRequestServiceInfo(TeaModel):
         self.name = name
         # The description of the service.
         self.short_description = short_description
+        self.softwares = softwares
 
     def validate(self):
         if self.agreements:
             for k in self.agreements:
+                if k:
+                    k.validate()
+        if self.softwares:
+            for k in self.softwares:
                 if k:
                     k.validate()
 
@@ -1143,6 +1182,10 @@ class CreateServiceRequestServiceInfo(TeaModel):
             result['Name'] = self.name
         if self.short_description is not None:
             result['ShortDescription'] = self.short_description
+        result['Softwares'] = []
+        if self.softwares is not None:
+            for k in self.softwares:
+                result['Softwares'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -1162,6 +1205,11 @@ class CreateServiceRequestServiceInfo(TeaModel):
             self.name = m.get('Name')
         if m.get('ShortDescription') is not None:
             self.short_description = m.get('ShortDescription')
+        self.softwares = []
+        if m.get('Softwares') is not None:
+            for k in m.get('Softwares'):
+                temp_model = CreateServiceRequestServiceInfoSoftwares()
+                self.softwares.append(temp_model.from_map(k))
         return self
 
 
@@ -1209,6 +1257,7 @@ class CreateServiceRequest(TeaModel):
         client_token: str = None,
         deploy_metadata: str = None,
         deploy_type: str = None,
+        dry_run: bool = None,
         duration: int = None,
         is_support_operated: bool = None,
         license_metadata: str = None,
@@ -1255,6 +1304,7 @@ class CreateServiceRequest(TeaModel):
         # 
         # This parameter is required.
         self.deploy_type = deploy_type
+        self.dry_run = dry_run
         # The duration for which hosted O\\&M is implemented. Unit: seconds.
         self.duration = duration
         # Specifies whether to enable the hosted O\\&M feature for the service. Default value: false. Valid values:
@@ -1345,6 +1395,8 @@ class CreateServiceRequest(TeaModel):
             result['DeployMetadata'] = self.deploy_metadata
         if self.deploy_type is not None:
             result['DeployType'] = self.deploy_type
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.duration is not None:
             result['Duration'] = self.duration
         if self.is_support_operated is not None:
@@ -1405,6 +1457,8 @@ class CreateServiceRequest(TeaModel):
             self.deploy_metadata = m.get('DeployMetadata')
         if m.get('DeployType') is not None:
             self.deploy_type = m.get('DeployType')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
         if m.get('IsSupportOperated') is not None:
@@ -1454,22 +1508,16 @@ class CreateServiceRequest(TeaModel):
         return self
 
 
-class CreateServiceResponseBody(TeaModel):
+class CreateServiceResponseBodyDryRunResultRolePolicyMissingPolicy(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
-        service_id: str = None,
-        status: str = None,
-        version: str = None,
+        action: List[str] = None,
+        resource: str = None,
+        service_name: str = None,
     ):
-        # The request ID.
-        self.request_id = request_id
-        # The service ID.
-        self.service_id = service_id
-        # The status of the service.
-        self.status = status
-        # The service version.
-        self.version = version
+        self.action = action
+        self.resource = resource
+        self.service_name = service_name
 
     def validate(self):
         pass
@@ -1480,6 +1528,126 @@ class CreateServiceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.resource is not None:
+            result['Resource'] = self.resource
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('Resource') is not None:
+            self.resource = m.get('Resource')
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
+        return self
+
+
+class CreateServiceResponseBodyDryRunResultRolePolicy(TeaModel):
+    def __init__(
+        self,
+        missing_policy: List[CreateServiceResponseBodyDryRunResultRolePolicyMissingPolicy] = None,
+        policy: str = None,
+    ):
+        self.missing_policy = missing_policy
+        self.policy = policy
+
+    def validate(self):
+        if self.missing_policy:
+            for k in self.missing_policy:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['MissingPolicy'] = []
+        if self.missing_policy is not None:
+            for k in self.missing_policy:
+                result['MissingPolicy'].append(k.to_map() if k else None)
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.missing_policy = []
+        if m.get('MissingPolicy') is not None:
+            for k in m.get('MissingPolicy'):
+                temp_model = CreateServiceResponseBodyDryRunResultRolePolicyMissingPolicy()
+                self.missing_policy.append(temp_model.from_map(k))
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        return self
+
+
+class CreateServiceResponseBodyDryRunResult(TeaModel):
+    def __init__(
+        self,
+        role_policy: CreateServiceResponseBodyDryRunResultRolePolicy = None,
+    ):
+        self.role_policy = role_policy
+
+    def validate(self):
+        if self.role_policy:
+            self.role_policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.role_policy is not None:
+            result['RolePolicy'] = self.role_policy.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RolePolicy') is not None:
+            temp_model = CreateServiceResponseBodyDryRunResultRolePolicy()
+            self.role_policy = temp_model.from_map(m['RolePolicy'])
+        return self
+
+
+class CreateServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        dry_run_result: CreateServiceResponseBodyDryRunResult = None,
+        request_id: str = None,
+        service_id: str = None,
+        status: str = None,
+        version: str = None,
+    ):
+        self.dry_run_result = dry_run_result
+        # The request ID.
+        self.request_id = request_id
+        # The service ID.
+        self.service_id = service_id
+        # The status of the service.
+        self.status = status
+        # The service version.
+        self.version = version
+
+    def validate(self):
+        if self.dry_run_result:
+            self.dry_run_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dry_run_result is not None:
+            result['DryRunResult'] = self.dry_run_result.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.service_id is not None:
@@ -1492,6 +1660,9 @@ class CreateServiceResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DryRunResult') is not None:
+            temp_model = CreateServiceResponseBodyDryRunResult()
+            self.dry_run_result = temp_model.from_map(m['DryRunResult'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('ServiceId') is not None:
@@ -3746,6 +3917,39 @@ class GetServiceResponseBodyServiceInfosAgreements(TeaModel):
         return self
 
 
+class GetServiceResponseBodyServiceInfosSoftwares(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        version: str = None,
+    ):
+        self.name = name
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
 class GetServiceResponseBodyServiceInfos(TeaModel):
     def __init__(
         self,
@@ -3755,6 +3959,7 @@ class GetServiceResponseBodyServiceInfos(TeaModel):
         long_description_url: str = None,
         name: str = None,
         short_description: str = None,
+        softwares: List[GetServiceResponseBodyServiceInfosSoftwares] = None,
     ):
         # The agreement information about the service.
         self.agreements = agreements
@@ -3771,10 +3976,15 @@ class GetServiceResponseBodyServiceInfos(TeaModel):
         self.name = name
         # The description of the service.
         self.short_description = short_description
+        self.softwares = softwares
 
     def validate(self):
         if self.agreements:
             for k in self.agreements:
+                if k:
+                    k.validate()
+        if self.softwares:
+            for k in self.softwares:
                 if k:
                     k.validate()
 
@@ -3798,6 +4008,10 @@ class GetServiceResponseBodyServiceInfos(TeaModel):
             result['Name'] = self.name
         if self.short_description is not None:
             result['ShortDescription'] = self.short_description
+        result['Softwares'] = []
+        if self.softwares is not None:
+            for k in self.softwares:
+                result['Softwares'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -3817,6 +4031,11 @@ class GetServiceResponseBodyServiceInfos(TeaModel):
             self.name = m.get('Name')
         if m.get('ShortDescription') is not None:
             self.short_description = m.get('ShortDescription')
+        self.softwares = []
+        if m.get('Softwares') is not None:
+            for k in m.get('Softwares'):
+                temp_model = GetServiceResponseBodyServiceInfosSoftwares()
+                self.softwares.append(temp_model.from_map(k))
         return self
 
 
@@ -6220,6 +6439,146 @@ class GetUploadCredentialsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetUploadCredentialsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class LaunchServiceRequest(TeaModel):
+    def __init__(
+        self,
+        categories: List[str] = None,
+        client_token: str = None,
+        recommend: bool = None,
+        region_id: str = None,
+        service_id: str = None,
+        service_version: str = None,
+    ):
+        self.categories = categories
+        self.client_token = client_token
+        self.recommend = recommend
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.service_id = service_id
+        # This parameter is required.
+        self.service_version = service_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.categories is not None:
+            result['Categories'] = self.categories
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.recommend is not None:
+            result['Recommend'] = self.recommend
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.service_version is not None:
+            result['ServiceVersion'] = self.service_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Categories') is not None:
+            self.categories = m.get('Categories')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Recommend') is not None:
+            self.recommend = m.get('Recommend')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('ServiceVersion') is not None:
+            self.service_version = m.get('ServiceVersion')
+        return self
+
+
+class LaunchServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        service_launch_result_type: str = None,
+        version: str = None,
+    ):
+        self.request_id = request_id
+        self.service_launch_result_type = service_launch_result_type
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.service_launch_result_type is not None:
+            result['ServiceLaunchResultType'] = self.service_launch_result_type
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ServiceLaunchResultType') is not None:
+            self.service_launch_result_type = m.get('ServiceLaunchResultType')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class LaunchServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: LaunchServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = LaunchServiceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9547,6 +9906,115 @@ class ModifyServiceInstanceResourcesResponse(TeaModel):
         return self
 
 
+class PreLaunchServiceRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        region_id: str = None,
+        service_id: str = None,
+    ):
+        self.client_token = client_token
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.service_id = service_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        return self
+
+
+class PreLaunchServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class PreLaunchServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PreLaunchServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PreLaunchServiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class PushMeteringDataRequest(TeaModel):
     def __init__(
         self,
@@ -10928,7 +11396,7 @@ class UpdateArtifactResponse(TeaModel):
 class UpdateServiceRequestCommodityComponentsMappings(TeaModel):
     def __init__(
         self,
-        mappings: str = None,
+        mappings: Dict[str, str] = None,
         template_name: str = None,
     ):
         # This parameter is not publicly accessible.
@@ -11224,6 +11692,39 @@ class UpdateServiceRequestServiceInfoAgreements(TeaModel):
         return self
 
 
+class UpdateServiceRequestServiceInfoSoftwares(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        version: str = None,
+    ):
+        self.name = name
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
 class UpdateServiceRequestServiceInfo(TeaModel):
     def __init__(
         self,
@@ -11233,6 +11734,7 @@ class UpdateServiceRequestServiceInfo(TeaModel):
         long_description_url: str = None,
         name: str = None,
         short_description: str = None,
+        softwares: List[UpdateServiceRequestServiceInfoSoftwares] = None,
     ):
         # Protocol document information about the service.
         self.agreements = agreements
@@ -11249,10 +11751,15 @@ class UpdateServiceRequestServiceInfo(TeaModel):
         self.name = name
         # The description of the service.
         self.short_description = short_description
+        self.softwares = softwares
 
     def validate(self):
         if self.agreements:
             for k in self.agreements:
+                if k:
+                    k.validate()
+        if self.softwares:
+            for k in self.softwares:
                 if k:
                     k.validate()
 
@@ -11276,6 +11783,10 @@ class UpdateServiceRequestServiceInfo(TeaModel):
             result['Name'] = self.name
         if self.short_description is not None:
             result['ShortDescription'] = self.short_description
+        result['Softwares'] = []
+        if self.softwares is not None:
+            for k in self.softwares:
+                result['Softwares'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -11295,6 +11806,11 @@ class UpdateServiceRequestServiceInfo(TeaModel):
             self.name = m.get('Name')
         if m.get('ShortDescription') is not None:
             self.short_description = m.get('ShortDescription')
+        self.softwares = []
+        if m.get('Softwares') is not None:
+            for k in m.get('Softwares'):
+                temp_model = UpdateServiceRequestServiceInfoSoftwares()
+                self.softwares.append(temp_model.from_map(k))
         return self
 
 
@@ -11304,6 +11820,7 @@ class UpdateServiceRequestUpdateOption(TeaModel):
         update_artifact: bool = None,
         update_from: str = None,
     ):
+        # Is need to update the artifacts
         self.update_artifact = update_artifact
         # The options for update the service. Valid values:
         # - CODE
@@ -11343,6 +11860,7 @@ class UpdateServiceRequest(TeaModel):
         commodity: UpdateServiceRequestCommodity = None,
         deploy_metadata: str = None,
         deploy_type: str = None,
+        dry_run: bool = None,
         duration: int = None,
         is_support_operated: bool = None,
         license_metadata: str = None,
@@ -11386,6 +11904,7 @@ class UpdateServiceRequest(TeaModel):
         # *   container: The service is deployed by using a container.
         # *   pkg: The service is deployed by using a package.
         self.deploy_type = deploy_type
+        self.dry_run = dry_run
         # The duration for which hosted O\\&M is implemented. Unit: seconds.
         self.duration = duration
         # Specifies whether to enable the hosted O\\&M feature for the service. Default value: false. Valid values:
@@ -11477,6 +11996,8 @@ class UpdateServiceRequest(TeaModel):
             result['DeployMetadata'] = self.deploy_metadata
         if self.deploy_type is not None:
             result['DeployType'] = self.deploy_type
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.duration is not None:
             result['Duration'] = self.duration
         if self.is_support_operated is not None:
@@ -11532,6 +12053,8 @@ class UpdateServiceRequest(TeaModel):
             self.deploy_metadata = m.get('DeployMetadata')
         if m.get('DeployType') is not None:
             self.deploy_type = m.get('DeployType')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
         if m.get('IsSupportOperated') is not None:
@@ -11610,6 +12133,39 @@ class UpdateServiceShrinkRequestServiceInfoAgreements(TeaModel):
         return self
 
 
+class UpdateServiceShrinkRequestServiceInfoSoftwares(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        version: str = None,
+    ):
+        self.name = name
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
 class UpdateServiceShrinkRequestServiceInfo(TeaModel):
     def __init__(
         self,
@@ -11619,6 +12175,7 @@ class UpdateServiceShrinkRequestServiceInfo(TeaModel):
         long_description_url: str = None,
         name: str = None,
         short_description: str = None,
+        softwares: List[UpdateServiceShrinkRequestServiceInfoSoftwares] = None,
     ):
         # Protocol document information about the service.
         self.agreements = agreements
@@ -11635,10 +12192,15 @@ class UpdateServiceShrinkRequestServiceInfo(TeaModel):
         self.name = name
         # The description of the service.
         self.short_description = short_description
+        self.softwares = softwares
 
     def validate(self):
         if self.agreements:
             for k in self.agreements:
+                if k:
+                    k.validate()
+        if self.softwares:
+            for k in self.softwares:
                 if k:
                     k.validate()
 
@@ -11662,6 +12224,10 @@ class UpdateServiceShrinkRequestServiceInfo(TeaModel):
             result['Name'] = self.name
         if self.short_description is not None:
             result['ShortDescription'] = self.short_description
+        result['Softwares'] = []
+        if self.softwares is not None:
+            for k in self.softwares:
+                result['Softwares'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -11681,6 +12247,11 @@ class UpdateServiceShrinkRequestServiceInfo(TeaModel):
             self.name = m.get('Name')
         if m.get('ShortDescription') is not None:
             self.short_description = m.get('ShortDescription')
+        self.softwares = []
+        if m.get('Softwares') is not None:
+            for k in m.get('Softwares'):
+                temp_model = UpdateServiceShrinkRequestServiceInfoSoftwares()
+                self.softwares.append(temp_model.from_map(k))
         return self
 
 
@@ -11693,6 +12264,7 @@ class UpdateServiceShrinkRequest(TeaModel):
         commodity_shrink: str = None,
         deploy_metadata: str = None,
         deploy_type: str = None,
+        dry_run: bool = None,
         duration: int = None,
         is_support_operated: bool = None,
         license_metadata: str = None,
@@ -11736,6 +12308,7 @@ class UpdateServiceShrinkRequest(TeaModel):
         # *   container: The service is deployed by using a container.
         # *   pkg: The service is deployed by using a package.
         self.deploy_type = deploy_type
+        self.dry_run = dry_run
         # The duration for which hosted O\\&M is implemented. Unit: seconds.
         self.duration = duration
         # Specifies whether to enable the hosted O\\&M feature for the service. Default value: false. Valid values:
@@ -11823,6 +12396,8 @@ class UpdateServiceShrinkRequest(TeaModel):
             result['DeployMetadata'] = self.deploy_metadata
         if self.deploy_type is not None:
             result['DeployType'] = self.deploy_type
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.duration is not None:
             result['Duration'] = self.duration
         if self.is_support_operated is not None:
@@ -11877,6 +12452,8 @@ class UpdateServiceShrinkRequest(TeaModel):
             self.deploy_metadata = m.get('DeployMetadata')
         if m.get('DeployType') is not None:
             self.deploy_type = m.get('DeployType')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
         if m.get('IsSupportOperated') is not None:
@@ -11919,13 +12496,16 @@ class UpdateServiceShrinkRequest(TeaModel):
         return self
 
 
-class UpdateServiceResponseBody(TeaModel):
+class UpdateServiceResponseBodyDryRunResultRolePolicyMissingPolicy(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
+        action: List[str] = None,
+        resource: str = None,
+        service_name: str = None,
     ):
-        # The request ID.
-        self.request_id = request_id
+        self.action = action
+        self.resource = resource
+        self.service_name = service_name
 
     def validate(self):
         pass
@@ -11936,12 +12516,126 @@ class UpdateServiceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.resource is not None:
+            result['Resource'] = self.resource
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('Resource') is not None:
+            self.resource = m.get('Resource')
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
+        return self
+
+
+class UpdateServiceResponseBodyDryRunResultRolePolicy(TeaModel):
+    def __init__(
+        self,
+        missing_policy: List[UpdateServiceResponseBodyDryRunResultRolePolicyMissingPolicy] = None,
+        policy: str = None,
+    ):
+        self.missing_policy = missing_policy
+        self.policy = policy
+
+    def validate(self):
+        if self.missing_policy:
+            for k in self.missing_policy:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['MissingPolicy'] = []
+        if self.missing_policy is not None:
+            for k in self.missing_policy:
+                result['MissingPolicy'].append(k.to_map() if k else None)
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.missing_policy = []
+        if m.get('MissingPolicy') is not None:
+            for k in m.get('MissingPolicy'):
+                temp_model = UpdateServiceResponseBodyDryRunResultRolePolicyMissingPolicy()
+                self.missing_policy.append(temp_model.from_map(k))
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        return self
+
+
+class UpdateServiceResponseBodyDryRunResult(TeaModel):
+    def __init__(
+        self,
+        role_policy: UpdateServiceResponseBodyDryRunResultRolePolicy = None,
+    ):
+        self.role_policy = role_policy
+
+    def validate(self):
+        if self.role_policy:
+            self.role_policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.role_policy is not None:
+            result['RolePolicy'] = self.role_policy.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RolePolicy') is not None:
+            temp_model = UpdateServiceResponseBodyDryRunResultRolePolicy()
+            self.role_policy = temp_model.from_map(m['RolePolicy'])
+        return self
+
+
+class UpdateServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        dry_run_result: UpdateServiceResponseBodyDryRunResult = None,
+        request_id: str = None,
+    ):
+        self.dry_run_result = dry_run_result
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.dry_run_result:
+            self.dry_run_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dry_run_result is not None:
+            result['DryRunResult'] = self.dry_run_result.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DryRunResult') is not None:
+            temp_model = UpdateServiceResponseBodyDryRunResult()
+            self.dry_run_result = temp_model.from_map(m['DryRunResult'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -12021,6 +12715,7 @@ class UpdateServiceInstanceAttributeRequest(TeaModel):
         self,
         end_time: str = None,
         license_data: UpdateServiceInstanceAttributeRequestLicenseData = None,
+        reason: str = None,
         region_id: str = None,
         service_instance_id: str = None,
     ):
@@ -12030,6 +12725,7 @@ class UpdateServiceInstanceAttributeRequest(TeaModel):
         self.end_time = end_time
         # The License Data
         self.license_data = license_data
+        self.reason = reason
         # The region ID.
         # 
         # This parameter is required.
@@ -12053,6 +12749,8 @@ class UpdateServiceInstanceAttributeRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.license_data is not None:
             result['LicenseData'] = self.license_data.to_map()
+        if self.reason is not None:
+            result['Reason'] = self.reason
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.service_instance_id is not None:
@@ -12066,6 +12764,8 @@ class UpdateServiceInstanceAttributeRequest(TeaModel):
         if m.get('LicenseData') is not None:
             temp_model = UpdateServiceInstanceAttributeRequestLicenseData()
             self.license_data = temp_model.from_map(m['LicenseData'])
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ServiceInstanceId') is not None:
@@ -12078,6 +12778,7 @@ class UpdateServiceInstanceAttributeShrinkRequest(TeaModel):
         self,
         end_time: str = None,
         license_data_shrink: str = None,
+        reason: str = None,
         region_id: str = None,
         service_instance_id: str = None,
     ):
@@ -12087,6 +12788,7 @@ class UpdateServiceInstanceAttributeShrinkRequest(TeaModel):
         self.end_time = end_time
         # The License Data
         self.license_data_shrink = license_data_shrink
+        self.reason = reason
         # The region ID.
         # 
         # This parameter is required.
@@ -12109,6 +12811,8 @@ class UpdateServiceInstanceAttributeShrinkRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.license_data_shrink is not None:
             result['LicenseData'] = self.license_data_shrink
+        if self.reason is not None:
+            result['Reason'] = self.reason
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.service_instance_id is not None:
@@ -12121,6 +12825,8 @@ class UpdateServiceInstanceAttributeShrinkRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('LicenseData') is not None:
             self.license_data_shrink = m.get('LicenseData')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ServiceInstanceId') is not None:

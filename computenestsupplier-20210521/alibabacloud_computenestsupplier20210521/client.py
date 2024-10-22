@@ -543,6 +543,8 @@ class Client(OpenApiClient):
             query['DeployMetadata'] = request.deploy_metadata
         if not UtilClient.is_unset(request.deploy_type):
             query['DeployType'] = request.deploy_type
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.duration):
             query['Duration'] = request.duration
         if not UtilClient.is_unset(request.is_support_operated):
@@ -628,6 +630,8 @@ class Client(OpenApiClient):
             query['DeployMetadata'] = request.deploy_metadata
         if not UtilClient.is_unset(request.deploy_type):
             query['DeployType'] = request.deploy_type
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.duration):
             query['Duration'] = request.duration
         if not UtilClient.is_unset(request.is_support_operated):
@@ -2173,6 +2177,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_upload_credentials_with_options_async(request, runtime)
 
+    def launch_service_with_options(
+        self,
+        request: compute_nest_supplier_20210521_models.LaunchServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.LaunchServiceResponse:
+        """
+        @param request: LaunchServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LaunchServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.categories):
+            query['Categories'] = request.categories
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.recommend):
+            query['Recommend'] = request.recommend
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_version):
+            query['ServiceVersion'] = request.service_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='LaunchService',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.LaunchServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def launch_service_with_options_async(
+        self,
+        request: compute_nest_supplier_20210521_models.LaunchServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.LaunchServiceResponse:
+        """
+        @param request: LaunchServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LaunchServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.categories):
+            query['Categories'] = request.categories
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.recommend):
+            query['Recommend'] = request.recommend
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_version):
+            query['ServiceVersion'] = request.service_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='LaunchService',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.LaunchServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def launch_service(
+        self,
+        request: compute_nest_supplier_20210521_models.LaunchServiceRequest,
+    ) -> compute_nest_supplier_20210521_models.LaunchServiceResponse:
+        """
+        @param request: LaunchServiceRequest
+        @return: LaunchServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.launch_service_with_options(request, runtime)
+
+    async def launch_service_async(
+        self,
+        request: compute_nest_supplier_20210521_models.LaunchServiceRequest,
+    ) -> compute_nest_supplier_20210521_models.LaunchServiceResponse:
+        """
+        @param request: LaunchServiceRequest
+        @return: LaunchServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.launch_service_with_options_async(request, runtime)
+
     def list_acr_image_repositories_with_options(
         self,
         request: compute_nest_supplier_20210521_models.ListAcrImageRepositoriesRequest,
@@ -3239,6 +3351,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_service_instance_resources_with_options_async(request, runtime)
 
+    def pre_launch_service_with_options(
+        self,
+        request: compute_nest_supplier_20210521_models.PreLaunchServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.PreLaunchServiceResponse:
+        """
+        @summary 预发布服务
+        
+        @param request: PreLaunchServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PreLaunchServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PreLaunchService',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.PreLaunchServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pre_launch_service_with_options_async(
+        self,
+        request: compute_nest_supplier_20210521_models.PreLaunchServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.PreLaunchServiceResponse:
+        """
+        @summary 预发布服务
+        
+        @param request: PreLaunchServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PreLaunchServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PreLaunchService',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.PreLaunchServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pre_launch_service(
+        self,
+        request: compute_nest_supplier_20210521_models.PreLaunchServiceRequest,
+    ) -> compute_nest_supplier_20210521_models.PreLaunchServiceResponse:
+        """
+        @summary 预发布服务
+        
+        @param request: PreLaunchServiceRequest
+        @return: PreLaunchServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.pre_launch_service_with_options(request, runtime)
+
+    async def pre_launch_service_async(
+        self,
+        request: compute_nest_supplier_20210521_models.PreLaunchServiceRequest,
+    ) -> compute_nest_supplier_20210521_models.PreLaunchServiceResponse:
+        """
+        @summary 预发布服务
+        
+        @param request: PreLaunchServiceRequest
+        @return: PreLaunchServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.pre_launch_service_with_options_async(request, runtime)
+
     def push_metering_data_with_options(
         self,
         request: compute_nest_supplier_20210521_models.PushMeteringDataRequest,
@@ -4227,6 +4443,8 @@ class Client(OpenApiClient):
             query['DeployMetadata'] = request.deploy_metadata
         if not UtilClient.is_unset(request.deploy_type):
             query['DeployType'] = request.deploy_type
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.duration):
             query['Duration'] = request.duration
         if not UtilClient.is_unset(request.is_support_operated):
@@ -4314,6 +4532,8 @@ class Client(OpenApiClient):
             query['DeployMetadata'] = request.deploy_metadata
         if not UtilClient.is_unset(request.deploy_type):
             query['DeployType'] = request.deploy_type
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.duration):
             query['Duration'] = request.duration
         if not UtilClient.is_unset(request.is_support_operated):
@@ -4417,6 +4637,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.license_data_shrink):
             query['LicenseData'] = request.license_data_shrink
+        if not UtilClient.is_unset(request.reason):
+            query['Reason'] = request.reason
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.service_instance_id):
@@ -4462,6 +4684,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.license_data_shrink):
             query['LicenseData'] = request.license_data_shrink
+        if not UtilClient.is_unset(request.reason):
+            query['Reason'] = request.reason
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.service_instance_id):
