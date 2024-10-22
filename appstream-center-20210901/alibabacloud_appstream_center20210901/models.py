@@ -887,6 +887,39 @@ class AskSessionPackageRenewPriceResponse(TeaModel):
         return self
 
 
+class AuthorizeInstanceGroupRequestUserMeta(TeaModel):
+    def __init__(
+        self,
+        ad_domain: str = None,
+        type: str = None,
+    ):
+        self.ad_domain = ad_domain
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ad_domain is not None:
+            result['AdDomain'] = self.ad_domain
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdDomain') is not None:
+            self.ad_domain = m.get('AdDomain')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
 class AuthorizeInstanceGroupRequest(TeaModel):
     def __init__(
         self,
@@ -894,6 +927,7 @@ class AuthorizeInstanceGroupRequest(TeaModel):
         authorize_user_ids: List[str] = None,
         product_type: str = None,
         un_authorize_user_ids: List[str] = None,
+        user_meta: AuthorizeInstanceGroupRequestUserMeta = None,
     ):
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
@@ -901,6 +935,62 @@ class AuthorizeInstanceGroupRequest(TeaModel):
         # This parameter is required.
         self.product_type = product_type
         self.un_authorize_user_ids = un_authorize_user_ids
+        self.user_meta = user_meta
+
+    def validate(self):
+        if self.user_meta:
+            self.user_meta.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_instance_group_id is not None:
+            result['AppInstanceGroupId'] = self.app_instance_group_id
+        if self.authorize_user_ids is not None:
+            result['AuthorizeUserIds'] = self.authorize_user_ids
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.un_authorize_user_ids is not None:
+            result['UnAuthorizeUserIds'] = self.un_authorize_user_ids
+        if self.user_meta is not None:
+            result['UserMeta'] = self.user_meta.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppInstanceGroupId') is not None:
+            self.app_instance_group_id = m.get('AppInstanceGroupId')
+        if m.get('AuthorizeUserIds') is not None:
+            self.authorize_user_ids = m.get('AuthorizeUserIds')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('UnAuthorizeUserIds') is not None:
+            self.un_authorize_user_ids = m.get('UnAuthorizeUserIds')
+        if m.get('UserMeta') is not None:
+            temp_model = AuthorizeInstanceGroupRequestUserMeta()
+            self.user_meta = temp_model.from_map(m['UserMeta'])
+        return self
+
+
+class AuthorizeInstanceGroupShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_instance_group_id: str = None,
+        authorize_user_ids: List[str] = None,
+        product_type: str = None,
+        un_authorize_user_ids: List[str] = None,
+        user_meta_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.app_instance_group_id = app_instance_group_id
+        self.authorize_user_ids = authorize_user_ids
+        # This parameter is required.
+        self.product_type = product_type
+        self.un_authorize_user_ids = un_authorize_user_ids
+        self.user_meta_shrink = user_meta_shrink
 
     def validate(self):
         pass
@@ -919,6 +1009,8 @@ class AuthorizeInstanceGroupRequest(TeaModel):
             result['ProductType'] = self.product_type
         if self.un_authorize_user_ids is not None:
             result['UnAuthorizeUserIds'] = self.un_authorize_user_ids
+        if self.user_meta_shrink is not None:
+            result['UserMeta'] = self.user_meta_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -931,6 +1023,8 @@ class AuthorizeInstanceGroupRequest(TeaModel):
             self.product_type = m.get('ProductType')
         if m.get('UnAuthorizeUserIds') is not None:
             self.un_authorize_user_ids = m.get('UnAuthorizeUserIds')
+        if m.get('UserMeta') is not None:
+            self.user_meta_shrink = m.get('UserMeta')
         return self
 
 
@@ -1521,13 +1615,17 @@ class CreateAppInstanceGroupRequestNetwork(TeaModel):
         self,
         domain_rules: List[CreateAppInstanceGroupRequestNetworkDomainRules] = None,
         ip_expire_minutes: int = None,
+        office_site_id: str = None,
         routes: List[CreateAppInstanceGroupRequestNetworkRoutes] = None,
         strategy_type: str = None,
+        v_switch_ids: List[str] = None,
     ):
         self.domain_rules = domain_rules
         self.ip_expire_minutes = ip_expire_minutes
+        self.office_site_id = office_site_id
         self.routes = routes
         self.strategy_type = strategy_type
+        self.v_switch_ids = v_switch_ids
 
     def validate(self):
         if self.domain_rules:
@@ -1551,12 +1649,16 @@ class CreateAppInstanceGroupRequestNetwork(TeaModel):
                 result['DomainRules'].append(k.to_map() if k else None)
         if self.ip_expire_minutes is not None:
             result['IpExpireMinutes'] = self.ip_expire_minutes
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
         result['Routes'] = []
         if self.routes is not None:
             for k in self.routes:
                 result['Routes'].append(k.to_map() if k else None)
         if self.strategy_type is not None:
             result['StrategyType'] = self.strategy_type
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
         return result
 
     def from_map(self, m: dict = None):
@@ -1568,6 +1670,8 @@ class CreateAppInstanceGroupRequestNetwork(TeaModel):
                 self.domain_rules.append(temp_model.from_map(k))
         if m.get('IpExpireMinutes') is not None:
             self.ip_expire_minutes = m.get('IpExpireMinutes')
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
         self.routes = []
         if m.get('Routes') is not None:
             for k in m.get('Routes'):
@@ -1575,6 +1679,8 @@ class CreateAppInstanceGroupRequestNetwork(TeaModel):
                 self.routes.append(temp_model.from_map(k))
         if m.get('StrategyType') is not None:
             self.strategy_type = m.get('StrategyType')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
         return self
 
 
@@ -2004,7 +2110,6 @@ class CreateAppInstanceGroupRequest(TeaModel):
     ):
         # This parameter is required.
         self.app_center_image_id = app_center_image_id
-        # This parameter is required.
         self.app_instance_group_name = app_instance_group_name
         self.auto_pay = auto_pay
         self.auto_renew = auto_renew
@@ -2189,7 +2294,6 @@ class CreateAppInstanceGroupShrinkRequest(TeaModel):
     ):
         # This parameter is required.
         self.app_center_image_id = app_center_image_id
-        # This parameter is required.
         self.app_instance_group_name = app_instance_group_name
         self.auto_pay = auto_pay
         self.auto_renew = auto_renew
@@ -3805,6 +3909,7 @@ class GetAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
         max_amount: int = None,
         min_amount: int = None,
         node_pool: List[GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool] = None,
+        office_site_id: str = None,
         os_type: str = None,
         ota_info: GetAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo = None,
         product_type: str = None,
@@ -3837,6 +3942,7 @@ class GetAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
         self.max_amount = max_amount
         self.min_amount = min_amount
         self.node_pool = node_pool
+        self.office_site_id = office_site_id
         self.os_type = os_type
         self.ota_info = ota_info
         self.product_type = product_type
@@ -3907,6 +4013,8 @@ class GetAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
         if self.node_pool is not None:
             for k in self.node_pool:
                 result['NodePool'].append(k.to_map() if k else None)
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
         if self.os_type is not None:
             result['OsType'] = self.os_type
         if self.ota_info is not None:
@@ -3979,6 +4087,8 @@ class GetAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
             for k in m.get('NodePool'):
                 temp_model = GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool()
                 self.node_pool.append(temp_model.from_map(k))
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
         if m.get('OsType') is not None:
             self.os_type = m.get('OsType')
         if m.get('OtaInfo') is not None:
@@ -5927,6 +6037,7 @@ class ListAppInstanceGroupRequest(TeaModel):
         app_instance_group_name: str = None,
         biz_region_id: str = None,
         node_instance_type: str = None,
+        office_site_id: str = None,
         page_number: int = None,
         page_size: int = None,
         product_type: str = None,
@@ -5938,6 +6049,7 @@ class ListAppInstanceGroupRequest(TeaModel):
         self.app_instance_group_name = app_instance_group_name
         self.biz_region_id = biz_region_id
         self.node_instance_type = node_instance_type
+        self.office_site_id = office_site_id
         self.page_number = page_number
         self.page_size = page_size
         # This parameter is required.
@@ -5964,6 +6076,8 @@ class ListAppInstanceGroupRequest(TeaModel):
             result['BizRegionId'] = self.biz_region_id
         if self.node_instance_type is not None:
             result['NodeInstanceType'] = self.node_instance_type
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -5988,6 +6102,8 @@ class ListAppInstanceGroupRequest(TeaModel):
             self.biz_region_id = m.get('BizRegionId')
         if m.get('NodeInstanceType') is not None:
             self.node_instance_type = m.get('NodeInstanceType')
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -6340,6 +6456,7 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
         max_amount: int = None,
         min_amount: int = None,
         node_pool: List[ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool] = None,
+        office_site_id: str = None,
         os_type: str = None,
         ota_info: ListAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo = None,
         product_type: str = None,
@@ -6372,6 +6489,7 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
         self.max_amount = max_amount
         self.min_amount = min_amount
         self.node_pool = node_pool
+        self.office_site_id = office_site_id
         self.os_type = os_type
         self.ota_info = ota_info
         self.product_type = product_type
@@ -6438,6 +6556,8 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
         if self.node_pool is not None:
             for k in self.node_pool:
                 result['NodePool'].append(k.to_map() if k else None)
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
         if self.os_type is not None:
             result['OsType'] = self.os_type
         if self.ota_info is not None:
@@ -6506,6 +6626,8 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
             for k in m.get('NodePool'):
                 temp_model = ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool()
                 self.node_pool.append(temp_model.from_map(k))
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
         if m.get('OsType') is not None:
             self.os_type = m.get('OsType')
         if m.get('OtaInfo') is not None:
@@ -6912,18 +7034,31 @@ class ListNodeInstanceTypeRequest(TeaModel):
     def __init__(
         self,
         biz_region_id: str = None,
+        cpu: float = None,
+        gpu: float = None,
+        gpu_memory: int = None,
         language: str = None,
+        memory: int = None,
         node_instance_type: str = None,
+        node_instance_type_family: str = None,
+        order_by: str = None,
         os_type: str = None,
         page_number: int = None,
         page_size: int = None,
         product_type: str = None,
+        sort_type: str = None,
     ):
         # 资源所属的地域ID。关于支持的地域详情，请参见[使用限制](https://help.aliyun.com/document_detail/426036.html)。
         self.biz_region_id = biz_region_id
+        self.cpu = cpu
+        self.gpu = gpu
+        self.gpu_memory = gpu_memory
         # 语言类型。
         self.language = language
+        self.memory = memory
         self.node_instance_type = node_instance_type
+        self.node_instance_type_family = node_instance_type_family
+        self.order_by = order_by
         # 支持的操作系统类型。
         self.os_type = os_type
         # This parameter is required.
@@ -6932,6 +7067,7 @@ class ListNodeInstanceTypeRequest(TeaModel):
         self.page_size = page_size
         # This parameter is required.
         self.product_type = product_type
+        self.sort_type = sort_type
 
     def validate(self):
         pass
@@ -6944,10 +7080,22 @@ class ListNodeInstanceTypeRequest(TeaModel):
         result = dict()
         if self.biz_region_id is not None:
             result['BizRegionId'] = self.biz_region_id
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        if self.gpu is not None:
+            result['Gpu'] = self.gpu
+        if self.gpu_memory is not None:
+            result['GpuMemory'] = self.gpu_memory
         if self.language is not None:
             result['Language'] = self.language
+        if self.memory is not None:
+            result['Memory'] = self.memory
         if self.node_instance_type is not None:
             result['NodeInstanceType'] = self.node_instance_type
+        if self.node_instance_type_family is not None:
+            result['NodeInstanceTypeFamily'] = self.node_instance_type_family
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
         if self.os_type is not None:
             result['OsType'] = self.os_type
         if self.page_number is not None:
@@ -6956,16 +7104,30 @@ class ListNodeInstanceTypeRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.product_type is not None:
             result['ProductType'] = self.product_type
+        if self.sort_type is not None:
+            result['SortType'] = self.sort_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('BizRegionId') is not None:
             self.biz_region_id = m.get('BizRegionId')
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        if m.get('Gpu') is not None:
+            self.gpu = m.get('Gpu')
+        if m.get('GpuMemory') is not None:
+            self.gpu_memory = m.get('GpuMemory')
         if m.get('Language') is not None:
             self.language = m.get('Language')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
         if m.get('NodeInstanceType') is not None:
             self.node_instance_type = m.get('NodeInstanceType')
+        if m.get('NodeInstanceTypeFamily') is not None:
+            self.node_instance_type_family = m.get('NodeInstanceTypeFamily')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
         if m.get('OsType') is not None:
             self.os_type = m.get('OsType')
         if m.get('PageNumber') is not None:
@@ -6974,6 +7136,8 @@ class ListNodeInstanceTypeRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('ProductType') is not None:
             self.product_type = m.get('ProductType')
+        if m.get('SortType') is not None:
+            self.sort_type = m.get('SortType')
         return self
 
 

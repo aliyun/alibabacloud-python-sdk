@@ -1,3 +1,20 @@
+2024-10-22 Version: 2.0.4
+- Update API AuthorizeInstanceGroup: add param UserMeta.
+- Update API CreateAppInstanceGroup: update param AppInstanceGroupName.
+- Update API CreateAppInstanceGroup: update param Network.
+- Update API GetAppInstanceGroup: update response param.
+- Update API ListAppInstanceGroup: add param OfficeSiteId.
+- Update API ListAppInstanceGroup: update response param.
+- Update API ListNodeInstanceType: add param Cpu.
+- Update API ListNodeInstanceType: add param Gpu.
+- Update API ListNodeInstanceType: add param GpuMemory.
+- Update API ListNodeInstanceType: add param Memory.
+- Update API ListNodeInstanceType: add param NodeInstanceTypeFamily.
+- Update API ListNodeInstanceType: add param OrderBy.
+- Update API ListNodeInstanceType: add param SortType.
+- Update API ListNodeInstanceType: update response param.
+
+
 2024-09-12 Version: 2.0.3
 - Update API CreateAppInstanceGroup: update param NodePool.
 - Update API GetAppInstanceGroup: update response param.

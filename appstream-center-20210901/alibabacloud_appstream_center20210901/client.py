@@ -592,17 +592,21 @@ class Client(OpenApiClient):
 
     def authorize_instance_group_with_options(
         self,
-        request: appstream_center_20210901_models.AuthorizeInstanceGroupRequest,
+        tmp_req: appstream_center_20210901_models.AuthorizeInstanceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.AuthorizeInstanceGroupResponse:
         """
         @summary 授权用户
         
-        @param request: AuthorizeInstanceGroupRequest
+        @param tmp_req: AuthorizeInstanceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AuthorizeInstanceGroupResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = appstream_center_20210901_models.AuthorizeInstanceGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.user_meta):
+            request.user_meta_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_meta, 'UserMeta', 'json')
         body = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
             body['AppInstanceGroupId'] = request.app_instance_group_id
@@ -613,6 +617,8 @@ class Client(OpenApiClient):
             body['ProductType'] = request.product_type
         if not UtilClient.is_unset(request.un_authorize_user_ids):
             body_flat['UnAuthorizeUserIds'] = request.un_authorize_user_ids
+        if not UtilClient.is_unset(request.user_meta_shrink):
+            body['UserMeta'] = request.user_meta_shrink
         body = TeaCore.merge(body,
             OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
@@ -636,17 +642,21 @@ class Client(OpenApiClient):
 
     async def authorize_instance_group_with_options_async(
         self,
-        request: appstream_center_20210901_models.AuthorizeInstanceGroupRequest,
+        tmp_req: appstream_center_20210901_models.AuthorizeInstanceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.AuthorizeInstanceGroupResponse:
         """
         @summary 授权用户
         
-        @param request: AuthorizeInstanceGroupRequest
+        @param tmp_req: AuthorizeInstanceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AuthorizeInstanceGroupResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = appstream_center_20210901_models.AuthorizeInstanceGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.user_meta):
+            request.user_meta_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_meta, 'UserMeta', 'json')
         body = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
             body['AppInstanceGroupId'] = request.app_instance_group_id
@@ -657,6 +667,8 @@ class Client(OpenApiClient):
             body['ProductType'] = request.product_type
         if not UtilClient.is_unset(request.un_authorize_user_ids):
             body_flat['UnAuthorizeUserIds'] = request.un_authorize_user_ids
+        if not UtilClient.is_unset(request.user_meta_shrink):
+            body['UserMeta'] = request.user_meta_shrink
         body = TeaCore.merge(body,
             OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
@@ -2920,6 +2932,8 @@ class Client(OpenApiClient):
             query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.node_instance_type):
             query['NodeInstanceType'] = request.node_instance_type
+        if not UtilClient.is_unset(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -2975,6 +2989,8 @@ class Client(OpenApiClient):
             query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.node_instance_type):
             query['NodeInstanceType'] = request.node_instance_type
+        if not UtilClient.is_unset(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -3172,10 +3188,22 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.cpu):
+            query['Cpu'] = request.cpu
+        if not UtilClient.is_unset(request.gpu):
+            query['Gpu'] = request.gpu
+        if not UtilClient.is_unset(request.gpu_memory):
+            query['GpuMemory'] = request.gpu_memory
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
+        if not UtilClient.is_unset(request.memory):
+            query['Memory'] = request.memory
         if not UtilClient.is_unset(request.node_instance_type):
             query['NodeInstanceType'] = request.node_instance_type
+        if not UtilClient.is_unset(request.node_instance_type_family):
+            query['NodeInstanceTypeFamily'] = request.node_instance_type_family
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.os_type):
             query['OsType'] = request.os_type
         if not UtilClient.is_unset(request.page_number):
@@ -3184,6 +3212,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.product_type):
             query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.sort_type):
+            query['SortType'] = request.sort_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3219,10 +3249,22 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.cpu):
+            query['Cpu'] = request.cpu
+        if not UtilClient.is_unset(request.gpu):
+            query['Gpu'] = request.gpu
+        if not UtilClient.is_unset(request.gpu_memory):
+            query['GpuMemory'] = request.gpu_memory
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
+        if not UtilClient.is_unset(request.memory):
+            query['Memory'] = request.memory
         if not UtilClient.is_unset(request.node_instance_type):
             query['NodeInstanceType'] = request.node_instance_type
+        if not UtilClient.is_unset(request.node_instance_type_family):
+            query['NodeInstanceTypeFamily'] = request.node_instance_type_family
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.os_type):
             query['OsType'] = request.os_type
         if not UtilClient.is_unset(request.page_number):
@@ -3231,6 +3273,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.product_type):
             query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.sort_type):
+            query['SortType'] = request.sort_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
