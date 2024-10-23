@@ -443,6 +443,8 @@ class AddUserToGroupRequest(TeaModel):
         # The name of the RAM user group.
         self.group_name = group_name
         # The logon name of the RAM user.
+        # 
+        # This parameter is required.
         self.user_principal_name = user_principal_name
 
     def validate(self):
@@ -548,17 +550,19 @@ class BindMFADeviceRequest(TeaModel):
     ):
         # The first verification code.
         # 
-        # >  You can call the [CreateVirtualMFADevice](~~186179~~) operation to create an MFA device and generate a key (value of `Base32StringSeed`). Then, use the key on the Alibaba Cloud app to manually add an MFA device, and obtain the two consecutive verification codes.
+        # >  You can call the [CreateVirtualMFADevice](https://help.aliyun.com/document_detail/186179.html) operation to create an MFA device and generate a key (value of `Base32StringSeed`). Then, use the key on the Alibaba Cloud app to manually add an MFA device, and obtain the two consecutive verification codes.
         self.authentication_code_1 = authentication_code_1
         # The second verification code.
         # 
-        # >  You can call the [CreateVirtualMFADevice](~~186179~~) operation to create an MFA device and generate a key (value of `Base32StringSeed`). Then, use the key on the Alibaba Cloud app to manually add an MFA device, and obtain the two consecutive verification codes.
+        # >  You can call the [CreateVirtualMFADevice](https://help.aliyun.com/document_detail/186179.html) operation to create an MFA device and generate a key (value of `Base32StringSeed`). Then, use the key on the Alibaba Cloud app to manually add an MFA device, and obtain the two consecutive verification codes.
         self.authentication_code_2 = authentication_code_2
         # The serial number of the MFA device.
         # 
-        # >  You can call the [CreateVirtualMFADevice](~~186179~~) operation to obtain the serial number of the MFA device.
+        # >  You can call the [CreateVirtualMFADevice](https://help.aliyun.com/document_detail/186179.html) operation to obtain the serial number of the MFA device.
         self.serial_number = serial_number
         # The logon name of the RAM user.
+        # 
+        # This parameter is required.
         self.user_principal_name = user_principal_name
 
     def validate(self):
@@ -670,9 +674,13 @@ class ChangePasswordRequest(TeaModel):
     ):
         # The new password that is used to log on to the console.
         # 
-        # The password must meet the complexity requirements. For more information, see [GetPasswordPolicy](~~186691~~).
+        # The password must meet the complexity requirements. For more information, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/186691.html).
+        # 
+        # This parameter is required.
         self.new_password = new_password
         # The old password that is used to log on to the console.
+        # 
+        # This parameter is required.
         self.old_password = old_password
 
     def validate(self):
@@ -934,6 +942,8 @@ class CreateAppSecretRequest(TeaModel):
         app_id: str = None,
     ):
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.app_id = app_id
 
     def validate(self):
@@ -1105,17 +1115,21 @@ class CreateApplicationRequest(TeaModel):
         self.access_token_validity = access_token_validity
         # The application name.
         # 
-        # The name can be up to 64 characters in length. The name can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+        # The name can be up to 64 characters in length. The name can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         self.app_name = app_name
         # The type of the application. Valid values:
         # 
         # *   WebApp: a web application that interacts with a browser.
         # *   NativeApp: a native application that runs on an operating system, such as a desktop operating system or a mobile operating system.
         # *   ServerApp: an application that accesses Alibaba Cloud services without the need of manual user logon. User provisioning is automated based on the System for Cross-Domain Identity Management (SCIM) protocol.
+        # 
+        # This parameter is required.
         self.app_type = app_type
         # The display name of the application.
         # 
         # The name can be up to 24 characters in length.
+        # 
+        # This parameter is required.
         self.display_name = display_name
         # Indicates whether the application can be installed by using other Alibaba Cloud accounts. Valid values:
         # 
@@ -1124,7 +1138,7 @@ class CreateApplicationRequest(TeaModel):
         self.is_multi_tenant = is_multi_tenant
         # The scope of application permissions.
         # 
-        # For more information about the application permission scope, see [Open authorization scope](~~93693~~). You can also call the [ListPredefinedScopes](~~187206~~) operation to obtain the permission scopes supported by different types of applications.
+        # For more information about the application permission scope, see [Open authorization scope](https://help.aliyun.com/document_detail/93693.html). You can also call the [ListPredefinedScopes](https://help.aliyun.com/document_detail/187206.html) operation to obtain the permission scopes supported by different types of applications.
         # 
         # If you enter multiple permission scopes, separate them with semicolons (;).
         self.predefined_scopes = predefined_scopes
@@ -1155,7 +1169,7 @@ class CreateApplicationRequest(TeaModel):
         # *   false
         # 
         # >- For applications of the WebApp and ServerApp types, this parameter is automatically set to true and cannot be changed.
-        # >- For applications of the NativeApp type, this parameter can be set to true or false. If you do not set this parameter, false is used. Applications of the NativeApp type run in untrusted environments and the secrets of these applications are not protected. Therefore, we recommend that you do not set this parameter to true unless otherwise specified. For more information, see [Use an application of the NativeApp type to log on to Alibaba Cloud](~~93697~~).
+        # >- For applications of the NativeApp type, this parameter can be set to true or false. If you do not set this parameter, false is used. Applications of the NativeApp type run in untrusted environments and the secrets of these applications are not protected. Therefore, we recommend that you do not set this parameter to true unless otherwise specified. For more information, see [Use an application of the NativeApp type to log on to Alibaba Cloud](https://help.aliyun.com/document_detail/93697.html).
         self.secret_required = secret_required
 
     def validate(self):
@@ -1565,7 +1579,7 @@ class CreateGroupRequest(TeaModel):
         self.display_name = display_name
         # The name of the RAM user group. You must specify this parameter.
         # 
-        # The name can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+        # The name can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         self.group_name = group_name
 
     def validate(self):
@@ -1766,6 +1780,8 @@ class CreateLoginProfileRequest(TeaModel):
         # *   Inactive: Password-based logon is disabled.
         self.status = status
         # The logon name of the RAM user.
+        # 
+        # This parameter is required.
         self.user_principal_name = user_principal_name
 
     def validate(self):
@@ -2211,6 +2227,8 @@ class CreateSAMLProviderRequest(TeaModel):
         # The name of the IdP.
         # 
         # The value can be up to 128 characters in length. The name can contain letters, digits,`  periods (.), hyphens (-), and underscores (_) `. The name cannot start or end with`  periods (.), hyphens (-), or underscores (_) `.
+        # 
+        # This parameter is required.
         self.samlprovider_name = samlprovider_name
 
     def validate(self):
@@ -2431,6 +2449,8 @@ class CreateUserRequest(TeaModel):
         # The display name of the RAM user.
         # 
         # The name must be 1 to 24 characters in length.
+        # 
+        # This parameter is required.
         self.display_name = display_name
         # The email address of the RAM user.
         # 
@@ -2448,9 +2468,11 @@ class CreateUserRequest(TeaModel):
         self.tag = tag
         # The logon name of the RAM user.
         # 
-        # The name is in the format of `<username>@<AccountAlias>.onaliyun.com`. `<username>` indicates the name of the RAM user. `<AccountAlias>.onaliyun.com` indicates the default domain name. For more information about how to obtain the default domain name, see [GetDefaultDomain](~~186720~~).
+        # The name is in the format of `<username>@<AccountAlias>.onaliyun.com`. `<username>` indicates the name of the RAM user. `<AccountAlias>.onaliyun.com` indicates the default domain name. For more information about how to obtain the default domain name, see [GetDefaultDomain](https://help.aliyun.com/document_detail/186720.html).
         # 
-        # The value of `UserPrincipalName` must be 1 to 128 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (\_). The value of `<username>` must be 1 to 64 characters in length.
+        # The value of `UserPrincipalName` must be 1 to 128 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The value of `<username>` must be 1 to 64 characters in length.
+        # 
+        # This parameter is required.
         self.user_principal_name = user_principal_name
 
     def validate(self):
@@ -2765,6 +2787,8 @@ class CreateVirtualMFADeviceRequest(TeaModel):
         # The name of the MFA device.
         # 
         # The name must be 1 to 64 characters in length and can contain letters, digits, and hyphens (-).
+        # 
+        # This parameter is required.
         self.virtual_mfadevice_name = virtual_mfadevice_name
 
     def validate(self):
@@ -2914,6 +2938,8 @@ class DeleteAccessKeyRequest(TeaModel):
         user_principal_name: str = None,
     ):
         # The ID of the AccessKey pair that you want to delete.
+        # 
+        # This parameter is required.
         self.user_access_key_id = user_access_key_id
         # The logon name of the RAM user.
         # 
@@ -3020,8 +3046,12 @@ class DeleteAppSecretRequest(TeaModel):
         app_secret_id: str = None,
     ):
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.app_id = app_id
         # The ID of the application secret.
+        # 
+        # This parameter is required.
         self.app_secret_id = app_secret_id
 
     def validate(self):
@@ -3123,6 +3153,8 @@ class DeleteApplicationRequest(TeaModel):
         app_id: str = None,
     ):
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.app_id = app_id
 
     def validate(self):
@@ -3317,6 +3349,8 @@ class DeleteLoginProfileRequest(TeaModel):
         user_principal_name: str = None,
     ):
         # The logon name of the RAM user.
+        # 
+        # This parameter is required.
         self.user_principal_name = user_principal_name
 
     def validate(self):
@@ -3511,6 +3545,8 @@ class DeleteSAMLProviderRequest(TeaModel):
         samlprovider_name: str = None,
     ):
         # The name of the IdP that you want to delete.
+        # 
+        # This parameter is required.
         self.samlprovider_name = samlprovider_name
 
     def validate(self):
@@ -3716,6 +3752,8 @@ class DeleteVirtualMFADeviceRequest(TeaModel):
         serial_number: str = None,
     ):
         # The serial number of the MFA device.
+        # 
+        # This parameter is required.
         self.serial_number = serial_number
 
     def validate(self):
@@ -3813,6 +3851,8 @@ class DisableVirtualMFARequest(TeaModel):
         user_principal_name: str = None,
     ):
         # The logon name of the RAM user.
+        # 
+        # This parameter is required.
         self.user_principal_name = user_principal_name
 
     def validate(self):
@@ -3991,6 +4031,8 @@ class GetAccessKeyLastUsedRequest(TeaModel):
         user_principal_name: str = None,
     ):
         # The ID of the AccessKey pair that you want to query.
+        # 
+        # This parameter is required.
         self.user_access_key_id = user_access_key_id
         # The logon name of the RAM user.
         # 
@@ -4672,8 +4714,12 @@ class GetAppSecretRequest(TeaModel):
         app_secret_id: str = None,
     ):
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.app_id = app_id
         # The ID of the application secret.
+        # 
+        # This parameter is required.
         self.app_secret_id = app_secret_id
 
     def validate(self):
@@ -4833,6 +4879,8 @@ class GetApplicationRequest(TeaModel):
         app_id: str = None,
     ):
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.app_id = app_id
 
     def validate(self):
@@ -5583,6 +5631,8 @@ class GetLoginProfileRequest(TeaModel):
         user_principal_name: str = None,
     ):
         # The logon name of the RAM user.
+        # 
+        # This parameter is required.
         self.user_principal_name = user_principal_name
 
     def validate(self):
@@ -6132,6 +6182,8 @@ class GetSAMLProviderRequest(TeaModel):
         samlprovider_name: str = None,
     ):
         # The name of the IdP.
+        # 
+        # This parameter is required.
         self.samlprovider_name = samlprovider_name
 
     def validate(self):
@@ -6659,7 +6711,7 @@ class GetUserRequest(TeaModel):
         # 
         # The name is in the format of `<username>@<AccountAlias>.onaliyun.com`. `<username>` indicates the name of the RAM user. `<AccountAlias>.onaliyun.com` indicates the default domain name.
         # 
-        # The value of `UserPrincipalName` must be `1 to 128` characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (\_). The value of `<username>` must be `1 to 64` characters in length.
+        # The value of `UserPrincipalName` must be `1 to 128` characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The value of `<username>` must be `1 to 64` characters in length.
         # 
         # > You must specify only one of the following parameters: `UserPrincipalName`, `UserId`, and `UserAccessKeyId`.
         self.user_principal_name = user_principal_name
@@ -7610,6 +7662,8 @@ class ListAppSecretIdsRequest(TeaModel):
         app_id: str = None,
     ):
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.app_id = app_id
 
     def validate(self):
@@ -8396,6 +8450,8 @@ class ListGroupsForUserRequest(TeaModel):
         user_principal_name: str = None,
     ):
         # The logon name of the RAM user.
+        # 
+        # This parameter is required.
         self.user_principal_name = user_principal_name
 
     def validate(self):
@@ -9604,6 +9660,7 @@ class ListUserBasicInfosRequest(TeaModel):
         self,
         marker: str = None,
         max_items: int = None,
+        status: str = None,
         tag: List[ListUserBasicInfosRequestTag] = None,
     ):
         # The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
@@ -9612,6 +9669,7 @@ class ListUserBasicInfosRequest(TeaModel):
         # 
         # Valid values: 1 to 1000. Default value: 100.
         self.max_items = max_items
+        self.status = status
         # The tag value.
         self.tag = tag
 
@@ -9631,6 +9689,8 @@ class ListUserBasicInfosRequest(TeaModel):
             result['Marker'] = self.marker
         if self.max_items is not None:
             result['MaxItems'] = self.max_items
+        if self.status is not None:
+            result['Status'] = self.status
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -9643,6 +9703,8 @@ class ListUserBasicInfosRequest(TeaModel):
             self.marker = m.get('Marker')
         if m.get('MaxItems') is not None:
             self.max_items = m.get('MaxItems')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -9655,11 +9717,13 @@ class ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfo(TeaModel):
     def __init__(
         self,
         display_name: str = None,
+        status: str = None,
         user_id: str = None,
         user_principal_name: str = None,
     ):
         # The display name of the RAM user.
         self.display_name = display_name
+        self.status = status
         # The ID of the RAM user.
         self.user_id = user_id
         # The logon name of the RAM user.
@@ -9676,6 +9740,8 @@ class ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfo(TeaModel):
         result = dict()
         if self.display_name is not None:
             result['DisplayName'] = self.display_name
+        if self.status is not None:
+            result['Status'] = self.status
         if self.user_id is not None:
             result['UserId'] = self.user_id
         if self.user_principal_name is not None:
@@ -9686,6 +9752,8 @@ class ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfo(TeaModel):
         m = m or dict()
         if m.get('DisplayName') is not None:
             self.display_name = m.get('DisplayName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         if m.get('UserPrincipalName') is not None:
@@ -9867,6 +9935,7 @@ class ListUsersRequest(TeaModel):
         self,
         marker: str = None,
         max_items: int = None,
+        status: str = None,
         tag: List[ListUsersRequestTag] = None,
     ):
         # The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
@@ -9875,6 +9944,7 @@ class ListUsersRequest(TeaModel):
         # 
         # Valid values: 1 to 1000. Default value: 1000.
         self.max_items = max_items
+        self.status = status
         # The tags. A maximum number of 20 tags are supported.
         self.tag = tag
 
@@ -9894,6 +9964,8 @@ class ListUsersRequest(TeaModel):
             result['Marker'] = self.marker
         if self.max_items is not None:
             result['MaxItems'] = self.max_items
+        if self.status is not None:
+            result['Status'] = self.status
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -9906,6 +9978,8 @@ class ListUsersRequest(TeaModel):
             self.marker = m.get('Marker')
         if m.get('MaxItems') is not None:
             self.max_items = m.get('MaxItems')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -9994,6 +10068,7 @@ class ListUsersResponseBodyUsersUser(TeaModel):
         last_login_date: str = None,
         mobile_phone: str = None,
         provision_type: str = None,
+        status: str = None,
         tags: ListUsersResponseBodyUsersUserTags = None,
         update_date: str = None,
         user_id: str = None,
@@ -10021,6 +10096,7 @@ class ListUsersResponseBodyUsersUser(TeaModel):
         # *   SCIM: The RAM user is mapped by using System for Cross-domain Identity Management (SCIM).
         # *   CloudSSO: The RAM user is mapped from a CloudSSO user.
         self.provision_type = provision_type
+        self.status = status
         # The tags.
         self.tags = tags
         # The point in time when the information about the RAM user was last modified. The time is displayed in UTC.
@@ -10054,6 +10130,8 @@ class ListUsersResponseBodyUsersUser(TeaModel):
             result['MobilePhone'] = self.mobile_phone
         if self.provision_type is not None:
             result['ProvisionType'] = self.provision_type
+        if self.status is not None:
+            result['Status'] = self.status
         if self.tags is not None:
             result['Tags'] = self.tags.to_map()
         if self.update_date is not None:
@@ -10080,6 +10158,8 @@ class ListUsersResponseBodyUsersUser(TeaModel):
             self.mobile_phone = m.get('MobilePhone')
         if m.get('ProvisionType') is not None:
             self.provision_type = m.get('ProvisionType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('Tags') is not None:
             temp_model = ListUsersResponseBodyUsersUserTags()
             self.tags = temp_model.from_map(m['Tags'])
@@ -10231,11 +10311,15 @@ class ListUsersForGroupRequest(TeaModel):
     ):
         # The name of the RAM user group.
         self.group_name = group_name
-        # The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
-        self.marker = marker
-        # The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be `true`.
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.``
         # 
-        # Valid values: 1 to 100. Default value: 100.
+        # When you call the operation for the first time, if the total number of returned entries exceeds the value of `MaxItems`, the entries are truncated. The system returns entries based on the value of `MaxItems` and does not return the excess entries. In this case, the value of the response parameter `IsTruncated` is `true`, and `Marker` is returned. In the next call, you can use the value of `Marker` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
+        self.marker = marker
+        # The number of entries per page.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 100.
         self.max_items = max_items
 
     def validate(self):
@@ -10276,7 +10360,7 @@ class ListUsersForGroupResponseBodyUsersUser(TeaModel):
     ):
         # The display name of the RAM user.
         self.display_name = display_name
-        # The time when the RAM user was added.
+        # The time when the RAM user was added to the RAM user group. The time is displayed in UTC.
         self.join_date = join_date
         # The ID of the RAM user.
         self.user_id = user_id
@@ -10363,11 +10447,13 @@ class ListUsersForGroupResponseBody(TeaModel):
         # *   true
         # *   false
         self.is_truncated = is_truncated
-        # The `marker`. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.
+        # The pagination token that is used in the next request to retrieve a new page of results.
+        # 
+        # >  This parameter is returned only when `IsTruncated` is `true`.
         self.marker = marker
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information of RAM users.
+        # The information about the RAM users.
         self.users = users
 
     def validate(self):
@@ -10451,11 +10537,15 @@ class ListVirtualMFADevicesRequest(TeaModel):
         marker: str = None,
         max_items: int = None,
     ):
-        # The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
-        self.marker = marker
-        # The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be `true`.
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.``
         # 
-        # Valid values: 1 to 100. Default value: 100.
+        # When you call the operation for the first time, if the total number of returned entries exceeds the value of `MaxItems`, the entries are truncated. The system returns entries based on the value of `MaxItems` and does not return the excess entries. In this case, the value of the response parameter `IsTruncated` is `true`, and `Marker` is returned. In the next call, you can use the value of `Marker` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of the `IsTruncated` parameter becomes `false`. This way, all entries are returned.
+        self.marker = marker
+        # The number of entries per page.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 100.
         self.max_items = max_items
 
     def validate(self):
@@ -10616,11 +10706,13 @@ class ListVirtualMFADevicesResponseBody(TeaModel):
         # *   true
         # *   false
         self.is_truncated = is_truncated
-        # The `marker`. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.
+        # The pagination token that is used in the next request to retrieve a new page of results.
+        # 
+        # >  This parameter is returned only when `IsTruncated` is `true`.
         self.marker = marker
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information of the MFA device.
+        # The information about the MFA device.
         self.virtual_mfadevices = virtual_mfadevices
 
     def validate(self):
@@ -11133,6 +11225,8 @@ class RemoveUserFromGroupRequest(TeaModel):
         # The name of the RAM user group.
         self.group_name = group_name
         # The logon name of the RAM user.
+        # 
+        # This parameter is required.
         self.user_principal_name = user_principal_name
 
     def validate(self):
@@ -11237,9 +11331,11 @@ class SetDefaultDomainRequest(TeaModel):
         # 
         # The name is in the format of `<AccountAlias>.onaliyun.com`. `<AccountAlias>` indicates the account alias. By default, the value of AccountAlias is the ID of the Alibaba Cloud account. The default domain name must end with `.onaliyun.com`.
         # 
-        # The default domain name can contain up to 64 characters in length. The name can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+        # The default domain name can contain up to 64 characters in length. The name can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         # 
         # >  The default domain name cannot start or end with a hyphen (-) and cannot have two consecutive hyphens (-).
+        # 
+        # This parameter is required.
         self.default_domain_name = default_domain_name
 
     def validate(self):
@@ -12567,6 +12663,8 @@ class UnbindMFADeviceRequest(TeaModel):
         user_principal_name: str = None,
     ):
         # The logon name of the RAM user.
+        # 
+        # This parameter is required.
         self.user_principal_name = user_principal_name
 
     def validate(self):
@@ -12848,8 +12946,12 @@ class UpdateAccessKeyRequest(TeaModel):
         # 
         # *   Active
         # *   Inactive
+        # 
+        # This parameter is required.
         self.status = status
         # The AccessKey ID of the AccessKey pair for which you want to modify the status.
+        # 
+        # This parameter is required.
         self.user_access_key_id = user_access_key_id
         # The logon name of the RAM user.
         # 
@@ -12967,6 +13069,8 @@ class UpdateApplicationRequest(TeaModel):
         new_secret_required: bool = None,
     ):
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.app_id = app_id
         # The validity period of the access token.
         # 
@@ -12981,7 +13085,7 @@ class UpdateApplicationRequest(TeaModel):
         self.new_is_multi_tenant = new_is_multi_tenant
         # The permission that is granted on the application.
         # 
-        # For more information about the application permission scope, see [OAuth scopes](~~93693~~). You can also call the [ListPredefinedScopes](~~187206~~) operation to query the permissions that are supported by different types of applications.
+        # For more information about the application permission scope, see [OAuth scopes](https://help.aliyun.com/document_detail/93693.html). You can also call the [ListPredefinedScopes](https://help.aliyun.com/document_detail/187206.html) operation to query the permissions that are supported by different types of applications.
         # 
         # If you enter multiple permissions, separate them with semicolons (;).
         # 
@@ -13015,7 +13119,7 @@ class UpdateApplicationRequest(TeaModel):
         # > 
         # 
         # *   For applications of the WebApp and ServerApp types, this parameter is automatically set to true and cannot be changed.
-        # *   For applications of the NativeApp type, this parameter can be set to true or false. If you do not set this parameter, false is used. Applications of the NativeApp type run in untrusted environments and the secrets of these applications are not protected. Therefore, we recommend that you do not set this parameter to true unless otherwise specified. For more information, see [Use an application of the NativeApp type to log on to Alibaba Cloud](~~93697~~).
+        # *   For applications of the NativeApp type, this parameter can be set to true or false. If you do not set this parameter, false is used. Applications of the NativeApp type run in untrusted environments and the secrets of these applications are not protected. Therefore, we recommend that you do not set this parameter to true unless otherwise specified. For more information, see [Use an application of the NativeApp type to log on to Alibaba Cloud](https://help.aliyun.com/document_detail/93697.html).
         self.new_secret_required = new_secret_required
 
     def validate(self):
@@ -13424,7 +13528,7 @@ class UpdateGroupRequest(TeaModel):
         self.new_display_name = new_display_name
         # The new name of the RAM user group.
         # 
-        # The name can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+        # The name can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         self.new_group_name = new_group_name
 
     def validate(self):
@@ -13629,6 +13733,8 @@ class UpdateLoginProfileRequest(TeaModel):
         # *   Inactive
         self.status = status
         # The logon name of the RAM user.
+        # 
+        # This parameter is required.
         self.user_principal_name = user_principal_name
 
     def validate(self):
@@ -13815,7 +13921,7 @@ class UpdateOIDCProviderRequest(TeaModel):
         # 
         # The client ID can be up to 64 characters in length.
         # 
-        # > If you specify this parameter, all the client IDs of the OIDC IdP are replaced. If you need to only add or remove a client ID, call the AddClientIdToOIDCProvider or RemoveClientIdFromOIDCProvider operation. For more information, see [AddClientIdToOIDCProvider](~~332057~~) or [RemoveClientIdFromOIDCProvider](~~332058~~).
+        # > If you specify this parameter, all the client IDs of the OIDC IdP are replaced. If you need to only add or remove a client ID, call the AddClientIdToOIDCProvider or RemoveClientIdFromOIDCProvider operation. For more information, see [AddClientIdToOIDCProvider](https://help.aliyun.com/document_detail/332057.html) or [RemoveClientIdFromOIDCProvider](https://help.aliyun.com/document_detail/332058.html).
         self.client_ids = client_ids
         # The earliest time when an external IdP can issue an ID token. If the value of the iat field in the ID token is later than the current time, the request is rejected. Unit: hours. Valid values: 1 to 168.
         self.issuance_limit_time = issuance_limit_time
@@ -14050,6 +14156,8 @@ class UpdateSAMLProviderRequest(TeaModel):
         # >  You must specify at least one of the `NewDescription` and `NewEncodedSAMLMetadataDocument` parameters.
         self.new_encoded_samlmetadata_document = new_encoded_samlmetadata_document
         # The name of the IdP whose information you want to modify.
+        # 
+        # This parameter is required.
         self.samlprovider_name = samlprovider_name
 
     def validate(self):
@@ -14239,7 +14347,7 @@ class UpdateUserRequest(TeaModel):
         self.new_email = new_email
         # The new mobile phone number of the RAM user.
         # 
-        # Format: \<Country code>-\<Mobile phone number>.
+        # Format: \\<Country code>-\\<Mobile phone number>.
         # 
         # > This parameter is valid only on the China site (aliyun.com).
         self.new_mobile_phone = new_mobile_phone
@@ -14247,7 +14355,7 @@ class UpdateUserRequest(TeaModel):
         # 
         # The name is in the format of `<username>@<AccountAlias>.onaliyun.com`. `<username>` indicates the name of the RAM user. `<AccountAlias>.onaliyun.com` indicates the default domain name.
         # 
-        # The value of `UserPrincipalName` must be 1 to 128 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (\_). The value of `<username>` must be 1 to 64 characters in length.
+        # The value of `UserPrincipalName` must be 1 to 128 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The value of `<username>` must be 1 to 64 characters in length.
         self.new_user_principal_name = new_user_principal_name
         # The ID of the RAM user.
         # 

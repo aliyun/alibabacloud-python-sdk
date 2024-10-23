@@ -1,3 +1,10 @@
+2024-10-23 Version: 3.1.1
+- Update API ListUserBasicInfos: add param Status.
+- Update API ListUserBasicInfos: update response param.
+- Update API ListUsers: add param Status.
+- Update API ListUsers: update response param.
+
+
 2024-05-07 Version: 3.1.0
 - Support API GetVerificationInfo.
 

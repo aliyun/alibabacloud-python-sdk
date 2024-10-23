@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.AddClientIdToOIDCProviderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.AddClientIdToOIDCProviderResponse:
+        """
+        @summary Adds a client ID to an OpenID Connect (OIDC) identity provider (IdP).
+        
+        @param request: AddClientIdToOIDCProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddClientIdToOIDCProviderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -76,6 +83,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.AddClientIdToOIDCProviderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.AddClientIdToOIDCProviderResponse:
+        """
+        @summary Adds a client ID to an OpenID Connect (OIDC) identity provider (IdP).
+        
+        @param request: AddClientIdToOIDCProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddClientIdToOIDCProviderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -105,6 +119,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.AddClientIdToOIDCProviderRequest,
     ) -> ims_20190815_models.AddClientIdToOIDCProviderResponse:
+        """
+        @summary Adds a client ID to an OpenID Connect (OIDC) identity provider (IdP).
+        
+        @param request: AddClientIdToOIDCProviderRequest
+        @return: AddClientIdToOIDCProviderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_client_id_to_oidcprovider_with_options(request, runtime)
 
@@ -112,6 +132,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.AddClientIdToOIDCProviderRequest,
     ) -> ims_20190815_models.AddClientIdToOIDCProviderResponse:
+        """
+        @summary Adds a client ID to an OpenID Connect (OIDC) identity provider (IdP).
+        
+        @param request: AddClientIdToOIDCProviderRequest
+        @return: AddClientIdToOIDCProviderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_client_id_to_oidcprovider_with_options_async(request, runtime)
 
@@ -121,8 +147,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.AddFingerprintToOIDCProviderResponse:
         """
-        ###
-        This topic provides an example on how to add the fingerprint `902ef2deeb3c5b13ea4c3d5193629309e231****` to the OIDC IdP named `TestOIDCProvider`.
+        @summary Adds a fingerprint to an OpenID Connect (OIDC) identity provider (IdP).
+        
+        @description ###
+        This topic provides an example on how to add the fingerprint `902ef2deeb3c5b13ea4c3d5193629309e231***` to the OIDC IdP named `TestOIDCProvider`.
         
         @param request: AddFingerprintToOIDCProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -159,8 +187,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.AddFingerprintToOIDCProviderResponse:
         """
-        ###
-        This topic provides an example on how to add the fingerprint `902ef2deeb3c5b13ea4c3d5193629309e231****` to the OIDC IdP named `TestOIDCProvider`.
+        @summary Adds a fingerprint to an OpenID Connect (OIDC) identity provider (IdP).
+        
+        @description ###
+        This topic provides an example on how to add the fingerprint `902ef2deeb3c5b13ea4c3d5193629309e231***` to the OIDC IdP named `TestOIDCProvider`.
         
         @param request: AddFingerprintToOIDCProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -196,8 +226,10 @@ class Client(OpenApiClient):
         request: ims_20190815_models.AddFingerprintToOIDCProviderRequest,
     ) -> ims_20190815_models.AddFingerprintToOIDCProviderResponse:
         """
-        ###
-        This topic provides an example on how to add the fingerprint `902ef2deeb3c5b13ea4c3d5193629309e231****` to the OIDC IdP named `TestOIDCProvider`.
+        @summary Adds a fingerprint to an OpenID Connect (OIDC) identity provider (IdP).
+        
+        @description ###
+        This topic provides an example on how to add the fingerprint `902ef2deeb3c5b13ea4c3d5193629309e231***` to the OIDC IdP named `TestOIDCProvider`.
         
         @param request: AddFingerprintToOIDCProviderRequest
         @return: AddFingerprintToOIDCProviderResponse
@@ -210,8 +242,10 @@ class Client(OpenApiClient):
         request: ims_20190815_models.AddFingerprintToOIDCProviderRequest,
     ) -> ims_20190815_models.AddFingerprintToOIDCProviderResponse:
         """
-        ###
-        This topic provides an example on how to add the fingerprint `902ef2deeb3c5b13ea4c3d5193629309e231****` to the OIDC IdP named `TestOIDCProvider`.
+        @summary Adds a fingerprint to an OpenID Connect (OIDC) identity provider (IdP).
+        
+        @description ###
+        This topic provides an example on how to add the fingerprint `902ef2deeb3c5b13ea4c3d5193629309e231***` to the OIDC IdP named `TestOIDCProvider`.
         
         @param request: AddFingerprintToOIDCProviderRequest
         @return: AddFingerprintToOIDCProviderResponse
@@ -224,6 +258,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.AddUserToGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.AddUserToGroupResponse:
+        """
+        @summary 将RAM用户添加到指定的用户组
+        
+        @param request: AddUserToGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUserToGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -254,6 +295,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.AddUserToGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.AddUserToGroupResponse:
+        """
+        @summary 将RAM用户添加到指定的用户组
+        
+        @param request: AddUserToGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUserToGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -283,6 +331,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.AddUserToGroupRequest,
     ) -> ims_20190815_models.AddUserToGroupResponse:
+        """
+        @summary 将RAM用户添加到指定的用户组
+        
+        @param request: AddUserToGroupRequest
+        @return: AddUserToGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_user_to_group_with_options(request, runtime)
 
@@ -290,6 +344,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.AddUserToGroupRequest,
     ) -> ims_20190815_models.AddUserToGroupResponse:
+        """
+        @summary 将RAM用户添加到指定的用户组
+        
+        @param request: AddUserToGroupRequest
+        @return: AddUserToGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_user_to_group_with_options_async(request, runtime)
 
@@ -298,6 +358,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.BindMFADeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.BindMFADeviceResponse:
+        """
+        @summary Binds a multi-factor authentication (MFA) device to a RAM user.
+        
+        @param request: BindMFADeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindMFADeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.authentication_code_1):
@@ -332,6 +399,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.BindMFADeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.BindMFADeviceResponse:
+        """
+        @summary Binds a multi-factor authentication (MFA) device to a RAM user.
+        
+        @param request: BindMFADeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindMFADeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.authentication_code_1):
@@ -365,6 +439,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.BindMFADeviceRequest,
     ) -> ims_20190815_models.BindMFADeviceResponse:
+        """
+        @summary Binds a multi-factor authentication (MFA) device to a RAM user.
+        
+        @param request: BindMFADeviceRequest
+        @return: BindMFADeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.bind_mfadevice_with_options(request, runtime)
 
@@ -372,6 +452,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.BindMFADeviceRequest,
     ) -> ims_20190815_models.BindMFADeviceResponse:
+        """
+        @summary Binds a multi-factor authentication (MFA) device to a RAM user.
+        
+        @param request: BindMFADeviceRequest
+        @return: BindMFADeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.bind_mfadevice_with_options_async(request, runtime)
 
@@ -381,7 +467,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ChangePasswordResponse:
         """
-        >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](~~43765~~) is set to `True`. The value True indicates that RAM users can change their passwords.
+        @summary 修改RAM用户的登录密码
+        
+        @description >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can change their passwords.
         
         @param request: ChangePasswordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -418,7 +506,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ChangePasswordResponse:
         """
-        >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](~~43765~~) is set to `True`. The value True indicates that RAM users can change their passwords.
+        @summary 修改RAM用户的登录密码
+        
+        @description >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can change their passwords.
         
         @param request: ChangePasswordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -454,7 +544,9 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ChangePasswordRequest,
     ) -> ims_20190815_models.ChangePasswordResponse:
         """
-        >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](~~43765~~) is set to `True`. The value True indicates that RAM users can change their passwords.
+        @summary 修改RAM用户的登录密码
+        
+        @description >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can change their passwords.
         
         @param request: ChangePasswordRequest
         @return: ChangePasswordResponse
@@ -467,7 +559,9 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ChangePasswordRequest,
     ) -> ims_20190815_models.ChangePasswordResponse:
         """
-        >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](~~43765~~) is set to `True`. The value True indicates that RAM users can change their passwords.
+        @summary 修改RAM用户的登录密码
+        
+        @description >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can change their passwords.
         
         @param request: ChangePasswordRequest
         @return: ChangePasswordResponse
@@ -480,6 +574,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.CreateAccessKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateAccessKeyResponse:
+        """
+        @summary 创建主账号或RAM用户访问密钥
+        
+        @param request: CreateAccessKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccessKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_principal_name):
@@ -508,6 +609,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.CreateAccessKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateAccessKeyResponse:
+        """
+        @summary 创建主账号或RAM用户访问密钥
+        
+        @param request: CreateAccessKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccessKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_principal_name):
@@ -535,6 +643,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.CreateAccessKeyRequest,
     ) -> ims_20190815_models.CreateAccessKeyResponse:
+        """
+        @summary 创建主账号或RAM用户访问密钥
+        
+        @param request: CreateAccessKeyRequest
+        @return: CreateAccessKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_access_key_with_options(request, runtime)
 
@@ -542,6 +656,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.CreateAccessKeyRequest,
     ) -> ims_20190815_models.CreateAccessKeyResponse:
+        """
+        @summary 创建主账号或RAM用户访问密钥
+        
+        @param request: CreateAccessKeyRequest
+        @return: CreateAccessKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_access_key_with_options_async(request, runtime)
 
@@ -550,6 +670,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.CreateAppSecretRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateAppSecretResponse:
+        """
+        @summary Creates an application secret for the specified application.
+        
+        @param request: CreateAppSecretRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppSecretResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -578,6 +705,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.CreateAppSecretRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateAppSecretResponse:
+        """
+        @summary Creates an application secret for the specified application.
+        
+        @param request: CreateAppSecretRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppSecretResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -605,6 +739,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.CreateAppSecretRequest,
     ) -> ims_20190815_models.CreateAppSecretResponse:
+        """
+        @summary Creates an application secret for the specified application.
+        
+        @param request: CreateAppSecretRequest
+        @return: CreateAppSecretResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_app_secret_with_options(request, runtime)
 
@@ -612,6 +752,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.CreateAppSecretRequest,
     ) -> ims_20190815_models.CreateAppSecretResponse:
+        """
+        @summary Creates an application secret for the specified application.
+        
+        @param request: CreateAppSecretRequest
+        @return: CreateAppSecretResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_app_secret_with_options_async(request, runtime)
 
@@ -620,6 +766,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.CreateApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateApplicationResponse:
+        """
+        @summary Creates an application.
+        
+        @param request: CreateApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token_validity):
@@ -666,6 +819,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.CreateApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateApplicationResponse:
+        """
+        @summary Creates an application.
+        
+        @param request: CreateApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token_validity):
@@ -711,6 +871,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.CreateApplicationRequest,
     ) -> ims_20190815_models.CreateApplicationResponse:
+        """
+        @summary Creates an application.
+        
+        @param request: CreateApplicationRequest
+        @return: CreateApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_application_with_options(request, runtime)
 
@@ -718,6 +884,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.CreateApplicationRequest,
     ) -> ims_20190815_models.CreateApplicationResponse:
+        """
+        @summary Creates an application.
+        
+        @param request: CreateApplicationRequest
+        @return: CreateApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_application_with_options_async(request, runtime)
 
@@ -726,6 +898,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.CreateGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateGroupResponse:
+        """
+        @summary Creates a RAM user group.
+        
+        @param request: CreateGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.comments):
@@ -758,6 +937,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.CreateGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateGroupResponse:
+        """
+        @summary Creates a RAM user group.
+        
+        @param request: CreateGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.comments):
@@ -789,6 +975,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.CreateGroupRequest,
     ) -> ims_20190815_models.CreateGroupResponse:
+        """
+        @summary Creates a RAM user group.
+        
+        @param request: CreateGroupRequest
+        @return: CreateGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_group_with_options(request, runtime)
 
@@ -796,6 +988,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.CreateGroupRequest,
     ) -> ims_20190815_models.CreateGroupResponse:
+        """
+        @summary Creates a RAM user group.
+        
+        @param request: CreateGroupRequest
+        @return: CreateGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_group_with_options_async(request, runtime)
 
@@ -804,6 +1002,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.CreateLoginProfileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateLoginProfileResponse:
+        """
+        @summary 开启指定RAM用户的控制台登录
+        
+        @param request: CreateLoginProfileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLoginProfileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.mfabind_required):
@@ -840,6 +1045,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.CreateLoginProfileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateLoginProfileResponse:
+        """
+        @summary 开启指定RAM用户的控制台登录
+        
+        @param request: CreateLoginProfileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLoginProfileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.mfabind_required):
@@ -875,6 +1087,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.CreateLoginProfileRequest,
     ) -> ims_20190815_models.CreateLoginProfileResponse:
+        """
+        @summary 开启指定RAM用户的控制台登录
+        
+        @param request: CreateLoginProfileRequest
+        @return: CreateLoginProfileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_login_profile_with_options(request, runtime)
 
@@ -882,6 +1100,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.CreateLoginProfileRequest,
     ) -> ims_20190815_models.CreateLoginProfileResponse:
+        """
+        @summary 开启指定RAM用户的控制台登录
+        
+        @param request: CreateLoginProfileRequest
+        @return: CreateLoginProfileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_login_profile_with_options_async(request, runtime)
 
@@ -891,12 +1115,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateOIDCProviderResponse:
         """
-        ### Prerequisites
+        @summary Creates an OpenID Connect (OIDC) identity provider (IdP) to configure a trust relationship between Alibaba Cloud and an external IdP. This topic provides an example on how to create an IdP named TestOIDCProvider to configure a trust relationship between the external IdP Okta and Alibaba Cloud.
+        
+        @description ### Prerequisites
         Before you call this operation, make sure that the information such as the URL of the issuer, the fingerprints of HTTPS certificates, and the client IDs are obtained from an external (IdP, such as Google G Suite or Okta.
         ### Limits
-        *   You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
-        *   You can add a maximum of 20 client IDs to an OIDC IdP.
-        *   You can add a maximum of five fingerprints to an OIDC IdP.
+        You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
+        You can add a maximum of 20 client IDs to an OIDC IdP.
+        You can add a maximum of five fingerprints to an OIDC IdP.
         ###
         This topic provides an example on how to create an IdP named `TestOIDCProvider` to configure a trust relationship between the external IdP and Alibaba Cloud.
         
@@ -943,12 +1169,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateOIDCProviderResponse:
         """
-        ### Prerequisites
+        @summary Creates an OpenID Connect (OIDC) identity provider (IdP) to configure a trust relationship between Alibaba Cloud and an external IdP. This topic provides an example on how to create an IdP named TestOIDCProvider to configure a trust relationship between the external IdP Okta and Alibaba Cloud.
+        
+        @description ### Prerequisites
         Before you call this operation, make sure that the information such as the URL of the issuer, the fingerprints of HTTPS certificates, and the client IDs are obtained from an external (IdP, such as Google G Suite or Okta.
         ### Limits
-        *   You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
-        *   You can add a maximum of 20 client IDs to an OIDC IdP.
-        *   You can add a maximum of five fingerprints to an OIDC IdP.
+        You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
+        You can add a maximum of 20 client IDs to an OIDC IdP.
+        You can add a maximum of five fingerprints to an OIDC IdP.
         ###
         This topic provides an example on how to create an IdP named `TestOIDCProvider` to configure a trust relationship between the external IdP and Alibaba Cloud.
         
@@ -994,12 +1222,14 @@ class Client(OpenApiClient):
         request: ims_20190815_models.CreateOIDCProviderRequest,
     ) -> ims_20190815_models.CreateOIDCProviderResponse:
         """
-        ### Prerequisites
+        @summary Creates an OpenID Connect (OIDC) identity provider (IdP) to configure a trust relationship between Alibaba Cloud and an external IdP. This topic provides an example on how to create an IdP named TestOIDCProvider to configure a trust relationship between the external IdP Okta and Alibaba Cloud.
+        
+        @description ### Prerequisites
         Before you call this operation, make sure that the information such as the URL of the issuer, the fingerprints of HTTPS certificates, and the client IDs are obtained from an external (IdP, such as Google G Suite or Okta.
         ### Limits
-        *   You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
-        *   You can add a maximum of 20 client IDs to an OIDC IdP.
-        *   You can add a maximum of five fingerprints to an OIDC IdP.
+        You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
+        You can add a maximum of 20 client IDs to an OIDC IdP.
+        You can add a maximum of five fingerprints to an OIDC IdP.
         ###
         This topic provides an example on how to create an IdP named `TestOIDCProvider` to configure a trust relationship between the external IdP and Alibaba Cloud.
         
@@ -1014,12 +1244,14 @@ class Client(OpenApiClient):
         request: ims_20190815_models.CreateOIDCProviderRequest,
     ) -> ims_20190815_models.CreateOIDCProviderResponse:
         """
-        ### Prerequisites
+        @summary Creates an OpenID Connect (OIDC) identity provider (IdP) to configure a trust relationship between Alibaba Cloud and an external IdP. This topic provides an example on how to create an IdP named TestOIDCProvider to configure a trust relationship between the external IdP Okta and Alibaba Cloud.
+        
+        @description ### Prerequisites
         Before you call this operation, make sure that the information such as the URL of the issuer, the fingerprints of HTTPS certificates, and the client IDs are obtained from an external (IdP, such as Google G Suite or Okta.
         ### Limits
-        *   You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
-        *   You can add a maximum of 20 client IDs to an OIDC IdP.
-        *   You can add a maximum of five fingerprints to an OIDC IdP.
+        You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
+        You can add a maximum of 20 client IDs to an OIDC IdP.
+        You can add a maximum of five fingerprints to an OIDC IdP.
         ###
         This topic provides an example on how to create an IdP named `TestOIDCProvider` to configure a trust relationship between the external IdP and Alibaba Cloud.
         
@@ -1034,6 +1266,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.CreateSAMLProviderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateSAMLProviderResponse:
+        """
+        @summary 创建角色SSO身份提供商
+        
+        @param request: CreateSAMLProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSAMLProviderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -1066,6 +1305,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.CreateSAMLProviderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateSAMLProviderResponse:
+        """
+        @summary 创建角色SSO身份提供商
+        
+        @param request: CreateSAMLProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSAMLProviderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -1097,6 +1343,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.CreateSAMLProviderRequest,
     ) -> ims_20190815_models.CreateSAMLProviderResponse:
+        """
+        @summary 创建角色SSO身份提供商
+        
+        @param request: CreateSAMLProviderRequest
+        @return: CreateSAMLProviderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_samlprovider_with_options(request, runtime)
 
@@ -1104,6 +1356,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.CreateSAMLProviderRequest,
     ) -> ims_20190815_models.CreateSAMLProviderResponse:
+        """
+        @summary 创建角色SSO身份提供商
+        
+        @param request: CreateSAMLProviderRequest
+        @return: CreateSAMLProviderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_samlprovider_with_options_async(request, runtime)
 
@@ -1113,7 +1371,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateUserResponse:
         """
-        This topic provides an example on how to create a RAM user named `test`.
+        @summary Creates a RAM user.
+        
+        @description This topic provides an example on how to create a RAM user named `test`.
         
         @param request: CreateUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1158,7 +1418,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateUserResponse:
         """
-        This topic provides an example on how to create a RAM user named `test`.
+        @summary Creates a RAM user.
+        
+        @description This topic provides an example on how to create a RAM user named `test`.
         
         @param request: CreateUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1202,7 +1464,9 @@ class Client(OpenApiClient):
         request: ims_20190815_models.CreateUserRequest,
     ) -> ims_20190815_models.CreateUserResponse:
         """
-        This topic provides an example on how to create a RAM user named `test`.
+        @summary Creates a RAM user.
+        
+        @description This topic provides an example on how to create a RAM user named `test`.
         
         @param request: CreateUserRequest
         @return: CreateUserResponse
@@ -1215,7 +1479,9 @@ class Client(OpenApiClient):
         request: ims_20190815_models.CreateUserRequest,
     ) -> ims_20190815_models.CreateUserResponse:
         """
-        This topic provides an example on how to create a RAM user named `test`.
+        @summary Creates a RAM user.
+        
+        @description This topic provides an example on how to create a RAM user named `test`.
         
         @param request: CreateUserRequest
         @return: CreateUserResponse
@@ -1228,6 +1494,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.CreateVirtualMFADeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateVirtualMFADeviceResponse:
+        """
+        @summary 创建多因素认证设备
+        
+        @param request: CreateVirtualMFADeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVirtualMFADeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.virtual_mfadevice_name):
@@ -1256,6 +1529,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.CreateVirtualMFADeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateVirtualMFADeviceResponse:
+        """
+        @summary 创建多因素认证设备
+        
+        @param request: CreateVirtualMFADeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVirtualMFADeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.virtual_mfadevice_name):
@@ -1283,6 +1563,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.CreateVirtualMFADeviceRequest,
     ) -> ims_20190815_models.CreateVirtualMFADeviceResponse:
+        """
+        @summary 创建多因素认证设备
+        
+        @param request: CreateVirtualMFADeviceRequest
+        @return: CreateVirtualMFADeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_virtual_mfadevice_with_options(request, runtime)
 
@@ -1290,6 +1576,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.CreateVirtualMFADeviceRequest,
     ) -> ims_20190815_models.CreateVirtualMFADeviceResponse:
+        """
+        @summary 创建多因素认证设备
+        
+        @param request: CreateVirtualMFADeviceRequest
+        @return: CreateVirtualMFADeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_virtual_mfadevice_with_options_async(request, runtime)
 
@@ -1298,6 +1590,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DeleteAccessKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteAccessKeyResponse:
+        """
+        @summary 删除用户的访问密钥
+        
+        @param request: DeleteAccessKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccessKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_access_key_id):
@@ -1328,6 +1627,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DeleteAccessKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteAccessKeyResponse:
+        """
+        @summary 删除用户的访问密钥
+        
+        @param request: DeleteAccessKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccessKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_access_key_id):
@@ -1357,6 +1663,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.DeleteAccessKeyRequest,
     ) -> ims_20190815_models.DeleteAccessKeyResponse:
+        """
+        @summary 删除用户的访问密钥
+        
+        @param request: DeleteAccessKeyRequest
+        @return: DeleteAccessKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_access_key_with_options(request, runtime)
 
@@ -1364,6 +1676,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.DeleteAccessKeyRequest,
     ) -> ims_20190815_models.DeleteAccessKeyResponse:
+        """
+        @summary 删除用户的访问密钥
+        
+        @param request: DeleteAccessKeyRequest
+        @return: DeleteAccessKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_access_key_with_options_async(request, runtime)
 
@@ -1372,6 +1690,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DeleteAppSecretRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteAppSecretResponse:
+        """
+        @summary Delete the application secret for the specified application.
+        
+        @param request: DeleteAppSecretRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppSecretResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1402,6 +1727,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DeleteAppSecretRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteAppSecretResponse:
+        """
+        @summary Delete the application secret for the specified application.
+        
+        @param request: DeleteAppSecretRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppSecretResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1431,6 +1763,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.DeleteAppSecretRequest,
     ) -> ims_20190815_models.DeleteAppSecretResponse:
+        """
+        @summary Delete the application secret for the specified application.
+        
+        @param request: DeleteAppSecretRequest
+        @return: DeleteAppSecretResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_app_secret_with_options(request, runtime)
 
@@ -1438,6 +1776,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.DeleteAppSecretRequest,
     ) -> ims_20190815_models.DeleteAppSecretResponse:
+        """
+        @summary Delete the application secret for the specified application.
+        
+        @param request: DeleteAppSecretRequest
+        @return: DeleteAppSecretResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_app_secret_with_options_async(request, runtime)
 
@@ -1446,6 +1790,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DeleteApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteApplicationResponse:
+        """
+        @summary Deletes an application.
+        
+        @param request: DeleteApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1474,6 +1825,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DeleteApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteApplicationResponse:
+        """
+        @summary Deletes an application.
+        
+        @param request: DeleteApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1501,6 +1859,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.DeleteApplicationRequest,
     ) -> ims_20190815_models.DeleteApplicationResponse:
+        """
+        @summary Deletes an application.
+        
+        @param request: DeleteApplicationRequest
+        @return: DeleteApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_application_with_options(request, runtime)
 
@@ -1508,6 +1872,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.DeleteApplicationRequest,
     ) -> ims_20190815_models.DeleteApplicationResponse:
+        """
+        @summary Deletes an application.
+        
+        @param request: DeleteApplicationRequest
+        @return: DeleteApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_application_with_options_async(request, runtime)
 
@@ -1517,7 +1887,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteGroupResponse:
         """
-        Before you delete a RAM user group, make sure that no policies are attached to the group and no RAM users are included in the group.
+        @summary 删除指定的用户组
+        
+        @description Before you delete a RAM user group, make sure that no policies are attached to the group and no RAM users are included in the group.
         
         @param request: DeleteGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1552,7 +1924,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteGroupResponse:
         """
-        Before you delete a RAM user group, make sure that no policies are attached to the group and no RAM users are included in the group.
+        @summary 删除指定的用户组
+        
+        @description Before you delete a RAM user group, make sure that no policies are attached to the group and no RAM users are included in the group.
         
         @param request: DeleteGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1586,7 +1960,9 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DeleteGroupRequest,
     ) -> ims_20190815_models.DeleteGroupResponse:
         """
-        Before you delete a RAM user group, make sure that no policies are attached to the group and no RAM users are included in the group.
+        @summary 删除指定的用户组
+        
+        @description Before you delete a RAM user group, make sure that no policies are attached to the group and no RAM users are included in the group.
         
         @param request: DeleteGroupRequest
         @return: DeleteGroupResponse
@@ -1599,7 +1975,9 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DeleteGroupRequest,
     ) -> ims_20190815_models.DeleteGroupResponse:
         """
-        Before you delete a RAM user group, make sure that no policies are attached to the group and no RAM users are included in the group.
+        @summary 删除指定的用户组
+        
+        @description Before you delete a RAM user group, make sure that no policies are attached to the group and no RAM users are included in the group.
         
         @param request: DeleteGroupRequest
         @return: DeleteGroupResponse
@@ -1612,6 +1990,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DeleteLoginProfileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteLoginProfileResponse:
+        """
+        @summary 关闭指定RAM用户的控制台登录
+        
+        @param request: DeleteLoginProfileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLoginProfileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_principal_name):
@@ -1640,6 +2025,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DeleteLoginProfileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteLoginProfileResponse:
+        """
+        @summary 关闭指定RAM用户的控制台登录
+        
+        @param request: DeleteLoginProfileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLoginProfileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_principal_name):
@@ -1667,6 +2059,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.DeleteLoginProfileRequest,
     ) -> ims_20190815_models.DeleteLoginProfileResponse:
+        """
+        @summary 关闭指定RAM用户的控制台登录
+        
+        @param request: DeleteLoginProfileRequest
+        @return: DeleteLoginProfileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_login_profile_with_options(request, runtime)
 
@@ -1674,6 +2072,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.DeleteLoginProfileRequest,
     ) -> ims_20190815_models.DeleteLoginProfileResponse:
+        """
+        @summary 关闭指定RAM用户的控制台登录
+        
+        @param request: DeleteLoginProfileRequest
+        @return: DeleteLoginProfileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_login_profile_with_options_async(request, runtime)
 
@@ -1683,7 +2087,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteOIDCProviderResponse:
         """
-        ###
+        @summary Deletes an OpenID Connect (OIDC) identity provider (IdP).
+        
+        @description ###
         This topic provides an example on how to remove the OIDC IdP named `TestOIDCProvider`.
         
         @param request: DeleteOIDCProviderRequest
@@ -1719,7 +2125,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteOIDCProviderResponse:
         """
-        ###
+        @summary Deletes an OpenID Connect (OIDC) identity provider (IdP).
+        
+        @description ###
         This topic provides an example on how to remove the OIDC IdP named `TestOIDCProvider`.
         
         @param request: DeleteOIDCProviderRequest
@@ -1754,7 +2162,9 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DeleteOIDCProviderRequest,
     ) -> ims_20190815_models.DeleteOIDCProviderResponse:
         """
-        ###
+        @summary Deletes an OpenID Connect (OIDC) identity provider (IdP).
+        
+        @description ###
         This topic provides an example on how to remove the OIDC IdP named `TestOIDCProvider`.
         
         @param request: DeleteOIDCProviderRequest
@@ -1768,7 +2178,9 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DeleteOIDCProviderRequest,
     ) -> ims_20190815_models.DeleteOIDCProviderResponse:
         """
-        ###
+        @summary Deletes an OpenID Connect (OIDC) identity provider (IdP).
+        
+        @description ###
         This topic provides an example on how to remove the OIDC IdP named `TestOIDCProvider`.
         
         @param request: DeleteOIDCProviderRequest
@@ -1782,6 +2194,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DeleteSAMLProviderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteSAMLProviderResponse:
+        """
+        @summary 删除指定的角色SSO身份提供商
+        
+        @param request: DeleteSAMLProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSAMLProviderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.samlprovider_name):
@@ -1810,6 +2229,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DeleteSAMLProviderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteSAMLProviderResponse:
+        """
+        @summary 删除指定的角色SSO身份提供商
+        
+        @param request: DeleteSAMLProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSAMLProviderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.samlprovider_name):
@@ -1837,6 +2263,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.DeleteSAMLProviderRequest,
     ) -> ims_20190815_models.DeleteSAMLProviderResponse:
+        """
+        @summary 删除指定的角色SSO身份提供商
+        
+        @param request: DeleteSAMLProviderRequest
+        @return: DeleteSAMLProviderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_samlprovider_with_options(request, runtime)
 
@@ -1844,6 +2276,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.DeleteSAMLProviderRequest,
     ) -> ims_20190815_models.DeleteSAMLProviderResponse:
+        """
+        @summary 删除指定的角色SSO身份提供商
+        
+        @param request: DeleteSAMLProviderRequest
+        @return: DeleteSAMLProviderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_samlprovider_with_options_async(request, runtime)
 
@@ -1852,6 +2290,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DeleteUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteUserResponse:
+        """
+        @summary 删除RAM用户
+        
+        @param request: DeleteUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -1882,6 +2327,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DeleteUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteUserResponse:
+        """
+        @summary 删除RAM用户
+        
+        @param request: DeleteUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -1911,6 +2363,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.DeleteUserRequest,
     ) -> ims_20190815_models.DeleteUserResponse:
+        """
+        @summary 删除RAM用户
+        
+        @param request: DeleteUserRequest
+        @return: DeleteUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_user_with_options(request, runtime)
 
@@ -1918,6 +2376,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.DeleteUserRequest,
     ) -> ims_20190815_models.DeleteUserResponse:
+        """
+        @summary 删除RAM用户
+        
+        @param request: DeleteUserRequest
+        @return: DeleteUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_user_with_options_async(request, runtime)
 
@@ -1926,6 +2390,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DeleteVirtualMFADeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteVirtualMFADeviceResponse:
+        """
+        @summary 删除多因素认证设备
+        
+        @param request: DeleteVirtualMFADeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVirtualMFADeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.serial_number):
@@ -1954,6 +2425,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DeleteVirtualMFADeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteVirtualMFADeviceResponse:
+        """
+        @summary 删除多因素认证设备
+        
+        @param request: DeleteVirtualMFADeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVirtualMFADeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.serial_number):
@@ -1981,6 +2459,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.DeleteVirtualMFADeviceRequest,
     ) -> ims_20190815_models.DeleteVirtualMFADeviceResponse:
+        """
+        @summary 删除多因素认证设备
+        
+        @param request: DeleteVirtualMFADeviceRequest
+        @return: DeleteVirtualMFADeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_virtual_mfadevice_with_options(request, runtime)
 
@@ -1988,6 +2472,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.DeleteVirtualMFADeviceRequest,
     ) -> ims_20190815_models.DeleteVirtualMFADeviceResponse:
+        """
+        @summary 删除多因素认证设备
+        
+        @param request: DeleteVirtualMFADeviceRequest
+        @return: DeleteVirtualMFADeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_virtual_mfadevice_with_options_async(request, runtime)
 
@@ -1996,6 +2486,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DisableVirtualMFARequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DisableVirtualMFAResponse:
+        """
+        @summary 解绑并删除多因素认证设备
+        
+        @param request: DisableVirtualMFARequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableVirtualMFAResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_principal_name):
@@ -2024,6 +2521,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DisableVirtualMFARequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DisableVirtualMFAResponse:
+        """
+        @summary 解绑并删除多因素认证设备
+        
+        @param request: DisableVirtualMFARequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableVirtualMFAResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_principal_name):
@@ -2051,6 +2555,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.DisableVirtualMFARequest,
     ) -> ims_20190815_models.DisableVirtualMFAResponse:
+        """
+        @summary 解绑并删除多因素认证设备
+        
+        @param request: DisableVirtualMFARequest
+        @return: DisableVirtualMFAResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.disable_virtual_mfawith_options(request, runtime)
 
@@ -2058,6 +2568,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.DisableVirtualMFARequest,
     ) -> ims_20190815_models.DisableVirtualMFAResponse:
+        """
+        @summary 解绑并删除多因素认证设备
+        
+        @param request: DisableVirtualMFARequest
+        @return: DisableVirtualMFAResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.disable_virtual_mfawith_options_async(request, runtime)
 
@@ -2065,6 +2581,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GenerateCredentialReportResponse:
+        """
+        @summary Generates a user credential report.
+        
+        @param request: GenerateCredentialReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateCredentialReportResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GenerateCredentialReport',
@@ -2086,6 +2609,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GenerateCredentialReportResponse:
+        """
+        @summary Generates a user credential report.
+        
+        @param request: GenerateCredentialReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateCredentialReportResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GenerateCredentialReport',
@@ -2104,10 +2634,20 @@ class Client(OpenApiClient):
         )
 
     def generate_credential_report(self) -> ims_20190815_models.GenerateCredentialReportResponse:
+        """
+        @summary Generates a user credential report.
+        
+        @return: GenerateCredentialReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.generate_credential_report_with_options(runtime)
 
     async def generate_credential_report_async(self) -> ims_20190815_models.GenerateCredentialReportResponse:
+        """
+        @summary Generates a user credential report.
+        
+        @return: GenerateCredentialReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.generate_credential_report_with_options_async(runtime)
 
@@ -2116,6 +2656,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetAccessKeyLastUsedRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetAccessKeyLastUsedResponse:
+        """
+        @summary Queries the time when an AccessKey pair was used for the last time.
+        
+        @param request: GetAccessKeyLastUsedRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccessKeyLastUsedResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_access_key_id):
@@ -2146,6 +2693,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetAccessKeyLastUsedRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetAccessKeyLastUsedResponse:
+        """
+        @summary Queries the time when an AccessKey pair was used for the last time.
+        
+        @param request: GetAccessKeyLastUsedRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccessKeyLastUsedResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_access_key_id):
@@ -2175,6 +2729,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.GetAccessKeyLastUsedRequest,
     ) -> ims_20190815_models.GetAccessKeyLastUsedResponse:
+        """
+        @summary Queries the time when an AccessKey pair was used for the last time.
+        
+        @param request: GetAccessKeyLastUsedRequest
+        @return: GetAccessKeyLastUsedResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_access_key_last_used_with_options(request, runtime)
 
@@ -2182,6 +2742,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.GetAccessKeyLastUsedRequest,
     ) -> ims_20190815_models.GetAccessKeyLastUsedResponse:
+        """
+        @summary Queries the time when an AccessKey pair was used for the last time.
+        
+        @param request: GetAccessKeyLastUsedRequest
+        @return: GetAccessKeyLastUsedResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_access_key_last_used_with_options_async(request, runtime)
 
@@ -2189,6 +2755,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetAccountMFAInfoResponse:
+        """
+        @summary 查询主账号多因素认证设备信息
+        
+        @param request: GetAccountMFAInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountMFAInfoResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetAccountMFAInfo',
@@ -2210,6 +2783,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetAccountMFAInfoResponse:
+        """
+        @summary 查询主账号多因素认证设备信息
+        
+        @param request: GetAccountMFAInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountMFAInfoResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetAccountMFAInfo',
@@ -2228,10 +2808,20 @@ class Client(OpenApiClient):
         )
 
     def get_account_mfainfo(self) -> ims_20190815_models.GetAccountMFAInfoResponse:
+        """
+        @summary 查询主账号多因素认证设备信息
+        
+        @return: GetAccountMFAInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_account_mfainfo_with_options(runtime)
 
     async def get_account_mfainfo_async(self) -> ims_20190815_models.GetAccountMFAInfoResponse:
+        """
+        @summary 查询主账号多因素认证设备信息
+        
+        @return: GetAccountMFAInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_account_mfainfo_with_options_async(runtime)
 
@@ -2239,6 +2829,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetAccountSecurityPracticeReportResponse:
+        """
+        @summary 查询阿里云账号的安全报告
+        
+        @param request: GetAccountSecurityPracticeReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountSecurityPracticeReportResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetAccountSecurityPracticeReport',
@@ -2260,6 +2857,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetAccountSecurityPracticeReportResponse:
+        """
+        @summary 查询阿里云账号的安全报告
+        
+        @param request: GetAccountSecurityPracticeReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountSecurityPracticeReportResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetAccountSecurityPracticeReport',
@@ -2278,10 +2882,20 @@ class Client(OpenApiClient):
         )
 
     def get_account_security_practice_report(self) -> ims_20190815_models.GetAccountSecurityPracticeReportResponse:
+        """
+        @summary 查询阿里云账号的安全报告
+        
+        @return: GetAccountSecurityPracticeReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_account_security_practice_report_with_options(runtime)
 
     async def get_account_security_practice_report_async(self) -> ims_20190815_models.GetAccountSecurityPracticeReportResponse:
+        """
+        @summary 查询阿里云账号的安全报告
+        
+        @return: GetAccountSecurityPracticeReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_account_security_practice_report_with_options_async(runtime)
 
@@ -2289,6 +2903,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetAccountSummaryResponse:
+        """
+        @summary 查询主账号概览信息
+        
+        @param request: GetAccountSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountSummaryResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetAccountSummary',
@@ -2310,6 +2931,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetAccountSummaryResponse:
+        """
+        @summary 查询主账号概览信息
+        
+        @param request: GetAccountSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountSummaryResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetAccountSummary',
@@ -2328,10 +2956,20 @@ class Client(OpenApiClient):
         )
 
     def get_account_summary(self) -> ims_20190815_models.GetAccountSummaryResponse:
+        """
+        @summary 查询主账号概览信息
+        
+        @return: GetAccountSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_account_summary_with_options(runtime)
 
     async def get_account_summary_async(self) -> ims_20190815_models.GetAccountSummaryResponse:
+        """
+        @summary 查询主账号概览信息
+        
+        @return: GetAccountSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_account_summary_with_options_async(runtime)
 
@@ -2340,6 +2978,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetAppSecretRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetAppSecretResponse:
+        """
+        @summary Queries the details of an application secret.
+        
+        @param request: GetAppSecretRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAppSecretResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2370,6 +3015,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetAppSecretRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetAppSecretResponse:
+        """
+        @summary Queries the details of an application secret.
+        
+        @param request: GetAppSecretRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAppSecretResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2399,6 +3051,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.GetAppSecretRequest,
     ) -> ims_20190815_models.GetAppSecretResponse:
+        """
+        @summary Queries the details of an application secret.
+        
+        @param request: GetAppSecretRequest
+        @return: GetAppSecretResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_app_secret_with_options(request, runtime)
 
@@ -2406,6 +3064,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.GetAppSecretRequest,
     ) -> ims_20190815_models.GetAppSecretResponse:
+        """
+        @summary Queries the details of an application secret.
+        
+        @param request: GetAppSecretRequest
+        @return: GetAppSecretResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_app_secret_with_options_async(request, runtime)
 
@@ -2415,7 +3079,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetApplicationResponse:
         """
-        This topic provides an example on how to query the configurations of an application named `472457090344041***`.
+        @summary Queries the configuration information about an application.
+        
+        @description This topic provides an example on how to query the configurations of an application named `472457090344041***`.
         
         @param request: GetApplicationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2450,7 +3116,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetApplicationResponse:
         """
-        This topic provides an example on how to query the configurations of an application named `472457090344041***`.
+        @summary Queries the configuration information about an application.
+        
+        @description This topic provides an example on how to query the configurations of an application named `472457090344041***`.
         
         @param request: GetApplicationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2484,7 +3152,9 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetApplicationRequest,
     ) -> ims_20190815_models.GetApplicationResponse:
         """
-        This topic provides an example on how to query the configurations of an application named `472457090344041***`.
+        @summary Queries the configuration information about an application.
+        
+        @description This topic provides an example on how to query the configurations of an application named `472457090344041***`.
         
         @param request: GetApplicationRequest
         @return: GetApplicationResponse
@@ -2497,7 +3167,9 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetApplicationRequest,
     ) -> ims_20190815_models.GetApplicationResponse:
         """
-        This topic provides an example on how to query the configurations of an application named `472457090344041***`.
+        @summary Queries the configuration information about an application.
+        
+        @description This topic provides an example on how to query the configurations of an application named `472457090344041***`.
         
         @param request: GetApplicationRequest
         @return: GetApplicationResponse
@@ -2510,6 +3182,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetCredentialReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetCredentialReportResponse:
+        """
+        @summary Queries the user credential reports of an Alibaba Cloud account.
+        
+        @param request: GetCredentialReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCredentialReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_items):
@@ -2540,6 +3219,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetCredentialReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetCredentialReportResponse:
+        """
+        @summary Queries the user credential reports of an Alibaba Cloud account.
+        
+        @param request: GetCredentialReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCredentialReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_items):
@@ -2569,6 +3255,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.GetCredentialReportRequest,
     ) -> ims_20190815_models.GetCredentialReportResponse:
+        """
+        @summary Queries the user credential reports of an Alibaba Cloud account.
+        
+        @param request: GetCredentialReportRequest
+        @return: GetCredentialReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_credential_report_with_options(request, runtime)
 
@@ -2576,6 +3268,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.GetCredentialReportRequest,
     ) -> ims_20190815_models.GetCredentialReportResponse:
+        """
+        @summary Queries the user credential reports of an Alibaba Cloud account.
+        
+        @param request: GetCredentialReportRequest
+        @return: GetCredentialReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_credential_report_with_options_async(request, runtime)
 
@@ -2583,6 +3281,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetDefaultDomainResponse:
+        """
+        @summary Queries the default domain name of an Alibaba Cloud account.
+        
+        @param request: GetDefaultDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDefaultDomainResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetDefaultDomain',
@@ -2604,6 +3309,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetDefaultDomainResponse:
+        """
+        @summary Queries the default domain name of an Alibaba Cloud account.
+        
+        @param request: GetDefaultDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDefaultDomainResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetDefaultDomain',
@@ -2622,10 +3334,20 @@ class Client(OpenApiClient):
         )
 
     def get_default_domain(self) -> ims_20190815_models.GetDefaultDomainResponse:
+        """
+        @summary Queries the default domain name of an Alibaba Cloud account.
+        
+        @return: GetDefaultDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_default_domain_with_options(runtime)
 
     async def get_default_domain_async(self) -> ims_20190815_models.GetDefaultDomainResponse:
+        """
+        @summary Queries the default domain name of an Alibaba Cloud account.
+        
+        @return: GetDefaultDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_default_domain_with_options_async(runtime)
 
@@ -2634,6 +3356,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetGroupResponse:
+        """
+        @summary Queries the information about a Resource Access Management (RAM) user group.
+        
+        @param request: GetGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -2662,6 +3391,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetGroupResponse:
+        """
+        @summary Queries the information about a Resource Access Management (RAM) user group.
+        
+        @param request: GetGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -2689,6 +3425,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.GetGroupRequest,
     ) -> ims_20190815_models.GetGroupResponse:
+        """
+        @summary Queries the information about a Resource Access Management (RAM) user group.
+        
+        @param request: GetGroupRequest
+        @return: GetGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_group_with_options(request, runtime)
 
@@ -2696,6 +3438,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.GetGroupRequest,
     ) -> ims_20190815_models.GetGroupResponse:
+        """
+        @summary Queries the information about a Resource Access Management (RAM) user group.
+        
+        @param request: GetGroupRequest
+        @return: GetGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_group_with_options_async(request, runtime)
 
@@ -2704,6 +3452,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetLoginProfileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetLoginProfileResponse:
+        """
+        @summary Queries the console logon settings of a RAM user.
+        
+        @param request: GetLoginProfileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLoginProfileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_principal_name):
@@ -2732,6 +3487,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetLoginProfileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetLoginProfileResponse:
+        """
+        @summary Queries the console logon settings of a RAM user.
+        
+        @param request: GetLoginProfileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLoginProfileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_principal_name):
@@ -2759,6 +3521,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.GetLoginProfileRequest,
     ) -> ims_20190815_models.GetLoginProfileResponse:
+        """
+        @summary Queries the console logon settings of a RAM user.
+        
+        @param request: GetLoginProfileRequest
+        @return: GetLoginProfileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_login_profile_with_options(request, runtime)
 
@@ -2766,6 +3534,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.GetLoginProfileRequest,
     ) -> ims_20190815_models.GetLoginProfileResponse:
+        """
+        @summary Queries the console logon settings of a RAM user.
+        
+        @param request: GetLoginProfileRequest
+        @return: GetLoginProfileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_login_profile_with_options_async(request, runtime)
 
@@ -2775,7 +3549,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetOIDCProviderResponse:
         """
-        ###
+        @summary Queries the information about an OIDC IdP.
+        
+        @description ###
         This topic provides an example on how to query the information about an OpenID Connect (OIDC) identity provider (IdP) named `TestOIDCProvider`.
         
         @param request: GetOIDCProviderRequest
@@ -2811,7 +3587,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetOIDCProviderResponse:
         """
-        ###
+        @summary Queries the information about an OIDC IdP.
+        
+        @description ###
         This topic provides an example on how to query the information about an OpenID Connect (OIDC) identity provider (IdP) named `TestOIDCProvider`.
         
         @param request: GetOIDCProviderRequest
@@ -2846,7 +3624,9 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetOIDCProviderRequest,
     ) -> ims_20190815_models.GetOIDCProviderResponse:
         """
-        ###
+        @summary Queries the information about an OIDC IdP.
+        
+        @description ###
         This topic provides an example on how to query the information about an OpenID Connect (OIDC) identity provider (IdP) named `TestOIDCProvider`.
         
         @param request: GetOIDCProviderRequest
@@ -2860,7 +3640,9 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetOIDCProviderRequest,
     ) -> ims_20190815_models.GetOIDCProviderResponse:
         """
-        ###
+        @summary Queries the information about an OIDC IdP.
+        
+        @description ###
         This topic provides an example on how to query the information about an OpenID Connect (OIDC) identity provider (IdP) named `TestOIDCProvider`.
         
         @param request: GetOIDCProviderRequest
@@ -2873,6 +3655,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetPasswordPolicyResponse:
+        """
+        @summary Queries the details of the password policy for RAM users.
+        
+        @param request: GetPasswordPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPasswordPolicyResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetPasswordPolicy',
@@ -2894,6 +3683,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetPasswordPolicyResponse:
+        """
+        @summary Queries the details of the password policy for RAM users.
+        
+        @param request: GetPasswordPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPasswordPolicyResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetPasswordPolicy',
@@ -2912,10 +3708,20 @@ class Client(OpenApiClient):
         )
 
     def get_password_policy(self) -> ims_20190815_models.GetPasswordPolicyResponse:
+        """
+        @summary Queries the details of the password policy for RAM users.
+        
+        @return: GetPasswordPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_password_policy_with_options(runtime)
 
     async def get_password_policy_async(self) -> ims_20190815_models.GetPasswordPolicyResponse:
+        """
+        @summary Queries the details of the password policy for RAM users.
+        
+        @return: GetPasswordPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_password_policy_with_options_async(runtime)
 
@@ -2924,6 +3730,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetSAMLProviderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetSAMLProviderResponse:
+        """
+        @summary Queries the information about an identity provider (IdP) for role-based single sign-on (SSO).
+        
+        @param request: GetSAMLProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSAMLProviderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.samlprovider_name):
@@ -2952,6 +3765,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetSAMLProviderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetSAMLProviderResponse:
+        """
+        @summary Queries the information about an identity provider (IdP) for role-based single sign-on (SSO).
+        
+        @param request: GetSAMLProviderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSAMLProviderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.samlprovider_name):
@@ -2979,6 +3799,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.GetSAMLProviderRequest,
     ) -> ims_20190815_models.GetSAMLProviderResponse:
+        """
+        @summary Queries the information about an identity provider (IdP) for role-based single sign-on (SSO).
+        
+        @param request: GetSAMLProviderRequest
+        @return: GetSAMLProviderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_samlprovider_with_options(request, runtime)
 
@@ -2986,6 +3812,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.GetSAMLProviderRequest,
     ) -> ims_20190815_models.GetSAMLProviderResponse:
+        """
+        @summary Queries the information about an identity provider (IdP) for role-based single sign-on (SSO).
+        
+        @param request: GetSAMLProviderRequest
+        @return: GetSAMLProviderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_samlprovider_with_options_async(request, runtime)
 
@@ -2993,6 +3825,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetSecurityPreferenceResponse:
+        """
+        @summary Queries the security preferences for RAM users.
+        
+        @param request: GetSecurityPreferenceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSecurityPreferenceResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetSecurityPreference',
@@ -3014,6 +3853,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetSecurityPreferenceResponse:
+        """
+        @summary Queries the security preferences for RAM users.
+        
+        @param request: GetSecurityPreferenceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSecurityPreferenceResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetSecurityPreference',
@@ -3032,10 +3878,20 @@ class Client(OpenApiClient):
         )
 
     def get_security_preference(self) -> ims_20190815_models.GetSecurityPreferenceResponse:
+        """
+        @summary Queries the security preferences for RAM users.
+        
+        @return: GetSecurityPreferenceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_security_preference_with_options(runtime)
 
     async def get_security_preference_async(self) -> ims_20190815_models.GetSecurityPreferenceResponse:
+        """
+        @summary Queries the security preferences for RAM users.
+        
+        @return: GetSecurityPreferenceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_security_preference_with_options_async(runtime)
 
@@ -3045,7 +3901,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetUserResponse:
         """
-        This topic provides an example to show how to query the information about a RAM user named `test@example.onaliyun.com`.
+        @summary Queries the information about a RAM user.
+        
+        @description This topic provides an example to show how to query the information about a RAM user named `test@example.onaliyun.com`.
         
         @param request: GetUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3084,7 +3942,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetUserResponse:
         """
-        This topic provides an example to show how to query the information about a RAM user named `test@example.onaliyun.com`.
+        @summary Queries the information about a RAM user.
+        
+        @description This topic provides an example to show how to query the information about a RAM user named `test@example.onaliyun.com`.
         
         @param request: GetUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3122,7 +3982,9 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetUserRequest,
     ) -> ims_20190815_models.GetUserResponse:
         """
-        This topic provides an example to show how to query the information about a RAM user named `test@example.onaliyun.com`.
+        @summary Queries the information about a RAM user.
+        
+        @description This topic provides an example to show how to query the information about a RAM user named `test@example.onaliyun.com`.
         
         @param request: GetUserRequest
         @return: GetUserResponse
@@ -3135,7 +3997,9 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetUserRequest,
     ) -> ims_20190815_models.GetUserResponse:
         """
-        This topic provides an example to show how to query the information about a RAM user named `test@example.onaliyun.com`.
+        @summary Queries the information about a RAM user.
+        
+        @description This topic provides an example to show how to query the information about a RAM user named `test@example.onaliyun.com`.
         
         @param request: GetUserRequest
         @return: GetUserResponse
@@ -3148,6 +4012,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetUserMFAInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetUserMFAInfoResponse:
+        """
+        @summary 查询RAM用户多因素认证设备信息
+        
+        @param request: GetUserMFAInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserMFAInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_principal_name):
@@ -3176,6 +4047,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetUserMFAInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetUserMFAInfoResponse:
+        """
+        @summary 查询RAM用户多因素认证设备信息
+        
+        @param request: GetUserMFAInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserMFAInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_principal_name):
@@ -3203,6 +4081,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.GetUserMFAInfoRequest,
     ) -> ims_20190815_models.GetUserMFAInfoResponse:
+        """
+        @summary 查询RAM用户多因素认证设备信息
+        
+        @param request: GetUserMFAInfoRequest
+        @return: GetUserMFAInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_user_mfainfo_with_options(request, runtime)
 
@@ -3210,6 +4094,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.GetUserMFAInfoRequest,
     ) -> ims_20190815_models.GetUserMFAInfoResponse:
+        """
+        @summary 查询RAM用户多因素认证设备信息
+        
+        @param request: GetUserMFAInfoRequest
+        @return: GetUserMFAInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_user_mfainfo_with_options_async(request, runtime)
 
@@ -3217,6 +4107,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetUserSsoSettingsResponse:
+        """
+        @summary 查询用户SSO身份提供商信息
+        
+        @param request: GetUserSsoSettingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserSsoSettingsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetUserSsoSettings',
@@ -3238,6 +4135,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetUserSsoSettingsResponse:
+        """
+        @summary 查询用户SSO身份提供商信息
+        
+        @param request: GetUserSsoSettingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserSsoSettingsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetUserSsoSettings',
@@ -3256,10 +4160,20 @@ class Client(OpenApiClient):
         )
 
     def get_user_sso_settings(self) -> ims_20190815_models.GetUserSsoSettingsResponse:
+        """
+        @summary 查询用户SSO身份提供商信息
+        
+        @return: GetUserSsoSettingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_user_sso_settings_with_options(runtime)
 
     async def get_user_sso_settings_async(self) -> ims_20190815_models.GetUserSsoSettingsResponse:
+        """
+        @summary 查询用户SSO身份提供商信息
+        
+        @return: GetUserSsoSettingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_user_sso_settings_with_options_async(runtime)
 
@@ -3268,6 +4182,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetVerificationInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetVerificationInfoResponse:
+        """
+        @summary 获取用户安全认证的信息
+        
+        @param request: GetVerificationInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVerificationInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_principal_name):
@@ -3296,6 +4217,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetVerificationInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetVerificationInfoResponse:
+        """
+        @summary 获取用户安全认证的信息
+        
+        @param request: GetVerificationInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVerificationInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_principal_name):
@@ -3323,6 +4251,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.GetVerificationInfoRequest,
     ) -> ims_20190815_models.GetVerificationInfoResponse:
+        """
+        @summary 获取用户安全认证的信息
+        
+        @param request: GetVerificationInfoRequest
+        @return: GetVerificationInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_verification_info_with_options(request, runtime)
 
@@ -3330,6 +4264,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.GetVerificationInfoRequest,
     ) -> ims_20190815_models.GetVerificationInfoResponse:
+        """
+        @summary 获取用户安全认证的信息
+        
+        @param request: GetVerificationInfoRequest
+        @return: GetVerificationInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_verification_info_with_options_async(request, runtime)
 
@@ -3338,6 +4278,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListAccessKeysRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListAccessKeysResponse:
+        """
+        @summary 查询主账号或RAM用户访问密钥列表
+        
+        @param request: ListAccessKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccessKeysResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_principal_name):
@@ -3366,6 +4313,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListAccessKeysRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListAccessKeysResponse:
+        """
+        @summary 查询主账号或RAM用户访问密钥列表
+        
+        @param request: ListAccessKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccessKeysResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_principal_name):
@@ -3393,6 +4347,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.ListAccessKeysRequest,
     ) -> ims_20190815_models.ListAccessKeysResponse:
+        """
+        @summary 查询主账号或RAM用户访问密钥列表
+        
+        @param request: ListAccessKeysRequest
+        @return: ListAccessKeysResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_access_keys_with_options(request, runtime)
 
@@ -3400,6 +4360,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.ListAccessKeysRequest,
     ) -> ims_20190815_models.ListAccessKeysResponse:
+        """
+        @summary 查询主账号或RAM用户访问密钥列表
+        
+        @param request: ListAccessKeysRequest
+        @return: ListAccessKeysResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_access_keys_with_options_async(request, runtime)
 
@@ -3408,6 +4374,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListAppSecretIdsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListAppSecretIdsResponse:
+        """
+        @summary Queries the secret IDs of an application.
+        
+        @param request: ListAppSecretIdsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppSecretIdsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3436,6 +4409,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListAppSecretIdsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListAppSecretIdsResponse:
+        """
+        @summary Queries the secret IDs of an application.
+        
+        @param request: ListAppSecretIdsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppSecretIdsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3463,6 +4443,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.ListAppSecretIdsRequest,
     ) -> ims_20190815_models.ListAppSecretIdsResponse:
+        """
+        @summary Queries the secret IDs of an application.
+        
+        @param request: ListAppSecretIdsRequest
+        @return: ListAppSecretIdsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_app_secret_ids_with_options(request, runtime)
 
@@ -3470,6 +4456,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.ListAppSecretIdsRequest,
     ) -> ims_20190815_models.ListAppSecretIdsResponse:
+        """
+        @summary Queries the secret IDs of an application.
+        
+        @param request: ListAppSecretIdsRequest
+        @return: ListAppSecretIdsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_app_secret_ids_with_options_async(request, runtime)
 
@@ -3478,7 +4470,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListApplicationsResponse:
         """
-        This topic provides an example on how to query the applications within the current account. The returned result shows that only one application named `myapp` belongs to the current account.
+        @summary Lists the created applications.
+        
+        @description This topic provides an example on how to query the applications within the current account. The returned result shows that only one application named `myapp` belongs to the current account.
         
         @param request: ListApplicationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3506,7 +4500,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListApplicationsResponse:
         """
-        This topic provides an example on how to query the applications within the current account. The returned result shows that only one application named `myapp` belongs to the current account.
+        @summary Lists the created applications.
+        
+        @description This topic provides an example on how to query the applications within the current account. The returned result shows that only one application named `myapp` belongs to the current account.
         
         @param request: ListApplicationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3531,7 +4527,9 @@ class Client(OpenApiClient):
 
     def list_applications(self) -> ims_20190815_models.ListApplicationsResponse:
         """
-        This topic provides an example on how to query the applications within the current account. The returned result shows that only one application named `myapp` belongs to the current account.
+        @summary Lists the created applications.
+        
+        @description This topic provides an example on how to query the applications within the current account. The returned result shows that only one application named `myapp` belongs to the current account.
         
         @return: ListApplicationsResponse
         """
@@ -3540,7 +4538,9 @@ class Client(OpenApiClient):
 
     async def list_applications_async(self) -> ims_20190815_models.ListApplicationsResponse:
         """
-        This topic provides an example on how to query the applications within the current account. The returned result shows that only one application named `myapp` belongs to the current account.
+        @summary Lists the created applications.
+        
+        @description This topic provides an example on how to query the applications within the current account. The returned result shows that only one application named `myapp` belongs to the current account.
         
         @return: ListApplicationsResponse
         """
@@ -3552,6 +4552,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListGroupsResponse:
+        """
+        @summary Queries RAM user groups.
+        
+        @param request: ListGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.marker):
@@ -3582,6 +4589,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListGroupsResponse:
+        """
+        @summary Queries RAM user groups.
+        
+        @param request: ListGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.marker):
@@ -3611,6 +4625,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.ListGroupsRequest,
     ) -> ims_20190815_models.ListGroupsResponse:
+        """
+        @summary Queries RAM user groups.
+        
+        @param request: ListGroupsRequest
+        @return: ListGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_groups_with_options(request, runtime)
 
@@ -3618,6 +4638,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.ListGroupsRequest,
     ) -> ims_20190815_models.ListGroupsResponse:
+        """
+        @summary Queries RAM user groups.
+        
+        @param request: ListGroupsRequest
+        @return: ListGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_groups_with_options_async(request, runtime)
 
@@ -3626,6 +4652,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListGroupsForUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListGroupsForUserResponse:
+        """
+        @summary Queries the RAM user groups to which a RAM user belongs.
+        
+        @param request: ListGroupsForUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGroupsForUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_principal_name):
@@ -3654,6 +4687,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListGroupsForUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListGroupsForUserResponse:
+        """
+        @summary Queries the RAM user groups to which a RAM user belongs.
+        
+        @param request: ListGroupsForUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGroupsForUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_principal_name):
@@ -3681,6 +4721,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.ListGroupsForUserRequest,
     ) -> ims_20190815_models.ListGroupsForUserResponse:
+        """
+        @summary Queries the RAM user groups to which a RAM user belongs.
+        
+        @param request: ListGroupsForUserRequest
+        @return: ListGroupsForUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_groups_for_user_with_options(request, runtime)
 
@@ -3688,6 +4734,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.ListGroupsForUserRequest,
     ) -> ims_20190815_models.ListGroupsForUserResponse:
+        """
+        @summary Queries the RAM user groups to which a RAM user belongs.
+        
+        @param request: ListGroupsForUserRequest
+        @return: ListGroupsForUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_groups_for_user_with_options_async(request, runtime)
 
@@ -3697,7 +4749,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListOIDCProvidersResponse:
         """
-        ###
+        @summary Queries OIDC IdPs.
+        
+        @description ###
         This topic provides an example on how to query all OpenID Connect (OIDC) identity providers (IdPs) within your Alibaba Cloud account. The response shows that your Alibaba Cloud account has only one OIDC IdP named `TestOIDCProvider`.
         
         @param request: ListOIDCProvidersRequest
@@ -3735,7 +4789,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListOIDCProvidersResponse:
         """
-        ###
+        @summary Queries OIDC IdPs.
+        
+        @description ###
         This topic provides an example on how to query all OpenID Connect (OIDC) identity providers (IdPs) within your Alibaba Cloud account. The response shows that your Alibaba Cloud account has only one OIDC IdP named `TestOIDCProvider`.
         
         @param request: ListOIDCProvidersRequest
@@ -3772,7 +4828,9 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListOIDCProvidersRequest,
     ) -> ims_20190815_models.ListOIDCProvidersResponse:
         """
-        ###
+        @summary Queries OIDC IdPs.
+        
+        @description ###
         This topic provides an example on how to query all OpenID Connect (OIDC) identity providers (IdPs) within your Alibaba Cloud account. The response shows that your Alibaba Cloud account has only one OIDC IdP named `TestOIDCProvider`.
         
         @param request: ListOIDCProvidersRequest
@@ -3786,7 +4844,9 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListOIDCProvidersRequest,
     ) -> ims_20190815_models.ListOIDCProvidersResponse:
         """
-        ###
+        @summary Queries OIDC IdPs.
+        
+        @description ###
         This topic provides an example on how to query all OpenID Connect (OIDC) identity providers (IdPs) within your Alibaba Cloud account. The response shows that your Alibaba Cloud account has only one OIDC IdP named `TestOIDCProvider`.
         
         @param request: ListOIDCProvidersRequest
@@ -3800,6 +4860,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListPredefinedScopesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListPredefinedScopesResponse:
+        """
+        @summary Queries predefined application permissions.
+        
+        @param request: ListPredefinedScopesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPredefinedScopesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_type):
@@ -3828,6 +4895,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListPredefinedScopesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListPredefinedScopesResponse:
+        """
+        @summary Queries predefined application permissions.
+        
+        @param request: ListPredefinedScopesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPredefinedScopesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_type):
@@ -3855,6 +4929,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.ListPredefinedScopesRequest,
     ) -> ims_20190815_models.ListPredefinedScopesResponse:
+        """
+        @summary Queries predefined application permissions.
+        
+        @param request: ListPredefinedScopesRequest
+        @return: ListPredefinedScopesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_predefined_scopes_with_options(request, runtime)
 
@@ -3862,6 +4942,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.ListPredefinedScopesRequest,
     ) -> ims_20190815_models.ListPredefinedScopesResponse:
+        """
+        @summary Queries predefined application permissions.
+        
+        @param request: ListPredefinedScopesRequest
+        @return: ListPredefinedScopesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_predefined_scopes_with_options_async(request, runtime)
 
@@ -3870,6 +4956,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListSAMLProvidersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListSAMLProvidersResponse:
+        """
+        @summary 查询角色SSO身份提供商列表
+        
+        @param request: ListSAMLProvidersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSAMLProvidersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.marker):
@@ -3900,6 +4993,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListSAMLProvidersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListSAMLProvidersResponse:
+        """
+        @summary 查询角色SSO身份提供商列表
+        
+        @param request: ListSAMLProvidersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSAMLProvidersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.marker):
@@ -3929,6 +5029,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.ListSAMLProvidersRequest,
     ) -> ims_20190815_models.ListSAMLProvidersResponse:
+        """
+        @summary 查询角色SSO身份提供商列表
+        
+        @param request: ListSAMLProvidersRequest
+        @return: ListSAMLProvidersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_samlproviders_with_options(request, runtime)
 
@@ -3936,6 +5042,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.ListSAMLProvidersRequest,
     ) -> ims_20190815_models.ListSAMLProvidersResponse:
+        """
+        @summary 查询角色SSO身份提供商列表
+        
+        @param request: ListSAMLProvidersRequest
+        @return: ListSAMLProvidersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_samlproviders_with_options_async(request, runtime)
 
@@ -3945,11 +5057,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListTagResourcesResponse:
         """
-        ###
+        @summary Queries the tags that are added resources.
+        
+        @description ###
         You must specify at least one of the following parameters or parameter pairs in a request to determine a query object:
-        *   `ResourceId.N`
-        *   `Tag.N.Key`
-        *   `Tag.N.Key` and `Tag.N.Value`
+        `ResourceId.N`
+        `Tag.N.Key`
+        `Tag.N.Key` and `Tag.N.Value`
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3994,11 +5108,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListTagResourcesResponse:
         """
-        ###
+        @summary Queries the tags that are added resources.
+        
+        @description ###
         You must specify at least one of the following parameters or parameter pairs in a request to determine a query object:
-        *   `ResourceId.N`
-        *   `Tag.N.Key`
-        *   `Tag.N.Key` and `Tag.N.Value`
+        `ResourceId.N`
+        `Tag.N.Key`
+        `Tag.N.Key` and `Tag.N.Value`
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4042,11 +5158,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListTagResourcesRequest,
     ) -> ims_20190815_models.ListTagResourcesResponse:
         """
-        ###
+        @summary Queries the tags that are added resources.
+        
+        @description ###
         You must specify at least one of the following parameters or parameter pairs in a request to determine a query object:
-        *   `ResourceId.N`
-        *   `Tag.N.Key`
-        *   `Tag.N.Key` and `Tag.N.Value`
+        `ResourceId.N`
+        `Tag.N.Key`
+        `Tag.N.Key` and `Tag.N.Value`
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -4059,11 +5177,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListTagResourcesRequest,
     ) -> ims_20190815_models.ListTagResourcesResponse:
         """
-        ###
+        @summary Queries the tags that are added resources.
+        
+        @description ###
         You must specify at least one of the following parameters or parameter pairs in a request to determine a query object:
-        *   `ResourceId.N`
-        *   `Tag.N.Key`
-        *   `Tag.N.Key` and `Tag.N.Value`
+        `ResourceId.N`
+        `Tag.N.Key`
+        `Tag.N.Key` and `Tag.N.Value`
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -4077,9 +5197,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListUserBasicInfosResponse:
         """
-        You can call the following API operations to query the information about all RAM users:
-        *   ListUsers: queries the details of all RAM users.
-        *   ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
+        @summary Queries the basic information about all RAM users.
+        
+        @description You can call the following API operations to query the information about all RAM users:
+        ListUsers: queries the details of all RAM users.
+        ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
         
         @param request: ListUserBasicInfosRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4091,6 +5213,8 @@ class Client(OpenApiClient):
             query['Marker'] = request.marker
         if not UtilClient.is_unset(request.max_items):
             query['MaxItems'] = request.max_items
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
@@ -4118,9 +5242,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListUserBasicInfosResponse:
         """
-        You can call the following API operations to query the information about all RAM users:
-        *   ListUsers: queries the details of all RAM users.
-        *   ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
+        @summary Queries the basic information about all RAM users.
+        
+        @description You can call the following API operations to query the information about all RAM users:
+        ListUsers: queries the details of all RAM users.
+        ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
         
         @param request: ListUserBasicInfosRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4132,6 +5258,8 @@ class Client(OpenApiClient):
             query['Marker'] = request.marker
         if not UtilClient.is_unset(request.max_items):
             query['MaxItems'] = request.max_items
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
@@ -4158,9 +5286,11 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListUserBasicInfosRequest,
     ) -> ims_20190815_models.ListUserBasicInfosResponse:
         """
-        You can call the following API operations to query the information about all RAM users:
-        *   ListUsers: queries the details of all RAM users.
-        *   ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
+        @summary Queries the basic information about all RAM users.
+        
+        @description You can call the following API operations to query the information about all RAM users:
+        ListUsers: queries the details of all RAM users.
+        ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
         
         @param request: ListUserBasicInfosRequest
         @return: ListUserBasicInfosResponse
@@ -4173,9 +5303,11 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListUserBasicInfosRequest,
     ) -> ims_20190815_models.ListUserBasicInfosResponse:
         """
-        You can call the following API operations to query the information about all RAM users:
-        *   ListUsers: queries the details of all RAM users.
-        *   ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
+        @summary Queries the basic information about all RAM users.
+        
+        @description You can call the following API operations to query the information about all RAM users:
+        ListUsers: queries the details of all RAM users.
+        ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
         
         @param request: ListUserBasicInfosRequest
         @return: ListUserBasicInfosResponse
@@ -4189,10 +5321,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListUsersResponse:
         """
-        ### [](#)
+        @summary Queries the details of all RAM users.
+        
+        @description ### [](#)
         You can call the following API operations to query the details of all RAM users:
-        *   ListUsers: queries the details of all RAM users.
-        *   ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
+        ListUsers: queries the details of all RAM users.
+        ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
         
         @param request: ListUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4204,6 +5338,8 @@ class Client(OpenApiClient):
             query['Marker'] = request.marker
         if not UtilClient.is_unset(request.max_items):
             query['MaxItems'] = request.max_items
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
@@ -4231,10 +5367,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListUsersResponse:
         """
-        ### [](#)
+        @summary Queries the details of all RAM users.
+        
+        @description ### [](#)
         You can call the following API operations to query the details of all RAM users:
-        *   ListUsers: queries the details of all RAM users.
-        *   ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
+        ListUsers: queries the details of all RAM users.
+        ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
         
         @param request: ListUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4246,6 +5384,8 @@ class Client(OpenApiClient):
             query['Marker'] = request.marker
         if not UtilClient.is_unset(request.max_items):
             query['MaxItems'] = request.max_items
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
@@ -4272,10 +5412,12 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListUsersRequest,
     ) -> ims_20190815_models.ListUsersResponse:
         """
-        ### [](#)
+        @summary Queries the details of all RAM users.
+        
+        @description ### [](#)
         You can call the following API operations to query the details of all RAM users:
-        *   ListUsers: queries the details of all RAM users.
-        *   ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
+        ListUsers: queries the details of all RAM users.
+        ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
         
         @param request: ListUsersRequest
         @return: ListUsersResponse
@@ -4288,10 +5430,12 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListUsersRequest,
     ) -> ims_20190815_models.ListUsersResponse:
         """
-        ### [](#)
+        @summary Queries the details of all RAM users.
+        
+        @description ### [](#)
         You can call the following API operations to query the details of all RAM users:
-        *   ListUsers: queries the details of all RAM users.
-        *   ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
+        ListUsers: queries the details of all RAM users.
+        ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
         
         @param request: ListUsersRequest
         @return: ListUsersResponse
@@ -4304,6 +5448,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListUsersForGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListUsersForGroupResponse:
+        """
+        @summary Queries Resource Access Management (RAM) users in a RAM user group.
+        
+        @param request: ListUsersForGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUsersForGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -4336,6 +5487,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListUsersForGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListUsersForGroupResponse:
+        """
+        @summary Queries Resource Access Management (RAM) users in a RAM user group.
+        
+        @param request: ListUsersForGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUsersForGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -4367,6 +5525,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.ListUsersForGroupRequest,
     ) -> ims_20190815_models.ListUsersForGroupResponse:
+        """
+        @summary Queries Resource Access Management (RAM) users in a RAM user group.
+        
+        @param request: ListUsersForGroupRequest
+        @return: ListUsersForGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_users_for_group_with_options(request, runtime)
 
@@ -4374,6 +5538,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.ListUsersForGroupRequest,
     ) -> ims_20190815_models.ListUsersForGroupResponse:
+        """
+        @summary Queries Resource Access Management (RAM) users in a RAM user group.
+        
+        @param request: ListUsersForGroupRequest
+        @return: ListUsersForGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_users_for_group_with_options_async(request, runtime)
 
@@ -4382,6 +5552,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListVirtualMFADevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListVirtualMFADevicesResponse:
+        """
+        @summary Queries multi-factor authentication (MFA) devices.
+        
+        @param request: ListVirtualMFADevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVirtualMFADevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.marker):
@@ -4412,6 +5589,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListVirtualMFADevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListVirtualMFADevicesResponse:
+        """
+        @summary Queries multi-factor authentication (MFA) devices.
+        
+        @param request: ListVirtualMFADevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVirtualMFADevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.marker):
@@ -4441,6 +5625,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.ListVirtualMFADevicesRequest,
     ) -> ims_20190815_models.ListVirtualMFADevicesResponse:
+        """
+        @summary Queries multi-factor authentication (MFA) devices.
+        
+        @param request: ListVirtualMFADevicesRequest
+        @return: ListVirtualMFADevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_virtual_mfadevices_with_options(request, runtime)
 
@@ -4448,6 +5638,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.ListVirtualMFADevicesRequest,
     ) -> ims_20190815_models.ListVirtualMFADevicesResponse:
+        """
+        @summary Queries multi-factor authentication (MFA) devices.
+        
+        @param request: ListVirtualMFADevicesRequest
+        @return: ListVirtualMFADevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_virtual_mfadevices_with_options_async(request, runtime)
 
@@ -4457,8 +5653,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.RemoveClientIdFromOIDCProviderResponse:
         """
-        ###
-        This topic provides an example on how to remove the client ID `498469743454717****` from the OIDC IdP named `TestOIDCProvider`.
+        @summary Removes a client ID from an OpenID Connect (OIDC) identity provider (IdP).
+        
+        @description ###
+        This topic provides an example on how to remove the client ID `498469743454717***` from the OIDC IdP named `TestOIDCProvider`.
         
         @param request: RemoveClientIdFromOIDCProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4495,8 +5693,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.RemoveClientIdFromOIDCProviderResponse:
         """
-        ###
-        This topic provides an example on how to remove the client ID `498469743454717****` from the OIDC IdP named `TestOIDCProvider`.
+        @summary Removes a client ID from an OpenID Connect (OIDC) identity provider (IdP).
+        
+        @description ###
+        This topic provides an example on how to remove the client ID `498469743454717***` from the OIDC IdP named `TestOIDCProvider`.
         
         @param request: RemoveClientIdFromOIDCProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4532,8 +5732,10 @@ class Client(OpenApiClient):
         request: ims_20190815_models.RemoveClientIdFromOIDCProviderRequest,
     ) -> ims_20190815_models.RemoveClientIdFromOIDCProviderResponse:
         """
-        ###
-        This topic provides an example on how to remove the client ID `498469743454717****` from the OIDC IdP named `TestOIDCProvider`.
+        @summary Removes a client ID from an OpenID Connect (OIDC) identity provider (IdP).
+        
+        @description ###
+        This topic provides an example on how to remove the client ID `498469743454717***` from the OIDC IdP named `TestOIDCProvider`.
         
         @param request: RemoveClientIdFromOIDCProviderRequest
         @return: RemoveClientIdFromOIDCProviderResponse
@@ -4546,8 +5748,10 @@ class Client(OpenApiClient):
         request: ims_20190815_models.RemoveClientIdFromOIDCProviderRequest,
     ) -> ims_20190815_models.RemoveClientIdFromOIDCProviderResponse:
         """
-        ###
-        This topic provides an example on how to remove the client ID `498469743454717****` from the OIDC IdP named `TestOIDCProvider`.
+        @summary Removes a client ID from an OpenID Connect (OIDC) identity provider (IdP).
+        
+        @description ###
+        This topic provides an example on how to remove the client ID `498469743454717***` from the OIDC IdP named `TestOIDCProvider`.
         
         @param request: RemoveClientIdFromOIDCProviderRequest
         @return: RemoveClientIdFromOIDCProviderResponse
@@ -4561,8 +5765,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.RemoveFingerprintFromOIDCProviderResponse:
         """
-        ###
-        This topic provides an example on how to remove the fingerprint `6938fd4d98bab03faadb97b34396831e3780****` from the OIDC IdP named `TestOIDCProvider`.
+        @summary Removes a fingerprint from an OpenID Connect (OIDC) identity provider (IdP).
+        
+        @description ###
+        This topic provides an example on how to remove the fingerprint `6938fd4d98bab03faadb97b34396831e3780***` from the OIDC IdP named `TestOIDCProvider`.
         
         @param request: RemoveFingerprintFromOIDCProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4599,8 +5805,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.RemoveFingerprintFromOIDCProviderResponse:
         """
-        ###
-        This topic provides an example on how to remove the fingerprint `6938fd4d98bab03faadb97b34396831e3780****` from the OIDC IdP named `TestOIDCProvider`.
+        @summary Removes a fingerprint from an OpenID Connect (OIDC) identity provider (IdP).
+        
+        @description ###
+        This topic provides an example on how to remove the fingerprint `6938fd4d98bab03faadb97b34396831e3780***` from the OIDC IdP named `TestOIDCProvider`.
         
         @param request: RemoveFingerprintFromOIDCProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4636,8 +5844,10 @@ class Client(OpenApiClient):
         request: ims_20190815_models.RemoveFingerprintFromOIDCProviderRequest,
     ) -> ims_20190815_models.RemoveFingerprintFromOIDCProviderResponse:
         """
-        ###
-        This topic provides an example on how to remove the fingerprint `6938fd4d98bab03faadb97b34396831e3780****` from the OIDC IdP named `TestOIDCProvider`.
+        @summary Removes a fingerprint from an OpenID Connect (OIDC) identity provider (IdP).
+        
+        @description ###
+        This topic provides an example on how to remove the fingerprint `6938fd4d98bab03faadb97b34396831e3780***` from the OIDC IdP named `TestOIDCProvider`.
         
         @param request: RemoveFingerprintFromOIDCProviderRequest
         @return: RemoveFingerprintFromOIDCProviderResponse
@@ -4650,8 +5860,10 @@ class Client(OpenApiClient):
         request: ims_20190815_models.RemoveFingerprintFromOIDCProviderRequest,
     ) -> ims_20190815_models.RemoveFingerprintFromOIDCProviderResponse:
         """
-        ###
-        This topic provides an example on how to remove the fingerprint `6938fd4d98bab03faadb97b34396831e3780****` from the OIDC IdP named `TestOIDCProvider`.
+        @summary Removes a fingerprint from an OpenID Connect (OIDC) identity provider (IdP).
+        
+        @description ###
+        This topic provides an example on how to remove the fingerprint `6938fd4d98bab03faadb97b34396831e3780***` from the OIDC IdP named `TestOIDCProvider`.
         
         @param request: RemoveFingerprintFromOIDCProviderRequest
         @return: RemoveFingerprintFromOIDCProviderResponse
@@ -4664,6 +5876,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.RemoveUserFromGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.RemoveUserFromGroupResponse:
+        """
+        @summary 将RAM用户从用户组中移除
+        
+        @param request: RemoveUserFromGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveUserFromGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -4694,6 +5913,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.RemoveUserFromGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.RemoveUserFromGroupResponse:
+        """
+        @summary 将RAM用户从用户组中移除
+        
+        @param request: RemoveUserFromGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveUserFromGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -4723,6 +5949,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.RemoveUserFromGroupRequest,
     ) -> ims_20190815_models.RemoveUserFromGroupResponse:
+        """
+        @summary 将RAM用户从用户组中移除
+        
+        @param request: RemoveUserFromGroupRequest
+        @return: RemoveUserFromGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_user_from_group_with_options(request, runtime)
 
@@ -4730,6 +5962,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.RemoveUserFromGroupRequest,
     ) -> ims_20190815_models.RemoveUserFromGroupResponse:
+        """
+        @summary 将RAM用户从用户组中移除
+        
+        @param request: RemoveUserFromGroupRequest
+        @return: RemoveUserFromGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_user_from_group_with_options_async(request, runtime)
 
@@ -4738,6 +5976,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.SetDefaultDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.SetDefaultDomainResponse:
+        """
+        @summary Configures the default domain name.
+        
+        @param request: SetDefaultDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDefaultDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.default_domain_name):
@@ -4766,6 +6011,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.SetDefaultDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.SetDefaultDomainResponse:
+        """
+        @summary Configures the default domain name.
+        
+        @param request: SetDefaultDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDefaultDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.default_domain_name):
@@ -4793,6 +6045,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.SetDefaultDomainRequest,
     ) -> ims_20190815_models.SetDefaultDomainResponse:
+        """
+        @summary Configures the default domain name.
+        
+        @param request: SetDefaultDomainRequest
+        @return: SetDefaultDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_default_domain_with_options(request, runtime)
 
@@ -4800,6 +6058,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.SetDefaultDomainRequest,
     ) -> ims_20190815_models.SetDefaultDomainResponse:
+        """
+        @summary Configures the default domain name.
+        
+        @param request: SetDefaultDomainRequest
+        @return: SetDefaultDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_default_domain_with_options_async(request, runtime)
 
@@ -4808,6 +6072,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.SetPasswordPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.SetPasswordPolicyResponse:
+        """
+        @summary Configures the password policy for RAM users.
+        
+        @param request: SetPasswordPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetPasswordPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.hard_expire):
@@ -4856,6 +6127,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.SetPasswordPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.SetPasswordPolicyResponse:
+        """
+        @summary Configures the password policy for RAM users.
+        
+        @param request: SetPasswordPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetPasswordPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.hard_expire):
@@ -4903,6 +6181,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.SetPasswordPolicyRequest,
     ) -> ims_20190815_models.SetPasswordPolicyResponse:
+        """
+        @summary Configures the password policy for RAM users.
+        
+        @param request: SetPasswordPolicyRequest
+        @return: SetPasswordPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_password_policy_with_options(request, runtime)
 
@@ -4910,6 +6194,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.SetPasswordPolicyRequest,
     ) -> ims_20190815_models.SetPasswordPolicyResponse:
+        """
+        @summary Configures the password policy for RAM users.
+        
+        @param request: SetPasswordPolicyRequest
+        @return: SetPasswordPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_password_policy_with_options_async(request, runtime)
 
@@ -4919,7 +6209,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.SetSecurityPreferenceResponse:
         """
-        ###
+        @summary Configures security preferences for a RAM user.
+        
+        @description ###
         This topic provides an example on how to enable multi-factor authentication (MFA) only for RAM users who initiated unusual logons.
         
         @param tmp_req: SetSecurityPreferenceRequest
@@ -4977,7 +6269,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.SetSecurityPreferenceResponse:
         """
-        ###
+        @summary Configures security preferences for a RAM user.
+        
+        @description ###
         This topic provides an example on how to enable multi-factor authentication (MFA) only for RAM users who initiated unusual logons.
         
         @param tmp_req: SetSecurityPreferenceRequest
@@ -5034,7 +6328,9 @@ class Client(OpenApiClient):
         request: ims_20190815_models.SetSecurityPreferenceRequest,
     ) -> ims_20190815_models.SetSecurityPreferenceResponse:
         """
-        ###
+        @summary Configures security preferences for a RAM user.
+        
+        @description ###
         This topic provides an example on how to enable multi-factor authentication (MFA) only for RAM users who initiated unusual logons.
         
         @param request: SetSecurityPreferenceRequest
@@ -5048,7 +6344,9 @@ class Client(OpenApiClient):
         request: ims_20190815_models.SetSecurityPreferenceRequest,
     ) -> ims_20190815_models.SetSecurityPreferenceResponse:
         """
-        ###
+        @summary Configures security preferences for a RAM user.
+        
+        @description ###
         This topic provides an example on how to enable multi-factor authentication (MFA) only for RAM users who initiated unusual logons.
         
         @param request: SetSecurityPreferenceRequest
@@ -5062,6 +6360,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.SetUserSsoSettingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.SetUserSsoSettingsResponse:
+        """
+        @summary 设置用户SSO身份提供商信息
+        
+        @param request: SetUserSsoSettingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetUserSsoSettingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auxiliary_domain):
@@ -5094,6 +6399,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.SetUserSsoSettingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.SetUserSsoSettingsResponse:
+        """
+        @summary 设置用户SSO身份提供商信息
+        
+        @param request: SetUserSsoSettingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetUserSsoSettingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auxiliary_domain):
@@ -5125,6 +6437,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.SetUserSsoSettingsRequest,
     ) -> ims_20190815_models.SetUserSsoSettingsResponse:
+        """
+        @summary 设置用户SSO身份提供商信息
+        
+        @param request: SetUserSsoSettingsRequest
+        @return: SetUserSsoSettingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_user_sso_settings_with_options(request, runtime)
 
@@ -5132,6 +6450,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.SetUserSsoSettingsRequest,
     ) -> ims_20190815_models.SetUserSsoSettingsResponse:
+        """
+        @summary 设置用户SSO身份提供商信息
+        
+        @param request: SetUserSsoSettingsRequest
+        @return: SetUserSsoSettingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_user_sso_settings_with_options_async(request, runtime)
 
@@ -5140,6 +6464,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.TagResourcesResponse:
+        """
+        @summary Adds tags to resources.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_id):
@@ -5174,6 +6505,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.TagResourcesResponse:
+        """
+        @summary Adds tags to resources.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_id):
@@ -5207,6 +6545,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.TagResourcesRequest,
     ) -> ims_20190815_models.TagResourcesResponse:
+        """
+        @summary Adds tags to resources.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
@@ -5214,6 +6558,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.TagResourcesRequest,
     ) -> ims_20190815_models.TagResourcesResponse:
+        """
+        @summary Adds tags to resources.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
@@ -5222,6 +6572,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.UnbindMFADeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UnbindMFADeviceResponse:
+        """
+        @summary 为RAM用户解绑多因素认证设备
+        
+        @param request: UnbindMFADeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindMFADeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_principal_name):
@@ -5250,6 +6607,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.UnbindMFADeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UnbindMFADeviceResponse:
+        """
+        @summary 为RAM用户解绑多因素认证设备
+        
+        @param request: UnbindMFADeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindMFADeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_principal_name):
@@ -5277,6 +6641,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.UnbindMFADeviceRequest,
     ) -> ims_20190815_models.UnbindMFADeviceResponse:
+        """
+        @summary 为RAM用户解绑多因素认证设备
+        
+        @param request: UnbindMFADeviceRequest
+        @return: UnbindMFADeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unbind_mfadevice_with_options(request, runtime)
 
@@ -5284,6 +6654,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.UnbindMFADeviceRequest,
     ) -> ims_20190815_models.UnbindMFADeviceResponse:
+        """
+        @summary 为RAM用户解绑多因素认证设备
+        
+        @param request: UnbindMFADeviceRequest
+        @return: UnbindMFADeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unbind_mfadevice_with_options_async(request, runtime)
 
@@ -5292,6 +6668,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from a resource.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -5328,6 +6711,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from a resource.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -5363,6 +6753,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.UntagResourcesRequest,
     ) -> ims_20190815_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from a resource.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.untag_resources_with_options(request, runtime)
 
@@ -5370,6 +6766,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.UntagResourcesRequest,
     ) -> ims_20190815_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from a resource.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
 
@@ -5378,6 +6780,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.UpdateAccessKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UpdateAccessKeyResponse:
+        """
+        @summary 修改访问密钥状态
+        
+        @param request: UpdateAccessKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAccessKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.status):
@@ -5410,6 +6819,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.UpdateAccessKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UpdateAccessKeyResponse:
+        """
+        @summary 修改访问密钥状态
+        
+        @param request: UpdateAccessKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAccessKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.status):
@@ -5441,6 +6857,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.UpdateAccessKeyRequest,
     ) -> ims_20190815_models.UpdateAccessKeyResponse:
+        """
+        @summary 修改访问密钥状态
+        
+        @param request: UpdateAccessKeyRequest
+        @return: UpdateAccessKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_access_key_with_options(request, runtime)
 
@@ -5448,6 +6870,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.UpdateAccessKeyRequest,
     ) -> ims_20190815_models.UpdateAccessKeyResponse:
+        """
+        @summary 修改访问密钥状态
+        
+        @param request: UpdateAccessKeyRequest
+        @return: UpdateAccessKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_access_key_with_options_async(request, runtime)
 
@@ -5456,6 +6884,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.UpdateApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UpdateApplicationResponse:
+        """
+        @summary Modifies the information about a specified application.
+        
+        @param request: UpdateApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5500,6 +6935,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.UpdateApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UpdateApplicationResponse:
+        """
+        @summary Modifies the information about a specified application.
+        
+        @param request: UpdateApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5543,6 +6985,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.UpdateApplicationRequest,
     ) -> ims_20190815_models.UpdateApplicationResponse:
+        """
+        @summary Modifies the information about a specified application.
+        
+        @param request: UpdateApplicationRequest
+        @return: UpdateApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_application_with_options(request, runtime)
 
@@ -5550,6 +6998,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.UpdateApplicationRequest,
     ) -> ims_20190815_models.UpdateApplicationResponse:
+        """
+        @summary Modifies the information about a specified application.
+        
+        @param request: UpdateApplicationRequest
+        @return: UpdateApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_application_with_options_async(request, runtime)
 
@@ -5558,6 +7012,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.UpdateGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UpdateGroupResponse:
+        """
+        @summary Modifies the information of a RAM user group.
+        
+        @param request: UpdateGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -5592,6 +7053,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.UpdateGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UpdateGroupResponse:
+        """
+        @summary Modifies the information of a RAM user group.
+        
+        @param request: UpdateGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -5625,6 +7093,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.UpdateGroupRequest,
     ) -> ims_20190815_models.UpdateGroupResponse:
+        """
+        @summary Modifies the information of a RAM user group.
+        
+        @param request: UpdateGroupRequest
+        @return: UpdateGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_group_with_options(request, runtime)
 
@@ -5632,6 +7106,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.UpdateGroupRequest,
     ) -> ims_20190815_models.UpdateGroupResponse:
+        """
+        @summary Modifies the information of a RAM user group.
+        
+        @param request: UpdateGroupRequest
+        @return: UpdateGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_group_with_options_async(request, runtime)
 
@@ -5640,6 +7120,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.UpdateLoginProfileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UpdateLoginProfileResponse:
+        """
+        @summary 修改RAM用户的控制台登录信息
+        
+        @param request: UpdateLoginProfileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLoginProfileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.mfabind_required):
@@ -5676,6 +7163,13 @@ class Client(OpenApiClient):
         request: ims_20190815_models.UpdateLoginProfileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UpdateLoginProfileResponse:
+        """
+        @summary 修改RAM用户的控制台登录信息
+        
+        @param request: UpdateLoginProfileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLoginProfileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.mfabind_required):
@@ -5711,6 +7205,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.UpdateLoginProfileRequest,
     ) -> ims_20190815_models.UpdateLoginProfileResponse:
+        """
+        @summary 修改RAM用户的控制台登录信息
+        
+        @param request: UpdateLoginProfileRequest
+        @return: UpdateLoginProfileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_login_profile_with_options(request, runtime)
 
@@ -5718,6 +7218,12 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.UpdateLoginProfileRequest,
     ) -> ims_20190815_models.UpdateLoginProfileResponse:
+        """
+        @summary 修改RAM用户的控制台登录信息
+        
+        @param request: UpdateLoginProfileRequest
+        @return: UpdateLoginProfileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_login_profile_with_options_async(request, runtime)
 
@@ -5727,7 +7233,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UpdateOIDCProviderResponse:
         """
-        ###
+        @summary Modifies the description and client IDs of an OpenID Connect (OIDC) identity provider (IdP).
+        
+        @description ###
         This topic provides an example on how to change the description of the OIDC IdP named `TestOIDCProvider` to `This is a new OIDC Provider.`
         
         @param request: UpdateOIDCProviderRequest
@@ -5769,7 +7277,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UpdateOIDCProviderResponse:
         """
-        ###
+        @summary Modifies the description and client IDs of an OpenID Connect (OIDC) identity provider (IdP).
+        
+        @description ###
         This topic provides an example on how to change the description of the OIDC IdP named `TestOIDCProvider` to `This is a new OIDC Provider.`
         
         @param request: UpdateOIDCProviderRequest
@@ -5810,7 +7320,9 @@ class Client(OpenApiClient):
         request: ims_20190815_models.UpdateOIDCProviderRequest,
     ) -> ims_20190815_models.UpdateOIDCProviderResponse:
         """
-        ###
+        @summary Modifies the description and client IDs of an OpenID Connect (OIDC) identity provider (IdP).
+        
+        @description ###
         This topic provides an example on how to change the description of the OIDC IdP named `TestOIDCProvider` to `This is a new OIDC Provider.`
         
         @param request: UpdateOIDCProviderRequest
@@ -5824,7 +7336,9 @@ class Client(OpenApiClient):
         request: ims_20190815_models.UpdateOIDCProviderRequest,
     ) -> ims_20190815_models.UpdateOIDCProviderResponse:
         """
-        ###
+        @summary Modifies the description and client IDs of an OpenID Connect (OIDC) identity provider (IdP).
+        
+        @description ###
         This topic provides an example on how to change the description of the OIDC IdP named `TestOIDCProvider` to `This is a new OIDC Provider.`
         
         @param request: UpdateOIDCProviderRequest
@@ -5839,7 +7353,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UpdateSAMLProviderResponse:
         """
-        This topic provides an example on how to change the description of an IdP named `test-provider` to `This is a new provider.`
+        @summary 修改角色SSO身份提供商信息
+        
+        @description This topic provides an example on how to change the description of an IdP named `test-provider` to `This is a new provider.`
         
         @param request: UpdateSAMLProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5878,7 +7394,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UpdateSAMLProviderResponse:
         """
-        This topic provides an example on how to change the description of an IdP named `test-provider` to `This is a new provider.`
+        @summary 修改角色SSO身份提供商信息
+        
+        @description This topic provides an example on how to change the description of an IdP named `test-provider` to `This is a new provider.`
         
         @param request: UpdateSAMLProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5916,7 +7434,9 @@ class Client(OpenApiClient):
         request: ims_20190815_models.UpdateSAMLProviderRequest,
     ) -> ims_20190815_models.UpdateSAMLProviderResponse:
         """
-        This topic provides an example on how to change the description of an IdP named `test-provider` to `This is a new provider.`
+        @summary 修改角色SSO身份提供商信息
+        
+        @description This topic provides an example on how to change the description of an IdP named `test-provider` to `This is a new provider.`
         
         @param request: UpdateSAMLProviderRequest
         @return: UpdateSAMLProviderResponse
@@ -5929,7 +7449,9 @@ class Client(OpenApiClient):
         request: ims_20190815_models.UpdateSAMLProviderRequest,
     ) -> ims_20190815_models.UpdateSAMLProviderResponse:
         """
-        This topic provides an example on how to change the description of an IdP named `test-provider` to `This is a new provider.`
+        @summary 修改角色SSO身份提供商信息
+        
+        @description This topic provides an example on how to change the description of an IdP named `test-provider` to `This is a new provider.`
         
         @param request: UpdateSAMLProviderRequest
         @return: UpdateSAMLProviderResponse
@@ -5943,7 +7465,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UpdateUserResponse:
         """
-        This topic provides an example to show how to modify the name of a RAM user from `test@example.onaliyun.com` to `new@example.onaliyun.com`.
+        @summary Modifies the information about a RAM user.
+        
+        @description This topic provides an example to show how to modify the name of a RAM user from `test@example.onaliyun.com` to `new@example.onaliyun.com`.
         
         @param request: UpdateUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5990,7 +7514,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UpdateUserResponse:
         """
-        This topic provides an example to show how to modify the name of a RAM user from `test@example.onaliyun.com` to `new@example.onaliyun.com`.
+        @summary Modifies the information about a RAM user.
+        
+        @description This topic provides an example to show how to modify the name of a RAM user from `test@example.onaliyun.com` to `new@example.onaliyun.com`.
         
         @param request: UpdateUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6036,7 +7562,9 @@ class Client(OpenApiClient):
         request: ims_20190815_models.UpdateUserRequest,
     ) -> ims_20190815_models.UpdateUserResponse:
         """
-        This topic provides an example to show how to modify the name of a RAM user from `test@example.onaliyun.com` to `new@example.onaliyun.com`.
+        @summary Modifies the information about a RAM user.
+        
+        @description This topic provides an example to show how to modify the name of a RAM user from `test@example.onaliyun.com` to `new@example.onaliyun.com`.
         
         @param request: UpdateUserRequest
         @return: UpdateUserResponse
@@ -6049,7 +7577,9 @@ class Client(OpenApiClient):
         request: ims_20190815_models.UpdateUserRequest,
     ) -> ims_20190815_models.UpdateUserResponse:
         """
-        This topic provides an example to show how to modify the name of a RAM user from `test@example.onaliyun.com` to `new@example.onaliyun.com`.
+        @summary Modifies the information about a RAM user.
+        
+        @description This topic provides an example to show how to modify the name of a RAM user from `test@example.onaliyun.com` to `new@example.onaliyun.com`.
         
         @param request: UpdateUserRequest
         @return: UpdateUserResponse
