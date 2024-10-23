@@ -1854,10 +1854,12 @@ class TracingConfig(TeaModel):
 class VPCConfig(TeaModel):
     def __init__(
         self,
+        role: str = None,
         security_group_id: str = None,
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
     ):
+        self.role = role
         self.security_group_id = security_group_id
         self.v_switch_ids = v_switch_ids
         self.vpc_id = vpc_id
@@ -1871,6 +1873,8 @@ class VPCConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.role is not None:
+            result['role'] = self.role
         if self.security_group_id is not None:
             result['securityGroupId'] = self.security_group_id
         if self.v_switch_ids is not None:
@@ -1881,6 +1885,8 @@ class VPCConfig(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('role') is not None:
+            self.role = m.get('role')
         if m.get('securityGroupId') is not None:
             self.security_group_id = m.get('securityGroupId')
         if m.get('vSwitchIds') is not None:
@@ -6118,7 +6124,7 @@ class CreateVpcBindingRequest(TeaModel):
         self,
         body: CreateVpcBindingInput = None,
     ):
-        # The configurations of the virtual private cloud (VPC) binding.
+        # The VPC binding configurations.
         # 
         # This parameter is required.
         self.body = body
@@ -6830,7 +6836,7 @@ class GetFunctionRequest(TeaModel):
         self,
         qualifier: str = None,
     ):
-        # The version or alias of the function.
+        # 2023-03-10T10:10:10Z
         self.qualifier = qualifier
 
     def validate(self):
@@ -7465,7 +7471,7 @@ class ListAsyncTasksRequest(TeaModel):
         # 
         # >  The `invocationPayload` parameter indicates the input parameters of an asynchronous task.
         self.include_payload = include_payload
-        # The number of asynchronous tasks to return. Valid values: [1,100]. Default value: 50.
+        # The number of asynchronous tasks to return. Valid values: [1,100]. Default value: 20.
         self.limit = limit
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
@@ -7845,6 +7851,7 @@ class ListFunctionsRequest(TeaModel):
         next_token: str = None,
         prefix: str = None,
     ):
+        # The version of Function Compute to which the functions belong. Valid values: v3 and v2. v3: only lists functions of Function Compute 3.0. v2: only lists functions of Function Compute 2.0. By default, this parameter is left empty and functions in both Function Compute 2.0 and Function Compute 3.0 are listed.
         self.fc_version = fc_version
         # The number of functions to return. The minimum value is 1 and the maximum value is 100.
         self.limit = limit

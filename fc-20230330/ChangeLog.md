@@ -1,3 +1,8 @@
+2024-10-23 Version: 4.1.4
+- Update API GetAsyncTask: update response param.
+- Update API ListAsyncTasks: update response param.
+
+
 2024-08-22 Version: 4.1.3
 - Update API ListFunctions: add param fcVersion.
 
