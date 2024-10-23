@@ -21504,7 +21504,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryGroupLiveInfoResponse:
         """
-        @summary 查询直播信息
+        @summary 查询群直播详情
         
         @param tmp_req: QueryGroupLiveInfoRequest
         @param tmp_header: QueryGroupLiveInfoHeaders
@@ -21520,12 +21520,11 @@ class Client(OpenApiClient):
             headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
         if not UtilClient.is_unset(tmp_req.tenant_context):
             request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.anchor_union_id):
-            query['AnchorUnionId'] = request.anchor_union_id
-        if not UtilClient.is_unset(request.live_uuid):
-            query['LiveUuid'] = request.live_uuid
         body = {}
+        if not UtilClient.is_unset(request.anchor_union_id):
+            body['AnchorUnionId'] = request.anchor_union_id
+        if not UtilClient.is_unset(request.live_uuid):
+            body['LiveUuid'] = request.live_uuid
         if not UtilClient.is_unset(request.tenant_context_shrink):
             body['TenantContext'] = request.tenant_context_shrink
         real_headers = {}
@@ -21535,7 +21534,6 @@ class Client(OpenApiClient):
             real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -21543,7 +21541,7 @@ class Client(OpenApiClient):
             version='2023-04-26',
             protocol='HTTPS',
             pathname=f'/dingtalk/v1/ysp/queryGroupLiveInfo',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='ROA',
             req_body_type='formData',
@@ -21561,7 +21559,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryGroupLiveInfoResponse:
         """
-        @summary 查询直播信息
+        @summary 查询群直播详情
         
         @param tmp_req: QueryGroupLiveInfoRequest
         @param tmp_header: QueryGroupLiveInfoHeaders
@@ -21577,12 +21575,11 @@ class Client(OpenApiClient):
             headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
         if not UtilClient.is_unset(tmp_req.tenant_context):
             request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.anchor_union_id):
-            query['AnchorUnionId'] = request.anchor_union_id
-        if not UtilClient.is_unset(request.live_uuid):
-            query['LiveUuid'] = request.live_uuid
         body = {}
+        if not UtilClient.is_unset(request.anchor_union_id):
+            body['AnchorUnionId'] = request.anchor_union_id
+        if not UtilClient.is_unset(request.live_uuid):
+            body['LiveUuid'] = request.live_uuid
         if not UtilClient.is_unset(request.tenant_context_shrink):
             body['TenantContext'] = request.tenant_context_shrink
         real_headers = {}
@@ -21592,7 +21589,6 @@ class Client(OpenApiClient):
             real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -21600,7 +21596,7 @@ class Client(OpenApiClient):
             version='2023-04-26',
             protocol='HTTPS',
             pathname=f'/dingtalk/v1/ysp/queryGroupLiveInfo',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='ROA',
             req_body_type='formData',
@@ -21616,7 +21612,7 @@ class Client(OpenApiClient):
         request: aliding_20230426_models.QueryGroupLiveInfoRequest,
     ) -> aliding_20230426_models.QueryGroupLiveInfoResponse:
         """
-        @summary 查询直播信息
+        @summary 查询群直播详情
         
         @param request: QueryGroupLiveInfoRequest
         @return: QueryGroupLiveInfoResponse
@@ -21630,7 +21626,7 @@ class Client(OpenApiClient):
         request: aliding_20230426_models.QueryGroupLiveInfoRequest,
     ) -> aliding_20230426_models.QueryGroupLiveInfoResponse:
         """
-        @summary 查询直播信息
+        @summary 查询群直播详情
         
         @param request: QueryGroupLiveInfoRequest
         @return: QueryGroupLiveInfoResponse

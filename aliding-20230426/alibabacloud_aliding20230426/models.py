@@ -59168,7 +59168,9 @@ class QueryGroupLiveInfoRequest(TeaModel):
         live_uuid: str = None,
         tenant_context: QueryGroupLiveInfoRequestTenantContext = None,
     ):
+        # This parameter is required.
         self.anchor_union_id = anchor_union_id
+        # This parameter is required.
         self.live_uuid = live_uuid
         self.tenant_context = tenant_context
 
@@ -59209,7 +59211,9 @@ class QueryGroupLiveInfoShrinkRequest(TeaModel):
         live_uuid: str = None,
         tenant_context_shrink: str = None,
     ):
+        # This parameter is required.
         self.anchor_union_id = anchor_union_id
+        # This parameter is required.
         self.live_uuid = live_uuid
         self.tenant_context_shrink = tenant_context_shrink
 
@@ -59253,6 +59257,7 @@ class QueryGroupLiveInfoResponseBody(TeaModel):
         live_status: int = None,
         playback_duration: int = None,
         request_id: str = None,
+        staff_id: str = None,
         start_time: int = None,
         subscribe_count: int = None,
         title: str = None,
@@ -59270,6 +59275,7 @@ class QueryGroupLiveInfoResponseBody(TeaModel):
         self.playback_duration = playback_duration
         # requestId
         self.request_id = request_id
+        self.staff_id = staff_id
         self.start_time = start_time
         self.subscribe_count = subscribe_count
         self.title = title
@@ -59304,6 +59310,8 @@ class QueryGroupLiveInfoResponseBody(TeaModel):
             result['playbackDuration'] = self.playback_duration
         if self.request_id is not None:
             result['requestId'] = self.request_id
+        if self.staff_id is not None:
+            result['staffId'] = self.staff_id
         if self.start_time is not None:
             result['startTime'] = self.start_time
         if self.subscribe_count is not None:
@@ -59338,6 +59346,8 @@ class QueryGroupLiveInfoResponseBody(TeaModel):
             self.playback_duration = m.get('playbackDuration')
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+        if m.get('staffId') is not None:
+            self.staff_id = m.get('staffId')
         if m.get('startTime') is not None:
             self.start_time = m.get('startTime')
         if m.get('subscribeCount') is not None:
