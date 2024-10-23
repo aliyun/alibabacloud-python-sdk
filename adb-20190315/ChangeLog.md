@@ -1,3 +1,89 @@
+2024-10-23 Version: 4.0.0
+- Support API DescribeDBClusterSSL.
+- Support API DescribeDBClusterSpaceSummary.
+- Support API DescribeExcessivePrimaryKeys.
+- Support API DescribeKernelVersion.
+- Support API ModifyDBClusterSSL.
+- Support API UpgradeKernelVersion.
+- Delete API DescribeSlowLogTrend.
+- Update API BatchApplyAdviceByIdList: update response param.
+- Update API CreateDBCluster: add param EnableSSL.
+- Update API CreateDBCluster: update param DiskEncryption.
+- Update API CreateElasticPlan: add param ElasticPlanWeeklyRepeat.
+- Update API CreateElasticPlan: add param ElasticPlanMonthlyRepeat.
+- Update API CreateElasticPlan: update param ElasticPlanWeeklyRepeat.
+- Update API CreateElasticPlan: update param ResourcePoolName.
+- Update API DescribeAllAccounts: update response param.
+- Update API DescribeAppliedAdvices: add param AdviceType.
+- Update API DescribeAppliedAdvices: add param Keyword.
+- Update API DescribeAppliedAdvices: add param Order.
+- Update API DescribeAppliedAdvices: add param SchemaTableName.
+- Update API DescribeAppliedAdvices: update response param.
+- Update API DescribeAuditLogConfig: update response param.
+- Update API DescribeAuditLogRecords: update param EndTime.
+- Update API DescribeAuditLogRecords: update param StartTime.
+- Update API DescribeAuditLogRecords: update response param.
+- Update API DescribeAvailableAdvices: add param AdviceType.
+- Update API DescribeAvailableAdvices: add param Keyword.
+- Update API DescribeAvailableAdvices: add param Order.
+- Update API DescribeAvailableAdvices: add param SchemaTableName.
+- Update API DescribeAvailableAdvices: update response param.
+- Update API DescribeBackups: add param CrossRole.
+- Update API DescribeBackups: add param CrossUid.
+- Update API DescribeBackups: add param RegionId.
+- Update API DescribeBackups: update param EndTime.
+- Update API DescribeBackups: update param StartTime.
+- Update API DescribeBackups: update response param.
+- Update API DescribeDBClusterAccessWhiteList: add param RegionId.
+- Update API DescribeDBClusterAttribute: add param RegionId.
+- Update API DescribeDBClusterAttribute: update response param.
+- Update API DescribeDBClusterNetInfo: add param RegionId.
+- Update API DescribeDBClusterNetInfo: update response param.
+- Update API DescribeDBClusters: update response param.
+- Update API DescribeDBResourceGroup: update response param.
+- Update API DescribeDiagnosisDimensions: update response param.
+- Update API DescribeDiagnosisMonitorPerformance: update response param.
+- Update API DescribeDiagnosisRecords: update response param.
+- Update API DescribeEIURange: add param StorageSize.
+- Update API DescribeEIURange: add param SubOperation.
+- Update API DescribeEIURange: update param ComputeResource.
+- Update API DescribeEIURange: update param Operation.
+- Update API DescribeEIURange: update response param.
+- Update API DescribeElasticPlan: update response param.
+- Update API DescribeInclinedTables: add param Lang.
+- Update API DescribeInclinedTables: add param RegionId.
+- Update API DescribeInclinedTables: update param DBClusterId.
+- Update API DescribeInclinedTables: update response param.
+- Update API DescribePatternPerformance: update response param.
+- Update API DescribeRegions: add param RegionId.
+- Update API DescribeSQLPatterns: update response param.
+- Update API DescribeTableDetail: add param RegionId.
+- Update API DescribeTableDetail: update param DBClusterId.
+- Update API DescribeTableDetail: update response param.
+- Update API DescribeTablePartitionDiagnose: add param Lang.
+- Update API DescribeTablePartitionDiagnose: add param Order.
+- Update API DescribeTablePartitionDiagnose: delete param Action.
+- Update API DescribeTablePartitionDiagnose: update param AccessKeyId.
+- Update API DescribeTablePartitionDiagnose: update param DBClusterId.
+- Update API DescribeTablePartitionDiagnose: update param OwnerAccount.
+- Update API DescribeTablePartitionDiagnose: update param OwnerId.
+- Update API DescribeTablePartitionDiagnose: update param ResourceOwnerAccount.
+- Update API DescribeTablePartitionDiagnose: update param ResourceOwnerId.
+- Update API DescribeTablePartitionDiagnose: update response param.
+- Update API DescribeTableStatistics: add param Keyword.
+- Update API DescribeTableStatistics: update param RegionId.
+- Update API DescribeTableStatistics: update response param.
+- Update API MigrateDBCluster: add param ComputeResource.
+- Update API MigrateDBCluster: add param ShardNumber.
+- Update API MigrateDBCluster: add param StorageResource.
+- Update API MigrateDBCluster: add param StorageResourceSize.
+- Update API ModifyBackupPolicy: update param PreferredBackupPeriod.
+- Update API ModifyDBClusterPayType: add param RegionId.
+- Update API ModifyDBResourceGroup: add param PoolUserList.
+- Update API ModifyElasticPlan: add param ElasticPlanMonthlyRepeat.
+- Update API ModifyElasticPlan: update param ResourcePoolName.
+
+
 2024-02-20 Version: 3.1.2
 - Update API CreateElasticPlan: add param ElasticPlanWeeklyRepeat.
 - Update API CreateElasticPlan: add param ElasticPlanMonthlyRepeat.

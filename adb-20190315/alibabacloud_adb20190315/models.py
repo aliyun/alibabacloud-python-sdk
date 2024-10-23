@@ -22,7 +22,9 @@ class AllocateClusterPublicConnectionRequest(TeaModel):
         self.connection_string_prefix = connection_string_prefix
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # You can call the [DescribeDBClusters](~~129857~~) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -152,11 +154,15 @@ class ApplyAdviceByIdRequest(TeaModel):
         self.advice_id = advice_id
         # The ID of the cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of Data Warehouse Edition (V3.0) clusters.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of Data Warehouse Edition (V3.0) clusters.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The region ID of the cluster.
         # 
-        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -281,7 +287,9 @@ class AttachUserENIRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query cluster IDs.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -401,14 +409,19 @@ class BatchApplyAdviceByIdListRequest(TeaModel):
         dbcluster_id: str = None,
         region_id: str = None,
     ):
+        # The date when the suggestion is generated. Specify the date in the yyyyMMdd format. The date must be in UTC.
         self.advice_date = advice_date
+        # The IDs of the suggestions to be applied. Separate multiple IDs with commas (,).
         self.advice_id_list = advice_id_list
-        # The message returned for the operation. Valid values:
+        # The ID of the cluster.
         # 
-        # *   **SUCCESS** is returned if the operation is successful.
-        # *   An error message is returned if the operation fails.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of Data Warehouse Edition (V3.0) clusters.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The ID of the request.
+        # The region ID of the cluster. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -449,7 +462,12 @@ class BatchApplyAdviceByIdListResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The message returned for the operation. Valid values:
+        # 
+        # *   **SUCCESS** is returned if the operation is successful.
+        # *   An error message is returned if the operation fails.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -530,11 +548,17 @@ class BindDBResourceGroupWithUserRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The name of the resource group.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         # The database account with which to associate the resource group. It can be a standard account or a privileged account.
+        # 
+        # This parameter is required.
         self.group_user = group_user
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -667,13 +691,19 @@ class BindDBResourcePoolWithUserRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The name of the resource group.
+        # 
+        # This parameter is required.
         self.pool_name = pool_name
         # The database account with which to associate the resource group. It can be a standard account or a privileged account.
+        # 
+        # This parameter is required.
         self.pool_user = pool_user
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -812,15 +842,19 @@ class CreateAccountRequest(TeaModel):
         # The name of the database account.
         # 
         # *   The name must start with a lowercase letter and end with a lowercase letter or a digit.
-        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name can contain lowercase letters, digits, and underscores (_).
         # *   The name must be 2 to 16 characters in length.
         # *   Reserved account names such as root, admin, and opsadmin cannot be used.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The password of the database account.
         # 
         # *   The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         # *   Special characters include `! @ # $ % ^ & * ( ) _ + - =`
         # *   The password must be 8 to 32 characters in length.
+        # 
+        # This parameter is required.
         self.account_password = account_password
         # The type of the database account. Valid values:
         # 
@@ -831,7 +865,9 @@ class CreateAccountRequest(TeaModel):
         self.account_type = account_type
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to view cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to view cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -1025,8 +1061,9 @@ class CreateDBClusterRequest(TeaModel):
         dbcluster_version: str = None,
         dbnode_group_count: str = None,
         dbnode_storage: str = None,
-        disk_encryption: str = None,
+        disk_encryption: bool = None,
         elastic_ioresource: str = None,
+        enable_ssl: bool = None,
         executor_count: str = None,
         kms_id: str = None,
         mode: str = None,
@@ -1053,9 +1090,16 @@ class CreateDBClusterRequest(TeaModel):
         self.backup_set_id = backup_set_id
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The value is case-sensitive and can contain a maximum of 64 ASCII characters in length.
         self.client_token = client_token
-        # The computing resources of the cluster. This parameter is required if the Mode parameter is set to **Flexible**.
+        # The computing resources of the cluster. You can use computing resources to compute data. The increase in the computing resources can accelerate data queries. The computing resources are available for Cluster Edition and Basic Edition.
         # 
-        # >  You can call the [DescribeAvailableResource](~~190632~~) operation to query the computing resources that are available within a specific region.
+        # *   Computing resources for Cluster Edition include 16 cores and 64 GB memory, 24 cores and 96 GB memory, and 32 cores or more. Cluster Edition supports resource isolation, scheduled scaling, and tiered storage of hot and cold data.
+        # *   Computing resources for Basic Edition include 8 cores and 32 GB memory and 16 cores and 64 GB memory. Alibaba Cloud does not provide an SLA guarantee for Basic Edition, and 4 to 8 hours are required for a failover. We recommend that you do not use Basic Edition in production environments.
+        # 
+        # > 
+        # 
+        # *   You can call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/190632.html) operation to query the available computing resources in a region.
+        # 
+        # *   This parameter must be specified when Mode is set to **Flexible**.
         self.compute_resource = compute_resource
         # The edition of the cluster. Valid values:
         # 
@@ -1066,6 +1110,8 @@ class CreateDBClusterRequest(TeaModel):
         # *   **MixedStorage**: elastic mode for Cluster Edition
         # 
         # >  If the DBClusterCategory parameter is set to Cluster, you must set the Mode parameter to Reserver. If the DBClusterCategory parameter is set to MixedStorage, you must set the Mode parameter to Flexible. Otherwise, the cluster fails to be created.
+        # 
+        # This parameter is required.
         self.dbcluster_category = dbcluster_category
         # The specification of the cluster. Valid values:
         # 
@@ -1080,8 +1126,12 @@ class CreateDBClusterRequest(TeaModel):
         # *   The description must be 2 to 256 characters in length.
         self.dbcluster_description = dbcluster_description
         # The network type of the cluster. Set the value to **VPC**.
+        # 
+        # This parameter is required.
         self.dbcluster_network_type = dbcluster_network_type
         # The version of the cluster. Set the value to **3.0**.
+        # 
+        # This parameter is required.
         self.dbcluster_version = dbcluster_version
         # The number of node groups. Valid values: 1 to 200 (integer).
         # 
@@ -1095,18 +1145,21 @@ class CreateDBClusterRequest(TeaModel):
         # > * This parameter is required if the Mode parameter is set to Reserver.
         # > * 1000 The storage capacity less than 1,000 GB increases in 100 GB increments. The storage capacity greater than 1,000 GB increases in 1,000 GB increments.
         self.dbnode_storage = dbnode_storage
-        # Specifies whether to enable disk encryption.
-        # 
-        # Valid values:
+        # Indicates whether disk encryption is enabled. Valid values:
         # 
         # *   true
         # *   false
         self.disk_encryption = disk_encryption
-        # The number of elastic I/O units (EIUs). For more information, see [Use EIUs to scale up storage resources](~~189505~~).
+        # The number of elastic I/O units (EIUs). For more information, see [Use EIUs to scale up storage resources](https://help.aliyun.com/document_detail/189505.html).
         self.elastic_ioresource = elastic_ioresource
+        # Specifies whether to enable SSL encryption. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        self.enable_ssl = enable_ssl
         # A reserved parameter.
         self.executor_count = executor_count
-        # The Key Management Service (KMS) ID that is used for disk encryption. This parameter is valid only when DiskEncryption is set to true.
+        # The Key Management Service (KMS) ID that is used for disk encryption. This parameter takes effect only when DiskEncryption is set to true.
         self.kms_id = kms_id
         # The mode of the cluster. Valid values:
         # 
@@ -1119,6 +1172,8 @@ class CreateDBClusterRequest(TeaModel):
         # 
         # *   **Postpaid**: pay-as-you-go
         # *   **Prepaid**: subscription
+        # 
+        # This parameter is required.
         self.pay_type = pay_type
         # The subscription type of the subscription cluster. Valid values:
         # 
@@ -1129,7 +1184,9 @@ class CreateDBClusterRequest(TeaModel):
         self.period = period
         # The region ID of the cluster.
         # 
-        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the cluster belongs.
         self.resource_group_id = resource_group_id
@@ -1161,7 +1218,7 @@ class CreateDBClusterRequest(TeaModel):
         self.v_switch_id = v_switch_id
         # The zone ID of the cluster.
         # 
-        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent zone list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1200,6 +1257,8 @@ class CreateDBClusterRequest(TeaModel):
             result['DiskEncryption'] = self.disk_encryption
         if self.elastic_ioresource is not None:
             result['ElasticIOResource'] = self.elastic_ioresource
+        if self.enable_ssl is not None:
+            result['EnableSSL'] = self.enable_ssl
         if self.executor_count is not None:
             result['ExecutorCount'] = self.executor_count
         if self.kms_id is not None:
@@ -1272,6 +1331,8 @@ class CreateDBClusterRequest(TeaModel):
             self.disk_encryption = m.get('DiskEncryption')
         if m.get('ElasticIOResource') is not None:
             self.elastic_ioresource = m.get('ElasticIOResource')
+        if m.get('EnableSSL') is not None:
+            self.enable_ssl = m.get('EnableSSL')
         if m.get('ExecutorCount') is not None:
             self.executor_count = m.get('ExecutorCount')
         if m.get('KmsId') is not None:
@@ -1424,17 +1485,21 @@ class CreateDBResourceGroupRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The name of the resource group.
         # 
         # *   The name can be up to 255 characters in length.
-        # *   The name must start with a letter or a digit.
-        # *   The name can contain letters, digits, hyphens (\_), and underscores (\_).
-        self.group_name = group_name
-        # The query execution mode. Default value: batch. Valid values:
+        # *   The name must start with an uppercase letter or a digit.
+        # *   The name can contain uppercase letters, digits, hyphens (-), and underscores (_).
         # 
-        # *   **interactive**\
+        # This parameter is required.
+        self.group_name = group_name
+        # The query execution mode. Valid values:
+        # 
+        # *   **interactive** (default)
         # *   **batch**\
         self.group_type = group_type
         # The number of nodes. Default value: 0.
@@ -1578,7 +1643,9 @@ class CreateDBResourcePoolRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The number of nodes. Default value: 0.
         # 
@@ -1591,7 +1658,9 @@ class CreateDBResourcePoolRequest(TeaModel):
         # 
         # *   The name can be up to 255 characters in length.
         # *   The name must start with a letter or a digit.
-        # *   The name can contain letters, digits, hyphens (\_), and underscores (\_).
+        # *   The name can contain letters, digits, hyphens (_), and underscores (_).
+        # 
+        # This parameter is required.
         self.pool_name = pool_name
         # The mode in which to execute SQL statements.
         # 
@@ -1599,7 +1668,7 @@ class CreateDBResourcePoolRequest(TeaModel):
         # 
         # *   **interactive**\
         # 
-        # > For more information, see [Query execution modes](~~189502~~).
+        # > For more information, see [Query execution modes](https://help.aliyun.com/document_detail/189502.html).
         self.query_type = query_type
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -1744,7 +1813,9 @@ class CreateElasticPlanRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # Specifies whether the scaling plan takes effect. Valid values:
         # 
@@ -1753,11 +1824,14 @@ class CreateElasticPlanRequest(TeaModel):
         self.elastic_plan_enable = elastic_plan_enable
         # The end date of the scaling plan. Specify the date in the yyyy-MM-dd format.
         self.elastic_plan_end_day = elastic_plan_end_day
+        # The dates of the month when you want to execute the scaling plan. A number specifies a date of the month. Separate multiple values with commas (,).
         self.elastic_plan_monthly_repeat = elastic_plan_monthly_repeat
         # The name of the scaling plan.
         # 
         # *   The name must be 2 to 30 characters in length.
-        # *   The name can contain letters, digits, and underscores (\_).
+        # *   The name can contain letters, digits, and underscores (_).
+        # 
+        # This parameter is required.
         self.elastic_plan_name = elastic_plan_name
         # The number of nodes that are involved in the scaling plan.
         # 
@@ -1767,8 +1841,12 @@ class CreateElasticPlanRequest(TeaModel):
         # The start date of the scaling plan. Specify the date in the yyyy-MM-dd format.
         self.elastic_plan_start_day = elastic_plan_start_day
         # The restoration time of the scaling plan. Specify the time on the hour in the HH:mm:ss format. The interval between the scale-up time and the restoration time cannot be more than 24 hours.
+        # 
+        # This parameter is required.
         self.elastic_plan_time_end = elastic_plan_time_end
         # The scale-up time of the scaling plan. Specify the time on the hour in the HH:mm:ss format.
+        # 
+        # This parameter is required.
         self.elastic_plan_time_start = elastic_plan_time_start
         # The type of the scaling plan. Valid values:
         # 
@@ -1778,7 +1856,7 @@ class CreateElasticPlanRequest(TeaModel):
         # > - If you want to set this parameter to **executorcombineworker**, make sure that the cluster runs a minor version of 3.1.3.2 or later.
         # > - If you want to set this parameter to **worker** or **executor**, make sure that the cluster runs a minor version of 3.1.6.1 or later and a ticket is submitted. After your request is approved, you can set this parameter to **worker** or **executor**.
         self.elastic_plan_type = elastic_plan_type
-        # The days of the week when you want to execute the scaling plan. Valid values: 0 to 6, which indicates Sunday to Saturday. Separate multiple values with commas (,).
+        # The days of the week when you want to execute the scaling plan. Valid values: 0 to 6 (Sunday to Saturday). Separate multiple values with commas (,).
         self.elastic_plan_weekly_repeat = elastic_plan_weekly_repeat
         # The resource specifications that can be scaled up by the scaling plan. Valid values:
         # 
@@ -1796,7 +1874,7 @@ class CreateElasticPlanRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The name of the resource group.
         # 
-        # > You can call the [DescribeDBResourceGroup](~~466685~~) operation to query the resource group name.
+        # > You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/466685.html) operation to query the resource group name.
         self.resource_pool_name = resource_pool_name
 
     def validate(self):
@@ -1964,11 +2042,15 @@ class DeleteAccountRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The account of the database.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # *   Normal: standard account
         # *   Super: privileged account
         self.account_type = account_type
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -2098,6 +2180,8 @@ class DeleteDBClusterRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -2235,9 +2319,13 @@ class DeleteDBResourceGroupRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The name of the resource group.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -2365,11 +2453,15 @@ class DeleteDBResourcePoolRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The name of the resource group.
+        # 
+        # This parameter is required.
         self.pool_name = pool_name
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -2495,11 +2587,15 @@ class DeleteElasticPlanRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~612241~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612241.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The name of the scaling plan.
         # 
-        # > You can call the [DescribeElasticPlans](~~601334~~) operation to query the names of scaling plans.
+        # > You can call the [DescribeElasticPlans](https://help.aliyun.com/document_detail/601334.html) operation to query the names of scaling plans.
+        # 
+        # This parameter is required.
         self.elastic_plan_name = elastic_plan_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -2637,7 +2733,9 @@ class DescribeAccountsRequest(TeaModel):
         self.account_type = account_type
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -2865,11 +2963,15 @@ class DescribeAdviceServiceEnabledRequest(TeaModel):
     ):
         # The cluster ID.
         # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of Data Warehouse Edition (V3.0) clusters.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of Data Warehouse Edition (V3.0) clusters.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The region ID of the cluster.
         # 
-        # > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2994,7 +3096,9 @@ class DescribeAllAccountsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -3042,7 +3146,7 @@ class DescribeAllAccountsResponseBodyAccountList(TeaModel):
         self,
         user: str = None,
     ):
-        # The name of the account.
+        # The name of the database account.
         self.user = user
 
     def validate(self):
@@ -3071,9 +3175,9 @@ class DescribeAllAccountsResponseBody(TeaModel):
         account_list: List[DescribeAllAccountsResponseBodyAccountList] = None,
         request_id: str = None,
     ):
-        # The list of accounts.
+        # The queried database accounts.
         self.account_list = account_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3161,14 +3265,20 @@ class DescribeAllDataSourceRequest(TeaModel):
         table_name: str = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The name of the database.
+        # 
+        # This parameter is required.
         self.schema_name = schema_name
         # The name of the table.
+        # 
+        # This parameter is required.
         self.table_name = table_name
 
     def validate(self):
@@ -3574,20 +3684,33 @@ class DescribeAllDataSourceResponse(TeaModel):
 class DescribeAppliedAdvicesRequest(TeaModel):
     def __init__(
         self,
+        advice_type: str = None,
         dbcluster_id: str = None,
         end_time: int = None,
+        keyword: str = None,
         lang: str = None,
+        order: str = None,
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        schema_table_name: str = None,
         start_time: int = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        # The type of the suggestion. Valid values:
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # *   **INDEX**: index optimization.
+        # *   **TIERING**: hot and cold data optimization.
+        self.advice_type = advice_type
+        # The ID of the AnalyticDB for MySQL Data Warehouse Edition cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of AnalyticDB for MySQL Data Warehouse Edition clusters within a region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyyMMdd format. The time must be in UTC.
         self.end_time = end_time
+        # The keyword that is used to query information by table name.
+        self.keyword = keyword
         # The display language of the suggestion. Valid values:
         # 
         # *   **zh** (default): simplified Chinese.
@@ -3595,6 +3718,23 @@ class DescribeAppliedAdvicesRequest(TeaModel):
         # *   **ja**: Japanese.
         # *   **zh-tw**: traditional Chinese.
         self.lang = lang
+        # The order by which to sort query results. Specify the parameter value in the JSON format. Example: `[{"Field":"SchemaName","Type":"Asc"}]`.
+        # 
+        # *   `Field` specifies the field by which to sort the query results. Valid values:
+        # 
+        #     *   `SchemaName`: the name of the database.
+        #     *   `TableName`: the name of the table.
+        #     *   `JobStatus`: the status of the BUILD job that is triggered on the table.
+        #     *   `SubmitTime`: the time when the suggestion was submitted.
+        #     *   `Benefit`: the expected benefits of the applied optimization suggestion.
+        # 
+        # *   `Type` specifies the sorting order. Valid values:
+        # 
+        #     *   `Asc`: ascending order.
+        #     *   `Desc`: descending order.
+        # 
+        # >  If you do not specify this parameter, optimization suggestions are sorted in descending order based on the submission time.
+        self.order = order
         # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Valid values:
@@ -3605,8 +3745,12 @@ class DescribeAppliedAdvicesRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the cluster.
         # 
-        # > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
+        # The name of the table in the **DatabaseName.TableName** format.
+        self.schema_table_name = schema_table_name
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyyMMdd format. The time must be in UTC.
         self.start_time = start_time
 
@@ -3619,36 +3763,52 @@ class DescribeAppliedAdvicesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.advice_type is not None:
+            result['AdviceType'] = self.advice_type
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
         if self.lang is not None:
             result['Lang'] = self.lang
+        if self.order is not None:
+            result['Order'] = self.order
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.schema_table_name is not None:
+            result['SchemaTableName'] = self.schema_table_name
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdviceType') is not None:
+            self.advice_type = m.get('AdviceType')
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('SchemaTableName') is not None:
+            self.schema_table_name = m.get('SchemaTableName')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -3665,8 +3825,10 @@ class DescribeAppliedAdvicesResponseBodyItems(TeaModel):
         page_size: int = None,
         rollback_sql: str = None,
         sql: str = None,
+        schema_name: str = None,
         submit_status: str = None,
         submit_time: str = None,
+        table_name: str = None,
         total_count: int = None,
     ):
         # The suggestion ID.
@@ -3692,6 +3854,8 @@ class DescribeAppliedAdvicesResponseBodyItems(TeaModel):
         self.rollback_sql = rollback_sql
         # The SQL statement that is used to apply the suggestion.
         self.sql = sql
+        # The name of the database.
+        self.schema_name = schema_name
         # The submission state of the suggestion. Valid values:
         # 
         # *   **SUCCEED**\
@@ -3699,6 +3863,8 @@ class DescribeAppliedAdvicesResponseBodyItems(TeaModel):
         self.submit_status = submit_status
         # The time when the suggestion was submitted. The time follows the ISO 8601 standard in the yyMMddHHmm format. The time is displayed in UTC.
         self.submit_time = submit_time
+        # The name of the table.
+        self.table_name = table_name
         # The total number of entries returned. Minimum value: 0. Default value: 0.
         self.total_count = total_count
 
@@ -3727,10 +3893,14 @@ class DescribeAppliedAdvicesResponseBodyItems(TeaModel):
             result['RollbackSQL'] = self.rollback_sql
         if self.sql is not None:
             result['SQL'] = self.sql
+        if self.schema_name is not None:
+            result['SchemaName'] = self.schema_name
         if self.submit_status is not None:
             result['SubmitStatus'] = self.submit_status
         if self.submit_time is not None:
             result['SubmitTime'] = self.submit_time
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         return result
@@ -3753,10 +3923,14 @@ class DescribeAppliedAdvicesResponseBodyItems(TeaModel):
             self.rollback_sql = m.get('RollbackSQL')
         if m.get('SQL') is not None:
             self.sql = m.get('SQL')
+        if m.get('SchemaName') is not None:
+            self.schema_name = m.get('SchemaName')
         if m.get('SubmitStatus') is not None:
             self.submit_status = m.get('SubmitStatus')
         if m.get('SubmitTime') is not None:
             self.submit_time = m.get('SubmitTime')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
         return self
@@ -3769,6 +3943,7 @@ class DescribeAppliedAdvicesResponseBody(TeaModel):
         page_number: int = None,
         page_size: int = None,
         request_id: str = None,
+        schema_table_names: List[str] = None,
         total_count: int = None,
     ):
         # The queried suggestions.
@@ -3783,6 +3958,8 @@ class DescribeAppliedAdvicesResponseBody(TeaModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
+        # The names of the tables in the DatabaseName.TableName format.
+        self.schema_table_names = schema_table_names
         # The total number of entries returned. The value is an integer that is greater than or equal to 0. Default value: 0.
         self.total_count = total_count
 
@@ -3808,6 +3985,8 @@ class DescribeAppliedAdvicesResponseBody(TeaModel):
             result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.schema_table_names is not None:
+            result['SchemaTableNames'] = self.schema_table_names
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         return result
@@ -3825,6 +4004,8 @@ class DescribeAppliedAdvicesResponseBody(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('SchemaTableNames') is not None:
+            self.schema_table_names = m.get('SchemaTableNames')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
         return self
@@ -3881,11 +4062,15 @@ class DescribeAuditLogConfigRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region. You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # The region ID of the cluster. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -3933,18 +4118,21 @@ class DescribeAuditLogConfigRequest(TeaModel):
 class DescribeAuditLogConfigResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         audit_log_status: str = None,
         dbcluster_id: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial. This parameter is returned only if Resource Access Management (RAM) permission verification failed.
+        self.access_denied_detail = access_denied_detail
         # The status of SQL audit. Valid values:
         # 
         # *   **on**: SQL audit is enabled.
         # *   **off**: SQL audit is disabled.
         self.audit_log_status = audit_log_status
-        # The ID of the cluster.
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3956,6 +4144,8 @@ class DescribeAuditLogConfigResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.audit_log_status is not None:
             result['AuditLogStatus'] = self.audit_log_status
         if self.dbcluster_id is not None:
@@ -3966,6 +4156,8 @@ class DescribeAuditLogConfigResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('AuditLogStatus') is not None:
             self.audit_log_status = m.get('AuditLogStatus')
         if m.get('DBClusterId') is not None:
@@ -4040,7 +4232,9 @@ class DescribeAuditLogRecordsRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The name of the database on which you want to execute the SQL statement.
         self.dbname = dbname
@@ -4090,7 +4284,9 @@ class DescribeAuditLogRecordsRequest(TeaModel):
         self.query_keyword = query_keyword
         # The region ID of the cluster.
         # 
-        # > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -4426,6 +4622,8 @@ class DescribeAutoRenewAttributeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID. Separate multiple clusters with commas (,).
+        # 
+        # This parameter is required.
         self.dbcluster_ids = dbcluster_ids
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -4440,6 +4638,8 @@ class DescribeAutoRenewAttributeRequest(TeaModel):
         # Default value: 30.
         self.page_size = page_size
         # The region ID of the cluster.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -4709,37 +4909,79 @@ class DescribeAvailableAdvicesRequest(TeaModel):
     def __init__(
         self,
         advice_date: int = None,
+        advice_type: str = None,
         dbcluster_id: str = None,
+        keyword: str = None,
         lang: str = None,
+        order: str = None,
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        schema_table_name: str = None,
     ):
         # The date when the suggestion is generated. Specify the date in the yyyyMMdd format. The date must be in UTC.
+        # 
+        # >  Suggestions are generated after analysis after midnight every day. You must specify a date that is at least one day earlier than the current date. For example, if the current date is 20240627, you must specify 20240626 or an earlier date.
+        # 
+        # This parameter is required.
         self.advice_date = advice_date
+        # The type of the suggestion. Valid values:
+        # 
+        # *   **INDEX**: index optimization.
+        # *   **TIERING**: hot and cold data optimization.
+        self.advice_type = advice_type
         # The ID of the cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of Data Warehouse Edition (V3.0) clusters.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of Data Warehouse Edition (V3.0) clusters.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The keyword that is used to query information by table name.
+        self.keyword = keyword
         # The display language of the suggestion. Default value: zh. Valid values:
         # 
         # *   **zh**: simplified Chinese
         # *   **en**: English
         # *   **ja**: Japanese
         # *   **zh-tw**: traditional Chinese
+        # 
+        # This parameter is required.
         self.lang = lang
+        # The order by which to sort query results. Specify the parameter value in the JSON format. Example: `[{"Field":"SchemaName","Type":"Asc"}]`.
+        # 
+        # *   `Field` specifies the field by which to sort the query results. Valid values:
+        # 
+        #     *   `SchemaName`: the name of the database.
+        #     *   `TableName`: the name of the table.
+        #     *   `Benefit`: the expected benefits of the applied optimization suggestion.
+        # 
+        # *   `Type` specifies the sorting order. Valid values:
+        # 
+        #     *   `Asc`: ascending order.
+        #     *   `Desc`: descending order.
+        # 
+        # >  If you do not specify this parameter, the query results are sorted in descending order based on the Benefit field.
+        self.order = order
         # The number of the page to return. The value must be an integer that is greater than 0. Default value: 1.
+        # 
+        # This parameter is required.
         self.page_number = page_number
         # The number of entries to return on each page. Default value: 30. Valid values:
         # 
         # *   **30**\
         # *   **50**\
         # *   **100**\
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The region ID of the cluster.
         # 
-        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
+        # The name of the table in the **DatabaseName.TableName** format.
+        self.schema_table_name = schema_table_name
 
     def validate(self):
         pass
@@ -4752,32 +4994,48 @@ class DescribeAvailableAdvicesRequest(TeaModel):
         result = dict()
         if self.advice_date is not None:
             result['AdviceDate'] = self.advice_date
+        if self.advice_type is not None:
+            result['AdviceType'] = self.advice_type
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
         if self.lang is not None:
             result['Lang'] = self.lang
+        if self.order is not None:
+            result['Order'] = self.order
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.schema_table_name is not None:
+            result['SchemaTableName'] = self.schema_table_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AdviceDate') is not None:
             self.advice_date = m.get('AdviceDate')
+        if m.get('AdviceType') is not None:
+            self.advice_type = m.get('AdviceType')
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('SchemaTableName') is not None:
+            self.schema_table_name = m.get('SchemaTableName')
         return self
 
 
@@ -4792,6 +5050,8 @@ class DescribeAvailableAdvicesResponseBodyItems(TeaModel):
         page_size: int = None,
         reason: str = None,
         sql: str = None,
+        schema_name: str = None,
+        table_name: str = None,
         total_count: int = None,
     ):
         # The time when the suggestion was generated. The time follows the ISO 8601 standard in the yyyyMMdd format. The time is displayed in UTC.
@@ -4817,6 +5077,10 @@ class DescribeAvailableAdvicesResponseBodyItems(TeaModel):
         self.reason = reason
         # The SQL statement that is used to apply the suggestion.
         self.sql = sql
+        # The name of the schema.
+        self.schema_name = schema_name
+        # The name of the table.
+        self.table_name = table_name
         # The total number of entries returned. Minimum value: 0. Default value: 0.
         self.total_count = total_count
 
@@ -4845,6 +5109,10 @@ class DescribeAvailableAdvicesResponseBodyItems(TeaModel):
             result['Reason'] = self.reason
         if self.sql is not None:
             result['SQL'] = self.sql
+        if self.schema_name is not None:
+            result['SchemaName'] = self.schema_name
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         return result
@@ -4867,6 +5135,10 @@ class DescribeAvailableAdvicesResponseBodyItems(TeaModel):
             self.reason = m.get('Reason')
         if m.get('SQL') is not None:
             self.sql = m.get('SQL')
+        if m.get('SchemaName') is not None:
+            self.schema_name = m.get('SchemaName')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
         return self
@@ -4879,6 +5151,7 @@ class DescribeAvailableAdvicesResponseBody(TeaModel):
         page_number: int = None,
         page_size: int = None,
         request_id: str = None,
+        schema_table_names: List[str] = None,
         total_count: int = None,
     ):
         # The queried suggestions.
@@ -4893,6 +5166,8 @@ class DescribeAvailableAdvicesResponseBody(TeaModel):
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
+        # The name of the table in the DatabaseName.TableName format.
+        self.schema_table_names = schema_table_names
         # The total number of entries returned. The value must be an integer that is greater than or equal to 0. Default value: 0.
         self.total_count = total_count
 
@@ -4918,6 +5193,8 @@ class DescribeAvailableAdvicesResponseBody(TeaModel):
             result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.schema_table_names is not None:
+            result['SchemaTableNames'] = self.schema_table_names
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         return result
@@ -4935,6 +5212,8 @@ class DescribeAvailableAdvicesResponseBody(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('SchemaTableNames') is not None:
+            self.schema_table_names = m.get('SchemaTableNames')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
         return self
@@ -5007,13 +5286,15 @@ class DescribeAvailableResourceRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID.
         # 
-        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The zone ID.
         # 
-        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent zone list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -5558,11 +5839,7 @@ class DescribeAvailableResourceResponseBody(TeaModel):
         self.available_zone_list = available_zone_list
         # The resources available in the supported editions.
         self.region_id = region_id
-        # The supported edition. Valid values:
-        # 
-        # *   **basic**: Basic Edition
-        # *   **cluster**: Cluster Edition
-        # *   **mixed_storage**: elastic mode for Cluster Edition
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5652,6 +5929,8 @@ class DescribeBackupPolicyRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -5813,21 +6092,34 @@ class DescribeBackupsRequest(TeaModel):
     def __init__(
         self,
         backup_id: str = None,
+        cross_role: str = None,
+        cross_uid: str = None,
         dbcluster_id: str = None,
         end_time: str = None,
         owner_account: str = None,
         owner_id: int = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         start_time: str = None,
     ):
         # The ID of the backup set.
         self.backup_id = backup_id
+        # The Resource Access Management (RAM) role of the Alibaba Cloud account to which the backup set belongs.
+        # 
+        # >  This parameter must be specified only when cross-account backup operations are performed.
+        self.cross_role = cross_role
+        # The Alibaba Cloud account to which the backup set belongs.
+        # 
+        # >  This parameter must be specified only when cross-account backup operations are performed.
+        self.cross_uid = cross_uid
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC. The end time must be later than the start time.
         self.end_time = end_time
@@ -5841,6 +6133,10 @@ class DescribeBackupsRequest(TeaModel):
         # *   **50**\
         # *   **100**\
         self.page_size = page_size
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
@@ -5857,6 +6153,10 @@ class DescribeBackupsRequest(TeaModel):
         result = dict()
         if self.backup_id is not None:
             result['BackupId'] = self.backup_id
+        if self.cross_role is not None:
+            result['CrossRole'] = self.cross_role
+        if self.cross_uid is not None:
+            result['CrossUid'] = self.cross_uid
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
         if self.end_time is not None:
@@ -5869,6 +6169,8 @@ class DescribeBackupsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -5881,6 +6183,10 @@ class DescribeBackupsRequest(TeaModel):
         m = m or dict()
         if m.get('BackupId') is not None:
             self.backup_id = m.get('BackupId')
+        if m.get('CrossRole') is not None:
+            self.cross_role = m.get('CrossRole')
+        if m.get('CrossUid') is not None:
+            self.cross_uid = m.get('CrossUid')
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('EndTime') is not None:
@@ -5893,6 +6199,8 @@ class DescribeBackupsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -5906,6 +6214,7 @@ class DescribeBackupsResponseBodyItemsBackup(TeaModel):
     def __init__(
         self,
         backup_end_time: str = None,
+        backup_expired_time: str = None,
         backup_id: str = None,
         backup_method: str = None,
         backup_size: int = None,
@@ -5915,6 +6224,7 @@ class DescribeBackupsResponseBodyItemsBackup(TeaModel):
     ):
         # The end time of the backup.
         self.backup_end_time = backup_end_time
+        self.backup_expired_time = backup_expired_time
         # The backup set ID.
         self.backup_id = backup_id
         # The backup method. Only Snapshot is returned.
@@ -5942,6 +6252,8 @@ class DescribeBackupsResponseBodyItemsBackup(TeaModel):
         result = dict()
         if self.backup_end_time is not None:
             result['BackupEndTime'] = self.backup_end_time
+        if self.backup_expired_time is not None:
+            result['BackupExpiredTime'] = self.backup_expired_time
         if self.backup_id is not None:
             result['BackupId'] = self.backup_id
         if self.backup_method is not None:
@@ -5960,6 +6272,8 @@ class DescribeBackupsResponseBodyItemsBackup(TeaModel):
         m = m or dict()
         if m.get('BackupEndTime') is not None:
             self.backup_end_time = m.get('BackupEndTime')
+        if m.get('BackupExpiredTime') is not None:
+            self.backup_expired_time = m.get('BackupExpiredTime')
         if m.get('BackupId') is not None:
             self.backup_id = m.get('BackupId')
         if m.get('BackupMethod') is not None:
@@ -6013,12 +6327,15 @@ class DescribeBackupsResponseBodyItems(TeaModel):
 class DescribeBackupsResponseBody(TeaModel):
     def __init__(
         self,
+        free_backup_size: int = None,
         items: DescribeBackupsResponseBodyItems = None,
         page_number: str = None,
         page_size: str = None,
         request_id: str = None,
+        total_backup_size: int = None,
         total_count: str = None,
     ):
+        self.free_backup_size = free_backup_size
         # The queried backup sets.
         self.items = items
         # The page number.
@@ -6027,6 +6344,7 @@ class DescribeBackupsResponseBody(TeaModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
+        self.total_backup_size = total_backup_size
         # The total number of entries returned.
         self.total_count = total_count
 
@@ -6040,6 +6358,8 @@ class DescribeBackupsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.free_backup_size is not None:
+            result['FreeBackupSize'] = self.free_backup_size
         if self.items is not None:
             result['Items'] = self.items.to_map()
         if self.page_number is not None:
@@ -6048,12 +6368,16 @@ class DescribeBackupsResponseBody(TeaModel):
             result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.total_backup_size is not None:
+            result['TotalBackupSize'] = self.total_backup_size
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FreeBackupSize') is not None:
+            self.free_backup_size = m.get('FreeBackupSize')
         if m.get('Items') is not None:
             temp_model = DescribeBackupsResponseBodyItems()
             self.items = temp_model.from_map(m['Items'])
@@ -6063,6 +6387,8 @@ class DescribeBackupsResponseBody(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TotalBackupSize') is not None:
+            self.total_backup_size = m.get('TotalBackupSize')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
         return self
@@ -6121,14 +6447,20 @@ class DescribeColumnsRequest(TeaModel):
         table_name: str = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The name of the database.
+        # 
+        # This parameter is required.
         self.schema_name = schema_name
         # The name of the table.
+        # 
+        # This parameter is required.
         self.table_name = table_name
 
     def validate(self):
@@ -6383,13 +6715,15 @@ class DescribeComputeResourceRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the cluster.
         # 
-        # > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The zone ID of the cluster.
         # 
-        # > You can call the [DescribeRegions](~~129857~~) operation to query the most recent zone list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/129857.html) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -6574,7 +6908,9 @@ class DescribeConnectionCountRecordsRequest(TeaModel):
     ):
         # The cluster ID.
         # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -6800,13 +7136,20 @@ class DescribeDBClusterAccessWhiteListRequest(TeaModel):
         dbcluster_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the cluster.
+        # 
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -6825,6 +7168,8 @@ class DescribeDBClusterAccessWhiteListRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -6839,6 +7184,8 @@ class DescribeDBClusterAccessWhiteListRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -6859,7 +7206,7 @@ class DescribeDBClusterAccessWhiteListResponseBodyItemsIPArray(TeaModel):
         self.dbcluster_iparray_attribute = dbcluster_iparray_attribute
         # The name of the IP address whitelist.
         # 
-        # *   The name of an IP address whitelist must be 2 to 32 characters in length. The name can contain lowercase letters, digits, and underscores (\_). The name must start with a lowercase letter and end with a lowercase letter or digit.
+        # *   The name of an IP address whitelist must be 2 to 32 characters in length. The name can contain lowercase letters, digits, and underscores (_). The name must start with a lowercase letter and end with a lowercase letter or digit.
         # *   Each cluster supports up to 50 IP address whitelists.
         self.dbcluster_iparray_name = dbcluster_iparray_name
         # The IP addresses in the IP address whitelist. Up to 1,000 IP addresses can be returned. Multiple IP addresses are separated by commas (,).
@@ -7012,15 +7359,20 @@ class DescribeDBClusterAttributeRequest(TeaModel):
         dbcluster_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the cluster.
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -7039,6 +7391,8 @@ class DescribeDBClusterAttributeRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -7053,6 +7407,8 @@ class DescribeDBClusterAttributeRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -7068,7 +7424,7 @@ class DescribeDBClusterAttributeResponseBodyItemsDBClusterTagsTag(TeaModel):
     ):
         # The tag key.
         # 
-        # >  You can call the [TagResources](~~179253~~) operation to add a tag to the cluster.
+        # >  You can call the [TagResources](https://help.aliyun.com/document_detail/179253.html) operation to add a tag to the cluster.
         self.key = key
         # The tag value.
         self.value = value
@@ -7132,6 +7488,163 @@ class DescribeDBClusterAttributeResponseBodyItemsDBClusterTags(TeaModel):
         return self
 
 
+class DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepListStepList(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        start_time: str = None,
+        step_desc: str = None,
+        step_name: str = None,
+        step_progress: str = None,
+        step_status: str = None,
+    ):
+        # The end time of the job step. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        self.end_time = end_time
+        # The start time of the job step. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        self.start_time = start_time
+        # The description of the job step.
+        self.step_desc = step_desc
+        # The name of the job step.
+        self.step_name = step_name
+        # The progress of the job step. Unit: %.
+        self.step_progress = step_progress
+        # The status of the job step. Valid values:
+        # 
+        # *   **NOT_RUN**\
+        # *   **RUNNING**\
+        # *   **SUCCEED**\
+        self.step_status = step_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.step_desc is not None:
+            result['StepDesc'] = self.step_desc
+        if self.step_name is not None:
+            result['StepName'] = self.step_name
+        if self.step_progress is not None:
+            result['StepProgress'] = self.step_progress
+        if self.step_status is not None:
+            result['StepStatus'] = self.step_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StepDesc') is not None:
+            self.step_desc = m.get('StepDesc')
+        if m.get('StepName') is not None:
+            self.step_name = m.get('StepName')
+        if m.get('StepProgress') is not None:
+            self.step_progress = m.get('StepProgress')
+        if m.get('StepStatus') is not None:
+            self.step_status = m.get('StepStatus')
+        return self
+
+
+class DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepList(TeaModel):
+    def __init__(
+        self,
+        step_list: List[DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepListStepList] = None,
+    ):
+        self.step_list = step_list
+
+    def validate(self):
+        if self.step_list:
+            for k in self.step_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['StepList'] = []
+        if self.step_list is not None:
+            for k in self.step_list:
+                result['StepList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.step_list = []
+        if m.get('StepList') is not None:
+            for k in m.get('StepList'):
+                temp_model = DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepListStepList()
+                self.step_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfo(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        progress: str = None,
+        status: str = None,
+        step_list: DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepList = None,
+    ):
+        # The name of the job.
+        self.name = name
+        # The progress of the job. Unit: %.
+        self.progress = progress
+        # The status of the job. Valid values:
+        # 
+        # *   **NOT_RUN**\
+        # *   **RUNNING**\
+        # *   **SUCCEED**\
+        self.status = status
+        # The job steps.
+        self.step_list = step_list
+
+    def validate(self):
+        if self.step_list:
+            self.step_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.step_list is not None:
+            result['StepList'] = self.step_list.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StepList') is not None:
+            temp_model = DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepList()
+            self.step_list = temp_model.from_map(m['StepList'])
+        return self
+
+
 class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
     def __init__(
         self,
@@ -7149,7 +7662,7 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         dbnode_count: int = None,
         dbnode_storage: int = None,
         dbversion: str = None,
-        disk_encryption: str = None,
+        disk_encryption: bool = None,
         disk_performance_level: str = None,
         disk_type: str = None,
         dts_job_id: str = None,
@@ -7171,11 +7684,13 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         mode: str = None,
         pay_type: str = None,
         port: int = None,
+        product_version: str = None,
         rds_instance_id: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         storage_resource: str = None,
         tags: DescribeDBClusterAttributeResponseBodyItemsDBClusterTags = None,
+        task_info: DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfo = None,
         user_enistatus: bool = None,
         vpccloud_instance_id: str = None,
         vpcid: str = None,
@@ -7188,7 +7703,7 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         # *   **CLUSTER**: reserved mode for Cluster Edition.
         # *   **MIXED_STORAGE**: elastic mode for Cluster Edition.
         # 
-        # >  For more information about cluster editions, see [Editions](~~205001~~).
+        # >  For more information about cluster editions, see [Editions](https://help.aliyun.com/document_detail/205001.html).
         self.category = category
         # The billing method of the cluster. Valid values:
         # 
@@ -7207,9 +7722,9 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         self.dbcluster_id = dbcluster_id
         # The network type of the cluster. **VPC** is returned.
         self.dbcluster_network_type = dbcluster_network_type
-        # The state of the cluster. For more information, see [Cluster states](~~143075~~).
+        # The status of the cluster. For more information, see [Cluster states](https://help.aliyun.com/document_detail/143075.html).
         self.dbcluster_status = dbcluster_status
-        # The cluster type. Valid values:
+        # The type of the cluster. Valid values:
         # 
         # *   **Common**: common cluster.
         # *   **RDS_ANALYSIS**: MySQL analytic instance.
@@ -7235,12 +7750,12 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         # *   **cloud**: basic disk.
         # *   **cloud_ssd**: standard SSD.
         # *   **cloud_efficiency**: ultra disk.
-        # *   **cloud_essd0**: PL0 enhanced SSD (ESSD).
+        # *   **cloud_essd0**: PL0 Enterprise SSD (ESSD).
         # *   **cloud_essd**: PL1 ESSD.
         # *   **cloud_essd2**: PL2 ESSD.
         # *   **cloud_essd3**: PL3 ESSD.
         # 
-        # >  For more information about ESSDs, see [ESSDs](~~122389~~).
+        # >  For more information about ESSDs, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
         self.disk_type = disk_type
         # The ID of the Data Transmission Service (DTS) synchronization job. This parameter is returned only for MySQL analytic instances.
         self.dts_job_id = dts_job_id
@@ -7261,7 +7776,7 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         # *   **true**\
         # *   **false**\
         self.enable_spark = enable_spark
-        # The engine of the cluster. **AnalyticDB** is returned.
+        # The database engine of the cluster. **AnalyticDB** is returned.
         self.engine = engine
         # The minor version of the cluster.
         self.engine_version = engine_version
@@ -7300,16 +7815,16 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         # 
         # >  This parameter is returned only when the cluster was locked. **instance_expire** is returned.
         self.lock_reason = lock_reason
-        # The maintenance window of the cluster. The time is displayed in the *HH:mmZ-HH:mmZ* format in UTC. An example is *04:00Z-05:00Z*, which indicates that routine maintenance is performed from 04:00 to 05:00.
+        # The maintenance window of the cluster. The time is displayed in the *HH:mmZ-HH:mmZ* format in UTC. Example: *04:00Z-05:00Z*, which indicates that routine maintenance is performed from 04:00 to 05:00.
         # 
-        # >  For more information about maintenance windows, see [Configure a maintenance window](~~122569~~).
+        # >  For more information about maintenance windows, see [Configure a maintenance window](https://help.aliyun.com/document_detail/122569.html).
         self.maintain_time = maintain_time
         # The mode of the cluster. Valid values:
         # 
         # *   **flexible**: elastic mode.
         # *   **reserver**: reserved mode.
         # 
-        # >  For more information about cluster modes, see [Editions](~~205001~~).
+        # >  For more information about cluster modes, see [Editions](https://help.aliyun.com/document_detail/205001.html).
         self.mode = mode
         # The billing method of the cluster. Valid values:
         # 
@@ -7318,6 +7833,11 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         self.pay_type = pay_type
         # The port number that is used to connect to the cluster.
         self.port = port
+        # The edition of the cluster. Valid values:
+        # 
+        # *   **BasicVersion**: Basic Edition.
+        # *   **EnterpriseVersion**: Enterprise Edition.
+        self.product_version = product_version
         # The ID of the ApsaraDB RDS instance from which data is synchronized to the cluster. This parameter is returned only for MySQL analytic instances.
         self.rds_instance_id = rds_instance_id
         # The region ID of the cluster.
@@ -7328,6 +7848,8 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         self.storage_resource = storage_resource
         # The tags that are added to the cluster.
         self.tags = tags
+        # The job information.
+        self.task_info = task_info
         # Indicates whether Elastic Network Interface (ENI) is enabled. Valid values:
         # 
         # *   **true**\
@@ -7345,6 +7867,8 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
     def validate(self):
         if self.tags:
             self.tags.validate()
+        if self.task_info:
+            self.task_info.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7424,6 +7948,8 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
             result['PayType'] = self.pay_type
         if self.port is not None:
             result['Port'] = self.port
+        if self.product_version is not None:
+            result['ProductVersion'] = self.product_version
         if self.rds_instance_id is not None:
             result['RdsInstanceId'] = self.rds_instance_id
         if self.region_id is not None:
@@ -7434,6 +7960,8 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
             result['StorageResource'] = self.storage_resource
         if self.tags is not None:
             result['Tags'] = self.tags.to_map()
+        if self.task_info is not None:
+            result['TaskInfo'] = self.task_info.to_map()
         if self.user_enistatus is not None:
             result['UserENIStatus'] = self.user_enistatus
         if self.vpccloud_instance_id is not None:
@@ -7520,6 +8048,8 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
             self.pay_type = m.get('PayType')
         if m.get('Port') is not None:
             self.port = m.get('Port')
+        if m.get('ProductVersion') is not None:
+            self.product_version = m.get('ProductVersion')
         if m.get('RdsInstanceId') is not None:
             self.rds_instance_id = m.get('RdsInstanceId')
         if m.get('RegionId') is not None:
@@ -7531,6 +8061,9 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         if m.get('Tags') is not None:
             temp_model = DescribeDBClusterAttributeResponseBodyItemsDBClusterTags()
             self.tags = temp_model.from_map(m['Tags'])
+        if m.get('TaskInfo') is not None:
+            temp_model = DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfo()
+            self.task_info = temp_model.from_map(m['TaskInfo'])
         if m.get('UserENIStatus') is not None:
             self.user_enistatus = m.get('UserENIStatus')
         if m.get('VPCCloudInstanceId') is not None:
@@ -7665,11 +8198,15 @@ class DescribeDBClusterHealthStatusRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The ID of the region.
         # 
-        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -7995,13 +8532,18 @@ class DescribeDBClusterNetInfoRequest(TeaModel):
         dbcluster_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the cluster.
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -8020,6 +8562,8 @@ class DescribeDBClusterNetInfoRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -8034,6 +8578,8 @@ class DescribeDBClusterNetInfoRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -8058,20 +8604,20 @@ class DescribeDBClusterNetInfoResponseBodyItemsAddress(TeaModel):
         self.connection_string_prefix = connection_string_prefix
         # The IP address.
         self.ipaddress = ipaddress
-        # The network type of the endpoint. Valid values:
+        # The network type of the cluster. Valid values:
         # 
-        # *   **Public**: public endpoint
-        # *   **VPC**: Virtual Private Cloud (VPC) endpoint
+        # *   **Public**: public endpoint.
+        # *   **VPC**: Virtual Private Cloud (VPC) endpoint.
         self.net_type = net_type
         # The port number that is used to connect to the cluster.
         self.port = port
-        # The ID of the VPC.
+        # The VPC ID.
         # 
-        # >  This parameter is empty when Public is returned for NetType.
+        # >  If NetType is set to Public, an empty string is returned for this parameter.
         self.vpcid = vpcid
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         # 
-        # >  This parameter is empty when Public is returned for NetType.
+        # >  If NetType is set to Public, an empty string is returned for this parameter.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -8162,9 +8708,9 @@ class DescribeDBClusterNetInfoResponseBody(TeaModel):
     ):
         # The network type of the cluster.
         self.cluster_network_type = cluster_network_type
-        # The network information of the cluster.
+        # The queried network information about the cluster.
         self.items = items
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8254,7 +8800,9 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The end time of the query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
         # 
@@ -8268,7 +8816,7 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
         # 
         # *   Connections
         # 
-        #     *   **AnalyticDB_Connections**: the number of database connections.
+        #     *   **AnalyticDB_Connections**: the number of connections of the cluster.
         # 
         # *   Writes
         # 
@@ -8280,7 +8828,7 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
         # 
         #     *   **AnalyticDB_UpdateRT**: the update response time.
         # 
-        # *   Deletion
+        # *   Deletes
         # 
         #     *   **AnalyticDB_DeleteRT**: the delete response time.
         # 
@@ -8293,18 +8841,25 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
         # *   Disks
         # 
         #     *   **AnalyticDB_IO**: the disk I/O throughput.
-        #     *   **AnalyticDB_IO_UTIL**: the I/O utilization.
-        #     *   **AnalyticDB_IO_WAIT**: the I/O wait time.
-        #     *   **AnalyticDB_IOPS**: the disk input/output operations per second (IOPS).
+        #     *   **AnalyticDB_IO_UTIL**: the disk I/O usage.
+        #     *   **AnalyticDB_IO_WAIT**: the disk I/O wait time.
+        #     *   **AnalyticDB_IOPS**: the disk IOPS.
         #     *   **AnalyticDB_DiskUsage**: the disk space that is used.
         #     *   **AnalyticDB_HotDataDiskUsage**: the disk space that is used by hot data.
         #     *   **AnalyticDB_ColdDataDiskUsage**: the disk space that is used by cold data.
+        # 
+        # *   Other
+        # 
+        #     *   **AnalyticDB_BuildTaskCount**: the number of BUILD jobs.
+        #     *   **AnalyticDB_ComputeMemoryUsedRatio**: the compute memory usage.
         # 
         # >  If you leave this parameter empty, the values of all the preceding performance metrics are returned.
         self.key = key
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the cluster.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -8376,11 +8931,190 @@ class DescribeDBClusterPerformanceResponseBodyPerformancesSeries(TeaModel):
         tags: str = None,
         values: List[str] = None,
     ):
-        # The name of the performance metric value.
+        # *   CPU
+        # 
+        #     *   **AnalyticDB_CPU**: the average CPU utilization.
+        # 
+        #         *   worker_avg_cpu_used: the average CPU utilization across storage nodes.
+        #         *   worker_max_cpu_used: the maximum CPU utilization across storage nodes.
+        #         *   executor_avg_cpu_used: the average CPU utilization across compute nodes.
+        #         *   executor_max_cpu_used: the maximum CPU utilization across compute nodes.
+        # 
+        # *   Connections
+        # 
+        #     *   **AnalyticDB_Connections**: the number of connections of the cluster.
+        # 
+        #         *   connections: the number of connections of the cluster.
+        # 
+        # *   Writes
+        # 
+        #     *   **AnalyticDB_TPS**: the write TPS.
+        # 
+        #         *   tps: the sum of the insert_tps, update_tps, delete_tps, and load_tps values.
+        #         *   insert_tps: the number of successful INSERT INTO VALUES operations per second.
+        #         *   update_tps: the number of successful UPDATE operations per second.
+        #         *   delete_tps: the number of successful DELETE operations per second.
+        #         *   load_tps: the number of successful INSERT OVERWRITE operations per second.
+        # 
+        #     *   **AnalyticDB_InsertRT**: the write response time.
+        # 
+        #         *   insert_avg_rt: the average amount of time consumed by writes.
+        #         *   insert_max_rt: the maximum amount of time consumed by a single write.
+        # 
+        #     *   **AnalyticDB_InsertBytes**: the write throughput.
+        # 
+        #         *   insert_in_bytes: the amount of written data.
+        # 
+        # *   Updates
+        # 
+        #     *   **AnalyticDB_UpdateRT**: the update response time.
+        # 
+        #         *   updateinto_avg_rt: the average amount of time consumed by updates.
+        #         *   updateinto_max_rt: the maximum amount of time consumed by a single update.
+        # 
+        # *   Deletes
+        # 
+        #     *   **AnalyticDB_DeleteRT**: the delete response time.
+        # 
+        #         *   delete_avg_rt: the average amount of time consumed by deletes.
+        #         *   delete_max_rt: the maximum amount of time consumed by a single delete.
+        # 
+        # *   Queries
+        # 
+        #     *   **AnalyticDB_QPS**: the QPS.
+        # 
+        #         *   qps: the number of SELECT operations completed per second.
+        #         *   etl_qps: the number of INSERT OVERWRITE operations completed per second.
+        # 
+        #     *   **AnalyticDB_QueryRT**: the query response time.
+        # 
+        #         *   query_avg_rt: the average amount of time consumed by queries.
+        #         *   query_max_rt: the maximum amount of time consumed by a single query.
+        #         *   etl_avg_rt: the average amount of time consumed by extract-transform-load (ETL) operations.
+        #         *   etl_max_rt: the maximum amount of time consumed by a single ETL operation.
+        # 
+        #     *   **AnalyticDB_QueryWaitTime**: the query wait time.
+        # 
+        #         *   query_avg_wait_time: the average wait time for SELECT and ETL operations.
+        #         *   query_max_wait_time: the maximum wait time for SELECT and ETL operations.
+        # 
+        #     *   AnalyticDB_QueryFailedRatio: the query failure rate.
+        # 
+        #         *   query_failed_ratio: the failure rate of SELECT and ETL operations.
+        # 
+        # *   Disks
+        # 
+        #     *   **AnalyticDB_IO**: the disk I/O throughput.
+        # 
+        #         *   worker_avg_read_bytes_ratio: the average read throughput across storage nodes.
+        #         *   worker_avg_write_bytes_ratio: the average write throughput across storage nodes.
+        # 
+        #     *   **AnalyticDB_IO_UTIL**: the disk I/O usage.
+        # 
+        #         *   worker_avg_io_util: the disk I/O usage across storage nodes.
+        # 
+        #     *   **AnalyticDB_IO_WAIT**: the disk I/O wait time.
+        # 
+        #         *   worker_avg_io_await: the average I/O wait time of storage nodes.
+        # 
+        #     *   **AnalyticDB_IOPS**: the disk IOPS.
+        # 
+        #         *   worker_avg_read_ratio: the average read IOPS of storage nodes.
+        #         *   worker_avg_write_ratio: the average write IOPS of storage nodes.
+        # 
+        #     *   **AnalyticDB_DiskUsage**: the disk space that is used.
+        # 
+        #         *   disk_used_ratio: the average disk space usage across nodes.
+        #         *   worker_max_node_disk_used_ratio: the maximum disk space usage across nodes.
+        # 
+        #     *   **AnalyticDB_HotDataDiskUsage**: the disk space that is used by hot data.
+        # 
+        #         *   local_disk_used: the disk space that is used by hot data.
+        # 
+        #     *   **AnalyticDB_ColdDataDiskUsage**: the disk space that is used by cold data.
+        # 
+        #         *   remote_disk_used: the disk space that is used by cold data.
+        # 
+        #     *   AnalyticDB_DiskUsedRatio: the node disk usage.
+        # 
+        #         *   disk_used_ratio: the average disk usage across nodes.
+        #         *   worker_max_node_disk_used_ratio: the maximum disk usage across nodes.
+        # 
+        #     *   AnalyticDB_DiskUsedSize: the total data size of the cluster.
+        # 
+        #         * disk_no_log_used: the total data size of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster in reserved mode.
+        #         * disk_no_log_used_max: the maximum data size of nodes of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster in reserved mode.
+        #         * disk_no_log_used_avg: the average data size of nodes of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster in reserved mode.
+        #         *   user_used_disk_max: the maximum hot data size of nodes of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster in elastic mode for Cluster Edition.
+        #         *   user_used_disk_avg: the average hot data size of nodes of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster in elastic mode for Cluster Edition.
+        #         *   hot_disk_used: the hot data size of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster in elastic mode for Cluster Edition.
+        #         *   cold_disk_used: the cold data size of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster in elastic mode for Cluster Edition.
+        # 
+        # *   Other
+        # 
+        #     *   **AnalyticDB_BuildTaskCount**: the number of BUILD jobs.
+        # 
+        #         *   max_build_task_count: the maximum number of running BUILD jobs across nodes.
+        #         *   avg_build_task_count: the average number of running BUILD jobs across nodes.
+        # 
+        #     *   **AnalyticDB_ComputeMemoryUsedRatio**: the compute memory usage.
+        # 
+        #         *   max_worker_compute_memory_used_ratio: the maximum compute memory usage across storage nodes.
+        #         *   avg_worker_compute_memory_used_ratio: the average compute memory usage across storage nodes.
+        #         *   max_executor_compute_memory_used_ratio: the maximum compute memory usage across compute nodes.
+        #         *   avg_executor_compute_memory_used_ratio: the average compute memory usage across compute nodes.
+        # 
+        #     *   AnalyticDB_UnavailableNodeCount: the number of unavailable nodes.
+        # 
+        #         *   worker_unavailable_node_count: the number of unavailable storage nodes.
+        #         *   executor_unavailable_node_count: the number of unavailable compute nodes.
+        # 
+        # *   WLM
+        # 
+        #     *   AnalyticDB_WLM_ResubmitQueries_Count: the number of resubmitted WLM queries.
+        # 
+        #         *   AnalyticDB_WLM_ResubmitQueries_Count: the number of resubmitted WLM queries.
+        # 
+        #     *   AnalyticDB_WLM_SQA_AvgRt_MS: the average amount of time consumed by accelerated short WLM queries.
+        # 
+        #         *   AnalyticDB_WLM_SQA_AvgRt_MS: the average amount of time consumed by accelerated short WLM queries.
+        # 
+        #     *   AnalyticDB_WLM_SQA_Queries_Count: the number of accelerated short WLM queries.
+        # 
+        #         *   AnalyticDB_WLM_SQA_Queries_Count: the number of accelerated short WLM queries.
+        # 
+        #     *   AnalyticDB_WLM_TotalQueries_Count: the total number of WLM queries.
+        # 
+        #         *   AnalyticDB_WLM_TotalQueries_Count: the total number of WLM queries.
+        # 
+        # *   AnalyticDB Pipeline Service (APS)
+        # 
+        #     *   AnalyticDB_APS_BPS: the bytes per second (BPS) of APS provided by the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        # 
+        #         *   APS_Read_BPS: the read BPS of APS.
+        # 
+        #     *   AnalyticDB_APS_CPU: the CPU utilization of APS provided by the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        # 
+        #         *   APS_CPU_Avg_Usage_Percentage: the average CPU utilization of APS.
+        #         *   APS_CPU_Max_Usage_Percentage: the maximum CPU utilization of APS.
+        # 
+        #     *   AnalyticDB_APS_Memory: the memory usage of APS provided by the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        # 
+        #         *   APS_Memory_Avg_Usage_Percentage: the average memory usage of APS.
+        #         *   APS_Memory_Max_Usage_Percentage: the maximum memory usage of APS.
+        # 
+        #     *   AnalyticDB_APS_RPS: the number of records per second of APS provided by the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        # 
+        #         *   APS_Read_RPS: the number of read records per second of APS.
+        # 
+        #     *   AnalyticDB_APS_RT: the response time of APS provided by the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        # 
+        #         *   AnalyticDB_APS_RT: the average response time of APS.
+        #         *   APS_Read_Max_RT: the maximum response time of APS.
         self.name = name
         # The tags that are added to the cluster.
         self.tags = tags
-        # The values of the queried performance metrics.
+        # The values of the queried performance metric.
         self.values = values
 
     def validate(self):
@@ -8422,7 +9156,7 @@ class DescribeDBClusterPerformanceResponseBodyPerformances(TeaModel):
         self.key = key
         # The queried performance metric data.
         self.series = series
-        # The unit of the performance metrics.
+        # The unit of the performance metric.
         self.unit = unit
 
     def validate(self):
@@ -8581,9 +9315,13 @@ class DescribeDBClusterResourcePoolPerformanceRequest(TeaModel):
     ):
         # The cluster ID.
         # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The end of the time range to monitor the resource group. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The metrics of the resource group. You can enter multiple metrics at the same time to query the monitoring information. Separate multiple metrics with commas (,). Valid values:
         # 
@@ -8600,7 +9338,7 @@ class DescribeDBClusterResourcePoolPerformanceRequest(TeaModel):
         # 
         # *   If you leave this parameter empty, the monitoring information about all metrics is returned.
         # 
-        # *   For more information about scaling plans, see [Create a resource scaling plan](~~189507~~).
+        # *   For more information about scaling plans, see [Create a resource scaling plan](https://help.aliyun.com/document_detail/189507.html).
         self.key = key
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -8617,6 +9355,8 @@ class DescribeDBClusterResourcePoolPerformanceRequest(TeaModel):
         # The beginning of the time range to monitor the resource group. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
         # 
         # > You can view only the monitoring information about the resource groups within the last two days.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -8904,6 +9644,514 @@ class DescribeDBClusterResourcePoolPerformanceResponse(TeaModel):
         return self
 
 
+class DescribeDBClusterSSLRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeDBClusterSSLResponseBody(TeaModel):
+    def __init__(
+        self,
+        connection_string: str = None,
+        expire_time: str = None,
+        request_id: str = None,
+        sslenabled: bool = None,
+    ):
+        # The endpoint that is protected by SSL encryption.
+        self.connection_string = connection_string
+        # The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        self.expire_time = expire_time
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether SSL encryption is enabled. Valid values:
+        # 
+        # *   true
+        # *   false
+        self.sslenabled = sslenabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connection_string is not None:
+            result['ConnectionString'] = self.connection_string
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.sslenabled is not None:
+            result['SSLEnabled'] = self.sslenabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectionString') is not None:
+            self.connection_string = m.get('ConnectionString')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SSLEnabled') is not None:
+            self.sslenabled = m.get('SSLEnabled')
+        return self
+
+
+class DescribeDBClusterSSLResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDBClusterSSLResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDBClusterSSLResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDBClusterSpaceSummaryRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The region ID of the cluster.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeDBClusterSpaceSummaryResponseBodyDataColdData(TeaModel):
+    def __init__(
+        self,
+        data_size: int = None,
+        index_size: int = None,
+        other_size: int = None,
+        primary_key_index_size: int = None,
+        total_size: int = None,
+    ):
+        # The data size of table records. Unit: bytes.
+        self.data_size = data_size
+        # The data size of regular indexes. Unit: bytes.
+        self.index_size = index_size
+        # The other data size. Unit: bytes.
+        self.other_size = other_size
+        # The data size of primary key indexes. Unit: bytes.
+        self.primary_key_index_size = primary_key_index_size
+        # The cold data size. Unit: bytes.
+        # 
+        # >  Formula: Cold data size = Data size of table records + Data size of regular indexes + Data size of primary key indexes + Other data size.
+        self.total_size = total_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_size is not None:
+            result['DataSize'] = self.data_size
+        if self.index_size is not None:
+            result['IndexSize'] = self.index_size
+        if self.other_size is not None:
+            result['OtherSize'] = self.other_size
+        if self.primary_key_index_size is not None:
+            result['PrimaryKeyIndexSize'] = self.primary_key_index_size
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataSize') is not None:
+            self.data_size = m.get('DataSize')
+        if m.get('IndexSize') is not None:
+            self.index_size = m.get('IndexSize')
+        if m.get('OtherSize') is not None:
+            self.other_size = m.get('OtherSize')
+        if m.get('PrimaryKeyIndexSize') is not None:
+            self.primary_key_index_size = m.get('PrimaryKeyIndexSize')
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
+        return self
+
+
+class DescribeDBClusterSpaceSummaryResponseBodyDataDataGrowth(TeaModel):
+    def __init__(
+        self,
+        day_growth: int = None,
+        week_growth: int = None,
+    ):
+        # The data growth within the last day. Unit: bytes.
+        # 
+        # >  Formula: Data growth within the last day = Current data size - Data size of one day ago.
+        self.day_growth = day_growth
+        # The daily data growth within the last seven days. Unit: bytes.
+        # 
+        # >  Formula: Daily data growth within the last seven days = (Current data size - Data size of seven days ago)/7.
+        self.week_growth = week_growth
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.day_growth is not None:
+            result['DayGrowth'] = self.day_growth
+        if self.week_growth is not None:
+            result['WeekGrowth'] = self.week_growth
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DayGrowth') is not None:
+            self.day_growth = m.get('DayGrowth')
+        if m.get('WeekGrowth') is not None:
+            self.week_growth = m.get('WeekGrowth')
+        return self
+
+
+class DescribeDBClusterSpaceSummaryResponseBodyDataHotData(TeaModel):
+    def __init__(
+        self,
+        data_size: int = None,
+        index_size: int = None,
+        other_size: int = None,
+        primary_key_index_size: int = None,
+        total_size: int = None,
+    ):
+        # The data size of table records. Unit: bytes.
+        self.data_size = data_size
+        # The data size of regular indexes. Unit: bytes.
+        self.index_size = index_size
+        # The other data size. Unit: bytes.
+        self.other_size = other_size
+        # The data size of primary key indexes. Unit: bytes.
+        self.primary_key_index_size = primary_key_index_size
+        # The hot data size. Unit: bytes.
+        # 
+        # >  Formula: Hot data size = Data size of table records + Data size of regular indexes + Data size of primary key indexes + Other data size.
+        self.total_size = total_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_size is not None:
+            result['DataSize'] = self.data_size
+        if self.index_size is not None:
+            result['IndexSize'] = self.index_size
+        if self.other_size is not None:
+            result['OtherSize'] = self.other_size
+        if self.primary_key_index_size is not None:
+            result['PrimaryKeyIndexSize'] = self.primary_key_index_size
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataSize') is not None:
+            self.data_size = m.get('DataSize')
+        if m.get('IndexSize') is not None:
+            self.index_size = m.get('IndexSize')
+        if m.get('OtherSize') is not None:
+            self.other_size = m.get('OtherSize')
+        if m.get('PrimaryKeyIndexSize') is not None:
+            self.primary_key_index_size = m.get('PrimaryKeyIndexSize')
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
+        return self
+
+
+class DescribeDBClusterSpaceSummaryResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cold_data: DescribeDBClusterSpaceSummaryResponseBodyDataColdData = None,
+        data_growth: DescribeDBClusterSpaceSummaryResponseBodyDataDataGrowth = None,
+        hot_data: DescribeDBClusterSpaceSummaryResponseBodyDataHotData = None,
+        total_size: str = None,
+    ):
+        # The cold data.
+        self.cold_data = cold_data
+        # The data growth.
+        self.data_growth = data_growth
+        # The hot data.
+        self.hot_data = hot_data
+        # The total data size. Unit: bytes.
+        # 
+        # >  Formula: Total data size = Hot data size+ Cold data size.
+        self.total_size = total_size
+
+    def validate(self):
+        if self.cold_data:
+            self.cold_data.validate()
+        if self.data_growth:
+            self.data_growth.validate()
+        if self.hot_data:
+            self.hot_data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cold_data is not None:
+            result['ColdData'] = self.cold_data.to_map()
+        if self.data_growth is not None:
+            result['DataGrowth'] = self.data_growth.to_map()
+        if self.hot_data is not None:
+            result['HotData'] = self.hot_data.to_map()
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ColdData') is not None:
+            temp_model = DescribeDBClusterSpaceSummaryResponseBodyDataColdData()
+            self.cold_data = temp_model.from_map(m['ColdData'])
+        if m.get('DataGrowth') is not None:
+            temp_model = DescribeDBClusterSpaceSummaryResponseBodyDataDataGrowth()
+            self.data_growth = temp_model.from_map(m['DataGrowth'])
+        if m.get('HotData') is not None:
+            temp_model = DescribeDBClusterSpaceSummaryResponseBodyDataHotData()
+            self.hot_data = temp_model.from_map(m['HotData'])
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
+        return self
+
+
+class DescribeDBClusterSpaceSummaryResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeDBClusterSpaceSummaryResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # The queried storage overview information.
+        self.data = data
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeDBClusterSpaceSummaryResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDBClusterSpaceSummaryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDBClusterSpaceSummaryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDBClusterSpaceSummaryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDBClusterStatusRequest(TeaModel):
     def __init__(
         self,
@@ -8915,9 +10163,11 @@ class DescribeDBClusterStatusRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region.
+        # The region ID of the cluster.
         # 
-        # >  You can call [DescribeRegions](~~143074~~) to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -8964,20 +10214,9 @@ class DescribeDBClusterStatusResponseBody(TeaModel):
         request_id: str = None,
         status: List[str] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The states of clusters. Valid values:
-        # 
-        # *   **Preparing**: The cluster is being prepared.
-        # *   **Creating**: The cluster is being created.
-        # *   **Restoring**: The cluster is being restored from a backup.
-        # *   **Running**: The cluster is running.
-        # *   **Deleting**: The cluster is being deleted.
-        # *   **ClassChanging**: The cluster configurations are being changed.
-        # *   **NetAddressCreating**: A network connection is being created.
-        # *   **NetAddressDeleting**: A network connection is being released.
-        # *   **NetAddressModifying**: A network connection is being modified.
-        # *   **EngineVersionUpgrading**: The engine version is being updated.
+        # The status of clusters.
         self.status = status
 
     def validate(self):
@@ -9135,7 +10374,9 @@ class DescribeDBClustersRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the clusters.
         # 
-        # > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -9228,7 +10469,7 @@ class DescribeDBClustersResponseBodyItemsDBClusterTagsTag(TeaModel):
     ):
         # The tag key.
         # 
-        # >  You can call the [TagResources](~~179253~~) operation to add tags to a cluster.
+        # >  You can call the [TagResources](https://help.aliyun.com/document_detail/179253.html) operation to add a tag to the cluster.
         self.key = key
         # The tag value.
         self.value = value
@@ -9292,6 +10533,163 @@ class DescribeDBClustersResponseBodyItemsDBClusterTags(TeaModel):
         return self
 
 
+class DescribeDBClustersResponseBodyItemsDBClusterTaskInfoStepListStepList(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        start_time: str = None,
+        step_desc: str = None,
+        step_name: str = None,
+        step_progress: str = None,
+        step_status: str = None,
+    ):
+        # The end time of the job step. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        self.end_time = end_time
+        # The start time of the job step. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        self.start_time = start_time
+        # The description of the job step.
+        self.step_desc = step_desc
+        # The name of the job step.
+        self.step_name = step_name
+        # The progress of the job step. Unit: %.
+        self.step_progress = step_progress
+        # The status of the job step. Valid values:
+        # 
+        # *   **NOT_RUN**\
+        # *   **RUNNING**\
+        # *   **SUCCEED**\
+        self.step_status = step_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.step_desc is not None:
+            result['StepDesc'] = self.step_desc
+        if self.step_name is not None:
+            result['StepName'] = self.step_name
+        if self.step_progress is not None:
+            result['StepProgress'] = self.step_progress
+        if self.step_status is not None:
+            result['StepStatus'] = self.step_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StepDesc') is not None:
+            self.step_desc = m.get('StepDesc')
+        if m.get('StepName') is not None:
+            self.step_name = m.get('StepName')
+        if m.get('StepProgress') is not None:
+            self.step_progress = m.get('StepProgress')
+        if m.get('StepStatus') is not None:
+            self.step_status = m.get('StepStatus')
+        return self
+
+
+class DescribeDBClustersResponseBodyItemsDBClusterTaskInfoStepList(TeaModel):
+    def __init__(
+        self,
+        step_list: List[DescribeDBClustersResponseBodyItemsDBClusterTaskInfoStepListStepList] = None,
+    ):
+        self.step_list = step_list
+
+    def validate(self):
+        if self.step_list:
+            for k in self.step_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['StepList'] = []
+        if self.step_list is not None:
+            for k in self.step_list:
+                result['StepList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.step_list = []
+        if m.get('StepList') is not None:
+            for k in m.get('StepList'):
+                temp_model = DescribeDBClustersResponseBodyItemsDBClusterTaskInfoStepListStepList()
+                self.step_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeDBClustersResponseBodyItemsDBClusterTaskInfo(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        progress: str = None,
+        status: str = None,
+        step_list: DescribeDBClustersResponseBodyItemsDBClusterTaskInfoStepList = None,
+    ):
+        # The name of the job.
+        self.name = name
+        # The progress of the job. Unit: %.
+        self.progress = progress
+        # The status of the job. Valid values:
+        # 
+        # *   **NOT_RUN**\
+        # *   **RUNNING**\
+        # *   **SUCCEED**\
+        self.status = status
+        # The job steps.
+        self.step_list = step_list
+
+    def validate(self):
+        if self.step_list:
+            self.step_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.step_list is not None:
+            result['StepList'] = self.step_list.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StepList') is not None:
+            temp_model = DescribeDBClustersResponseBodyItemsDBClusterTaskInfoStepList()
+            self.step_list = temp_model.from_map(m['StepList'])
+        return self
+
+
 class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
     def __init__(
         self,
@@ -9323,11 +10721,13 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         mode: str = None,
         pay_type: str = None,
         port: str = None,
+        product_version: str = None,
         rds_instance_id: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         storage_resource: str = None,
         tags: DescribeDBClustersResponseBodyItemsDBClusterTags = None,
+        task_info: DescribeDBClustersResponseBodyItemsDBClusterTaskInfo = None,
         vpccloud_instance_id: str = None,
         vpcid: str = None,
         v_switch_id: str = None,
@@ -9339,11 +10739,11 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         # *   **CLUSTER**: reserved mode for Cluster Edition.
         # *   **MIXED_STORAGE**: elastic mode for Cluster Edition.
         # 
-        # >  For more information about cluster editions, see [Editions](~~205001~~).
+        # >  For more information about cluster editions, see [Editions](https://help.aliyun.com/document_detail/205001.html).
         self.category = category
         # The commodity code. **ads** is returned.
         self.commodity_code = commodity_code
-        # The specifications of computing resources that are used in the cluster in elastic mode. The increase of computing resources can speed up queries. You can adjust the value of this parameter to scale the cluster.
+        # The specifications of computing resources that are used in the cluster in elastic mode. Computing resources are used to compute data. The increase in the computing resources can accelerate queries. You can scale computing resources based on your business requirements.
         self.compute_resource = compute_resource
         # The public endpoint that is used to connect to the cluster.
         self.connection_string = connection_string
@@ -9355,14 +10755,14 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         self.dbcluster_id = dbcluster_id
         # The network type of the cluster. **VPC** is returned.
         self.dbcluster_network_type = dbcluster_network_type
-        # The state of the cluster. For more information, see [Cluster states](~~143075~~).
+        # The status of the cluster. For more information, see [Cluster states](https://help.aliyun.com/document_detail/143075.html).
         self.dbcluster_status = dbcluster_status
         # The type of the cluster. Valid values:
         # 
         # *   **Common**: common cluster.
         # *   **RDS_ANALYSIS**: MySQL analytic instance.
         self.dbcluster_type = dbcluster_type
-        # The instance type of the cluster.
+        # The specifications of the cluster.
         self.dbnode_class = dbnode_class
         # The number of node groups.
         self.dbnode_count = dbnode_count
@@ -9372,20 +10772,20 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         self.dbversion = dbversion
         # The disk type of the cluster. Valid values:
         # 
-        # *   **local_ssd**: local disk.
+        # *   **local_ssd**: local SSD.
         # *   **cloud**: basic disk.
         # *   **cloud_ssd**: standard SSD.
         # *   **cloud_efficiency**: ultra disk.
-        # *   **cloud_essd**: PL0 enhanced SSD (ESSD).
+        # *   **cloud_essd0**: PL0 Enterprise SSD (ESSD).
         # *   **cloud_essd**: PL1 ESSD.
         # *   **cloud_essd2**: PL2 ESSD.
         # *   **cloud_essd3**: PL3 ESSD.
         # 
-        # >  For more information, see [ESSDs](~~122389~~).
+        # >  For more information about ESSDs, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
         self.disk_type = disk_type
-        # The ID of the Data Transmission Service (DTS) synchronization task. This parameter is returned only for MySQL analytic instances.
+        # The ID of the Data Transmission Service (DTS) synchronization job. This parameter is returned only for MySQL analytic instances.
         self.dts_job_id = dts_job_id
-        # The number of elastic I/O units (EIUs). For more information, see [Use EIUs to scale up storage resources](~~189505~~).
+        # The number of elastic I/O units (EIUs). For more information, see [Elasticity of the storage layer](https://help.aliyun.com/document_detail/189505.html).
         # 
         # >  This parameter is returned only for clusters in elastic mode.
         self.elastic_ioresource = elastic_ioresource
@@ -9393,7 +10793,7 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         self.engine = engine
         # The number of compute nodes that are used by the cluster in elastic mode.
         self.executor_count = executor_count
-        # The time when the cluster expires. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time is displayed in UTC. Example: *2999-09-08T16:00:00Z*.
+        # The expiration time of the cluster. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time is displayed in UTC. Example: *2999-09-08T16:00:00Z*.
         # 
         # > 
         # 
@@ -9416,7 +10816,7 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         # *   **ManualLock**: The cluster is manually locked.
         # *   **LockByExpiration**: The cluster is automatically locked due to cluster expiration.
         # *   **LockByRestoration**: The cluster is automatically locked due to cluster restoration.
-        # *   **LockByDiskQuota**: The cluster is automatically locked when it has used 90% of its storage.
+        # *   **LockByDiskQuota**: The cluster is automatically locked when 90% of the cluster storage is used.
         self.lock_mode = lock_mode
         # The reason why the cluster is locked.
         # 
@@ -9429,7 +10829,7 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         # 
         # > 
         # 
-        # *   For more information about cluster modes, see [Editions](~~205001~~).
+        # *   For more information about cluster modes, see [Editions](https://help.aliyun.com/document_detail/205001.html).
         self.mode = mode
         # The billing method of the cluster. Valid values:
         # 
@@ -9438,17 +10838,24 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         self.pay_type = pay_type
         # The port number that is used to connect to the cluster. Default value: 3306.
         self.port = port
+        # The edition of the cluster. Valid values:
+        # 
+        # *   **BasicVersion**: Basic Edition.
+        # *   **EnterpriseVersion**: Enterprise Edition.
+        self.product_version = product_version
         # The ID of the ApsaraDB RDS instance from which data is synchronized to the cluster. This parameter is returned only for MySQL analytic instances.
         self.rds_instance_id = rds_instance_id
         # The region ID of the cluster.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The specifications of storage resources that are used in the cluster in elastic mode. These resources are used to read and write data. You can increase the value of this parameter to improve the read and write performance of the cluster.
+        # The specifications of storage resources that are used in the cluster in elastic mode. Storage resources are used to read and write data. The increase in the storage resources can improve the read and write performance of the cluster.
         self.storage_resource = storage_resource
         # The tags that are added to the cluster.
         self.tags = tags
-        # The ID of the cluster that is deployed in the VPC.
+        # The job progress.
+        self.task_info = task_info
+        # The ID of the cluster that resides in the VPC.
         self.vpccloud_instance_id = vpccloud_instance_id
         # The virtual private cloud (VPC) ID of the cluster.
         self.vpcid = vpcid
@@ -9460,6 +10867,8 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
     def validate(self):
         if self.tags:
             self.tags.validate()
+        if self.task_info:
+            self.task_info.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9523,6 +10932,8 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
             result['PayType'] = self.pay_type
         if self.port is not None:
             result['Port'] = self.port
+        if self.product_version is not None:
+            result['ProductVersion'] = self.product_version
         if self.rds_instance_id is not None:
             result['RdsInstanceId'] = self.rds_instance_id
         if self.region_id is not None:
@@ -9533,6 +10944,8 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
             result['StorageResource'] = self.storage_resource
         if self.tags is not None:
             result['Tags'] = self.tags.to_map()
+        if self.task_info is not None:
+            result['TaskInfo'] = self.task_info.to_map()
         if self.vpccloud_instance_id is not None:
             result['VPCCloudInstanceId'] = self.vpccloud_instance_id
         if self.vpcid is not None:
@@ -9601,6 +11014,8 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
             self.pay_type = m.get('PayType')
         if m.get('Port') is not None:
             self.port = m.get('Port')
+        if m.get('ProductVersion') is not None:
+            self.product_version = m.get('ProductVersion')
         if m.get('RdsInstanceId') is not None:
             self.rds_instance_id = m.get('RdsInstanceId')
         if m.get('RegionId') is not None:
@@ -9612,6 +11027,9 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         if m.get('Tags') is not None:
             temp_model = DescribeDBClustersResponseBodyItemsDBClusterTags()
             self.tags = temp_model.from_map(m['Tags'])
+        if m.get('TaskInfo') is not None:
+            temp_model = DescribeDBClustersResponseBodyItemsDBClusterTaskInfo()
+            self.task_info = temp_model.from_map(m['TaskInfo'])
         if m.get('VPCCloudInstanceId') is not None:
             self.vpccloud_instance_id = m.get('VPCCloudInstanceId')
         if m.get('VPCId') is not None:
@@ -9769,7 +11187,9 @@ class DescribeDBResourceGroupRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The name of the resource group.
         self.group_name = group_name
@@ -9824,6 +11244,7 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(TeaModel):
         create_time: str = None,
         group_name: str = None,
         group_type: str = None,
+        group_user_list: List[str] = None,
         group_users: str = None,
         node_num: int = None,
         update_time: str = None,
@@ -9837,9 +11258,11 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(TeaModel):
         # *   **interactive**\
         # *   **batch** (default)
         # 
-        # > For more information, see [Query execution modes](~~189502~~).
+        # > For more information, see [Query execution modes](https://help.aliyun.com/document_detail/189502.html).
         self.group_type = group_type
         # The database accounts that are associated with the resource group.
+        self.group_user_list = group_user_list
+        # The database accounts that are associated with the resource group. Multiple database accounts are separated by commas (,).
         self.group_users = group_users
         # The number of nodes. Each node provides 16 cores and 64 GB memory.
         self.node_num = node_num
@@ -9861,6 +11284,8 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(TeaModel):
             result['GroupName'] = self.group_name
         if self.group_type is not None:
             result['GroupType'] = self.group_type
+        if self.group_user_list is not None:
+            result['GroupUserList'] = self.group_user_list
         if self.group_users is not None:
             result['GroupUsers'] = self.group_users
         if self.node_num is not None:
@@ -9877,6 +11302,8 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(TeaModel):
             self.group_name = m.get('GroupName')
         if m.get('GroupType') is not None:
             self.group_type = m.get('GroupType')
+        if m.get('GroupUserList') is not None:
+            self.group_user_list = m.get('GroupUserList')
         if m.get('GroupUsers') is not None:
             self.group_users = m.get('GroupUsers')
         if m.get('NodeNum') is not None:
@@ -9895,7 +11322,7 @@ class DescribeDBResourceGroupResponseBody(TeaModel):
     ):
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The queried resource group.
+        # The queried resource groups.
         self.groups_info = groups_info
         # The request ID.
         self.request_id = request_id
@@ -9989,7 +11416,9 @@ class DescribeDBResourcePoolRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -10063,7 +11492,7 @@ class DescribeDBResourcePoolResponseBodyPoolsInfo(TeaModel):
         # *   **batch**\
         # *   **interactive**\
         # 
-        # >  For more information, see [Query execution modes](~~189502~~).
+        # >  For more information, see [Query execution modes](https://help.aliyun.com/document_detail/189502.html).
         self.query_type = query_type
         # The time when the resource group was updated.
         self.update_time = update_time
@@ -10211,7 +11640,9 @@ class DescribeDiagnosisDimensionsRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The end of the time range to query. Specify a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
@@ -10220,6 +11651,8 @@ class DescribeDiagnosisDimensionsRequest(TeaModel):
         # *   The end time must be later than the start time.
         # 
         # *   The maximum time range that can be specified is 24 hours.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The language of file titles and error messages. Valid values:
         # 
@@ -10233,14 +11666,20 @@ class DescribeDiagnosisDimensionsRequest(TeaModel):
         # *   `{"Type":"maxCost","Value":"100"}`: queries the top 100 most time-consuming SQL statements. Set `Value` to 100.
         # *   `{"Type":"status","Value":"finished"}`: queries executed SQL statements. You can set `Value` to `running` to query SQL statements that are being executed. You can also set Value to `failed` to query SQL statements that failed to be executed.
         # *   `{"Type":"cost","Min":"10","Max":"200"}`: queries SQL statements whose execution durations are in the range of 10 to 200 milliseconds. You can also customize the maximum and minimum execution durations.
+        # 
+        # This parameter is required.
         self.query_condition = query_condition
         # The region ID of the cluster.
         # 
-        # > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The beginning of the time range to query. Specify a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # > Only data within the last 14 days can be queried. If you call this operation to query data that is earlier than 14 days, an empty string is returned.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -10392,28 +11831,38 @@ class DescribeDiagnosisMonitorPerformanceRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
-        self.dbcluster_id = dbcluster_id
-        # The end of the time range to query. Specify the time in the UNIX timestamp format. Unit: milliseconds.
-        self.end_time = end_time
-        # The language of file titles and error messages. Default value: zh. Valid values:
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
         # 
-        # *   **zh**: simplified Chinese
-        # *   **en**: English
-        # *   **ja**: Japanese
-        # *   **zh-tw**: traditional Chinese
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
+        self.end_time = end_time
+        # The language of file titles and error messages. Valid values:
+        # 
+        # *   **zh** (default): simplified Chinese.
+        # *   **en**: English.
+        # *   **ja**: Japanese.
+        # *   **zh-tw**: traditional Chinese.
         self.lang = lang
         # The query conditions for SQL statements, which can be a combination of the `Type` and `Value` fields or a combination of the Type, `Min`, and `Max` fields. Specify the conditions in the JSON format. `Type` specifies the query dimension. Valid values for Type: `maxCost`, `status`, and `cost`. `Value`, `Min`, or `Max` specifies the query range for the dimension. Valid values:
         # 
         # *   `{"Type":"maxCost","Value":"100"}`: queries the top 100 most time-consuming SQL statements. Set `Value` to 100.
-        # *   `{"Type":"status","Value":"finished"}`: queries executed SQL statements. You can set `Value` to `running` to query SQL statements that are being executed. You can also set Value to `failed` to query SQL statements that failed to be executed.
-        # *   `{"Type":"cost","Min":"10","Max":"200"}`: queries SQL statements whose execution durations are in the range of 10 to 200 milliseconds. You can also customize the maximum and minimum execution durations.
+        # *   `{"Type":"status","Value":"finished"}`: queries the executed SQL statements. You can set `Value` to `running` to query the SQL statements that are being executed. You can also set Value to `failed` to query the SQL statements that failed to be executed.
+        # *   `{"Type":"cost","Min":"10","Max":"200"}`: queries the SQL statements whose execution duration is in the range of 10 to 200 milliseconds. You can also specify custom values for the Min and Max fields.
+        # 
+        # This parameter is required.
         self.query_condition = query_condition
         # The region ID of the cluster.
         # 
-        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The beginning of the time range to query. Specify the time in the UNIX timestamp format. Unit: milliseconds.
+        # The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -10469,25 +11918,23 @@ class DescribeDiagnosisMonitorPerformanceResponseBodyPerformances(TeaModel):
         status: str = None,
         user_name: str = None,
     ):
-        # The total amount of time consumed by the query. Unit: milliseconds.
+        # The total execution duration. Unit: milliseconds.
         # 
-        # >  This parameter indicates the sum of `QueuedTime`, `TotalPlanningTime`, and `ExecutionTime`.
+        # >  This value is the cumulative value of the `QueuedTime`, `TotalPlanningTime`, and `ExecutionTime` parameters.
         self.cost = cost
         # The peak memory of the query. Unit: bytes.
         self.peak_memory = peak_memory
-        # The ID of the query.
-        # 
-        # >  You can call the [DescribeProcessList](~~143382~~) operation to query the IDs of queries that are being executed.
+        # The query ID.
         self.process_id = process_id
         # The IP address of the AnalyticDB for MySQL frontend node on which the SQL statement is executed.
         self.rc_host = rc_host
-        # The number of entries scanned.
+        # The number of rows scanned.
         self.scan_rows = scan_rows
         # The amount of scanned data. Unit: bytes.
         self.scan_size = scan_size
-        # The execution start time of the SQL statement. The time is in the UNIX timestamp format. Unit: milliseconds.
+        # The execution start time of the SQL statement. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
-        # The state of the SQL statement. Valid values:
+        # The status of the SQL statement. Valid values:
         # 
         # *   **running**\
         # *   **finished**\
@@ -10556,18 +12003,18 @@ class DescribeDiagnosisMonitorPerformanceResponseBody(TeaModel):
         performances_truncated: bool = None,
         request_id: str = None,
     ):
-        # The monitoring information of queries displayed in Gantt charts.
+        # The monitoring information about queries displayed in Gantt charts.
         self.performances = performances
-        # The threshold for the number of queries displayed in a Gantt chart. The default value is 10000.
+        # The threshold for the number of queries displayed in a Gantt chart. Default value: 10000.
         # 
-        # >  A maximum of 10,000 queries can be displayed in a Gantt chart even if more queries exist.
+        # >  Up to 10,000 queries can be displayed in a Gantt chart even if more queries exist.
         self.performances_threshold = performances_threshold
         # Indicates whether all queries are returned. Valid values:
         # 
-        # *   true: All queries are returned.
-        # *   false: Only a specified number of queries are returned.
+        # *   true
+        # *   false
         self.performances_truncated = performances_truncated
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10676,15 +12123,17 @@ class DescribeDiagnosisRecordsRequest(TeaModel):
     ):
         # The source IP address.
         # 
-        # > You can call the [DescribeDiagnosisDimensions](~~308210~~) operation to query the resource group, database name, username, and source IP address of the SQL statements to be queried.
+        # > You can call the [DescribeDiagnosisDimensions](https://help.aliyun.com/document_detail/308210.html) operation to query the resource group, database name, username, and source IP address of the SQL statements to be queried.
         self.client_ip = client_ip
         # The cluster ID.
         # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The database on which the SQL statements are executed.
         # 
-        # > You can call the [DescribeDiagnosisDimensions](~~308210~~) operation to query the resource group, database name, username, and source IP address of the SQL statements to be queried.
+        # > You can call the [DescribeDiagnosisDimensions](https://help.aliyun.com/document_detail/308210.html) operation to query the resource group, database name, username, and source IP address of the SQL statements to be queried.
         self.database = database
         # The end of the time range to query. Specify a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
@@ -10693,6 +12142,8 @@ class DescribeDiagnosisRecordsRequest(TeaModel):
         # *   The end time must be later than the start time.
         # 
         # *   The maximum time range that can be specified is 24 hours.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The keyword for the query.
         self.keyword = keyword
@@ -10738,29 +12189,37 @@ class DescribeDiagnosisRecordsRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Valid values: **30**, **50**, and **100**. Default value: 30.
         self.page_size = page_size
-        # The ID of the SQL pattern.[](~~321868~~)
+        # The SQL pattern ID.
+        # 
+        # >  You can call the [DescribeSQLPatterns](https://help.aliyun.com/document_detail/321868.html) operation to query the information about all SQL patterns within an AnalyticDB for MySQL cluster in a time range, including SQL pattern IDs.
         self.pattern_id = pattern_id
         # The query condition for SQL statements, which can contain the `Type`, `Value`, and `Min` or `Max` fields. Specify the condition in the JSON format. `Type` specifies the query dimension. Valid values for Type: `maxCost`, `status`, and `cost`. `Value`, `Min`, or `Max` specifies the query range for the dimension. Valid values:
         # 
         # *   `{"Type":"maxCost","Value":"100"}`: queries the top 100 most time-consuming SQL statements. Set `Value` to 100.
         # *   `{"Type":"status","Value":"finished"}`: queries executed SQL statements. You can set `Value` to `running` to query SQL statements that are being executed. You can also set Value to `failed` to query SQL statements that failed to be executed.
         # *   `{"Type":"cost","Min":"10","Max":"200"}`: queries SQL statements whose execution durations are in the range of 10 to 200 milliseconds. You can also customize the maximum and minimum execution durations.
+        # 
+        # This parameter is required.
         self.query_condition = query_condition
         # The region ID of the cluster.
         # 
-        # > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group to which the SQL statements belong.
         # 
-        # > You can call the [DescribeDiagnosisDimensions](~~308210~~) operation to query the resource group, database name, username, and source IP address of the SQL statements to be queried.
+        # > You can call the [DescribeDiagnosisDimensions](https://help.aliyun.com/document_detail/308210.html) operation to query the resource group, database name, username, and source IP address of the SQL statements to be queried.
         self.resource_group = resource_group
         # The beginning of the time range to query. Specify a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # > Only data within the last 14 days can be queried.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The username that is used to execute the SQL statements.
         # 
-        # > You can call the [DescribeDiagnosisDimensions](~~308210~~) operation to query the resource group, database name, username, and source IP address of the SQL statements to be queried.
+        # > You can call the [DescribeDiagnosisDimensions](https://help.aliyun.com/document_detail/308210.html) operation to query the resource group, database name, username, and source IP address of the SQL statements to be queried.
         self.user_name = user_name
 
     def validate(self):
@@ -10855,6 +12314,41 @@ class DescribeDiagnosisRecordsRequest(TeaModel):
         return self
 
 
+class DescribeDiagnosisRecordsResponseBodyQuerysQueryProperties(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        # The name of the query property.
+        self.name = name
+        # The value of the query property.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeDiagnosisRecordsResponseBodyQuerys(TeaModel):
     def __init__(
         self,
@@ -10865,8 +12359,10 @@ class DescribeDiagnosisRecordsResponseBodyQuerys(TeaModel):
         execution_time: int = None,
         output_data_size: int = None,
         output_rows: int = None,
+        pattern_id: str = None,
         peak_memory: int = None,
         process_id: str = None,
+        query_properties: List[DescribeDiagnosisRecordsResponseBodyQuerysQueryProperties] = None,
         queue_time: int = None,
         rc_host: str = None,
         resource_cost_rank: int = None,
@@ -10898,10 +12394,13 @@ class DescribeDiagnosisRecordsResponseBodyQuerys(TeaModel):
         self.output_data_size = output_data_size
         # The number of rows returned.
         self.output_rows = output_rows
+        self.pattern_id = pattern_id
         # The peak memory. Unit: bytes.
         self.peak_memory = peak_memory
         # The query ID.
         self.process_id = process_id
+        # The query properties.
+        self.query_properties = query_properties
         # The amount of time that is consumed for queuing. Unit: milliseconds.
         self.queue_time = queue_time
         # The IP address and port number of the AnalyticDB for MySQL frontend node on which the SQL statement is executed.
@@ -10914,7 +12413,7 @@ class DescribeDiagnosisRecordsResponseBodyQuerys(TeaModel):
         self.resource_group = resource_group
         # The SQL statement.
         # 
-        # > For performance considerations, an SQL statement cannot exceed 5,120 characters in length. Otherwise, the SQL statement is truncated. You can call the [DownloadDiagnosisRecords](~~308212~~) operation to download the diagnostic information about SQL statements that meet a condition in an AnalyticDB for MySQL cluster, including the complete SQL statements.
+        # > For performance considerations, an SQL statement cannot exceed 5,120 characters in length. Otherwise, the SQL statement is truncated. You can call the [DownloadDiagnosisRecords](https://help.aliyun.com/document_detail/308212.html) operation to download the diagnostic information about SQL statements that meet a condition in an AnalyticDB for MySQL cluster, including the complete SQL statements.
         self.sql = sql
         # Indicates whether the SQL statement is truncated. Valid values:
         # 
@@ -10943,7 +12442,10 @@ class DescribeDiagnosisRecordsResponseBodyQuerys(TeaModel):
         self.user_name = user_name
 
     def validate(self):
-        pass
+        if self.query_properties:
+            for k in self.query_properties:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -10965,10 +12467,16 @@ class DescribeDiagnosisRecordsResponseBodyQuerys(TeaModel):
             result['OutputDataSize'] = self.output_data_size
         if self.output_rows is not None:
             result['OutputRows'] = self.output_rows
+        if self.pattern_id is not None:
+            result['PatternId'] = self.pattern_id
         if self.peak_memory is not None:
             result['PeakMemory'] = self.peak_memory
         if self.process_id is not None:
             result['ProcessId'] = self.process_id
+        result['QueryProperties'] = []
+        if self.query_properties is not None:
+            for k in self.query_properties:
+                result['QueryProperties'].append(k.to_map() if k else None)
         if self.queue_time is not None:
             result['QueueTime'] = self.queue_time
         if self.rc_host is not None:
@@ -11015,10 +12523,17 @@ class DescribeDiagnosisRecordsResponseBodyQuerys(TeaModel):
             self.output_data_size = m.get('OutputDataSize')
         if m.get('OutputRows') is not None:
             self.output_rows = m.get('OutputRows')
+        if m.get('PatternId') is not None:
+            self.pattern_id = m.get('PatternId')
         if m.get('PeakMemory') is not None:
             self.peak_memory = m.get('PeakMemory')
         if m.get('ProcessId') is not None:
             self.process_id = m.get('ProcessId')
+        self.query_properties = []
+        if m.get('QueryProperties') is not None:
+            for k in m.get('QueryProperties'):
+                temp_model = DescribeDiagnosisRecordsResponseBodyQuerysQueryProperties()
+                self.query_properties.append(temp_model.from_map(k))
         if m.get('QueueTime') is not None:
             self.queue_time = m.get('QueueTime')
         if m.get('RcHost') is not None:
@@ -11168,7 +12683,9 @@ class DescribeDiagnosisSQLInfoRequest(TeaModel):
     ):
         # The ID of the cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition clusters within a specific region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition clusters within a specific region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The language of file titles and error messages. Valid values:
         # 
@@ -11176,18 +12693,22 @@ class DescribeDiagnosisSQLInfoRequest(TeaModel):
         # *   **en**: English
         # *   **ja**: Japanese
         # *   **zh-tw**: traditional Chinese
+        # 
+        # This parameter is required.
         self.lang = lang
         # The ID of the query.
         # 
-        # >  You can call the [DescribeDiagnosisRecords](~~308207~~) operation to query the SQL summary information of a specified AnalyticDB for MySQL cluster, including the query ID.
+        # >  You can call the [DescribeDiagnosisRecords](https://help.aliyun.com/document_detail/308207.html) operation to query the SQL summary information of a specified AnalyticDB for MySQL cluster, including the query ID.
+        # 
+        # This parameter is required.
         self.process_id = process_id
         # The IP address and port number of the AnalyticDB for MySQL frontend node on which the SQL statement is executed.
         # 
-        # >  You can call the [DescribeDiagnosisRecords](~~308207~~) operation to query the SQL summary information of a specified AnalyticDB for MySQL cluster, including the IP address and port number of the frontend node.
+        # >  You can call the [DescribeDiagnosisRecords](https://help.aliyun.com/document_detail/308207.html) operation to query the SQL summary information of a specified AnalyticDB for MySQL cluster, including the IP address and port number of the frontend node.
         self.process_rc_host = process_rc_host
         # The execution start time of the SQL statement. Specify the time in the UNIX timestamp format. Unit: milliseconds.
         # 
-        # >  You can call the [DescribeDiagnosisRecords](~~308207~~) operation to query the SQL summary information of a specified AnalyticDB for MySQL cluster, including the execution start time of the SQL statement.
+        # >  You can call the [DescribeDiagnosisRecords](https://help.aliyun.com/document_detail/308207.html) operation to query the SQL summary information of a specified AnalyticDB for MySQL cluster, including the execution start time of the SQL statement.
         self.process_start_time = process_start_time
         # The state of the SQL statement. Valid values:
         # 
@@ -11197,11 +12718,13 @@ class DescribeDiagnosisSQLInfoRequest(TeaModel):
         # 
         # *   **failed**\
         # 
-        # > You can call the [DescribeDiagnosisRecords](~~308207~~) operation to query the SQL summary information of a specified AnalyticDB for MySQL cluster, including the state of the SQL statement.
+        # > You can call the [DescribeDiagnosisRecords](https://help.aliyun.com/document_detail/308207.html) operation to query the SQL summary information of a specified AnalyticDB for MySQL cluster, including the state of the SQL statement.
         self.process_state = process_state
         # The region ID of the cluster.
         # 
-        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -11438,7 +12961,9 @@ class DescribeDiagnosisTasksRequest(TeaModel):
     ):
         # The cluster ID.
         # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The IP address from which the query was initiated.
         self.host = host
@@ -11446,9 +12971,9 @@ class DescribeDiagnosisTasksRequest(TeaModel):
         # 
         # > 
         # 
-        # *   `Field` indicates the field that is used to sort the tasks. Valid values of Field: `State`, `CreateTime`, `DBName`, `ProcessID`, `UpdateTime`, `JobName`, and `ProcessRows`.
+        # *   `Field` specifies the field that is used to sort the tasks. Valid values of Field: `State`, `CreateTime`, `DBName`, `ProcessID`, `UpdateTime`, `JobName`, and `ProcessRows`.
         # 
-        # *   `Type` indicates the sort type. Valid values of Type: `Desc` and `Asc`. The values are case-insensitive.
+        # *   `Type` specifies the sort order. Valid values of Type: `Desc` and `Asc`. The values are case-insensitive.
         self.order = order
         # The page number.
         self.page_number = page_number
@@ -11460,13 +12985,17 @@ class DescribeDiagnosisTasksRequest(TeaModel):
         self.page_size = page_size
         # The query ID.
         # 
-        # > You can call the [DescribeProcessList](~~190092~~) operation to query the IDs of queries that are being executed.
+        # > You can call the [DescribeProcessList](https://help.aliyun.com/document_detail/190092.html) operation to query the IDs of queries that are being executed.
+        # 
+        # This parameter is required.
         self.process_id = process_id
         # The region ID of the cluster.
         # 
-        # > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of a stage in the query that is specified by the `ProcessId` parameter.
+        # 
+        # This parameter is required.
         self.stage_id = stage_id
         # The state of the asynchronous import or export task to be queried. Valid values:
         # 
@@ -11779,7 +13308,9 @@ class DescribeDownloadRecordsRequest(TeaModel):
     ):
         # The ID of the cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the detailed information of all AnalyticDB for MySQL clusters within a specific region, including cluster IDs.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the detailed information of all AnalyticDB for MySQL clusters within a specific region, including cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The languages available for file titles and some error messages. Default value: zh. Valid values:
         # 
@@ -11790,7 +13321,9 @@ class DescribeDownloadRecordsRequest(TeaModel):
         self.lang = lang
         # The region ID of the cluster.
         # 
-        # >  You can call the [DescribeRegions](~~143074~~) operation to query the regions and zones supported by AnalyticDB for MySQL, including region IDs.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the regions and zones supported by AnalyticDB for MySQL, including region IDs.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -11978,40 +13511,54 @@ class DescribeEIURangeRequest(TeaModel):
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        storage_size: str = None,
+        sub_operation: str = None,
         zone_id: str = None,
     ):
         # The specifications of computing resources.
         # 
-        # >  You can call the [DescribeComputeResource](~~469002~~) operation to query the specifications of computing resources.
+        # >  You can call the [DescribeComputeResource](https://help.aliyun.com/document_detail/469002.html) operation to query the specifications of computing resources.
         self.compute_resource = compute_resource
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
         # *   This parameter can be left empty when **Operation** is set to **Buy**.
         # *   This parameter must be specified when **Operation** is set to **Upgrade** or **Downgrade**.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
         self.dbcluster_id = dbcluster_id
         # The version of the AnalyticDB for MySQL Data Warehouse Edition cluster. Set the value to **3.0**.
         self.dbcluster_version = dbcluster_version
         # The type of the operation. Valid values:
         # 
         # *   **Buy**: purchases a cluster.
-        # *   **Upgrade**: upgrades a cluster.
-        # *   **Downgrade**: downgrades a cluster.
+        # *   **Modify**: changes configurations of a cluster.
         self.operation = operation
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the cluster.
         # 
-        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The specifications of storage resources. Default value: **8ACU**. Valid values:
+        # 
+        # *   **8ACU**\
+        # *   **12ACU**\
+        # *   **16ACU**\
+        self.storage_size = storage_size
+        # The type of the sub-operation. Valid values:
+        # 
+        # *   **Upgrade**: upgrades a cluster.
+        # *   **Downgrade**: downgrades a cluster.
+        self.sub_operation = sub_operation
         # The zone ID of the cluster.
         # 
-        # >  You can call the [DescribeRegions](~~612293~~) operation to query the most recent zone list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612293.html) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -12043,6 +13590,10 @@ class DescribeEIURangeRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.storage_size is not None:
+            result['StorageSize'] = self.storage_size
+        if self.sub_operation is not None:
+            result['SubOperation'] = self.sub_operation
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
         return result
@@ -12069,6 +13620,10 @@ class DescribeEIURangeRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('StorageSize') is not None:
+            self.storage_size = m.get('StorageSize')
+        if m.get('SubOperation') is not None:
+            self.sub_operation = m.get('SubOperation')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
         return self
@@ -12079,12 +13634,21 @@ class DescribeEIURangeResponseBodyEIUInfo(TeaModel):
         self,
         default_value: str = None,
         eiurange: List[int] = None,
+        max_value: str = None,
+        min_value: str = None,
+        step: str = None,
         storage_resource_range: List[str] = None,
     ):
         # The suggested value for the number of EIUs.
         self.default_value = default_value
         # The queried range for the number of EIUs.
         self.eiurange = eiurange
+        # A reserved parameter.
+        self.max_value = max_value
+        # A reserved parameter.
+        self.min_value = min_value
+        # A reserved parameter.
+        self.step = step
         # A reserved parameter.
         self.storage_resource_range = storage_resource_range
 
@@ -12101,6 +13665,12 @@ class DescribeEIURangeResponseBodyEIUInfo(TeaModel):
             result['DefaultValue'] = self.default_value
         if self.eiurange is not None:
             result['EIURange'] = self.eiurange
+        if self.max_value is not None:
+            result['MaxValue'] = self.max_value
+        if self.min_value is not None:
+            result['MinValue'] = self.min_value
+        if self.step is not None:
+            result['Step'] = self.step
         if self.storage_resource_range is not None:
             result['StorageResourceRange'] = self.storage_resource_range
         return result
@@ -12111,6 +13681,12 @@ class DescribeEIURangeResponseBodyEIUInfo(TeaModel):
             self.default_value = m.get('DefaultValue')
         if m.get('EIURange') is not None:
             self.eiurange = m.get('EIURange')
+        if m.get('MaxValue') is not None:
+            self.max_value = m.get('MaxValue')
+        if m.get('MinValue') is not None:
+            self.min_value = m.get('MinValue')
+        if m.get('Step') is not None:
+            self.step = m.get('Step')
         if m.get('StorageResourceRange') is not None:
             self.storage_resource_range = m.get('StorageResourceRange')
         return self
@@ -12209,7 +13785,9 @@ class DescribeElasticDailyPlanRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The start date of the current-day scaling plan. Specify the date in the yyyy-MM-dd format.
         self.elastic_daily_plan_day = elastic_daily_plan_day
@@ -12223,7 +13801,7 @@ class DescribeElasticDailyPlanRequest(TeaModel):
         # The name of the scaling plan. Valid values:
         # 
         # *   The name must be 2 to 30 characters in length.
-        # *   The name can contain letters, digits, and underscores (\_).
+        # *   The name can contain letters, digits, and underscores (_).
         self.elastic_plan_name = elastic_plan_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -12231,7 +13809,7 @@ class DescribeElasticDailyPlanRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The name of the resource group.
         # 
-        # >  You can call the [DescribeDBResourceGroup](~~466685~~) operation to query the resource group name.
+        # >  You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/466685.html) operation to query the resource group name.
         self.resource_pool_name = resource_pool_name
 
     def validate(self):
@@ -12502,7 +14080,9 @@ class DescribeElasticPlanRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # Specifies whether the scaling plan takes effect. Valid values:
         # 
@@ -12512,7 +14092,7 @@ class DescribeElasticPlanRequest(TeaModel):
         # The name of the scaling plan.
         # 
         # *   The name must be 2 to 30 characters in length.
-        # *   The name can contain letters, digits, and underscores (\_).
+        # *   The name can contain letters, digits, and underscores (_).
         # 
         # > If you do not specify this parameter, the information about all scaling plans for the specified cluster is returned.
         self.elastic_plan_name = elastic_plan_name
@@ -12522,7 +14102,7 @@ class DescribeElasticPlanRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The name of the resource group.
         # 
-        # > You can call the [DescribeDBResourceGroup](~~466685~~) operation to query the resource group name.
+        # > You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/466685.html) operation to query the resource group name.
         self.resource_pool_name = resource_pool_name
 
     def validate(self):
@@ -12610,7 +14190,7 @@ class DescribeElasticPlanResponseBodyElasticPlanList(TeaModel):
         # *   24 Core 96 GB
         # *   52 Core 86 GB
         self.elastic_plan_worker_spec = elastic_plan_worker_spec
-        # Indicates whether the scaling plan takes effect. Default value: true. Valid values:
+        # Indicates whether the scaling plan takes effect. Valid values:
         # 
         # *   **true** (default)
         # *   **false**\
@@ -12619,6 +14199,7 @@ class DescribeElasticPlanResponseBodyElasticPlanList(TeaModel):
         self.end_day = end_day
         # The restoration time of the scaling plan. The interval between the scale-up time and the restoration time cannot be more than 24 hours. The time is in the HH:mm:ss format.
         self.end_time = end_time
+        # The days of the month when the scaling plan was executed. A value indicates a day of the month. Multiple values are separated by commas (,).
         self.monthly_repeat = monthly_repeat
         # The name of the scaling plan.
         self.plan_name = plan_name
@@ -12779,21 +14360,423 @@ class DescribeElasticPlanResponse(TeaModel):
         return self
 
 
-class DescribeInclinedTablesRequest(TeaModel):
+class DescribeExcessivePrimaryKeysRequest(TeaModel):
     def __init__(
         self,
         dbcluster_id: str = None,
+        end_time: str = None,
+        lang: str = None,
         order: str = None,
         owner_account: str = None,
         owner_id: int = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        start_time: str = None,
+    ):
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time must be in UTC.
+        self.end_time = end_time
+        # The display language of the suggestion. Valid values:
+        # 
+        # *   **zh (default)**: simplified Chinese.
+        # *   **en**: English.
+        # *   **ja**: Japanese.
+        # *   **zh-tw**: traditional Chinese.
+        self.lang = lang
+        # The order by which to sort query results. Specify the parameter value in the JSON format. Example: `[{"Field":"TableSchema","Type":"Asc"}]`.
+        # 
+        # *   `Field` specifies the field by which to sort the query results. Valid values:
+        # 
+        #     *   `TableSchema`: the name of the database to which the table belongs.
+        #     *   `TableName`: the name of the table.
+        #     *   `AccessCount`: the number of accesses to the table.
+        # 
+        # *   `Type` specifies the sorting order. Valid values:
+        # 
+        #     *   `Asc`: ascending order.
+        #     *   `Desc`: descending order.
+        # 
+        # >  If you do not specify this parameter, query results are sorted in ascending order based on the database and the table.
+        self.order = order
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The page number. Pages start from page 1. Default value: **1**.
+        self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # *   **30** (default)
+        # *   **50**\
+        # *   **100**\
+        self.page_size = page_size
+        # The region ID of the cluster.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time must be in UTC.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeExcessivePrimaryKeysResponseBodyDetectionItems(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        name: str = None,
+        status: str = None,
+    ):
+        # The detection result.
+        self.message = message
+        # The name of the detection item.
+        self.name = name
+        # The severity level of the detection result.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeExcessivePrimaryKeysResponseBodyTables(TeaModel):
+    def __init__(
+        self,
+        column_count: int = None,
+        primary_key_columns: str = None,
+        primary_key_count: int = None,
+        primary_key_index_size: int = None,
+        schema_name: str = None,
+        space_ratio: float = None,
+        table_name: str = None,
+        total_size: int = None,
+    ):
+        # The total number of columns.
+        self.column_count = column_count
+        # The queried primary key fields.
+        self.primary_key_columns = primary_key_columns
+        # The number of primary key fields.
+        self.primary_key_count = primary_key_count
+        # The data size of primary key indexes. Unit: bytes.
+        self.primary_key_index_size = primary_key_index_size
+        # The name of the database.
+        self.schema_name = schema_name
+        # The percentage of the table size. Unit: %.
+        # 
+        # >  Formula: Table storage percentage = Total data size of a table/Total data size of the cluster × 100%.
+        self.space_ratio = space_ratio
+        # The name of the table.
+        self.table_name = table_name
+        # The cold data size. Unit: bytes.
+        # 
+        # >  Formula: Cold data size = Data size of table records + Data size of regular indexes + Data size of primary key indexes + Size of other data.
+        self.total_size = total_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column_count is not None:
+            result['ColumnCount'] = self.column_count
+        if self.primary_key_columns is not None:
+            result['PrimaryKeyColumns'] = self.primary_key_columns
+        if self.primary_key_count is not None:
+            result['PrimaryKeyCount'] = self.primary_key_count
+        if self.primary_key_index_size is not None:
+            result['PrimaryKeyIndexSize'] = self.primary_key_index_size
+        if self.schema_name is not None:
+            result['SchemaName'] = self.schema_name
+        if self.space_ratio is not None:
+            result['SpaceRatio'] = self.space_ratio
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ColumnCount') is not None:
+            self.column_count = m.get('ColumnCount')
+        if m.get('PrimaryKeyColumns') is not None:
+            self.primary_key_columns = m.get('PrimaryKeyColumns')
+        if m.get('PrimaryKeyCount') is not None:
+            self.primary_key_count = m.get('PrimaryKeyCount')
+        if m.get('PrimaryKeyIndexSize') is not None:
+            self.primary_key_index_size = m.get('PrimaryKeyIndexSize')
+        if m.get('SchemaName') is not None:
+            self.schema_name = m.get('SchemaName')
+        if m.get('SpaceRatio') is not None:
+            self.space_ratio = m.get('SpaceRatio')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
+        return self
+
+
+class DescribeExcessivePrimaryKeysResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        dbcluster_id: str = None,
+        detection_items: List[DescribeExcessivePrimaryKeysResponseBodyDetectionItems] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        tables: List[DescribeExcessivePrimaryKeysResponseBodyTables] = None,
+        total_count: str = None,
+    ):
+        # The details about the access denial.
+        # 
+        # >  This parameter is returned only if Resource Access Management (RAM) permission verification failed.
+        self.access_denied_detail = access_denied_detail
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        self.dbcluster_id = dbcluster_id
+        # The queried detection items and detection results.
+        self.detection_items = detection_items
+        # The page number. Pages start from page 1. Default value: 1.
+        self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # *   **30** (default)
+        # *   **50**\
+        # *   **100**\
+        self.page_size = page_size
+        # The request ID.
+        self.request_id = request_id
+        # The queried tables.
+        self.tables = tables
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.detection_items:
+            for k in self.detection_items:
+                if k:
+                    k.validate()
+        if self.tables:
+            for k in self.tables:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        result['DetectionItems'] = []
+        if self.detection_items is not None:
+            for k in self.detection_items:
+                result['DetectionItems'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Tables'] = []
+        if self.tables is not None:
+            for k in self.tables:
+                result['Tables'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        self.detection_items = []
+        if m.get('DetectionItems') is not None:
+            for k in m.get('DetectionItems'):
+                temp_model = DescribeExcessivePrimaryKeysResponseBodyDetectionItems()
+                self.detection_items.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.tables = []
+        if m.get('Tables') is not None:
+            for k in m.get('Tables'):
+                temp_model = DescribeExcessivePrimaryKeysResponseBodyTables()
+                self.tables.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeExcessivePrimaryKeysResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeExcessivePrimaryKeysResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeExcessivePrimaryKeysResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeInclinedTablesRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        lang: str = None,
+        order: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         table_type: str = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        self.lang = lang
         # The order in which queries are sorted in the JSON format based on the specified fields. Specify the fields used to sort the queries and the order type.
         # 
         # Example:
@@ -12831,12 +14814,15 @@ class DescribeInclinedTablesRequest(TeaModel):
         # 
         # Default value: 30.
         self.page_size = page_size
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The type of the table. Valid values:
         # 
         # *   FactTable
         # *   DimensionTable
+        # 
+        # This parameter is required.
         self.table_type = table_type
 
     def validate(self):
@@ -12850,6 +14836,8 @@ class DescribeInclinedTablesRequest(TeaModel):
         result = dict()
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
+        if self.lang is not None:
+            result['Lang'] = self.lang
         if self.order is not None:
             result['Order'] = self.order
         if self.owner_account is not None:
@@ -12860,6 +14848,8 @@ class DescribeInclinedTablesRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -12872,6 +14862,8 @@ class DescribeInclinedTablesRequest(TeaModel):
         m = m or dict()
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
         if m.get('Order') is not None:
             self.order = m.get('Order')
         if m.get('OwnerAccount') is not None:
@@ -12882,6 +14874,8 @@ class DescribeInclinedTablesRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -12891,30 +14885,64 @@ class DescribeInclinedTablesRequest(TeaModel):
         return self
 
 
+class DescribeInclinedTablesResponseBodyDetectionItems(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        name: str = None,
+        status: str = None,
+    ):
+        self.message = message
+        self.name = name
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
 class DescribeInclinedTablesResponseBodyItemsTable(TeaModel):
     def __init__(
         self,
-        is_incline: bool = None,
+        is_incline: str = None,
         name: str = None,
+        row_count: int = None,
         schema: str = None,
-        size: int = None,
+        size: str = None,
+        space_ratio: float = None,
+        total_size: int = None,
         type: str = None,
     ):
-        # Indicates whether data is skewed in partitions of the table. Valid values:
-        # 
-        # *   **true**\
-        # *   **false**\
         self.is_incline = is_incline
-        # The name of the table.
         self.name = name
-        # The name of the database.
+        self.row_count = row_count
         self.schema = schema
-        # The number of rows in the table.
         self.size = size
-        # The type of the table. Valid values:
-        # 
-        # *   **FactTable**\
-        # *   **DimensionTable**\
+        self.space_ratio = space_ratio
+        self.total_size = total_size
         self.type = type
 
     def validate(self):
@@ -12930,10 +14958,16 @@ class DescribeInclinedTablesResponseBodyItemsTable(TeaModel):
             result['IsIncline'] = self.is_incline
         if self.name is not None:
             result['Name'] = self.name
+        if self.row_count is not None:
+            result['RowCount'] = self.row_count
         if self.schema is not None:
             result['Schema'] = self.schema
         if self.size is not None:
             result['Size'] = self.size
+        if self.space_ratio is not None:
+            result['SpaceRatio'] = self.space_ratio
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -12944,10 +14978,16 @@ class DescribeInclinedTablesResponseBodyItemsTable(TeaModel):
             self.is_incline = m.get('IsIncline')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('RowCount') is not None:
+            self.row_count = m.get('RowCount')
         if m.get('Schema') is not None:
             self.schema = m.get('Schema')
         if m.get('Size') is not None:
             self.size = m.get('Size')
+        if m.get('SpaceRatio') is not None:
+            self.space_ratio = m.get('SpaceRatio')
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -12991,12 +15031,14 @@ class DescribeInclinedTablesResponseBodyItems(TeaModel):
 class DescribeInclinedTablesResponseBody(TeaModel):
     def __init__(
         self,
+        detection_items: List[DescribeInclinedTablesResponseBodyDetectionItems] = None,
         items: DescribeInclinedTablesResponseBodyItems = None,
         page_number: str = None,
         page_size: str = None,
         request_id: str = None,
         total_count: str = None,
     ):
+        self.detection_items = detection_items
         # The monitoring information about tables.
         self.items = items
         # The page number.
@@ -13009,6 +15051,10 @@ class DescribeInclinedTablesResponseBody(TeaModel):
         self.total_count = total_count
 
     def validate(self):
+        if self.detection_items:
+            for k in self.detection_items:
+                if k:
+                    k.validate()
         if self.items:
             self.items.validate()
 
@@ -13018,6 +15064,10 @@ class DescribeInclinedTablesResponseBody(TeaModel):
             return _map
 
         result = dict()
+        result['DetectionItems'] = []
+        if self.detection_items is not None:
+            for k in self.detection_items:
+                result['DetectionItems'].append(k.to_map() if k else None)
         if self.items is not None:
             result['Items'] = self.items.to_map()
         if self.page_number is not None:
@@ -13032,6 +15082,11 @@ class DescribeInclinedTablesResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.detection_items = []
+        if m.get('DetectionItems') is not None:
+            for k in m.get('DetectionItems'):
+                temp_model = DescribeInclinedTablesResponseBodyDetectionItems()
+                self.detection_items.append(temp_model.from_map(k))
         if m.get('Items') is not None:
             temp_model = DescribeInclinedTablesResponseBodyItems()
             self.items = temp_model.from_map(m['Items'])
@@ -13087,6 +15142,209 @@ class DescribeInclinedTablesResponse(TeaModel):
         return self
 
 
+class DescribeKernelVersionRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # The cluster ID.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The region ID of the cluster.
+        # > You can call the DescribeRegions operation to query the most recent region list.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeKernelVersionResponseBodyAvailableKernelVersions(TeaModel):
+    def __init__(
+        self,
+        expire_date: str = None,
+        kernel_version: str = None,
+        release_date: str = None,
+    ):
+        # The maintenance expiration time of the version. The time follows the ISO 8601 standard in the yyyy-MM-DD HH:mm:ss format. The time is displayed in UTC. After the time arrives, the system no longer maintains the version. If any issues occur, update the minor version of the cluster to a later version.
+        self.expire_date = expire_date
+        # The minor version. Example: **3.1.9**.
+        self.kernel_version = kernel_version
+        # The time when the minor version was released. The time follows the ISO 8601 standard in the yyyy-MM-DD HH:mm:ss format. The time is displayed in UTC.
+        self.release_date = release_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expire_date is not None:
+            result['ExpireDate'] = self.expire_date
+        if self.kernel_version is not None:
+            result['KernelVersion'] = self.kernel_version
+        if self.release_date is not None:
+            result['ReleaseDate'] = self.release_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExpireDate') is not None:
+            self.expire_date = m.get('ExpireDate')
+        if m.get('KernelVersion') is not None:
+            self.kernel_version = m.get('KernelVersion')
+        if m.get('ReleaseDate') is not None:
+            self.release_date = m.get('ReleaseDate')
+        return self
+
+
+class DescribeKernelVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        available_kernel_versions: List[DescribeKernelVersionResponseBodyAvailableKernelVersions] = None,
+        expire_date: str = None,
+        kernel_version: str = None,
+        request_id: str = None,
+    ):
+        # The minor versions to which you can update the current minor version of the cluster.
+        self.available_kernel_versions = available_kernel_versions
+        # The maintenance expiration time of the version. The time follows the ISO 8601 standard in the yyyy-MM-DD HH:mm:ss format. The time is displayed in UTC. After the time arrives, the system no longer maintains the version. If any issues occur, update the minor version of the cluster to a later version.
+        self.expire_date = expire_date
+        # The minor version of the cluster. Example: **3.1.8**.
+        self.kernel_version = kernel_version
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.available_kernel_versions:
+            for k in self.available_kernel_versions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AvailableKernelVersions'] = []
+        if self.available_kernel_versions is not None:
+            for k in self.available_kernel_versions:
+                result['AvailableKernelVersions'].append(k.to_map() if k else None)
+        if self.expire_date is not None:
+            result['ExpireDate'] = self.expire_date
+        if self.kernel_version is not None:
+            result['KernelVersion'] = self.kernel_version
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.available_kernel_versions = []
+        if m.get('AvailableKernelVersions') is not None:
+            for k in m.get('AvailableKernelVersions'):
+                temp_model = DescribeKernelVersionResponseBodyAvailableKernelVersions()
+                self.available_kernel_versions.append(temp_model.from_map(k))
+        if m.get('ExpireDate') is not None:
+            self.expire_date = m.get('ExpireDate')
+        if m.get('KernelVersion') is not None:
+            self.kernel_version = m.get('KernelVersion')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeKernelVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeKernelVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeKernelVersionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeLoadTasksRecordsRequest(TeaModel):
     def __init__(
         self,
@@ -13106,11 +15364,15 @@ class DescribeLoadTasksRecordsRequest(TeaModel):
     ):
         # The cluster ID.
         # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the information about all AnalyticDB for MySQL clusters in a region, including cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters in a region, including cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The name of the database that is involved in the import or export task.
         self.dbname = dbname
         # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The order in which to sort the tasks by field. Specify the field and the sort order in the JSON format. Example: `[{"Field":"CreateTime", "Type":"desc"}]`.
         # 
@@ -13132,13 +15394,15 @@ class DescribeLoadTasksRecordsRequest(TeaModel):
         self.page_size = page_size
         # The region ID.
         # 
-        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time must be in UTC.
         # 
         # > We recommend that you set the query start time to any point in time within 30 days.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The state of the asynchronous import or export task to be queried. Valid values:
         # 
@@ -13419,12 +15683,12 @@ class DescribeMaintenanceActionRequest(TeaModel):
         resource_owner_id: int = None,
         task_type: str = None,
     ):
-        # Specifies whether to return the information about pending or historical O\&M events. Valid values:
+        # Specifies whether to return the information about pending or historical O\\&M events. Valid values:
         # 
-        # *   **0**: returns the information about pending O\&M event.
-        # *   **1**: returns the information about historical O\&M event.
+        # *   **0**: returns the information about pending O\\&M event.
+        # *   **1**: returns the information about historical O\\&M event.
         # 
-        # If you do not specify this parameter, the information about pending O\&M event are returned.
+        # If you do not specify this parameter, the information about pending O\\&M event are returned.
         self.is_history = is_history
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -13434,19 +15698,25 @@ class DescribeMaintenanceActionRequest(TeaModel):
         self.page_size = page_size
         # The region ID. Valid values:
         # 
-        # *   The ID of the region where the O\&M event occurs. Example: `cn-hangzhou`. You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
-        # *   You can also set Region to `all` to query the O\&M events in all regions. If you set `Region` to `all`, you must set `TaskType` to `all`.
-        self.region = region
-        # The ID of the region where the O\&M event occurs.
+        # *   The ID of the region where the O\\&M event occurs. Example: `cn-hangzhou`. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # *   You can also set Region to `all` to query the O\\&M events in all regions. If you set `Region` to `all`, you must set `TaskType` to `all`.
         # 
-        # > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # This parameter is required.
+        self.region = region
+        # The ID of the region where the O\\&M event occurs.
+        # 
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the O\&M event. Valid values:
+        # The type of the O\\&M event. Valid values:
         # 
         # *   **rds_apsaradb_upgrade**: database software upgrades.
-        # *   **all**: all the O\&M events in all regions within the current account. If you set `Region` to `all`, you must set `TaskType` to `all`.
+        # *   **all**: all the O\\&M events in all regions within the current account. If you set `Region` to `all`, you must set `TaskType` to `all`.
+        # 
+        # This parameter is required.
         self.task_type = task_type
 
     def validate(self):
@@ -13523,9 +15793,9 @@ class DescribeMaintenanceActionResponseBodyItems(TeaModel):
         switch_time: str = None,
         task_type: str = None,
     ):
-        # The time when the O\&M event was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+        # The time when the O\\&M event was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.created_time = created_time
-        # The ID of the cluster that is involved in the O\&M event.
+        # The ID of the cluster that is involved in the O\\&M event.
         self.dbcluster_id = dbcluster_id
         # The database engine.
         self.dbtype = dbtype
@@ -13533,15 +15803,15 @@ class DescribeMaintenanceActionResponseBodyItems(TeaModel):
         self.dbversion = dbversion
         # The deadline before which the event can be executed. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.deadline = deadline
-        # The ID of the O\&M event.
+        # The ID of the O\\&M event.
         self.id = id
-        # The point in time at which the switchover time of the O\&M event was modified. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+        # The point in time at which the switchover time of the O\\&M event was modified. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.modified_time = modified_time
-        # The preparation time that is required before the pending O\&M event can be switched. The time is in the `HH:mm:ss` format.
+        # The preparation time that is required before the pending O\\&M event can be switched. The time is in the `HH:mm:ss` format.
         self.prepare_interval = prepare_interval
-        # The ID of the region where the O\&M event occurs.
+        # The ID of the region where the O\\&M event occurs.
         self.region = region
-        # The execution result of the O\&M event.
+        # The execution result of the O\\&M event.
         # 
         # > This parameter is returned only when the value of `Status` is **FAILED** or **CANCEL**.
         self.result_info = result_info
@@ -13549,21 +15819,21 @@ class DescribeMaintenanceActionResponseBodyItems(TeaModel):
         self.start_time = start_time
         # The state of the event.
         # 
-        # *   If you set `IsHistory` to **0**, the state of the pending O\&M event is returned. Valid values:
+        # *   If you set `IsHistory` to **0**, the state of the pending O\\&M event is returned. Valid values:
         # 
-        #     *   **WAITING_MODIFY**: The start time of the O\&M event is waiting to be set.
-        #     *   **WAITING**: The O\&M event is waiting to be processed.
-        #     *   **PROCESSING**: The O\&M event is being processed. The switchover time of an event in this state cannot be changed.
+        #     *   **WAITING_MODIFY**: The start time of the O\\&M event is waiting to be set.
+        #     *   **WAITING**: The O\\&M event is waiting to be processed.
+        #     *   **PROCESSING**: The O\\&M event is being processed. The switchover time of an event in this state cannot be changed.
         # 
-        # *   If you set `IsHistory` to **1**, the state of the historical O\&M event is returned. Valid values:
+        # *   If you set `IsHistory` to **1**, the state of the historical O\\&M event is returned. Valid values:
         # 
         #     *   **SUCCESS**: The event ended and the execution succeeded.
         #     *   **FAILED**: The event ended but the execution failed.
         #     *   **CANCEL**: The event was canceled.
         self.status = status
-        # The time when the pending O\&M event is switched. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+        # The time when the pending O\\&M event is switched. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.switch_time = switch_time
-        # The type of the O\&M event.
+        # The type of the O\\&M event.
         self.task_type = task_type
 
     def validate(self):
@@ -13647,7 +15917,7 @@ class DescribeMaintenanceActionResponseBody(TeaModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The queried O\&M events.
+        # The queried O\\&M events.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -13753,6 +16023,8 @@ class DescribeOperatorPermissionRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -13903,19 +16175,27 @@ class DescribePatternPerformanceRequest(TeaModel):
     ):
         # The cluster ID.
         # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time must be in UTC.
         # 
         # > The end time must be later than the start time.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The SQL pattern ID.
         # 
-        # > You can call the [DescribeSQLPatterns](~~321868~~) operation to query the information about all SQL patterns in an AnalyticDB for MySQL cluster within a period of time, including SQL pattern IDs.
+        # > You can call the [DescribeSQLPatterns](https://help.aliyun.com/document_detail/321868.html) operation to query the information about all SQL patterns in an AnalyticDB for MySQL cluster within a period of time, including SQL pattern IDs.
+        # 
+        # This parameter is required.
         self.pattern_id = pattern_id
         # The region ID of the cluster.
         # 
-        # > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time must be in UTC.
         # 
@@ -13924,6 +16204,8 @@ class DescribePatternPerformanceRequest(TeaModel):
         # *   Only data within the last 14 days can be queried. For example, if the current date is November 22 (UTC+8), you can query data on a day as early as November 9 by setting StartTime to 2021-11-08T16:00:00Z. If you set StartTime to a value earlier than 2021-11-08T16:00:00Z, the Performances parameter is empty.
         # 
         # *   The maximum time range that can be specified is 24 hours.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -14083,19 +16365,31 @@ class DescribePatternPerformanceResponseBodyPerformances(TeaModel):
 class DescribePatternPerformanceResponseBody(TeaModel):
     def __init__(
         self,
+        access_ip: str = None,
         end_time: str = None,
+        failed_count: int = None,
         performances: List[DescribePatternPerformanceResponseBodyPerformances] = None,
+        query_count: int = None,
         request_id: str = None,
+        sqlpattern: str = None,
         start_time: str = None,
+        tables: str = None,
+        user: str = None,
     ):
+        self.access_ip = access_ip
         # The end time of the query. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time is displayed in UTC.
         self.end_time = end_time
+        self.failed_count = failed_count
         # The queried performance metrics.
         self.performances = performances
+        self.query_count = query_count
         # The request ID.
         self.request_id = request_id
+        self.sqlpattern = sqlpattern
         # The start time of the query. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time is displayed in UTC.
         self.start_time = start_time
+        self.tables = tables
+        self.user = user
 
     def validate(self):
         if self.performances:
@@ -14109,31 +16403,55 @@ class DescribePatternPerformanceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_ip is not None:
+            result['AccessIp'] = self.access_ip
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.failed_count is not None:
+            result['FailedCount'] = self.failed_count
         result['Performances'] = []
         if self.performances is not None:
             for k in self.performances:
                 result['Performances'].append(k.to_map() if k else None)
+        if self.query_count is not None:
+            result['QueryCount'] = self.query_count
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.sqlpattern is not None:
+            result['SQLPattern'] = self.sqlpattern
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.tables is not None:
+            result['Tables'] = self.tables
+        if self.user is not None:
+            result['User'] = self.user
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessIp') is not None:
+            self.access_ip = m.get('AccessIp')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('FailedCount') is not None:
+            self.failed_count = m.get('FailedCount')
         self.performances = []
         if m.get('Performances') is not None:
             for k in m.get('Performances'):
                 temp_model = DescribePatternPerformanceResponseBodyPerformances()
                 self.performances.append(temp_model.from_map(k))
+        if m.get('QueryCount') is not None:
+            self.query_count = m.get('QueryCount')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('SQLPattern') is not None:
+            self.sqlpattern = m.get('SQLPattern')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('Tables') is not None:
+            self.tables = m.get('Tables')
+        if m.get('User') is not None:
+            self.user = m.get('User')
         return self
 
 
@@ -14195,6 +16513,8 @@ class DescribeProcessListRequest(TeaModel):
         user: str = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The keyword in an SQL statement, which is used to filter queries. Set the value to **SELECT**.
         self.keyword = keyword
@@ -14515,6 +16835,7 @@ class DescribeRegionsRequest(TeaModel):
         accept_language: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
@@ -14528,6 +16849,10 @@ class DescribeRegionsRequest(TeaModel):
         self.accept_language = accept_language
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the cluster.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -14546,6 +16871,8 @@ class DescribeRegionsRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -14560,6 +16887,8 @@ class DescribeRegionsRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -14822,13 +17151,17 @@ class DescribeResubmitConfigRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Warehouse Edition cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition clusters within a region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The name of the resource group.
         # 
-        # >  You can call the [DescribeDBResourceGroup](~~459446~~) operation to query the resource group name of a cluster.
+        # >  You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/459446.html) operation to query the resource group name of a cluster.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -14944,9 +17277,9 @@ class DescribeResubmitConfigResponseBody(TeaModel):
         request_id: str = None,
         rules: List[DescribeResubmitConfigResponseBodyRules] = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Warehouse Edition cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition clusters within a region.
         self.dbcluster_id = dbcluster_id
         # The request ID.
         self.request_id = request_id
@@ -15044,17 +17377,21 @@ class DescribeSQAConfigRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The name of the resource group.
         # 
-        # >  You can call the [DescribeDBResourceGroup](~~612410~~) operation to query the resource group name of a cluster.
+        # >  You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/612410.html) operation to query the resource group name of a cluster.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the cluster.
         # 
-        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -15119,7 +17456,7 @@ class DescribeSQAConfigResponseBody(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
         self.dbcluster_id = dbcluster_id
         # The name of the resource group.
         self.group_name = group_name
@@ -15216,11 +17553,15 @@ class DescribeSQLPatternsRequest(TeaModel):
     ):
         # The cluster ID.
         # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the information about all AnalyticDB for MySQL clusters in a region, including cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters in a region, including cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time must be in UTC.
         # 
         # > The end time must be later than the start time.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The keyword that is used for the query.
         self.keyword = keyword
@@ -15251,6 +17592,8 @@ class DescribeSQLPatternsRequest(TeaModel):
         # 
         #     *   `Asc`: ascending order.
         #     *   `Desc`: descending order.
+        # 
+        # This parameter is required.
         self.order = order
         # The page number. Pages start from page 1.
         # 
@@ -15266,7 +17609,9 @@ class DescribeSQLPatternsRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the cluster.
         # 
-        # > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time must be in UTC.
         # 
@@ -15275,6 +17620,8 @@ class DescribeSQLPatternsRequest(TeaModel):
         # *   Only data within the last 14 days can be queried. For example, if the current time is 2021-11-22T12:00:00Z, you can query SQL patterns at a point in time as early as 2021-11-09T12:00:00Z.
         # 
         # *   The maximum time range that can be specified is 24 hours.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -15334,19 +17681,33 @@ class DescribeSQLPatternsResponseBodyPatternDetails(TeaModel):
         self,
         access_ip: str = None,
         average_execution_time: float = None,
+        average_operator_cost: float = None,
         average_peak_memory: float = None,
         average_query_time: float = None,
+        average_scan_cost: float = None,
         average_scan_size: float = None,
         blockable: bool = None,
         failed_count: int = None,
         max_execution_time: int = None,
+        max_operator_cost: float = None,
         max_peak_memory: int = None,
         max_query_time: int = None,
+        max_scan_cost: float = None,
         max_scan_size: int = None,
+        operator_cost_percentage: float = None,
+        operator_cost_sum: float = None,
         pattern_creation_time: str = None,
         pattern_id: str = None,
+        peak_memory_percentage: float = None,
+        peak_memory_sum: float = None,
         query_count: int = None,
+        query_time_percentage: float = None,
+        query_time_sum: float = None,
         sqlpattern: str = None,
+        scan_cost_percentage: float = None,
+        scan_cost_sum: float = None,
+        scan_size_percentage: float = None,
+        scan_size_sum: float = None,
         tables: str = None,
         user: str = None,
     ):
@@ -15354,10 +17715,14 @@ class DescribeSQLPatternsResponseBodyPatternDetails(TeaModel):
         self.access_ip = access_ip
         # The average execution duration of the SQL pattern within the query time range. Unit: milliseconds.
         self.average_execution_time = average_execution_time
+        # The number of average operator cost.
+        self.average_operator_cost = average_operator_cost
         # The average peak memory usage of the SQL pattern within the query time range. Unit: bytes.
         self.average_peak_memory = average_peak_memory
         # The average total amount of time consumed by the SQL pattern within the query time range. Unit: milliseconds.
         self.average_query_time = average_query_time
+        # The number of average scan cost.
+        self.average_scan_cost = average_scan_cost
         # The average amount of data scanned based on the SQL pattern within the query time range. Unit: bytes.
         self.average_scan_size = average_scan_size
         # Indicates whether the execution of the SQL pattern can be blocked. Valid values:
@@ -15371,20 +17736,44 @@ class DescribeSQLPatternsResponseBodyPatternDetails(TeaModel):
         self.failed_count = failed_count
         # The maximum execution duration of the SQL pattern within the query time range. Unit: milliseconds.
         self.max_execution_time = max_execution_time
+        # The number of max operator cost.
+        self.max_operator_cost = max_operator_cost
         # The maximum peak memory usage of the SQL pattern within the query time range. Unit: bytes.
         self.max_peak_memory = max_peak_memory
         # The maximum total amount of time consumed by the SQL pattern within the query time range. Unit: milliseconds.
         self.max_query_time = max_query_time
+        # The number of max scan cost.
+        self.max_scan_cost = max_scan_cost
         # The maximum amount of data scanned based on the SQL pattern within the query time range. Unit: bytes.
         self.max_scan_size = max_scan_size
+        # The number of operator cost percentage.
+        self.operator_cost_percentage = operator_cost_percentage
+        # The number of operator cost sum.
+        self.operator_cost_sum = operator_cost_sum
         # The earliest commit time of the SQL pattern within the query time range. Unit: milliseconds.
         self.pattern_creation_time = pattern_creation_time
         # The ID of the SQL pattern.
         self.pattern_id = pattern_id
+        # The number of peak memory percentage.
+        self.peak_memory_percentage = peak_memory_percentage
+        # The number of peak memory sum.
+        self.peak_memory_sum = peak_memory_sum
         # The number of queries executed in association with the SQL pattern within the query time range.
         self.query_count = query_count
+        # The number of query time percentage.
+        self.query_time_percentage = query_time_percentage
+        # The number of query time sum.
+        self.query_time_sum = query_time_sum
         # The statement of the SQL pattern.
         self.sqlpattern = sqlpattern
+        # The number of scan cost percentage.
+        self.scan_cost_percentage = scan_cost_percentage
+        # The number of scan cost sum.
+        self.scan_cost_sum = scan_cost_sum
+        # The number of scan size percentage.
+        self.scan_size_percentage = scan_size_percentage
+        # The number of scan size sum.
+        self.scan_size_sum = scan_size_sum
         # The tables scanned based on the SQL pattern.
         self.tables = tables
         # The database username that is used to commit the SQL pattern.
@@ -15403,10 +17792,14 @@ class DescribeSQLPatternsResponseBodyPatternDetails(TeaModel):
             result['AccessIp'] = self.access_ip
         if self.average_execution_time is not None:
             result['AverageExecutionTime'] = self.average_execution_time
+        if self.average_operator_cost is not None:
+            result['AverageOperatorCost'] = self.average_operator_cost
         if self.average_peak_memory is not None:
             result['AveragePeakMemory'] = self.average_peak_memory
         if self.average_query_time is not None:
             result['AverageQueryTime'] = self.average_query_time
+        if self.average_scan_cost is not None:
+            result['AverageScanCost'] = self.average_scan_cost
         if self.average_scan_size is not None:
             result['AverageScanSize'] = self.average_scan_size
         if self.blockable is not None:
@@ -15415,20 +17808,44 @@ class DescribeSQLPatternsResponseBodyPatternDetails(TeaModel):
             result['FailedCount'] = self.failed_count
         if self.max_execution_time is not None:
             result['MaxExecutionTime'] = self.max_execution_time
+        if self.max_operator_cost is not None:
+            result['MaxOperatorCost'] = self.max_operator_cost
         if self.max_peak_memory is not None:
             result['MaxPeakMemory'] = self.max_peak_memory
         if self.max_query_time is not None:
             result['MaxQueryTime'] = self.max_query_time
+        if self.max_scan_cost is not None:
+            result['MaxScanCost'] = self.max_scan_cost
         if self.max_scan_size is not None:
             result['MaxScanSize'] = self.max_scan_size
+        if self.operator_cost_percentage is not None:
+            result['OperatorCostPercentage'] = self.operator_cost_percentage
+        if self.operator_cost_sum is not None:
+            result['OperatorCostSum'] = self.operator_cost_sum
         if self.pattern_creation_time is not None:
             result['PatternCreationTime'] = self.pattern_creation_time
         if self.pattern_id is not None:
             result['PatternId'] = self.pattern_id
+        if self.peak_memory_percentage is not None:
+            result['PeakMemoryPercentage'] = self.peak_memory_percentage
+        if self.peak_memory_sum is not None:
+            result['PeakMemorySum'] = self.peak_memory_sum
         if self.query_count is not None:
             result['QueryCount'] = self.query_count
+        if self.query_time_percentage is not None:
+            result['QueryTimePercentage'] = self.query_time_percentage
+        if self.query_time_sum is not None:
+            result['QueryTimeSum'] = self.query_time_sum
         if self.sqlpattern is not None:
             result['SQLPattern'] = self.sqlpattern
+        if self.scan_cost_percentage is not None:
+            result['ScanCostPercentage'] = self.scan_cost_percentage
+        if self.scan_cost_sum is not None:
+            result['ScanCostSum'] = self.scan_cost_sum
+        if self.scan_size_percentage is not None:
+            result['ScanSizePercentage'] = self.scan_size_percentage
+        if self.scan_size_sum is not None:
+            result['ScanSizeSum'] = self.scan_size_sum
         if self.tables is not None:
             result['Tables'] = self.tables
         if self.user is not None:
@@ -15441,10 +17858,14 @@ class DescribeSQLPatternsResponseBodyPatternDetails(TeaModel):
             self.access_ip = m.get('AccessIp')
         if m.get('AverageExecutionTime') is not None:
             self.average_execution_time = m.get('AverageExecutionTime')
+        if m.get('AverageOperatorCost') is not None:
+            self.average_operator_cost = m.get('AverageOperatorCost')
         if m.get('AveragePeakMemory') is not None:
             self.average_peak_memory = m.get('AveragePeakMemory')
         if m.get('AverageQueryTime') is not None:
             self.average_query_time = m.get('AverageQueryTime')
+        if m.get('AverageScanCost') is not None:
+            self.average_scan_cost = m.get('AverageScanCost')
         if m.get('AverageScanSize') is not None:
             self.average_scan_size = m.get('AverageScanSize')
         if m.get('Blockable') is not None:
@@ -15453,20 +17874,44 @@ class DescribeSQLPatternsResponseBodyPatternDetails(TeaModel):
             self.failed_count = m.get('FailedCount')
         if m.get('MaxExecutionTime') is not None:
             self.max_execution_time = m.get('MaxExecutionTime')
+        if m.get('MaxOperatorCost') is not None:
+            self.max_operator_cost = m.get('MaxOperatorCost')
         if m.get('MaxPeakMemory') is not None:
             self.max_peak_memory = m.get('MaxPeakMemory')
         if m.get('MaxQueryTime') is not None:
             self.max_query_time = m.get('MaxQueryTime')
+        if m.get('MaxScanCost') is not None:
+            self.max_scan_cost = m.get('MaxScanCost')
         if m.get('MaxScanSize') is not None:
             self.max_scan_size = m.get('MaxScanSize')
+        if m.get('OperatorCostPercentage') is not None:
+            self.operator_cost_percentage = m.get('OperatorCostPercentage')
+        if m.get('OperatorCostSum') is not None:
+            self.operator_cost_sum = m.get('OperatorCostSum')
         if m.get('PatternCreationTime') is not None:
             self.pattern_creation_time = m.get('PatternCreationTime')
         if m.get('PatternId') is not None:
             self.pattern_id = m.get('PatternId')
+        if m.get('PeakMemoryPercentage') is not None:
+            self.peak_memory_percentage = m.get('PeakMemoryPercentage')
+        if m.get('PeakMemorySum') is not None:
+            self.peak_memory_sum = m.get('PeakMemorySum')
         if m.get('QueryCount') is not None:
             self.query_count = m.get('QueryCount')
+        if m.get('QueryTimePercentage') is not None:
+            self.query_time_percentage = m.get('QueryTimePercentage')
+        if m.get('QueryTimeSum') is not None:
+            self.query_time_sum = m.get('QueryTimeSum')
         if m.get('SQLPattern') is not None:
             self.sqlpattern = m.get('SQLPattern')
+        if m.get('ScanCostPercentage') is not None:
+            self.scan_cost_percentage = m.get('ScanCostPercentage')
+        if m.get('ScanCostSum') is not None:
+            self.scan_cost_sum = m.get('ScanCostSum')
+        if m.get('ScanSizePercentage') is not None:
+            self.scan_size_percentage = m.get('ScanSizePercentage')
+        if m.get('ScanSizeSum') is not None:
+            self.scan_size_sum = m.get('ScanSizeSum')
         if m.get('Tables') is not None:
             self.tables = m.get('Tables')
         if m.get('User') is not None:
@@ -15591,13 +18036,17 @@ class DescribeSQLPlanRequest(TeaModel):
     ):
         # The cluster ID.
         # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The query ID.
         # 
-        # > You can call the [DescribeProcessList](~~143382~~) operation to query the IDs of queries that are being executed.
+        # >  You can call the [DescribeProcessList](https://help.aliyun.com/document_detail/612277.html) operation to query the IDs of queries that are being executed.
+        # 
+        # This parameter is required.
         self.process_id = process_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -16022,14 +18471,20 @@ class DescribeSQLPlanTaskRequest(TeaModel):
         stage_id: str = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the task.
+        # 
+        # This parameter is required.
         self.process_id = process_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The stage of the task.
+        # 
+        # This parameter is required.
         self.stage_id = stage_id
 
     def validate(self):
@@ -16280,6 +18735,8 @@ class DescribeSchemasRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -16490,13 +18947,17 @@ class DescribeSlowLogRecordsRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The name of the database.
         self.dbname = dbname
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time must be in UTC.
         # 
         # >  The end time must be later than the start time. The specified time range must be less than seven days.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The order in which to sort the retrieved entries by field. Specify this parameter in the JSON format. The value is an ordered array that uses the order of the input array and contains `Field` and `Type`. Example: `[{"Field":"ExecutionStartTime","Type":"Desc"},{"Field":"ScanRows","Type":"Asc"}]`.
         # 
@@ -16540,6 +19001,8 @@ class DescribeSlowLogRecordsRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The state of the query. Valid values:
         # 
@@ -16907,327 +19370,6 @@ class DescribeSlowLogRecordsResponse(TeaModel):
         return self
 
 
-class DescribeSlowLogTrendRequest(TeaModel):
-    def __init__(
-        self,
-        dbcluster_id: str = None,
-        dbname: str = None,
-        end_time: str = None,
-        owner_account: str = None,
-        owner_id: int = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
-        start_time: str = None,
-    ):
-        # The cluster ID.
-        self.dbcluster_id = dbcluster_id
-        # The name of the database.
-        self.dbname = dbname
-        # The end of the time range to query. The end time must be later than the start time. The maximum time range that can be specified is seven days. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-        self.end_time = end_time
-        self.owner_account = owner_account
-        self.owner_id = owner_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-        self.start_time = start_time
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.dbcluster_id is not None:
-            result['DBClusterId'] = self.dbcluster_id
-        if self.dbname is not None:
-            result['DBName'] = self.dbname
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.owner_account is not None:
-            result['OwnerAccount'] = self.owner_account
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DBClusterId') is not None:
-            self.dbcluster_id = m.get('DBClusterId')
-        if m.get('DBName') is not None:
-            self.dbname = m.get('DBName')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('OwnerAccount') is not None:
-            self.owner_account = m.get('OwnerAccount')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        return self
-
-
-class DescribeSlowLogTrendResponseBodyItemsSlowLogTrendItemSeriesSeriesItem(TeaModel):
-    def __init__(
-        self,
-        name: str = None,
-        values: str = None,
-    ):
-        # The name of the performance metric.
-        self.name = name
-        # The values of the performance metric.
-        self.values = values
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.values is not None:
-            result['Values'] = self.values
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Values') is not None:
-            self.values = m.get('Values')
-        return self
-
-
-class DescribeSlowLogTrendResponseBodyItemsSlowLogTrendItemSeries(TeaModel):
-    def __init__(
-        self,
-        series_item: List[DescribeSlowLogTrendResponseBodyItemsSlowLogTrendItemSeriesSeriesItem] = None,
-    ):
-        self.series_item = series_item
-
-    def validate(self):
-        if self.series_item:
-            for k in self.series_item:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['SeriesItem'] = []
-        if self.series_item is not None:
-            for k in self.series_item:
-                result['SeriesItem'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.series_item = []
-        if m.get('SeriesItem') is not None:
-            for k in m.get('SeriesItem'):
-                temp_model = DescribeSlowLogTrendResponseBodyItemsSlowLogTrendItemSeriesSeriesItem()
-                self.series_item.append(temp_model.from_map(k))
-        return self
-
-
-class DescribeSlowLogTrendResponseBodyItemsSlowLogTrendItem(TeaModel):
-    def __init__(
-        self,
-        key: str = None,
-        series: DescribeSlowLogTrendResponseBodyItemsSlowLogTrendItemSeries = None,
-        unit: str = None,
-    ):
-        # The trend of slow query logs. The value is AnalyticDB_SlowLogTrend.
-        self.key = key
-        # The performance metrics.
-        self.series = series
-        # The unit of performance metrics.
-        self.unit = unit
-
-    def validate(self):
-        if self.series:
-            self.series.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.key is not None:
-            result['Key'] = self.key
-        if self.series is not None:
-            result['Series'] = self.series.to_map()
-        if self.unit is not None:
-            result['Unit'] = self.unit
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Key') is not None:
-            self.key = m.get('Key')
-        if m.get('Series') is not None:
-            temp_model = DescribeSlowLogTrendResponseBodyItemsSlowLogTrendItemSeries()
-            self.series = temp_model.from_map(m['Series'])
-        if m.get('Unit') is not None:
-            self.unit = m.get('Unit')
-        return self
-
-
-class DescribeSlowLogTrendResponseBodyItems(TeaModel):
-    def __init__(
-        self,
-        slow_log_trend_item: List[DescribeSlowLogTrendResponseBodyItemsSlowLogTrendItem] = None,
-    ):
-        self.slow_log_trend_item = slow_log_trend_item
-
-    def validate(self):
-        if self.slow_log_trend_item:
-            for k in self.slow_log_trend_item:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['SlowLogTrendItem'] = []
-        if self.slow_log_trend_item is not None:
-            for k in self.slow_log_trend_item:
-                result['SlowLogTrendItem'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.slow_log_trend_item = []
-        if m.get('SlowLogTrendItem') is not None:
-            for k in m.get('SlowLogTrendItem'):
-                temp_model = DescribeSlowLogTrendResponseBodyItemsSlowLogTrendItem()
-                self.slow_log_trend_item.append(temp_model.from_map(k))
-        return self
-
-
-class DescribeSlowLogTrendResponseBody(TeaModel):
-    def __init__(
-        self,
-        dbcluster_id: str = None,
-        end_time: str = None,
-        items: DescribeSlowLogTrendResponseBodyItems = None,
-        request_id: str = None,
-        start_time: str = None,
-    ):
-        # The cluster ID.
-        self.dbcluster_id = dbcluster_id
-        # The end time of the query. The end time must be later than the start time. The maximum time range that can be specified is seven days. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-        self.end_time = end_time
-        # The information about the trend of slow query logs.
-        self.items = items
-        # The request ID.
-        self.request_id = request_id
-        # The start time of the query. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-        self.start_time = start_time
-
-    def validate(self):
-        if self.items:
-            self.items.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.dbcluster_id is not None:
-            result['DBClusterId'] = self.dbcluster_id
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.items is not None:
-            result['Items'] = self.items.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DBClusterId') is not None:
-            self.dbcluster_id = m.get('DBClusterId')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('Items') is not None:
-            temp_model = DescribeSlowLogTrendResponseBodyItems()
-            self.items = temp_model.from_map(m['Items'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        return self
-
-
-class DescribeSlowLogTrendResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeSlowLogTrendResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeSlowLogTrendResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeSqlPatternRequest(TeaModel):
     def __init__(
         self,
@@ -17242,7 +19384,9 @@ class DescribeSqlPatternRequest(TeaModel):
     ):
         # The cluster ID.
         # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The order by which to sort query results. Specify the parameter value in the JSON string format. Example: `[{"Field":"Pattern","Type":"Asc"}]`. Parameters:
         # 
@@ -17280,7 +19424,9 @@ class DescribeSqlPatternRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the cluster.
         # 
-        # > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The keyword that is used for the query.
         # 
@@ -17289,6 +19435,8 @@ class DescribeSqlPatternRequest(TeaModel):
         # The start date to query. Specify the time in the *yyyy-MM-dd* format. The time must be in UTC.
         # 
         # > Only data within the last 30 days can be queried.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The dimension by which to aggregate the SQL patterns. Valid values:
         # 
@@ -17601,7 +19749,9 @@ class DescribeTableAccessCountRequest(TeaModel):
     ):
         # The ID of the cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the details of all AnalyticDB for MySQL clusters within a specified region, including cluster IDs.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the details of all AnalyticDB for MySQL clusters within a specified region, including cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The order by which to sort query results. Specify the parameter value in the JSON string format. Example: `[{"Field":"TableSchema","Type":"Asc"}]`.
         # 
@@ -17624,11 +19774,15 @@ class DescribeTableAccessCountRequest(TeaModel):
         self.page_size = page_size
         # The ID of the region.
         # 
-        # >  You can call the [DescribeRegions](~~143074~~) operation to query the regions and zones supported by AnalyticDB for MySQL, including region IDs.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the regions and zones supported by AnalyticDB for MySQL, including region IDs.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The date to query. Specify the time in the *yyyy-MM-dd* format. The time must be in UTC.
         # 
         # >  Only data for the last 30 days can be queried.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The name of the specific table.
         # 
@@ -17846,20 +20000,28 @@ class DescribeTableDetailRequest(TeaModel):
         dbcluster_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         schema_name: str = None,
         table_name: str = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The name of the database.
+        # 
+        # This parameter is required.
         self.schema_name = schema_name
         # The name of the table.
+        # 
+        # This parameter is required.
         self.table_name = table_name
 
     def validate(self):
@@ -17877,6 +20039,8 @@ class DescribeTableDetailRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -17895,6 +20059,8 @@ class DescribeTableDetailRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -17912,9 +20078,7 @@ class DescribeTableDetailResponseBodyItemsShard(TeaModel):
         id: int = None,
         size: int = None,
     ):
-        # The ID of the partition. Only the numeric part of the partition name is returned.
         self.id = id
-        # The number of rows in the table.
         self.size = size
 
     def validate(self):
@@ -18065,6 +20229,8 @@ class DescribeTablePartitionDiagnoseRequest(TeaModel):
     def __init__(
         self,
         dbcluster_id: str = None,
+        lang: str = None,
+        order: str = None,
         owner_account: str = None,
         owner_id: int = None,
         page_number: int = None,
@@ -18074,7 +20240,30 @@ class DescribeTablePartitionDiagnoseRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese.
+        # *   **en**: English.
+        self.lang = lang
+        # The order by which to sort query results. Specify the parameter value in the JSON string format. Example: `[{"Field":"TotalSize","Type":"Desc"}]`.
+        # 
+        # *   `Field` specifies the field by which to sort the query results. Valid values:
+        # 
+        #     *   `SchemaName`: the name of the database to which the table belongs.
+        #     *   `TableName`: the name of the table.
+        #     *   `TotalSize`: the total data size of the table.
+        #     *   `SpaceRatio`: the storage percentage of the table.
+        # 
+        # *   `Type` specifies the sorting order. Valid values:
+        # 
+        #     *   `Asc`: ascending order.
+        #     *   `Desc`: descending order.
+        # 
+        # >  If you do not specify this parameter, the query results are sorted by the TotalSize field in descending order.
+        self.order = order
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The number of the page to return. Pages start from page 1. Default value: 1.
@@ -18101,6 +20290,10 @@ class DescribeTablePartitionDiagnoseRequest(TeaModel):
         result = dict()
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.order is not None:
+            result['Order'] = self.order
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -18121,6 +20314,10 @@ class DescribeTablePartitionDiagnoseRequest(TeaModel):
         m = m or dict()
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -18138,22 +20335,76 @@ class DescribeTablePartitionDiagnoseRequest(TeaModel):
         return self
 
 
+class DescribeTablePartitionDiagnoseResponseBodyDetectionItems(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        name: str = None,
+        status: str = None,
+    ):
+        # The detection result.
+        self.message = message
+        # The name of the detection item.
+        self.name = name
+        # The severity level of the detection result. Valid values:
+        # 
+        # *   NORMAL
+        # *   WARNING
+        # *   CRITICAL
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
 class DescribeTablePartitionDiagnoseResponseBodyItems(TeaModel):
     def __init__(
         self,
         partition_detail: str = None,
         partition_number: int = None,
         schema_name: str = None,
+        space_ratio: float = None,
         table_name: str = None,
+        total_size: int = None,
     ):
-        # Details of the inappropriate partitions.
+        # The information about inappropriate partitions.
         self.partition_detail = partition_detail
         # The number of partitions.
         self.partition_number = partition_number
         # The name of the database.
         self.schema_name = schema_name
-        # The table name.
+        # The storage percentage of the table. Unit: %.
+        # 
+        # >  Formula: Table storage percentage = Total data size of a table/Total data size of the cluster × 100%.
+        self.space_ratio = space_ratio
+        # The name of the table.
         self.table_name = table_name
+        # The total data size of the table. Unit: bytes.
+        self.total_size = total_size
 
     def validate(self):
         pass
@@ -18170,8 +20421,12 @@ class DescribeTablePartitionDiagnoseResponseBodyItems(TeaModel):
             result['PartitionNumber'] = self.partition_number
         if self.schema_name is not None:
             result['SchemaName'] = self.schema_name
+        if self.space_ratio is not None:
+            result['SpaceRatio'] = self.space_ratio
         if self.table_name is not None:
             result['TableName'] = self.table_name
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
         return result
 
     def from_map(self, m: dict = None):
@@ -18182,8 +20437,12 @@ class DescribeTablePartitionDiagnoseResponseBodyItems(TeaModel):
             self.partition_number = m.get('PartitionNumber')
         if m.get('SchemaName') is not None:
             self.schema_name = m.get('SchemaName')
+        if m.get('SpaceRatio') is not None:
+            self.space_ratio = m.get('SpaceRatio')
         if m.get('TableName') is not None:
             self.table_name = m.get('TableName')
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
         return self
 
 
@@ -18191,6 +20450,7 @@ class DescribeTablePartitionDiagnoseResponseBody(TeaModel):
     def __init__(
         self,
         dbcluster_id: str = None,
+        detection_items: List[DescribeTablePartitionDiagnoseResponseBodyDetectionItems] = None,
         items: List[DescribeTablePartitionDiagnoseResponseBodyItems] = None,
         page_number: int = None,
         page_size: int = None,
@@ -18201,7 +20461,9 @@ class DescribeTablePartitionDiagnoseResponseBody(TeaModel):
     ):
         # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
-        # The information of tables.
+        # The queried detection items and detection results.
+        self.detection_items = detection_items
+        # The table statistics.
         self.items = items
         # The page number of the returned page.
         self.page_number = page_number
@@ -18217,6 +20479,10 @@ class DescribeTablePartitionDiagnoseResponseBody(TeaModel):
         self.total_count = total_count
 
     def validate(self):
+        if self.detection_items:
+            for k in self.detection_items:
+                if k:
+                    k.validate()
         if self.items:
             for k in self.items:
                 if k:
@@ -18230,6 +20496,10 @@ class DescribeTablePartitionDiagnoseResponseBody(TeaModel):
         result = dict()
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
+        result['DetectionItems'] = []
+        if self.detection_items is not None:
+            for k in self.detection_items:
+                result['DetectionItems'].append(k.to_map() if k else None)
         result['Items'] = []
         if self.items is not None:
             for k in self.items:
@@ -18252,6 +20522,11 @@ class DescribeTablePartitionDiagnoseResponseBody(TeaModel):
         m = m or dict()
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+        self.detection_items = []
+        if m.get('DetectionItems') is not None:
+            for k in m.get('DetectionItems'):
+                temp_model = DescribeTablePartitionDiagnoseResponseBodyDetectionItems()
+                self.detection_items.append(temp_model.from_map(k))
         self.items = []
         if m.get('Items') is not None:
             for k in m.get('Items'):
@@ -18327,29 +20602,36 @@ class DescribeTableStatisticsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query details about all AnalyticDB for MySQL clusters in a specific region, including cluster IDs.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query a list of cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The keyword that is used to query information by table name.
         self.keyword = keyword
-        # The order in which to sort the retrieved records by field. Specify this value in the JSON format. The value is an ordered array that uses the order of the input array and contains `Field` and `Type`. Example: `[{ "Field":"TableName", "Type":"Asc" }]`.
+        # The order in which to sort the queried information. Specify this parameter as an ordered JSON array that consists of the `Field` and `Type` fields. Example: `[{ "Field":"TableName", "Type":"Asc" }]`.
         # 
-        # *   In the example, `Field` indicates the field that is used to sort the retrieved records. Set the value of Field to `TableName`.
+        # *   `Field` specifies the field that is used to sort the queried information. The following fields are supported: `TableName`, ColdDataSize, DataSize, PrimaryKeyIndexSize, RowCount, IndexSize, SchemaName, and PartitionCount.
         # 
-        # *   `Type` indicates the sort type. Valid values (case-insensitive):
+        # *   `Type` specifies the sorting order. Valid values (case-insensitive):
         # 
-        #     *   **Desc**: The entries are sorted in descending order.
-        #     *   **Asc**: The entries are sorted in ascending order.
+        #     *   **Desc**: descending order.
+        #     *   **Asc**: ascending order.
         self.order = order
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+        # The page number. Pages start from page 1. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: 30.
+        # The number of entries per page. Valid values:
+        # 
+        # *   **30** (default)
+        # *   **50**\
+        # *   **100**\
         self.page_size = page_size
         # The region ID of the cluster.
         # 
-        # >  You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -18426,27 +20708,37 @@ class DescribeTableStatisticsResponseBodyItemsTableStatisticRecords(TeaModel):
         table_name: str = None,
         total_size: int = None,
     ):
-        # The total amount of cold data. Unit: byte.
+        # The cold data size. Unit: bytes.
         # 
-        # >  The parameter is returned only when the engine version of the cluster is 3.1.3.4 or later.
+        # >  The parameter is returned only for AnalyticDB for MySQL clusters of V3.1.3.4 or later.
         self.cold_data_size = cold_data_size
-        # The amount of data in the table. Unit: byte.
+        # The data size of table records. Unit: bytes.
+        # 
+        # >  The data size of table records, excluding the data size of regular index and primary key indexes.
         self.data_size = data_size
+        # The hot data size. Unit: bytes.
         self.hot_data_size = hot_data_size
-        # The amount of data in indexes. Unit: byte.
+        # The data size of regular indexes. Unit: bytes.
         self.index_size = index_size
+        # The data size of other data. Unit: bytes.
         self.other_size = other_size
         # The number of partitions.
         self.partition_count = partition_count
-        # The amount of data in primary key indexes. Unit: byte.
+        # The data size of primary key indexes. Unit: bytes.
         self.primary_key_index_size = primary_key_index_size
         # The number of rows in the table.
         self.row_count = row_count
         # The name of the database.
         self.schema_name = schema_name
+        # The percentage of the table size. Unit: %.
+        # 
+        # >  Formula: Table storage percentage = Total data size of a table/Total data size of the cluster × 100%.
         self.space_ratio = space_ratio
         # The name of the table.
         self.table_name = table_name
+        # The total data size. Unit: bytes.
+        # 
+        # >  The following formulas can be used to calculate the total data size: Formula 1: Total data size = Hot data size + Cold data size. Formula 2: Total data size = Data size of table records + Data size of regular indexes + Data size of primary key indexes + Data size of other data.
         self.total_size = total_size
 
     def validate(self):
@@ -18558,17 +20850,17 @@ class DescribeTableStatisticsResponseBody(TeaModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # Details about table statistics.
+        # The queried table statistics.
         self.items = items
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned on the current page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -18666,16 +20958,20 @@ class DescribeTablesRequest(TeaModel):
         schema_name: str = None,
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the cluster.
         # 
-        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The name of the database.
+        # 
+        # This parameter is required.
         self.schema_name = schema_name
 
     def validate(self):
@@ -18890,17 +21186,21 @@ class DescribeTaskInfoRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the cluster.
         # 
-        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The task ID.
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -19108,20 +21408,20 @@ class DescribeVSwitchesRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID.
         # 
-        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
         # The virtual private cloud (VPC) ID.
         # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the VPC ID.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the VPC ID.
         self.vpc_id = vpc_id
         # The vSwitch ID.
         self.vsw_id = vsw_id
         # The zone ID.
         # 
-        # > You can call the [DescribeRegions](~~129857~~) operation to query the most recent zone list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/129857.html) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -19399,7 +21699,9 @@ class DetachUserENIRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query cluster IDs.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -19519,11 +21821,15 @@ class DisableAdviceServiceRequest(TeaModel):
     ):
         # The ID of the cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of Data Warehouse Edition (V3.0) clusters.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of Data Warehouse Edition (V3.0) clusters.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The region ID of the cluster.
         # 
-        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -19650,15 +21956,17 @@ class DownloadDiagnosisRecordsRequest(TeaModel):
     ):
         # The source IP addresses.
         # 
-        # > You can call the [DescribeDiagnosisDimensions](~~308210~~) operation to query the resource group, database name, username, and source IP address of the SQL statements to be queried.
+        # > You can call the [DescribeDiagnosisDimensions](https://help.aliyun.com/document_detail/308210.html) operation to query the resource group, database name, username, and source IP address of the SQL statements to be queried.
         self.client_ip = client_ip
         # The cluster ID.
         # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The name of the database on which the SQL statements are executed.
         # 
-        # > You can call the [DescribeDiagnosisDimensions](~~308210~~) operation to query the resource group, database name, username, and source IP address of the SQL statements to be queried.
+        # > You can call the [DescribeDiagnosisDimensions](https://help.aliyun.com/document_detail/308210.html) operation to query the resource group, database name, username, and source IP address of the SQL statements to be queried.
         self.database = database
         # The end of the time range to query. Specify a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
@@ -19667,6 +21975,8 @@ class DownloadDiagnosisRecordsRequest(TeaModel):
         # *   The end time must be later than the start time.
         # 
         # *   The maximum time range that can be specified is 24 hours.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The keyword that is used for the query.
         self.keyword = keyword
@@ -19690,22 +22000,28 @@ class DownloadDiagnosisRecordsRequest(TeaModel):
         # *   `{"Type":"maxCost","Value":"100"}`: queries the top 100 most time-consuming SQL statements. Set `Value` to 100.
         # *   `{"Type":"status","Value":"finished"}`: queries executed SQL statements. You can set `Value` to `running` to query SQL statements that are being executed. You can also set Value to `failed` to query SQL statements that failed to be executed.
         # *   `{"Type":"cost","Min":"10","Max":"200"}`: queries SQL statements whose execution durations are in the range of 10 to 200 milliseconds. You can also customize the maximum and minimum execution durations.
+        # 
+        # This parameter is required.
         self.query_condition = query_condition
         # The region ID of the cluster.
         # 
-        # > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group to which the SQL statements belong.
         # 
-        # > You can call the [DescribeDiagnosisDimensions](~~308210~~) operation to query the resource group, database name, username, and source IP address of the SQL statements to be queried.
+        # > You can call the [DescribeDiagnosisDimensions](https://help.aliyun.com/document_detail/308210.html) operation to query the resource group, database name, username, and source IP address of the SQL statements to be queried.
         self.resource_group = resource_group
         # The beginning of the time range to query. Specify a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # > Only data within the last 14 days can be queried.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The username that is used to execute the SQL statements.
         # 
-        # > You can call the [DescribeDiagnosisDimensions](~~308210~~) operation to query the resource group, database name, username, and source IP address of the SQL statements to be queried.
+        # > You can call the [DescribeDiagnosisDimensions](https://help.aliyun.com/document_detail/308210.html) operation to query the resource group, database name, username, and source IP address of the SQL statements to be queried.
         self.user_name = user_name
 
     def validate(self):
@@ -19868,11 +22184,15 @@ class EnableAdviceServiceRequest(TeaModel):
     ):
         # The ID of the cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of Data Warehouse Edition (V3.0) clusters.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of Data Warehouse Edition (V3.0) clusters.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The region ID of the cluster.
         # 
-        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -19991,9 +22311,13 @@ class GrantOperatorPermissionRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to query cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The expiration time of the service account permissions. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.expired_time = expired_time
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -20001,6 +22325,8 @@ class GrantOperatorPermissionRequest(TeaModel):
         # 
         # *   **Control**: configuration permissions. The service account is granted permissions to query and modify cluster configurations.
         # *   **Data**: data permissions. The service account is granted permissions to query schemas, indexes, and SQL statements.
+        # 
+        # This parameter is required.
         self.privileges = privileges
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -20128,11 +22454,13 @@ class KillProcessRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The unique ID of the process. You can call the [DescribeProcessList](~~190092~~) operation to obtain the ID.
+        # The unique ID of the query. You can call the [DescribeProcessList](https://help.aliyun.com/document_detail/190092.html) operation to obtain the unique ID of a query.
         self.process_id = process_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -20182,7 +22510,7 @@ class KillProcessResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -20300,7 +22628,9 @@ class ListTagResourcesRequest(TeaModel):
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the cluster. You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # The region ID of the cluster. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The cluster ID. You can specify multiple cluster IDs. Valid values of N: 1 to 50.
         # 
@@ -20309,6 +22639,8 @@ class ListTagResourcesRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The type of the resource. Set the value to **cluster**.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags that are added to clusters.
         self.tag = tag
@@ -20545,18 +22877,28 @@ class ListTagResourcesResponse(TeaModel):
 class MigrateDBClusterRequest(TeaModel):
     def __init__(
         self,
+        compute_resource: str = None,
         dbcluster_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        shard_number: str = None,
+        storage_resource: str = None,
+        storage_resource_size: str = None,
     ):
+        self.compute_resource = compute_resource
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.shard_number = shard_number
+        self.storage_resource = storage_resource
+        self.storage_resource_size = storage_resource_size
 
     def validate(self):
         pass
@@ -20567,6 +22909,8 @@ class MigrateDBClusterRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.compute_resource is not None:
+            result['ComputeResource'] = self.compute_resource
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
         if self.owner_account is not None:
@@ -20577,10 +22921,18 @@ class MigrateDBClusterRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.shard_number is not None:
+            result['ShardNumber'] = self.shard_number
+        if self.storage_resource is not None:
+            result['StorageResource'] = self.storage_resource
+        if self.storage_resource_size is not None:
+            result['StorageResourceSize'] = self.storage_resource_size
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ComputeResource') is not None:
+            self.compute_resource = m.get('ComputeResource')
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('OwnerAccount') is not None:
@@ -20591,6 +22943,12 @@ class MigrateDBClusterRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ShardNumber') is not None:
+            self.shard_number = m.get('ShardNumber')
+        if m.get('StorageResource') is not None:
+            self.storage_resource = m.get('StorageResource')
+        if m.get('StorageResourceSize') is not None:
+            self.storage_resource_size = m.get('StorageResourceSize')
         return self
 
 
@@ -20677,13 +23035,19 @@ class ModifyAccountDescriptionRequest(TeaModel):
         # The description of the account. The description must meet the following requirements:
         # 
         # *   The description must start with a letter.
-        # *   The description can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The description can contain letters, digits, underscores (_), and hyphens (-).
         # *   The description cannot start with `http://` or `https://`.
         # *   The description must be 2 to 256 characters in length.
+        # 
+        # This parameter is required.
         self.account_description = account_description
-        # The name of the account.
+        # The name of the database account.
+        # 
+        # This parameter is required.
         self.account_name = account_name
-        # The ID of the cluster.
+        # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -20739,7 +23103,7 @@ class ModifyAccountDescriptionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -20818,12 +23182,18 @@ class ModifyAuditLogConfigRequest(TeaModel):
         # 
         # *   **on**: SQL audit is enabled.
         # *   **off**: SQL audit is disabled.
+        # 
+        # This parameter is required.
         self.audit_log_status = audit_log_status
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region. You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -20966,7 +23336,9 @@ class ModifyAutoRenewAttributeRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The renewal duration. Default value: **1**.
         # 
@@ -20984,7 +23356,9 @@ class ModifyAutoRenewAttributeRequest(TeaModel):
         self.period_unit = period_unit
         # The region ID of the cluster.
         # 
-        # > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The renewal status of the cluster. Valid values:
         # 
@@ -21135,6 +23509,8 @@ class ModifyBackupPolicyRequest(TeaModel):
         # >  If you leave this parameter empty, the default value 7 is used.
         self.backup_retention_period = backup_retention_period
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # Specifies whether to enable real-time log backup. Valid values:
         # 
@@ -21165,6 +23541,8 @@ class ModifyBackupPolicyRequest(TeaModel):
         # The start time of the full backup within a time range. Specify the time range in the HH:mmZ-HH:mmZ format. The time must be in UTC.
         # 
         # >  The time range is 1 hour.
+        # 
+        # This parameter is required.
         self.preferred_backup_time = preferred_backup_time
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -21306,18 +23684,24 @@ class ModifyClusterConnectionStringRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The prefix of public endpoints.
+        # The prefix of the public endpoint.
         # 
         # *   The prefix can contain lowercase letters, digits, and hyphens (-). It must start with a lowercase letter.
         # *   The prefix can be up to 30 characters in length.
+        # 
+        # This parameter is required.
         self.connection_string_prefix = connection_string_prefix
         # The current public endpoint of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # >  You can call the [DescribeDBClusterNetInfo](~~143384~~) operation to query the public endpoint of the cluster.
+        # >  You can call the [DescribeDBClusterNetInfo](https://help.aliyun.com/document_detail/143384.html) operation to query the public endpoint of the cluster.
+        # 
+        # This parameter is required.
         self.current_connection_string = current_connection_string
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -21379,7 +23763,7 @@ class ModifyClusterConnectionStringResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -21465,7 +23849,7 @@ class ModifyDBClusterRequest(TeaModel):
         resource_owner_id: int = None,
         storage_resource: str = None,
     ):
-        # The computing resources of the cluster. You can call the [DescribeAvailableResource](~~190632~~) operation to query the computing resources that are available within a region.
+        # The computing resources of the cluster. You can call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/190632.html) operation to query the computing resources that are available within a region.
         # 
         # > This parameter must be specified when Mode is set to Flexible.
         self.compute_resource = compute_resource
@@ -21477,6 +23861,8 @@ class ModifyDBClusterRequest(TeaModel):
         # > If you set DBClusterCategory to Cluster, you must set Mode to Reserver. If you set DBClusterCategory to MixedStorage, you must set Mode to Flexible. Otherwise, you fail to change the specifications of the cluster.
         self.dbcluster_category = dbcluster_category
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The node specifications of the cluster. Valid values:
         # 
@@ -21539,7 +23925,7 @@ class ModifyDBClusterRequest(TeaModel):
         self.modify_type = modify_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the cluster. You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # The region ID of the cluster. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -21732,11 +24118,13 @@ class ModifyDBClusterAccessWhiteListRequest(TeaModel):
     ):
         # The attribute of the IP address whitelist. By default, this parameter is empty. The IP address whitelists that have the **hidden** attribute are not displayed in the console. These IP address whitelists are used to access services such as Data Transmission Service (DTS) and PolarDB-X.
         self.dbcluster_iparray_attribute = dbcluster_iparray_attribute
-        # The name of the IP address whitelist that you want to modify. Default value: **Default**. The name of an IP address whitelist must be 2 to 32 characters in length. The name can contain lowercase letters, digits, and underscores (\_). The name must start with a lowercase letter and end with a lowercase letter or digit.
+        # The name of the IP address whitelist that you want to modify. Default value: **Default**. The name of an IP address whitelist must be 2 to 32 characters in length. The name can contain lowercase letters, digits, and underscores (_). The name must start with a lowercase letter and end with a lowercase letter or digit.
         # 
         # Each cluster supports up to 50 IP address whitelists.
         self.dbcluster_iparray_name = dbcluster_iparray_name
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The method that you want to use to modify the IP address whitelist. Valid values:
         # 
@@ -21756,6 +24144,8 @@ class ModifyDBClusterAccessWhiteListRequest(TeaModel):
         # *   CIDR block. Example: 10.23.12.24/24. In this example, 24 indicates that the prefix of the CIDR block is 24 bits in length. You can replace 24 with a value that ranges from 1 to 32.
         # 
         # >  This parameter must be specified unless ModifyMode is set to Delete.
+        # 
+        # This parameter is required.
         self.security_ips = security_ips
 
     def validate(self):
@@ -21907,8 +24297,12 @@ class ModifyDBClusterDescriptionRequest(TeaModel):
         # 
         # *   The description cannot start with `http://` or `https`.
         # *   The description must be 2 to 256 characters in length.
+        # 
+        # This parameter is required.
         self.dbcluster_description = dbcluster_description
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -22034,13 +24428,17 @@ class ModifyDBClusterMaintainTimeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of cluster.
+        # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the details of all AnalyticDB for MySQL clusters within a specific region, including cluster IDs.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The maintenance window of the cluster. It is in the hh:mmZ-hh:mmZ format.
+        # The maintenance window of the cluster. Specify the maintenance window in the hh:mmZ-hh:mmZ format.
         # 
-        # >  The maintenance window lasts only 1 hour. Specify the beginning and end of the time range on the hour.
+        # >  The time range must be 1 hour and start and end at the beginning of an hour.
+        # 
+        # This parameter is required.
         self.maintain_time = maintain_time
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -22092,7 +24490,7 @@ class ModifyDBClusterMaintainTimeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -22162,14 +24560,19 @@ class ModifyDBClusterPayTypeRequest(TeaModel):
         db_cluster_id: str = None,
         pay_type: str = None,
         period: str = None,
+        region_id: str = None,
         used_time: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.db_cluster_id = db_cluster_id
         # The billing method. Valid values:
         # 
         # *   **Postpaid**: pay-as-you-go.
         # *   **Prepaid**: subscription.
+        # 
+        # This parameter is required.
         self.pay_type = pay_type
         # The subscription type of the subscription cluster. Valid values:
         # 
@@ -22178,6 +24581,7 @@ class ModifyDBClusterPayTypeRequest(TeaModel):
         # 
         # > This parameter must be specified when PayType is set to Prepaid.
         self.period = period
+        self.region_id = region_id
         # The subscription duration of the subscription cluster.
         # 
         # *   Valid values when Period is set to Year: 1, 2, 3, and 5 (integer).
@@ -22205,6 +24609,8 @@ class ModifyDBClusterPayTypeRequest(TeaModel):
             result['PayType'] = self.pay_type
         if self.period is not None:
             result['Period'] = self.period
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.used_time is not None:
             result['UsedTime'] = self.used_time
         return result
@@ -22217,6 +24623,8 @@ class ModifyDBClusterPayTypeRequest(TeaModel):
             self.pay_type = m.get('PayType')
         if m.get('Period') is not None:
             self.period = m.get('Period')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('UsedTime') is not None:
             self.used_time = m.get('UsedTime')
         return self
@@ -22325,9 +24733,13 @@ class ModifyDBClusterResourceGroupRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The ID of the resource group. For more information, see [View basic information of a resource group](~~151181#task-2398293~~ "This topic describes how to view basic information of a resource group, including the resource group ID, resource group name, and resource group display name.").
+        # The resource group ID. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+        # 
+        # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -22379,7 +24791,7 @@ class ModifyDBClusterResourceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -22443,6 +24855,150 @@ class ModifyDBClusterResourceGroupResponse(TeaModel):
         return self
 
 
+class ModifyDBClusterSSLRequest(TeaModel):
+    def __init__(
+        self,
+        connection_string: str = None,
+        dbcluster_id: str = None,
+        enable_ssl: bool = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # The internal or public endpoint for which the server certificate needs to be created or updated.
+        self.connection_string = connection_string
+        # The ID of the AnalyticDB for MySQL Data Warehouse Edition cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of AnalyticDB for MySQL Data Warehouse Edition clusters within a region.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # Specifies whether to enable SSL encryption. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # This parameter is required.
+        self.enable_ssl = enable_ssl
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connection_string is not None:
+            result['ConnectionString'] = self.connection_string
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.enable_ssl is not None:
+            result['EnableSSL'] = self.enable_ssl
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectionString') is not None:
+            self.connection_string = m.get('ConnectionString')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('EnableSSL') is not None:
+            self.enable_ssl = m.get('EnableSSL')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ModifyDBClusterSSLResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyDBClusterSSLResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyDBClusterSSLResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyDBClusterSSLResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyDBResourceGroupRequest(TeaModel):
     def __init__(
         self,
@@ -22452,21 +25008,26 @@ class ModifyDBResourceGroupRequest(TeaModel):
         node_num: int = None,
         owner_account: str = None,
         owner_id: int = None,
+        pool_user_list: List[str] = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The name of the resource group.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         # The query execution mode. Valid values:
         # 
         # *   **interactive**\
         # *   **batch**\
         # 
-        # >  For more information, see [Query execution modes](~~189502~~).
+        # >  For more information, see [Query execution modes](https://help.aliyun.com/document_detail/189502.html).
         self.group_type = group_type
         # The number of nodes. Default value: 0.
         # 
@@ -22475,6 +25036,8 @@ class ModifyDBResourceGroupRequest(TeaModel):
         self.node_num = node_num
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The database accounts with which to associate the resource group. They can be standard accounts or privileged accounts.
+        self.pool_user_list = pool_user_list
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -22499,6 +25062,8 @@ class ModifyDBResourceGroupRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.pool_user_list is not None:
+            result['PoolUserList'] = self.pool_user_list
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -22519,6 +25084,102 @@ class ModifyDBResourceGroupRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('PoolUserList') is not None:
+            self.pool_user_list = m.get('PoolUserList')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ModifyDBResourceGroupShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        group_name: str = None,
+        group_type: str = None,
+        node_num: int = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        pool_user_list_shrink: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The name of the resource group.
+        # 
+        # This parameter is required.
+        self.group_name = group_name
+        # The query execution mode. Valid values:
+        # 
+        # *   **interactive**\
+        # *   **batch**\
+        # 
+        # >  For more information, see [Query execution modes](https://help.aliyun.com/document_detail/189502.html).
+        self.group_type = group_type
+        # The number of nodes. Default value: 0.
+        # 
+        # *   Each node is configured with the resources of 16 cores and 64 GB memory.
+        # *   Make sure that the amount of resources of the nodes (Number of nodes × 16 cores and 64 GB memory) is less than or equal to the amount of unused resources of the cluster.
+        self.node_num = node_num
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The database accounts with which to associate the resource group. They can be standard accounts or privileged accounts.
+        self.pool_user_list_shrink = pool_user_list_shrink
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.group_type is not None:
+            result['GroupType'] = self.group_type
+        if self.node_num is not None:
+            result['NodeNum'] = self.node_num
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.pool_user_list_shrink is not None:
+            result['PoolUserList'] = self.pool_user_list_shrink
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('GroupType') is not None:
+            self.group_type = m.get('GroupType')
+        if m.get('NodeNum') is not None:
+            self.node_num = m.get('NodeNum')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PoolUserList') is not None:
+            self.pool_user_list_shrink = m.get('PoolUserList')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -22609,7 +25270,9 @@ class ModifyDBResourcePoolRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The number of nodes.
         # 
@@ -22622,6 +25285,8 @@ class ModifyDBResourcePoolRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The name of the resource group.
+        # 
+        # This parameter is required.
         self.pool_name = pool_name
         # The mode in which SQL statements are executed. Valid values:
         # 
@@ -22773,7 +25438,9 @@ class ModifyElasticPlanRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # Specifies whether the scaling plan takes effect. Valid values:
         # 
@@ -22782,13 +25449,16 @@ class ModifyElasticPlanRequest(TeaModel):
         self.elastic_plan_enable = elastic_plan_enable
         # The end date of the scaling plan. Specify the date in the yyyy-MM-dd format.
         self.elastic_plan_end_day = elastic_plan_end_day
+        # The dates of the month when you want to execute the scaling plan. A number specifies a date of the month. Separate multiple values with commas (,).
         self.elastic_plan_monthly_repeat = elastic_plan_monthly_repeat
         # The name of the scaling plan.
         # 
         # *   The name must be 2 to 30 characters in length.
-        # *   The name can contain letters, digits, and underscores (\_).
+        # *   The name can contain letters, digits, and underscores (_).
         # 
-        # > You can call the [DescribeElasticPlan](~~190596~~) operation to query the information about all scaling plans of a cluster, including the scaling plan names.
+        # > You can call the [DescribeElasticPlan](https://help.aliyun.com/document_detail/190596.html) operation to query the information about all scaling plans of a cluster, including the scaling plan names.
+        # 
+        # This parameter is required.
         self.elastic_plan_name = elastic_plan_name
         # The number of nodes that are involved in the scaling plan.
         # 
@@ -22831,7 +25501,7 @@ class ModifyElasticPlanRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The name of the resource group.
         # 
-        # > You can call the [DescribeDBResourceGroup](~~466685~~) operation to query the resource group name.
+        # > You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/466685.html) operation to query the resource group name.
         self.resource_pool_name = resource_pool_name
 
     def validate(self):
@@ -23000,11 +25670,15 @@ class ModifyLogBackupPolicyRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # Specifies whether to enable log backup. Valid values:
         # 
         # *   **Enable**\
         # *   **Disable**\
+        # 
+        # This parameter is required.
         self.enable_backup_log = enable_backup_log
         # The number of days for which to retain backup files. Valid values: 7 to 730.
         # 
@@ -23146,21 +25820,27 @@ class ModifyMaintenanceActionRequest(TeaModel):
         resource_owner_id: int = None,
         switch_time: str = None,
     ):
-        # The ID of the pending O\&M event. You can specify multiple IDs to batch change the switchover time. Separate multiple IDs with commas (,).
-        # > - You can call the [DescribeMaintenanceAction](~~271738~~) operation to query the information about pending O\&M events, including the event ID.
-        # > - You can change the switchover time only for pending O\&M events. The switchover time of historical O\&M events cannot be changed. For more information about the status of pending and historical O\&M events, see [DescribeMaintenanceAction](~~271738~~).
+        # The ID of the pending O\\&M event. You can specify multiple IDs to batch change the switchover time. Separate multiple IDs with commas (,).
+        # > - You can call the [DescribeMaintenanceAction](https://help.aliyun.com/document_detail/271738.html) operation to query the information about pending O\\&M events, including the event ID.
+        # > - You can change the switchover time only for pending O\\&M events. The switchover time of historical O\\&M events cannot be changed. For more information about the status of pending and historical O\\&M events, see [DescribeMaintenanceAction](https://help.aliyun.com/document_detail/271738.html).
+        # 
+        # This parameter is required.
         self.ids = ids
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the pending O\&M event occurs.
+        # The ID of the region where the pending O\\&M event occurs.
         # 
-        # > - You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # > - You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The point in time when you want the system to perform operations on the pending O\&M event. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+        # The point in time when you want the system to perform operations on the pending O\\&M event. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.switch_time = switch_time
 
     def validate(self):
@@ -23217,7 +25897,7 @@ class ModifyMaintenanceActionResponseBody(TeaModel):
         ids: str = None,
         request_id: str = None,
     ):
-        # The O\&M event ID.
+        # The O\\&M event ID.
         self.ids = ids
         # The request ID.
         self.request_id = request_id
@@ -23356,7 +26036,9 @@ class ModifyResubmitConfigRequest(TeaModel):
     ):
         # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -23365,6 +26047,8 @@ class ModifyResubmitConfigRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The job resubmission rules.
+        # 
+        # This parameter is required.
         self.rules = rules
 
     def validate(self):
@@ -23432,7 +26116,9 @@ class ModifyResubmitConfigShrinkRequest(TeaModel):
     ):
         # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -23441,6 +26127,8 @@ class ModifyResubmitConfigShrinkRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The job resubmission rules.
+        # 
+        # This parameter is required.
         self.rules_shrink = rules_shrink
 
     def validate(self):
@@ -23570,11 +26258,15 @@ class ModifySQAConfigRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The name of the resource group.
         # 
-        # >  You can call the [DescribeDBResourceGroup](~~459446~~) operation to query the resource group name of a cluster.
+        # >  You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/459446.html) operation to query the resource group name of a cluster.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -23588,6 +26280,8 @@ class ModifySQAConfigRequest(TeaModel):
         # 
         # *   on
         # *   off
+        # 
+        # This parameter is required.
         self.sqastatus = sqastatus
 
     def validate(self):
@@ -23716,7 +26410,9 @@ class ReleaseClusterPublicConnectionRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -23764,7 +26460,7 @@ class ReleaseClusterPublicConnectionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -23840,19 +26536,24 @@ class ResetAccountPasswordRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The account of the database.
+        # The name of the database account.
+        # 
+        # This parameter is required.
         self.account_name = account_name
-        # The account and password of the database.
+        # The password of the database account.
         # 
-        # *   The password must contain uppercase letters, lowercase letters, digits, and special characters.
-        # *   Special characters include ! @ # $ % ^ & \* () \_ + - and =\
-        # *   A password must be 8 to 32 characters in length.
+        # *   The password can contain uppercase letters, lowercase letters, digits, and special characters.
+        # *   Special characters include ! @ # $ % ^ & \\* ( ) _ + - =\
+        # *   The password must be 8 to 32 characters in length.
+        # 
+        # This parameter is required.
         self.account_password = account_password
-        # Normal: standard account
-        # 
-        # Super: privileged account
+        # 1.  Normal: the standard account.
+        # 2.  Super: the privileged account.
         self.account_type = account_type
-        # The ID of the cluster.
+        # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -23914,11 +26615,11 @@ class ResetAccountPasswordResponseBody(TeaModel):
         request_id: str = None,
         task_id: int = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -24000,6 +26701,8 @@ class RevokeOperatorPermissionRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -24164,7 +26867,9 @@ class TagResourcesRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the cluster. You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # The region ID of the cluster. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the cluster to which to add a tag. If you want to add a tag to multiple clusters, click **Add** and enter the cluster IDs.
         # 
@@ -24172,13 +26877,19 @@ class TagResourcesRequest(TeaModel):
         # 
         # *   You can add tags to up to 50 clusters at a time.
         # 
-        # *   You can call the [DescribeDBClusters](~~129857~~) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # *   You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The type of the cluster. Set the value to **ALIYUN::ADB::CLUSTER**.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags to add to the cluster.
+        # 
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -24319,11 +27030,17 @@ class UnbindDBResourceGroupWithUserRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The name of the resource group.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         # The database account with which the resource group is associated.
+        # 
+        # This parameter is required.
         self.group_user = group_user
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -24454,13 +27171,21 @@ class UnbindDBResourcePoolWithUserRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the cluster.
+        # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The name of the resource pool. You cannot unbind users from the default resource pool named USER_DEFAULT.
+        # The name of the resource group.
+        # 
+        # This parameter is required.
         self.pool_name = pool_name
-        # The user bound to the resource pool.
+        # The database account with which the resource group is associated.
+        # 
+        # This parameter is required.
         self.pool_user = pool_user
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -24514,7 +27239,7 @@ class UnbindDBResourcePoolWithUserResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -24602,13 +27327,19 @@ class UntagResourcesRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID.
         # 
-        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of cluster N. Valid values of N: 1 to 50.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The resource type. Set the value to **ALIYUN::ADB::CLUSTER**.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The key of tag N. Valid values of N: 1 to 20.
         self.tag_key = tag_key
@@ -24730,6 +27461,152 @@ class UntagResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UntagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpgradeKernelVersionRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        dbversion: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        switch_mode: int = None,
+    ):
+        # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612241.html) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The minor version to which you want to update.
+        # 
+        # >  You can call the **DescribeKernelVersion** operation to query the supported minor versions.
+        self.dbversion = dbversion
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # The time when to perform the update. Valid values:
+        # 
+        # *   **0** (default): immediately performs the update.
+        # *   **1**: performs the update during the maintenance window.
+        # 
+        # >  You can call the [ModifyDBClusterMaintainTime](https://help.aliyun.com/document_detail/612236.html) operation to modify the maintenance window of an AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        self.switch_mode = switch_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.dbversion is not None:
+            result['DBVersion'] = self.dbversion
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.switch_mode is not None:
+            result['SwitchMode'] = self.switch_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DBVersion') is not None:
+            self.dbversion = m.get('DBVersion')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SwitchMode') is not None:
+            self.switch_mode = m.get('SwitchMode')
+        return self
+
+
+class UpgradeKernelVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpgradeKernelVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpgradeKernelVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpgradeKernelVersionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
