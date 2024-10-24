@@ -9194,6 +9194,350 @@ class DescribeDomainAttackEventsResponse(TeaModel):
         return self
 
 
+class DescribeDomainBpsRequest(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        end_time: int = None,
+        interval: int = None,
+        region: str = None,
+        start_time: int = None,
+    ):
+        self.domain = domain
+        # This parameter is required.
+        self.end_time = end_time
+        # This parameter is required.
+        self.interval = interval
+        # This parameter is required.
+        self.region = region
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeDomainBpsResponseBodyDomainBps(TeaModel):
+    def __init__(
+        self,
+        in_bps: int = None,
+        index: int = None,
+        out_bps: int = None,
+    ):
+        self.in_bps = in_bps
+        self.index = index
+        self.out_bps = out_bps
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.in_bps is not None:
+            result['InBps'] = self.in_bps
+        if self.index is not None:
+            result['Index'] = self.index
+        if self.out_bps is not None:
+            result['OutBps'] = self.out_bps
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InBps') is not None:
+            self.in_bps = m.get('InBps')
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        if m.get('OutBps') is not None:
+            self.out_bps = m.get('OutBps')
+        return self
+
+
+class DescribeDomainBpsResponseBody(TeaModel):
+    def __init__(
+        self,
+        domain_bps: List[DescribeDomainBpsResponseBodyDomainBps] = None,
+        request_id: str = None,
+    ):
+        self.domain_bps = domain_bps
+        self.request_id = request_id
+
+    def validate(self):
+        if self.domain_bps:
+            for k in self.domain_bps:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DomainBps'] = []
+        if self.domain_bps is not None:
+            for k in self.domain_bps:
+                result['DomainBps'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.domain_bps = []
+        if m.get('DomainBps') is not None:
+            for k in m.get('DomainBps'):
+                temp_model = DescribeDomainBpsResponseBodyDomainBps()
+                self.domain_bps.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDomainBpsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDomainBpsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDomainBpsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDomainH2FingerprintRequest(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        end_time: int = None,
+        limit: int = None,
+        start_time: int = None,
+    ):
+        self.domain = domain
+        self.end_time = end_time
+        # This parameter is required.
+        self.limit = limit
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeDomainH2FingerprintResponseBodyDomainH2Fp(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        h_2fingerprint: str = None,
+        pv: int = None,
+    ):
+        self.domain = domain
+        self.h_2fingerprint = h_2fingerprint
+        self.pv = pv
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.h_2fingerprint is not None:
+            result['H2Fingerprint'] = self.h_2fingerprint
+        if self.pv is not None:
+            result['Pv'] = self.pv
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('H2Fingerprint') is not None:
+            self.h_2fingerprint = m.get('H2Fingerprint')
+        if m.get('Pv') is not None:
+            self.pv = m.get('Pv')
+        return self
+
+
+class DescribeDomainH2FingerprintResponseBody(TeaModel):
+    def __init__(
+        self,
+        domain_h2fp: List[DescribeDomainH2FingerprintResponseBodyDomainH2Fp] = None,
+        request_id: str = None,
+    ):
+        self.domain_h2fp = domain_h2fp
+        self.request_id = request_id
+
+    def validate(self):
+        if self.domain_h2fp:
+            for k in self.domain_h2fp:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DomainH2Fp'] = []
+        if self.domain_h2fp is not None:
+            for k in self.domain_h2fp:
+                result['DomainH2Fp'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.domain_h2fp = []
+        if m.get('DomainH2Fp') is not None:
+            for k in m.get('DomainH2Fp'):
+                temp_model = DescribeDomainH2FingerprintResponseBodyDomainH2Fp()
+                self.domain_h2fp.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDomainH2FingerprintResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDomainH2FingerprintResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDomainH2FingerprintResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDomainOverviewRequest(TeaModel):
     def __init__(
         self,
@@ -10845,6 +11189,717 @@ class DescribeDomainTopAttackListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDomainTopAttackListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDomainTopFingerprintRequest(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        end_time: int = None,
+        interval: int = None,
+        limit: int = None,
+        region: str = None,
+        start_time: int = None,
+    ):
+        self.domain = domain
+        # This parameter is required.
+        self.end_time = end_time
+        # This parameter is required.
+        self.interval = interval
+        # This parameter is required.
+        self.limit = limit
+        # This parameter is required.
+        self.region = region
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeDomainTopFingerprintResponseBodyDomainTopFp(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        fingerprinting: str = None,
+        pv: int = None,
+    ):
+        self.domain = domain
+        self.fingerprinting = fingerprinting
+        self.pv = pv
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.fingerprinting is not None:
+            result['Fingerprinting'] = self.fingerprinting
+        if self.pv is not None:
+            result['Pv'] = self.pv
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Fingerprinting') is not None:
+            self.fingerprinting = m.get('Fingerprinting')
+        if m.get('Pv') is not None:
+            self.pv = m.get('Pv')
+        return self
+
+
+class DescribeDomainTopFingerprintResponseBody(TeaModel):
+    def __init__(
+        self,
+        domain_top_fp: List[DescribeDomainTopFingerprintResponseBodyDomainTopFp] = None,
+        request_id: str = None,
+    ):
+        self.domain_top_fp = domain_top_fp
+        self.request_id = request_id
+
+    def validate(self):
+        if self.domain_top_fp:
+            for k in self.domain_top_fp:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DomainTopFp'] = []
+        if self.domain_top_fp is not None:
+            for k in self.domain_top_fp:
+                result['DomainTopFp'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.domain_top_fp = []
+        if m.get('DomainTopFp') is not None:
+            for k in m.get('DomainTopFp'):
+                temp_model = DescribeDomainTopFingerprintResponseBodyDomainTopFp()
+                self.domain_top_fp.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDomainTopFingerprintResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDomainTopFingerprintResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDomainTopFingerprintResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDomainTopHttpMethodRequest(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        end_time: int = None,
+        limit: int = None,
+        region: str = None,
+        start_time: int = None,
+    ):
+        self.domain = domain
+        # This parameter is required.
+        self.end_time = end_time
+        # This parameter is required.
+        self.limit = limit
+        # This parameter is required.
+        self.region = region
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeDomainTopHttpMethodResponseBodyDomainTopMethod(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        http_method: str = None,
+        pv: int = None,
+    ):
+        self.domain = domain
+        self.http_method = http_method
+        self.pv = pv
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.http_method is not None:
+            result['HttpMethod'] = self.http_method
+        if self.pv is not None:
+            result['Pv'] = self.pv
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('HttpMethod') is not None:
+            self.http_method = m.get('HttpMethod')
+        if m.get('Pv') is not None:
+            self.pv = m.get('Pv')
+        return self
+
+
+class DescribeDomainTopHttpMethodResponseBody(TeaModel):
+    def __init__(
+        self,
+        domain_top_method: List[DescribeDomainTopHttpMethodResponseBodyDomainTopMethod] = None,
+        request_id: str = None,
+    ):
+        self.domain_top_method = domain_top_method
+        self.request_id = request_id
+
+    def validate(self):
+        if self.domain_top_method:
+            for k in self.domain_top_method:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DomainTopMethod'] = []
+        if self.domain_top_method is not None:
+            for k in self.domain_top_method:
+                result['DomainTopMethod'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.domain_top_method = []
+        if m.get('DomainTopMethod') is not None:
+            for k in m.get('DomainTopMethod'):
+                temp_model = DescribeDomainTopHttpMethodResponseBodyDomainTopMethod()
+                self.domain_top_method.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDomainTopHttpMethodResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDomainTopHttpMethodResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDomainTopHttpMethodResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDomainTopRefererRequest(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        end_time: int = None,
+        limit: int = None,
+        region: str = None,
+        start_time: int = None,
+    ):
+        self.domain = domain
+        # This parameter is required.
+        self.end_time = end_time
+        # This parameter is required.
+        self.limit = limit
+        # This parameter is required.
+        self.region = region
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeDomainTopRefererResponseBodyDomainTopReferer(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        pv: int = None,
+        referer: str = None,
+    ):
+        self.domain = domain
+        self.pv = pv
+        self.referer = referer
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.pv is not None:
+            result['Pv'] = self.pv
+        if self.referer is not None:
+            result['Referer'] = self.referer
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Pv') is not None:
+            self.pv = m.get('Pv')
+        if m.get('Referer') is not None:
+            self.referer = m.get('Referer')
+        return self
+
+
+class DescribeDomainTopRefererResponseBody(TeaModel):
+    def __init__(
+        self,
+        domain_top_referer: List[DescribeDomainTopRefererResponseBodyDomainTopReferer] = None,
+        request_id: str = None,
+    ):
+        self.domain_top_referer = domain_top_referer
+        self.request_id = request_id
+
+    def validate(self):
+        if self.domain_top_referer:
+            for k in self.domain_top_referer:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DomainTopReferer'] = []
+        if self.domain_top_referer is not None:
+            for k in self.domain_top_referer:
+                result['DomainTopReferer'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.domain_top_referer = []
+        if m.get('DomainTopReferer') is not None:
+            for k in m.get('DomainTopReferer'):
+                temp_model = DescribeDomainTopRefererResponseBodyDomainTopReferer()
+                self.domain_top_referer.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDomainTopRefererResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDomainTopRefererResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDomainTopRefererResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDomainTopUserAgentRequest(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        end_time: int = None,
+        limit: int = None,
+        region: str = None,
+        start_time: int = None,
+    ):
+        self.domain = domain
+        # This parameter is required.
+        self.end_time = end_time
+        # This parameter is required.
+        self.limit = limit
+        # This parameter is required.
+        self.region = region
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeDomainTopUserAgentResponseBodyDomainTopUa(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        pv: int = None,
+        user_agent: str = None,
+    ):
+        self.domain = domain
+        self.pv = pv
+        self.user_agent = user_agent
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.pv is not None:
+            result['Pv'] = self.pv
+        if self.user_agent is not None:
+            result['UserAgent'] = self.user_agent
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Pv') is not None:
+            self.pv = m.get('Pv')
+        if m.get('UserAgent') is not None:
+            self.user_agent = m.get('UserAgent')
+        return self
+
+
+class DescribeDomainTopUserAgentResponseBody(TeaModel):
+    def __init__(
+        self,
+        domain_top_ua: List[DescribeDomainTopUserAgentResponseBodyDomainTopUa] = None,
+        request_id: str = None,
+    ):
+        self.domain_top_ua = domain_top_ua
+        self.request_id = request_id
+
+    def validate(self):
+        if self.domain_top_ua:
+            for k in self.domain_top_ua:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DomainTopUa'] = []
+        if self.domain_top_ua is not None:
+            for k in self.domain_top_ua:
+                result['DomainTopUa'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.domain_top_ua = []
+        if m.get('DomainTopUa') is not None:
+            for k in m.get('DomainTopUa'):
+                temp_model = DescribeDomainTopUserAgentResponseBodyDomainTopUa()
+                self.domain_top_ua.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDomainTopUserAgentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDomainTopUserAgentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDomainTopUserAgentResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17277,7 +18332,7 @@ class DescribePortCcAttackTopIPResponseBody(TeaModel):
     ):
         # The request ID, which is used to locate and troubleshoot issues.
         self.request_id = request_id
-        # The information about the source IP address of the attack.
+        # The top IP addresses from which most attacks are initiated.
         self.top_ip = top_ip
 
     def validate(self):
@@ -21468,11 +22523,11 @@ class DescribeUnBlockCountResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The remaining quota that you can use the Diversion from Origin Server policy.
+        # The remaining number of times that you can enable the near-origin traffic diversion feature.
         self.remain_count = remain_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total quota that you can use the Diversion from Origin Server policy.
+        # The total number of times that you can enable the near-origin traffic diversion feature.
         self.total_count = total_count
 
     def validate(self):
@@ -24489,9 +25544,9 @@ class DescribeWebRulesRequest(TeaModel):
         self.domain = domain
         # The list of DDoS protection instance IDs to query.
         self.instance_ids = instance_ids
-        # When paginating, set the page number of the current page. The default value is 1.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # When paginating, set the number of forwarding rules per page. The range of values is: 1~10.
+        # The number of entries per page. Valid values: **1** to **10**.
         self.page_size = page_size
         # The query matching pattern. Values:
         # - **fuzzy** (default): Indicates fuzzy query.
@@ -26562,9 +27617,9 @@ class ModifyBlockStatusRequest(TeaModel):
         # 
         # > If you set **Status** to **do**, you must also specify this parameter.
         self.duration = duration
-        # The ID of the Anti-DDoS Pro instance to manage.
+        # The ID of the Anti-DDoS Proxy (Chinese Mainland) instance to manage.
         # 
-        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # >  You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all Anti-DDoS Proxy instances.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -28025,12 +29080,12 @@ class ModifyNetworkRuleAttributeRequest(TeaModel):
         # *   **Maxconn**: the source rate limit on concurrent connections in the DDoS mitigation policy. This field is required and of the integer type. Valid values: 1 to 50000.
         # *   **CpsEnable**: specifies whether to enable Cps. This field is required and of the integer type. Valid values: 0 and 1. Default value: 1. The value 0 indicates that Cps is disabled, and the value 1 indicates that Cps is enabled.
         # *   **MaxconnEnable**: specifies whether to enable Maxconn. This field is required and of the integer type. Valid values: 0 and 1. Default value: 1. The value 0 indicates that Maxconn is disabled, and the value 1 indicates that Maxconn is enabled.
-        # *   **CpsMode**: specifies whether to enable the source rate limit on new connections. This field is required and of the integer type. Valid values: 1 and 2. The value 1 indicates the source rate limit is enabled. The value 2 indicates that the system determines whether to enable the source rate limit.
+        # *   **CpsMode**: specifies whether to enable the source rate limit on new connections. This field is required and of the integer type. Valid values: 1 and 2. The value 1 indicates that the source rate limit is disabled. The value 2 indicates that the system determines whether to enable the source rate limit.
         # 
         # PayloadLen contains the following fields:
         # 
-        # *   **Min**: the minimum packet length in the DDoS mitigation policy. This field is required and of the integer type. Valid values: 0 to 2000.
-        # *   **Max**: the maximum packet length in the DDoS mitigation policy. This field is required and of the integer type. Valid values: 0 to 6000.
+        # *   **Min**: the minimum packet length in the DDoS mitigation policy. This field is required and of the integer type. Valid values: 0 to 1500.
+        # *   **Max**: the maximum packet length in the DDoS mitigation policy. This field is required and of the integer type. Valid values: 0 to 1500.
         # 
         # This parameter is required.
         self.config = config

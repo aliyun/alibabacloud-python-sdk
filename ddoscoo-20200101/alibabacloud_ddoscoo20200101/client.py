@@ -6693,6 +6693,226 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_attack_events_with_options_async(request, runtime)
 
+    def describe_domain_bps_with_options(
+        self,
+        request: ddoscoo_20200101_models.DescribeDomainBpsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeDomainBpsResponse:
+        """
+        @summary 查询域名业务带宽流量
+        
+        @param request: DescribeDomainBpsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainBpsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainBps',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeDomainBpsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_domain_bps_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeDomainBpsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeDomainBpsResponse:
+        """
+        @summary 查询域名业务带宽流量
+        
+        @param request: DescribeDomainBpsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainBpsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainBps',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeDomainBpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_domain_bps(
+        self,
+        request: ddoscoo_20200101_models.DescribeDomainBpsRequest,
+    ) -> ddoscoo_20200101_models.DescribeDomainBpsResponse:
+        """
+        @summary 查询域名业务带宽流量
+        
+        @param request: DescribeDomainBpsRequest
+        @return: DescribeDomainBpsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_domain_bps_with_options(request, runtime)
+
+    async def describe_domain_bps_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeDomainBpsRequest,
+    ) -> ddoscoo_20200101_models.DescribeDomainBpsResponse:
+        """
+        @summary 查询域名业务带宽流量
+        
+        @param request: DescribeDomainBpsRequest
+        @return: DescribeDomainBpsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_domain_bps_with_options_async(request, runtime)
+
+    def describe_domain_h2fingerprint_with_options(
+        self,
+        request: ddoscoo_20200101_models.DescribeDomainH2FingerprintRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeDomainH2FingerprintResponse:
+        """
+        @summary 查询HTTP2指纹
+        
+        @param request: DescribeDomainH2FingerprintRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainH2FingerprintResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainH2Fingerprint',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeDomainH2FingerprintResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_domain_h2fingerprint_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeDomainH2FingerprintRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeDomainH2FingerprintResponse:
+        """
+        @summary 查询HTTP2指纹
+        
+        @param request: DescribeDomainH2FingerprintRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainH2FingerprintResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainH2Fingerprint',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeDomainH2FingerprintResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_domain_h2fingerprint(
+        self,
+        request: ddoscoo_20200101_models.DescribeDomainH2FingerprintRequest,
+    ) -> ddoscoo_20200101_models.DescribeDomainH2FingerprintResponse:
+        """
+        @summary 查询HTTP2指纹
+        
+        @param request: DescribeDomainH2FingerprintRequest
+        @return: DescribeDomainH2FingerprintResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_domain_h2fingerprint_with_options(request, runtime)
+
+    async def describe_domain_h2fingerprint_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeDomainH2FingerprintRequest,
+    ) -> ddoscoo_20200101_models.DescribeDomainH2FingerprintResponse:
+        """
+        @summary 查询HTTP2指纹
+        
+        @param request: DescribeDomainH2FingerprintRequest
+        @return: DescribeDomainH2FingerprintResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_domain_h2fingerprint_with_options_async(request, runtime)
+
     def describe_domain_overview_with_options(
         self,
         request: ddoscoo_20200101_models.DescribeDomainOverviewRequest,
@@ -7469,6 +7689,458 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_top_attack_list_with_options_async(request, runtime)
 
+    def describe_domain_top_fingerprint_with_options(
+        self,
+        request: ddoscoo_20200101_models.DescribeDomainTopFingerprintRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeDomainTopFingerprintResponse:
+        """
+        @summary 查询域名 top fingerprint
+        
+        @param request: DescribeDomainTopFingerprintRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainTopFingerprintResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainTopFingerprint',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeDomainTopFingerprintResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_domain_top_fingerprint_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeDomainTopFingerprintRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeDomainTopFingerprintResponse:
+        """
+        @summary 查询域名 top fingerprint
+        
+        @param request: DescribeDomainTopFingerprintRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainTopFingerprintResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainTopFingerprint',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeDomainTopFingerprintResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_domain_top_fingerprint(
+        self,
+        request: ddoscoo_20200101_models.DescribeDomainTopFingerprintRequest,
+    ) -> ddoscoo_20200101_models.DescribeDomainTopFingerprintResponse:
+        """
+        @summary 查询域名 top fingerprint
+        
+        @param request: DescribeDomainTopFingerprintRequest
+        @return: DescribeDomainTopFingerprintResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_domain_top_fingerprint_with_options(request, runtime)
+
+    async def describe_domain_top_fingerprint_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeDomainTopFingerprintRequest,
+    ) -> ddoscoo_20200101_models.DescribeDomainTopFingerprintResponse:
+        """
+        @summary 查询域名 top fingerprint
+        
+        @param request: DescribeDomainTopFingerprintRequest
+        @return: DescribeDomainTopFingerprintResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_domain_top_fingerprint_with_options_async(request, runtime)
+
+    def describe_domain_top_http_method_with_options(
+        self,
+        request: ddoscoo_20200101_models.DescribeDomainTopHttpMethodRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeDomainTopHttpMethodResponse:
+        """
+        @summary 查询域名 top HttpMethod
+        
+        @param request: DescribeDomainTopHttpMethodRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainTopHttpMethodResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainTopHttpMethod',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeDomainTopHttpMethodResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_domain_top_http_method_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeDomainTopHttpMethodRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeDomainTopHttpMethodResponse:
+        """
+        @summary 查询域名 top HttpMethod
+        
+        @param request: DescribeDomainTopHttpMethodRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainTopHttpMethodResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainTopHttpMethod',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeDomainTopHttpMethodResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_domain_top_http_method(
+        self,
+        request: ddoscoo_20200101_models.DescribeDomainTopHttpMethodRequest,
+    ) -> ddoscoo_20200101_models.DescribeDomainTopHttpMethodResponse:
+        """
+        @summary 查询域名 top HttpMethod
+        
+        @param request: DescribeDomainTopHttpMethodRequest
+        @return: DescribeDomainTopHttpMethodResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_domain_top_http_method_with_options(request, runtime)
+
+    async def describe_domain_top_http_method_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeDomainTopHttpMethodRequest,
+    ) -> ddoscoo_20200101_models.DescribeDomainTopHttpMethodResponse:
+        """
+        @summary 查询域名 top HttpMethod
+        
+        @param request: DescribeDomainTopHttpMethodRequest
+        @return: DescribeDomainTopHttpMethodResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_domain_top_http_method_with_options_async(request, runtime)
+
+    def describe_domain_top_referer_with_options(
+        self,
+        request: ddoscoo_20200101_models.DescribeDomainTopRefererRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeDomainTopRefererResponse:
+        """
+        @summary 查询域名top referer
+        
+        @param request: DescribeDomainTopRefererRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainTopRefererResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainTopReferer',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeDomainTopRefererResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_domain_top_referer_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeDomainTopRefererRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeDomainTopRefererResponse:
+        """
+        @summary 查询域名top referer
+        
+        @param request: DescribeDomainTopRefererRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainTopRefererResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainTopReferer',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeDomainTopRefererResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_domain_top_referer(
+        self,
+        request: ddoscoo_20200101_models.DescribeDomainTopRefererRequest,
+    ) -> ddoscoo_20200101_models.DescribeDomainTopRefererResponse:
+        """
+        @summary 查询域名top referer
+        
+        @param request: DescribeDomainTopRefererRequest
+        @return: DescribeDomainTopRefererResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_domain_top_referer_with_options(request, runtime)
+
+    async def describe_domain_top_referer_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeDomainTopRefererRequest,
+    ) -> ddoscoo_20200101_models.DescribeDomainTopRefererResponse:
+        """
+        @summary 查询域名top referer
+        
+        @param request: DescribeDomainTopRefererRequest
+        @return: DescribeDomainTopRefererResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_domain_top_referer_with_options_async(request, runtime)
+
+    def describe_domain_top_user_agent_with_options(
+        self,
+        request: ddoscoo_20200101_models.DescribeDomainTopUserAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeDomainTopUserAgentResponse:
+        """
+        @summary 查询top user agent
+        
+        @param request: DescribeDomainTopUserAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainTopUserAgentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainTopUserAgent',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeDomainTopUserAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_domain_top_user_agent_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeDomainTopUserAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeDomainTopUserAgentResponse:
+        """
+        @summary 查询top user agent
+        
+        @param request: DescribeDomainTopUserAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainTopUserAgentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainTopUserAgent',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeDomainTopUserAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_domain_top_user_agent(
+        self,
+        request: ddoscoo_20200101_models.DescribeDomainTopUserAgentRequest,
+    ) -> ddoscoo_20200101_models.DescribeDomainTopUserAgentResponse:
+        """
+        @summary 查询top user agent
+        
+        @param request: DescribeDomainTopUserAgentRequest
+        @return: DescribeDomainTopUserAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_domain_top_user_agent_with_options(request, runtime)
+
+    async def describe_domain_top_user_agent_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeDomainTopUserAgentRequest,
+    ) -> ddoscoo_20200101_models.DescribeDomainTopUserAgentResponse:
+        """
+        @summary 查询top user agent
+        
+        @param request: DescribeDomainTopUserAgentRequest
+        @return: DescribeDomainTopUserAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_domain_top_user_agent_with_options_async(request, runtime)
+
     def describe_domain_view_source_countries_with_options(
         self,
         request: ddoscoo_20200101_models.DescribeDomainViewSourceCountriesRequest,
@@ -8015,9 +8687,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeElasticBandwidthSpecResponse:
         """
-        @summary Queries the available burstable protection bandwidths of an Anti-DDoS Pro instance.
+        @summary Queries the available burstable protection bandwidths of an Anti-DDoS Proxy (Chinese Mainland) instance.
         
-        @description > This operation is suitable only for Anti-DDoS Pro.
+        @description >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
         
         @param request: DescribeElasticBandwidthSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8052,9 +8724,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeElasticBandwidthSpecResponse:
         """
-        @summary Queries the available burstable protection bandwidths of an Anti-DDoS Pro instance.
+        @summary Queries the available burstable protection bandwidths of an Anti-DDoS Proxy (Chinese Mainland) instance.
         
-        @description > This operation is suitable only for Anti-DDoS Pro.
+        @description >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
         
         @param request: DescribeElasticBandwidthSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8088,9 +8760,9 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeElasticBandwidthSpecRequest,
     ) -> ddoscoo_20200101_models.DescribeElasticBandwidthSpecResponse:
         """
-        @summary Queries the available burstable protection bandwidths of an Anti-DDoS Pro instance.
+        @summary Queries the available burstable protection bandwidths of an Anti-DDoS Proxy (Chinese Mainland) instance.
         
-        @description > This operation is suitable only for Anti-DDoS Pro.
+        @description >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
         
         @param request: DescribeElasticBandwidthSpecRequest
         @return: DescribeElasticBandwidthSpecResponse
@@ -8103,9 +8775,9 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeElasticBandwidthSpecRequest,
     ) -> ddoscoo_20200101_models.DescribeElasticBandwidthSpecResponse:
         """
-        @summary Queries the available burstable protection bandwidths of an Anti-DDoS Pro instance.
+        @summary Queries the available burstable protection bandwidths of an Anti-DDoS Proxy (Chinese Mainland) instance.
         
-        @description > This operation is suitable only for Anti-DDoS Pro.
+        @description >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
         
         @param request: DescribeElasticBandwidthSpecRequest
         @return: DescribeElasticBandwidthSpecResponse
@@ -13031,9 +13703,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeUnBlockCountResponse:
         """
-        @summary Queries the remaining quota that allows you to use the Diversion from Origin Server policy.
+        @summary Queries the total number and the remaining number of times that you can enable the near-origin traffic diversion feature.
         
-        @description > This operation is suitable only for Anti-DDoS Pro.
+        @description >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
         
         @param request: DescribeUnBlockCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13068,9 +13740,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeUnBlockCountResponse:
         """
-        @summary Queries the remaining quota that allows you to use the Diversion from Origin Server policy.
+        @summary Queries the total number and the remaining number of times that you can enable the near-origin traffic diversion feature.
         
-        @description > This operation is suitable only for Anti-DDoS Pro.
+        @description >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
         
         @param request: DescribeUnBlockCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13104,9 +13776,9 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeUnBlockCountRequest,
     ) -> ddoscoo_20200101_models.DescribeUnBlockCountResponse:
         """
-        @summary Queries the remaining quota that allows you to use the Diversion from Origin Server policy.
+        @summary Queries the total number and the remaining number of times that you can enable the near-origin traffic diversion feature.
         
-        @description > This operation is suitable only for Anti-DDoS Pro.
+        @description >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
         
         @param request: DescribeUnBlockCountRequest
         @return: DescribeUnBlockCountResponse
@@ -13119,9 +13791,9 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeUnBlockCountRequest,
     ) -> ddoscoo_20200101_models.DescribeUnBlockCountResponse:
         """
-        @summary Queries the remaining quota that allows you to use the Diversion from Origin Server policy.
+        @summary Queries the total number and the remaining number of times that you can enable the near-origin traffic diversion feature.
         
-        @description > This operation is suitable only for Anti-DDoS Pro.
+        @description >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
         
         @param request: DescribeUnBlockCountRequest
         @return: DescribeUnBlockCountResponse

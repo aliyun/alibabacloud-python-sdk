@@ -1,3 +1,14 @@
+2024-10-24 Version: 2.5.0
+- Support API DescribeDomainBps.
+- Support API DescribeDomainH2Fingerprint.
+- Support API DescribeDomainTopFingerprint.
+- Support API DescribeDomainTopHttpMethod.
+- Support API DescribeDomainTopReferer.
+- Support API DescribeDomainTopUserAgent.
+- Update API DescribePortCcAttackTopIP: add param RegionId.
+- Update API DescribePortCcAttackTopIP: update response param.
+
+
 2024-09-19 Version: 2.4.4
 - Update API AssociateWebCert: delete param ResourceGroupId.
 - Update API DescribeDomainResource: update param PageSize.
