@@ -99,6 +99,13 @@ class Client(OpenApiClient):
         request: eais_20190624_models.AttachEaiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.AttachEaiResponse:
+        """
+        @summary 将弹性加速计算实例挂载到ECS实例上
+        
+        @param request: AttachEaiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachEaiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_instance_id):
@@ -131,6 +138,13 @@ class Client(OpenApiClient):
         request: eais_20190624_models.AttachEaiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.AttachEaiResponse:
+        """
+        @summary 将弹性加速计算实例挂载到ECS实例上
+        
+        @param request: AttachEaiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachEaiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_instance_id):
@@ -162,6 +176,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.AttachEaiRequest,
     ) -> eais_20190624_models.AttachEaiResponse:
+        """
+        @summary 将弹性加速计算实例挂载到ECS实例上
+        
+        @param request: AttachEaiRequest
+        @return: AttachEaiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.attach_eai_with_options(request, runtime)
 
@@ -169,6 +189,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.AttachEaiRequest,
     ) -> eais_20190624_models.AttachEaiResponse:
+        """
+        @summary 将弹性加速计算实例挂载到ECS实例上
+        
+        @param request: AttachEaiRequest
+        @return: AttachEaiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.attach_eai_with_options_async(request, runtime)
 
@@ -177,6 +203,13 @@ class Client(OpenApiClient):
         request: eais_20190624_models.AttachEaisEiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.AttachEaisEiResponse:
+        """
+        @summary 将EI绑定到ECS或ECI实例上。
+        
+        @param request: AttachEaisEiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachEaisEiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_instance_id):
@@ -211,6 +244,13 @@ class Client(OpenApiClient):
         request: eais_20190624_models.AttachEaisEiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.AttachEaisEiResponse:
+        """
+        @summary 将EI绑定到ECS或ECI实例上。
+        
+        @param request: AttachEaisEiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachEaisEiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_instance_id):
@@ -244,6 +284,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.AttachEaisEiRequest,
     ) -> eais_20190624_models.AttachEaisEiResponse:
+        """
+        @summary 将EI绑定到ECS或ECI实例上。
+        
+        @param request: AttachEaisEiRequest
+        @return: AttachEaisEiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.attach_eais_ei_with_options(request, runtime)
 
@@ -251,6 +297,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.AttachEaisEiRequest,
     ) -> eais_20190624_models.AttachEaisEiResponse:
+        """
+        @summary 将EI绑定到ECS或ECI实例上。
+        
+        @param request: AttachEaisEiRequest
+        @return: AttachEaisEiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.attach_eais_ei_with_options_async(request, runtime)
 
@@ -259,6 +311,13 @@ class Client(OpenApiClient):
         request: eais_20190624_models.ChangeResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_group_id):
@@ -291,6 +350,13 @@ class Client(OpenApiClient):
         request: eais_20190624_models.ChangeResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_group_id):
@@ -322,6 +388,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.ChangeResourceGroupRequest,
     ) -> eais_20190624_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.change_resource_group_with_options(request, runtime)
 
@@ -329,6 +401,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.ChangeResourceGroupRequest,
     ) -> eais_20190624_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.change_resource_group_with_options_async(request, runtime)
 
@@ -337,6 +415,13 @@ class Client(OpenApiClient):
         request: eais_20190624_models.CreateEaiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.CreateEaiResponse:
+        """
+        @summary 创建一个弹性加速计算实例
+        
+        @param request: CreateEaiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEaiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -379,6 +464,13 @@ class Client(OpenApiClient):
         request: eais_20190624_models.CreateEaiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.CreateEaiResponse:
+        """
+        @summary 创建一个弹性加速计算实例
+        
+        @param request: CreateEaiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEaiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -420,6 +512,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.CreateEaiRequest,
     ) -> eais_20190624_models.CreateEaiResponse:
+        """
+        @summary 创建一个弹性加速计算实例
+        
+        @param request: CreateEaiRequest
+        @return: CreateEaiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_eai_with_options(request, runtime)
 
@@ -427,174 +525,27 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.CreateEaiRequest,
     ) -> eais_20190624_models.CreateEaiResponse:
+        """
+        @summary 创建一个弹性加速计算实例
+        
+        @param request: CreateEaiRequest
+        @return: CreateEaiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_eai_with_options_async(request, runtime)
-
-    def create_eai_all_with_options(
-        self,
-        request: eais_20190624_models.CreateEaiAllRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> eais_20190624_models.CreateEaiAllResponse:
-        """
-        @deprecated
-        
-        @param request: CreateEaiAllRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateEaiAllResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.client_image_id):
-            query['ClientImageId'] = request.client_image_id
-        if not UtilClient.is_unset(request.client_instance_name):
-            query['ClientInstanceName'] = request.client_instance_name
-        if not UtilClient.is_unset(request.client_instance_type):
-            query['ClientInstanceType'] = request.client_instance_type
-        if not UtilClient.is_unset(request.client_internet_max_bandwidth_in):
-            query['ClientInternetMaxBandwidthIn'] = request.client_internet_max_bandwidth_in
-        if not UtilClient.is_unset(request.client_internet_max_bandwidth_out):
-            query['ClientInternetMaxBandwidthOut'] = request.client_internet_max_bandwidth_out
-        if not UtilClient.is_unset(request.client_password):
-            query['ClientPassword'] = request.client_password
-        if not UtilClient.is_unset(request.client_security_group_id):
-            query['ClientSecurityGroupId'] = request.client_security_group_id
-        if not UtilClient.is_unset(request.client_system_disk_category):
-            query['ClientSystemDiskCategory'] = request.client_system_disk_category
-        if not UtilClient.is_unset(request.client_system_disk_size):
-            query['ClientSystemDiskSize'] = request.client_system_disk_size
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.client_vswitch_id):
-            query['ClientVSwitchId'] = request.client_vswitch_id
-        if not UtilClient.is_unset(request.client_zone_id):
-            query['ClientZoneId'] = request.client_zone_id
-        if not UtilClient.is_unset(request.eai_instance_type):
-            query['EaiInstanceType'] = request.eai_instance_type
-        if not UtilClient.is_unset(request.instance_name):
-            query['InstanceName'] = request.instance_name
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateEaiAll',
-            version='2019-06-24',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            eais_20190624_models.CreateEaiAllResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_eai_all_with_options_async(
-        self,
-        request: eais_20190624_models.CreateEaiAllRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> eais_20190624_models.CreateEaiAllResponse:
-        """
-        @deprecated
-        
-        @param request: CreateEaiAllRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateEaiAllResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.client_image_id):
-            query['ClientImageId'] = request.client_image_id
-        if not UtilClient.is_unset(request.client_instance_name):
-            query['ClientInstanceName'] = request.client_instance_name
-        if not UtilClient.is_unset(request.client_instance_type):
-            query['ClientInstanceType'] = request.client_instance_type
-        if not UtilClient.is_unset(request.client_internet_max_bandwidth_in):
-            query['ClientInternetMaxBandwidthIn'] = request.client_internet_max_bandwidth_in
-        if not UtilClient.is_unset(request.client_internet_max_bandwidth_out):
-            query['ClientInternetMaxBandwidthOut'] = request.client_internet_max_bandwidth_out
-        if not UtilClient.is_unset(request.client_password):
-            query['ClientPassword'] = request.client_password
-        if not UtilClient.is_unset(request.client_security_group_id):
-            query['ClientSecurityGroupId'] = request.client_security_group_id
-        if not UtilClient.is_unset(request.client_system_disk_category):
-            query['ClientSystemDiskCategory'] = request.client_system_disk_category
-        if not UtilClient.is_unset(request.client_system_disk_size):
-            query['ClientSystemDiskSize'] = request.client_system_disk_size
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.client_vswitch_id):
-            query['ClientVSwitchId'] = request.client_vswitch_id
-        if not UtilClient.is_unset(request.client_zone_id):
-            query['ClientZoneId'] = request.client_zone_id
-        if not UtilClient.is_unset(request.eai_instance_type):
-            query['EaiInstanceType'] = request.eai_instance_type
-        if not UtilClient.is_unset(request.instance_name):
-            query['InstanceName'] = request.instance_name
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateEaiAll',
-            version='2019-06-24',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            eais_20190624_models.CreateEaiAllResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_eai_all(
-        self,
-        request: eais_20190624_models.CreateEaiAllRequest,
-    ) -> eais_20190624_models.CreateEaiAllResponse:
-        """
-        @deprecated
-        
-        @param request: CreateEaiAllRequest
-        @return: CreateEaiAllResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.create_eai_all_with_options(request, runtime)
-
-    async def create_eai_all_async(
-        self,
-        request: eais_20190624_models.CreateEaiAllRequest,
-    ) -> eais_20190624_models.CreateEaiAllResponse:
-        """
-        @deprecated
-        
-        @param request: CreateEaiAllRequest
-        @return: CreateEaiAllResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.create_eai_all_with_options_async(request, runtime)
 
     def create_eai_eci_with_options(
         self,
         tmp_req: eais_20190624_models.CreateEaiEciRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.CreateEaiEciResponse:
+        """
+        @summary 创建一个EAIS实例和ECI实例并绑定
+        
+        @param tmp_req: CreateEaiEciRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEaiEciResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = eais_20190624_models.CreateEaiEciShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -641,6 +592,13 @@ class Client(OpenApiClient):
         tmp_req: eais_20190624_models.CreateEaiEciRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.CreateEaiEciResponse:
+        """
+        @summary 创建一个EAIS实例和ECI实例并绑定
+        
+        @param tmp_req: CreateEaiEciRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEaiEciResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = eais_20190624_models.CreateEaiEciShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -686,6 +644,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.CreateEaiEciRequest,
     ) -> eais_20190624_models.CreateEaiEciResponse:
+        """
+        @summary 创建一个EAIS实例和ECI实例并绑定
+        
+        @param request: CreateEaiEciRequest
+        @return: CreateEaiEciResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_eai_eci_with_options(request, runtime)
 
@@ -693,6 +657,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.CreateEaiEciRequest,
     ) -> eais_20190624_models.CreateEaiEciResponse:
+        """
+        @summary 创建一个EAIS实例和ECI实例并绑定
+        
+        @param request: CreateEaiEciRequest
+        @return: CreateEaiEciResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_eai_eci_with_options_async(request, runtime)
 
@@ -701,6 +671,13 @@ class Client(OpenApiClient):
         tmp_req: eais_20190624_models.CreateEaiEcsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.CreateEaiEcsResponse:
+        """
+        @summary 创建一个EAIS实例和ECS实例并绑定
+        
+        @param tmp_req: CreateEaiEcsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEaiEcsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = eais_20190624_models.CreateEaiEcsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -747,6 +724,13 @@ class Client(OpenApiClient):
         tmp_req: eais_20190624_models.CreateEaiEcsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.CreateEaiEcsResponse:
+        """
+        @summary 创建一个EAIS实例和ECS实例并绑定
+        
+        @param tmp_req: CreateEaiEcsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEaiEcsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = eais_20190624_models.CreateEaiEcsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -792,6 +776,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.CreateEaiEcsRequest,
     ) -> eais_20190624_models.CreateEaiEcsResponse:
+        """
+        @summary 创建一个EAIS实例和ECS实例并绑定
+        
+        @param request: CreateEaiEcsRequest
+        @return: CreateEaiEcsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_eai_ecs_with_options(request, runtime)
 
@@ -799,6 +789,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.CreateEaiEcsRequest,
     ) -> eais_20190624_models.CreateEaiEcsResponse:
+        """
+        @summary 创建一个EAIS实例和ECS实例并绑定
+        
+        @param request: CreateEaiEcsRequest
+        @return: CreateEaiEcsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_eai_ecs_with_options_async(request, runtime)
 
@@ -807,6 +803,13 @@ class Client(OpenApiClient):
         tmp_req: eais_20190624_models.CreateEaiJupyterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.CreateEaiJupyterResponse:
+        """
+        @summary 创建一个EAIS Jupyter环境
+        
+        @param tmp_req: CreateEaiJupyterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEaiJupyterResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = eais_20190624_models.CreateEaiJupyterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -853,6 +856,13 @@ class Client(OpenApiClient):
         tmp_req: eais_20190624_models.CreateEaiJupyterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.CreateEaiJupyterResponse:
+        """
+        @summary 创建一个EAIS Jupyter环境
+        
+        @param tmp_req: CreateEaiJupyterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEaiJupyterResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = eais_20190624_models.CreateEaiJupyterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -898,6 +908,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.CreateEaiJupyterRequest,
     ) -> eais_20190624_models.CreateEaiJupyterResponse:
+        """
+        @summary 创建一个EAIS Jupyter环境
+        
+        @param request: CreateEaiJupyterRequest
+        @return: CreateEaiJupyterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_eai_jupyter_with_options(request, runtime)
 
@@ -905,6 +921,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.CreateEaiJupyterRequest,
     ) -> eais_20190624_models.CreateEaiJupyterResponse:
+        """
+        @summary 创建一个EAIS Jupyter环境
+        
+        @param request: CreateEaiJupyterRequest
+        @return: CreateEaiJupyterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_eai_jupyter_with_options_async(request, runtime)
 
@@ -913,6 +935,13 @@ class Client(OpenApiClient):
         request: eais_20190624_models.CreateEaisEiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.CreateEaisEiResponse:
+        """
+        @summary 创建一个弹性加速计算实例
+        
+        @param request: CreateEaisEiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEaisEiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -953,6 +982,13 @@ class Client(OpenApiClient):
         request: eais_20190624_models.CreateEaisEiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.CreateEaisEiResponse:
+        """
+        @summary 创建一个弹性加速计算实例
+        
+        @param request: CreateEaisEiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEaisEiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -992,6 +1028,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.CreateEaisEiRequest,
     ) -> eais_20190624_models.CreateEaisEiResponse:
+        """
+        @summary 创建一个弹性加速计算实例
+        
+        @param request: CreateEaisEiRequest
+        @return: CreateEaisEiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_eais_ei_with_options(request, runtime)
 
@@ -999,6 +1041,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.CreateEaisEiRequest,
     ) -> eais_20190624_models.CreateEaisEiResponse:
+        """
+        @summary 创建一个弹性加速计算实例
+        
+        @param request: CreateEaisEiRequest
+        @return: CreateEaisEiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_eais_ei_with_options_async(request, runtime)
 
@@ -1007,6 +1055,13 @@ class Client(OpenApiClient):
         request: eais_20190624_models.DeleteEaiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.DeleteEaiResponse:
+        """
+        @summary 释放一个弹性加速计算实例
+        
+        @param request: DeleteEaiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEaiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.elastic_accelerated_instance_id):
@@ -1039,6 +1094,13 @@ class Client(OpenApiClient):
         request: eais_20190624_models.DeleteEaiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.DeleteEaiResponse:
+        """
+        @summary 释放一个弹性加速计算实例
+        
+        @param request: DeleteEaiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEaiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.elastic_accelerated_instance_id):
@@ -1070,6 +1132,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.DeleteEaiRequest,
     ) -> eais_20190624_models.DeleteEaiResponse:
+        """
+        @summary 释放一个弹性加速计算实例
+        
+        @param request: DeleteEaiRequest
+        @return: DeleteEaiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_eai_with_options(request, runtime)
 
@@ -1077,6 +1145,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.DeleteEaiRequest,
     ) -> eais_20190624_models.DeleteEaiResponse:
+        """
+        @summary 释放一个弹性加速计算实例
+        
+        @param request: DeleteEaiRequest
+        @return: DeleteEaiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_eai_with_options_async(request, runtime)
 
@@ -1085,6 +1159,13 @@ class Client(OpenApiClient):
         request: eais_20190624_models.DeleteEaiAllRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.DeleteEaiAllResponse:
+        """
+        @summary 释放一个弹性加速计算实例以及与其绑定的ECS或ECI实例
+        
+        @param request: DeleteEaiAllRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEaiAllResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_instance_id):
@@ -1117,6 +1198,13 @@ class Client(OpenApiClient):
         request: eais_20190624_models.DeleteEaiAllRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.DeleteEaiAllResponse:
+        """
+        @summary 释放一个弹性加速计算实例以及与其绑定的ECS或ECI实例
+        
+        @param request: DeleteEaiAllRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEaiAllResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_instance_id):
@@ -1148,6 +1236,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.DeleteEaiAllRequest,
     ) -> eais_20190624_models.DeleteEaiAllResponse:
+        """
+        @summary 释放一个弹性加速计算实例以及与其绑定的ECS或ECI实例
+        
+        @param request: DeleteEaiAllRequest
+        @return: DeleteEaiAllResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_eai_all_with_options(request, runtime)
 
@@ -1155,6 +1249,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.DeleteEaiAllRequest,
     ) -> eais_20190624_models.DeleteEaiAllResponse:
+        """
+        @summary 释放一个弹性加速计算实例以及与其绑定的ECS或ECI实例
+        
+        @param request: DeleteEaiAllRequest
+        @return: DeleteEaiAllResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_eai_all_with_options_async(request, runtime)
 
@@ -1163,6 +1263,13 @@ class Client(OpenApiClient):
         request: eais_20190624_models.DeleteEaisEiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.DeleteEaisEiResponse:
+        """
+        @summary 释放弹性加速计算实例
+        
+        @param request: DeleteEaisEiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEaisEiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ei_instance_id):
@@ -1195,6 +1302,13 @@ class Client(OpenApiClient):
         request: eais_20190624_models.DeleteEaisEiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.DeleteEaisEiResponse:
+        """
+        @summary 释放弹性加速计算实例
+        
+        @param request: DeleteEaisEiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEaisEiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ei_instance_id):
@@ -1226,6 +1340,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.DeleteEaisEiRequest,
     ) -> eais_20190624_models.DeleteEaisEiResponse:
+        """
+        @summary 释放弹性加速计算实例
+        
+        @param request: DeleteEaisEiRequest
+        @return: DeleteEaisEiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_eais_ei_with_options(request, runtime)
 
@@ -1233,6 +1353,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.DeleteEaisEiRequest,
     ) -> eais_20190624_models.DeleteEaisEiResponse:
+        """
+        @summary 释放弹性加速计算实例
+        
+        @param request: DeleteEaisEiRequest
+        @return: DeleteEaisEiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_eais_ei_with_options_async(request, runtime)
 
@@ -1241,6 +1367,13 @@ class Client(OpenApiClient):
         request: eais_20190624_models.DescribeEaisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.DescribeEaisResponse:
+        """
+        @summary 查询一个或多个弹性加速计算实例的详细信息
+        
+        @param request: DescribeEaisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEaisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_instance_id):
@@ -1287,6 +1420,13 @@ class Client(OpenApiClient):
         request: eais_20190624_models.DescribeEaisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.DescribeEaisResponse:
+        """
+        @summary 查询一个或多个弹性加速计算实例的详细信息
+        
+        @param request: DescribeEaisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEaisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_instance_id):
@@ -1332,6 +1472,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.DescribeEaisRequest,
     ) -> eais_20190624_models.DescribeEaisResponse:
+        """
+        @summary 查询一个或多个弹性加速计算实例的详细信息
+        
+        @param request: DescribeEaisRequest
+        @return: DescribeEaisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_eais_with_options(request, runtime)
 
@@ -1339,6 +1485,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.DescribeEaisRequest,
     ) -> eais_20190624_models.DescribeEaisResponse:
+        """
+        @summary 查询一个或多个弹性加速计算实例的详细信息
+        
+        @param request: DescribeEaisRequest
+        @return: DescribeEaisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_eais_with_options_async(request, runtime)
 
@@ -1346,6 +1498,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.DescribeRegionsResponse:
+        """
+        @summary 查询您可以使用的阿里云地域
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeRegions',
@@ -1367,6 +1526,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.DescribeRegionsResponse:
+        """
+        @summary 查询您可以使用的阿里云地域
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeRegions',
@@ -1385,10 +1551,20 @@ class Client(OpenApiClient):
         )
 
     def describe_regions(self) -> eais_20190624_models.DescribeRegionsResponse:
+        """
+        @summary 查询您可以使用的阿里云地域
+        
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_regions_with_options(runtime)
 
     async def describe_regions_async(self) -> eais_20190624_models.DescribeRegionsResponse:
+        """
+        @summary 查询您可以使用的阿里云地域
+        
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(runtime)
 
@@ -1397,6 +1573,13 @@ class Client(OpenApiClient):
         request: eais_20190624_models.DetachEaiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.DetachEaiResponse:
+        """
+        @summary 从ECS实例上卸载弹性加速计算实例
+        
+        @param request: DetachEaiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachEaiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.elastic_accelerated_instance_id):
@@ -1427,6 +1610,13 @@ class Client(OpenApiClient):
         request: eais_20190624_models.DetachEaiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.DetachEaiResponse:
+        """
+        @summary 从ECS实例上卸载弹性加速计算实例
+        
+        @param request: DetachEaiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachEaiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.elastic_accelerated_instance_id):
@@ -1456,6 +1646,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.DetachEaiRequest,
     ) -> eais_20190624_models.DetachEaiResponse:
+        """
+        @summary 从ECS实例上卸载弹性加速计算实例
+        
+        @param request: DetachEaiRequest
+        @return: DetachEaiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detach_eai_with_options(request, runtime)
 
@@ -1463,6 +1659,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.DetachEaiRequest,
     ) -> eais_20190624_models.DetachEaiResponse:
+        """
+        @summary 从ECS实例上卸载弹性加速计算实例
+        
+        @param request: DetachEaiRequest
+        @return: DetachEaiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detach_eai_with_options_async(request, runtime)
 
@@ -1471,6 +1673,13 @@ class Client(OpenApiClient):
         request: eais_20190624_models.DetachEaisEiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.DetachEaisEiResponse:
+        """
+        @summary 将EI实例与ECS或ECI实例解绑
+        
+        @param request: DetachEaisEiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachEaisEiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ei_instance_id):
@@ -1501,6 +1710,13 @@ class Client(OpenApiClient):
         request: eais_20190624_models.DetachEaisEiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.DetachEaisEiResponse:
+        """
+        @summary 将EI实例与ECS或ECI实例解绑
+        
+        @param request: DetachEaisEiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachEaisEiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ei_instance_id):
@@ -1530,6 +1746,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.DetachEaisEiRequest,
     ) -> eais_20190624_models.DetachEaisEiResponse:
+        """
+        @summary 将EI实例与ECS或ECI实例解绑
+        
+        @param request: DetachEaisEiRequest
+        @return: DetachEaisEiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detach_eais_ei_with_options(request, runtime)
 
@@ -1537,6 +1759,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.DetachEaisEiRequest,
     ) -> eais_20190624_models.DetachEaisEiResponse:
+        """
+        @summary 将EI实例与ECS或ECI实例解绑
+        
+        @param request: DetachEaisEiRequest
+        @return: DetachEaisEiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detach_eais_ei_with_options_async(request, runtime)
 
@@ -1545,6 +1773,13 @@ class Client(OpenApiClient):
         request: eais_20190624_models.GetInstanceMetricsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.GetInstanceMetricsResponse:
+        """
+        @summary 获取EAIS实例级别的监控数据
+        
+        @param request: GetInstanceMetricsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceMetricsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -1583,6 +1818,13 @@ class Client(OpenApiClient):
         request: eais_20190624_models.GetInstanceMetricsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.GetInstanceMetricsResponse:
+        """
+        @summary 获取EAIS实例级别的监控数据
+        
+        @param request: GetInstanceMetricsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceMetricsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -1620,6 +1862,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.GetInstanceMetricsRequest,
     ) -> eais_20190624_models.GetInstanceMetricsResponse:
+        """
+        @summary 获取EAIS实例级别的监控数据
+        
+        @param request: GetInstanceMetricsRequest
+        @return: GetInstanceMetricsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_instance_metrics_with_options(request, runtime)
 
@@ -1627,14 +1875,239 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.GetInstanceMetricsRequest,
     ) -> eais_20190624_models.GetInstanceMetricsResponse:
+        """
+        @summary 获取EAIS实例级别的监控数据
+        
+        @param request: GetInstanceMetricsRequest
+        @return: GetInstanceMetricsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_instance_metrics_with_options_async(request, runtime)
+
+    def list_tag_resources_with_options(
+        self,
+        request: eais_20190624_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eais_20190624_models.ListTagResourcesResponse:
+        """
+        @summary 查询标签列表
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2019-06-24',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eais_20190624_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_resources_with_options_async(
+        self,
+        request: eais_20190624_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eais_20190624_models.ListTagResourcesResponse:
+        """
+        @summary 查询标签列表
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2019-06-24',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eais_20190624_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_resources(
+        self,
+        request: eais_20190624_models.ListTagResourcesRequest,
+    ) -> eais_20190624_models.ListTagResourcesResponse:
+        """
+        @summary 查询标签列表
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_tag_resources_with_options(request, runtime)
+
+    async def list_tag_resources_async(
+        self,
+        request: eais_20190624_models.ListTagResourcesRequest,
+    ) -> eais_20190624_models.ListTagResourcesResponse:
+        """
+        @summary 查询标签列表
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tag_resources_with_options_async(request, runtime)
+
+    def start_eai_jupyter_with_options(
+        self,
+        request: eais_20190624_models.StartEaiJupyterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eais_20190624_models.StartEaiJupyterResponse:
+        """
+        @summary 启动一个部署了notebook的弹性加速计算实例
+        
+        @param request: StartEaiJupyterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartEaiJupyterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartEaiJupyter',
+            version='2019-06-24',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eais_20190624_models.StartEaiJupyterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_eai_jupyter_with_options_async(
+        self,
+        request: eais_20190624_models.StartEaiJupyterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eais_20190624_models.StartEaiJupyterResponse:
+        """
+        @summary 启动一个部署了notebook的弹性加速计算实例
+        
+        @param request: StartEaiJupyterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartEaiJupyterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartEaiJupyter',
+            version='2019-06-24',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eais_20190624_models.StartEaiJupyterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_eai_jupyter(
+        self,
+        request: eais_20190624_models.StartEaiJupyterRequest,
+    ) -> eais_20190624_models.StartEaiJupyterResponse:
+        """
+        @summary 启动一个部署了notebook的弹性加速计算实例
+        
+        @param request: StartEaiJupyterRequest
+        @return: StartEaiJupyterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.start_eai_jupyter_with_options(request, runtime)
+
+    async def start_eai_jupyter_async(
+        self,
+        request: eais_20190624_models.StartEaiJupyterRequest,
+    ) -> eais_20190624_models.StartEaiJupyterResponse:
+        """
+        @summary 启动一个部署了notebook的弹性加速计算实例
+        
+        @param request: StartEaiJupyterRequest
+        @return: StartEaiJupyterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.start_eai_jupyter_with_options_async(request, runtime)
 
     def start_eais_ei_with_options(
         self,
         request: eais_20190624_models.StartEaisEiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.StartEaisEiResponse:
+        """
+        @summary 启动一个弹性加速计算实例
+        
+        @param request: StartEaisEiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartEaisEiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ei_instance_id):
@@ -1665,6 +2138,13 @@ class Client(OpenApiClient):
         request: eais_20190624_models.StartEaisEiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.StartEaisEiResponse:
+        """
+        @summary 启动一个弹性加速计算实例
+        
+        @param request: StartEaisEiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartEaisEiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ei_instance_id):
@@ -1694,6 +2174,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.StartEaisEiRequest,
     ) -> eais_20190624_models.StartEaisEiResponse:
+        """
+        @summary 启动一个弹性加速计算实例
+        
+        @param request: StartEaisEiRequest
+        @return: StartEaisEiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_eais_ei_with_options(request, runtime)
 
@@ -1701,14 +2187,127 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.StartEaisEiRequest,
     ) -> eais_20190624_models.StartEaisEiResponse:
+        """
+        @summary 启动一个弹性加速计算实例
+        
+        @param request: StartEaisEiRequest
+        @return: StartEaisEiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_eais_ei_with_options_async(request, runtime)
+
+    def stop_eai_jupyter_with_options(
+        self,
+        request: eais_20190624_models.StopEaiJupyterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eais_20190624_models.StopEaiJupyterResponse:
+        """
+        @summary 停止一个部署了notebook的弹性加速计算实例
+        
+        @param request: StopEaiJupyterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopEaiJupyterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopEaiJupyter',
+            version='2019-06-24',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eais_20190624_models.StopEaiJupyterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_eai_jupyter_with_options_async(
+        self,
+        request: eais_20190624_models.StopEaiJupyterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eais_20190624_models.StopEaiJupyterResponse:
+        """
+        @summary 停止一个部署了notebook的弹性加速计算实例
+        
+        @param request: StopEaiJupyterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopEaiJupyterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopEaiJupyter',
+            version='2019-06-24',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eais_20190624_models.StopEaiJupyterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_eai_jupyter(
+        self,
+        request: eais_20190624_models.StopEaiJupyterRequest,
+    ) -> eais_20190624_models.StopEaiJupyterResponse:
+        """
+        @summary 停止一个部署了notebook的弹性加速计算实例
+        
+        @param request: StopEaiJupyterRequest
+        @return: StopEaiJupyterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.stop_eai_jupyter_with_options(request, runtime)
+
+    async def stop_eai_jupyter_async(
+        self,
+        request: eais_20190624_models.StopEaiJupyterRequest,
+    ) -> eais_20190624_models.StopEaiJupyterResponse:
+        """
+        @summary 停止一个部署了notebook的弹性加速计算实例
+        
+        @param request: StopEaiJupyterRequest
+        @return: StopEaiJupyterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_eai_jupyter_with_options_async(request, runtime)
 
     def stop_eais_ei_with_options(
         self,
         request: eais_20190624_models.StopEaisEiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.StopEaisEiResponse:
+        """
+        @summary 停止一个弹性加速计算实例
+        
+        @param request: StopEaisEiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopEaisEiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ei_instance_id):
@@ -1739,6 +2338,13 @@ class Client(OpenApiClient):
         request: eais_20190624_models.StopEaisEiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eais_20190624_models.StopEaisEiResponse:
+        """
+        @summary 停止一个弹性加速计算实例
+        
+        @param request: StopEaisEiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopEaisEiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ei_instance_id):
@@ -1768,6 +2374,12 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.StopEaisEiRequest,
     ) -> eais_20190624_models.StopEaisEiResponse:
+        """
+        @summary 停止一个弹性加速计算实例
+        
+        @param request: StopEaisEiRequest
+        @return: StopEaisEiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_eais_ei_with_options(request, runtime)
 
@@ -1775,5 +2387,231 @@ class Client(OpenApiClient):
         self,
         request: eais_20190624_models.StopEaisEiRequest,
     ) -> eais_20190624_models.StopEaisEiResponse:
+        """
+        @summary 停止一个弹性加速计算实例
+        
+        @param request: StopEaisEiRequest
+        @return: StopEaisEiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_eais_ei_with_options_async(request, runtime)
+
+    def tag_resources_with_options(
+        self,
+        request: eais_20190624_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eais_20190624_models.TagResourcesResponse:
+        """
+        @summary 为弹性加速计算实例创建并绑定标签
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2019-06-24',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eais_20190624_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_resources_with_options_async(
+        self,
+        request: eais_20190624_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eais_20190624_models.TagResourcesResponse:
+        """
+        @summary 为弹性加速计算实例创建并绑定标签
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2019-06-24',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eais_20190624_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_resources(
+        self,
+        request: eais_20190624_models.TagResourcesRequest,
+    ) -> eais_20190624_models.TagResourcesResponse:
+        """
+        @summary 为弹性加速计算实例创建并绑定标签
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.tag_resources_with_options(request, runtime)
+
+    async def tag_resources_async(
+        self,
+        request: eais_20190624_models.TagResourcesRequest,
+    ) -> eais_20190624_models.TagResourcesResponse:
+        """
+        @summary 为弹性加速计算实例创建并绑定标签
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.tag_resources_with_options_async(request, runtime)
+
+    def untag_resources_with_options(
+        self,
+        request: eais_20190624_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eais_20190624_models.UntagResourcesResponse:
+        """
+        @summary 解绑并删除标签
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2019-06-24',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eais_20190624_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def untag_resources_with_options_async(
+        self,
+        request: eais_20190624_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eais_20190624_models.UntagResourcesResponse:
+        """
+        @summary 解绑并删除标签
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2019-06-24',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eais_20190624_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def untag_resources(
+        self,
+        request: eais_20190624_models.UntagResourcesRequest,
+    ) -> eais_20190624_models.UntagResourcesResponse:
+        """
+        @summary 解绑并删除标签
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.untag_resources_with_options(request, runtime)
+
+    async def untag_resources_async(
+        self,
+        request: eais_20190624_models.UntagResourcesRequest,
+    ) -> eais_20190624_models.UntagResourcesResponse:
+        """
+        @summary 解绑并删除标签
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.untag_resources_with_options_async(request, runtime)

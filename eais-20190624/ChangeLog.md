@@ -1,3 +1,12 @@
+2024-10-24 Version: 3.0.0
+- Support API ListTagResources.
+- Support API StartEaiJupyter.
+- Support API StopEaiJupyter.
+- Support API TagResources.
+- Support API UntagResources.
+- Delete API CreateEaiAll.
+
+
 2023-09-15 Version: 2.1.5
 - Generated python 2019-06-24 for eais.
 

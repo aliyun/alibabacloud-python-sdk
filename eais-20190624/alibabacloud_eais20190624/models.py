@@ -11,8 +11,11 @@ class AttachEaiRequest(TeaModel):
         elastic_accelerated_instance_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.client_instance_id = client_instance_id
+        # This parameter is required.
         self.elastic_accelerated_instance_id = elastic_accelerated_instance_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -94,9 +97,6 @@ class AttachEaiResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -134,9 +134,11 @@ class AttachEaisEiRequest(TeaModel):
         ei_instance_type: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.client_instance_id = client_instance_id
         self.ei_instance_id = ei_instance_id
         self.ei_instance_type = ei_instance_type
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -222,9 +224,6 @@ class AttachEaisEiResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -261,8 +260,11 @@ class ChangeResourceGroupRequest(TeaModel):
         resource_id: str = None,
         resource_region_id: str = None,
     ):
+        # This parameter is required.
         self.resource_group_id = resource_group_id
+        # This parameter is required.
         self.resource_id = resource_id
+        # This parameter is required.
         self.resource_region_id = resource_region_id
 
     def validate(self):
@@ -332,9 +334,6 @@ class ChangeResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -379,7 +378,9 @@ class CreateEaiRequest(TeaModel):
         self.client_token = client_token
         self.image = image
         self.instance_name = instance_name
+        # This parameter is required.
         self.instance_type = instance_type
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.security_group_id = security_group_id
@@ -478,9 +479,6 @@ class CreateEaiResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -506,206 +504,6 @@ class CreateEaiResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateEaiResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class CreateEaiAllRequest(TeaModel):
-    def __init__(
-        self,
-        client_image_id: str = None,
-        client_instance_name: str = None,
-        client_instance_type: str = None,
-        client_internet_max_bandwidth_in: int = None,
-        client_internet_max_bandwidth_out: int = None,
-        client_password: str = None,
-        client_security_group_id: str = None,
-        client_system_disk_category: str = None,
-        client_system_disk_size: int = None,
-        client_token: str = None,
-        client_vswitch_id: str = None,
-        client_zone_id: str = None,
-        eai_instance_type: str = None,
-        instance_name: str = None,
-        region_id: str = None,
-        resource_group_id: str = None,
-    ):
-        self.client_image_id = client_image_id
-        self.client_instance_name = client_instance_name
-        self.client_instance_type = client_instance_type
-        self.client_internet_max_bandwidth_in = client_internet_max_bandwidth_in
-        self.client_internet_max_bandwidth_out = client_internet_max_bandwidth_out
-        self.client_password = client_password
-        self.client_security_group_id = client_security_group_id
-        self.client_system_disk_category = client_system_disk_category
-        self.client_system_disk_size = client_system_disk_size
-        self.client_token = client_token
-        self.client_vswitch_id = client_vswitch_id
-        self.client_zone_id = client_zone_id
-        self.eai_instance_type = eai_instance_type
-        self.instance_name = instance_name
-        self.region_id = region_id
-        self.resource_group_id = resource_group_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.client_image_id is not None:
-            result['ClientImageId'] = self.client_image_id
-        if self.client_instance_name is not None:
-            result['ClientInstanceName'] = self.client_instance_name
-        if self.client_instance_type is not None:
-            result['ClientInstanceType'] = self.client_instance_type
-        if self.client_internet_max_bandwidth_in is not None:
-            result['ClientInternetMaxBandwidthIn'] = self.client_internet_max_bandwidth_in
-        if self.client_internet_max_bandwidth_out is not None:
-            result['ClientInternetMaxBandwidthOut'] = self.client_internet_max_bandwidth_out
-        if self.client_password is not None:
-            result['ClientPassword'] = self.client_password
-        if self.client_security_group_id is not None:
-            result['ClientSecurityGroupId'] = self.client_security_group_id
-        if self.client_system_disk_category is not None:
-            result['ClientSystemDiskCategory'] = self.client_system_disk_category
-        if self.client_system_disk_size is not None:
-            result['ClientSystemDiskSize'] = self.client_system_disk_size
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
-        if self.client_vswitch_id is not None:
-            result['ClientVSwitchId'] = self.client_vswitch_id
-        if self.client_zone_id is not None:
-            result['ClientZoneId'] = self.client_zone_id
-        if self.eai_instance_type is not None:
-            result['EaiInstanceType'] = self.eai_instance_type
-        if self.instance_name is not None:
-            result['InstanceName'] = self.instance_name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClientImageId') is not None:
-            self.client_image_id = m.get('ClientImageId')
-        if m.get('ClientInstanceName') is not None:
-            self.client_instance_name = m.get('ClientInstanceName')
-        if m.get('ClientInstanceType') is not None:
-            self.client_instance_type = m.get('ClientInstanceType')
-        if m.get('ClientInternetMaxBandwidthIn') is not None:
-            self.client_internet_max_bandwidth_in = m.get('ClientInternetMaxBandwidthIn')
-        if m.get('ClientInternetMaxBandwidthOut') is not None:
-            self.client_internet_max_bandwidth_out = m.get('ClientInternetMaxBandwidthOut')
-        if m.get('ClientPassword') is not None:
-            self.client_password = m.get('ClientPassword')
-        if m.get('ClientSecurityGroupId') is not None:
-            self.client_security_group_id = m.get('ClientSecurityGroupId')
-        if m.get('ClientSystemDiskCategory') is not None:
-            self.client_system_disk_category = m.get('ClientSystemDiskCategory')
-        if m.get('ClientSystemDiskSize') is not None:
-            self.client_system_disk_size = m.get('ClientSystemDiskSize')
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
-        if m.get('ClientVSwitchId') is not None:
-            self.client_vswitch_id = m.get('ClientVSwitchId')
-        if m.get('ClientZoneId') is not None:
-            self.client_zone_id = m.get('ClientZoneId')
-        if m.get('EaiInstanceType') is not None:
-            self.eai_instance_type = m.get('EaiInstanceType')
-        if m.get('InstanceName') is not None:
-            self.instance_name = m.get('InstanceName')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
-        return self
-
-
-class CreateEaiAllResponseBody(TeaModel):
-    def __init__(
-        self,
-        client_instance_id: str = None,
-        elastic_accelerated_instance_id: str = None,
-        request_id: str = None,
-    ):
-        self.client_instance_id = client_instance_id
-        self.elastic_accelerated_instance_id = elastic_accelerated_instance_id
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.client_instance_id is not None:
-            result['ClientInstanceId'] = self.client_instance_id
-        if self.elastic_accelerated_instance_id is not None:
-            result['ElasticAcceleratedInstanceId'] = self.elastic_accelerated_instance_id
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClientInstanceId') is not None:
-            self.client_instance_id = m.get('ClientInstanceId')
-        if m.get('ElasticAcceleratedInstanceId') is not None:
-            self.elastic_accelerated_instance_id = m.get('ElasticAcceleratedInstanceId')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class CreateEaiAllResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CreateEaiAllResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CreateEaiAllResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -828,11 +626,15 @@ class CreateEaiEciRequest(TeaModel):
     ):
         self.client_token = client_token
         self.eais_name = eais_name
+        # This parameter is required.
         self.eais_type = eais_type
         self.eci = eci
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
+        # This parameter is required.
         self.security_group_id = security_group_id
+        # This parameter is required.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -899,11 +701,15 @@ class CreateEaiEciShrinkRequest(TeaModel):
     ):
         self.client_token = client_token
         self.eais_name = eais_name
+        # This parameter is required.
         self.eais_type = eais_type
         self.eci_shrink = eci_shrink
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
+        # This parameter is required.
         self.security_group_id = security_group_id
+        # This parameter is required.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -1005,9 +811,6 @@ class CreateEaiEciResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1126,11 +929,15 @@ class CreateEaiEcsRequest(TeaModel):
     ):
         self.client_token = client_token
         self.eais_name = eais_name
+        # This parameter is required.
         self.eais_type = eais_type
         self.ecs = ecs
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
+        # This parameter is required.
         self.security_group_id = security_group_id
+        # This parameter is required.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -1197,11 +1004,15 @@ class CreateEaiEcsShrinkRequest(TeaModel):
     ):
         self.client_token = client_token
         self.eais_name = eais_name
+        # This parameter is required.
         self.eais_type = eais_type
         self.ecs_shrink = ecs_shrink
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
+        # This parameter is required.
         self.security_group_id = security_group_id
+        # This parameter is required.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -1303,9 +1114,6 @@ class CreateEaiEcsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1382,11 +1190,15 @@ class CreateEaiJupyterRequest(TeaModel):
     ):
         self.client_token = client_token
         self.eais_name = eais_name
+        # This parameter is required.
         self.eais_type = eais_type
         self.environment_var = environment_var
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
+        # This parameter is required.
         self.security_group_id = security_group_id
+        # This parameter is required.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -1459,11 +1271,15 @@ class CreateEaiJupyterShrinkRequest(TeaModel):
     ):
         self.client_token = client_token
         self.eais_name = eais_name
+        # This parameter is required.
         self.eais_type = eais_type
         self.environment_var_shrink = environment_var_shrink
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
+        # This parameter is required.
         self.security_group_id = security_group_id
+        # This parameter is required.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -1559,9 +1375,6 @@ class CreateEaiJupyterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1604,10 +1417,14 @@ class CreateEaisEiRequest(TeaModel):
     ):
         self.client_token = client_token
         self.instance_name = instance_name
+        # This parameter is required.
         self.instance_type = instance_type
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
+        # This parameter is required.
         self.security_group_id = security_group_id
+        # This parameter is required.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -1699,9 +1516,6 @@ class CreateEaisEiResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1738,8 +1552,10 @@ class DeleteEaiRequest(TeaModel):
         force: bool = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.elastic_accelerated_instance_id = elastic_accelerated_instance_id
         self.force = force
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -1809,9 +1625,6 @@ class DeleteEaiResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1849,7 +1662,9 @@ class DeleteEaiAllRequest(TeaModel):
         region_id: str = None,
     ):
         self.client_instance_id = client_instance_id
+        # This parameter is required.
         self.elastic_accelerated_instance_id = elastic_accelerated_instance_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -1919,9 +1734,6 @@ class DeleteEaiAllResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1958,8 +1770,10 @@ class DeleteEaisEiRequest(TeaModel):
         force: bool = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.ei_instance_id = ei_instance_id
         self.force = force
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2029,9 +1843,6 @@ class DeleteEaisEiResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2114,6 +1925,7 @@ class DescribeEaisRequest(TeaModel):
         self.instance_type = instance_type
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.status = status
@@ -2482,9 +2294,6 @@ class DescribeEaisResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2635,9 +2444,6 @@ class DescribeRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2673,7 +2479,9 @@ class DetachEaiRequest(TeaModel):
         elastic_accelerated_instance_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.elastic_accelerated_instance_id = elastic_accelerated_instance_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2739,9 +2547,6 @@ class DetachEaiResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2777,7 +2582,9 @@ class DetachEaisEiRequest(TeaModel):
         ei_instance_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.ei_instance_id = ei_instance_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2843,9 +2650,6 @@ class DetachEaisEiResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2886,7 +2690,9 @@ class GetInstanceMetricsRequest(TeaModel):
         time_step: str = None,
     ):
         self.end_time = end_time
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.metric_type = metric_type
         self.region_id = region_id
         self.start_time = start_time
@@ -3066,9 +2872,6 @@ class GetInstanceMetricsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3098,13 +2901,416 @@ class GetInstanceMetricsResponse(TeaModel):
         return self
 
 
+class ListTagResourcesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListTagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag: List[ListTagResourcesRequestTag] = None,
+    ):
+        self.next_token = next_token
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_id = resource_id
+        # This parameter is required.
+        self.resource_type = resource_type
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListTagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesResponseBodyTagResources(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_type: str = None,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class ListTagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        request_id: str = None,
+        tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
+    ):
+        self.next_token = next_token
+        self.request_id = request_id
+        self.tag_resources = tag_resources
+
+    def validate(self):
+        if self.tag_resources:
+            for k in self.tag_resources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['TagResources'] = []
+        if self.tag_resources is not None:
+            for k in self.tag_resources:
+                result['TagResources'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.tag_resources = []
+        if m.get('TagResources') is not None:
+            for k in m.get('TagResources'):
+                temp_model = ListTagResourcesResponseBodyTagResources()
+                self.tag_resources.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StartEaiJupyterRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class StartEaiJupyterResponseBodyAccessDeniedDetail(TeaModel):
+    def __init__(
+        self,
+        auth_action: str = None,
+        auth_principal_display_name: str = None,
+        auth_principal_owner_id: str = None,
+        auth_principal_type: str = None,
+        encoded_diagnostic_message: str = None,
+        no_permission_type: str = None,
+        policy_type: str = None,
+    ):
+        self.auth_action = auth_action
+        self.auth_principal_display_name = auth_principal_display_name
+        self.auth_principal_owner_id = auth_principal_owner_id
+        self.auth_principal_type = auth_principal_type
+        self.encoded_diagnostic_message = encoded_diagnostic_message
+        self.no_permission_type = no_permission_type
+        self.policy_type = policy_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_action is not None:
+            result['AuthAction'] = self.auth_action
+        if self.auth_principal_display_name is not None:
+            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
+        if self.auth_principal_owner_id is not None:
+            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
+        if self.auth_principal_type is not None:
+            result['AuthPrincipalType'] = self.auth_principal_type
+        if self.encoded_diagnostic_message is not None:
+            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
+        if self.no_permission_type is not None:
+            result['NoPermissionType'] = self.no_permission_type
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthAction') is not None:
+            self.auth_action = m.get('AuthAction')
+        if m.get('AuthPrincipalDisplayName') is not None:
+            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
+        if m.get('AuthPrincipalOwnerId') is not None:
+            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
+        if m.get('AuthPrincipalType') is not None:
+            self.auth_principal_type = m.get('AuthPrincipalType')
+        if m.get('EncodedDiagnosticMessage') is not None:
+            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
+        if m.get('NoPermissionType') is not None:
+            self.no_permission_type = m.get('NoPermissionType')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
+        return self
+
+
+class StartEaiJupyterResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: StartEaiJupyterResponseBodyAccessDeniedDetail = None,
+        request_id: str = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.request_id = request_id
+
+    def validate(self):
+        if self.access_denied_detail:
+            self.access_denied_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            temp_model = StartEaiJupyterResponseBodyAccessDeniedDetail()
+            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StartEaiJupyterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartEaiJupyterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartEaiJupyterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StartEaisEiRequest(TeaModel):
     def __init__(
         self,
         ei_instance_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.ei_instance_id = ei_instance_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -3170,9 +3376,6 @@ class StartEaisEiResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3202,13 +3405,189 @@ class StartEaisEiResponse(TeaModel):
         return self
 
 
+class StopEaiJupyterRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class StopEaiJupyterResponseBodyAccessDeniedDetail(TeaModel):
+    def __init__(
+        self,
+        auth_action: str = None,
+        auth_principal_display_name: str = None,
+        auth_principal_owner_id: str = None,
+        auth_principal_type: str = None,
+        encoded_diagnostic_message: str = None,
+        no_permission_type: str = None,
+        policy_type: str = None,
+    ):
+        self.auth_action = auth_action
+        self.auth_principal_display_name = auth_principal_display_name
+        self.auth_principal_owner_id = auth_principal_owner_id
+        self.auth_principal_type = auth_principal_type
+        self.encoded_diagnostic_message = encoded_diagnostic_message
+        self.no_permission_type = no_permission_type
+        self.policy_type = policy_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_action is not None:
+            result['AuthAction'] = self.auth_action
+        if self.auth_principal_display_name is not None:
+            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
+        if self.auth_principal_owner_id is not None:
+            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
+        if self.auth_principal_type is not None:
+            result['AuthPrincipalType'] = self.auth_principal_type
+        if self.encoded_diagnostic_message is not None:
+            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
+        if self.no_permission_type is not None:
+            result['NoPermissionType'] = self.no_permission_type
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthAction') is not None:
+            self.auth_action = m.get('AuthAction')
+        if m.get('AuthPrincipalDisplayName') is not None:
+            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
+        if m.get('AuthPrincipalOwnerId') is not None:
+            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
+        if m.get('AuthPrincipalType') is not None:
+            self.auth_principal_type = m.get('AuthPrincipalType')
+        if m.get('EncodedDiagnosticMessage') is not None:
+            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
+        if m.get('NoPermissionType') is not None:
+            self.no_permission_type = m.get('NoPermissionType')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
+        return self
+
+
+class StopEaiJupyterResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: StopEaiJupyterResponseBodyAccessDeniedDetail = None,
+        request_id: str = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.request_id = request_id
+
+    def validate(self):
+        if self.access_denied_detail:
+            self.access_denied_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            temp_model = StopEaiJupyterResponseBodyAccessDeniedDetail()
+            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StopEaiJupyterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopEaiJupyterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopEaiJupyterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StopEaisEiRequest(TeaModel):
     def __init__(
         self,
         ei_instance_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.ei_instance_id = ei_instance_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -3274,9 +3653,6 @@ class StopEaisEiResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3302,6 +3678,286 @@ class StopEaisEiResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StopEaisEiResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TagResourcesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class TagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag: List[TagResourcesRequestTag] = None,
+    ):
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.resource_id = resource_id
+        # This parameter is required.
+        self.resource_type = resource_type
+        # This parameter is required.
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = TagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class TagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class TagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UntagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        all: bool = None,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag_key: List[str] = None,
+    ):
+        self.all = all
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.resource_id = resource_id
+        # This parameter is required.
+        self.resource_type = resource_type
+        self.tag_key = tag_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all is not None:
+            result['All'] = self.all
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        return self
+
+
+class UntagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UntagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UntagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UntagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
