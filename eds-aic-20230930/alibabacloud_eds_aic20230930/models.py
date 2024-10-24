@@ -678,6 +678,7 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
         image_id: str = None,
         instance_group_name: str = None,
         instance_group_spec: str = None,
+        key_pair_id: str = None,
         number_of_instances: int = None,
         office_site_id: str = None,
         period: int = None,
@@ -698,6 +699,7 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
         self.instance_group_name = instance_group_name
         # This parameter is required.
         self.instance_group_spec = instance_group_spec
+        self.key_pair_id = key_pair_id
         self.number_of_instances = number_of_instances
         self.office_site_id = office_site_id
         self.period = period
@@ -735,6 +737,8 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
             result['InstanceGroupName'] = self.instance_group_name
         if self.instance_group_spec is not None:
             result['InstanceGroupSpec'] = self.instance_group_spec
+        if self.key_pair_id is not None:
+            result['KeyPairId'] = self.key_pair_id
         if self.number_of_instances is not None:
             result['NumberOfInstances'] = self.number_of_instances
         if self.office_site_id is not None:
@@ -771,6 +775,8 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
             self.instance_group_name = m.get('InstanceGroupName')
         if m.get('InstanceGroupSpec') is not None:
             self.instance_group_spec = m.get('InstanceGroupSpec')
+        if m.get('KeyPairId') is not None:
+            self.key_pair_id = m.get('KeyPairId')
         if m.get('NumberOfInstances') is not None:
             self.number_of_instances = m.get('NumberOfInstances')
         if m.get('OfficeSiteId') is not None:

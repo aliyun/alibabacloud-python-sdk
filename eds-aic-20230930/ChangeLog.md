@@ -1,3 +1,7 @@
+2024-10-24 Version: 2.0.1
+- Update API CreateAndroidInstanceGroup: add param KeyPairId.
+
+
 2024-10-17 Version: 2.0.0
 - Update API BackupFile: update response param.
 - Update API CheckResourceStock: add param Amount.

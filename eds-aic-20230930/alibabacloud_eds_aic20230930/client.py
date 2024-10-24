@@ -508,6 +508,8 @@ class Client(OpenApiClient):
             query['InstanceGroupName'] = request.instance_group_name
         if not UtilClient.is_unset(request.instance_group_spec):
             query['InstanceGroupSpec'] = request.instance_group_spec
+        if not UtilClient.is_unset(request.key_pair_id):
+            query['KeyPairId'] = request.key_pair_id
         if not UtilClient.is_unset(request.number_of_instances):
             query['NumberOfInstances'] = request.number_of_instances
         if not UtilClient.is_unset(request.office_site_id):
@@ -573,6 +575,8 @@ class Client(OpenApiClient):
             query['InstanceGroupName'] = request.instance_group_name
         if not UtilClient.is_unset(request.instance_group_spec):
             query['InstanceGroupSpec'] = request.instance_group_spec
+        if not UtilClient.is_unset(request.key_pair_id):
+            query['KeyPairId'] = request.key_pair_id
         if not UtilClient.is_unset(request.number_of_instances):
             query['NumberOfInstances'] = request.number_of_instances
         if not UtilClient.is_unset(request.office_site_id):
