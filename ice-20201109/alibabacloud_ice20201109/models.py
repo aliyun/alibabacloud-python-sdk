@@ -11492,10 +11492,67 @@ class GetCustomTemplateRequest(TeaModel):
         return self
 
 
+class GetCustomTemplateResponseBodyCustomTemplateFrontendHintTranscodeTemplateHint(TeaModel):
+    def __init__(
+        self,
+        bitrate_control_type: str = None,
+    ):
+        self.bitrate_control_type = bitrate_control_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bitrate_control_type is not None:
+            result['BitrateControlType'] = self.bitrate_control_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BitrateControlType') is not None:
+            self.bitrate_control_type = m.get('BitrateControlType')
+        return self
+
+
+class GetCustomTemplateResponseBodyCustomTemplateFrontendHint(TeaModel):
+    def __init__(
+        self,
+        transcode_template_hint: GetCustomTemplateResponseBodyCustomTemplateFrontendHintTranscodeTemplateHint = None,
+    ):
+        self.transcode_template_hint = transcode_template_hint
+
+    def validate(self):
+        if self.transcode_template_hint:
+            self.transcode_template_hint.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.transcode_template_hint is not None:
+            result['TranscodeTemplateHint'] = self.transcode_template_hint.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TranscodeTemplateHint') is not None:
+            temp_model = GetCustomTemplateResponseBodyCustomTemplateFrontendHintTranscodeTemplateHint()
+            self.transcode_template_hint = temp_model.from_map(m['TranscodeTemplateHint'])
+        return self
+
+
 class GetCustomTemplateResponseBodyCustomTemplate(TeaModel):
     def __init__(
         self,
         create_time: str = None,
+        frontend_hint: GetCustomTemplateResponseBodyCustomTemplateFrontendHint = None,
         is_default: bool = None,
         modified_time: str = None,
         status: str = None,
@@ -11508,6 +11565,7 @@ class GetCustomTemplateResponseBodyCustomTemplate(TeaModel):
         type_name: str = None,
     ):
         self.create_time = create_time
+        self.frontend_hint = frontend_hint
         self.is_default = is_default
         self.modified_time = modified_time
         self.status = status
@@ -11520,7 +11578,8 @@ class GetCustomTemplateResponseBodyCustomTemplate(TeaModel):
         self.type_name = type_name
 
     def validate(self):
-        pass
+        if self.frontend_hint:
+            self.frontend_hint.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -11530,6 +11589,8 @@ class GetCustomTemplateResponseBodyCustomTemplate(TeaModel):
         result = dict()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.frontend_hint is not None:
+            result['FrontendHint'] = self.frontend_hint.to_map()
         if self.is_default is not None:
             result['IsDefault'] = self.is_default
         if self.modified_time is not None:
@@ -11556,6 +11617,9 @@ class GetCustomTemplateResponseBodyCustomTemplate(TeaModel):
         m = m or dict()
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('FrontendHint') is not None:
+            temp_model = GetCustomTemplateResponseBodyCustomTemplateFrontendHint()
+            self.frontend_hint = temp_model.from_map(m['FrontendHint'])
         if m.get('IsDefault') is not None:
             self.is_default = m.get('IsDefault')
         if m.get('ModifiedTime') is not None:
@@ -26825,10 +26889,67 @@ class ListCustomTemplatesRequest(TeaModel):
         return self
 
 
+class ListCustomTemplatesResponseBodyCustomTemplateListFrontendHintTranscodeTemplateHint(TeaModel):
+    def __init__(
+        self,
+        bitrate_control_type: str = None,
+    ):
+        self.bitrate_control_type = bitrate_control_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bitrate_control_type is not None:
+            result['BitrateControlType'] = self.bitrate_control_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BitrateControlType') is not None:
+            self.bitrate_control_type = m.get('BitrateControlType')
+        return self
+
+
+class ListCustomTemplatesResponseBodyCustomTemplateListFrontendHint(TeaModel):
+    def __init__(
+        self,
+        transcode_template_hint: ListCustomTemplatesResponseBodyCustomTemplateListFrontendHintTranscodeTemplateHint = None,
+    ):
+        self.transcode_template_hint = transcode_template_hint
+
+    def validate(self):
+        if self.transcode_template_hint:
+            self.transcode_template_hint.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.transcode_template_hint is not None:
+            result['TranscodeTemplateHint'] = self.transcode_template_hint.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TranscodeTemplateHint') is not None:
+            temp_model = ListCustomTemplatesResponseBodyCustomTemplateListFrontendHintTranscodeTemplateHint()
+            self.transcode_template_hint = temp_model.from_map(m['TranscodeTemplateHint'])
+        return self
+
+
 class ListCustomTemplatesResponseBodyCustomTemplateList(TeaModel):
     def __init__(
         self,
         create_time: str = None,
+        frontend_hint: ListCustomTemplatesResponseBodyCustomTemplateListFrontendHint = None,
         is_default: bool = None,
         modified_time: str = None,
         status: str = None,
@@ -26841,6 +26962,7 @@ class ListCustomTemplatesResponseBodyCustomTemplateList(TeaModel):
         type_name: str = None,
     ):
         self.create_time = create_time
+        self.frontend_hint = frontend_hint
         self.is_default = is_default
         self.modified_time = modified_time
         self.status = status
@@ -26853,7 +26975,8 @@ class ListCustomTemplatesResponseBodyCustomTemplateList(TeaModel):
         self.type_name = type_name
 
     def validate(self):
-        pass
+        if self.frontend_hint:
+            self.frontend_hint.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -26863,6 +26986,8 @@ class ListCustomTemplatesResponseBodyCustomTemplateList(TeaModel):
         result = dict()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.frontend_hint is not None:
+            result['FrontendHint'] = self.frontend_hint.to_map()
         if self.is_default is not None:
             result['IsDefault'] = self.is_default
         if self.modified_time is not None:
@@ -26889,6 +27014,9 @@ class ListCustomTemplatesResponseBodyCustomTemplateList(TeaModel):
         m = m or dict()
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('FrontendHint') is not None:
+            temp_model = ListCustomTemplatesResponseBodyCustomTemplateListFrontendHint()
+            self.frontend_hint = temp_model.from_map(m['FrontendHint'])
         if m.get('IsDefault') is not None:
             self.is_default = m.get('IsDefault')
         if m.get('ModifiedTime') is not None:

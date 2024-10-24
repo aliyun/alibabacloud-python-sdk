@@ -1,3 +1,8 @@
+2024-10-24 Version: 3.6.2
+- Update API GetCustomTemplate: update response param.
+- Update API ListCustomTemplates: update response param.
+
+
 2024-10-17 Version: 3.6.1
 - Update API SearchMediaByAILabel: add param MatchingMode.
 
