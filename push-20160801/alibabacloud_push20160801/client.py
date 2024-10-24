@@ -103,6 +103,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.BindAliasResponse:
         """
+        @summary 绑定别名
+        
         @param request: BindAliasRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: BindAliasResponse
@@ -140,6 +142,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.BindAliasResponse:
         """
+        @summary 绑定别名
+        
         @param request: BindAliasRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: BindAliasResponse
@@ -176,6 +180,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.BindAliasRequest,
     ) -> push_20160801_models.BindAliasResponse:
         """
+        @summary 绑定别名
+        
         @param request: BindAliasRequest
         @return: BindAliasResponse
         """
@@ -187,6 +193,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.BindAliasRequest,
     ) -> push_20160801_models.BindAliasResponse:
         """
+        @summary 绑定别名
+        
         @param request: BindAliasRequest
         @return: BindAliasResponse
         """
@@ -199,6 +207,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.BindPhoneResponse:
         """
+        @summary 绑定手机号码
+        
         @param request: BindPhoneRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: BindPhoneResponse
@@ -236,6 +246,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.BindPhoneResponse:
         """
+        @summary 绑定手机号码
+        
         @param request: BindPhoneRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: BindPhoneResponse
@@ -272,6 +284,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.BindPhoneRequest,
     ) -> push_20160801_models.BindPhoneResponse:
         """
+        @summary 绑定手机号码
+        
         @param request: BindPhoneRequest
         @return: BindPhoneResponse
         """
@@ -283,6 +297,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.BindPhoneRequest,
     ) -> push_20160801_models.BindPhoneResponse:
         """
+        @summary 绑定手机号码
+        
         @param request: BindPhoneRequest
         @return: BindPhoneResponse
         """
@@ -295,6 +311,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.BindTagResponse:
         """
+        @summary 绑定标签
+        
         @param request: BindTagRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: BindTagResponse
@@ -334,6 +352,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.BindTagResponse:
         """
+        @summary 绑定标签
+        
         @param request: BindTagRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: BindTagResponse
@@ -372,6 +392,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.BindTagRequest,
     ) -> push_20160801_models.BindTagResponse:
         """
+        @summary 绑定标签
+        
         @param request: BindTagRequest
         @return: BindTagResponse
         """
@@ -383,6 +405,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.BindTagRequest,
     ) -> push_20160801_models.BindTagResponse:
         """
+        @summary 绑定标签
+        
         @param request: BindTagRequest
         @return: BindTagResponse
         """
@@ -395,6 +419,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.CancelPushResponse:
         """
+        @summary 取消定时推送任务
+        
         @param request: CancelPushRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CancelPushResponse
@@ -430,6 +456,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.CancelPushResponse:
         """
+        @summary 取消定时推送任务
+        
         @param request: CancelPushRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CancelPushResponse
@@ -464,6 +492,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.CancelPushRequest,
     ) -> push_20160801_models.CancelPushResponse:
         """
+        @summary 取消定时推送任务
+        
         @param request: CancelPushRequest
         @return: CancelPushResponse
         """
@@ -475,6 +505,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.CancelPushRequest,
     ) -> push_20160801_models.CancelPushResponse:
         """
+        @summary 取消定时推送任务
+        
         @param request: CancelPushRequest
         @return: CancelPushResponse
         """
@@ -577,6 +609,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI CheckDevice is deprecated, please use Push::2016-08-01::CheckDevices instead.
         
+        @summary 【废弃】验证设备有效性
+        
         @param request: CheckDeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CheckDeviceResponse
@@ -615,6 +649,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI CheckDevice is deprecated, please use Push::2016-08-01::CheckDevices instead.
         
+        @summary 【废弃】验证设备有效性
+        
         @param request: CheckDeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CheckDeviceResponse
@@ -652,6 +688,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI CheckDevice is deprecated, please use Push::2016-08-01::CheckDevices instead.
         
+        @summary 【废弃】验证设备有效性
+        
         @param request: CheckDeviceRequest
         @return: CheckDeviceResponse
         Deprecated
@@ -666,6 +704,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI CheckDevice is deprecated, please use Push::2016-08-01::CheckDevices instead.
         
+        @summary 【废弃】验证设备有效性
+        
         @param request: CheckDeviceRequest
         @return: CheckDeviceResponse
         Deprecated
@@ -679,6 +719,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.CheckDevicesResponse:
         """
+        @summary 批量检查设备有效性
+        
         @param request: CheckDevicesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CheckDevicesResponse
@@ -714,6 +756,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.CheckDevicesResponse:
         """
+        @summary 批量检查设备有效性
+        
         @param request: CheckDevicesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CheckDevicesResponse
@@ -748,6 +792,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.CheckDevicesRequest,
     ) -> push_20160801_models.CheckDevicesResponse:
         """
+        @summary 批量检查设备有效性
+        
         @param request: CheckDevicesRequest
         @return: CheckDevicesResponse
         """
@@ -759,6 +805,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.CheckDevicesRequest,
     ) -> push_20160801_models.CheckDevicesResponse:
         """
+        @summary 批量检查设备有效性
+        
         @param request: CheckDevicesRequest
         @return: CheckDevicesResponse
         """
@@ -771,6 +819,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.CompleteContinuouslyPushResponse:
         """
+        @summary 完成持续推送任务
+        
         @param request: CompleteContinuouslyPushRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CompleteContinuouslyPushResponse
@@ -806,6 +856,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.CompleteContinuouslyPushResponse:
         """
+        @summary 完成持续推送任务
+        
         @param request: CompleteContinuouslyPushRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CompleteContinuouslyPushResponse
@@ -840,6 +892,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.CompleteContinuouslyPushRequest,
     ) -> push_20160801_models.CompleteContinuouslyPushResponse:
         """
+        @summary 完成持续推送任务
+        
         @param request: CompleteContinuouslyPushRequest
         @return: CompleteContinuouslyPushResponse
         """
@@ -851,6 +905,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.CompleteContinuouslyPushRequest,
     ) -> push_20160801_models.CompleteContinuouslyPushResponse:
         """
+        @summary 完成持续推送任务
+        
         @param request: CompleteContinuouslyPushRequest
         @return: CompleteContinuouslyPushResponse
         """
@@ -863,6 +919,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.ContinuouslyPushResponse:
         """
+        @summary 持续推送
+        
         @param request: ContinuouslyPushRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ContinuouslyPushResponse
@@ -902,6 +960,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.ContinuouslyPushResponse:
         """
+        @summary 持续推送
+        
         @param request: ContinuouslyPushRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ContinuouslyPushResponse
@@ -940,6 +1000,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.ContinuouslyPushRequest,
     ) -> push_20160801_models.ContinuouslyPushResponse:
         """
+        @summary 持续推送
+        
         @param request: ContinuouslyPushRequest
         @return: ContinuouslyPushResponse
         """
@@ -951,6 +1013,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.ContinuouslyPushRequest,
     ) -> push_20160801_models.ContinuouslyPushResponse:
         """
+        @summary 持续推送
+        
         @param request: ContinuouslyPushRequest
         @return: ContinuouslyPushResponse
         """
@@ -963,6 +1027,8 @@ class Client(OpenApiClient):
     ) -> push_20160801_models.ListSummaryAppsResponse:
         """
         @deprecated OpenAPI ListSummaryApps is deprecated, please use Mhub::2017-08-25::ListApps instead.
+        
+        @summary 【废弃】查询用户已创建的app列表
         
         @param request: ListSummaryAppsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -993,6 +1059,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI ListSummaryApps is deprecated, please use Mhub::2017-08-25::ListApps instead.
         
+        @summary 【废弃】查询用户已创建的app列表
+        
         @param request: ListSummaryAppsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListSummaryAppsResponse
@@ -1019,6 +1087,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI ListSummaryApps is deprecated, please use Mhub::2017-08-25::ListApps instead.
         
+        @summary 【废弃】查询用户已创建的app列表
+        
         @return: ListSummaryAppsResponse
         Deprecated
         """
@@ -1028,6 +1098,8 @@ class Client(OpenApiClient):
     async def list_summary_apps_async(self) -> push_20160801_models.ListSummaryAppsResponse:
         """
         @deprecated OpenAPI ListSummaryApps is deprecated, please use Mhub::2017-08-25::ListApps instead.
+        
+        @summary 【废弃】查询用户已创建的app列表
         
         @return: ListSummaryAppsResponse
         Deprecated
@@ -1041,6 +1113,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.ListTagsResponse:
         """
+        @summary 获取标签列表
+        
         @param request: ListTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListTagsResponse
@@ -1074,6 +1148,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.ListTagsResponse:
         """
+        @summary 获取标签列表
+        
         @param request: ListTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListTagsResponse
@@ -1106,6 +1182,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.ListTagsRequest,
     ) -> push_20160801_models.ListTagsResponse:
         """
+        @summary 获取标签列表
+        
         @param request: ListTagsRequest
         @return: ListTagsResponse
         """
@@ -1117,6 +1195,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.ListTagsRequest,
     ) -> push_20160801_models.ListTagsResponse:
         """
+        @summary 获取标签列表
+        
         @param request: ListTagsRequest
         @return: ListTagsResponse
         """
@@ -1129,6 +1209,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.MassPushResponse:
         """
+        @summary 批量推送
+        
         @param request: MassPushRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: MassPushResponse
@@ -1166,6 +1248,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.MassPushResponse:
         """
+        @summary 批量推送
+        
         @param request: MassPushRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: MassPushResponse
@@ -1202,6 +1286,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.MassPushRequest,
     ) -> push_20160801_models.MassPushResponse:
         """
+        @summary 批量推送
+        
         @param request: MassPushRequest
         @return: MassPushResponse
         """
@@ -1213,6 +1299,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.MassPushRequest,
     ) -> push_20160801_models.MassPushResponse:
         """
+        @summary 批量推送
+        
         @param request: MassPushRequest
         @return: MassPushResponse
         """
@@ -1225,6 +1313,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.PushResponse:
         """
+        @summary 高级推送接口
+        
         @param request: PushRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: PushResponse
@@ -1279,6 +1369,8 @@ class Client(OpenApiClient):
             query['AndroidNotificationHuaweiChannel'] = request.android_notification_huawei_channel
         if not UtilClient.is_unset(request.android_notification_notify_id):
             query['AndroidNotificationNotifyId'] = request.android_notification_notify_id
+        if not UtilClient.is_unset(request.android_notification_thread_id):
+            query['AndroidNotificationThreadId'] = request.android_notification_thread_id
         if not UtilClient.is_unset(request.android_notification_vivo_channel):
             query['AndroidNotificationVivoChannel'] = request.android_notification_vivo_channel
         if not UtilClient.is_unset(request.android_notification_xiaomi_channel):
@@ -1446,6 +1538,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.PushResponse:
         """
+        @summary 高级推送接口
+        
         @param request: PushRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: PushResponse
@@ -1500,6 +1594,8 @@ class Client(OpenApiClient):
             query['AndroidNotificationHuaweiChannel'] = request.android_notification_huawei_channel
         if not UtilClient.is_unset(request.android_notification_notify_id):
             query['AndroidNotificationNotifyId'] = request.android_notification_notify_id
+        if not UtilClient.is_unset(request.android_notification_thread_id):
+            query['AndroidNotificationThreadId'] = request.android_notification_thread_id
         if not UtilClient.is_unset(request.android_notification_vivo_channel):
             query['AndroidNotificationVivoChannel'] = request.android_notification_vivo_channel
         if not UtilClient.is_unset(request.android_notification_xiaomi_channel):
@@ -1666,6 +1762,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.PushRequest,
     ) -> push_20160801_models.PushResponse:
         """
+        @summary 高级推送接口
+        
         @param request: PushRequest
         @return: PushResponse
         """
@@ -1677,6 +1775,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.PushRequest,
     ) -> push_20160801_models.PushResponse:
         """
+        @summary 高级推送接口
+        
         @param request: PushRequest
         @return: PushResponse
         """
@@ -1689,6 +1789,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.PushMessageToAndroidResponse:
         """
+        @summary 推送消息给Android设备
+        
         @param request: PushMessageToAndroidRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: PushMessageToAndroidResponse
@@ -1734,6 +1836,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.PushMessageToAndroidResponse:
         """
+        @summary 推送消息给Android设备
+        
         @param request: PushMessageToAndroidRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: PushMessageToAndroidResponse
@@ -1778,6 +1882,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.PushMessageToAndroidRequest,
     ) -> push_20160801_models.PushMessageToAndroidResponse:
         """
+        @summary 推送消息给Android设备
+        
         @param request: PushMessageToAndroidRequest
         @return: PushMessageToAndroidResponse
         """
@@ -1789,6 +1895,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.PushMessageToAndroidRequest,
     ) -> push_20160801_models.PushMessageToAndroidResponse:
         """
+        @summary 推送消息给Android设备
+        
         @param request: PushMessageToAndroidRequest
         @return: PushMessageToAndroidResponse
         """
@@ -1801,6 +1909,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.PushMessageToiOSResponse:
         """
+        @summary 推送消息给iOS设备
+        
         @param request: PushMessageToiOSRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: PushMessageToiOSResponse
@@ -1846,6 +1956,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.PushMessageToiOSResponse:
         """
+        @summary 推送消息给iOS设备
+        
         @param request: PushMessageToiOSRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: PushMessageToiOSResponse
@@ -1890,6 +2002,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.PushMessageToiOSRequest,
     ) -> push_20160801_models.PushMessageToiOSResponse:
         """
+        @summary 推送消息给iOS设备
+        
         @param request: PushMessageToiOSRequest
         @return: PushMessageToiOSResponse
         """
@@ -1901,6 +2015,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.PushMessageToiOSRequest,
     ) -> push_20160801_models.PushMessageToiOSResponse:
         """
+        @summary 推送消息给iOS设备
+        
         @param request: PushMessageToiOSRequest
         @return: PushMessageToiOSResponse
         """
@@ -1913,6 +2029,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.PushNoticeToAndroidResponse:
         """
+        @summary 推送通知给Android设备
+        
         @param request: PushNoticeToAndroidRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: PushNoticeToAndroidResponse
@@ -1960,6 +2078,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.PushNoticeToAndroidResponse:
         """
+        @summary 推送通知给Android设备
+        
         @param request: PushNoticeToAndroidRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: PushNoticeToAndroidResponse
@@ -2006,6 +2126,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.PushNoticeToAndroidRequest,
     ) -> push_20160801_models.PushNoticeToAndroidResponse:
         """
+        @summary 推送通知给Android设备
+        
         @param request: PushNoticeToAndroidRequest
         @return: PushNoticeToAndroidResponse
         """
@@ -2017,6 +2139,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.PushNoticeToAndroidRequest,
     ) -> push_20160801_models.PushNoticeToAndroidResponse:
         """
+        @summary 推送通知给Android设备
+        
         @param request: PushNoticeToAndroidRequest
         @return: PushNoticeToAndroidResponse
         """
@@ -2029,6 +2153,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.PushNoticeToiOSResponse:
         """
+        @summary 推送通知给iOS设备
+        
         @param request: PushNoticeToiOSRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: PushNoticeToiOSResponse
@@ -2076,6 +2202,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.PushNoticeToiOSResponse:
         """
+        @summary 推送通知给iOS设备
+        
         @param request: PushNoticeToiOSRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: PushNoticeToiOSResponse
@@ -2122,6 +2250,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.PushNoticeToiOSRequest,
     ) -> push_20160801_models.PushNoticeToiOSResponse:
         """
+        @summary 推送通知给iOS设备
+        
         @param request: PushNoticeToiOSRequest
         @return: PushNoticeToiOSResponse
         """
@@ -2133,6 +2263,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.PushNoticeToiOSRequest,
     ) -> push_20160801_models.PushNoticeToiOSResponse:
         """
+        @summary 推送通知给iOS设备
+        
         @param request: PushNoticeToiOSRequest
         @return: PushNoticeToiOSResponse
         """
@@ -2145,6 +2277,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryAliasesResponse:
         """
+        @summary 查询别名
+        
         @param request: QueryAliasesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryAliasesResponse
@@ -2180,6 +2314,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryAliasesResponse:
         """
+        @summary 查询别名
+        
         @param request: QueryAliasesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryAliasesResponse
@@ -2214,6 +2350,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryAliasesRequest,
     ) -> push_20160801_models.QueryAliasesResponse:
         """
+        @summary 查询别名
+        
         @param request: QueryAliasesRequest
         @return: QueryAliasesResponse
         """
@@ -2225,6 +2363,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryAliasesRequest,
     ) -> push_20160801_models.QueryAliasesResponse:
         """
+        @summary 查询别名
+        
         @param request: QueryAliasesRequest
         @return: QueryAliasesResponse
         """
@@ -2237,6 +2377,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryDeviceInfoResponse:
         """
+        @summary 查询设备详情
+        
         @param request: QueryDeviceInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryDeviceInfoResponse
@@ -2272,6 +2414,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryDeviceInfoResponse:
         """
+        @summary 查询设备详情
+        
         @param request: QueryDeviceInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryDeviceInfoResponse
@@ -2306,6 +2450,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryDeviceInfoRequest,
     ) -> push_20160801_models.QueryDeviceInfoResponse:
         """
+        @summary 查询设备详情
+        
         @param request: QueryDeviceInfoRequest
         @return: QueryDeviceInfoResponse
         """
@@ -2317,6 +2463,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryDeviceInfoRequest,
     ) -> push_20160801_models.QueryDeviceInfoResponse:
         """
+        @summary 查询设备详情
+        
         @param request: QueryDeviceInfoRequest
         @return: QueryDeviceInfoResponse
         """
@@ -2329,6 +2477,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryDeviceStatResponse:
         """
+        @summary 设备新增与留存
+        
         @param request: QueryDeviceStatRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryDeviceStatResponse
@@ -2370,6 +2520,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryDeviceStatResponse:
         """
+        @summary 设备新增与留存
+        
         @param request: QueryDeviceStatRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryDeviceStatResponse
@@ -2410,6 +2562,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryDeviceStatRequest,
     ) -> push_20160801_models.QueryDeviceStatResponse:
         """
+        @summary 设备新增与留存
+        
         @param request: QueryDeviceStatRequest
         @return: QueryDeviceStatResponse
         """
@@ -2421,6 +2575,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryDeviceStatRequest,
     ) -> push_20160801_models.QueryDeviceStatResponse:
         """
+        @summary 设备新增与留存
+        
         @param request: QueryDeviceStatRequest
         @return: QueryDeviceStatResponse
         """
@@ -2433,6 +2589,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryDevicesByAccountResponse:
         """
+        @summary 通过账户查询设备列表
+        
         @param request: QueryDevicesByAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryDevicesByAccountResponse
@@ -2468,6 +2626,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryDevicesByAccountResponse:
         """
+        @summary 通过账户查询设备列表
+        
         @param request: QueryDevicesByAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryDevicesByAccountResponse
@@ -2502,6 +2662,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryDevicesByAccountRequest,
     ) -> push_20160801_models.QueryDevicesByAccountResponse:
         """
+        @summary 通过账户查询设备列表
+        
         @param request: QueryDevicesByAccountRequest
         @return: QueryDevicesByAccountResponse
         """
@@ -2513,6 +2675,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryDevicesByAccountRequest,
     ) -> push_20160801_models.QueryDevicesByAccountResponse:
         """
+        @summary 通过账户查询设备列表
+        
         @param request: QueryDevicesByAccountRequest
         @return: QueryDevicesByAccountResponse
         """
@@ -2525,6 +2689,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryDevicesByAliasResponse:
         """
+        @summary 通过别名查询设备列表
+        
         @param request: QueryDevicesByAliasRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryDevicesByAliasResponse
@@ -2560,6 +2726,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryDevicesByAliasResponse:
         """
+        @summary 通过别名查询设备列表
+        
         @param request: QueryDevicesByAliasRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryDevicesByAliasResponse
@@ -2594,6 +2762,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryDevicesByAliasRequest,
     ) -> push_20160801_models.QueryDevicesByAliasResponse:
         """
+        @summary 通过别名查询设备列表
+        
         @param request: QueryDevicesByAliasRequest
         @return: QueryDevicesByAliasResponse
         """
@@ -2605,6 +2775,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryDevicesByAliasRequest,
     ) -> push_20160801_models.QueryDevicesByAliasResponse:
         """
+        @summary 通过别名查询设备列表
+        
         @param request: QueryDevicesByAliasRequest
         @return: QueryDevicesByAliasResponse
         """
@@ -2741,6 +2913,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryPushStatByAppResponse:
         """
+        @summary App维度推送统计
+        
         @param request: QueryPushStatByAppRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryPushStatByAppResponse
@@ -2780,6 +2954,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryPushStatByAppResponse:
         """
+        @summary App维度推送统计
+        
         @param request: QueryPushStatByAppRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryPushStatByAppResponse
@@ -2818,6 +2994,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryPushStatByAppRequest,
     ) -> push_20160801_models.QueryPushStatByAppResponse:
         """
+        @summary App维度推送统计
+        
         @param request: QueryPushStatByAppRequest
         @return: QueryPushStatByAppResponse
         """
@@ -2829,6 +3007,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryPushStatByAppRequest,
     ) -> push_20160801_models.QueryPushStatByAppResponse:
         """
+        @summary App维度推送统计
+        
         @param request: QueryPushStatByAppRequest
         @return: QueryPushStatByAppResponse
         """
@@ -2841,6 +3021,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryPushStatByMsgResponse:
         """
+        @summary 任务维度推送统计
+        
         @param request: QueryPushStatByMsgRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryPushStatByMsgResponse
@@ -2876,6 +3058,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryPushStatByMsgResponse:
         """
+        @summary 任务维度推送统计
+        
         @param request: QueryPushStatByMsgRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryPushStatByMsgResponse
@@ -2910,6 +3094,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryPushStatByMsgRequest,
     ) -> push_20160801_models.QueryPushStatByMsgResponse:
         """
+        @summary 任务维度推送统计
+        
         @param request: QueryPushStatByMsgRequest
         @return: QueryPushStatByMsgResponse
         """
@@ -2921,6 +3107,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryPushStatByMsgRequest,
     ) -> push_20160801_models.QueryPushStatByMsgResponse:
         """
+        @summary 任务维度推送统计
+        
         @param request: QueryPushStatByMsgRequest
         @return: QueryPushStatByMsgResponse
         """
@@ -2933,6 +3121,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryTagsResponse:
         """
+        @summary 查询标签列表
+        
         @param request: QueryTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryTagsResponse
@@ -2970,6 +3160,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryTagsResponse:
         """
+        @summary 查询标签列表
+        
         @param request: QueryTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryTagsResponse
@@ -3006,6 +3198,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryTagsRequest,
     ) -> push_20160801_models.QueryTagsResponse:
         """
+        @summary 查询标签列表
+        
         @param request: QueryTagsRequest
         @return: QueryTagsResponse
         """
@@ -3017,6 +3211,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryTagsRequest,
     ) -> push_20160801_models.QueryTagsResponse:
         """
+        @summary 查询标签列表
+        
         @param request: QueryTagsRequest
         @return: QueryTagsResponse
         """
@@ -3029,6 +3225,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryUniqueDeviceStatResponse:
         """
+        @summary 去重设备统计
+        
         @param request: QueryUniqueDeviceStatRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryUniqueDeviceStatResponse
@@ -3068,6 +3266,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryUniqueDeviceStatResponse:
         """
+        @summary 去重设备统计
+        
         @param request: QueryUniqueDeviceStatRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryUniqueDeviceStatResponse
@@ -3106,6 +3306,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryUniqueDeviceStatRequest,
     ) -> push_20160801_models.QueryUniqueDeviceStatResponse:
         """
+        @summary 去重设备统计
+        
         @param request: QueryUniqueDeviceStatRequest
         @return: QueryUniqueDeviceStatResponse
         """
@@ -3117,6 +3319,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryUniqueDeviceStatRequest,
     ) -> push_20160801_models.QueryUniqueDeviceStatResponse:
         """
+        @summary 去重设备统计
+        
         @param request: QueryUniqueDeviceStatRequest
         @return: QueryUniqueDeviceStatResponse
         """
@@ -3129,6 +3333,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.RemoveTagResponse:
         """
+        @summary 删除标签
+        
         @param request: RemoveTagRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveTagResponse
@@ -3164,6 +3370,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.RemoveTagResponse:
         """
+        @summary 删除标签
+        
         @param request: RemoveTagRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveTagResponse
@@ -3198,6 +3406,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.RemoveTagRequest,
     ) -> push_20160801_models.RemoveTagResponse:
         """
+        @summary 删除标签
+        
         @param request: RemoveTagRequest
         @return: RemoveTagResponse
         """
@@ -3209,6 +3419,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.RemoveTagRequest,
     ) -> push_20160801_models.RemoveTagResponse:
         """
+        @summary 删除标签
+        
         @param request: RemoveTagRequest
         @return: RemoveTagResponse
         """
@@ -3221,6 +3433,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.UnbindAliasResponse:
         """
+        @summary 解绑别名
+        
         @param request: UnbindAliasRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UnbindAliasResponse
@@ -3260,6 +3474,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.UnbindAliasResponse:
         """
+        @summary 解绑别名
+        
         @param request: UnbindAliasRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UnbindAliasResponse
@@ -3298,6 +3514,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.UnbindAliasRequest,
     ) -> push_20160801_models.UnbindAliasResponse:
         """
+        @summary 解绑别名
+        
         @param request: UnbindAliasRequest
         @return: UnbindAliasResponse
         """
@@ -3309,6 +3527,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.UnbindAliasRequest,
     ) -> push_20160801_models.UnbindAliasResponse:
         """
+        @summary 解绑别名
+        
         @param request: UnbindAliasRequest
         @return: UnbindAliasResponse
         """
@@ -3321,6 +3541,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.UnbindPhoneResponse:
         """
+        @summary 解绑手机号码
+        
         @param request: UnbindPhoneRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UnbindPhoneResponse
@@ -3356,6 +3578,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.UnbindPhoneResponse:
         """
+        @summary 解绑手机号码
+        
         @param request: UnbindPhoneRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UnbindPhoneResponse
@@ -3390,6 +3614,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.UnbindPhoneRequest,
     ) -> push_20160801_models.UnbindPhoneResponse:
         """
+        @summary 解绑手机号码
+        
         @param request: UnbindPhoneRequest
         @return: UnbindPhoneResponse
         """
@@ -3401,6 +3627,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.UnbindPhoneRequest,
     ) -> push_20160801_models.UnbindPhoneResponse:
         """
+        @summary 解绑手机号码
+        
         @param request: UnbindPhoneRequest
         @return: UnbindPhoneResponse
         """
@@ -3413,6 +3641,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.UnbindTagResponse:
         """
+        @summary 绑定标签
+        
         @param request: UnbindTagRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UnbindTagResponse
@@ -3452,6 +3682,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.UnbindTagResponse:
         """
+        @summary 绑定标签
+        
         @param request: UnbindTagRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UnbindTagResponse
@@ -3490,6 +3722,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.UnbindTagRequest,
     ) -> push_20160801_models.UnbindTagResponse:
         """
+        @summary 绑定标签
+        
         @param request: UnbindTagRequest
         @return: UnbindTagResponse
         """
@@ -3501,6 +3735,8 @@ class Client(OpenApiClient):
         request: push_20160801_models.UnbindTagRequest,
     ) -> push_20160801_models.UnbindTagResponse:
         """
+        @summary 绑定标签
+        
         @param request: UnbindTagRequest
         @return: UnbindTagResponse
         """

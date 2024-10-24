@@ -1,3 +1,8 @@
+2024-10-24 Version: 1.0.14
+- Update API MassPush: update param PushTask.
+- Update API Push: add param AndroidNotificationThreadId.
+
+
 2024-10-10 Version: 1.0.13
 - Update API MassPush: update param PushTask.
 - Update API Push: add param HarmonyBadgeAddNum.

@@ -1492,6 +1492,7 @@ class MassPushRequestPushTask(TeaModel):
         android_notification_honor_channel: str = None,
         android_notification_huawei_channel: str = None,
         android_notification_notify_id: int = None,
+        android_notification_thread_id: str = None,
         android_notification_vivo_channel: str = None,
         android_notification_xiaomi_channel: str = None,
         android_notify_type: str = None,
@@ -1582,6 +1583,7 @@ class MassPushRequestPushTask(TeaModel):
         self.android_notification_honor_channel = android_notification_honor_channel
         self.android_notification_huawei_channel = android_notification_huawei_channel
         self.android_notification_notify_id = android_notification_notify_id
+        self.android_notification_thread_id = android_notification_thread_id
         self.android_notification_vivo_channel = android_notification_vivo_channel
         self.android_notification_xiaomi_channel = android_notification_xiaomi_channel
         self.android_notify_type = android_notify_type
@@ -1710,6 +1712,8 @@ class MassPushRequestPushTask(TeaModel):
             result['AndroidNotificationHuaweiChannel'] = self.android_notification_huawei_channel
         if self.android_notification_notify_id is not None:
             result['AndroidNotificationNotifyId'] = self.android_notification_notify_id
+        if self.android_notification_thread_id is not None:
+            result['AndroidNotificationThreadId'] = self.android_notification_thread_id
         if self.android_notification_vivo_channel is not None:
             result['AndroidNotificationVivoChannel'] = self.android_notification_vivo_channel
         if self.android_notification_xiaomi_channel is not None:
@@ -1892,6 +1896,8 @@ class MassPushRequestPushTask(TeaModel):
             self.android_notification_huawei_channel = m.get('AndroidNotificationHuaweiChannel')
         if m.get('AndroidNotificationNotifyId') is not None:
             self.android_notification_notify_id = m.get('AndroidNotificationNotifyId')
+        if m.get('AndroidNotificationThreadId') is not None:
+            self.android_notification_thread_id = m.get('AndroidNotificationThreadId')
         if m.get('AndroidNotificationVivoChannel') is not None:
             self.android_notification_vivo_channel = m.get('AndroidNotificationVivoChannel')
         if m.get('AndroidNotificationXiaomiChannel') is not None:
@@ -2198,6 +2204,7 @@ class PushRequest(TeaModel):
         android_notification_honor_channel: str = None,
         android_notification_huawei_channel: str = None,
         android_notification_notify_id: int = None,
+        android_notification_thread_id: str = None,
         android_notification_vivo_channel: str = None,
         android_notification_xiaomi_channel: str = None,
         android_notify_type: str = None,
@@ -2294,6 +2301,7 @@ class PushRequest(TeaModel):
         self.android_notification_honor_channel = android_notification_honor_channel
         self.android_notification_huawei_channel = android_notification_huawei_channel
         self.android_notification_notify_id = android_notification_notify_id
+        self.android_notification_thread_id = android_notification_thread_id
         self.android_notification_vivo_channel = android_notification_vivo_channel
         self.android_notification_xiaomi_channel = android_notification_xiaomi_channel
         self.android_notify_type = android_notify_type
@@ -2429,6 +2437,8 @@ class PushRequest(TeaModel):
             result['AndroidNotificationHuaweiChannel'] = self.android_notification_huawei_channel
         if self.android_notification_notify_id is not None:
             result['AndroidNotificationNotifyId'] = self.android_notification_notify_id
+        if self.android_notification_thread_id is not None:
+            result['AndroidNotificationThreadId'] = self.android_notification_thread_id
         if self.android_notification_vivo_channel is not None:
             result['AndroidNotificationVivoChannel'] = self.android_notification_vivo_channel
         if self.android_notification_xiaomi_channel is not None:
@@ -2623,6 +2633,8 @@ class PushRequest(TeaModel):
             self.android_notification_huawei_channel = m.get('AndroidNotificationHuaweiChannel')
         if m.get('AndroidNotificationNotifyId') is not None:
             self.android_notification_notify_id = m.get('AndroidNotificationNotifyId')
+        if m.get('AndroidNotificationThreadId') is not None:
+            self.android_notification_thread_id = m.get('AndroidNotificationThreadId')
         if m.get('AndroidNotificationVivoChannel') is not None:
             self.android_notification_vivo_channel = m.get('AndroidNotificationVivoChannel')
         if m.get('AndroidNotificationXiaomiChannel') is not None:
