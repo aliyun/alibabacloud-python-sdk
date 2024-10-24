@@ -1,3 +1,12 @@
+2024-10-24 Version: 2.9.0
+- Support API GetReport.
+- Support API ListReports.
+- Update API CreateEnterpriseSnapshotPolicy: update response param.
+- Update API DeleteEnterpriseSnapshotPolicy: update response param.
+- Update API DescribeEnterpriseSnapshotPolicy: update response param.
+- Update API UpdateEnterpriseSnapshotPolicy: update response param.
+
+
 2024-08-14 Version: 2.8.1
 - Update API DescribeDiskReplicaGroups: add param Name.
 - Update API DescribeDiskReplicaPairs: add param Name.

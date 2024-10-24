@@ -3404,7 +3404,7 @@ class DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClus
         self.cluster_available_capacity = cluster_available_capacity
         # The capacity of the dedicated block storage cluster that is to be delivered in orders. Unit: GB.
         self.cluster_delivery_capacity = cluster_delivery_capacity
-        # The to-be-delivered capacity of the dedicated block storage cluster. Unit: GB.
+        # The capacity to be delivered for the dedicated block storage cluster. Unit: GiB.
         self.delivery_capacity = delivery_capacity
         # The total capacity of the dedicated block storage cluster. Unit: GiB.
         self.total_capacity = total_capacity
@@ -3412,7 +3412,7 @@ class DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClus
         self.total_device_capacity = total_device_capacity
         # This parameter is displayed only if Thin Provision is enabled.
         self.total_space_capacity = total_space_capacity
-        # The used capacity of the dedicated block storage cluster. Unit: GB.
+        # The used capacity of the dedicated block storage cluster. Unit: GiB.
         self.used_capacity = used_capacity
         # The capacity of the dedicated block storage cluster that was used to create disks. Unit: GB.
         self.used_device_capacity = used_device_capacity
@@ -3541,13 +3541,13 @@ class DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClus
         type: str = None,
         zone_id: str = None,
     ):
-        # The unique ID (UID) of the Alibaba Cloud account.
+        # The user ID.
         self.ali_uid = ali_uid
         # The category of disks that can be created in the dedicated block storage cluster.
         self.category = category
         # The time when the dedicated block storage cluster was created. The value is a UNIX timestamp. Unit: seconds.
         self.create_time = create_time
-        # The storage capacity of the dedicated block storage cluster.
+        # Details about the storage capacity of the dedicated block storage cluster.
         self.dedicated_block_storage_cluster_capacity = dedicated_block_storage_cluster_capacity
         # The ID of the dedicated block storage cluster.
         self.dedicated_block_storage_cluster_id = dedicated_block_storage_cluster_id
@@ -3555,7 +3555,7 @@ class DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClus
         self.dedicated_block_storage_cluster_name = dedicated_block_storage_cluster_name
         # The description of the dedicated block storage cluster.
         self.description = description
-        # The dedicated block storage cluster enable thin provison.
+        # Indicates whether Thin Provision is enabled.
         self.enable_thin_provision = enable_thin_provision
         # The time when the dedicated block storage cluster expires. The value is a UNIX timestamp. Unit: seconds.
         self.expired_time = expired_time
@@ -3566,13 +3566,13 @@ class DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClus
         # *   PL2
         # *   PL3
         # 
-        # >  This parameter takes effect only if Category is set to cloud_essd.
+        # >  This parameter is valid only when the SupportedCategory value is cloud_essd.
         self.performance_level = performance_level
         # The region ID of the dedicated block storage cluster.
         self.region_id = region_id
-        # The ID of the resource group to which the dedicated block storage cluster belongs.
+        # The ID of the resource group to which the dedicated block storage cluster belongs. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to obtain the ID of the resource group.
         self.resource_group_id = resource_group_id
-        # Oversold ratio of cluster space capacity for creating disk.
+        # The capacity oversold ratio.
         self.size_over_sold_ratio = size_over_sold_ratio
         # The state of the dedicated block storage cluster. Valid values:
         # 
@@ -3581,7 +3581,7 @@ class DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClus
         # *   Expired
         # *   Offline
         self.status = status
-        # StorageDomain.
+        # StorageDomain
         self.storage_domain = storage_domain
         # This parameter is not supported.
         self.supported_category = supported_category
@@ -3708,7 +3708,7 @@ class DescribeDedicatedBlockStorageClustersResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The queried dedicated block storage clusters.
+        # Details about the dedicated block storage clusters.
         self.dedicated_block_storage_clusters = dedicated_block_storage_clusters
         # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
@@ -4583,9 +4583,9 @@ class DescribeDiskReplicaGroupsRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N of the replication group.
+        # The key of tag N of the replication pair-consistent group.
         self.key = key
-        # The value of tag N to add to the replication group.
+        # The value of tag N of the replication pair-consistent group.
         self.value = value
 
     def validate(self):
@@ -4626,39 +4626,40 @@ class DescribeDiskReplicaGroupsRequest(TeaModel):
         site: str = None,
         tag: List[DescribeDiskReplicaGroupsRequestTag] = None,
     ):
-        # The IDs of replication pair-consistent groups. You can specify the IDs of one or more replication pair-consistent groups. Separate the IDs with commas (,).
+        # The IDs of the replication pair-consistent groups. You can specify the IDs of one or more replication pair-consistent groups. Separate the IDs with commas (,).
         # 
-        # This parameter is empty by default, which indicates that all replication pair-consistent groups in the specified region are queried.
+        # This parameter is empty by default, which indicates that all replication pair-consistent groups in the specified region are queried. You can specify up to the IDs of 100 replication pair-consistent groups.
         self.group_ids = group_ids
-        # The maximum number of entries to return on each page. Valid values: 1 to 500.
+        # The maximum number of entries per page. You can use this parameter together with NextToken.
+        # 
+        # Valid values: 1 to 500.
         # 
         # Default value: 10.
         self.max_results = max_results
+        # The name of the replication pair-consistent group. You can perform a fuzzy search.
         self.name = name
-        # The query token. Set the value to the NextToken value returned in the previous call to the DescribeDiskReplicaGroups operation. Leave this parameter empty the first time you call this operation. When NextToken is specified, the PageSize and PageNumber request parameters do not take effect and the TotalCount response parameter is invalid.
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken. If you specify NextToken, the PageSize and PageNumber request parameters do not take effect, and the TotalCount response parameter is invalid.
         self.next_token = next_token
         # The number of the page to return.
         self.page_number = page_number
-        # The number of entries to return on each page.
-        # 
-        # Valid values: 1 to 100.
+        # The number of entries to return on each page. Valid values: 1 to 100.
         self.page_size = page_size
-        # The region ID of the replication pair-consistent group.
+        # The ID of the region to which the replication pair-consistent group belongs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the replication group belongs.
+        # The ID of the resource group to which the replication pair-consistent group belongs.
         self.resource_group_id = resource_group_id
         # The type of the site from which the information of replication pair-consistent groups is retrieved. This parameter is used for scenarios where data is replicated across zones in replication pairs.
         # 
-        # *   If the Site parameter is not specified, information such as the state of replication pair-consistent groups at the primary site is queried and returned.
+        # *   If this parameter is not specified, information such as the status of replication pair-consistent groups at the primary site is queried and returned.
         # 
-        # *   Otherwise, information such as the state of replication pair-consistent groups at the site specified by the Site parameter is queried and returned. Valid values:
+        # *   Otherwise, information such as the state of replication pairs at the site specified by the Site parameter is queried and returned. Valid values:
         # 
         #     *   production: primary site
         #     *   backup: secondary site
         self.site = site
-        # The resource tags. You can specify up to 20 tags.
+        # The tags to add to the replication pair-consistent group. You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -4731,9 +4732,9 @@ class DescribeDiskReplicaGroupsResponseBodyReplicaGroupsTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the replication group.
+        # The tag key of the replication pair-consistent group.
         self.tag_key = tag_key
-        # The tag value of the replication group.
+        # The tag value of the replication pair-consistent group.
         self.tag_value = tag_value
 
     def validate(self):
@@ -4784,7 +4785,7 @@ class DescribeDiskReplicaGroupsResponseBodyReplicaGroups(TeaModel):
         status: str = None,
         tags: List[DescribeDiskReplicaGroupsResponseBodyReplicaGroupsTags] = None,
     ):
-        # The bandwidth value. Unit: Mbit/s. This parameter is unavailable and has a system-preset value.
+        # The bandwidth value. Unit: Kbit/s. This parameter is not publicly available and has a system-preset value.
         self.bandwidth = bandwidth
         # The description of the replication pair-consistent group.
         self.description = description
@@ -4796,9 +4797,9 @@ class DescribeDiskReplicaGroupsResponseBodyReplicaGroups(TeaModel):
         self.group_name = group_name
         # The time when data was last replicated from the primary disks to the secondary disks in the replication pair-consistent group. The value of this parameter is a timestamp. Unit: seconds.
         self.last_recover_point = last_recover_point
-        # The IDs of the replications pairs that belong to the replication pair-consistent group.
+        # The IDs of replication pairs that belong to the replication pair-consistent group.
         self.pair_ids = pair_ids
-        # The number of replications pairs that belong to the replication pair-consistent group.
+        # The number of replication pairs that belong to the replication pair-consistent group.
         self.pair_number = pair_number
         # The initial source region (primary region) of the replication pair-consistent group.
         self.primary_region = primary_region
@@ -4806,11 +4807,11 @@ class DescribeDiskReplicaGroupsResponseBodyReplicaGroups(TeaModel):
         self.primary_zone = primary_zone
         # The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
         self.rpo = rpo
-        # The ID of the replication pair-consistent group.
+        # The IDs of the replication pair-consistent groups.
         self.replica_group_id = replica_group_id
-        # The ID of the resource group to which the replication group belongs.
+        # The ID of the resource group to which the replication pair-consistent group belongs.
         self.resource_group_id = resource_group_id
-        # The type of the site from which the information of the replication pair and replication pair-consistent group is obtained. Valid values:
+        # The type of the site from which the information about the replication pairs and replication pair-consistent group was obtained. Valid values:
         # 
         # *   production: primary site
         # *   backup: secondary site
@@ -4823,28 +4824,28 @@ class DescribeDiskReplicaGroupsResponseBodyReplicaGroups(TeaModel):
         self.standby_region = standby_region
         # The initial destination zone (secondary zone) of the replication pair-consistent group.
         self.standby_zone = standby_zone
-        # The state of the replication pair-consistent group. Valid values:
+        # The status of the replication pair-consistent group. Valid values:
         # 
         # *   invalid: The replication pair-consistent group is invalid, which indicates that abnormal replication pairs are present in the replication pair-consistent group.
         # *   creating: The replication pair-consistent group is being created.
-        # *   created: The replication pair-consistent group is created.
-        # *   create_failed: The replication pair-consistent group cannot be created.
-        # *   manual_syncing: Data is being manually synchronized between the disks in the replication pair-consistent group. The first time data is being manually synchronized between the disks in a replication pair-consistent group, the replication pair-consistent group is in this state.
-        # *   syncing: Data is being synchronized between the disks in the replication pair-consistent group. While data is being asynchronously replicated from the primary disks to the secondary disks not for the first time, the replication pair-consistent group is in this state.
-        # *   normal: The replication pair-consistent group is working as expected. When the system finishes replicating data from the primary disks to the secondary disks within the current replication cycle, the replication pair-consistent group enters this state.
-        # *   stopping: The replication pair-consistent group is being stopped.
-        # *   stopped: The replication pair-consistent group is stopped.
-        # *   stop_failed: The replication pair-consistent group cannot be stopped.
-        # *   failovering: A failover is being performed.
-        # *   failovered: A failover is performed.
-        # *   failover_failed: A failover cannot be performed.
-        # *   reprotecting: A reverse replication is being performed.
-        # *   reprotect_failed: A reverse replication cannot be performed.
-        # *   deleting: The replication pair-consistent group is being deleted.
-        # *   delete_failed: The replication pair-consistent group cannot be deleted.
-        # *   deleted: The replication pair-consistent group is deleted.
+        # *   created: The replication pair-consistent group was created.
+        # *   create_failed: The replication pair-consistent group failed to be created.
+        # *   manual_syncing: Data was being manually synchronized between the disks in the replication pair-consistent group. When data was being manually synchronized for the first time, the replication pair is in this state.
+        # *   syncing: Data was being synchronized between the disks. When data is being asynchronously replicated from the primary disk to the secondary disk again in subsequent operations, the replication pair is in this state.
+        # *   normal: The replication pair was working as expected. When the system finishes replicating data from the primary disk to the secondary disk within the current replication cycle, the replication pair enters this state.
+        # *   stopping: The replication pair was being stopped.
+        # *   stopped: The replication pair was stopped.
+        # *   stop_failed: The replication pair failed to be stopped.
+        # *   failovering: A failover was being performed.
+        # *   failovered: A failover was performed.
+        # *   failover_failed: A failover failed to be performed.
+        # *   reprotecting: A reverse replication was being performed.
+        # *   reprotect_failed: A reverse replication failed to be performed.
+        # *   deleting: The replication pair was being deleted.
+        # *   delete_failed: The replication pair failed to be deleted.
+        # *   deleted: The replication pair was deleted.
         self.status = status
-        # The tags of the replication pair.
+        # The tags of the replication pair-consistent group.
         self.tags = tags
 
     def validate(self):
@@ -4961,15 +4962,15 @@ class DescribeDiskReplicaGroupsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The query token returned in this call.
+        # A pagination token.
         self.next_token = next_token
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # Details about the replication pair-consistent groups.
+        # The information about the replication pair-consistent groups.
         self.replica_groups = replica_groups
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -5241,6 +5242,7 @@ class DescribeDiskReplicaPairsRequest(TeaModel):
         # 
         # Default value: 10.
         self.max_results = max_results
+        # The name of the replication pair. Fuzzy search is supported.
         self.name = name
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken. If you specify NextToken, the PageSize and PageNumber request parameters do not take effect, and the TotalCount response parameter is invalid.
         self.next_token = next_token
@@ -9964,6 +9966,423 @@ class GetDiskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetDiskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetReportRequest(TeaModel):
+    def __init__(
+        self,
+        app_name: str = None,
+        region_id: str = None,
+        report_id: str = None,
+        report_type: str = None,
+    ):
+        self.app_name = app_name
+        self.region_id = region_id
+        self.report_id = report_id
+        self.report_type = report_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.report_id is not None:
+            result['ReportId'] = self.report_id
+        if self.report_type is not None:
+            result['ReportType'] = self.report_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ReportId') is not None:
+            self.report_id = m.get('ReportId')
+        if m.get('ReportType') is not None:
+            self.report_type = m.get('ReportType')
+        return self
+
+
+class GetReportResponseBodyDatasData(TeaModel):
+    def __init__(
+        self,
+        data_points: Dict[str, Any] = None,
+        labels: Dict[str, Any] = None,
+    ):
+        self.data_points = data_points
+        self.labels = labels
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_points is not None:
+            result['DataPoints'] = self.data_points
+        if self.labels is not None:
+            result['Labels'] = self.labels
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataPoints') is not None:
+            self.data_points = m.get('DataPoints')
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
+        return self
+
+
+class GetReportResponseBodyDatas(TeaModel):
+    def __init__(
+        self,
+        data: List[GetReportResponseBodyDatasData] = None,
+        title: str = None,
+    ):
+        self.data = data
+        self.title = title
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetReportResponseBodyDatasData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class GetReportResponseBody(TeaModel):
+    def __init__(
+        self,
+        datas: List[GetReportResponseBodyDatas] = None,
+        request_id: str = None,
+    ):
+        self.datas = datas
+        self.request_id = request_id
+
+    def validate(self):
+        if self.datas:
+            for k in self.datas:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Datas'] = []
+        if self.datas is not None:
+            for k in self.datas:
+                result['Datas'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.datas = []
+        if m.get('Datas') is not None:
+            for k in m.get('Datas'):
+                temp_model = GetReportResponseBodyDatas()
+                self.datas.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetReportResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetReportResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetReportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListReportsRequest(TeaModel):
+    def __init__(
+        self,
+        app_name: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_name = app_name
+        self.max_results = max_results
+        self.next_token = next_token
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ListReportsResponseBodyHistoryReports(TeaModel):
+    def __init__(
+        self,
+        app_name: str = None,
+        report_id: str = None,
+        report_name: str = None,
+        report_time: str = None,
+        subscribe_period: str = None,
+    ):
+        self.app_name = app_name
+        self.report_id = report_id
+        self.report_name = report_name
+        self.report_time = report_time
+        self.subscribe_period = subscribe_period
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.report_id is not None:
+            result['ReportId'] = self.report_id
+        if self.report_name is not None:
+            result['ReportName'] = self.report_name
+        if self.report_time is not None:
+            result['ReportTime'] = self.report_time
+        if self.subscribe_period is not None:
+            result['SubscribePeriod'] = self.subscribe_period
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('ReportId') is not None:
+            self.report_id = m.get('ReportId')
+        if m.get('ReportName') is not None:
+            self.report_name = m.get('ReportName')
+        if m.get('ReportTime') is not None:
+            self.report_time = m.get('ReportTime')
+        if m.get('SubscribePeriod') is not None:
+            self.subscribe_period = m.get('SubscribePeriod')
+        return self
+
+
+class ListReportsResponseBody(TeaModel):
+    def __init__(
+        self,
+        history_reports: List[ListReportsResponseBodyHistoryReports] = None,
+        next_token: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        # historyReports
+        self.history_reports = history_reports
+        self.next_token = next_token
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.history_reports:
+            for k in self.history_reports:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['HistoryReports'] = []
+        if self.history_reports is not None:
+            for k in self.history_reports:
+                result['HistoryReports'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.history_reports = []
+        if m.get('HistoryReports') is not None:
+            for k in m.get('HistoryReports'):
+                temp_model = ListReportsResponseBodyHistoryReports()
+                self.history_reports.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListReportsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListReportsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListReportsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

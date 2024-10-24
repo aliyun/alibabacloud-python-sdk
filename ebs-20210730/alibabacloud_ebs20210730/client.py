@@ -2615,10 +2615,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.DescribeDiskReplicaGroupsResponse:
         """
-        @summary Queries the details of one or more replication pair-consistent groups in a specific region.
+        @summary Queries the details of replication pair-consistent groups in a specific region.
         
-        @description To perform a paged query, set the MaxResults and NextToken parameters.
-        During a paged query, when you call the DescribeDiskReplicaGroups operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeDiskReplicaGroups operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call.
+        @description ## [](#)Usage notes
+        To perform a paged query, specify the MaxResults and NextToken parameters.
+        During a paged query, when you call the DescribeDiskReplicaGroups operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeDiskReplicaGroups operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call.
         
         @param request: DescribeDiskReplicaGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2671,10 +2672,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.DescribeDiskReplicaGroupsResponse:
         """
-        @summary Queries the details of one or more replication pair-consistent groups in a specific region.
+        @summary Queries the details of replication pair-consistent groups in a specific region.
         
-        @description To perform a paged query, set the MaxResults and NextToken parameters.
-        During a paged query, when you call the DescribeDiskReplicaGroups operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeDiskReplicaGroups operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call.
+        @description ## [](#)Usage notes
+        To perform a paged query, specify the MaxResults and NextToken parameters.
+        During a paged query, when you call the DescribeDiskReplicaGroups operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeDiskReplicaGroups operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call.
         
         @param request: DescribeDiskReplicaGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2726,10 +2728,11 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.DescribeDiskReplicaGroupsRequest,
     ) -> ebs_20210730_models.DescribeDiskReplicaGroupsResponse:
         """
-        @summary Queries the details of one or more replication pair-consistent groups in a specific region.
+        @summary Queries the details of replication pair-consistent groups in a specific region.
         
-        @description To perform a paged query, set the MaxResults and NextToken parameters.
-        During a paged query, when you call the DescribeDiskReplicaGroups operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeDiskReplicaGroups operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call.
+        @description ## [](#)Usage notes
+        To perform a paged query, specify the MaxResults and NextToken parameters.
+        During a paged query, when you call the DescribeDiskReplicaGroups operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeDiskReplicaGroups operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call.
         
         @param request: DescribeDiskReplicaGroupsRequest
         @return: DescribeDiskReplicaGroupsResponse
@@ -2742,10 +2745,11 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.DescribeDiskReplicaGroupsRequest,
     ) -> ebs_20210730_models.DescribeDiskReplicaGroupsResponse:
         """
-        @summary Queries the details of one or more replication pair-consistent groups in a specific region.
+        @summary Queries the details of replication pair-consistent groups in a specific region.
         
-        @description To perform a paged query, set the MaxResults and NextToken parameters.
-        During a paged query, when you call the DescribeDiskReplicaGroups operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeDiskReplicaGroups operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call.
+        @description ## [](#)Usage notes
+        To perform a paged query, specify the MaxResults and NextToken parameters.
+        During a paged query, when you call the DescribeDiskReplicaGroups operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeDiskReplicaGroups operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call.
         
         @param request: DescribeDiskReplicaGroupsRequest
         @return: DescribeDiskReplicaGroupsResponse
@@ -2859,7 +2863,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.DescribeDiskReplicaPairsResponse:
         """
-        @summary Queries information about replication pairs in a region.
+        @summary Queries information about replication pairs in a specific region.
         
         @description ## [](#)Usage notes
         For information about the regions in which async replication is available, see [Overview](https://help.aliyun.com/document_detail/314563.html).
@@ -2919,7 +2923,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.DescribeDiskReplicaPairsResponse:
         """
-        @summary Queries information about replication pairs in a region.
+        @summary Queries information about replication pairs in a specific region.
         
         @description ## [](#)Usage notes
         For information about the regions in which async replication is available, see [Overview](https://help.aliyun.com/document_detail/314563.html).
@@ -2978,7 +2982,7 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.DescribeDiskReplicaPairsRequest,
     ) -> ebs_20210730_models.DescribeDiskReplicaPairsResponse:
         """
-        @summary Queries information about replication pairs in a region.
+        @summary Queries information about replication pairs in a specific region.
         
         @description ## [](#)Usage notes
         For information about the regions in which async replication is available, see [Overview](https://help.aliyun.com/document_detail/314563.html).
@@ -2996,7 +3000,7 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.DescribeDiskReplicaPairsRequest,
     ) -> ebs_20210730_models.DescribeDiskReplicaPairsResponse:
         """
-        @summary Queries information about replication pairs in a region.
+        @summary Queries information about replication pairs in a specific region.
         
         @description ## [](#)Usage notes
         For information about the regions in which async replication is available, see [Overview](https://help.aliyun.com/document_detail/314563.html).
@@ -4514,6 +4518,238 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_disk_with_options_async(request, runtime)
+
+    def get_report_with_options(
+        self,
+        request: ebs_20210730_models.GetReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.GetReportResponse:
+        """
+        @summary 中心化角色：使用reportId获取用户使用报告
+        
+        @param request: GetReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetReportResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.report_type):
+            query['ReportType'] = request.report_type
+        body = {}
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.report_id):
+            body['ReportId'] = request.report_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetReport',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.GetReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_report_with_options_async(
+        self,
+        request: ebs_20210730_models.GetReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.GetReportResponse:
+        """
+        @summary 中心化角色：使用reportId获取用户使用报告
+        
+        @param request: GetReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetReportResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.report_type):
+            query['ReportType'] = request.report_type
+        body = {}
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.report_id):
+            body['ReportId'] = request.report_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetReport',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.GetReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_report(
+        self,
+        request: ebs_20210730_models.GetReportRequest,
+    ) -> ebs_20210730_models.GetReportResponse:
+        """
+        @summary 中心化角色：使用reportId获取用户使用报告
+        
+        @param request: GetReportRequest
+        @return: GetReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_report_with_options(request, runtime)
+
+    async def get_report_async(
+        self,
+        request: ebs_20210730_models.GetReportRequest,
+    ) -> ebs_20210730_models.GetReportResponse:
+        """
+        @summary 中心化角色：使用reportId获取用户使用报告
+        
+        @param request: GetReportRequest
+        @return: GetReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_report_with_options_async(request, runtime)
+
+    def list_reports_with_options(
+        self,
+        request: ebs_20210730_models.ListReportsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.ListReportsResponse:
+        """
+        @summary 中心化角色：查询历史报告
+        
+        @param request: ListReportsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListReportsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        body = {}
+        if not UtilClient.is_unset(request.app_name):
+            body['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListReports',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.ListReportsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_reports_with_options_async(
+        self,
+        request: ebs_20210730_models.ListReportsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.ListReportsResponse:
+        """
+        @summary 中心化角色：查询历史报告
+        
+        @param request: ListReportsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListReportsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        body = {}
+        if not UtilClient.is_unset(request.app_name):
+            body['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListReports',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.ListReportsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_reports(
+        self,
+        request: ebs_20210730_models.ListReportsRequest,
+    ) -> ebs_20210730_models.ListReportsResponse:
+        """
+        @summary 中心化角色：查询历史报告
+        
+        @param request: ListReportsRequest
+        @return: ListReportsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_reports_with_options(request, runtime)
+
+    async def list_reports_async(
+        self,
+        request: ebs_20210730_models.ListReportsRequest,
+    ) -> ebs_20210730_models.ListReportsResponse:
+        """
+        @summary 中心化角色：查询历史报告
+        
+        @param request: ListReportsRequest
+        @return: ListReportsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_reports_with_options_async(request, runtime)
 
     def list_tag_resources_with_options(
         self,
