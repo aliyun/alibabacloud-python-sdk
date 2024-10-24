@@ -1,3 +1,7 @@
+2024-10-24 Version: 4.7.9
+- Update API DescribePolicyInstances: update response param.
+
+
 2024-10-18 Version: 4.7.8
 - Update API DescribeClusterDetail: update response param.
 - Update API DescribeClustersV1: update response param.

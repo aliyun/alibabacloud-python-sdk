@@ -2161,6 +2161,7 @@ class CancelOperationPlanResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7090,6 +7091,7 @@ class DeleteClusterNodepoolResponseBody(TeaModel):
     ):
         # The request ID.
         self.request_id = request_id
+        # task IDs
         self.task_id = task_id
 
     def validate(self):
@@ -17142,6 +17144,11 @@ class DescribePolicyInstancesResponseBody(TeaModel):
         policy_severity: str = None,
         policy_scope: str = None,
         policy_action: str = None,
+        created: str = None,
+        updated: str = None,
+        resource_id: str = None,
+        total_violations: int = None,
+        is_deleted: int = None,
     ):
         # The UID of the Alibaba Cloud account that is used to deploy the policy instance.
         self.ali_uid = ali_uid
@@ -17170,6 +17177,11 @@ class DescribePolicyInstancesResponseBody(TeaModel):
         # *   `deny`: Deployments that match the policy are denied.
         # *   `warn`: Alerts are generated for deployments that match the policy.
         self.policy_action = policy_action
+        self.created = created
+        self.updated = updated
+        self.resource_id = resource_id
+        self.total_violations = total_violations
+        self.is_deleted = is_deleted
 
     def validate(self):
         pass
@@ -17200,6 +17212,16 @@ class DescribePolicyInstancesResponseBody(TeaModel):
             result['policy_scope'] = self.policy_scope
         if self.policy_action is not None:
             result['policy_action'] = self.policy_action
+        if self.created is not None:
+            result['Created'] = self.created
+        if self.updated is not None:
+            result['Updated'] = self.updated
+        if self.resource_id is not None:
+            result['resource_id'] = self.resource_id
+        if self.total_violations is not None:
+            result['total_violations'] = self.total_violations
+        if self.is_deleted is not None:
+            result['is_deleted'] = self.is_deleted
         return result
 
     def from_map(self, m: dict = None):
@@ -17224,6 +17246,16 @@ class DescribePolicyInstancesResponseBody(TeaModel):
             self.policy_scope = m.get('policy_scope')
         if m.get('policy_action') is not None:
             self.policy_action = m.get('policy_action')
+        if m.get('Created') is not None:
+            self.created = m.get('Created')
+        if m.get('Updated') is not None:
+            self.updated = m.get('Updated')
+        if m.get('resource_id') is not None:
+            self.resource_id = m.get('resource_id')
+        if m.get('total_violations') is not None:
+            self.total_violations = m.get('total_violations')
+        if m.get('is_deleted') is not None:
+            self.is_deleted = m.get('is_deleted')
         return self
 
 

@@ -569,7 +569,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelOperationPlanResponse:
         """
-        @summary You can call the CancelOperationPlan operation to cancel a pending auto O\\\\\\&M plan.
+        @summary You can call the CancelOperationPlan operation to cancel a pending auto O\\\\\\\\\\\\&M plan.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -601,7 +601,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelOperationPlanResponse:
         """
-        @summary You can call the CancelOperationPlan operation to cancel a pending auto O\\\\\\&M plan.
+        @summary You can call the CancelOperationPlan operation to cancel a pending auto O\\\\\\\\\\\\&M plan.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -631,7 +631,7 @@ class Client(OpenApiClient):
         plan_id: str,
     ) -> cs20151215_models.CancelOperationPlanResponse:
         """
-        @summary You can call the CancelOperationPlan operation to cancel a pending auto O\\\\\\&M plan.
+        @summary You can call the CancelOperationPlan operation to cancel a pending auto O\\\\\\\\\\\\&M plan.
         
         @return: CancelOperationPlanResponse
         """
@@ -644,7 +644,7 @@ class Client(OpenApiClient):
         plan_id: str,
     ) -> cs20151215_models.CancelOperationPlanResponse:
         """
-        @summary You can call the CancelOperationPlan operation to cancel a pending auto O\\\\\\&M plan.
+        @summary You can call the CancelOperationPlan operation to cancel a pending auto O\\\\\\\\\\\\&M plan.
         
         @return: CancelOperationPlanResponse
         """
@@ -2977,7 +2977,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteClusterNodepoolResponse:
         """
-        @summary You can call the DeleteClusterNodepool operation to delete a node pool by node pool ID.
+        @summary null
         
         @param request: DeleteClusterNodepoolRequest
         @param headers: map
@@ -3017,7 +3017,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteClusterNodepoolResponse:
         """
-        @summary You can call the DeleteClusterNodepool operation to delete a node pool by node pool ID.
+        @summary null
         
         @param request: DeleteClusterNodepoolRequest
         @param headers: map
@@ -3055,7 +3055,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DeleteClusterNodepoolRequest,
     ) -> cs20151215_models.DeleteClusterNodepoolResponse:
         """
-        @summary You can call the DeleteClusterNodepool operation to delete a node pool by node pool ID.
+        @summary null
         
         @param request: DeleteClusterNodepoolRequest
         @return: DeleteClusterNodepoolResponse
@@ -3071,7 +3071,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DeleteClusterNodepoolRequest,
     ) -> cs20151215_models.DeleteClusterNodepoolResponse:
         """
-        @summary You can call the DeleteClusterNodepool operation to delete a node pool by node pool ID.
+        @summary null
         
         @param request: DeleteClusterNodepoolRequest
         @return: DeleteClusterNodepoolResponse
