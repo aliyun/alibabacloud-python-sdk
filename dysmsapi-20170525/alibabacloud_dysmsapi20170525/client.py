@@ -49,6 +49,118 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_ext_code_sign_with_options(
+        self,
+        request: dysmsapi_20170525_models.AddExtCodeSignRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.AddExtCodeSignResponse:
+        """
+        @summary 添加验证码签名信息
+        
+        @param request: AddExtCodeSignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddExtCodeSignResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ext_code):
+            query['ExtCode'] = request.ext_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddExtCodeSign',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.AddExtCodeSignResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_ext_code_sign_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.AddExtCodeSignRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.AddExtCodeSignResponse:
+        """
+        @summary 添加验证码签名信息
+        
+        @param request: AddExtCodeSignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddExtCodeSignResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ext_code):
+            query['ExtCode'] = request.ext_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddExtCodeSign',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.AddExtCodeSignResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_ext_code_sign(
+        self,
+        request: dysmsapi_20170525_models.AddExtCodeSignRequest,
+    ) -> dysmsapi_20170525_models.AddExtCodeSignResponse:
+        """
+        @summary 添加验证码签名信息
+        
+        @param request: AddExtCodeSignRequest
+        @return: AddExtCodeSignResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_ext_code_sign_with_options(request, runtime)
+
+    async def add_ext_code_sign_async(
+        self,
+        request: dysmsapi_20170525_models.AddExtCodeSignRequest,
+    ) -> dysmsapi_20170525_models.AddExtCodeSignResponse:
+        """
+        @summary 添加验证码签名信息
+        
+        @param request: AddExtCodeSignRequest
+        @return: AddExtCodeSignResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_ext_code_sign_with_options_async(request, runtime)
+
     def add_short_url_with_options(
         self,
         request: dysmsapi_20170525_models.AddShortUrlRequest,
@@ -1007,7 +1119,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.CreateSmsSignResponse:
         """
-        @summary 创建短信签名
+        @summary Create SMS Signature
+        
+        @description - For details about the announcement of changes to the new and original interfaces, see [Announcement on Updates to SMS Service Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+        - Individual authenticated users can apply for one formal signature per natural day under the same Alibaba Cloud account, while enterprise authenticated users have no current restrictions. For details on the differences in rights between individual and enterprise users, please refer to [User Guide](https://help.aliyun.com/zh/sms/user-guide/usage-notes?spm).
+        - Signature information applied through the interface will be synchronized in the SMS service console. For operations related to signatures in the console, see [SMS Signatures](https://help.aliyun.com/zh/sms/user-guide/create-signatures?spm).
+        - After submitting the signature application, you can query the signature review status and details via the [GetSmsSign](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-getsmssign?spm) interface. You can also [Configure Receipt Messages](https://help.aliyun.com/zh/sms/developer-reference/configure-delivery-receipts-1?spm) and obtain signature review status messages through SignSmsReport.
         
         @param tmp_req: CreateSmsSignRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1066,7 +1183,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.CreateSmsSignResponse:
         """
-        @summary 创建短信签名
+        @summary Create SMS Signature
+        
+        @description - For details about the announcement of changes to the new and original interfaces, see [Announcement on Updates to SMS Service Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+        - Individual authenticated users can apply for one formal signature per natural day under the same Alibaba Cloud account, while enterprise authenticated users have no current restrictions. For details on the differences in rights between individual and enterprise users, please refer to [User Guide](https://help.aliyun.com/zh/sms/user-guide/usage-notes?spm).
+        - Signature information applied through the interface will be synchronized in the SMS service console. For operations related to signatures in the console, see [SMS Signatures](https://help.aliyun.com/zh/sms/user-guide/create-signatures?spm).
+        - After submitting the signature application, you can query the signature review status and details via the [GetSmsSign](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-getsmssign?spm) interface. You can also [Configure Receipt Messages](https://help.aliyun.com/zh/sms/developer-reference/configure-delivery-receipts-1?spm) and obtain signature review status messages through SignSmsReport.
         
         @param tmp_req: CreateSmsSignRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1124,7 +1246,12 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.CreateSmsSignRequest,
     ) -> dysmsapi_20170525_models.CreateSmsSignResponse:
         """
-        @summary 创建短信签名
+        @summary Create SMS Signature
+        
+        @description - For details about the announcement of changes to the new and original interfaces, see [Announcement on Updates to SMS Service Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+        - Individual authenticated users can apply for one formal signature per natural day under the same Alibaba Cloud account, while enterprise authenticated users have no current restrictions. For details on the differences in rights between individual and enterprise users, please refer to [User Guide](https://help.aliyun.com/zh/sms/user-guide/usage-notes?spm).
+        - Signature information applied through the interface will be synchronized in the SMS service console. For operations related to signatures in the console, see [SMS Signatures](https://help.aliyun.com/zh/sms/user-guide/create-signatures?spm).
+        - After submitting the signature application, you can query the signature review status and details via the [GetSmsSign](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-getsmssign?spm) interface. You can also [Configure Receipt Messages](https://help.aliyun.com/zh/sms/developer-reference/configure-delivery-receipts-1?spm) and obtain signature review status messages through SignSmsReport.
         
         @param request: CreateSmsSignRequest
         @return: CreateSmsSignResponse
@@ -1137,7 +1264,12 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.CreateSmsSignRequest,
     ) -> dysmsapi_20170525_models.CreateSmsSignResponse:
         """
-        @summary 创建短信签名
+        @summary Create SMS Signature
+        
+        @description - For details about the announcement of changes to the new and original interfaces, see [Announcement on Updates to SMS Service Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+        - Individual authenticated users can apply for one formal signature per natural day under the same Alibaba Cloud account, while enterprise authenticated users have no current restrictions. For details on the differences in rights between individual and enterprise users, please refer to [User Guide](https://help.aliyun.com/zh/sms/user-guide/usage-notes?spm).
+        - Signature information applied through the interface will be synchronized in the SMS service console. For operations related to signatures in the console, see [SMS Signatures](https://help.aliyun.com/zh/sms/user-guide/create-signatures?spm).
+        - After submitting the signature application, you can query the signature review status and details via the [GetSmsSign](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-getsmssign?spm) interface. You can also [Configure Receipt Messages](https://help.aliyun.com/zh/sms/developer-reference/configure-delivery-receipts-1?spm) and obtain signature review status messages through SignSmsReport.
         
         @param request: CreateSmsSignRequest
         @return: CreateSmsSignResponse
@@ -1151,7 +1283,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.CreateSmsTemplateResponse:
         """
-        @summary 创建短信模板
+        @summary Create SMS Template
+        
+        @description - For details about the changes of this new interface compared to the original one, please refer to [Announcement on the Update of SMS Service Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+        - It is recommended to apply for SMS templates via the API with at least a 30-second interval between each request.
+        - The template information applied through the API will be synchronized in the SMS service console. For operations related to templates in the console, please refer to SMS Templates.
+        - After submitting the template application, you can query the audit status and details using the GetSmsTemplate interface. You can also configure delivery receipts to obtain the audit status messages via TemplateSmsReport.
+        - Domestic SMS templates are not interchangeable with international/Hong Kong, Macao, and Taiwan SMS templates. Please apply for templates based on your business scenario.
+        - Only enterprise-verified users can apply for promotional messages and international/Hong Kong, Macao, and Taiwan messages. For differences in rights between personal and enterprise users, please refer to Usage Instructions.
         
         @param tmp_req: CreateSmsTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1212,7 +1351,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.CreateSmsTemplateResponse:
         """
-        @summary 创建短信模板
+        @summary Create SMS Template
+        
+        @description - For details about the changes of this new interface compared to the original one, please refer to [Announcement on the Update of SMS Service Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+        - It is recommended to apply for SMS templates via the API with at least a 30-second interval between each request.
+        - The template information applied through the API will be synchronized in the SMS service console. For operations related to templates in the console, please refer to SMS Templates.
+        - After submitting the template application, you can query the audit status and details using the GetSmsTemplate interface. You can also configure delivery receipts to obtain the audit status messages via TemplateSmsReport.
+        - Domestic SMS templates are not interchangeable with international/Hong Kong, Macao, and Taiwan SMS templates. Please apply for templates based on your business scenario.
+        - Only enterprise-verified users can apply for promotional messages and international/Hong Kong, Macao, and Taiwan messages. For differences in rights between personal and enterprise users, please refer to Usage Instructions.
         
         @param tmp_req: CreateSmsTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1272,7 +1418,14 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.CreateSmsTemplateRequest,
     ) -> dysmsapi_20170525_models.CreateSmsTemplateResponse:
         """
-        @summary 创建短信模板
+        @summary Create SMS Template
+        
+        @description - For details about the changes of this new interface compared to the original one, please refer to [Announcement on the Update of SMS Service Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+        - It is recommended to apply for SMS templates via the API with at least a 30-second interval between each request.
+        - The template information applied through the API will be synchronized in the SMS service console. For operations related to templates in the console, please refer to SMS Templates.
+        - After submitting the template application, you can query the audit status and details using the GetSmsTemplate interface. You can also configure delivery receipts to obtain the audit status messages via TemplateSmsReport.
+        - Domestic SMS templates are not interchangeable with international/Hong Kong, Macao, and Taiwan SMS templates. Please apply for templates based on your business scenario.
+        - Only enterprise-verified users can apply for promotional messages and international/Hong Kong, Macao, and Taiwan messages. For differences in rights between personal and enterprise users, please refer to Usage Instructions.
         
         @param request: CreateSmsTemplateRequest
         @return: CreateSmsTemplateResponse
@@ -1285,13 +1438,132 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.CreateSmsTemplateRequest,
     ) -> dysmsapi_20170525_models.CreateSmsTemplateResponse:
         """
-        @summary 创建短信模板
+        @summary Create SMS Template
+        
+        @description - For details about the changes of this new interface compared to the original one, please refer to [Announcement on the Update of SMS Service Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+        - It is recommended to apply for SMS templates via the API with at least a 30-second interval between each request.
+        - The template information applied through the API will be synchronized in the SMS service console. For operations related to templates in the console, please refer to SMS Templates.
+        - After submitting the template application, you can query the audit status and details using the GetSmsTemplate interface. You can also configure delivery receipts to obtain the audit status messages via TemplateSmsReport.
+        - Domestic SMS templates are not interchangeable with international/Hong Kong, Macao, and Taiwan SMS templates. Please apply for templates based on your business scenario.
+        - Only enterprise-verified users can apply for promotional messages and international/Hong Kong, Macao, and Taiwan messages. For differences in rights between personal and enterprise users, please refer to Usage Instructions.
         
         @param request: CreateSmsTemplateRequest
         @return: CreateSmsTemplateResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_sms_template_with_options_async(request, runtime)
+
+    def delete_ext_code_sign_with_options(
+        self,
+        request: dysmsapi_20170525_models.DeleteExtCodeSignRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.DeleteExtCodeSignResponse:
+        """
+        @summary 删除验证码签名
+        
+        @param request: DeleteExtCodeSignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteExtCodeSignResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ext_code):
+            query['ExtCode'] = request.ext_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteExtCodeSign',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.DeleteExtCodeSignResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_ext_code_sign_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.DeleteExtCodeSignRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.DeleteExtCodeSignResponse:
+        """
+        @summary 删除验证码签名
+        
+        @param request: DeleteExtCodeSignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteExtCodeSignResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ext_code):
+            query['ExtCode'] = request.ext_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteExtCodeSign',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.DeleteExtCodeSignResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_ext_code_sign(
+        self,
+        request: dysmsapi_20170525_models.DeleteExtCodeSignRequest,
+    ) -> dysmsapi_20170525_models.DeleteExtCodeSignResponse:
+        """
+        @summary 删除验证码签名
+        
+        @param request: DeleteExtCodeSignRequest
+        @return: DeleteExtCodeSignResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_ext_code_sign_with_options(request, runtime)
+
+    async def delete_ext_code_sign_async(
+        self,
+        request: dysmsapi_20170525_models.DeleteExtCodeSignRequest,
+    ) -> dysmsapi_20170525_models.DeleteExtCodeSignResponse:
+        """
+        @summary 删除验证码签名
+        
+        @param request: DeleteExtCodeSignRequest
+        @return: DeleteExtCodeSignResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_ext_code_sign_with_options_async(request, runtime)
 
     def delete_short_url_with_options(
         self,
@@ -1677,6 +1949,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_sms_template_with_options_async(request, runtime)
 
+    def get_card_sms_details_with_options(
+        self,
+        request: dysmsapi_20170525_models.GetCardSmsDetailsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.GetCardSmsDetailsResponse:
+        """
+        @summary 查询卡片发送详情
+        
+        @param request: GetCardSmsDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCardSmsDetailsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_card_id):
+            query['BizCardId'] = request.biz_card_id
+        if not UtilClient.is_unset(request.biz_digit_id):
+            query['BizDigitId'] = request.biz_digit_id
+        if not UtilClient.is_unset(request.biz_sms_id):
+            query['BizSmsId'] = request.biz_sms_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.send_date):
+            query['SendDate'] = request.send_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCardSmsDetails',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.GetCardSmsDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_card_sms_details_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.GetCardSmsDetailsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.GetCardSmsDetailsResponse:
+        """
+        @summary 查询卡片发送详情
+        
+        @param request: GetCardSmsDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCardSmsDetailsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_card_id):
+            query['BizCardId'] = request.biz_card_id
+        if not UtilClient.is_unset(request.biz_digit_id):
+            query['BizDigitId'] = request.biz_digit_id
+        if not UtilClient.is_unset(request.biz_sms_id):
+            query['BizSmsId'] = request.biz_sms_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.send_date):
+            query['SendDate'] = request.send_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCardSmsDetails',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.GetCardSmsDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_card_sms_details(
+        self,
+        request: dysmsapi_20170525_models.GetCardSmsDetailsRequest,
+    ) -> dysmsapi_20170525_models.GetCardSmsDetailsResponse:
+        """
+        @summary 查询卡片发送详情
+        
+        @param request: GetCardSmsDetailsRequest
+        @return: GetCardSmsDetailsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_card_sms_details_with_options(request, runtime)
+
+    async def get_card_sms_details_async(
+        self,
+        request: dysmsapi_20170525_models.GetCardSmsDetailsRequest,
+    ) -> dysmsapi_20170525_models.GetCardSmsDetailsResponse:
+        """
+        @summary 查询卡片发送详情
+        
+        @param request: GetCardSmsDetailsRequest
+        @return: GetCardSmsDetailsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_card_sms_details_with_options_async(request, runtime)
+
     def get_card_sms_link_with_options(
         self,
         request: dysmsapi_20170525_models.GetCardSmsLinkRequest,
@@ -2037,7 +2441,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.GetOSSInfoForUploadFileResponse:
         """
-        @summary 短信上传文件，获取授权信息
+        @summary SMS File Upload, Get Authorization Info
+        
+        @description - When creating signatures or templates, you can upload materials such as login pages with links, backend page screenshots, software copyrights, supplementary agreements, etc. This helps the review personnel understand your business details. If there are multiple materials, they can be combined into one file, supporting png, jpg, jpeg, doc, docx, pdf formats.
+        - For additional materials needed when creating signatures or templates, you can upload them to the OSS file system for storage. For file upload operations, refer to [OSS File Upload](https://help.aliyun.com/zh/sms/upload-files-through-oss).
         
         @param request: GetOSSInfoForUploadFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2078,7 +2485,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.GetOSSInfoForUploadFileResponse:
         """
-        @summary 短信上传文件，获取授权信息
+        @summary SMS File Upload, Get Authorization Info
+        
+        @description - When creating signatures or templates, you can upload materials such as login pages with links, backend page screenshots, software copyrights, supplementary agreements, etc. This helps the review personnel understand your business details. If there are multiple materials, they can be combined into one file, supporting png, jpg, jpeg, doc, docx, pdf formats.
+        - For additional materials needed when creating signatures or templates, you can upload them to the OSS file system for storage. For file upload operations, refer to [OSS File Upload](https://help.aliyun.com/zh/sms/upload-files-through-oss).
         
         @param request: GetOSSInfoForUploadFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2118,7 +2528,10 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.GetOSSInfoForUploadFileRequest,
     ) -> dysmsapi_20170525_models.GetOSSInfoForUploadFileResponse:
         """
-        @summary 短信上传文件，获取授权信息
+        @summary SMS File Upload, Get Authorization Info
+        
+        @description - When creating signatures or templates, you can upload materials such as login pages with links, backend page screenshots, software copyrights, supplementary agreements, etc. This helps the review personnel understand your business details. If there are multiple materials, they can be combined into one file, supporting png, jpg, jpeg, doc, docx, pdf formats.
+        - For additional materials needed when creating signatures or templates, you can upload them to the OSS file system for storage. For file upload operations, refer to [OSS File Upload](https://help.aliyun.com/zh/sms/upload-files-through-oss).
         
         @param request: GetOSSInfoForUploadFileRequest
         @return: GetOSSInfoForUploadFileResponse
@@ -2131,7 +2544,10 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.GetOSSInfoForUploadFileRequest,
     ) -> dysmsapi_20170525_models.GetOSSInfoForUploadFileResponse:
         """
-        @summary 短信上传文件，获取授权信息
+        @summary SMS File Upload, Get Authorization Info
+        
+        @description - When creating signatures or templates, you can upload materials such as login pages with links, backend page screenshots, software copyrights, supplementary agreements, etc. This helps the review personnel understand your business details. If there are multiple materials, they can be combined into one file, supporting png, jpg, jpeg, doc, docx, pdf formats.
+        - For additional materials needed when creating signatures or templates, you can upload them to the OSS file system for storage. For file upload operations, refer to [OSS File Upload](https://help.aliyun.com/zh/sms/upload-files-through-oss).
         
         @param request: GetOSSInfoForUploadFileRequest
         @return: GetOSSInfoForUploadFileResponse
@@ -2145,7 +2561,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.GetSmsSignResponse:
         """
-        @summary 查询短信签名详情
+        @summary Query SMS Signature Details
+        
+        @description - For details about the changes of this new interface and the original one, please refer to [Announcement on the Update of SMS Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+        - Review Time: Generally, after submitting the signature, Alibaba Cloud expects to complete the review within 2 hours (Review Business Hours: Monday to Sunday 9:00~21:00, with legal holidays postponed). It is recommended to submit your application before 18:00.
+        - If the signature fails the review, the reason for the failure will be returned. Please refer to [Handling Suggestions for Failed SMS Reviews](https://help.aliyun.com/zh/sms/user-guide/causes-of-application-failures-and-suggestions?spm), invoke the [UpdateSmsSign](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-updatesmssign?spm) API, or modify the unapproved SMS signature on the [Signature Management](https://dysms.console.aliyun.com/domestic/text/sign) page.
         
         @param request: GetSmsSignRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2186,7 +2606,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.GetSmsSignResponse:
         """
-        @summary 查询短信签名详情
+        @summary Query SMS Signature Details
+        
+        @description - For details about the changes of this new interface and the original one, please refer to [Announcement on the Update of SMS Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+        - Review Time: Generally, after submitting the signature, Alibaba Cloud expects to complete the review within 2 hours (Review Business Hours: Monday to Sunday 9:00~21:00, with legal holidays postponed). It is recommended to submit your application before 18:00.
+        - If the signature fails the review, the reason for the failure will be returned. Please refer to [Handling Suggestions for Failed SMS Reviews](https://help.aliyun.com/zh/sms/user-guide/causes-of-application-failures-and-suggestions?spm), invoke the [UpdateSmsSign](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-updatesmssign?spm) API, or modify the unapproved SMS signature on the [Signature Management](https://dysms.console.aliyun.com/domestic/text/sign) page.
         
         @param request: GetSmsSignRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2226,7 +2650,11 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.GetSmsSignRequest,
     ) -> dysmsapi_20170525_models.GetSmsSignResponse:
         """
-        @summary 查询短信签名详情
+        @summary Query SMS Signature Details
+        
+        @description - For details about the changes of this new interface and the original one, please refer to [Announcement on the Update of SMS Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+        - Review Time: Generally, after submitting the signature, Alibaba Cloud expects to complete the review within 2 hours (Review Business Hours: Monday to Sunday 9:00~21:00, with legal holidays postponed). It is recommended to submit your application before 18:00.
+        - If the signature fails the review, the reason for the failure will be returned. Please refer to [Handling Suggestions for Failed SMS Reviews](https://help.aliyun.com/zh/sms/user-guide/causes-of-application-failures-and-suggestions?spm), invoke the [UpdateSmsSign](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-updatesmssign?spm) API, or modify the unapproved SMS signature on the [Signature Management](https://dysms.console.aliyun.com/domestic/text/sign) page.
         
         @param request: GetSmsSignRequest
         @return: GetSmsSignResponse
@@ -2239,7 +2667,11 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.GetSmsSignRequest,
     ) -> dysmsapi_20170525_models.GetSmsSignResponse:
         """
-        @summary 查询短信签名详情
+        @summary Query SMS Signature Details
+        
+        @description - For details about the changes of this new interface and the original one, please refer to [Announcement on the Update of SMS Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+        - Review Time: Generally, after submitting the signature, Alibaba Cloud expects to complete the review within 2 hours (Review Business Hours: Monday to Sunday 9:00~21:00, with legal holidays postponed). It is recommended to submit your application before 18:00.
+        - If the signature fails the review, the reason for the failure will be returned. Please refer to [Handling Suggestions for Failed SMS Reviews](https://help.aliyun.com/zh/sms/user-guide/causes-of-application-failures-and-suggestions?spm), invoke the [UpdateSmsSign](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-updatesmssign?spm) API, or modify the unapproved SMS signature on the [Signature Management](https://dysms.console.aliyun.com/domestic/text/sign) page.
         
         @param request: GetSmsSignRequest
         @return: GetSmsSignResponse
@@ -2253,7 +2685,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.GetSmsTemplateResponse:
         """
-        @summary 查询文本短信模板详情
+        @summary Query Text SMS Template Details
+        
+        @description - For details about the announcement of changes to the new and original interfaces, see [Announcement on Updates to SMS Service Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+        - Review Time: Under normal circumstances, Alibaba Cloud expects to complete the review within 2 hours after template submission (review working hours: Monday to Sunday 9:00~21:00, with statutory holidays postponed). It is recommended to submit your application before 18:00.
+        - If the template fails the review, the reason for the failure will be returned. Please refer to [Handling Suggestions for Failed SMS Reviews](https://help.aliyun.com/zh/sms/user-guide/causes-of-application-failures-and-suggestions?spm=a2c4g.11186623.0.0.41fd339f3bPSCQ), invoke the [ModifySmsTemplate](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-modifysmstemplate?spm=a2c4g.11186623.0.0.5b1f6e8bQloFit) API or modify the SMS template on the [Template Management](https://dysms.console.aliyun.com/domestic/text/template) page.
+        - The current QuerySmsTemplate interface queries the audit details of a single template by template code. The [QuerySmsTemplateList](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-querysmstemplatelist?spm=a2c4g.11186623.0.0.24086e8bO8cFn4) interface can query the template details of all templates under your current account.
         
         @param request: GetSmsTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2294,7 +2731,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.GetSmsTemplateResponse:
         """
-        @summary 查询文本短信模板详情
+        @summary Query Text SMS Template Details
+        
+        @description - For details about the announcement of changes to the new and original interfaces, see [Announcement on Updates to SMS Service Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+        - Review Time: Under normal circumstances, Alibaba Cloud expects to complete the review within 2 hours after template submission (review working hours: Monday to Sunday 9:00~21:00, with statutory holidays postponed). It is recommended to submit your application before 18:00.
+        - If the template fails the review, the reason for the failure will be returned. Please refer to [Handling Suggestions for Failed SMS Reviews](https://help.aliyun.com/zh/sms/user-guide/causes-of-application-failures-and-suggestions?spm=a2c4g.11186623.0.0.41fd339f3bPSCQ), invoke the [ModifySmsTemplate](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-modifysmstemplate?spm=a2c4g.11186623.0.0.5b1f6e8bQloFit) API or modify the SMS template on the [Template Management](https://dysms.console.aliyun.com/domestic/text/template) page.
+        - The current QuerySmsTemplate interface queries the audit details of a single template by template code. The [QuerySmsTemplateList](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-querysmstemplatelist?spm=a2c4g.11186623.0.0.24086e8bO8cFn4) interface can query the template details of all templates under your current account.
         
         @param request: GetSmsTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2334,7 +2776,12 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.GetSmsTemplateRequest,
     ) -> dysmsapi_20170525_models.GetSmsTemplateResponse:
         """
-        @summary 查询文本短信模板详情
+        @summary Query Text SMS Template Details
+        
+        @description - For details about the announcement of changes to the new and original interfaces, see [Announcement on Updates to SMS Service Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+        - Review Time: Under normal circumstances, Alibaba Cloud expects to complete the review within 2 hours after template submission (review working hours: Monday to Sunday 9:00~21:00, with statutory holidays postponed). It is recommended to submit your application before 18:00.
+        - If the template fails the review, the reason for the failure will be returned. Please refer to [Handling Suggestions for Failed SMS Reviews](https://help.aliyun.com/zh/sms/user-guide/causes-of-application-failures-and-suggestions?spm=a2c4g.11186623.0.0.41fd339f3bPSCQ), invoke the [ModifySmsTemplate](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-modifysmstemplate?spm=a2c4g.11186623.0.0.5b1f6e8bQloFit) API or modify the SMS template on the [Template Management](https://dysms.console.aliyun.com/domestic/text/template) page.
+        - The current QuerySmsTemplate interface queries the audit details of a single template by template code. The [QuerySmsTemplateList](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-querysmstemplatelist?spm=a2c4g.11186623.0.0.24086e8bO8cFn4) interface can query the template details of all templates under your current account.
         
         @param request: GetSmsTemplateRequest
         @return: GetSmsTemplateResponse
@@ -2347,7 +2794,12 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.GetSmsTemplateRequest,
     ) -> dysmsapi_20170525_models.GetSmsTemplateResponse:
         """
-        @summary 查询文本短信模板详情
+        @summary Query Text SMS Template Details
+        
+        @description - For details about the announcement of changes to the new and original interfaces, see [Announcement on Updates to SMS Service Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+        - Review Time: Under normal circumstances, Alibaba Cloud expects to complete the review within 2 hours after template submission (review working hours: Monday to Sunday 9:00~21:00, with statutory holidays postponed). It is recommended to submit your application before 18:00.
+        - If the template fails the review, the reason for the failure will be returned. Please refer to [Handling Suggestions for Failed SMS Reviews](https://help.aliyun.com/zh/sms/user-guide/causes-of-application-failures-and-suggestions?spm=a2c4g.11186623.0.0.41fd339f3bPSCQ), invoke the [ModifySmsTemplate](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-modifysmstemplate?spm=a2c4g.11186623.0.0.5b1f6e8bQloFit) API or modify the SMS template on the [Template Management](https://dysms.console.aliyun.com/domestic/text/template) page.
+        - The current QuerySmsTemplate interface queries the audit details of a single template by template code. The [QuerySmsTemplateList](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-querysmstemplatelist?spm=a2c4g.11186623.0.0.24086e8bO8cFn4) interface can query the template details of all templates under your current account.
         
         @param request: GetSmsTemplateRequest
         @return: GetSmsTemplateResponse
@@ -3034,6 +3486,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.query_card_sms_template_report_with_options_async(request, runtime)
+
+    def query_ext_code_sign_with_options(
+        self,
+        request: dysmsapi_20170525_models.QueryExtCodeSignRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.QueryExtCodeSignResponse:
+        """
+        @summary 查询验证码签名
+        
+        @param request: QueryExtCodeSignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryExtCodeSignResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ext_code):
+            query['ExtCode'] = request.ext_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryExtCodeSign',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.QueryExtCodeSignResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_ext_code_sign_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.QueryExtCodeSignRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.QueryExtCodeSignResponse:
+        """
+        @summary 查询验证码签名
+        
+        @param request: QueryExtCodeSignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryExtCodeSignResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ext_code):
+            query['ExtCode'] = request.ext_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryExtCodeSign',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.QueryExtCodeSignResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_ext_code_sign(
+        self,
+        request: dysmsapi_20170525_models.QueryExtCodeSignRequest,
+    ) -> dysmsapi_20170525_models.QueryExtCodeSignResponse:
+        """
+        @summary 查询验证码签名
+        
+        @param request: QueryExtCodeSignRequest
+        @return: QueryExtCodeSignResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_ext_code_sign_with_options(request, runtime)
+
+    async def query_ext_code_sign_async(
+        self,
+        request: dysmsapi_20170525_models.QueryExtCodeSignRequest,
+    ) -> dysmsapi_20170525_models.QueryExtCodeSignResponse:
+        """
+        @summary 查询验证码签名
+        
+        @param request: QueryExtCodeSignRequest
+        @return: QueryExtCodeSignResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_ext_code_sign_with_options_async(request, runtime)
 
     def query_mobiles_card_support_with_options(
         self,
@@ -5061,6 +5633,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.UntagResourcesResponse:
         """
+        @summary Deletes tags from a message template.
+        
+        @description ### QPS limit
+        You can call this operation up to 50 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UntagResourcesResponse
@@ -5110,6 +5687,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.UntagResourcesResponse:
         """
+        @summary Deletes tags from a message template.
+        
+        @description ### QPS limit
+        You can call this operation up to 50 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UntagResourcesResponse
@@ -5158,6 +5740,11 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.UntagResourcesRequest,
     ) -> dysmsapi_20170525_models.UntagResourcesResponse:
         """
+        @summary Deletes tags from a message template.
+        
+        @description ### QPS limit
+        You can call this operation up to 50 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
         """
@@ -5169,11 +5756,132 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.UntagResourcesRequest,
     ) -> dysmsapi_20170525_models.UntagResourcesResponse:
         """
+        @summary Deletes tags from a message template.
+        
+        @description ### QPS limit
+        You can call this operation up to 50 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
+
+    def update_ext_code_sign_with_options(
+        self,
+        request: dysmsapi_20170525_models.UpdateExtCodeSignRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.UpdateExtCodeSignResponse:
+        """
+        @summary 修改验证码签名
+        
+        @param request: UpdateExtCodeSignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateExtCodeSignResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.exist_ext_code):
+            query['ExistExtCode'] = request.exist_ext_code
+        if not UtilClient.is_unset(request.new_ext_code):
+            query['NewExtCode'] = request.new_ext_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateExtCodeSign',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.UpdateExtCodeSignResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_ext_code_sign_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.UpdateExtCodeSignRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.UpdateExtCodeSignResponse:
+        """
+        @summary 修改验证码签名
+        
+        @param request: UpdateExtCodeSignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateExtCodeSignResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.exist_ext_code):
+            query['ExistExtCode'] = request.exist_ext_code
+        if not UtilClient.is_unset(request.new_ext_code):
+            query['NewExtCode'] = request.new_ext_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateExtCodeSign',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.UpdateExtCodeSignResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_ext_code_sign(
+        self,
+        request: dysmsapi_20170525_models.UpdateExtCodeSignRequest,
+    ) -> dysmsapi_20170525_models.UpdateExtCodeSignResponse:
+        """
+        @summary 修改验证码签名
+        
+        @param request: UpdateExtCodeSignRequest
+        @return: UpdateExtCodeSignResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_ext_code_sign_with_options(request, runtime)
+
+    async def update_ext_code_sign_async(
+        self,
+        request: dysmsapi_20170525_models.UpdateExtCodeSignRequest,
+    ) -> dysmsapi_20170525_models.UpdateExtCodeSignResponse:
+        """
+        @summary 修改验证码签名
+        
+        @param request: UpdateExtCodeSignRequest
+        @return: UpdateExtCodeSignResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_ext_code_sign_with_options_async(request, runtime)
 
     def update_sms_sign_with_options(
         self,
@@ -5181,7 +5889,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.UpdateSmsSignResponse:
         """
-        @summary 修改文本短信签名
+        @summary Update Text SMS Signature
+        
+        @description - For details about the changes of this new interface and the original one, please refer to [Announcement on the Update of SMS Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+        - Only signatures that have not passed the review can be modified. Please refer to [Handling Suggestions for Failed SMS Reviews](https://help.aliyun.com/zh/sms/user-guide/causes-of-application-failures-and-suggestions?spm) and call this interface to modify and resubmit for review after modification.
+        - Signature information applied through the interface will be synchronized in the SMS service console. For operations related to signatures in the console, please see [SMS Signatures](https://help.aliyun.com/zh/sms/user-guide/create-signatures?spm).
         
         @param tmp_req: UpdateSmsSignRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5240,7 +5952,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.UpdateSmsSignResponse:
         """
-        @summary 修改文本短信签名
+        @summary Update Text SMS Signature
+        
+        @description - For details about the changes of this new interface and the original one, please refer to [Announcement on the Update of SMS Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+        - Only signatures that have not passed the review can be modified. Please refer to [Handling Suggestions for Failed SMS Reviews](https://help.aliyun.com/zh/sms/user-guide/causes-of-application-failures-and-suggestions?spm) and call this interface to modify and resubmit for review after modification.
+        - Signature information applied through the interface will be synchronized in the SMS service console. For operations related to signatures in the console, please see [SMS Signatures](https://help.aliyun.com/zh/sms/user-guide/create-signatures?spm).
         
         @param tmp_req: UpdateSmsSignRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5298,7 +6014,11 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.UpdateSmsSignRequest,
     ) -> dysmsapi_20170525_models.UpdateSmsSignResponse:
         """
-        @summary 修改文本短信签名
+        @summary Update Text SMS Signature
+        
+        @description - For details about the changes of this new interface and the original one, please refer to [Announcement on the Update of SMS Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+        - Only signatures that have not passed the review can be modified. Please refer to [Handling Suggestions for Failed SMS Reviews](https://help.aliyun.com/zh/sms/user-guide/causes-of-application-failures-and-suggestions?spm) and call this interface to modify and resubmit for review after modification.
+        - Signature information applied through the interface will be synchronized in the SMS service console. For operations related to signatures in the console, please see [SMS Signatures](https://help.aliyun.com/zh/sms/user-guide/create-signatures?spm).
         
         @param request: UpdateSmsSignRequest
         @return: UpdateSmsSignResponse
@@ -5311,7 +6031,11 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.UpdateSmsSignRequest,
     ) -> dysmsapi_20170525_models.UpdateSmsSignResponse:
         """
-        @summary 修改文本短信签名
+        @summary Update Text SMS Signature
+        
+        @description - For details about the changes of this new interface and the original one, please refer to [Announcement on the Update of SMS Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+        - Only signatures that have not passed the review can be modified. Please refer to [Handling Suggestions for Failed SMS Reviews](https://help.aliyun.com/zh/sms/user-guide/causes-of-application-failures-and-suggestions?spm) and call this interface to modify and resubmit for review after modification.
+        - Signature information applied through the interface will be synchronized in the SMS service console. For operations related to signatures in the console, please see [SMS Signatures](https://help.aliyun.com/zh/sms/user-guide/create-signatures?spm).
         
         @param request: UpdateSmsSignRequest
         @return: UpdateSmsSignResponse
@@ -5325,7 +6049,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.UpdateSmsTemplateResponse:
         """
-        @summary 修改文本短信模板
+        @summary Update Text SMS Template
+        
+        @description - For details about the changes of this new interface compared to the original one, please refer to [Announcement on SMS Service Update: Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+        - Only templates that have not passed the review can be modified. Please refer to [Handling Suggestions for Failed SMS Template Reviews](https://help.aliyun.com/zh/sms/user-guide/causes-of-application-failures-and-suggestions?spm=a2c4g.11186623.0.0.4bf5561ajcFtMQ) and call this interface to modify and resubmit for review.
+        - Modifications made through the interface will be synchronized in the SMS service console. For related operations on templates in the console, see [SMS Templates](https://help.aliyun.com/zh/sms/user-guide/message-templates/?spm=a2c4g.11186623.0.0.35a947464Itaxp).
+        ### QPS Limit
+        The single-user QPS limit for this interface is 1000 times/second. Exceeding this limit will result in API throttling, which may impact your business. Please make calls reasonably.
         
         @param tmp_req: UpdateSmsTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5388,7 +6118,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.UpdateSmsTemplateResponse:
         """
-        @summary 修改文本短信模板
+        @summary Update Text SMS Template
+        
+        @description - For details about the changes of this new interface compared to the original one, please refer to [Announcement on SMS Service Update: Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+        - Only templates that have not passed the review can be modified. Please refer to [Handling Suggestions for Failed SMS Template Reviews](https://help.aliyun.com/zh/sms/user-guide/causes-of-application-failures-and-suggestions?spm=a2c4g.11186623.0.0.4bf5561ajcFtMQ) and call this interface to modify and resubmit for review.
+        - Modifications made through the interface will be synchronized in the SMS service console. For related operations on templates in the console, see [SMS Templates](https://help.aliyun.com/zh/sms/user-guide/message-templates/?spm=a2c4g.11186623.0.0.35a947464Itaxp).
+        ### QPS Limit
+        The single-user QPS limit for this interface is 1000 times/second. Exceeding this limit will result in API throttling, which may impact your business. Please make calls reasonably.
         
         @param tmp_req: UpdateSmsTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5450,7 +6186,13 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.UpdateSmsTemplateRequest,
     ) -> dysmsapi_20170525_models.UpdateSmsTemplateResponse:
         """
-        @summary 修改文本短信模板
+        @summary Update Text SMS Template
+        
+        @description - For details about the changes of this new interface compared to the original one, please refer to [Announcement on SMS Service Update: Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+        - Only templates that have not passed the review can be modified. Please refer to [Handling Suggestions for Failed SMS Template Reviews](https://help.aliyun.com/zh/sms/user-guide/causes-of-application-failures-and-suggestions?spm=a2c4g.11186623.0.0.4bf5561ajcFtMQ) and call this interface to modify and resubmit for review.
+        - Modifications made through the interface will be synchronized in the SMS service console. For related operations on templates in the console, see [SMS Templates](https://help.aliyun.com/zh/sms/user-guide/message-templates/?spm=a2c4g.11186623.0.0.35a947464Itaxp).
+        ### QPS Limit
+        The single-user QPS limit for this interface is 1000 times/second. Exceeding this limit will result in API throttling, which may impact your business. Please make calls reasonably.
         
         @param request: UpdateSmsTemplateRequest
         @return: UpdateSmsTemplateResponse
@@ -5463,7 +6205,13 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.UpdateSmsTemplateRequest,
     ) -> dysmsapi_20170525_models.UpdateSmsTemplateResponse:
         """
-        @summary 修改文本短信模板
+        @summary Update Text SMS Template
+        
+        @description - For details about the changes of this new interface compared to the original one, please refer to [Announcement on SMS Service Update: Signature & Template Interfaces](https://help.aliyun.com/zh/sms/product-overview/announcement-on-sms-service-update-signature-template-interface).
+        - Only templates that have not passed the review can be modified. Please refer to [Handling Suggestions for Failed SMS Template Reviews](https://help.aliyun.com/zh/sms/user-guide/causes-of-application-failures-and-suggestions?spm=a2c4g.11186623.0.0.4bf5561ajcFtMQ) and call this interface to modify and resubmit for review.
+        - Modifications made through the interface will be synchronized in the SMS service console. For related operations on templates in the console, see [SMS Templates](https://help.aliyun.com/zh/sms/user-guide/message-templates/?spm=a2c4g.11186623.0.0.35a947464Itaxp).
+        ### QPS Limit
+        The single-user QPS limit for this interface is 1000 times/second. Exceeding this limit will result in API throttling, which may impact your business. Please make calls reasonably.
         
         @param request: UpdateSmsTemplateRequest
         @return: UpdateSmsTemplateResponse

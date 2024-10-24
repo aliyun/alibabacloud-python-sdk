@@ -1,3 +1,11 @@
+2024-10-24 Version: 3.1.0
+- Support API AddExtCodeSign.
+- Support API DeleteExtCodeSign.
+- Support API GetCardSmsDetails.
+- Support API QueryExtCodeSign.
+- Support API UpdateExtCodeSign.
+
+
 2024-06-25 Version: 3.0.0
 - Support API CreateSmsSign.
 - Support API CreateSmsTemplate.

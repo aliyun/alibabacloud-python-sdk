@@ -4,6 +4,161 @@ from Tea.model import TeaModel
 from typing import Dict, List, Any
 
 
+class AddExtCodeSignRequest(TeaModel):
+    def __init__(
+        self,
+        ext_code: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        sign_name: str = None,
+    ):
+        # 扩展码A3
+        # 
+        # This parameter is required.
+        self.ext_code = ext_code
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 签名
+        # 
+        # This parameter is required.
+        self.sign_name = sign_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ext_code is not None:
+            result['ExtCode'] = self.ext_code
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.sign_name is not None:
+            result['SignName'] = self.sign_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExtCode') is not None:
+            self.ext_code = m.get('ExtCode')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SignName') is not None:
+            self.sign_name = m.get('SignName')
+        return self
+
+
+class AddExtCodeSignResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: bool = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AddExtCodeSignResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddExtCodeSignResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddExtCodeSignResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AddShortUrlRequest(TeaModel):
     def __init__(
         self,
@@ -1464,19 +1619,69 @@ class CreateSmsSignRequest(TeaModel):
         sign_type: int = None,
         third_party: bool = None,
     ):
+        # Application scenarios, instructions as follows:
+        # - For registered websites, enter the domain name with HTTP or HTTPS that has been registered with the MIIT.
+        # 
+        # - For launched apps, provide a display link from the app store with HTTP or HTTPS, ensuring the app is online.
+        # 
+        # - For public accounts or mini-programs, input the full name, ensuring they are online.
+        # 
+        # - For e-commerce platform store names, applicable only to enterprise users, provide a display link with HTTP or HTTPS for the store.
         self.apply_scene_content = apply_scene_content
+        # Additional information to supplement uploaded business proof documents or screenshots, which helps reviewers understand your business details.
+        # 
+        # This parameter is optional; please fill it out based on your actual needs.
         self.more_data = more_data
         self.owner_id = owner_id
+        # Approved or under-review qualification ID.
+        # 
+        # > - Before applying for an SMS signature, please first [Apply for Qualification](https://help.aliyun.com/zh/sms/user-guide/new-qualification?spm=a2c4g.11186623.0.0.718d187bbkpMRK).
+        # > - You can view the qualification ID on the [Qualification Management](https://dysms.console.aliyun.com/domestic/text/qualification) page.
+        # 
         # This parameter is required.
         self.qualification_id = qualification_id
+        # Explanation of the SMS signature scenario, with a maximum length of 200 characters.
+        # 
+        # > The scenario explanation is one of the reference materials for signature review. Please provide a detailed description of the usage scenarios for your live services, along with links to verify these services such as website URLs with MIIT备案, app store display links, full names of public accounts or mini-programs, etc. For login scenarios, test account credentials are also required. A comprehensive application explanation enhances the efficiency of signature and template reviews. Refer to the **Application Scenario** column in the [Signature Source](https://help.aliyun.com/zh/sms/user-guide/signature-specifications-1?spm=a2c4g.11186623.0.i2#section-xup-k46-yi4) table for filling in SMS scenarios.
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Signature name. Please adhere to the [Signature Specifications](https://help.aliyun.com/zh/sms/user-guide/signature-specifications-1?spm=a2c4g.11186623.0.0.4f9710fder2gR7#section-0p8-qn8-mmy).
+        # 
+        # > - Signature names are case-insensitive; e.g., 【Aliyun Communication】 and 【aliyun communication】 are considered identical.
+        # > - If your verification code signature and general signature names are the same, the system defaults to using the general signature for sending SMS messages.
+        # 
         # This parameter is required.
         self.sign_name = sign_name
+        # Signature source. Values:
+        # 
+        # - **0**: Full name or abbreviation of an enterprise or institution.
+        # - **1**: Full name or abbreviation of a MIIT-registered website.
+        # - **2**: Full name or abbreviation of an App.
+        # - **3**: Full name or abbreviation of an official account or mini-program.
+        # - **4**: Full name or abbreviation of an e-commerce platform store.
+        # - **5**: Full name or abbreviation of a trademark.
+        # 
+        # For detailed information on signature sources, refer to [Signature Source](https://help.aliyun.com/zh/sms/user-guide/signature-specifications-1?spm=a2c4g.11186623.0.0.4f9710fder2gR7#section-xup-k46-yi4).
+        # 
+        # > This interface does not support applying for signatures with sources as **Test or Learning** and **Trial Use**. If you need to apply for signatures with these sources, please go to the [SMS Service Console](https://dysms.console.aliyun.com/domestic/text/sign/add/qualification).
+        # 
         # This parameter is required.
         self.sign_source = sign_source
+        # Signature type. Values:
+        # 
+        # - **0**: Verification Code
+        # 
+        # - **1**: General (Default)
+        # 
+        # > It is recommended to use the default value: **General**.
         self.sign_type = sign_type
+        # Choose whether the applied signature is for self-use or third-party use.
+        # 
+        # - false: Self-use (default)
+        # 
+        # - true: Third-party use
+        # >Notice: Please select self-use qualification ID when the signature is for self-use; choose third-party use qualification ID when it\\"s for third-party use.
         self.third_party = third_party
 
     def validate(self):
@@ -1554,19 +1759,69 @@ class CreateSmsSignShrinkRequest(TeaModel):
         sign_type: int = None,
         third_party: bool = None,
     ):
+        # Application scenarios, instructions as follows:
+        # - For registered websites, enter the domain name with HTTP or HTTPS that has been registered with the MIIT.
+        # 
+        # - For launched apps, provide a display link from the app store with HTTP or HTTPS, ensuring the app is online.
+        # 
+        # - For public accounts or mini-programs, input the full name, ensuring they are online.
+        # 
+        # - For e-commerce platform store names, applicable only to enterprise users, provide a display link with HTTP or HTTPS for the store.
         self.apply_scene_content = apply_scene_content
+        # Additional information to supplement uploaded business proof documents or screenshots, which helps reviewers understand your business details.
+        # 
+        # This parameter is optional; please fill it out based on your actual needs.
         self.more_data_shrink = more_data_shrink
         self.owner_id = owner_id
+        # Approved or under-review qualification ID.
+        # 
+        # > - Before applying for an SMS signature, please first [Apply for Qualification](https://help.aliyun.com/zh/sms/user-guide/new-qualification?spm=a2c4g.11186623.0.0.718d187bbkpMRK).
+        # > - You can view the qualification ID on the [Qualification Management](https://dysms.console.aliyun.com/domestic/text/qualification) page.
+        # 
         # This parameter is required.
         self.qualification_id = qualification_id
+        # Explanation of the SMS signature scenario, with a maximum length of 200 characters.
+        # 
+        # > The scenario explanation is one of the reference materials for signature review. Please provide a detailed description of the usage scenarios for your live services, along with links to verify these services such as website URLs with MIIT备案, app store display links, full names of public accounts or mini-programs, etc. For login scenarios, test account credentials are also required. A comprehensive application explanation enhances the efficiency of signature and template reviews. Refer to the **Application Scenario** column in the [Signature Source](https://help.aliyun.com/zh/sms/user-guide/signature-specifications-1?spm=a2c4g.11186623.0.i2#section-xup-k46-yi4) table for filling in SMS scenarios.
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Signature name. Please adhere to the [Signature Specifications](https://help.aliyun.com/zh/sms/user-guide/signature-specifications-1?spm=a2c4g.11186623.0.0.4f9710fder2gR7#section-0p8-qn8-mmy).
+        # 
+        # > - Signature names are case-insensitive; e.g., 【Aliyun Communication】 and 【aliyun communication】 are considered identical.
+        # > - If your verification code signature and general signature names are the same, the system defaults to using the general signature for sending SMS messages.
+        # 
         # This parameter is required.
         self.sign_name = sign_name
+        # Signature source. Values:
+        # 
+        # - **0**: Full name or abbreviation of an enterprise or institution.
+        # - **1**: Full name or abbreviation of a MIIT-registered website.
+        # - **2**: Full name or abbreviation of an App.
+        # - **3**: Full name or abbreviation of an official account or mini-program.
+        # - **4**: Full name or abbreviation of an e-commerce platform store.
+        # - **5**: Full name or abbreviation of a trademark.
+        # 
+        # For detailed information on signature sources, refer to [Signature Source](https://help.aliyun.com/zh/sms/user-guide/signature-specifications-1?spm=a2c4g.11186623.0.0.4f9710fder2gR7#section-xup-k46-yi4).
+        # 
+        # > This interface does not support applying for signatures with sources as **Test or Learning** and **Trial Use**. If you need to apply for signatures with these sources, please go to the [SMS Service Console](https://dysms.console.aliyun.com/domestic/text/sign/add/qualification).
+        # 
         # This parameter is required.
         self.sign_source = sign_source
+        # Signature type. Values:
+        # 
+        # - **0**: Verification Code
+        # 
+        # - **1**: General (Default)
+        # 
+        # > It is recommended to use the default value: **General**.
         self.sign_type = sign_type
+        # Choose whether the applied signature is for self-use or third-party use.
+        # 
+        # - false: Self-use (default)
+        # 
+        # - true: Third-party use
+        # >Notice: Please select self-use qualification ID when the signature is for self-use; choose third-party use qualification ID when it\\"s for third-party use.
         self.third_party = third_party
 
     def validate(self):
@@ -1638,10 +1893,20 @@ class CreateSmsSignResponseBody(TeaModel):
         request_id: str = None,
         sign_name: str = None,
     ):
+        # Request status code.
+        # 
+        # - OK indicates a successful request.
+        # - For other error codes, refer to the [Error Code List](https://help.aliyun.com/document_detail/101346.html).
         self.code = code
+        # Description of the status code.
         self.message = message
+        # Work order number.
+        # 
+        # This parameter is used by auditors when querying the audit. You will need to provide this work order number if you require expedited review.
         self.order_id = order_id
+        # The ID of this call request, which is a unique identifier generated by Alibaba Cloud for the request and can be used for troubleshooting and issue localization.
         self.request_id = request_id
+        # Signature name.
         self.sign_name = sign_name
 
     def validate(self):
@@ -1737,19 +2002,51 @@ class CreateSmsTemplateRequest(TeaModel):
         template_rule: str = None,
         template_type: int = None,
     ):
+        # If there is an applicable scenario, you can fill it in.
         self.apply_scene_content = apply_scene_content
+        # International/Hong Kong, Macao, and Taiwan template type. When the **TemplateType** parameter is **3**, this parameter is required for international/Hong Kong, Macao, and Taiwan templates, with values:
+        # - **0**: Verification code.
+        # - **1**: SMS notification.
+        # - **2**: Promotional message.
         self.intl_type = intl_type
+        # Additional materials you can upload, such as business proof documents or screenshots, to help reviewers understand your business details.
+        # 
+        # This parameter is optional; please fill it in according to actual needs.
         self.more_data = more_data
         self.owner_id = owner_id
+        # The signature name that the template needs to be associated with. The associated SMS signature must have passed the review.
+        # 
+        # This parameter is mandatory when the TemplateType parameter is **0**, **1**, or **2**.
+        # 
+        # <notice>Associating a signature can expedite the review process. Note that this associated signature is unrelated to the signature selected when sending SMS messages.</notice>
         self.related_sign_name = related_sign_name
+        # Please describe the business scenario where you use SMS or provide an online link to the scenario, along with a complete example of the SMS (with variable contents filled), as complete information helps increase the template approval rate. Failure to follow guidelines or leaving this field blank may affect the approval of your template.
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Template content, up to 500 characters in length.
+        # 
+        # Both the template content and variable content must comply with SMS specifications; otherwise, the template will fail the review. You can also view common template examples on the template application page. Using sample templates can enhance review efficiency and success rates. For variable specifications, see [TemplateContent Variable Parameter Filling Specifications](https://help.aliyun.com/zh/sms/templaterule-template-variable-parameter-filling-example).
+        # 
         # This parameter is required.
         self.template_content = template_content
+        # Template name, up to 30 characters in length.
+        # 
         # This parameter is required.
         self.template_name = template_name
+        # Template variable rules.
+        # 
+        # For filling in variable rules, refer to the [Sample Documentation](https://help.aliyun.com/zh/sms/templaterule-template-variable-parameter-filling-example).
         self.template_rule = template_rule
+        # SMS type. Values:
+        # 
+        # - **0**: Verification code.
+        # - **1**: SMS notification.
+        # - **2**: Promotional message.
+        # - **3**: International/Hong Kong, Macao, and Taiwan messages.
+        # 
+        # > Only enterprise-verified users can apply for promotional messages and international/Hong Kong, Macao, and Taiwan messages. For details on the differences between personal and enterprise user rights, please refer to [Usage Instructions](https://help.aliyun.com/zh/sms/user-guide/usage-notes?spm=a2c4g.11186623.0.0.67447f576NJnE8).
+        # 
         # This parameter is required.
         self.template_type = template_type
 
@@ -1833,19 +2130,51 @@ class CreateSmsTemplateShrinkRequest(TeaModel):
         template_rule: str = None,
         template_type: int = None,
     ):
+        # If there is an applicable scenario, you can fill it in.
         self.apply_scene_content = apply_scene_content
+        # International/Hong Kong, Macao, and Taiwan template type. When the **TemplateType** parameter is **3**, this parameter is required for international/Hong Kong, Macao, and Taiwan templates, with values:
+        # - **0**: Verification code.
+        # - **1**: SMS notification.
+        # - **2**: Promotional message.
         self.intl_type = intl_type
+        # Additional materials you can upload, such as business proof documents or screenshots, to help reviewers understand your business details.
+        # 
+        # This parameter is optional; please fill it in according to actual needs.
         self.more_data_shrink = more_data_shrink
         self.owner_id = owner_id
+        # The signature name that the template needs to be associated with. The associated SMS signature must have passed the review.
+        # 
+        # This parameter is mandatory when the TemplateType parameter is **0**, **1**, or **2**.
+        # 
+        # <notice>Associating a signature can expedite the review process. Note that this associated signature is unrelated to the signature selected when sending SMS messages.</notice>
         self.related_sign_name = related_sign_name
+        # Please describe the business scenario where you use SMS or provide an online link to the scenario, along with a complete example of the SMS (with variable contents filled), as complete information helps increase the template approval rate. Failure to follow guidelines or leaving this field blank may affect the approval of your template.
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Template content, up to 500 characters in length.
+        # 
+        # Both the template content and variable content must comply with SMS specifications; otherwise, the template will fail the review. You can also view common template examples on the template application page. Using sample templates can enhance review efficiency and success rates. For variable specifications, see [TemplateContent Variable Parameter Filling Specifications](https://help.aliyun.com/zh/sms/templaterule-template-variable-parameter-filling-example).
+        # 
         # This parameter is required.
         self.template_content = template_content
+        # Template name, up to 30 characters in length.
+        # 
         # This parameter is required.
         self.template_name = template_name
+        # Template variable rules.
+        # 
+        # For filling in variable rules, refer to the [Sample Documentation](https://help.aliyun.com/zh/sms/templaterule-template-variable-parameter-filling-example).
         self.template_rule = template_rule
+        # SMS type. Values:
+        # 
+        # - **0**: Verification code.
+        # - **1**: SMS notification.
+        # - **2**: Promotional message.
+        # - **3**: International/Hong Kong, Macao, and Taiwan messages.
+        # 
+        # > Only enterprise-verified users can apply for promotional messages and international/Hong Kong, Macao, and Taiwan messages. For details on the differences between personal and enterprise user rights, please refer to [Usage Instructions](https://help.aliyun.com/zh/sms/user-guide/usage-notes?spm=a2c4g.11186623.0.0.67447f576NJnE8).
+        # 
         # This parameter is required.
         self.template_type = template_type
 
@@ -1923,11 +2252,24 @@ class CreateSmsTemplateResponseBody(TeaModel):
         template_code: str = None,
         template_name: str = None,
     ):
+        # Request status code.
+        # 
+        # * OK indicates a successful request.
+        # * For other error codes, refer to the **Error Codes** section of this chapter or the product\\"s [API Error Codes](https://help.aliyun.com/document_detail/101346.html).
         self.code = code
+        # Description of the status code.
         self.message = message
+        # Work order ID.
+        # 
+        # This parameter is used by auditors when querying audits. If you need expedited review, you must provide this work order number.
         self.order_id = order_id
+        # The ID generated by Alibaba Cloud for this request, which is a unique identifier that can be used for troubleshooting and issue定位.
         self.request_id = request_id
+        # SMS template code.
+        # 
+        # After submitting the template application, you can use the SMS template code to query the template audit details via the [GetSmsTemplate](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-getsmstemplate?) API. You can also [configure delivery receipts](https://help.aliyun.com/zh/sms/developer-reference/configure-delivery-receipts-1?spm), and obtain the template audit status messages through TemplateSmsReport.
         self.template_code = template_code
+        # SMS template name.
         self.template_name = template_name
 
     def validate(self):
@@ -2007,6 +2349,161 @@ class CreateSmsTemplateResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateSmsTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteExtCodeSignRequest(TeaModel):
+    def __init__(
+        self,
+        ext_code: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        sign_name: str = None,
+    ):
+        # 扩展码A3
+        # 
+        # This parameter is required.
+        self.ext_code = ext_code
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 签名
+        # 
+        # This parameter is required.
+        self.sign_name = sign_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ext_code is not None:
+            result['ExtCode'] = self.ext_code
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.sign_name is not None:
+            result['SignName'] = self.sign_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExtCode') is not None:
+            self.ext_code = m.get('ExtCode')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SignName') is not None:
+            self.sign_name = m.get('SignName')
+        return self
+
+
+class DeleteExtCodeSignResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: bool = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteExtCodeSignResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteExtCodeSignResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteExtCodeSignResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2427,6 +2924,340 @@ class DeleteSmsTemplateResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteSmsTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetCardSmsDetailsRequest(TeaModel):
+    def __init__(
+        self,
+        biz_card_id: str = None,
+        biz_digit_id: str = None,
+        biz_sms_id: str = None,
+        current_page: int = None,
+        owner_id: int = None,
+        page_size: int = None,
+        phone_number: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        send_date: str = None,
+    ):
+        self.biz_card_id = biz_card_id
+        self.biz_digit_id = biz_digit_id
+        self.biz_sms_id = biz_sms_id
+        self.current_page = current_page
+        self.owner_id = owner_id
+        self.page_size = page_size
+        # This parameter is required.
+        self.phone_number = phone_number
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.send_date = send_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_card_id is not None:
+            result['BizCardId'] = self.biz_card_id
+        if self.biz_digit_id is not None:
+            result['BizDigitId'] = self.biz_digit_id
+        if self.biz_sms_id is not None:
+            result['BizSmsId'] = self.biz_sms_id
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.send_date is not None:
+            result['SendDate'] = self.send_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCardId') is not None:
+            self.biz_card_id = m.get('BizCardId')
+        if m.get('BizDigitId') is not None:
+            self.biz_digit_id = m.get('BizDigitId')
+        if m.get('BizSmsId') is not None:
+            self.biz_sms_id = m.get('BizSmsId')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SendDate') is not None:
+            self.send_date = m.get('SendDate')
+        return self
+
+
+class GetCardSmsDetailsResponseBodyCardSendDetailDTORecords(TeaModel):
+    def __init__(
+        self,
+        err_code: str = None,
+        out_id: str = None,
+        phone_number: str = None,
+        receive_date: str = None,
+        receive_type: str = None,
+        render_date: str = None,
+        render_status: int = None,
+        send_date: str = None,
+        send_status: int = None,
+        sms_content: str = None,
+        template_code: str = None,
+    ):
+        # 发送错误码
+        self.err_code = err_code
+        # 客户传输outId
+        self.out_id = out_id
+        # 接收短信手机号
+        self.phone_number = phone_number
+        # 接收时间
+        self.receive_date = receive_date
+        # 接收短信类型
+        self.receive_type = receive_type
+        # 渲染时间
+        self.render_date = render_date
+        # 解析状态.。0：未解析；1：解析成功；3：未解析
+        self.render_status = render_status
+        # 短信发送时间
+        self.send_date = send_date
+        # 发送状态 1：发送中；2：发送失败；3：发送成功；4：寻址失败
+        self.send_status = send_status
+        # 短信内容。只有文本短信有值
+        self.sms_content = sms_content
+        # 模板code
+        self.template_code = template_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.out_id is not None:
+            result['OutId'] = self.out_id
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        if self.receive_date is not None:
+            result['ReceiveDate'] = self.receive_date
+        if self.receive_type is not None:
+            result['ReceiveType'] = self.receive_type
+        if self.render_date is not None:
+            result['RenderDate'] = self.render_date
+        if self.render_status is not None:
+            result['RenderStatus'] = self.render_status
+        if self.send_date is not None:
+            result['SendDate'] = self.send_date
+        if self.send_status is not None:
+            result['SendStatus'] = self.send_status
+        if self.sms_content is not None:
+            result['SmsContent'] = self.sms_content
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('OutId') is not None:
+            self.out_id = m.get('OutId')
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        if m.get('ReceiveDate') is not None:
+            self.receive_date = m.get('ReceiveDate')
+        if m.get('ReceiveType') is not None:
+            self.receive_type = m.get('ReceiveType')
+        if m.get('RenderDate') is not None:
+            self.render_date = m.get('RenderDate')
+        if m.get('RenderStatus') is not None:
+            self.render_status = m.get('RenderStatus')
+        if m.get('SendDate') is not None:
+            self.send_date = m.get('SendDate')
+        if m.get('SendStatus') is not None:
+            self.send_status = m.get('SendStatus')
+        if m.get('SmsContent') is not None:
+            self.sms_content = m.get('SmsContent')
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        return self
+
+
+class GetCardSmsDetailsResponseBodyCardSendDetailDTO(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        page_size: int = None,
+        records: List[GetCardSmsDetailsResponseBodyCardSendDetailDTORecords] = None,
+        total_count: int = None,
+    ):
+        # 页码
+        self.current_page = current_page
+        # 页数
+        self.page_size = page_size
+        self.records = records
+        # 总量
+        self.total_count = total_count
+
+    def validate(self):
+        if self.records:
+            for k in self.records:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['Records'] = []
+        if self.records is not None:
+            for k in self.records:
+                result['Records'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.records = []
+        if m.get('Records') is not None:
+            for k in m.get('Records'):
+                temp_model = GetCardSmsDetailsResponseBodyCardSendDetailDTORecords()
+                self.records.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class GetCardSmsDetailsResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        card_send_detail_dto: GetCardSmsDetailsResponseBodyCardSendDetailDTO = None,
+        code: str = None,
+        message: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        # 卡片短信发送结果
+        self.card_send_detail_dto = card_send_detail_dto
+        # 状态码
+        self.code = code
+        # 状态描述
+        self.message = message
+        self.success = success
+
+    def validate(self):
+        if self.card_send_detail_dto:
+            self.card_send_detail_dto.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.card_send_detail_dto is not None:
+            result['CardSendDetailDTO'] = self.card_send_detail_dto.to_map()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('CardSendDetailDTO') is not None:
+            temp_model = GetCardSmsDetailsResponseBodyCardSendDetailDTO()
+            self.card_send_detail_dto = temp_model.from_map(m['CardSendDetailDTO'])
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetCardSmsDetailsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetCardSmsDetailsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetCardSmsDetailsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3104,6 +3935,9 @@ class GetOSSInfoForUploadFileRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # Business type, default value is **fcMediaSms**.
+        # 
+        # When creating signatures and templates, and uploading **additional materials**, this value is **fcMediaSms**.
         self.biz_type = biz_type
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -3151,11 +3985,17 @@ class GetOSSInfoForUploadFileResponseBodyModel(TeaModel):
         signature: str = None,
         start_path: str = None,
     ):
+        # AccessKey ID used for signing.
         self.access_key_id = access_key_id
+        # Expiration time.
         self.expire_time = expire_time
+        # Host address.
         self.host = host
+        # Signature policy.
         self.policy = policy
+        # Signature information calculated based on **AccessKey Secret** and **Policy**. When calling the OSS API, OSS verifies this signature information to confirm the legitimacy of the Post request.
         self.signature = signature
+        # Policy path.
         self.start_path = start_path
 
     def validate(self):
@@ -3207,10 +4047,21 @@ class GetOSSInfoForUploadFileResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Request status code.
+        # 
+        # - OK return represents a successful request.
+        # - For other error codes, please refer to the [Error Code List](https://help.aliyun.com/document_detail/101346.htm).
         self.code = code
+        # Description of the status code.
         self.message = message
+        # Return result.
         self.model = model
+        # The ID of this call request, which is a unique identifier generated by Alibaba Cloud for the request, can be used for troubleshooting and issue定位.
         self.request_id = request_id
+        # Indicates success. Values:
+        # 
+        # - **true**\
+        # - **false**\
         self.success = success
 
     def validate(self):
@@ -3303,6 +4154,11 @@ class GetSmsSignRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Signature name. Must be an SMS signature already applied for by this account.
+        # 
+        # - Obtain from the return parameters after calling the [CreateSmsSign](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-createsmssign?spm) API.
+        # - View the signature on the [Signature Management](https://dysms.console.aliyun.com/domestic/text/sign) page.
+        # 
         # This parameter is required.
         self.sign_name = sign_name
 
@@ -3344,7 +4200,9 @@ class GetSmsSignResponseBodyAuditInfo(TeaModel):
         audit_date: str = None,
         reject_info: str = None,
     ):
+        # Audit date and time.
         self.audit_date = audit_date
+        # Reasons for not passing the review.
         self.reject_info = reject_info
 
     def validate(self):
@@ -3391,21 +4249,56 @@ class GetSmsSignResponseBody(TeaModel):
         sign_usage: str = None,
         third_party: bool = None,
     ):
+        # Content of application scenarios.
         self.apply_scene = apply_scene
+        # Audit information.
         self.audit_info = audit_info
+        # Request status code.
+        # 
+        # - OK indicates a successful request.
+        # - For other error codes, see [API Error Codes](https://help.aliyun.com/document_detail/101346.html).
         self.code = code
+        # Creation date and time of the SMS signature.
         self.create_date = create_date
+        # 更多资料信息，补充上传业务证明文件或业务截图文件列表。
         self.file_url_list = file_url_list
+        # Description of the status code.
         self.message = message
+        # Work order number.
+        # 
+        # Used by reviewers when querying the review. You need to provide this work order number if you require expedited review.
         self.order_id = order_id
+        # Credential ID, the credential ID associated when applying for the signature.
         self.qualification_id = qualification_id
+        # Explanation of the SMS signature scenario, with a maximum length of 200 characters.
         self.remark = remark
+        # The ID of this call request, which is a unique identifier generated by Alibaba Cloud for the request and can be used for troubleshooting and issue localization.
         self.request_id = request_id
+        # SMS signature code.
         self.sign_code = sign_code
+        # SMS signature name.
         self.sign_name = sign_name
+        # Signature review status. Values:
+        # 
+        # - **0**: Under review.
+        # - **1**: Approved.
+        # - **2**: Review failed, please check the Reason parameter for the failure cause.
+        # - **10**: Review canceled.
         self.sign_status = sign_status
+        # Signature tag indicating whether the signature is user-defined, system-provided, test, or trial. Values:
+        # 
+        # - 2: User-defined signature
+        # - 3: System-provided signature
+        # - 4: Test signature
+        # - 5: Trial signature
         self.sign_tag = sign_tag
+        # scenarios for using signatures.
         self.sign_usage = sign_usage
+        # Signature usage indication—self-use or third-party use.
+        # 
+        # - false: Self-use (default)
+        # 
+        # - true: Third-party use
         self.third_party = third_party
 
     def validate(self):
@@ -3542,6 +4435,11 @@ class GetSmsTemplateRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # SMS template code.
+        # 
+        # - Obtain the SMS template code from the return parameters of the [CreateSmsTemplate](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-createsmstemplate?spm) API.
+        # - View the SMS template code on the [Template Management](https://dysms.console.aliyun.com/domestic/text/template) page.
+        # 
         # This parameter is required.
         self.template_code = template_code
 
@@ -3583,7 +4481,9 @@ class GetSmsTemplateResponseBodyAuditInfo(TeaModel):
         audit_date: str = None,
         reject_info: str = None,
     ):
+        # Audit date and time.
         self.audit_date = audit_date
+        # Reasons for failed audit.
         self.reject_info = reject_info
 
     def validate(self):
@@ -3687,24 +4587,69 @@ class GetSmsTemplateResponseBody(TeaModel):
         template_type: str = None,
         variable_attribute: str = None,
     ):
+        # Application scenario content.
         self.apply_scene = apply_scene
+        # Audit information.
         self.audit_info = audit_info
+        # Request status code.
+        # 
+        # * OK indicates a successful request.
+        # * For other error codes, please refer to [API Error Codes](https://help.aliyun.com/document_detail/101346.html).
         self.code = code
+        # The time when the SMS template was created.
         self.create_date = create_date
+        # File information, compatible with signatures created by the [AddSmsSign](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-addsmstemplate?spm) API.
         self.file_url_list = file_url_list
+        # International/Hong Kong, Macao, and Taiwan template type. When the **TemplateType** parameter is **3**, this parameter is required for international/Hong Kong, Macao, and Taiwan templates, with values:
+        # - **0**: Verification code.
+        # - **1**: SMS notification.
+        # - **2**: Promotional SMS.
         self.intl_type = intl_type
+        # Description of the status code.
         self.message = message
+        # Additional documentation information, supplementing uploaded business proof files or operational screenshots file list.
         self.more_data_file_url_list = more_data_file_url_list
+        # Work order number.
+        # 
+        # This parameter is used by auditors when querying the audit. You need to provide this work order number when requesting expedited review.
         self.order_id = order_id
+        # The SMS signature associated with the template when applied.
         self.related_sign_name = related_sign_name
+        # Explanation for the SMS template application, which is one of the reference information for template review.
         self.remark = remark
+        # The ID of this call request, which is a unique identifier generated by Alibaba Cloud for the request and can be used for troubleshooting and issue定位.
         self.request_id = request_id
+        # SMS template code.
         self.template_code = template_code
+        # Content of the SMS template.
         self.template_content = template_content
+        # Name of the SMS template.
         self.template_name = template_name
+        # Template review status. Return values:
+        # 
+        # - **0**: Under review.
+        # - **1**: Approved.
+        # - **2**: Not approved, with reasons for failure returned. Please refer to [Handling Suggestions for Failed SMS Reviews](https://help.aliyun.com/zh/sms/user-guide/causes-of-application-failures-and-suggestions?spm=a2c4g.11186623.0.0.41fd339f3bPSCQ), invoke the [UpdateSmsTemplate](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-updatesmstemplate?spm) API or modify the SMS template on the [Template Management](https://dysms.console.aliyun.com/domestic/text/template) page.
+        # - **10**: Review canceled.
         self.template_status = template_status
+        # Template identifier, indicating whether the template is user-defined or system-provided. Values:
+        # 
+        # - **2**: User-defined template.
+        # 
+        # - **3**: System-provided template.
         self.template_tag = template_tag
+        # SMS type. Values:
+        # 
+        # - **0**: Verification code.
+        # - **1**: SMS notification.
+        # - **2**: Promotional SMS.
+        # - **3**: International/Hong Kong, Macao, and Taiwan messages.
+        # 
+        # > Only enterprise-certified users can apply for promotional SMS and international/Hong Kong, Macao, and Taiwan messages. For details on the differences between personal and enterprise user rights, please refer to [Usage Notes](https://help.aliyun.com/zh/sms/user-guide/usage-notes?spm=a2c4g.11186623.0.0.67447f576NJnE8).
         self.template_type = template_type
+        # Template variable rules.
+        # 
+        # For detailed rules of template variables, refer to the [Example Document](https://help.aliyun.com/zh/sms/templaterule-template-variable-parameter-filling-example).
         self.variable_attribute = variable_attribute
 
     def validate(self):
@@ -4914,6 +5859,284 @@ class QueryCardSmsTemplateReportResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryCardSmsTemplateReportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryExtCodeSignRequest(TeaModel):
+    def __init__(
+        self,
+        ext_code: str = None,
+        owner_id: int = None,
+        page_no: int = None,
+        page_size: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        sign_name: str = None,
+    ):
+        # 扩展码A3
+        # 
+        # This parameter is required.
+        self.ext_code = ext_code
+        self.owner_id = owner_id
+        self.page_no = page_no
+        self.page_size = page_size
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 签名
+        # 
+        # This parameter is required.
+        self.sign_name = sign_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ext_code is not None:
+            result['ExtCode'] = self.ext_code
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.sign_name is not None:
+            result['SignName'] = self.sign_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExtCode') is not None:
+            self.ext_code = m.get('ExtCode')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SignName') is not None:
+            self.sign_name = m.get('SignName')
+        return self
+
+
+class QueryExtCodeSignResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        active: int = None,
+        ext_code: str = None,
+        send_count: int = None,
+        sign_name: str = None,
+        source: str = None,
+    ):
+        # 是否可回收
+        self.active = active
+        # 扩展码A3
+        self.ext_code = ext_code
+        # 近1个月发送成功条数（只读）
+        self.send_count = send_count
+        # 签名
+        self.sign_name = sign_name
+        # 来源
+        self.source = source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active is not None:
+            result['Active'] = self.active
+        if self.ext_code is not None:
+            result['ExtCode'] = self.ext_code
+        if self.send_count is not None:
+            result['SendCount'] = self.send_count
+        if self.sign_name is not None:
+            result['SignName'] = self.sign_name
+        if self.source is not None:
+            result['Source'] = self.source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Active') is not None:
+            self.active = m.get('Active')
+        if m.get('ExtCode') is not None:
+            self.ext_code = m.get('ExtCode')
+        if m.get('SendCount') is not None:
+            self.send_count = m.get('SendCount')
+        if m.get('SignName') is not None:
+            self.sign_name = m.get('SignName')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        return self
+
+
+class QueryExtCodeSignResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        list: List[QueryExtCodeSignResponseBodyDataList] = None,
+        page_no: int = None,
+        page_size: int = None,
+        total: int = None,
+    ):
+        self.list = list
+        self.page_no = page_no
+        self.page_size = page_size
+        self.total = total
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = QueryExtCodeSignResponseBodyDataList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class QueryExtCodeSignResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: QueryExtCodeSignResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = QueryExtCodeSignResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryExtCodeSignResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryExtCodeSignResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryExtCodeSignResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8728,16 +9951,27 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
+        # Specifies whether to delete all tags from the message template. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.all = all
         self.owner_id = owner_id
+        # The name of the cloud service. Set the value to **dysms**.
         self.prod_code = prod_code
+        # The region. Set the value to cn-hangzhou.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The array of message template codes. You can specify 1 to 20 message templates.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The type of the resource. Set the value to TEMPLATE.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The array of tag keys. You can specify 1 to 20 tag keys.
         self.tag_key = tag_key
 
     def validate(self):
@@ -8799,8 +10033,17 @@ class UntagResourcesResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The HTTP status code.
+        # 
+        # *   The value OK indicates that the request was successful.
+        # *   Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
         self.code = code
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8872,6 +10115,170 @@ class UntagResourcesResponse(TeaModel):
         return self
 
 
+class UpdateExtCodeSignRequest(TeaModel):
+    def __init__(
+        self,
+        exist_ext_code: str = None,
+        new_ext_code: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        sign_name: str = None,
+    ):
+        # 要修改的扩展码A3
+        # 
+        # This parameter is required.
+        self.exist_ext_code = exist_ext_code
+        # 修改后的扩展码A3
+        # 
+        # This parameter is required.
+        self.new_ext_code = new_ext_code
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 签名
+        # 
+        # This parameter is required.
+        self.sign_name = sign_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exist_ext_code is not None:
+            result['ExistExtCode'] = self.exist_ext_code
+        if self.new_ext_code is not None:
+            result['NewExtCode'] = self.new_ext_code
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.sign_name is not None:
+            result['SignName'] = self.sign_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExistExtCode') is not None:
+            self.exist_ext_code = m.get('ExistExtCode')
+        if m.get('NewExtCode') is not None:
+            self.new_ext_code = m.get('NewExtCode')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SignName') is not None:
+            self.sign_name = m.get('SignName')
+        return self
+
+
+class UpdateExtCodeSignResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: bool = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateExtCodeSignResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateExtCodeSignResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateExtCodeSignResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateSmsSignRequest(TeaModel):
     def __init__(
         self,
@@ -8887,19 +10294,53 @@ class UpdateSmsSignRequest(TeaModel):
         sign_type: int = None,
         third_party: bool = None,
     ):
+        # Application scenarios, instructions as follows:
+        # - For registered websites, please enter the domain name registered with MIIT, including HTTP or HTTPS.
+        # - For launched apps, provide the display link from the app store with HTTP or HTTPS, ensuring the app is online.
+        # - For public accounts or mini-programs, fill in the full name, ensuring they are online.
+        # - For e-commerce platform store names (for enterprise users only), provide the display link with HTTP or HTTPS.
         self.apply_scene_content = apply_scene_content
+        # Additional materials, such as uploading business proof documents or screenshots of business operations, to help reviewers understand your business details.
         self.more_data = more_data
         self.owner_id = owner_id
+        # Approved or under-review qualification ID.
+        # 
+        # > - Before applying for an SMS signature, please first [apply for qualifications](https://help.aliyun.com/zh/sms/user-guide/new-qualification?spm=a2c4g.11186623.0.0.718d187bbkpMRK).
+        # > - You can view the qualification ID on the [Qualification Management](https://dysms.console.aliyun.com/domestic/text/qualification) page.
+        # 
         # This parameter is required.
         self.qualification_id = qualification_id
+        # Explanation of the SMS signature scenario, with a maximum length of 200 characters.
+        # 
+        # > The scenario explanation is one of the reference information for signature review. Please provide a detailed description of the usage scenarios of the launched business, along with verifiable information such as website links, registered domain addresses, app store download links, full names of public accounts or mini-programs, etc. For login scenarios, test account credentials are also required. A well-informed application explanation will enhance the efficiency of signature and template reviews. Refer to the **Application Scenarios** column in the [Signature Source](https://help.aliyun.com/zh/sms/user-guide/signature-specifications-1?spm=a2c4g.11186623.0.i2#section-xup-k46-yi4) table for filling in SMS scenarios.
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Signature not yet approved.
+        # 
         # This parameter is required.
         self.sign_name = sign_name
+        # Source of the signature. Values:
+        # 
+        # - **0**: Full name or abbreviation of enterprises and institutions.
+        # - **1**: Full name or abbreviation of MIIT-registered websites.
+        # - **2**: Full name or abbreviation of app applications.
+        # - **3**: Full name or abbreviation of public accounts or mini-programs.
+        # - **4**: Full name or abbreviation of e-commerce platform store names.
+        # - **5**: Full name or abbreviation of trademarks.
+        # 
         # This parameter is required.
         self.sign_source = sign_source
+        # Signature type. It is recommended to use the default value.
+        # 
+        # - **0**: Verification code
+        # - **1**: General (default)
         self.sign_type = sign_type
+        # Whether the signature is for self-use or others.
+        # 
+        # - false: Self-use
+        # - true: Others
+        # >Notice: When the signature is for self-use, select the self-use qualification ID; when it\\"s for others, choose the others\\" qualification ID.
         self.third_party = third_party
 
     def validate(self):
@@ -8977,19 +10418,53 @@ class UpdateSmsSignShrinkRequest(TeaModel):
         sign_type: int = None,
         third_party: bool = None,
     ):
+        # Application scenarios, instructions as follows:
+        # - For registered websites, please enter the domain name registered with MIIT, including HTTP or HTTPS.
+        # - For launched apps, provide the display link from the app store with HTTP or HTTPS, ensuring the app is online.
+        # - For public accounts or mini-programs, fill in the full name, ensuring they are online.
+        # - For e-commerce platform store names (for enterprise users only), provide the display link with HTTP or HTTPS.
         self.apply_scene_content = apply_scene_content
+        # Additional materials, such as uploading business proof documents or screenshots of business operations, to help reviewers understand your business details.
         self.more_data_shrink = more_data_shrink
         self.owner_id = owner_id
+        # Approved or under-review qualification ID.
+        # 
+        # > - Before applying for an SMS signature, please first [apply for qualifications](https://help.aliyun.com/zh/sms/user-guide/new-qualification?spm=a2c4g.11186623.0.0.718d187bbkpMRK).
+        # > - You can view the qualification ID on the [Qualification Management](https://dysms.console.aliyun.com/domestic/text/qualification) page.
+        # 
         # This parameter is required.
         self.qualification_id = qualification_id
+        # Explanation of the SMS signature scenario, with a maximum length of 200 characters.
+        # 
+        # > The scenario explanation is one of the reference information for signature review. Please provide a detailed description of the usage scenarios of the launched business, along with verifiable information such as website links, registered domain addresses, app store download links, full names of public accounts or mini-programs, etc. For login scenarios, test account credentials are also required. A well-informed application explanation will enhance the efficiency of signature and template reviews. Refer to the **Application Scenarios** column in the [Signature Source](https://help.aliyun.com/zh/sms/user-guide/signature-specifications-1?spm=a2c4g.11186623.0.i2#section-xup-k46-yi4) table for filling in SMS scenarios.
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Signature not yet approved.
+        # 
         # This parameter is required.
         self.sign_name = sign_name
+        # Source of the signature. Values:
+        # 
+        # - **0**: Full name or abbreviation of enterprises and institutions.
+        # - **1**: Full name or abbreviation of MIIT-registered websites.
+        # - **2**: Full name or abbreviation of app applications.
+        # - **3**: Full name or abbreviation of public accounts or mini-programs.
+        # - **4**: Full name or abbreviation of e-commerce platform store names.
+        # - **5**: Full name or abbreviation of trademarks.
+        # 
         # This parameter is required.
         self.sign_source = sign_source
+        # Signature type. It is recommended to use the default value.
+        # 
+        # - **0**: Verification code
+        # - **1**: General (default)
         self.sign_type = sign_type
+        # Whether the signature is for self-use or others.
+        # 
+        # - false: Self-use
+        # - true: Others
+        # >Notice: When the signature is for self-use, select the self-use qualification ID; when it\\"s for others, choose the others\\" qualification ID.
         self.third_party = third_party
 
     def validate(self):
@@ -9061,10 +10536,20 @@ class UpdateSmsSignResponseBody(TeaModel):
         request_id: str = None,
         sign_name: str = None,
     ):
+        # Request status code.
+        # 
+        # * OK indicates a successful request.
+        # * For other error codes, refer to [Error Code List](https://help.aliyun.com/document_detail/101346.html).
         self.code = code
+        # Description of the status code.
         self.message = message
+        # Work order number.
+        # 
+        # This parameter is used by auditors when querying audits. You need to provide this work order number for expedited review.
         self.order_id = order_id
+        # The ID of this call request, uniquely generated by Alibaba Cloud, which can be used for troubleshooting and issue localization.
         self.request_id = request_id
+        # The modified signature name.
         self.sign_name = sign_name
 
     def validate(self):
@@ -9161,21 +10646,53 @@ class UpdateSmsTemplateRequest(TeaModel):
         template_rule: str = None,
         template_type: int = None,
     ):
+        # Application scenarios, instructions as follows:
+        # - For registered websites, please enter the MIIT-registered domain with HTTP or HTTPS.
+        # - For launched apps, provide the app store display link with HTTP or HTTPS, ensuring the app is online.
+        # - For public accounts or mini-programs, enter the full name of the public account or mini-program, ensuring they are online.
+        # - For e-commerce platform stores, applicable only to enterprise users, enter the display link of the e-commerce store with HTTP or HTTPS.
         self.apply_scene_content = apply_scene_content
+        # International/Hong Kong, Macao, and Taiwan template type. When the **TemplateType** parameter is **3**, this parameter is required for international/Hong Kong, Macao, and Taiwan templates, with values:
+        # - **0**: Verification code.
+        # - **1**: SMS notification.
+        # - **2**: Promotional SMS.
         self.intl_type = intl_type
+        # Additional information, such as uploading business proof documents or screenshots, to help reviewers understand your business details. Optional and can be left unset.
         self.more_data = more_data
         self.owner_id = owner_id
+        # SMS signature associated with the template during the application.
         self.related_sign_name = related_sign_name
+        # Explanation for the SMS template application, which serves as a reference for template review.
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Template Code of an unapproved template.
+        # 
         # This parameter is required.
         self.template_code = template_code
+        # Template content, up to 500 characters in length.
+        # 
+        # Both the template content and variable content must comply with SMS regulations; otherwise, the template will fail the review. You can also view common template examples on the template application page. Using sample templates can enhance review efficiency and success rates. Variable specifications can be found in [TemplateContent Parameter Variable Specifications](https://help.aliyun.com/zh/sms/templaterule-template-variable-parameter-filling-example?spm).
+        # 
         # This parameter is required.
         self.template_content = template_content
+        # Template name, up to 30 characters in length.
+        # 
         # This parameter is required.
         self.template_name = template_name
+        # Template variable rules.
+        # 
+        # For guidance on filling variable rules, refer to the [Sample Documentation](https://help.aliyun.com/zh/sms/templaterule-template-variable-parameter-filling-example?spm).
         self.template_rule = template_rule
+        # SMS type. Values:
+        # 
+        # - **0**: Verification code.
+        # - **1**: SMS notification.
+        # - **2**: Promotional SMS.
+        # - **3**: International/Hong Kong, Macao, and Taiwan messages.
+        # 
+        # > Only enterprise-certified users can apply for promotional SMS and international/Hong Kong, Macao, and Taiwan messages. Details on differences between personal and enterprise user rights are available in [Usage Guidelines](https://help.aliyun.com/zh/sms/user-guide/usage-notes?spm=a2c4g.11186623.0.0.67447f576NJnE8).
+        # 
         # This parameter is required.
         self.template_type = template_type
 
@@ -9264,21 +10781,53 @@ class UpdateSmsTemplateShrinkRequest(TeaModel):
         template_rule: str = None,
         template_type: int = None,
     ):
+        # Application scenarios, instructions as follows:
+        # - For registered websites, please enter the MIIT-registered domain with HTTP or HTTPS.
+        # - For launched apps, provide the app store display link with HTTP or HTTPS, ensuring the app is online.
+        # - For public accounts or mini-programs, enter the full name of the public account or mini-program, ensuring they are online.
+        # - For e-commerce platform stores, applicable only to enterprise users, enter the display link of the e-commerce store with HTTP or HTTPS.
         self.apply_scene_content = apply_scene_content
+        # International/Hong Kong, Macao, and Taiwan template type. When the **TemplateType** parameter is **3**, this parameter is required for international/Hong Kong, Macao, and Taiwan templates, with values:
+        # - **0**: Verification code.
+        # - **1**: SMS notification.
+        # - **2**: Promotional SMS.
         self.intl_type = intl_type
+        # Additional information, such as uploading business proof documents or screenshots, to help reviewers understand your business details. Optional and can be left unset.
         self.more_data_shrink = more_data_shrink
         self.owner_id = owner_id
+        # SMS signature associated with the template during the application.
         self.related_sign_name = related_sign_name
+        # Explanation for the SMS template application, which serves as a reference for template review.
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Template Code of an unapproved template.
+        # 
         # This parameter is required.
         self.template_code = template_code
+        # Template content, up to 500 characters in length.
+        # 
+        # Both the template content and variable content must comply with SMS regulations; otherwise, the template will fail the review. You can also view common template examples on the template application page. Using sample templates can enhance review efficiency and success rates. Variable specifications can be found in [TemplateContent Parameter Variable Specifications](https://help.aliyun.com/zh/sms/templaterule-template-variable-parameter-filling-example?spm).
+        # 
         # This parameter is required.
         self.template_content = template_content
+        # Template name, up to 30 characters in length.
+        # 
         # This parameter is required.
         self.template_name = template_name
+        # Template variable rules.
+        # 
+        # For guidance on filling variable rules, refer to the [Sample Documentation](https://help.aliyun.com/zh/sms/templaterule-template-variable-parameter-filling-example?spm).
         self.template_rule = template_rule
+        # SMS type. Values:
+        # 
+        # - **0**: Verification code.
+        # - **1**: SMS notification.
+        # - **2**: Promotional SMS.
+        # - **3**: International/Hong Kong, Macao, and Taiwan messages.
+        # 
+        # > Only enterprise-certified users can apply for promotional SMS and international/Hong Kong, Macao, and Taiwan messages. Details on differences between personal and enterprise user rights are available in [Usage Guidelines](https://help.aliyun.com/zh/sms/user-guide/usage-notes?spm=a2c4g.11186623.0.0.67447f576NJnE8).
+        # 
         # This parameter is required.
         self.template_type = template_type
 
@@ -9360,11 +10909,22 @@ class UpdateSmsTemplateResponseBody(TeaModel):
         template_code: str = None,
         template_name: str = None,
     ):
+        # Request status code.
+        # 
+        # * OK indicates a successful request.
+        # * For other error codes, refer to the **Error Codes** section of this chapter or the product\\"s [API Error Codes](https://help.aliyun.com/document_detail/101346.html).
         self.code = code
+        # Description of the status code.
         self.message = message
+        # Work order number.
+        # 
+        # This parameter is used by auditors when querying audits. You need to provide this work order number when requesting expedited review.
         self.order_id = order_id
+        # The ID of this call request, which is a unique identifier generated by Alibaba Cloud for the request and can be used to troubleshoot and locate issues.
         self.request_id = request_id
+        # Code of the SMS template.
         self.template_code = template_code
+        # Name of the SMS template.
         self.template_name = template_name
 
     def validate(self):
