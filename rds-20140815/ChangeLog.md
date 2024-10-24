@@ -1,3 +1,17 @@
+2024-10-24 Version: 7.3.1
+- Update API DescribeRCImageList: update param Type.
+- Update API DescribeRCInstanceAttribute: update response param.
+- Update API DescribeRCInstances: add param AccessKeyId.
+- Update API DescribeRCInstances: add param Tag.
+- Update API DescribeRCInstances: update response param.
+- Update API ModifyDBInstanceSpec: add param ReadOnlyDBInstanceClass.
+- Update API RunRCInstances: add param CreateMode.
+- Update API RunRCInstances: add param HostName.
+- Update API RunRCInstances: add param ResourceGroupId.
+- Update API RunRCInstances: add param Tag.
+- Update API RunRCInstances: update param InstanceChargeType.
+
+
 2024-10-18 Version: 7.3.0
 - Support API CancelActiveOperationTasks.
 - Update API CloneDBInstance: add param DBInstanceDescription.

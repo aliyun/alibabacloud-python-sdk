@@ -25450,6 +25450,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
@@ -25493,6 +25495,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
@@ -36300,6 +36304,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.pay_type):
             query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.read_only_dbinstance_class):
+            query['ReadOnlyDBInstanceClass'] = request.read_only_dbinstance_class
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -36405,6 +36411,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.pay_type):
             query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.read_only_dbinstance_class):
+            query['ReadOnlyDBInstanceClass'] = request.read_only_dbinstance_class
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -37919,7 +37927,8 @@ class Client(OpenApiClient):
         @description ### [](#)Supported database engines
         SQL Server
         ### [](#)References
-        You can call this operation to modify the database properties of an ApsaraDB RDS for SQL Server instance and archive data from an instance that uses general Enterprise SSDs (ESSDs) to an Object Storage Service (OSS) bucket. Before you call this operation to archive data to an OSS bucket, you must enable the data archiving feature in the ApsaraDB RDS console. For more information, see [Modify database properties](https://help.aliyun.com/document_detail/2401398.html) and [Archive cloud disk data to an OSS bucket](https://help.aliyun.com/document_detail/2767189.html).
+        <props="china">You can call this operation to modify the database properties of an ApsaraDB RDS for SQL Server instance and archive data from an instance that uses general Enterprise SSDs (ESSDs) to an Object Storage Service (OSS) bucket. Before you call this operation to archive data to an OSS bucket, you must enable the data archiving feature in the ApsaraDB RDS console. For more information, see [Modify database properties](https://help.aliyun.com/document_detail/2401398.html) and [Archive cloud disk data to an OSS bucket](https://help.aliyun.com/document_detail/2767189.html).
+        <props="intl">You can call this operation to modify the database properties of an ApsaraDB RDS for SQL Server instance and archive data from an instance that uses general Enterprise SSDs (ESSDs) to an Object Storage Service (OSS) bucket. Before you call this operation to archive data to an OSS bucket, you must enable the data archiving feature in the ApsaraDB RDS console. For more information, see [Modify database properties](https://help.aliyun.com/document_detail/2401398.html).
         > : Before you call this operation, read the preceding topics and make sure that you fully understand the prerequisites and impacts of this operation.
         
         @param request: ModifyDatabaseConfigRequest
@@ -37974,7 +37983,8 @@ class Client(OpenApiClient):
         @description ### [](#)Supported database engines
         SQL Server
         ### [](#)References
-        You can call this operation to modify the database properties of an ApsaraDB RDS for SQL Server instance and archive data from an instance that uses general Enterprise SSDs (ESSDs) to an Object Storage Service (OSS) bucket. Before you call this operation to archive data to an OSS bucket, you must enable the data archiving feature in the ApsaraDB RDS console. For more information, see [Modify database properties](https://help.aliyun.com/document_detail/2401398.html) and [Archive cloud disk data to an OSS bucket](https://help.aliyun.com/document_detail/2767189.html).
+        <props="china">You can call this operation to modify the database properties of an ApsaraDB RDS for SQL Server instance and archive data from an instance that uses general Enterprise SSDs (ESSDs) to an Object Storage Service (OSS) bucket. Before you call this operation to archive data to an OSS bucket, you must enable the data archiving feature in the ApsaraDB RDS console. For more information, see [Modify database properties](https://help.aliyun.com/document_detail/2401398.html) and [Archive cloud disk data to an OSS bucket](https://help.aliyun.com/document_detail/2767189.html).
+        <props="intl">You can call this operation to modify the database properties of an ApsaraDB RDS for SQL Server instance and archive data from an instance that uses general Enterprise SSDs (ESSDs) to an Object Storage Service (OSS) bucket. Before you call this operation to archive data to an OSS bucket, you must enable the data archiving feature in the ApsaraDB RDS console. For more information, see [Modify database properties](https://help.aliyun.com/document_detail/2401398.html).
         > : Before you call this operation, read the preceding topics and make sure that you fully understand the prerequisites and impacts of this operation.
         
         @param request: ModifyDatabaseConfigRequest
@@ -38028,7 +38038,8 @@ class Client(OpenApiClient):
         @description ### [](#)Supported database engines
         SQL Server
         ### [](#)References
-        You can call this operation to modify the database properties of an ApsaraDB RDS for SQL Server instance and archive data from an instance that uses general Enterprise SSDs (ESSDs) to an Object Storage Service (OSS) bucket. Before you call this operation to archive data to an OSS bucket, you must enable the data archiving feature in the ApsaraDB RDS console. For more information, see [Modify database properties](https://help.aliyun.com/document_detail/2401398.html) and [Archive cloud disk data to an OSS bucket](https://help.aliyun.com/document_detail/2767189.html).
+        <props="china">You can call this operation to modify the database properties of an ApsaraDB RDS for SQL Server instance and archive data from an instance that uses general Enterprise SSDs (ESSDs) to an Object Storage Service (OSS) bucket. Before you call this operation to archive data to an OSS bucket, you must enable the data archiving feature in the ApsaraDB RDS console. For more information, see [Modify database properties](https://help.aliyun.com/document_detail/2401398.html) and [Archive cloud disk data to an OSS bucket](https://help.aliyun.com/document_detail/2767189.html).
+        <props="intl">You can call this operation to modify the database properties of an ApsaraDB RDS for SQL Server instance and archive data from an instance that uses general Enterprise SSDs (ESSDs) to an Object Storage Service (OSS) bucket. Before you call this operation to archive data to an OSS bucket, you must enable the data archiving feature in the ApsaraDB RDS console. For more information, see [Modify database properties](https://help.aliyun.com/document_detail/2401398.html).
         > : Before you call this operation, read the preceding topics and make sure that you fully understand the prerequisites and impacts of this operation.
         
         @param request: ModifyDatabaseConfigRequest
@@ -38047,7 +38058,8 @@ class Client(OpenApiClient):
         @description ### [](#)Supported database engines
         SQL Server
         ### [](#)References
-        You can call this operation to modify the database properties of an ApsaraDB RDS for SQL Server instance and archive data from an instance that uses general Enterprise SSDs (ESSDs) to an Object Storage Service (OSS) bucket. Before you call this operation to archive data to an OSS bucket, you must enable the data archiving feature in the ApsaraDB RDS console. For more information, see [Modify database properties](https://help.aliyun.com/document_detail/2401398.html) and [Archive cloud disk data to an OSS bucket](https://help.aliyun.com/document_detail/2767189.html).
+        <props="china">You can call this operation to modify the database properties of an ApsaraDB RDS for SQL Server instance and archive data from an instance that uses general Enterprise SSDs (ESSDs) to an Object Storage Service (OSS) bucket. Before you call this operation to archive data to an OSS bucket, you must enable the data archiving feature in the ApsaraDB RDS console. For more information, see [Modify database properties](https://help.aliyun.com/document_detail/2401398.html) and [Archive cloud disk data to an OSS bucket](https://help.aliyun.com/document_detail/2767189.html).
+        <props="intl">You can call this operation to modify the database properties of an ApsaraDB RDS for SQL Server instance and archive data from an instance that uses general Enterprise SSDs (ESSDs) to an Object Storage Service (OSS) bucket. Before you call this operation to archive data to an OSS bucket, you must enable the data archiving feature in the ApsaraDB RDS console. For more information, see [Modify database properties](https://help.aliyun.com/document_detail/2401398.html).
         > : Before you call this operation, read the preceding topics and make sure that you fully understand the prerequisites and impacts of this operation.
         
         @param request: ModifyDatabaseConfigRequest
@@ -44620,6 +44632,8 @@ class Client(OpenApiClient):
             query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.create_mode):
+            query['CreateMode'] = request.create_mode
         if not UtilClient.is_unset(request.data_disk_shrink):
             query['DataDisk'] = request.data_disk_shrink
         if not UtilClient.is_unset(request.deployment_set_id):
@@ -44628,6 +44642,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.host_name):
+            query['HostName'] = request.host_name
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.instance_charge_type):
@@ -44652,12 +44668,16 @@ class Client(OpenApiClient):
             query['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.security_enhancement_strategy):
             query['SecurityEnhancementStrategy'] = request.security_enhancement_strategy
         if not UtilClient.is_unset(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.system_disk_shrink):
             query['SystemDisk'] = request.system_disk_shrink
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.zone_id):
@@ -44713,6 +44733,8 @@ class Client(OpenApiClient):
             query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.create_mode):
+            query['CreateMode'] = request.create_mode
         if not UtilClient.is_unset(request.data_disk_shrink):
             query['DataDisk'] = request.data_disk_shrink
         if not UtilClient.is_unset(request.deployment_set_id):
@@ -44721,6 +44743,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.host_name):
+            query['HostName'] = request.host_name
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.instance_charge_type):
@@ -44745,12 +44769,16 @@ class Client(OpenApiClient):
             query['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.security_enhancement_strategy):
             query['SecurityEnhancementStrategy'] = request.security_enhancement_strategy
         if not UtilClient.is_unset(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.system_disk_shrink):
             query['SystemDisk'] = request.system_disk_shrink
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.zone_id):

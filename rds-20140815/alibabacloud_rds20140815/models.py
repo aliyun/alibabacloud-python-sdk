@@ -49184,6 +49184,7 @@ class DescribeRCInstanceAttributeResponseBody(TeaModel):
         host_type: str = None,
         image_id: str = None,
         inner_ip_address: DescribeRCInstanceAttributeResponseBodyInnerIpAddress = None,
+        instance_charge_type: str = None,
         instance_id: str = None,
         instance_name: str = None,
         instance_network_type: str = None,
@@ -49198,6 +49199,7 @@ class DescribeRCInstanceAttributeResponseBody(TeaModel):
         public_ip_address: DescribeRCInstanceAttributeResponseBodyPublicIpAddress = None,
         region_id: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
         security_group_ids: DescribeRCInstanceAttributeResponseBodySecurityGroupIds = None,
         serial_number: str = None,
         status: str = None,
@@ -49248,6 +49250,7 @@ class DescribeRCInstanceAttributeResponseBody(TeaModel):
         self.image_id = image_id
         # The private IP addresses of the instance in the classic network.
         self.inner_ip_address = inner_ip_address
+        self.instance_charge_type = instance_charge_type
         # The instance ID.
         self.instance_id = instance_id
         # The instance name.
@@ -49287,6 +49290,7 @@ class DescribeRCInstanceAttributeResponseBody(TeaModel):
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
         # The security groups.
         self.security_group_ids = security_group_ids
         # The serial number of the instance.
@@ -49372,6 +49376,8 @@ class DescribeRCInstanceAttributeResponseBody(TeaModel):
             result['ImageId'] = self.image_id
         if self.inner_ip_address is not None:
             result['InnerIpAddress'] = self.inner_ip_address.to_map()
+        if self.instance_charge_type is not None:
+            result['InstanceChargeType'] = self.instance_charge_type
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.instance_name is not None:
@@ -49400,6 +49406,8 @@ class DescribeRCInstanceAttributeResponseBody(TeaModel):
             result['RegionId'] = self.region_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.security_group_ids is not None:
             result['SecurityGroupIds'] = self.security_group_ids.to_map()
         if self.serial_number is not None:
@@ -49456,6 +49464,8 @@ class DescribeRCInstanceAttributeResponseBody(TeaModel):
         if m.get('InnerIpAddress') is not None:
             temp_model = DescribeRCInstanceAttributeResponseBodyInnerIpAddress()
             self.inner_ip_address = temp_model.from_map(m['InnerIpAddress'])
+        if m.get('InstanceChargeType') is not None:
+            self.instance_charge_type = m.get('InstanceChargeType')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceName') is not None:
@@ -49486,6 +49496,8 @@ class DescribeRCInstanceAttributeResponseBody(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SecurityGroupIds') is not None:
             temp_model = DescribeRCInstanceAttributeResponseBodySecurityGroupIds()
             self.security_group_ids = temp_model.from_map(m['SecurityGroupIds'])
@@ -49553,6 +49565,7 @@ class DescribeRCInstancesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        tag: str = None,
         vpc_id: str = None,
     ):
         # The instance ID.
@@ -49571,6 +49584,7 @@ class DescribeRCInstancesRequest(TeaModel):
         self.page_size = page_size
         # The region ID.
         self.region_id = region_id
+        self.tag = tag
         # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
 
@@ -49591,6 +49605,8 @@ class DescribeRCInstancesRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.tag is not None:
+            result['Tag'] = self.tag
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
@@ -49605,6 +49621,8 @@ class DescribeRCInstancesRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         return self
@@ -49614,11 +49632,13 @@ class DescribeRCInstancesResponseBodyRCInstances(TeaModel):
     def __init__(
         self,
         cluster_name: str = None,
+        create_mode: str = None,
         db_type: str = None,
         description: str = None,
         gmt_created: str = None,
         host_ip: str = None,
         host_name: str = None,
+        instance_charge_type: str = None,
         instance_id: str = None,
         region_id: str = None,
         status: str = None,
@@ -49626,6 +49646,7 @@ class DescribeRCInstancesResponseBodyRCInstances(TeaModel):
     ):
         # The cluster name.
         self.cluster_name = cluster_name
+        self.create_mode = create_mode
         # The database type.
         self.db_type = db_type
         # The instance description.
@@ -49636,6 +49657,7 @@ class DescribeRCInstancesResponseBodyRCInstances(TeaModel):
         self.host_ip = host_ip
         # The host name.
         self.host_name = host_name
+        self.instance_charge_type = instance_charge_type
         # The instance ID.
         self.instance_id = instance_id
         # The region ID.
@@ -49664,6 +49686,8 @@ class DescribeRCInstancesResponseBodyRCInstances(TeaModel):
         result = dict()
         if self.cluster_name is not None:
             result['ClusterName'] = self.cluster_name
+        if self.create_mode is not None:
+            result['CreateMode'] = self.create_mode
         if self.db_type is not None:
             result['DbType'] = self.db_type
         if self.description is not None:
@@ -49674,6 +49698,8 @@ class DescribeRCInstancesResponseBodyRCInstances(TeaModel):
             result['HostIp'] = self.host_ip
         if self.host_name is not None:
             result['HostName'] = self.host_name
+        if self.instance_charge_type is not None:
+            result['InstanceChargeType'] = self.instance_charge_type
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -49688,6 +49714,8 @@ class DescribeRCInstancesResponseBodyRCInstances(TeaModel):
         m = m or dict()
         if m.get('ClusterName') is not None:
             self.cluster_name = m.get('ClusterName')
+        if m.get('CreateMode') is not None:
+            self.create_mode = m.get('CreateMode')
         if m.get('DbType') is not None:
             self.db_type = m.get('DbType')
         if m.get('Description') is not None:
@@ -49698,6 +49726,8 @@ class DescribeRCInstancesResponseBodyRCInstances(TeaModel):
             self.host_ip = m.get('HostIp')
         if m.get('HostName') is not None:
             self.host_name = m.get('HostName')
+        if m.get('InstanceChargeType') is not None:
+            self.instance_charge_type = m.get('InstanceChargeType')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -49839,7 +49869,7 @@ class DescribeRCMetricListRequest(TeaModel):
         # 
         # >  The maximum value of the Length parameter in a request is 1440.
         self.length = length
-        # The metric that you want to use.
+        # The metric that you want to use. For more information, see [CloudMonitor metrics](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
         # 
         # This parameter is required.
         self.metric_name = metric_name
@@ -66316,6 +66346,7 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         owner_account: str = None,
         owner_id: int = None,
         pay_type: str = None,
+        read_only_dbinstance_class: str = None,
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -66433,6 +66464,7 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         # *   **Prepaid**: subscription.
         # *   **Serverless**: serverless. This value is not supported for instances that run MariaDB. If you set the value to Serverless, you must specify the scaling range of computing resources, configure the automatic start and stop feature, and configure auto scaling policies for your serverless instance. For more information, see [Overview of serverless ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/411291.html), [Overview of serverless ApsaraDB RDS for SQL Server instances](https://help.aliyun.com/document_detail/604344.html), and [Overview of serverless ApsaraDB RDS for PostgreSQL instances](https://help.aliyun.com/document_detail/607742.html).
         self.pay_type = pay_type
+        self.read_only_dbinstance_class = read_only_dbinstance_class
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
@@ -66518,6 +66550,8 @@ class ModifyDBInstanceSpecRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
+        if self.read_only_dbinstance_class is not None:
+            result['ReadOnlyDBInstanceClass'] = self.read_only_dbinstance_class
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
@@ -66578,6 +66612,8 @@ class ModifyDBInstanceSpecRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
+        if m.get('ReadOnlyDBInstanceClass') is not None:
+            self.read_only_dbinstance_class = m.get('ReadOnlyDBInstanceClass')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
@@ -66624,6 +66660,7 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         owner_account: str = None,
         owner_id: int = None,
         pay_type: str = None,
+        read_only_dbinstance_class: str = None,
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -66741,6 +66778,7 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         # *   **Prepaid**: subscription.
         # *   **Serverless**: serverless. This value is not supported for instances that run MariaDB. If you set the value to Serverless, you must specify the scaling range of computing resources, configure the automatic start and stop feature, and configure auto scaling policies for your serverless instance. For more information, see [Overview of serverless ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/411291.html), [Overview of serverless ApsaraDB RDS for SQL Server instances](https://help.aliyun.com/document_detail/604344.html), and [Overview of serverless ApsaraDB RDS for PostgreSQL instances](https://help.aliyun.com/document_detail/607742.html).
         self.pay_type = pay_type
+        self.read_only_dbinstance_class = read_only_dbinstance_class
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
@@ -66825,6 +66863,8 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
+        if self.read_only_dbinstance_class is not None:
+            result['ReadOnlyDBInstanceClass'] = self.read_only_dbinstance_class
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
@@ -66885,6 +66925,8 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
+        if m.get('ReadOnlyDBInstanceClass') is not None:
+            self.read_only_dbinstance_class = m.get('ReadOnlyDBInstanceClass')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
@@ -77209,6 +77251,39 @@ class RunRCInstancesRequestSystemDisk(TeaModel):
         return self
 
 
+class RunRCInstancesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class RunRCInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -77216,10 +77291,12 @@ class RunRCInstancesRequest(TeaModel):
         auto_pay: bool = None,
         auto_renew: bool = None,
         client_token: str = None,
+        create_mode: str = None,
         data_disk: List[RunRCInstancesRequestDataDisk] = None,
         deployment_set_id: str = None,
         description: str = None,
         dry_run: bool = None,
+        host_name: str = None,
         image_id: str = None,
         instance_charge_type: str = None,
         instance_name: str = None,
@@ -77232,9 +77309,11 @@ class RunRCInstancesRequest(TeaModel):
         period: int = None,
         period_unit: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         security_enhancement_strategy: str = None,
         security_group_id: str = None,
         system_disk: RunRCInstancesRequestSystemDisk = None,
+        tag: List[RunRCInstancesRequestTag] = None,
         v_switch_id: str = None,
         zone_id: str = None,
     ):
@@ -77258,6 +77337,7 @@ class RunRCInstancesRequest(TeaModel):
         self.auto_renew = auto_renew
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        self.create_mode = create_mode
         # The information about the data disks.
         self.data_disk = data_disk
         # The deployment set ID.
@@ -77269,6 +77349,7 @@ class RunRCInstancesRequest(TeaModel):
         # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and insufficient inventory errors.
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, the instance is directly created.
         self.dry_run = dry_run
+        self.host_name = host_name
         # The ID of the image used by the instance.
         self.image_id = image_id
         # The billing method of the instance. Set the value to **Prepaid**, which indicates the subscription billing method.
@@ -77300,6 +77381,7 @@ class RunRCInstancesRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The reserved parameter. This parameter is not supported.
         self.security_enhancement_strategy = security_enhancement_strategy
         # The ID of the security group to which you want to add the new instance. Instances in the same security group can communicate with each other. The maximum number of instances allowed in a security group varies based on the type of the security group. For more information, see the "Security group limits" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
@@ -77308,6 +77390,7 @@ class RunRCInstancesRequest(TeaModel):
         self.security_group_id = security_group_id
         # The specification of the system disk.
         self.system_disk = system_disk
+        self.tag = tag
         # The vSwitch ID of the instance. You must specify this parameter when you create an instance of the virtual private cloud (VPC) type. The specified vSwitch and security group must belong to the same VPC.
         # 
         # >  If you specify the VSwitchId parameter, the zone specified by the ZoneId parameter must be the same as the zone in which the specified vSwitch resides. You can leave the ZoneId parameter empty. In this case, the system uses the zone in which the specified vSwitch resides.
@@ -77326,6 +77409,10 @@ class RunRCInstancesRequest(TeaModel):
                     k.validate()
         if self.system_disk:
             self.system_disk.validate()
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -77341,6 +77428,8 @@ class RunRCInstancesRequest(TeaModel):
             result['AutoRenew'] = self.auto_renew
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.create_mode is not None:
+            result['CreateMode'] = self.create_mode
         result['DataDisk'] = []
         if self.data_disk is not None:
             for k in self.data_disk:
@@ -77351,6 +77440,8 @@ class RunRCInstancesRequest(TeaModel):
             result['Description'] = self.description
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+        if self.host_name is not None:
+            result['HostName'] = self.host_name
         if self.image_id is not None:
             result['ImageId'] = self.image_id
         if self.instance_charge_type is not None:
@@ -77375,12 +77466,18 @@ class RunRCInstancesRequest(TeaModel):
             result['PeriodUnit'] = self.period_unit
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.security_enhancement_strategy is not None:
             result['SecurityEnhancementStrategy'] = self.security_enhancement_strategy
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
         if self.system_disk is not None:
             result['SystemDisk'] = self.system_disk.to_map()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.zone_id is not None:
@@ -77397,6 +77494,8 @@ class RunRCInstancesRequest(TeaModel):
             self.auto_renew = m.get('AutoRenew')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('CreateMode') is not None:
+            self.create_mode = m.get('CreateMode')
         self.data_disk = []
         if m.get('DataDisk') is not None:
             for k in m.get('DataDisk'):
@@ -77408,6 +77507,8 @@ class RunRCInstancesRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+        if m.get('HostName') is not None:
+            self.host_name = m.get('HostName')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
         if m.get('InstanceChargeType') is not None:
@@ -77432,6 +77533,8 @@ class RunRCInstancesRequest(TeaModel):
             self.period_unit = m.get('PeriodUnit')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SecurityEnhancementStrategy') is not None:
             self.security_enhancement_strategy = m.get('SecurityEnhancementStrategy')
         if m.get('SecurityGroupId') is not None:
@@ -77439,10 +77542,48 @@ class RunRCInstancesRequest(TeaModel):
         if m.get('SystemDisk') is not None:
             temp_model = RunRCInstancesRequestSystemDisk()
             self.system_disk = temp_model.from_map(m['SystemDisk'])
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = RunRCInstancesRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
+        return self
+
+
+class RunRCInstancesShrinkRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -77453,10 +77594,12 @@ class RunRCInstancesShrinkRequest(TeaModel):
         auto_pay: bool = None,
         auto_renew: bool = None,
         client_token: str = None,
+        create_mode: str = None,
         data_disk_shrink: str = None,
         deployment_set_id: str = None,
         description: str = None,
         dry_run: bool = None,
+        host_name: str = None,
         image_id: str = None,
         instance_charge_type: str = None,
         instance_name: str = None,
@@ -77469,9 +77612,11 @@ class RunRCInstancesShrinkRequest(TeaModel):
         period: int = None,
         period_unit: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         security_enhancement_strategy: str = None,
         security_group_id: str = None,
         system_disk_shrink: str = None,
+        tag: List[RunRCInstancesShrinkRequestTag] = None,
         v_switch_id: str = None,
         zone_id: str = None,
     ):
@@ -77495,6 +77640,7 @@ class RunRCInstancesShrinkRequest(TeaModel):
         self.auto_renew = auto_renew
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        self.create_mode = create_mode
         # The information about the data disks.
         self.data_disk_shrink = data_disk_shrink
         # The deployment set ID.
@@ -77506,6 +77652,7 @@ class RunRCInstancesShrinkRequest(TeaModel):
         # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and insufficient inventory errors.
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, the instance is directly created.
         self.dry_run = dry_run
+        self.host_name = host_name
         # The ID of the image used by the instance.
         self.image_id = image_id
         # The billing method of the instance. Set the value to **Prepaid**, which indicates the subscription billing method.
@@ -77537,6 +77684,7 @@ class RunRCInstancesShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The reserved parameter. This parameter is not supported.
         self.security_enhancement_strategy = security_enhancement_strategy
         # The ID of the security group to which you want to add the new instance. Instances in the same security group can communicate with each other. The maximum number of instances allowed in a security group varies based on the type of the security group. For more information, see the "Security group limits" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
@@ -77545,6 +77693,7 @@ class RunRCInstancesShrinkRequest(TeaModel):
         self.security_group_id = security_group_id
         # The specification of the system disk.
         self.system_disk_shrink = system_disk_shrink
+        self.tag = tag
         # The vSwitch ID of the instance. You must specify this parameter when you create an instance of the virtual private cloud (VPC) type. The specified vSwitch and security group must belong to the same VPC.
         # 
         # >  If you specify the VSwitchId parameter, the zone specified by the ZoneId parameter must be the same as the zone in which the specified vSwitch resides. You can leave the ZoneId parameter empty. In this case, the system uses the zone in which the specified vSwitch resides.
@@ -77557,7 +77706,10 @@ class RunRCInstancesShrinkRequest(TeaModel):
         self.zone_id = zone_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -77573,6 +77725,8 @@ class RunRCInstancesShrinkRequest(TeaModel):
             result['AutoRenew'] = self.auto_renew
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.create_mode is not None:
+            result['CreateMode'] = self.create_mode
         if self.data_disk_shrink is not None:
             result['DataDisk'] = self.data_disk_shrink
         if self.deployment_set_id is not None:
@@ -77581,6 +77735,8 @@ class RunRCInstancesShrinkRequest(TeaModel):
             result['Description'] = self.description
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+        if self.host_name is not None:
+            result['HostName'] = self.host_name
         if self.image_id is not None:
             result['ImageId'] = self.image_id
         if self.instance_charge_type is not None:
@@ -77605,12 +77761,18 @@ class RunRCInstancesShrinkRequest(TeaModel):
             result['PeriodUnit'] = self.period_unit
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.security_enhancement_strategy is not None:
             result['SecurityEnhancementStrategy'] = self.security_enhancement_strategy
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
         if self.system_disk_shrink is not None:
             result['SystemDisk'] = self.system_disk_shrink
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.zone_id is not None:
@@ -77627,6 +77789,8 @@ class RunRCInstancesShrinkRequest(TeaModel):
             self.auto_renew = m.get('AutoRenew')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('CreateMode') is not None:
+            self.create_mode = m.get('CreateMode')
         if m.get('DataDisk') is not None:
             self.data_disk_shrink = m.get('DataDisk')
         if m.get('DeploymentSetId') is not None:
@@ -77635,6 +77799,8 @@ class RunRCInstancesShrinkRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+        if m.get('HostName') is not None:
+            self.host_name = m.get('HostName')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
         if m.get('InstanceChargeType') is not None:
@@ -77659,12 +77825,19 @@ class RunRCInstancesShrinkRequest(TeaModel):
             self.period_unit = m.get('PeriodUnit')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SecurityEnhancementStrategy') is not None:
             self.security_enhancement_strategy = m.get('SecurityEnhancementStrategy')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('SystemDisk') is not None:
             self.system_disk_shrink = m.get('SystemDisk')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = RunRCInstancesShrinkRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('ZoneId') is not None:
