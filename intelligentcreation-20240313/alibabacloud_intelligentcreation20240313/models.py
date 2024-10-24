@@ -2778,6 +2778,7 @@ class ListAnchorRequest(TeaModel):
         digital_human_type: str = None,
         page_number: int = None,
         page_size: int = None,
+        res_spec_type: str = None,
         use_scene: str = None,
     ):
         self.anchor_type = anchor_type
@@ -2785,6 +2786,7 @@ class ListAnchorRequest(TeaModel):
         self.digital_human_type = digital_human_type
         self.page_number = page_number
         self.page_size = page_size
+        self.res_spec_type = res_spec_type
         self.use_scene = use_scene
 
     def validate(self):
@@ -2806,6 +2808,8 @@ class ListAnchorRequest(TeaModel):
             result['pageNumber'] = self.page_number
         if self.page_size is not None:
             result['pageSize'] = self.page_size
+        if self.res_spec_type is not None:
+            result['resSpecType'] = self.res_spec_type
         if self.use_scene is not None:
             result['useScene'] = self.use_scene
         return result
@@ -2822,6 +2826,8 @@ class ListAnchorRequest(TeaModel):
             self.page_number = m.get('pageNumber')
         if m.get('pageSize') is not None:
             self.page_size = m.get('pageSize')
+        if m.get('resSpecType') is not None:
+            self.res_spec_type = m.get('resSpecType')
         if m.get('useScene') is not None:
             self.use_scene = m.get('useScene')
         return self
@@ -3311,11 +3317,13 @@ class ListVoiceModelsRequest(TeaModel):
         self,
         page_number: int = None,
         page_size: int = None,
+        res_spec_type: str = None,
         use_scene: str = None,
         voice_type: str = None,
     ):
         self.page_number = page_number
         self.page_size = page_size
+        self.res_spec_type = res_spec_type
         self.use_scene = use_scene
         self.voice_type = voice_type
 
@@ -3332,6 +3340,8 @@ class ListVoiceModelsRequest(TeaModel):
             result['pageNumber'] = self.page_number
         if self.page_size is not None:
             result['pageSize'] = self.page_size
+        if self.res_spec_type is not None:
+            result['resSpecType'] = self.res_spec_type
         if self.use_scene is not None:
             result['useScene'] = self.use_scene
         if self.voice_type is not None:
@@ -3344,6 +3354,8 @@ class ListVoiceModelsRequest(TeaModel):
             self.page_number = m.get('pageNumber')
         if m.get('pageSize') is not None:
             self.page_size = m.get('pageSize')
+        if m.get('resSpecType') is not None:
+            self.res_spec_type = m.get('resSpecType')
         if m.get('useScene') is not None:
             self.use_scene = m.get('useScene')
         if m.get('voiceType') is not None:
@@ -3464,6 +3476,126 @@ class ListVoiceModelsResponse(TeaModel):
         return self
 
 
+class OperateAvatarProjectRequest(TeaModel):
+    def __init__(
+        self,
+        operate_type: str = None,
+        project_id: str = None,
+        res_channel_number: int = None,
+        res_type: str = None,
+    ):
+        self.operate_type = operate_type
+        self.project_id = project_id
+        self.res_channel_number = res_channel_number
+        self.res_type = res_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operate_type is not None:
+            result['operateType'] = self.operate_type
+        if self.project_id is not None:
+            result['projectId'] = self.project_id
+        if self.res_channel_number is not None:
+            result['resChannelNumber'] = self.res_channel_number
+        if self.res_type is not None:
+            result['resType'] = self.res_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('operateType') is not None:
+            self.operate_type = m.get('operateType')
+        if m.get('projectId') is not None:
+            self.project_id = m.get('projectId')
+        if m.get('resChannelNumber') is not None:
+            self.res_channel_number = m.get('resChannelNumber')
+        if m.get('resType') is not None:
+            self.res_type = m.get('resType')
+        return self
+
+
+class OperateAvatarProjectResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class OperateAvatarProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: OperateAvatarProjectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = OperateAvatarProjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryAvatarProjectRequest(TeaModel):
     def __init__(
         self,
@@ -3491,23 +3623,207 @@ class QueryAvatarProjectRequest(TeaModel):
         return self
 
 
+class QueryAvatarProjectResponseBodyFramesLayersMaterial(TeaModel):
+    def __init__(
+        self,
+        format: str = None,
+        id: str = None,
+        url: str = None,
+    ):
+        self.format = format
+        self.id = id
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.format is not None:
+            result['format'] = self.format
+        if self.id is not None:
+            result['id'] = self.id
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('format') is not None:
+            self.format = m.get('format')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class QueryAvatarProjectResponseBodyFramesLayers(TeaModel):
+    def __init__(
+        self,
+        height: int = None,
+        material: QueryAvatarProjectResponseBodyFramesLayersMaterial = None,
+        position_x: int = None,
+        position_y: int = None,
+        type: str = None,
+        width: int = None,
+    ):
+        self.height = height
+        self.material = material
+        self.position_x = position_x
+        self.position_y = position_y
+        self.type = type
+        self.width = width
+
+    def validate(self):
+        if self.material:
+            self.material.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.height is not None:
+            result['height'] = self.height
+        if self.material is not None:
+            result['material'] = self.material.to_map()
+        if self.position_x is not None:
+            result['positionX'] = self.position_x
+        if self.position_y is not None:
+            result['positionY'] = self.position_y
+        if self.type is not None:
+            result['type'] = self.type
+        if self.width is not None:
+            result['width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('height') is not None:
+            self.height = m.get('height')
+        if m.get('material') is not None:
+            temp_model = QueryAvatarProjectResponseBodyFramesLayersMaterial()
+            self.material = temp_model.from_map(m['material'])
+        if m.get('positionX') is not None:
+            self.position_x = m.get('positionX')
+        if m.get('positionY') is not None:
+            self.position_y = m.get('positionY')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('width') is not None:
+            self.width = m.get('width')
+        return self
+
+
+class QueryAvatarProjectResponseBodyFramesVideoScript(TeaModel):
+    def __init__(
+        self,
+        speed_rate: str = None,
+        voice_template_id: str = None,
+    ):
+        self.speed_rate = speed_rate
+        self.voice_template_id = voice_template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.speed_rate is not None:
+            result['speedRate'] = self.speed_rate
+        if self.voice_template_id is not None:
+            result['voiceTemplateId'] = self.voice_template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('speedRate') is not None:
+            self.speed_rate = m.get('speedRate')
+        if m.get('voiceTemplateId') is not None:
+            self.voice_template_id = m.get('voiceTemplateId')
+        return self
+
+
+class QueryAvatarProjectResponseBodyFrames(TeaModel):
+    def __init__(
+        self,
+        layers: List[QueryAvatarProjectResponseBodyFramesLayers] = None,
+        video_script: QueryAvatarProjectResponseBodyFramesVideoScript = None,
+    ):
+        self.layers = layers
+        self.video_script = video_script
+
+    def validate(self):
+        if self.layers:
+            for k in self.layers:
+                if k:
+                    k.validate()
+        if self.video_script:
+            self.video_script.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['layers'] = []
+        if self.layers is not None:
+            for k in self.layers:
+                result['layers'].append(k.to_map() if k else None)
+        if self.video_script is not None:
+            result['videoScript'] = self.video_script.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.layers = []
+        if m.get('layers') is not None:
+            for k in m.get('layers'):
+                temp_model = QueryAvatarProjectResponseBodyFramesLayers()
+                self.layers.append(temp_model.from_map(k))
+        if m.get('videoScript') is not None:
+            temp_model = QueryAvatarProjectResponseBodyFramesVideoScript()
+            self.video_script = temp_model.from_map(m['videoScript'])
+        return self
+
+
 class QueryAvatarProjectResponseBody(TeaModel):
     def __init__(
         self,
         agent_id: str = None,
         error_msg: str = None,
+        frames: List[QueryAvatarProjectResponseBodyFrames] = None,
         project_name: str = None,
         request_id: str = None,
+        res_spec_type: str = None,
+        scale_type: str = None,
         status: str = None,
     ):
         self.agent_id = agent_id
         self.error_msg = error_msg
+        self.frames = frames
         self.project_name = project_name
         self.request_id = request_id
+        self.res_spec_type = res_spec_type
+        self.scale_type = scale_type
         self.status = status
 
     def validate(self):
-        pass
+        if self.frames:
+            for k in self.frames:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3519,10 +3835,18 @@ class QueryAvatarProjectResponseBody(TeaModel):
             result['agentId'] = self.agent_id
         if self.error_msg is not None:
             result['errorMsg'] = self.error_msg
+        result['frames'] = []
+        if self.frames is not None:
+            for k in self.frames:
+                result['frames'].append(k.to_map() if k else None)
         if self.project_name is not None:
             result['projectName'] = self.project_name
         if self.request_id is not None:
             result['requestId'] = self.request_id
+        if self.res_spec_type is not None:
+            result['resSpecType'] = self.res_spec_type
+        if self.scale_type is not None:
+            result['scaleType'] = self.scale_type
         if self.status is not None:
             result['status'] = self.status
         return result
@@ -3533,10 +3857,19 @@ class QueryAvatarProjectResponseBody(TeaModel):
             self.agent_id = m.get('agentId')
         if m.get('errorMsg') is not None:
             self.error_msg = m.get('errorMsg')
+        self.frames = []
+        if m.get('frames') is not None:
+            for k in m.get('frames'):
+                temp_model = QueryAvatarProjectResponseBodyFrames()
+                self.frames.append(temp_model.from_map(k))
         if m.get('projectName') is not None:
             self.project_name = m.get('projectName')
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+        if m.get('resSpecType') is not None:
+            self.res_spec_type = m.get('resSpecType')
+        if m.get('scaleType') is not None:
+            self.scale_type = m.get('scaleType')
         if m.get('status') is not None:
             self.status = m.get('status')
         return self
@@ -3731,6 +4064,217 @@ class QueryAvatarResourceResponse(TeaModel):
         return self
 
 
+class QuerySessionInfoRequest(TeaModel):
+    def __init__(
+        self,
+        page_no: int = None,
+        page_size: int = None,
+        project_id: str = None,
+        status_list: List[str] = None,
+    ):
+        self.page_no = page_no
+        self.page_size = page_size
+        self.project_id = project_id
+        self.status_list = status_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_no is not None:
+            result['pageNo'] = self.page_no
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.project_id is not None:
+            result['projectId'] = self.project_id
+        if self.status_list is not None:
+            result['statusList'] = self.status_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('pageNo') is not None:
+            self.page_no = m.get('pageNo')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('projectId') is not None:
+            self.project_id = m.get('projectId')
+        if m.get('statusList') is not None:
+            self.status_list = m.get('statusList')
+        return self
+
+
+class QuerySessionInfoShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        page_no: int = None,
+        page_size: int = None,
+        project_id: str = None,
+        status_list_shrink: str = None,
+    ):
+        self.page_no = page_no
+        self.page_size = page_size
+        self.project_id = project_id
+        self.status_list_shrink = status_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_no is not None:
+            result['pageNo'] = self.page_no
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.project_id is not None:
+            result['projectId'] = self.project_id
+        if self.status_list_shrink is not None:
+            result['statusList'] = self.status_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('pageNo') is not None:
+            self.page_no = m.get('pageNo')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('projectId') is not None:
+            self.project_id = m.get('projectId')
+        if m.get('statusList') is not None:
+            self.status_list_shrink = m.get('statusList')
+        return self
+
+
+class QuerySessionInfoResponseBodyQueryResourceInfoList(TeaModel):
+    def __init__(
+        self,
+        session_id: str = None,
+        status: str = None,
+    ):
+        self.session_id = session_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class QuerySessionInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        query_resource_info_list: List[QuerySessionInfoResponseBodyQueryResourceInfoList] = None,
+        request_id: str = None,
+        total: int = None,
+    ):
+        self.query_resource_info_list = query_resource_info_list
+        self.request_id = request_id
+        self.total = total
+
+    def validate(self):
+        if self.query_resource_info_list:
+            for k in self.query_resource_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['queryResourceInfoList'] = []
+        if self.query_resource_info_list is not None:
+            for k in self.query_resource_info_list:
+                result['queryResourceInfoList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.query_resource_info_list = []
+        if m.get('queryResourceInfoList') is not None:
+            for k in m.get('queryResourceInfoList'):
+                temp_model = QuerySessionInfoResponseBodyQueryResourceInfoList()
+                self.query_resource_info_list.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class QuerySessionInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QuerySessionInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QuerySessionInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryTextStreamResponseBody(TeaModel):
     def __init__(
         self,
@@ -3814,6 +4358,368 @@ class QueryTextStreamResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryTextStreamResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SaveAvatarProjectRequestFramesLayersMaterial(TeaModel):
+    def __init__(
+        self,
+        format: str = None,
+        id: str = None,
+        url: str = None,
+    ):
+        self.format = format
+        self.id = id
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.format is not None:
+            result['format'] = self.format
+        if self.id is not None:
+            result['id'] = self.id
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('format') is not None:
+            self.format = m.get('format')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class SaveAvatarProjectRequestFramesLayers(TeaModel):
+    def __init__(
+        self,
+        height: int = None,
+        material: SaveAvatarProjectRequestFramesLayersMaterial = None,
+        position_x: int = None,
+        position_y: int = None,
+        type: str = None,
+        width: int = None,
+    ):
+        self.height = height
+        self.material = material
+        self.position_x = position_x
+        self.position_y = position_y
+        self.type = type
+        self.width = width
+
+    def validate(self):
+        if self.material:
+            self.material.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.height is not None:
+            result['height'] = self.height
+        if self.material is not None:
+            result['material'] = self.material.to_map()
+        if self.position_x is not None:
+            result['positionX'] = self.position_x
+        if self.position_y is not None:
+            result['positionY'] = self.position_y
+        if self.type is not None:
+            result['type'] = self.type
+        if self.width is not None:
+            result['width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('height') is not None:
+            self.height = m.get('height')
+        if m.get('material') is not None:
+            temp_model = SaveAvatarProjectRequestFramesLayersMaterial()
+            self.material = temp_model.from_map(m['material'])
+        if m.get('positionX') is not None:
+            self.position_x = m.get('positionX')
+        if m.get('positionY') is not None:
+            self.position_y = m.get('positionY')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('width') is not None:
+            self.width = m.get('width')
+        return self
+
+
+class SaveAvatarProjectRequestFramesVideoScript(TeaModel):
+    def __init__(
+        self,
+        speed_rate: str = None,
+        voice_template_id: str = None,
+        volume: str = None,
+    ):
+        self.speed_rate = speed_rate
+        self.voice_template_id = voice_template_id
+        self.volume = volume
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.speed_rate is not None:
+            result['speedRate'] = self.speed_rate
+        if self.voice_template_id is not None:
+            result['voiceTemplateId'] = self.voice_template_id
+        if self.volume is not None:
+            result['volume'] = self.volume
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('speedRate') is not None:
+            self.speed_rate = m.get('speedRate')
+        if m.get('voiceTemplateId') is not None:
+            self.voice_template_id = m.get('voiceTemplateId')
+        if m.get('volume') is not None:
+            self.volume = m.get('volume')
+        return self
+
+
+class SaveAvatarProjectRequestFrames(TeaModel):
+    def __init__(
+        self,
+        layers: List[SaveAvatarProjectRequestFramesLayers] = None,
+        video_script: SaveAvatarProjectRequestFramesVideoScript = None,
+    ):
+        self.layers = layers
+        self.video_script = video_script
+
+    def validate(self):
+        if self.layers:
+            for k in self.layers:
+                if k:
+                    k.validate()
+        if self.video_script:
+            self.video_script.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['layers'] = []
+        if self.layers is not None:
+            for k in self.layers:
+                result['layers'].append(k.to_map() if k else None)
+        if self.video_script is not None:
+            result['videoScript'] = self.video_script.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.layers = []
+        if m.get('layers') is not None:
+            for k in m.get('layers'):
+                temp_model = SaveAvatarProjectRequestFramesLayers()
+                self.layers.append(temp_model.from_map(k))
+        if m.get('videoScript') is not None:
+            temp_model = SaveAvatarProjectRequestFramesVideoScript()
+            self.video_script = temp_model.from_map(m['videoScript'])
+        return self
+
+
+class SaveAvatarProjectRequest(TeaModel):
+    def __init__(
+        self,
+        agent_id: str = None,
+        frames: List[SaveAvatarProjectRequestFrames] = None,
+        operate_type: str = None,
+        project_id: str = None,
+        project_name: str = None,
+        res_spec_type: str = None,
+        scale_type: str = None,
+    ):
+        self.agent_id = agent_id
+        self.frames = frames
+        self.operate_type = operate_type
+        self.project_id = project_id
+        self.project_name = project_name
+        self.res_spec_type = res_spec_type
+        self.scale_type = scale_type
+
+    def validate(self):
+        if self.frames:
+            for k in self.frames:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_id is not None:
+            result['agentId'] = self.agent_id
+        result['frames'] = []
+        if self.frames is not None:
+            for k in self.frames:
+                result['frames'].append(k.to_map() if k else None)
+        if self.operate_type is not None:
+            result['operateType'] = self.operate_type
+        if self.project_id is not None:
+            result['projectId'] = self.project_id
+        if self.project_name is not None:
+            result['projectName'] = self.project_name
+        if self.res_spec_type is not None:
+            result['resSpecType'] = self.res_spec_type
+        if self.scale_type is not None:
+            result['scaleType'] = self.scale_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('agentId') is not None:
+            self.agent_id = m.get('agentId')
+        self.frames = []
+        if m.get('frames') is not None:
+            for k in m.get('frames'):
+                temp_model = SaveAvatarProjectRequestFrames()
+                self.frames.append(temp_model.from_map(k))
+        if m.get('operateType') is not None:
+            self.operate_type = m.get('operateType')
+        if m.get('projectId') is not None:
+            self.project_id = m.get('projectId')
+        if m.get('projectName') is not None:
+            self.project_name = m.get('projectName')
+        if m.get('resSpecType') is not None:
+            self.res_spec_type = m.get('resSpecType')
+        if m.get('scaleType') is not None:
+            self.scale_type = m.get('scaleType')
+        return self
+
+
+class SaveAvatarProjectResponseBody(TeaModel):
+    def __init__(
+        self,
+        agent_id: str = None,
+        error_code: str = None,
+        error_message: str = None,
+        error_msg: str = None,
+        project_id: str = None,
+        project_name: str = None,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.agent_id = agent_id
+        self.error_code = error_code
+        self.error_message = error_message
+        self.error_msg = error_msg
+        self.project_id = project_id
+        self.project_name = project_name
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_id is not None:
+            result['agentId'] = self.agent_id
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.error_msg is not None:
+            result['errorMsg'] = self.error_msg
+        if self.project_id is not None:
+            result['projectId'] = self.project_id
+        if self.project_name is not None:
+            result['projectName'] = self.project_name
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('agentId') is not None:
+            self.agent_id = m.get('agentId')
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('errorMsg') is not None:
+            self.error_msg = m.get('errorMsg')
+        if m.get('projectId') is not None:
+            self.project_id = m.get('projectId')
+        if m.get('projectName') is not None:
+            self.project_name = m.get('projectName')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class SaveAvatarProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SaveAvatarProjectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SaveAvatarProjectResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4288,9 +5194,11 @@ class SendTextMsgResponse(TeaModel):
 class StartAvatarSessionRequest(TeaModel):
     def __init__(
         self,
+        custom_push_url: str = None,
         project_id: str = None,
         request_id: str = None,
     ):
+        self.custom_push_url = custom_push_url
         self.project_id = project_id
         self.request_id = request_id
 
@@ -4303,6 +5211,8 @@ class StartAvatarSessionRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.custom_push_url is not None:
+            result['customPushUrl'] = self.custom_push_url
         if self.project_id is not None:
             result['projectId'] = self.project_id
         if self.request_id is not None:
@@ -4311,6 +5221,8 @@ class StartAvatarSessionRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('customPushUrl') is not None:
+            self.custom_push_url = m.get('customPushUrl')
         if m.get('projectId') is not None:
             self.project_id = m.get('projectId')
         if m.get('requestId') is not None:
@@ -4623,11 +5535,13 @@ class SubmitProjectTaskRequestFramesLayersMaterial(TeaModel):
         self,
         format: str = None,
         id: str = None,
+        speed: str = None,
         url: str = None,
         volume: int = None,
     ):
         self.format = format
         self.id = id
+        self.speed = speed
         self.url = url
         self.volume = volume
 
@@ -4644,6 +5558,8 @@ class SubmitProjectTaskRequestFramesLayersMaterial(TeaModel):
             result['format'] = self.format
         if self.id is not None:
             result['id'] = self.id
+        if self.speed is not None:
+            result['speed'] = self.speed
         if self.url is not None:
             result['url'] = self.url
         if self.volume is not None:
@@ -4656,6 +5572,8 @@ class SubmitProjectTaskRequestFramesLayersMaterial(TeaModel):
             self.format = m.get('format')
         if m.get('id') is not None:
             self.id = m.get('id')
+        if m.get('speed') is not None:
+            self.speed = m.get('speed')
         if m.get('url') is not None:
             self.url = m.get('url')
         if m.get('volume') is not None:

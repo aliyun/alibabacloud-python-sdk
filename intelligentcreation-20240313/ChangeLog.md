@@ -1,3 +1,14 @@
+2024-10-24 Version: 2.6.0
+- Support API OperateAvatarProject.
+- Support API QuerySessionInfo.
+- Support API SaveAvatarProject.
+- Update API ListAnchor: add param resSpecType.
+- Update API ListVoiceModels: add param resSpecType.
+- Update API QueryAvatarProject: update response param.
+- Update API StartAvatarSession: update param body.
+- Update API SubmitProjectTask: update param body.
+
+
 2024-09-29 Version: 2.5.0
 - Support API InteractText.
 - Support API ListAvatarProject.
