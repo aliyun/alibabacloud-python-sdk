@@ -1116,13 +1116,22 @@ class DescribeVerifySchemeResponse(TeaModel):
 class GetAuthTokenRequest(TeaModel):
     def __init__(
         self,
+        biz_type: int = None,
+        cm_api_code: int = None,
+        ct_api_code: int = None,
+        cu_api_code: int = None,
         origin: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         scene_code: str = None,
         url: str = None,
+        version: str = None,
     ):
+        self.biz_type = biz_type
+        self.cm_api_code = cm_api_code
+        self.ct_api_code = ct_api_code
+        self.cu_api_code = cu_api_code
         # The requested domain name.
         # 
         # This parameter is required.
@@ -1135,6 +1144,7 @@ class GetAuthTokenRequest(TeaModel):
         # 
         # This parameter is required.
         self.url = url
+        self.version = version
 
     def validate(self):
         pass
@@ -1145,6 +1155,14 @@ class GetAuthTokenRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
+        if self.cm_api_code is not None:
+            result['CmApiCode'] = self.cm_api_code
+        if self.ct_api_code is not None:
+            result['CtApiCode'] = self.ct_api_code
+        if self.cu_api_code is not None:
+            result['CuApiCode'] = self.cu_api_code
         if self.origin is not None:
             result['Origin'] = self.origin
         if self.owner_id is not None:
@@ -1157,10 +1175,20 @@ class GetAuthTokenRequest(TeaModel):
             result['SceneCode'] = self.scene_code
         if self.url is not None:
             result['Url'] = self.url
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
+        if m.get('CmApiCode') is not None:
+            self.cm_api_code = m.get('CmApiCode')
+        if m.get('CtApiCode') is not None:
+            self.ct_api_code = m.get('CtApiCode')
+        if m.get('CuApiCode') is not None:
+            self.cu_api_code = m.get('CuApiCode')
         if m.get('Origin') is not None:
             self.origin = m.get('Origin')
         if m.get('OwnerId') is not None:
@@ -1173,6 +1201,8 @@ class GetAuthTokenRequest(TeaModel):
             self.scene_code = m.get('SceneCode')
         if m.get('Url') is not None:
             self.url = m.get('Url')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 

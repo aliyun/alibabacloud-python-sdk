@@ -765,6 +765,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.cm_api_code):
+            query['CmApiCode'] = request.cm_api_code
+        if not UtilClient.is_unset(request.ct_api_code):
+            query['CtApiCode'] = request.ct_api_code
+        if not UtilClient.is_unset(request.cu_api_code):
+            query['CuApiCode'] = request.cu_api_code
         if not UtilClient.is_unset(request.origin):
             query['Origin'] = request.origin
         if not UtilClient.is_unset(request.owner_id):
@@ -777,6 +785,8 @@ class Client(OpenApiClient):
             query['SceneCode'] = request.scene_code
         if not UtilClient.is_unset(request.url):
             query['Url'] = request.url
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -815,6 +825,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.cm_api_code):
+            query['CmApiCode'] = request.cm_api_code
+        if not UtilClient.is_unset(request.ct_api_code):
+            query['CtApiCode'] = request.ct_api_code
+        if not UtilClient.is_unset(request.cu_api_code):
+            query['CuApiCode'] = request.cu_api_code
         if not UtilClient.is_unset(request.origin):
             query['Origin'] = request.origin
         if not UtilClient.is_unset(request.owner_id):
@@ -827,6 +845,8 @@ class Client(OpenApiClient):
             query['SceneCode'] = request.scene_code
         if not UtilClient.is_unset(request.url):
             query['Url'] = request.url
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

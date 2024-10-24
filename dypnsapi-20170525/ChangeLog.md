@@ -1,3 +1,14 @@
+2024-10-24 Version: 1.2.2
+- Update API CreateVerifyScheme: add param HmAppIdentifier.
+- Update API CreateVerifyScheme: add param HmPackageName.
+- Update API CreateVerifyScheme: add param HmSignName.
+- Update API GetAuthToken: add param BizType.
+- Update API GetAuthToken: add param CmApiCode.
+- Update API GetAuthToken: add param CtApiCode.
+- Update API GetAuthToken: add param CuApiCode.
+- Update API GetAuthToken: add param Version.
+
+
 2024-10-18 Version: 1.2.1
 - Update API CreateVerifyScheme: add param HmAppIdentifier.
 - Update API CreateVerifyScheme: add param HmPackageName.
