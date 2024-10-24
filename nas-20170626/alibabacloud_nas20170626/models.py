@@ -863,14 +863,35 @@ class CancelDataFlowSubTaskRequest(TeaModel):
         dry_run: bool = None,
         file_system_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+        # 
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # The ID of the data flow.
+        # 
         # This parameter is required.
         self.data_flow_id = data_flow_id
+        # The ID of the data streaming task.
+        # 
         # This parameter is required.
         self.data_flow_sub_task_id = data_flow_sub_task_id
+        # The ID of the data flow task.
+        # 
         # This parameter is required.
         self.data_flow_task_id = data_flow_task_id
+        # Specifies whether to perform a dry run.
+        # 
+        # During the dry run, the system checks whether the request parameters are valid and whether the requested resources are available. During the dry run, no data streaming task is created and no fee is incurred.
+        # 
+        # Valid values:
+        # 
+        # *   true: performs a dry run. The system checks the required parameters, request syntax, service limits, and available Apsara File Storage NAS (NAS) resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned.
+        # *   false (default): performs a dry run and sends the request. If the request passes the dry run, a data streaming task is created.
         self.dry_run = dry_run
+        # The ID of the file system.
+        # 
         # This parameter is required.
         self.file_system_id = file_system_id
 
@@ -919,6 +940,7 @@ class CancelDataFlowSubTaskResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1011,6 +1033,11 @@ class CancelDataFlowTaskRequest(TeaModel):
         # *   false (default): performs a dry run and sends the request. If the request passes the dry run, the specified dataflow task is canceled.
         self.dry_run = dry_run
         # The ID of the file system.
+        # 
+        # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-125487\\*\\*\\*\\*.
+        # *   The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-0015\\*\\*\\*\\*.
+        # 
+        # >  CPFS is not supported on the international site.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
@@ -2442,7 +2469,7 @@ class CreateDataFlowRequest(TeaModel):
         # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-125487\\*\\*\\*\\*.
         # *   The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-0015\\*\\*\\*\\*.
         # 
-        # >  CPFS file systems are available only on the China site (aliyun.com).
+        # >  CPFS is not supported on the international site.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
@@ -2464,19 +2491,27 @@ class CreateDataFlowRequest(TeaModel):
         # *   None (default): The source storage can be accessed without a security mechanism.
         # *   SSL: The source storage must be accessed with an SSL certificate.
         self.source_security_type = source_security_type
-        # The access path of the source storage. Format: `<storage type>://<path>`.
+        # The access path of the source storage. Format: `<storage type>://[<account id>:]<path>`.
         # 
         # Parameters:
         # 
         # *   storage type: Only OSS is supported.
         # 
+        # *   account id (optional): the UID of the account of the source storage.
+        # 
         # *   path: the name of the OSS bucket. Limits:
         # 
-        #     *   The path can contain only lowercase letters, digits, and hyphens (-). The path must start and end with a lowercase letter or digit.
-        #     *   The path can be up to 128 characters in length.
-        #     *   The path must be encoded in UTF-8.
+        #     *   The name can contain only lowercase letters, digits, and hyphens (-). The name must start and end with a lowercase letter or digit.
+        #     *   The name can be up to 128 characters in length.
+        #     *   The name must be encoded in UTF-8.
         # 
-        # >  The OSS bucket must be an existing bucket in the region.
+        # > 
+        # 
+        # *   The OSS bucket must be an existing bucket in the region.
+        # 
+        # *   Only CPFS for LINGJUN V2.6.0 and later support the account id parameter.
+        # 
+        # *   The account id parameter is optional. This parameter is required when you use OSS buckets across accounts.
         # 
         # This parameter is required.
         self.source_storage = source_storage
@@ -3664,6 +3699,39 @@ class CreateFileSystemResponse(TeaModel):
         return self
 
 
+class CreateFilesetRequestQuota(TeaModel):
+    def __init__(
+        self,
+        file_count_limit: int = None,
+        size_limit: int = None,
+    ):
+        self.file_count_limit = file_count_limit
+        self.size_limit = size_limit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_count_limit is not None:
+            result['FileCountLimit'] = self.file_count_limit
+        if self.size_limit is not None:
+            result['SizeLimit'] = self.size_limit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileCountLimit') is not None:
+            self.file_count_limit = m.get('FileCountLimit')
+        if m.get('SizeLimit') is not None:
+            self.size_limit = m.get('SizeLimit')
+        return self
+
+
 class CreateFilesetRequest(TeaModel):
     def __init__(
         self,
@@ -3673,6 +3741,7 @@ class CreateFilesetRequest(TeaModel):
         dry_run: bool = None,
         file_system_id: str = None,
         file_system_path: str = None,
+        quota: CreateFilesetRequestQuota = None,
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
@@ -3714,9 +3783,11 @@ class CreateFilesetRequest(TeaModel):
         # 
         # This parameter is required.
         self.file_system_path = file_system_path
+        self.quota = quota
 
     def validate(self):
-        pass
+        if self.quota:
+            self.quota.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3736,6 +3807,8 @@ class CreateFilesetRequest(TeaModel):
             result['FileSystemId'] = self.file_system_id
         if self.file_system_path is not None:
             result['FileSystemPath'] = self.file_system_path
+        if self.quota is not None:
+            result['Quota'] = self.quota.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -3752,6 +3825,9 @@ class CreateFilesetRequest(TeaModel):
             self.file_system_id = m.get('FileSystemId')
         if m.get('FileSystemPath') is not None:
             self.file_system_path = m.get('FileSystemPath')
+        if m.get('Quota') is not None:
+            temp_model = CreateFilesetRequestQuota()
+            self.quota = temp_model.from_map(m['Quota'])
         return self
 
 
@@ -5865,6 +5941,11 @@ class DeleteDataFlowRequest(TeaModel):
         # *   false (default): performs a dry run and sends the request. If the request passes the dry run, a file system is created.
         self.dry_run = dry_run
         # The ID of the file system.
+        # 
+        # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-125487\\*\\*\\*\\*.
+        # *   The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-0015\\*\\*\\*\\*.
+        # 
+        # >  CPFS is not supported on the international site.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
@@ -9062,7 +9143,25 @@ class DescribeDataFlowSubTasksRequestFilters(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The filter name.
+        # 
+        # Valid values:
+        # 
+        # *   DataFlowIds: filters data flow subtasks by data flow ID.
+        # *   DataFlowTaskIds: filters data flow subtasks by data flow task ID.
+        # *   DataFlowSubTaskIds: filters data flow subtasks by data streaming task ID.
+        # *   Status: filters data flow subtasks by status.
+        # *   SrcFilePath: filters data flow subtasks by source file path.
+        # *   DstFilePath: filters data flow subtasks by destination file path.
         self.key = key
+        # The filter value. This parameter does not support wildcards.
+        # 
+        # *   If Key is set to DataFlowIds, set Value to a data flow ID or a part of the data flow ID. You can specify a data flow ID or a group of data flow IDs. You can specify a maximum of 10 data flow IDs. Example: `df-194433a5be31****` or `df-194433a5be31****,df-244433a5be31****`.
+        # *   If Key is set to DataFlowTaskIds, set Value to a data flow task ID or a part of the data flow task ID. You can specify a data flow task ID or a group of data flow task IDs. You can specify a maximum of 10 data flow task IDs. Example:  `task-38aa8e890f45****` or `task-38aa8e890f45****,task-27aa8e890f45****`.
+        # *   If Key is set to DataFlowSubTaskIds, set Value to a data streaming task ID or a part of the data streaming task ID. You can specify a data streaming task ID or a group of data streaming task IDs. You can specify a maximum of 10 data streaming task IDs. Example: ` subTaskId-370kyfmyknxcyzw****  `or `subTaskId-370kyfmyknxcyzw****,subTaskId-280kyfmyknxcyzw****`.
+        # *   If Key is set to Status, set Value to the status of the data flow task. The status can be EXPIRED, CREATED, RUNNING, COMPLETE, CANCELING, FAILED, or CANCELED. Combined query is supported.
+        # *   If Key is set to SrcFilePath, set Value to the path of the source file. The path can be up to 1,023 characters in length.
+        # *   If Key is set to DstFilePath, set Value to the path of the destination file. The path can be up to 1,023 characters in length.
         self.value = value
 
     def validate(self):
@@ -9097,10 +9196,18 @@ class DescribeDataFlowSubTasksRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The ID of the file system.
+        # 
         # This parameter is required.
         self.file_system_id = file_system_id
+        # The filter that is used to query data streaming tasks.
         self.filters = filters
+        # The number of results for each query.
+        # 
+        # *   Valid values: 20 to 100.
+        # *   Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
 
     def validate(self):
@@ -9150,8 +9257,11 @@ class DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskFileDeta
         modify_time: int = None,
         size: int = None,
     ):
+        # The checksum. Format example: crc64:123456.
         self.checksum = checksum
+        # The time when the file was modified. The value is a UNIX timestamp. Unit: ns.
         self.modify_time = modify_time
+        # The file size. Unit: bytes.
         self.size = size
 
     def validate(self):
@@ -9190,9 +9300,13 @@ class DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskProgress
         bytes_done: int = None,
         bytes_total: int = None,
     ):
+        # The actual amount of data for which the data flow task is complete. Unit: bytes.
         self.actual_bytes = actual_bytes
+        # The average flow velocity. Unit: bytes/s.
         self.average_speed = average_speed
+        # The amount of data (including skipped data) for which the data flow task is complete. Unit: bytes.
         self.bytes_done = bytes_done
+        # The amount of data scanned on the source. Unit: bytes.
         self.bytes_total = bytes_total
 
     def validate(self):
@@ -9245,19 +9359,51 @@ class DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTask(TeaMode
         start_time: str = None,
         status: str = None,
     ):
+        # The time when the data streaming task was created.
         self.create_time = create_time
+        # The ID of the data flow.
         self.data_flow_id = data_flow_id
+        # The ID of the data streaming task.
         self.data_flow_sub_task_id = data_flow_sub_task_id
+        # The ID of the data flow task.
         self.data_flow_task_id = data_flow_task_id
+        # The path of the destination file. Limits:
+        # 
+        # *   The path must be 1 to 1,023 characters in length.
+        # *   The path must be encoded in UTF-8.
+        # *   The path must start with a forward slash (/).
+        # *   The path must end with the file name.
         self.dst_file_path = dst_file_path
+        # The time when the data streaming task ended.
         self.end_time = end_time
+        # The error message returned when the task failed.
         self.error_msg = error_msg
+        # The file information.
         self.file_detail = file_detail
+        # The ID of the file system.
         self.file_system_id = file_system_id
+        # The progress of the data streaming task. Valid values: 0 to 10000.
         self.progress = progress
+        # The progress information about data streaming tasks.
         self.progress_stats = progress_stats
+        # The path of the source file. Limits:
+        # 
+        # *   The path must be 1 to 1,023 characters in length.
+        # *   The path must be encoded in UTF-8.
+        # *   The path must start with a forward slash (/).
+        # *   The path must end with the file name.
         self.src_file_path = src_file_path
+        # The time when the data streaming task started.
         self.start_time = start_time
+        # The status of the data streaming task. Valid values:
+        # 
+        # *   EXPIRED: The task is terminated.
+        # *   CREATED: The task is created.
+        # *   RUNNING: The task is running.
+        # *   COMPLETE: The task is complete.
+        # *   CANCELING: The task is being canceled.
+        # *   FAILED: The task failed to be executed.
+        # *   CANCELED: The task is canceled.
         self.status = status
 
     def validate(self):
@@ -9379,8 +9525,11 @@ class DescribeDataFlowSubTasksResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The details about data streaming tasks.
         self.data_flow_sub_task = data_flow_sub_task
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12642,14 +12791,51 @@ class DescribeFilesetsRequest(TeaModel):
         return self
 
 
+class DescribeFilesetsResponseBodyEntriesEntrieQuota(TeaModel):
+    def __init__(
+        self,
+        file_count_limit: int = None,
+        size_limit: int = None,
+    ):
+        self.file_count_limit = file_count_limit
+        self.size_limit = size_limit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_count_limit is not None:
+            result['FileCountLimit'] = self.file_count_limit
+        if self.size_limit is not None:
+            result['SizeLimit'] = self.size_limit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileCountLimit') is not None:
+            self.file_count_limit = m.get('FileCountLimit')
+        if m.get('SizeLimit') is not None:
+            self.size_limit = m.get('SizeLimit')
+        return self
+
+
 class DescribeFilesetsResponseBodyEntriesEntrie(TeaModel):
     def __init__(
         self,
         create_time: str = None,
         deletion_protection: bool = None,
         description: str = None,
+        file_count_usage: int = None,
+        file_system_id: str = None,
         file_system_path: str = None,
         fset_id: str = None,
+        quota: DescribeFilesetsResponseBodyEntriesEntrieQuota = None,
+        space_usage: int = None,
         status: str = None,
         update_time: str = None,
     ):
@@ -12666,10 +12852,14 @@ class DescribeFilesetsResponseBodyEntriesEntrie(TeaModel):
         self.deletion_protection = deletion_protection
         # The fileset description.
         self.description = description
+        self.file_count_usage = file_count_usage
+        self.file_system_id = file_system_id
         # The fileset path.
         self.file_system_path = file_system_path
         # The fileset ID.
         self.fset_id = fset_id
+        self.quota = quota
+        self.space_usage = space_usage
         # The fileset status. Valid values:
         # 
         # *   CREATING: The fileset is being created.
@@ -12683,7 +12873,8 @@ class DescribeFilesetsResponseBodyEntriesEntrie(TeaModel):
         self.update_time = update_time
 
     def validate(self):
-        pass
+        if self.quota:
+            self.quota.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -12697,10 +12888,18 @@ class DescribeFilesetsResponseBodyEntriesEntrie(TeaModel):
             result['DeletionProtection'] = self.deletion_protection
         if self.description is not None:
             result['Description'] = self.description
+        if self.file_count_usage is not None:
+            result['FileCountUsage'] = self.file_count_usage
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
         if self.file_system_path is not None:
             result['FileSystemPath'] = self.file_system_path
         if self.fset_id is not None:
             result['FsetId'] = self.fset_id
+        if self.quota is not None:
+            result['Quota'] = self.quota.to_map()
+        if self.space_usage is not None:
+            result['SpaceUsage'] = self.space_usage
         if self.status is not None:
             result['Status'] = self.status
         if self.update_time is not None:
@@ -12715,10 +12914,19 @@ class DescribeFilesetsResponseBodyEntriesEntrie(TeaModel):
             self.deletion_protection = m.get('DeletionProtection')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('FileCountUsage') is not None:
+            self.file_count_usage = m.get('FileCountUsage')
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
         if m.get('FileSystemPath') is not None:
             self.file_system_path = m.get('FileSystemPath')
         if m.get('FsetId') is not None:
             self.fset_id = m.get('FsetId')
+        if m.get('Quota') is not None:
+            temp_model = DescribeFilesetsResponseBodyEntriesEntrieQuota()
+            self.quota = temp_model.from_map(m['Quota'])
+        if m.get('SpaceUsage') is not None:
+            self.space_usage = m.get('SpaceUsage')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('UpdateTime') is not None:
@@ -21061,6 +21269,7 @@ class OpenNASServiceResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The details about the failed permission verification.
         self.access_denied_detail = access_denied_detail
         # The order ID.
         self.order_id = order_id
