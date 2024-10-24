@@ -1,3 +1,6 @@
+2024-10-24 Version: 2.5.1
+- Generated python 2020-01-01 for ddoscoo.
+
 2024-10-24 Version: 2.5.0
 - Support API DescribeDomainBps.
 - Support API DescribeDomainH2Fingerprint.
