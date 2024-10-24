@@ -2397,6 +2397,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_organizational_unit_with_options_async(request, runtime)
 
+    def delete_organizational_unit_children_with_options(
+        self,
+        request: eiam_20211201_models.DeleteOrganizationalUnitChildrenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DeleteOrganizationalUnitChildrenResponse:
+        """
+        @summary Delete organizational unit information, forcibly deleting all accounts and sub-organizations beneath it
+        
+        @param request: DeleteOrganizationalUnitChildrenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteOrganizationalUnitChildrenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.organizational_unit_id):
+            query['OrganizationalUnitId'] = request.organizational_unit_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteOrganizationalUnitChildren',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteOrganizationalUnitChildrenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_organizational_unit_children_with_options_async(
+        self,
+        request: eiam_20211201_models.DeleteOrganizationalUnitChildrenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.DeleteOrganizationalUnitChildrenResponse:
+        """
+        @summary Delete organizational unit information, forcibly deleting all accounts and sub-organizations beneath it
+        
+        @param request: DeleteOrganizationalUnitChildrenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteOrganizationalUnitChildrenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.organizational_unit_id):
+            query['OrganizationalUnitId'] = request.organizational_unit_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteOrganizationalUnitChildren',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.DeleteOrganizationalUnitChildrenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_organizational_unit_children(
+        self,
+        request: eiam_20211201_models.DeleteOrganizationalUnitChildrenRequest,
+    ) -> eiam_20211201_models.DeleteOrganizationalUnitChildrenResponse:
+        """
+        @summary Delete organizational unit information, forcibly deleting all accounts and sub-organizations beneath it
+        
+        @param request: DeleteOrganizationalUnitChildrenRequest
+        @return: DeleteOrganizationalUnitChildrenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_organizational_unit_children_with_options(request, runtime)
+
+    async def delete_organizational_unit_children_async(
+        self,
+        request: eiam_20211201_models.DeleteOrganizationalUnitChildrenRequest,
+    ) -> eiam_20211201_models.DeleteOrganizationalUnitChildrenResponse:
+        """
+        @summary Delete organizational unit information, forcibly deleting all accounts and sub-organizations beneath it
+        
+        @param request: DeleteOrganizationalUnitChildrenRequest
+        @return: DeleteOrganizationalUnitChildrenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_organizational_unit_children_with_options_async(request, runtime)
+
     def delete_user_with_options(
         self,
         request: eiam_20211201_models.DeleteUserRequest,

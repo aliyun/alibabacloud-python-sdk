@@ -2868,6 +2868,114 @@ class DeleteOrganizationalUnitResponse(TeaModel):
         return self
 
 
+class DeleteOrganizationalUnitChildrenRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        organizational_unit_id: str = None,
+    ):
+        # Instance ID.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # Organizational Unit ID.
+        # 
+        # This parameter is required.
+        self.organizational_unit_id = organizational_unit_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.organizational_unit_id is not None:
+            result['OrganizationalUnitId'] = self.organizational_unit_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OrganizationalUnitId') is not None:
+            self.organizational_unit_id = m.get('OrganizationalUnitId')
+        return self
+
+
+class DeleteOrganizationalUnitChildrenResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteOrganizationalUnitChildrenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteOrganizationalUnitChildrenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteOrganizationalUnitChildrenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteUserRequest(TeaModel):
     def __init__(
         self,
@@ -4763,6 +4871,7 @@ class GetApplicationResponseBodyApplication(TeaModel):
         application_name: str = None,
         application_source_type: str = None,
         application_template_id: str = None,
+        application_visibility: List[str] = None,
         authorization_type: str = None,
         client_id: str = None,
         create_time: int = None,
@@ -4792,6 +4901,7 @@ class GetApplicationResponseBodyApplication(TeaModel):
         self.application_source_type = application_source_type
         # The ID of the template based on which the application is created. This parameter is returned only if the application is created based on a template.
         self.application_template_id = application_template_id
+        self.application_visibility = application_visibility
         # The authorization type of the EIAM application. Valid values:
         # 
         # *   authorize_required: Only the user with explicit authorization can access the application.
@@ -4849,6 +4959,8 @@ class GetApplicationResponseBodyApplication(TeaModel):
             result['ApplicationSourceType'] = self.application_source_type
         if self.application_template_id is not None:
             result['ApplicationTemplateId'] = self.application_template_id
+        if self.application_visibility is not None:
+            result['ApplicationVisibility'] = self.application_visibility
         if self.authorization_type is not None:
             result['AuthorizationType'] = self.authorization_type
         if self.client_id is not None:
@@ -4887,6 +4999,8 @@ class GetApplicationResponseBodyApplication(TeaModel):
             self.application_source_type = m.get('ApplicationSourceType')
         if m.get('ApplicationTemplateId') is not None:
             self.application_template_id = m.get('ApplicationTemplateId')
+        if m.get('ApplicationVisibility') is not None:
+            self.application_visibility = m.get('ApplicationVisibility')
         if m.get('AuthorizationType') is not None:
             self.authorization_type = m.get('AuthorizationType')
         if m.get('ClientId') is not None:
@@ -5622,13 +5736,13 @@ class GetApplicationProvisioningScopeResponseBodyApplicationProvisioningScope(Te
         organizational_unit_ids: List[str] = None,
         used_quota: int = None,
     ):
-        # 同步授权的组列表
+        # Synchronize the list of authorized groups
         self.group_ids = group_ids
-        # 租户最大授权主体quota数量
+        # Instance Indicates the maximum quota number of authorized agents
         self.max_quota = max_quota
         # The list of organizational units that are authorized for account synchronization.
         self.organizational_unit_ids = organizational_unit_ids
-        # 已使用授权主体quota数量
+        # Indicates the quota number of used authorized agents
         self.used_quota = used_quota
 
     def validate(self):
@@ -6081,6 +6195,7 @@ class GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig(TeaMo
         assertion_signed: bool = None,
         attribute_statements: List[GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfigAttributeStatements] = None,
         default_relay_state: str = None,
+        id_pentity_id: str = None,
         name_id_format: str = None,
         name_id_value_expression: str = None,
         response_signed: bool = None,
@@ -6094,6 +6209,7 @@ class GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig(TeaMo
         self.attribute_statements = attribute_statements
         # The default value of the RelayState attribute. If the SSO request is initiated in EIAM, the RelayState attribute in the SAML response is set to this default value.
         self.default_relay_state = default_relay_state
+        self.id_pentity_id = id_pentity_id
         # The Format attribute of the NameID element in the SAML assertion. Valid values:
         # 
         # *   urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified: No format is specified. How to resolve the NameID element depends on the application.
@@ -6132,6 +6248,8 @@ class GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig(TeaMo
                 result['AttributeStatements'].append(k.to_map() if k else None)
         if self.default_relay_state is not None:
             result['DefaultRelayState'] = self.default_relay_state
+        if self.id_pentity_id is not None:
+            result['IdPEntityId'] = self.id_pentity_id
         if self.name_id_format is not None:
             result['NameIdFormat'] = self.name_id_format
         if self.name_id_value_expression is not None:
@@ -6157,6 +6275,8 @@ class GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig(TeaMo
                 self.attribute_statements.append(temp_model.from_map(k))
         if m.get('DefaultRelayState') is not None:
             self.default_relay_state = m.get('DefaultRelayState')
+        if m.get('IdPEntityId') is not None:
+            self.id_pentity_id = m.get('IdPEntityId')
         if m.get('NameIdFormat') is not None:
             self.name_id_format = m.get('NameIdFormat')
         if m.get('NameIdValueExpression') is not None:
@@ -10653,6 +10773,7 @@ class GetUserResponseBodyUser(TeaModel):
         self.phone_number_verified = phone_number_verified
         # The country code of the mobile number. For example, the country code of China is 86 without 00 or +.
         self.phone_region = phone_region
+        # Preferred language
         self.preferred_language = preferred_language
         # The ID of the primary organizational unit to which the account belongs.
         self.primary_organizational_unit_id = primary_organizational_unit_id
@@ -13045,7 +13166,9 @@ class ListGroupsForUserResponseBodyGroups(TeaModel):
     ):
         # The group ID.
         self.group_id = group_id
+        # Account membership source ID
         self.group_member_relation_source_id = group_member_relation_source_id
+        # Account membership source type
         self.group_member_relation_source_type = group_member_relation_source_type
 
     def validate(self):
@@ -14314,11 +14437,11 @@ class ListOrganizationalUnitsRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 组织ID列表。size限制最大100。
+        # The IDs of organizational units.
         self.organizational_unit_ids = organizational_unit_ids
         # The name of the organizational unit.
         self.organizational_unit_name = organizational_unit_name
-        # 组织名称，左匹配
+        # Organization name, matching left
         self.organizational_unit_name_starts_with = organizational_unit_name_starts_with
         # The number of the page to return. Default value: 1.
         self.page_number = page_number
@@ -16741,7 +16864,7 @@ class ListUsersRequest(TeaModel):
         user_source_type: str = None,
         username_starts_with: str = None,
     ):
-        # 账户展示名，模糊匹配
+        # Displayname
         self.display_name_starts_with = display_name_starts_with
         # The email address of the user who owns the account.
         self.email = email
@@ -16768,7 +16891,7 @@ class ListUsersRequest(TeaModel):
         # 
         # For accounts with the same source type and source ID, each account has a unique external ID.
         self.user_external_id = user_external_id
-        # 账户的ID集合
+        # User ID set
         self.user_ids = user_ids
         # The source ID of the account.
         # 
@@ -16781,7 +16904,7 @@ class ListUsersRequest(TeaModel):
         # *   ad: The account was imported from Microsoft Active Directory (AD).
         # *   ldap: The account was imported from a Lightweight Directory Access Protocol (LDAP) service.
         self.user_source_type = user_source_type
-        # 账户名，左模糊匹配
+        # Username
         self.username_starts_with = username_starts_with
 
     def validate(self):
@@ -17373,7 +17496,9 @@ class ListUsersForGroupResponseBodyUsers(TeaModel):
         group_member_relation_source_type: str = None,
         user_id: str = None,
     ):
+        # Account membership source id
         self.group_member_relation_source_id = group_member_relation_source_id
+        # Account membership source type
         self.group_member_relation_source_type = group_member_relation_source_type
         # The account ID.
         self.user_id = user_id
@@ -19100,7 +19225,7 @@ class SetApplicationProvisioningScopeRequest(TeaModel):
         # 
         # This parameter is required.
         self.application_id = application_id
-        # 授权同步出的组列表
+        # List of groups that are authorized to be synchronized from
         self.group_ids = group_ids
         # The ID of the instance.
         # 
@@ -19420,6 +19545,7 @@ class SetApplicationSsoConfigRequestSamlSsoConfig(TeaModel):
         assertion_signed: bool = None,
         attribute_statements: List[SetApplicationSsoConfigRequestSamlSsoConfigAttributeStatements] = None,
         default_relay_state: str = None,
+        id_pentity_id: str = None,
         name_id_format: str = None,
         name_id_value_expression: str = None,
         response_signed: bool = None,
@@ -19427,12 +19553,16 @@ class SetApplicationSsoConfigRequestSamlSsoConfig(TeaModel):
         sp_entity_id: str = None,
         sp_sso_acs_url: str = None,
     ):
-        # assertion是否签名
+        # Specifies whether to calculate the signature for the assertion. You cannot set ResponseSigned and AssertionSigned to false at the same time.
+        # 
+        # *   true
+        # *   false
         self.assertion_signed = assertion_signed
         # The additional user attributes in the SAML assertion.
         self.attribute_statements = attribute_statements
         # The default value of the RelayState attribute. If the SSO request is initiated in EIAM, the RelayState attribute in the SAML response is set to this default value.
         self.default_relay_state = default_relay_state
+        self.id_pentity_id = id_pentity_id
         # The Format attribute of the NameID element in the SAML assertion. Valid values:
         # 
         # *   urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified: No format is specified. How to resolve the NameID element depends on the application.
@@ -19442,13 +19572,32 @@ class SetApplicationSsoConfigRequestSamlSsoConfig(TeaModel):
         self.name_id_format = name_id_format
         # The expression that is used to generate the value of NameID in the SAML assertion.
         self.name_id_value_expression = name_id_value_expression
-        # response是否签名
+        # Specifies whether to calculate the signature for the response. You cannot set ResponseSigned and AssertionSigned to false at the same time.
+        # 
+        # *   true
+        # *   false
         self.response_signed = response_signed
         # The algorithm that is used to calculate the signature for the SAML assertion.
+        # 
+        # Enumeration value:
+        # 
+        # *   RSA-SHA256
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     the Rivest-Shamir-Adleman (RSA)-Secure Hash Algorithm 256 (SHA-256) algorithm
+        # 
+        #     <!-- -->
+        # 
+        #     .
         self.signature_algorithm = signature_algorithm
-        # The entity ID of the application in SAML. The application assumes the role of service provider.
+        # The entity ID of the application in SAML.
         self.sp_entity_id = sp_entity_id
-        # The Assertion Consumer Service (ACS) URL of the application in SAML. The application assumes the role of service provider.
+        # The Assertion Consumer Service (ACS) URL of the application in SAML.
         self.sp_sso_acs_url = sp_sso_acs_url
 
     def validate(self):
@@ -19471,6 +19620,8 @@ class SetApplicationSsoConfigRequestSamlSsoConfig(TeaModel):
                 result['AttributeStatements'].append(k.to_map() if k else None)
         if self.default_relay_state is not None:
             result['DefaultRelayState'] = self.default_relay_state
+        if self.id_pentity_id is not None:
+            result['IdPEntityId'] = self.id_pentity_id
         if self.name_id_format is not None:
             result['NameIdFormat'] = self.name_id_format
         if self.name_id_value_expression is not None:
@@ -19496,6 +19647,8 @@ class SetApplicationSsoConfigRequestSamlSsoConfig(TeaModel):
                 self.attribute_statements.append(temp_model.from_map(k))
         if m.get('DefaultRelayState') is not None:
             self.default_relay_state = m.get('DefaultRelayState')
+        if m.get('IdPEntityId') is not None:
+            self.id_pentity_id = m.get('IdPEntityId')
         if m.get('NameIdFormat') is not None:
             self.name_id_format = m.get('NameIdFormat')
         if m.get('NameIdValueExpression') is not None:
@@ -19532,13 +19685,13 @@ class SetApplicationSsoConfigRequest(TeaModel):
         self.init_login_type = init_login_type
         # The initial webhook URL of SSO. This parameter is required when the SSO protocol of the application is an OIDC protocol and the InitLoginType parameters is set to idaas_or_app_init_sso or when the SSO protocol of the application is SAML and the InitLoginType parameter is set to only_app_init_sso.
         self.init_login_url = init_login_url
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The Open ID Connect (OIDC)-based SSO configuration attributes of the application.
         self.oidc_sso_config = oidc_sso_config
-        # The Security Assertion Markup Language (SAML)-based SSO configuration attributes of the application.
+        # The Security Assertion Markup Language (SAML)-based single sign-on (SSO) configuration attributes of the application.
         self.saml_sso_config = saml_sso_config
 
     def validate(self):
@@ -19591,7 +19744,7 @@ class SetApplicationSsoConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -19769,9 +19922,9 @@ class SetForgetPasswordConfigurationRequest(TeaModel):
         forget_password_status: str = None,
         instance_id: str = None,
     ):
-        # 身份认证渠道。枚举取值:email(邮件)、sms(短信)
+        # The authentication channels. Valid values: email and sms.
         self.authentication_channels = authentication_channels
-        # 忘记密码配置状态。枚举取值:enabled(开启)、disabled(禁用)
+        # The status of the forgot password feature. Valid values: enabled and disabled.
         # 
         # This parameter is required.
         self.forget_password_status = forget_password_status
@@ -21041,7 +21194,7 @@ class UpdateGroupDescriptionRequest(TeaModel):
         group_id: str = None,
         instance_id: str = None,
     ):
-        # The description of the account group. The value can be up to 256 characters in length.
+        # The description of the account group.
         self.description = description
         # The ID of the account group.
         # 
@@ -21386,7 +21539,7 @@ class UpdateOrganizationalUnitRequest(TeaModel):
         # 
         # This parameter is required.
         self.organizational_unit_id = organizational_unit_id
-        # The name of the organization. The name can be up to 64 characters in length and must be unique in the same parent organization.
+        # The name of the organization. The name can be up to 128 characters in length and must be unique in the same parent organization.
         self.organizational_unit_name = organizational_unit_name
 
     def validate(self):
