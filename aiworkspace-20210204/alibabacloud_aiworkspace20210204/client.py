@@ -807,6 +807,262 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_dataset_labels_with_options_async(dataset_id, request, headers, runtime)
 
+    def create_dataset_version_with_options(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.CreateDatasetVersionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.CreateDatasetVersionResponse:
+        """
+        @summary 创建数据集版本
+        
+        @param request: CreateDatasetVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatasetVersionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_count):
+            body['DataCount'] = request.data_count
+        if not UtilClient.is_unset(request.data_size):
+            body['DataSize'] = request.data_size
+        if not UtilClient.is_unset(request.data_source_type):
+            body['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
+        if not UtilClient.is_unset(request.options):
+            body['Options'] = request.options
+        if not UtilClient.is_unset(request.property):
+            body['Property'] = request.property
+        if not UtilClient.is_unset(request.source_id):
+            body['SourceId'] = request.source_id
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.uri):
+            body['Uri'] = request.uri
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDatasetVersion',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/versions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.CreateDatasetVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dataset_version_with_options_async(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.CreateDatasetVersionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.CreateDatasetVersionResponse:
+        """
+        @summary 创建数据集版本
+        
+        @param request: CreateDatasetVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatasetVersionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_count):
+            body['DataCount'] = request.data_count
+        if not UtilClient.is_unset(request.data_size):
+            body['DataSize'] = request.data_size
+        if not UtilClient.is_unset(request.data_source_type):
+            body['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
+        if not UtilClient.is_unset(request.options):
+            body['Options'] = request.options
+        if not UtilClient.is_unset(request.property):
+            body['Property'] = request.property
+        if not UtilClient.is_unset(request.source_id):
+            body['SourceId'] = request.source_id
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.uri):
+            body['Uri'] = request.uri
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDatasetVersion',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/versions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.CreateDatasetVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dataset_version(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.CreateDatasetVersionRequest,
+    ) -> aiwork_space_20210204_models.CreateDatasetVersionResponse:
+        """
+        @summary 创建数据集版本
+        
+        @param request: CreateDatasetVersionRequest
+        @return: CreateDatasetVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_dataset_version_with_options(dataset_id, request, headers, runtime)
+
+    async def create_dataset_version_async(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.CreateDatasetVersionRequest,
+    ) -> aiwork_space_20210204_models.CreateDatasetVersionResponse:
+        """
+        @summary 创建数据集版本
+        
+        @param request: CreateDatasetVersionRequest
+        @return: CreateDatasetVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_dataset_version_with_options_async(dataset_id, request, headers, runtime)
+
+    def create_dataset_version_labels_with_options(
+        self,
+        dataset_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.CreateDatasetVersionLabelsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.CreateDatasetVersionLabelsResponse:
+        """
+        @summary 创建数据集版本的标签
+        
+        @param request: CreateDatasetVersionLabelsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatasetVersionLabelsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDatasetVersionLabels',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/versions/{OpenApiUtilClient.get_encode_param(version_name)}/labels',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.CreateDatasetVersionLabelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dataset_version_labels_with_options_async(
+        self,
+        dataset_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.CreateDatasetVersionLabelsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.CreateDatasetVersionLabelsResponse:
+        """
+        @summary 创建数据集版本的标签
+        
+        @param request: CreateDatasetVersionLabelsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatasetVersionLabelsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDatasetVersionLabels',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/versions/{OpenApiUtilClient.get_encode_param(version_name)}/labels',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.CreateDatasetVersionLabelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dataset_version_labels(
+        self,
+        dataset_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.CreateDatasetVersionLabelsRequest,
+    ) -> aiwork_space_20210204_models.CreateDatasetVersionLabelsResponse:
+        """
+        @summary 创建数据集版本的标签
+        
+        @param request: CreateDatasetVersionLabelsRequest
+        @return: CreateDatasetVersionLabelsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_dataset_version_labels_with_options(dataset_id, version_name, request, headers, runtime)
+
+    async def create_dataset_version_labels_async(
+        self,
+        dataset_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.CreateDatasetVersionLabelsRequest,
+    ) -> aiwork_space_20210204_models.CreateDatasetVersionLabelsResponse:
+        """
+        @summary 创建数据集版本的标签
+        
+        @param request: CreateDatasetVersionLabelsRequest
+        @return: CreateDatasetVersionLabelsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_dataset_version_labels_with_options_async(dataset_id, version_name, request, headers, runtime)
+
     def create_experiment_with_options(
         self,
         request: aiwork_space_20210204_models.CreateExperimentRequest,
@@ -2319,6 +2575,212 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_dataset_labels_with_options_async(dataset_id, request, headers, runtime)
 
+    def delete_dataset_version_with_options(
+        self,
+        dataset_id: str,
+        version_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.DeleteDatasetVersionResponse:
+        """
+        @summary 删除指定版本的数据集信息，如果删除的版本是该数据集的仅存版本，版本删除后会联动删除dataset 表中的数据集信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatasetVersionResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteDatasetVersion',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/versions/{OpenApiUtilClient.get_encode_param(version_name)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.DeleteDatasetVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_dataset_version_with_options_async(
+        self,
+        dataset_id: str,
+        version_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.DeleteDatasetVersionResponse:
+        """
+        @summary 删除指定版本的数据集信息，如果删除的版本是该数据集的仅存版本，版本删除后会联动删除dataset 表中的数据集信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatasetVersionResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteDatasetVersion',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/versions/{OpenApiUtilClient.get_encode_param(version_name)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.DeleteDatasetVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_dataset_version(
+        self,
+        dataset_id: str,
+        version_name: str,
+    ) -> aiwork_space_20210204_models.DeleteDatasetVersionResponse:
+        """
+        @summary 删除指定版本的数据集信息，如果删除的版本是该数据集的仅存版本，版本删除后会联动删除dataset 表中的数据集信息
+        
+        @return: DeleteDatasetVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_dataset_version_with_options(dataset_id, version_name, headers, runtime)
+
+    async def delete_dataset_version_async(
+        self,
+        dataset_id: str,
+        version_name: str,
+    ) -> aiwork_space_20210204_models.DeleteDatasetVersionResponse:
+        """
+        @summary 删除指定版本的数据集信息，如果删除的版本是该数据集的仅存版本，版本删除后会联动删除dataset 表中的数据集信息
+        
+        @return: DeleteDatasetVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_dataset_version_with_options_async(dataset_id, version_name, headers, runtime)
+
+    def delete_dataset_version_labels_with_options(
+        self,
+        dataset_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.DeleteDatasetVersionLabelsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.DeleteDatasetVersionLabelsResponse:
+        """
+        @summary 删除数据集版本的标签。
+        
+        @param request: DeleteDatasetVersionLabelsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatasetVersionLabelsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keys):
+            query['Keys'] = request.keys
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDatasetVersionLabels',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/versions/{OpenApiUtilClient.get_encode_param(version_name)}/labels',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.DeleteDatasetVersionLabelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_dataset_version_labels_with_options_async(
+        self,
+        dataset_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.DeleteDatasetVersionLabelsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.DeleteDatasetVersionLabelsResponse:
+        """
+        @summary 删除数据集版本的标签。
+        
+        @param request: DeleteDatasetVersionLabelsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatasetVersionLabelsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keys):
+            query['Keys'] = request.keys
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDatasetVersionLabels',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/versions/{OpenApiUtilClient.get_encode_param(version_name)}/labels',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.DeleteDatasetVersionLabelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_dataset_version_labels(
+        self,
+        dataset_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.DeleteDatasetVersionLabelsRequest,
+    ) -> aiwork_space_20210204_models.DeleteDatasetVersionLabelsResponse:
+        """
+        @summary 删除数据集版本的标签。
+        
+        @param request: DeleteDatasetVersionLabelsRequest
+        @return: DeleteDatasetVersionLabelsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_dataset_version_labels_with_options(dataset_id, version_name, request, headers, runtime)
+
+    async def delete_dataset_version_labels_async(
+        self,
+        dataset_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.DeleteDatasetVersionLabelsRequest,
+    ) -> aiwork_space_20210204_models.DeleteDatasetVersionLabelsResponse:
+        """
+        @summary 删除数据集版本的标签。
+        
+        @param request: DeleteDatasetVersionLabelsRequest
+        @return: DeleteDatasetVersionLabelsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_dataset_version_labels_with_options_async(dataset_id, version_name, request, headers, runtime)
+
     def delete_experiment_with_options(
         self,
         experiment_id: str,
@@ -3597,6 +4059,100 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_dataset_with_options_async(dataset_id, headers, runtime)
 
+    def get_dataset_version_with_options(
+        self,
+        dataset_id: str,
+        version_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.GetDatasetVersionResponse:
+        """
+        @summary 获取指定版本的数据集信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatasetVersionResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetDatasetVersion',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/versions/{OpenApiUtilClient.get_encode_param(version_name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.GetDatasetVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_dataset_version_with_options_async(
+        self,
+        dataset_id: str,
+        version_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.GetDatasetVersionResponse:
+        """
+        @summary 获取指定版本的数据集信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatasetVersionResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetDatasetVersion',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/versions/{OpenApiUtilClient.get_encode_param(version_name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.GetDatasetVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_dataset_version(
+        self,
+        dataset_id: str,
+        version_name: str,
+    ) -> aiwork_space_20210204_models.GetDatasetVersionResponse:
+        """
+        @summary 获取指定版本的数据集信息
+        
+        @return: GetDatasetVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_dataset_version_with_options(dataset_id, version_name, headers, runtime)
+
+    async def get_dataset_version_async(
+        self,
+        dataset_id: str,
+        version_name: str,
+    ) -> aiwork_space_20210204_models.GetDatasetVersionResponse:
+        """
+        @summary 获取指定版本的数据集信息
+        
+        @return: GetDatasetVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_dataset_version_with_options_async(dataset_id, version_name, headers, runtime)
+
     def get_default_workspace_with_options(
         self,
         request: aiwork_space_20210204_models.GetDefaultWorkspaceRequest,
@@ -4676,6 +5232,150 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_code_sources_with_options_async(request, headers, runtime)
+
+    def list_dataset_versions_with_options(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.ListDatasetVersionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.ListDatasetVersionsResponse:
+        """
+        @summary 获取数据集版本列表
+        
+        @param request: ListDatasetVersionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatasetVersionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_sources_types):
+            query['DataSourcesTypes'] = request.data_sources_types
+        if not UtilClient.is_unset(request.label_keys):
+            query['LabelKeys'] = request.label_keys
+        if not UtilClient.is_unset(request.lable_values):
+            query['LableValues'] = request.lable_values
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.properties):
+            query['Properties'] = request.properties
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.source_id):
+            query['SourceId'] = request.source_id
+        if not UtilClient.is_unset(request.source_types):
+            query['SourceTypes'] = request.source_types
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatasetVersions',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/versions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.ListDatasetVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_dataset_versions_with_options_async(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.ListDatasetVersionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.ListDatasetVersionsResponse:
+        """
+        @summary 获取数据集版本列表
+        
+        @param request: ListDatasetVersionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatasetVersionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_sources_types):
+            query['DataSourcesTypes'] = request.data_sources_types
+        if not UtilClient.is_unset(request.label_keys):
+            query['LabelKeys'] = request.label_keys
+        if not UtilClient.is_unset(request.lable_values):
+            query['LableValues'] = request.lable_values
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.properties):
+            query['Properties'] = request.properties
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.source_id):
+            query['SourceId'] = request.source_id
+        if not UtilClient.is_unset(request.source_types):
+            query['SourceTypes'] = request.source_types
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatasetVersions',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/versions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.ListDatasetVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_dataset_versions(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.ListDatasetVersionsRequest,
+    ) -> aiwork_space_20210204_models.ListDatasetVersionsResponse:
+        """
+        @summary 获取数据集版本列表
+        
+        @param request: ListDatasetVersionsRequest
+        @return: ListDatasetVersionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_dataset_versions_with_options(dataset_id, request, headers, runtime)
+
+    async def list_dataset_versions_async(
+        self,
+        dataset_id: str,
+        request: aiwork_space_20210204_models.ListDatasetVersionsRequest,
+    ) -> aiwork_space_20210204_models.ListDatasetVersionsResponse:
+        """
+        @summary 获取数据集版本列表
+        
+        @param request: ListDatasetVersionsRequest
+        @return: ListDatasetVersionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_dataset_versions_with_options_async(dataset_id, request, headers, runtime)
 
     def list_datasets_with_options(
         self,
@@ -7546,6 +8246,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_dataset_with_options_async(dataset_id, request, headers, runtime)
+
+    def update_dataset_version_with_options(
+        self,
+        dataset_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.UpdateDatasetVersionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.UpdateDatasetVersionResponse:
+        """
+        @summary 更新指定版本的数据集信息
+        
+        @param request: UpdateDatasetVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDatasetVersionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_count):
+            body['DataCount'] = request.data_count
+        if not UtilClient.is_unset(request.data_size):
+            body['DataSize'] = request.data_size
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.options):
+            body['Options'] = request.options
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDatasetVersion',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/versions/{OpenApiUtilClient.get_encode_param(version_name)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.UpdateDatasetVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_dataset_version_with_options_async(
+        self,
+        dataset_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.UpdateDatasetVersionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.UpdateDatasetVersionResponse:
+        """
+        @summary 更新指定版本的数据集信息
+        
+        @param request: UpdateDatasetVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDatasetVersionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_count):
+            body['DataCount'] = request.data_count
+        if not UtilClient.is_unset(request.data_size):
+            body['DataSize'] = request.data_size
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.options):
+            body['Options'] = request.options
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDatasetVersion',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/versions/{OpenApiUtilClient.get_encode_param(version_name)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.UpdateDatasetVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_dataset_version(
+        self,
+        dataset_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.UpdateDatasetVersionRequest,
+    ) -> aiwork_space_20210204_models.UpdateDatasetVersionResponse:
+        """
+        @summary 更新指定版本的数据集信息
+        
+        @param request: UpdateDatasetVersionRequest
+        @return: UpdateDatasetVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_dataset_version_with_options(dataset_id, version_name, request, headers, runtime)
+
+    async def update_dataset_version_async(
+        self,
+        dataset_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.UpdateDatasetVersionRequest,
+    ) -> aiwork_space_20210204_models.UpdateDatasetVersionResponse:
+        """
+        @summary 更新指定版本的数据集信息
+        
+        @param request: UpdateDatasetVersionRequest
+        @return: UpdateDatasetVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_dataset_version_with_options_async(dataset_id, version_name, request, headers, runtime)
 
     def update_default_workspace_with_options(
         self,

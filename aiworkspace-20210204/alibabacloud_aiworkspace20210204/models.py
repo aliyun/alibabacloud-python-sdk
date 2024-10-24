@@ -2289,6 +2289,273 @@ class CreateDatasetLabelsResponse(TeaModel):
         return self
 
 
+class CreateDatasetVersionRequest(TeaModel):
+    def __init__(
+        self,
+        data_count: int = None,
+        data_size: int = None,
+        data_source_type: str = None,
+        description: str = None,
+        labels: List[Label] = None,
+        options: str = None,
+        property: str = None,
+        source_id: str = None,
+        source_type: str = None,
+        uri: str = None,
+    ):
+        self.data_count = data_count
+        self.data_size = data_size
+        self.data_source_type = data_source_type
+        self.description = description
+        self.labels = labels
+        self.options = options
+        self.property = property
+        self.source_id = source_id
+        self.source_type = source_type
+        self.uri = uri
+
+    def validate(self):
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_count is not None:
+            result['DataCount'] = self.data_count
+        if self.data_size is not None:
+            result['DataSize'] = self.data_size
+        if self.data_source_type is not None:
+            result['DataSourceType'] = self.data_source_type
+        if self.description is not None:
+            result['Description'] = self.description
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
+        if self.options is not None:
+            result['Options'] = self.options
+        if self.property is not None:
+            result['Property'] = self.property
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        if self.uri is not None:
+            result['Uri'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataCount') is not None:
+            self.data_count = m.get('DataCount')
+        if m.get('DataSize') is not None:
+            self.data_size = m.get('DataSize')
+        if m.get('DataSourceType') is not None:
+            self.data_source_type = m.get('DataSourceType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = Label()
+                self.labels.append(temp_model.from_map(k))
+        if m.get('Options') is not None:
+            self.options = m.get('Options')
+        if m.get('Property') is not None:
+            self.property = m.get('Property')
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
+        return self
+
+
+class CreateDatasetVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        version_name: str = None,
+        request_id: str = None,
+    ):
+        self.version_name = version_name
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.version_name is not None:
+            result['VersionName'] = self.version_name
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VersionName') is not None:
+            self.version_name = m.get('VersionName')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreateDatasetVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDatasetVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDatasetVersionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateDatasetVersionLabelsRequest(TeaModel):
+    def __init__(
+        self,
+        labels: List[Label] = None,
+    ):
+        # This parameter is required.
+        self.labels = labels
+
+    def validate(self):
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = Label()
+                self.labels.append(temp_model.from_map(k))
+        return self
+
+
+class CreateDatasetVersionLabelsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreateDatasetVersionLabelsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDatasetVersionLabelsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDatasetVersionLabelsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateExperimentRequest(TeaModel):
     def __init__(
         self,
@@ -4276,6 +4543,170 @@ class DeleteDatasetLabelsResponse(TeaModel):
         return self
 
 
+class DeleteDatasetVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeleteDatasetVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDatasetVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDatasetVersionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDatasetVersionLabelsRequest(TeaModel):
+    def __init__(
+        self,
+        keys: str = None,
+    ):
+        # This parameter is required.
+        self.keys = keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keys is not None:
+            result['Keys'] = self.keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Keys') is not None:
+            self.keys = m.get('Keys')
+        return self
+
+
+class DeleteDatasetVersionLabelsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeleteDatasetVersionLabelsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDatasetVersionLabelsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDatasetVersionLabelsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteExperimentResponseBody(TeaModel):
     def __init__(
         self,
@@ -5548,6 +5979,82 @@ class GetDatasetResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetDatasetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDatasetVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        dataset_version: DatasetVersion = None,
+        request_id: str = None,
+    ):
+        self.dataset_version = dataset_version
+        self.request_id = request_id
+
+    def validate(self):
+        if self.dataset_version:
+            self.dataset_version.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_version is not None:
+            result['DatasetVersion'] = self.dataset_version.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetVersion') is not None:
+            temp_model = DatasetVersion()
+            self.dataset_version = temp_model.from_map(m['DatasetVersion'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetDatasetVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDatasetVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDatasetVersionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7193,6 +7700,189 @@ class ListCodeSourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListCodeSourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDatasetVersionsRequest(TeaModel):
+    def __init__(
+        self,
+        data_sources_types: str = None,
+        label_keys: str = None,
+        lable_values: str = None,
+        order: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        properties: str = None,
+        sort_by: str = None,
+        source_id: str = None,
+        source_types: str = None,
+    ):
+        self.data_sources_types = data_sources_types
+        self.label_keys = label_keys
+        self.lable_values = lable_values
+        self.order = order
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        self.properties = properties
+        self.sort_by = sort_by
+        self.source_id = source_id
+        self.source_types = source_types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_sources_types is not None:
+            result['DataSourcesTypes'] = self.data_sources_types
+        if self.label_keys is not None:
+            result['LabelKeys'] = self.label_keys
+        if self.lable_values is not None:
+            result['LableValues'] = self.lable_values
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.properties is not None:
+            result['Properties'] = self.properties
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
+        if self.source_types is not None:
+            result['SourceTypes'] = self.source_types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataSourcesTypes') is not None:
+            self.data_sources_types = m.get('DataSourcesTypes')
+        if m.get('LabelKeys') is not None:
+            self.label_keys = m.get('LabelKeys')
+        if m.get('LableValues') is not None:
+            self.lable_values = m.get('LableValues')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Properties') is not None:
+            self.properties = m.get('Properties')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
+        if m.get('SourceTypes') is not None:
+            self.source_types = m.get('SourceTypes')
+        return self
+
+
+class ListDatasetVersionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        dataset_versions: List[DatasetVersion] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+        request_id: str = None,
+    ):
+        self.dataset_versions = dataset_versions
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+        self.request_id = request_id
+
+    def validate(self):
+        if self.dataset_versions:
+            for k in self.dataset_versions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DatasetVersions'] = []
+        if self.dataset_versions is not None:
+            for k in self.dataset_versions:
+                result['DatasetVersions'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dataset_versions = []
+        if m.get('DatasetVersions') is not None:
+            for k in m.get('DatasetVersions'):
+                temp_model = DatasetVersion()
+                self.dataset_versions.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListDatasetVersionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDatasetVersionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDatasetVersionsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11356,6 +12046,119 @@ class UpdateDatasetResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateDatasetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateDatasetVersionRequest(TeaModel):
+    def __init__(
+        self,
+        data_count: int = None,
+        data_size: int = None,
+        description: str = None,
+        options: str = None,
+    ):
+        self.data_count = data_count
+        self.data_size = data_size
+        self.description = description
+        self.options = options
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_count is not None:
+            result['DataCount'] = self.data_count
+        if self.data_size is not None:
+            result['DataSize'] = self.data_size
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.options is not None:
+            result['Options'] = self.options
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataCount') is not None:
+            self.data_count = m.get('DataCount')
+        if m.get('DataSize') is not None:
+            self.data_size = m.get('DataSize')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Options') is not None:
+            self.options = m.get('Options')
+        return self
+
+
+class UpdateDatasetVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpdateDatasetVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateDatasetVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateDatasetVersionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
