@@ -1,3 +1,14 @@
+2024-10-24 Version: 6.9.4
+- Update API CreateFlowLog: add param IpVersion.
+- Update API CreateNatGateway: add param AccessMode.
+- Update API CreateNatGateway: add param PrivateLinkEnabled.
+- Update API DescribeFlowLogs: update response param.
+- Update API DescribeNatGatewayAssociateNetworkInterfaces: update response param.
+- Update API DescribeNatGateways: update response param.
+- Update API GetNatGatewayAttribute: update response param.
+- Update API ModifyFlowLogAttribute: add param IpVersion.
+
+
 2024-09-14 Version: 6.9.3
 - Update API ListVpcPublishedRouteEntries: update response param.
 

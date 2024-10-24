@@ -7579,6 +7579,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.flow_log_name):
             query['FlowLogName'] = request.flow_log_name
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
         if not UtilClient.is_unset(request.log_store_name):
             query['LogStoreName'] = request.log_store_name
         if not UtilClient.is_unset(request.owner_account):
@@ -7648,6 +7650,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.flow_log_name):
             query['FlowLogName'] = request.flow_log_name
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
         if not UtilClient.is_unset(request.log_store_name):
             query['LogStoreName'] = request.log_store_name
         if not UtilClient.is_unset(request.owner_account):
@@ -9681,7 +9685,7 @@ class Client(OpenApiClient):
 
     def create_nat_gateway_with_options(
         self,
-        request: vpc_20160428_models.CreateNatGatewayRequest,
+        tmp_req: vpc_20160428_models.CreateNatGatewayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateNatGatewayResponse:
         """
@@ -9697,12 +9701,18 @@ class Client(OpenApiClient):
         It takes 1 to 3 minutes to create a NAT gateway.
         You cannot repeatedly call the **CreateNatGateway** operation within a specific period of time.
         
-        @param request: CreateNatGatewayRequest
+        @param tmp_req: CreateNatGatewayRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateNatGatewayResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = vpc_20160428_models.CreateNatGatewayShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.access_mode):
+            request.access_mode_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.access_mode, 'AccessMode', 'json')
         query = {}
+        if not UtilClient.is_unset(request.access_mode_shrink):
+            query['AccessMode'] = request.access_mode_shrink
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.client_token):
@@ -9731,6 +9741,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.pricing_cycle):
             query['PricingCycle'] = request.pricing_cycle
+        if not UtilClient.is_unset(request.private_link_enabled):
+            query['PrivateLinkEnabled'] = request.private_link_enabled
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -9768,7 +9780,7 @@ class Client(OpenApiClient):
 
     async def create_nat_gateway_with_options_async(
         self,
-        request: vpc_20160428_models.CreateNatGatewayRequest,
+        tmp_req: vpc_20160428_models.CreateNatGatewayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateNatGatewayResponse:
         """
@@ -9784,12 +9796,18 @@ class Client(OpenApiClient):
         It takes 1 to 3 minutes to create a NAT gateway.
         You cannot repeatedly call the **CreateNatGateway** operation within a specific period of time.
         
-        @param request: CreateNatGatewayRequest
+        @param tmp_req: CreateNatGatewayRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateNatGatewayResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = vpc_20160428_models.CreateNatGatewayShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.access_mode):
+            request.access_mode_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.access_mode, 'AccessMode', 'json')
         query = {}
+        if not UtilClient.is_unset(request.access_mode_shrink):
+            query['AccessMode'] = request.access_mode_shrink
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.client_token):
@@ -9818,6 +9836,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.pricing_cycle):
             query['PricingCycle'] = request.pricing_cycle
+        if not UtilClient.is_unset(request.private_link_enabled):
+            query['PrivateLinkEnabled'] = request.private_link_enabled
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -33951,11 +33971,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DisableNatGatewayEcsMetricResponse:
         """
+        @deprecated OpenAPI DisableNatGatewayEcsMetric is deprecated
+        
         @summary Disables traffic monitoring for an Elastic Compute Service (ECS) instance.
         
         @param request: DisableNatGatewayEcsMetricRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DisableNatGatewayEcsMetricResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -33992,11 +34015,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DisableNatGatewayEcsMetricResponse:
         """
+        @deprecated OpenAPI DisableNatGatewayEcsMetric is deprecated
+        
         @summary Disables traffic monitoring for an Elastic Compute Service (ECS) instance.
         
         @param request: DisableNatGatewayEcsMetricRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DisableNatGatewayEcsMetricResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -34032,10 +34058,13 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DisableNatGatewayEcsMetricRequest,
     ) -> vpc_20160428_models.DisableNatGatewayEcsMetricResponse:
         """
+        @deprecated OpenAPI DisableNatGatewayEcsMetric is deprecated
+        
         @summary Disables traffic monitoring for an Elastic Compute Service (ECS) instance.
         
         @param request: DisableNatGatewayEcsMetricRequest
         @return: DisableNatGatewayEcsMetricResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.disable_nat_gateway_ecs_metric_with_options(request, runtime)
@@ -34045,10 +34074,13 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DisableNatGatewayEcsMetricRequest,
     ) -> vpc_20160428_models.DisableNatGatewayEcsMetricResponse:
         """
+        @deprecated OpenAPI DisableNatGatewayEcsMetric is deprecated
+        
         @summary Disables traffic monitoring for an Elastic Compute Service (ECS) instance.
         
         @param request: DisableNatGatewayEcsMetricRequest
         @return: DisableNatGatewayEcsMetricResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.disable_nat_gateway_ecs_metric_with_options_async(request, runtime)
@@ -34695,11 +34727,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.EnableNatGatewayEcsMetricResponse:
         """
+        @deprecated OpenAPI EnableNatGatewayEcsMetric is deprecated
+        
         @summary Enables Elastic Compute Service (ECS) traffic monitoring.
         
         @param request: EnableNatGatewayEcsMetricRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: EnableNatGatewayEcsMetricResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -34736,11 +34771,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.EnableNatGatewayEcsMetricResponse:
         """
+        @deprecated OpenAPI EnableNatGatewayEcsMetric is deprecated
+        
         @summary Enables Elastic Compute Service (ECS) traffic monitoring.
         
         @param request: EnableNatGatewayEcsMetricRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: EnableNatGatewayEcsMetricResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -34776,10 +34814,13 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.EnableNatGatewayEcsMetricRequest,
     ) -> vpc_20160428_models.EnableNatGatewayEcsMetricResponse:
         """
+        @deprecated OpenAPI EnableNatGatewayEcsMetric is deprecated
+        
         @summary Enables Elastic Compute Service (ECS) traffic monitoring.
         
         @param request: EnableNatGatewayEcsMetricRequest
         @return: EnableNatGatewayEcsMetricResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.enable_nat_gateway_ecs_metric_with_options(request, runtime)
@@ -34789,10 +34830,13 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.EnableNatGatewayEcsMetricRequest,
     ) -> vpc_20160428_models.EnableNatGatewayEcsMetricResponse:
         """
+        @deprecated OpenAPI EnableNatGatewayEcsMetric is deprecated
+        
         @summary Enables Elastic Compute Service (ECS) traffic monitoring.
         
         @param request: EnableNatGatewayEcsMetricRequest
         @return: EnableNatGatewayEcsMetricResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.enable_nat_gateway_ecs_metric_with_options_async(request, runtime)
@@ -42058,6 +42102,8 @@ class Client(OpenApiClient):
             query['FlowLogId'] = request.flow_log_id
         if not UtilClient.is_unset(request.flow_log_name):
             query['FlowLogName'] = request.flow_log_name
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -42114,6 +42160,8 @@ class Client(OpenApiClient):
             query['FlowLogId'] = request.flow_log_id
         if not UtilClient.is_unset(request.flow_log_name):
             query['FlowLogName'] = request.flow_log_name
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -44965,7 +45013,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyRouteEntryResponse:
         """
-        @summary 修改路由条目属性
+        @summary Modifies the name and description of a custom route entry.
         
         @description You cannot repeatedly call the *ModifyRouteEntry** operation to modify the name and description of a custom route within the specified period of time.
         
@@ -45024,7 +45072,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyRouteEntryResponse:
         """
-        @summary 修改路由条目属性
+        @summary Modifies the name and description of a custom route entry.
         
         @description You cannot repeatedly call the *ModifyRouteEntry** operation to modify the name and description of a custom route within the specified period of time.
         
@@ -45082,7 +45130,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyRouteEntryRequest,
     ) -> vpc_20160428_models.ModifyRouteEntryResponse:
         """
-        @summary 修改路由条目属性
+        @summary Modifies the name and description of a custom route entry.
         
         @description You cannot repeatedly call the *ModifyRouteEntry** operation to modify the name and description of a custom route within the specified period of time.
         
@@ -45097,7 +45145,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyRouteEntryRequest,
     ) -> vpc_20160428_models.ModifyRouteEntryResponse:
         """
-        @summary 修改路由条目属性
+        @summary Modifies the name and description of a custom route entry.
         
         @description You cannot repeatedly call the *ModifyRouteEntry** operation to modify the name and description of a custom route within the specified period of time.
         
@@ -54463,6 +54511,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateNatGatewayNatTypeResponse:
         """
+        @deprecated OpenAPI UpdateNatGatewayNatType is deprecated
+        
         @summary Upgrades a standard NAT gateway to an enhanced NAT gateway.
         
         @description Before you call this operation, take note of the following limits:
@@ -54478,6 +54528,7 @@ class Client(OpenApiClient):
         @param request: UpdateNatGatewayNatTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateNatGatewayNatTypeResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -54528,6 +54579,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateNatGatewayNatTypeResponse:
         """
+        @deprecated OpenAPI UpdateNatGatewayNatType is deprecated
+        
         @summary Upgrades a standard NAT gateway to an enhanced NAT gateway.
         
         @description Before you call this operation, take note of the following limits:
@@ -54543,6 +54596,7 @@ class Client(OpenApiClient):
         @param request: UpdateNatGatewayNatTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateNatGatewayNatTypeResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -54592,6 +54646,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UpdateNatGatewayNatTypeRequest,
     ) -> vpc_20160428_models.UpdateNatGatewayNatTypeResponse:
         """
+        @deprecated OpenAPI UpdateNatGatewayNatType is deprecated
+        
         @summary Upgrades a standard NAT gateway to an enhanced NAT gateway.
         
         @description Before you call this operation, take note of the following limits:
@@ -54606,6 +54662,7 @@ class Client(OpenApiClient):
         
         @param request: UpdateNatGatewayNatTypeRequest
         @return: UpdateNatGatewayNatTypeResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.update_nat_gateway_nat_type_with_options(request, runtime)
@@ -54615,6 +54672,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UpdateNatGatewayNatTypeRequest,
     ) -> vpc_20160428_models.UpdateNatGatewayNatTypeResponse:
         """
+        @deprecated OpenAPI UpdateNatGatewayNatType is deprecated
+        
         @summary Upgrades a standard NAT gateway to an enhanced NAT gateway.
         
         @description Before you call this operation, take note of the following limits:
@@ -54629,6 +54688,7 @@ class Client(OpenApiClient):
         
         @param request: UpdateNatGatewayNatTypeRequest
         @return: UpdateNatGatewayNatTypeResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_nat_gateway_nat_type_with_options_async(request, runtime)

@@ -7289,17 +7289,15 @@ class CreateCommonBandwidthPackageRequest(TeaModel):
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > 
-        # 
-        # If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The description of the Internet Shared Bandwidth instance.
         # 
-        # The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
+        # The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
         # The line type. Valid values:
         # 
-        # *   **BGP** All regions support BGP (Multi-ISP).
+        # *   **BGP** (default) All regions support BGP (Multi-ISP).
         # *   **BGP_PRO** BGP (Multi-ISP) Pro lines are available in the China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
         # 
         # If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
@@ -7317,15 +7315,13 @@ class CreateCommonBandwidthPackageRequest(TeaModel):
         self.internet_charge_type = internet_charge_type
         # The name of the Internet Shared Bandwidth instance.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+        # The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The percentage of the minimum bandwidth commitment. Set the parameter to **20**.
         # 
-        # > 
-        # 
-        # This parameter is available only on the Alibaba Cloud China site.
+        # > This parameter is available only on the Alibaba Cloud China site.
         self.ratio = ratio
         # The region ID of the Internet Shared Bandwidth instance.
         # 
@@ -9544,6 +9540,7 @@ class CreateFlowLogRequest(TeaModel):
         aggregation_interval: int = None,
         description: str = None,
         flow_log_name: str = None,
+        ip_version: str = None,
         log_store_name: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -9568,6 +9565,7 @@ class CreateFlowLogRequest(TeaModel):
         # 
         # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.flow_log_name = flow_log_name
+        self.ip_version = ip_version
         # The name of the Logstore that stores the captured traffic data.
         # 
         # *   The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
@@ -9640,6 +9638,8 @@ class CreateFlowLogRequest(TeaModel):
             result['Description'] = self.description
         if self.flow_log_name is not None:
             result['FlowLogName'] = self.flow_log_name
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
         if self.log_store_name is not None:
             result['LogStoreName'] = self.log_store_name
         if self.owner_account is not None:
@@ -9678,6 +9678,8 @@ class CreateFlowLogRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('FlowLogName') is not None:
             self.flow_log_name = m.get('FlowLogName')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
         if m.get('LogStoreName') is not None:
             self.log_store_name = m.get('LogStoreName')
         if m.get('OwnerAccount') is not None:
@@ -12711,6 +12713,39 @@ class CreateIpv6GatewayResponse(TeaModel):
         return self
 
 
+class CreateNatGatewayRequestAccessMode(TeaModel):
+    def __init__(
+        self,
+        mode_value: str = None,
+        tunnel_type: str = None,
+    ):
+        self.mode_value = mode_value
+        self.tunnel_type = tunnel_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mode_value is not None:
+            result['ModeValue'] = self.mode_value
+        if self.tunnel_type is not None:
+            result['TunnelType'] = self.tunnel_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ModeValue') is not None:
+            self.mode_value = m.get('ModeValue')
+        if m.get('TunnelType') is not None:
+            self.tunnel_type = m.get('TunnelType')
+        return self
+
+
 class CreateNatGatewayRequestTag(TeaModel):
     def __init__(
         self,
@@ -12749,6 +12784,7 @@ class CreateNatGatewayRequestTag(TeaModel):
 class CreateNatGatewayRequest(TeaModel):
     def __init__(
         self,
+        access_mode: CreateNatGatewayRequestAccessMode = None,
         auto_pay: bool = None,
         client_token: str = None,
         description: str = None,
@@ -12763,6 +12799,7 @@ class CreateNatGatewayRequest(TeaModel):
         owner_account: str = None,
         owner_id: int = None,
         pricing_cycle: str = None,
+        private_link_enabled: bool = None,
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -12772,6 +12809,7 @@ class CreateNatGatewayRequest(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        self.access_mode = access_mode
         # Subscription Internet NAT gateways are no longer available for purchase. Ignore this parameter.
         self.auto_pay = auto_pay
         # The client token that is used to ensure the idempotence of the request.
@@ -12826,6 +12864,279 @@ class CreateNatGatewayRequest(TeaModel):
         self.owner_id = owner_id
         # Subscription Internet NAT gateways are no longer available for purchase. Ignore this parameter.
         self.pricing_cycle = pricing_cycle
+        self.private_link_enabled = private_link_enabled
+        # The region ID of the NAT gateway.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # Specifies whether to enable the firewall feature. Valid values:
+        # 
+        # *   **false** (default)>Notice: This parameter is deprecated.
+        self.security_protection_enabled = security_protection_enabled
+        # Subscription Internet NAT gateways are no longer available for purchase. Ignore this parameter.
+        self.spec = spec
+        # The tags.
+        self.tag = tag
+        # The ID of the vSwitch to which the NAT gateway is attached.
+        # 
+        # When you create a NAT gateway, you must specify a vSwitch for the NAT gateway. Then, the system assigns an idle private IP address from the vSwitch to the NAT gateway.
+        # 
+        # *   To attach the NAT gateway to an existing vSwitch, make sure that the zone to which the vSwitch belongs supports NAT gateways. In addition, the vSwitch must have idle IP addresses.
+        # *   If no vSwitch exists in the VPC, create a vSwitch in a zone that supports NAT gateways. Then, specify the vSwitch for the NAT gateway.
+        # 
+        # >  You can call the [ListEnhanhcedNatGatewayAvailableZones](https://help.aliyun.com/document_detail/182292.html) operation to query zones that support NAT gateways. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/35748.html) operation to query idle IP addresses in a vSwitch.
+        self.v_switch_id = v_switch_id
+        # The ID of the VPC where you want to create the NAT gateway.
+        # 
+        # This parameter is required.
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        if self.access_mode:
+            self.access_mode.validate()
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_mode is not None:
+            result['AccessMode'] = self.access_mode.to_map()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.eip_bind_mode is not None:
+            result['EipBindMode'] = self.eip_bind_mode
+        if self.icmp_reply_enabled is not None:
+            result['IcmpReplyEnabled'] = self.icmp_reply_enabled
+        if self.instance_charge_type is not None:
+            result['InstanceChargeType'] = self.instance_charge_type
+        if self.internet_charge_type is not None:
+            result['InternetChargeType'] = self.internet_charge_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.nat_type is not None:
+            result['NatType'] = self.nat_type
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.pricing_cycle is not None:
+            result['PricingCycle'] = self.pricing_cycle
+        if self.private_link_enabled is not None:
+            result['PrivateLinkEnabled'] = self.private_link_enabled
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_protection_enabled is not None:
+            result['SecurityProtectionEnabled'] = self.security_protection_enabled
+        if self.spec is not None:
+            result['Spec'] = self.spec
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessMode') is not None:
+            temp_model = CreateNatGatewayRequestAccessMode()
+            self.access_mode = temp_model.from_map(m['AccessMode'])
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('EipBindMode') is not None:
+            self.eip_bind_mode = m.get('EipBindMode')
+        if m.get('IcmpReplyEnabled') is not None:
+            self.icmp_reply_enabled = m.get('IcmpReplyEnabled')
+        if m.get('InstanceChargeType') is not None:
+            self.instance_charge_type = m.get('InstanceChargeType')
+        if m.get('InternetChargeType') is not None:
+            self.internet_charge_type = m.get('InternetChargeType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NatType') is not None:
+            self.nat_type = m.get('NatType')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PricingCycle') is not None:
+            self.pricing_cycle = m.get('PricingCycle')
+        if m.get('PrivateLinkEnabled') is not None:
+            self.private_link_enabled = m.get('PrivateLinkEnabled')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityProtectionEnabled') is not None:
+            self.security_protection_enabled = m.get('SecurityProtectionEnabled')
+        if m.get('Spec') is not None:
+            self.spec = m.get('Spec')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateNatGatewayRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class CreateNatGatewayShrinkRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key. The format of Tag.N.Key when you call the operation. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length, and cannot start with acs: or aliyun. It cannot contain http:// or https://.
+        self.key = key
+        # The tag value. The format of Tag.N.Value when you call the operation. Valid values of N: 1 to 20. The tag value cannot be an empty string. The tag value can be up to 128 characters in length, and cannot start with acs: or aliyun. It cannot contain http:// or https://.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateNatGatewayShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        access_mode_shrink: str = None,
+        auto_pay: bool = None,
+        client_token: str = None,
+        description: str = None,
+        duration: str = None,
+        eip_bind_mode: str = None,
+        icmp_reply_enabled: bool = None,
+        instance_charge_type: str = None,
+        internet_charge_type: str = None,
+        name: str = None,
+        nat_type: str = None,
+        network_type: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        pricing_cycle: str = None,
+        private_link_enabled: bool = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_protection_enabled: bool = None,
+        spec: str = None,
+        tag: List[CreateNatGatewayShrinkRequestTag] = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+    ):
+        self.access_mode_shrink = access_mode_shrink
+        # Subscription Internet NAT gateways are no longer available for purchase. Ignore this parameter.
+        self.auto_pay = auto_pay
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        self.client_token = client_token
+        # The description of the NAT gateway.
+        # 
+        # You can leave this parameter empty or enter a description. If you enter a description, the description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        self.description = description
+        # Subscription Internet NAT gateways are no longer available for purchase. Ignore this parameter.
+        self.duration = duration
+        # The mode in which the EIP is associated with the NAT gateway. Valid values:
+        # 
+        # *   **MULTI_BINDED** (default): Multi-EIP-to-ENI mode.
+        # 
+        # *   **NAT**: NAT mode. IPv4 gateways are supported in this mode.
+        # 
+        #     **\
+        # 
+        #     **Note** If a NAT gateway is associated with an EIP in NAT mode, the EIP occupies one private IP address in the vSwitch. Make sure that the vSwitch has sufficient private IP addresses. Otherwise, the NAT gateway fails to be associated with the EIP. In NAT mode, a maximum number of 50 EIPs can be associated with each NAT gateway.
+        self.eip_bind_mode = eip_bind_mode
+        # Specifies whether to enable ICMP retrieval. Valid values:
+        # 
+        # *   **true** (default)
+        # *   **false**\
+        self.icmp_reply_enabled = icmp_reply_enabled
+        # The billing method of the NAT gateway.
+        # 
+        # Set the value to **PostPaid** (pay-as-you-go), which is the default value.
+        # 
+        # For more information, see [Internet NAT gateway billing](https://help.aliyun.com/document_detail/48126.html) and [VPC NAT gateway billing](https://help.aliyun.com/document_detail/270913.html).
+        self.instance_charge_type = instance_charge_type
+        # The metering method of the NAT gateway. Set the value to **PayByLcu**, which specifies the pay-by-CU metering method.
+        self.internet_charge_type = internet_charge_type
+        # The name of the NAT gateway.
+        # 
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+        # 
+        # If this parameter is not set, the system assigns a default name to the NAT gateway.
+        self.name = name
+        # The type of NAT gateway. Set the value to **Enhanced**, which specifies enhanced NAT gateway.
+        self.nat_type = nat_type
+        # The network type of the NAT gateway. Valid values:
+        # 
+        # *   **internet**: Internet
+        # *   **intranet**: VPC
+        self.network_type = network_type
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # Subscription Internet NAT gateways are no longer available for purchase. Ignore this parameter.
+        self.pricing_cycle = pricing_cycle
+        self.private_link_enabled = private_link_enabled
         # The region ID of the NAT gateway.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
@@ -12868,6 +13179,8 @@ class CreateNatGatewayRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.access_mode_shrink is not None:
+            result['AccessMode'] = self.access_mode_shrink
         if self.auto_pay is not None:
             result['AutoPay'] = self.auto_pay
         if self.client_token is not None:
@@ -12896,6 +13209,8 @@ class CreateNatGatewayRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.pricing_cycle is not None:
             result['PricingCycle'] = self.pricing_cycle
+        if self.private_link_enabled is not None:
+            result['PrivateLinkEnabled'] = self.private_link_enabled
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
@@ -12918,6 +13233,8 @@ class CreateNatGatewayRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessMode') is not None:
+            self.access_mode_shrink = m.get('AccessMode')
         if m.get('AutoPay') is not None:
             self.auto_pay = m.get('AutoPay')
         if m.get('ClientToken') is not None:
@@ -12946,6 +13263,8 @@ class CreateNatGatewayRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('PricingCycle') is not None:
             self.pricing_cycle = m.get('PricingCycle')
+        if m.get('PrivateLinkEnabled') is not None:
+            self.private_link_enabled = m.get('PrivateLinkEnabled')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
@@ -12959,7 +13278,7 @@ class CreateNatGatewayRequest(TeaModel):
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
-                temp_model = CreateNatGatewayRequestTag()
+                temp_model = CreateNatGatewayShrinkRequestTag()
                 self.tag.append(temp_model.from_map(k))
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
@@ -39057,6 +39376,7 @@ class DescribeFlowLogsResponseBodyFlowLogsFlowLog(TeaModel):
         flow_log_deliver_status: str = None,
         flow_log_id: str = None,
         flow_log_name: str = None,
+        ip_version: str = None,
         log_store_name: str = None,
         project_name: str = None,
         region_id: str = None,
@@ -39094,6 +39414,7 @@ class DescribeFlowLogsResponseBodyFlowLogsFlowLog(TeaModel):
         self.flow_log_id = flow_log_id
         # The name of the flow log.
         self.flow_log_name = flow_log_name
+        self.ip_version = ip_version
         # The Logstore that stores the captured traffic data.
         self.log_store_name = log_store_name
         # The project that manages the captured traffic data.
@@ -39167,6 +39488,8 @@ class DescribeFlowLogsResponseBodyFlowLogsFlowLog(TeaModel):
             result['FlowLogId'] = self.flow_log_id
         if self.flow_log_name is not None:
             result['FlowLogName'] = self.flow_log_name
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
         if self.log_store_name is not None:
             result['LogStoreName'] = self.log_store_name
         if self.project_name is not None:
@@ -39209,6 +39532,8 @@ class DescribeFlowLogsResponseBodyFlowLogsFlowLog(TeaModel):
             self.flow_log_id = m.get('FlowLogId')
         if m.get('FlowLogName') is not None:
             self.flow_log_name = m.get('FlowLogName')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
         if m.get('LogStoreName') is not None:
             self.log_store_name = m.get('LogStoreName')
         if m.get('ProjectName') is not None:
@@ -44847,12 +45172,14 @@ class DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkIn
         resource_id: str = None,
         resource_owner_id: str = None,
         resource_type: str = None,
+        tunnel_index: str = None,
     ):
         self.ipv_4sets = ipv_4sets
         self.network_interface_id = network_interface_id
         self.resource_id = resource_id
         self.resource_owner_id = resource_owner_id
         self.resource_type = resource_type
+        self.tunnel_index = tunnel_index
 
     def validate(self):
         if self.ipv_4sets:
@@ -44874,6 +45201,8 @@ class DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkIn
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
+        if self.tunnel_index is not None:
+            result['TunnelIndex'] = self.tunnel_index
         return result
 
     def from_map(self, m: dict = None):
@@ -44889,6 +45218,8 @@ class DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkIn
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
+        if m.get('TunnelIndex') is not None:
+            self.tunnel_index = m.get('TunnelIndex')
         return self
 
 
@@ -45244,6 +45575,39 @@ class DescribeNatGatewaysRequest(TeaModel):
         return self
 
 
+class DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayAccessMode(TeaModel):
+    def __init__(
+        self,
+        mode_value: str = None,
+        tunnel_type: str = None,
+    ):
+        self.mode_value = mode_value
+        self.tunnel_type = tunnel_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mode_value is not None:
+            result['ModeValue'] = self.mode_value
+        if self.tunnel_type is not None:
+            result['TunnelType'] = self.tunnel_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ModeValue') is not None:
+            self.mode_value = m.get('ModeValue')
+        if m.get('TunnelType') is not None:
+            self.tunnel_type = m.get('TunnelType')
+        return self
+
+
 class DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayForwardTableIds(TeaModel):
     def __init__(
         self,
@@ -45577,6 +45941,7 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTags(TeaModel):
 class DescribeNatGatewaysResponseBodyNatGatewaysNatGateway(TeaModel):
     def __init__(
         self,
+        access_mode: DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayAccessMode = None,
         auto_pay: bool = None,
         business_status: str = None,
         creation_time: str = None,
@@ -45608,6 +45973,7 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGateway(TeaModel):
         tags: DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTags = None,
         vpc_id: str = None,
     ):
+        self.access_mode = access_mode
         # Indicates whether automatic payment is enabled. Valid values:
         # 
         # *   **false**: no
@@ -45714,6 +46080,8 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGateway(TeaModel):
         self.vpc_id = vpc_id
 
     def validate(self):
+        if self.access_mode:
+            self.access_mode.validate()
         if self.forward_table_ids:
             self.forward_table_ids.validate()
         if self.full_nat_table_ids:
@@ -45733,6 +46101,8 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGateway(TeaModel):
             return _map
 
         result = dict()
+        if self.access_mode is not None:
+            result['AccessMode'] = self.access_mode.to_map()
         if self.auto_pay is not None:
             result['AutoPay'] = self.auto_pay
         if self.business_status is not None:
@@ -45797,6 +46167,9 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGateway(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessMode') is not None:
+            temp_model = DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayAccessMode()
+            self.access_mode = temp_model.from_map(m['AccessMode'])
         if m.get('AutoPay') is not None:
             self.auto_pay = m.get('AutoPay')
         if m.get('BusinessStatus') is not None:
@@ -69306,6 +69679,39 @@ class GetNatGatewayAttributeRequest(TeaModel):
         return self
 
 
+class GetNatGatewayAttributeResponseBodyAccessMode(TeaModel):
+    def __init__(
+        self,
+        mode_value: str = None,
+        tunnel_type: str = None,
+    ):
+        self.mode_value = mode_value
+        self.tunnel_type = tunnel_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mode_value is not None:
+            result['ModeValue'] = self.mode_value
+        if self.tunnel_type is not None:
+            result['TunnelType'] = self.tunnel_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ModeValue') is not None:
+            self.mode_value = m.get('ModeValue')
+        if m.get('TunnelType') is not None:
+            self.tunnel_type = m.get('TunnelType')
+        return self
+
+
 class GetNatGatewayAttributeResponseBodyBillingConfig(TeaModel):
     def __init__(
         self,
@@ -69657,6 +70063,7 @@ class GetNatGatewayAttributeResponseBodySnatTable(TeaModel):
 class GetNatGatewayAttributeResponseBody(TeaModel):
     def __init__(
         self,
+        access_mode: GetNatGatewayAttributeResponseBodyAccessMode = None,
         billing_config: GetNatGatewayAttributeResponseBodyBillingConfig = None,
         business_status: str = None,
         creation_time: str = None,
@@ -69683,6 +70090,7 @@ class GetNatGatewayAttributeResponseBody(TeaModel):
         status: str = None,
         vpc_id: str = None,
     ):
+        self.access_mode = access_mode
         # The billing information.
         self.billing_config = billing_config
         # The service status of the NAT gateway. Valid values:
@@ -69754,6 +70162,8 @@ class GetNatGatewayAttributeResponseBody(TeaModel):
         self.vpc_id = vpc_id
 
     def validate(self):
+        if self.access_mode:
+            self.access_mode.validate()
         if self.billing_config:
             self.billing_config.validate()
         if self.deletion_protection_info:
@@ -69779,6 +70189,8 @@ class GetNatGatewayAttributeResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_mode is not None:
+            result['AccessMode'] = self.access_mode.to_map()
         if self.billing_config is not None:
             result['BillingConfig'] = self.billing_config.to_map()
         if self.business_status is not None:
@@ -69835,6 +70247,9 @@ class GetNatGatewayAttributeResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessMode') is not None:
+            temp_model = GetNatGatewayAttributeResponseBodyAccessMode()
+            self.access_mode = temp_model.from_map(m['AccessMode'])
         if m.get('BillingConfig') is not None:
             temp_model = GetNatGatewayAttributeResponseBodyBillingConfig()
             self.billing_config = temp_model.from_map(m['BillingConfig'])
@@ -83303,6 +83718,7 @@ class ModifyFlowLogAttributeRequest(TeaModel):
         description: str = None,
         flow_log_id: str = None,
         flow_log_name: str = None,
+        ip_version: str = None,
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
@@ -83323,6 +83739,7 @@ class ModifyFlowLogAttributeRequest(TeaModel):
         # 
         # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.flow_log_name = flow_log_name
+        self.ip_version = ip_version
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the flow log is created.
@@ -83351,6 +83768,8 @@ class ModifyFlowLogAttributeRequest(TeaModel):
             result['FlowLogId'] = self.flow_log_id
         if self.flow_log_name is not None:
             result['FlowLogName'] = self.flow_log_name
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -83373,6 +83792,8 @@ class ModifyFlowLogAttributeRequest(TeaModel):
             self.flow_log_id = m.get('FlowLogId')
         if m.get('FlowLogName') is not None:
             self.flow_log_name = m.get('FlowLogName')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -86983,6 +87404,7 @@ class ModifyRouteEntryRequest(TeaModel):
         # 
         # The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         self.description = description
+        # The destination CIDR block of the route entry. Only IPv4 CIDR blocks, IPv6 CIDR blocks, and prefix lists are supported.
         self.destination_cidr_block = destination_cidr_block
         # The ID of the new next hop instance.
         self.new_next_hop_id = new_next_hop_id
@@ -87004,6 +87426,7 @@ class ModifyRouteEntryRequest(TeaModel):
         # 
         # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         self.route_entry_name = route_entry_name
+        # The ID of the route table to which the route entry belongs.
         self.route_table_id = route_table_id
 
     def validate(self):
