@@ -4847,15 +4847,15 @@ class CreateGroupMonitoringAgentProcessRequestAlertConfigTargetList(TeaModel):
     ):
         # The Alibaba Cloud Resource Name (ARN) of the resource.
         # 
-        # For information about how to obtain the ARN of a resource, see [DescribeMetricRuleTargets](https://help.aliyun.com/document_detail/121592.html).
+        # For more information about how to query the ARN of a resource, see [DescribeMetricRuleTargets](https://help.aliyun.com/document_detail/121592.html).
         # 
         # Format: `acs:{Service name abbreviation}:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. Example: `acs:mns:cn-hangzhou:120886317861****:/queues/test123/message`. Fields:
         # 
-        # *   {Service name abbreviation}: the abbreviation of the service name. Valid value: mns.
+        # *   {Service name abbreviation}: the abbreviation of the service name. Set the value to Simple Message Queue (formerly MNS) (SMQ).
         # 
         # *   {userId}: the ID of the Alibaba Cloud account.
         # 
-        # *   {regionId}: the region ID of the message queue or topic.
+        # *   {regionId}: the region ID of the SMQ queue or topic.
         # 
         # *   {Resource type}: the type of the resource that triggers the alert. Valid values:
         # 
@@ -4869,9 +4869,9 @@ class CreateGroupMonitoringAgentProcessRequestAlertConfigTargetList(TeaModel):
         self.arn = arn
         # The ID of the resource for which alerts are triggered.
         # 
-        # For information about how to obtain the ID of a resource for which alerts are triggered, see [DescribeMetricRuleTargets](https://help.aliyun.com/document_detail/121592.html).
+        # For more information about how to obtain the ID of a resource for which alerts are triggered, see [DescribeMetricRuleTargets](https://help.aliyun.com/document_detail/121592.html).
         self.id = id
-        # The parameters of the alert callback. Specify the parameters in the JSON format.
+        # The parameters of the alert callback. The parameters are in the JSON format.
         self.json_params = json_params
         # The alert level. Valid values:
         # 
@@ -4938,21 +4938,21 @@ class CreateGroupMonitoringAgentProcessRequestAlertConfig(TeaModel):
         # *   GreaterThanLastWeek: greater than the metric value at the same time last week
         # *   LessThanLastWeek: less than the metric value at the same time last week
         # *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-        # *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
+        # *   LessThanLastPeriod: less than the metric value in the previous monitoring cycle
         # 
         # Valid values of N: 1 to 3.
         # 
         # This parameter is required.
         self.comparison_operator = comparison_operator
-        # The time period during which the alert rule is effective.
+        # The period of time during which the alert rule is effective.
         # 
         # Valid values of N: 1 to 3.
         self.effective_interval = effective_interval
         # The alert level. Valid values:
         # 
-        # *   critical (default): critical
-        # *   warn: warning
-        # *   info: information
+        # *   critical (default)
+        # *   warn
+        # *   info
         # 
         # Valid values of N: 1 to 3.
         # 
@@ -4964,9 +4964,9 @@ class CreateGroupMonitoringAgentProcessRequestAlertConfig(TeaModel):
         # 
         # Valid values of N: 1 to 3.
         # 
-        # >  Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
+        # >  Only one alert notification is sent during a mute period even if the metric value exceeds the alert threshold during consecutive checks.
         self.silence_time = silence_time
-        # The statistical method for alerts.
+        # The statistical aggregation method that is used to calculate the metric values.
         # 
         # Valid values of N: 1 to 3.
         # 
@@ -4980,15 +4980,13 @@ class CreateGroupMonitoringAgentProcessRequestAlertConfig(TeaModel):
         # 
         # Valid values of N: 1 to 3.
         # 
-        # Unit: cores.
-        # 
         # This parameter is required.
         self.threshold = threshold
         # The number of times for which the threshold can be consecutively exceeded. Default value: 3.
         # 
         # Valid values of N: 1 to 3.
         # 
-        # >  An alert is triggered only if the number of times for which the threshold can be consecutively exceeded is reached.
+        # >  A metric triggers an alert only after the metric value reaches the threshold consecutively for the specified times.
         # 
         # This parameter is required.
         self.times = times
@@ -22178,15 +22176,31 @@ class DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfig
     ):
         # The Alibaba Cloud Resource Name (ARN) of the resource. Format: acs:{Service name abbreviation}:{regionId}:{userId}:/{Resource type}/{Resource name}/message. Example: acs:mns:cn-hangzhou:120886317861\\*\\*\\*\\*:/queues/test123/message. Fields:
         # 
-        # {Service name abbreviation}: the abbreviation of the service name. Valid value: mns. {userId}: the ID of the Alibaba Cloud account. {regionId}: the region ID of the message queue or topic. {Resource type}: the type of the resource that triggers the alert. Valid values: - **queues** - **topics** - {Resource name}: the resource name. - If the resource type is set to **queues**, the resource name is the name of the message queue. - If the resource type is set to **topics**, the resource name is the name of the topic.
+        # *   {Service name abbreviation}: the abbreviation of the service name. Set the value to Simple Message Queue (formerly MNS) (SMQ).
+        # 
+        # *   {userId}: the ID of the Alibaba Cloud account.
+        # 
+        # *   {regionId}: the region ID of the SMQ queue or topic.
+        # 
+        # *   {Resource type}: the type of the resource for which alerts are triggered. Valid values:
+        # 
+        #     *   **queues**\
+        #     *   **topics**\
+        # 
+        # *   {Resource name}: the resource name.
+        # 
+        #     *   If the resource type is **queues**, the resource name is the queue name.
+        #     *   If the resource type is **topics**, the resource name is the topic name.
         self.arn = arn
         # The ID of the resource for which alerts are triggered.
         self.id = id
         # The parameters of the alert callback. The parameters are in the JSON format.
         self.json_parmas = json_parmas
-        # The level of the alert. Valid values:
+        # The alert level. Valid values:
         # 
-        # INFO WARN CRITICAL
+        # *   INFO
+        # *   WARN
+        # *   CRITICAL
         self.level = level
 
     def validate(self):
@@ -22300,7 +22314,7 @@ class DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfig
         self.silence_time = silence_time
         # The method used to calculate metric values that trigger alerts.
         self.statistics = statistics
-        # The resource for which alerts are triggered.
+        # The resources for which alerts are triggered.
         self.target_list = target_list
         # The alert threshold.
         self.threshold = threshold
@@ -36562,6 +36576,7 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
         response_format: str = None,
         retry_delay: int = None,
         screen_shot: bool = None,
+        scroll_end: bool = None,
         strict_mode: bool = None,
         time_out: int = None,
         traffic_hijack_element_blacklist: DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementBlacklist = None,
@@ -36672,6 +36687,7 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
         self.retry_delay = retry_delay
         # 是否开启页面截图
         self.screen_shot = screen_shot
+        self.scroll_end = scroll_end
         self.strict_mode = strict_mode
         # The timeout period. Unit: milliseconds.
         self.time_out = time_out
@@ -36792,6 +36808,8 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
             result['retry_delay'] = self.retry_delay
         if self.screen_shot is not None:
             result['screen_shot'] = self.screen_shot
+        if self.scroll_end is not None:
+            result['scroll_end'] = self.scroll_end
         if self.strict_mode is not None:
             result['strict_mode'] = self.strict_mode
         if self.time_out is not None:
@@ -36900,6 +36918,8 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
             self.retry_delay = m.get('retry_delay')
         if m.get('screen_shot') is not None:
             self.screen_shot = m.get('screen_shot')
+        if m.get('scroll_end') is not None:
+            self.scroll_end = m.get('scroll_end')
         if m.get('strict_mode') is not None:
             self.strict_mode = m.get('strict_mode')
         if m.get('time_out') is not None:
