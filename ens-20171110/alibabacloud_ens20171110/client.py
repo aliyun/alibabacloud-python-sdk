@@ -1113,6 +1113,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.attach_ens_instances_with_options_async(request, runtime)
 
+    def attach_network_interface_with_options(
+        self,
+        request: ens_20171110_models.AttachNetworkInterfaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.AttachNetworkInterfaceResponse:
+        """
+        @summary Attaches an Elastic Network Interface (ENI) to an Edge Node Service (ECS) instance.
+        
+        @description When you call this operation, take note of the following limits:
+        The ENI must be in the Available state.
+        An ENI can be attached to only one instance that is the same zone and the same Virtual Private Cloud (VPC).
+        The instance must be in the Stopped state.
+        A maximum of 10 ENIs can be attached to an instance.
+        This operation is an asynchronous operation. After you call this operation to attach an ENI, you can view the status of the ENI to check whether the ENI is attached.
+        
+        @param request: AttachNetworkInterfaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachNetworkInterfaceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_interface_id):
+            query['NetworkInterfaceId'] = request.network_interface_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachNetworkInterface',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.AttachNetworkInterfaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def attach_network_interface_with_options_async(
+        self,
+        request: ens_20171110_models.AttachNetworkInterfaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.AttachNetworkInterfaceResponse:
+        """
+        @summary Attaches an Elastic Network Interface (ENI) to an Edge Node Service (ECS) instance.
+        
+        @description When you call this operation, take note of the following limits:
+        The ENI must be in the Available state.
+        An ENI can be attached to only one instance that is the same zone and the same Virtual Private Cloud (VPC).
+        The instance must be in the Stopped state.
+        A maximum of 10 ENIs can be attached to an instance.
+        This operation is an asynchronous operation. After you call this operation to attach an ENI, you can view the status of the ENI to check whether the ENI is attached.
+        
+        @param request: AttachNetworkInterfaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachNetworkInterfaceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_interface_id):
+            query['NetworkInterfaceId'] = request.network_interface_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachNetworkInterface',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.AttachNetworkInterfaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def attach_network_interface(
+        self,
+        request: ens_20171110_models.AttachNetworkInterfaceRequest,
+    ) -> ens_20171110_models.AttachNetworkInterfaceResponse:
+        """
+        @summary Attaches an Elastic Network Interface (ENI) to an Edge Node Service (ECS) instance.
+        
+        @description When you call this operation, take note of the following limits:
+        The ENI must be in the Available state.
+        An ENI can be attached to only one instance that is the same zone and the same Virtual Private Cloud (VPC).
+        The instance must be in the Stopped state.
+        A maximum of 10 ENIs can be attached to an instance.
+        This operation is an asynchronous operation. After you call this operation to attach an ENI, you can view the status of the ENI to check whether the ENI is attached.
+        
+        @param request: AttachNetworkInterfaceRequest
+        @return: AttachNetworkInterfaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.attach_network_interface_with_options(request, runtime)
+
+    async def attach_network_interface_async(
+        self,
+        request: ens_20171110_models.AttachNetworkInterfaceRequest,
+    ) -> ens_20171110_models.AttachNetworkInterfaceResponse:
+        """
+        @summary Attaches an Elastic Network Interface (ENI) to an Edge Node Service (ECS) instance.
+        
+        @description When you call this operation, take note of the following limits:
+        The ENI must be in the Available state.
+        An ENI can be attached to only one instance that is the same zone and the same Virtual Private Cloud (VPC).
+        The instance must be in the Stopped state.
+        A maximum of 10 ENIs can be attached to an instance.
+        This operation is an asynchronous operation. After you call this operation to attach an ENI, you can view the status of the ENI to check whether the ENI is attached.
+        
+        @param request: AttachNetworkInterfaceRequest
+        @return: AttachNetworkInterfaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.attach_network_interface_with_options_async(request, runtime)
+
     def authorize_security_group_with_options(
         self,
         request: ens_20171110_models.AuthorizeSecurityGroupRequest,
@@ -2045,6 +2173,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_classic_network_with_options_async(request, runtime)
 
+    def create_cluster_with_options(
+        self,
+        request: ens_20171110_models.CreateClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateClusterResponse:
+        """
+        @summary 创建边缘容器集群
+        
+        @param request: CreateClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateClusterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_version):
+            query['ClusterVersion'] = request.cluster_version
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCluster',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_cluster_with_options_async(
+        self,
+        request: ens_20171110_models.CreateClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateClusterResponse:
+        """
+        @summary 创建边缘容器集群
+        
+        @param request: CreateClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateClusterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_version):
+            query['ClusterVersion'] = request.cluster_version
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCluster',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_cluster(
+        self,
+        request: ens_20171110_models.CreateClusterRequest,
+    ) -> ens_20171110_models.CreateClusterResponse:
+        """
+        @summary 创建边缘容器集群
+        
+        @param request: CreateClusterRequest
+        @return: CreateClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_cluster_with_options(request, runtime)
+
+    async def create_cluster_async(
+        self,
+        request: ens_20171110_models.CreateClusterRequest,
+    ) -> ens_20171110_models.CreateClusterResponse:
+        """
+        @summary 创建边缘容器集群
+        
+        @param request: CreateClusterRequest
+        @return: CreateClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_cluster_with_options_async(request, runtime)
+
     def create_disk_with_options(
         self,
         request: ens_20171110_models.CreateDiskRequest,
@@ -2075,6 +2303,8 @@ class Client(OpenApiClient):
             query['Size'] = request.size
         if not UtilClient.is_unset(request.snapshot_id):
             query['SnapshotId'] = request.snapshot_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2124,6 +2354,8 @@ class Client(OpenApiClient):
             query['Size'] = request.size
         if not UtilClient.is_unset(request.snapshot_id):
             query['SnapshotId'] = request.snapshot_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2200,6 +2432,8 @@ class Client(OpenApiClient):
             query['Isp'] = request.isp
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2250,6 +2484,8 @@ class Client(OpenApiClient):
             query['Isp'] = request.isp
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4471,6 +4707,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.network_id):
             query['NetworkId'] = request.network_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         req = open_api_models.OpenApiRequest(
@@ -4514,6 +4752,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.network_id):
             query['NetworkId'] = request.network_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         req = open_api_models.OpenApiRequest(
@@ -4586,6 +4826,8 @@ class Client(OpenApiClient):
             query['EnsRegionId'] = request.ens_region_id
         if not UtilClient.is_unset(request.network_name):
             query['NetworkName'] = request.network_name
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4630,6 +4872,8 @@ class Client(OpenApiClient):
             query['EnsRegionId'] = request.ens_region_id
         if not UtilClient.is_unset(request.network_name):
             query['NetworkName'] = request.network_name
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5247,6 +5491,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.idle_timeout):
+            query['IdleTimeout'] = request.idle_timeout
         if not UtilClient.is_unset(request.nat_gateway_id):
             query['NatGatewayId'] = request.nat_gateway_id
         if not UtilClient.is_unset(request.snat_entry_name):
@@ -5294,6 +5540,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.idle_timeout):
+            query['IdleTimeout'] = request.idle_timeout
         if not UtilClient.is_unset(request.nat_gateway_id):
             query['NatGatewayId'] = request.nat_gateway_id
         if not UtilClient.is_unset(request.snat_entry_name):
@@ -5611,6 +5859,8 @@ class Client(OpenApiClient):
             query['EnsRegionId'] = request.ens_region_id
         if not UtilClient.is_unset(request.network_id):
             query['NetworkId'] = request.network_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.v_switch_name):
             query['VSwitchName'] = request.v_switch_name
         req = open_api_models.OpenApiRequest(
@@ -5654,6 +5904,8 @@ class Client(OpenApiClient):
             query['EnsRegionId'] = request.ens_region_id
         if not UtilClient.is_unset(request.network_id):
             query['NetworkId'] = request.network_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.v_switch_name):
             query['VSwitchName'] = request.v_switch_name
         req = open_api_models.OpenApiRequest(
@@ -9523,17 +9775,21 @@ class Client(OpenApiClient):
 
     def describe_cloud_disk_types_with_options(
         self,
-        request: ens_20171110_models.DescribeCloudDiskTypesRequest,
+        tmp_req: ens_20171110_models.DescribeCloudDiskTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeCloudDiskTypesResponse:
         """
         @summary Queries the specifications of resources that you can purchase when you create an instance.
         
-        @param request: DescribeCloudDiskTypesRequest
+        @param tmp_req: DescribeCloudDiskTypesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeCloudDiskTypesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DescribeCloudDiskTypesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ens_region_ids):
+            request.ens_region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ens_region_ids, 'EnsRegionIds', 'json')
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -9556,17 +9812,21 @@ class Client(OpenApiClient):
 
     async def describe_cloud_disk_types_with_options_async(
         self,
-        request: ens_20171110_models.DescribeCloudDiskTypesRequest,
+        tmp_req: ens_20171110_models.DescribeCloudDiskTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeCloudDiskTypesResponse:
         """
         @summary Queries the specifications of resources that you can purchase when you create an instance.
         
-        @param request: DescribeCloudDiskTypesRequest
+        @param tmp_req: DescribeCloudDiskTypesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeCloudDiskTypesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DescribeCloudDiskTypesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ens_region_ids):
+            request.ens_region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ens_region_ids, 'EnsRegionIds', 'json')
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -9612,6 +9872,198 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cloud_disk_types_with_options_async(request, runtime)
+
+    def describe_cluster_with_options(
+        self,
+        request: ens_20171110_models.DescribeClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeClusterResponse:
+        """
+        @summary 查询边缘容器集群
+        
+        @param request: DescribeClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCluster',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cluster_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeClusterResponse:
+        """
+        @summary 查询边缘容器集群
+        
+        @param request: DescribeClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCluster',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cluster(
+        self,
+        request: ens_20171110_models.DescribeClusterRequest,
+    ) -> ens_20171110_models.DescribeClusterResponse:
+        """
+        @summary 查询边缘容器集群
+        
+        @param request: DescribeClusterRequest
+        @return: DescribeClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cluster_with_options(request, runtime)
+
+    async def describe_cluster_async(
+        self,
+        request: ens_20171110_models.DescribeClusterRequest,
+    ) -> ens_20171110_models.DescribeClusterResponse:
+        """
+        @summary 查询边缘容器集群
+        
+        @param request: DescribeClusterRequest
+        @return: DescribeClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cluster_with_options_async(request, runtime)
+
+    def describe_cluster_kube_config_with_options(
+        self,
+        request: ens_20171110_models.DescribeClusterKubeConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeClusterKubeConfigResponse:
+        """
+        @summary 查询边缘容器集群证书
+        
+        @param request: DescribeClusterKubeConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterKubeConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeClusterKubeConfig',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeClusterKubeConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cluster_kube_config_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeClusterKubeConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeClusterKubeConfigResponse:
+        """
+        @summary 查询边缘容器集群证书
+        
+        @param request: DescribeClusterKubeConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterKubeConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeClusterKubeConfig',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeClusterKubeConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cluster_kube_config(
+        self,
+        request: ens_20171110_models.DescribeClusterKubeConfigRequest,
+    ) -> ens_20171110_models.DescribeClusterKubeConfigResponse:
+        """
+        @summary 查询边缘容器集群证书
+        
+        @param request: DescribeClusterKubeConfigRequest
+        @return: DescribeClusterKubeConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cluster_kube_config_with_options(request, runtime)
+
+    async def describe_cluster_kube_config_async(
+        self,
+        request: ens_20171110_models.DescribeClusterKubeConfigRequest,
+    ) -> ens_20171110_models.DescribeClusterKubeConfigResponse:
+        """
+        @summary 查询边缘容器集群证书
+        
+        @param request: DescribeClusterKubeConfigRequest
+        @return: DescribeClusterKubeConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cluster_kube_config_with_options_async(request, runtime)
 
     def describe_create_pre_paid_instance_result_with_options(
         self,
@@ -10152,6 +10604,98 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_device_service_with_options_async(request, runtime)
+
+    def describe_disk_iops_list_with_options(
+        self,
+        request: ens_20171110_models.DescribeDiskIopsListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeDiskIopsListResponse:
+        """
+        @summary Queries the disk IOPS monitoring data.
+        
+        @param request: DescribeDiskIopsListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDiskIopsListResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiskIopsList',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeDiskIopsListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_disk_iops_list_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeDiskIopsListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeDiskIopsListResponse:
+        """
+        @summary Queries the disk IOPS monitoring data.
+        
+        @param request: DescribeDiskIopsListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDiskIopsListResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiskIopsList',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeDiskIopsListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_disk_iops_list(
+        self,
+        request: ens_20171110_models.DescribeDiskIopsListRequest,
+    ) -> ens_20171110_models.DescribeDiskIopsListResponse:
+        """
+        @summary Queries the disk IOPS monitoring data.
+        
+        @param request: DescribeDiskIopsListRequest
+        @return: DescribeDiskIopsListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_disk_iops_list_with_options(request, runtime)
+
+    async def describe_disk_iops_list_async(
+        self,
+        request: ens_20171110_models.DescribeDiskIopsListRequest,
+    ) -> ens_20171110_models.DescribeDiskIopsListResponse:
+        """
+        @summary Queries the disk IOPS monitoring data.
+        
+        @param request: DescribeDiskIopsListRequest
+        @return: DescribeDiskIopsListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_disk_iops_list_with_options_async(request, runtime)
 
     def describe_disks_with_options(
         self,
@@ -13341,6 +13885,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_auto_renew_attribute_with_options_async(request, runtime)
 
+    def describe_instance_bandwidth_detail_with_options(
+        self,
+        request: ens_20171110_models.DescribeInstanceBandwidthDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeInstanceBandwidthDetailResponse:
+        """
+        @summary 查询实例5分钟粒度带宽明细
+        
+        @param request: DescribeInstanceBandwidthDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceBandwidthDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceBandwidthDetail',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeInstanceBandwidthDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instance_bandwidth_detail_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeInstanceBandwidthDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeInstanceBandwidthDetailResponse:
+        """
+        @summary 查询实例5分钟粒度带宽明细
+        
+        @param request: DescribeInstanceBandwidthDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceBandwidthDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceBandwidthDetail',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeInstanceBandwidthDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instance_bandwidth_detail(
+        self,
+        request: ens_20171110_models.DescribeInstanceBandwidthDetailRequest,
+    ) -> ens_20171110_models.DescribeInstanceBandwidthDetailResponse:
+        """
+        @summary 查询实例5分钟粒度带宽明细
+        
+        @param request: DescribeInstanceBandwidthDetailRequest
+        @return: DescribeInstanceBandwidthDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_instance_bandwidth_detail_with_options(request, runtime)
+
+    async def describe_instance_bandwidth_detail_async(
+        self,
+        request: ens_20171110_models.DescribeInstanceBandwidthDetailRequest,
+    ) -> ens_20171110_models.DescribeInstanceBandwidthDetailResponse:
+        """
+        @summary 查询实例5分钟粒度带宽明细
+        
+        @param request: DescribeInstanceBandwidthDetailRequest
+        @return: DescribeInstanceBandwidthDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_instance_bandwidth_detail_with_options_async(request, runtime)
+
     def describe_instance_monitor_data_with_options(
         self,
         request: ens_20171110_models.DescribeInstanceMonitorDataRequest,
@@ -14324,6 +14960,202 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_load_balancer_httpslistener_attribute_with_options_async(request, runtime)
+
+    def describe_load_balancer_listen_monitor_with_options(
+        self,
+        request: ens_20171110_models.DescribeLoadBalancerListenMonitorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeLoadBalancerListenMonitorResponse:
+        """
+        @summary LB监听级监控数据查询
+        
+        @param request: DescribeLoadBalancerListenMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLoadBalancerListenMonitorResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLoadBalancerListenMonitor',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeLoadBalancerListenMonitorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_load_balancer_listen_monitor_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeLoadBalancerListenMonitorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeLoadBalancerListenMonitorResponse:
+        """
+        @summary LB监听级监控数据查询
+        
+        @param request: DescribeLoadBalancerListenMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLoadBalancerListenMonitorResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLoadBalancerListenMonitor',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeLoadBalancerListenMonitorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_load_balancer_listen_monitor(
+        self,
+        request: ens_20171110_models.DescribeLoadBalancerListenMonitorRequest,
+    ) -> ens_20171110_models.DescribeLoadBalancerListenMonitorResponse:
+        """
+        @summary LB监听级监控数据查询
+        
+        @param request: DescribeLoadBalancerListenMonitorRequest
+        @return: DescribeLoadBalancerListenMonitorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_load_balancer_listen_monitor_with_options(request, runtime)
+
+    async def describe_load_balancer_listen_monitor_async(
+        self,
+        request: ens_20171110_models.DescribeLoadBalancerListenMonitorRequest,
+    ) -> ens_20171110_models.DescribeLoadBalancerListenMonitorResponse:
+        """
+        @summary LB监听级监控数据查询
+        
+        @param request: DescribeLoadBalancerListenMonitorRequest
+        @return: DescribeLoadBalancerListenMonitorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_load_balancer_listen_monitor_with_options_async(request, runtime)
+
+    def describe_load_balancer_listeners_with_options(
+        self,
+        request: ens_20171110_models.DescribeLoadBalancerListenersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeLoadBalancerListenersResponse:
+        """
+        @summary 调用DescribeLoadBalancerListeners查询负载均衡实例监听列表。
+        
+        @param request: DescribeLoadBalancerListenersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLoadBalancerListenersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLoadBalancerListeners',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeLoadBalancerListenersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_load_balancer_listeners_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeLoadBalancerListenersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeLoadBalancerListenersResponse:
+        """
+        @summary 调用DescribeLoadBalancerListeners查询负载均衡实例监听列表。
+        
+        @param request: DescribeLoadBalancerListenersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLoadBalancerListenersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLoadBalancerListeners',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeLoadBalancerListenersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_load_balancer_listeners(
+        self,
+        request: ens_20171110_models.DescribeLoadBalancerListenersRequest,
+    ) -> ens_20171110_models.DescribeLoadBalancerListenersResponse:
+        """
+        @summary 调用DescribeLoadBalancerListeners查询负载均衡实例监听列表。
+        
+        @param request: DescribeLoadBalancerListenersRequest
+        @return: DescribeLoadBalancerListenersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_load_balancer_listeners_with_options(request, runtime)
+
+    async def describe_load_balancer_listeners_async(
+        self,
+        request: ens_20171110_models.DescribeLoadBalancerListenersRequest,
+    ) -> ens_20171110_models.DescribeLoadBalancerListenersResponse:
+        """
+        @summary 调用DescribeLoadBalancerListeners查询负载均衡实例监听列表。
+        
+        @param request: DescribeLoadBalancerListenersRequest
+        @return: DescribeLoadBalancerListenersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_load_balancer_listeners_with_options_async(request, runtime)
 
     def describe_load_balancer_spec_with_options(
         self,
@@ -16567,6 +17399,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_sdgs_with_options_async(request, runtime)
 
+    def describe_secondary_public_ip_addresses_with_options(
+        self,
+        request: ens_20171110_models.DescribeSecondaryPublicIpAddressesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeSecondaryPublicIpAddressesResponse:
+        """
+        @summary Queries created secondary public IP addresses.
+        
+        @param request: DescribeSecondaryPublicIpAddressesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecondaryPublicIpAddressesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.isp):
+            query['Isp'] = request.isp
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.secondary_public_ip_address):
+            query['SecondaryPublicIpAddress'] = request.secondary_public_ip_address
+        if not UtilClient.is_unset(request.secondary_public_ip_id):
+            query['SecondaryPublicIpId'] = request.secondary_public_ip_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSecondaryPublicIpAddresses',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeSecondaryPublicIpAddressesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_secondary_public_ip_addresses_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeSecondaryPublicIpAddressesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeSecondaryPublicIpAddressesResponse:
+        """
+        @summary Queries created secondary public IP addresses.
+        
+        @param request: DescribeSecondaryPublicIpAddressesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecondaryPublicIpAddressesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.isp):
+            query['Isp'] = request.isp
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.secondary_public_ip_address):
+            query['SecondaryPublicIpAddress'] = request.secondary_public_ip_address
+        if not UtilClient.is_unset(request.secondary_public_ip_id):
+            query['SecondaryPublicIpId'] = request.secondary_public_ip_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSecondaryPublicIpAddresses',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeSecondaryPublicIpAddressesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_secondary_public_ip_addresses(
+        self,
+        request: ens_20171110_models.DescribeSecondaryPublicIpAddressesRequest,
+    ) -> ens_20171110_models.DescribeSecondaryPublicIpAddressesResponse:
+        """
+        @summary Queries created secondary public IP addresses.
+        
+        @param request: DescribeSecondaryPublicIpAddressesRequest
+        @return: DescribeSecondaryPublicIpAddressesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_secondary_public_ip_addresses_with_options(request, runtime)
+
+    async def describe_secondary_public_ip_addresses_async(
+        self,
+        request: ens_20171110_models.DescribeSecondaryPublicIpAddressesRequest,
+    ) -> ens_20171110_models.DescribeSecondaryPublicIpAddressesResponse:
+        """
+        @summary Queries created secondary public IP addresses.
+        
+        @param request: DescribeSecondaryPublicIpAddressesRequest
+        @return: DescribeSecondaryPublicIpAddressesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_secondary_public_ip_addresses_with_options_async(request, runtime)
+
     def describe_security_group_attribute_with_options(
         self,
         request: ens_20171110_models.DescribeSecurityGroupAttributeRequest,
@@ -16987,6 +17935,190 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_servcie_schedule_with_options_async(request, runtime)
 
+    def describe_server_load_balancer_listen_monitor_with_options(
+        self,
+        request: ens_20171110_models.DescribeServerLoadBalancerListenMonitorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeServerLoadBalancerListenMonitorResponse:
+        """
+        @summary ESLB实例监听级监控数据
+        
+        @param request: DescribeServerLoadBalancerListenMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServerLoadBalancerListenMonitorResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeServerLoadBalancerListenMonitor',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeServerLoadBalancerListenMonitorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_server_load_balancer_listen_monitor_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeServerLoadBalancerListenMonitorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeServerLoadBalancerListenMonitorResponse:
+        """
+        @summary ESLB实例监听级监控数据
+        
+        @param request: DescribeServerLoadBalancerListenMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServerLoadBalancerListenMonitorResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeServerLoadBalancerListenMonitor',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeServerLoadBalancerListenMonitorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_server_load_balancer_listen_monitor(
+        self,
+        request: ens_20171110_models.DescribeServerLoadBalancerListenMonitorRequest,
+    ) -> ens_20171110_models.DescribeServerLoadBalancerListenMonitorResponse:
+        """
+        @summary ESLB实例监听级监控数据
+        
+        @param request: DescribeServerLoadBalancerListenMonitorRequest
+        @return: DescribeServerLoadBalancerListenMonitorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_server_load_balancer_listen_monitor_with_options(request, runtime)
+
+    async def describe_server_load_balancer_listen_monitor_async(
+        self,
+        request: ens_20171110_models.DescribeServerLoadBalancerListenMonitorRequest,
+    ) -> ens_20171110_models.DescribeServerLoadBalancerListenMonitorResponse:
+        """
+        @summary ESLB实例监听级监控数据
+        
+        @param request: DescribeServerLoadBalancerListenMonitorRequest
+        @return: DescribeServerLoadBalancerListenMonitorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_server_load_balancer_listen_monitor_with_options_async(request, runtime)
+
+    def describe_server_load_balancer_monitor_with_options(
+        self,
+        request: ens_20171110_models.DescribeServerLoadBalancerMonitorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeServerLoadBalancerMonitorResponse:
+        """
+        @summary ESLB实例请求监控数据
+        
+        @param request: DescribeServerLoadBalancerMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServerLoadBalancerMonitorResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeServerLoadBalancerMonitor',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeServerLoadBalancerMonitorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_server_load_balancer_monitor_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeServerLoadBalancerMonitorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeServerLoadBalancerMonitorResponse:
+        """
+        @summary ESLB实例请求监控数据
+        
+        @param request: DescribeServerLoadBalancerMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServerLoadBalancerMonitorResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeServerLoadBalancerMonitor',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeServerLoadBalancerMonitorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_server_load_balancer_monitor(
+        self,
+        request: ens_20171110_models.DescribeServerLoadBalancerMonitorRequest,
+    ) -> ens_20171110_models.DescribeServerLoadBalancerMonitorResponse:
+        """
+        @summary ESLB实例请求监控数据
+        
+        @param request: DescribeServerLoadBalancerMonitorRequest
+        @return: DescribeServerLoadBalancerMonitorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_server_load_balancer_monitor_with_options(request, runtime)
+
+    async def describe_server_load_balancer_monitor_async(
+        self,
+        request: ens_20171110_models.DescribeServerLoadBalancerMonitorRequest,
+    ) -> ens_20171110_models.DescribeServerLoadBalancerMonitorResponse:
+        """
+        @summary ESLB实例请求监控数据
+        
+        @param request: DescribeServerLoadBalancerMonitorRequest
+        @return: DescribeServerLoadBalancerMonitorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_server_load_balancer_monitor_with_options_async(request, runtime)
+
     def describe_snapshots_with_options(
         self,
         request: ens_20171110_models.DescribeSnapshotsRequest,
@@ -17297,7 +18429,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeStorageGatewayResponse:
         """
-        @summary 查询存储网关
+        @summary Queries storage gateways.
         
         @param request: DescribeStorageGatewayRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17342,7 +18474,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeStorageGatewayResponse:
         """
-        @summary 查询存储网关
+        @summary Queries storage gateways.
         
         @param request: DescribeStorageGatewayRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17386,7 +18518,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeStorageGatewayRequest,
     ) -> ens_20171110_models.DescribeStorageGatewayResponse:
         """
-        @summary 查询存储网关
+        @summary Queries storage gateways.
         
         @param request: DescribeStorageGatewayRequest
         @return: DescribeStorageGatewayResponse
@@ -17399,7 +18531,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeStorageGatewayRequest,
     ) -> ens_20171110_models.DescribeStorageGatewayResponse:
         """
-        @summary 查询存储网关
+        @summary Queries storage gateways.
         
         @param request: DescribeStorageGatewayRequest
         @return: DescribeStorageGatewayResponse
@@ -17413,7 +18545,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeStorageVolumeResponse:
         """
-        @summary 查询存储卷
+        @summary Queries volumes.
         
         @param request: DescribeStorageVolumeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17460,7 +18592,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeStorageVolumeResponse:
         """
-        @summary 查询存储卷
+        @summary Queries volumes.
         
         @param request: DescribeStorageVolumeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17506,7 +18638,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeStorageVolumeRequest,
     ) -> ens_20171110_models.DescribeStorageVolumeResponse:
         """
-        @summary 查询存储卷
+        @summary Queries volumes.
         
         @param request: DescribeStorageVolumeRequest
         @return: DescribeStorageVolumeResponse
@@ -17519,7 +18651,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeStorageVolumeRequest,
     ) -> ens_20171110_models.DescribeStorageVolumeResponse:
         """
-        @summary 查询存储卷
+        @summary Queries volumes.
         
         @param request: DescribeStorageVolumeRequest
         @return: DescribeStorageVolumeResponse
@@ -17862,6 +18994,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.detach_disk_with_options_async(request, runtime)
+
+    def detach_network_interface_with_options(
+        self,
+        request: ens_20171110_models.DetachNetworkInterfaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DetachNetworkInterfaceResponse:
+        """
+        @summary Detach an elastic network interface (ENI) from an instance.
+        
+        @description Before you call this operation, take note of the following items:
+        You cannot detach a primary ENI from an instance.
+        The ENI must be in the InUse state.
+        The instances are in the Stopped state.
+        This operation is an asynchronous operation. After this operation is called to detach an ENI, you can check the state of the ENI to determine whether the ENI is detached.
+        
+        @param request: DetachNetworkInterfaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachNetworkInterfaceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.network_interface_id):
+            query['NetworkInterfaceId'] = request.network_interface_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetachNetworkInterface',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DetachNetworkInterfaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detach_network_interface_with_options_async(
+        self,
+        request: ens_20171110_models.DetachNetworkInterfaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DetachNetworkInterfaceResponse:
+        """
+        @summary Detach an elastic network interface (ENI) from an instance.
+        
+        @description Before you call this operation, take note of the following items:
+        You cannot detach a primary ENI from an instance.
+        The ENI must be in the InUse state.
+        The instances are in the Stopped state.
+        This operation is an asynchronous operation. After this operation is called to detach an ENI, you can check the state of the ENI to determine whether the ENI is detached.
+        
+        @param request: DetachNetworkInterfaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachNetworkInterfaceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.network_interface_id):
+            query['NetworkInterfaceId'] = request.network_interface_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetachNetworkInterface',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DetachNetworkInterfaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detach_network_interface(
+        self,
+        request: ens_20171110_models.DetachNetworkInterfaceRequest,
+    ) -> ens_20171110_models.DetachNetworkInterfaceResponse:
+        """
+        @summary Detach an elastic network interface (ENI) from an instance.
+        
+        @description Before you call this operation, take note of the following items:
+        You cannot detach a primary ENI from an instance.
+        The ENI must be in the InUse state.
+        The instances are in the Stopped state.
+        This operation is an asynchronous operation. After this operation is called to detach an ENI, you can check the state of the ENI to determine whether the ENI is detached.
+        
+        @param request: DetachNetworkInterfaceRequest
+        @return: DetachNetworkInterfaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.detach_network_interface_with_options(request, runtime)
+
+    async def detach_network_interface_async(
+        self,
+        request: ens_20171110_models.DetachNetworkInterfaceRequest,
+    ) -> ens_20171110_models.DetachNetworkInterfaceResponse:
+        """
+        @summary Detach an elastic network interface (ENI) from an instance.
+        
+        @description Before you call this operation, take note of the following items:
+        You cannot detach a primary ENI from an instance.
+        The ENI must be in the InUse state.
+        The instances are in the Stopped state.
+        This operation is an asynchronous operation. After this operation is called to detach an ENI, you can check the state of the ENI to determine whether the ENI is detached.
+        
+        @param request: DetachNetworkInterfaceRequest
+        @return: DetachNetworkInterfaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.detach_network_interface_with_options_async(request, runtime)
 
     def dist_application_data_with_options(
         self,
@@ -18292,7 +19544,9 @@ class Client(OpenApiClient):
         @return: GetBucketAclResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.bucket_name):
+            query['BucketName'] = request.bucket_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -18301,7 +19555,7 @@ class Client(OpenApiClient):
             version='2017-11-10',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -18325,7 +19579,9 @@ class Client(OpenApiClient):
         @return: GetBucketAclResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.bucket_name):
+            query['BucketName'] = request.bucket_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -18334,7 +19590,7 @@ class Client(OpenApiClient):
             version='2017-11-10',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -20273,7 +21529,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyHaVipAttributeResponse:
         """
-        @summary 调用ModifyHaVipAttribute接口更新高可用VIP的名称和描述。
+        @summary Modifies the name of a high-availability virtual IP address (HAVIP).
         
         @param request: ModifyHaVipAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20310,7 +21566,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyHaVipAttributeResponse:
         """
-        @summary 调用ModifyHaVipAttribute接口更新高可用VIP的名称和描述。
+        @summary Modifies the name of a high-availability virtual IP address (HAVIP).
         
         @param request: ModifyHaVipAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20346,7 +21602,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyHaVipAttributeRequest,
     ) -> ens_20171110_models.ModifyHaVipAttributeResponse:
         """
-        @summary 调用ModifyHaVipAttribute接口更新高可用VIP的名称和描述。
+        @summary Modifies the name of a high-availability virtual IP address (HAVIP).
         
         @param request: ModifyHaVipAttributeRequest
         @return: ModifyHaVipAttributeResponse
@@ -20359,7 +21615,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyHaVipAttributeRequest,
     ) -> ens_20171110_models.ModifyHaVipAttributeResponse:
         """
-        @summary 调用ModifyHaVipAttribute接口更新高可用VIP的名称和描述。
+        @summary Modifies the name of a high-availability virtual IP address (HAVIP).
         
         @param request: ModifyHaVipAttributeRequest
         @return: ModifyHaVipAttributeResponse
@@ -20811,6 +22067,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_auto_renew_attribute_with_options_async(request, runtime)
 
+    def modify_instance_boot_configuration_with_options(
+        self,
+        request: ens_20171110_models.ModifyInstanceBootConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ModifyInstanceBootConfigurationResponse:
+        """
+        @summary 修改启动配置，只支持异构实例(PCFarm裸金属)。
+        
+        @param request: ModifyInstanceBootConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceBootConfigurationResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceBootConfiguration',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ModifyInstanceBootConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_instance_boot_configuration_with_options_async(
+        self,
+        request: ens_20171110_models.ModifyInstanceBootConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ModifyInstanceBootConfigurationResponse:
+        """
+        @summary 修改启动配置，只支持异构实例(PCFarm裸金属)。
+        
+        @param request: ModifyInstanceBootConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceBootConfigurationResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceBootConfiguration',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ModifyInstanceBootConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_instance_boot_configuration(
+        self,
+        request: ens_20171110_models.ModifyInstanceBootConfigurationRequest,
+    ) -> ens_20171110_models.ModifyInstanceBootConfigurationResponse:
+        """
+        @summary 修改启动配置，只支持异构实例(PCFarm裸金属)。
+        
+        @param request: ModifyInstanceBootConfigurationRequest
+        @return: ModifyInstanceBootConfigurationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_instance_boot_configuration_with_options(request, runtime)
+
+    async def modify_instance_boot_configuration_async(
+        self,
+        request: ens_20171110_models.ModifyInstanceBootConfigurationRequest,
+    ) -> ens_20171110_models.ModifyInstanceBootConfigurationResponse:
+        """
+        @summary 修改启动配置，只支持异构实例(PCFarm裸金属)。
+        
+        @param request: ModifyInstanceBootConfigurationRequest
+        @return: ModifyInstanceBootConfigurationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_instance_boot_configuration_with_options_async(request, runtime)
+
     def modify_instance_charge_type_with_options(
         self,
         tmp_req: ens_20171110_models.ModifyInstanceChargeTypeRequest,
@@ -21178,6 +22526,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_network_attribute_with_options_async(request, runtime)
+
+    def modify_network_interface_attribute_with_options(
+        self,
+        request: ens_20171110_models.ModifyNetworkInterfaceAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ModifyNetworkInterfaceAttributeResponse:
+        """
+        @summary Modifies the attributes of an elastic network interface (ENI), such as its name and description.
+        
+        @param request: ModifyNetworkInterfaceAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyNetworkInterfaceAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.network_interface_id):
+            query['NetworkInterfaceId'] = request.network_interface_id
+        if not UtilClient.is_unset(request.network_interface_name):
+            query['NetworkInterfaceName'] = request.network_interface_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyNetworkInterfaceAttribute',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ModifyNetworkInterfaceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_network_interface_attribute_with_options_async(
+        self,
+        request: ens_20171110_models.ModifyNetworkInterfaceAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ModifyNetworkInterfaceAttributeResponse:
+        """
+        @summary Modifies the attributes of an elastic network interface (ENI), such as its name and description.
+        
+        @param request: ModifyNetworkInterfaceAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyNetworkInterfaceAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.network_interface_id):
+            query['NetworkInterfaceId'] = request.network_interface_id
+        if not UtilClient.is_unset(request.network_interface_name):
+            query['NetworkInterfaceName'] = request.network_interface_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyNetworkInterfaceAttribute',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ModifyNetworkInterfaceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_network_interface_attribute(
+        self,
+        request: ens_20171110_models.ModifyNetworkInterfaceAttributeRequest,
+    ) -> ens_20171110_models.ModifyNetworkInterfaceAttributeResponse:
+        """
+        @summary Modifies the attributes of an elastic network interface (ENI), such as its name and description.
+        
+        @param request: ModifyNetworkInterfaceAttributeRequest
+        @return: ModifyNetworkInterfaceAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_network_interface_attribute_with_options(request, runtime)
+
+    async def modify_network_interface_attribute_async(
+        self,
+        request: ens_20171110_models.ModifyNetworkInterfaceAttributeRequest,
+    ) -> ens_20171110_models.ModifyNetworkInterfaceAttributeResponse:
+        """
+        @summary Modifies the attributes of an elastic network interface (ENI), such as its name and description.
+        
+        @param request: ModifyNetworkInterfaceAttributeRequest
+        @return: ModifyNetworkInterfaceAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_network_interface_attribute_with_options_async(request, runtime)
 
     def modify_prepay_instance_spec_with_options(
         self,
@@ -23725,7 +25177,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RemoveInstanceSDGResponse:
         """
-        @summary Removes a deployed shared data group (SDG) on compute instances.
+        @summary Removes a shared data group (SDG) that is attached to the compute instance.
         
         @param tmp_req: RemoveInstanceSDGRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23764,7 +25216,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RemoveInstanceSDGResponse:
         """
-        @summary Removes a deployed shared data group (SDG) on compute instances.
+        @summary Removes a shared data group (SDG) that is attached to the compute instance.
         
         @param tmp_req: RemoveInstanceSDGRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23802,7 +25254,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RemoveInstanceSDGRequest,
     ) -> ens_20171110_models.RemoveInstanceSDGResponse:
         """
-        @summary Removes a deployed shared data group (SDG) on compute instances.
+        @summary Removes a shared data group (SDG) that is attached to the compute instance.
         
         @param request: RemoveInstanceSDGRequest
         @return: RemoveInstanceSDGResponse
@@ -23815,7 +25267,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RemoveInstanceSDGRequest,
     ) -> ens_20171110_models.RemoveInstanceSDGResponse:
         """
-        @summary Removes a deployed shared data group (SDG) on compute instances.
+        @summary Removes a shared data group (SDG) that is attached to the compute instance.
         
         @param request: RemoveInstanceSDGRequest
         @return: RemoveInstanceSDGResponse
@@ -25453,7 +26905,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RunInstancesResponse:
         """
-        @summary Creates one or more pay-as-you-go or subscription Edge Node Service (ENS) instances.
+        @summary Purchases instances.
         
         @param tmp_req: RunInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25566,7 +27018,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RunInstancesResponse:
         """
-        @summary Creates one or more pay-as-you-go or subscription Edge Node Service (ENS) instances.
+        @summary Purchases instances.
         
         @param tmp_req: RunInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25678,7 +27130,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RunInstancesRequest,
     ) -> ens_20171110_models.RunInstancesResponse:
         """
-        @summary Creates one or more pay-as-you-go or subscription Edge Node Service (ENS) instances.
+        @summary Purchases instances.
         
         @param request: RunInstancesRequest
         @return: RunInstancesResponse
@@ -25691,7 +27143,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RunInstancesRequest,
     ) -> ens_20171110_models.RunInstancesResponse:
         """
-        @summary Creates one or more pay-as-you-go or subscription Edge Node Service (ENS) instances.
+        @summary Purchases instances.
         
         @param request: RunInstancesRequest
         @return: RunInstancesResponse
@@ -28193,7 +29645,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.UnassociateHaVipResponse:
         """
-        @summary 调用UnassociateHaVip接口将高可用VIP从云产品实例上解绑。
+        @summary Disassociates a high-availability virtual IP address (HAVIP) from an Edge Node Service (ENS) instance or Elastic Network Interface (ENI).
         
         @param request: UnassociateHaVipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28230,7 +29682,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.UnassociateHaVipResponse:
         """
-        @summary 调用UnassociateHaVip接口将高可用VIP从云产品实例上解绑。
+        @summary Disassociates a high-availability virtual IP address (HAVIP) from an Edge Node Service (ENS) instance or Elastic Network Interface (ENI).
         
         @param request: UnassociateHaVipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28266,7 +29718,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.UnassociateHaVipRequest,
     ) -> ens_20171110_models.UnassociateHaVipResponse:
         """
-        @summary 调用UnassociateHaVip接口将高可用VIP从云产品实例上解绑。
+        @summary Disassociates a high-availability virtual IP address (HAVIP) from an Edge Node Service (ENS) instance or Elastic Network Interface (ENI).
         
         @param request: UnassociateHaVipRequest
         @return: UnassociateHaVipResponse
@@ -28279,7 +29731,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.UnassociateHaVipRequest,
     ) -> ens_20171110_models.UnassociateHaVipResponse:
         """
-        @summary 调用UnassociateHaVip接口将高可用VIP从云产品实例上解绑。
+        @summary Disassociates a high-availability virtual IP address (HAVIP) from an Edge Node Service (ENS) instance or Elastic Network Interface (ENI).
         
         @param request: UnassociateHaVipRequest
         @return: UnassociateHaVipResponse

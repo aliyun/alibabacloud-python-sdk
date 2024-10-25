@@ -1,3 +1,38 @@
+2024-10-25 Version: 7.1.0
+- Support API AttachNetworkInterface.
+- Support API CreateCluster.
+- Support API DescribeCluster.
+- Support API DescribeClusterKubeConfig.
+- Support API DescribeDiskIopsList.
+- Support API DescribeInstanceBandwidthDetail.
+- Support API DescribeLoadBalancerListenMonitor.
+- Support API DescribeLoadBalancerListeners.
+- Support API DescribeSecondaryPublicIpAddresses.
+- Support API DescribeServerLoadBalancerListenMonitor.
+- Support API DescribeServerLoadBalancerMonitor.
+- Support API DetachNetworkInterface.
+- Support API ModifyInstanceBootConfiguration.
+- Support API ModifyNetworkInterfaceAttribute.
+- Update API CreateDisk: add param Tag.
+- Update API CreateEipInstance: add param Tag.
+- Update API CreateNatGateway: add param Tag.
+- Update API CreateNetwork: add param Tag.
+- Update API CreateSnatEntry: add param IdleTimeout.
+- Update API CreateVSwitch: add param Tag.
+- Update API DescribeCloudDiskTypes: add param EnsRegionIds.
+- Update API DescribeDisks: update response param.
+- Update API DescribeImageInfos: update response param.
+- Update API DescribeImages: update response param.
+- Update API DescribeInstances: update response param.
+- Update API DescribeSelfImages: update response param.
+- Update API DescribeSnatAttribute: update response param.
+- Update API DescribeSnatTableEntries: update response param.
+- Update API GetBucketAcl: update response param.
+- Update API ListTagResources: update param ResourceType.
+- Update API TagResources: update param ResourceType.
+- Update API UntagResources: update param ResourceType.
+
+
 2024-09-13 Version: 7.0.0
 - Support API AssociateHaVip.
 - Support API CreateStorageVolume.
