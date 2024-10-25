@@ -4883,6 +4883,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbcluster_sslwith_options_async(request, runtime)
 
+    def describe_dbcluster_shard_number_with_options(
+        self,
+        request: adb_20190315_models.DescribeDBClusterShardNumberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeDBClusterShardNumberResponse:
+        """
+        @summary 获取实例分片(Shard)数目
+        
+        @param request: DescribeDBClusterShardNumberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBClusterShardNumberResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterShardNumber',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeDBClusterShardNumberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbcluster_shard_number_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeDBClusterShardNumberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeDBClusterShardNumberResponse:
+        """
+        @summary 获取实例分片(Shard)数目
+        
+        @param request: DescribeDBClusterShardNumberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBClusterShardNumberResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterShardNumber',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeDBClusterShardNumberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbcluster_shard_number(
+        self,
+        request: adb_20190315_models.DescribeDBClusterShardNumberRequest,
+    ) -> adb_20190315_models.DescribeDBClusterShardNumberResponse:
+        """
+        @summary 获取实例分片(Shard)数目
+        
+        @param request: DescribeDBClusterShardNumberRequest
+        @return: DescribeDBClusterShardNumberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbcluster_shard_number_with_options(request, runtime)
+
+    async def describe_dbcluster_shard_number_async(
+        self,
+        request: adb_20190315_models.DescribeDBClusterShardNumberRequest,
+    ) -> adb_20190315_models.DescribeDBClusterShardNumberResponse:
+        """
+        @summary 获取实例分片(Shard)数目
+        
+        @param request: DescribeDBClusterShardNumberRequest
+        @return: DescribeDBClusterShardNumberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbcluster_shard_number_with_options_async(request, runtime)
+
     def describe_dbcluster_space_summary_with_options(
         self,
         request: adb_20190315_models.DescribeDBClusterSpaceSummaryRequest,
