@@ -2,6 +2,10 @@
 - Update API DescribeSiteMonitorAttribute: update response param.
 
 
+2024-10-25 Version: 3.1.3
+- Update API DescribeSiteMonitorAttribute: update response param.
+
+
 2024-10-11 Version: 3.1.2
 - Generated python 2019-01-01 for Cms.
 
