@@ -1052,6 +1052,33 @@ class CreateArtifactResponse(TeaModel):
         return self
 
 
+class CreateServiceRequestComplianceMetadata(TeaModel):
+    def __init__(
+        self,
+        compliance_packs: List[str] = None,
+    ):
+        self.compliance_packs = compliance_packs
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compliance_packs is not None:
+            result['CompliancePacks'] = self.compliance_packs
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompliancePacks') is not None:
+            self.compliance_packs = m.get('CompliancePacks')
+        return self
+
+
 class CreateServiceRequestServiceInfoAgreements(TeaModel):
     def __init__(
         self,
@@ -1255,6 +1282,7 @@ class CreateServiceRequest(TeaModel):
         approval_type: str = None,
         build_parameters: str = None,
         client_token: str = None,
+        compliance_metadata: CreateServiceRequestComplianceMetadata = None,
         deploy_metadata: str = None,
         deploy_type: str = None,
         dry_run: bool = None,
@@ -1292,6 +1320,472 @@ class CreateServiceRequest(TeaModel):
         self.build_parameters = build_parameters
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         self.client_token = client_token
+        self.compliance_metadata = compliance_metadata
+        # The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
+        self.deploy_metadata = deploy_metadata
+        # The deployment type of the service. Valid values:
+        # 
+        # *   ros: The service is deployed by using Resource Orchestration Service (ROS).
+        # *   terraform: The service is deployed by using Terraform.
+        # *   ack: The service is deployed by using Container Service for Kubernetes (ACK).
+        # *   spi: The service is deployed by calling a service provider interface (SPI).
+        # *   operation: The service is deployed by using a hosted O\\&M service.
+        # 
+        # This parameter is required.
+        self.deploy_type = deploy_type
+        self.dry_run = dry_run
+        # The duration for which hosted O\\&M is implemented. Unit: seconds.
+        self.duration = duration
+        # Specifies whether to enable the hosted O\\&M feature for the service. Default value: false. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # >  This parameter is required if you set **ServiceType** to **private**.
+        self.is_support_operated = is_support_operated
+        # The license metadata.
+        self.license_metadata = license_metadata
+        # The logging configurations.
+        self.log_metadata = log_metadata
+        # The hosted O\\&M configurations.
+        self.operation_metadata = operation_metadata
+        # The policy name. The name can be up to 128 characters in length. Separate multiple names with commas (,). Only hosted O\\&M policies are supported.
+        self.policy_names = policy_names
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # Whether resell is supported.
+        self.resellable = resellable
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
+        # The service ID.
+        self.service_id = service_id
+        # The service details.
+        self.service_info = service_info
+        # The service type. Valid values:
+        # 
+        # *   private: The service is a private service and is deployed within the account of a customer.
+        # *   managed: The service is a fully managed service and is deployed within the account of a service provider.
+        # *   operation: The service is a hosted O\\&M service.
+        # *   poc: The service is a trial service.
+        self.service_type = service_type
+        # The permission type of the deployment URL. Valid values:
+        # 
+        # *   Public: All users can go to the URL to create a service instance or a trial service instance.
+        # *   Restricted: Only users in the whitelist can go to the URL to create a service instance or a trial service instance.
+        # *   OnlyFormalRestricted: Only users in the whitelist can go to the URL to create a service instance.
+        # *   OnlyTrailRestricted: Only users in the whitelist can go to the URL to create a trial service instance.
+        # *   Hidden: Users not in the whitelist cannot see the service details page when they go to the URL and cannot request deployment permissions.
+        self.share_type = share_type
+        # The source service ID for resell。
+        self.source_service_id = source_service_id
+        # The source service version for resell。
+        self.source_service_version = source_service_version
+        # The custom tags.
+        self.tag = tag
+        # The type of the tenant. Valid values:
+        # 
+        # *   SingleTenant
+        # *   MultiTenant
+        self.tenant_type = tenant_type
+        # The trial duration. Unit: day. The maximum trial duration cannot exceed 30 days.
+        self.trial_duration = trial_duration
+        # The metadata about the upgrade.
+        self.upgrade_metadata = upgrade_metadata
+        # The version name.
+        self.version_name = version_name
+
+    def validate(self):
+        if self.compliance_metadata:
+            self.compliance_metadata.validate()
+        if self.service_info:
+            for k in self.service_info:
+                if k:
+                    k.validate()
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alarm_metadata is not None:
+            result['AlarmMetadata'] = self.alarm_metadata
+        if self.approval_type is not None:
+            result['ApprovalType'] = self.approval_type
+        if self.build_parameters is not None:
+            result['BuildParameters'] = self.build_parameters
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.compliance_metadata is not None:
+            result['ComplianceMetadata'] = self.compliance_metadata.to_map()
+        if self.deploy_metadata is not None:
+            result['DeployMetadata'] = self.deploy_metadata
+        if self.deploy_type is not None:
+            result['DeployType'] = self.deploy_type
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.is_support_operated is not None:
+            result['IsSupportOperated'] = self.is_support_operated
+        if self.license_metadata is not None:
+            result['LicenseMetadata'] = self.license_metadata
+        if self.log_metadata is not None:
+            result['LogMetadata'] = self.log_metadata
+        if self.operation_metadata is not None:
+            result['OperationMetadata'] = self.operation_metadata
+        if self.policy_names is not None:
+            result['PolicyNames'] = self.policy_names
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resellable is not None:
+            result['Resellable'] = self.resellable
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        result['ServiceInfo'] = []
+        if self.service_info is not None:
+            for k in self.service_info:
+                result['ServiceInfo'].append(k.to_map() if k else None)
+        if self.service_type is not None:
+            result['ServiceType'] = self.service_type
+        if self.share_type is not None:
+            result['ShareType'] = self.share_type
+        if self.source_service_id is not None:
+            result['SourceServiceId'] = self.source_service_id
+        if self.source_service_version is not None:
+            result['SourceServiceVersion'] = self.source_service_version
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        if self.tenant_type is not None:
+            result['TenantType'] = self.tenant_type
+        if self.trial_duration is not None:
+            result['TrialDuration'] = self.trial_duration
+        if self.upgrade_metadata is not None:
+            result['UpgradeMetadata'] = self.upgrade_metadata
+        if self.version_name is not None:
+            result['VersionName'] = self.version_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlarmMetadata') is not None:
+            self.alarm_metadata = m.get('AlarmMetadata')
+        if m.get('ApprovalType') is not None:
+            self.approval_type = m.get('ApprovalType')
+        if m.get('BuildParameters') is not None:
+            self.build_parameters = m.get('BuildParameters')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ComplianceMetadata') is not None:
+            temp_model = CreateServiceRequestComplianceMetadata()
+            self.compliance_metadata = temp_model.from_map(m['ComplianceMetadata'])
+        if m.get('DeployMetadata') is not None:
+            self.deploy_metadata = m.get('DeployMetadata')
+        if m.get('DeployType') is not None:
+            self.deploy_type = m.get('DeployType')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('IsSupportOperated') is not None:
+            self.is_support_operated = m.get('IsSupportOperated')
+        if m.get('LicenseMetadata') is not None:
+            self.license_metadata = m.get('LicenseMetadata')
+        if m.get('LogMetadata') is not None:
+            self.log_metadata = m.get('LogMetadata')
+        if m.get('OperationMetadata') is not None:
+            self.operation_metadata = m.get('OperationMetadata')
+        if m.get('PolicyNames') is not None:
+            self.policy_names = m.get('PolicyNames')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Resellable') is not None:
+            self.resellable = m.get('Resellable')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        self.service_info = []
+        if m.get('ServiceInfo') is not None:
+            for k in m.get('ServiceInfo'):
+                temp_model = CreateServiceRequestServiceInfo()
+                self.service_info.append(temp_model.from_map(k))
+        if m.get('ServiceType') is not None:
+            self.service_type = m.get('ServiceType')
+        if m.get('ShareType') is not None:
+            self.share_type = m.get('ShareType')
+        if m.get('SourceServiceId') is not None:
+            self.source_service_id = m.get('SourceServiceId')
+        if m.get('SourceServiceVersion') is not None:
+            self.source_service_version = m.get('SourceServiceVersion')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateServiceRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        if m.get('TenantType') is not None:
+            self.tenant_type = m.get('TenantType')
+        if m.get('TrialDuration') is not None:
+            self.trial_duration = m.get('TrialDuration')
+        if m.get('UpgradeMetadata') is not None:
+            self.upgrade_metadata = m.get('UpgradeMetadata')
+        if m.get('VersionName') is not None:
+            self.version_name = m.get('VersionName')
+        return self
+
+
+class CreateServiceShrinkRequestServiceInfoAgreements(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        url: str = None,
+    ):
+        # Protocol name.
+        self.name = name
+        # Protocol url.
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class CreateServiceShrinkRequestServiceInfoSoftwares(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        version: str = None,
+    ):
+        self.name = name
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class CreateServiceShrinkRequestServiceInfo(TeaModel):
+    def __init__(
+        self,
+        agreements: List[CreateServiceShrinkRequestServiceInfoAgreements] = None,
+        image: str = None,
+        locale: str = None,
+        long_description_url: str = None,
+        name: str = None,
+        short_description: str = None,
+        softwares: List[CreateServiceShrinkRequestServiceInfoSoftwares] = None,
+    ):
+        # Protocol document information about the service.
+        self.agreements = agreements
+        # The URL of the service icon.
+        self.image = image
+        # The language of the service. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US: English
+        # 
+        # This parameter is required.
+        self.locale = locale
+        # The URL of the detailed description of the service.
+        self.long_description_url = long_description_url
+        # The service name.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The description of the service.
+        self.short_description = short_description
+        self.softwares = softwares
+
+    def validate(self):
+        if self.agreements:
+            for k in self.agreements:
+                if k:
+                    k.validate()
+        if self.softwares:
+            for k in self.softwares:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Agreements'] = []
+        if self.agreements is not None:
+            for k in self.agreements:
+                result['Agreements'].append(k.to_map() if k else None)
+        if self.image is not None:
+            result['Image'] = self.image
+        if self.locale is not None:
+            result['Locale'] = self.locale
+        if self.long_description_url is not None:
+            result['LongDescriptionUrl'] = self.long_description_url
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.short_description is not None:
+            result['ShortDescription'] = self.short_description
+        result['Softwares'] = []
+        if self.softwares is not None:
+            for k in self.softwares:
+                result['Softwares'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.agreements = []
+        if m.get('Agreements') is not None:
+            for k in m.get('Agreements'):
+                temp_model = CreateServiceShrinkRequestServiceInfoAgreements()
+                self.agreements.append(temp_model.from_map(k))
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+        if m.get('Locale') is not None:
+            self.locale = m.get('Locale')
+        if m.get('LongDescriptionUrl') is not None:
+            self.long_description_url = m.get('LongDescriptionUrl')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ShortDescription') is not None:
+            self.short_description = m.get('ShortDescription')
+        self.softwares = []
+        if m.get('Softwares') is not None:
+            for k in m.get('Softwares'):
+                temp_model = CreateServiceShrinkRequestServiceInfoSoftwares()
+                self.softwares.append(temp_model.from_map(k))
+        return self
+
+
+class CreateServiceShrinkRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key.
+        self.key = key
+        # The tag value.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateServiceShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        alarm_metadata: str = None,
+        approval_type: str = None,
+        build_parameters: str = None,
+        client_token: str = None,
+        compliance_metadata_shrink: str = None,
+        deploy_metadata: str = None,
+        deploy_type: str = None,
+        dry_run: bool = None,
+        duration: int = None,
+        is_support_operated: bool = None,
+        license_metadata: str = None,
+        log_metadata: str = None,
+        operation_metadata: str = None,
+        policy_names: str = None,
+        region_id: str = None,
+        resellable: bool = None,
+        resource_group_id: str = None,
+        service_id: str = None,
+        service_info: List[CreateServiceShrinkRequestServiceInfo] = None,
+        service_type: str = None,
+        share_type: str = None,
+        source_service_id: str = None,
+        source_service_version: str = None,
+        tag: List[CreateServiceShrinkRequestTag] = None,
+        tenant_type: str = None,
+        trial_duration: int = None,
+        upgrade_metadata: str = None,
+        version_name: str = None,
+    ):
+        # The alert configurations of the service.
+        # 
+        # >  This parameter takes effect only when you specify an alert policy for **PolicyNames**.
+        self.alarm_metadata = alarm_metadata
+        # The approval type of the service usage application. Valid values:
+        # 
+        # *   Manual: The application is manually approved.
+        # *   AutoPass: The application is automatically approved.
+        self.approval_type = approval_type
+        # The parameters for building the service
+        self.build_parameters = build_parameters
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        self.client_token = client_token
+        self.compliance_metadata_shrink = compliance_metadata_shrink
         # The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
         self.deploy_metadata = deploy_metadata
         # The deployment type of the service. Valid values:
@@ -1391,6 +1885,8 @@ class CreateServiceRequest(TeaModel):
             result['BuildParameters'] = self.build_parameters
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.compliance_metadata_shrink is not None:
+            result['ComplianceMetadata'] = self.compliance_metadata_shrink
         if self.deploy_metadata is not None:
             result['DeployMetadata'] = self.deploy_metadata
         if self.deploy_type is not None:
@@ -1453,6 +1949,8 @@ class CreateServiceRequest(TeaModel):
             self.build_parameters = m.get('BuildParameters')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('ComplianceMetadata') is not None:
+            self.compliance_metadata_shrink = m.get('ComplianceMetadata')
         if m.get('DeployMetadata') is not None:
             self.deploy_metadata = m.get('DeployMetadata')
         if m.get('DeployType') is not None:
@@ -1482,7 +1980,7 @@ class CreateServiceRequest(TeaModel):
         self.service_info = []
         if m.get('ServiceInfo') is not None:
             for k in m.get('ServiceInfo'):
-                temp_model = CreateServiceRequestServiceInfo()
+                temp_model = CreateServiceShrinkRequestServiceInfo()
                 self.service_info.append(temp_model.from_map(k))
         if m.get('ServiceType') is not None:
             self.service_type = m.get('ServiceType')
@@ -1495,7 +1993,7 @@ class CreateServiceRequest(TeaModel):
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
-                temp_model = CreateServiceRequestTag()
+                temp_model = CreateServiceShrinkRequestTag()
                 self.tag.append(temp_model.from_map(k))
         if m.get('TenantType') is not None:
             self.tenant_type = m.get('TenantType')
@@ -3225,6 +3723,8 @@ class GetServiceRequest(TeaModel):
         filter_ali_uid: bool = None,
         region_id: str = None,
         service_id: str = None,
+        service_instance_id: str = None,
+        service_name: str = None,
         service_version: str = None,
         shared_account_type: str = None,
         show_detail: List[str] = None,
@@ -3234,9 +3734,9 @@ class GetServiceRequest(TeaModel):
         # The region ID.
         self.region_id = region_id
         # The service ID.
-        # 
-        # This parameter is required.
         self.service_id = service_id
+        self.service_instance_id = service_instance_id
+        self.service_name = service_name
         # The service version.
         self.service_version = service_version
         # The share type of the service. Default value: SharedAccount. Valid values:
@@ -3262,6 +3762,10 @@ class GetServiceRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
+        if self.service_instance_id is not None:
+            result['ServiceInstanceId'] = self.service_instance_id
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
         if self.service_version is not None:
             result['ServiceVersion'] = self.service_version
         if self.shared_account_type is not None:
@@ -3278,6 +3782,10 @@ class GetServiceRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
+        if m.get('ServiceInstanceId') is not None:
+            self.service_instance_id = m.get('ServiceInstanceId')
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
         if m.get('ServiceVersion') is not None:
             self.service_version = m.get('ServiceVersion')
         if m.get('SharedAccountType') is not None:
@@ -3882,6 +4390,33 @@ class GetServiceResponseBodyCommodity(TeaModel):
         return self
 
 
+class GetServiceResponseBodyComplianceMetadata(TeaModel):
+    def __init__(
+        self,
+        compliance_packs: List[str] = None,
+    ):
+        self.compliance_packs = compliance_packs
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compliance_packs is not None:
+            result['CompliancePacks'] = self.compliance_packs
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompliancePacks') is not None:
+            self.compliance_packs = m.get('CompliancePacks')
+        return self
+
+
 class GetServiceResponseBodyServiceInfosAgreements(TeaModel):
     def __init__(
         self,
@@ -4167,6 +4702,7 @@ class GetServiceResponseBody(TeaModel):
         categories: str = None,
         commodity: GetServiceResponseBodyCommodity = None,
         commodity_code: str = None,
+        compliance_metadata: GetServiceResponseBodyComplianceMetadata = None,
         create_time: str = None,
         cross_region_connection_status: str = None,
         default_license_days: int = None,
@@ -4234,6 +4770,7 @@ class GetServiceResponseBody(TeaModel):
         self.commodity = commodity
         # The commodity code of the service in Alibaba Cloud Marketplace.
         self.commodity_code = commodity_code
+        self.compliance_metadata = compliance_metadata
         # The time when the service was created.
         self.create_time = create_time
         # The binding configurations of the commodity module.
@@ -4398,6 +4935,8 @@ class GetServiceResponseBody(TeaModel):
     def validate(self):
         if self.commodity:
             self.commodity.validate()
+        if self.compliance_metadata:
+            self.compliance_metadata.validate()
         if self.service_infos:
             for k in self.service_infos:
                 if k:
@@ -4427,6 +4966,8 @@ class GetServiceResponseBody(TeaModel):
             result['Commodity'] = self.commodity.to_map()
         if self.commodity_code is not None:
             result['CommodityCode'] = self.commodity_code
+        if self.compliance_metadata is not None:
+            result['ComplianceMetadata'] = self.compliance_metadata.to_map()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.cross_region_connection_status is not None:
@@ -4546,6 +5087,9 @@ class GetServiceResponseBody(TeaModel):
             self.commodity = temp_model.from_map(m['Commodity'])
         if m.get('CommodityCode') is not None:
             self.commodity_code = m.get('CommodityCode')
+        if m.get('ComplianceMetadata') is not None:
+            temp_model = GetServiceResponseBodyComplianceMetadata()
+            self.compliance_metadata = temp_model.from_map(m['ComplianceMetadata'])
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('CrossRegionConnectionStatus') is not None:
@@ -11657,6 +12201,33 @@ class UpdateServiceRequestCommodity(TeaModel):
         return self
 
 
+class UpdateServiceRequestComplianceMetadata(TeaModel):
+    def __init__(
+        self,
+        compliance_packs: List[str] = None,
+    ):
+        self.compliance_packs = compliance_packs
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compliance_packs is not None:
+            result['CompliancePacks'] = self.compliance_packs
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompliancePacks') is not None:
+            self.compliance_packs = m.get('CompliancePacks')
+        return self
+
+
 class UpdateServiceRequestServiceInfoAgreements(TeaModel):
     def __init__(
         self,
@@ -11858,6 +12429,7 @@ class UpdateServiceRequest(TeaModel):
         approval_type: str = None,
         client_token: str = None,
         commodity: UpdateServiceRequestCommodity = None,
+        compliance_metadata: UpdateServiceRequestComplianceMetadata = None,
         deploy_metadata: str = None,
         deploy_type: str = None,
         dry_run: bool = None,
@@ -11893,6 +12465,7 @@ class UpdateServiceRequest(TeaModel):
         self.client_token = client_token
         # Bind Commodity Information
         self.commodity = commodity
+        self.compliance_metadata = compliance_metadata
         # The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
         self.deploy_metadata = deploy_metadata
         # The deployment type of the service. Valid values:
@@ -11971,6 +12544,8 @@ class UpdateServiceRequest(TeaModel):
     def validate(self):
         if self.commodity:
             self.commodity.validate()
+        if self.compliance_metadata:
+            self.compliance_metadata.validate()
         if self.service_info:
             for k in self.service_info:
                 if k:
@@ -11992,6 +12567,8 @@ class UpdateServiceRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.commodity is not None:
             result['Commodity'] = self.commodity.to_map()
+        if self.compliance_metadata is not None:
+            result['ComplianceMetadata'] = self.compliance_metadata.to_map()
         if self.deploy_metadata is not None:
             result['DeployMetadata'] = self.deploy_metadata
         if self.deploy_type is not None:
@@ -12049,6 +12626,9 @@ class UpdateServiceRequest(TeaModel):
         if m.get('Commodity') is not None:
             temp_model = UpdateServiceRequestCommodity()
             self.commodity = temp_model.from_map(m['Commodity'])
+        if m.get('ComplianceMetadata') is not None:
+            temp_model = UpdateServiceRequestComplianceMetadata()
+            self.compliance_metadata = temp_model.from_map(m['ComplianceMetadata'])
         if m.get('DeployMetadata') is not None:
             self.deploy_metadata = m.get('DeployMetadata')
         if m.get('DeployType') is not None:
@@ -12262,6 +12842,7 @@ class UpdateServiceShrinkRequest(TeaModel):
         approval_type: str = None,
         client_token: str = None,
         commodity_shrink: str = None,
+        compliance_metadata_shrink: str = None,
         deploy_metadata: str = None,
         deploy_type: str = None,
         dry_run: bool = None,
@@ -12297,6 +12878,7 @@ class UpdateServiceShrinkRequest(TeaModel):
         self.client_token = client_token
         # Bind Commodity Information
         self.commodity_shrink = commodity_shrink
+        self.compliance_metadata_shrink = compliance_metadata_shrink
         # The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
         self.deploy_metadata = deploy_metadata
         # The deployment type of the service. Valid values:
@@ -12392,6 +12974,8 @@ class UpdateServiceShrinkRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.commodity_shrink is not None:
             result['Commodity'] = self.commodity_shrink
+        if self.compliance_metadata_shrink is not None:
+            result['ComplianceMetadata'] = self.compliance_metadata_shrink
         if self.deploy_metadata is not None:
             result['DeployMetadata'] = self.deploy_metadata
         if self.deploy_type is not None:
@@ -12448,6 +13032,8 @@ class UpdateServiceShrinkRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('Commodity') is not None:
             self.commodity_shrink = m.get('Commodity')
+        if m.get('ComplianceMetadata') is not None:
+            self.compliance_metadata_shrink = m.get('ComplianceMetadata')
         if m.get('DeployMetadata') is not None:
             self.deploy_metadata = m.get('DeployMetadata')
         if m.get('DeployType') is not None:

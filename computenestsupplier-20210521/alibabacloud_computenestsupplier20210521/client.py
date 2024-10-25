@@ -519,17 +519,21 @@ class Client(OpenApiClient):
 
     def create_service_with_options(
         self,
-        request: compute_nest_supplier_20210521_models.CreateServiceRequest,
+        tmp_req: compute_nest_supplier_20210521_models.CreateServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.CreateServiceResponse:
         """
         @summary Creates a service.
         
-        @param request: CreateServiceRequest
+        @param tmp_req: CreateServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateServiceResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = compute_nest_supplier_20210521_models.CreateServiceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.compliance_metadata):
+            request.compliance_metadata_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.compliance_metadata, 'ComplianceMetadata', 'json')
         query = {}
         if not UtilClient.is_unset(request.alarm_metadata):
             query['AlarmMetadata'] = request.alarm_metadata
@@ -539,6 +543,8 @@ class Client(OpenApiClient):
             query['BuildParameters'] = request.build_parameters
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.compliance_metadata_shrink):
+            query['ComplianceMetadata'] = request.compliance_metadata_shrink
         if not UtilClient.is_unset(request.deploy_metadata):
             query['DeployMetadata'] = request.deploy_metadata
         if not UtilClient.is_unset(request.deploy_type):
@@ -606,17 +612,21 @@ class Client(OpenApiClient):
 
     async def create_service_with_options_async(
         self,
-        request: compute_nest_supplier_20210521_models.CreateServiceRequest,
+        tmp_req: compute_nest_supplier_20210521_models.CreateServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.CreateServiceResponse:
         """
         @summary Creates a service.
         
-        @param request: CreateServiceRequest
+        @param tmp_req: CreateServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateServiceResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = compute_nest_supplier_20210521_models.CreateServiceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.compliance_metadata):
+            request.compliance_metadata_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.compliance_metadata, 'ComplianceMetadata', 'json')
         query = {}
         if not UtilClient.is_unset(request.alarm_metadata):
             query['AlarmMetadata'] = request.alarm_metadata
@@ -626,6 +636,8 @@ class Client(OpenApiClient):
             query['BuildParameters'] = request.build_parameters
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.compliance_metadata_shrink):
+            query['ComplianceMetadata'] = request.compliance_metadata_shrink
         if not UtilClient.is_unset(request.deploy_metadata):
             query['DeployMetadata'] = request.deploy_metadata
         if not UtilClient.is_unset(request.deploy_type):
@@ -1613,6 +1625,10 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.service_id):
             query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
         if not UtilClient.is_unset(request.service_version):
             query['ServiceVersion'] = request.service_version
         if not UtilClient.is_unset(request.shared_account_type):
@@ -1658,6 +1674,10 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.service_id):
             query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
         if not UtilClient.is_unset(request.service_version):
             query['ServiceVersion'] = request.service_version
         if not UtilClient.is_unset(request.shared_account_type):
@@ -4428,6 +4448,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.commodity):
             request.commodity_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.commodity, 'Commodity', 'json')
+        if not UtilClient.is_unset(tmp_req.compliance_metadata):
+            request.compliance_metadata_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.compliance_metadata, 'ComplianceMetadata', 'json')
         if not UtilClient.is_unset(tmp_req.update_option):
             request.update_option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.update_option, 'UpdateOption', 'json')
         query = {}
@@ -4439,6 +4461,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.commodity_shrink):
             query['Commodity'] = request.commodity_shrink
+        if not UtilClient.is_unset(request.compliance_metadata_shrink):
+            query['ComplianceMetadata'] = request.compliance_metadata_shrink
         if not UtilClient.is_unset(request.deploy_metadata):
             query['DeployMetadata'] = request.deploy_metadata
         if not UtilClient.is_unset(request.deploy_type):
@@ -4517,6 +4541,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.commodity):
             request.commodity_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.commodity, 'Commodity', 'json')
+        if not UtilClient.is_unset(tmp_req.compliance_metadata):
+            request.compliance_metadata_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.compliance_metadata, 'ComplianceMetadata', 'json')
         if not UtilClient.is_unset(tmp_req.update_option):
             request.update_option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.update_option, 'UpdateOption', 'json')
         query = {}
@@ -4528,6 +4554,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.commodity_shrink):
             query['Commodity'] = request.commodity_shrink
+        if not UtilClient.is_unset(request.compliance_metadata_shrink):
+            query['ComplianceMetadata'] = request.compliance_metadata_shrink
         if not UtilClient.is_unset(request.deploy_metadata):
             query['DeployMetadata'] = request.deploy_metadata
         if not UtilClient.is_unset(request.deploy_type):
