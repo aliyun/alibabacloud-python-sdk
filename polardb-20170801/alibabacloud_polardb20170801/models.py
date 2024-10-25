@@ -1033,17 +1033,18 @@ class CreateAccountRequest(TeaModel):
         self.account_password = account_password
         # The permissions that are granted to the account. Valid values:
         # 
-        # *   **ReadWrite**: read and write permissions
-        # *   **ReadOnly**: read-only permissions
-        # *   **DMLOnly**: the permissions to execute only DML statements
-        # *   **DDLOnly**: the permissions to execute only DDL statements
-        # *   **ReadIndex**: the read and index permissions
+        # *   **ReadWrite**: read and write permissions.
+        # *   **ReadOnly**: read-only permissions.
+        # *   **DMLOnly**: the permissions to execute only DML statements.
+        # *   **DDLOnly**: the permissions to execute only DDL statements.
+        # *   **ReadIndex**: the read-only and index permissions.
         # 
         # > 
         # 
-        # *   The `AccountPrivilege` parameter is valid only after you specify the `DBName` parameter.
+        # *   `AccountPrivilege` is valid only after you specify `DBName`.
         # 
-        # *   If multiple database names are specified by the `DBName` parameter, you must grant permissions on the databases. Separate multiple permissions with commas (,). For example, if you want to grant the account the read and write permissions on DB1 and the read-only permissions on DB2, set `DBName` to `DB1,DB2`, and set `AccountPrivilege` to `ReadWrite,ReadOnly`.
+        # *   If multiple database names are specified by the `DBName` parameter, you must grant permissions on the databases. Separate multiple permissions with commas (,), and make sure that the length of the value of `AccountPrivilege` does not exceed 900. For example, if you want to grant the account the read and write permissions on DB1 and the read-only permissions on DB2, set `DBName` to `DB1,DB2` and set `AccountPrivilege` to `ReadWrite,ReadOnly`.
+        # 
         # *   This parameter is valid only for standard accounts of PolarDB for MySQL clusters.
         self.account_privilege = account_privilege
         # The type of the account. Valid values:
@@ -1066,10 +1067,14 @@ class CreateAccountRequest(TeaModel):
         self.dbcluster_id = dbcluster_id
         # The name of the database that can be accessed by the account. To enter multiple database names, separate the names with commas (,).
         # 
-        # > This parameter is valid only for standard accounts of PolarDB for MySQL clusters.
+        # >  This parameter is valid only for standard accounts of PolarDB for MySQL clusters.
         self.dbname = dbname
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # Specifies whether to grant the specified account required permissions on all existing databases in the current cluster and databases that will be further created for the current cluster. Valid values:
+        # 
+        # *   **0 or unspecified**: does not grant required permissions.
+        # *   **1**: grants required permissions.
         self.priv_for_all_db = priv_for_all_db
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -1207,6 +1212,213 @@ class CreateAccountResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateAccountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateActivationCodeRequest(TeaModel):
+    def __init__(
+        self,
+        aliyun_order_id: str = None,
+        description: str = None,
+        mac_address: str = None,
+        name: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        system_identifier: str = None,
+    ):
+        # This parameter is required.
+        self.aliyun_order_id = aliyun_order_id
+        self.description = description
+        # This parameter is required.
+        self.mac_address = mac_address
+        # This parameter is required.
+        self.name = name
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.system_identifier = system_identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_order_id is not None:
+            result['AliyunOrderId'] = self.aliyun_order_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.mac_address is not None:
+            result['MacAddress'] = self.mac_address
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.system_identifier is not None:
+            result['SystemIdentifier'] = self.system_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliyunOrderId') is not None:
+            self.aliyun_order_id = m.get('AliyunOrderId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('MacAddress') is not None:
+            self.mac_address = m.get('MacAddress')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SystemIdentifier') is not None:
+            self.system_identifier = m.get('SystemIdentifier')
+        return self
+
+
+class CreateActivationCodeResponseBody(TeaModel):
+    def __init__(
+        self,
+        activate_at: str = None,
+        cert_content_b64: str = None,
+        description: str = None,
+        expire_at: str = None,
+        gmt_created: str = None,
+        gmt_modified: str = None,
+        id: int = None,
+        mac_address: str = None,
+        name: str = None,
+        request_id: str = None,
+        system_identifier: str = None,
+    ):
+        self.activate_at = activate_at
+        self.cert_content_b64 = cert_content_b64
+        self.description = description
+        self.expire_at = expire_at
+        self.gmt_created = gmt_created
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.mac_address = mac_address
+        self.name = name
+        # Id of the request
+        self.request_id = request_id
+        self.system_identifier = system_identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.activate_at is not None:
+            result['ActivateAt'] = self.activate_at
+        if self.cert_content_b64 is not None:
+            result['CertContentB64'] = self.cert_content_b64
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.expire_at is not None:
+            result['ExpireAt'] = self.expire_at
+        if self.gmt_created is not None:
+            result['GmtCreated'] = self.gmt_created
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mac_address is not None:
+            result['MacAddress'] = self.mac_address
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.system_identifier is not None:
+            result['SystemIdentifier'] = self.system_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActivateAt') is not None:
+            self.activate_at = m.get('ActivateAt')
+        if m.get('CertContentB64') is not None:
+            self.cert_content_b64 = m.get('CertContentB64')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ExpireAt') is not None:
+            self.expire_at = m.get('ExpireAt')
+        if m.get('GmtCreated') is not None:
+            self.gmt_created = m.get('GmtCreated')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MacAddress') is not None:
+            self.mac_address = m.get('MacAddress')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SystemIdentifier') is not None:
+            self.system_identifier = m.get('SystemIdentifier')
+        return self
+
+
+class CreateActivationCodeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateActivationCodeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateActivationCodeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1360,12 +1572,17 @@ class CreateColdStorageInstanceRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The description of the cluster. The description cannot exceed 256 characters in length.
         self.cold_storage_instance_description = cold_storage_instance_description
+        # The cluster ID. > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters within your account, such as cluster IDs.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -1424,7 +1641,9 @@ class CreateColdStorageInstanceResponseBody(TeaModel):
         cold_storage_instance_id: str = None,
         request_id: str = None,
     ):
+        # The cluster ID.
         self.cold_storage_instance_id = cold_storage_instance_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1498,13 +1717,13 @@ class CreateDBClusterRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag that you want to create for the cluster. To create multiple tags for a cluster at a time, click the **+** icon.
+        # Tag key. If you need to add multiple tags to the target cluster at once, click **Add** to add a tag key.
         # 
-        # > You can create up to 20 key-value pairs of tags at a time. Each value of the `Tag.N.Key` parameter is paired with a value of the `Tag.N.Value` parameter.
+        # > Up to 20 pairs of tags can be added each time, where `Tag.N.Key` corresponds to `Tag.N.Value`.
         self.key = key
-        # The value of the tag that you want to create for the cluster. To create multiple tags for a cluster at a time, click the **+** icon.
+        # Tag value. If you need to add multiple tags to the target cluster at once, click **Add** to add tag values.
         # 
-        # > You can create up to 20 key-value pairs of tags at a time. Each value of the `Tag.N.Value` parameter is paired with a value of the `Tag.N.Key` parameter.
+        # > Up to 20 pairs of tags can be added each time, where `Tag.N.Value` corresponds to `Tag.N.Key`.
         self.value = value
 
     def validate(self):
@@ -1589,287 +1808,323 @@ class CreateDBClusterRequest(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values:
+        # Whether to enable idle pause. Values:
         # 
-        # *   **true**\
-        # *   **false**\
+        # - **true**: Enabled
         # 
-        # > This parameter is valid only for serverless clusters.
+        # - **false**: Disabled (default)
+        # 
+        # > Only supported by Serverless clusters.
         self.allow_shut_down = allow_shut_down
-        # The CPU architecture. Valid values:
-        # 
-        # *   X86
-        # *   ARM
+        # CPU architecture. Available values include:
+        # - X86
+        # - ARM
         self.architecture = architecture
-        # Specifies whether to enable automatic renewal. Valid values:
+        # Whether to enable auto-renewal, with available values as follows:
         # 
-        # *   **true**\
-        # *   **false**\
+        # - **true**: Auto-renew.
+        # - **false**: Do not auto-renew.
         # 
-        # Default value: **false**.
+        # The default is **false**.
         # 
-        # > This parameter is valid only when the **PayType** parameter is set to **Prepaid**.
+        # > This parameter takes effect only when **PayType** is set to **Prepaid**.
         self.auto_renew = auto_renew
-        # The retention policy for the backup sets when you delete the cluster. Valid values:
+        # Backup retention policy upon cluster deletion, with valid values as follows:
+        # * **ALL**: Permanently retain all backups.
+        # * **LATEST**: Permanently retain the latest backup (automatically backed up before deletion).
+        # * **NONE**: Do not retain backup sets upon cluster deletion.
         # 
-        # *   **ALL**: permanently retains all backups.
-        # *   **LATEST**: permanently retains the last backup. A backup is automatically created before you delete the cluster.
-        # *   **NONE**: No backup sets are retained after the cluster is deleted.
-        # 
-        # The default value is **NONE** after you create a cluster.
-        # 
-        # > 
-        # 
-        # *   This parameter is valid only when the **DBType** parameter is set to **MySQL**.
-        # 
-        # *   This parameter is invalid for serverless clusters.
+        # By default, the value is set to **NONE**, indicating no backup sets are retained upon cluster deletion.
+        # > This parameter applies only when **DBType** is **MySQL**.
+        # > Serverless clusters do not support this parameter.
         self.backup_retention_policy_on_cluster_deletion = backup_retention_policy_on_cluster_deletion
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
+        # Used to ensure idempotency of the request. Generated by the client, ensuring uniqueness across different requests, case-sensitive, and not exceeding 64 ASCII characters.
         self.client_token = client_token
-        # The point in time when you want to clone data. Valid values:
+        # The point in time to clone data, with the following options:
         # 
-        # *   **LATEST**: The data of the latest point in time is cloned.
-        # *   **BackupID**: You can specify the ID of a backup set. In this case, data is cloned based on the specified backup set.
-        # *   **Timestamp**: You can specify a point in time in the past in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+        # - **LATEST**: Data from the latest time point.
+        # - **BackupID**: Historical backup set ID, please enter the specific backup set ID.
+        # - **Timestamp**: Historical time point, please enter the specific time in the format `YYYY-MM-DDThh:mm:ssZ` (UTC time).
         # 
-        # Default value: **LATEST**.
+        # The default value is **LATEST**.
         # 
-        # > If the **CreationOption** parameter is set to **CloneFromRDS**, the value of this parameter must be **LATEST**.
+        # > If **CreationOption** is **CloneFromRDS**, this parameter can only be set to **LATEST**.
         self.clone_data_point = clone_data_point
-        # The network type of the cluster. Only virtual private clouds (VPCs) are supported. Set the value to **VPC**.
+        # Cluster network type, currently only VPC is supported, with a fixed value of **VPC**.
         self.cluster_network_type = cluster_network_type
-        # The edition of the cluster. Default value: Normal. Valid values:
+        # Product series, with valid values as follows:
+        # * **Normal**: Cluster Edition (default)
+        # * **Basic**: Single-node
+        # * **ArchiveNormal**: High Compression Engine (X-Engine)
+        # * **NormalMultimaster**: Multi-master Cluster Edition
+        # * **SENormal**: Standard Edition
         # 
-        # *   **Normal**: Cluster Edition
-        # *   **Basic**: Single Node Edition
-        # *   **ArchiveNormal**: X-Engine Edition
-        # *   **NormalMultimaster**: Multi-master Cluster Edition
+        # > * **MySQL** **5.6**, **5.7**, **8.0**, **PostgreSQL** **14**, and **Oracle Syntax Compatible 2.0** support **Basic**.
+        # > * **MySQL** **8.0** supports **ArchiveNormal** and **NormalMultimaster**.
+        # > * **MySQL** **5.6**, **5.7**, **8.0**, and **PostgreSQL** **14** support **SENormal**.
         # 
-        # > 
-        # 
-        # *   Only when the **DBType** parameter is set to **MySQL** and **the DBVersion** parameter is set to **5.6**, **5.7**, or **8.0**, you can set this parameter to **Basic**.
-        # 
-        # *   Only when the **DBType** parameter is set to **MySQL** and the **DBVersion** parameter is set to **8.0**, you can set this parameter to **ArchiveNormal** or **NormalMultimaster**.
-        # 
-        # For more information, see [Product editions](https://help.aliyun.com/document_detail/183258.html).
+        # For more information about product series, see [Product Series](https://help.aliyun.com/document_detail/183258.html).
         self.creation_category = creation_category
-        # The method that is used to create a cluster. Valid values:
+        # Creation method, with the following values supported:
         # 
-        # *   **Normal**: creates a PolarDB cluster. For more information about how to perform this operation in the console, see the following topics:
+        # * **Normal**: Creates a brand new PolarDB cluster. For console operations, refer to the following documents:
+        #     * [Create a PolarDB MySQL Edition Database Cluster](https://help.aliyun.com/document_detail/58769.html)
+        #     * [Create a PolarDB PostgreSQL Edition Database Cluster](https://help.aliyun.com/document_detail/118063.html)
+        #     * [Create a PolarDB PostgreSQL Edition (Oracle Compatible) Database Cluster](https://help.aliyun.com/document_detail/118182.html)
         # 
-        #     *   [Create a PolarDB for MySQL cluster](https://help.aliyun.com/document_detail/58769.html)
-        #     *   [Create a PolarDB for PostgreSQL cluster](https://help.aliyun.com/document_detail/118063.html)
-        #     *   [Create a PolarDB for Oracle cluster](https://help.aliyun.com/document_detail/118182.html)
+        # * **CloneFromPolarDB**: Clones data from an existing PolarDB cluster to a new PolarDB cluster. For console operations, refer to the following documents:
+        #     * [Clone a PolarDB MySQL Edition Cluster](https://help.aliyun.com/document_detail/87966.html)
+        #     * [Clone a PolarDB PostgreSQL Edition Cluster](https://help.aliyun.com/document_detail/118108.html)
+        #     * [Clone a PolarDB PostgreSQL Edition (Oracle Compatible) Cluster](https://help.aliyun.com/document_detail/118221.html)
         # 
-        # *   **CloneFromPolarDB**: clones data from an existing PolarDB cluster to a new PolarDB cluster. For more information about how to perform this operation in the console, see the following topics:
+        # * **RecoverFromRecyclebin**: Recovers data from a released PolarDB cluster to a new PolarDB cluster. For console operations, refer to the following documents:
+        #     * [Restore a Released PolarDB MySQL Edition Cluster](https://help.aliyun.com/document_detail/164880.html)
+        #     * [Restore a Released PolarDB PostgreSQL Edition Cluster](https://help.aliyun.com/document_detail/432844.html)
+        #     * [Restore a Released PolarDB PostgreSQL Edition (Oracle Compatible) Cluster](https://help.aliyun.com/document_detail/424632.html)
         # 
-        #     *   [Clone a PolarDB for MySQL cluster](https://help.aliyun.com/document_detail/87966.html)
-        #     *   [Clone a PolarDB for PostgreSQL cluster](https://help.aliyun.com/document_detail/118108.html)
-        #     *   [Clone a PolarDB for Oracle cluster](https://help.aliyun.com/document_detail/118221.html)
+        # * **CloneFromRDS**: Clones data from an existing RDS instance to a new PolarDB cluster. Console operation guide is available at [One-click Clone from RDS MySQL to PolarDB MySQL Edition](https://help.aliyun.com/document_detail/121812.html).
         # 
-        # *   **CloneFromRDS**: clones data from an existing ApsaraDB RDS for MySQL instance to a new PolarDB for MySQL cluster. For more information about how to perform this operation in the console, see [Create a PolarDB for MySQL cluster by cloning an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/121812.html).
+        # * **MigrationFromRDS**: Migrates data from an existing RDS instance to a new PolarDB cluster. The created PolarDB cluster operates in read-only mode with Binlog enabled by default. Console operation guide is at [One-click Upgrade from RDS MySQL to PolarDB MySQL Edition](https://help.aliyun.com/document_detail/121582.html).
         # 
-        # *   **MigrationFromRDS**: migrates data from an existing ApsaraDB RDS for MySQL instance to a new PolarDB for MySQL cluster. By default, the created PolarDB cluster is in read-only mode, and the binary logging feature is enabled. For more information about how to perform this operation in the console, see [Create a PolarDB for MySQL cluster from an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/121582.html).
+        # * **CreateGdnStandby**: Creates a standby cluster. Console operation guide can be found at [Add Standby Cluster](https://help.aliyun.com/document_detail/160381.html).
         # 
-        # *   **CreateGdnStandby**: creates a secondary cluster. For more information about how to perform this operation in the console, see [Add a secondary cluster](https://help.aliyun.com/document_detail/160381.html).
+        # * **UpgradeFromPolarDB**: Upgrades and migrates from PolarDB. Console operation guide is detailed in [Major Version Upgrade](https://help.aliyun.com/document_detail/459712.html).
         # 
-        # Default value: **Normal**.
+        # The default value is **Normal**.
         # 
-        # > 
-        # 
-        # *   If the **DBType** parameter is set to **MySQL** and the **DBVersion** parameter is set to **5.6** or **5.7**, this parameter can be set to **CloneFromRDS** or **MigrationFromRDS**.
-        # 
-        # *   If the **DBType** parameter is set to **MySQL** and the **DBVersion** parameter is set to **8.0**, this parameter can be set to **CreateGdnStandby**.
+        # > When **DBType** is **MySQL** and **DBVersion** is **8.0**, this parameter can also take the value **CreateGdnStandby**.
         self.creation_option = creation_option
-        # The name of the cluster. The name must meet the following requirements:
-        # 
-        # *   It cannot start with `http://` or `https://`.
-        # *   It must be 2 to 256 characters in length.
+        # Cluster name, which must meet the following requirements:
+        # * Cannot start with `http://` or `https://`.
+        # * Length should be between 2 and 256 characters.
         self.dbcluster_description = dbcluster_description
-        # The minor version of the database engine. Valid values:
+        # Database engine minor version number. Valid values include:
         # 
-        # *   **8.0.2**\
-        # *   **8.0.1**\
+        # - **8.0.2**\
+        # - **8.0.1**\
         # 
-        # > This parameter is valid only when the **DBType** parameter is set to **MySQL** and the **DBVersion** parameter is set to **8.0**.
+        # > This parameter takes effect only when **DBType** is **MySQL** and **DBVersion** is **8.0**.
         self.dbminor_version = dbminor_version
-        # The specifications of the node.
+        # Node specifications. For details, refer to the following documents:
         # 
-        # *   For more information about specifications supported by PolarDB for MySQL, see [Specifications of compute nodes](https://help.aliyun.com/document_detail/102542.html).
-        # *   For information about node specifications supported by the Oracle database engine, see [Specifications of compute nodes](https://help.aliyun.com/document_detail/207921.html).
-        # *   For information about node specifications supported by the PostgreSQL database engine, see [Specifications of compute nodes](https://help.aliyun.com/document_detail/209380.html).
+        # - PolarDB MySQL Edition: [Compute Node Specifications](https://help.aliyun.com/document_detail/102542.html).
+        # - PolarDB PostgreSQL Edition (Oracle Compatible): [Compute Node Specifications](https://help.aliyun.com/document_detail/207921.html).
+        # - PolarDB PostgreSQL Edition: [Compute Node Specifications](https://help.aliyun.com/document_detail/209380.html).
+        # 
+        # > - For a Serverless cluster in PolarDB MySQL, enter **polar.mysql.sl.small**.
+        # <props="china">> - For a Serverless cluster in both PolarDB PostgreSQL (Oracle Compatible) and PolarDB PostgreSQL, enter **polar.pg.sl.small.c**.
         # 
         # This parameter is required.
         self.dbnode_class = dbnode_class
-        self.dbnode_num = dbnode_num
-        # The type of the database engine. Valid values:
+        # Number of standard edition nodes. Values are as follows:
         # 
-        # *   **MySQL**\
-        # *   **PostgreSQL**\
-        # *   **Oracle**\
+        # - **1** (default): Indicates there is only one read-write node.
+        # - **2**: Indicates there is one read-only node and one read-write node.
+        # > - Enterprise edition defaults to 2 nodes, while the standard edition defaults to 1 node.
+        # > - Only supported by PolarDB MySQL edition.
+        self.dbnode_num = dbnode_num
+        # Database engine type, with available values as follows:
+        # 
+        # - **MySQL**\
+        # - **PostgreSQL**\
+        # - **Oracle**\
         # 
         # This parameter is required.
         self.dbtype = dbtype
-        # The version of the database engine.
-        # 
-        # *   Valid values for the MySQL database engine:
-        # 
-        #     *   **5.6**\
-        #     *   **5.7**\
-        #     *   **8.0**\
-        # 
-        # *   Valid values for the PostgreSQL database engine:
-        # 
-        #     *   **11**\
-        #     *   **14**\
-        # 
-        # *   Valid value for the Oracle database engine: **11**\
+        # Database engine version number.
+        # * For MySQL, the version numbers are as follows:
+        #     * **5.6**\
+        #     * **5.7**\
+        #     * **8.0**\
+        # * For PostgreSQL, the version numbers are as follows:
+        #     * **11**\
+        #     * **14**\
+        #     * **15**\
+        #     <props="china">
+        #       
+        #       > When creating a Serverless cluster in PolarDB PostgreSQL, only version **14** is supported.
+        #     
+        #     
+        # * For Oracle, the version numbers are as follows:
+        #     * **11**\
+        #     * **14**\
         # 
         # This parameter is required.
         self.dbversion = dbversion
-        # The time zone of the cluster. The time must be in UTC. You can set the parameter to a value that is on the hour from **-12:00 to +13:00**. Example: 00:00. Default value: **SYSTEM**, which means that the value is the same as the time zone of the region.
-        # 
-        # > This parameter is valid only when the **DBType** parameter is set to **MySQL**.
+        # Cluster timezone (UTC), with selectable values ranging from **-12:00** to **+13:00** at whole-hour intervals, e.g., **00:00**. The default value is **SYSTEM**, which matches the Region\\"s timezone.
+        # > This parameter applies only when **DBType** is **MySQL**.
         self.default_time_zone = default_time_zone
-        # The ID of the Global Database Network (GDN).
+        # Global Database Network (GDN) ID.
         # 
-        # > This parameter is required only when the **CreationOption** parameter is set to **CreateGdnStandby**.
+        # > This parameter is required when **CreationOption** is **CreateGdnStandby**.
         self.gdnid = gdnid
+        # Whether to enable the hot standby cluster. Values are as follows:
+        # 
+        # - **ON** (default): Enables the hot standby cluster.
+        # - **OFF**: Disables the hot standby cluster.
+        # - **STANDBY**: Enables the hot standby cluster for the standard edition.
+        # > The default value for standard edition clusters is **STANDBY**.
         self.hot_standby_cluster = hot_standby_cluster
+        # Enable Binlog feature, valid values are as follows:
+        # - **ON**: Cluster enables the Binlog feature. - **OFF**: Cluster disables the Binlog feature. > This parameter takes effect only when the **DBType** parameter is set to **MySQL**.
         self.loose_polar_log_bin = loose_polar_log_bin
-        # Specifies whether to enable X-Engine. Valid values:
+        # Enable the X-Engine storage engine feature, with valid values as follows:
         # 
-        # *   **ON**\
-        # *   **OFF**\
-        # 
-        # >  This parameter takes effect only if you do not set **CreationOption** to **CreateGdnStandby** and you set **DBType** to **MySQL** and **DBVersion** to **8.0**. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+        # - **ON**: The cluster enables the X-Engine engine.
+        # - **OFF**: The cluster disables the X-Engine engine.
+        # > This parameter is effective only when **CreationOption** is not **CreateGdnStandby**, **DBType** is **MySQL**, and **DBVersion** is **8.0**. The memory specification of nodes that enable the X-Engine engine must be at least 8 GB.
         self.loose_xengine = loose_xengine
+        # Set the ratio for enabling the X-Engine storage engine, with a range of integers from 10 to 90.
+        # > This parameter takes effect only when **LooseXEngine** is **ON**.
         self.loose_xengine_use_memory_pct = loose_xengine_use_memory_pct
-        # Specifies whether the table names are case-sensitive. Valid values:
+        # Whether table names are case-sensitive, with valid values as follows:
+        # * **1**: Case-insensitive
+        # * **0**: Case-sensitive
         # 
-        # *   **1**: The table names are case-insensitive.
-        # *   **0**: The table names are case-sensitive.
-        # 
-        # Default value: **1**.
-        # 
-        # > This parameter is valid only when the **DBType** parameter is set to **MySQL**.
+        # The default value is **1**.
+        # > This parameter applies only when **DBType** is **MySQL**.
         self.lower_case_table_names = lower_case_table_names
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the parameter template.
+        # Parameter template ID.
         # 
-        # > You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/207178.html) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+        # > You can view the list of parameter templates in the target region, including the parameter template ID, by calling the [DescribeParameterGroups](https://help.aliyun.com/document_detail/207178.html) interface.
         self.parameter_group_id = parameter_group_id
-        # The billing method. Valid values:
+        # Payment type, with available values as follows:
         # 
-        # *   **Postpaid**: pay-as-you-go
-        # *   **Prepaid**: subscription
+        # - **Postpaid**: Pay-as-you-go.
+        # - **Prepaid**: Subscription (monthly or yearly).
         # 
         # This parameter is required.
         self.pay_type = pay_type
-        # The subscription type of the subscription cluster. This parameter is required only when the PayType parameter is set to **Prepaid**. Valid values:
+        # If the payment type is **Prepaid**, this parameter is required. It specifies whether the prepaid cluster is on a monthly or yearly basis.
         # 
-        # *   **Year**: annual subscription. Unit: years.
-        # *   **Month**: monthly subscription. Unit: months.
+        # - **Year**: Yearly subscription.
+        # - **Month**: Monthly subscription.
         self.period = period
-        # The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}
-        # 
-        # Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}
-        # 
-        # >  This parameter is available only if the StorageType parameter is set to ESSDAUTOPL.
+        # <p id="p_wyg_t4a_glm">The provisioned read and write IOPS for ESSD AutoPL cloud disks. Possible values: 0 to min{50,000, 1000*capacity-Baseline Performance}.</p>
+        # <p id="p_6de_jxy_k2g">Baseline Performance = min{1,800+50*capacity, 50000}.</p>
+        # <note id="note_7kj_j0o_rgs">This parameter is supported only when StorageType is ESSDAUTOPL.</note>
         self.provisioned_iops = provisioned_iops
-        self.proxy_class = proxy_class
-        self.proxy_type = proxy_type
-        # The region ID of the cluster.
+        # Standard edition database proxy specifications. Values are as follows:
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
+        # - **polar.maxscale.g2.medium.c**: 2 cores.
+        # - **polar.maxscale.g2.large.c**: 4 cores.
+        # - **polar.maxscale.g2.xlarge.c**: 8 cores.
+        # - **polar.maxscale.g2.2xlarge.c**: 16 cores.
+        # - **polar.maxscale.g2.3xlarge.c**: 24 cores.
+        # - **polar.maxscale.g2.4xlarge.c**: 32 cores.
+        # - **polar.maxscale.g2.8xlarge.c**: 64 cores.
+        self.proxy_class = proxy_class
+        # Database proxy type, with values including:
+        # - **EXCLUSIVE**: Enterprise Exclusive Edition
+        # - **GENERAL**: Enterprise General Purpose Edition
+        # > The proxy type must match the type of the cluster\\"s node specifications, i.e.,
+        # >- If the node specification is general, the proxy type should be Enterprise General Purpose Edition;
+        # >- If the node specification is dedicated, the proxy type should be Enterprise Exclusive Edition.
+        self.proxy_type = proxy_type
+        # Region ID.
+        # 
+        # > You can view available regions through the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) interface.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.
+        # Resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
+        # Maximum scaling limit for a single node. The value range is: 1 PCU~32 PCU.
         # 
-        # > This parameter is valid only for serverless clusters.
+        # > Only supported by Serverless clusters.
         self.scale_max = scale_max
-        # The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
+        # Minimum scaling limit for a single node. The value range is: 1 PCU~31 PCU.
         # 
-        # > This parameter is valid only for serverless clusters.
+        # > Only supported by Serverless clusters.
         self.scale_min = scale_min
-        # The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+        # Maximum scaling limit for the number of read-only nodes. The value range is: 0~15.
         # 
-        # > This parameter is valid only for serverless clusters.
+        # > Only supported by Serverless clusters.
         self.scale_ro_num_max = scale_ro_num_max
-        # The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
+        # Minimum scaling limit for the number of read-only nodes. The value range is: 0~15.
         # 
-        # > This parameter is valid only for serverless clusters.
+        # > Only supported by Serverless clusters.
         self.scale_ro_num_min = scale_ro_num_min
-        # The IP whitelist of the cluster.
-        # 
-        # > The whitelist can contain multiple IP addresses. Separate multiple IP addresses with commas (,).
+        # PolarDB cluster whitelist IP address.
+        # > Supports configuring multiple whitelist IP addresses, with English commas separating multiple IP addresses.
         self.security_iplist = security_iplist
-        # The type of the serverless cluster. Set the value to **AgileServerless**.
-        # 
-        # > This parameter is valid only for serverless clusters.
+        # Serverless type. The current value is fixed to **AgileServerless** (sensitive mode).
+        # > This parameter is only supported by Serverless clusters.
         self.serverless_type = serverless_type
-        # The ID of the source ApsaraDB RDS instance or PolarDB cluster. This parameter is required only when the **CreationOption** parameter is set to **MigrationFromRDS**, **CloneFromRDS**, or **CloneFromPolarDB**.
+        # Source RDS instance ID or source PolarDB cluster ID. This parameter is mandatory only when **CreationOption** is set to **MigrationFromRDS**, **CloneFromRDS**, **CloneFromPolarDB**, or **RecoverFromRecyclebin**.
+        # * If **CreationOption** is **MigrationFromRDS** or **CloneFromRDS**, you need to input the source RDS instance ID. The source RDS instance version must be RDS MySQL 5.6, 5.7, or 8.0 High Availability edition.
         # 
-        # *   If the **CreationOption** parameter is set to **MigrationFromRDS** or **CloneFromRDS**, you must set this parameter to the ID of the source ApsaraDB RDS instance. The source ApsaraDB RDS instance must use ApsaraDB RDS for MySQL 5.6, 5.7, or 8.0 High-availability Edition.
-        # *   If the **CreationOption** parameter is set to **CloneFromPolarDB**, you must set this parameter to the ID of the source PolarDB cluster. By default, the value of DBType of the destination cluster must be the same as that of the source cluster. For example, if a MySQL 8.0 cluster is used as the source cluster, you must set the **DBType** parameter to **MySQL** and the **DBVersion** parameter to **8.0** for the destination cluster.
+        # * If **CreationOption** is **CloneFromPolarDB**, you need to input the source PolarDB cluster ID. The DBType of the cloned cluster will default to match the source cluster. For example, if the source cluster is MySQL 8.0, the cloned cluster must also have **DBType** set to **MySQL** and **DBVersion** to **8.0**.
+        # 
+        # * If **CreationOption** is **RecoverFromRecyclebin**, you need to input the released source PolarDB cluster ID. The DBType of the cluster being recovered from the recycle bin must match the source cluster. For example, if the source cluster was MySQL 8.0, the recovered cluster must also have **DBType** set to **MySQL** and **DBVersion** to **8.0**.
         self.source_resource_id = source_resource_id
+        # The availability zone where the hot standby cluster is stored. Applicable to the standard edition 3AZ scenario.
+        # 
+        # > This parameter takes effect only when multi-zone data strong consistency is enabled.
         self.standby_az = standby_az
+        # Whether to enable automatic storage expansion for standard edition clusters, with valid values as follows:
+        # 
+        # - Enable: Enables automatic storage expansion.
+        # - Disable: Disables automatic storage expansion.
         self.storage_auto_scale = storage_auto_scale
+        # The storage billing type, with valid values as follows:
+        # 
+        # - Postpaid: Pay-as-you-go (hourly).
+        # - Prepaid: Pay-per-use based on space (subscription).
         self.storage_pay_type = storage_pay_type
-        # The storage space that uses the subscription billing method. Unit: GB.
+        # Storage space for pay-by-space (subscription) billing. Unit: GB.
+        # > - For PolarDB MySQL Standard Edition, the storage space range is 20 to 32000.
+        # > - When the Standard Edition storage type is ESSDAUTOPL, the storage space range is 40 to 64000, with a minimum step size of 10, meaning you can only enter values like 40, 50, 60, and so on.
         self.storage_space = storage_space
-        # The storage type. Valid values for Enterprise Edition:
+        # Enterprise edition storage types include:
+        # - **PSL5**\
+        # - **PSL4**\
         # 
-        # *   **PSL5**\
-        # *   **PSL4**\
-        # 
-        # Valid values for Standard Edition:
-        # *   **ESSDPL0**\
-        # *   **ESSDPL1**\
-        # *   **ESSDPL2**\
-        # *   **ESSDPL3**\
-        # *   **ESSDAUTOPL**\
-        # 
-        # > This parameter is invalid for serverless clusters.
+        # Standard edition storage types include:
+        # - **ESSDPL0**\
+        # - **ESSDPL1**\
+        # - **ESSDPL2**\
+        # - **ESSDPL3**\
+        # - **ESSDAUTOPL**\
         self.storage_type = storage_type
+        # Set the upper limit for automatic storage expansion of standard edition clusters, in GB.
+        # 
+        # > The maximum value is 32000.
         self.storage_upper_bound = storage_upper_bound
-        # Specifies whether to enable multi-zone data consistency. Valid values:
+        # Whether the cluster has enabled strong data consistency across multiple zones. Values are as follows:
         # 
-        # *   **ON**: enables multi-zone data consistency. Set this parameter to ON for Standard Edition clusters of Multi-zone Edition.
-        # *   **OFF**: disables multi-zone data consistency.
+        # - **ON**: Indicates strong data consistency across multiple zones is enabled, applicable to the standard edition 3AZ scenario.
+        # 
+        # - **OFF**: Indicates strong data consistency across multiple zones is not enabled.
         self.strict_consistency = strict_consistency
-        # Specifies whether to enable transparent data encryption (TDE). Default value: false. Valid values:
+        # Enables TDE encryption. Valid values are as follows:
         # 
-        # *   **true**\
-        # *   **false**\
+        # - **true**: Enabled.
+        # - **false**: Disabled (default).
         # 
-        # > 
-        # 
-        # *   This parameter is valid only when the **DBType** parameter is set to **PostgreSQL** or **Oracle**.
-        # 
-        # *   You can call the [ModifyDBClusterTDE](https://help.aliyun.com/document_detail/167982.html) operation to enable TDE for a PolarDB for MySQL cluster.
-        # *   TDE cannot be disabled after it is enabled.
+        # > * This parameter takes effect only when **DBType** is **PostgreSQL** or **Oracle**.
+        # > * You can call the [ModifyDBClusterTDE](https://help.aliyun.com/document_detail/167982.html) interface to enable TDE encryption for a PolarDB MySQL cluster.
+        # > * Once the TDE feature is enabled, it cannot be disabled.
         self.tdestatus = tdestatus
-        # 1
+        # List of tags.
         self.tag = tag
-        # *   If the **Period** parameter is set to **Month**, the **UsedTime** parameter can be set to `1, 2, 3, 4, 5, 6, 7, 8, or 9`.
-        # *   If the **Period** parameter is set to **Year**, the **UsedTime** parameter can be set to `1, 2, or 3`.
+        # If the payment type is **Prepaid**, this parameter is required.
+        # - When **Period** is **Month**, **UsedTime** should be an integer within `[1-9]`.
+        # - When **Period** is **Year**, **UsedTime** should be an integer within `[1-3]`.
         self.used_time = used_time
-        # The virtual private cloud (VPC) ID of the cluster.
+        # VPC ID.
         self.vpcid = vpcid
-        # The vSwitch ID of the cluster.
+        # Virtual switch ID.
         # 
-        # > If the VPCId parameter is specified, the VSwitchId parameter is required.
+        # > If VPCId has been selected, VSwitchId is mandatory.
         self.v_switch_id = v_switch_id
-        # The zone ID of the cluster.
+        # Availability Zone ID.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available zones.
+        # > You can view the available zones through the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) interface.
         self.zone_id = zone_id
 
     def validate(self):
@@ -2120,13 +2375,13 @@ class CreateDBClusterResponseBody(TeaModel):
         request_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of cluster.
+        # Cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The ID of the order.
+        # Order ID.
         self.order_id = order_id
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
-        # The ID of the resource group.
+        # Resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -2221,12 +2476,10 @@ class CreateDBClusterEndpointRequest(TeaModel):
         resource_owner_id: int = None,
         scc_mode: str = None,
     ):
-        # Specifies whether to automatically associate newly added nodes with the cluster endpoint. Valid values:
+        # Specifies whether to enable automatic association of newly added nodes with the cluster endpoint. Valid values:
         # 
-        # *   **Enable**: Newly added nodes are automatically associated with the cluster endpoint.
-        # *   **Disable**: Newly added nodes are not automatically associated with the cluster endpoint.
-        # 
-        # Default value: **Disable**.
+        # *   **Enable**: enables automatic association of newly added nodes with the cluster endpoint.
+        # *   **Disable** (default): disables automatic association of newly added nodes with the cluster endpoint.
         self.auto_add_new_nodes = auto_add_new_nodes
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
         self.client_token = client_token
@@ -2281,7 +2534,11 @@ class CreateDBClusterEndpointRequest(TeaModel):
         self.nodes = nodes
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # Global consistency timeout strategy. The value range is as follows:
+        # - **0**: Send the request to the primary node
+        # - **2**: Timeout degradation, when a global consistency read times out, the query operation will automatically degrade to an inconsistent read, and the client will not receive an error message
         self.polar_scc_timeout_action = polar_scc_timeout_action
+        # Global consistency timeout
         self.polar_scc_wait_timeout = polar_scc_wait_timeout
         # The read/write mode. Valid values:
         # 
@@ -2292,6 +2549,8 @@ class CreateDBClusterEndpointRequest(TeaModel):
         self.read_write_mode = read_write_mode
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Whether the node has enabled the global consistency (high-performance mode) feature. The value range is as follows:
+        # - **ON**: Enabled - **OFF**: Disabled
         self.scc_mode = scc_mode
 
     def validate(self):
@@ -3800,6 +4059,199 @@ class CreateGlobalSecurityIPGroupResponse(TeaModel):
         return self
 
 
+class CreateOrGetVirtualLicenseOrderRequest(TeaModel):
+    def __init__(
+        self,
+        engine: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.engine = engine
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class CreateOrGetVirtualLicenseOrderResponseBody(TeaModel):
+    def __init__(
+        self,
+        activated_code_count: int = None,
+        activation_code_quota: int = None,
+        aliyun_order_id: str = None,
+        allow_empty_system_identifier: bool = None,
+        gmt_created: str = None,
+        gmt_modified: str = None,
+        is_virtual_order: bool = None,
+        is_virtual_order_frozen: bool = None,
+        package_type: str = None,
+        package_validity: str = None,
+        purchase_channel: str = None,
+        request_id: str = None,
+        virtual_order_id: str = None,
+    ):
+        self.activated_code_count = activated_code_count
+        self.activation_code_quota = activation_code_quota
+        self.aliyun_order_id = aliyun_order_id
+        self.allow_empty_system_identifier = allow_empty_system_identifier
+        self.gmt_created = gmt_created
+        self.gmt_modified = gmt_modified
+        self.is_virtual_order = is_virtual_order
+        self.is_virtual_order_frozen = is_virtual_order_frozen
+        self.package_type = package_type
+        self.package_validity = package_validity
+        self.purchase_channel = purchase_channel
+        # Id of the request
+        self.request_id = request_id
+        self.virtual_order_id = virtual_order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.activated_code_count is not None:
+            result['ActivatedCodeCount'] = self.activated_code_count
+        if self.activation_code_quota is not None:
+            result['ActivationCodeQuota'] = self.activation_code_quota
+        if self.aliyun_order_id is not None:
+            result['AliyunOrderId'] = self.aliyun_order_id
+        if self.allow_empty_system_identifier is not None:
+            result['AllowEmptySystemIdentifier'] = self.allow_empty_system_identifier
+        if self.gmt_created is not None:
+            result['GmtCreated'] = self.gmt_created
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.is_virtual_order is not None:
+            result['IsVirtualOrder'] = self.is_virtual_order
+        if self.is_virtual_order_frozen is not None:
+            result['IsVirtualOrderFrozen'] = self.is_virtual_order_frozen
+        if self.package_type is not None:
+            result['PackageType'] = self.package_type
+        if self.package_validity is not None:
+            result['PackageValidity'] = self.package_validity
+        if self.purchase_channel is not None:
+            result['PurchaseChannel'] = self.purchase_channel
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.virtual_order_id is not None:
+            result['VirtualOrderId'] = self.virtual_order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActivatedCodeCount') is not None:
+            self.activated_code_count = m.get('ActivatedCodeCount')
+        if m.get('ActivationCodeQuota') is not None:
+            self.activation_code_quota = m.get('ActivationCodeQuota')
+        if m.get('AliyunOrderId') is not None:
+            self.aliyun_order_id = m.get('AliyunOrderId')
+        if m.get('AllowEmptySystemIdentifier') is not None:
+            self.allow_empty_system_identifier = m.get('AllowEmptySystemIdentifier')
+        if m.get('GmtCreated') is not None:
+            self.gmt_created = m.get('GmtCreated')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('IsVirtualOrder') is not None:
+            self.is_virtual_order = m.get('IsVirtualOrder')
+        if m.get('IsVirtualOrderFrozen') is not None:
+            self.is_virtual_order_frozen = m.get('IsVirtualOrderFrozen')
+        if m.get('PackageType') is not None:
+            self.package_type = m.get('PackageType')
+        if m.get('PackageValidity') is not None:
+            self.package_validity = m.get('PackageValidity')
+        if m.get('PurchaseChannel') is not None:
+            self.purchase_channel = m.get('PurchaseChannel')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('VirtualOrderId') is not None:
+            self.virtual_order_id = m.get('VirtualOrderId')
+        return self
+
+
+class CreateOrGetVirtualLicenseOrderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateOrGetVirtualLicenseOrderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateOrGetVirtualLicenseOrderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateParameterGroupRequest(TeaModel):
     def __init__(
         self,
@@ -4563,11 +5015,11 @@ class DeleteDBClusterRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The retention policy for the backup sets when you delete the cluster. Valid values:
+        # The retention policy applied to the backup sets when the cluster is released. Valid values:
         # 
-        # *   **ALL**: permanently retains all backups.
-        # *   **LATEST**: permanently retains the most recent backup. A backup is automatically created before you delete the cluster.
-        # *   **NONE**: No backup sets are retained after you delete the cluster.
+        # *   **ALL**: permanently retains all backup sets.
+        # *   **LATEST**: permanently retains the most recent backup set that is automatically created before the cluster is released.
+        # *   **NONE**: does not retain backup sets.
         self.backup_retention_policy_on_cluster_deletion = backup_retention_policy_on_cluster_deletion
         # The cluster ID.
         # 
@@ -6491,6 +6943,433 @@ class DescribeAccountsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeAccountsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeActivationCodeDetailsRequest(TeaModel):
+    def __init__(
+        self,
+        activation_code_id: int = None,
+        aliyun_order_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.activation_code_id = activation_code_id
+        # This parameter is required.
+        self.aliyun_order_id = aliyun_order_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.activation_code_id is not None:
+            result['ActivationCodeId'] = self.activation_code_id
+        if self.aliyun_order_id is not None:
+            result['AliyunOrderId'] = self.aliyun_order_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActivationCodeId') is not None:
+            self.activation_code_id = m.get('ActivationCodeId')
+        if m.get('AliyunOrderId') is not None:
+            self.aliyun_order_id = m.get('AliyunOrderId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeActivationCodeDetailsResponseBody(TeaModel):
+    def __init__(
+        self,
+        activate_at: str = None,
+        cert_content_b64: str = None,
+        description: str = None,
+        expire_at: str = None,
+        gmt_created: str = None,
+        gmt_modified: str = None,
+        id: int = None,
+        mac_address: str = None,
+        name: str = None,
+        request_id: str = None,
+        system_identifier: str = None,
+    ):
+        self.activate_at = activate_at
+        self.cert_content_b64 = cert_content_b64
+        self.description = description
+        self.expire_at = expire_at
+        self.gmt_created = gmt_created
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.mac_address = mac_address
+        self.name = name
+        # Id of the request
+        self.request_id = request_id
+        self.system_identifier = system_identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.activate_at is not None:
+            result['ActivateAt'] = self.activate_at
+        if self.cert_content_b64 is not None:
+            result['CertContentB64'] = self.cert_content_b64
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.expire_at is not None:
+            result['ExpireAt'] = self.expire_at
+        if self.gmt_created is not None:
+            result['GmtCreated'] = self.gmt_created
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mac_address is not None:
+            result['MacAddress'] = self.mac_address
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.system_identifier is not None:
+            result['SystemIdentifier'] = self.system_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActivateAt') is not None:
+            self.activate_at = m.get('ActivateAt')
+        if m.get('CertContentB64') is not None:
+            self.cert_content_b64 = m.get('CertContentB64')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ExpireAt') is not None:
+            self.expire_at = m.get('ExpireAt')
+        if m.get('GmtCreated') is not None:
+            self.gmt_created = m.get('GmtCreated')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MacAddress') is not None:
+            self.mac_address = m.get('MacAddress')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SystemIdentifier') is not None:
+            self.system_identifier = m.get('SystemIdentifier')
+        return self
+
+
+class DescribeActivationCodeDetailsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeActivationCodeDetailsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeActivationCodeDetailsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeActivationCodesRequest(TeaModel):
+    def __init__(
+        self,
+        aliyun_order_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.aliyun_order_id = aliyun_order_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_order_id is not None:
+            result['AliyunOrderId'] = self.aliyun_order_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliyunOrderId') is not None:
+            self.aliyun_order_id = m.get('AliyunOrderId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeActivationCodesResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        activate_at: str = None,
+        description: str = None,
+        expire_at: str = None,
+        gmt_created: str = None,
+        gmt_modified: str = None,
+        id: int = None,
+        mac_address: str = None,
+        name: str = None,
+        system_identifier: str = None,
+    ):
+        self.activate_at = activate_at
+        self.description = description
+        self.expire_at = expire_at
+        self.gmt_created = gmt_created
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.mac_address = mac_address
+        self.name = name
+        self.system_identifier = system_identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.activate_at is not None:
+            result['ActivateAt'] = self.activate_at
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.expire_at is not None:
+            result['ExpireAt'] = self.expire_at
+        if self.gmt_created is not None:
+            result['GmtCreated'] = self.gmt_created
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mac_address is not None:
+            result['MacAddress'] = self.mac_address
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.system_identifier is not None:
+            result['SystemIdentifier'] = self.system_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActivateAt') is not None:
+            self.activate_at = m.get('ActivateAt')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ExpireAt') is not None:
+            self.expire_at = m.get('ExpireAt')
+        if m.get('GmtCreated') is not None:
+            self.gmt_created = m.get('GmtCreated')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MacAddress') is not None:
+            self.mac_address = m.get('MacAddress')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SystemIdentifier') is not None:
+            self.system_identifier = m.get('SystemIdentifier')
+        return self
+
+
+class DescribeActivationCodesResponseBody(TeaModel):
+    def __init__(
+        self,
+        items: List[DescribeActivationCodesResponseBodyItems] = None,
+        page_number: int = None,
+        page_record_count: int = None,
+        request_id: str = None,
+        total_record_count: int = None,
+    ):
+        self.items = items
+        self.page_number = page_number
+        self.page_record_count = page_record_count
+        # Id of the request
+        self.request_id = request_id
+        self.total_record_count = total_record_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_record_count is not None:
+            result['PageRecordCount'] = self.page_record_count
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_record_count is not None:
+            result['TotalRecordCount'] = self.total_record_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeActivationCodesResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageRecordCount') is not None:
+            self.page_record_count = m.get('PageRecordCount')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalRecordCount') is not None:
+            self.total_record_count = m.get('TotalRecordCount')
+        return self
+
+
+class DescribeActivationCodesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeActivationCodesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeActivationCodesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8889,13 +9768,12 @@ class DescribeDBClusterAttributeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of cluster.
-        # 
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+        # Cluster ID.
+        # > You can view detailed information about all clusters under your account, including the cluster ID, through the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) interface.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether to query information about AI-related nodes.
+        # Whether to obtain information about AI-related nodes.
         self.describe_type = describe_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -8960,6 +9838,8 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
         max_iops: int = None,
         memory_size: str = None,
         mirror_ins_name: str = None,
+        multi_master_local_standby: str = None,
+        multi_master_primary_node: str = None,
         orca: str = None,
         remote_memory_size: str = None,
         scc_mode: str = None,
@@ -8968,73 +9848,91 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
         sub_cluster: str = None,
         zone_id: str = None,
     ):
-        # The number of CPU cores for compute node scale-out within seconds.
+        # Number of CPU cores for second-level elastic scaling.
         self.added_cpu_cores = added_cpu_cores
+        # Number of CPU cores for the node.
         self.cpu_cores = cpu_cores
-        # The time when the node was created.
+        # Node creation time.
         self.creation_time = creation_time
-        # The type of the node.
+        # Node specification.
         self.dbnode_class = dbnode_class
-        # The ID of the node.
+        # Node ID.
         self.dbnode_id = dbnode_id
-        # The role of the node. Valid values:
+        # Node role, with possible values as follows:
         # 
-        # *   **Writer**: The node is the primary node.
-        # *   **Reader**: The node is a read-only node.
+        # - **Writer**: Primary node.
+        # - **Reader**: Read-only node.
         self.dbnode_role = dbnode_role
-        # The status of the node. Valid values:
-        # 
-        # *   **Creating**: The cluster is being created.
-        # *   **Running**: The cluster is running.
-        # *   **Deleting**: The cluster is being deleted.
-        # *   **Rebooting**: The cluster is restarting.
-        # *   **DBNodeCreating**: PolarProxy is being added.
-        # *   **DBNodeDeleting**: PolarProxy is being deleted.
-        # *   **ClassChanging**: The specification type of PolarProxy are being modified.
-        # *   **NetAddressCreating**: The network connection is being created.
-        # *   **NetAddressDeleting**: The network connection is being deleted.
-        # *   **NetAddressModifying**: The network connection is being modified.
-        # *   **MinorVersionUpgrading**: The minor version is being updated.
-        # *   **Maintaining**: The cluster is being maintained.
-        # *   **Switching**: A failover is being performed.
+        # Node status, with possible values as follows:
+        # * **Creating**: Creating
+        # * **Running**: Running
+        # * **Deleting**: Deleting
+        # * **Rebooting**: Rebooting
+        # * **DBNodeCreating**: Adding node
+        # * **DBNodeDeleting**: Removing node
+        # * **ClassChanging**: Modifying node specification
+        # * **NetAddressCreating**: Creating network connection
+        # * **NetAddressDeleting**: Deleting network connection
+        # * **NetAddressModifying**: Modifying network connection
+        # * **MinorVersionUpgrading**: Upgrading minor version
+        # * **Maintaining**: Instance maintenance
+        # * **Switching**: Switching
         self.dbnode_status = dbnode_status
-        # The failover priority. Each node is assigned a failover priority. If a failover occurs, a node can be selected as a primary node. The priority determines the probability at which a node is selected as a primary node. A larger value indicates a higher priority. Valid values: 1 to 15.
+        # Failover priority. Each node has a failover priority, determining the likelihood of being elected as the primary node during a failover. A higher value indicates a higher priority.
+        # Range: 1 to 15.
         self.failover_priority = failover_priority
-        # Indicates whether the hot standby feature is enabled. Valid values:
+        # Whether hot standby is enabled. Possible values are:
         # 
-        # *   **ON**\
-        # *   **OFF**\
+        # - **ON**: Enabled
+        # - **OFF**: Disabled
         self.hot_replica_mode = hot_replica_mode
-        # Indicates whether the In-Memory Column Index (IMCI) feature is enabled. Valid values:
+        # Whether columnar index is enabled. Possible values are:
         # 
-        # *   **ON**\
-        # *   **OFF**\
+        # - **ON**: Enabled
+        # - **OFF**: Disabled
         self.imci_switch = imci_switch
-        # The ID of the primary node in the cluster that runs Multi-master Cluster Edition.
+        # Primary node ID of the multi-master architecture cluster edition.
         self.master_id = master_id
-        # The maximum number of concurrent connections in the cluster.
+        # Maximum concurrent connections of the cluster.
         self.max_connections = max_connections
-        # The maximum input/output operations per second (IOPS).
+        # Maximum number of I/O requests, that is, IOPS.
         self.max_iops = max_iops
+        # Node memory size, in MB.
         self.memory_size = memory_size
+        # The name of the hot standby compute node corresponding to the node when the hot standby storage and compute clusters feature is enabled.
         self.mirror_ins_name = mirror_ins_name
+        self.multi_master_local_standby = multi_master_local_standby
+        self.multi_master_primary_node = multi_master_primary_node
+        # Orca feature, valid values are:
+        # - on: enabled
+        # - off: disabled
         self.orca = orca
+        # Remote memory size, in MB.
         self.remote_memory_size = remote_memory_size
-        # Indicates whether the global consistency (high-performance mode) feature is enabled for the node. Valid values:
+        # Whether the node has the global consistency (high-performance mode) feature enabled. Possible values are:
         # 
-        # *   **ON**\
-        # *   **OFF**\
+        # - **ON**: Enabled
+        # 
+        # - **OFF**: Disabled
         # 
         # This parameter is required.
         self.scc_mode = scc_mode
-        # The routing weight of the node. Valid values: 1 to 100 Default value: 1.
+        # Routing weight.
+        # Range: 1~100. Default is 1.
         self.server_weight = server_weight
-        # The type of the serverless node. Only **AgileServerless** can be returned.
+        # Serverless type. Possible values include:
         # 
-        # > This parameter is supported only for serverless clusters.
+        # - **AgileServerless**: Agile
+        # - **SteadyServerless**: Steady
+        # 
+        # > This parameter is only supported by Serverless clusters.
         self.serverless_type = serverless_type
+        # Identifies whether the node is in the primary or standby availability zone, primarily used in resource mirroring scenarios.
+        # Values include:
+        # - **Primary**: Primary Availability Zone
+        # - **Standby**: Standby Availability Zone
         self.sub_cluster = sub_cluster
-        # The ID of the zone.
+        # Availability zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -9076,6 +9974,10 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
             result['MemorySize'] = self.memory_size
         if self.mirror_ins_name is not None:
             result['MirrorInsName'] = self.mirror_ins_name
+        if self.multi_master_local_standby is not None:
+            result['MultiMasterLocalStandby'] = self.multi_master_local_standby
+        if self.multi_master_primary_node is not None:
+            result['MultiMasterPrimaryNode'] = self.multi_master_primary_node
         if self.orca is not None:
             result['Orca'] = self.orca
         if self.remote_memory_size is not None:
@@ -9124,6 +10026,10 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
             self.memory_size = m.get('MemorySize')
         if m.get('MirrorInsName') is not None:
             self.mirror_ins_name = m.get('MirrorInsName')
+        if m.get('MultiMasterLocalStandby') is not None:
+            self.multi_master_local_standby = m.get('MultiMasterLocalStandby')
+        if m.get('MultiMasterPrimaryNode') is not None:
+            self.multi_master_primary_node = m.get('MultiMasterPrimaryNode')
         if m.get('Orca') is not None:
             self.orca = m.get('Orca')
         if m.get('RemoteMemorySize') is not None:
@@ -9147,9 +10053,9 @@ class DescribeDBClusterAttributeResponseBodyTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # Tag key.
         self.key = key
-        # The value of the tag.
+        # Tag value.
         self.value = value
 
     def validate(self):
@@ -9204,6 +10110,7 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         expired: str = None,
         has_complete_standby_res: bool = None,
         hot_standby_cluster: str = None,
+        imci_auto_index: str = None,
         inode_total: int = None,
         inode_used: int = None,
         is_latest_version: bool = None,
@@ -9241,180 +10148,212 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         v_switch_id: str = None,
         zone_ids: str = None,
     ):
+        # Start time for free AI activation
         self.ai_creating_time = ai_creating_time
-        # The information status of the AI node. Valid values:
+        # Types of AI nodes. Values include:
         # 
-        # *   SearchNode: search node.
-        # *   DLNode: AI node
+        # - **SearchNode**: Search node.
+        # - **DLNode**: AI node.
         self.ai_type = ai_type
+        # CPU architecture. Available options are:
+        # - **X86**\
+        # - **ARM**\
         self.architecture = architecture
-        # Maximum blktags in file system.
+        # Maximum number of blktags in the file system.
         self.blktag_total = blktag_total
-        # The current blktag usage.
+        # Current blktag usage.
         self.blktag_used = blktag_used
-        # [The edition of PolarDB](https://help.aliyun.com/document_detail/183258.html). Valid values:
+        # [Product Series](https://help.aliyun.com/document_detail/183258.html), with values as follows:
+        # * **Normal**: Cluster Edition
+        # * **Basic**: Single Node
+        # * **Archive**: High Compression Engine (X-Engine)
+        # * **NormalMultimaster**: Multi-Master Cluster Edition
+        # * **SENormal**: Standard Edition
         # 
-        # *   **Normal**: Cluster Edition.
-        # *   **Basic**: Single Node Edition.
-        # *   **Archive**: X-Engine Edition.
-        # *   **NormalMultimaster**: Multi-master Cluster Edition.
-        # *   **SENormal**: Standard Edition.
-        # 
-        # >-  Only PolarDB for MySQL supports Single Node Edition.
-        # >- Only PolarDB for MySQL 8.0.1 supports Standard Edition.
-        # >- Only PolarDB for MySQL 8.0 supports X-Engine Edition and Multi-master Cluster Edition.
+        # > * PolarDB PostgreSQL version 11 does not support single-node.
+        # >* PolarDB MySQL versions 8.0 and 5.7, and PolarDB PostgreSQL version 14 support the Standard Edition.
+        # >* PolarDB MySQL version 8.0 supports High Compression Engine (X-Engine) and Multi-Master Cluster Edition.
         self.category = category
+        # Whether storage compression is enabled. Values are as follows:
+        # - ON: Enabled
+        # - OFF: Disabled
         self.compress_storage_mode = compress_storage_mode
+        # Compressed storage data size.
+        # > This parameter is supported only when the cluster\\"s storage compression feature is enabled.
         self.compress_storage_used = compress_storage_used
-        # The time when the cluster was created.
+        # Cluster creation time.
         self.creation_time = creation_time
-        # The description of the cluster.
+        # Cluster description.
         self.dbcluster_description = dbcluster_description
-        # The ID of cluster.
+        # Cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The network type of the cluster.
+        # Network type of the cluster.
         self.dbcluster_network_type = dbcluster_network_type
-        # The status of the cluster. For information about the valid values, see [Cluster states](https://help.aliyun.com/document_detail/99286.html).
+        # Cluster status. For the full list of values, refer to [Cluster Status Table](https://help.aliyun.com/document_detail/99286.html).
         self.dbcluster_status = dbcluster_status
         # The information about the nodes.
         self.dbnodes = dbnodes
-        # The type of the database engine.
+        # Database engine type.
         self.dbtype = dbtype
-        # The version of the database engine.
+        # Database engine version.
         self.dbversion = dbversion
         # The status of the minor version. Valid values:
         # 
         # *   **Stable**: The minor version is stable.
-        # *   **Old**: The minor version is outdated. We recommend that you upgrade the cluster to the latest version.
-        # *   **HighRisk**: The minor version has critical defects. We recommend that you immediately upgrade the cluster to the latest version.
+        # *   **Old**: The minor version is outdated. We recommend that you update it to the latest version.
+        # *   **HighRisk**: The minor version has critical defects. We recommend that you immediately update it to the latest version.
+        # *   **Beta**: The minor version is a Beta version.
         # 
-        # > For more information about how to upgrade the minor version, see [Upgrade versions](https://help.aliyun.com/document_detail/158572.html).
+        # >  For information about how to update the minor version, see [Minor version update](https://help.aliyun.com/document_detail/158572.html).
         self.dbversion_status = dbversion_status
-        # The total physical storage of level-1 backups (snapshots). Unit: bytes.
+        # Total size of Level 1 backups (snapshots), in bytes.
         self.data_level_1backup_chain_size = data_level_1backup_chain_size
-        # Indicates the rule of data replication. Valid values: AsyncSync: asynchronous. SemiSync: semi-synchronous.
+        # Data replication relationship mode. Values are as follows:
+        # - **AsyncSync**: Asynchronous
+        # - **SemiSync**: Semi-synchronous
         self.data_sync_mode = data_sync_mode
-        # Indicates whether the cluster is locked and can be deleted. Valid values:
-        # 
-        # *   **0**: The cluster is not locked and can be deleted.
-        # *   **1**: The cluster is locked and cannot be deleted.
+        # Lock status for cluster deletion, with values as follows:
+        # * **0**: Unlocked, cluster can be deleted.
+        # * **1**: Locked, cluster cannot be deleted.
         self.deletion_lock = deletion_lock
-        # The database type.
+        # Cluster engine.
         self.engine = engine
-        # The time when the cluster expires.
+        # Cluster expiration time.
         # 
-        # > A specific value will be returned only for subscription (**Prepaid**) clusters. For pay-as-you-go (**Postpaid**) clusters, an empty string will be returned.
+        # > Only clusters with **Prepaid** (subscription) payment methods return specific parameter values; **Postpaid** (pay-as-you-go) clusters return empty values.
         self.expire_time = expire_time
-        # Indicates whether the cluster has expired. Valid values:
-        # 
-        # > This parameter is returned only for subscription (**Prepaid**) clusters.
+        # Whether the cluster has expired.
+        # > This parameter is only supported for clusters with **Prepaid** (Subscription) payment methods.
         self.expired = expired
-        # Indicates whether to replenish resources for the primary database after a cross-zone switchover. Valid values: true false
+        # Whether to replenish resources for the new primary after cross-AZ switch. Values are as follows:
+        # - **true**: Yes
+        # - **false**: No
         self.has_complete_standby_res = has_complete_standby_res
+        # Whether to enable storage hot backup cluster (and Standby compute nodes). Values are as follows:
+        # - **StandbyClusterON**: Enable storage hot backup/Enable storage hot backup and Standby compute nodes.
+        # - **StandbyClusterOFF**: Disable storage hot backup/Disable storage hot backup and Standby compute nodes.
         self.hot_standby_cluster = hot_standby_cluster
-        # Maximum inodes in file system.
+        self.imci_auto_index = imci_auto_index
+        # Maximum number of inodes in the file system.
         self.inode_total = inode_total
-        # The current inode usage.
+        # Current inode usage.
         self.inode_used = inode_used
-        # Indicates whether the kernel is of the latest version. Valid values:
+        # Indicates whether it is the latest kernel version. Values are as follows:
         # 
-        # *   **true**\
-        # *   **false**\
+        # - **true**: Yes
+        # 
+        # - **false**: No
         self.is_latest_version = is_latest_version
-        # Indicates whether PolarProxy uses the latest version. Valid values:
+        # Indicates whether it is the latest version of the database proxy, with possible values as follows:
         # 
-        # *   **true**\
-        # *   **false**\
+        # - **true**: Yes
+        # - **false**: No
         self.is_proxy_latest_version = is_proxy_latest_version
-        # The lock mode. Valid values:
+        # Lock mode. Possible values are as follows:
         # 
-        # *   **Unlock**: The cluster is not locked.
-        # *   **ManualLock**: The cluster is manually locked.
-        # *   **LockByExpiration**: The cluster is automatically locked due to cluster expiration.
+        # - **Unlock**: Unlocked.
+        # - **ManualLock**: Manually triggered lock.
+        # - **LockByExpiration**: Automatic cluster lock upon expiration.
         self.lock_mode = lock_mode
-        # The maintenance window of the cluster. The format is `HH:mmZ-HH:mmZ`. The time is displayed in UTC. For example, the value `16:00Z-17:00Z` indicates that the cluster can be maintained from 00:00 to 01:00 (UTC+08:00).
+        # The maintenance window for the cluster, formatted as `HH:mmZ-HH:mmZ` (UTC time). For example, `16:00Z-17:00Z` indicates that routine maintenance can be performed from 0:00 to 1:00 (UTC+08:00).
         self.maintain_time = maintain_time
+        # Orca function with possible values as follows:
+        # 
+        # - **on**: Enabled
+        # 
+        # - **off**: Disabled
         self.orca = orca
-        # The billing method of the cluster. Valid values:
+        # Payment type. Possible values are:
         # 
-        # *   **Postpaid**: pay-as-you-go.
-        # *   **Prepaid**: subscription
+        # - **Postpaid**: Pay-As-You-Go
+        # - **Prepaid**: Prepaid (Subscription).
         self.pay_type = pay_type
+        # Describes the preconfigured read and write IOPS for ESSD AutoPL cloud disks. Possible values: 0 to min{50,000, 1000*capacity - baseline performance}.<br>Baseline performance = min{1,800 + 50*capacity, 50000}.<br>Note: This parameter is supported only when StorageType is ESSDAUTOPL.
         self.provisioned_iops = provisioned_iops
-        # The number of CPU cores for PolarProxy.
+        # Number of CPU cores for the database proxy.
         self.proxy_cpu_cores = proxy_cpu_cores
-        # The type of the serverless PolarProxy. Valid value: AgileServerless.
+        # Serverless type for the database proxy. Currently, the value is fixed to AgileServerless.
         self.proxy_serverless_type = proxy_serverless_type
-        # The number of CPU cores for PolarProxy Standard Enterprise Edition.
+        # Standard configuration CPU cores for the database proxy.
         self.proxy_standard_cpu_cores = proxy_standard_cpu_cores
-        # The status of PolarProxy. Valid values:
+        # Status of the database proxy. Possible values include:
         # 
-        # *   **Creating**: PolarProxy is being created.
-        # *   **Running**: PolarProxy is running.
-        # *   **Deleting**: PolarProxy is being released.
-        # *   **Rebooting**: PolarProxy is restarting.
-        # *   **DBNodeCreating**: PolarProxy is being added.
-        # *   **DBNodeDeleting**: PolarProxy is being deleted.
-        # *   **ClassChanging**: The specifications of PolarProxy are being changed.
-        # *   **NetAddressCreating**: The network connection is being created.
-        # *   **NetAddressDeleting**: The network connection is being deleted.
-        # *   **NetAddressModifying**: The network connection is being modified.
-        # *   **Deleted**: PolarProxy is released.
+        # - **Creating**: Creating
+        # - **Running**: Running
+        # - **Deleting**: Releasing
+        # - **Rebooting**: Restarting
+        # - **DBNodeCreating**: Adding nodes
+        # - **DBNodeDeleting**: Deleting nodes
+        # - **ClassChanging**: Changing node specifications
+        # - **NetAddressCreating**: Creating network connections
+        # - **NetAddressDeleting**: Deleting network connections
+        # - **NetAddressModifying**: Modifying network connections
+        # - **Deleted**: Released
         self.proxy_status = proxy_status
-        # The type of PolarProxy. Valid values:
+        # Database proxy types, with the following values:
         # 
-        # *   **Exclusive**: Dedicated Enterprise Edition
-        # *   **General**: Standard Enterprise Edition
+        # - **Exclusive**: Enterprise Exclusive Edition
+        # - **General**: Enterprise General Purpose Edition
         self.proxy_type = proxy_type
-        # The region ID of the security group.
+        # Region ID.
         self.region_id = region_id
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
-        # The ID of your Alibaba Cloud resource group.
+        # Resource group ID.
         self.resource_group_id = resource_group_id
+        # If RestoreType is **RestoreByTime** or **RestoreByTimeOss**, this value represents the recovery time point. If RestoreType is **RestoreByBackupSet** or **RestoreByBackupSetOss**, this value indicates the ID of the backup set on which the recovery is based.
+        # <note>Only clusters restored from a backup set or time point after June 1, 2024, support this parameter.</note>
         self.restore_data_point = restore_data_point
+        # Cluster recovery method, with possible values:
+        # * **RestoreByTime**: Restore from a time point based on primary backup. * **RestoreByBackupSet**: Restore from a backup set based on primary backup. * **RestoreByTimeOss**: Restore from a time point based on secondary backup. * **RestoreByBackupSetOss**: Restore from a backup set based on secondary backup. * **CloneFromSourceCluster**: Clone from the source cluster.
+        # <note>This parameter is only supported for clusters restored from a backup set or time point after June 1, 2024.</note>
         self.restore_type = restore_type
-        # The storage of SQL. Unit: bytes. If the value is -1, no data is stored.
+        # Storage amount of SQL, in bytes. If the value is -1, it indicates no data.
         self.sqlsize = sqlsize
-        # The type of the serverless cluster. Only **AgileServerless** can be returned.
+        # Serverless type. Valid values are as follows:
+        # - AgileServerless: Agile - SteadyServerless: Stable
         self.serverless_type = serverless_type
+        # Source cluster ID. <note>Clusters restored from backup sets or specific points in time after June 1, 2024, support this parameter.</note>
         self.source_dbcluster = source_dbcluster
+        # The region ID of the source cluster.
+        # 
+        # >  This parameter is returned only if the source cluster ID exists.
         self.source_region_id = source_region_id
-        # Indicates whether the cross-zone disaster recovery feature is enabled. Valid values: ON OFF 0: Customer Drill Mode
+        # Cross-AZ disaster recovery mode. Values are as follows:
+        # - **ON**: Enable cross-AZ disaster recovery mode.
+        # - **OFF**: Disable cross-AZ disaster recovery mode.
+        # - **0**: Customer drill mode.
         self.standby_hamode = standby_hamode
-        # The maximum storage capacity of the current cluster specification. Unit: bytes.
+        # The maximum storage capacity of the current cluster specification, in bytes.
         self.storage_max = storage_max
-        # The billing method of the storage. Valid values:
-        # 
-        # *   **Postpaid**: pay-as-you-go
-        # *   **Prepaid**: subscription.
+        # Storage billing type. Valid values are as follows:
+        # - **Postpaid**：Pay-as-you-go (by capacity). - **Prepaid**：Subscription (by space).
         self.storage_pay_type = storage_pay_type
-        # The storage space that uses the subscription billing method. Unit: bytes.
+        # Storage space for pay-by-space (subscription) billing. Unit: Byte.
         self.storage_space = storage_space
-        # The storage type. Set the value to **HighPerformance**.
+        # Storage type, with a fixed value of **HighPerformance**.
         self.storage_type = storage_type
-        # The storage space consumed by the cluster. Unit: bytes.
+        # Amount of used storage space, in bytes.
         self.storage_used = storage_used
-        # Indicates whether the multi-zone data consistency feature is enabled for the cluster. Valid values:
-        # 
-        # *   **ON**: Multi-zone data consistency is enabled, which is suitable for Standard Edition clusters that run Multi-zone Edition.
-        # *   **OFF**\
+        # Indicates whether multi-AZ data strong consistency is enabled for the cluster. The value ranges are as follows:
+        # - **ON**: Indicates that multi-AZ data strong consistency is enabled, applicable to the Standard 3AZ scenario.
+        # - **OFF**: Indicates that multi-AZ data strong consistency is not enabled.
         self.strict_consistency = strict_consistency
-        # The specification type of the compute node. Valid values:
+        # Specification type of compute nodes, with possible values as follows:
+        # * **Exclusive**: Dedicated specification
+        # * **General**: General-purpose specification
         # 
-        # *   **Exclusive**: dedicated.
-        # *   **General**: general-purpose.
-        # 
-        # > This parameter is supported only for PolarDB for MySQL clusters of Cluster Edition.
+        # > This parameter is supported only for PolarDB MySQL Edition with the product series set to Cluster Edition.
         self.sub_category = sub_category
+        # Indicates whether the failover with hot replica feature is supported if the cluster has In-Memory Column Index (IMCI) nodes.
         self.support_instant_switch_with_imci = support_instant_switch_with_imci
-        # Details about the tags.
+        # Details of tags.
         self.tags = tags
-        # The VPC ID of the cluster.
+        # VPC ID.
         self.vpcid = vpcid
-        # The vSwitch ID of the cluster.
+        # VSwitch ID.
         self.v_switch_id = v_switch_id
-        # The zone ID of the cluster.
+        # Availability Zone IDs.
         self.zone_ids = zone_ids
 
     def validate(self):
@@ -9485,6 +10424,8 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             result['HasCompleteStandbyRes'] = self.has_complete_standby_res
         if self.hot_standby_cluster is not None:
             result['HotStandbyCluster'] = self.hot_standby_cluster
+        if self.imci_auto_index is not None:
+            result['ImciAutoIndex'] = self.imci_auto_index
         if self.inode_total is not None:
             result['InodeTotal'] = self.inode_total
         if self.inode_used is not None:
@@ -9616,6 +10557,8 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             self.has_complete_standby_res = m.get('HasCompleteStandbyRes')
         if m.get('HotStandbyCluster') is not None:
             self.hot_standby_cluster = m.get('HotStandbyCluster')
+        if m.get('ImciAutoIndex') is not None:
+            self.imci_auto_index = m.get('ImciAutoIndex')
         if m.get('InodeTotal') is not None:
             self.inode_total = m.get('InodeTotal')
         if m.get('InodeUsed') is not None:
@@ -10685,7 +11628,7 @@ class DescribeDBClusterEndpointsResponseBody(TeaModel):
         items: List[DescribeDBClusterEndpointsResponseBodyItems] = None,
         request_id: str = None,
     ):
-        # The details of the endpoints.
+        # The information about the endpoints.
         self.items = items
         # The ID of the request.
         self.request_id = request_id
@@ -11045,7 +11988,7 @@ class DescribeDBClusterMigrationResponseBodyRdsEndpointList(TeaModel):
     ):
         # Details about the endpoints.
         self.address_items = address_items
-        # The type of the source database.
+        # The role of the source database instance.
         self.custins_type = custins_type
         # The ID of the endpoint.
         self.dbendpoint_id = dbendpoint_id
@@ -11967,6 +12910,7 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.start_time = start_time
+        # The Query Type
         self.type = type
 
     def validate(self):
@@ -12764,24 +13708,41 @@ class DescribeDBClusterTDERequest(TeaModel):
 class DescribeDBClusterTDEResponseBody(TeaModel):
     def __init__(
         self,
+        automatic_rotation: str = None,
         dbcluster_id: str = None,
         encrypt_new_tables: str = None,
         encryption_key: str = None,
         request_id: str = None,
+        rotation_interval: str = None,
         tderegion: str = None,
         tdestatus: str = None,
     ):
+        # Indicates whether automatic key rotation is allowed. Valid values:
+        # 
+        # *   **Enabled**: Automatic key rotation is allowed.
+        # *   **Disabled**: Automatic key rotation is not allowed.
+        # 
+        # >  This parameter is returned only for a PolarDB for PostgreSQL or PolarDB for PostgreSQL (Compatible with Oracle) cluster.
+        self.automatic_rotation = automatic_rotation
         # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
         # Indicates whether automatic encryption is enabled for new tables. Valid values:
         # 
         # *   **ON**\
         # *   **OFF**\
+        # 
+        # >  This parameter is returned only for a PolarDB for MySQL cluster.
         self.encrypt_new_tables = encrypt_new_tables
         # The ID of the custom key.
         self.encryption_key = encryption_key
         # The ID of the request.
         self.request_id = request_id
+        # The automatic key rotation period configured in Key Management Service (KMS). If no automatic key rotation period is configured, 0s is returned. Unit: seconds.
+        # 
+        # For example, if the rotation period is set to 7 days, 604800s is returned.
+        # 
+        # >  This parameter is returned only for a PolarDB for PostgreSQL or PolarDB for PostgreSQL (Compatible with Oracle) cluster whose AutomaticRotation parameter is set to Enabled.
+        self.rotation_interval = rotation_interval
         # The region where the TDE key resides.
         self.tderegion = tderegion
         # Indicates whether TDE encryption is enabled. Valid values:
@@ -12799,6 +13760,8 @@ class DescribeDBClusterTDEResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.automatic_rotation is not None:
+            result['AutomaticRotation'] = self.automatic_rotation
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
         if self.encrypt_new_tables is not None:
@@ -12807,6 +13770,8 @@ class DescribeDBClusterTDEResponseBody(TeaModel):
             result['EncryptionKey'] = self.encryption_key
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.rotation_interval is not None:
+            result['RotationInterval'] = self.rotation_interval
         if self.tderegion is not None:
             result['TDERegion'] = self.tderegion
         if self.tdestatus is not None:
@@ -12815,6 +13780,8 @@ class DescribeDBClusterTDEResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutomaticRotation') is not None:
+            self.automatic_rotation = m.get('AutomaticRotation')
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('EncryptNewTables') is not None:
@@ -12823,6 +13790,8 @@ class DescribeDBClusterTDEResponseBody(TeaModel):
             self.encryption_key = m.get('EncryptionKey')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('RotationInterval') is not None:
+            self.rotation_interval = m.get('RotationInterval')
         if m.get('TDERegion') is not None:
             self.tderegion = m.get('TDERegion')
         if m.get('TDEStatus') is not None:
@@ -13074,6 +14043,7 @@ class DescribeDBClusterVersionResponseBody(TeaModel):
         # The revision version of the database engine.
         # >For a cluster of the PolarDB for MySQL 5.6, the DBRevisionVersion parameter returns the revision version information only if the Revision Version is released later than August 31, 2020. Otherwise, this parameter returns an empty value.
         self.dbrevision_version = dbrevision_version
+        # The versions to which the cluster can be upgraded.
         self.dbrevision_version_list = dbrevision_version_list
         # The version of the database engine. Valid values:
         # 
@@ -13343,9 +14313,9 @@ class DescribeDBClustersRequest(TeaModel):
         self.expired = expired
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
+        # The page number. The value must be an integer that is greater than 0. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Valid values: **30**, **50**, or **100**.
+        # The number of entries per page. Valid values: **30**, **50**, and **100**.
         # 
         # Default value: **30**.
         self.page_size = page_size
@@ -13774,6 +14744,10 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         # 
         # >  A specific value is returned only for subscription (**Prepaid**) clusters.
         self.expired = expired
+        # Indicates whether the hot standby storage cluster feature is enabled. Valid values:
+        # 
+        # *   ON
+        # *   OFF
         self.hot_standby_cluster = hot_standby_cluster
         # The lock state of the cluster. Valid values:
         # 
@@ -15747,6 +16721,9 @@ class DescribeDBProxyPerformanceRequest(TeaModel):
         self.dbcluster_id = dbcluster_id
         # The ID of the endpoint.
         self.dbendpoint_id = dbendpoint_id
+        # Database instance node ID.
+        # 
+        # > It is used to query the metrics of Proxy on different DB nodes, supporting metrics such as PolarProxy_DBConns, PolarProxy_DBQps, and PolarProxy_DBActionOps.
         self.dbnode_id = dbnode_id
         # The end of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
         # 
@@ -17234,6 +18211,7 @@ class DescribeGlobalDatabaseNetworkResponseBodyDBClusters(TeaModel):
         serverless_type: str = None,
         storage_used: str = None,
     ):
+        # The edition of the cluster.
         self.category = category
         # The description of the cluster.
         self.dbcluster_description = dbcluster_description
@@ -17416,6 +18394,7 @@ class DescribeGlobalDatabaseNetworkResponseBody(TeaModel):
         # *   **locked**: The GDN is locked. If the GDN is locked, you cannot perform operations on clusters in the GDN.
         # *   **removing_member**: The secondary cluster is being removed from the GDN.
         self.gdnstatus = gdnstatus
+        # The global domain name.
         self.global_domain_name = global_domain_name
         # The ID of the request.
         self.request_id = request_id
@@ -18334,6 +19313,484 @@ class DescribeGlobalSecurityIPGroupRelationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeGlobalSecurityIPGroupRelationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeLicenseOrderDetailsRequest(TeaModel):
+    def __init__(
+        self,
+        aliyun_order_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.aliyun_order_id = aliyun_order_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_order_id is not None:
+            result['AliyunOrderId'] = self.aliyun_order_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliyunOrderId') is not None:
+            self.aliyun_order_id = m.get('AliyunOrderId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeLicenseOrderDetailsResponseBody(TeaModel):
+    def __init__(
+        self,
+        activated_code_count: int = None,
+        activation_code_quota: int = None,
+        aliyun_order_id: str = None,
+        allow_empty_system_identifier: bool = None,
+        engine: str = None,
+        gmt_created: str = None,
+        gmt_modified: str = None,
+        is_virtual_order: bool = None,
+        is_virtual_order_frozen: bool = None,
+        package_type: str = None,
+        package_validity: str = None,
+        purchase_channel: str = None,
+        request_id: str = None,
+        virtual_order_id: str = None,
+    ):
+        self.activated_code_count = activated_code_count
+        self.activation_code_quota = activation_code_quota
+        self.aliyun_order_id = aliyun_order_id
+        self.allow_empty_system_identifier = allow_empty_system_identifier
+        self.engine = engine
+        self.gmt_created = gmt_created
+        self.gmt_modified = gmt_modified
+        self.is_virtual_order = is_virtual_order
+        self.is_virtual_order_frozen = is_virtual_order_frozen
+        self.package_type = package_type
+        self.package_validity = package_validity
+        self.purchase_channel = purchase_channel
+        self.request_id = request_id
+        self.virtual_order_id = virtual_order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.activated_code_count is not None:
+            result['ActivatedCodeCount'] = self.activated_code_count
+        if self.activation_code_quota is not None:
+            result['ActivationCodeQuota'] = self.activation_code_quota
+        if self.aliyun_order_id is not None:
+            result['AliyunOrderId'] = self.aliyun_order_id
+        if self.allow_empty_system_identifier is not None:
+            result['AllowEmptySystemIdentifier'] = self.allow_empty_system_identifier
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.gmt_created is not None:
+            result['GmtCreated'] = self.gmt_created
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.is_virtual_order is not None:
+            result['IsVirtualOrder'] = self.is_virtual_order
+        if self.is_virtual_order_frozen is not None:
+            result['IsVirtualOrderFrozen'] = self.is_virtual_order_frozen
+        if self.package_type is not None:
+            result['PackageType'] = self.package_type
+        if self.package_validity is not None:
+            result['PackageValidity'] = self.package_validity
+        if self.purchase_channel is not None:
+            result['PurchaseChannel'] = self.purchase_channel
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.virtual_order_id is not None:
+            result['VirtualOrderId'] = self.virtual_order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActivatedCodeCount') is not None:
+            self.activated_code_count = m.get('ActivatedCodeCount')
+        if m.get('ActivationCodeQuota') is not None:
+            self.activation_code_quota = m.get('ActivationCodeQuota')
+        if m.get('AliyunOrderId') is not None:
+            self.aliyun_order_id = m.get('AliyunOrderId')
+        if m.get('AllowEmptySystemIdentifier') is not None:
+            self.allow_empty_system_identifier = m.get('AllowEmptySystemIdentifier')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('GmtCreated') is not None:
+            self.gmt_created = m.get('GmtCreated')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('IsVirtualOrder') is not None:
+            self.is_virtual_order = m.get('IsVirtualOrder')
+        if m.get('IsVirtualOrderFrozen') is not None:
+            self.is_virtual_order_frozen = m.get('IsVirtualOrderFrozen')
+        if m.get('PackageType') is not None:
+            self.package_type = m.get('PackageType')
+        if m.get('PackageValidity') is not None:
+            self.package_validity = m.get('PackageValidity')
+        if m.get('PurchaseChannel') is not None:
+            self.purchase_channel = m.get('PurchaseChannel')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('VirtualOrderId') is not None:
+            self.virtual_order_id = m.get('VirtualOrderId')
+        return self
+
+
+class DescribeLicenseOrderDetailsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeLicenseOrderDetailsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeLicenseOrderDetailsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeLicenseOrdersRequest(TeaModel):
+    def __init__(
+        self,
+        aliyun_order_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        package_type: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        purchase_channel: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        virtual_order: bool = None,
+    ):
+        self.aliyun_order_id = aliyun_order_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.package_type = package_type
+        self.page_number = page_number
+        self.page_size = page_size
+        self.purchase_channel = purchase_channel
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.virtual_order = virtual_order
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_order_id is not None:
+            result['AliyunOrderId'] = self.aliyun_order_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.package_type is not None:
+            result['PackageType'] = self.package_type
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.purchase_channel is not None:
+            result['PurchaseChannel'] = self.purchase_channel
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.virtual_order is not None:
+            result['VirtualOrder'] = self.virtual_order
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliyunOrderId') is not None:
+            self.aliyun_order_id = m.get('AliyunOrderId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PackageType') is not None:
+            self.package_type = m.get('PackageType')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PurchaseChannel') is not None:
+            self.purchase_channel = m.get('PurchaseChannel')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('VirtualOrder') is not None:
+            self.virtual_order = m.get('VirtualOrder')
+        return self
+
+
+class DescribeLicenseOrdersResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        activated_code_count: int = None,
+        activation_code_quota: int = None,
+        aliyun_order_id: str = None,
+        allow_empty_system_identifier: bool = None,
+        engine: str = None,
+        gmt_created: str = None,
+        gmt_modified: str = None,
+        is_virtual_order: bool = None,
+        is_virtual_order_frozen: bool = None,
+        package_type: str = None,
+        package_validity: str = None,
+        purchase_channel: str = None,
+        virtual_aliyun_order_id: str = None,
+    ):
+        self.activated_code_count = activated_code_count
+        self.activation_code_quota = activation_code_quota
+        self.aliyun_order_id = aliyun_order_id
+        self.allow_empty_system_identifier = allow_empty_system_identifier
+        self.engine = engine
+        self.gmt_created = gmt_created
+        self.gmt_modified = gmt_modified
+        self.is_virtual_order = is_virtual_order
+        self.is_virtual_order_frozen = is_virtual_order_frozen
+        self.package_type = package_type
+        self.package_validity = package_validity
+        self.purchase_channel = purchase_channel
+        self.virtual_aliyun_order_id = virtual_aliyun_order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.activated_code_count is not None:
+            result['ActivatedCodeCount'] = self.activated_code_count
+        if self.activation_code_quota is not None:
+            result['ActivationCodeQuota'] = self.activation_code_quota
+        if self.aliyun_order_id is not None:
+            result['AliyunOrderId'] = self.aliyun_order_id
+        if self.allow_empty_system_identifier is not None:
+            result['AllowEmptySystemIdentifier'] = self.allow_empty_system_identifier
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.gmt_created is not None:
+            result['GmtCreated'] = self.gmt_created
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.is_virtual_order is not None:
+            result['IsVirtualOrder'] = self.is_virtual_order
+        if self.is_virtual_order_frozen is not None:
+            result['IsVirtualOrderFrozen'] = self.is_virtual_order_frozen
+        if self.package_type is not None:
+            result['PackageType'] = self.package_type
+        if self.package_validity is not None:
+            result['PackageValidity'] = self.package_validity
+        if self.purchase_channel is not None:
+            result['PurchaseChannel'] = self.purchase_channel
+        if self.virtual_aliyun_order_id is not None:
+            result['VirtualAliyunOrderId'] = self.virtual_aliyun_order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActivatedCodeCount') is not None:
+            self.activated_code_count = m.get('ActivatedCodeCount')
+        if m.get('ActivationCodeQuota') is not None:
+            self.activation_code_quota = m.get('ActivationCodeQuota')
+        if m.get('AliyunOrderId') is not None:
+            self.aliyun_order_id = m.get('AliyunOrderId')
+        if m.get('AllowEmptySystemIdentifier') is not None:
+            self.allow_empty_system_identifier = m.get('AllowEmptySystemIdentifier')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('GmtCreated') is not None:
+            self.gmt_created = m.get('GmtCreated')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('IsVirtualOrder') is not None:
+            self.is_virtual_order = m.get('IsVirtualOrder')
+        if m.get('IsVirtualOrderFrozen') is not None:
+            self.is_virtual_order_frozen = m.get('IsVirtualOrderFrozen')
+        if m.get('PackageType') is not None:
+            self.package_type = m.get('PackageType')
+        if m.get('PackageValidity') is not None:
+            self.package_validity = m.get('PackageValidity')
+        if m.get('PurchaseChannel') is not None:
+            self.purchase_channel = m.get('PurchaseChannel')
+        if m.get('VirtualAliyunOrderId') is not None:
+            self.virtual_aliyun_order_id = m.get('VirtualAliyunOrderId')
+        return self
+
+
+class DescribeLicenseOrdersResponseBody(TeaModel):
+    def __init__(
+        self,
+        items: List[DescribeLicenseOrdersResponseBodyItems] = None,
+        page_number: int = None,
+        page_record_count: int = None,
+        request_id: str = None,
+        total_record_count: int = None,
+    ):
+        self.items = items
+        self.page_number = page_number
+        self.page_record_count = page_record_count
+        self.request_id = request_id
+        self.total_record_count = total_record_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_record_count is not None:
+            result['PageRecordCount'] = self.page_record_count
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_record_count is not None:
+            result['TotalRecordCount'] = self.total_record_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeLicenseOrdersResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageRecordCount') is not None:
+            self.page_record_count = m.get('PageRecordCount')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalRecordCount') is not None:
+            self.total_record_count = m.get('TotalRecordCount')
+        return self
+
+
+class DescribeLicenseOrdersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeLicenseOrdersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeLicenseOrdersResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -20965,6 +22422,7 @@ class DescribeScheduleTasksResponseBodyDataTimerInfos(TeaModel):
     def __init__(
         self,
         action: str = None,
+        crontab_job_id: str = None,
         dbcluster_id: str = None,
         db_cluster_description: str = None,
         db_cluster_status: str = None,
@@ -20980,6 +22438,8 @@ class DescribeScheduleTasksResponseBodyDataTimerInfos(TeaModel):
     ):
         # The type of the scheduled tasks.
         self.action = action
+        # The ID of the scheduled task.
+        self.crontab_job_id = crontab_job_id
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
         # The description of the cluster.
@@ -21020,6 +22480,8 @@ class DescribeScheduleTasksResponseBodyDataTimerInfos(TeaModel):
         result = dict()
         if self.action is not None:
             result['Action'] = self.action
+        if self.crontab_job_id is not None:
+            result['CrontabJobId'] = self.crontab_job_id
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
         if self.db_cluster_description is not None:
@@ -21050,6 +22512,8 @@ class DescribeScheduleTasksResponseBodyDataTimerInfos(TeaModel):
         m = m or dict()
         if m.get('Action') is not None:
             self.action = m.get('Action')
+        if m.get('CrontabJobId') is not None:
+            self.crontab_job_id = m.get('CrontabJobId')
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('DbClusterDescription') is not None:
@@ -21089,7 +22553,7 @@ class DescribeScheduleTasksResponseBodyData(TeaModel):
         self.page_number = page_number
         # The number of entries returned per page.
         self.page_size = page_size
-        # The details of the scheduled task.
+        # The details of the scheduled tasks.
         self.timer_infos = timer_infos
         # The total number of entries returned.
         self.total_record_count = total_record_count
@@ -21142,7 +22606,7 @@ class DescribeScheduleTasksResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The result data that is returned.
+        # The result data.
         self.data = data
         # The message that is returned for the request.
         # 
@@ -21245,52 +22709,48 @@ class DescribeSlowLogRecordsRequest(TeaModel):
         sqlhash: str = None,
         start_time: str = None,
     ):
-        # The ID of cluster.
-        # 
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+        # Cluster ID.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) interface to view all cluster information in the target region, including the Cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The name of the database.
+        # Database name.
         self.dbname = dbname
-        # The end of the time range to query. The end time must be later than the start time. The interval between the start time and end time must be within 24 hours. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+        # End time of the query, which must be later than the start time, and the time interval between the start and end times must not exceed 24 hours. The format is `YYYY-MM-DDThh:mmZ` (UTC time).
         # 
-        # > This parameter must be set to a time value in UTC (UTC+0 time zone). If your service resides in another time zone, convert the time value. For example, if the local time in the time zone where your service resides is 12:00 (UTC +8) and you want to query slow query logs at 08:00 (UTC +8) to 12:00, set this parameter to a time value that ranges from 00:00, set this parameter to 04:00.
+        # > The input is UTC time (i.e., 0 timezone). If your service is currently in a different timezone, please perform a time conversion. For example, if the current timezone of your service is Beijing Time (UTC+8) at 12:00, and you need to query the slow logs between 08:00-12:00 Beijing Time, you should input 00:00-04:00.
         # 
         # This parameter is required.
         self.end_time = end_time
+        # Node ID
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. The value must be an integer that is larger than 0.
+        # Page number, with a range greater than 0 and not exceeding the maximum value of Integer.
         # 
-        # Default value: **1**.
+        # The default value is **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
+        # Number of records per page, with the following options:
+        # * **30**\
+        # * **50**\
+        # * **100**\
         # 
-        # *   **30**\
-        # *   **50**\
-        # *   **100**\
-        # 
-        # Default value: **30**.
+        # The default value is **30**.
         self.page_size = page_size
-        # The region ID of the cluster.
+        # Region ID.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all regions that are available for your account, such as the region ID.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) interface to view the available regions under the target account, including the Region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The unique ID of the SQL statement. The ID is used to obtain the slow query logs of the SQL statement.
+        # Unique identifier of the SQL statement in the slow log statistics, which can be used to obtain the detailed slow logs for that SQL statement.
         self.sqlhash = sqlhash
-        # The beginning of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+        # Start time of the query. The format is `YYYY-MM-DDThh:mmZ` (UTC time).
         # 
-        # > 
-        # 
-        # *   You can specify a time range of up to 30 days.
-        # 
-        # *   This parameter must be set to a time value in UTC (UTC+0 time zone). If your service resides in another time zone, convert the time value. For example, if the local time in the time zone where your service resides is 12:00 (UTC +8) and you want to query slow query logs at 08:00 (UTC +8) to 12:00, set this parameter to a time value that ranges from 00:00, set this parameter to 04:00.
+        # > * Supports viewing slow log information up to 30 days.
+        # > * The input is UTC time (i.e., 0 timezone). If your service is currently in a different timezone, please perform a time conversion. For example, if the current timezone of your service is Beijing Time (UTC+8) at 12:00, and you need to query the slow logs between 08:00-12:00 Beijing Time, you should input 00:00-04:00.
         # 
         # This parameter is required.
         self.start_time = start_time
@@ -21378,26 +22838,27 @@ class DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord(TeaModel):
         sqlhash: str = None,
         sqltext: str = None,
     ):
-        # The name of the database.
+        # Database name.
         self.dbname = dbname
-        # The ID of the node.
+        # Node ID.
         self.dbnode_id = dbnode_id
-        # The time when the SQL statement was executed. The time is in the `yyyy-MM-ddTHH:mmZ` format. The time is displayed in UTC.
+        # Time when the SQL starts execution. The format is `YYYY-MM-DDThh:mmZ` (UTC time).
         self.execution_start_time = execution_start_time
-        # The IP address of the client that is used to connect to the database.
+        # Client address connecting to the database.
         self.host_address = host_address
-        # The period of time during which the SQL statement was locked. Unit: seconds.
+        # SQL lock duration in seconds.
         self.lock_times = lock_times
-        # The number of rows parsed by the SQL statement.
+        # Number of rows parsed.
         self.parse_row_counts = parse_row_counts
-        # The time range for the query. Unit: milliseconds.
+        # Query time. Unit: milliseconds.
         self.query_time_ms = query_time_ms
-        # The amount of time that was consumed to execute the SQL statement. Unit: seconds.
+        # SQL execution duration, in seconds.
         self.query_times = query_times
-        # The number of rows returned by the SQL statement.
+        # Number of rows returned.
         self.return_row_counts = return_row_counts
+        # Unique identifier for the SQL statement in slow log statistics.
         self.sqlhash = sqlhash
-        # The SQL statement that is executed in the query.
+        # Query statement.
         self.sqltext = sqltext
 
     def validate(self):
@@ -21506,19 +22967,19 @@ class DescribeSlowLogRecordsResponseBody(TeaModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The ID of cluster.
+        # Cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The type of the database engine.
+        # Database engine.
         self.engine = engine
-        # Details about slow query logs.
+        # List of slow log details.
         self.items = items
-        # The number of the returned page.
+        # Page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # Number of records on this page.
         self.page_record_count = page_record_count
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
-        # The total number of SQL statements.
+        # Total number of SQL statements.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -22042,7 +23503,7 @@ class DescribeTasksRequest(TeaModel):
         # *   **Running**: The task is running.
         # *   **Finished**: The task is completed.
         # *   **Closed**: The task is closed.
-        # *   **Pause**: The task is suspended.
+        # *   **Pause**: The task is paused.
         # *   **Stop**: The task is interrupted.
         # 
         # > 
@@ -23152,13 +24613,25 @@ class EnableFirewallRulesRequest(TeaModel):
         resource_owner_id: int = None,
         rule_name_list: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # Specifies whether to enable or disable the specified firewall rules. Valid values:
+        # 
+        # *   **true**: enables the specified firewall rules.
+        # *   **false**: disables the specified firewall rules.
+        # 
+        # > This parameter is valid only when you specify the **RuleNameList** parameter.
         self.enable = enable
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The name of the firewall rule that you want to enable for the cluster. You can specify multiple firewall rules at a time. Separate multiple rules with commas (,).
+        # 
+        # > You can call the **DescribeFirewallRules** operation to query the details of all firewall rules that are applicable to a cluster, such as rule names.
+        # 
         # This parameter is required.
         self.rule_name_list = rule_name_list
 
@@ -23213,9 +24686,16 @@ class EnableFirewallRulesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The message that is returned for the request.
+        # 
+        # > If the request was successful, Successful is returned. If the request failed, an error message that contains information such as an error code is returned.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -23582,7 +25062,7 @@ class FailoverDBClusterRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Specifies whether to fail back to the original primary zone after a failover. Valid values:
+        # Specifies whether to switch back services to the original primary zone when the original primary zone recovers.
         # 
         # *   true
         # *   false
@@ -23592,6 +25072,10 @@ class FailoverDBClusterRequest(TeaModel):
         # > *   If you leave this parameter empty, the system selects one or more available read-only nodes that have the highest failover priority as candidate primary nodes. If the failover to the first read-only node fails due to network issues, abnormal replication status, or other reasons, the system attempts to fail over your applications to the next read-only node until the failover is successful.
         # >*  This parameter is required for PolarDB for Oracle and PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.
         self.target_dbnode_id = target_dbnode_id
+        # Whether it is a primary-standby switch within the primary availability zone, with the following values:
+        # 
+        # Primary: Primary-standby switch within the primary availability zone.
+        # Standby: Switch to the storage hot backup cluster.
         self.target_zone_type = target_zone_type
 
     def validate(self):
@@ -23879,7 +25363,7 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. To query the details of clusters to which multiple tags are bound, click **Add** to add tags.
+        # The tag key. To query the details of clusters to which multiple tags are added, click **Add** to add tags.
         # 
         # > 
         # 
@@ -23935,7 +25419,7 @@ class ListTagResourcesRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The cluster ID. To query the tags of multiple clusters, click **Add** to add cluster IDs.
+        # The IDs of the clusters. To query the tags of multiple clusters, click **Add** to add cluster IDs.
         # 
         # > 
         # 
@@ -24822,13 +26306,13 @@ class ModifyBackupPolicyRequest(TeaModel):
         # >- If you enable enhanced backup, **PreferredBackupPeriod** is automatically set to all days in a week (from Monday to Sunday).
         # >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed supports the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
         self.backup_frequency = backup_frequency
-        # Specifies whether to retain backups when you delete a cluster. Valid values:
+        # Specifies whether to retain backups when a cluster is deleted. Valid values:
         # 
         # *   **ALL**: permanently retains all backups.
-        # *   **LATEST**: permanently retains only the last backup.
+        # *   **LATEST**: permanently retains the most recent backup.
         # *   **NONE**: does not retain backups.
         # 
-        # > The default value is NONE.
+        # >  The default value of the parameter is NONE.
         self.backup_retention_policy_on_cluster_deletion = backup_retention_policy_on_cluster_deletion
         # The ID of the cluster.
         # 
@@ -24874,7 +26358,7 @@ class ModifyBackupPolicyRequest(TeaModel):
         # *   **30 to 7300**: Cross-region level-2 backups are retained for 30 to 7,300 days.
         # *   **1**: Cross-region level-2 backups are permanently retained.
         # 
-        # > The default value is **0**. By default, the cross-region level-2 backup feature is disabled when you create a cluster.
+        # >  The default value of the parameter is **0**.
         self.data_level_2backup_another_region_retention_period = data_level_2backup_another_region_retention_period
         # The backup cycle of level-2 backups. Valid values:
         # 
@@ -24893,10 +26377,10 @@ class ModifyBackupPolicyRequest(TeaModel):
         # The retention period of level-2 backups. Valid values:
         # 
         # *   **0**: The level-2 backup feature is disabled.
-        # *   **30 to 7300**: Cross-region level-2 backups are retained for 30 to 7,300 days.
-        # *   **1**: Cross-region level-2 backups are permanently retained.
+        # *   **30 to 7300**: Level-2 backups are retained for 30 to 7,300 days.
+        # *   **1**: Level-2 backups are permanently retained.
         # 
-        # > The default value is **0**. By default, the level-2 backup feature is disabled when you create a cluster.
+        # >  The default value of this parameter is **0**.
         self.data_level_2backup_retention_period = data_level_2backup_retention_period
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -25080,6 +26564,7 @@ class ModifyDBClusterRequest(TeaModel):
         data_sync_mode: str = None,
         fault_injection_type: str = None,
         fault_simulate_mode: str = None,
+        imci_auto_index: str = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
@@ -25088,7 +26573,7 @@ class ModifyDBClusterRequest(TeaModel):
         storage_auto_scale: str = None,
         storage_upper_bound: int = None,
     ):
-        # Enable storage compression function. The value of this parameter is ON.
+        # Specifies whether to enable storage compression. Set the value to **ON**.
         self.compress_storage = compress_storage
         # The cluster ID.
         # 
@@ -25096,34 +26581,41 @@ class ModifyDBClusterRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The list of nodes for the drill.
+        # 
+        # >  You can specify only one node for a node-level disaster recovery drill. For a primary zone-level disaster recovery drill, you can either choose not to specify this parameter or specify all nodes.
         self.dbnode_crash_list = dbnode_crash_list
         # The method used to replicate data across zones. Valid values:
         # 
         # *   **AsyncSync**: the asynchronous mode.
         # *   **SemiSync**: the semi-synchronous mode.
         self.data_sync_mode = data_sync_mode
-        self.fault_injection_type = fault_injection_type
-        # The fault scenario that you want to simulate for the cluster.
+        # The fault injection method. Valid values:
         # 
-        # *   Set the value to **0**. The value 0 indicates the scenario in which the primary zone of the cluster fails.
+        # *   CrashSQLInjection: `Crash SQL`-based fault injection.
+        self.fault_injection_type = fault_injection_type
+        # The level of the disaster recovery drill. Valid values:
+        # 
+        # *   `0` or `FaultInjection`: The primary zone level.
+        # *   `1`: The node level.
         # 
         # > 
         # 
-        # *   This parameter takes effect only when you set the `StandbyHAMode` parameter to 0.
+        # *   In **primary zone-level disaster recovery drill** scenarios, all compute nodes in the primary zone are unavailable. Data loss occurs during failovers in the scenarios.
         # 
-        # *   If you set this parameter to 0, all compute nodes deployed in the primary zone are unavailable. In this case, the switchover degrades the cluster performance.
+        # *   In **node-level disaster recovery drill** scenarios, you can specify only one compute node for the disaster recovery drill. You can use the `DBNodeCrashList` parameter to specify the name of the compute node that you want to use for the drill.
         self.fault_simulate_mode = fault_simulate_mode
+        self.imci_auto_index = imci_auto_index
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Specifies whether to enable the cross-zone automatic switchover mode. Valid values:
+        # Specifies whether to enable cross-zone automatic switchover. Valid values:
         # 
-        # *   **ON**: Enable the cross-zone automatic switchover mode.
-        # *   **OFF**: Disable the cross-zone automatic switchover mode.
-        # *   **0**: Enable the customer drill mode.
+        # *   **ON**: enables cross-zone automatic switchover.
+        # *   **OFF**: disables cross-zone automatic switchover.
         self.standby_hamode = standby_hamode
-        # Specifies whether to enable automatic storage scaling for the cluster of Standard Edition. Valid values:
+        # Specifies whether to enable automatic storage scaling. This parameter is available only for Standard Edition clusters. Valid values:
         # 
         # *   Enable
         # *   Disable
@@ -25154,6 +26646,8 @@ class ModifyDBClusterRequest(TeaModel):
             result['FaultInjectionType'] = self.fault_injection_type
         if self.fault_simulate_mode is not None:
             result['FaultSimulateMode'] = self.fault_simulate_mode
+        if self.imci_auto_index is not None:
+            result['ImciAutoIndex'] = self.imci_auto_index
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -25184,6 +26678,8 @@ class ModifyDBClusterRequest(TeaModel):
             self.fault_injection_type = m.get('FaultInjectionType')
         if m.get('FaultSimulateMode') is not None:
             self.fault_simulate_mode = m.get('FaultSimulateMode')
+        if m.get('ImciAutoIndex') is not None:
+            self.imci_auto_index = m.get('ImciAutoIndex')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -25210,7 +26706,9 @@ class ModifyDBClusterResponseBody(TeaModel):
     ):
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The order ID.
         self.order_id = order_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -27163,12 +28661,17 @@ class ModifyDBClusterResourceGroupRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The ID of the new resource group.
+        # 
         # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the original resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -27222,6 +28725,7 @@ class ModifyDBClusterResourceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -27466,6 +28970,7 @@ class ModifyDBClusterServerlessConfRequest(TeaModel):
     def __init__(
         self,
         allow_shut_down: str = None,
+        crontab_job_id: str = None,
         dbcluster_id: str = None,
         from_time_service: bool = None,
         owner_account: str = None,
@@ -27484,12 +28989,15 @@ class ModifyDBClusterServerlessConfRequest(TeaModel):
         serverless_rule_cpu_enlarge_threshold: str = None,
         serverless_rule_cpu_shrink_threshold: str = None,
         serverless_rule_mode: str = None,
+        task_id: str = None,
     ):
         # Specifies whether to enable No-activity Suspension. Default value: false. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         self.allow_shut_down = allow_shut_down
+        # Cycle policy ID.
+        self.crontab_job_id = crontab_job_id
         # The ID of the serverless cluster.
         # 
         # This parameter is required.
@@ -27526,9 +29034,14 @@ class ModifyDBClusterServerlessConfRequest(TeaModel):
         self.scale_ro_num_min = scale_ro_num_min
         # The detection period for No-activity Suspension. Valid values: 5 to 1440. Unit: minutes. The detection duration must be a multiple of 5 minutes.
         self.seconds_until_auto_pause = seconds_until_auto_pause
+        # CPU burst threshold
         self.serverless_rule_cpu_enlarge_threshold = serverless_rule_cpu_enlarge_threshold
+        # CPU downscale threshold
         self.serverless_rule_cpu_shrink_threshold = serverless_rule_cpu_shrink_threshold
+        # Elastic sensitivity. Values: - normal: standard - flexible: sensitive
         self.serverless_rule_mode = serverless_rule_mode
+        # Asynchronous task ID.
+        self.task_id = task_id
 
     def validate(self):
         pass
@@ -27541,6 +29054,8 @@ class ModifyDBClusterServerlessConfRequest(TeaModel):
         result = dict()
         if self.allow_shut_down is not None:
             result['AllowShutDown'] = self.allow_shut_down
+        if self.crontab_job_id is not None:
+            result['CrontabJobId'] = self.crontab_job_id
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
         if self.from_time_service is not None:
@@ -27577,12 +29092,16 @@ class ModifyDBClusterServerlessConfRequest(TeaModel):
             result['ServerlessRuleCpuShrinkThreshold'] = self.serverless_rule_cpu_shrink_threshold
         if self.serverless_rule_mode is not None:
             result['ServerlessRuleMode'] = self.serverless_rule_mode
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AllowShutDown') is not None:
             self.allow_shut_down = m.get('AllowShutDown')
+        if m.get('CrontabJobId') is not None:
+            self.crontab_job_id = m.get('CrontabJobId')
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('FromTimeService') is not None:
@@ -27619,6 +29138,8 @@ class ModifyDBClusterServerlessConfRequest(TeaModel):
             self.serverless_rule_cpu_shrink_threshold = m.get('ServerlessRuleCpuShrinkThreshold')
         if m.get('ServerlessRuleMode') is not None:
             self.serverless_rule_mode = m.get('ServerlessRuleMode')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
         return self
 
 
@@ -27886,6 +29407,7 @@ class ModifyDBClusterTDERequest(TeaModel):
     def __init__(
         self,
         dbcluster_id: str = None,
+        enable_automatic_rotation: str = None,
         encrypt_new_tables: str = None,
         encryption_key: str = None,
         owner_account: str = None,
@@ -27899,10 +29421,19 @@ class ModifyDBClusterTDERequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # Specifies whether to allow the TDE key of the cluster to be automatically rotated within the next maintenance window after a lapse of the rotation period when a change in the KMS key version is detected. This parameter is supported only for custom keys. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # >  This parameter is supported only for a PolarDB for PostgreSQL or PolarDB for PostgreSQL (Compatible with Oracle) cluster.
+        self.enable_automatic_rotation = enable_automatic_rotation
         # Specifies whether to enable automatic encryption for new tables. Valid values:
         # 
         # *   **ON**\
         # *   **OFF**\
+        # 
+        # >  This parameter takes effect only for a PolarDB for MySQL cluster.
         self.encrypt_new_tables = encrypt_new_tables
         # The ID of the custom key.
         self.encryption_key = encryption_key
@@ -27928,6 +29459,8 @@ class ModifyDBClusterTDERequest(TeaModel):
         result = dict()
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
+        if self.enable_automatic_rotation is not None:
+            result['EnableAutomaticRotation'] = self.enable_automatic_rotation
         if self.encrypt_new_tables is not None:
             result['EncryptNewTables'] = self.encrypt_new_tables
         if self.encryption_key is not None:
@@ -27950,6 +29483,8 @@ class ModifyDBClusterTDERequest(TeaModel):
         m = m or dict()
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+        if m.get('EnableAutomaticRotation') is not None:
+            self.enable_automatic_rotation = m.get('EnableAutomaticRotation')
         if m.get('EncryptNewTables') is not None:
             self.encrypt_new_tables = m.get('EncryptNewTables')
         if m.get('EncryptionKey') is not None:
@@ -29177,21 +30712,22 @@ class ModifyGlobalDatabaseNetworkRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # Create a global domain
         self.enable_global_domain_name = enable_global_domain_name
         # The description of the GDN. The description must meet the following requirements:
         # 
-        # *   It cannot start with `http://` or `https://`.
-        # *   It must start with a letter.
-        # *   It can contain letters, digits, underscores (_), and hyphens (-).
-        # *   It must be 2 to 126 characters in length.
+        # *   The description cannot start with http:// or https://.
+        # *   The description must start with a letter.
+        # *   The description can contain letters, digits, underscores (_), and hyphens (-).
+        # *   The description must be 2 to 126 characters in length.
         self.gdndescription = gdndescription
-        # The ID of the GDN.
+        # The GDN ID.
         # 
         # This parameter is required.
         self.gdnid = gdnid
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -29254,7 +30790,7 @@ class ModifyGlobalDatabaseNetworkResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -30539,6 +32075,10 @@ class OpenAITaskRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The node type. Valid values:
+        # 
+        # *   **DLNode**: This node is an AI node.
+        # *   **SearchNode**: This node is a node for which the PolarDB for AI feature is enabled.
         self.node_type = node_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -31988,13 +33528,13 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. To create multiple tags for a cluster at a time, click **Add** to add tag keys.
+        # The key of the tag that you want to create for the cluster. To create multiple tags for a cluster at a time, click **Add** to add tag keys.
         # 
-        # >  You can create up to 20 tags at a time. A tag consists of a key and a value. Each value of `Tag.N.Key` is paired with a value of `Tag.N.Value`.
+        # >  You can create up to 20 tags for a cluster at a time. The value of `Tag.N.Key` is paired with the value of `Tag.N.Value`.
         self.key = key
-        # The value of the tag. To create multiple tags for a cluster at a time, click **Add** to add tag values.
+        # The value of the tag that you want to create for the cluster. To create multiple tags for a cluster at a time, click **Add** to add tag values.
         # 
-        # >  You can create up to 20 tags at a time. A tag consists of a key and a value. Each value of `Tag.N.Value` is paired with a value of `Tag.N.Key`.
+        # >  You can create up to 20 tags for a cluster at a time. The value of `Tag.N.Key` is paired with the value of `Tag.N.Value`.
         self.value = value
 
     def validate(self):
@@ -32039,6 +33579,8 @@ class TagResourcesRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
@@ -32047,6 +33589,8 @@ class TagResourcesRequest(TeaModel):
         # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The tags.
+        # 
         # This parameter is required.
         self.tag = tag
 
@@ -32240,9 +33784,9 @@ class TempModifyDBNodeRequest(TeaModel):
         # 
         # This parameter is required.
         self.modify_type = modify_type
-        # The type of operation performed on the cluster. Valid values:
+        # The operation type. Valid values:
         # 
-        # *   **Modify**: temporarily upgrade the configuration of the cluster.
+        # *   **Modify**: temporarily upgrades the configuration of the cluster.
         # 
         # This parameter is required.
         self.operation_type = operation_type
@@ -32639,9 +34183,9 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # Specifies whether to unbinds all tags from the cluster. Valid values: **true** and **false**. Default value: **false**.
+        # Specifies whether to detach all tags from the cluster. Valid values: **true** and **false**. Default value: **false**.
         # 
-        # >  This parameter takes effect only when the value of the `TagKey.n` parameter is empty.
+        # >  This parameter takes effect only if `TagKey.n` is empty.
         self.all = all
         self.owner_account = owner_account
         self.owner_id = owner_id

@@ -1059,6 +1059,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_account_with_options_async(request, runtime)
 
+    def create_activation_code_with_options(
+        self,
+        request: polardb_20170801_models.CreateActivationCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CreateActivationCodeResponse:
+        """
+        @summary 生成轻量化版本激活码
+        
+        @param request: CreateActivationCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateActivationCodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_order_id):
+            query['AliyunOrderId'] = request.aliyun_order_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.mac_address):
+            query['MacAddress'] = request.mac_address
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.system_identifier):
+            query['SystemIdentifier'] = request.system_identifier
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateActivationCode',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateActivationCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_activation_code_with_options_async(
+        self,
+        request: polardb_20170801_models.CreateActivationCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CreateActivationCodeResponse:
+        """
+        @summary 生成轻量化版本激活码
+        
+        @param request: CreateActivationCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateActivationCodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_order_id):
+            query['AliyunOrderId'] = request.aliyun_order_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.mac_address):
+            query['MacAddress'] = request.mac_address
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.system_identifier):
+            query['SystemIdentifier'] = request.system_identifier
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateActivationCode',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateActivationCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_activation_code(
+        self,
+        request: polardb_20170801_models.CreateActivationCodeRequest,
+    ) -> polardb_20170801_models.CreateActivationCodeResponse:
+        """
+        @summary 生成轻量化版本激活码
+        
+        @param request: CreateActivationCodeRequest
+        @return: CreateActivationCodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_activation_code_with_options(request, runtime)
+
+    async def create_activation_code_async(
+        self,
+        request: polardb_20170801_models.CreateActivationCodeRequest,
+    ) -> polardb_20170801_models.CreateActivationCodeResponse:
+        """
+        @summary 生成轻量化版本激活码
+        
+        @param request: CreateActivationCodeRequest
+        @return: CreateActivationCodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_activation_code_with_options_async(request, runtime)
+
     def create_backup_with_options(
         self,
         request: polardb_20170801_models.CreateBackupRequest,
@@ -1201,7 +1329,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateColdStorageInstanceResponse:
         """
-        @summary 创建冷存储实例
+        @summary Creates a cluster that is used to store cold data.
         
         @param request: CreateColdStorageInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1250,7 +1378,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateColdStorageInstanceResponse:
         """
-        @summary 创建冷存储实例
+        @summary Creates a cluster that is used to store cold data.
         
         @param request: CreateColdStorageInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1298,7 +1426,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.CreateColdStorageInstanceRequest,
     ) -> polardb_20170801_models.CreateColdStorageInstanceResponse:
         """
-        @summary 创建冷存储实例
+        @summary Creates a cluster that is used to store cold data.
         
         @param request: CreateColdStorageInstanceRequest
         @return: CreateColdStorageInstanceResponse
@@ -1311,7 +1439,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.CreateColdStorageInstanceRequest,
     ) -> polardb_20170801_models.CreateColdStorageInstanceResponse:
         """
-        @summary 创建冷存储实例
+        @summary Creates a cluster that is used to store cold data.
         
         @param request: CreateColdStorageInstanceRequest
         @return: CreateColdStorageInstanceResponse
@@ -1325,7 +1453,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateDBClusterResponse:
         """
-        @summary Creates a PolarDB cluster.
+        @summary Create Database Cluster
         
         @param request: CreateDBClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1466,7 +1594,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateDBClusterResponse:
         """
-        @summary Creates a PolarDB cluster.
+        @summary Create Database Cluster
         
         @param request: CreateDBClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1606,7 +1734,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.CreateDBClusterRequest,
     ) -> polardb_20170801_models.CreateDBClusterResponse:
         """
-        @summary Creates a PolarDB cluster.
+        @summary Create Database Cluster
         
         @param request: CreateDBClusterRequest
         @return: CreateDBClusterResponse
@@ -1619,7 +1747,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.CreateDBClusterRequest,
     ) -> polardb_20170801_models.CreateDBClusterResponse:
         """
-        @summary Creates a PolarDB cluster.
+        @summary Create Database Cluster
         
         @param request: CreateDBClusterRequest
         @return: CreateDBClusterResponse
@@ -2666,6 +2794,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_global_security_ipgroup_with_options_async(request, runtime)
+
+    def create_or_get_virtual_license_order_with_options(
+        self,
+        request: polardb_20170801_models.CreateOrGetVirtualLicenseOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CreateOrGetVirtualLicenseOrderResponse:
+        """
+        @summary 创建或获取虚拟证书订单
+        
+        @param request: CreateOrGetVirtualLicenseOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOrGetVirtualLicenseOrderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOrGetVirtualLicenseOrder',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateOrGetVirtualLicenseOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_or_get_virtual_license_order_with_options_async(
+        self,
+        request: polardb_20170801_models.CreateOrGetVirtualLicenseOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CreateOrGetVirtualLicenseOrderResponse:
+        """
+        @summary 创建或获取虚拟证书订单
+        
+        @param request: CreateOrGetVirtualLicenseOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOrGetVirtualLicenseOrderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOrGetVirtualLicenseOrder',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateOrGetVirtualLicenseOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_or_get_virtual_license_order(
+        self,
+        request: polardb_20170801_models.CreateOrGetVirtualLicenseOrderRequest,
+    ) -> polardb_20170801_models.CreateOrGetVirtualLicenseOrderResponse:
+        """
+        @summary 创建或获取虚拟证书订单
+        
+        @param request: CreateOrGetVirtualLicenseOrderRequest
+        @return: CreateOrGetVirtualLicenseOrderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_or_get_virtual_license_order_with_options(request, runtime)
+
+    async def create_or_get_virtual_license_order_async(
+        self,
+        request: polardb_20170801_models.CreateOrGetVirtualLicenseOrderRequest,
+    ) -> polardb_20170801_models.CreateOrGetVirtualLicenseOrderResponse:
+        """
+        @summary 创建或获取虚拟证书订单
+        
+        @param request: CreateOrGetVirtualLicenseOrderRequest
+        @return: CreateOrGetVirtualLicenseOrderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_or_get_virtual_license_order_with_options_async(request, runtime)
 
     def create_parameter_group_with_options(
         self,
@@ -4541,7 +4781,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeAITaskStatusResponse:
         """
-        @summary Queries the state of the PolarDB for AI feature for a cluster.
+        @summary Queries the status of the PolarDB for AI feature.
         
         @param request: DescribeAITaskStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4574,7 +4814,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeAITaskStatusResponse:
         """
-        @summary Queries the state of the PolarDB for AI feature for a cluster.
+        @summary Queries the status of the PolarDB for AI feature.
         
         @param request: DescribeAITaskStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4606,7 +4846,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeAITaskStatusRequest,
     ) -> polardb_20170801_models.DescribeAITaskStatusResponse:
         """
-        @summary Queries the state of the PolarDB for AI feature for a cluster.
+        @summary Queries the status of the PolarDB for AI feature.
         
         @param request: DescribeAITaskStatusRequest
         @return: DescribeAITaskStatusResponse
@@ -4619,7 +4859,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeAITaskStatusRequest,
     ) -> polardb_20170801_models.DescribeAITaskStatusResponse:
         """
-        @summary Queries the state of the PolarDB for AI feature for a cluster.
+        @summary Queries the status of the PolarDB for AI feature.
         
         @param request: DescribeAITaskStatusRequest
         @return: DescribeAITaskStatusResponse
@@ -4750,6 +4990,242 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_accounts_with_options_async(request, runtime)
+
+    def describe_activation_code_details_with_options(
+        self,
+        request: polardb_20170801_models.DescribeActivationCodeDetailsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeActivationCodeDetailsResponse:
+        """
+        @summary 查询激活码详情
+        
+        @param request: DescribeActivationCodeDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActivationCodeDetailsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.activation_code_id):
+            query['ActivationCodeId'] = request.activation_code_id
+        if not UtilClient.is_unset(request.aliyun_order_id):
+            query['AliyunOrderId'] = request.aliyun_order_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeActivationCodeDetails',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeActivationCodeDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_activation_code_details_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribeActivationCodeDetailsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeActivationCodeDetailsResponse:
+        """
+        @summary 查询激活码详情
+        
+        @param request: DescribeActivationCodeDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActivationCodeDetailsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.activation_code_id):
+            query['ActivationCodeId'] = request.activation_code_id
+        if not UtilClient.is_unset(request.aliyun_order_id):
+            query['AliyunOrderId'] = request.aliyun_order_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeActivationCodeDetails',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeActivationCodeDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_activation_code_details(
+        self,
+        request: polardb_20170801_models.DescribeActivationCodeDetailsRequest,
+    ) -> polardb_20170801_models.DescribeActivationCodeDetailsResponse:
+        """
+        @summary 查询激活码详情
+        
+        @param request: DescribeActivationCodeDetailsRequest
+        @return: DescribeActivationCodeDetailsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_activation_code_details_with_options(request, runtime)
+
+    async def describe_activation_code_details_async(
+        self,
+        request: polardb_20170801_models.DescribeActivationCodeDetailsRequest,
+    ) -> polardb_20170801_models.DescribeActivationCodeDetailsResponse:
+        """
+        @summary 查询激活码详情
+        
+        @param request: DescribeActivationCodeDetailsRequest
+        @return: DescribeActivationCodeDetailsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_activation_code_details_with_options_async(request, runtime)
+
+    def describe_activation_codes_with_options(
+        self,
+        request: polardb_20170801_models.DescribeActivationCodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeActivationCodesResponse:
+        """
+        @summary 查询激活码列表
+        
+        @param request: DescribeActivationCodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActivationCodesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_order_id):
+            query['AliyunOrderId'] = request.aliyun_order_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeActivationCodes',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeActivationCodesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_activation_codes_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribeActivationCodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeActivationCodesResponse:
+        """
+        @summary 查询激活码列表
+        
+        @param request: DescribeActivationCodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActivationCodesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_order_id):
+            query['AliyunOrderId'] = request.aliyun_order_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeActivationCodes',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeActivationCodesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_activation_codes(
+        self,
+        request: polardb_20170801_models.DescribeActivationCodesRequest,
+    ) -> polardb_20170801_models.DescribeActivationCodesResponse:
+        """
+        @summary 查询激活码列表
+        
+        @param request: DescribeActivationCodesRequest
+        @return: DescribeActivationCodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_activation_codes_with_options(request, runtime)
+
+    async def describe_activation_codes_async(
+        self,
+        request: polardb_20170801_models.DescribeActivationCodesRequest,
+    ) -> polardb_20170801_models.DescribeActivationCodesResponse:
+        """
+        @summary 查询激活码列表
+        
+        @param request: DescribeActivationCodesRequest
+        @return: DescribeActivationCodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_activation_codes_with_options_async(request, runtime)
 
     def describe_auto_renew_attribute_with_options(
         self,
@@ -7097,7 +7573,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterTDEResponse:
         """
-        @summary Queries the Transparent Data Encryption (TDE) settings of a PolarDB for MySQL cluster.
+        @summary Queries the transparent data encryption (TDE) settings of a PolarDB cluster.
         
         @param request: DescribeDBClusterTDERequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7140,7 +7616,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterTDEResponse:
         """
-        @summary Queries the Transparent Data Encryption (TDE) settings of a PolarDB for MySQL cluster.
+        @summary Queries the transparent data encryption (TDE) settings of a PolarDB cluster.
         
         @param request: DescribeDBClusterTDERequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7182,7 +7658,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDBClusterTDERequest,
     ) -> polardb_20170801_models.DescribeDBClusterTDEResponse:
         """
-        @summary Queries the Transparent Data Encryption (TDE) settings of a PolarDB for MySQL cluster.
+        @summary Queries the transparent data encryption (TDE) settings of a PolarDB cluster.
         
         @param request: DescribeDBClusterTDERequest
         @return: DescribeDBClusterTDEResponse
@@ -7195,7 +7671,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDBClusterTDERequest,
     ) -> polardb_20170801_models.DescribeDBClusterTDEResponse:
         """
-        @summary Queries the Transparent Data Encryption (TDE) settings of a PolarDB for MySQL cluster.
+        @summary Queries the transparent data encryption (TDE) settings of a PolarDB cluster.
         
         @param request: DescribeDBClusterTDERequest
         @return: DescribeDBClusterTDEResponse
@@ -9195,6 +9671,250 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_global_security_ipgroup_relation_with_options_async(request, runtime)
 
+    def describe_license_order_details_with_options(
+        self,
+        request: polardb_20170801_models.DescribeLicenseOrderDetailsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeLicenseOrderDetailsResponse:
+        """
+        @summary 查看License订单详情
+        
+        @param request: DescribeLicenseOrderDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLicenseOrderDetailsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_order_id):
+            query['AliyunOrderId'] = request.aliyun_order_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLicenseOrderDetails',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeLicenseOrderDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_license_order_details_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribeLicenseOrderDetailsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeLicenseOrderDetailsResponse:
+        """
+        @summary 查看License订单详情
+        
+        @param request: DescribeLicenseOrderDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLicenseOrderDetailsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_order_id):
+            query['AliyunOrderId'] = request.aliyun_order_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLicenseOrderDetails',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeLicenseOrderDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_license_order_details(
+        self,
+        request: polardb_20170801_models.DescribeLicenseOrderDetailsRequest,
+    ) -> polardb_20170801_models.DescribeLicenseOrderDetailsResponse:
+        """
+        @summary 查看License订单详情
+        
+        @param request: DescribeLicenseOrderDetailsRequest
+        @return: DescribeLicenseOrderDetailsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_license_order_details_with_options(request, runtime)
+
+    async def describe_license_order_details_async(
+        self,
+        request: polardb_20170801_models.DescribeLicenseOrderDetailsRequest,
+    ) -> polardb_20170801_models.DescribeLicenseOrderDetailsResponse:
+        """
+        @summary 查看License订单详情
+        
+        @param request: DescribeLicenseOrderDetailsRequest
+        @return: DescribeLicenseOrderDetailsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_license_order_details_with_options_async(request, runtime)
+
+    def describe_license_orders_with_options(
+        self,
+        request: polardb_20170801_models.DescribeLicenseOrdersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeLicenseOrdersResponse:
+        """
+        @summary 查询License订单列表
+        
+        @param request: DescribeLicenseOrdersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLicenseOrdersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_order_id):
+            query['AliyunOrderId'] = request.aliyun_order_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.package_type):
+            query['PackageType'] = request.package_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.purchase_channel):
+            query['PurchaseChannel'] = request.purchase_channel
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.virtual_order):
+            query['VirtualOrder'] = request.virtual_order
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLicenseOrders',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeLicenseOrdersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_license_orders_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribeLicenseOrdersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeLicenseOrdersResponse:
+        """
+        @summary 查询License订单列表
+        
+        @param request: DescribeLicenseOrdersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLicenseOrdersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_order_id):
+            query['AliyunOrderId'] = request.aliyun_order_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.package_type):
+            query['PackageType'] = request.package_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.purchase_channel):
+            query['PurchaseChannel'] = request.purchase_channel
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.virtual_order):
+            query['VirtualOrder'] = request.virtual_order
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLicenseOrders',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeLicenseOrdersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_license_orders(
+        self,
+        request: polardb_20170801_models.DescribeLicenseOrdersRequest,
+    ) -> polardb_20170801_models.DescribeLicenseOrdersResponse:
+        """
+        @summary 查询License订单列表
+        
+        @param request: DescribeLicenseOrdersRequest
+        @return: DescribeLicenseOrdersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_license_orders_with_options(request, runtime)
+
+    async def describe_license_orders_async(
+        self,
+        request: polardb_20170801_models.DescribeLicenseOrdersRequest,
+    ) -> polardb_20170801_models.DescribeLicenseOrdersResponse:
+        """
+        @summary 查询License订单列表
+        
+        @param request: DescribeLicenseOrdersRequest
+        @return: DescribeLicenseOrdersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_license_orders_with_options_async(request, runtime)
+
     def describe_log_backup_policy_with_options(
         self,
         request: polardb_20170801_models.DescribeLogBackupPolicyRequest,
@@ -10557,9 +11277,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeSlowLogRecordsResponse:
         """
-        @summary Queries the details of the slow query logs of a PolarDB cluster.
+        @summary Slow Log Details
         
-        @description > This operation is applicable only to PolarDB for MySQL clusters.
+        @description >- Only PolarDB MySQL Edition clusters support calling this interface.
+        >- Starting from September 1, 2024, due to the optimization of the SQL template algorithm, when calling this interface, the value of the SQLHash field will change. For more details, please refer to [Notice] Optimization of Slow SQL Template Algorithm (~~2845725~~).
         
         @param request: DescribeSlowLogRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10618,9 +11339,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeSlowLogRecordsResponse:
         """
-        @summary Queries the details of the slow query logs of a PolarDB cluster.
+        @summary Slow Log Details
         
-        @description > This operation is applicable only to PolarDB for MySQL clusters.
+        @description >- Only PolarDB MySQL Edition clusters support calling this interface.
+        >- Starting from September 1, 2024, due to the optimization of the SQL template algorithm, when calling this interface, the value of the SQLHash field will change. For more details, please refer to [Notice] Optimization of Slow SQL Template Algorithm (~~2845725~~).
         
         @param request: DescribeSlowLogRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10678,9 +11400,10 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeSlowLogRecordsRequest,
     ) -> polardb_20170801_models.DescribeSlowLogRecordsResponse:
         """
-        @summary Queries the details of the slow query logs of a PolarDB cluster.
+        @summary Slow Log Details
         
-        @description > This operation is applicable only to PolarDB for MySQL clusters.
+        @description >- Only PolarDB MySQL Edition clusters support calling this interface.
+        >- Starting from September 1, 2024, due to the optimization of the SQL template algorithm, when calling this interface, the value of the SQLHash field will change. For more details, please refer to [Notice] Optimization of Slow SQL Template Algorithm (~~2845725~~).
         
         @param request: DescribeSlowLogRecordsRequest
         @return: DescribeSlowLogRecordsResponse
@@ -10693,9 +11416,10 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeSlowLogRecordsRequest,
     ) -> polardb_20170801_models.DescribeSlowLogRecordsResponse:
         """
-        @summary Queries the details of the slow query logs of a PolarDB cluster.
+        @summary Slow Log Details
         
-        @description > This operation is applicable only to PolarDB for MySQL clusters.
+        @description >- Only PolarDB MySQL Edition clusters support calling this interface.
+        >- Starting from September 1, 2024, due to the optimization of the SQL template algorithm, when calling this interface, the value of the SQLHash field will change. For more details, please refer to [Notice] Optimization of Slow SQL Template Algorithm (~~2845725~~).
         
         @param request: DescribeSlowLogRecordsRequest
         @return: DescribeSlowLogRecordsResponse
@@ -10853,9 +11577,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeTasksResponse:
         """
-        @summary Queries the details of the tasks that are generated by calling API operations. For example, you can call this operation to view the details of the task when you create a cluster.
+        @summary Queries the status of the tasks that are generated based on API operations, such as the status of instance creation tasks.
         
-        @description    You can call this operation to view the details of a task that is generated by a specific API operation or in the console. The system calls the specific API operation when you perform an operation in the console. For example, you can view the details of the task when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation or [create a cluster](https://help.aliyun.com/document_detail/58769.html) in the console.
+        @description    You can call this operation to view the details of a task that is generated by a specific API operation or in the PolarDB console. The system calls the specific API operation when you perform an operation in the PolarDB console. For example, you can view the details of the task when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation or [create a cluster](https://help.aliyun.com/document_detail/58769.html) in the PolarDB console.
         You can view the details of tasks that are generated only when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation to create a cluster and `CreationOption` is not set to `CreateGdnStandby`.
         
         @param request: DescribeTasksRequest
@@ -10911,9 +11635,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeTasksResponse:
         """
-        @summary Queries the details of the tasks that are generated by calling API operations. For example, you can call this operation to view the details of the task when you create a cluster.
+        @summary Queries the status of the tasks that are generated based on API operations, such as the status of instance creation tasks.
         
-        @description    You can call this operation to view the details of a task that is generated by a specific API operation or in the console. The system calls the specific API operation when you perform an operation in the console. For example, you can view the details of the task when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation or [create a cluster](https://help.aliyun.com/document_detail/58769.html) in the console.
+        @description    You can call this operation to view the details of a task that is generated by a specific API operation or in the PolarDB console. The system calls the specific API operation when you perform an operation in the PolarDB console. For example, you can view the details of the task when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation or [create a cluster](https://help.aliyun.com/document_detail/58769.html) in the PolarDB console.
         You can view the details of tasks that are generated only when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation to create a cluster and `CreationOption` is not set to `CreateGdnStandby`.
         
         @param request: DescribeTasksRequest
@@ -10968,9 +11692,9 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeTasksRequest,
     ) -> polardb_20170801_models.DescribeTasksResponse:
         """
-        @summary Queries the details of the tasks that are generated by calling API operations. For example, you can call this operation to view the details of the task when you create a cluster.
+        @summary Queries the status of the tasks that are generated based on API operations, such as the status of instance creation tasks.
         
-        @description    You can call this operation to view the details of a task that is generated by a specific API operation or in the console. The system calls the specific API operation when you perform an operation in the console. For example, you can view the details of the task when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation or [create a cluster](https://help.aliyun.com/document_detail/58769.html) in the console.
+        @description    You can call this operation to view the details of a task that is generated by a specific API operation or in the PolarDB console. The system calls the specific API operation when you perform an operation in the PolarDB console. For example, you can view the details of the task when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation or [create a cluster](https://help.aliyun.com/document_detail/58769.html) in the PolarDB console.
         You can view the details of tasks that are generated only when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation to create a cluster and `CreationOption` is not set to `CreateGdnStandby`.
         
         @param request: DescribeTasksRequest
@@ -10984,9 +11708,9 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeTasksRequest,
     ) -> polardb_20170801_models.DescribeTasksResponse:
         """
-        @summary Queries the details of the tasks that are generated by calling API operations. For example, you can call this operation to view the details of the task when you create a cluster.
+        @summary Queries the status of the tasks that are generated based on API operations, such as the status of instance creation tasks.
         
-        @description    You can call this operation to view the details of a task that is generated by a specific API operation or in the console. The system calls the specific API operation when you perform an operation in the console. For example, you can view the details of the task when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation or [create a cluster](https://help.aliyun.com/document_detail/58769.html) in the console.
+        @description    You can call this operation to view the details of a task that is generated by a specific API operation or in the PolarDB console. The system calls the specific API operation when you perform an operation in the PolarDB console. For example, you can view the details of the task when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation or [create a cluster](https://help.aliyun.com/document_detail/58769.html) in the PolarDB console.
         You can view the details of tasks that are generated only when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation to create a cluster and `CreationOption` is not set to `CreateGdnStandby`.
         
         @param request: DescribeTasksRequest
@@ -11509,7 +12233,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.EnableFirewallRulesResponse:
         """
-        @summary 修改sql防火墙状态
+        @summary Modifies the status of SQL firewall rules for a cluster.
         
         @param request: EnableFirewallRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11556,7 +12280,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.EnableFirewallRulesResponse:
         """
-        @summary 修改sql防火墙状态
+        @summary Modifies the status of SQL firewall rules for a cluster.
         
         @param request: EnableFirewallRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11602,7 +12326,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.EnableFirewallRulesRequest,
     ) -> polardb_20170801_models.EnableFirewallRulesResponse:
         """
-        @summary 修改sql防火墙状态
+        @summary Modifies the status of SQL firewall rules for a cluster.
         
         @param request: EnableFirewallRulesRequest
         @return: EnableFirewallRulesResponse
@@ -11615,7 +12339,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.EnableFirewallRulesRequest,
     ) -> polardb_20170801_models.EnableFirewallRulesResponse:
         """
-        @summary 修改sql防火墙状态
+        @summary Modifies the status of SQL firewall rules for a cluster.
         
         @param request: EnableFirewallRulesRequest
         @return: EnableFirewallRulesResponse
@@ -12053,7 +12777,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ListTagResourcesResponse:
         """
-        @summary Queries the tags that are bound to one or more PolarDB clusters, or queries the PolarDB clusters to which one or more tags are bound.
+        @summary Queries the tags that are added to one or more PolarDB clusters, or the PolarDB clusters to which one or more tags are added.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12104,7 +12828,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ListTagResourcesResponse:
         """
-        @summary Queries the tags that are bound to one or more PolarDB clusters, or queries the PolarDB clusters to which one or more tags are bound.
+        @summary Queries the tags that are added to one or more PolarDB clusters, or the PolarDB clusters to which one or more tags are added.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12154,7 +12878,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ListTagResourcesRequest,
     ) -> polardb_20170801_models.ListTagResourcesResponse:
         """
-        @summary Queries the tags that are bound to one or more PolarDB clusters, or queries the PolarDB clusters to which one or more tags are bound.
+        @summary Queries the tags that are added to one or more PolarDB clusters, or the PolarDB clusters to which one or more tags are added.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -12167,7 +12891,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ListTagResourcesRequest,
     ) -> polardb_20170801_models.ListTagResourcesResponse:
         """
-        @summary Queries the tags that are bound to one or more PolarDB clusters, or queries the PolarDB clusters to which one or more tags are bound.
+        @summary Queries the tags that are added to one or more PolarDB clusters, or the PolarDB clusters to which one or more tags are added.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -12861,6 +13585,8 @@ class Client(OpenApiClient):
             query['FaultInjectionType'] = request.fault_injection_type
         if not UtilClient.is_unset(request.fault_simulate_mode):
             query['FaultSimulateMode'] = request.fault_simulate_mode
+        if not UtilClient.is_unset(request.imci_auto_index):
+            query['ImciAutoIndex'] = request.imci_auto_index
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -12920,6 +13646,8 @@ class Client(OpenApiClient):
             query['FaultInjectionType'] = request.fault_injection_type
         if not UtilClient.is_unset(request.fault_simulate_mode):
             query['FaultSimulateMode'] = request.fault_simulate_mode
+        if not UtilClient.is_unset(request.imci_auto_index):
+            query['ImciAutoIndex'] = request.imci_auto_index
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -14481,6 +15209,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterResourceGroupResponse:
         """
+        @summary Modifies the configurations of a resource group for a database cluster.
+        
         @param request: ModifyDBClusterResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyDBClusterResourceGroupResponse
@@ -14526,6 +15256,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterResourceGroupResponse:
         """
+        @summary Modifies the configurations of a resource group for a database cluster.
+        
         @param request: ModifyDBClusterResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyDBClusterResourceGroupResponse
@@ -14570,6 +15302,8 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ModifyDBClusterResourceGroupRequest,
     ) -> polardb_20170801_models.ModifyDBClusterResourceGroupResponse:
         """
+        @summary Modifies the configurations of a resource group for a database cluster.
+        
         @param request: ModifyDBClusterResourceGroupRequest
         @return: ModifyDBClusterResourceGroupResponse
         """
@@ -14581,6 +15315,8 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ModifyDBClusterResourceGroupRequest,
     ) -> polardb_20170801_models.ModifyDBClusterResourceGroupResponse:
         """
+        @summary Modifies the configurations of a resource group for a database cluster.
+        
         @param request: ModifyDBClusterResourceGroupRequest
         @return: ModifyDBClusterResourceGroupResponse
         """
@@ -14731,6 +15467,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.allow_shut_down):
             query['AllowShutDown'] = request.allow_shut_down
+        if not UtilClient.is_unset(request.crontab_job_id):
+            query['CrontabJobId'] = request.crontab_job_id
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.from_time_service):
@@ -14767,6 +15505,8 @@ class Client(OpenApiClient):
             query['ServerlessRuleCpuShrinkThreshold'] = request.serverless_rule_cpu_shrink_threshold
         if not UtilClient.is_unset(request.serverless_rule_mode):
             query['ServerlessRuleMode'] = request.serverless_rule_mode
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -14802,6 +15542,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.allow_shut_down):
             query['AllowShutDown'] = request.allow_shut_down
+        if not UtilClient.is_unset(request.crontab_job_id):
+            query['CrontabJobId'] = request.crontab_job_id
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.from_time_service):
@@ -14838,6 +15580,8 @@ class Client(OpenApiClient):
             query['ServerlessRuleCpuShrinkThreshold'] = request.serverless_rule_cpu_shrink_threshold
         if not UtilClient.is_unset(request.serverless_rule_mode):
             query['ServerlessRuleMode'] = request.serverless_rule_mode
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -15021,7 +15765,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterTDEResponse:
         """
-        @summary Enables the TDE feature or changes the encryption method for a specified PolarDB for MySQL cluster.
+        @summary Enables the transparent data encryption (TDE) feature for a PolarDB cluster.
         
         @description >    To perform this operation, you must activate KMS first. For more information, see [Purchase a dedicated KMS instance](https://help.aliyun.com/document_detail/153781.html).
         >    After TDE is enabled, you cannot disable TDE.
@@ -15034,6 +15778,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.enable_automatic_rotation):
+            query['EnableAutomaticRotation'] = request.enable_automatic_rotation
         if not UtilClient.is_unset(request.encrypt_new_tables):
             query['EncryptNewTables'] = request.encrypt_new_tables
         if not UtilClient.is_unset(request.encryption_key):
@@ -15075,7 +15821,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterTDEResponse:
         """
-        @summary Enables the TDE feature or changes the encryption method for a specified PolarDB for MySQL cluster.
+        @summary Enables the transparent data encryption (TDE) feature for a PolarDB cluster.
         
         @description >    To perform this operation, you must activate KMS first. For more information, see [Purchase a dedicated KMS instance](https://help.aliyun.com/document_detail/153781.html).
         >    After TDE is enabled, you cannot disable TDE.
@@ -15088,6 +15834,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.enable_automatic_rotation):
+            query['EnableAutomaticRotation'] = request.enable_automatic_rotation
         if not UtilClient.is_unset(request.encrypt_new_tables):
             query['EncryptNewTables'] = request.encrypt_new_tables
         if not UtilClient.is_unset(request.encryption_key):
@@ -15128,7 +15876,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ModifyDBClusterTDERequest,
     ) -> polardb_20170801_models.ModifyDBClusterTDEResponse:
         """
-        @summary Enables the TDE feature or changes the encryption method for a specified PolarDB for MySQL cluster.
+        @summary Enables the transparent data encryption (TDE) feature for a PolarDB cluster.
         
         @description >    To perform this operation, you must activate KMS first. For more information, see [Purchase a dedicated KMS instance](https://help.aliyun.com/document_detail/153781.html).
         >    After TDE is enabled, you cannot disable TDE.
@@ -15144,7 +15892,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ModifyDBClusterTDERequest,
     ) -> polardb_20170801_models.ModifyDBClusterTDEResponse:
         """
-        @summary Enables the TDE feature or changes the encryption method for a specified PolarDB for MySQL cluster.
+        @summary Enables the transparent data encryption (TDE) feature for a PolarDB cluster.
         
         @description >    To perform this operation, you must activate KMS first. For more information, see [Purchase a dedicated KMS instance](https://help.aliyun.com/document_detail/153781.html).
         >    After TDE is enabled, you cannot disable TDE.
@@ -15561,7 +16309,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBNodeHotReplicaModeResponse:
         """
-        @summary Enables or disables a cluster node.
+        @summary Enables or disables the hot standby node in a cluster.
         
         @param request: ModifyDBNodeHotReplicaModeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15608,7 +16356,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBNodeHotReplicaModeResponse:
         """
-        @summary Enables or disables a cluster node.
+        @summary Enables or disables the hot standby node in a cluster.
         
         @param request: ModifyDBNodeHotReplicaModeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15654,7 +16402,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ModifyDBNodeHotReplicaModeRequest,
     ) -> polardb_20170801_models.ModifyDBNodeHotReplicaModeResponse:
         """
-        @summary Enables or disables a cluster node.
+        @summary Enables or disables the hot standby node in a cluster.
         
         @param request: ModifyDBNodeHotReplicaModeRequest
         @return: ModifyDBNodeHotReplicaModeResponse
@@ -15667,7 +16415,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ModifyDBNodeHotReplicaModeRequest,
     ) -> polardb_20170801_models.ModifyDBNodeHotReplicaModeResponse:
         """
-        @summary Enables or disables a cluster node.
+        @summary Enables or disables the hot standby node in a cluster.
         
         @param request: ModifyDBNodeHotReplicaModeRequest
         @return: ModifyDBNodeHotReplicaModeResponse
@@ -15957,7 +16705,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyGlobalDatabaseNetworkResponse:
         """
-        @summary Modifies a Global Database Network (GDN).
+        @summary Modifies a global database network (GDN).
         
         @param request: ModifyGlobalDatabaseNetworkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16008,7 +16756,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyGlobalDatabaseNetworkResponse:
         """
-        @summary Modifies a Global Database Network (GDN).
+        @summary Modifies a global database network (GDN).
         
         @param request: ModifyGlobalDatabaseNetworkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16058,7 +16806,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ModifyGlobalDatabaseNetworkRequest,
     ) -> polardb_20170801_models.ModifyGlobalDatabaseNetworkResponse:
         """
-        @summary Modifies a Global Database Network (GDN).
+        @summary Modifies a global database network (GDN).
         
         @param request: ModifyGlobalDatabaseNetworkRequest
         @return: ModifyGlobalDatabaseNetworkResponse
@@ -16071,7 +16819,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ModifyGlobalDatabaseNetworkRequest,
     ) -> polardb_20170801_models.ModifyGlobalDatabaseNetworkResponse:
         """
-        @summary Modifies a Global Database Network (GDN).
+        @summary Modifies a global database network (GDN).
         
         @param request: ModifyGlobalDatabaseNetworkRequest
         @return: ModifyGlobalDatabaseNetworkResponse
@@ -18069,6 +18817,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.TagResourcesResponse:
         """
+        @summary Creates tags for a PolarDB cluster.
+        
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: TagResourcesResponse
@@ -18116,6 +18866,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.TagResourcesResponse:
         """
+        @summary Creates tags for a PolarDB cluster.
+        
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: TagResourcesResponse
@@ -18162,6 +18914,8 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.TagResourcesRequest,
     ) -> polardb_20170801_models.TagResourcesResponse:
         """
+        @summary Creates tags for a PolarDB cluster.
+        
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
         """
@@ -18173,6 +18927,8 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.TagResourcesRequest,
     ) -> polardb_20170801_models.TagResourcesResponse:
         """
+        @summary Creates tags for a PolarDB cluster.
+        
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
         """
@@ -18185,7 +18941,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.TempModifyDBNodeResponse:
         """
-        @summary Temporarily upgrades the configuration of a PolarDB cluster or adds one or more nodes to a cluster.
+        @summary Temporarily changes the node configurations of a cluster.
         
         @param request: TempModifyDBNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18238,7 +18994,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.TempModifyDBNodeResponse:
         """
-        @summary Temporarily upgrades the configuration of a PolarDB cluster or adds one or more nodes to a cluster.
+        @summary Temporarily changes the node configurations of a cluster.
         
         @param request: TempModifyDBNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18290,7 +19046,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.TempModifyDBNodeRequest,
     ) -> polardb_20170801_models.TempModifyDBNodeResponse:
         """
-        @summary Temporarily upgrades the configuration of a PolarDB cluster or adds one or more nodes to a cluster.
+        @summary Temporarily changes the node configurations of a cluster.
         
         @param request: TempModifyDBNodeRequest
         @return: TempModifyDBNodeResponse
@@ -18303,7 +19059,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.TempModifyDBNodeRequest,
     ) -> polardb_20170801_models.TempModifyDBNodeResponse:
         """
-        @summary Temporarily upgrades the configuration of a PolarDB cluster or adds one or more nodes to a cluster.
+        @summary Temporarily changes the node configurations of a cluster.
         
         @param request: TempModifyDBNodeRequest
         @return: TempModifyDBNodeResponse
@@ -18319,9 +19075,10 @@ class Client(OpenApiClient):
         """
         @summary Changes the billing method of a PolarDB cluster.
         
-        @description >    PolarDB clusters support the subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Change the billing method from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
-        >   You cannot change the billing method from pay-as-you-go to subscription if your account balance is insufficient.
-        >   If you change the billing method from subscription to pay-as-you-go, the system automatically refunds the balance of the prepaid subscription fees.
+        @description >
+        PolarDB clusters support the subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Change the billing method from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
+        You cannot change the billing method from pay-as-you-go to subscription if your account balance is insufficient.
+        If you change the billing method from subscription to pay-as-you-go, the system automatically refunds the balance of the prepaid subscription fees.
         
         @param request: TransformDBClusterPayTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18378,9 +19135,10 @@ class Client(OpenApiClient):
         """
         @summary Changes the billing method of a PolarDB cluster.
         
-        @description >    PolarDB clusters support the subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Change the billing method from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
-        >   You cannot change the billing method from pay-as-you-go to subscription if your account balance is insufficient.
-        >   If you change the billing method from subscription to pay-as-you-go, the system automatically refunds the balance of the prepaid subscription fees.
+        @description >
+        PolarDB clusters support the subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Change the billing method from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
+        You cannot change the billing method from pay-as-you-go to subscription if your account balance is insufficient.
+        If you change the billing method from subscription to pay-as-you-go, the system automatically refunds the balance of the prepaid subscription fees.
         
         @param request: TransformDBClusterPayTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18436,9 +19194,10 @@ class Client(OpenApiClient):
         """
         @summary Changes the billing method of a PolarDB cluster.
         
-        @description >    PolarDB clusters support the subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Change the billing method from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
-        >   You cannot change the billing method from pay-as-you-go to subscription if your account balance is insufficient.
-        >   If you change the billing method from subscription to pay-as-you-go, the system automatically refunds the balance of the prepaid subscription fees.
+        @description >
+        PolarDB clusters support the subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Change the billing method from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
+        You cannot change the billing method from pay-as-you-go to subscription if your account balance is insufficient.
+        If you change the billing method from subscription to pay-as-you-go, the system automatically refunds the balance of the prepaid subscription fees.
         
         @param request: TransformDBClusterPayTypeRequest
         @return: TransformDBClusterPayTypeResponse
@@ -18453,9 +19212,10 @@ class Client(OpenApiClient):
         """
         @summary Changes the billing method of a PolarDB cluster.
         
-        @description >    PolarDB clusters support the subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Change the billing method from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
-        >   You cannot change the billing method from pay-as-you-go to subscription if your account balance is insufficient.
-        >   If you change the billing method from subscription to pay-as-you-go, the system automatically refunds the balance of the prepaid subscription fees.
+        @description >
+        PolarDB clusters support the subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Change the billing method from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
+        You cannot change the billing method from pay-as-you-go to subscription if your account balance is insufficient.
+        If you change the billing method from subscription to pay-as-you-go, the system automatically refunds the balance of the prepaid subscription fees.
         
         @param request: TransformDBClusterPayTypeRequest
         @return: TransformDBClusterPayTypeResponse
