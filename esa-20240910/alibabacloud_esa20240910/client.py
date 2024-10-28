@@ -2055,6 +2055,374 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_custom_scene_policy_with_options_async(request, runtime)
 
+    def create_edge_container_app_with_options(
+        self,
+        request: esa20240910_models.CreateEdgeContainerAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateEdgeContainerAppResponse:
+        """
+        @summary 创建边缘容器的应用
+        
+        @param request: CreateEdgeContainerAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEdgeContainerAppResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.health_check_fail_times):
+            body['HealthCheckFailTimes'] = request.health_check_fail_times
+        if not UtilClient.is_unset(request.health_check_host):
+            body['HealthCheckHost'] = request.health_check_host
+        if not UtilClient.is_unset(request.health_check_http_code):
+            body['HealthCheckHttpCode'] = request.health_check_http_code
+        if not UtilClient.is_unset(request.health_check_interval):
+            body['HealthCheckInterval'] = request.health_check_interval
+        if not UtilClient.is_unset(request.health_check_method):
+            body['HealthCheckMethod'] = request.health_check_method
+        if not UtilClient.is_unset(request.health_check_port):
+            body['HealthCheckPort'] = request.health_check_port
+        if not UtilClient.is_unset(request.health_check_succ_times):
+            body['HealthCheckSuccTimes'] = request.health_check_succ_times
+        if not UtilClient.is_unset(request.health_check_timeout):
+            body['HealthCheckTimeout'] = request.health_check_timeout
+        if not UtilClient.is_unset(request.health_check_type):
+            body['HealthCheckType'] = request.health_check_type
+        if not UtilClient.is_unset(request.health_check_uri):
+            body['HealthCheckURI'] = request.health_check_uri
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.remarks):
+            body['Remarks'] = request.remarks
+        if not UtilClient.is_unset(request.service_port):
+            body['ServicePort'] = request.service_port
+        if not UtilClient.is_unset(request.target_port):
+            body['TargetPort'] = request.target_port
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateEdgeContainerApp',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateEdgeContainerAppResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_edge_container_app_with_options_async(
+        self,
+        request: esa20240910_models.CreateEdgeContainerAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateEdgeContainerAppResponse:
+        """
+        @summary 创建边缘容器的应用
+        
+        @param request: CreateEdgeContainerAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEdgeContainerAppResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.health_check_fail_times):
+            body['HealthCheckFailTimes'] = request.health_check_fail_times
+        if not UtilClient.is_unset(request.health_check_host):
+            body['HealthCheckHost'] = request.health_check_host
+        if not UtilClient.is_unset(request.health_check_http_code):
+            body['HealthCheckHttpCode'] = request.health_check_http_code
+        if not UtilClient.is_unset(request.health_check_interval):
+            body['HealthCheckInterval'] = request.health_check_interval
+        if not UtilClient.is_unset(request.health_check_method):
+            body['HealthCheckMethod'] = request.health_check_method
+        if not UtilClient.is_unset(request.health_check_port):
+            body['HealthCheckPort'] = request.health_check_port
+        if not UtilClient.is_unset(request.health_check_succ_times):
+            body['HealthCheckSuccTimes'] = request.health_check_succ_times
+        if not UtilClient.is_unset(request.health_check_timeout):
+            body['HealthCheckTimeout'] = request.health_check_timeout
+        if not UtilClient.is_unset(request.health_check_type):
+            body['HealthCheckType'] = request.health_check_type
+        if not UtilClient.is_unset(request.health_check_uri):
+            body['HealthCheckURI'] = request.health_check_uri
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.remarks):
+            body['Remarks'] = request.remarks
+        if not UtilClient.is_unset(request.service_port):
+            body['ServicePort'] = request.service_port
+        if not UtilClient.is_unset(request.target_port):
+            body['TargetPort'] = request.target_port
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateEdgeContainerApp',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateEdgeContainerAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_edge_container_app(
+        self,
+        request: esa20240910_models.CreateEdgeContainerAppRequest,
+    ) -> esa20240910_models.CreateEdgeContainerAppResponse:
+        """
+        @summary 创建边缘容器的应用
+        
+        @param request: CreateEdgeContainerAppRequest
+        @return: CreateEdgeContainerAppResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_edge_container_app_with_options(request, runtime)
+
+    async def create_edge_container_app_async(
+        self,
+        request: esa20240910_models.CreateEdgeContainerAppRequest,
+    ) -> esa20240910_models.CreateEdgeContainerAppResponse:
+        """
+        @summary 创建边缘容器的应用
+        
+        @param request: CreateEdgeContainerAppRequest
+        @return: CreateEdgeContainerAppResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_edge_container_app_with_options_async(request, runtime)
+
+    def create_edge_container_app_record_with_options(
+        self,
+        request: esa20240910_models.CreateEdgeContainerAppRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateEdgeContainerAppRecordResponse:
+        """
+        @summary 创建一个边缘容器应用的域名记录
+        
+        @param request: CreateEdgeContainerAppRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEdgeContainerAppRecordResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.record_name):
+            body['RecordName'] = request.record_name
+        if not UtilClient.is_unset(request.site_id):
+            body['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateEdgeContainerAppRecord',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateEdgeContainerAppRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_edge_container_app_record_with_options_async(
+        self,
+        request: esa20240910_models.CreateEdgeContainerAppRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateEdgeContainerAppRecordResponse:
+        """
+        @summary 创建一个边缘容器应用的域名记录
+        
+        @param request: CreateEdgeContainerAppRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEdgeContainerAppRecordResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.record_name):
+            body['RecordName'] = request.record_name
+        if not UtilClient.is_unset(request.site_id):
+            body['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateEdgeContainerAppRecord',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateEdgeContainerAppRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_edge_container_app_record(
+        self,
+        request: esa20240910_models.CreateEdgeContainerAppRecordRequest,
+    ) -> esa20240910_models.CreateEdgeContainerAppRecordResponse:
+        """
+        @summary 创建一个边缘容器应用的域名记录
+        
+        @param request: CreateEdgeContainerAppRecordRequest
+        @return: CreateEdgeContainerAppRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_edge_container_app_record_with_options(request, runtime)
+
+    async def create_edge_container_app_record_async(
+        self,
+        request: esa20240910_models.CreateEdgeContainerAppRecordRequest,
+    ) -> esa20240910_models.CreateEdgeContainerAppRecordResponse:
+        """
+        @summary 创建一个边缘容器应用的域名记录
+        
+        @param request: CreateEdgeContainerAppRecordRequest
+        @return: CreateEdgeContainerAppRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_edge_container_app_record_with_options_async(request, runtime)
+
+    def create_edge_container_app_version_with_options(
+        self,
+        tmp_req: esa20240910_models.CreateEdgeContainerAppVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateEdgeContainerAppVersionResponse:
+        """
+        @summary 创建边缘容器应用的版本
+        
+        @param tmp_req: CreateEdgeContainerAppVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEdgeContainerAppVersionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.CreateEdgeContainerAppVersionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.containers):
+            request.containers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.containers, 'Containers', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.containers_shrink):
+            body['Containers'] = request.containers_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.remarks):
+            body['Remarks'] = request.remarks
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateEdgeContainerAppVersion',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateEdgeContainerAppVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_edge_container_app_version_with_options_async(
+        self,
+        tmp_req: esa20240910_models.CreateEdgeContainerAppVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateEdgeContainerAppVersionResponse:
+        """
+        @summary 创建边缘容器应用的版本
+        
+        @param tmp_req: CreateEdgeContainerAppVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEdgeContainerAppVersionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.CreateEdgeContainerAppVersionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.containers):
+            request.containers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.containers, 'Containers', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.containers_shrink):
+            body['Containers'] = request.containers_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.remarks):
+            body['Remarks'] = request.remarks
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateEdgeContainerAppVersion',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateEdgeContainerAppVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_edge_container_app_version(
+        self,
+        request: esa20240910_models.CreateEdgeContainerAppVersionRequest,
+    ) -> esa20240910_models.CreateEdgeContainerAppVersionResponse:
+        """
+        @summary 创建边缘容器应用的版本
+        
+        @param request: CreateEdgeContainerAppVersionRequest
+        @return: CreateEdgeContainerAppVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_edge_container_app_version_with_options(request, runtime)
+
+    async def create_edge_container_app_version_async(
+        self,
+        request: esa20240910_models.CreateEdgeContainerAppVersionRequest,
+    ) -> esa20240910_models.CreateEdgeContainerAppVersionResponse:
+        """
+        @summary 创建边缘容器应用的版本
+        
+        @param request: CreateEdgeContainerAppVersionRequest
+        @return: CreateEdgeContainerAppVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_edge_container_app_version_with_options_async(request, runtime)
+
     def create_kv_namespace_with_options(
         self,
         request: esa20240910_models.CreateKvNamespaceRequest,
@@ -4290,6 +4658,306 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_custom_scene_policy_with_options_async(request, runtime)
+
+    def delete_edge_container_app_with_options(
+        self,
+        request: esa20240910_models.DeleteEdgeContainerAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteEdgeContainerAppResponse:
+        """
+        @summary 删除边缘容器的应用
+        
+        @param request: DeleteEdgeContainerAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEdgeContainerAppResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEdgeContainerApp',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteEdgeContainerAppResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_edge_container_app_with_options_async(
+        self,
+        request: esa20240910_models.DeleteEdgeContainerAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteEdgeContainerAppResponse:
+        """
+        @summary 删除边缘容器的应用
+        
+        @param request: DeleteEdgeContainerAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEdgeContainerAppResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEdgeContainerApp',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteEdgeContainerAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_edge_container_app(
+        self,
+        request: esa20240910_models.DeleteEdgeContainerAppRequest,
+    ) -> esa20240910_models.DeleteEdgeContainerAppResponse:
+        """
+        @summary 删除边缘容器的应用
+        
+        @param request: DeleteEdgeContainerAppRequest
+        @return: DeleteEdgeContainerAppResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_edge_container_app_with_options(request, runtime)
+
+    async def delete_edge_container_app_async(
+        self,
+        request: esa20240910_models.DeleteEdgeContainerAppRequest,
+    ) -> esa20240910_models.DeleteEdgeContainerAppResponse:
+        """
+        @summary 删除边缘容器的应用
+        
+        @param request: DeleteEdgeContainerAppRequest
+        @return: DeleteEdgeContainerAppResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_edge_container_app_with_options_async(request, runtime)
+
+    def delete_edge_container_app_record_with_options(
+        self,
+        request: esa20240910_models.DeleteEdgeContainerAppRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteEdgeContainerAppRecordResponse:
+        """
+        @summary 删除一个边缘容器应用的域名记录
+        
+        @param request: DeleteEdgeContainerAppRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEdgeContainerAppRecordResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.record_name):
+            body['RecordName'] = request.record_name
+        if not UtilClient.is_unset(request.site_id):
+            body['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteEdgeContainerAppRecord',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteEdgeContainerAppRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_edge_container_app_record_with_options_async(
+        self,
+        request: esa20240910_models.DeleteEdgeContainerAppRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteEdgeContainerAppRecordResponse:
+        """
+        @summary 删除一个边缘容器应用的域名记录
+        
+        @param request: DeleteEdgeContainerAppRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEdgeContainerAppRecordResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.record_name):
+            body['RecordName'] = request.record_name
+        if not UtilClient.is_unset(request.site_id):
+            body['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteEdgeContainerAppRecord',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteEdgeContainerAppRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_edge_container_app_record(
+        self,
+        request: esa20240910_models.DeleteEdgeContainerAppRecordRequest,
+    ) -> esa20240910_models.DeleteEdgeContainerAppRecordResponse:
+        """
+        @summary 删除一个边缘容器应用的域名记录
+        
+        @param request: DeleteEdgeContainerAppRecordRequest
+        @return: DeleteEdgeContainerAppRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_edge_container_app_record_with_options(request, runtime)
+
+    async def delete_edge_container_app_record_async(
+        self,
+        request: esa20240910_models.DeleteEdgeContainerAppRecordRequest,
+    ) -> esa20240910_models.DeleteEdgeContainerAppRecordResponse:
+        """
+        @summary 删除一个边缘容器应用的域名记录
+        
+        @param request: DeleteEdgeContainerAppRecordRequest
+        @return: DeleteEdgeContainerAppRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_edge_container_app_record_with_options_async(request, runtime)
+
+    def delete_edge_container_app_version_with_options(
+        self,
+        request: esa20240910_models.DeleteEdgeContainerAppVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteEdgeContainerAppVersionResponse:
+        """
+        @summary 删除边缘容器应用的版本
+        
+        @param request: DeleteEdgeContainerAppVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEdgeContainerAppVersionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEdgeContainerAppVersion',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteEdgeContainerAppVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_edge_container_app_version_with_options_async(
+        self,
+        request: esa20240910_models.DeleteEdgeContainerAppVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteEdgeContainerAppVersionResponse:
+        """
+        @summary 删除边缘容器应用的版本
+        
+        @param request: DeleteEdgeContainerAppVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEdgeContainerAppVersionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEdgeContainerAppVersion',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteEdgeContainerAppVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_edge_container_app_version(
+        self,
+        request: esa20240910_models.DeleteEdgeContainerAppVersionRequest,
+    ) -> esa20240910_models.DeleteEdgeContainerAppVersionResponse:
+        """
+        @summary 删除边缘容器应用的版本
+        
+        @param request: DeleteEdgeContainerAppVersionRequest
+        @return: DeleteEdgeContainerAppVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_edge_container_app_version_with_options(request, runtime)
+
+    async def delete_edge_container_app_version_async(
+        self,
+        request: esa20240910_models.DeleteEdgeContainerAppVersionRequest,
+    ) -> esa20240910_models.DeleteEdgeContainerAppVersionResponse:
+        """
+        @summary 删除边缘容器应用的版本
+        
+        @param request: DeleteEdgeContainerAppVersionRequest
+        @return: DeleteEdgeContainerAppVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_edge_container_app_version_with_options_async(request, runtime)
 
     def delete_kv_with_options(
         self,
@@ -7409,6 +8077,666 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_cache_reserve_specification_with_options_async(runtime)
 
+    def get_edge_container_app_with_options(
+        self,
+        request: esa20240910_models.GetEdgeContainerAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetEdgeContainerAppResponse:
+        """
+        @summary 获取边缘容器应用信息
+        
+        @param request: GetEdgeContainerAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEdgeContainerAppResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEdgeContainerApp',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetEdgeContainerAppResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_edge_container_app_with_options_async(
+        self,
+        request: esa20240910_models.GetEdgeContainerAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetEdgeContainerAppResponse:
+        """
+        @summary 获取边缘容器应用信息
+        
+        @param request: GetEdgeContainerAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEdgeContainerAppResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEdgeContainerApp',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetEdgeContainerAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_edge_container_app(
+        self,
+        request: esa20240910_models.GetEdgeContainerAppRequest,
+    ) -> esa20240910_models.GetEdgeContainerAppResponse:
+        """
+        @summary 获取边缘容器应用信息
+        
+        @param request: GetEdgeContainerAppRequest
+        @return: GetEdgeContainerAppResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_edge_container_app_with_options(request, runtime)
+
+    async def get_edge_container_app_async(
+        self,
+        request: esa20240910_models.GetEdgeContainerAppRequest,
+    ) -> esa20240910_models.GetEdgeContainerAppResponse:
+        """
+        @summary 获取边缘容器应用信息
+        
+        @param request: GetEdgeContainerAppRequest
+        @return: GetEdgeContainerAppResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_edge_container_app_with_options_async(request, runtime)
+
+    def get_edge_container_app_status_with_options(
+        self,
+        request: esa20240910_models.GetEdgeContainerAppStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetEdgeContainerAppStatusResponse:
+        """
+        @summary 获取边缘容器应用的状态信息
+        
+        @param request: GetEdgeContainerAppStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEdgeContainerAppStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.publish_env):
+            query['PublishEnv'] = request.publish_env
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEdgeContainerAppStatus',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetEdgeContainerAppStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_edge_container_app_status_with_options_async(
+        self,
+        request: esa20240910_models.GetEdgeContainerAppStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetEdgeContainerAppStatusResponse:
+        """
+        @summary 获取边缘容器应用的状态信息
+        
+        @param request: GetEdgeContainerAppStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEdgeContainerAppStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.publish_env):
+            query['PublishEnv'] = request.publish_env
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEdgeContainerAppStatus',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetEdgeContainerAppStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_edge_container_app_status(
+        self,
+        request: esa20240910_models.GetEdgeContainerAppStatusRequest,
+    ) -> esa20240910_models.GetEdgeContainerAppStatusResponse:
+        """
+        @summary 获取边缘容器应用的状态信息
+        
+        @param request: GetEdgeContainerAppStatusRequest
+        @return: GetEdgeContainerAppStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_edge_container_app_status_with_options(request, runtime)
+
+    async def get_edge_container_app_status_async(
+        self,
+        request: esa20240910_models.GetEdgeContainerAppStatusRequest,
+    ) -> esa20240910_models.GetEdgeContainerAppStatusResponse:
+        """
+        @summary 获取边缘容器应用的状态信息
+        
+        @param request: GetEdgeContainerAppStatusRequest
+        @return: GetEdgeContainerAppStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_edge_container_app_status_with_options_async(request, runtime)
+
+    def get_edge_container_app_version_with_options(
+        self,
+        request: esa20240910_models.GetEdgeContainerAppVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetEdgeContainerAppVersionResponse:
+        """
+        @summary 获取边缘容器应用的某个版本信息
+        
+        @param request: GetEdgeContainerAppVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEdgeContainerAppVersionResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEdgeContainerAppVersion',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetEdgeContainerAppVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_edge_container_app_version_with_options_async(
+        self,
+        request: esa20240910_models.GetEdgeContainerAppVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetEdgeContainerAppVersionResponse:
+        """
+        @summary 获取边缘容器应用的某个版本信息
+        
+        @param request: GetEdgeContainerAppVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEdgeContainerAppVersionResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEdgeContainerAppVersion',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetEdgeContainerAppVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_edge_container_app_version(
+        self,
+        request: esa20240910_models.GetEdgeContainerAppVersionRequest,
+    ) -> esa20240910_models.GetEdgeContainerAppVersionResponse:
+        """
+        @summary 获取边缘容器应用的某个版本信息
+        
+        @param request: GetEdgeContainerAppVersionRequest
+        @return: GetEdgeContainerAppVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_edge_container_app_version_with_options(request, runtime)
+
+    async def get_edge_container_app_version_async(
+        self,
+        request: esa20240910_models.GetEdgeContainerAppVersionRequest,
+    ) -> esa20240910_models.GetEdgeContainerAppVersionResponse:
+        """
+        @summary 获取边缘容器应用的某个版本信息
+        
+        @param request: GetEdgeContainerAppVersionRequest
+        @return: GetEdgeContainerAppVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_edge_container_app_version_with_options_async(request, runtime)
+
+    def get_edge_container_deploy_regions_with_options(
+        self,
+        request: esa20240910_models.GetEdgeContainerDeployRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetEdgeContainerDeployRegionsResponse:
+        """
+        @summary 获取边缘容器应用部署区域
+        
+        @param request: GetEdgeContainerDeployRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEdgeContainerDeployRegionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEdgeContainerDeployRegions',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetEdgeContainerDeployRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_edge_container_deploy_regions_with_options_async(
+        self,
+        request: esa20240910_models.GetEdgeContainerDeployRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetEdgeContainerDeployRegionsResponse:
+        """
+        @summary 获取边缘容器应用部署区域
+        
+        @param request: GetEdgeContainerDeployRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEdgeContainerDeployRegionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEdgeContainerDeployRegions',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetEdgeContainerDeployRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_edge_container_deploy_regions(
+        self,
+        request: esa20240910_models.GetEdgeContainerDeployRegionsRequest,
+    ) -> esa20240910_models.GetEdgeContainerDeployRegionsResponse:
+        """
+        @summary 获取边缘容器应用部署区域
+        
+        @param request: GetEdgeContainerDeployRegionsRequest
+        @return: GetEdgeContainerDeployRegionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_edge_container_deploy_regions_with_options(request, runtime)
+
+    async def get_edge_container_deploy_regions_async(
+        self,
+        request: esa20240910_models.GetEdgeContainerDeployRegionsRequest,
+    ) -> esa20240910_models.GetEdgeContainerDeployRegionsResponse:
+        """
+        @summary 获取边缘容器应用部署区域
+        
+        @param request: GetEdgeContainerDeployRegionsRequest
+        @return: GetEdgeContainerDeployRegionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_edge_container_deploy_regions_with_options_async(request, runtime)
+
+    def get_edge_container_logs_with_options(
+        self,
+        request: esa20240910_models.GetEdgeContainerLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetEdgeContainerLogsResponse:
+        """
+        @summary 获取边缘容器日志信息
+        
+        @param request: GetEdgeContainerLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEdgeContainerLogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEdgeContainerLogs',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetEdgeContainerLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_edge_container_logs_with_options_async(
+        self,
+        request: esa20240910_models.GetEdgeContainerLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetEdgeContainerLogsResponse:
+        """
+        @summary 获取边缘容器日志信息
+        
+        @param request: GetEdgeContainerLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEdgeContainerLogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEdgeContainerLogs',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetEdgeContainerLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_edge_container_logs(
+        self,
+        request: esa20240910_models.GetEdgeContainerLogsRequest,
+    ) -> esa20240910_models.GetEdgeContainerLogsResponse:
+        """
+        @summary 获取边缘容器日志信息
+        
+        @param request: GetEdgeContainerLogsRequest
+        @return: GetEdgeContainerLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_edge_container_logs_with_options(request, runtime)
+
+    async def get_edge_container_logs_async(
+        self,
+        request: esa20240910_models.GetEdgeContainerLogsRequest,
+    ) -> esa20240910_models.GetEdgeContainerLogsResponse:
+        """
+        @summary 获取边缘容器日志信息
+        
+        @param request: GetEdgeContainerLogsRequest
+        @return: GetEdgeContainerLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_edge_container_logs_with_options_async(request, runtime)
+
+    def get_edge_container_staging_deploy_status_with_options(
+        self,
+        request: esa20240910_models.GetEdgeContainerStagingDeployStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetEdgeContainerStagingDeployStatusResponse:
+        """
+        @summary 获取应用测试环境部署状态
+        
+        @param request: GetEdgeContainerStagingDeployStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEdgeContainerStagingDeployStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEdgeContainerStagingDeployStatus',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetEdgeContainerStagingDeployStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_edge_container_staging_deploy_status_with_options_async(
+        self,
+        request: esa20240910_models.GetEdgeContainerStagingDeployStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetEdgeContainerStagingDeployStatusResponse:
+        """
+        @summary 获取应用测试环境部署状态
+        
+        @param request: GetEdgeContainerStagingDeployStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEdgeContainerStagingDeployStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEdgeContainerStagingDeployStatus',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetEdgeContainerStagingDeployStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_edge_container_staging_deploy_status(
+        self,
+        request: esa20240910_models.GetEdgeContainerStagingDeployStatusRequest,
+    ) -> esa20240910_models.GetEdgeContainerStagingDeployStatusResponse:
+        """
+        @summary 获取应用测试环境部署状态
+        
+        @param request: GetEdgeContainerStagingDeployStatusRequest
+        @return: GetEdgeContainerStagingDeployStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_edge_container_staging_deploy_status_with_options(request, runtime)
+
+    async def get_edge_container_staging_deploy_status_async(
+        self,
+        request: esa20240910_models.GetEdgeContainerStagingDeployStatusRequest,
+    ) -> esa20240910_models.GetEdgeContainerStagingDeployStatusResponse:
+        """
+        @summary 获取应用测试环境部署状态
+        
+        @param request: GetEdgeContainerStagingDeployStatusRequest
+        @return: GetEdgeContainerStagingDeployStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_edge_container_staging_deploy_status_with_options_async(request, runtime)
+
+    def get_edge_container_terminal_with_options(
+        self,
+        request: esa20240910_models.GetEdgeContainerTerminalRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetEdgeContainerTerminalResponse:
+        """
+        @summary 获取边缘容器应用终端信息
+        
+        @param request: GetEdgeContainerTerminalRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEdgeContainerTerminalResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEdgeContainerTerminal',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetEdgeContainerTerminalResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_edge_container_terminal_with_options_async(
+        self,
+        request: esa20240910_models.GetEdgeContainerTerminalRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetEdgeContainerTerminalResponse:
+        """
+        @summary 获取边缘容器应用终端信息
+        
+        @param request: GetEdgeContainerTerminalRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEdgeContainerTerminalResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEdgeContainerTerminal',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetEdgeContainerTerminalResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_edge_container_terminal(
+        self,
+        request: esa20240910_models.GetEdgeContainerTerminalRequest,
+    ) -> esa20240910_models.GetEdgeContainerTerminalResponse:
+        """
+        @summary 获取边缘容器应用终端信息
+        
+        @param request: GetEdgeContainerTerminalRequest
+        @return: GetEdgeContainerTerminalResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_edge_container_terminal_with_options(request, runtime)
+
+    async def get_edge_container_terminal_async(
+        self,
+        request: esa20240910_models.GetEdgeContainerTerminalRequest,
+    ) -> esa20240910_models.GetEdgeContainerTerminalResponse:
+        """
+        @summary 获取边缘容器应用终端信息
+        
+        @param request: GetEdgeContainerTerminalRequest
+        @return: GetEdgeContainerTerminalResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_edge_container_terminal_with_options_async(request, runtime)
+
     def get_er_service_with_options(
         self,
         request: esa20240910_models.GetErServiceRequest,
@@ -10248,6 +11576,98 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_edge_container_app_records_with_options_async(request, runtime)
+
+    def list_edge_container_app_versions_with_options(
+        self,
+        request: esa20240910_models.ListEdgeContainerAppVersionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListEdgeContainerAppVersionsResponse:
+        """
+        @summary 获取边缘容器应用的全部版本信息
+        
+        @param request: ListEdgeContainerAppVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEdgeContainerAppVersionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEdgeContainerAppVersions',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListEdgeContainerAppVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_edge_container_app_versions_with_options_async(
+        self,
+        request: esa20240910_models.ListEdgeContainerAppVersionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListEdgeContainerAppVersionsResponse:
+        """
+        @summary 获取边缘容器应用的全部版本信息
+        
+        @param request: ListEdgeContainerAppVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEdgeContainerAppVersionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEdgeContainerAppVersions',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListEdgeContainerAppVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_edge_container_app_versions(
+        self,
+        request: esa20240910_models.ListEdgeContainerAppVersionsRequest,
+    ) -> esa20240910_models.ListEdgeContainerAppVersionsResponse:
+        """
+        @summary 获取边缘容器应用的全部版本信息
+        
+        @param request: ListEdgeContainerAppVersionsRequest
+        @return: ListEdgeContainerAppVersionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_edge_container_app_versions_with_options(request, runtime)
+
+    async def list_edge_container_app_versions_async(
+        self,
+        request: esa20240910_models.ListEdgeContainerAppVersionsRequest,
+    ) -> esa20240910_models.ListEdgeContainerAppVersionsResponse:
+        """
+        @summary 获取边缘容器应用的全部版本信息
+        
+        @param request: ListEdgeContainerAppVersionsRequest
+        @return: ListEdgeContainerAppVersionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_edge_container_app_versions_with_options_async(request, runtime)
 
     def list_edge_container_apps_with_options(
         self,
@@ -13395,6 +14815,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.preload_caches_with_options_async(request, runtime)
 
+    def publish_edge_container_app_version_with_options(
+        self,
+        tmp_req: esa20240910_models.PublishEdgeContainerAppVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.PublishEdgeContainerAppVersionResponse:
+        """
+        @summary 发布边缘容器应用的某个版本
+        
+        @param tmp_req: PublishEdgeContainerAppVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PublishEdgeContainerAppVersionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.PublishEdgeContainerAppVersionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.regions):
+            request.regions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.regions, 'Regions', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.full_release):
+            query['FullRelease'] = request.full_release
+        if not UtilClient.is_unset(request.publish_type):
+            query['PublishType'] = request.publish_type
+        if not UtilClient.is_unset(request.regions_shrink):
+            query['Regions'] = request.regions_shrink
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.percentage):
+            body['Percentage'] = request.percentage
+        if not UtilClient.is_unset(request.publish_env):
+            body['PublishEnv'] = request.publish_env
+        if not UtilClient.is_unset(request.remarks):
+            body['Remarks'] = request.remarks
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PublishEdgeContainerAppVersion',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.PublishEdgeContainerAppVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def publish_edge_container_app_version_with_options_async(
+        self,
+        tmp_req: esa20240910_models.PublishEdgeContainerAppVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.PublishEdgeContainerAppVersionResponse:
+        """
+        @summary 发布边缘容器应用的某个版本
+        
+        @param tmp_req: PublishEdgeContainerAppVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PublishEdgeContainerAppVersionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.PublishEdgeContainerAppVersionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.regions):
+            request.regions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.regions, 'Regions', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.full_release):
+            query['FullRelease'] = request.full_release
+        if not UtilClient.is_unset(request.publish_type):
+            query['PublishType'] = request.publish_type
+        if not UtilClient.is_unset(request.regions_shrink):
+            query['Regions'] = request.regions_shrink
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.percentage):
+            body['Percentage'] = request.percentage
+        if not UtilClient.is_unset(request.publish_env):
+            body['PublishEnv'] = request.publish_env
+        if not UtilClient.is_unset(request.remarks):
+            body['Remarks'] = request.remarks
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PublishEdgeContainerAppVersion',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.PublishEdgeContainerAppVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def publish_edge_container_app_version(
+        self,
+        request: esa20240910_models.PublishEdgeContainerAppVersionRequest,
+    ) -> esa20240910_models.PublishEdgeContainerAppVersionResponse:
+        """
+        @summary 发布边缘容器应用的某个版本
+        
+        @param request: PublishEdgeContainerAppVersionRequest
+        @return: PublishEdgeContainerAppVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.publish_edge_container_app_version_with_options(request, runtime)
+
+    async def publish_edge_container_app_version_async(
+        self,
+        request: esa20240910_models.PublishEdgeContainerAppVersionRequest,
+    ) -> esa20240910_models.PublishEdgeContainerAppVersionResponse:
+        """
+        @summary 发布边缘容器应用的某个版本
+        
+        @param request: PublishEdgeContainerAppVersionRequest
+        @return: PublishEdgeContainerAppVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.publish_edge_container_app_version_with_options_async(request, runtime)
+
     def publish_routine_code_version_with_options(
         self,
         tmp_req: esa20240910_models.PublishRoutineCodeVersionRequest,
@@ -14003,6 +15563,102 @@ class Client(OpenApiClient):
         put_kv_with_high_capacity_resp = await self.put_kv_with_high_capacity_with_options_async(put_kv_with_high_capacity_req, runtime)
         return put_kv_with_high_capacity_resp
 
+    def rebuild_edge_container_app_staging_env_with_options(
+        self,
+        request: esa20240910_models.RebuildEdgeContainerAppStagingEnvRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.RebuildEdgeContainerAppStagingEnvResponse:
+        """
+        @summary 重建边缘容器应用的测试环境
+        
+        @param request: RebuildEdgeContainerAppStagingEnvRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebuildEdgeContainerAppStagingEnvResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RebuildEdgeContainerAppStagingEnv',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.RebuildEdgeContainerAppStagingEnvResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def rebuild_edge_container_app_staging_env_with_options_async(
+        self,
+        request: esa20240910_models.RebuildEdgeContainerAppStagingEnvRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.RebuildEdgeContainerAppStagingEnvResponse:
+        """
+        @summary 重建边缘容器应用的测试环境
+        
+        @param request: RebuildEdgeContainerAppStagingEnvRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebuildEdgeContainerAppStagingEnvResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RebuildEdgeContainerAppStagingEnv',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.RebuildEdgeContainerAppStagingEnvResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def rebuild_edge_container_app_staging_env(
+        self,
+        request: esa20240910_models.RebuildEdgeContainerAppStagingEnvRequest,
+    ) -> esa20240910_models.RebuildEdgeContainerAppStagingEnvResponse:
+        """
+        @summary 重建边缘容器应用的测试环境
+        
+        @param request: RebuildEdgeContainerAppStagingEnvRequest
+        @return: RebuildEdgeContainerAppStagingEnvResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.rebuild_edge_container_app_staging_env_with_options(request, runtime)
+
+    async def rebuild_edge_container_app_staging_env_async(
+        self,
+        request: esa20240910_models.RebuildEdgeContainerAppStagingEnvRequest,
+    ) -> esa20240910_models.RebuildEdgeContainerAppStagingEnvResponse:
+        """
+        @summary 重建边缘容器应用的测试环境
+        
+        @param request: RebuildEdgeContainerAppStagingEnvRequest
+        @return: RebuildEdgeContainerAppStagingEnvResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.rebuild_edge_container_app_staging_env_with_options_async(request, runtime)
+
     def reset_scheduled_preload_job_with_options(
         self,
         request: esa20240910_models.ResetScheduledPreloadJobRequest,
@@ -14098,6 +15754,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.reset_scheduled_preload_job_with_options_async(request, runtime)
+
+    def rollback_edge_container_app_version_with_options(
+        self,
+        request: esa20240910_models.RollbackEdgeContainerAppVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.RollbackEdgeContainerAppVersionResponse:
+        """
+        @summary 回滚边缘容器应用的某个版本
+        
+        @param request: RollbackEdgeContainerAppVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RollbackEdgeContainerAppVersionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.remarks):
+            body['Remarks'] = request.remarks
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RollbackEdgeContainerAppVersion',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.RollbackEdgeContainerAppVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def rollback_edge_container_app_version_with_options_async(
+        self,
+        request: esa20240910_models.RollbackEdgeContainerAppVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.RollbackEdgeContainerAppVersionResponse:
+        """
+        @summary 回滚边缘容器应用的某个版本
+        
+        @param request: RollbackEdgeContainerAppVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RollbackEdgeContainerAppVersionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.remarks):
+            body['Remarks'] = request.remarks
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RollbackEdgeContainerAppVersion',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.RollbackEdgeContainerAppVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def rollback_edge_container_app_version(
+        self,
+        request: esa20240910_models.RollbackEdgeContainerAppVersionRequest,
+    ) -> esa20240910_models.RollbackEdgeContainerAppVersionResponse:
+        """
+        @summary 回滚边缘容器应用的某个版本
+        
+        @param request: RollbackEdgeContainerAppVersionRequest
+        @return: RollbackEdgeContainerAppVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.rollback_edge_container_app_version_with_options(request, runtime)
+
+    async def rollback_edge_container_app_version_async(
+        self,
+        request: esa20240910_models.RollbackEdgeContainerAppVersionRequest,
+    ) -> esa20240910_models.RollbackEdgeContainerAppVersionResponse:
+        """
+        @summary 回滚边缘容器应用的某个版本
+        
+        @param request: RollbackEdgeContainerAppVersionRequest
+        @return: RollbackEdgeContainerAppVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.rollback_edge_container_app_version_with_options_async(request, runtime)
 
     def set_certificate_with_options(
         self,

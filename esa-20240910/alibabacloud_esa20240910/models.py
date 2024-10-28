@@ -4845,6 +4845,748 @@ class CreateCustomScenePolicyResponse(TeaModel):
         return self
 
 
+class CreateEdgeContainerAppRequest(TeaModel):
+    def __init__(
+        self,
+        health_check_fail_times: int = None,
+        health_check_host: str = None,
+        health_check_http_code: str = None,
+        health_check_interval: int = None,
+        health_check_method: str = None,
+        health_check_port: int = None,
+        health_check_succ_times: int = None,
+        health_check_timeout: int = None,
+        health_check_type: str = None,
+        health_check_uri: str = None,
+        name: str = None,
+        remarks: str = None,
+        service_port: int = None,
+        target_port: int = None,
+    ):
+        self.health_check_fail_times = health_check_fail_times
+        self.health_check_host = health_check_host
+        self.health_check_http_code = health_check_http_code
+        self.health_check_interval = health_check_interval
+        self.health_check_method = health_check_method
+        self.health_check_port = health_check_port
+        self.health_check_succ_times = health_check_succ_times
+        self.health_check_timeout = health_check_timeout
+        self.health_check_type = health_check_type
+        self.health_check_uri = health_check_uri
+        # This parameter is required.
+        self.name = name
+        self.remarks = remarks
+        # This parameter is required.
+        self.service_port = service_port
+        # This parameter is required.
+        self.target_port = target_port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.health_check_fail_times is not None:
+            result['HealthCheckFailTimes'] = self.health_check_fail_times
+        if self.health_check_host is not None:
+            result['HealthCheckHost'] = self.health_check_host
+        if self.health_check_http_code is not None:
+            result['HealthCheckHttpCode'] = self.health_check_http_code
+        if self.health_check_interval is not None:
+            result['HealthCheckInterval'] = self.health_check_interval
+        if self.health_check_method is not None:
+            result['HealthCheckMethod'] = self.health_check_method
+        if self.health_check_port is not None:
+            result['HealthCheckPort'] = self.health_check_port
+        if self.health_check_succ_times is not None:
+            result['HealthCheckSuccTimes'] = self.health_check_succ_times
+        if self.health_check_timeout is not None:
+            result['HealthCheckTimeout'] = self.health_check_timeout
+        if self.health_check_type is not None:
+            result['HealthCheckType'] = self.health_check_type
+        if self.health_check_uri is not None:
+            result['HealthCheckURI'] = self.health_check_uri
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.remarks is not None:
+            result['Remarks'] = self.remarks
+        if self.service_port is not None:
+            result['ServicePort'] = self.service_port
+        if self.target_port is not None:
+            result['TargetPort'] = self.target_port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HealthCheckFailTimes') is not None:
+            self.health_check_fail_times = m.get('HealthCheckFailTimes')
+        if m.get('HealthCheckHost') is not None:
+            self.health_check_host = m.get('HealthCheckHost')
+        if m.get('HealthCheckHttpCode') is not None:
+            self.health_check_http_code = m.get('HealthCheckHttpCode')
+        if m.get('HealthCheckInterval') is not None:
+            self.health_check_interval = m.get('HealthCheckInterval')
+        if m.get('HealthCheckMethod') is not None:
+            self.health_check_method = m.get('HealthCheckMethod')
+        if m.get('HealthCheckPort') is not None:
+            self.health_check_port = m.get('HealthCheckPort')
+        if m.get('HealthCheckSuccTimes') is not None:
+            self.health_check_succ_times = m.get('HealthCheckSuccTimes')
+        if m.get('HealthCheckTimeout') is not None:
+            self.health_check_timeout = m.get('HealthCheckTimeout')
+        if m.get('HealthCheckType') is not None:
+            self.health_check_type = m.get('HealthCheckType')
+        if m.get('HealthCheckURI') is not None:
+            self.health_check_uri = m.get('HealthCheckURI')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Remarks') is not None:
+            self.remarks = m.get('Remarks')
+        if m.get('ServicePort') is not None:
+            self.service_port = m.get('ServicePort')
+        if m.get('TargetPort') is not None:
+            self.target_port = m.get('TargetPort')
+        return self
+
+
+class CreateEdgeContainerAppResponseBody(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        request_id: str = None,
+    ):
+        self.app_id = app_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateEdgeContainerAppResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateEdgeContainerAppResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateEdgeContainerAppResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateEdgeContainerAppRecordRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        record_name: str = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.record_name = record_name
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.record_name is not None:
+            result['RecordName'] = self.record_name
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RecordName') is not None:
+            self.record_name = m.get('RecordName')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class CreateEdgeContainerAppRecordResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateEdgeContainerAppRecordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateEdgeContainerAppRecordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateEdgeContainerAppRecordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateEdgeContainerAppVersionRequestContainersACRImageInfo(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        instance_id: str = None,
+        is_enterprise_registry: bool = None,
+        region_id: str = None,
+        repo_id: str = None,
+        repo_name: str = None,
+        repo_namespace: str = None,
+        tag: str = None,
+        tag_url: str = None,
+    ):
+        self.domain = domain
+        self.instance_id = instance_id
+        self.is_enterprise_registry = is_enterprise_registry
+        self.region_id = region_id
+        self.repo_id = repo_id
+        self.repo_name = repo_name
+        self.repo_namespace = repo_namespace
+        self.tag = tag
+        self.tag_url = tag_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.is_enterprise_registry is not None:
+            result['IsEnterpriseRegistry'] = self.is_enterprise_registry
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.repo_id is not None:
+            result['RepoId'] = self.repo_id
+        if self.repo_name is not None:
+            result['RepoName'] = self.repo_name
+        if self.repo_namespace is not None:
+            result['RepoNamespace'] = self.repo_namespace
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        if self.tag_url is not None:
+            result['TagUrl'] = self.tag_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IsEnterpriseRegistry') is not None:
+            self.is_enterprise_registry = m.get('IsEnterpriseRegistry')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RepoId') is not None:
+            self.repo_id = m.get('RepoId')
+        if m.get('RepoName') is not None:
+            self.repo_name = m.get('RepoName')
+        if m.get('RepoNamespace') is not None:
+            self.repo_namespace = m.get('RepoNamespace')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        if m.get('TagUrl') is not None:
+            self.tag_url = m.get('TagUrl')
+        return self
+
+
+class CreateEdgeContainerAppVersionRequestContainersProbeContent(TeaModel):
+    def __init__(
+        self,
+        command: str = None,
+        failure_threshold: int = None,
+        host: str = None,
+        http_headers: str = None,
+        initial_delay_seconds: int = None,
+        path: str = None,
+        period_seconds: int = None,
+        port: int = None,
+        scheme: str = None,
+        success_threshold: int = None,
+        timeout_seconds: int = None,
+    ):
+        self.command = command
+        self.failure_threshold = failure_threshold
+        self.host = host
+        self.http_headers = http_headers
+        self.initial_delay_seconds = initial_delay_seconds
+        self.path = path
+        self.period_seconds = period_seconds
+        self.port = port
+        self.scheme = scheme
+        self.success_threshold = success_threshold
+        self.timeout_seconds = timeout_seconds
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.command is not None:
+            result['Command'] = self.command
+        if self.failure_threshold is not None:
+            result['FailureThreshold'] = self.failure_threshold
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.http_headers is not None:
+            result['HttpHeaders'] = self.http_headers
+        if self.initial_delay_seconds is not None:
+            result['InitialDelaySeconds'] = self.initial_delay_seconds
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.period_seconds is not None:
+            result['PeriodSeconds'] = self.period_seconds
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.scheme is not None:
+            result['Scheme'] = self.scheme
+        if self.success_threshold is not None:
+            result['SuccessThreshold'] = self.success_threshold
+        if self.timeout_seconds is not None:
+            result['TimeoutSeconds'] = self.timeout_seconds
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Command') is not None:
+            self.command = m.get('Command')
+        if m.get('FailureThreshold') is not None:
+            self.failure_threshold = m.get('FailureThreshold')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('HttpHeaders') is not None:
+            self.http_headers = m.get('HttpHeaders')
+        if m.get('InitialDelaySeconds') is not None:
+            self.initial_delay_seconds = m.get('InitialDelaySeconds')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('PeriodSeconds') is not None:
+            self.period_seconds = m.get('PeriodSeconds')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Scheme') is not None:
+            self.scheme = m.get('Scheme')
+        if m.get('SuccessThreshold') is not None:
+            self.success_threshold = m.get('SuccessThreshold')
+        if m.get('TimeoutSeconds') is not None:
+            self.timeout_seconds = m.get('TimeoutSeconds')
+        return self
+
+
+class CreateEdgeContainerAppVersionRequestContainers(TeaModel):
+    def __init__(
+        self,
+        acrimage_info: CreateEdgeContainerAppVersionRequestContainersACRImageInfo = None,
+        args: str = None,
+        command: str = None,
+        env_variables: str = None,
+        image: str = None,
+        is_acrimage: bool = None,
+        name: str = None,
+        post_start: str = None,
+        pre_stop: str = None,
+        probe_content: CreateEdgeContainerAppVersionRequestContainersProbeContent = None,
+        probe_type: str = None,
+        spec: str = None,
+        storage: str = None,
+    ):
+        self.acrimage_info = acrimage_info
+        self.args = args
+        self.command = command
+        self.env_variables = env_variables
+        # This parameter is required.
+        self.image = image
+        # This parameter is required.
+        self.is_acrimage = is_acrimage
+        # This parameter is required.
+        self.name = name
+        self.post_start = post_start
+        self.pre_stop = pre_stop
+        # This parameter is required.
+        self.probe_content = probe_content
+        # This parameter is required.
+        self.probe_type = probe_type
+        # This parameter is required.
+        self.spec = spec
+        # This parameter is required.
+        self.storage = storage
+
+    def validate(self):
+        if self.acrimage_info:
+            self.acrimage_info.validate()
+        if self.probe_content:
+            self.probe_content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acrimage_info is not None:
+            result['ACRImageInfo'] = self.acrimage_info.to_map()
+        if self.args is not None:
+            result['Args'] = self.args
+        if self.command is not None:
+            result['Command'] = self.command
+        if self.env_variables is not None:
+            result['EnvVariables'] = self.env_variables
+        if self.image is not None:
+            result['Image'] = self.image
+        if self.is_acrimage is not None:
+            result['IsACRImage'] = self.is_acrimage
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.post_start is not None:
+            result['PostStart'] = self.post_start
+        if self.pre_stop is not None:
+            result['PreStop'] = self.pre_stop
+        if self.probe_content is not None:
+            result['ProbeContent'] = self.probe_content.to_map()
+        if self.probe_type is not None:
+            result['ProbeType'] = self.probe_type
+        if self.spec is not None:
+            result['Spec'] = self.spec
+        if self.storage is not None:
+            result['Storage'] = self.storage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ACRImageInfo') is not None:
+            temp_model = CreateEdgeContainerAppVersionRequestContainersACRImageInfo()
+            self.acrimage_info = temp_model.from_map(m['ACRImageInfo'])
+        if m.get('Args') is not None:
+            self.args = m.get('Args')
+        if m.get('Command') is not None:
+            self.command = m.get('Command')
+        if m.get('EnvVariables') is not None:
+            self.env_variables = m.get('EnvVariables')
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+        if m.get('IsACRImage') is not None:
+            self.is_acrimage = m.get('IsACRImage')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PostStart') is not None:
+            self.post_start = m.get('PostStart')
+        if m.get('PreStop') is not None:
+            self.pre_stop = m.get('PreStop')
+        if m.get('ProbeContent') is not None:
+            temp_model = CreateEdgeContainerAppVersionRequestContainersProbeContent()
+            self.probe_content = temp_model.from_map(m['ProbeContent'])
+        if m.get('ProbeType') is not None:
+            self.probe_type = m.get('ProbeType')
+        if m.get('Spec') is not None:
+            self.spec = m.get('Spec')
+        if m.get('Storage') is not None:
+            self.storage = m.get('Storage')
+        return self
+
+
+class CreateEdgeContainerAppVersionRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        containers: List[CreateEdgeContainerAppVersionRequestContainers] = None,
+        name: str = None,
+        remarks: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.containers = containers
+        # This parameter is required.
+        self.name = name
+        self.remarks = remarks
+
+    def validate(self):
+        if self.containers:
+            for k in self.containers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        result['Containers'] = []
+        if self.containers is not None:
+            for k in self.containers:
+                result['Containers'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.remarks is not None:
+            result['Remarks'] = self.remarks
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        self.containers = []
+        if m.get('Containers') is not None:
+            for k in m.get('Containers'):
+                temp_model = CreateEdgeContainerAppVersionRequestContainers()
+                self.containers.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Remarks') is not None:
+            self.remarks = m.get('Remarks')
+        return self
+
+
+class CreateEdgeContainerAppVersionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        containers_shrink: str = None,
+        name: str = None,
+        remarks: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.containers_shrink = containers_shrink
+        # This parameter is required.
+        self.name = name
+        self.remarks = remarks
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.containers_shrink is not None:
+            result['Containers'] = self.containers_shrink
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.remarks is not None:
+            result['Remarks'] = self.remarks
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Containers') is not None:
+            self.containers_shrink = m.get('Containers')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Remarks') is not None:
+            self.remarks = m.get('Remarks')
+        return self
+
+
+class CreateEdgeContainerAppVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        version_id: str = None,
+    ):
+        self.request_id = request_id
+        self.version_id = version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
+        return self
+
+
+class CreateEdgeContainerAppVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateEdgeContainerAppVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateEdgeContainerAppVersionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateKvNamespaceRequest(TeaModel):
     def __init__(
         self,
@@ -9313,6 +10055,321 @@ class DeleteCustomScenePolicyResponse(TeaModel):
         return self
 
 
+class DeleteEdgeContainerAppRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class DeleteEdgeContainerAppResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        state: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
+class DeleteEdgeContainerAppResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteEdgeContainerAppResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteEdgeContainerAppResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteEdgeContainerAppRecordRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        record_name: str = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.record_name = record_name
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.record_name is not None:
+            result['RecordName'] = self.record_name
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RecordName') is not None:
+            self.record_name = m.get('RecordName')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class DeleteEdgeContainerAppRecordResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteEdgeContainerAppRecordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteEdgeContainerAppRecordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteEdgeContainerAppRecordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteEdgeContainerAppVersionRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        version_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.version_id = version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
+        return self
+
+
+class DeleteEdgeContainerAppVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteEdgeContainerAppVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteEdgeContainerAppVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteEdgeContainerAppVersionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteKvRequest(TeaModel):
     def __init__(
         self,
@@ -13147,6 +14204,1536 @@ class GetCacheReserveSpecificationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetCacheReserveSpecificationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetEdgeContainerAppRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class GetEdgeContainerAppResponseBodyAppHealthCheck(TeaModel):
+    def __init__(
+        self,
+        fail_times: int = None,
+        host: str = None,
+        http_code: str = None,
+        interval: int = None,
+        method: str = None,
+        port: int = None,
+        succ_times: int = None,
+        timeout: int = None,
+        type: str = None,
+        uri: str = None,
+    ):
+        self.fail_times = fail_times
+        self.host = host
+        self.http_code = http_code
+        self.interval = interval
+        self.method = method
+        self.port = port
+        self.succ_times = succ_times
+        self.timeout = timeout
+        self.type = type
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fail_times is not None:
+            result['FailTimes'] = self.fail_times
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.http_code is not None:
+            result['HttpCode'] = self.http_code
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.method is not None:
+            result['Method'] = self.method
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.succ_times is not None:
+            result['SuccTimes'] = self.succ_times
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.uri is not None:
+            result['Uri'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailTimes') is not None:
+            self.fail_times = m.get('FailTimes')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('HttpCode') is not None:
+            self.http_code = m.get('HttpCode')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('Method') is not None:
+            self.method = m.get('Method')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('SuccTimes') is not None:
+            self.succ_times = m.get('SuccTimes')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
+        return self
+
+
+class GetEdgeContainerAppResponseBodyApp(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        create_time: str = None,
+        domain_name: str = None,
+        gateway_type: str = None,
+        health_check: GetEdgeContainerAppResponseBodyAppHealthCheck = None,
+        name: str = None,
+        quic_cid: str = None,
+        remarks: str = None,
+        service_port: int = None,
+        status: str = None,
+        target_port: int = None,
+        update_time: str = None,
+        version_count: int = None,
+    ):
+        self.app_id = app_id
+        self.create_time = create_time
+        self.domain_name = domain_name
+        self.gateway_type = gateway_type
+        self.health_check = health_check
+        self.name = name
+        self.quic_cid = quic_cid
+        self.remarks = remarks
+        self.service_port = service_port
+        self.status = status
+        self.target_port = target_port
+        self.update_time = update_time
+        self.version_count = version_count
+
+    def validate(self):
+        if self.health_check:
+            self.health_check.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.gateway_type is not None:
+            result['GatewayType'] = self.gateway_type
+        if self.health_check is not None:
+            result['HealthCheck'] = self.health_check.to_map()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.quic_cid is not None:
+            result['QuicCid'] = self.quic_cid
+        if self.remarks is not None:
+            result['Remarks'] = self.remarks
+        if self.service_port is not None:
+            result['ServicePort'] = self.service_port
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.target_port is not None:
+            result['TargetPort'] = self.target_port
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.version_count is not None:
+            result['VersionCount'] = self.version_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('GatewayType') is not None:
+            self.gateway_type = m.get('GatewayType')
+        if m.get('HealthCheck') is not None:
+            temp_model = GetEdgeContainerAppResponseBodyAppHealthCheck()
+            self.health_check = temp_model.from_map(m['HealthCheck'])
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('QuicCid') is not None:
+            self.quic_cid = m.get('QuicCid')
+        if m.get('Remarks') is not None:
+            self.remarks = m.get('Remarks')
+        if m.get('ServicePort') is not None:
+            self.service_port = m.get('ServicePort')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TargetPort') is not None:
+            self.target_port = m.get('TargetPort')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('VersionCount') is not None:
+            self.version_count = m.get('VersionCount')
+        return self
+
+
+class GetEdgeContainerAppResponseBody(TeaModel):
+    def __init__(
+        self,
+        app: GetEdgeContainerAppResponseBodyApp = None,
+        request_id: str = None,
+    ):
+        self.app = app
+        self.request_id = request_id
+
+    def validate(self):
+        if self.app:
+            self.app.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app is not None:
+            result['App'] = self.app.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('App') is not None:
+            temp_model = GetEdgeContainerAppResponseBodyApp()
+            self.app = temp_model.from_map(m['App'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetEdgeContainerAppResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetEdgeContainerAppResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetEdgeContainerAppResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetEdgeContainerAppStatusRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        publish_env: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.publish_env = publish_env
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.publish_env is not None:
+            result['PublishEnv'] = self.publish_env
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('PublishEnv') is not None:
+            self.publish_env = m.get('PublishEnv')
+        return self
+
+
+class GetEdgeContainerAppStatusResponseBodyAppStatusRegions(TeaModel):
+    def __init__(
+        self,
+        region: List[str] = None,
+    ):
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region is not None:
+            result['Region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        return self
+
+
+class GetEdgeContainerAppStatusResponseBodyAppStatus(TeaModel):
+    def __init__(
+        self,
+        base_line_version: str = None,
+        deploy_status: str = None,
+        deploy_time: str = None,
+        deployed_version: str = None,
+        expect_percentage: int = None,
+        full_release: bool = None,
+        publish_env: str = None,
+        publish_percentage: int = None,
+        publish_status: str = None,
+        publish_time: str = None,
+        publish_type: str = None,
+        publishing_version: str = None,
+        regions: GetEdgeContainerAppStatusResponseBodyAppStatusRegions = None,
+        rollback_time: str = None,
+        un_deploy_time: str = None,
+    ):
+        self.base_line_version = base_line_version
+        self.deploy_status = deploy_status
+        self.deploy_time = deploy_time
+        self.deployed_version = deployed_version
+        self.expect_percentage = expect_percentage
+        self.full_release = full_release
+        self.publish_env = publish_env
+        self.publish_percentage = publish_percentage
+        self.publish_status = publish_status
+        self.publish_time = publish_time
+        self.publish_type = publish_type
+        self.publishing_version = publishing_version
+        self.regions = regions
+        self.rollback_time = rollback_time
+        self.un_deploy_time = un_deploy_time
+
+    def validate(self):
+        if self.regions:
+            self.regions.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.base_line_version is not None:
+            result['BaseLineVersion'] = self.base_line_version
+        if self.deploy_status is not None:
+            result['DeployStatus'] = self.deploy_status
+        if self.deploy_time is not None:
+            result['DeployTime'] = self.deploy_time
+        if self.deployed_version is not None:
+            result['DeployedVersion'] = self.deployed_version
+        if self.expect_percentage is not None:
+            result['ExpectPercentage'] = self.expect_percentage
+        if self.full_release is not None:
+            result['FullRelease'] = self.full_release
+        if self.publish_env is not None:
+            result['PublishEnv'] = self.publish_env
+        if self.publish_percentage is not None:
+            result['PublishPercentage'] = self.publish_percentage
+        if self.publish_status is not None:
+            result['PublishStatus'] = self.publish_status
+        if self.publish_time is not None:
+            result['PublishTime'] = self.publish_time
+        if self.publish_type is not None:
+            result['PublishType'] = self.publish_type
+        if self.publishing_version is not None:
+            result['PublishingVersion'] = self.publishing_version
+        if self.regions is not None:
+            result['Regions'] = self.regions.to_map()
+        if self.rollback_time is not None:
+            result['RollbackTime'] = self.rollback_time
+        if self.un_deploy_time is not None:
+            result['UnDeployTime'] = self.un_deploy_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaseLineVersion') is not None:
+            self.base_line_version = m.get('BaseLineVersion')
+        if m.get('DeployStatus') is not None:
+            self.deploy_status = m.get('DeployStatus')
+        if m.get('DeployTime') is not None:
+            self.deploy_time = m.get('DeployTime')
+        if m.get('DeployedVersion') is not None:
+            self.deployed_version = m.get('DeployedVersion')
+        if m.get('ExpectPercentage') is not None:
+            self.expect_percentage = m.get('ExpectPercentage')
+        if m.get('FullRelease') is not None:
+            self.full_release = m.get('FullRelease')
+        if m.get('PublishEnv') is not None:
+            self.publish_env = m.get('PublishEnv')
+        if m.get('PublishPercentage') is not None:
+            self.publish_percentage = m.get('PublishPercentage')
+        if m.get('PublishStatus') is not None:
+            self.publish_status = m.get('PublishStatus')
+        if m.get('PublishTime') is not None:
+            self.publish_time = m.get('PublishTime')
+        if m.get('PublishType') is not None:
+            self.publish_type = m.get('PublishType')
+        if m.get('PublishingVersion') is not None:
+            self.publishing_version = m.get('PublishingVersion')
+        if m.get('Regions') is not None:
+            temp_model = GetEdgeContainerAppStatusResponseBodyAppStatusRegions()
+            self.regions = temp_model.from_map(m['Regions'])
+        if m.get('RollbackTime') is not None:
+            self.rollback_time = m.get('RollbackTime')
+        if m.get('UnDeployTime') is not None:
+            self.un_deploy_time = m.get('UnDeployTime')
+        return self
+
+
+class GetEdgeContainerAppStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        app_status: GetEdgeContainerAppStatusResponseBodyAppStatus = None,
+        request_id: str = None,
+    ):
+        self.app_status = app_status
+        self.request_id = request_id
+
+    def validate(self):
+        if self.app_status:
+            self.app_status.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_status is not None:
+            result['AppStatus'] = self.app_status.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppStatus') is not None:
+            temp_model = GetEdgeContainerAppStatusResponseBodyAppStatus()
+            self.app_status = temp_model.from_map(m['AppStatus'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetEdgeContainerAppStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetEdgeContainerAppStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetEdgeContainerAppStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetEdgeContainerAppVersionRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        version_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.version_id = version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
+        return self
+
+
+class GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        instance_id: str = None,
+        is_enterprise_registry: bool = None,
+        region_id: str = None,
+        repo_id: str = None,
+        repo_name: str = None,
+        repo_namespace: str = None,
+        tag: str = None,
+        tag_url: str = None,
+    ):
+        self.domain = domain
+        self.instance_id = instance_id
+        self.is_enterprise_registry = is_enterprise_registry
+        self.region_id = region_id
+        self.repo_id = repo_id
+        self.repo_name = repo_name
+        self.repo_namespace = repo_namespace
+        self.tag = tag
+        self.tag_url = tag_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.is_enterprise_registry is not None:
+            result['IsEnterpriseRegistry'] = self.is_enterprise_registry
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.repo_id is not None:
+            result['RepoId'] = self.repo_id
+        if self.repo_name is not None:
+            result['RepoName'] = self.repo_name
+        if self.repo_namespace is not None:
+            result['RepoNamespace'] = self.repo_namespace
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        if self.tag_url is not None:
+            result['TagUrl'] = self.tag_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IsEnterpriseRegistry') is not None:
+            self.is_enterprise_registry = m.get('IsEnterpriseRegistry')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RepoId') is not None:
+            self.repo_id = m.get('RepoId')
+        if m.get('RepoName') is not None:
+            self.repo_name = m.get('RepoName')
+        if m.get('RepoNamespace') is not None:
+            self.repo_namespace = m.get('RepoNamespace')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        if m.get('TagUrl') is not None:
+            self.tag_url = m.get('TagUrl')
+        return self
+
+
+class GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent(TeaModel):
+    def __init__(
+        self,
+        command: str = None,
+        failure_threshold: int = None,
+        host: str = None,
+        http_headers: str = None,
+        initial_delay_seconds: int = None,
+        path: str = None,
+        period_seconds: int = None,
+        port: int = None,
+        scheme: str = None,
+        success_threshold: int = None,
+        timeout_seconds: int = None,
+    ):
+        self.command = command
+        self.failure_threshold = failure_threshold
+        self.host = host
+        self.http_headers = http_headers
+        self.initial_delay_seconds = initial_delay_seconds
+        self.path = path
+        self.period_seconds = period_seconds
+        self.port = port
+        self.scheme = scheme
+        self.success_threshold = success_threshold
+        self.timeout_seconds = timeout_seconds
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.command is not None:
+            result['Command'] = self.command
+        if self.failure_threshold is not None:
+            result['FailureThreshold'] = self.failure_threshold
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.http_headers is not None:
+            result['HttpHeaders'] = self.http_headers
+        if self.initial_delay_seconds is not None:
+            result['InitialDelaySeconds'] = self.initial_delay_seconds
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.period_seconds is not None:
+            result['PeriodSeconds'] = self.period_seconds
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.scheme is not None:
+            result['Scheme'] = self.scheme
+        if self.success_threshold is not None:
+            result['SuccessThreshold'] = self.success_threshold
+        if self.timeout_seconds is not None:
+            result['TimeoutSeconds'] = self.timeout_seconds
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Command') is not None:
+            self.command = m.get('Command')
+        if m.get('FailureThreshold') is not None:
+            self.failure_threshold = m.get('FailureThreshold')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('HttpHeaders') is not None:
+            self.http_headers = m.get('HttpHeaders')
+        if m.get('InitialDelaySeconds') is not None:
+            self.initial_delay_seconds = m.get('InitialDelaySeconds')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('PeriodSeconds') is not None:
+            self.period_seconds = m.get('PeriodSeconds')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Scheme') is not None:
+            self.scheme = m.get('Scheme')
+        if m.get('SuccessThreshold') is not None:
+            self.success_threshold = m.get('SuccessThreshold')
+        if m.get('TimeoutSeconds') is not None:
+            self.timeout_seconds = m.get('TimeoutSeconds')
+        return self
+
+
+class GetEdgeContainerAppVersionResponseBodyVersionContainers(TeaModel):
+    def __init__(
+        self,
+        acrimage_info: GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo = None,
+        args: str = None,
+        command: str = None,
+        env_variables: str = None,
+        image: str = None,
+        is_acrimage: bool = None,
+        name: str = None,
+        post_start: str = None,
+        pre_start: str = None,
+        pre_stop: str = None,
+        probe_content: GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent = None,
+        probe_type: str = None,
+        spec: str = None,
+        storage: str = None,
+    ):
+        self.acrimage_info = acrimage_info
+        self.args = args
+        self.command = command
+        self.env_variables = env_variables
+        self.image = image
+        self.is_acrimage = is_acrimage
+        self.name = name
+        self.post_start = post_start
+        self.pre_start = pre_start
+        self.pre_stop = pre_stop
+        self.probe_content = probe_content
+        self.probe_type = probe_type
+        self.spec = spec
+        self.storage = storage
+
+    def validate(self):
+        if self.acrimage_info:
+            self.acrimage_info.validate()
+        if self.probe_content:
+            self.probe_content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acrimage_info is not None:
+            result['ACRImageInfo'] = self.acrimage_info.to_map()
+        if self.args is not None:
+            result['Args'] = self.args
+        if self.command is not None:
+            result['Command'] = self.command
+        if self.env_variables is not None:
+            result['EnvVariables'] = self.env_variables
+        if self.image is not None:
+            result['Image'] = self.image
+        if self.is_acrimage is not None:
+            result['IsACRImage'] = self.is_acrimage
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.post_start is not None:
+            result['PostStart'] = self.post_start
+        if self.pre_start is not None:
+            result['PreStart'] = self.pre_start
+        if self.pre_stop is not None:
+            result['PreStop'] = self.pre_stop
+        if self.probe_content is not None:
+            result['ProbeContent'] = self.probe_content.to_map()
+        if self.probe_type is not None:
+            result['ProbeType'] = self.probe_type
+        if self.spec is not None:
+            result['Spec'] = self.spec
+        if self.storage is not None:
+            result['Storage'] = self.storage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ACRImageInfo') is not None:
+            temp_model = GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo()
+            self.acrimage_info = temp_model.from_map(m['ACRImageInfo'])
+        if m.get('Args') is not None:
+            self.args = m.get('Args')
+        if m.get('Command') is not None:
+            self.command = m.get('Command')
+        if m.get('EnvVariables') is not None:
+            self.env_variables = m.get('EnvVariables')
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+        if m.get('IsACRImage') is not None:
+            self.is_acrimage = m.get('IsACRImage')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PostStart') is not None:
+            self.post_start = m.get('PostStart')
+        if m.get('PreStart') is not None:
+            self.pre_start = m.get('PreStart')
+        if m.get('PreStop') is not None:
+            self.pre_stop = m.get('PreStop')
+        if m.get('ProbeContent') is not None:
+            temp_model = GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent()
+            self.probe_content = temp_model.from_map(m['ProbeContent'])
+        if m.get('ProbeType') is not None:
+            self.probe_type = m.get('ProbeType')
+        if m.get('Spec') is not None:
+            self.spec = m.get('Spec')
+        if m.get('Storage') is not None:
+            self.storage = m.get('Storage')
+        return self
+
+
+class GetEdgeContainerAppVersionResponseBodyVersion(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        containers: List[GetEdgeContainerAppVersionResponseBodyVersionContainers] = None,
+        create_time: str = None,
+        last_publish_time: str = None,
+        name: str = None,
+        publish_time: str = None,
+        remarks: str = None,
+        status: str = None,
+        update_time: str = None,
+        version_id: str = None,
+    ):
+        self.app_id = app_id
+        self.containers = containers
+        self.create_time = create_time
+        self.last_publish_time = last_publish_time
+        self.name = name
+        self.publish_time = publish_time
+        self.remarks = remarks
+        self.status = status
+        self.update_time = update_time
+        self.version_id = version_id
+
+    def validate(self):
+        if self.containers:
+            for k in self.containers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        result['Containers'] = []
+        if self.containers is not None:
+            for k in self.containers:
+                result['Containers'].append(k.to_map() if k else None)
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.last_publish_time is not None:
+            result['LastPublishTime'] = self.last_publish_time
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.publish_time is not None:
+            result['PublishTime'] = self.publish_time
+        if self.remarks is not None:
+            result['Remarks'] = self.remarks
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        self.containers = []
+        if m.get('Containers') is not None:
+            for k in m.get('Containers'):
+                temp_model = GetEdgeContainerAppVersionResponseBodyVersionContainers()
+                self.containers.append(temp_model.from_map(k))
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('LastPublishTime') is not None:
+            self.last_publish_time = m.get('LastPublishTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PublishTime') is not None:
+            self.publish_time = m.get('PublishTime')
+        if m.get('Remarks') is not None:
+            self.remarks = m.get('Remarks')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
+        return self
+
+
+class GetEdgeContainerAppVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        version: GetEdgeContainerAppVersionResponseBodyVersion = None,
+    ):
+        self.request_id = request_id
+        self.version = version
+
+    def validate(self):
+        if self.version:
+            self.version.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.version is not None:
+            result['Version'] = self.version.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Version') is not None:
+            temp_model = GetEdgeContainerAppVersionResponseBodyVersion()
+            self.version = temp_model.from_map(m['Version'])
+        return self
+
+
+class GetEdgeContainerAppVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetEdgeContainerAppVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetEdgeContainerAppVersionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetEdgeContainerDeployRegionsRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class GetEdgeContainerDeployRegionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        regions: List[str] = None,
+        request_id: str = None,
+    ):
+        self.regions = regions
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.regions is not None:
+            result['Regions'] = self.regions
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Regions') is not None:
+            self.regions = m.get('Regions')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetEdgeContainerDeployRegionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetEdgeContainerDeployRegionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetEdgeContainerDeployRegionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetEdgeContainerLogsRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        lines: int = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.lines = lines
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.lines is not None:
+            result['Lines'] = self.lines
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Lines') is not None:
+            self.lines = m.get('Lines')
+        return self
+
+
+class GetEdgeContainerLogsResponseBody(TeaModel):
+    def __init__(
+        self,
+        items: List[str] = None,
+        request_id: str = None,
+    ):
+        self.items = items
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.items is not None:
+            result['Items'] = self.items
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Items') is not None:
+            self.items = m.get('Items')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetEdgeContainerLogsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetEdgeContainerLogsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetEdgeContainerLogsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetEdgeContainerStagingDeployStatusRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class GetEdgeContainerStagingDeployStatusResponseBodyPodRestartState(TeaModel):
+    def __init__(
+        self,
+        last_terminated_reason: str = None,
+        restart_count: int = None,
+    ):
+        self.last_terminated_reason = last_terminated_reason
+        self.restart_count = restart_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.last_terminated_reason is not None:
+            result['LastTerminatedReason'] = self.last_terminated_reason
+        if self.restart_count is not None:
+            result['RestartCount'] = self.restart_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LastTerminatedReason') is not None:
+            self.last_terminated_reason = m.get('LastTerminatedReason')
+        if m.get('RestartCount') is not None:
+            self.restart_count = m.get('RestartCount')
+        return self
+
+
+class GetEdgeContainerStagingDeployStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        containers_ready: str = None,
+        creation_timestamp: str = None,
+        initialized: str = None,
+        phase: str = None,
+        pod_restart_state: GetEdgeContainerStagingDeployStatusResponseBodyPodRestartState = None,
+        ready: str = None,
+        request_id: str = None,
+        scheduled: str = None,
+        vips: List[str] = None,
+    ):
+        self.containers_ready = containers_ready
+        self.creation_timestamp = creation_timestamp
+        self.initialized = initialized
+        self.phase = phase
+        self.pod_restart_state = pod_restart_state
+        self.ready = ready
+        self.request_id = request_id
+        self.scheduled = scheduled
+        self.vips = vips
+
+    def validate(self):
+        if self.pod_restart_state:
+            self.pod_restart_state.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.containers_ready is not None:
+            result['ContainersReady'] = self.containers_ready
+        if self.creation_timestamp is not None:
+            result['CreationTimestamp'] = self.creation_timestamp
+        if self.initialized is not None:
+            result['Initialized'] = self.initialized
+        if self.phase is not None:
+            result['Phase'] = self.phase
+        if self.pod_restart_state is not None:
+            result['PodRestartState'] = self.pod_restart_state.to_map()
+        if self.ready is not None:
+            result['Ready'] = self.ready
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.scheduled is not None:
+            result['Scheduled'] = self.scheduled
+        if self.vips is not None:
+            result['VIPs'] = self.vips
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ContainersReady') is not None:
+            self.containers_ready = m.get('ContainersReady')
+        if m.get('CreationTimestamp') is not None:
+            self.creation_timestamp = m.get('CreationTimestamp')
+        if m.get('Initialized') is not None:
+            self.initialized = m.get('Initialized')
+        if m.get('Phase') is not None:
+            self.phase = m.get('Phase')
+        if m.get('PodRestartState') is not None:
+            temp_model = GetEdgeContainerStagingDeployStatusResponseBodyPodRestartState()
+            self.pod_restart_state = temp_model.from_map(m['PodRestartState'])
+        if m.get('Ready') is not None:
+            self.ready = m.get('Ready')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Scheduled') is not None:
+            self.scheduled = m.get('Scheduled')
+        if m.get('VIPs') is not None:
+            self.vips = m.get('VIPs')
+        return self
+
+
+class GetEdgeContainerStagingDeployStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetEdgeContainerStagingDeployStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetEdgeContainerStagingDeployStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetEdgeContainerTerminalRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class GetEdgeContainerTerminalResponseBody(TeaModel):
+    def __init__(
+        self,
+        cluster: str = None,
+        container: str = None,
+        namespace: str = None,
+        pod: str = None,
+        request_id: str = None,
+        session_id: str = None,
+        token: str = None,
+    ):
+        self.cluster = cluster
+        self.container = container
+        self.namespace = namespace
+        self.pod = pod
+        # Id of the request
+        self.request_id = request_id
+        self.session_id = session_id
+        self.token = token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster is not None:
+            result['Cluster'] = self.cluster
+        if self.container is not None:
+            result['Container'] = self.container
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.pod is not None:
+            result['Pod'] = self.pod
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.token is not None:
+            result['Token'] = self.token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cluster') is not None:
+            self.cluster = m.get('Cluster')
+        if m.get('Container') is not None:
+            self.container = m.get('Container')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('Pod') is not None:
+            self.pod = m.get('Pod')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        return self
+
+
+class GetEdgeContainerTerminalResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetEdgeContainerTerminalResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetEdgeContainerTerminalResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -18626,6 +21213,435 @@ class ListEdgeContainerAppRecordsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListEdgeContainerAppRecordsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListEdgeContainerAppVersionsRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        order_key: str = None,
+        order_type: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        search_key: str = None,
+        search_type: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.order_key = order_key
+        self.order_type = order_type
+        self.page_number = page_number
+        self.page_size = page_size
+        self.search_key = search_key
+        self.search_type = search_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.order_key is not None:
+            result['OrderKey'] = self.order_key
+        if self.order_type is not None:
+            result['OrderType'] = self.order_type
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.search_key is not None:
+            result['SearchKey'] = self.search_key
+        if self.search_type is not None:
+            result['SearchType'] = self.search_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('OrderKey') is not None:
+            self.order_key = m.get('OrderKey')
+        if m.get('OrderType') is not None:
+            self.order_type = m.get('OrderType')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SearchKey') is not None:
+            self.search_key = m.get('SearchKey')
+        if m.get('SearchType') is not None:
+            self.search_type = m.get('SearchType')
+        return self
+
+
+class ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent(TeaModel):
+    def __init__(
+        self,
+        command: str = None,
+        failure_threshold: int = None,
+        host: str = None,
+        http_headers: str = None,
+        initial_delay_seconds: int = None,
+        path: str = None,
+        period_seconds: int = None,
+        port: int = None,
+        scheme: str = None,
+        success_threshold: int = None,
+        timeout_seconds: int = None,
+    ):
+        self.command = command
+        self.failure_threshold = failure_threshold
+        self.host = host
+        self.http_headers = http_headers
+        self.initial_delay_seconds = initial_delay_seconds
+        self.path = path
+        self.period_seconds = period_seconds
+        self.port = port
+        self.scheme = scheme
+        self.success_threshold = success_threshold
+        self.timeout_seconds = timeout_seconds
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.command is not None:
+            result['Command'] = self.command
+        if self.failure_threshold is not None:
+            result['FailureThreshold'] = self.failure_threshold
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.http_headers is not None:
+            result['HttpHeaders'] = self.http_headers
+        if self.initial_delay_seconds is not None:
+            result['InitialDelaySeconds'] = self.initial_delay_seconds
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.period_seconds is not None:
+            result['PeriodSeconds'] = self.period_seconds
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.scheme is not None:
+            result['Scheme'] = self.scheme
+        if self.success_threshold is not None:
+            result['SuccessThreshold'] = self.success_threshold
+        if self.timeout_seconds is not None:
+            result['TimeoutSeconds'] = self.timeout_seconds
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Command') is not None:
+            self.command = m.get('Command')
+        if m.get('FailureThreshold') is not None:
+            self.failure_threshold = m.get('FailureThreshold')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('HttpHeaders') is not None:
+            self.http_headers = m.get('HttpHeaders')
+        if m.get('InitialDelaySeconds') is not None:
+            self.initial_delay_seconds = m.get('InitialDelaySeconds')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('PeriodSeconds') is not None:
+            self.period_seconds = m.get('PeriodSeconds')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Scheme') is not None:
+            self.scheme = m.get('Scheme')
+        if m.get('SuccessThreshold') is not None:
+            self.success_threshold = m.get('SuccessThreshold')
+        if m.get('TimeoutSeconds') is not None:
+            self.timeout_seconds = m.get('TimeoutSeconds')
+        return self
+
+
+class ListEdgeContainerAppVersionsResponseBodyVersionsContainers(TeaModel):
+    def __init__(
+        self,
+        args: str = None,
+        command: str = None,
+        env_variables: str = None,
+        image: str = None,
+        name: str = None,
+        post_start: str = None,
+        pre_start: str = None,
+        pre_stop: str = None,
+        probe_content: ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent = None,
+        probe_type: str = None,
+        spec: str = None,
+    ):
+        self.args = args
+        self.command = command
+        self.env_variables = env_variables
+        self.image = image
+        self.name = name
+        self.post_start = post_start
+        self.pre_start = pre_start
+        self.pre_stop = pre_stop
+        self.probe_content = probe_content
+        self.probe_type = probe_type
+        self.spec = spec
+
+    def validate(self):
+        if self.probe_content:
+            self.probe_content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.args is not None:
+            result['Args'] = self.args
+        if self.command is not None:
+            result['Command'] = self.command
+        if self.env_variables is not None:
+            result['EnvVariables'] = self.env_variables
+        if self.image is not None:
+            result['Image'] = self.image
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.post_start is not None:
+            result['PostStart'] = self.post_start
+        if self.pre_start is not None:
+            result['PreStart'] = self.pre_start
+        if self.pre_stop is not None:
+            result['PreStop'] = self.pre_stop
+        if self.probe_content is not None:
+            result['ProbeContent'] = self.probe_content.to_map()
+        if self.probe_type is not None:
+            result['ProbeType'] = self.probe_type
+        if self.spec is not None:
+            result['Spec'] = self.spec
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Args') is not None:
+            self.args = m.get('Args')
+        if m.get('Command') is not None:
+            self.command = m.get('Command')
+        if m.get('EnvVariables') is not None:
+            self.env_variables = m.get('EnvVariables')
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PostStart') is not None:
+            self.post_start = m.get('PostStart')
+        if m.get('PreStart') is not None:
+            self.pre_start = m.get('PreStart')
+        if m.get('PreStop') is not None:
+            self.pre_stop = m.get('PreStop')
+        if m.get('ProbeContent') is not None:
+            temp_model = ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent()
+            self.probe_content = temp_model.from_map(m['ProbeContent'])
+        if m.get('ProbeType') is not None:
+            self.probe_type = m.get('ProbeType')
+        if m.get('Spec') is not None:
+            self.spec = m.get('Spec')
+        return self
+
+
+class ListEdgeContainerAppVersionsResponseBodyVersions(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        containers: List[ListEdgeContainerAppVersionsResponseBodyVersionsContainers] = None,
+        create_time: str = None,
+        last_publish_time: str = None,
+        name: str = None,
+        publish_time: str = None,
+        remarks: str = None,
+        status: str = None,
+        update_time: str = None,
+        version_id: str = None,
+    ):
+        self.app_id = app_id
+        self.containers = containers
+        self.create_time = create_time
+        self.last_publish_time = last_publish_time
+        self.name = name
+        self.publish_time = publish_time
+        self.remarks = remarks
+        self.status = status
+        self.update_time = update_time
+        self.version_id = version_id
+
+    def validate(self):
+        if self.containers:
+            for k in self.containers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        result['Containers'] = []
+        if self.containers is not None:
+            for k in self.containers:
+                result['Containers'].append(k.to_map() if k else None)
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.last_publish_time is not None:
+            result['LastPublishTime'] = self.last_publish_time
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.publish_time is not None:
+            result['PublishTime'] = self.publish_time
+        if self.remarks is not None:
+            result['Remarks'] = self.remarks
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        self.containers = []
+        if m.get('Containers') is not None:
+            for k in m.get('Containers'):
+                temp_model = ListEdgeContainerAppVersionsResponseBodyVersionsContainers()
+                self.containers.append(temp_model.from_map(k))
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('LastPublishTime') is not None:
+            self.last_publish_time = m.get('LastPublishTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PublishTime') is not None:
+            self.publish_time = m.get('PublishTime')
+        if m.get('Remarks') is not None:
+            self.remarks = m.get('Remarks')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
+        return self
+
+
+class ListEdgeContainerAppVersionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+        versions: List[ListEdgeContainerAppVersionsResponseBodyVersions] = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+        self.versions = versions
+
+    def validate(self):
+        if self.versions:
+            for k in self.versions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['Versions'] = []
+        if self.versions is not None:
+            for k in self.versions:
+                result['Versions'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.versions = []
+        if m.get('Versions') is not None:
+            for k in m.get('Versions'):
+                temp_model = ListEdgeContainerAppVersionsResponseBodyVersions()
+                self.versions.append(temp_model.from_map(k))
+        return self
+
+
+class ListEdgeContainerAppVersionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListEdgeContainerAppVersionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListEdgeContainerAppVersionsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -26275,6 +29291,230 @@ class PreloadCachesResponse(TeaModel):
         return self
 
 
+class PublishEdgeContainerAppVersionRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        full_release: bool = None,
+        percentage: int = None,
+        publish_env: str = None,
+        publish_type: str = None,
+        regions: List[str] = None,
+        remarks: str = None,
+        start_time: str = None,
+        version_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.full_release = full_release
+        self.percentage = percentage
+        # This parameter is required.
+        self.publish_env = publish_env
+        self.publish_type = publish_type
+        self.regions = regions
+        self.remarks = remarks
+        self.start_time = start_time
+        # This parameter is required.
+        self.version_id = version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.full_release is not None:
+            result['FullRelease'] = self.full_release
+        if self.percentage is not None:
+            result['Percentage'] = self.percentage
+        if self.publish_env is not None:
+            result['PublishEnv'] = self.publish_env
+        if self.publish_type is not None:
+            result['PublishType'] = self.publish_type
+        if self.regions is not None:
+            result['Regions'] = self.regions
+        if self.remarks is not None:
+            result['Remarks'] = self.remarks
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('FullRelease') is not None:
+            self.full_release = m.get('FullRelease')
+        if m.get('Percentage') is not None:
+            self.percentage = m.get('Percentage')
+        if m.get('PublishEnv') is not None:
+            self.publish_env = m.get('PublishEnv')
+        if m.get('PublishType') is not None:
+            self.publish_type = m.get('PublishType')
+        if m.get('Regions') is not None:
+            self.regions = m.get('Regions')
+        if m.get('Remarks') is not None:
+            self.remarks = m.get('Remarks')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
+        return self
+
+
+class PublishEdgeContainerAppVersionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        full_release: bool = None,
+        percentage: int = None,
+        publish_env: str = None,
+        publish_type: str = None,
+        regions_shrink: str = None,
+        remarks: str = None,
+        start_time: str = None,
+        version_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.full_release = full_release
+        self.percentage = percentage
+        # This parameter is required.
+        self.publish_env = publish_env
+        self.publish_type = publish_type
+        self.regions_shrink = regions_shrink
+        self.remarks = remarks
+        self.start_time = start_time
+        # This parameter is required.
+        self.version_id = version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.full_release is not None:
+            result['FullRelease'] = self.full_release
+        if self.percentage is not None:
+            result['Percentage'] = self.percentage
+        if self.publish_env is not None:
+            result['PublishEnv'] = self.publish_env
+        if self.publish_type is not None:
+            result['PublishType'] = self.publish_type
+        if self.regions_shrink is not None:
+            result['Regions'] = self.regions_shrink
+        if self.remarks is not None:
+            result['Remarks'] = self.remarks
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('FullRelease') is not None:
+            self.full_release = m.get('FullRelease')
+        if m.get('Percentage') is not None:
+            self.percentage = m.get('Percentage')
+        if m.get('PublishEnv') is not None:
+            self.publish_env = m.get('PublishEnv')
+        if m.get('PublishType') is not None:
+            self.publish_type = m.get('PublishType')
+        if m.get('Regions') is not None:
+            self.regions_shrink = m.get('Regions')
+        if m.get('Remarks') is not None:
+            self.remarks = m.get('Remarks')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
+        return self
+
+
+class PublishEdgeContainerAppVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class PublishEdgeContainerAppVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PublishEdgeContainerAppVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PublishEdgeContainerAppVersionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class PublishRoutineCodeVersionRequest(TeaModel):
     def __init__(
         self,
@@ -26996,6 +30236,102 @@ class PutKvWithHighCapacityResponse(TeaModel):
         return self
 
 
+class RebuildEdgeContainerAppStagingEnvRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class RebuildEdgeContainerAppStagingEnvResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RebuildEdgeContainerAppStagingEnvResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RebuildEdgeContainerAppStagingEnvResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RebuildEdgeContainerAppStagingEnvResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ResetScheduledPreloadJobRequest(TeaModel):
     def __init__(
         self,
@@ -27172,6 +30508,115 @@ class ResetScheduledPreloadJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ResetScheduledPreloadJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RollbackEdgeContainerAppVersionRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        remarks: str = None,
+        version_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.remarks = remarks
+        # This parameter is required.
+        self.version_id = version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.remarks is not None:
+            result['Remarks'] = self.remarks
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Remarks') is not None:
+            self.remarks = m.get('Remarks')
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
+        return self
+
+
+class RollbackEdgeContainerAppVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RollbackEdgeContainerAppVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RollbackEdgeContainerAppVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RollbackEdgeContainerAppVersionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

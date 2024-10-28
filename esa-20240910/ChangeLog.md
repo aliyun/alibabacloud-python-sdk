@@ -1,3 +1,23 @@
+2024-10-28 Version: 2.4.0
+- Support API CreateEdgeContainerApp.
+- Support API CreateEdgeContainerAppRecord.
+- Support API CreateEdgeContainerAppVersion.
+- Support API DeleteEdgeContainerApp.
+- Support API DeleteEdgeContainerAppRecord.
+- Support API DeleteEdgeContainerAppVersion.
+- Support API GetEdgeContainerApp.
+- Support API GetEdgeContainerAppStatus.
+- Support API GetEdgeContainerAppVersion.
+- Support API GetEdgeContainerDeployRegions.
+- Support API GetEdgeContainerLogs.
+- Support API GetEdgeContainerStagingDeployStatus.
+- Support API GetEdgeContainerTerminal.
+- Support API ListEdgeContainerAppVersions.
+- Support API PublishEdgeContainerAppVersion.
+- Support API RebuildEdgeContainerAppStagingEnv.
+- Support API RollbackEdgeContainerAppVersion.
+
+
 2024-10-18 Version: 2.3.1
 - Update API CreateSiteDeliveryTask: update param DiscardRate.
 - Update API CreateSiteDeliveryTask: update param SiteId.
