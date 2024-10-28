@@ -1230,6 +1230,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_dir_quota_with_options_async(request, runtime)
 
+    def cancel_fileset_quota_with_options(
+        self,
+        request: nas20170626_models.CancelFilesetQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nas20170626_models.CancelFilesetQuotaResponse:
+        """
+        @summary 取消设置智能目录配额
+        
+        @param request: CancelFilesetQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelFilesetQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.fset_id):
+            query['FsetId'] = request.fset_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelFilesetQuota',
+            version='2017-06-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nas20170626_models.CancelFilesetQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_fileset_quota_with_options_async(
+        self,
+        request: nas20170626_models.CancelFilesetQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nas20170626_models.CancelFilesetQuotaResponse:
+        """
+        @summary 取消设置智能目录配额
+        
+        @param request: CancelFilesetQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelFilesetQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.fset_id):
+            query['FsetId'] = request.fset_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelFilesetQuota',
+            version='2017-06-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nas20170626_models.CancelFilesetQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_fileset_quota(
+        self,
+        request: nas20170626_models.CancelFilesetQuotaRequest,
+    ) -> nas20170626_models.CancelFilesetQuotaResponse:
+        """
+        @summary 取消设置智能目录配额
+        
+        @param request: CancelFilesetQuotaRequest
+        @return: CancelFilesetQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_fileset_quota_with_options(request, runtime)
+
+    async def cancel_fileset_quota_async(
+        self,
+        request: nas20170626_models.CancelFilesetQuotaRequest,
+    ) -> nas20170626_models.CancelFilesetQuotaResponse:
+        """
+        @summary 取消设置智能目录配额
+        
+        @param request: CancelFilesetQuotaRequest
+        @return: CancelFilesetQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_fileset_quota_with_options_async(request, runtime)
+
     def cancel_lifecycle_retrieve_job_with_options(
         self,
         request: nas20170626_models.CancelLifecycleRetrieveJobRequest,
@@ -12947,6 +13055,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.set_dir_quota_with_options_async(request, runtime)
+
+    def set_fileset_quota_with_options(
+        self,
+        request: nas20170626_models.SetFilesetQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nas20170626_models.SetFilesetQuotaResponse:
+        """
+        @summary 设置智能目录配额
+        
+        @param request: SetFilesetQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetFilesetQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.file_count_limit):
+            query['FileCountLimit'] = request.file_count_limit
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.fset_id):
+            query['FsetId'] = request.fset_id
+        if not UtilClient.is_unset(request.size_limit):
+            query['SizeLimit'] = request.size_limit
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetFilesetQuota',
+            version='2017-06-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nas20170626_models.SetFilesetQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_fileset_quota_with_options_async(
+        self,
+        request: nas20170626_models.SetFilesetQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nas20170626_models.SetFilesetQuotaResponse:
+        """
+        @summary 设置智能目录配额
+        
+        @param request: SetFilesetQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetFilesetQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.file_count_limit):
+            query['FileCountLimit'] = request.file_count_limit
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.fset_id):
+            query['FsetId'] = request.fset_id
+        if not UtilClient.is_unset(request.size_limit):
+            query['SizeLimit'] = request.size_limit
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetFilesetQuota',
+            version='2017-06-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nas20170626_models.SetFilesetQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_fileset_quota(
+        self,
+        request: nas20170626_models.SetFilesetQuotaRequest,
+    ) -> nas20170626_models.SetFilesetQuotaResponse:
+        """
+        @summary 设置智能目录配额
+        
+        @param request: SetFilesetQuotaRequest
+        @return: SetFilesetQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.set_fileset_quota_with_options(request, runtime)
+
+    async def set_fileset_quota_async(
+        self,
+        request: nas20170626_models.SetFilesetQuotaRequest,
+    ) -> nas20170626_models.SetFilesetQuotaResponse:
+        """
+        @summary 设置智能目录配额
+        
+        @param request: SetFilesetQuotaRequest
+        @return: SetFilesetQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.set_fileset_quota_with_options_async(request, runtime)
 
     def start_data_flow_with_options(
         self,

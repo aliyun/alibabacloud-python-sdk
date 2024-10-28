@@ -1,3 +1,8 @@
+2024-10-28 Version: 2.5.0
+- Support API CancelFilesetQuota.
+- Support API SetFilesetQuota.
+
+
 2024-10-24 Version: 2.4.1
 - Update API CreateFileset: add param Quota.
 - Update API CreateFileset: update param FileSystemPath.

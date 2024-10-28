@@ -1300,6 +1300,123 @@ class CancelDirQuotaResponse(TeaModel):
         return self
 
 
+class CancelFilesetQuotaRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dry_run: bool = None,
+        file_system_id: str = None,
+        fset_id: str = None,
+    ):
+        self.client_token = client_token
+        self.dry_run = dry_run
+        # This parameter is required.
+        self.file_system_id = file_system_id
+        # Fileset ID。
+        # 
+        # This parameter is required.
+        self.fset_id = fset_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.fset_id is not None:
+            result['FsetId'] = self.fset_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('FsetId') is not None:
+            self.fset_id = m.get('FsetId')
+        return self
+
+
+class CancelFilesetQuotaResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CancelFilesetQuotaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CancelFilesetQuotaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CancelFilesetQuotaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CancelLifecycleRetrieveJobRequest(TeaModel):
     def __init__(
         self,
@@ -22006,6 +22123,135 @@ class SetDirQuotaResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SetDirQuotaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetFilesetQuotaRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dry_run: bool = None,
+        file_count_limit: int = None,
+        file_system_id: str = None,
+        fset_id: str = None,
+        size_limit: int = None,
+    ):
+        self.client_token = client_token
+        self.dry_run = dry_run
+        self.file_count_limit = file_count_limit
+        # This parameter is required.
+        self.file_system_id = file_system_id
+        # Fileset ID。
+        # 
+        # This parameter is required.
+        self.fset_id = fset_id
+        self.size_limit = size_limit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.file_count_limit is not None:
+            result['FileCountLimit'] = self.file_count_limit
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.fset_id is not None:
+            result['FsetId'] = self.fset_id
+        if self.size_limit is not None:
+            result['SizeLimit'] = self.size_limit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('FileCountLimit') is not None:
+            self.file_count_limit = m.get('FileCountLimit')
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('FsetId') is not None:
+            self.fset_id = m.get('FsetId')
+        if m.get('SizeLimit') is not None:
+            self.size_limit = m.get('SizeLimit')
+        return self
+
+
+class SetFilesetQuotaResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SetFilesetQuotaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetFilesetQuotaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetFilesetQuotaResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
