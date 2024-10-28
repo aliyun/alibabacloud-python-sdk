@@ -37049,11 +37049,15 @@ class QueryResourceStaticsResponseBodyDataRealTimeRes(TeaModel):
 class QueryResourceStaticsResponseBodyDataSummary(TeaModel):
     def __init__(
         self,
+        active_cpu: float = None,
         cpu: float = None,
+        idle_cpu: float = None,
         memory: float = None,
     ):
+        self.active_cpu = active_cpu
         # The CPU usage. Unit: core per minute.
         self.cpu = cpu
+        self.idle_cpu = idle_cpu
         # The memory usage. Unit: GiB per minute.
         self.memory = memory
 
@@ -37066,16 +37070,24 @@ class QueryResourceStaticsResponseBodyDataSummary(TeaModel):
             return _map
 
         result = dict()
+        if self.active_cpu is not None:
+            result['ActiveCpu'] = self.active_cpu
         if self.cpu is not None:
             result['Cpu'] = self.cpu
+        if self.idle_cpu is not None:
+            result['IdleCpu'] = self.idle_cpu
         if self.memory is not None:
             result['Memory'] = self.memory
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ActiveCpu') is not None:
+            self.active_cpu = m.get('ActiveCpu')
         if m.get('Cpu') is not None:
             self.cpu = m.get('Cpu')
+        if m.get('IdleCpu') is not None:
+            self.idle_cpu = m.get('IdleCpu')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
         return self
