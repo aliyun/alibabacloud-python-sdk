@@ -1,3 +1,7 @@
+2024-10-28 Version: 4.1.1
+- Update API DescribeDBClusterSSL: add param RegionId.
+
+
 2024-10-25 Version: 4.1.0
 - Support API DescribeDBClusterShardNumber.
 - Update API DescribeInclinedTables: update param PageSize.
