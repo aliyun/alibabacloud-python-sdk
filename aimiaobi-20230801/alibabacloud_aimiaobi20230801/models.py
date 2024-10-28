@@ -7289,9 +7289,11 @@ class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResul
     def __init__(
         self,
         content: str = None,
+        create_time: str = None,
         doc_id: str = None,
         doc_uuid: str = None,
         image_urls: List[str] = None,
+        pub_time: str = None,
         source: str = None,
         summary: str = None,
         tags: List[str] = None,
@@ -7300,9 +7302,11 @@ class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResul
         url: str = None,
     ):
         self.content = content
+        self.create_time = create_time
         self.doc_id = doc_id
         self.doc_uuid = doc_uuid
         self.image_urls = image_urls
+        self.pub_time = pub_time
         self.source = source
         self.summary = summary
         self.tags = tags
@@ -7321,12 +7325,16 @@ class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResul
         result = dict()
         if self.content is not None:
             result['Content'] = self.content
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
         if self.doc_id is not None:
             result['DocId'] = self.doc_id
         if self.doc_uuid is not None:
             result['DocUuid'] = self.doc_uuid
         if self.image_urls is not None:
             result['ImageUrls'] = self.image_urls
+        if self.pub_time is not None:
+            result['PubTime'] = self.pub_time
         if self.source is not None:
             result['Source'] = self.source
         if self.summary is not None:
@@ -7345,12 +7353,16 @@ class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResul
         m = m or dict()
         if m.get('Content') is not None:
             self.content = m.get('Content')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
         if m.get('DocId') is not None:
             self.doc_id = m.get('DocId')
         if m.get('DocUuid') is not None:
             self.doc_uuid = m.get('DocUuid')
         if m.get('ImageUrls') is not None:
             self.image_urls = m.get('ImageUrls')
+        if m.get('PubTime') is not None:
+            self.pub_time = m.get('PubTime')
         if m.get('Source') is not None:
             self.source = m.get('Source')
         if m.get('Summary') is not None:

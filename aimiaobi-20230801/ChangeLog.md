@@ -1,3 +1,7 @@
+2024-10-28 Version: 1.8.3
+- Update API GetTopicSelectionPerspectiveAnalysisTask: update response param.
+
+
 2024-10-12 Version: 1.8.2
 - Update API SubmitTopicSelectionPerspectiveAnalysisTask: update param Documents.
 
