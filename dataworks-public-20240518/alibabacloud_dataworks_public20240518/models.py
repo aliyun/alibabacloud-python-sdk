@@ -1,7 +1,1790 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List, Any
+from typing import List, Dict, Any
+
+
+class DataQualityEvaluationTaskHooks(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        type: str = None,
+    ):
+        self.condition = condition
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['Condition'] = self.condition
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Condition') is not None:
+            self.condition = m.get('Condition')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DataQualityEvaluationTaskNotificationsNotificationsNotificationChannels(TeaModel):
+    def __init__(
+        self,
+        channels: List[str] = None,
+    ):
+        self.channels = channels
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channels is not None:
+            result['Channels'] = self.channels
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Channels') is not None:
+            self.channels = m.get('Channels')
+        return self
+
+
+class DataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers(TeaModel):
+    def __init__(
+        self,
+        extension: str = None,
+        receiver_type: str = None,
+        receiver_values: List[str] = None,
+    ):
+        self.extension = extension
+        self.receiver_type = receiver_type
+        self.receiver_values = receiver_values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.extension is not None:
+            result['Extension'] = self.extension
+        if self.receiver_type is not None:
+            result['ReceiverType'] = self.receiver_type
+        if self.receiver_values is not None:
+            result['ReceiverValues'] = self.receiver_values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Extension') is not None:
+            self.extension = m.get('Extension')
+        if m.get('ReceiverType') is not None:
+            self.receiver_type = m.get('ReceiverType')
+        if m.get('ReceiverValues') is not None:
+            self.receiver_values = m.get('ReceiverValues')
+        return self
+
+
+class DataQualityEvaluationTaskNotificationsNotifications(TeaModel):
+    def __init__(
+        self,
+        notification_channels: List[DataQualityEvaluationTaskNotificationsNotificationsNotificationChannels] = None,
+        notification_receivers: List[DataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers] = None,
+    ):
+        self.notification_channels = notification_channels
+        self.notification_receivers = notification_receivers
+
+    def validate(self):
+        if self.notification_channels:
+            for k in self.notification_channels:
+                if k:
+                    k.validate()
+        if self.notification_receivers:
+            for k in self.notification_receivers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['NotificationChannels'] = []
+        if self.notification_channels is not None:
+            for k in self.notification_channels:
+                result['NotificationChannels'].append(k.to_map() if k else None)
+        result['NotificationReceivers'] = []
+        if self.notification_receivers is not None:
+            for k in self.notification_receivers:
+                result['NotificationReceivers'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.notification_channels = []
+        if m.get('NotificationChannels') is not None:
+            for k in m.get('NotificationChannels'):
+                temp_model = DataQualityEvaluationTaskNotificationsNotificationsNotificationChannels()
+                self.notification_channels.append(temp_model.from_map(k))
+        self.notification_receivers = []
+        if m.get('NotificationReceivers') is not None:
+            for k in m.get('NotificationReceivers'):
+                temp_model = DataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers()
+                self.notification_receivers.append(temp_model.from_map(k))
+        return self
+
+
+class DataQualityEvaluationTaskNotifications(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        notifications: List[DataQualityEvaluationTaskNotificationsNotifications] = None,
+    ):
+        self.condition = condition
+        self.notifications = notifications
+
+    def validate(self):
+        if self.notifications:
+            for k in self.notifications:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['Condition'] = self.condition
+        result['Notifications'] = []
+        if self.notifications is not None:
+            for k in self.notifications:
+                result['Notifications'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Condition') is not None:
+            self.condition = m.get('Condition')
+        self.notifications = []
+        if m.get('Notifications') is not None:
+            for k in m.get('Notifications'):
+                temp_model = DataQualityEvaluationTaskNotificationsNotifications()
+                self.notifications.append(temp_model.from_map(k))
+        return self
+
+
+class DataQualityEvaluationTaskTarget(TeaModel):
+    def __init__(
+        self,
+        database_type: str = None,
+        partition_spec: str = None,
+        table_guid: str = None,
+        type: str = None,
+    ):
+        self.database_type = database_type
+        self.partition_spec = partition_spec
+        self.table_guid = table_guid
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.database_type is not None:
+            result['DatabaseType'] = self.database_type
+        if self.partition_spec is not None:
+            result['PartitionSpec'] = self.partition_spec
+        if self.table_guid is not None:
+            result['TableGuid'] = self.table_guid
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatabaseType') is not None:
+            self.database_type = m.get('DatabaseType')
+        if m.get('PartitionSpec') is not None:
+            self.partition_spec = m.get('PartitionSpec')
+        if m.get('TableGuid') is not None:
+            self.table_guid = m.get('TableGuid')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DataQualityEvaluationTaskTrigger(TeaModel):
+    def __init__(
+        self,
+        task_ids: List[int] = None,
+        type: str = None,
+    ):
+        self.task_ids = task_ids
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_ids is not None:
+            result['TaskIds'] = self.task_ids
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskIds') is not None:
+            self.task_ids = m.get('TaskIds')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DataQualityEvaluationTask(TeaModel):
+    def __init__(
+        self,
+        data_source_id: int = None,
+        description: str = None,
+        hooks: List[DataQualityEvaluationTaskHooks] = None,
+        id: int = None,
+        name: str = None,
+        notifications: List[DataQualityEvaluationTaskNotifications] = None,
+        project_id: int = None,
+        runtime_conf: str = None,
+        target: DataQualityEvaluationTaskTarget = None,
+        tenant_id: int = None,
+        trigger: DataQualityEvaluationTaskTrigger = None,
+    ):
+        self.data_source_id = data_source_id
+        self.description = description
+        self.hooks = hooks
+        self.id = id
+        self.name = name
+        self.notifications = notifications
+        self.project_id = project_id
+        self.runtime_conf = runtime_conf
+        self.target = target
+        self.tenant_id = tenant_id
+        self.trigger = trigger
+
+    def validate(self):
+        if self.hooks:
+            for k in self.hooks:
+                if k:
+                    k.validate()
+        if self.notifications:
+            for k in self.notifications:
+                if k:
+                    k.validate()
+        if self.target:
+            self.target.validate()
+        if self.trigger:
+            self.trigger.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_source_id is not None:
+            result['DataSourceId'] = self.data_source_id
+        if self.description is not None:
+            result['Description'] = self.description
+        result['Hooks'] = []
+        if self.hooks is not None:
+            for k in self.hooks:
+                result['Hooks'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        result['Notifications'] = []
+        if self.notifications is not None:
+            for k in self.notifications:
+                result['Notifications'].append(k.to_map() if k else None)
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.runtime_conf is not None:
+            result['RuntimeConf'] = self.runtime_conf
+        if self.target is not None:
+            result['Target'] = self.target.to_map()
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.trigger is not None:
+            result['Trigger'] = self.trigger.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataSourceId') is not None:
+            self.data_source_id = m.get('DataSourceId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.hooks = []
+        if m.get('Hooks') is not None:
+            for k in m.get('Hooks'):
+                temp_model = DataQualityEvaluationTaskHooks()
+                self.hooks.append(temp_model.from_map(k))
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.notifications = []
+        if m.get('Notifications') is not None:
+            for k in m.get('Notifications'):
+                temp_model = DataQualityEvaluationTaskNotifications()
+                self.notifications.append(temp_model.from_map(k))
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RuntimeConf') is not None:
+            self.runtime_conf = m.get('RuntimeConf')
+        if m.get('Target') is not None:
+            temp_model = DataQualityEvaluationTaskTarget()
+            self.target = temp_model.from_map(m['Target'])
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('Trigger') is not None:
+            temp_model = DataQualityEvaluationTaskTrigger()
+            self.trigger = temp_model.from_map(m['Trigger'])
+        return self
+
+
+class DataQualityEvaluationTaskInstanceTaskHooks(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        type: str = None,
+    ):
+        self.condition = condition
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['Condition'] = self.condition
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Condition') is not None:
+            self.condition = m.get('Condition')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationChannels(TeaModel):
+    def __init__(
+        self,
+        channels: List[str] = None,
+    ):
+        self.channels = channels
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channels is not None:
+            result['Channels'] = self.channels
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Channels') is not None:
+            self.channels = m.get('Channels')
+        return self
+
+
+class DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers(TeaModel):
+    def __init__(
+        self,
+        extension: str = None,
+        receiver_type: str = None,
+        receiver_values: List[str] = None,
+    ):
+        self.extension = extension
+        self.receiver_type = receiver_type
+        self.receiver_values = receiver_values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.extension is not None:
+            result['Extension'] = self.extension
+        if self.receiver_type is not None:
+            result['ReceiverType'] = self.receiver_type
+        if self.receiver_values is not None:
+            result['ReceiverValues'] = self.receiver_values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Extension') is not None:
+            self.extension = m.get('Extension')
+        if m.get('ReceiverType') is not None:
+            self.receiver_type = m.get('ReceiverType')
+        if m.get('ReceiverValues') is not None:
+            self.receiver_values = m.get('ReceiverValues')
+        return self
+
+
+class DataQualityEvaluationTaskInstanceTaskNotificationsNotifications(TeaModel):
+    def __init__(
+        self,
+        notification_channels: List[DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationChannels] = None,
+        notification_receivers: List[DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers] = None,
+    ):
+        self.notification_channels = notification_channels
+        self.notification_receivers = notification_receivers
+
+    def validate(self):
+        if self.notification_channels:
+            for k in self.notification_channels:
+                if k:
+                    k.validate()
+        if self.notification_receivers:
+            for k in self.notification_receivers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['NotificationChannels'] = []
+        if self.notification_channels is not None:
+            for k in self.notification_channels:
+                result['NotificationChannels'].append(k.to_map() if k else None)
+        result['NotificationReceivers'] = []
+        if self.notification_receivers is not None:
+            for k in self.notification_receivers:
+                result['NotificationReceivers'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.notification_channels = []
+        if m.get('NotificationChannels') is not None:
+            for k in m.get('NotificationChannels'):
+                temp_model = DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationChannels()
+                self.notification_channels.append(temp_model.from_map(k))
+        self.notification_receivers = []
+        if m.get('NotificationReceivers') is not None:
+            for k in m.get('NotificationReceivers'):
+                temp_model = DataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers()
+                self.notification_receivers.append(temp_model.from_map(k))
+        return self
+
+
+class DataQualityEvaluationTaskInstanceTaskNotifications(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        notifications: List[DataQualityEvaluationTaskInstanceTaskNotificationsNotifications] = None,
+    ):
+        self.condition = condition
+        self.notifications = notifications
+
+    def validate(self):
+        if self.notifications:
+            for k in self.notifications:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['Condition'] = self.condition
+        result['Notifications'] = []
+        if self.notifications is not None:
+            for k in self.notifications:
+                result['Notifications'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Condition') is not None:
+            self.condition = m.get('Condition')
+        self.notifications = []
+        if m.get('Notifications') is not None:
+            for k in m.get('Notifications'):
+                temp_model = DataQualityEvaluationTaskInstanceTaskNotificationsNotifications()
+                self.notifications.append(temp_model.from_map(k))
+        return self
+
+
+class DataQualityEvaluationTaskInstanceTaskTarget(TeaModel):
+    def __init__(
+        self,
+        database_type: str = None,
+        partition_spec: str = None,
+        table_guid: str = None,
+        type: str = None,
+    ):
+        self.database_type = database_type
+        self.partition_spec = partition_spec
+        self.table_guid = table_guid
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.database_type is not None:
+            result['DatabaseType'] = self.database_type
+        if self.partition_spec is not None:
+            result['PartitionSpec'] = self.partition_spec
+        if self.table_guid is not None:
+            result['TableGuid'] = self.table_guid
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatabaseType') is not None:
+            self.database_type = m.get('DatabaseType')
+        if m.get('PartitionSpec') is not None:
+            self.partition_spec = m.get('PartitionSpec')
+        if m.get('TableGuid') is not None:
+            self.table_guid = m.get('TableGuid')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DataQualityEvaluationTaskInstanceTaskTrigger(TeaModel):
+    def __init__(
+        self,
+        task_ids: List[int] = None,
+        type: str = None,
+    ):
+        self.task_ids = task_ids
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_ids is not None:
+            result['TaskIds'] = self.task_ids
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskIds') is not None:
+            self.task_ids = m.get('TaskIds')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DataQualityEvaluationTaskInstanceTask(TeaModel):
+    def __init__(
+        self,
+        data_source_id: int = None,
+        hooks: List[DataQualityEvaluationTaskInstanceTaskHooks] = None,
+        id: int = None,
+        name: str = None,
+        notifications: List[DataQualityEvaluationTaskInstanceTaskNotifications] = None,
+        project_id: int = None,
+        runtime_conf: str = None,
+        target: DataQualityEvaluationTaskInstanceTaskTarget = None,
+        tenant_id: int = None,
+        trigger: DataQualityEvaluationTaskInstanceTaskTrigger = None,
+    ):
+        self.data_source_id = data_source_id
+        self.hooks = hooks
+        self.id = id
+        self.name = name
+        self.notifications = notifications
+        self.project_id = project_id
+        self.runtime_conf = runtime_conf
+        self.target = target
+        self.tenant_id = tenant_id
+        self.trigger = trigger
+
+    def validate(self):
+        if self.hooks:
+            for k in self.hooks:
+                if k:
+                    k.validate()
+        if self.notifications:
+            for k in self.notifications:
+                if k:
+                    k.validate()
+        if self.target:
+            self.target.validate()
+        if self.trigger:
+            self.trigger.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_source_id is not None:
+            result['DataSourceId'] = self.data_source_id
+        result['Hooks'] = []
+        if self.hooks is not None:
+            for k in self.hooks:
+                result['Hooks'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        result['Notifications'] = []
+        if self.notifications is not None:
+            for k in self.notifications:
+                result['Notifications'].append(k.to_map() if k else None)
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.runtime_conf is not None:
+            result['RuntimeConf'] = self.runtime_conf
+        if self.target is not None:
+            result['Target'] = self.target.to_map()
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.trigger is not None:
+            result['Trigger'] = self.trigger.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataSourceId') is not None:
+            self.data_source_id = m.get('DataSourceId')
+        self.hooks = []
+        if m.get('Hooks') is not None:
+            for k in m.get('Hooks'):
+                temp_model = DataQualityEvaluationTaskInstanceTaskHooks()
+                self.hooks.append(temp_model.from_map(k))
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.notifications = []
+        if m.get('Notifications') is not None:
+            for k in m.get('Notifications'):
+                temp_model = DataQualityEvaluationTaskInstanceTaskNotifications()
+                self.notifications.append(temp_model.from_map(k))
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RuntimeConf') is not None:
+            self.runtime_conf = m.get('RuntimeConf')
+        if m.get('Target') is not None:
+            temp_model = DataQualityEvaluationTaskInstanceTaskTarget()
+            self.target = temp_model.from_map(m['Target'])
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('Trigger') is not None:
+            temp_model = DataQualityEvaluationTaskInstanceTaskTrigger()
+            self.trigger = temp_model.from_map(m['Trigger'])
+        return self
+
+
+class DataQualityEvaluationTaskInstance(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        finish_time: int = None,
+        id: int = None,
+        status: str = None,
+        task: DataQualityEvaluationTaskInstanceTask = None,
+    ):
+        self.create_time = create_time
+        self.finish_time = finish_time
+        self.id = id
+        self.status = status
+        self.task = task
+
+    def validate(self):
+        if self.task:
+            self.task.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.finish_time is not None:
+            result['FinishTime'] = self.finish_time
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task is not None:
+            result['Task'] = self.task.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('FinishTime') is not None:
+            self.finish_time = m.get('FinishTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Task') is not None:
+            temp_model = DataQualityEvaluationTaskInstanceTask()
+            self.task = temp_model.from_map(m['Task'])
+        return self
+
+
+class DataQualityResultDetails(TeaModel):
+    def __init__(
+        self,
+        checked_value: str = None,
+        referenced_value: str = None,
+        status: str = None,
+    ):
+        self.checked_value = checked_value
+        self.referenced_value = referenced_value
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.checked_value is not None:
+            result['CheckedValue'] = self.checked_value
+        if self.referenced_value is not None:
+            result['ReferencedValue'] = self.referenced_value
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckedValue') is not None:
+            self.checked_value = m.get('CheckedValue')
+        if m.get('ReferencedValue') is not None:
+            self.referenced_value = m.get('ReferencedValue')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DataQualityResultRuleCheckingConfigThresholdsCritical(TeaModel):
+    def __init__(
+        self,
+        operator: str = None,
+        value: str = None,
+    ):
+        self.operator = operator
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DataQualityResultRuleCheckingConfigThresholdsExpected(TeaModel):
+    def __init__(
+        self,
+        operator: str = None,
+        value: str = None,
+    ):
+        self.operator = operator
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DataQualityResultRuleCheckingConfigThresholdsWarned(TeaModel):
+    def __init__(
+        self,
+        operator: str = None,
+        value: str = None,
+    ):
+        self.operator = operator
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DataQualityResultRuleCheckingConfigThresholds(TeaModel):
+    def __init__(
+        self,
+        critical: DataQualityResultRuleCheckingConfigThresholdsCritical = None,
+        expected: DataQualityResultRuleCheckingConfigThresholdsExpected = None,
+        warned: DataQualityResultRuleCheckingConfigThresholdsWarned = None,
+    ):
+        self.critical = critical
+        self.expected = expected
+        self.warned = warned
+
+    def validate(self):
+        if self.critical:
+            self.critical.validate()
+        if self.expected:
+            self.expected.validate()
+        if self.warned:
+            self.warned.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.critical is not None:
+            result['Critical'] = self.critical.to_map()
+        if self.expected is not None:
+            result['Expected'] = self.expected.to_map()
+        if self.warned is not None:
+            result['Warned'] = self.warned.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Critical') is not None:
+            temp_model = DataQualityResultRuleCheckingConfigThresholdsCritical()
+            self.critical = temp_model.from_map(m['Critical'])
+        if m.get('Expected') is not None:
+            temp_model = DataQualityResultRuleCheckingConfigThresholdsExpected()
+            self.expected = temp_model.from_map(m['Expected'])
+        if m.get('Warned') is not None:
+            temp_model = DataQualityResultRuleCheckingConfigThresholdsWarned()
+            self.warned = temp_model.from_map(m['Warned'])
+        return self
+
+
+class DataQualityResultRuleCheckingConfig(TeaModel):
+    def __init__(
+        self,
+        referenced_samples_filter: str = None,
+        thresholds: DataQualityResultRuleCheckingConfigThresholds = None,
+        type: str = None,
+    ):
+        self.referenced_samples_filter = referenced_samples_filter
+        self.thresholds = thresholds
+        self.type = type
+
+    def validate(self):
+        if self.thresholds:
+            self.thresholds.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.referenced_samples_filter is not None:
+            result['ReferencedSamplesFilter'] = self.referenced_samples_filter
+        if self.thresholds is not None:
+            result['Thresholds'] = self.thresholds.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReferencedSamplesFilter') is not None:
+            self.referenced_samples_filter = m.get('ReferencedSamplesFilter')
+        if m.get('Thresholds') is not None:
+            temp_model = DataQualityResultRuleCheckingConfigThresholds()
+            self.thresholds = temp_model.from_map(m['Thresholds'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DataQualityResultRuleErrorHandlers(TeaModel):
+    def __init__(
+        self,
+        error_data_filter: str = None,
+        type: str = None,
+    ):
+        self.error_data_filter = error_data_filter
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_data_filter is not None:
+            result['ErrorDataFilter'] = self.error_data_filter
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorDataFilter') is not None:
+            self.error_data_filter = m.get('ErrorDataFilter')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DataQualityResultRuleSamplingConfig(TeaModel):
+    def __init__(
+        self,
+        metric: str = None,
+        metric_parameters: str = None,
+        sampling_filter: str = None,
+        setting_config: str = None,
+    ):
+        self.metric = metric
+        self.metric_parameters = metric_parameters
+        self.sampling_filter = sampling_filter
+        self.setting_config = setting_config
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metric is not None:
+            result['Metric'] = self.metric
+        if self.metric_parameters is not None:
+            result['MetricParameters'] = self.metric_parameters
+        if self.sampling_filter is not None:
+            result['SamplingFilter'] = self.sampling_filter
+        if self.setting_config is not None:
+            result['SettingConfig'] = self.setting_config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Metric') is not None:
+            self.metric = m.get('Metric')
+        if m.get('MetricParameters') is not None:
+            self.metric_parameters = m.get('MetricParameters')
+        if m.get('SamplingFilter') is not None:
+            self.sampling_filter = m.get('SamplingFilter')
+        if m.get('SettingConfig') is not None:
+            self.setting_config = m.get('SettingConfig')
+        return self
+
+
+class DataQualityResultRuleTarget(TeaModel):
+    def __init__(
+        self,
+        database_type: str = None,
+        partition_spec: str = None,
+        table_guid: str = None,
+        type: str = None,
+    ):
+        self.database_type = database_type
+        self.partition_spec = partition_spec
+        self.table_guid = table_guid
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.database_type is not None:
+            result['DatabaseType'] = self.database_type
+        if self.partition_spec is not None:
+            result['PartitionSpec'] = self.partition_spec
+        if self.table_guid is not None:
+            result['TableGuid'] = self.table_guid
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatabaseType') is not None:
+            self.database_type = m.get('DatabaseType')
+        if m.get('PartitionSpec') is not None:
+            self.partition_spec = m.get('PartitionSpec')
+        if m.get('TableGuid') is not None:
+            self.table_guid = m.get('TableGuid')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DataQualityResultRule(TeaModel):
+    def __init__(
+        self,
+        checking_config: DataQualityResultRuleCheckingConfig = None,
+        description: str = None,
+        enabled: bool = None,
+        error_handlers: List[DataQualityResultRuleErrorHandlers] = None,
+        id: int = None,
+        name: str = None,
+        project_id: int = None,
+        sampling_config: DataQualityResultRuleSamplingConfig = None,
+        severity: str = None,
+        target: DataQualityResultRuleTarget = None,
+        template_code: str = None,
+        tenant_id: int = None,
+    ):
+        self.checking_config = checking_config
+        self.description = description
+        self.enabled = enabled
+        self.error_handlers = error_handlers
+        self.id = id
+        self.name = name
+        self.project_id = project_id
+        self.sampling_config = sampling_config
+        self.severity = severity
+        self.target = target
+        self.template_code = template_code
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        if self.checking_config:
+            self.checking_config.validate()
+        if self.error_handlers:
+            for k in self.error_handlers:
+                if k:
+                    k.validate()
+        if self.sampling_config:
+            self.sampling_config.validate()
+        if self.target:
+            self.target.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.checking_config is not None:
+            result['CheckingConfig'] = self.checking_config.to_map()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        result['ErrorHandlers'] = []
+        if self.error_handlers is not None:
+            for k in self.error_handlers:
+                result['ErrorHandlers'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.sampling_config is not None:
+            result['SamplingConfig'] = self.sampling_config.to_map()
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        if self.target is not None:
+            result['Target'] = self.target.to_map()
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckingConfig') is not None:
+            temp_model = DataQualityResultRuleCheckingConfig()
+            self.checking_config = temp_model.from_map(m['CheckingConfig'])
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        self.error_handlers = []
+        if m.get('ErrorHandlers') is not None:
+            for k in m.get('ErrorHandlers'):
+                temp_model = DataQualityResultRuleErrorHandlers()
+                self.error_handlers.append(temp_model.from_map(k))
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('SamplingConfig') is not None:
+            temp_model = DataQualityResultRuleSamplingConfig()
+            self.sampling_config = temp_model.from_map(m['SamplingConfig'])
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        if m.get('Target') is not None:
+            temp_model = DataQualityResultRuleTarget()
+            self.target = temp_model.from_map(m['Target'])
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        return self
+
+
+class DataQualityResult(TeaModel):
+    def __init__(
+        self,
+        details: List[DataQualityResultDetails] = None,
+        id: int = None,
+        rule: DataQualityResultRule = None,
+        sample: str = None,
+        status: str = None,
+        task_instance_id: int = None,
+    ):
+        self.details = details
+        self.id = id
+        self.rule = rule
+        self.sample = sample
+        self.status = status
+        self.task_instance_id = task_instance_id
+
+    def validate(self):
+        if self.details:
+            for k in self.details:
+                if k:
+                    k.validate()
+        if self.rule:
+            self.rule.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Details'] = []
+        if self.details is not None:
+            for k in self.details:
+                result['Details'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.rule is not None:
+            result['Rule'] = self.rule.to_map()
+        if self.sample is not None:
+            result['Sample'] = self.sample
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_instance_id is not None:
+            result['TaskInstanceId'] = self.task_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.details = []
+        if m.get('Details') is not None:
+            for k in m.get('Details'):
+                temp_model = DataQualityResultDetails()
+                self.details.append(temp_model.from_map(k))
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Rule') is not None:
+            temp_model = DataQualityResultRule()
+            self.rule = temp_model.from_map(m['Rule'])
+        if m.get('Sample') is not None:
+            self.sample = m.get('Sample')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskInstanceId') is not None:
+            self.task_instance_id = m.get('TaskInstanceId')
+        return self
+
+
+class DataQualityRuleCheckingConfigThresholdsCritical(TeaModel):
+    def __init__(
+        self,
+        operator: str = None,
+        value: str = None,
+    ):
+        self.operator = operator
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DataQualityRuleCheckingConfigThresholdsExpected(TeaModel):
+    def __init__(
+        self,
+        operator: str = None,
+        value: str = None,
+    ):
+        self.operator = operator
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DataQualityRuleCheckingConfigThresholdsWarned(TeaModel):
+    def __init__(
+        self,
+        operator: str = None,
+        value: str = None,
+    ):
+        self.operator = operator
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DataQualityRuleCheckingConfigThresholds(TeaModel):
+    def __init__(
+        self,
+        critical: DataQualityRuleCheckingConfigThresholdsCritical = None,
+        expected: DataQualityRuleCheckingConfigThresholdsExpected = None,
+        warned: DataQualityRuleCheckingConfigThresholdsWarned = None,
+    ):
+        self.critical = critical
+        self.expected = expected
+        self.warned = warned
+
+    def validate(self):
+        if self.critical:
+            self.critical.validate()
+        if self.expected:
+            self.expected.validate()
+        if self.warned:
+            self.warned.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.critical is not None:
+            result['Critical'] = self.critical.to_map()
+        if self.expected is not None:
+            result['Expected'] = self.expected.to_map()
+        if self.warned is not None:
+            result['Warned'] = self.warned.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Critical') is not None:
+            temp_model = DataQualityRuleCheckingConfigThresholdsCritical()
+            self.critical = temp_model.from_map(m['Critical'])
+        if m.get('Expected') is not None:
+            temp_model = DataQualityRuleCheckingConfigThresholdsExpected()
+            self.expected = temp_model.from_map(m['Expected'])
+        if m.get('Warned') is not None:
+            temp_model = DataQualityRuleCheckingConfigThresholdsWarned()
+            self.warned = temp_model.from_map(m['Warned'])
+        return self
+
+
+class DataQualityRuleCheckingConfig(TeaModel):
+    def __init__(
+        self,
+        referenced_samples_filter: str = None,
+        thresholds: DataQualityRuleCheckingConfigThresholds = None,
+        type: str = None,
+    ):
+        self.referenced_samples_filter = referenced_samples_filter
+        self.thresholds = thresholds
+        self.type = type
+
+    def validate(self):
+        if self.thresholds:
+            self.thresholds.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.referenced_samples_filter is not None:
+            result['ReferencedSamplesFilter'] = self.referenced_samples_filter
+        if self.thresholds is not None:
+            result['Thresholds'] = self.thresholds.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReferencedSamplesFilter') is not None:
+            self.referenced_samples_filter = m.get('ReferencedSamplesFilter')
+        if m.get('Thresholds') is not None:
+            temp_model = DataQualityRuleCheckingConfigThresholds()
+            self.thresholds = temp_model.from_map(m['Thresholds'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DataQualityRuleErrorHandlers(TeaModel):
+    def __init__(
+        self,
+        error_data_filter: str = None,
+        type: str = None,
+    ):
+        self.error_data_filter = error_data_filter
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_data_filter is not None:
+            result['ErrorDataFilter'] = self.error_data_filter
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorDataFilter') is not None:
+            self.error_data_filter = m.get('ErrorDataFilter')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DataQualityRuleSamplingConfig(TeaModel):
+    def __init__(
+        self,
+        metric: str = None,
+        metric_parameters: str = None,
+        sampling_filter: str = None,
+        setting_config: str = None,
+    ):
+        self.metric = metric
+        self.metric_parameters = metric_parameters
+        self.sampling_filter = sampling_filter
+        self.setting_config = setting_config
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metric is not None:
+            result['Metric'] = self.metric
+        if self.metric_parameters is not None:
+            result['MetricParameters'] = self.metric_parameters
+        if self.sampling_filter is not None:
+            result['SamplingFilter'] = self.sampling_filter
+        if self.setting_config is not None:
+            result['SettingConfig'] = self.setting_config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Metric') is not None:
+            self.metric = m.get('Metric')
+        if m.get('MetricParameters') is not None:
+            self.metric_parameters = m.get('MetricParameters')
+        if m.get('SamplingFilter') is not None:
+            self.sampling_filter = m.get('SamplingFilter')
+        if m.get('SettingConfig') is not None:
+            self.setting_config = m.get('SettingConfig')
+        return self
+
+
+class DataQualityRuleTarget(TeaModel):
+    def __init__(
+        self,
+        database_type: str = None,
+        partition_spec: str = None,
+        table_guid: str = None,
+        type: str = None,
+    ):
+        self.database_type = database_type
+        self.partition_spec = partition_spec
+        self.table_guid = table_guid
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.database_type is not None:
+            result['DatabaseType'] = self.database_type
+        if self.partition_spec is not None:
+            result['PartitionSpec'] = self.partition_spec
+        if self.table_guid is not None:
+            result['TableGuid'] = self.table_guid
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatabaseType') is not None:
+            self.database_type = m.get('DatabaseType')
+        if m.get('PartitionSpec') is not None:
+            self.partition_spec = m.get('PartitionSpec')
+        if m.get('TableGuid') is not None:
+            self.table_guid = m.get('TableGuid')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DataQualityRule(TeaModel):
+    def __init__(
+        self,
+        checking_config: DataQualityRuleCheckingConfig = None,
+        description: str = None,
+        enabled: bool = None,
+        error_handlers: List[DataQualityRuleErrorHandlers] = None,
+        id: int = None,
+        name: str = None,
+        project_id: int = None,
+        sampling_config: DataQualityRuleSamplingConfig = None,
+        severity: str = None,
+        target: DataQualityRuleTarget = None,
+        template_code: str = None,
+        tenant_id: int = None,
+    ):
+        self.checking_config = checking_config
+        self.description = description
+        self.enabled = enabled
+        self.error_handlers = error_handlers
+        self.id = id
+        self.name = name
+        self.project_id = project_id
+        self.sampling_config = sampling_config
+        self.severity = severity
+        self.target = target
+        self.template_code = template_code
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        if self.checking_config:
+            self.checking_config.validate()
+        if self.error_handlers:
+            for k in self.error_handlers:
+                if k:
+                    k.validate()
+        if self.sampling_config:
+            self.sampling_config.validate()
+        if self.target:
+            self.target.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.checking_config is not None:
+            result['CheckingConfig'] = self.checking_config.to_map()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        result['ErrorHandlers'] = []
+        if self.error_handlers is not None:
+            for k in self.error_handlers:
+                result['ErrorHandlers'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.sampling_config is not None:
+            result['SamplingConfig'] = self.sampling_config.to_map()
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        if self.target is not None:
+            result['Target'] = self.target.to_map()
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckingConfig') is not None:
+            temp_model = DataQualityRuleCheckingConfig()
+            self.checking_config = temp_model.from_map(m['CheckingConfig'])
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        self.error_handlers = []
+        if m.get('ErrorHandlers') is not None:
+            for k in m.get('ErrorHandlers'):
+                temp_model = DataQualityRuleErrorHandlers()
+                self.error_handlers.append(temp_model.from_map(k))
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('SamplingConfig') is not None:
+            temp_model = DataQualityRuleSamplingConfig()
+            self.sampling_config = temp_model.from_map(m['SamplingConfig'])
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        if m.get('Target') is not None:
+            temp_model = DataQualityRuleTarget()
+            self.target = temp_model.from_map(m['Target'])
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        return self
+
+
+class SuccessInfoValue(TeaModel):
+    def __init__(
+        self,
+        success: bool = None,
+        message: str = None,
+    ):
+        self.success = success
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
 
 
 class AbolishDeploymentRequest(TeaModel):
@@ -130,8 +1913,12 @@ class AssociateProjectToResourceGroupRequest(TeaModel):
         project_id: int = None,
         resource_group_id: str = None,
     ):
+        # The ID of the DataWorks workspace with which you want to associate the resource group.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The ID of the resource group.
+        # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
 
@@ -165,7 +1952,9 @@ class AssociateProjectToResourceGroupResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: true and false.
         self.success = success
 
     def validate(self):
@@ -2808,6 +4597,158 @@ class CreateProjectResponse(TeaModel):
         return self
 
 
+class CreateProjectMemberRequest(TeaModel):
+    def __init__(
+        self,
+        project_id: int = None,
+        role_codes: List[str] = None,
+        user_id: str = None,
+    ):
+        # This parameter is required.
+        self.project_id = project_id
+        # This parameter is required.
+        self.role_codes = role_codes
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.role_codes is not None:
+            result['RoleCodes'] = self.role_codes
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RoleCodes') is not None:
+            self.role_codes = m.get('RoleCodes')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class CreateProjectMemberShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        project_id: int = None,
+        role_codes_shrink: str = None,
+        user_id: str = None,
+    ):
+        # This parameter is required.
+        self.project_id = project_id
+        # This parameter is required.
+        self.role_codes_shrink = role_codes_shrink
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.role_codes_shrink is not None:
+            result['RoleCodes'] = self.role_codes_shrink
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RoleCodes') is not None:
+            self.role_codes_shrink = m.get('RoleCodes')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class CreateProjectMemberResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateProjectMemberResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateProjectMemberResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateProjectMemberResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateResourceRequest(TeaModel):
     def __init__(
         self,
@@ -4221,6 +6162,109 @@ class DeleteProjectResponse(TeaModel):
         return self
 
 
+class DeleteProjectMemberRequest(TeaModel):
+    def __init__(
+        self,
+        project_id: int = None,
+        user_id: str = None,
+    ):
+        # This parameter is required.
+        self.project_id = project_id
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class DeleteProjectMemberResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteProjectMemberResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteProjectMemberResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteProjectMemberResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteResourceRequest(TeaModel):
     def __init__(
         self,
@@ -4344,6 +6388,8 @@ class DeleteResourceGroupRequest(TeaModel):
         self,
         id: str = None,
     ):
+        # The ID of the resource group.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -4373,7 +6419,9 @@ class DeleteResourceGroupResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: true and false.
         self.success = success
 
     def validate(self):
@@ -4543,6 +6591,114 @@ class DeleteRouteResponse(TeaModel):
         return self
 
 
+class DeleteTaskRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        project_env: str = None,
+    ):
+        # This parameter is required.
+        self.id = id
+        self.project_env = project_env
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.project_env is not None:
+            result['ProjectEnv'] = self.project_env
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ProjectEnv') is not None:
+            self.project_env = m.get('ProjectEnv')
+        return self
+
+
+class DeleteTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteWorkflowDefinitionRequest(TeaModel):
     def __init__(
         self,
@@ -4667,8 +6823,12 @@ class DissociateProjectFromResourceGroupRequest(TeaModel):
         project_id: int = None,
         resource_group_id: str = None,
     ):
+        # The ID of the workspace from which you want to disassociate the resource group.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The ID of the resource group.
+        # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
 
@@ -4702,7 +6862,9 @@ class DissociateProjectFromResourceGroupResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: true and false.
         self.success = success
 
     def validate(self):
@@ -5923,6 +8085,8 @@ class GetDataSourceRequest(TeaModel):
         self,
         id: int = None,
     ):
+        # The data source ID.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -5962,17 +8126,33 @@ class GetDataSourceResponseBodyDataSource(TeaModel):
         qualified_name: str = None,
         type: str = None,
     ):
+        # The connection properties of the data source.
         self.connection_properties = connection_properties
+        # The mode in which the data source is added. The mode varies based on the data source type. Valid values:
+        # 
+        # *   InstanceMode: instance mode
+        # *   UrlMode: connection string mode
+        # *   CdhMode: CDH cluster mode
         self.connection_properties_mode = connection_properties_mode
+        # The time when the data source was added. This value is a UNIX timestamp.
         self.create_time = create_time
+        # The ID of the user who adds the data source.
         self.create_user = create_user
+        # The description of the data source.
         self.description = description
+        # The data source ID.
         self.id = id
+        # The time when the data source was last modified. This value is a UNIX timestamp.
         self.modify_time = modify_time
+        # The ID of the user who modifies the data source.
         self.modify_user = modify_user
+        # The name of the data source.
         self.name = name
+        # The ID of the workspace with which the data source is associated.
         self.project_id = project_id
+        # The unique business key of the data source. For example, the unique business key of a Hologres data source is in the ${tenantOwnerId}:${regionId}:${type}:${instanceId}:${database} format.
         self.qualified_name = qualified_name
+        # The type of the data source.
         self.type = type
 
     def validate(self):
@@ -6046,6 +8226,7 @@ class GetDataSourceResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data_source = data_source
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7368,6 +9549,209 @@ class GetProjectResponse(TeaModel):
         return self
 
 
+class GetProjectMemberRequest(TeaModel):
+    def __init__(
+        self,
+        project_id: int = None,
+        user_id: str = None,
+    ):
+        # This parameter is required.
+        self.project_id = project_id
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GetProjectMemberResponseBodyProjectMemberRoles(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        name: str = None,
+        type: str = None,
+    ):
+        self.code = code
+        self.name = name
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetProjectMemberResponseBodyProjectMember(TeaModel):
+    def __init__(
+        self,
+        project_id: int = None,
+        roles: List[GetProjectMemberResponseBodyProjectMemberRoles] = None,
+        status: str = None,
+        user_id: str = None,
+    ):
+        self.project_id = project_id
+        self.roles = roles
+        self.status = status
+        self.user_id = user_id
+
+    def validate(self):
+        if self.roles:
+            for k in self.roles:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        result['Roles'] = []
+        if self.roles is not None:
+            for k in self.roles:
+                result['Roles'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        self.roles = []
+        if m.get('Roles') is not None:
+            for k in m.get('Roles'):
+                temp_model = GetProjectMemberResponseBodyProjectMemberRoles()
+                self.roles.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GetProjectMemberResponseBody(TeaModel):
+    def __init__(
+        self,
+        project_member: GetProjectMemberResponseBodyProjectMember = None,
+        request_id: str = None,
+    ):
+        self.project_member = project_member
+        self.request_id = request_id
+
+    def validate(self):
+        if self.project_member:
+            self.project_member.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_member is not None:
+            result['ProjectMember'] = self.project_member.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectMember') is not None:
+            temp_model = GetProjectMemberResponseBodyProjectMember()
+            self.project_member = temp_model.from_map(m['ProjectMember'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetProjectMemberResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetProjectMemberResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetProjectMemberResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetProjectRoleRequest(TeaModel):
     def __init__(
         self,
@@ -8116,6 +10500,1922 @@ class GetRouteResponse(TeaModel):
         return self
 
 
+class GetTaskRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        project_env: str = None,
+    ):
+        # This parameter is required.
+        self.id = id
+        self.project_env = project_env
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.project_env is not None:
+            result['ProjectEnv'] = self.project_env
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ProjectEnv') is not None:
+            self.project_env = m.get('ProjectEnv')
+        return self
+
+
+class GetTaskResponseBodyTaskDataSource(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class GetTaskResponseBodyTaskDependencies(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+        upstream: str = None,
+    ):
+        self.type = type
+        self.upstream = upstream
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.upstream is not None:
+            result['Upstream'] = self.upstream
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Upstream') is not None:
+            self.upstream = m.get('Upstream')
+        return self
+
+
+class GetTaskResponseBodyTaskInputsVariables(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        scope: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.scope = scope
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.scope is not None:
+            result['Scope'] = self.scope
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetTaskResponseBodyTaskInputs(TeaModel):
+    def __init__(
+        self,
+        variables: List[GetTaskResponseBodyTaskInputsVariables] = None,
+    ):
+        self.variables = variables
+
+    def validate(self):
+        if self.variables:
+            for k in self.variables:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Variables'] = []
+        if self.variables is not None:
+            for k in self.variables:
+                result['Variables'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.variables = []
+        if m.get('Variables') is not None:
+            for k in m.get('Variables'):
+                temp_model = GetTaskResponseBodyTaskInputsVariables()
+                self.variables.append(temp_model.from_map(k))
+        return self
+
+
+class GetTaskResponseBodyTaskOutputsTaskOutputs(TeaModel):
+    def __init__(
+        self,
+        output: str = None,
+    ):
+        self.output = output
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output is not None:
+            result['Output'] = self.output
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Output') is not None:
+            self.output = m.get('Output')
+        return self
+
+
+class GetTaskResponseBodyTaskOutputsVariables(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        scope: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.scope = scope
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.scope is not None:
+            result['Scope'] = self.scope
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetTaskResponseBodyTaskOutputs(TeaModel):
+    def __init__(
+        self,
+        task_outputs: List[GetTaskResponseBodyTaskOutputsTaskOutputs] = None,
+        variables: List[GetTaskResponseBodyTaskOutputsVariables] = None,
+    ):
+        self.task_outputs = task_outputs
+        self.variables = variables
+
+    def validate(self):
+        if self.task_outputs:
+            for k in self.task_outputs:
+                if k:
+                    k.validate()
+        if self.variables:
+            for k in self.variables:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['TaskOutputs'] = []
+        if self.task_outputs is not None:
+            for k in self.task_outputs:
+                result['TaskOutputs'].append(k.to_map() if k else None)
+        result['Variables'] = []
+        if self.variables is not None:
+            for k in self.variables:
+                result['Variables'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.task_outputs = []
+        if m.get('TaskOutputs') is not None:
+            for k in m.get('TaskOutputs'):
+                temp_model = GetTaskResponseBodyTaskOutputsTaskOutputs()
+                self.task_outputs.append(temp_model.from_map(k))
+        self.variables = []
+        if m.get('Variables') is not None:
+            for k in m.get('Variables'):
+                temp_model = GetTaskResponseBodyTaskOutputsVariables()
+                self.variables.append(temp_model.from_map(k))
+        return self
+
+
+class GetTaskResponseBodyTaskRuntimeResource(TeaModel):
+    def __init__(
+        self,
+        cu: str = None,
+        image: str = None,
+        resource_group_id: str = None,
+    ):
+        self.cu = cu
+        self.image = image
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cu is not None:
+            result['Cu'] = self.cu
+        if self.image is not None:
+            result['Image'] = self.image
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cu') is not None:
+            self.cu = m.get('Cu')
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class GetTaskResponseBodyTaskScript(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        parameters: str = None,
+    ):
+        self.content = content
+        self.parameters = parameters
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+        return self
+
+
+class GetTaskResponseBodyTaskSubTasksSubTasksDataSource(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class GetTaskResponseBodyTaskSubTasksSubTasksRuntimeResource(TeaModel):
+    def __init__(
+        self,
+        cu: str = None,
+        image: str = None,
+        resource_group_id: str = None,
+    ):
+        self.cu = cu
+        self.image = image
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cu is not None:
+            result['Cu'] = self.cu
+        if self.image is not None:
+            result['Image'] = self.image
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cu') is not None:
+            self.cu = m.get('Cu')
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class GetTaskResponseBodyTaskSubTasksSubTasksTrigger(TeaModel):
+    def __init__(
+        self,
+        cron: str = None,
+        end_time: str = None,
+        recurrence: str = None,
+        start_time: str = None,
+        type: str = None,
+    ):
+        self.cron = cron
+        self.end_time = end_time
+        self.recurrence = recurrence
+        self.start_time = start_time
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cron is not None:
+            result['Cron'] = self.cron
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.recurrence is not None:
+            result['Recurrence'] = self.recurrence
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cron') is not None:
+            self.cron = m.get('Cron')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Recurrence') is not None:
+            self.recurrence = m.get('Recurrence')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetTaskResponseBodyTaskSubTasksSubTasks(TeaModel):
+    def __init__(
+        self,
+        baseline_id: int = None,
+        create_time: int = None,
+        create_user: str = None,
+        data_source: GetTaskResponseBodyTaskSubTasksSubTasksDataSource = None,
+        description: str = None,
+        id: int = None,
+        modify_time: int = None,
+        modify_user: str = None,
+        name: str = None,
+        owner: str = None,
+        priority: int = None,
+        project_env: str = None,
+        project_id: int = None,
+        rerun_interval: int = None,
+        rerun_mode: str = None,
+        rerun_times: int = None,
+        runtime_resource: GetTaskResponseBodyTaskSubTasksSubTasksRuntimeResource = None,
+        tenant_id: int = None,
+        timeout: int = None,
+        trigger: GetTaskResponseBodyTaskSubTasksSubTasksTrigger = None,
+        type: str = None,
+        workflow_id: int = None,
+    ):
+        self.baseline_id = baseline_id
+        self.create_time = create_time
+        self.create_user = create_user
+        self.data_source = data_source
+        self.description = description
+        self.id = id
+        self.modify_time = modify_time
+        self.modify_user = modify_user
+        self.name = name
+        self.owner = owner
+        self.priority = priority
+        self.project_env = project_env
+        self.project_id = project_id
+        self.rerun_interval = rerun_interval
+        self.rerun_mode = rerun_mode
+        self.rerun_times = rerun_times
+        self.runtime_resource = runtime_resource
+        self.tenant_id = tenant_id
+        self.timeout = timeout
+        self.trigger = trigger
+        self.type = type
+        self.workflow_id = workflow_id
+
+    def validate(self):
+        if self.data_source:
+            self.data_source.validate()
+        if self.runtime_resource:
+            self.runtime_resource.validate()
+        if self.trigger:
+            self.trigger.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.baseline_id is not None:
+            result['BaselineId'] = self.baseline_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.data_source is not None:
+            result['DataSource'] = self.data_source.to_map()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.modify_user is not None:
+            result['ModifyUser'] = self.modify_user
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.project_env is not None:
+            result['ProjectEnv'] = self.project_env
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.rerun_interval is not None:
+            result['RerunInterval'] = self.rerun_interval
+        if self.rerun_mode is not None:
+            result['RerunMode'] = self.rerun_mode
+        if self.rerun_times is not None:
+            result['RerunTimes'] = self.rerun_times
+        if self.runtime_resource is not None:
+            result['RuntimeResource'] = self.runtime_resource.to_map()
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        if self.trigger is not None:
+            result['Trigger'] = self.trigger.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.workflow_id is not None:
+            result['WorkflowId'] = self.workflow_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaselineId') is not None:
+            self.baseline_id = m.get('BaselineId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('DataSource') is not None:
+            temp_model = GetTaskResponseBodyTaskSubTasksSubTasksDataSource()
+            self.data_source = temp_model.from_map(m['DataSource'])
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('ModifyUser') is not None:
+            self.modify_user = m.get('ModifyUser')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('ProjectEnv') is not None:
+            self.project_env = m.get('ProjectEnv')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RerunInterval') is not None:
+            self.rerun_interval = m.get('RerunInterval')
+        if m.get('RerunMode') is not None:
+            self.rerun_mode = m.get('RerunMode')
+        if m.get('RerunTimes') is not None:
+            self.rerun_times = m.get('RerunTimes')
+        if m.get('RuntimeResource') is not None:
+            temp_model = GetTaskResponseBodyTaskSubTasksSubTasksRuntimeResource()
+            self.runtime_resource = temp_model.from_map(m['RuntimeResource'])
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        if m.get('Trigger') is not None:
+            temp_model = GetTaskResponseBodyTaskSubTasksSubTasksTrigger()
+            self.trigger = temp_model.from_map(m['Trigger'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('WorkflowId') is not None:
+            self.workflow_id = m.get('WorkflowId')
+        return self
+
+
+class GetTaskResponseBodyTaskSubTasks(TeaModel):
+    def __init__(
+        self,
+        sub_tasks: List[GetTaskResponseBodyTaskSubTasksSubTasks] = None,
+        type: str = None,
+    ):
+        self.sub_tasks = sub_tasks
+        self.type = type
+
+    def validate(self):
+        if self.sub_tasks:
+            for k in self.sub_tasks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['SubTasks'] = []
+        if self.sub_tasks is not None:
+            for k in self.sub_tasks:
+                result['SubTasks'].append(k.to_map() if k else None)
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.sub_tasks = []
+        if m.get('SubTasks') is not None:
+            for k in m.get('SubTasks'):
+                temp_model = GetTaskResponseBodyTaskSubTasksSubTasks()
+                self.sub_tasks.append(temp_model.from_map(k))
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetTaskResponseBodyTaskTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetTaskResponseBodyTaskTrigger(TeaModel):
+    def __init__(
+        self,
+        cron: str = None,
+        end_time: str = None,
+        recurrence: str = None,
+        start_time: str = None,
+        type: str = None,
+    ):
+        self.cron = cron
+        self.end_time = end_time
+        self.recurrence = recurrence
+        self.start_time = start_time
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cron is not None:
+            result['Cron'] = self.cron
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.recurrence is not None:
+            result['Recurrence'] = self.recurrence
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cron') is not None:
+            self.cron = m.get('Cron')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Recurrence') is not None:
+            self.recurrence = m.get('Recurrence')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetTaskResponseBodyTask(TeaModel):
+    def __init__(
+        self,
+        baseline_id: int = None,
+        create_time: int = None,
+        create_user: str = None,
+        data_source: GetTaskResponseBodyTaskDataSource = None,
+        dependencies: List[GetTaskResponseBodyTaskDependencies] = None,
+        description: str = None,
+        id: int = None,
+        inputs: GetTaskResponseBodyTaskInputs = None,
+        modify_time: int = None,
+        modify_user: str = None,
+        name: str = None,
+        outputs: GetTaskResponseBodyTaskOutputs = None,
+        owner: str = None,
+        priority: int = None,
+        project_env: str = None,
+        project_id: int = None,
+        rerun_interval: int = None,
+        rerun_mode: str = None,
+        rerun_times: int = None,
+        runtime_resource: GetTaskResponseBodyTaskRuntimeResource = None,
+        script: GetTaskResponseBodyTaskScript = None,
+        sub_tasks: GetTaskResponseBodyTaskSubTasks = None,
+        tags: List[GetTaskResponseBodyTaskTags] = None,
+        tenant_id: int = None,
+        timeout: int = None,
+        trigger: GetTaskResponseBodyTaskTrigger = None,
+        type: str = None,
+        workflow_id: int = None,
+    ):
+        self.baseline_id = baseline_id
+        self.create_time = create_time
+        self.create_user = create_user
+        self.data_source = data_source
+        self.dependencies = dependencies
+        self.description = description
+        self.id = id
+        self.inputs = inputs
+        self.modify_time = modify_time
+        self.modify_user = modify_user
+        self.name = name
+        self.outputs = outputs
+        self.owner = owner
+        self.priority = priority
+        self.project_env = project_env
+        self.project_id = project_id
+        self.rerun_interval = rerun_interval
+        self.rerun_mode = rerun_mode
+        self.rerun_times = rerun_times
+        self.runtime_resource = runtime_resource
+        self.script = script
+        self.sub_tasks = sub_tasks
+        self.tags = tags
+        self.tenant_id = tenant_id
+        self.timeout = timeout
+        self.trigger = trigger
+        self.type = type
+        self.workflow_id = workflow_id
+
+    def validate(self):
+        if self.data_source:
+            self.data_source.validate()
+        if self.dependencies:
+            for k in self.dependencies:
+                if k:
+                    k.validate()
+        if self.inputs:
+            self.inputs.validate()
+        if self.outputs:
+            self.outputs.validate()
+        if self.runtime_resource:
+            self.runtime_resource.validate()
+        if self.script:
+            self.script.validate()
+        if self.sub_tasks:
+            self.sub_tasks.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+        if self.trigger:
+            self.trigger.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.baseline_id is not None:
+            result['BaselineId'] = self.baseline_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.data_source is not None:
+            result['DataSource'] = self.data_source.to_map()
+        result['Dependencies'] = []
+        if self.dependencies is not None:
+            for k in self.dependencies:
+                result['Dependencies'].append(k.to_map() if k else None)
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.inputs is not None:
+            result['Inputs'] = self.inputs.to_map()
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.modify_user is not None:
+            result['ModifyUser'] = self.modify_user
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.outputs is not None:
+            result['Outputs'] = self.outputs.to_map()
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.project_env is not None:
+            result['ProjectEnv'] = self.project_env
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.rerun_interval is not None:
+            result['RerunInterval'] = self.rerun_interval
+        if self.rerun_mode is not None:
+            result['RerunMode'] = self.rerun_mode
+        if self.rerun_times is not None:
+            result['RerunTimes'] = self.rerun_times
+        if self.runtime_resource is not None:
+            result['RuntimeResource'] = self.runtime_resource.to_map()
+        if self.script is not None:
+            result['Script'] = self.script.to_map()
+        if self.sub_tasks is not None:
+            result['SubTasks'] = self.sub_tasks.to_map()
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        if self.trigger is not None:
+            result['Trigger'] = self.trigger.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.workflow_id is not None:
+            result['WorkflowId'] = self.workflow_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaselineId') is not None:
+            self.baseline_id = m.get('BaselineId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('DataSource') is not None:
+            temp_model = GetTaskResponseBodyTaskDataSource()
+            self.data_source = temp_model.from_map(m['DataSource'])
+        self.dependencies = []
+        if m.get('Dependencies') is not None:
+            for k in m.get('Dependencies'):
+                temp_model = GetTaskResponseBodyTaskDependencies()
+                self.dependencies.append(temp_model.from_map(k))
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Inputs') is not None:
+            temp_model = GetTaskResponseBodyTaskInputs()
+            self.inputs = temp_model.from_map(m['Inputs'])
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('ModifyUser') is not None:
+            self.modify_user = m.get('ModifyUser')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Outputs') is not None:
+            temp_model = GetTaskResponseBodyTaskOutputs()
+            self.outputs = temp_model.from_map(m['Outputs'])
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('ProjectEnv') is not None:
+            self.project_env = m.get('ProjectEnv')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RerunInterval') is not None:
+            self.rerun_interval = m.get('RerunInterval')
+        if m.get('RerunMode') is not None:
+            self.rerun_mode = m.get('RerunMode')
+        if m.get('RerunTimes') is not None:
+            self.rerun_times = m.get('RerunTimes')
+        if m.get('RuntimeResource') is not None:
+            temp_model = GetTaskResponseBodyTaskRuntimeResource()
+            self.runtime_resource = temp_model.from_map(m['RuntimeResource'])
+        if m.get('Script') is not None:
+            temp_model = GetTaskResponseBodyTaskScript()
+            self.script = temp_model.from_map(m['Script'])
+        if m.get('SubTasks') is not None:
+            temp_model = GetTaskResponseBodyTaskSubTasks()
+            self.sub_tasks = temp_model.from_map(m['SubTasks'])
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetTaskResponseBodyTaskTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        if m.get('Trigger') is not None:
+            temp_model = GetTaskResponseBodyTaskTrigger()
+            self.trigger = temp_model.from_map(m['Trigger'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('WorkflowId') is not None:
+            self.workflow_id = m.get('WorkflowId')
+        return self
+
+
+class GetTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task: GetTaskResponseBodyTask = None,
+    ):
+        self.request_id = request_id
+        self.task = task
+
+    def validate(self):
+        if self.task:
+            self.task.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task is not None:
+            result['Task'] = self.task.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Task') is not None:
+            temp_model = GetTaskResponseBodyTask()
+            self.task = temp_model.from_map(m['Task'])
+        return self
+
+
+class GetTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetTaskInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+    ):
+        # This parameter is required.
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class GetTaskInstanceResponseBodyTaskInstanceDataSource(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class GetTaskInstanceResponseBodyTaskInstanceInputsVariables(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        scope: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.scope = scope
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.scope is not None:
+            result['Scope'] = self.scope
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetTaskInstanceResponseBodyTaskInstanceInputs(TeaModel):
+    def __init__(
+        self,
+        variables: List[GetTaskInstanceResponseBodyTaskInstanceInputsVariables] = None,
+    ):
+        self.variables = variables
+
+    def validate(self):
+        if self.variables:
+            for k in self.variables:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Variables'] = []
+        if self.variables is not None:
+            for k in self.variables:
+                result['Variables'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.variables = []
+        if m.get('Variables') is not None:
+            for k in m.get('Variables'):
+                temp_model = GetTaskInstanceResponseBodyTaskInstanceInputsVariables()
+                self.variables.append(temp_model.from_map(k))
+        return self
+
+
+class GetTaskInstanceResponseBodyTaskInstanceOutputsTaskOutputs(TeaModel):
+    def __init__(
+        self,
+        output: str = None,
+    ):
+        self.output = output
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output is not None:
+            result['Output'] = self.output
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Output') is not None:
+            self.output = m.get('Output')
+        return self
+
+
+class GetTaskInstanceResponseBodyTaskInstanceOutputsVariables(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        scope: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.scope = scope
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.scope is not None:
+            result['Scope'] = self.scope
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetTaskInstanceResponseBodyTaskInstanceOutputs(TeaModel):
+    def __init__(
+        self,
+        task_outputs: List[GetTaskInstanceResponseBodyTaskInstanceOutputsTaskOutputs] = None,
+        variables: List[GetTaskInstanceResponseBodyTaskInstanceOutputsVariables] = None,
+    ):
+        self.task_outputs = task_outputs
+        self.variables = variables
+
+    def validate(self):
+        if self.task_outputs:
+            for k in self.task_outputs:
+                if k:
+                    k.validate()
+        if self.variables:
+            for k in self.variables:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['TaskOutputs'] = []
+        if self.task_outputs is not None:
+            for k in self.task_outputs:
+                result['TaskOutputs'].append(k.to_map() if k else None)
+        result['Variables'] = []
+        if self.variables is not None:
+            for k in self.variables:
+                result['Variables'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.task_outputs = []
+        if m.get('TaskOutputs') is not None:
+            for k in m.get('TaskOutputs'):
+                temp_model = GetTaskInstanceResponseBodyTaskInstanceOutputsTaskOutputs()
+                self.task_outputs.append(temp_model.from_map(k))
+        self.variables = []
+        if m.get('Variables') is not None:
+            for k in m.get('Variables'):
+                temp_model = GetTaskInstanceResponseBodyTaskInstanceOutputsVariables()
+                self.variables.append(temp_model.from_map(k))
+        return self
+
+
+class GetTaskInstanceResponseBodyTaskInstanceRuntime(TeaModel):
+    def __init__(
+        self,
+        gateway: str = None,
+        process_id: str = None,
+    ):
+        self.gateway = gateway
+        self.process_id = process_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gateway is not None:
+            result['Gateway'] = self.gateway
+        if self.process_id is not None:
+            result['ProcessId'] = self.process_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Gateway') is not None:
+            self.gateway = m.get('Gateway')
+        if m.get('ProcessId') is not None:
+            self.process_id = m.get('ProcessId')
+        return self
+
+
+class GetTaskInstanceResponseBodyTaskInstanceRuntimeResource(TeaModel):
+    def __init__(
+        self,
+        cu: str = None,
+        image: str = None,
+        resource_group_id: str = None,
+    ):
+        self.cu = cu
+        self.image = image
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cu is not None:
+            result['Cu'] = self.cu
+        if self.image is not None:
+            result['Image'] = self.image
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cu') is not None:
+            self.cu = m.get('Cu')
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class GetTaskInstanceResponseBodyTaskInstanceScript(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        parameters: str = None,
+    ):
+        self.content = content
+        self.parameters = parameters
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+        return self
+
+
+class GetTaskInstanceResponseBodyTaskInstanceTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetTaskInstanceResponseBodyTaskInstance(TeaModel):
+    def __init__(
+        self,
+        baseline_id: int = None,
+        bizdate: int = None,
+        create_time: int = None,
+        create_user: str = None,
+        data_source: GetTaskInstanceResponseBodyTaskInstanceDataSource = None,
+        description: str = None,
+        finished_time: int = None,
+        id: int = None,
+        inputs: GetTaskInstanceResponseBodyTaskInstanceInputs = None,
+        modify_time: int = None,
+        modify_user: str = None,
+        outputs: GetTaskInstanceResponseBodyTaskInstanceOutputs = None,
+        owner: str = None,
+        priority: int = None,
+        project_env: str = None,
+        project_id: int = None,
+        rerun_mode: str = None,
+        run_number: int = None,
+        runtime: GetTaskInstanceResponseBodyTaskInstanceRuntime = None,
+        runtime_resource: GetTaskInstanceResponseBodyTaskInstanceRuntimeResource = None,
+        script: GetTaskInstanceResponseBodyTaskInstanceScript = None,
+        started_time: int = None,
+        status: str = None,
+        tags: List[GetTaskInstanceResponseBodyTaskInstanceTags] = None,
+        task_id: int = None,
+        task_name: str = None,
+        task_type: str = None,
+        tenant_id: int = None,
+        timeout: int = None,
+        trigger_recurrence: str = None,
+        trigger_time: int = None,
+        trigger_type: str = None,
+        workflow_id: int = None,
+        workflow_instance_id: int = None,
+        workflow_instance_type: str = None,
+        workflow_name: str = None,
+    ):
+        self.baseline_id = baseline_id
+        self.bizdate = bizdate
+        self.create_time = create_time
+        self.create_user = create_user
+        self.data_source = data_source
+        self.description = description
+        self.finished_time = finished_time
+        self.id = id
+        self.inputs = inputs
+        self.modify_time = modify_time
+        self.modify_user = modify_user
+        self.outputs = outputs
+        self.owner = owner
+        self.priority = priority
+        self.project_env = project_env
+        self.project_id = project_id
+        self.rerun_mode = rerun_mode
+        self.run_number = run_number
+        self.runtime = runtime
+        self.runtime_resource = runtime_resource
+        self.script = script
+        self.started_time = started_time
+        self.status = status
+        self.tags = tags
+        self.task_id = task_id
+        self.task_name = task_name
+        self.task_type = task_type
+        self.tenant_id = tenant_id
+        self.timeout = timeout
+        self.trigger_recurrence = trigger_recurrence
+        self.trigger_time = trigger_time
+        self.trigger_type = trigger_type
+        self.workflow_id = workflow_id
+        self.workflow_instance_id = workflow_instance_id
+        self.workflow_instance_type = workflow_instance_type
+        self.workflow_name = workflow_name
+
+    def validate(self):
+        if self.data_source:
+            self.data_source.validate()
+        if self.inputs:
+            self.inputs.validate()
+        if self.outputs:
+            self.outputs.validate()
+        if self.runtime:
+            self.runtime.validate()
+        if self.runtime_resource:
+            self.runtime_resource.validate()
+        if self.script:
+            self.script.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.baseline_id is not None:
+            result['BaselineId'] = self.baseline_id
+        if self.bizdate is not None:
+            result['Bizdate'] = self.bizdate
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.data_source is not None:
+            result['DataSource'] = self.data_source.to_map()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.finished_time is not None:
+            result['FinishedTime'] = self.finished_time
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.inputs is not None:
+            result['Inputs'] = self.inputs.to_map()
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.modify_user is not None:
+            result['ModifyUser'] = self.modify_user
+        if self.outputs is not None:
+            result['Outputs'] = self.outputs.to_map()
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.project_env is not None:
+            result['ProjectEnv'] = self.project_env
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.rerun_mode is not None:
+            result['RerunMode'] = self.rerun_mode
+        if self.run_number is not None:
+            result['RunNumber'] = self.run_number
+        if self.runtime is not None:
+            result['Runtime'] = self.runtime.to_map()
+        if self.runtime_resource is not None:
+            result['RuntimeResource'] = self.runtime_resource.to_map()
+        if self.script is not None:
+            result['Script'] = self.script.to_map()
+        if self.started_time is not None:
+            result['StartedTime'] = self.started_time
+        if self.status is not None:
+            result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        if self.trigger_recurrence is not None:
+            result['TriggerRecurrence'] = self.trigger_recurrence
+        if self.trigger_time is not None:
+            result['TriggerTime'] = self.trigger_time
+        if self.trigger_type is not None:
+            result['TriggerType'] = self.trigger_type
+        if self.workflow_id is not None:
+            result['WorkflowId'] = self.workflow_id
+        if self.workflow_instance_id is not None:
+            result['WorkflowInstanceId'] = self.workflow_instance_id
+        if self.workflow_instance_type is not None:
+            result['WorkflowInstanceType'] = self.workflow_instance_type
+        if self.workflow_name is not None:
+            result['WorkflowName'] = self.workflow_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaselineId') is not None:
+            self.baseline_id = m.get('BaselineId')
+        if m.get('Bizdate') is not None:
+            self.bizdate = m.get('Bizdate')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('DataSource') is not None:
+            temp_model = GetTaskInstanceResponseBodyTaskInstanceDataSource()
+            self.data_source = temp_model.from_map(m['DataSource'])
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FinishedTime') is not None:
+            self.finished_time = m.get('FinishedTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Inputs') is not None:
+            temp_model = GetTaskInstanceResponseBodyTaskInstanceInputs()
+            self.inputs = temp_model.from_map(m['Inputs'])
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('ModifyUser') is not None:
+            self.modify_user = m.get('ModifyUser')
+        if m.get('Outputs') is not None:
+            temp_model = GetTaskInstanceResponseBodyTaskInstanceOutputs()
+            self.outputs = temp_model.from_map(m['Outputs'])
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('ProjectEnv') is not None:
+            self.project_env = m.get('ProjectEnv')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RerunMode') is not None:
+            self.rerun_mode = m.get('RerunMode')
+        if m.get('RunNumber') is not None:
+            self.run_number = m.get('RunNumber')
+        if m.get('Runtime') is not None:
+            temp_model = GetTaskInstanceResponseBodyTaskInstanceRuntime()
+            self.runtime = temp_model.from_map(m['Runtime'])
+        if m.get('RuntimeResource') is not None:
+            temp_model = GetTaskInstanceResponseBodyTaskInstanceRuntimeResource()
+            self.runtime_resource = temp_model.from_map(m['RuntimeResource'])
+        if m.get('Script') is not None:
+            temp_model = GetTaskInstanceResponseBodyTaskInstanceScript()
+            self.script = temp_model.from_map(m['Script'])
+        if m.get('StartedTime') is not None:
+            self.started_time = m.get('StartedTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetTaskInstanceResponseBodyTaskInstanceTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        if m.get('TriggerRecurrence') is not None:
+            self.trigger_recurrence = m.get('TriggerRecurrence')
+        if m.get('TriggerTime') is not None:
+            self.trigger_time = m.get('TriggerTime')
+        if m.get('TriggerType') is not None:
+            self.trigger_type = m.get('TriggerType')
+        if m.get('WorkflowId') is not None:
+            self.workflow_id = m.get('WorkflowId')
+        if m.get('WorkflowInstanceId') is not None:
+            self.workflow_instance_id = m.get('WorkflowInstanceId')
+        if m.get('WorkflowInstanceType') is not None:
+            self.workflow_instance_type = m.get('WorkflowInstanceType')
+        if m.get('WorkflowName') is not None:
+            self.workflow_name = m.get('WorkflowName')
+        return self
+
+
+class GetTaskInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_instance: GetTaskInstanceResponseBodyTaskInstance = None,
+    ):
+        self.request_id = request_id
+        self.task_instance = task_instance
+
+    def validate(self):
+        if self.task_instance:
+            self.task_instance.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_instance is not None:
+            result['TaskInstance'] = self.task_instance.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskInstance') is not None:
+            temp_model = GetTaskInstanceResponseBodyTaskInstance()
+            self.task_instance = temp_model.from_map(m['TaskInstance'])
+        return self
+
+
+class GetTaskInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTaskInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTaskInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetTaskInstanceLogRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        run_number: int = None,
+    ):
+        # This parameter is required.
+        self.id = id
+        self.run_number = run_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.run_number is not None:
+            result['RunNumber'] = self.run_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RunNumber') is not None:
+            self.run_number = m.get('RunNumber')
+        return self
+
+
+class GetTaskInstanceLogResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_instance_log: str = None,
+    ):
+        self.request_id = request_id
+        self.task_instance_log = task_instance_log
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_instance_log is not None:
+            result['TaskInstanceLog'] = self.task_instance_log
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskInstanceLog') is not None:
+            self.task_instance_log = m.get('TaskInstanceLog')
+        return self
+
+
+class GetTaskInstanceLogResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTaskInstanceLogResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTaskInstanceLogResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetWorkflowDefinitionRequest(TeaModel):
     def __init__(
         self,
@@ -8299,6 +12599,158 @@ class GetWorkflowDefinitionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetWorkflowDefinitionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GrantMemberProjectRolesRequest(TeaModel):
+    def __init__(
+        self,
+        project_id: int = None,
+        role_codes: List[str] = None,
+        user_id: str = None,
+    ):
+        # This parameter is required.
+        self.project_id = project_id
+        # This parameter is required.
+        self.role_codes = role_codes
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.role_codes is not None:
+            result['RoleCodes'] = self.role_codes
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RoleCodes') is not None:
+            self.role_codes = m.get('RoleCodes')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GrantMemberProjectRolesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        project_id: int = None,
+        role_codes_shrink: str = None,
+        user_id: str = None,
+    ):
+        # This parameter is required.
+        self.project_id = project_id
+        # This parameter is required.
+        self.role_codes_shrink = role_codes_shrink
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.role_codes_shrink is not None:
+            result['RoleCodes'] = self.role_codes_shrink
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RoleCodes') is not None:
+            self.role_codes_shrink = m.get('RoleCodes')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GrantMemberProjectRolesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GrantMemberProjectRolesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GrantMemberProjectRolesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GrantMemberProjectRolesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9966,7 +14418,7 @@ class ListDIJobsResponseBodyPagingInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The synchronization tasks that are returned.
+        # The synchronization tasks returned.
         self.dijobs = dijobs
         # The page number.
         self.page_number = page_number
@@ -10089,6 +14541,2695 @@ class ListDIJobsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListDIJobsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDataQualityEvaluationTaskInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        bizdate_from: str = None,
+        bizdate_to: str = None,
+        create_time_from: int = None,
+        create_time_to: int = None,
+        data_quality_evaluation_task_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: int = None,
+        table_guid: str = None,
+        trigger_client: str = None,
+        trigger_client_id: str = None,
+    ):
+        self.bizdate_from = bizdate_from
+        self.bizdate_to = bizdate_to
+        self.create_time_from = create_time_from
+        self.create_time_to = create_time_to
+        self.data_quality_evaluation_task_id = data_quality_evaluation_task_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.project_id = project_id
+        self.table_guid = table_guid
+        self.trigger_client = trigger_client
+        self.trigger_client_id = trigger_client_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bizdate_from is not None:
+            result['BizdateFrom'] = self.bizdate_from
+        if self.bizdate_to is not None:
+            result['BizdateTo'] = self.bizdate_to
+        if self.create_time_from is not None:
+            result['CreateTimeFrom'] = self.create_time_from
+        if self.create_time_to is not None:
+            result['CreateTimeTo'] = self.create_time_to
+        if self.data_quality_evaluation_task_id is not None:
+            result['DataQualityEvaluationTaskId'] = self.data_quality_evaluation_task_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.table_guid is not None:
+            result['TableGuid'] = self.table_guid
+        if self.trigger_client is not None:
+            result['TriggerClient'] = self.trigger_client
+        if self.trigger_client_id is not None:
+            result['TriggerClientId'] = self.trigger_client_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizdateFrom') is not None:
+            self.bizdate_from = m.get('BizdateFrom')
+        if m.get('BizdateTo') is not None:
+            self.bizdate_to = m.get('BizdateTo')
+        if m.get('CreateTimeFrom') is not None:
+            self.create_time_from = m.get('CreateTimeFrom')
+        if m.get('CreateTimeTo') is not None:
+            self.create_time_to = m.get('CreateTimeTo')
+        if m.get('DataQualityEvaluationTaskId') is not None:
+            self.data_quality_evaluation_task_id = m.get('DataQualityEvaluationTaskId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('TableGuid') is not None:
+            self.table_guid = m.get('TableGuid')
+        if m.get('TriggerClient') is not None:
+            self.trigger_client = m.get('TriggerClient')
+        if m.get('TriggerClientId') is not None:
+            self.trigger_client_id = m.get('TriggerClientId')
+        return self
+
+
+class ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskHooks(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        type: str = None,
+    ):
+        # Hook触发条件
+        self.condition = condition
+        # Hook类型
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['Condition'] = self.condition
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Condition') is not None:
+            self.condition = m.get('Condition')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotificationsNofiticationReceivers(TeaModel):
+    def __init__(
+        self,
+        extension: str = None,
+        receiver_type: str = None,
+        receiver_values: List[str] = None,
+    ):
+        # 扩展信息，格式为 json，例如钉钉机器人支持 at 所有人
+        self.extension = extension
+        # 告警接收人类型
+        self.receiver_type = receiver_type
+        # 告警接收人
+        self.receiver_values = receiver_values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.extension is not None:
+            result['Extension'] = self.extension
+        if self.receiver_type is not None:
+            result['ReceiverType'] = self.receiver_type
+        if self.receiver_values is not None:
+            result['ReceiverValues'] = self.receiver_values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Extension') is not None:
+            self.extension = m.get('Extension')
+        if m.get('ReceiverType') is not None:
+            self.receiver_type = m.get('ReceiverType')
+        if m.get('ReceiverValues') is not None:
+            self.receiver_values = m.get('ReceiverValues')
+        return self
+
+
+class ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotificationsNotificationChannels(TeaModel):
+    def __init__(
+        self,
+        channels: List[str] = None,
+    ):
+        # 通知方式
+        self.channels = channels
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channels is not None:
+            result['Channels'] = self.channels
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Channels') is not None:
+            self.channels = m.get('Channels')
+        return self
+
+
+class ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotifications(TeaModel):
+    def __init__(
+        self,
+        nofitication_receivers: List[ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotificationsNofiticationReceivers] = None,
+        notification_channels: List[ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotificationsNotificationChannels] = None,
+    ):
+        # 告警接收人设置
+        self.nofitication_receivers = nofitication_receivers
+        # 通知方式
+        self.notification_channels = notification_channels
+
+    def validate(self):
+        if self.nofitication_receivers:
+            for k in self.nofitication_receivers:
+                if k:
+                    k.validate()
+        if self.notification_channels:
+            for k in self.notification_channels:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['NofiticationReceivers'] = []
+        if self.nofitication_receivers is not None:
+            for k in self.nofitication_receivers:
+                result['NofiticationReceivers'].append(k.to_map() if k else None)
+        result['NotificationChannels'] = []
+        if self.notification_channels is not None:
+            for k in self.notification_channels:
+                result['NotificationChannels'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.nofitication_receivers = []
+        if m.get('NofiticationReceivers') is not None:
+            for k in m.get('NofiticationReceivers'):
+                temp_model = ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotificationsNofiticationReceivers()
+                self.nofitication_receivers.append(temp_model.from_map(k))
+        self.notification_channels = []
+        if m.get('NotificationChannels') is not None:
+            for k in m.get('NotificationChannels'):
+                temp_model = ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotificationsNotificationChannels()
+                self.notification_channels.append(temp_model.from_map(k))
+        return self
+
+
+class ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotifications(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        notifications: List[ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotifications] = None,
+    ):
+        # 通知触发条件
+        self.condition = condition
+        # 具体的消息通知设置
+        self.notifications = notifications
+
+    def validate(self):
+        if self.notifications:
+            for k in self.notifications:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['Condition'] = self.condition
+        result['Notifications'] = []
+        if self.notifications is not None:
+            for k in self.notifications:
+                result['Notifications'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Condition') is not None:
+            self.condition = m.get('Condition')
+        self.notifications = []
+        if m.get('Notifications') is not None:
+            for k in m.get('Notifications'):
+                temp_model = ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotificationsNotifications()
+                self.notifications.append(temp_model.from_map(k))
+        return self
+
+
+class ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTarget(TeaModel):
+    def __init__(
+        self,
+        database_type: str = None,
+        partition_spec: str = None,
+        table_guid: str = None,
+        type: str = None,
+    ):
+        # 表所属的数据库类型
+        self.database_type = database_type
+        # 分区表的分区设置
+        self.partition_spec = partition_spec
+        # 表在数据地图中的唯一ID
+        self.table_guid = table_guid
+        # 监控对象类型
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.database_type is not None:
+            result['DatabaseType'] = self.database_type
+        if self.partition_spec is not None:
+            result['PartitionSpec'] = self.partition_spec
+        if self.table_guid is not None:
+            result['TableGuid'] = self.table_guid
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatabaseType') is not None:
+            self.database_type = m.get('DatabaseType')
+        if m.get('PartitionSpec') is not None:
+            self.partition_spec = m.get('PartitionSpec')
+        if m.get('TableGuid') is not None:
+            self.table_guid = m.get('TableGuid')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTrigger(TeaModel):
+    def __init__(
+        self,
+        task_ids: List[int] = None,
+        type: str = None,
+    ):
+        # 具体指明哪些调度节点的实例执行成功后可以触发
+        self.task_ids = task_ids
+        # 何种事件可以触发质量校验任务执行
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_ids is not None:
+            result['TaskIds'] = self.task_ids
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskIds') is not None:
+            self.task_ids = m.get('TaskIds')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        hooks: List[ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskHooks] = None,
+        id: int = None,
+        name: str = None,
+        notifications: ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotifications = None,
+        project_id: int = None,
+        region_id: str = None,
+        runtime_conf: str = None,
+        target: ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTarget = None,
+        tenant_id: int = None,
+        trigger: ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTrigger = None,
+    ):
+        # 质量监控任务描述
+        self.description = description
+        # 数据质量校验任务实例生命周期中的回调设置，目前只支持一个阻塞调度任务的Hook
+        self.hooks = hooks
+        # 代表资源一级ID的资源属性字段
+        self.id = id
+        # 质量监控任务名称
+        # 
+        # This parameter is required.
+        self.name = name
+        # 数据质量校验任务通知订阅配置
+        self.notifications = notifications
+        # 项目空间Id
+        self.project_id = project_id
+        # 代表region的资源属性字段
+        self.region_id = region_id
+        # 使用数据源时的一些设置，目前只支持指定EMR的yarn队列、采集EMR表时把SQL引擎指定为SPARK-SQL
+        self.runtime_conf = runtime_conf
+        # 参看 DataQualityTarget示例	数据质量校验任务的监控对象，参考 DataQualityTarget
+        self.target = target
+        # 租户Id
+        self.tenant_id = tenant_id
+        # 数据质量校验任务的触发配置
+        self.trigger = trigger
+
+    def validate(self):
+        if self.hooks:
+            for k in self.hooks:
+                if k:
+                    k.validate()
+        if self.notifications:
+            self.notifications.validate()
+        if self.target:
+            self.target.validate()
+        if self.trigger:
+            self.trigger.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        result['Hooks'] = []
+        if self.hooks is not None:
+            for k in self.hooks:
+                result['Hooks'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.notifications is not None:
+            result['Notifications'] = self.notifications.to_map()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.runtime_conf is not None:
+            result['RuntimeConf'] = self.runtime_conf
+        if self.target is not None:
+            result['Target'] = self.target.to_map()
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.trigger is not None:
+            result['Trigger'] = self.trigger.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.hooks = []
+        if m.get('Hooks') is not None:
+            for k in m.get('Hooks'):
+                temp_model = ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskHooks()
+                self.hooks.append(temp_model.from_map(k))
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Notifications') is not None:
+            temp_model = ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskNotifications()
+            self.notifications = temp_model.from_map(m['Notifications'])
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RuntimeConf') is not None:
+            self.runtime_conf = m.get('RuntimeConf')
+        if m.get('Target') is not None:
+            temp_model = ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTarget()
+            self.target = temp_model.from_map(m['Target'])
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('Trigger') is not None:
+            temp_model = ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTrigger()
+            self.trigger = temp_model.from_map(m['Trigger'])
+        return self
+
+
+class ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstances(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        finish_time: int = None,
+        id: int = None,
+        parameters: str = None,
+        project_id: int = None,
+        status: str = None,
+        task: ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask = None,
+        trigger_context: str = None,
+    ):
+        self.create_time = create_time
+        self.finish_time = finish_time
+        self.id = id
+        self.parameters = parameters
+        self.project_id = project_id
+        self.status = status
+        self.task = task
+        self.trigger_context = trigger_context
+
+    def validate(self):
+        if self.task:
+            self.task.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.finish_time is not None:
+            result['FinishTime'] = self.finish_time
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task is not None:
+            result['Task'] = self.task.to_map()
+        if self.trigger_context is not None:
+            result['TriggerContext'] = self.trigger_context
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('FinishTime') is not None:
+            self.finish_time = m.get('FinishTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Task') is not None:
+            temp_model = ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTask()
+            self.task = temp_model.from_map(m['Task'])
+        if m.get('TriggerContext') is not None:
+            self.trigger_context = m.get('TriggerContext')
+        return self
+
+
+class ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfo(TeaModel):
+    def __init__(
+        self,
+        data_quality_evaluation_task_instances: List[ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstances] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.data_quality_evaluation_task_instances = data_quality_evaluation_task_instances
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data_quality_evaluation_task_instances:
+            for k in self.data_quality_evaluation_task_instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataQualityEvaluationTaskInstances'] = []
+        if self.data_quality_evaluation_task_instances is not None:
+            for k in self.data_quality_evaluation_task_instances:
+                result['DataQualityEvaluationTaskInstances'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_quality_evaluation_task_instances = []
+        if m.get('DataQualityEvaluationTaskInstances') is not None:
+            for k in m.get('DataQualityEvaluationTaskInstances'):
+                temp_model = ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstances()
+                self.data_quality_evaluation_task_instances.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListDataQualityEvaluationTaskInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        paging_info: ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfo = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.paging_info = paging_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.paging_info:
+            self.paging_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.paging_info is not None:
+            result['PagingInfo'] = self.paging_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PagingInfo') is not None:
+            temp_model = ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfo()
+            self.paging_info = temp_model.from_map(m['PagingInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListDataQualityEvaluationTaskInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDataQualityEvaluationTaskInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDataQualityEvaluationTaskInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDataQualityEvaluationTasksRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: int = None,
+        table_guid: str = None,
+    ):
+        self.name = name
+        self.page_number = page_number
+        self.page_size = page_size
+        self.project_id = project_id
+        self.table_guid = table_guid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.table_guid is not None:
+            result['TableGuid'] = self.table_guid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('TableGuid') is not None:
+            self.table_guid = m.get('TableGuid')
+        return self
+
+
+class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksHooks(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        type: str = None,
+    ):
+        self.condition = condition
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['Condition'] = self.condition
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Condition') is not None:
+            self.condition = m.get('Condition')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationChannels(TeaModel):
+    def __init__(
+        self,
+        channels: List[str] = None,
+    ):
+        self.channels = channels
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channels is not None:
+            result['Channels'] = self.channels
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Channels') is not None:
+            self.channels = m.get('Channels')
+        return self
+
+
+class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationReceivers(TeaModel):
+    def __init__(
+        self,
+        extension: str = None,
+        receiver_type: str = None,
+        receiver_values: List[str] = None,
+    ):
+        self.extension = extension
+        self.receiver_type = receiver_type
+        self.receiver_values = receiver_values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.extension is not None:
+            result['Extension'] = self.extension
+        if self.receiver_type is not None:
+            result['ReceiverType'] = self.receiver_type
+        if self.receiver_values is not None:
+            result['ReceiverValues'] = self.receiver_values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Extension') is not None:
+            self.extension = m.get('Extension')
+        if m.get('ReceiverType') is not None:
+            self.receiver_type = m.get('ReceiverType')
+        if m.get('ReceiverValues') is not None:
+            self.receiver_values = m.get('ReceiverValues')
+        return self
+
+
+class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotifications(TeaModel):
+    def __init__(
+        self,
+        notification_channels: List[ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationChannels] = None,
+        notification_receivers: List[ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationReceivers] = None,
+    ):
+        self.notification_channels = notification_channels
+        self.notification_receivers = notification_receivers
+
+    def validate(self):
+        if self.notification_channels:
+            for k in self.notification_channels:
+                if k:
+                    k.validate()
+        if self.notification_receivers:
+            for k in self.notification_receivers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['NotificationChannels'] = []
+        if self.notification_channels is not None:
+            for k in self.notification_channels:
+                result['NotificationChannels'].append(k.to_map() if k else None)
+        result['NotificationReceivers'] = []
+        if self.notification_receivers is not None:
+            for k in self.notification_receivers:
+                result['NotificationReceivers'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.notification_channels = []
+        if m.get('NotificationChannels') is not None:
+            for k in m.get('NotificationChannels'):
+                temp_model = ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationChannels()
+                self.notification_channels.append(temp_model.from_map(k))
+        self.notification_receivers = []
+        if m.get('NotificationReceivers') is not None:
+            for k in m.get('NotificationReceivers'):
+                temp_model = ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationReceivers()
+                self.notification_receivers.append(temp_model.from_map(k))
+        return self
+
+
+class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotifications(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        notifications: List[ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotifications] = None,
+    ):
+        self.condition = condition
+        self.notifications = notifications
+
+    def validate(self):
+        if self.notifications:
+            for k in self.notifications:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['Condition'] = self.condition
+        result['Notifications'] = []
+        if self.notifications is not None:
+            for k in self.notifications:
+                result['Notifications'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Condition') is not None:
+            self.condition = m.get('Condition')
+        self.notifications = []
+        if m.get('Notifications') is not None:
+            for k in m.get('Notifications'):
+                temp_model = ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotifications()
+                self.notifications.append(temp_model.from_map(k))
+        return self
+
+
+class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTarget(TeaModel):
+    def __init__(
+        self,
+        database_type: str = None,
+        partition_spec: str = None,
+        table_guid: str = None,
+        type: str = None,
+    ):
+        self.database_type = database_type
+        self.partition_spec = partition_spec
+        self.table_guid = table_guid
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.database_type is not None:
+            result['DatabaseType'] = self.database_type
+        if self.partition_spec is not None:
+            result['PartitionSpec'] = self.partition_spec
+        if self.table_guid is not None:
+            result['TableGuid'] = self.table_guid
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatabaseType') is not None:
+            self.database_type = m.get('DatabaseType')
+        if m.get('PartitionSpec') is not None:
+            self.partition_spec = m.get('PartitionSpec')
+        if m.get('TableGuid') is not None:
+            self.table_guid = m.get('TableGuid')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTrigger(TeaModel):
+    def __init__(
+        self,
+        task_ids: List[int] = None,
+        type: str = None,
+    ):
+        self.task_ids = task_ids
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_ids is not None:
+            result['TaskIds'] = self.task_ids
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskIds') is not None:
+            self.task_ids = m.get('TaskIds')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        hooks: List[ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksHooks] = None,
+        id: int = None,
+        name: str = None,
+        notifications: ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotifications = None,
+        project_id: int = None,
+        runtime_conf: str = None,
+        target: ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTarget = None,
+        tenant_id: int = None,
+        trigger: ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTrigger = None,
+    ):
+        self.description = description
+        self.hooks = hooks
+        self.id = id
+        self.name = name
+        self.notifications = notifications
+        self.project_id = project_id
+        self.runtime_conf = runtime_conf
+        self.target = target
+        self.tenant_id = tenant_id
+        self.trigger = trigger
+
+    def validate(self):
+        if self.hooks:
+            for k in self.hooks:
+                if k:
+                    k.validate()
+        if self.notifications:
+            self.notifications.validate()
+        if self.target:
+            self.target.validate()
+        if self.trigger:
+            self.trigger.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        result['Hooks'] = []
+        if self.hooks is not None:
+            for k in self.hooks:
+                result['Hooks'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.notifications is not None:
+            result['Notifications'] = self.notifications.to_map()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.runtime_conf is not None:
+            result['RuntimeConf'] = self.runtime_conf
+        if self.target is not None:
+            result['Target'] = self.target.to_map()
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.trigger is not None:
+            result['Trigger'] = self.trigger.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.hooks = []
+        if m.get('Hooks') is not None:
+            for k in m.get('Hooks'):
+                temp_model = ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksHooks()
+                self.hooks.append(temp_model.from_map(k))
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Notifications') is not None:
+            temp_model = ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotifications()
+            self.notifications = temp_model.from_map(m['Notifications'])
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RuntimeConf') is not None:
+            self.runtime_conf = m.get('RuntimeConf')
+        if m.get('Target') is not None:
+            temp_model = ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTarget()
+            self.target = temp_model.from_map(m['Target'])
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('Trigger') is not None:
+            temp_model = ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTrigger()
+            self.trigger = temp_model.from_map(m['Trigger'])
+        return self
+
+
+class ListDataQualityEvaluationTasksResponseBodyPagingInfo(TeaModel):
+    def __init__(
+        self,
+        data_quality_evaluation_tasks: List[ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks] = None,
+        page_number: str = None,
+        page_size: str = None,
+        total_count: str = None,
+    ):
+        self.data_quality_evaluation_tasks = data_quality_evaluation_tasks
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data_quality_evaluation_tasks:
+            for k in self.data_quality_evaluation_tasks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataQualityEvaluationTasks'] = []
+        if self.data_quality_evaluation_tasks is not None:
+            for k in self.data_quality_evaluation_tasks:
+                result['DataQualityEvaluationTasks'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_quality_evaluation_tasks = []
+        if m.get('DataQualityEvaluationTasks') is not None:
+            for k in m.get('DataQualityEvaluationTasks'):
+                temp_model = ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks()
+                self.data_quality_evaluation_tasks.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListDataQualityEvaluationTasksResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        paging_info: ListDataQualityEvaluationTasksResponseBodyPagingInfo = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.paging_info = paging_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.paging_info:
+            self.paging_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.paging_info is not None:
+            result['PagingInfo'] = self.paging_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PagingInfo') is not None:
+            temp_model = ListDataQualityEvaluationTasksResponseBodyPagingInfo()
+            self.paging_info = temp_model.from_map(m['PagingInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListDataQualityEvaluationTasksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDataQualityEvaluationTasksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDataQualityEvaluationTasksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDataQualityResultsRequest(TeaModel):
+    def __init__(
+        self,
+        bizdate_from: str = None,
+        bizdate_to: str = None,
+        create_time_from: int = None,
+        create_time_to: int = None,
+        data_quality_evaluation_task_id: int = None,
+        data_quality_evaluation_task_instance_id: int = None,
+        data_quality_rule_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: int = None,
+    ):
+        self.bizdate_from = bizdate_from
+        self.bizdate_to = bizdate_to
+        self.create_time_from = create_time_from
+        self.create_time_to = create_time_to
+        self.data_quality_evaluation_task_id = data_quality_evaluation_task_id
+        self.data_quality_evaluation_task_instance_id = data_quality_evaluation_task_instance_id
+        self.data_quality_rule_id = data_quality_rule_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bizdate_from is not None:
+            result['BizdateFrom'] = self.bizdate_from
+        if self.bizdate_to is not None:
+            result['BizdateTo'] = self.bizdate_to
+        if self.create_time_from is not None:
+            result['CreateTimeFrom'] = self.create_time_from
+        if self.create_time_to is not None:
+            result['CreateTimeTo'] = self.create_time_to
+        if self.data_quality_evaluation_task_id is not None:
+            result['DataQualityEvaluationTaskId'] = self.data_quality_evaluation_task_id
+        if self.data_quality_evaluation_task_instance_id is not None:
+            result['DataQualityEvaluationTaskInstanceId'] = self.data_quality_evaluation_task_instance_id
+        if self.data_quality_rule_id is not None:
+            result['DataQualityRuleId'] = self.data_quality_rule_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizdateFrom') is not None:
+            self.bizdate_from = m.get('BizdateFrom')
+        if m.get('BizdateTo') is not None:
+            self.bizdate_to = m.get('BizdateTo')
+        if m.get('CreateTimeFrom') is not None:
+            self.create_time_from = m.get('CreateTimeFrom')
+        if m.get('CreateTimeTo') is not None:
+            self.create_time_to = m.get('CreateTimeTo')
+        if m.get('DataQualityEvaluationTaskId') is not None:
+            self.data_quality_evaluation_task_id = m.get('DataQualityEvaluationTaskId')
+        if m.get('DataQualityEvaluationTaskInstanceId') is not None:
+            self.data_quality_evaluation_task_instance_id = m.get('DataQualityEvaluationTaskInstanceId')
+        if m.get('DataQualityRuleId') is not None:
+            self.data_quality_rule_id = m.get('DataQualityRuleId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsDetails(TeaModel):
+    def __init__(
+        self,
+        checked_value: str = None,
+        referenced_value: str = None,
+        status: str = None,
+    ):
+        self.checked_value = checked_value
+        self.referenced_value = referenced_value
+        # *   ERROR
+        # *   PASSED
+        # *   WARNED
+        # *   CRITICAL
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.checked_value is not None:
+            result['CheckedValue'] = self.checked_value
+        if self.referenced_value is not None:
+            result['ReferencedValue'] = self.referenced_value
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckedValue') is not None:
+            self.checked_value = m.get('CheckedValue')
+        if m.get('ReferencedValue') is not None:
+            self.referenced_value = m.get('ReferencedValue')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsCritical(TeaModel):
+    def __init__(
+        self,
+        operator: str = None,
+        value: str = None,
+    ):
+        # *   \\>
+        # *   \\>=\
+        # *   <
+        # *   <=\
+        # *   !=\
+        # *   \\=\
+        self.operator = operator
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsExpected(TeaModel):
+    def __init__(
+        self,
+        operator: str = None,
+        value: str = None,
+    ):
+        # *   \\>
+        # *   \\>=\
+        # *   <
+        # *   <=\
+        # *   !=\
+        # *   \\=\
+        self.operator = operator
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsWarned(TeaModel):
+    def __init__(
+        self,
+        operator: str = None,
+        value: str = None,
+    ):
+        # *   \\>
+        # *   \\>=\
+        # *   <
+        # *   <=\
+        # *   !=\
+        # *   \\=\
+        self.operator = operator
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholds(TeaModel):
+    def __init__(
+        self,
+        critical: ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsCritical = None,
+        expected: ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsExpected = None,
+        warned: ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsWarned = None,
+    ):
+        self.critical = critical
+        self.expected = expected
+        self.warned = warned
+
+    def validate(self):
+        if self.critical:
+            self.critical.validate()
+        if self.expected:
+            self.expected.validate()
+        if self.warned:
+            self.warned.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.critical is not None:
+            result['Critical'] = self.critical.to_map()
+        if self.expected is not None:
+            result['Expected'] = self.expected.to_map()
+        if self.warned is not None:
+            result['Warned'] = self.warned.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Critical') is not None:
+            temp_model = ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsCritical()
+            self.critical = temp_model.from_map(m['Critical'])
+        if m.get('Expected') is not None:
+            temp_model = ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsExpected()
+            self.expected = temp_model.from_map(m['Expected'])
+        if m.get('Warned') is not None:
+            temp_model = ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsWarned()
+            self.warned = temp_model.from_map(m['Warned'])
+        return self
+
+
+class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfig(TeaModel):
+    def __init__(
+        self,
+        referenced_samples_filter: str = None,
+        thresholds: ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholds = None,
+        type: str = None,
+    ):
+        self.referenced_samples_filter = referenced_samples_filter
+        self.thresholds = thresholds
+        # *   FIXED
+        # *   FLUCTATION
+        # *   AUTO
+        # *   AVERAGE
+        # *   VARIANCE
+        # *   FLUCTATION_DISCREATE
+        self.type = type
+
+    def validate(self):
+        if self.thresholds:
+            self.thresholds.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.referenced_samples_filter is not None:
+            result['ReferencedSamplesFilter'] = self.referenced_samples_filter
+        if self.thresholds is not None:
+            result['Thresholds'] = self.thresholds.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReferencedSamplesFilter') is not None:
+            self.referenced_samples_filter = m.get('ReferencedSamplesFilter')
+        if m.get('Thresholds') is not None:
+            temp_model = ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholds()
+            self.thresholds = temp_model.from_map(m['Thresholds'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleErrorHandlers(TeaModel):
+    def __init__(
+        self,
+        error_data_filter: str = None,
+        type: str = None,
+    ):
+        self.error_data_filter = error_data_filter
+        # *   SAVE_ERROR_DATA
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_data_filter is not None:
+            result['ErrorDataFilter'] = self.error_data_filter
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorDataFilter') is not None:
+            self.error_data_filter = m.get('ErrorDataFilter')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleSamplingConfig(TeaModel):
+    def __init__(
+        self,
+        metric: str = None,
+        metric_parameters: str = None,
+        sampling_filter: str = None,
+        setting_config: str = None,
+    ):
+        # *\
+        # *\
+        # *\
+        # *\
+        # *\
+        # *\
+        # *\
+        # *\
+        # *\
+        # *\
+        # *\
+        # *\
+        # *\
+        # *\
+        self.metric = metric
+        self.metric_parameters = metric_parameters
+        self.sampling_filter = sampling_filter
+        self.setting_config = setting_config
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metric is not None:
+            result['Metric'] = self.metric
+        if self.metric_parameters is not None:
+            result['MetricParameters'] = self.metric_parameters
+        if self.sampling_filter is not None:
+            result['SamplingFilter'] = self.sampling_filter
+        if self.setting_config is not None:
+            result['SettingConfig'] = self.setting_config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Metric') is not None:
+            self.metric = m.get('Metric')
+        if m.get('MetricParameters') is not None:
+            self.metric_parameters = m.get('MetricParameters')
+        if m.get('SamplingFilter') is not None:
+            self.sampling_filter = m.get('SamplingFilter')
+        if m.get('SettingConfig') is not None:
+            self.setting_config = m.get('SettingConfig')
+        return self
+
+
+class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget(TeaModel):
+    def __init__(
+        self,
+        database_type: str = None,
+        partition_spec: str = None,
+        table_guid: str = None,
+        type: str = None,
+    ):
+        # *   MAX_COMPUTE
+        # *   EMR
+        # *   CDH
+        # *   HOLOGRES
+        # *   ANALYTICDB_FOR_POSTGRESQL
+        # *   ANALYTICDB_FOR_MYSQL
+        # *   STAR_ROCKS
+        self.database_type = database_type
+        self.partition_spec = partition_spec
+        self.table_guid = table_guid
+        # *   TABLE
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.database_type is not None:
+            result['DatabaseType'] = self.database_type
+        if self.partition_spec is not None:
+            result['PartitionSpec'] = self.partition_spec
+        if self.table_guid is not None:
+            result['TableGuid'] = self.table_guid
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatabaseType') is not None:
+            self.database_type = m.get('DatabaseType')
+        if m.get('PartitionSpec') is not None:
+            self.partition_spec = m.get('PartitionSpec')
+        if m.get('TableGuid') is not None:
+            self.table_guid = m.get('TableGuid')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule(TeaModel):
+    def __init__(
+        self,
+        checking_config: ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfig = None,
+        description: str = None,
+        enabled: bool = None,
+        error_handlers: List[ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleErrorHandlers] = None,
+        id: int = None,
+        name: str = None,
+        project_id: int = None,
+        sampling_config: ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleSamplingConfig = None,
+        severity: str = None,
+        target: ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget = None,
+        template_code: str = None,
+        tenant_id: int = None,
+    ):
+        self.checking_config = checking_config
+        self.description = description
+        self.enabled = enabled
+        self.error_handlers = error_handlers
+        self.id = id
+        self.name = name
+        self.project_id = project_id
+        self.sampling_config = sampling_config
+        # *   HIGH
+        # *   NORMAL
+        self.severity = severity
+        self.target = target
+        self.template_code = template_code
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        if self.checking_config:
+            self.checking_config.validate()
+        if self.error_handlers:
+            for k in self.error_handlers:
+                if k:
+                    k.validate()
+        if self.sampling_config:
+            self.sampling_config.validate()
+        if self.target:
+            self.target.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.checking_config is not None:
+            result['CheckingConfig'] = self.checking_config.to_map()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        result['ErrorHandlers'] = []
+        if self.error_handlers is not None:
+            for k in self.error_handlers:
+                result['ErrorHandlers'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.sampling_config is not None:
+            result['SamplingConfig'] = self.sampling_config.to_map()
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        if self.target is not None:
+            result['Target'] = self.target.to_map()
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckingConfig') is not None:
+            temp_model = ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfig()
+            self.checking_config = temp_model.from_map(m['CheckingConfig'])
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        self.error_handlers = []
+        if m.get('ErrorHandlers') is not None:
+            for k in m.get('ErrorHandlers'):
+                temp_model = ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleErrorHandlers()
+                self.error_handlers.append(temp_model.from_map(k))
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('SamplingConfig') is not None:
+            temp_model = ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleSamplingConfig()
+            self.sampling_config = temp_model.from_map(m['SamplingConfig'])
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        if m.get('Target') is not None:
+            temp_model = ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget()
+            self.target = temp_model.from_map(m['Target'])
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        return self
+
+
+class ListDataQualityResultsResponseBodyPagingInfoDataQualityResults(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        details: List[ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsDetails] = None,
+        id: int = None,
+        rule: ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule = None,
+        sample: str = None,
+        status: str = None,
+        task_instance_id: int = None,
+    ):
+        self.create_time = create_time
+        self.details = details
+        self.id = id
+        self.rule = rule
+        self.sample = sample
+        # *   RUNNING
+        # *   ERROR
+        # *   PASSED
+        # *   WARNED
+        # *   CRITICAL
+        self.status = status
+        self.task_instance_id = task_instance_id
+
+    def validate(self):
+        if self.details:
+            for k in self.details:
+                if k:
+                    k.validate()
+        if self.rule:
+            self.rule.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        result['Details'] = []
+        if self.details is not None:
+            for k in self.details:
+                result['Details'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.rule is not None:
+            result['Rule'] = self.rule.to_map()
+        if self.sample is not None:
+            result['Sample'] = self.sample
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_instance_id is not None:
+            result['TaskInstanceId'] = self.task_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        self.details = []
+        if m.get('Details') is not None:
+            for k in m.get('Details'):
+                temp_model = ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsDetails()
+                self.details.append(temp_model.from_map(k))
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Rule') is not None:
+            temp_model = ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule()
+            self.rule = temp_model.from_map(m['Rule'])
+        if m.get('Sample') is not None:
+            self.sample = m.get('Sample')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskInstanceId') is not None:
+            self.task_instance_id = m.get('TaskInstanceId')
+        return self
+
+
+class ListDataQualityResultsResponseBodyPagingInfo(TeaModel):
+    def __init__(
+        self,
+        data_quality_results: List[ListDataQualityResultsResponseBodyPagingInfoDataQualityResults] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.data_quality_results = data_quality_results
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data_quality_results:
+            for k in self.data_quality_results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataQualityResults'] = []
+        if self.data_quality_results is not None:
+            for k in self.data_quality_results:
+                result['DataQualityResults'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_quality_results = []
+        if m.get('DataQualityResults') is not None:
+            for k in m.get('DataQualityResults'):
+                temp_model = ListDataQualityResultsResponseBodyPagingInfoDataQualityResults()
+                self.data_quality_results.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListDataQualityResultsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        paging_info: ListDataQualityResultsResponseBodyPagingInfo = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.paging_info = paging_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.paging_info:
+            self.paging_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.paging_info is not None:
+            result['PagingInfo'] = self.paging_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PagingInfo') is not None:
+            temp_model = ListDataQualityResultsResponseBodyPagingInfo()
+            self.paging_info = temp_model.from_map(m['PagingInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListDataQualityResultsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDataQualityResultsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDataQualityResultsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDataQualityRulesRequest(TeaModel):
+    def __init__(
+        self,
+        data_quality_evaluation_task_id: int = None,
+        name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: int = None,
+        table_guid: str = None,
+    ):
+        self.data_quality_evaluation_task_id = data_quality_evaluation_task_id
+        self.name = name
+        self.page_number = page_number
+        self.page_size = page_size
+        self.project_id = project_id
+        self.table_guid = table_guid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_quality_evaluation_task_id is not None:
+            result['DataQualityEvaluationTaskId'] = self.data_quality_evaluation_task_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.table_guid is not None:
+            result['TableGuid'] = self.table_guid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataQualityEvaluationTaskId') is not None:
+            self.data_quality_evaluation_task_id = m.get('DataQualityEvaluationTaskId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('TableGuid') is not None:
+            self.table_guid = m.get('TableGuid')
+        return self
+
+
+class ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsCritical(TeaModel):
+    def __init__(
+        self,
+        operator: str = None,
+        value: str = None,
+    ):
+        self.operator = operator
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsExpected(TeaModel):
+    def __init__(
+        self,
+        operator: str = None,
+        value: str = None,
+    ):
+        self.operator = operator
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsWarned(TeaModel):
+    def __init__(
+        self,
+        operator: str = None,
+        value: str = None,
+    ):
+        self.operator = operator
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholds(TeaModel):
+    def __init__(
+        self,
+        critical: ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsCritical = None,
+        expected: ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsExpected = None,
+        warned: ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsWarned = None,
+    ):
+        self.critical = critical
+        self.expected = expected
+        self.warned = warned
+
+    def validate(self):
+        if self.critical:
+            self.critical.validate()
+        if self.expected:
+            self.expected.validate()
+        if self.warned:
+            self.warned.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.critical is not None:
+            result['Critical'] = self.critical.to_map()
+        if self.expected is not None:
+            result['Expected'] = self.expected.to_map()
+        if self.warned is not None:
+            result['Warned'] = self.warned.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Critical') is not None:
+            temp_model = ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsCritical()
+            self.critical = temp_model.from_map(m['Critical'])
+        if m.get('Expected') is not None:
+            temp_model = ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsExpected()
+            self.expected = temp_model.from_map(m['Expected'])
+        if m.get('Warned') is not None:
+            temp_model = ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsWarned()
+            self.warned = temp_model.from_map(m['Warned'])
+        return self
+
+
+class ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfig(TeaModel):
+    def __init__(
+        self,
+        referenced_samples_filter: str = None,
+        thresholds: ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholds = None,
+        type: str = None,
+    ):
+        self.referenced_samples_filter = referenced_samples_filter
+        self.thresholds = thresholds
+        self.type = type
+
+    def validate(self):
+        if self.thresholds:
+            self.thresholds.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.referenced_samples_filter is not None:
+            result['ReferencedSamplesFilter'] = self.referenced_samples_filter
+        if self.thresholds is not None:
+            result['Thresholds'] = self.thresholds.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReferencedSamplesFilter') is not None:
+            self.referenced_samples_filter = m.get('ReferencedSamplesFilter')
+        if m.get('Thresholds') is not None:
+            temp_model = ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholds()
+            self.thresholds = temp_model.from_map(m['Thresholds'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesErrorHandlers(TeaModel):
+    def __init__(
+        self,
+        error_data_filter: str = None,
+        type: str = None,
+    ):
+        self.error_data_filter = error_data_filter
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_data_filter is not None:
+            result['ErrorDataFilter'] = self.error_data_filter
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorDataFilter') is not None:
+            self.error_data_filter = m.get('ErrorDataFilter')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesSamplingConfig(TeaModel):
+    def __init__(
+        self,
+        metric: str = None,
+        metric_parameters: str = None,
+        sampling_filter: str = None,
+        setting_config: str = None,
+    ):
+        self.metric = metric
+        self.metric_parameters = metric_parameters
+        self.sampling_filter = sampling_filter
+        self.setting_config = setting_config
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metric is not None:
+            result['Metric'] = self.metric
+        if self.metric_parameters is not None:
+            result['MetricParameters'] = self.metric_parameters
+        if self.sampling_filter is not None:
+            result['SamplingFilter'] = self.sampling_filter
+        if self.setting_config is not None:
+            result['SettingConfig'] = self.setting_config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Metric') is not None:
+            self.metric = m.get('Metric')
+        if m.get('MetricParameters') is not None:
+            self.metric_parameters = m.get('MetricParameters')
+        if m.get('SamplingFilter') is not None:
+            self.sampling_filter = m.get('SamplingFilter')
+        if m.get('SettingConfig') is not None:
+            self.setting_config = m.get('SettingConfig')
+        return self
+
+
+class ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget(TeaModel):
+    def __init__(
+        self,
+        database_type: str = None,
+        partition_spec: str = None,
+        table_guid: str = None,
+        type: str = None,
+    ):
+        self.database_type = database_type
+        self.partition_spec = partition_spec
+        self.table_guid = table_guid
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.database_type is not None:
+            result['DatabaseType'] = self.database_type
+        if self.partition_spec is not None:
+            result['PartitionSpec'] = self.partition_spec
+        if self.table_guid is not None:
+            result['TableGuid'] = self.table_guid
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatabaseType') is not None:
+            self.database_type = m.get('DatabaseType')
+        if m.get('PartitionSpec') is not None:
+            self.partition_spec = m.get('PartitionSpec')
+        if m.get('TableGuid') is not None:
+            self.table_guid = m.get('TableGuid')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListDataQualityRulesResponseBodyPagingInfoDataQualityRules(TeaModel):
+    def __init__(
+        self,
+        checking_config: ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfig = None,
+        description: str = None,
+        enabled: bool = None,
+        error_handlers: List[ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesErrorHandlers] = None,
+        id: int = None,
+        name: str = None,
+        project_id: int = None,
+        sampling_config: ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesSamplingConfig = None,
+        severity: str = None,
+        target: ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget = None,
+        template_code: str = None,
+        tenant_id: int = None,
+    ):
+        self.checking_config = checking_config
+        self.description = description
+        self.enabled = enabled
+        self.error_handlers = error_handlers
+        self.id = id
+        self.name = name
+        self.project_id = project_id
+        self.sampling_config = sampling_config
+        self.severity = severity
+        self.target = target
+        self.template_code = template_code
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        if self.checking_config:
+            self.checking_config.validate()
+        if self.error_handlers:
+            for k in self.error_handlers:
+                if k:
+                    k.validate()
+        if self.sampling_config:
+            self.sampling_config.validate()
+        if self.target:
+            self.target.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.checking_config is not None:
+            result['CheckingConfig'] = self.checking_config.to_map()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        result['ErrorHandlers'] = []
+        if self.error_handlers is not None:
+            for k in self.error_handlers:
+                result['ErrorHandlers'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.sampling_config is not None:
+            result['SamplingConfig'] = self.sampling_config.to_map()
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        if self.target is not None:
+            result['Target'] = self.target.to_map()
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckingConfig') is not None:
+            temp_model = ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfig()
+            self.checking_config = temp_model.from_map(m['CheckingConfig'])
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        self.error_handlers = []
+        if m.get('ErrorHandlers') is not None:
+            for k in m.get('ErrorHandlers'):
+                temp_model = ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesErrorHandlers()
+                self.error_handlers.append(temp_model.from_map(k))
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('SamplingConfig') is not None:
+            temp_model = ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesSamplingConfig()
+            self.sampling_config = temp_model.from_map(m['SamplingConfig'])
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        if m.get('Target') is not None:
+            temp_model = ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget()
+            self.target = temp_model.from_map(m['Target'])
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        return self
+
+
+class ListDataQualityRulesResponseBodyPagingInfo(TeaModel):
+    def __init__(
+        self,
+        data_quality_rules: List[ListDataQualityRulesResponseBodyPagingInfoDataQualityRules] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.data_quality_rules = data_quality_rules
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data_quality_rules:
+            for k in self.data_quality_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataQualityRules'] = []
+        if self.data_quality_rules is not None:
+            for k in self.data_quality_rules:
+                result['DataQualityRules'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_quality_rules = []
+        if m.get('DataQualityRules') is not None:
+            for k in m.get('DataQualityRules'):
+                temp_model = ListDataQualityRulesResponseBodyPagingInfoDataQualityRules()
+                self.data_quality_rules.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListDataQualityRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        paging_info: ListDataQualityRulesResponseBodyPagingInfo = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.paging_info = paging_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.paging_info:
+            self.paging_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.paging_info is not None:
+            result['PagingInfo'] = self.paging_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PagingInfo') is not None:
+            temp_model = ListDataQualityRulesResponseBodyPagingInfo()
+            self.paging_info = temp_model.from_map(m['PagingInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListDataQualityRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDataQualityRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDataQualityRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11076,6 +18217,954 @@ class ListDeploymentsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListDeploymentsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDownstreamTaskInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        # This parameter is required.
+        self.id = id
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime(TeaModel):
+    def __init__(
+        self,
+        gateway: str = None,
+        process_id: str = None,
+    ):
+        self.gateway = gateway
+        self.process_id = process_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gateway is not None:
+            result['Gateway'] = self.gateway
+        if self.process_id is not None:
+            result['ProcessId'] = self.process_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Gateway') is not None:
+            self.gateway = m.get('Gateway')
+        if m.get('ProcessId') is not None:
+            self.process_id = m.get('ProcessId')
+        return self
+
+
+class ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource(TeaModel):
+    def __init__(
+        self,
+        cu: str = None,
+        image: str = None,
+        resource_group_id: str = None,
+    ):
+        self.cu = cu
+        self.image = image
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cu is not None:
+            result['Cu'] = self.cu
+        if self.image is not None:
+            result['Image'] = self.image
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cu') is not None:
+            self.cu = m.get('Cu')
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances(TeaModel):
+    def __init__(
+        self,
+        baseline_id: int = None,
+        bizdate: int = None,
+        create_time: int = None,
+        create_user: str = None,
+        data_source: ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource = None,
+        description: str = None,
+        finished_time: int = None,
+        id: int = None,
+        modify_time: int = None,
+        modify_user: str = None,
+        owner: str = None,
+        priority: int = None,
+        project_env: str = None,
+        project_id: int = None,
+        rerun_mode: str = None,
+        run_number: int = None,
+        runtime: ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime = None,
+        runtime_resource: ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource = None,
+        started_time: int = None,
+        status: str = None,
+        task_id: int = None,
+        task_name: str = None,
+        task_type: str = None,
+        tenant_id: int = None,
+        timeout: int = None,
+        trigger_recurrence: str = None,
+        trigger_time: int = None,
+        trigger_type: str = None,
+        workflow_id: int = None,
+        workflow_instance_id: int = None,
+        workflow_instance_type: str = None,
+        workflow_name: str = None,
+    ):
+        self.baseline_id = baseline_id
+        self.bizdate = bizdate
+        self.create_time = create_time
+        self.create_user = create_user
+        self.data_source = data_source
+        self.description = description
+        self.finished_time = finished_time
+        self.id = id
+        self.modify_time = modify_time
+        self.modify_user = modify_user
+        self.owner = owner
+        self.priority = priority
+        self.project_env = project_env
+        self.project_id = project_id
+        self.rerun_mode = rerun_mode
+        self.run_number = run_number
+        self.runtime = runtime
+        self.runtime_resource = runtime_resource
+        self.started_time = started_time
+        self.status = status
+        self.task_id = task_id
+        self.task_name = task_name
+        self.task_type = task_type
+        self.tenant_id = tenant_id
+        self.timeout = timeout
+        self.trigger_recurrence = trigger_recurrence
+        self.trigger_time = trigger_time
+        self.trigger_type = trigger_type
+        self.workflow_id = workflow_id
+        self.workflow_instance_id = workflow_instance_id
+        self.workflow_instance_type = workflow_instance_type
+        self.workflow_name = workflow_name
+
+    def validate(self):
+        if self.data_source:
+            self.data_source.validate()
+        if self.runtime:
+            self.runtime.validate()
+        if self.runtime_resource:
+            self.runtime_resource.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.baseline_id is not None:
+            result['BaselineId'] = self.baseline_id
+        if self.bizdate is not None:
+            result['Bizdate'] = self.bizdate
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.data_source is not None:
+            result['DataSource'] = self.data_source.to_map()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.finished_time is not None:
+            result['FinishedTime'] = self.finished_time
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.modify_user is not None:
+            result['ModifyUser'] = self.modify_user
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.project_env is not None:
+            result['ProjectEnv'] = self.project_env
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.rerun_mode is not None:
+            result['RerunMode'] = self.rerun_mode
+        if self.run_number is not None:
+            result['RunNumber'] = self.run_number
+        if self.runtime is not None:
+            result['Runtime'] = self.runtime.to_map()
+        if self.runtime_resource is not None:
+            result['RuntimeResource'] = self.runtime_resource.to_map()
+        if self.started_time is not None:
+            result['StartedTime'] = self.started_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        if self.trigger_recurrence is not None:
+            result['TriggerRecurrence'] = self.trigger_recurrence
+        if self.trigger_time is not None:
+            result['TriggerTime'] = self.trigger_time
+        if self.trigger_type is not None:
+            result['TriggerType'] = self.trigger_type
+        if self.workflow_id is not None:
+            result['WorkflowId'] = self.workflow_id
+        if self.workflow_instance_id is not None:
+            result['WorkflowInstanceId'] = self.workflow_instance_id
+        if self.workflow_instance_type is not None:
+            result['WorkflowInstanceType'] = self.workflow_instance_type
+        if self.workflow_name is not None:
+            result['WorkflowName'] = self.workflow_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaselineId') is not None:
+            self.baseline_id = m.get('BaselineId')
+        if m.get('Bizdate') is not None:
+            self.bizdate = m.get('Bizdate')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('DataSource') is not None:
+            temp_model = ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource()
+            self.data_source = temp_model.from_map(m['DataSource'])
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FinishedTime') is not None:
+            self.finished_time = m.get('FinishedTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('ModifyUser') is not None:
+            self.modify_user = m.get('ModifyUser')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('ProjectEnv') is not None:
+            self.project_env = m.get('ProjectEnv')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RerunMode') is not None:
+            self.rerun_mode = m.get('RerunMode')
+        if m.get('RunNumber') is not None:
+            self.run_number = m.get('RunNumber')
+        if m.get('Runtime') is not None:
+            temp_model = ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime()
+            self.runtime = temp_model.from_map(m['Runtime'])
+        if m.get('RuntimeResource') is not None:
+            temp_model = ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource()
+            self.runtime_resource = temp_model.from_map(m['RuntimeResource'])
+        if m.get('StartedTime') is not None:
+            self.started_time = m.get('StartedTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        if m.get('TriggerRecurrence') is not None:
+            self.trigger_recurrence = m.get('TriggerRecurrence')
+        if m.get('TriggerTime') is not None:
+            self.trigger_time = m.get('TriggerTime')
+        if m.get('TriggerType') is not None:
+            self.trigger_type = m.get('TriggerType')
+        if m.get('WorkflowId') is not None:
+            self.workflow_id = m.get('WorkflowId')
+        if m.get('WorkflowInstanceId') is not None:
+            self.workflow_instance_id = m.get('WorkflowInstanceId')
+        if m.get('WorkflowInstanceType') is not None:
+            self.workflow_instance_type = m.get('WorkflowInstanceType')
+        if m.get('WorkflowName') is not None:
+            self.workflow_name = m.get('WorkflowName')
+        return self
+
+
+class ListDownstreamTaskInstancesResponseBodyPagingInfo(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        task_instances: List[ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances] = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.task_instances = task_instances
+        self.total_count = total_count
+
+    def validate(self):
+        if self.task_instances:
+            for k in self.task_instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['TaskInstances'] = []
+        if self.task_instances is not None:
+            for k in self.task_instances:
+                result['TaskInstances'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.task_instances = []
+        if m.get('TaskInstances') is not None:
+            for k in m.get('TaskInstances'):
+                temp_model = ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances()
+                self.task_instances.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListDownstreamTaskInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        paging_info: ListDownstreamTaskInstancesResponseBodyPagingInfo = None,
+        request_id: str = None,
+    ):
+        self.paging_info = paging_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.paging_info:
+            self.paging_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.paging_info is not None:
+            result['PagingInfo'] = self.paging_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PagingInfo') is not None:
+            temp_model = ListDownstreamTaskInstancesResponseBodyPagingInfo()
+            self.paging_info = temp_model.from_map(m['PagingInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListDownstreamTaskInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDownstreamTaskInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDownstreamTaskInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDownstreamTasksRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_env: str = None,
+    ):
+        # This parameter is required.
+        self.id = id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.project_env = project_env
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_env is not None:
+            result['ProjectEnv'] = self.project_env
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectEnv') is not None:
+            self.project_env = m.get('ProjectEnv')
+        return self
+
+
+class ListDownstreamTasksResponseBodyPagingInfoTasksDataSource(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ListDownstreamTasksResponseBodyPagingInfoTasksRuntimeResource(TeaModel):
+    def __init__(
+        self,
+        cu: str = None,
+        image: str = None,
+        resource_group_id: str = None,
+    ):
+        self.cu = cu
+        self.image = image
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cu is not None:
+            result['Cu'] = self.cu
+        if self.image is not None:
+            result['Image'] = self.image
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cu') is not None:
+            self.cu = m.get('Cu')
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class ListDownstreamTasksResponseBodyPagingInfoTasksTrigger(TeaModel):
+    def __init__(
+        self,
+        cron: str = None,
+        end_time: str = None,
+        recurrence: str = None,
+        start_time: str = None,
+        timezone: str = None,
+        type: str = None,
+    ):
+        self.cron = cron
+        self.end_time = end_time
+        self.recurrence = recurrence
+        self.start_time = start_time
+        self.timezone = timezone
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cron is not None:
+            result['Cron'] = self.cron
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.recurrence is not None:
+            result['Recurrence'] = self.recurrence
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.timezone is not None:
+            result['Timezone'] = self.timezone
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cron') is not None:
+            self.cron = m.get('Cron')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Recurrence') is not None:
+            self.recurrence = m.get('Recurrence')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Timezone') is not None:
+            self.timezone = m.get('Timezone')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListDownstreamTasksResponseBodyPagingInfoTasks(TeaModel):
+    def __init__(
+        self,
+        baseline_id: int = None,
+        create_time: int = None,
+        create_user: str = None,
+        data_source: ListDownstreamTasksResponseBodyPagingInfoTasksDataSource = None,
+        description: str = None,
+        id: int = None,
+        modify_time: int = None,
+        modify_user: str = None,
+        name: str = None,
+        owner: str = None,
+        priority: int = None,
+        project_env: str = None,
+        project_id: int = None,
+        rerun_interval: int = None,
+        rerun_mode: str = None,
+        rerun_times: int = None,
+        runtime_resource: ListDownstreamTasksResponseBodyPagingInfoTasksRuntimeResource = None,
+        tenant_id: int = None,
+        timeout: int = None,
+        trigger: ListDownstreamTasksResponseBodyPagingInfoTasksTrigger = None,
+        type: str = None,
+        workflow_id: int = None,
+    ):
+        self.baseline_id = baseline_id
+        self.create_time = create_time
+        self.create_user = create_user
+        self.data_source = data_source
+        self.description = description
+        self.id = id
+        self.modify_time = modify_time
+        self.modify_user = modify_user
+        self.name = name
+        self.owner = owner
+        self.priority = priority
+        self.project_env = project_env
+        self.project_id = project_id
+        self.rerun_interval = rerun_interval
+        self.rerun_mode = rerun_mode
+        self.rerun_times = rerun_times
+        self.runtime_resource = runtime_resource
+        self.tenant_id = tenant_id
+        self.timeout = timeout
+        self.trigger = trigger
+        self.type = type
+        self.workflow_id = workflow_id
+
+    def validate(self):
+        if self.data_source:
+            self.data_source.validate()
+        if self.runtime_resource:
+            self.runtime_resource.validate()
+        if self.trigger:
+            self.trigger.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.baseline_id is not None:
+            result['BaselineId'] = self.baseline_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.data_source is not None:
+            result['DataSource'] = self.data_source.to_map()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.modify_user is not None:
+            result['ModifyUser'] = self.modify_user
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.project_env is not None:
+            result['ProjectEnv'] = self.project_env
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.rerun_interval is not None:
+            result['RerunInterval'] = self.rerun_interval
+        if self.rerun_mode is not None:
+            result['RerunMode'] = self.rerun_mode
+        if self.rerun_times is not None:
+            result['RerunTimes'] = self.rerun_times
+        if self.runtime_resource is not None:
+            result['RuntimeResource'] = self.runtime_resource.to_map()
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        if self.trigger is not None:
+            result['Trigger'] = self.trigger.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.workflow_id is not None:
+            result['WorkflowId'] = self.workflow_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaselineId') is not None:
+            self.baseline_id = m.get('BaselineId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('DataSource') is not None:
+            temp_model = ListDownstreamTasksResponseBodyPagingInfoTasksDataSource()
+            self.data_source = temp_model.from_map(m['DataSource'])
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('ModifyUser') is not None:
+            self.modify_user = m.get('ModifyUser')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('ProjectEnv') is not None:
+            self.project_env = m.get('ProjectEnv')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RerunInterval') is not None:
+            self.rerun_interval = m.get('RerunInterval')
+        if m.get('RerunMode') is not None:
+            self.rerun_mode = m.get('RerunMode')
+        if m.get('RerunTimes') is not None:
+            self.rerun_times = m.get('RerunTimes')
+        if m.get('RuntimeResource') is not None:
+            temp_model = ListDownstreamTasksResponseBodyPagingInfoTasksRuntimeResource()
+            self.runtime_resource = temp_model.from_map(m['RuntimeResource'])
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        if m.get('Trigger') is not None:
+            temp_model = ListDownstreamTasksResponseBodyPagingInfoTasksTrigger()
+            self.trigger = temp_model.from_map(m['Trigger'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('WorkflowId') is not None:
+            self.workflow_id = m.get('WorkflowId')
+        return self
+
+
+class ListDownstreamTasksResponseBodyPagingInfo(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        tasks: List[ListDownstreamTasksResponseBodyPagingInfoTasks] = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.tasks = tasks
+        self.total_count = total_count
+
+    def validate(self):
+        if self.tasks:
+            for k in self.tasks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['Tasks'] = []
+        if self.tasks is not None:
+            for k in self.tasks:
+                result['Tasks'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.tasks = []
+        if m.get('Tasks') is not None:
+            for k in m.get('Tasks'):
+                temp_model = ListDownstreamTasksResponseBodyPagingInfoTasks()
+                self.tasks.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListDownstreamTasksResponseBody(TeaModel):
+    def __init__(
+        self,
+        paging_info: ListDownstreamTasksResponseBodyPagingInfo = None,
+        request_id: str = None,
+    ):
+        self.paging_info = paging_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.paging_info:
+            self.paging_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.paging_info is not None:
+            result['PagingInfo'] = self.paging_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PagingInfo') is not None:
+            temp_model = ListDownstreamTasksResponseBodyPagingInfo()
+            self.paging_info = temp_model.from_map(m['PagingInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListDownstreamTasksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDownstreamTasksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDownstreamTasksResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -14117,6 +22206,331 @@ class ListNodesResponse(TeaModel):
         return self
 
 
+class ListProjectMembersRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: int = None,
+        role_codes: List[str] = None,
+        user_ids: List[str] = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.project_id = project_id
+        self.role_codes = role_codes
+        self.user_ids = user_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.role_codes is not None:
+            result['RoleCodes'] = self.role_codes
+        if self.user_ids is not None:
+            result['UserIds'] = self.user_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RoleCodes') is not None:
+            self.role_codes = m.get('RoleCodes')
+        if m.get('UserIds') is not None:
+            self.user_ids = m.get('UserIds')
+        return self
+
+
+class ListProjectMembersShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: int = None,
+        role_codes_shrink: str = None,
+        user_ids_shrink: str = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.project_id = project_id
+        self.role_codes_shrink = role_codes_shrink
+        self.user_ids_shrink = user_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.role_codes_shrink is not None:
+            result['RoleCodes'] = self.role_codes_shrink
+        if self.user_ids_shrink is not None:
+            result['UserIds'] = self.user_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RoleCodes') is not None:
+            self.role_codes_shrink = m.get('RoleCodes')
+        if m.get('UserIds') is not None:
+            self.user_ids_shrink = m.get('UserIds')
+        return self
+
+
+class ListProjectMembersResponseBodyPagingInfoProjectMembersRoles(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        name: str = None,
+        type: str = None,
+    ):
+        self.code = code
+        self.name = name
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListProjectMembersResponseBodyPagingInfoProjectMembers(TeaModel):
+    def __init__(
+        self,
+        project_id: int = None,
+        roles: List[ListProjectMembersResponseBodyPagingInfoProjectMembersRoles] = None,
+        status: str = None,
+        user_id: str = None,
+    ):
+        self.project_id = project_id
+        self.roles = roles
+        self.status = status
+        self.user_id = user_id
+
+    def validate(self):
+        if self.roles:
+            for k in self.roles:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        result['Roles'] = []
+        if self.roles is not None:
+            for k in self.roles:
+                result['Roles'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        self.roles = []
+        if m.get('Roles') is not None:
+            for k in m.get('Roles'):
+                temp_model = ListProjectMembersResponseBodyPagingInfoProjectMembersRoles()
+                self.roles.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class ListProjectMembersResponseBodyPagingInfo(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        project_members: List[ListProjectMembersResponseBodyPagingInfoProjectMembers] = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.project_members = project_members
+        self.total_count = total_count
+
+    def validate(self):
+        if self.project_members:
+            for k in self.project_members:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['ProjectMembers'] = []
+        if self.project_members is not None:
+            for k in self.project_members:
+                result['ProjectMembers'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.project_members = []
+        if m.get('ProjectMembers') is not None:
+            for k in m.get('ProjectMembers'):
+                temp_model = ListProjectMembersResponseBodyPagingInfoProjectMembers()
+                self.project_members.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListProjectMembersResponseBody(TeaModel):
+    def __init__(
+        self,
+        paging_info: ListProjectMembersResponseBodyPagingInfo = None,
+        request_id: str = None,
+    ):
+        self.paging_info = paging_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.paging_info:
+            self.paging_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.paging_info is not None:
+            result['PagingInfo'] = self.paging_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PagingInfo') is not None:
+            temp_model = ListProjectMembersResponseBodyPagingInfo()
+            self.paging_info = temp_model.from_map(m['PagingInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListProjectMembersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListProjectMembersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListProjectMembersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListProjectRolesRequest(TeaModel):
     def __init__(
         self,
@@ -15210,10 +23624,10 @@ class ListResourcesRequest(TeaModel):
         # 
         # Valid values:
         # 
-        # *   python
-        # *   jar
-        # *   archive
-        # *   file
+        # *   Python
+        # *   Jar
+        # *   Archive
+        # *   File
         self.type = type
 
     def validate(self):
@@ -15392,22 +23806,33 @@ class ListResourcesResponseBodyPagingInfoResources(TeaModel):
         self.project_id = project_id
         # The script information.
         self.script = script
-        # The storage path of the source of the file resource. If the value of the SourecType parameter is local, this parameter is empty.
+        # The path of the source of the file resource. If the SourecType parameter is set to Local, this parameter is left empty.
         self.source_path = source_path
         # The storage type of the source of the file resource.
+        # 
+        # Valid values:
+        # 
+        # *   Local
+        # *   Oss
         self.source_type = source_type
         # The storage path of the destination of the file resource.
         self.target_path = target_path
         # The storage type of the destination of the file resource.
+        # 
+        # Valid values:
+        # 
+        # *   Gateway
+        # *   Oss
+        # *   Hdfs
         self.target_type = target_type
         # The type of the file resource.
         # 
         # Valid values:
         # 
-        # *   jar
-        # *   python
-        # *   file
-        # *   archive
+        # *   Python
+        # *   Jar
+        # *   Archive
+        # *   File
         self.type = type
 
     def validate(self):
@@ -15787,6 +24212,2612 @@ class ListRoutesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListRoutesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTaskInstanceOperationLogsRequest(TeaModel):
+    def __init__(
+        self,
+        date: int = None,
+        id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.date = date
+        # This parameter is required.
+        self.id = id
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.date is not None:
+            result['Date'] = self.date
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListTaskInstanceOperationLogsResponseBodyPagingInfoOperationLogs(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        operation_content: str = None,
+        operation_seq: int = None,
+        task_instance_id: int = None,
+        user: str = None,
+    ):
+        self.create_time = create_time
+        self.operation_content = operation_content
+        self.operation_seq = operation_seq
+        self.task_instance_id = task_instance_id
+        self.user = user
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.operation_content is not None:
+            result['OperationContent'] = self.operation_content
+        if self.operation_seq is not None:
+            result['OperationSeq'] = self.operation_seq
+        if self.task_instance_id is not None:
+            result['TaskInstanceId'] = self.task_instance_id
+        if self.user is not None:
+            result['User'] = self.user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('OperationContent') is not None:
+            self.operation_content = m.get('OperationContent')
+        if m.get('OperationSeq') is not None:
+            self.operation_seq = m.get('OperationSeq')
+        if m.get('TaskInstanceId') is not None:
+            self.task_instance_id = m.get('TaskInstanceId')
+        if m.get('User') is not None:
+            self.user = m.get('User')
+        return self
+
+
+class ListTaskInstanceOperationLogsResponseBodyPagingInfo(TeaModel):
+    def __init__(
+        self,
+        operation_logs: List[ListTaskInstanceOperationLogsResponseBodyPagingInfoOperationLogs] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.operation_logs = operation_logs
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.operation_logs:
+            for k in self.operation_logs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['OperationLogs'] = []
+        if self.operation_logs is not None:
+            for k in self.operation_logs:
+                result['OperationLogs'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.operation_logs = []
+        if m.get('OperationLogs') is not None:
+            for k in m.get('OperationLogs'):
+                temp_model = ListTaskInstanceOperationLogsResponseBodyPagingInfoOperationLogs()
+                self.operation_logs.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListTaskInstanceOperationLogsResponseBody(TeaModel):
+    def __init__(
+        self,
+        paging_info: ListTaskInstanceOperationLogsResponseBodyPagingInfo = None,
+        request_id: str = None,
+    ):
+        self.paging_info = paging_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.paging_info:
+            self.paging_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.paging_info is not None:
+            result['PagingInfo'] = self.paging_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PagingInfo') is not None:
+            temp_model = ListTaskInstanceOperationLogsResponseBodyPagingInfo()
+            self.paging_info = temp_model.from_map(m['PagingInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListTaskInstanceOperationLogsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTaskInstanceOperationLogsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTaskInstanceOperationLogsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTaskInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        bizdate: int = None,
+        id: int = None,
+        ids: List[int] = None,
+        owner: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_env: str = None,
+        project_id: int = None,
+        runtime_resource: str = None,
+        sort_by: str = None,
+        task_id: int = None,
+        task_ids: List[int] = None,
+        task_name: str = None,
+        task_type: int = None,
+        workflow_id: int = None,
+        workflow_instance_id: int = None,
+        workflow_instance_type: str = None,
+    ):
+        # This parameter is required.
+        self.bizdate = bizdate
+        self.id = id
+        self.ids = ids
+        self.owner = owner
+        self.page_number = page_number
+        self.page_size = page_size
+        self.project_env = project_env
+        # This parameter is required.
+        self.project_id = project_id
+        self.runtime_resource = runtime_resource
+        self.sort_by = sort_by
+        self.task_id = task_id
+        self.task_ids = task_ids
+        self.task_name = task_name
+        self.task_type = task_type
+        self.workflow_id = workflow_id
+        self.workflow_instance_id = workflow_instance_id
+        self.workflow_instance_type = workflow_instance_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bizdate is not None:
+            result['Bizdate'] = self.bizdate
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_env is not None:
+            result['ProjectEnv'] = self.project_env
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.runtime_resource is not None:
+            result['RuntimeResource'] = self.runtime_resource
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_ids is not None:
+            result['TaskIds'] = self.task_ids
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.workflow_id is not None:
+            result['WorkflowId'] = self.workflow_id
+        if self.workflow_instance_id is not None:
+            result['WorkflowInstanceId'] = self.workflow_instance_id
+        if self.workflow_instance_type is not None:
+            result['WorkflowInstanceType'] = self.workflow_instance_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bizdate') is not None:
+            self.bizdate = m.get('Bizdate')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectEnv') is not None:
+            self.project_env = m.get('ProjectEnv')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RuntimeResource') is not None:
+            self.runtime_resource = m.get('RuntimeResource')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskIds') is not None:
+            self.task_ids = m.get('TaskIds')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('WorkflowId') is not None:
+            self.workflow_id = m.get('WorkflowId')
+        if m.get('WorkflowInstanceId') is not None:
+            self.workflow_instance_id = m.get('WorkflowInstanceId')
+        if m.get('WorkflowInstanceType') is not None:
+            self.workflow_instance_type = m.get('WorkflowInstanceType')
+        return self
+
+
+class ListTaskInstancesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        bizdate: int = None,
+        id: int = None,
+        ids_shrink: str = None,
+        owner: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_env: str = None,
+        project_id: int = None,
+        runtime_resource: str = None,
+        sort_by: str = None,
+        task_id: int = None,
+        task_ids_shrink: str = None,
+        task_name: str = None,
+        task_type: int = None,
+        workflow_id: int = None,
+        workflow_instance_id: int = None,
+        workflow_instance_type: str = None,
+    ):
+        # This parameter is required.
+        self.bizdate = bizdate
+        self.id = id
+        self.ids_shrink = ids_shrink
+        self.owner = owner
+        self.page_number = page_number
+        self.page_size = page_size
+        self.project_env = project_env
+        # This parameter is required.
+        self.project_id = project_id
+        self.runtime_resource = runtime_resource
+        self.sort_by = sort_by
+        self.task_id = task_id
+        self.task_ids_shrink = task_ids_shrink
+        self.task_name = task_name
+        self.task_type = task_type
+        self.workflow_id = workflow_id
+        self.workflow_instance_id = workflow_instance_id
+        self.workflow_instance_type = workflow_instance_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bizdate is not None:
+            result['Bizdate'] = self.bizdate
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.ids_shrink is not None:
+            result['Ids'] = self.ids_shrink
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_env is not None:
+            result['ProjectEnv'] = self.project_env
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.runtime_resource is not None:
+            result['RuntimeResource'] = self.runtime_resource
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_ids_shrink is not None:
+            result['TaskIds'] = self.task_ids_shrink
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.workflow_id is not None:
+            result['WorkflowId'] = self.workflow_id
+        if self.workflow_instance_id is not None:
+            result['WorkflowInstanceId'] = self.workflow_instance_id
+        if self.workflow_instance_type is not None:
+            result['WorkflowInstanceType'] = self.workflow_instance_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bizdate') is not None:
+            self.bizdate = m.get('Bizdate')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Ids') is not None:
+            self.ids_shrink = m.get('Ids')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectEnv') is not None:
+            self.project_env = m.get('ProjectEnv')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RuntimeResource') is not None:
+            self.runtime_resource = m.get('RuntimeResource')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskIds') is not None:
+            self.task_ids_shrink = m.get('TaskIds')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('WorkflowId') is not None:
+            self.workflow_id = m.get('WorkflowId')
+        if m.get('WorkflowInstanceId') is not None:
+            self.workflow_instance_id = m.get('WorkflowInstanceId')
+        if m.get('WorkflowInstanceType') is not None:
+            self.workflow_instance_type = m.get('WorkflowInstanceType')
+        return self
+
+
+class ListTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime(TeaModel):
+    def __init__(
+        self,
+        gateway: str = None,
+        process_id: str = None,
+    ):
+        self.gateway = gateway
+        self.process_id = process_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gateway is not None:
+            result['Gateway'] = self.gateway
+        if self.process_id is not None:
+            result['ProcessId'] = self.process_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Gateway') is not None:
+            self.gateway = m.get('Gateway')
+        if m.get('ProcessId') is not None:
+            self.process_id = m.get('ProcessId')
+        return self
+
+
+class ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource(TeaModel):
+    def __init__(
+        self,
+        cu: str = None,
+        image: str = None,
+        resource_group_id: str = None,
+    ):
+        self.cu = cu
+        self.image = image
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cu is not None:
+            result['Cu'] = self.cu
+        if self.image is not None:
+            result['Image'] = self.image
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cu') is not None:
+            self.cu = m.get('Cu')
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class ListTaskInstancesResponseBodyPagingInfoTaskInstances(TeaModel):
+    def __init__(
+        self,
+        baseline_id: int = None,
+        bizdate: int = None,
+        create_time: int = None,
+        create_user: str = None,
+        data_source: ListTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource = None,
+        description: str = None,
+        finished_time: int = None,
+        id: int = None,
+        modify_time: int = None,
+        modify_user: str = None,
+        owner: str = None,
+        priority: int = None,
+        project_env: str = None,
+        project_id: int = None,
+        rerun_mode: str = None,
+        run_number: int = None,
+        runtime: ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime = None,
+        runtime_resource: ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource = None,
+        started_time: int = None,
+        status: str = None,
+        task_id: int = None,
+        task_name: str = None,
+        task_type: str = None,
+        tenant_id: int = None,
+        timeout: int = None,
+        trigger_recurrence: str = None,
+        trigger_time: int = None,
+        trigger_type: str = None,
+        workflow_id: int = None,
+        workflow_instance_id: int = None,
+        workflow_instance_type: str = None,
+        workflow_name: str = None,
+    ):
+        self.baseline_id = baseline_id
+        self.bizdate = bizdate
+        self.create_time = create_time
+        self.create_user = create_user
+        self.data_source = data_source
+        self.description = description
+        self.finished_time = finished_time
+        self.id = id
+        self.modify_time = modify_time
+        self.modify_user = modify_user
+        self.owner = owner
+        self.priority = priority
+        self.project_env = project_env
+        self.project_id = project_id
+        self.rerun_mode = rerun_mode
+        self.run_number = run_number
+        self.runtime = runtime
+        self.runtime_resource = runtime_resource
+        self.started_time = started_time
+        self.status = status
+        self.task_id = task_id
+        self.task_name = task_name
+        self.task_type = task_type
+        self.tenant_id = tenant_id
+        self.timeout = timeout
+        self.trigger_recurrence = trigger_recurrence
+        self.trigger_time = trigger_time
+        self.trigger_type = trigger_type
+        self.workflow_id = workflow_id
+        self.workflow_instance_id = workflow_instance_id
+        self.workflow_instance_type = workflow_instance_type
+        self.workflow_name = workflow_name
+
+    def validate(self):
+        if self.data_source:
+            self.data_source.validate()
+        if self.runtime:
+            self.runtime.validate()
+        if self.runtime_resource:
+            self.runtime_resource.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.baseline_id is not None:
+            result['BaselineId'] = self.baseline_id
+        if self.bizdate is not None:
+            result['Bizdate'] = self.bizdate
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.data_source is not None:
+            result['DataSource'] = self.data_source.to_map()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.finished_time is not None:
+            result['FinishedTime'] = self.finished_time
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.modify_user is not None:
+            result['ModifyUser'] = self.modify_user
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.project_env is not None:
+            result['ProjectEnv'] = self.project_env
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.rerun_mode is not None:
+            result['RerunMode'] = self.rerun_mode
+        if self.run_number is not None:
+            result['RunNumber'] = self.run_number
+        if self.runtime is not None:
+            result['Runtime'] = self.runtime.to_map()
+        if self.runtime_resource is not None:
+            result['RuntimeResource'] = self.runtime_resource.to_map()
+        if self.started_time is not None:
+            result['StartedTime'] = self.started_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        if self.trigger_recurrence is not None:
+            result['TriggerRecurrence'] = self.trigger_recurrence
+        if self.trigger_time is not None:
+            result['TriggerTime'] = self.trigger_time
+        if self.trigger_type is not None:
+            result['TriggerType'] = self.trigger_type
+        if self.workflow_id is not None:
+            result['WorkflowId'] = self.workflow_id
+        if self.workflow_instance_id is not None:
+            result['WorkflowInstanceId'] = self.workflow_instance_id
+        if self.workflow_instance_type is not None:
+            result['WorkflowInstanceType'] = self.workflow_instance_type
+        if self.workflow_name is not None:
+            result['WorkflowName'] = self.workflow_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaselineId') is not None:
+            self.baseline_id = m.get('BaselineId')
+        if m.get('Bizdate') is not None:
+            self.bizdate = m.get('Bizdate')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('DataSource') is not None:
+            temp_model = ListTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource()
+            self.data_source = temp_model.from_map(m['DataSource'])
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FinishedTime') is not None:
+            self.finished_time = m.get('FinishedTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('ModifyUser') is not None:
+            self.modify_user = m.get('ModifyUser')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('ProjectEnv') is not None:
+            self.project_env = m.get('ProjectEnv')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RerunMode') is not None:
+            self.rerun_mode = m.get('RerunMode')
+        if m.get('RunNumber') is not None:
+            self.run_number = m.get('RunNumber')
+        if m.get('Runtime') is not None:
+            temp_model = ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime()
+            self.runtime = temp_model.from_map(m['Runtime'])
+        if m.get('RuntimeResource') is not None:
+            temp_model = ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource()
+            self.runtime_resource = temp_model.from_map(m['RuntimeResource'])
+        if m.get('StartedTime') is not None:
+            self.started_time = m.get('StartedTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        if m.get('TriggerRecurrence') is not None:
+            self.trigger_recurrence = m.get('TriggerRecurrence')
+        if m.get('TriggerTime') is not None:
+            self.trigger_time = m.get('TriggerTime')
+        if m.get('TriggerType') is not None:
+            self.trigger_type = m.get('TriggerType')
+        if m.get('WorkflowId') is not None:
+            self.workflow_id = m.get('WorkflowId')
+        if m.get('WorkflowInstanceId') is not None:
+            self.workflow_instance_id = m.get('WorkflowInstanceId')
+        if m.get('WorkflowInstanceType') is not None:
+            self.workflow_instance_type = m.get('WorkflowInstanceType')
+        if m.get('WorkflowName') is not None:
+            self.workflow_name = m.get('WorkflowName')
+        return self
+
+
+class ListTaskInstancesResponseBodyPagingInfo(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        task_instances: List[ListTaskInstancesResponseBodyPagingInfoTaskInstances] = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.task_instances = task_instances
+        self.total_count = total_count
+
+    def validate(self):
+        if self.task_instances:
+            for k in self.task_instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['TaskInstances'] = []
+        if self.task_instances is not None:
+            for k in self.task_instances:
+                result['TaskInstances'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.task_instances = []
+        if m.get('TaskInstances') is not None:
+            for k in m.get('TaskInstances'):
+                temp_model = ListTaskInstancesResponseBodyPagingInfoTaskInstances()
+                self.task_instances.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListTaskInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        paging_info: ListTaskInstancesResponseBodyPagingInfo = None,
+        request_id: str = None,
+    ):
+        self.paging_info = paging_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.paging_info:
+            self.paging_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.paging_info is not None:
+            result['PagingInfo'] = self.paging_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PagingInfo') is not None:
+            temp_model = ListTaskInstancesResponseBodyPagingInfo()
+            self.paging_info = temp_model.from_map(m['PagingInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListTaskInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTaskInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTaskInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTaskOperationLogsRequest(TeaModel):
+    def __init__(
+        self,
+        date: int = None,
+        id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_env: str = None,
+    ):
+        self.date = date
+        # This parameter is required.
+        self.id = id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.project_env = project_env
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.date is not None:
+            result['Date'] = self.date
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_env is not None:
+            result['ProjectEnv'] = self.project_env
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectEnv') is not None:
+            self.project_env = m.get('ProjectEnv')
+        return self
+
+
+class ListTaskOperationLogsResponseBodyPagingInfoOperationLogs(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        operation_content: str = None,
+        operation_seq: int = None,
+        task_id: int = None,
+        user: str = None,
+    ):
+        self.create_time = create_time
+        self.operation_content = operation_content
+        self.operation_seq = operation_seq
+        self.task_id = task_id
+        self.user = user
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.operation_content is not None:
+            result['OperationContent'] = self.operation_content
+        if self.operation_seq is not None:
+            result['OperationSeq'] = self.operation_seq
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.user is not None:
+            result['User'] = self.user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('OperationContent') is not None:
+            self.operation_content = m.get('OperationContent')
+        if m.get('OperationSeq') is not None:
+            self.operation_seq = m.get('OperationSeq')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('User') is not None:
+            self.user = m.get('User')
+        return self
+
+
+class ListTaskOperationLogsResponseBodyPagingInfo(TeaModel):
+    def __init__(
+        self,
+        operation_logs: List[ListTaskOperationLogsResponseBodyPagingInfoOperationLogs] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.operation_logs = operation_logs
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.operation_logs:
+            for k in self.operation_logs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['OperationLogs'] = []
+        if self.operation_logs is not None:
+            for k in self.operation_logs:
+                result['OperationLogs'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.operation_logs = []
+        if m.get('OperationLogs') is not None:
+            for k in m.get('OperationLogs'):
+                temp_model = ListTaskOperationLogsResponseBodyPagingInfoOperationLogs()
+                self.operation_logs.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListTaskOperationLogsResponseBody(TeaModel):
+    def __init__(
+        self,
+        paging_info: ListTaskOperationLogsResponseBodyPagingInfo = None,
+        request_id: str = None,
+    ):
+        self.paging_info = paging_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.paging_info:
+            self.paging_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.paging_info is not None:
+            result['PagingInfo'] = self.paging_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PagingInfo') is not None:
+            temp_model = ListTaskOperationLogsResponseBodyPagingInfo()
+            self.paging_info = temp_model.from_map(m['PagingInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListTaskOperationLogsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTaskOperationLogsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTaskOperationLogsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTasksRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        owner: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_env: str = None,
+        project_id: int = None,
+        runtime_resource: str = None,
+        sort_by: str = None,
+        task_type: str = None,
+        trigger_recurrence: str = None,
+        trigger_type: str = None,
+        workflow_id: int = None,
+    ):
+        self.name = name
+        self.owner = owner
+        self.page_number = page_number
+        self.page_size = page_size
+        self.project_env = project_env
+        # This parameter is required.
+        self.project_id = project_id
+        self.runtime_resource = runtime_resource
+        self.sort_by = sort_by
+        self.task_type = task_type
+        self.trigger_recurrence = trigger_recurrence
+        self.trigger_type = trigger_type
+        self.workflow_id = workflow_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_env is not None:
+            result['ProjectEnv'] = self.project_env
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.runtime_resource is not None:
+            result['RuntimeResource'] = self.runtime_resource
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.trigger_recurrence is not None:
+            result['TriggerRecurrence'] = self.trigger_recurrence
+        if self.trigger_type is not None:
+            result['TriggerType'] = self.trigger_type
+        if self.workflow_id is not None:
+            result['WorkflowId'] = self.workflow_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectEnv') is not None:
+            self.project_env = m.get('ProjectEnv')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RuntimeResource') is not None:
+            self.runtime_resource = m.get('RuntimeResource')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('TriggerRecurrence') is not None:
+            self.trigger_recurrence = m.get('TriggerRecurrence')
+        if m.get('TriggerType') is not None:
+            self.trigger_type = m.get('TriggerType')
+        if m.get('WorkflowId') is not None:
+            self.workflow_id = m.get('WorkflowId')
+        return self
+
+
+class ListTasksResponseBodyPagingInfoTasksDataSource(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ListTasksResponseBodyPagingInfoTasksRuntimeResource(TeaModel):
+    def __init__(
+        self,
+        cu: str = None,
+        image: str = None,
+        resource_group_id: str = None,
+    ):
+        self.cu = cu
+        self.image = image
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cu is not None:
+            result['Cu'] = self.cu
+        if self.image is not None:
+            result['Image'] = self.image
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cu') is not None:
+            self.cu = m.get('Cu')
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class ListTasksResponseBodyPagingInfoTasksTrigger(TeaModel):
+    def __init__(
+        self,
+        cron: str = None,
+        end_time: str = None,
+        recurrence: str = None,
+        start_time: str = None,
+        type: str = None,
+    ):
+        self.cron = cron
+        self.end_time = end_time
+        self.recurrence = recurrence
+        self.start_time = start_time
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cron is not None:
+            result['Cron'] = self.cron
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.recurrence is not None:
+            result['Recurrence'] = self.recurrence
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cron') is not None:
+            self.cron = m.get('Cron')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Recurrence') is not None:
+            self.recurrence = m.get('Recurrence')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListTasksResponseBodyPagingInfoTasks(TeaModel):
+    def __init__(
+        self,
+        baseline_id: int = None,
+        create_time: int = None,
+        create_user: str = None,
+        data_source: ListTasksResponseBodyPagingInfoTasksDataSource = None,
+        description: str = None,
+        id: int = None,
+        modify_time: int = None,
+        modify_user: str = None,
+        name: str = None,
+        owner: str = None,
+        priority: int = None,
+        project_env: str = None,
+        project_id: int = None,
+        rerun_interval: int = None,
+        rerun_mode: str = None,
+        rerun_times: int = None,
+        runtime_resource: ListTasksResponseBodyPagingInfoTasksRuntimeResource = None,
+        tenant_id: int = None,
+        timeout: int = None,
+        trigger: ListTasksResponseBodyPagingInfoTasksTrigger = None,
+        type: str = None,
+        workflow_id: int = None,
+    ):
+        self.baseline_id = baseline_id
+        self.create_time = create_time
+        self.create_user = create_user
+        self.data_source = data_source
+        self.description = description
+        self.id = id
+        self.modify_time = modify_time
+        self.modify_user = modify_user
+        self.name = name
+        self.owner = owner
+        self.priority = priority
+        self.project_env = project_env
+        self.project_id = project_id
+        self.rerun_interval = rerun_interval
+        self.rerun_mode = rerun_mode
+        self.rerun_times = rerun_times
+        self.runtime_resource = runtime_resource
+        self.tenant_id = tenant_id
+        self.timeout = timeout
+        self.trigger = trigger
+        self.type = type
+        self.workflow_id = workflow_id
+
+    def validate(self):
+        if self.data_source:
+            self.data_source.validate()
+        if self.runtime_resource:
+            self.runtime_resource.validate()
+        if self.trigger:
+            self.trigger.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.baseline_id is not None:
+            result['BaselineId'] = self.baseline_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.data_source is not None:
+            result['DataSource'] = self.data_source.to_map()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.modify_user is not None:
+            result['ModifyUser'] = self.modify_user
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.project_env is not None:
+            result['ProjectEnv'] = self.project_env
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.rerun_interval is not None:
+            result['RerunInterval'] = self.rerun_interval
+        if self.rerun_mode is not None:
+            result['RerunMode'] = self.rerun_mode
+        if self.rerun_times is not None:
+            result['RerunTimes'] = self.rerun_times
+        if self.runtime_resource is not None:
+            result['RuntimeResource'] = self.runtime_resource.to_map()
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        if self.trigger is not None:
+            result['Trigger'] = self.trigger.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.workflow_id is not None:
+            result['WorkflowId'] = self.workflow_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaselineId') is not None:
+            self.baseline_id = m.get('BaselineId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('DataSource') is not None:
+            temp_model = ListTasksResponseBodyPagingInfoTasksDataSource()
+            self.data_source = temp_model.from_map(m['DataSource'])
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('ModifyUser') is not None:
+            self.modify_user = m.get('ModifyUser')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('ProjectEnv') is not None:
+            self.project_env = m.get('ProjectEnv')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RerunInterval') is not None:
+            self.rerun_interval = m.get('RerunInterval')
+        if m.get('RerunMode') is not None:
+            self.rerun_mode = m.get('RerunMode')
+        if m.get('RerunTimes') is not None:
+            self.rerun_times = m.get('RerunTimes')
+        if m.get('RuntimeResource') is not None:
+            temp_model = ListTasksResponseBodyPagingInfoTasksRuntimeResource()
+            self.runtime_resource = temp_model.from_map(m['RuntimeResource'])
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        if m.get('Trigger') is not None:
+            temp_model = ListTasksResponseBodyPagingInfoTasksTrigger()
+            self.trigger = temp_model.from_map(m['Trigger'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('WorkflowId') is not None:
+            self.workflow_id = m.get('WorkflowId')
+        return self
+
+
+class ListTasksResponseBodyPagingInfo(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        tasks: List[ListTasksResponseBodyPagingInfoTasks] = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.tasks = tasks
+        self.total_count = total_count
+
+    def validate(self):
+        if self.tasks:
+            for k in self.tasks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['Tasks'] = []
+        if self.tasks is not None:
+            for k in self.tasks:
+                result['Tasks'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.tasks = []
+        if m.get('Tasks') is not None:
+            for k in m.get('Tasks'):
+                temp_model = ListTasksResponseBodyPagingInfoTasks()
+                self.tasks.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListTasksResponseBody(TeaModel):
+    def __init__(
+        self,
+        paging_info: ListTasksResponseBodyPagingInfo = None,
+        request_id: str = None,
+    ):
+        self.paging_info = paging_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.paging_info:
+            self.paging_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.paging_info is not None:
+            result['PagingInfo'] = self.paging_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PagingInfo') is not None:
+            temp_model = ListTasksResponseBodyPagingInfo()
+            self.paging_info = temp_model.from_map(m['PagingInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListTasksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTasksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTasksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListUpstreamTaskInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        # This parameter is required.
+        self.id = id
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime(TeaModel):
+    def __init__(
+        self,
+        gateway: str = None,
+        process_id: str = None,
+    ):
+        self.gateway = gateway
+        self.process_id = process_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gateway is not None:
+            result['Gateway'] = self.gateway
+        if self.process_id is not None:
+            result['ProcessId'] = self.process_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Gateway') is not None:
+            self.gateway = m.get('Gateway')
+        if m.get('ProcessId') is not None:
+            self.process_id = m.get('ProcessId')
+        return self
+
+
+class ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource(TeaModel):
+    def __init__(
+        self,
+        cu: str = None,
+        image: str = None,
+        resource_group_id: str = None,
+    ):
+        self.cu = cu
+        self.image = image
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cu is not None:
+            result['Cu'] = self.cu
+        if self.image is not None:
+            result['Image'] = self.image
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cu') is not None:
+            self.cu = m.get('Cu')
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances(TeaModel):
+    def __init__(
+        self,
+        baseline_id: int = None,
+        bizdate: int = None,
+        create_time: int = None,
+        create_user: str = None,
+        data_source: ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource = None,
+        description: str = None,
+        finished_time: int = None,
+        id: int = None,
+        modify_time: int = None,
+        modify_user: str = None,
+        owner: str = None,
+        priority: int = None,
+        project_env: str = None,
+        project_id: int = None,
+        rerun_mode: str = None,
+        run_number: int = None,
+        runtime: ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime = None,
+        runtime_resource: ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource = None,
+        started_time: int = None,
+        status: str = None,
+        task_id: int = None,
+        task_name: str = None,
+        task_type: str = None,
+        tenant_id: int = None,
+        timeout: int = None,
+        trigger_recurrence: str = None,
+        trigger_time: int = None,
+        trigger_type: str = None,
+        workflow_id: int = None,
+        workflow_instance_id: int = None,
+        workflow_instance_type: str = None,
+        workflow_name: str = None,
+    ):
+        self.baseline_id = baseline_id
+        self.bizdate = bizdate
+        self.create_time = create_time
+        self.create_user = create_user
+        self.data_source = data_source
+        self.description = description
+        self.finished_time = finished_time
+        self.id = id
+        self.modify_time = modify_time
+        self.modify_user = modify_user
+        self.owner = owner
+        self.priority = priority
+        self.project_env = project_env
+        self.project_id = project_id
+        self.rerun_mode = rerun_mode
+        self.run_number = run_number
+        self.runtime = runtime
+        self.runtime_resource = runtime_resource
+        self.started_time = started_time
+        self.status = status
+        self.task_id = task_id
+        self.task_name = task_name
+        self.task_type = task_type
+        self.tenant_id = tenant_id
+        self.timeout = timeout
+        self.trigger_recurrence = trigger_recurrence
+        self.trigger_time = trigger_time
+        self.trigger_type = trigger_type
+        self.workflow_id = workflow_id
+        self.workflow_instance_id = workflow_instance_id
+        self.workflow_instance_type = workflow_instance_type
+        self.workflow_name = workflow_name
+
+    def validate(self):
+        if self.data_source:
+            self.data_source.validate()
+        if self.runtime:
+            self.runtime.validate()
+        if self.runtime_resource:
+            self.runtime_resource.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.baseline_id is not None:
+            result['BaselineId'] = self.baseline_id
+        if self.bizdate is not None:
+            result['Bizdate'] = self.bizdate
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.data_source is not None:
+            result['DataSource'] = self.data_source.to_map()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.finished_time is not None:
+            result['FinishedTime'] = self.finished_time
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.modify_user is not None:
+            result['ModifyUser'] = self.modify_user
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.project_env is not None:
+            result['ProjectEnv'] = self.project_env
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.rerun_mode is not None:
+            result['RerunMode'] = self.rerun_mode
+        if self.run_number is not None:
+            result['RunNumber'] = self.run_number
+        if self.runtime is not None:
+            result['Runtime'] = self.runtime.to_map()
+        if self.runtime_resource is not None:
+            result['RuntimeResource'] = self.runtime_resource.to_map()
+        if self.started_time is not None:
+            result['StartedTime'] = self.started_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        if self.trigger_recurrence is not None:
+            result['TriggerRecurrence'] = self.trigger_recurrence
+        if self.trigger_time is not None:
+            result['TriggerTime'] = self.trigger_time
+        if self.trigger_type is not None:
+            result['TriggerType'] = self.trigger_type
+        if self.workflow_id is not None:
+            result['WorkflowId'] = self.workflow_id
+        if self.workflow_instance_id is not None:
+            result['WorkflowInstanceId'] = self.workflow_instance_id
+        if self.workflow_instance_type is not None:
+            result['WorkflowInstanceType'] = self.workflow_instance_type
+        if self.workflow_name is not None:
+            result['WorkflowName'] = self.workflow_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaselineId') is not None:
+            self.baseline_id = m.get('BaselineId')
+        if m.get('Bizdate') is not None:
+            self.bizdate = m.get('Bizdate')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('DataSource') is not None:
+            temp_model = ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource()
+            self.data_source = temp_model.from_map(m['DataSource'])
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FinishedTime') is not None:
+            self.finished_time = m.get('FinishedTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('ModifyUser') is not None:
+            self.modify_user = m.get('ModifyUser')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('ProjectEnv') is not None:
+            self.project_env = m.get('ProjectEnv')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RerunMode') is not None:
+            self.rerun_mode = m.get('RerunMode')
+        if m.get('RunNumber') is not None:
+            self.run_number = m.get('RunNumber')
+        if m.get('Runtime') is not None:
+            temp_model = ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime()
+            self.runtime = temp_model.from_map(m['Runtime'])
+        if m.get('RuntimeResource') is not None:
+            temp_model = ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource()
+            self.runtime_resource = temp_model.from_map(m['RuntimeResource'])
+        if m.get('StartedTime') is not None:
+            self.started_time = m.get('StartedTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        if m.get('TriggerRecurrence') is not None:
+            self.trigger_recurrence = m.get('TriggerRecurrence')
+        if m.get('TriggerTime') is not None:
+            self.trigger_time = m.get('TriggerTime')
+        if m.get('TriggerType') is not None:
+            self.trigger_type = m.get('TriggerType')
+        if m.get('WorkflowId') is not None:
+            self.workflow_id = m.get('WorkflowId')
+        if m.get('WorkflowInstanceId') is not None:
+            self.workflow_instance_id = m.get('WorkflowInstanceId')
+        if m.get('WorkflowInstanceType') is not None:
+            self.workflow_instance_type = m.get('WorkflowInstanceType')
+        if m.get('WorkflowName') is not None:
+            self.workflow_name = m.get('WorkflowName')
+        return self
+
+
+class ListUpstreamTaskInstancesResponseBodyPagingInfo(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        task_instances: List[ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances] = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.task_instances = task_instances
+        self.total_count = total_count
+
+    def validate(self):
+        if self.task_instances:
+            for k in self.task_instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['TaskInstances'] = []
+        if self.task_instances is not None:
+            for k in self.task_instances:
+                result['TaskInstances'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.task_instances = []
+        if m.get('TaskInstances') is not None:
+            for k in m.get('TaskInstances'):
+                temp_model = ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances()
+                self.task_instances.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListUpstreamTaskInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        paging_info: ListUpstreamTaskInstancesResponseBodyPagingInfo = None,
+        request_id: str = None,
+    ):
+        self.paging_info = paging_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.paging_info:
+            self.paging_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.paging_info is not None:
+            result['PagingInfo'] = self.paging_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PagingInfo') is not None:
+            temp_model = ListUpstreamTaskInstancesResponseBodyPagingInfo()
+            self.paging_info = temp_model.from_map(m['PagingInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListUpstreamTaskInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListUpstreamTaskInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListUpstreamTaskInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListUpstreamTasksRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_env: str = None,
+    ):
+        # This parameter is required.
+        self.id = id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.project_env = project_env
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_env is not None:
+            result['ProjectEnv'] = self.project_env
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectEnv') is not None:
+            self.project_env = m.get('ProjectEnv')
+        return self
+
+
+class ListUpstreamTasksResponseBodyPagingInfoTasksDataSource(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ListUpstreamTasksResponseBodyPagingInfoTasksRuntimeResource(TeaModel):
+    def __init__(
+        self,
+        cu: str = None,
+        image: str = None,
+        resource_group_id: str = None,
+    ):
+        self.cu = cu
+        self.image = image
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cu is not None:
+            result['Cu'] = self.cu
+        if self.image is not None:
+            result['Image'] = self.image
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cu') is not None:
+            self.cu = m.get('Cu')
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class ListUpstreamTasksResponseBodyPagingInfoTasksTrigger(TeaModel):
+    def __init__(
+        self,
+        cron: str = None,
+        end_time: str = None,
+        recurrence: str = None,
+        start_time: str = None,
+        timezone: str = None,
+        type: str = None,
+    ):
+        self.cron = cron
+        self.end_time = end_time
+        self.recurrence = recurrence
+        self.start_time = start_time
+        self.timezone = timezone
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cron is not None:
+            result['Cron'] = self.cron
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.recurrence is not None:
+            result['Recurrence'] = self.recurrence
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.timezone is not None:
+            result['Timezone'] = self.timezone
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cron') is not None:
+            self.cron = m.get('Cron')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Recurrence') is not None:
+            self.recurrence = m.get('Recurrence')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Timezone') is not None:
+            self.timezone = m.get('Timezone')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListUpstreamTasksResponseBodyPagingInfoTasks(TeaModel):
+    def __init__(
+        self,
+        baseline_id: int = None,
+        create_time: int = None,
+        create_user: str = None,
+        data_source: ListUpstreamTasksResponseBodyPagingInfoTasksDataSource = None,
+        description: str = None,
+        id: int = None,
+        modify_time: int = None,
+        modify_user: str = None,
+        name: str = None,
+        owner: str = None,
+        priority: int = None,
+        project_env: str = None,
+        project_id: int = None,
+        rerun_interval: int = None,
+        rerun_mode: str = None,
+        rerun_times: int = None,
+        runtime_resource: ListUpstreamTasksResponseBodyPagingInfoTasksRuntimeResource = None,
+        tenant_id: int = None,
+        timeout: int = None,
+        trigger: ListUpstreamTasksResponseBodyPagingInfoTasksTrigger = None,
+        type: str = None,
+        workflow_id: int = None,
+    ):
+        self.baseline_id = baseline_id
+        self.create_time = create_time
+        self.create_user = create_user
+        self.data_source = data_source
+        self.description = description
+        self.id = id
+        self.modify_time = modify_time
+        self.modify_user = modify_user
+        self.name = name
+        self.owner = owner
+        self.priority = priority
+        self.project_env = project_env
+        self.project_id = project_id
+        self.rerun_interval = rerun_interval
+        self.rerun_mode = rerun_mode
+        self.rerun_times = rerun_times
+        self.runtime_resource = runtime_resource
+        self.tenant_id = tenant_id
+        self.timeout = timeout
+        self.trigger = trigger
+        self.type = type
+        self.workflow_id = workflow_id
+
+    def validate(self):
+        if self.data_source:
+            self.data_source.validate()
+        if self.runtime_resource:
+            self.runtime_resource.validate()
+        if self.trigger:
+            self.trigger.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.baseline_id is not None:
+            result['BaselineId'] = self.baseline_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.data_source is not None:
+            result['DataSource'] = self.data_source.to_map()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.modify_user is not None:
+            result['ModifyUser'] = self.modify_user
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.project_env is not None:
+            result['ProjectEnv'] = self.project_env
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.rerun_interval is not None:
+            result['RerunInterval'] = self.rerun_interval
+        if self.rerun_mode is not None:
+            result['RerunMode'] = self.rerun_mode
+        if self.rerun_times is not None:
+            result['RerunTimes'] = self.rerun_times
+        if self.runtime_resource is not None:
+            result['RuntimeResource'] = self.runtime_resource.to_map()
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        if self.trigger is not None:
+            result['Trigger'] = self.trigger.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.workflow_id is not None:
+            result['WorkflowId'] = self.workflow_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaselineId') is not None:
+            self.baseline_id = m.get('BaselineId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('DataSource') is not None:
+            temp_model = ListUpstreamTasksResponseBodyPagingInfoTasksDataSource()
+            self.data_source = temp_model.from_map(m['DataSource'])
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('ModifyUser') is not None:
+            self.modify_user = m.get('ModifyUser')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('ProjectEnv') is not None:
+            self.project_env = m.get('ProjectEnv')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RerunInterval') is not None:
+            self.rerun_interval = m.get('RerunInterval')
+        if m.get('RerunMode') is not None:
+            self.rerun_mode = m.get('RerunMode')
+        if m.get('RerunTimes') is not None:
+            self.rerun_times = m.get('RerunTimes')
+        if m.get('RuntimeResource') is not None:
+            temp_model = ListUpstreamTasksResponseBodyPagingInfoTasksRuntimeResource()
+            self.runtime_resource = temp_model.from_map(m['RuntimeResource'])
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        if m.get('Trigger') is not None:
+            temp_model = ListUpstreamTasksResponseBodyPagingInfoTasksTrigger()
+            self.trigger = temp_model.from_map(m['Trigger'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('WorkflowId') is not None:
+            self.workflow_id = m.get('WorkflowId')
+        return self
+
+
+class ListUpstreamTasksResponseBodyPagingInfo(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        tasks: List[ListUpstreamTasksResponseBodyPagingInfoTasks] = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.tasks = tasks
+        self.total_count = total_count
+
+    def validate(self):
+        if self.tasks:
+            for k in self.tasks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['Tasks'] = []
+        if self.tasks is not None:
+            for k in self.tasks:
+                result['Tasks'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.tasks = []
+        if m.get('Tasks') is not None:
+            for k in m.get('Tasks'):
+                temp_model = ListUpstreamTasksResponseBodyPagingInfoTasks()
+                self.tasks.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListUpstreamTasksResponseBody(TeaModel):
+    def __init__(
+        self,
+        paging_info: ListUpstreamTasksResponseBodyPagingInfo = None,
+        request_id: str = None,
+    ):
+        self.paging_info = paging_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.paging_info:
+            self.paging_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.paging_info is not None:
+            result['PagingInfo'] = self.paging_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PagingInfo') is not None:
+            temp_model = ListUpstreamTasksResponseBodyPagingInfo()
+            self.paging_info = temp_model.from_map(m['PagingInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListUpstreamTasksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListUpstreamTasksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListUpstreamTasksResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -16678,6 +27709,160 @@ class MoveWorkflowDefinitionResponse(TeaModel):
         return self
 
 
+class RemoveTaskInstanceDependenciesRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        id: int = None,
+        upstream_task_instance_ids: List[int] = None,
+    ):
+        self.comment = comment
+        # This parameter is required.
+        self.id = id
+        self.upstream_task_instance_ids = upstream_task_instance_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.upstream_task_instance_ids is not None:
+            result['UpstreamTaskInstanceIds'] = self.upstream_task_instance_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('UpstreamTaskInstanceIds') is not None:
+            self.upstream_task_instance_ids = m.get('UpstreamTaskInstanceIds')
+        return self
+
+
+class RemoveTaskInstanceDependenciesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        id: int = None,
+        upstream_task_instance_ids_shrink: str = None,
+    ):
+        self.comment = comment
+        # This parameter is required.
+        self.id = id
+        self.upstream_task_instance_ids_shrink = upstream_task_instance_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.upstream_task_instance_ids_shrink is not None:
+            result['UpstreamTaskInstanceIds'] = self.upstream_task_instance_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('UpstreamTaskInstanceIds') is not None:
+            self.upstream_task_instance_ids_shrink = m.get('UpstreamTaskInstanceIds')
+        return self
+
+
+class RemoveTaskInstanceDependenciesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class RemoveTaskInstanceDependenciesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RemoveTaskInstanceDependenciesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RemoveTaskInstanceDependenciesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RenameFunctionRequest(TeaModel):
     def __init__(
         self,
@@ -17188,6 +28373,602 @@ class RenameWorkflowDefinitionResponse(TeaModel):
         return self
 
 
+class RerunTaskInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        ids: List[int] = None,
+    ):
+        self.comment = comment
+        self.ids = ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        return self
+
+
+class RerunTaskInstancesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        ids_shrink: str = None,
+    ):
+        self.comment = comment
+        self.ids_shrink = ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.ids_shrink is not None:
+            result['Ids'] = self.ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('Ids') is not None:
+            self.ids_shrink = m.get('Ids')
+        return self
+
+
+class RerunTaskInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success_info: Dict[str, SuccessInfoValue] = None,
+    ):
+        self.request_id = request_id
+        self.success_info = success_info
+
+    def validate(self):
+        if self.success_info:
+            for v in self.success_info.values():
+                if v:
+                    v.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SuccessInfo'] = {}
+        if self.success_info is not None:
+            for k, v in self.success_info.items():
+                result['SuccessInfo'][k] = v.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.success_info = {}
+        if m.get('SuccessInfo') is not None:
+            for k, v in m.get('SuccessInfo').items():
+                temp_model = SuccessInfoValue()
+                self.success_info[k] = temp_model.from_map(v)
+        return self
+
+
+class RerunTaskInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RerunTaskInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RerunTaskInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ResumeTaskInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        ids: List[int] = None,
+    ):
+        self.comment = comment
+        self.ids = ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        return self
+
+
+class ResumeTaskInstancesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        ids_shrink: str = None,
+    ):
+        self.comment = comment
+        self.ids_shrink = ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.ids_shrink is not None:
+            result['Ids'] = self.ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('Ids') is not None:
+            self.ids_shrink = m.get('Ids')
+        return self
+
+
+class ResumeTaskInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success_info: Dict[str, SuccessInfoValue] = None,
+    ):
+        self.request_id = request_id
+        self.success_info = success_info
+
+    def validate(self):
+        if self.success_info:
+            for v in self.success_info.values():
+                if v:
+                    v.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SuccessInfo'] = {}
+        if self.success_info is not None:
+            for k, v in self.success_info.items():
+                result['SuccessInfo'][k] = v.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.success_info = {}
+        if m.get('SuccessInfo') is not None:
+            for k, v in m.get('SuccessInfo').items():
+                temp_model = SuccessInfoValue()
+                self.success_info[k] = temp_model.from_map(v)
+        return self
+
+
+class ResumeTaskInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ResumeTaskInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ResumeTaskInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RevokeMemberProjectRolesRequest(TeaModel):
+    def __init__(
+        self,
+        project_id: int = None,
+        role_codes: List[str] = None,
+        user_id: str = None,
+    ):
+        # This parameter is required.
+        self.project_id = project_id
+        # This parameter is required.
+        self.role_codes = role_codes
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.role_codes is not None:
+            result['RoleCodes'] = self.role_codes
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RoleCodes') is not None:
+            self.role_codes = m.get('RoleCodes')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class RevokeMemberProjectRolesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        project_id: int = None,
+        role_codes_shrink: str = None,
+        user_id: str = None,
+    ):
+        # This parameter is required.
+        self.project_id = project_id
+        # This parameter is required.
+        self.role_codes_shrink = role_codes_shrink
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.role_codes_shrink is not None:
+            result['RoleCodes'] = self.role_codes_shrink
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RoleCodes') is not None:
+            self.role_codes_shrink = m.get('RoleCodes')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class RevokeMemberProjectRolesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RevokeMemberProjectRolesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RevokeMemberProjectRolesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RevokeMemberProjectRolesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetSuccessTaskInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        ids: List[int] = None,
+    ):
+        self.comment = comment
+        self.ids = ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        return self
+
+
+class SetSuccessTaskInstancesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        ids_shrink: str = None,
+    ):
+        self.comment = comment
+        self.ids_shrink = ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.ids_shrink is not None:
+            result['Ids'] = self.ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('Ids') is not None:
+            self.ids_shrink = m.get('Ids')
+        return self
+
+
+class SetSuccessTaskInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success_info: Dict[str, SuccessInfoValue] = None,
+    ):
+        self.request_id = request_id
+        self.success_info = success_info
+
+    def validate(self):
+        if self.success_info:
+            for v in self.success_info.values():
+                if v:
+                    v.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SuccessInfo'] = {}
+        if self.success_info is not None:
+            for k, v in self.success_info.items():
+                result['SuccessInfo'][k] = v.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.success_info = {}
+        if m.get('SuccessInfo') is not None:
+            for k, v in m.get('SuccessInfo').items():
+                temp_model = SuccessInfoValue()
+                self.success_info[k] = temp_model.from_map(v)
+        return self
+
+
+class SetSuccessTaskInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetSuccessTaskInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetSuccessTaskInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StartDIJobRequestRealtimeStartSettingsFailoverSettings(TeaModel):
     def __init__(
         self,
@@ -17522,6 +29303,411 @@ class StopDIJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StopDIJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StopTaskInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        ids: List[int] = None,
+    ):
+        self.comment = comment
+        self.ids = ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        return self
+
+
+class StopTaskInstancesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        ids_shrink: str = None,
+    ):
+        self.comment = comment
+        self.ids_shrink = ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.ids_shrink is not None:
+            result['Ids'] = self.ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('Ids') is not None:
+            self.ids_shrink = m.get('Ids')
+        return self
+
+
+class StopTaskInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success_info: Dict[str, SuccessInfoValue] = None,
+    ):
+        self.request_id = request_id
+        self.success_info = success_info
+
+    def validate(self):
+        if self.success_info:
+            for v in self.success_info.values():
+                if v:
+                    v.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SuccessInfo'] = {}
+        if self.success_info is not None:
+            for k, v in self.success_info.items():
+                result['SuccessInfo'][k] = v.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.success_info = {}
+        if m.get('SuccessInfo') is not None:
+            for k, v in m.get('SuccessInfo').items():
+                temp_model = SuccessInfoValue()
+                self.success_info[k] = temp_model.from_map(v)
+        return self
+
+
+class StopTaskInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopTaskInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopTaskInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SuspendTaskInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        ids: List[int] = None,
+    ):
+        self.comment = comment
+        self.ids = ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        return self
+
+
+class SuspendTaskInstancesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        ids_shrink: str = None,
+    ):
+        self.comment = comment
+        self.ids_shrink = ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.ids_shrink is not None:
+            result['Ids'] = self.ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('Ids') is not None:
+            self.ids_shrink = m.get('Ids')
+        return self
+
+
+class SuspendTaskInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success_info: Dict[str, SuccessInfoValue] = None,
+    ):
+        self.request_id = request_id
+        self.success_info = success_info
+
+    def validate(self):
+        if self.success_info:
+            for v in self.success_info.values():
+                if v:
+                    v.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SuccessInfo'] = {}
+        if self.success_info is not None:
+            for k, v in self.success_info.items():
+                result['SuccessInfo'][k] = v.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.success_info = {}
+        if m.get('SuccessInfo') is not None:
+            for k, v in m.get('SuccessInfo').items():
+                temp_model = SuccessInfoValue()
+                self.success_info[k] = temp_model.from_map(v)
+        return self
+
+
+class SuspendTaskInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SuspendTaskInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SuspendTaskInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TriggerSchedulerTaskInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: int = None,
+        trigger_time: int = None,
+    ):
+        # This parameter is required.
+        self.task_id = task_id
+        # This parameter is required.
+        self.trigger_time = trigger_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.trigger_time is not None:
+            result['TriggerTime'] = self.trigger_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TriggerTime') is not None:
+            self.trigger_time = m.get('TriggerTime')
+        return self
+
+
+class TriggerSchedulerTaskInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class TriggerSchedulerTaskInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TriggerSchedulerTaskInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TriggerSchedulerTaskInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -19323,9 +31509,13 @@ class UpdateResourceGroupRequest(TeaModel):
         name: str = None,
         remark: str = None,
     ):
+        # The ID of the resource group.
+        # 
         # This parameter is required.
         self.id = id
+        # The new name that you want to change for the resource group.
         self.name = name
+        # The new remarks that you want to modify for the resource group.
         self.remark = remark
 
     def validate(self):
@@ -19362,7 +31552,9 @@ class UpdateResourceGroupResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: true and false.
         self.success = success
 
     def validate(self):
@@ -19535,6 +31727,237 @@ class UpdateRouteResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateTaskInstancesRequestTaskInstancesDataSource(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class UpdateTaskInstancesRequestTaskInstances(TeaModel):
+    def __init__(
+        self,
+        data_source: UpdateTaskInstancesRequestTaskInstancesDataSource = None,
+        id: int = None,
+        priority: int = None,
+        runtime_resource: str = None,
+    ):
+        self.data_source = data_source
+        # This parameter is required.
+        self.id = id
+        self.priority = priority
+        self.runtime_resource = runtime_resource
+
+    def validate(self):
+        if self.data_source:
+            self.data_source.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_source is not None:
+            result['DataSource'] = self.data_source.to_map()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.runtime_resource is not None:
+            result['RuntimeResource'] = self.runtime_resource
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataSource') is not None:
+            temp_model = UpdateTaskInstancesRequestTaskInstancesDataSource()
+            self.data_source = temp_model.from_map(m['DataSource'])
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('RuntimeResource') is not None:
+            self.runtime_resource = m.get('RuntimeResource')
+        return self
+
+
+class UpdateTaskInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        task_instances: List[UpdateTaskInstancesRequestTaskInstances] = None,
+    ):
+        self.comment = comment
+        self.task_instances = task_instances
+
+    def validate(self):
+        if self.task_instances:
+            for k in self.task_instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        result['TaskInstances'] = []
+        if self.task_instances is not None:
+            for k in self.task_instances:
+                result['TaskInstances'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        self.task_instances = []
+        if m.get('TaskInstances') is not None:
+            for k in m.get('TaskInstances'):
+                temp_model = UpdateTaskInstancesRequestTaskInstances()
+                self.task_instances.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateTaskInstancesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        task_instances_shrink: str = None,
+    ):
+        self.comment = comment
+        self.task_instances_shrink = task_instances_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.task_instances_shrink is not None:
+            result['TaskInstances'] = self.task_instances_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('TaskInstances') is not None:
+            self.task_instances_shrink = m.get('TaskInstances')
+        return self
+
+
+class UpdateTaskInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success_info: Dict[str, SuccessInfoValue] = None,
+    ):
+        self.request_id = request_id
+        self.success_info = success_info
+
+    def validate(self):
+        if self.success_info:
+            for v in self.success_info.values():
+                if v:
+                    v.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SuccessInfo'] = {}
+        if self.success_info is not None:
+            for k, v in self.success_info.items():
+                result['SuccessInfo'][k] = v.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.success_info = {}
+        if m.get('SuccessInfo') is not None:
+            for k, v in m.get('SuccessInfo').items():
+                temp_model = SuccessInfoValue()
+                self.success_info[k] = temp_model.from_map(v)
+        return self
+
+
+class UpdateTaskInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateTaskInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateTaskInstancesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

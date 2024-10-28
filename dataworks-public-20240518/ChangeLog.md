@@ -1,3 +1,37 @@
+2024-10-28 Version: 2.1.0
+- Support API CreateProjectMember.
+- Support API DeleteProjectMember.
+- Support API DeleteTask.
+- Support API GetProjectMember.
+- Support API GetTask.
+- Support API GetTaskInstance.
+- Support API GetTaskInstanceLog.
+- Support API GrantMemberProjectRoles.
+- Support API ListDataQualityEvaluationTaskInstances.
+- Support API ListDataQualityEvaluationTasks.
+- Support API ListDataQualityResults.
+- Support API ListDataQualityRules.
+- Support API ListDownstreamTaskInstances.
+- Support API ListDownstreamTasks.
+- Support API ListProjectMembers.
+- Support API ListTaskInstanceOperationLogs.
+- Support API ListTaskInstances.
+- Support API ListTaskOperationLogs.
+- Support API ListTasks.
+- Support API ListUpstreamTaskInstances.
+- Support API ListUpstreamTasks.
+- Support API RemoveTaskInstanceDependencies.
+- Support API RerunTaskInstances.
+- Support API ResumeTaskInstances.
+- Support API RevokeMemberProjectRoles.
+- Support API SetSuccessTaskInstances.
+- Support API StopTaskInstances.
+- Support API SuspendTaskInstances.
+- Support API TriggerSchedulerTaskInstance.
+- Support API UpdateTaskInstances.
+- Update API ListDIJobs: update response param.
+
+
 2024-10-18 Version: 2.0.0
 - Support API AssociateProjectToResourceGroup.
 - Support API CloneDataSource.
