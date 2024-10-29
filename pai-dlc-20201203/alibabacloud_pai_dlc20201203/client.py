@@ -2758,6 +2758,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.priority):
             body['Priority'] = request.priority
         req = open_api_models.OpenApiRequest(
@@ -2797,6 +2799,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.priority):
             body['Priority'] = request.priority
         req = open_api_models.OpenApiRequest(
@@ -2866,6 +2870,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.accessibility):
+            query['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.max_running_time_minutes):
             query['MaxRunningTimeMinutes'] = request.max_running_time_minutes
         if not UtilClient.is_unset(request.workspace_id):
@@ -2907,6 +2913,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.accessibility):
+            query['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.max_running_time_minutes):
             query['MaxRunningTimeMinutes'] = request.max_running_time_minutes
         if not UtilClient.is_unset(request.workspace_id):

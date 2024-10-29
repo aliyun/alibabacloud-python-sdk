@@ -1,3 +1,11 @@
+2024-10-29 Version: 1.4.14
+- Update API DeleteJob: update response param.
+- Update API GetJob: update response param.
+- Update API ListJobs: update param Accessibility.
+- Update API UpdateJob: update param body.
+- Update API UpdateTensorboard: add param Accessibility.
+
+
 2024-08-20 Version: 1.4.13
 - Update API CreateJob: update param body.
 - Update API CreateTensorboard: update param body.
