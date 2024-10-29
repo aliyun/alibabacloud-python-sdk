@@ -524,8 +524,14 @@ class Client(OpenApiClient):
         body_flat = {}
         if not UtilClient.is_unset(request.addresses):
             body_flat['Addresses'] = request.addresses
+        if not UtilClient.is_unset(request.browser_access_status):
+            body['BrowserAccessStatus'] = request.browser_access_status
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.l_7proxy_domain_automatic_prefix):
+            body['L7ProxyDomainAutomaticPrefix'] = request.l_7proxy_domain_automatic_prefix
+        if not UtilClient.is_unset(request.l_7proxy_domain_custom):
+            body['L7ProxyDomainCustom'] = request.l_7proxy_domain_custom
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.port_ranges):
@@ -574,8 +580,14 @@ class Client(OpenApiClient):
         body_flat = {}
         if not UtilClient.is_unset(request.addresses):
             body_flat['Addresses'] = request.addresses
+        if not UtilClient.is_unset(request.browser_access_status):
+            body['BrowserAccessStatus'] = request.browser_access_status
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.l_7proxy_domain_automatic_prefix):
+            body['L7ProxyDomainAutomaticPrefix'] = request.l_7proxy_domain_automatic_prefix
+        if not UtilClient.is_unset(request.l_7proxy_domain_custom):
+            body['L7ProxyDomainCustom'] = request.l_7proxy_domain_custom
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.port_ranges):
@@ -1286,8 +1298,13 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = csas_20230120_models.CreateWmEmbedTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.csv_control):
+            request.csv_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.csv_control, 'CsvControl', 'json')
         if not UtilClient.is_unset(tmp_req.document_control):
             request.document_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.document_control, 'DocumentControl', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.csv_control_shrink):
+            query['CsvControl'] = request.csv_control_shrink
         body = {}
         if not UtilClient.is_unset(request.document_control_shrink):
             body['DocumentControl'] = request.document_control_shrink
@@ -1312,6 +1329,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.wm_type):
             body['WmType'] = request.wm_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1345,8 +1363,13 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = csas_20230120_models.CreateWmEmbedTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.csv_control):
+            request.csv_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.csv_control, 'CsvControl', 'json')
         if not UtilClient.is_unset(tmp_req.document_control):
             request.document_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.document_control, 'DocumentControl', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.csv_control_shrink):
+            query['CsvControl'] = request.csv_control_shrink
         body = {}
         if not UtilClient.is_unset(request.document_control_shrink):
             body['DocumentControl'] = request.document_control_shrink
@@ -1371,6 +1394,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.wm_type):
             body['WmType'] = request.wm_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1417,17 +1441,24 @@ class Client(OpenApiClient):
 
     def create_wm_extract_task_with_options(
         self,
-        request: csas_20230120_models.CreateWmExtractTaskRequest,
+        tmp_req: csas_20230120_models.CreateWmExtractTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreateWmExtractTaskResponse:
         """
         @summary 创建文件水印提取任务
         
-        @param request: CreateWmExtractTaskRequest
+        @param tmp_req: CreateWmExtractTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateWmExtractTaskResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = csas_20230120_models.CreateWmExtractTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.csv_control):
+            request.csv_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.csv_control, 'CsvControl', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.csv_control_shrink):
+            query['CsvControl'] = request.csv_control_shrink
         body = {}
         if not UtilClient.is_unset(request.document_is_capture):
             body['DocumentIsCapture'] = request.document_is_capture
@@ -1444,6 +1475,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.wm_type):
             body['WmType'] = request.wm_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1464,17 +1496,24 @@ class Client(OpenApiClient):
 
     async def create_wm_extract_task_with_options_async(
         self,
-        request: csas_20230120_models.CreateWmExtractTaskRequest,
+        tmp_req: csas_20230120_models.CreateWmExtractTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreateWmExtractTaskResponse:
         """
         @summary 创建文件水印提取任务
         
-        @param request: CreateWmExtractTaskRequest
+        @param tmp_req: CreateWmExtractTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateWmExtractTaskResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = csas_20230120_models.CreateWmExtractTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.csv_control):
+            request.csv_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.csv_control, 'CsvControl', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.csv_control_shrink):
+            query['CsvControl'] = request.csv_control_shrink
         body = {}
         if not UtilClient.is_unset(request.document_is_capture):
             body['DocumentIsCapture'] = request.document_is_capture
@@ -1491,6 +1530,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.wm_type):
             body['WmType'] = request.wm_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -7452,6 +7492,12 @@ class Client(OpenApiClient):
             body['ApplicationId'] = request.application_id
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.l_7proxy_domain_automatic_prefix):
+            body['L7ProxyDomainAutomaticPrefix'] = request.l_7proxy_domain_automatic_prefix
+        if not UtilClient.is_unset(request.l_7proxy_domain_custom):
+            body['L7ProxyDomainCustom'] = request.l_7proxy_domain_custom
+        if not UtilClient.is_unset(request.l_7proxy_domain_private):
+            body['L7ProxyDomainPrivate'] = request.l_7proxy_domain_private
         if not UtilClient.is_unset(request.modify_type):
             body['ModifyType'] = request.modify_type
         if not UtilClient.is_unset(request.port_ranges):
@@ -7504,6 +7550,12 @@ class Client(OpenApiClient):
             body['ApplicationId'] = request.application_id
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.l_7proxy_domain_automatic_prefix):
+            body['L7ProxyDomainAutomaticPrefix'] = request.l_7proxy_domain_automatic_prefix
+        if not UtilClient.is_unset(request.l_7proxy_domain_custom):
+            body['L7ProxyDomainCustom'] = request.l_7proxy_domain_custom
+        if not UtilClient.is_unset(request.l_7proxy_domain_private):
+            body['L7ProxyDomainPrivate'] = request.l_7proxy_domain_private
         if not UtilClient.is_unset(request.modify_type):
             body['ModifyType'] = request.modify_type
         if not UtilClient.is_unset(request.port_ranges):

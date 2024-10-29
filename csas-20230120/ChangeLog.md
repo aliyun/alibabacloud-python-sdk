@@ -1,3 +1,19 @@
+2024-10-29 Version: 1.8.1
+- Update API CreatePrivateAccessApplication: add param BrowserAccessStatus.
+- Update API CreatePrivateAccessApplication: add param L7ProxyDomainAutomaticPrefix.
+- Update API CreatePrivateAccessApplication: add param L7ProxyDomainCustom.
+- Update API CreatePrivateAccessApplication: update param Protocol.
+- Update API CreateWmEmbedTask: add param CsvControl.
+- Update API CreateWmExtractTask: add param CsvControl.
+- Update API GetPrivateAccessApplication: update response param.
+- Update API ListPrivateAccessApplications: add param AccessModes.
+- Update API ListPrivateAccessApplications: update response param.
+- Update API UpdatePrivateAccessApplication: add param L7ProxyDomainAutomaticPrefix.
+- Update API UpdatePrivateAccessApplication: add param L7ProxyDomainCustom.
+- Update API UpdatePrivateAccessApplication: add param L7ProxyDomainPrivate.
+- Update API UpdatePrivateAccessApplication: update param Protocol.
+
+
 2024-07-03 Version: 1.8.0
 - Support API ListNacUserCert.
 - Support API UpdateNacUserCertStatus.

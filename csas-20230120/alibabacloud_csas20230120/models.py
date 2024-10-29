@@ -596,7 +596,10 @@ class CreatePrivateAccessApplicationRequest(TeaModel):
     def __init__(
         self,
         addresses: List[str] = None,
+        browser_access_status: str = None,
         description: str = None,
+        l_7proxy_domain_automatic_prefix: str = None,
+        l_7proxy_domain_custom: str = None,
         name: str = None,
         port_ranges: List[CreatePrivateAccessApplicationRequestPortRanges] = None,
         protocol: str = None,
@@ -605,7 +608,10 @@ class CreatePrivateAccessApplicationRequest(TeaModel):
     ):
         # This parameter is required.
         self.addresses = addresses
+        self.browser_access_status = browser_access_status
         self.description = description
+        self.l_7proxy_domain_automatic_prefix = l_7proxy_domain_automatic_prefix
+        self.l_7proxy_domain_custom = l_7proxy_domain_custom
         # This parameter is required.
         self.name = name
         # This parameter is required.
@@ -630,8 +636,14 @@ class CreatePrivateAccessApplicationRequest(TeaModel):
         result = dict()
         if self.addresses is not None:
             result['Addresses'] = self.addresses
+        if self.browser_access_status is not None:
+            result['BrowserAccessStatus'] = self.browser_access_status
         if self.description is not None:
             result['Description'] = self.description
+        if self.l_7proxy_domain_automatic_prefix is not None:
+            result['L7ProxyDomainAutomaticPrefix'] = self.l_7proxy_domain_automatic_prefix
+        if self.l_7proxy_domain_custom is not None:
+            result['L7ProxyDomainCustom'] = self.l_7proxy_domain_custom
         if self.name is not None:
             result['Name'] = self.name
         result['PortRanges'] = []
@@ -650,8 +662,14 @@ class CreatePrivateAccessApplicationRequest(TeaModel):
         m = m or dict()
         if m.get('Addresses') is not None:
             self.addresses = m.get('Addresses')
+        if m.get('BrowserAccessStatus') is not None:
+            self.browser_access_status = m.get('BrowserAccessStatus')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('L7ProxyDomainAutomaticPrefix') is not None:
+            self.l_7proxy_domain_automatic_prefix = m.get('L7ProxyDomainAutomaticPrefix')
+        if m.get('L7ProxyDomainCustom') is not None:
+            self.l_7proxy_domain_custom = m.get('L7ProxyDomainCustom')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         self.port_ranges = []
@@ -1959,6 +1977,45 @@ class CreateWmBaseImageResponse(TeaModel):
         return self
 
 
+class CreateWmEmbedTaskRequestCsvControl(TeaModel):
+    def __init__(
+        self,
+        embed_column: int = None,
+        embed_precision: int = None,
+        method: str = None,
+    ):
+        self.embed_column = embed_column
+        self.embed_precision = embed_precision
+        self.method = method
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.embed_column is not None:
+            result['EmbedColumn'] = self.embed_column
+        if self.embed_precision is not None:
+            result['EmbedPrecision'] = self.embed_precision
+        if self.method is not None:
+            result['Method'] = self.method
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EmbedColumn') is not None:
+            self.embed_column = m.get('EmbedColumn')
+        if m.get('EmbedPrecision') is not None:
+            self.embed_precision = m.get('EmbedPrecision')
+        if m.get('Method') is not None:
+            self.method = m.get('Method')
+        return self
+
+
 class CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgInvisibleControl(TeaModel):
     def __init__(
         self,
@@ -2161,6 +2218,7 @@ class CreateWmEmbedTaskRequestDocumentControl(TeaModel):
 class CreateWmEmbedTaskRequest(TeaModel):
     def __init__(
         self,
+        csv_control: CreateWmEmbedTaskRequestCsvControl = None,
         document_control: CreateWmEmbedTaskRequestDocumentControl = None,
         file_url: str = None,
         filename: str = None,
@@ -2173,6 +2231,7 @@ class CreateWmEmbedTaskRequest(TeaModel):
         wm_info_uint: str = None,
         wm_type: str = None,
     ):
+        self.csv_control = csv_control
         self.document_control = document_control
         # This parameter is required.
         self.file_url = file_url
@@ -2189,6 +2248,8 @@ class CreateWmEmbedTaskRequest(TeaModel):
         self.wm_type = wm_type
 
     def validate(self):
+        if self.csv_control:
+            self.csv_control.validate()
         if self.document_control:
             self.document_control.validate()
 
@@ -2198,6 +2259,8 @@ class CreateWmEmbedTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.csv_control is not None:
+            result['CsvControl'] = self.csv_control.to_map()
         if self.document_control is not None:
             result['DocumentControl'] = self.document_control.to_map()
         if self.file_url is not None:
@@ -2224,6 +2287,9 @@ class CreateWmEmbedTaskRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CsvControl') is not None:
+            temp_model = CreateWmEmbedTaskRequestCsvControl()
+            self.csv_control = temp_model.from_map(m['CsvControl'])
         if m.get('DocumentControl') is not None:
             temp_model = CreateWmEmbedTaskRequestDocumentControl()
             self.document_control = temp_model.from_map(m['DocumentControl'])
@@ -2253,6 +2319,7 @@ class CreateWmEmbedTaskRequest(TeaModel):
 class CreateWmEmbedTaskShrinkRequest(TeaModel):
     def __init__(
         self,
+        csv_control_shrink: str = None,
         document_control_shrink: str = None,
         file_url: str = None,
         filename: str = None,
@@ -2265,6 +2332,7 @@ class CreateWmEmbedTaskShrinkRequest(TeaModel):
         wm_info_uint: str = None,
         wm_type: str = None,
     ):
+        self.csv_control_shrink = csv_control_shrink
         self.document_control_shrink = document_control_shrink
         # This parameter is required.
         self.file_url = file_url
@@ -2289,6 +2357,8 @@ class CreateWmEmbedTaskShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.csv_control_shrink is not None:
+            result['CsvControl'] = self.csv_control_shrink
         if self.document_control_shrink is not None:
             result['DocumentControl'] = self.document_control_shrink
         if self.file_url is not None:
@@ -2315,6 +2385,8 @@ class CreateWmEmbedTaskShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CsvControl') is not None:
+            self.csv_control_shrink = m.get('CsvControl')
         if m.get('DocumentControl') is not None:
             self.document_control_shrink = m.get('DocumentControl')
         if m.get('FileUrl') is not None:
@@ -2443,9 +2515,49 @@ class CreateWmEmbedTaskResponse(TeaModel):
         return self
 
 
+class CreateWmExtractTaskRequestCsvControl(TeaModel):
+    def __init__(
+        self,
+        embed_column: int = None,
+        embed_precision: int = None,
+        method: str = None,
+    ):
+        self.embed_column = embed_column
+        self.embed_precision = embed_precision
+        self.method = method
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.embed_column is not None:
+            result['EmbedColumn'] = self.embed_column
+        if self.embed_precision is not None:
+            result['EmbedPrecision'] = self.embed_precision
+        if self.method is not None:
+            result['Method'] = self.method
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EmbedColumn') is not None:
+            self.embed_column = m.get('EmbedColumn')
+        if m.get('EmbedPrecision') is not None:
+            self.embed_precision = m.get('EmbedPrecision')
+        if m.get('Method') is not None:
+            self.method = m.get('Method')
+        return self
+
+
 class CreateWmExtractTaskRequest(TeaModel):
     def __init__(
         self,
+        csv_control: CreateWmExtractTaskRequestCsvControl = None,
         document_is_capture: bool = None,
         file_url: str = None,
         filename: str = None,
@@ -2454,6 +2566,81 @@ class CreateWmExtractTaskRequest(TeaModel):
         wm_info_size: int = None,
         wm_type: str = None,
     ):
+        self.csv_control = csv_control
+        self.document_is_capture = document_is_capture
+        # This parameter is required.
+        self.file_url = file_url
+        # This parameter is required.
+        self.filename = filename
+        self.video_is_long = video_is_long
+        self.video_speed = video_speed
+        self.wm_info_size = wm_info_size
+        # This parameter is required.
+        self.wm_type = wm_type
+
+    def validate(self):
+        if self.csv_control:
+            self.csv_control.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.csv_control is not None:
+            result['CsvControl'] = self.csv_control.to_map()
+        if self.document_is_capture is not None:
+            result['DocumentIsCapture'] = self.document_is_capture
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.filename is not None:
+            result['Filename'] = self.filename
+        if self.video_is_long is not None:
+            result['VideoIsLong'] = self.video_is_long
+        if self.video_speed is not None:
+            result['VideoSpeed'] = self.video_speed
+        if self.wm_info_size is not None:
+            result['WmInfoSize'] = self.wm_info_size
+        if self.wm_type is not None:
+            result['WmType'] = self.wm_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CsvControl') is not None:
+            temp_model = CreateWmExtractTaskRequestCsvControl()
+            self.csv_control = temp_model.from_map(m['CsvControl'])
+        if m.get('DocumentIsCapture') is not None:
+            self.document_is_capture = m.get('DocumentIsCapture')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('Filename') is not None:
+            self.filename = m.get('Filename')
+        if m.get('VideoIsLong') is not None:
+            self.video_is_long = m.get('VideoIsLong')
+        if m.get('VideoSpeed') is not None:
+            self.video_speed = m.get('VideoSpeed')
+        if m.get('WmInfoSize') is not None:
+            self.wm_info_size = m.get('WmInfoSize')
+        if m.get('WmType') is not None:
+            self.wm_type = m.get('WmType')
+        return self
+
+
+class CreateWmExtractTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        csv_control_shrink: str = None,
+        document_is_capture: bool = None,
+        file_url: str = None,
+        filename: str = None,
+        video_is_long: bool = None,
+        video_speed: str = None,
+        wm_info_size: int = None,
+        wm_type: str = None,
+    ):
+        self.csv_control_shrink = csv_control_shrink
         self.document_is_capture = document_is_capture
         # This parameter is required.
         self.file_url = file_url
@@ -2474,6 +2661,8 @@ class CreateWmExtractTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.csv_control_shrink is not None:
+            result['CsvControl'] = self.csv_control_shrink
         if self.document_is_capture is not None:
             result['DocumentIsCapture'] = self.document_is_capture
         if self.file_url is not None:
@@ -2492,6 +2681,8 @@ class CreateWmExtractTaskRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CsvControl') is not None:
+            self.csv_control_shrink = m.get('CsvControl')
         if m.get('DocumentIsCapture') is not None:
             self.document_is_capture = m.get('DocumentIsCapture')
         if m.get('FileUrl') is not None:
@@ -4799,9 +4990,12 @@ class GetPrivateAccessApplicationResponseBodyApplication(TeaModel):
         self,
         addresses: List[str] = None,
         application_id: str = None,
+        browser_access_status: str = None,
         connector_ids: List[str] = None,
         create_time: str = None,
         description: str = None,
+        l_7proxy_domain_automatic: str = None,
+        l_7proxy_domain_custom: str = None,
         name: str = None,
         policy_ids: List[str] = None,
         port_ranges: List[GetPrivateAccessApplicationResponseBodyApplicationPortRanges] = None,
@@ -4811,9 +5005,12 @@ class GetPrivateAccessApplicationResponseBodyApplication(TeaModel):
     ):
         self.addresses = addresses
         self.application_id = application_id
+        self.browser_access_status = browser_access_status
         self.connector_ids = connector_ids
         self.create_time = create_time
         self.description = description
+        self.l_7proxy_domain_automatic = l_7proxy_domain_automatic
+        self.l_7proxy_domain_custom = l_7proxy_domain_custom
         self.name = name
         self.policy_ids = policy_ids
         self.port_ranges = port_ranges
@@ -4837,12 +5034,18 @@ class GetPrivateAccessApplicationResponseBodyApplication(TeaModel):
             result['Addresses'] = self.addresses
         if self.application_id is not None:
             result['ApplicationId'] = self.application_id
+        if self.browser_access_status is not None:
+            result['BrowserAccessStatus'] = self.browser_access_status
         if self.connector_ids is not None:
             result['ConnectorIds'] = self.connector_ids
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.description is not None:
             result['Description'] = self.description
+        if self.l_7proxy_domain_automatic is not None:
+            result['L7ProxyDomainAutomatic'] = self.l_7proxy_domain_automatic
+        if self.l_7proxy_domain_custom is not None:
+            result['L7ProxyDomainCustom'] = self.l_7proxy_domain_custom
         if self.name is not None:
             result['Name'] = self.name
         if self.policy_ids is not None:
@@ -4865,12 +5068,18 @@ class GetPrivateAccessApplicationResponseBodyApplication(TeaModel):
             self.addresses = m.get('Addresses')
         if m.get('ApplicationId') is not None:
             self.application_id = m.get('ApplicationId')
+        if m.get('BrowserAccessStatus') is not None:
+            self.browser_access_status = m.get('BrowserAccessStatus')
         if m.get('ConnectorIds') is not None:
             self.connector_ids = m.get('ConnectorIds')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('L7ProxyDomainAutomatic') is not None:
+            self.l_7proxy_domain_automatic = m.get('L7ProxyDomainAutomatic')
+        if m.get('L7ProxyDomainCustom') is not None:
+            self.l_7proxy_domain_custom = m.get('L7ProxyDomainCustom')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('PolicyIds') is not None:
@@ -9793,6 +10002,7 @@ class ListPopTrafficStatisticsResponse(TeaModel):
 class ListPrivateAccessApplicationsRequest(TeaModel):
     def __init__(
         self,
+        access_modes: str = None,
         address: str = None,
         application_ids: List[str] = None,
         connector_id: str = None,
@@ -9803,6 +10013,7 @@ class ListPrivateAccessApplicationsRequest(TeaModel):
         status: str = None,
         tag_id: str = None,
     ):
+        self.access_modes = access_modes
         self.address = address
         self.application_ids = application_ids
         self.connector_id = connector_id
@@ -9824,6 +10035,8 @@ class ListPrivateAccessApplicationsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.access_modes is not None:
+            result['AccessModes'] = self.access_modes
         if self.address is not None:
             result['Address'] = self.address
         if self.application_ids is not None:
@@ -9846,6 +10059,8 @@ class ListPrivateAccessApplicationsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessModes') is not None:
+            self.access_modes = m.get('AccessModes')
         if m.get('Address') is not None:
             self.address = m.get('Address')
         if m.get('ApplicationIds') is not None:
@@ -9905,9 +10120,12 @@ class ListPrivateAccessApplicationsResponseBodyApplications(TeaModel):
         self,
         addresses: List[str] = None,
         application_id: str = None,
+        browser_access_status: str = None,
         connector_ids: List[str] = None,
         create_time: str = None,
         description: str = None,
+        l_7proxy_domain_automatic: str = None,
+        l_7proxy_domain_custom: str = None,
         name: str = None,
         policy_ids: List[str] = None,
         port_ranges: List[ListPrivateAccessApplicationsResponseBodyApplicationsPortRanges] = None,
@@ -9917,9 +10135,12 @@ class ListPrivateAccessApplicationsResponseBodyApplications(TeaModel):
     ):
         self.addresses = addresses
         self.application_id = application_id
+        self.browser_access_status = browser_access_status
         self.connector_ids = connector_ids
         self.create_time = create_time
         self.description = description
+        self.l_7proxy_domain_automatic = l_7proxy_domain_automatic
+        self.l_7proxy_domain_custom = l_7proxy_domain_custom
         self.name = name
         self.policy_ids = policy_ids
         self.port_ranges = port_ranges
@@ -9943,12 +10164,18 @@ class ListPrivateAccessApplicationsResponseBodyApplications(TeaModel):
             result['Addresses'] = self.addresses
         if self.application_id is not None:
             result['ApplicationId'] = self.application_id
+        if self.browser_access_status is not None:
+            result['BrowserAccessStatus'] = self.browser_access_status
         if self.connector_ids is not None:
             result['ConnectorIds'] = self.connector_ids
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.description is not None:
             result['Description'] = self.description
+        if self.l_7proxy_domain_automatic is not None:
+            result['L7ProxyDomainAutomatic'] = self.l_7proxy_domain_automatic
+        if self.l_7proxy_domain_custom is not None:
+            result['L7ProxyDomainCustom'] = self.l_7proxy_domain_custom
         if self.name is not None:
             result['Name'] = self.name
         if self.policy_ids is not None:
@@ -9971,12 +10198,18 @@ class ListPrivateAccessApplicationsResponseBodyApplications(TeaModel):
             self.addresses = m.get('Addresses')
         if m.get('ApplicationId') is not None:
             self.application_id = m.get('ApplicationId')
+        if m.get('BrowserAccessStatus') is not None:
+            self.browser_access_status = m.get('BrowserAccessStatus')
         if m.get('ConnectorIds') is not None:
             self.connector_ids = m.get('ConnectorIds')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('L7ProxyDomainAutomatic') is not None:
+            self.l_7proxy_domain_automatic = m.get('L7ProxyDomainAutomatic')
+        if m.get('L7ProxyDomainCustom') is not None:
+            self.l_7proxy_domain_custom = m.get('L7ProxyDomainCustom')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('PolicyIds') is not None:
@@ -14989,6 +15222,9 @@ class UpdatePrivateAccessApplicationRequest(TeaModel):
         addresses: List[str] = None,
         application_id: str = None,
         description: str = None,
+        l_7proxy_domain_automatic_prefix: str = None,
+        l_7proxy_domain_custom: str = None,
+        l_7proxy_domain_private: str = None,
         modify_type: str = None,
         port_ranges: List[UpdatePrivateAccessApplicationRequestPortRanges] = None,
         protocol: str = None,
@@ -14999,6 +15235,9 @@ class UpdatePrivateAccessApplicationRequest(TeaModel):
         # This parameter is required.
         self.application_id = application_id
         self.description = description
+        self.l_7proxy_domain_automatic_prefix = l_7proxy_domain_automatic_prefix
+        self.l_7proxy_domain_custom = l_7proxy_domain_custom
+        self.l_7proxy_domain_private = l_7proxy_domain_private
         self.modify_type = modify_type
         self.port_ranges = port_ranges
         self.protocol = protocol
@@ -15023,6 +15262,12 @@ class UpdatePrivateAccessApplicationRequest(TeaModel):
             result['ApplicationId'] = self.application_id
         if self.description is not None:
             result['Description'] = self.description
+        if self.l_7proxy_domain_automatic_prefix is not None:
+            result['L7ProxyDomainAutomaticPrefix'] = self.l_7proxy_domain_automatic_prefix
+        if self.l_7proxy_domain_custom is not None:
+            result['L7ProxyDomainCustom'] = self.l_7proxy_domain_custom
+        if self.l_7proxy_domain_private is not None:
+            result['L7ProxyDomainPrivate'] = self.l_7proxy_domain_private
         if self.modify_type is not None:
             result['ModifyType'] = self.modify_type
         result['PortRanges'] = []
@@ -15045,6 +15290,12 @@ class UpdatePrivateAccessApplicationRequest(TeaModel):
             self.application_id = m.get('ApplicationId')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('L7ProxyDomainAutomaticPrefix') is not None:
+            self.l_7proxy_domain_automatic_prefix = m.get('L7ProxyDomainAutomaticPrefix')
+        if m.get('L7ProxyDomainCustom') is not None:
+            self.l_7proxy_domain_custom = m.get('L7ProxyDomainCustom')
+        if m.get('L7ProxyDomainPrivate') is not None:
+            self.l_7proxy_domain_private = m.get('L7ProxyDomainPrivate')
         if m.get('ModifyType') is not None:
             self.modify_type = m.get('ModifyType')
         self.port_ranges = []
