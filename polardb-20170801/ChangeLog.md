@@ -1,3 +1,11 @@
+2024-10-29 Version: 5.2.1
+- Update API DescribeAITaskStatus: update param AccessKeyId.
+- Update API DescribeAITaskStatus: update response param.
+- Update API DescribeCharacterSetName: update param AccessKeyId.
+- Update API DescribeDBClusterAvailableResources: update param AccessKeyId.
+- Update API EvaluateRegionResource: update param AccessKeyId.
+
+
 2024-10-25 Version: 5.2.0
 - Support API CreateActivationCode.
 - Support API CreateOrGetVirtualLicenseOrder.

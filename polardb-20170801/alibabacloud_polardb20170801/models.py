@@ -6555,11 +6555,13 @@ class DescribeAITaskStatusRequest(TeaModel):
 class DescribeAITaskStatusResponseBody(TeaModel):
     def __init__(
         self,
+        account_name: str = None,
         dbcluster_id: str = None,
         request_id: str = None,
         status: str = None,
         status_name: str = None,
     ):
+        self.account_name = account_name
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
         # The request ID.
@@ -6581,6 +6583,8 @@ class DescribeAITaskStatusResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.account_name is not None:
+            result['AccountName'] = self.account_name
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
         if self.request_id is not None:
@@ -6593,6 +6597,8 @@ class DescribeAITaskStatusResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountName') is not None:
+            self.account_name = m.get('AccountName')
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('RequestId') is not None:
