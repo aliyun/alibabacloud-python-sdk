@@ -1473,6 +1473,16 @@ class Client(OpenApiClient):
             query['DefaultRule'] = request.default_rule
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_xforwarded_for):
+            query['EnableXForwardedFor'] = request.enable_xforwarded_for
+        if not UtilClient.is_unset(request.enable_xforwarded_for_client_src_port):
+            query['EnableXForwardedForClientSrcPort'] = request.enable_xforwarded_for_client_src_port
+        if not UtilClient.is_unset(request.enable_xforwarded_for_proto):
+            query['EnableXForwardedForProto'] = request.enable_xforwarded_for_proto
+        if not UtilClient.is_unset(request.enable_xforwarded_for_slb_id):
+            query['EnableXForwardedForSlbId'] = request.enable_xforwarded_for_slb_id
+        if not UtilClient.is_unset(request.enable_xforwarded_for_slb_port):
+            query['EnableXForwardedForSlbPort'] = request.enable_xforwarded_for_slb_port
         if not UtilClient.is_unset(request.idle_timeout):
             query['IdleTimeout'] = request.idle_timeout
         if not UtilClient.is_unset(request.listener_port):
@@ -1537,6 +1547,16 @@ class Client(OpenApiClient):
             query['DefaultRule'] = request.default_rule
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_xforwarded_for):
+            query['EnableXForwardedFor'] = request.enable_xforwarded_for
+        if not UtilClient.is_unset(request.enable_xforwarded_for_client_src_port):
+            query['EnableXForwardedForClientSrcPort'] = request.enable_xforwarded_for_client_src_port
+        if not UtilClient.is_unset(request.enable_xforwarded_for_proto):
+            query['EnableXForwardedForProto'] = request.enable_xforwarded_for_proto
+        if not UtilClient.is_unset(request.enable_xforwarded_for_slb_id):
+            query['EnableXForwardedForSlbId'] = request.enable_xforwarded_for_slb_id
+        if not UtilClient.is_unset(request.enable_xforwarded_for_slb_port):
+            query['EnableXForwardedForSlbPort'] = request.enable_xforwarded_for_slb_port
         if not UtilClient.is_unset(request.idle_timeout):
             query['IdleTimeout'] = request.idle_timeout
         if not UtilClient.is_unset(request.listener_port):
@@ -13623,6 +13643,16 @@ class Client(OpenApiClient):
             query['DefaultRule'] = request.default_rule
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_xforwarded_for):
+            query['EnableXForwardedFor'] = request.enable_xforwarded_for
+        if not UtilClient.is_unset(request.enable_xforwarded_for_client_src_port):
+            query['EnableXForwardedForClientSrcPort'] = request.enable_xforwarded_for_client_src_port
+        if not UtilClient.is_unset(request.enable_xforwarded_for_proto):
+            query['EnableXForwardedForProto'] = request.enable_xforwarded_for_proto
+        if not UtilClient.is_unset(request.enable_xforwarded_for_slb_id):
+            query['EnableXForwardedForSlbId'] = request.enable_xforwarded_for_slb_id
+        if not UtilClient.is_unset(request.enable_xforwarded_for_slb_port):
+            query['EnableXForwardedForSlbPort'] = request.enable_xforwarded_for_slb_port
         if not UtilClient.is_unset(request.idle_timeout):
             query['IdleTimeout'] = request.idle_timeout
         if not UtilClient.is_unset(request.ingress_id):
@@ -13685,6 +13715,16 @@ class Client(OpenApiClient):
             query['DefaultRule'] = request.default_rule
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_xforwarded_for):
+            query['EnableXForwardedFor'] = request.enable_xforwarded_for
+        if not UtilClient.is_unset(request.enable_xforwarded_for_client_src_port):
+            query['EnableXForwardedForClientSrcPort'] = request.enable_xforwarded_for_client_src_port
+        if not UtilClient.is_unset(request.enable_xforwarded_for_proto):
+            query['EnableXForwardedForProto'] = request.enable_xforwarded_for_proto
+        if not UtilClient.is_unset(request.enable_xforwarded_for_slb_id):
+            query['EnableXForwardedForSlbId'] = request.enable_xforwarded_for_slb_id
+        if not UtilClient.is_unset(request.enable_xforwarded_for_slb_port):
+            query['EnableXForwardedForSlbPort'] = request.enable_xforwarded_for_slb_port
         if not UtilClient.is_unset(request.idle_timeout):
             query['IdleTimeout'] = request.idle_timeout
         if not UtilClient.is_unset(request.ingress_id):

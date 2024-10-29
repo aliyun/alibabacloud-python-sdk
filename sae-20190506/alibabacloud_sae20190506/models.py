@@ -3318,6 +3318,110 @@ class CertConfig(TeaModel):
         return self
 
 
+class RegistryAuthenticationConfig(TeaModel):
+    def __init__(
+        self,
+        password: str = None,
+        user_name: str = None,
+    ):
+        self.password = password
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class RegistryCertificateConfig(TeaModel):
+    def __init__(
+        self,
+        cert_base_64: str = None,
+        insecure: bool = None,
+    ):
+        self.cert_base_64 = cert_base_64
+        self.insecure = insecure
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_base_64 is not None:
+            result['CertBase64'] = self.cert_base_64
+        if self.insecure is not None:
+            result['Insecure'] = self.insecure
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertBase64') is not None:
+            self.cert_base_64 = m.get('CertBase64')
+        if m.get('Insecure') is not None:
+            self.insecure = m.get('Insecure')
+        return self
+
+
+class ImageRegistryConfig(TeaModel):
+    def __init__(
+        self,
+        auth_config: RegistryAuthenticationConfig = None,
+        cert_config: RegistryCertificateConfig = None,
+    ):
+        self.auth_config = auth_config
+        self.cert_config = cert_config
+
+    def validate(self):
+        if self.auth_config:
+            self.auth_config.validate()
+        if self.cert_config:
+            self.cert_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_config is not None:
+            result['AuthConfig'] = self.auth_config.to_map()
+        if self.cert_config is not None:
+            result['CertConfig'] = self.cert_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthConfig') is not None:
+            temp_model = RegistryAuthenticationConfig()
+            self.auth_config = temp_model.from_map(m['AuthConfig'])
+        if m.get('CertConfig') is not None:
+            temp_model = RegistryCertificateConfig()
+            self.cert_config = temp_model.from_map(m['CertConfig'])
+        return self
+
+
 class MetricsCollectConfig(TeaModel):
     def __init__(
         self,
@@ -3861,6 +3965,7 @@ class Container(TeaModel):
         command: str = None,
         environment_variables: Dict[str, str] = None,
         image: str = None,
+        image_registry_config: ImageRegistryConfig = None,
         metrics_collect_config: MetricsCollectConfig = None,
         port: int = None,
         request_concurrency: int = None,
@@ -3876,6 +3981,7 @@ class Container(TeaModel):
         self.environment_variables = environment_variables
         # This parameter is required.
         self.image = image
+        self.image_registry_config = image_registry_config
         self.metrics_collect_config = metrics_collect_config
         self.port = port
         self.request_concurrency = request_concurrency
@@ -3888,6 +3994,8 @@ class Container(TeaModel):
         self.web_ossconfig = web_ossconfig
 
     def validate(self):
+        if self.image_registry_config:
+            self.image_registry_config.validate()
         if self.metrics_collect_config:
             self.metrics_collect_config.validate()
         if self.resources:
@@ -3915,6 +4023,8 @@ class Container(TeaModel):
             result['EnvironmentVariables'] = self.environment_variables
         if self.image is not None:
             result['Image'] = self.image
+        if self.image_registry_config is not None:
+            result['ImageRegistryConfig'] = self.image_registry_config.to_map()
         if self.metrics_collect_config is not None:
             result['MetricsCollectConfig'] = self.metrics_collect_config.to_map()
         if self.port is not None:
@@ -3945,6 +4055,9 @@ class Container(TeaModel):
             self.environment_variables = m.get('EnvironmentVariables')
         if m.get('Image') is not None:
             self.image = m.get('Image')
+        if m.get('ImageRegistryConfig') is not None:
+            temp_model = ImageRegistryConfig()
+            self.image_registry_config = temp_model.from_map(m['ImageRegistryConfig'])
         if m.get('MetricsCollectConfig') is not None:
             temp_model = MetricsCollectConfig()
             self.metrics_collect_config = temp_model.from_map(m['MetricsCollectConfig'])
@@ -12442,6 +12555,11 @@ class CreateIngressRequest(TeaModel):
         cert_ids: str = None,
         default_rule: str = None,
         description: str = None,
+        enable_xforwarded_for: bool = None,
+        enable_xforwarded_for_client_src_port: bool = None,
+        enable_xforwarded_for_proto: bool = None,
+        enable_xforwarded_for_slb_id: bool = None,
+        enable_xforwarded_for_slb_port: bool = None,
         idle_timeout: int = None,
         listener_port: int = None,
         listener_protocol: str = None,
@@ -12471,6 +12589,11 @@ class CreateIngressRequest(TeaModel):
         self.default_rule = default_rule
         # Route rule name.
         self.description = description
+        self.enable_xforwarded_for = enable_xforwarded_for
+        self.enable_xforwarded_for_client_src_port = enable_xforwarded_for_client_src_port
+        self.enable_xforwarded_for_proto = enable_xforwarded_for_proto
+        self.enable_xforwarded_for_slb_id = enable_xforwarded_for_slb_id
+        self.enable_xforwarded_for_slb_port = enable_xforwarded_for_slb_port
         # The timeout period of an idle connection. Unit: seconds. Valid values: 1 to 60.
         # 
         # If no request is received within the specified timeout period, ALB closes the current connection. When another request is received, ALB establishes a new connection.
@@ -12534,6 +12657,16 @@ class CreateIngressRequest(TeaModel):
             result['DefaultRule'] = self.default_rule
         if self.description is not None:
             result['Description'] = self.description
+        if self.enable_xforwarded_for is not None:
+            result['EnableXForwardedFor'] = self.enable_xforwarded_for
+        if self.enable_xforwarded_for_client_src_port is not None:
+            result['EnableXForwardedForClientSrcPort'] = self.enable_xforwarded_for_client_src_port
+        if self.enable_xforwarded_for_proto is not None:
+            result['EnableXForwardedForProto'] = self.enable_xforwarded_for_proto
+        if self.enable_xforwarded_for_slb_id is not None:
+            result['EnableXForwardedForSlbId'] = self.enable_xforwarded_for_slb_id
+        if self.enable_xforwarded_for_slb_port is not None:
+            result['EnableXForwardedForSlbPort'] = self.enable_xforwarded_for_slb_port
         if self.idle_timeout is not None:
             result['IdleTimeout'] = self.idle_timeout
         if self.listener_port is not None:
@@ -12564,6 +12697,16 @@ class CreateIngressRequest(TeaModel):
             self.default_rule = m.get('DefaultRule')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('EnableXForwardedFor') is not None:
+            self.enable_xforwarded_for = m.get('EnableXForwardedFor')
+        if m.get('EnableXForwardedForClientSrcPort') is not None:
+            self.enable_xforwarded_for_client_src_port = m.get('EnableXForwardedForClientSrcPort')
+        if m.get('EnableXForwardedForProto') is not None:
+            self.enable_xforwarded_for_proto = m.get('EnableXForwardedForProto')
+        if m.get('EnableXForwardedForSlbId') is not None:
+            self.enable_xforwarded_for_slb_id = m.get('EnableXForwardedForSlbId')
+        if m.get('EnableXForwardedForSlbPort') is not None:
+            self.enable_xforwarded_for_slb_port = m.get('EnableXForwardedForSlbPort')
         if m.get('IdleTimeout') is not None:
             self.idle_timeout = m.get('IdleTimeout')
         if m.get('ListenerPort') is not None:
@@ -24065,6 +24208,11 @@ class DescribeIngressResponseBodyData(TeaModel):
         cert_ids: str = None,
         default_rule: DescribeIngressResponseBodyDataDefaultRule = None,
         description: str = None,
+        enable_xforwarded_for: bool = None,
+        enable_xforwarded_for_client_src_port: bool = None,
+        enable_xforwarded_for_proto: bool = None,
+        enable_xforwarded_for_slb_id: bool = None,
+        enable_xforwarded_for_slb_port: bool = None,
         id: int = None,
         idle_timeout: int = None,
         listener_port: int = None,
@@ -24085,6 +24233,11 @@ class DescribeIngressResponseBodyData(TeaModel):
         self.default_rule = default_rule
         # The name of the routing rule.
         self.description = description
+        self.enable_xforwarded_for = enable_xforwarded_for
+        self.enable_xforwarded_for_client_src_port = enable_xforwarded_for_client_src_port
+        self.enable_xforwarded_for_proto = enable_xforwarded_for_proto
+        self.enable_xforwarded_for_slb_id = enable_xforwarded_for_slb_id
+        self.enable_xforwarded_for_slb_port = enable_xforwarded_for_slb_port
         # The HTTP status code. Valid values:
         # 
         # *   **2xx**: indicates that the request was successful.
@@ -24139,6 +24292,16 @@ class DescribeIngressResponseBodyData(TeaModel):
             result['DefaultRule'] = self.default_rule.to_map()
         if self.description is not None:
             result['Description'] = self.description
+        if self.enable_xforwarded_for is not None:
+            result['EnableXForwardedFor'] = self.enable_xforwarded_for
+        if self.enable_xforwarded_for_client_src_port is not None:
+            result['EnableXForwardedForClientSrcPort'] = self.enable_xforwarded_for_client_src_port
+        if self.enable_xforwarded_for_proto is not None:
+            result['EnableXForwardedForProto'] = self.enable_xforwarded_for_proto
+        if self.enable_xforwarded_for_slb_id is not None:
+            result['EnableXForwardedForSlbId'] = self.enable_xforwarded_for_slb_id
+        if self.enable_xforwarded_for_slb_port is not None:
+            result['EnableXForwardedForSlbPort'] = self.enable_xforwarded_for_slb_port
         if self.id is not None:
             result['Id'] = self.id
         if self.idle_timeout is not None:
@@ -24178,6 +24341,16 @@ class DescribeIngressResponseBodyData(TeaModel):
             self.default_rule = temp_model.from_map(m['DefaultRule'])
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('EnableXForwardedFor') is not None:
+            self.enable_xforwarded_for = m.get('EnableXForwardedFor')
+        if m.get('EnableXForwardedForClientSrcPort') is not None:
+            self.enable_xforwarded_for_client_src_port = m.get('EnableXForwardedForClientSrcPort')
+        if m.get('EnableXForwardedForProto') is not None:
+            self.enable_xforwarded_for_proto = m.get('EnableXForwardedForProto')
+        if m.get('EnableXForwardedForSlbId') is not None:
+            self.enable_xforwarded_for_slb_id = m.get('EnableXForwardedForSlbId')
+        if m.get('EnableXForwardedForSlbPort') is not None:
+            self.enable_xforwarded_for_slb_port = m.get('EnableXForwardedForSlbPort')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('IdleTimeout') is not None:
@@ -41265,6 +41438,11 @@ class UpdateIngressRequest(TeaModel):
         cert_ids: str = None,
         default_rule: str = None,
         description: str = None,
+        enable_xforwarded_for: bool = None,
+        enable_xforwarded_for_client_src_port: bool = None,
+        enable_xforwarded_for_proto: bool = None,
+        enable_xforwarded_for_slb_id: bool = None,
+        enable_xforwarded_for_slb_port: bool = None,
         idle_timeout: int = None,
         ingress_id: int = None,
         listener_port: str = None,
@@ -41294,6 +41472,11 @@ class UpdateIngressRequest(TeaModel):
         self.default_rule = default_rule
         # The name of the routing rule.
         self.description = description
+        self.enable_xforwarded_for = enable_xforwarded_for
+        self.enable_xforwarded_for_client_src_port = enable_xforwarded_for_client_src_port
+        self.enable_xforwarded_for_proto = enable_xforwarded_for_proto
+        self.enable_xforwarded_for_slb_id = enable_xforwarded_for_slb_id
+        self.enable_xforwarded_for_slb_port = enable_xforwarded_for_slb_port
         self.idle_timeout = idle_timeout
         # The ID of the routing rule.
         # 
@@ -41335,6 +41518,16 @@ class UpdateIngressRequest(TeaModel):
             result['DefaultRule'] = self.default_rule
         if self.description is not None:
             result['Description'] = self.description
+        if self.enable_xforwarded_for is not None:
+            result['EnableXForwardedFor'] = self.enable_xforwarded_for
+        if self.enable_xforwarded_for_client_src_port is not None:
+            result['EnableXForwardedForClientSrcPort'] = self.enable_xforwarded_for_client_src_port
+        if self.enable_xforwarded_for_proto is not None:
+            result['EnableXForwardedForProto'] = self.enable_xforwarded_for_proto
+        if self.enable_xforwarded_for_slb_id is not None:
+            result['EnableXForwardedForSlbId'] = self.enable_xforwarded_for_slb_id
+        if self.enable_xforwarded_for_slb_port is not None:
+            result['EnableXForwardedForSlbPort'] = self.enable_xforwarded_for_slb_port
         if self.idle_timeout is not None:
             result['IdleTimeout'] = self.idle_timeout
         if self.ingress_id is not None:
@@ -41363,6 +41556,16 @@ class UpdateIngressRequest(TeaModel):
             self.default_rule = m.get('DefaultRule')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('EnableXForwardedFor') is not None:
+            self.enable_xforwarded_for = m.get('EnableXForwardedFor')
+        if m.get('EnableXForwardedForClientSrcPort') is not None:
+            self.enable_xforwarded_for_client_src_port = m.get('EnableXForwardedForClientSrcPort')
+        if m.get('EnableXForwardedForProto') is not None:
+            self.enable_xforwarded_for_proto = m.get('EnableXForwardedForProto')
+        if m.get('EnableXForwardedForSlbId') is not None:
+            self.enable_xforwarded_for_slb_id = m.get('EnableXForwardedForSlbId')
+        if m.get('EnableXForwardedForSlbPort') is not None:
+            self.enable_xforwarded_for_slb_port = m.get('EnableXForwardedForSlbPort')
         if m.get('IdleTimeout') is not None:
             self.idle_timeout = m.get('IdleTimeout')
         if m.get('IngressId') is not None:

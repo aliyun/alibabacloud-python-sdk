@@ -1,3 +1,23 @@
+2024-10-29 Version: 1.24.4
+- Update API CreateIngress: add param EnableXForwardedFor.
+- Update API CreateIngress: add param EnableXForwardedForClientSrcPort.
+- Update API CreateIngress: add param EnableXForwardedForProto.
+- Update API CreateIngress: add param EnableXForwardedForSlbId.
+- Update API CreateIngress: add param EnableXForwardedForSlbPort.
+- Update API CreateIngress: update param IdleTimeout.
+- Update API CreateIngress: update param RequestTimeout.
+- Update API CreateIngress: update param SecurityPolicyId.
+- Update API DescribeIngress: update response param.
+- Update API UpdateIngress: add param EnableXForwardedFor.
+- Update API UpdateIngress: add param EnableXForwardedForClientSrcPort.
+- Update API UpdateIngress: add param EnableXForwardedForProto.
+- Update API UpdateIngress: add param EnableXForwardedForSlbId.
+- Update API UpdateIngress: add param EnableXForwardedForSlbPort.
+- Update API UpdateIngress: update param IdleTimeout.
+- Update API UpdateIngress: update param RequestTimeout.
+- Update API UpdateIngress: update param SecurityPolicyId.
+
+
 2024-10-28 Version: 1.24.3
 - Update API QueryResourceStatics: update response param.
 
