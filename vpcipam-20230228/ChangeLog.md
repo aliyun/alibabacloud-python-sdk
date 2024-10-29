@@ -1,3 +1,15 @@
+2024-10-29 Version: 2.0.0
+- Support API ListIpamDiscoveredResource.
+- Support API ListIpamResourceDiscoveries.
+- Support API UpdateIpamPoolAllocation.
+- Update API CreateIpamPoolAllocation: add param IpamPoolAllocationDescription.
+- Update API CreateIpamPoolAllocation: add param IpamPoolAllocationName.
+- Update API DeleteIpamPoolAllocation: delete param Cidr.
+- Update API DeleteIpamPoolAllocation: delete param IpamPoolId.
+- Update API ListIpamPoolAllocations: add param IpamPoolAllocationName.
+- Update API ListIpamPoolAllocations: update response param.
+
+
 2024-09-23 Version: 1.0.2
 - Update API CreateIpam: add param Tag.
 - Update API CreateIpamPool: add param AutoImport.
