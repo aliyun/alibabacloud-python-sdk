@@ -1,3 +1,7 @@
+2024-10-29 Version: 3.4.2
+- Update API ChangeApply: update param changed_journeys.
+
+
 2024-09-20 Version: 3.4.1
 - Update API Search: add param search_control_options.
 

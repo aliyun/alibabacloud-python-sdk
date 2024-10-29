@@ -16,13 +16,21 @@ class DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingV
         carry_on_weight_unit: str = None,
         is_all_carry_on_weight: bool = None,
     ):
+        # checked baggage quantity
         self.baggage_amount = baggage_amount
+        # checked baggage weight
         self.baggage_weight = baggage_weight
+        # checked baggage weight unit
         self.baggage_weight_unit = baggage_weight_unit
+        # Whether the weight is for all baggages
         self.is_all_weight = is_all_weight
+        # carry-on baggage quantity
         self.carry_on_amount = carry_on_amount
+        # carry-on baggage weight
         self.carry_on_weight = carry_on_weight
+        # carry-on baggage weight unit
         self.carry_on_weight_unit = carry_on_weight_unit
+        # Whether the weight is for all baggages
         self.is_all_carry_on_weight = is_all_carry_on_weight
 
     def validate(self):
@@ -85,13 +93,21 @@ class DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValue
         can_return_all_tax: bool = None,
         return_part_tax_fee: float = None,
     ):
+        # type: 0 - fully-unused ticket; 1 - partially used ticket
         self.type = type
+        # time unit: day/hour
         self.time_unit = time_unit
+        # applicable refund rule start time, time unit (day/hour)
         self.rule_start_time = rule_start_time
+        # applicable refund rule end time, time unit (day/hour)
         self.rule_end_time = rule_end_time
+        # whether refundable X-Y hour(day) before departure
         self.can_refund = can_refund
+        # refund fee X-Y hour(day) before departure
         self.refund_fee = refund_fee
+        # whether tax is fully refundable X-Y hour(day) before departure
         self.can_return_all_tax = can_return_all_tax
+        # tax amount refundable X-Y hour(day) before departure
         self.return_part_tax_fee = return_part_tax_fee
 
     def validate(self):
@@ -154,13 +170,21 @@ class DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValue
         can_return_all_tax: bool = None,
         return_part_tax_fee: float = None,
     ):
+        # type: 0 - fully-unused ticket; 1 - partially used ticket
         self.type = type
+        # time unit: day/hour
         self.time_unit = time_unit
+        # applicable refund rule start time, time unit (day/hour)
         self.rule_start_time = rule_start_time
+        # applicable refund rule end time, time unit (day/hour)
         self.rule_end_time = rule_end_time
+        # whether refundable X-Y hour(day) before departure
         self.can_refund = can_refund
+        # refund fee X-Y hour(day) before departure
         self.refund_fee = refund_fee
+        # whether tax is fully refundable X-Y hour(day) before departure
         self.can_return_all_tax = can_return_all_tax
+        # tax amount refundable X-Y hour(day) before departure
         self.return_part_tax_fee = return_part_tax_fee
 
     def validate(self):
@@ -221,11 +245,17 @@ class DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValue
         can_change: bool = None,
         change_fee: float = None,
     ):
+        # type: 2 - outbound segment unused; 3 - inbound segment unused
         self.type = type
+        # time unit: day/hour
         self.time_unit = time_unit
+        # applicable change rule start time, time unit (day/hour)
         self.rule_start_time = rule_start_time
+        # applicable change rule end time, time unit (day/hour)
         self.rule_end_time = rule_end_time
+        # whether changeable X-Y hour(day) before departure
         self.can_change = can_change
+        # change fee X-Y hour(day) before departure
         self.change_fee = change_fee
 
     def validate(self):
@@ -278,11 +308,17 @@ class DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValue
         can_change: bool = None,
         change_fee: float = None,
     ):
+        # type: 2 - outbound segment unused; 3 - inbound segment unused
         self.type = type
+        # time unit: day/hour
         self.time_unit = time_unit
+        # applicable change rule start time, time unit (day/hour)
         self.rule_start_time = rule_start_time
+        # applicable change rule end time, time unit (day/hour)
         self.rule_end_time = rule_end_time
+        # whether changeable X-Y hour(day) before departure
         self.can_change = can_change
+        # change fee X-Y hour(day) before departure
         self.change_fee = change_fee
 
     def validate(self):
@@ -333,9 +369,13 @@ class DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValue
         change_rule_in_unused_list: List[DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueChangeRuleInUnusedList] = None,
         change_rule_out_unused_list: List[DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueChangeRuleOutUnusedList] = None,
     ):
+        # refund rule for fully-unused tickets
         self.refund_rule_all_unused_list = refund_rule_all_unused_list
+        # refund rule for partially-used tickets
         self.refund_rule_part_unused_list = refund_rule_part_unused_list
+        # change rule for inbound segment unused tickets
         self.change_rule_in_unused_list = change_rule_in_unused_list
+        # change rule for outbound segment unused tickets
         self.change_rule_out_unused_list = change_rule_out_unused_list
 
     def validate(self):
@@ -417,13 +457,21 @@ class DataBaggageAllowanceMapValue(TeaModel):
         carry_on_weight_unit: str = None,
         is_all_carry_on_weight: bool = None,
     ):
+        # checked baggage quantity
         self.baggage_amount = baggage_amount
+        # checked baggage weight
         self.baggage_weight = baggage_weight
+        # checked baggage weight unit
         self.baggage_weight_unit = baggage_weight_unit
+        # Whether the weight is for all baggages
         self.is_all_weight = is_all_weight
+        # carry-on baggage quantity
         self.carry_on_amount = carry_on_amount
+        # carry-on baggage weight
         self.carry_on_weight = carry_on_weight
+        # carry-on baggage weight unit
         self.carry_on_weight_unit = carry_on_weight_unit
+        # Whether the weight is for all baggages
         self.is_all_carry_on_weight = is_all_carry_on_weight
 
     def validate(self):
@@ -486,13 +534,21 @@ class DataRefundChangeRuleMapValueRefundRuleAllUnusedList(TeaModel):
         can_return_all_tax: bool = None,
         return_part_tax_fee: float = None,
     ):
+        # type: 0 - fully-unused ticket; 1 - partially used ticket
         self.type = type
+        # time unit: day/hour
         self.time_unit = time_unit
+        # applicable refund rule start time, time unit (day/hour)
         self.rule_start_time = rule_start_time
+        # applicable refund rule end time, time unit (day/hour)
         self.rule_end_time = rule_end_time
+        # whether refundable X-Y hour(day) before departure
         self.can_refund = can_refund
+        # refund fee X-Y hour(day) before departure
         self.refund_fee = refund_fee
+        # whether tax is fully refundable X-Y hour(day) before departure
         self.can_return_all_tax = can_return_all_tax
+        # tax amount refundable X-Y hour(day) before departure
         self.return_part_tax_fee = return_part_tax_fee
 
     def validate(self):
@@ -555,13 +611,21 @@ class DataRefundChangeRuleMapValueRefundRulePartUnusedList(TeaModel):
         can_return_all_tax: bool = None,
         return_part_tax_fee: float = None,
     ):
+        # type: 0 - fully-unused ticket; 1 - partially used ticket
         self.type = type
+        # time unit: day/hour
         self.time_unit = time_unit
+        # applicable refund rule start time, time unit (day/hour)
         self.rule_start_time = rule_start_time
+        # applicable refund rule end time, time unit (day/hour)
         self.rule_end_time = rule_end_time
+        # whether refundable X-Y hour(day) before departure
         self.can_refund = can_refund
+        # refund fee X-Y hour(day) before departure
         self.refund_fee = refund_fee
+        # whether tax is fully refundable X-Y hour(day) before departure
         self.can_return_all_tax = can_return_all_tax
+        # tax amount refundable X-Y hour(day) before departure
         self.return_part_tax_fee = return_part_tax_fee
 
     def validate(self):
@@ -622,11 +686,17 @@ class DataRefundChangeRuleMapValueChangeRuleInUnusedList(TeaModel):
         can_change: bool = None,
         change_fee: float = None,
     ):
+        # type: 2 - outbound segment unused; 3 - inbound segment unused
         self.type = type
+        # time unit: day/hour
         self.time_unit = time_unit
+        # applicable change rule start time, time unit (day/hour)
         self.rule_start_time = rule_start_time
+        # applicable change rule end time, time unit (day/hour)
         self.rule_end_time = rule_end_time
+        # whether changeable X-Y hour(day) before departure
         self.can_change = can_change
+        # change fee X-Y hour(day) before departure
         self.change_fee = change_fee
 
     def validate(self):
@@ -679,11 +749,17 @@ class DataRefundChangeRuleMapValueChangeRuleOutUnusedList(TeaModel):
         can_change: bool = None,
         change_fee: float = None,
     ):
+        # type: 2 - outbound segment unused; 3 - inbound segment unused
         self.type = type
+        # time unit: day/hour
         self.time_unit = time_unit
+        # applicable change rule start time, time unit (day/hour)
         self.rule_start_time = rule_start_time
+        # applicable change rule end time, time unit (day/hour)
         self.rule_end_time = rule_end_time
+        # whether changeable X-Y hour(day) before departure
         self.can_change = can_change
+        # change fee X-Y hour(day) before departure
         self.change_fee = change_fee
 
     def validate(self):
@@ -734,9 +810,13 @@ class DataRefundChangeRuleMapValue(TeaModel):
         change_rule_in_unused_list: List[DataRefundChangeRuleMapValueChangeRuleInUnusedList] = None,
         change_rule_out_unused_list: List[DataRefundChangeRuleMapValueChangeRuleOutUnusedList] = None,
     ):
+        # refund rule for fully-unused tickets
         self.refund_rule_all_unused_list = refund_rule_all_unused_list
+        # refund rule for partially-used tickets
         self.refund_rule_part_unused_list = refund_rule_part_unused_list
+        # change rule for inbound segment unused tickets
         self.change_rule_in_unused_list = change_rule_in_unused_list
+        # change rule for outbound-flight-unused tickets
         self.change_rule_out_unused_list = change_rule_out_unused_list
 
     def validate(self):
@@ -818,13 +898,21 @@ class DataSolutionSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue
         carry_on_weight_unit: str = None,
         is_all_carry_on_weight: bool = None,
     ):
+        # checked baggage quantity
         self.baggage_amount = baggage_amount
+        # checked baggage weight
         self.baggage_weight = baggage_weight
+        # checked baggage weight unit
         self.baggage_weight_unit = baggage_weight_unit
+        # Whether the weight is for all baggages
         self.is_all_weight = is_all_weight
+        # carry-on baggage quantity
         self.carry_on_amount = carry_on_amount
+        # carry-on baggage weight
         self.carry_on_weight = carry_on_weight
+        # carry-on baggage weight unit
         self.carry_on_weight_unit = carry_on_weight_unit
+        # Whether the weight is for all baggages
         self.is_all_carry_on_weight = is_all_carry_on_weight
 
     def validate(self):
@@ -887,13 +975,21 @@ class DataSolutionSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueRefu
         can_return_all_tax: bool = None,
         return_part_tax_fee: float = None,
     ):
+        # type: 0 - fully-unused ticket; 1 - partially used ticket
         self.type = type
+        # time unit: day/hour
         self.time_unit = time_unit
+        # applicable refund rule start time, time unit (day/hour)
         self.rule_start_time = rule_start_time
+        # applicable refund rule end time, time unit (day/hour)
         self.rule_end_time = rule_end_time
+        # whether refundable X-Y hour(day) before departure
         self.can_refund = can_refund
+        # refund fee X-Y hour(day) before departure
         self.refund_fee = refund_fee
+        # whether tax is fully refundable X-Y hour(day) before departure
         self.can_return_all_tax = can_return_all_tax
+        # tax amount refundable X-Y hour(day) before departure
         self.return_part_tax_fee = return_part_tax_fee
 
     def validate(self):
@@ -956,13 +1052,21 @@ class DataSolutionSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueRefu
         can_return_all_tax: bool = None,
         return_part_tax_fee: float = None,
     ):
+        # type: 0 - fully-unused ticket; 1 - partially used ticket
         self.type = type
+        # time unit: day/hour
         self.time_unit = time_unit
+        # applicable refund rule start time, time unit (day/hour)
         self.rule_start_time = rule_start_time
+        # applicable refund rule end time, time unit (day/hour)
         self.rule_end_time = rule_end_time
+        # whether refundable X-Y hour(day) before departure
         self.can_refund = can_refund
+        # refund fee X-Y hour(day) before departure
         self.refund_fee = refund_fee
+        # whether tax is fully refundable X-Y hour(day) before departure
         self.can_return_all_tax = can_return_all_tax
+        # tax amount refundable X-Y hour(day) before departure
         self.return_part_tax_fee = return_part_tax_fee
 
     def validate(self):
@@ -1023,11 +1127,17 @@ class DataSolutionSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueChan
         can_change: bool = None,
         change_fee: float = None,
     ):
+        # type: 2 - outbound segment unused; 3 - inbound segment unused
         self.type = type
+        # time unit: day/hour
         self.time_unit = time_unit
+        # applicable change rule start time, time unit (day/hour)
         self.rule_start_time = rule_start_time
+        # applicable change rule end time, time unit (day/hour)
         self.rule_end_time = rule_end_time
+        # whether changeable X-Y hour(day) before departure
         self.can_change = can_change
+        # change fee X-Y hour(day) before departure
         self.change_fee = change_fee
 
     def validate(self):
@@ -1080,11 +1190,17 @@ class DataSolutionSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueChan
         can_change: bool = None,
         change_fee: float = None,
     ):
+        # type: 2 - outbound segment unused; 3 - inbound segment unused
         self.type = type
+        # time unit: day/hour
         self.time_unit = time_unit
+        # applicable change rule start time, time unit (day/hour)
         self.rule_start_time = rule_start_time
+        # applicable change rule end time, time unit (day/hour)
         self.rule_end_time = rule_end_time
+        # whether changeable X-Y hour(day) before departure
         self.can_change = can_change
+        # change fee X-Y hour(day) before departure
         self.change_fee = change_fee
 
     def validate(self):
@@ -1135,9 +1251,13 @@ class DataSolutionSegmentRefundChangeRuleMappingListRefundChangeRuleMapValue(Tea
         change_rule_in_unused_list: List[DataSolutionSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueChangeRuleInUnusedList] = None,
         change_rule_out_unused_list: List[DataSolutionSegmentRefundChangeRuleMappingListRefundChangeRuleMapValueChangeRuleOutUnusedList] = None,
     ):
+        # refund rule for fully-unused tickets
         self.refund_rule_all_unused_list = refund_rule_all_unused_list
+        # refund rule for partially-used tickets
         self.refund_rule_part_unused_list = refund_rule_part_unused_list
+        # change rule for inbound segment unused tickets
         self.change_rule_in_unused_list = change_rule_in_unused_list
+        # change rule for outbound-flight-unused tickets
         self.change_rule_out_unused_list = change_rule_out_unused_list
 
     def validate(self):
@@ -1596,6 +1716,7 @@ class AncillarySuggestHeaders(TeaModel):
         # 
         # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
+        # Language Code(refer to ISO_639)
         self.x_acs_airticket_language = x_acs_airticket_language
 
     def validate(self):
@@ -1631,6 +1752,8 @@ class AncillarySuggestRequest(TeaModel):
         self,
         solution_id: str = None,
     ):
+        # solution_id returned by enrich
+        # 
         # This parameter is required.
         self.solution_id = solution_id
 
@@ -1663,15 +1786,15 @@ class AncillarySuggestResponseBodyDataSegAncillaryMapListAncillaryBaggageAncilla
         is_all_weight: bool = None,
         price: float = None,
     ):
-        # 行李件数 取值如：3、2、1、0、-2。 -2 表示计重
+        # baggage quantity, values such as: 3, 2, 1, 0, -2.     -2 indicates weight-based
         self.baggage_amount = baggage_amount
-        # 行李重量，0-50。isAllWeght=true 时，表示所有件数总重量。
+        # Baggage weight, 0-50. When isAllWeight=true, it represents the total weight of all baggages.
         self.baggage_weight = baggage_weight
-        # 行李重量单位
+        # Unit of baggage weight
         self.baggage_weight_unit = baggage_weight_unit
-        # 是否所有行李重量
+        # Whether the weight is for all baggages
         self.is_all_weight = is_all_weight
-        # 总价
+        # Total price
         self.price = price
 
     def validate(self):
@@ -1717,9 +1840,11 @@ class AncillarySuggestResponseBodyDataSegAncillaryMapListAncillary(TeaModel):
         ancillary_type: int = None,
         baggage_ancillary: AncillarySuggestResponseBodyDataSegAncillaryMapListAncillaryBaggageAncillary = None,
     ):
+        # Ancillary product ID
         self.ancillary_id = ancillary_id
+        # Ancillary product type. currently supports 4: paid luggage
         self.ancillary_type = ancillary_type
-        # 行李辅营详情
+        # Baggage details
         self.baggage_ancillary = baggage_ancillary
 
     def validate(self):
@@ -1758,7 +1883,9 @@ class AncillarySuggestResponseBodyDataSegAncillaryMapList(TeaModel):
         ancillary: AncillarySuggestResponseBodyDataSegAncillaryMapListAncillary = None,
         segment_id_list: List[str] = None,
     ):
+        # Ancillary product
         self.ancillary = ancillary
+        # Segment ID list, these segments share the same ancillary
         self.segment_id_list = segment_id_list
 
     def validate(self):
@@ -1793,7 +1920,9 @@ class AncillarySuggestResponseBodyData(TeaModel):
         seg_ancillary_map_list: List[AncillarySuggestResponseBodyDataSegAncillaryMapList] = None,
         solution_id: str = None,
     ):
+        # ancillary detail list
         self.seg_ancillary_map_list = seg_ancillary_map_list
+        # solution_id, equals to solution_id in request
         self.solution_id = solution_id
 
     def validate(self):
@@ -1839,12 +1968,19 @@ class AncillarySuggestResponseBody(TeaModel):
         status: int = None,
         success: bool = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Properly processed return data
         self.data = data
+        # error code
         self.error_code = error_code
+        # Data carried in error handling
         self.error_data = error_data
+        # Error message
         self.error_msg = error_msg
+        # http request successful, status value is always 200
         self.status = status
+        # true represents success, false represents failure
         self.success = success
 
     def validate(self):
@@ -1942,10 +2078,11 @@ class BookHeaders(TeaModel):
         x_acs_airticket_language: str = None,
     ):
         self.common_headers = common_headers
-        # access_token
+        # access token
         # 
         # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
+        # language code(refer to ISO_639), defaults to the buyer\\"s account configuration
         self.x_acs_airticket_language = x_acs_airticket_language
 
     def validate(self):
@@ -1985,10 +2122,15 @@ class BookRequestContact(TeaModel):
         mobile_country_code: str = None,
         mobile_phone_num: str = None,
     ):
+        # email address
         self.email = email
+        # first name
         self.first_name = first_name
+        # last name
         self.last_name = last_name
+        # country code
         self.mobile_country_code = mobile_country_code
+        # mobile phone number
         self.mobile_phone_num = mobile_phone_num
 
     def validate(self):
@@ -2033,7 +2175,9 @@ class BookRequestPassengerAncillaryPurchaseMapListBookAncillaryReqItem(TeaModel)
         ancillary_id: str = None,
         ancillary_type: int = None,
     ):
+        # ancillary product ID, returned by AncillarySuggest.
         self.ancillary_id = ancillary_id
+        # type of ancillary product, only support "4"(4 means paid baggage) currently.
         self.ancillary_type = ancillary_type
 
     def validate(self):
@@ -2068,10 +2212,15 @@ class BookRequestPassengerAncillaryPurchaseMapListPassengerListCredential(TeaMod
         credential_type: int = None,
         expire_date: str = None,
     ):
+        # place of issue, two-letter code
         self.cert_issue_place = cert_issue_place
+        # travel document number
         self.credential_num = credential_num
+        # travel document type , only support "1"(1 means passport) currently
+        # 
         # This parameter is required.
         self.credential_type = credential_type
+        # expiration date
         self.expire_date = expire_date
 
     def validate(self):
@@ -2119,18 +2268,32 @@ class BookRequestPassengerAncillaryPurchaseMapListPassengerList(TeaModel):
         nationality: str = None,
         type: int = None,
     ):
+        # date of birth (yyyyMMdd)
         self.birthday = birthday
+        # travel document
         self.credential = credential
+        # first name
+        # 
         # This parameter is required.
         self.first_name = first_name
+        # gender 0: male; 1: female
         self.gender = gender
+        # last name
+        # 
         # This parameter is required.
         self.last_name = last_name
+        # country code for mobile phone number
+        # 
         # This parameter is required.
         self.mobile_country_code = mobile_country_code
+        # mobile phone number
+        # 
         # This parameter is required.
         self.mobile_phone_number = mobile_phone_number
+        # nationality
         self.nationality = nationality
+        # passenger type 0: adult; 1: child; 8: Infant
+        # 
         # This parameter is required.
         self.type = type
 
@@ -2194,7 +2357,9 @@ class BookRequestPassengerAncillaryPurchaseMapList(TeaModel):
         book_ancillary_req_item: BookRequestPassengerAncillaryPurchaseMapListBookAncillaryReqItem = None,
         passenger_list: List[BookRequestPassengerAncillaryPurchaseMapListPassengerList] = None,
     ):
+        # ancillary information
         self.book_ancillary_req_item = book_ancillary_req_item
+        # passenger list for unified ancillary purchases
         self.passenger_list = passenger_list
 
     def validate(self):
@@ -2240,10 +2405,15 @@ class BookRequestPassengerListCredential(TeaModel):
         credential_type: int = None,
         expire_date: str = None,
     ):
+        # place of issue, two-letter code
         self.cert_issue_place = cert_issue_place
+        # travel document number
         self.credential_num = credential_num
+        # travel document type , only support "1"(1 means passport) currently.
+        # 
         # This parameter is required.
         self.credential_type = credential_type
+        # expiration date
         self.expire_date = expire_date
 
     def validate(self):
@@ -2291,18 +2461,32 @@ class BookRequestPassengerList(TeaModel):
         nationality: str = None,
         type: int = None,
     ):
+        # date of birth (yyyyMMdd)
         self.birthday = birthday
+        # travel document
         self.credential = credential
+        # first name
+        # 
         # This parameter is required.
         self.first_name = first_name
+        # gender 0: MALE; 1: FEMALE
         self.gender = gender
+        # last name
+        # 
         # This parameter is required.
         self.last_name = last_name
+        # mobile country code
+        # 
         # This parameter is required.
         self.mobile_country_code = mobile_country_code
+        # mobile phone number
+        # 
         # This parameter is required.
         self.mobile_phone_number = mobile_phone_number
+        # nationality (two-letter code)
         self.nationality = nationality
+        # passenger type 0: adult; 1: child; 8: infant
+        # 
         # This parameter is required.
         self.type = type
 
@@ -2369,14 +2553,21 @@ class BookRequest(TeaModel):
         passenger_list: List[BookRequestPassengerList] = None,
         solution_id: str = None,
     ):
+        # contact information
+        # 
         # This parameter is required.
         self.contact = contact
+        # external order number(buyer customization)
+        # 
         # This parameter is required.
         self.out_order_num = out_order_num
+        # passenger-ancillary purchase relationship
         self.passenger_ancillary_purchase_map_list = passenger_ancillary_purchase_map_list
+        # passenger list
+        # 
         # This parameter is required.
         self.passenger_list = passenger_list
-        # solution_id
+        # solution_id returned by Enrich
         # 
         # This parameter is required.
         self.solution_id = solution_id
@@ -2446,14 +2637,21 @@ class BookShrinkRequest(TeaModel):
         passenger_list_shrink: str = None,
         solution_id: str = None,
     ):
+        # contact information
+        # 
         # This parameter is required.
         self.contact_shrink = contact_shrink
+        # external order number(buyer customization)
+        # 
         # This parameter is required.
         self.out_order_num = out_order_num
+        # passenger-ancillary purchase relationship
         self.passenger_ancillary_purchase_map_list_shrink = passenger_ancillary_purchase_map_list_shrink
+        # passenger list
+        # 
         # This parameter is required.
         self.passenger_list_shrink = passenger_list_shrink
-        # solution_id
+        # solution_id returned by Enrich
         # 
         # This parameter is required.
         self.solution_id = solution_id
@@ -2499,6 +2697,7 @@ class BookResponseBodyDataOrderList(TeaModel):
         self,
         order_num: int = None,
     ):
+        # order number
         self.order_num = order_num
 
     def validate(self):
@@ -2526,6 +2725,7 @@ class BookResponseBodyData(TeaModel):
         self,
         order_list: List[BookResponseBodyDataOrderList] = None,
     ):
+        # order information list
         self.order_list = order_list
 
     def validate(self):
@@ -2561,6 +2761,7 @@ class BookResponseBodyErrorDataOrderList(TeaModel):
         self,
         order_num: int = None,
     ):
+        # order number
         self.order_num = order_num
 
     def validate(self):
@@ -2588,6 +2789,7 @@ class BookResponseBodyErrorData(TeaModel):
         self,
         order_list: List[BookResponseBodyErrorDataOrderList] = None,
     ):
+        # order information list. When the same input parameters are used to repeat a Book, if the booking has already been successful, the order number will be returned.
         self.order_list = order_list
 
     def validate(self):
@@ -2629,12 +2831,19 @@ class BookResponseBody(TeaModel):
         status: int = None,
         success: bool = None,
     ):
+        # request ID
         self.request_id = request_id
+        # data
         self.data = data
+        # error code
         self.error_code = error_code
+        # error data
         self.error_data = error_data
+        # error message
         self.error_msg = error_msg
+        # http reqeust has been processed successfully，status code is 200
         self.status = status
+        # true represents success, false represents failure
         self.success = success
 
     def validate(self):
@@ -2735,10 +2944,11 @@ class CancelHeaders(TeaModel):
         x_acs_airticket_language: str = None,
     ):
         self.common_headers = common_headers
-        # access_token
+        # access token
         # 
         # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
+        # language code(refer to ISO_639), defaults to buyer account configuration
         self.x_acs_airticket_language = x_acs_airticket_language
 
     def validate(self):
@@ -2774,6 +2984,8 @@ class CancelRequest(TeaModel):
         self,
         order_num: int = None,
     ):
+        # order number
+        # 
         # This parameter is required.
         self.order_num = order_num
 
@@ -2802,6 +3014,7 @@ class CancelResponseBodyData(TeaModel):
         self,
         order_num: int = None,
     ):
+        # order number
         self.order_num = order_num
 
     def validate(self):
@@ -2835,12 +3048,19 @@ class CancelResponseBody(TeaModel):
         status: int = None,
         success: bool = None,
     ):
+        # request ID
         self.request_id = request_id
+        # data
         self.data = data
+        # error code
         self.error_code = error_code
+        # error data
         self.error_data = error_data
+        # error message
         self.error_msg = error_msg
+        # http reqeust has been processed successfully，status code is 200
         self.status = status
+        # true represents success, false represents failure
         self.success = success
 
     def validate(self):
@@ -3020,12 +3240,14 @@ class ChangeApplyRequestChangedJourneysSegmentList(TeaModel):
         arrival_city: str = None,
         arrive_terminal: str = None,
         arrive_time: int = None,
+        arrive_time_str: str = None,
         code_share: bool = None,
         departure_airport: str = None,
         departure_city: str = None,
         departure_date: str = None,
         departure_terminal: str = None,
         departure_time: int = None,
+        departure_time_str: str = None,
         marketing_flight_no: str = None,
         operating_flight_no: str = None,
     ):
@@ -3034,6 +3256,7 @@ class ChangeApplyRequestChangedJourneysSegmentList(TeaModel):
         self.arrival_city = arrival_city
         self.arrive_terminal = arrive_terminal
         self.arrive_time = arrive_time
+        self.arrive_time_str = arrive_time_str
         self.code_share = code_share
         self.departure_airport = departure_airport
         # This parameter is required.
@@ -3042,6 +3265,7 @@ class ChangeApplyRequestChangedJourneysSegmentList(TeaModel):
         self.departure_date = departure_date
         self.departure_terminal = departure_terminal
         self.departure_time = departure_time
+        self.departure_time_str = departure_time_str
         # This parameter is required.
         self.marketing_flight_no = marketing_flight_no
         self.operating_flight_no = operating_flight_no
@@ -3063,6 +3287,8 @@ class ChangeApplyRequestChangedJourneysSegmentList(TeaModel):
             result['arrive_terminal'] = self.arrive_terminal
         if self.arrive_time is not None:
             result['arrive_time'] = self.arrive_time
+        if self.arrive_time_str is not None:
+            result['arrive_time_str'] = self.arrive_time_str
         if self.code_share is not None:
             result['code_share'] = self.code_share
         if self.departure_airport is not None:
@@ -3075,6 +3301,8 @@ class ChangeApplyRequestChangedJourneysSegmentList(TeaModel):
             result['departure_terminal'] = self.departure_terminal
         if self.departure_time is not None:
             result['departure_time'] = self.departure_time
+        if self.departure_time_str is not None:
+            result['departure_time_str'] = self.departure_time_str
         if self.marketing_flight_no is not None:
             result['marketing_flight_no'] = self.marketing_flight_no
         if self.operating_flight_no is not None:
@@ -3091,6 +3319,8 @@ class ChangeApplyRequestChangedJourneysSegmentList(TeaModel):
             self.arrive_terminal = m.get('arrive_terminal')
         if m.get('arrive_time') is not None:
             self.arrive_time = m.get('arrive_time')
+        if m.get('arrive_time_str') is not None:
+            self.arrive_time_str = m.get('arrive_time_str')
         if m.get('code_share') is not None:
             self.code_share = m.get('code_share')
         if m.get('departure_airport') is not None:
@@ -3103,6 +3333,8 @@ class ChangeApplyRequestChangedJourneysSegmentList(TeaModel):
             self.departure_terminal = m.get('departure_terminal')
         if m.get('departure_time') is not None:
             self.departure_time = m.get('departure_time')
+        if m.get('departure_time_str') is not None:
+            self.departure_time_str = m.get('departure_time_str')
         if m.get('marketing_flight_no') is not None:
             self.marketing_flight_no = m.get('marketing_flight_no')
         if m.get('operating_flight_no') is not None:
@@ -6654,10 +6886,11 @@ class EnrichHeaders(TeaModel):
         x_acs_airticket_language: str = None,
     ):
         self.common_headers = common_headers
-        # access_token
+        # access token
         # 
         # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
+        # language code(refer to ISO_639), defaults to the buyer\\"s account configuration
         self.x_acs_airticket_language = x_acs_airticket_language
 
     def validate(self):
@@ -6700,16 +6933,28 @@ class EnrichRequestJourneyParamListSegmentParamList(TeaModel):
         departure_time: str = None,
         marketing_flight_no: str = None,
     ):
+        # arrival airport code (capitalized)
+        # 
         # This parameter is required.
         self.arrival_airport = arrival_airport
+        # arrival city code (capitalized)
         self.arrival_city = arrival_city
+        # RBD
         self.cabin = cabin
+        # child RBD
         self.child_cabin = child_cabin
+        # departure airport code (capitalized)
+        # 
         # This parameter is required.
         self.departure_airport = departure_airport
+        # departure city code (capitalized)
         self.departure_city = departure_city
+        # departure time in string format (yyyy-MM-dd HH:mm:ss)
+        # 
         # This parameter is required.
         self.departure_time = departure_time
+        # marketing flight no. (eg: KA5809)
+        # 
         # This parameter is required.
         self.marketing_flight_no = marketing_flight_no
 
@@ -6769,12 +7014,20 @@ class EnrichRequestJourneyParamList(TeaModel):
         departure_date: str = None,
         segment_param_list: List[EnrichRequestJourneyParamListSegmentParamList] = None,
     ):
+        # arrival city code (capitalized)
+        # 
         # This parameter is required.
         self.arrival_city = arrival_city
+        # departure city code (capitalized)
+        # 
         # This parameter is required.
         self.departure_city = departure_city
+        # departure date (eg: yyyyMMdd)
+        # 
         # This parameter is required.
         self.departure_date = departure_date
+        # segement param list
+        # 
         # This parameter is required.
         self.segment_param_list = segment_param_list
 
@@ -6828,11 +7081,23 @@ class EnrichRequest(TeaModel):
         journey_param_list: List[EnrichRequestJourneyParamList] = None,
         solution_id: str = None,
     ):
+        # adult passenger amount 1-9
         self.adults = adults
+        # cabin class
+        # 1. **ALL_CABIN** : all cabin class
+        # 2. **Y** : economy class
+        # 3. **FC** : first class and business class
+        # 4. **S** : premium economy class
+        # 5. **YS** : economy class and premium economy class
+        # 6. **YSC** : economy class, premium economy class and business class
         self.cabin_class = cabin_class
+        # child passenger amount 0-9
         self.children = children
+        # infant passenger amount 0-9
         self.infants = infants
+        # journey list
         self.journey_param_list = journey_param_list
+        # solution_id returned by Search
         self.solution_id = solution_id
 
     def validate(self):
@@ -6893,11 +7158,23 @@ class EnrichShrinkRequest(TeaModel):
         journey_param_list_shrink: str = None,
         solution_id: str = None,
     ):
+        # adult passenger amount 1-9
         self.adults = adults
+        # cabin class
+        # 1. **ALL_CABIN** : all cabin class
+        # 2. **Y** : economy class
+        # 3. **FC** : first class and business class
+        # 4. **S** : premium economy class
+        # 5. **YS** : economy class and premium economy class
+        # 6. **YSC** : economy class, premium economy class and business class
         self.cabin_class = cabin_class
+        # child passenger amount 0-9
         self.children = children
+        # infant passenger amount 0-9
         self.infants = infants
+        # journey list
         self.journey_param_list_shrink = journey_param_list_shrink
+        # solution_id returned by Search
         self.solution_id = solution_id
 
     def validate(self):
@@ -6966,27 +7243,50 @@ class EnrichResponseBodyDataSolutionListJourneyListSegmentList(TeaModel):
         stop_city_list: str = None,
         stop_quantity: int = None,
     ):
+        # arrival airport code (capitalized)
         self.arrival_airport = arrival_airport
+        # arrival city code (capitalized)
         self.arrival_city = arrival_city
+        # arrival terminal
         self.arrival_terminal = arrival_terminal
+        # arrival time in string format (yyyy-MM-dd HH:mm:ss)
         self.arrival_time = arrival_time
+        # available seats (for reference only)
         self.availability = availability
+        # RBD
         self.cabin = cabin
+        # cabin class
         self.cabin_class = cabin_class
+        # code share or not
         self.code_share = code_share
+        # departure airport code (capitalized)
         self.departure_airport = departure_airport
+        # departure city code (capitalized)
         self.departure_city = departure_city
+        # departure terminal
         self.departure_terminal = departure_terminal
+        # departure time in string format (yyyy-MM-dd HH:mm:ss)
         self.departure_time = departure_time
+        # equipment type
         self.equip_type = equip_type
+        # flight time, unit: minute
         self.flight_duration = flight_duration
+        # marketing airline code (eg: KA)
         self.marketing_airline = marketing_airline
+        # marketing airline flight no. (eg: KA5809)
         self.marketing_flight_no = marketing_flight_no
+        # marketing airline integer flight no. (eg: 5809)
         self.marketing_flight_no_int = marketing_flight_no_int
+        # operating airline code (eg: CX)
         self.operating_airline = operating_airline
+        # operating airline flight no. (eg: CX601)
         self.operating_flight_no = operating_flight_no
+        # segment ID format: flight no.+departure airport[IATA airport code]+arrival airport[IATA airport code]+departure time(MMdd)
         self.segment_id = segment_id
+        # stop city list. 
+        # when stop_quantity > 1 , use “,” for seperation
         self.stop_city_list = stop_city_list
+        # number of stops
         self.stop_quantity = stop_quantity
 
     def validate(self):
@@ -7099,7 +7399,9 @@ class EnrichResponseBodyDataSolutionListJourneyList(TeaModel):
         segment_list: List[EnrichResponseBodyDataSolutionListJourneyListSegmentList] = None,
         transfer_count: int = None,
     ):
+        # segment Info
         self.segment_list = segment_list
+        # number of transfers
         self.transfer_count = transfer_count
 
     def validate(self):
@@ -7140,7 +7442,13 @@ class EnrichResponseBodyDataSolutionListSegmentBaggageCheckInInfoList(TeaModel):
         luggage_direct_info_type: int = None,
         segment_id_list: List[str] = None,
     ):
+        # through check-in baggage policy type
+        # 1. baggage through check-in between segments
+        # 2. baggage re-check-in needed between segments
+        # 4. baggage through check-in at stop city ( applies for stop flight )
+        # 3. baggage re-checkin needed at stop city ( applies for stop flight )
         self.luggage_direct_info_type = luggage_direct_info_type
+        # segment id list. all the listed segment ids share the same baggage through check-in policy
         self.segment_id_list = segment_id_list
 
     def validate(self):
@@ -7173,7 +7481,10 @@ class EnrichResponseBodyDataSolutionListSegmentBaggageMappingList(TeaModel):
         passenger_baggage_allowance_mapping: Dict[str, DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue] = None,
         segment_id_list: List[str] = None,
     ):
+        # baggage rule mapping, key is passenger type, value is baggage allowance details
         self.passenger_baggage_allowance_mapping = passenger_baggage_allowance_mapping
+        # segment id list. 
+        # all the listed segment ids share the same baggage rule
         self.segment_id_list = segment_id_list
 
     def validate(self):
@@ -7214,7 +7525,9 @@ class EnrichResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList(TeaMo
         refund_change_rule_map: Dict[str, DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValue] = None,
         segment_id_list: List[str] = None,
     ):
+        # change and refund policy mapping, key is passenger type, value is change and refund policy detail
         self.refund_change_rule_map = refund_change_rule_map
+        # segment id list. all the listed segment ids share the same change and refund policy
         self.segment_id_list = segment_id_list
 
     def validate(self):
@@ -7266,19 +7579,31 @@ class EnrichResponseBodyDataSolutionList(TeaModel):
         segment_refund_change_rule_mapping_list: List[EnrichResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList] = None,
         solution_id: str = None,
     ):
+        # adult fare
         self.adult_price = adult_price
+        # adult tax
         self.adult_tax = adult_tax
+        # child fare
         self.child_price = child_price
+        # child tax
         self.child_tax = child_tax
+        # infant fare
         self.infant_price = infant_price
+        # infant tax
         self.infant_tax = infant_tax
+        # journey list
         self.journey_list = journey_list
+        # product type description
         self.product_type_description = product_type_description
+        # refund airline coupon description
         self.refund_ticket_coupon_description = refund_ticket_coupon_description
+        # through check-in baggage  policy
         self.segment_baggage_check_in_info_list = segment_baggage_check_in_info_list
+        # baggage rule
         self.segment_baggage_mapping_list = segment_baggage_mapping_list
+        # change and refund policy
         self.segment_refund_change_rule_mapping_list = segment_refund_change_rule_mapping_list
-        # solution_id
+        # solution ID
         self.solution_id = solution_id
 
     def validate(self):
@@ -7389,6 +7714,7 @@ class EnrichResponseBodyData(TeaModel):
         self,
         solution_list: List[EnrichResponseBodyDataSolutionList] = None,
     ):
+        # solution list
         self.solution_list = solution_list
 
     def validate(self):
@@ -7430,12 +7756,19 @@ class EnrichResponseBody(TeaModel):
         status: int = None,
         success: bool = None,
     ):
+        # request ID
         self.request_id = request_id
+        # data
         self.data = data
+        # error code
         self.error_code = error_code
+        # error data
         self.error_data = error_data
+        # error message
         self.error_msg = error_msg
+        # http reqeust has been processed successfully，status code is 200
         self.status = status
+        # true represents success, false represents failure
         self.success = success
 
     def validate(self):
@@ -8097,7 +8430,9 @@ class GetTokenResponseBodyData(TeaModel):
         generate_time: int = None,
         token: str = None,
     ):
+        # Remaining valid time of the token in seconds
         self.expire_time = expire_time
+        # Timestamp of token generation in seconds
         self.generate_time = generate_time
         # token
         self.token = token
@@ -8141,12 +8476,19 @@ class GetTokenResponseBody(TeaModel):
         status: int = None,
         success: bool = None,
     ):
+        # Request RequestId
         self.request_id = request_id
+        # Correctly processed return data
         self.data = data
+        # Business error code
         self.error_code = error_code
+        # Data carried during error handling
         self.error_data = error_data
+        # Error message
         self.error_msg = error_msg
+        # When the HTTP request is successful, the status value is 200.
         self.status = status
+        # Whether it is correct
         self.success = success
 
     def validate(self):
@@ -8593,10 +8935,11 @@ class OrderDetailHeaders(TeaModel):
         x_acs_airticket_language: str = None,
     ):
         self.common_headers = common_headers
-        # access_token
+        # access token
         # 
         # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
+        # language code(refer to ISO_639), defaults to the buyer\\"s account configuration
         self.x_acs_airticket_language = x_acs_airticket_language
 
     def validate(self):
@@ -8633,7 +8976,9 @@ class OrderDetailRequest(TeaModel):
         order_num: int = None,
         out_order_num: str = None,
     ):
+        # order number created by book
         self.order_num = order_num
+        # external order number(customized by buyer when book)
         self.out_order_num = out_order_num
 
     def validate(self):
@@ -8718,7 +9063,9 @@ class OrderDetailResponseBodyDataAncillaryItemDetailListAncillary(TeaModel):
         ancillary_type: int = None,
         baggage_ancillary: OrderDetailResponseBodyDataAncillaryItemDetailListAncillaryBaggageAncillary = None,
     ):
+        # ancillay_id
         self.ancillary_id = ancillary_id
+        # ancillary product type currently supports 4: paid luggage
         self.ancillary_type = ancillary_type
         self.baggage_ancillary = baggage_ancillary
 
@@ -8760,9 +9107,13 @@ class OrderDetailResponseBodyDataAncillaryItemDetailListPassengerCredential(TeaM
         credential_type: int = None,
         expire_date: str = None,
     ):
+        # place of issue, two-letter code
         self.cert_issue_place = cert_issue_place
+        # travel document number
         self.credential_num = credential_num
+        # travel document type , only support "1"(1 means passport) currently.
         self.credential_type = credential_type
+        # expiration date
         self.expire_date = expire_date
 
     def validate(self):
@@ -8810,14 +9161,23 @@ class OrderDetailResponseBodyDataAncillaryItemDetailListPassenger(TeaModel):
         nationality: str = None,
         type: int = None,
     ):
+        # date of birth (yyyyMMdd)
         self.birthday = birthday
+        # travel document
         self.credential = credential
+        # first name
         self.first_name = first_name
+        # gender 0: male; 1: female
         self.gender = gender
+        # last name
         self.last_name = last_name
+        # country code for mobile phone number
         self.mobile_country_code = mobile_country_code
+        # mobile phone number
         self.mobile_phone_number = mobile_phone_number
+        # nationality
         self.nationality = nationality
+        # passenger type 0: adult; 1: child; 8: infant
         self.type = type
 
     def validate(self):
@@ -8881,8 +9241,11 @@ class OrderDetailResponseBodyDataAncillaryItemDetailList(TeaModel):
         passenger: OrderDetailResponseBodyDataAncillaryItemDetailListPassenger = None,
         segment_id_list: List[str] = None,
     ):
+        # the ancillary buyer booked
         self.ancillary = ancillary
+        # passenger
         self.passenger = passenger
+        # segment ID list, these segments share the same ancillary
         self.segment_id_list = segment_id_list
 
     def validate(self):
@@ -8924,7 +9287,9 @@ class OrderDetailResponseBodyDataFlightItemDetailListFlightPrice(TeaModel):
         sell_price: float = None,
         tax: float = None,
     ):
+        # selling price
         self.sell_price = sell_price
+        # tax
         self.tax = tax
 
     def validate(self):
@@ -8960,10 +9325,15 @@ class OrderDetailResponseBodyDataFlightItemDetailListFlightSegmentCabinRelation(
         cabin_quantity: str = None,
         segment_id: str = None,
     ):
+        # RBD
         self.cabin = cabin
+        # cabin class
         self.cabin_class = cabin_class
+        # cabin class description
         self.cabin_class_name = cabin_class_name
+        # availability
         self.cabin_quantity = cabin_quantity
+        # segment ID format: flight no.+departure airport[IATA airport code]+arrival airport[IATA airport code]+departure time(yyMMddHHmm)
         self.segment_id = segment_id
 
     def validate(self):
@@ -9010,9 +9380,13 @@ class OrderDetailResponseBodyDataFlightItemDetailListPassengerCredential(TeaMode
         credential_type: int = None,
         expire_date: str = None,
     ):
+        # place of issue, two-letter code
         self.cert_issue_place = cert_issue_place
+        # travel document number
         self.credential_num = credential_num
+        # travel document type , only support "1"(1 means passport) currently.
         self.credential_type = credential_type
+        # expiration date
         self.expire_date = expire_date
 
     def validate(self):
@@ -9060,14 +9434,23 @@ class OrderDetailResponseBodyDataFlightItemDetailListPassenger(TeaModel):
         nationality: str = None,
         type: int = None,
     ):
+        # date of birth (yyyyMMdd)
         self.birthday = birthday
+        # travel document
         self.credential = credential
+        # first name
         self.first_name = first_name
+        # gender 0: MALE; 1: FEMALE
         self.gender = gender
+        # last name
         self.last_name = last_name
+        # mobile country code
         self.mobile_country_code = mobile_country_code
+        # mobile phone number
         self.mobile_phone_number = mobile_phone_number
+        # nationality (two-letter code)
         self.nationality = nationality
+        # passenger type 0: adult; 1: child; 8: infant
         self.type = type
 
     def validate(self):
@@ -9135,12 +9518,19 @@ class OrderDetailResponseBodyDataFlightItemDetailList(TeaModel):
         ticket_air_line: str = None,
         ticket_nos: List[str] = None,
     ):
+        # b PNR(airline booking code) list
         self.b_pnr_list = b_pnr_list
+        # c PNR(airline booking code) list
         self.c_pnr_list = c_pnr_list
+        # flight price information for current passenger
         self.flight_price = flight_price
+        # RBD information in flight segment dimension
         self.flight_segment_cabin_relation = flight_segment_cabin_relation
+        # passenger
         self.passenger = passenger
+        # ticketing airline
         self.ticket_air_line = ticket_air_line
+        # ticket number list
         self.ticket_nos = ticket_nos
 
     def validate(self):
@@ -9209,9 +9599,13 @@ class OrderDetailResponseBodyDataPassengerListCredential(TeaModel):
         credential_type: int = None,
         expire_date: str = None,
     ):
+        # place of issue, two-letter code
         self.cert_issue_place = cert_issue_place
+        # travel document number
         self.credential_num = credential_num
+        # travel document type , only support "1"(1 means passport) currently.
         self.credential_type = credential_type
+        # expiration date
         self.expire_date = expire_date
 
     def validate(self):
@@ -9259,14 +9653,23 @@ class OrderDetailResponseBodyDataPassengerList(TeaModel):
         nationality: str = None,
         type: int = None,
     ):
+        # date of birth (yyyyMMdd)
         self.birthday = birthday
+        # travel document
         self.credential = credential
+        # first name
         self.first_name = first_name
+        # gender 0: MALE; 1: FEMALE
         self.gender = gender
+        # last name
         self.last_name = last_name
+        # mobile country code
         self.mobile_country_code = mobile_country_code
+        # mobile phone number
         self.mobile_phone_number = mobile_phone_number
+        # nationality (two-letter code)
         self.nationality = nationality
+        # passenger type 0: adult; 1: child; 8: infant
         self.type = type
 
     def validate(self):
@@ -9349,27 +9752,49 @@ class OrderDetailResponseBodyDataSolutionJourneyListSegmentList(TeaModel):
         stop_city_list: str = None,
         stop_quantity: int = None,
     ):
+        # arrival airport code (capitalized)
         self.arrival_airport = arrival_airport
+        # arrival city code (capitalized)
         self.arrival_city = arrival_city
+        # arrival terminal
         self.arrival_terminal = arrival_terminal
+        # arrival time in string format (yyyy-MM-dd HH:mm:ss)
         self.arrival_time = arrival_time
+        # availability
         self.availability = availability
+        # RBD
         self.cabin = cabin
+        # cabin class
         self.cabin_class = cabin_class
+        # code share or not
         self.code_share = code_share
+        # departure airport code (capitalized)
         self.departure_airport = departure_airport
+        # departure city code (capitalized)
         self.departure_city = departure_city
+        # departure terminal
         self.departure_terminal = departure_terminal
+        # departure time in string format (yyyy-MM-dd HH:mm:ss)
         self.departure_time = departure_time
+        # equipment type
         self.equip_type = equip_type
+        # flight time, unit: minute
         self.flight_duration = flight_duration
+        # marketing airline code (eg: KA)
         self.marketing_airline = marketing_airline
+        # marketing airline flight no. (eg: KA5809)
         self.marketing_flight_no = marketing_flight_no
+        # marketing airline flight no. (eg: 5809)
         self.marketing_flight_no_int = marketing_flight_no_int
+        # operating airline code (eg: CX)
         self.operating_airline = operating_airline
+        # operating airline flight no. (eg: CX601)
         self.operating_flight_no = operating_flight_no
+        # segment ID format: flight no.+departure airport[IATA airport code]+arrival airport[IATA airport code]+departure time(MMdd)
         self.segment_id = segment_id
+        # stop city list when stop_quantity > 1 , use “,” for seperation
         self.stop_city_list = stop_city_list
+        # number of stops
         self.stop_quantity = stop_quantity
 
     def validate(self):
@@ -9482,7 +9907,9 @@ class OrderDetailResponseBodyDataSolutionJourneyList(TeaModel):
         segment_list: List[OrderDetailResponseBodyDataSolutionJourneyListSegmentList] = None,
         transfer_count: int = None,
     ):
+        # segment list
         self.segment_list = segment_list
+        # number of transfers
         self.transfer_count = transfer_count
 
     def validate(self):
@@ -9523,7 +9950,14 @@ class OrderDetailResponseBodyDataSolutionSegmentBaggageCheckInInfoList(TeaModel)
         luggage_direct_info_type: int = None,
         segment_id_list: List[str] = None,
     ):
+        # through check-in baggage policy type
+        # 
+        # 1. baggage through check-in between segments
+        # 2. baggage re-check-in needed between segments
+        # 3. baggage through check-in at stop city ( applies for stop flight )
+        # 4. baggage re-checkin needed at stop city ( applies for stop flight )
         self.luggage_direct_info_type = luggage_direct_info_type
+        # segment id list. all the listed segment ids share the same baggage through check-in policy
         self.segment_id_list = segment_id_list
 
     def validate(self):
@@ -9556,7 +9990,9 @@ class OrderDetailResponseBodyDataSolutionSegmentBaggageMappingList(TeaModel):
         passenger_baggage_allowance_mapping: Dict[str, DataSolutionSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue] = None,
         segment_id_list: List[str] = None,
     ):
+        # baggage rule mapping, key is passenger type, value is baggage allowance details
         self.passenger_baggage_allowance_mapping = passenger_baggage_allowance_mapping
+        # segment id list. all the listed segment ids share the same baggage rule
         self.segment_id_list = segment_id_list
 
     def validate(self):
@@ -9597,7 +10033,9 @@ class OrderDetailResponseBodyDataSolutionSegmentRefundChangeRuleMappingList(TeaM
         refund_change_rule_map: Dict[str, DataSolutionSegmentRefundChangeRuleMappingListRefundChangeRuleMapValue] = None,
         segment_id_list: List[str] = None,
     ):
+        # change and refund policy mapping, key is passenger type, value is change and refund policy details
         self.refund_change_rule_map = refund_change_rule_map
+        # segment id list. all the listed segment ids share the same change and refund policy
         self.segment_id_list = segment_id_list
 
     def validate(self):
@@ -9649,17 +10087,29 @@ class OrderDetailResponseBodyDataSolution(TeaModel):
         segment_refund_change_rule_mapping_list: List[OrderDetailResponseBodyDataSolutionSegmentRefundChangeRuleMappingList] = None,
         solution_id: str = None,
     ):
+        # adult fare
         self.adult_price = adult_price
+        # adult tax
         self.adult_tax = adult_tax
+        # child fare
         self.child_price = child_price
+        # child tax
         self.child_tax = child_tax
+        # infant fare
         self.infant_price = infant_price
+        # infant tax
         self.infant_tax = infant_tax
+        # journey list
         self.journey_list = journey_list
+        # product type description
         self.product_type_description = product_type_description
+        # refund coupon description
         self.refund_ticket_coupon_description = refund_ticket_coupon_description
+        # through check-in baggage policy
         self.segment_baggage_check_in_info_list = segment_baggage_check_in_info_list
+        # baggage rule list
         self.segment_baggage_mapping_list = segment_baggage_mapping_list
+        # change and refund policy
         self.segment_refund_change_rule_mapping_list = segment_refund_change_rule_mapping_list
         # solution_id
         self.solution_id = solution_id
@@ -9789,23 +10239,59 @@ class OrderDetailResponseBodyData(TeaModel):
         total_price: float = None,
         transaction_no: str = None,
     ):
+        # ancillary product fulfillment details
         self.ancillary_item_detail_list = ancillary_item_detail_list
+        # baggage rule mapping, key is passenger type, value is baggage allowance details
         self.baggage_allowance_map = baggage_allowance_map
+        # book time(timestamp)
         self.book_time = book_time
+        # flight product fulfillment details
         self.flight_item_detail_list = flight_item_detail_list
+        # order number created by book
         self.order_num = order_num
+        # order status 
+        # 
+        # 1: order creation in process; 
+        # 
+        # 2: order creation successful; 
+        # 
+        # 3: order paid; 
+        # 
+        # 4: order successful; 
+        # 
+        # 5: order closed
         self.order_status = order_status
+        # external order number(customized by buyer when book)
         self.out_order_num = out_order_num
+        # the information about all passenger of current order
         self.passenger_list = passenger_list
+        # payment status 
+        # 
+        # 1: payment in process; 
+        # 
+        # 2: deduction successful; 
+        # 
+        # 3: paid to the seller; 
+        # 
+        # 4: transaction closed
         self.pay_status = pay_status
+        # pay time(timestamp)
         self.pay_time = pay_time
+        # discount amount
         self.promotion_price = promotion_price
+        # actual payment amount
         self.real_pay_price = real_pay_price
+        # change and refund policy mapping, key is passenger type, value is change and refund policy details
         self.refund_change_rule_map = refund_change_rule_map
+        # buyer nickname
         self.session_nick = session_nick
+        # the solution buyer booked
         self.solution = solution
+        # order success time(timestamp)
         self.succeed_time = succeed_time
+        # total price of current order
         self.total_price = total_price
+        # transaction number
         self.transaction_no = transaction_no
 
     def validate(self):
@@ -9954,12 +10440,19 @@ class OrderDetailResponseBody(TeaModel):
         status: int = None,
         success: bool = None,
     ):
+        # request ID
         self.request_id = request_id
+        # data
         self.data = data
+        # error code
         self.error_code = error_code
+        # error data
         self.error_data = error_data
+        # error message
         self.error_msg = error_msg
+        # http reqeust has been processed successfully，status code is 200
         self.status = status
+        # true represents success, false represents failure
         self.success = success
 
     def validate(self):
@@ -10057,10 +10550,11 @@ class OrderListHeaders(TeaModel):
         x_acs_airticket_language: str = None,
     ):
         self.common_headers = common_headers
-        # access_token
+        # access token
         # 
         # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
+        # language code(refer to ISO_639), defaults to the buyer\\"s account configuration
         self.x_acs_airticket_language = x_acs_airticket_language
 
     def validate(self):
@@ -10100,12 +10594,29 @@ class OrderListRequest(TeaModel):
         page_size: int = None,
         status: int = None,
     ):
+        # latest booking time (timestamp)
+        # 
         # This parameter is required.
         self.book_time_end = book_time_end
+        # earliest book time(timestamp)
+        # 
         # This parameter is required.
         self.book_time_start = book_time_start
+        # pagination query parameters, from which page to start querying
         self.page_index = page_index
+        # pagination query parameters, how many orders to return
         self.page_size = page_size
+        # which order status will be query
+        # 
+        # 1: order reservation in process
+        # 
+        # 2: order reservation successful
+        # 
+        # 3: order paid
+        # 
+        # 4: order successful
+        # 
+        # 5: order closed
         self.status = status
 
     def validate(self):
@@ -10152,9 +10663,13 @@ class OrderListResponseBodyDataListPassengerListCredential(TeaModel):
         credential_type: int = None,
         expire_date: str = None,
     ):
+        # issuing place (two-letter code)
         self.cert_issue_place = cert_issue_place
+        # credential number
         self.credential_num = credential_num
+        # credential type , only support "1"(1 means passport) currently.
         self.credential_type = credential_type
+        # credential expiration date
         self.expire_date = expire_date
 
     def validate(self):
@@ -10202,14 +10717,23 @@ class OrderListResponseBodyDataListPassengerList(TeaModel):
         nationality: str = None,
         type: int = None,
     ):
+        # date of birth (yyyyMMdd)
         self.birthday = birthday
+        # credential
         self.credential = credential
+        # first name
         self.first_name = first_name
+        # gender 0: MALE; 1: FEMALE
         self.gender = gender
+        # last name
         self.last_name = last_name
+        # mobile country code
         self.mobile_country_code = mobile_country_code
+        # mobile phone number
         self.mobile_phone_number = mobile_phone_number
+        # nationality (two-letter code)
         self.nationality = nationality
+        # passenger type 0: adult; 1: child; 8: infant
         self.type = type
 
     def validate(self):
@@ -10283,18 +10807,49 @@ class OrderListResponseBodyDataList(TeaModel):
         total_price: float = None,
         transaction_no: str = None,
     ):
+        # book time(timestamp)
         self.book_time = book_time
+        # order number created by book
         self.order_num = order_num
+        # order status
+        # 
+        # 1: order reservation in process
+        # 
+        # 2: order reservation successful
+        # 
+        # 3: order paid
+        # 
+        # 4: order successful
+        # 
+        # 5: order closed
         self.order_status = order_status
+        # external order number(customized by buyer when book)
         self.out_order_num = out_order_num
+        # the information about all passenger of current order
         self.passenger_list = passenger_list
+        # payment status
+        # 
+        # 1: payment in process
+        # 
+        # 2: deduction successful
+        # 
+        # 3: paid to the seller
+        # 
+        # 4: transaction closed
         self.pay_status = pay_status
+        # pay time(timestamp)
         self.pay_time = pay_time
+        # discount amount
         self.promotion_price = promotion_price
+        # actual payment amount
         self.real_pay_price = real_pay_price
+        # buyer nickname
         self.session_nick = session_nick
+        # order success time(timestamp)
         self.succeed_time = succeed_time
+        # total price of current order
         self.total_price = total_price
+        # transaction number
         self.transaction_no = transaction_no
 
     def validate(self):
@@ -10381,9 +10936,13 @@ class OrderListResponseBodyDataPagination(TeaModel):
         total_count: int = None,
         total_page: int = None,
     ):
+        # current page index
         self.current_page = current_page
+        # page size
         self.page_size = page_size
+        # the number of total orders
         self.total_count = total_count
+        # the number of total pages
         self.total_page = total_page
 
     def validate(self):
@@ -10424,7 +10983,9 @@ class OrderListResponseBodyData(TeaModel):
         list: List[OrderListResponseBodyDataList] = None,
         pagination: OrderListResponseBodyDataPagination = None,
     ):
+        # order list
         self.list = list
+        # information of pagination
         self.pagination = pagination
 
     def validate(self):
@@ -10473,12 +11034,19 @@ class OrderListResponseBody(TeaModel):
         status: int = None,
         success: bool = None,
     ):
+        # request ID
         self.request_id = request_id
+        # data
         self.data = data
+        # error code
         self.error_code = error_code
+        # error data
         self.error_data = error_data
+        # error message
         self.error_msg = error_msg
+        # http reqeust has been processed successfully，status code is 200
         self.status = status
+        # true represents success, false represents failure
         self.success = success
 
     def validate(self):
@@ -10576,10 +11144,11 @@ class PricingHeaders(TeaModel):
         x_acs_airticket_language: str = None,
     ):
         self.common_headers = common_headers
-        # access_token
+        # access token
         # 
         # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
+        # language code(refer to ISO_639), defaults to the buyer\\"s account configuration
         self.x_acs_airticket_language = x_acs_airticket_language
 
     def validate(self):
@@ -10615,7 +11184,7 @@ class PricingRequest(TeaModel):
         self,
         solution_id: str = None,
     ):
-        # solution_id
+        # solution_id returned by Enrich
         # 
         # This parameter is required.
         self.solution_id = solution_id
@@ -10650,11 +11219,17 @@ class PricingResponseBodyDataChangedPriceInfo(TeaModel):
         infant_price: float = None,
         infant_tax: float = None,
     ):
+        # adult fare
         self.adult_price = adult_price
+        # adult tax
         self.adult_tax = adult_tax
+        # child fare
         self.child_price = child_price
+        # child tax
         self.child_tax = child_tax
+        # infant fare
         self.infant_price = infant_price
+        # infant tax
         self.infant_tax = infant_tax
 
     def validate(self):
@@ -10707,17 +11282,17 @@ class PricingResponseBodyDataOriginalPriceInfo(TeaModel):
         infant_price: float = None,
         infant_tax: float = None,
     ):
-        # 成人单价
+        # adult fare
         self.adult_price = adult_price
-        # 成人税
+        # adult tax
         self.adult_tax = adult_tax
-        # 儿童单价
+        # child fare
         self.child_price = child_price
-        # 儿童税
+        # child tax
         self.child_tax = child_tax
-        # 婴儿单价
+        # infant fare
         self.infant_price = infant_price
-        # 婴儿税
+        # infant tax
         self.infant_tax = infant_tax
 
     def validate(self):
@@ -10786,27 +11361,49 @@ class PricingResponseBodyDataSolutionJourneyListSegmentList(TeaModel):
         stop_city_list: str = None,
         stop_quantity: int = None,
     ):
+        # arrival airport code (capitalized)
         self.arrival_airport = arrival_airport
+        # arrival city code (capitalized)
         self.arrival_city = arrival_city
+        # arrival terminal
         self.arrival_terminal = arrival_terminal
+        # arrival time in string format (yyyy-MM-dd HH:mm:ss)
         self.arrival_time = arrival_time
+        # available seats (for reference only)
         self.availability = availability
+        # RBD
         self.cabin = cabin
+        # cabin class
         self.cabin_class = cabin_class
+        # code share or not
         self.code_share = code_share
+        # departure airport code (capitalized)
         self.departure_airport = departure_airport
+        # departure city code (capitalized)
         self.departure_city = departure_city
+        # departure terminal
         self.departure_terminal = departure_terminal
+        # departure time in string format (yyyy-MM-dd HH:mm:ss)
         self.departure_time = departure_time
+        # equipment type
         self.equip_type = equip_type
+        # flight time, unit: minute
         self.flight_duration = flight_duration
+        # marketing airline code (eg: KA)
         self.marketing_airline = marketing_airline
+        # marketing airline flight no. (eg: KA5809)
         self.marketing_flight_no = marketing_flight_no
+        # marketing airline flight no. (eg: 5809)
         self.marketing_flight_no_int = marketing_flight_no_int
+        # operating airline code (eg: CX)
         self.operating_airline = operating_airline
+        # operating airline flight no. (eg: CX601)
         self.operating_flight_no = operating_flight_no
+        # segment ID format: flight no.+departure airport[IATA airport code]+arrival airport[IATA airport code]+departure time(MMdd)
         self.segment_id = segment_id
+        # stop city list. when stop_quantity > 1 , use “,” for seperation
         self.stop_city_list = stop_city_list
+        # number of stops
         self.stop_quantity = stop_quantity
 
     def validate(self):
@@ -10919,7 +11516,9 @@ class PricingResponseBodyDataSolutionJourneyList(TeaModel):
         segment_list: List[PricingResponseBodyDataSolutionJourneyListSegmentList] = None,
         transfer_count: int = None,
     ):
+        # segment list
         self.segment_list = segment_list
+        # number of transfers
         self.transfer_count = transfer_count
 
     def validate(self):
@@ -10960,7 +11559,14 @@ class PricingResponseBodyDataSolutionSegmentBaggageCheckInInfoList(TeaModel):
         luggage_direct_info_type: int = None,
         segment_id_list: List[str] = None,
     ):
+        # through check-in baggage policy type
+        # 
+        # 1. baggage through check-in between segments
+        # 2. baggage re-check-in needed between segments
+        # 3. baggage through check-in at stop city ( applies for stop flight )
+        # 4. baggage re-checkin needed at stop city ( applies for stop flight )
         self.luggage_direct_info_type = luggage_direct_info_type
+        # segment id list. all the listed segment ids share the same baggage through check-in policy
         self.segment_id_list = segment_id_list
 
     def validate(self):
@@ -10993,7 +11599,9 @@ class PricingResponseBodyDataSolutionSegmentBaggageMappingList(TeaModel):
         passenger_baggage_allowance_mapping: Dict[str, DataSolutionSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue] = None,
         segment_id_list: List[str] = None,
     ):
+        # baggage rule mapping, key is passenger type, value is baggage allowance details
         self.passenger_baggage_allowance_mapping = passenger_baggage_allowance_mapping
+        # segment id list all the listed segment id share the same baggage rule
         self.segment_id_list = segment_id_list
 
     def validate(self):
@@ -11034,7 +11642,9 @@ class PricingResponseBodyDataSolutionSegmentRefundChangeRuleMappingList(TeaModel
         refund_change_rule_map: Dict[str, DataSolutionSegmentRefundChangeRuleMappingListRefundChangeRuleMapValue] = None,
         segment_id_list: List[str] = None,
     ):
+        # change and refund policy mapping, key is passenger type, value is change and refund policy detail
         self.refund_change_rule_map = refund_change_rule_map
+        # segment id list. all the listed segment ids share the same change and refund policy
         self.segment_id_list = segment_id_list
 
     def validate(self):
@@ -11086,19 +11696,31 @@ class PricingResponseBodyDataSolution(TeaModel):
         segment_refund_change_rule_mapping_list: List[PricingResponseBodyDataSolutionSegmentRefundChangeRuleMappingList] = None,
         solution_id: str = None,
     ):
+        # adult fare
         self.adult_price = adult_price
+        # adult tax
         self.adult_tax = adult_tax
+        # child fare
         self.child_price = child_price
+        # child tax
         self.child_tax = child_tax
+        # infant fare
         self.infant_price = infant_price
+        # infant tax
         self.infant_tax = infant_tax
+        # journey list
         self.journey_list = journey_list
+        # product type description
         self.product_type_description = product_type_description
+        # refund coupon description
         self.refund_ticket_coupon_description = refund_ticket_coupon_description
+        # through check-in baggage policy
         self.segment_baggage_check_in_info_list = segment_baggage_check_in_info_list
+        # baggage rule list
         self.segment_baggage_mapping_list = segment_baggage_mapping_list
+        # change and refund policy
         self.segment_refund_change_rule_mapping_list = segment_refund_change_rule_mapping_list
-        # solution_id
+        # solution_id, equals to solution_id in request
         self.solution_id = solution_id
 
     def validate(self):
@@ -11213,12 +11835,15 @@ class PricingResponseBodyData(TeaModel):
         remain_seats: str = None,
         solution: PricingResponseBodyDataSolution = None,
     ):
+        # price information after the price change
         self.changed_price_info = changed_price_info
+        # whether the price has changed
         self.is_changed = is_changed
-        # 变价之前价格信息 isChanged = true 时，才有值
+        # the price information before the change, only available when is_changed = true
         self.original_price_info = original_price_info
+        # remaining seats: A indicates more than 9, 0-9 represents the specific number
         self.remain_seats = remain_seats
-        # solution
+        # the solution represented by the solution_id in request
         self.solution = solution
 
     def validate(self):
@@ -11276,12 +11901,19 @@ class PricingResponseBody(TeaModel):
         status: int = None,
         success: bool = None,
     ):
+        # request ID
         self.request_id = request_id
+        # data
         self.data = data
+        # error code
         self.error_code = error_code
+        # error data
         self.error_data = error_data
+        # error message
         self.error_msg = error_msg
+        # http reqeust has been processed successfully，status code is 200
         self.status = status
+        # true represents success, false represents failure
         self.success = success
 
     def validate(self):
@@ -11379,10 +12011,11 @@ class RefundApplyHeaders(TeaModel):
         x_acs_airticket_language: str = None,
     ):
         self.common_headers = common_headers
-        # access_token
+        # access token
         # 
         # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
+        # language code(refer to ISO_639), defaults to the buyer\\"s account configuration
         self.x_acs_airticket_language = x_acs_airticket_language
 
     def validate(self):
@@ -11421,12 +12054,20 @@ class RefundApplyRequestRefundJourneysSegmentList(TeaModel):
         departure_airport: str = None,
         departure_city: str = None,
     ):
+        # arrival airport code (capitalized)
+        # 
         # This parameter is required.
         self.arrival_airport = arrival_airport
+        # arrival city code (capitalized)
+        # 
         # This parameter is required.
         self.arrival_city = arrival_city
+        # departure airport code (capitalized)
+        # 
         # This parameter is required.
         self.departure_airport = departure_airport
+        # departure city code (capitalized)
+        # 
         # This parameter is required.
         self.departure_city = departure_city
 
@@ -11467,6 +12108,8 @@ class RefundApplyRequestRefundJourneys(TeaModel):
         self,
         segment_list: List[RefundApplyRequestRefundJourneysSegmentList] = None,
     ):
+        # segment list
+        # 
         # This parameter is required.
         self.segment_list = segment_list
 
@@ -11505,9 +12148,14 @@ class RefundApplyRequestRefundPassengerList(TeaModel):
         first_name: str = None,
         last_name: str = None,
     ):
+        # credential number
         self.document = document
+        # first name
+        # 
         # This parameter is required.
         self.first_name = first_name
+        # last name
+        # 
         # This parameter is required.
         self.last_name = last_name
 
@@ -11546,9 +12194,23 @@ class RefundApplyRequestRefundType(TeaModel):
         refund_type_id: int = None,
         remark: str = None,
     ):
+        # attachment file URLs
+        # 
+        # (note: upload the files using a separate file upload interface to get the file URLs)
         self.file = file
+        # refund type 
+        # 
+        # 2: voluntary (I want to change my travel plan/I don\\"t want to fly) 
+        # 
+        # 5: involuntary, due to flight delay or cancellation, schedule changes, etc., by the airline 
+        # 
+        # 6: involuntary, due to health reasons with a certificate from a hospital of at least secondary level A or above 
+        # 
+        #  (note: attachments are not mandatory, but it is recommended to provide them for involuntary refunds as they can increase the success rate)
+        # 
         # This parameter is required.
         self.refund_type_id = refund_type_id
+        # remark
         self.remark = remark
 
     def validate(self):
@@ -11587,12 +12249,20 @@ class RefundApplyRequest(TeaModel):
         refund_passenger_list: List[RefundApplyRequestRefundPassengerList] = None,
         refund_type: RefundApplyRequestRefundType = None,
     ):
+        # order number
+        # 
         # This parameter is required.
         self.order_num = order_num
+        # journeys for which a refund is being requested
+        # 
         # This parameter is required.
         self.refund_journeys = refund_journeys
+        # passengers that applying for a refund
+        # 
         # This parameter is required.
         self.refund_passenger_list = refund_passenger_list
+        # refund type and attachments
+        # 
         # This parameter is required.
         self.refund_type = refund_type
 
@@ -11656,12 +12326,20 @@ class RefundApplyShrinkRequest(TeaModel):
         refund_passenger_list_shrink: str = None,
         refund_type_shrink: str = None,
     ):
+        # order number
+        # 
         # This parameter is required.
         self.order_num = order_num
+        # journeys for which a refund is being requested
+        # 
         # This parameter is required.
         self.refund_journeys_shrink = refund_journeys_shrink
+        # passengers that applying for a refund
+        # 
         # This parameter is required.
         self.refund_passenger_list_shrink = refund_passenger_list_shrink
+        # refund type and attachments
+        # 
         # This parameter is required.
         self.refund_type_shrink = refund_type_shrink
 
@@ -11704,8 +12382,11 @@ class RefundApplyResponseBodyDataRefundResultsRefundPassengers(TeaModel):
         first_name: str = None,
         last_name: str = None,
     ):
+        # credential number
         self.document = document
+        # first name
         self.first_name = first_name
+        # last name
         self.last_name = last_name
 
     def validate(self):
@@ -11744,9 +12425,17 @@ class RefundApplyResponseBodyDataRefundResults(TeaModel):
         refund_passengers: List[RefundApplyResponseBodyDataRefundResultsRefundPassengers] = None,
         status: int = None,
     ):
+        # reason for refund application failure
         self.fail_reason = fail_reason
+        # refund order number
         self.refund_order_num = refund_order_num
+        # passengers of current refund order
         self.refund_passengers = refund_passengers
+        # refund order status 
+        # 
+        # 0: refund order created successfully
+        # 
+        # 1: refund order creation failed
         self.status = status
 
     def validate(self):
@@ -11795,7 +12484,9 @@ class RefundApplyResponseBodyData(TeaModel):
         order_num: int = None,
         refund_results: List[RefundApplyResponseBodyDataRefundResults] = None,
     ):
+        # order number
         self.order_num = order_num
+        # refund results
         self.refund_results = refund_results
 
     def validate(self):
@@ -11841,13 +12532,19 @@ class RefundApplyResponseBody(TeaModel):
         status: int = None,
         success: bool = None,
     ):
-        # 请求 RequestId
+        # request ID
         self.request_id = request_id
+        # data
         self.data = data
+        # error code
         self.error_code = error_code
+        # error data
         self.error_data = error_data
+        # error message
         self.error_msg = error_msg
+        # http reqeust has been processed successfully，status code is 200
         self.status = status
+        # true represents success, false represents failure
         self.success = success
 
     def validate(self):
@@ -11945,10 +12642,11 @@ class RefundDetailHeaders(TeaModel):
         x_acs_airticket_language: str = None,
     ):
         self.common_headers = common_headers
-        # access_token
+        # access token
         # 
         # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
+        # language code(refer to ISO_639), defaults to the buyer\\"s account configuration
         self.x_acs_airticket_language = x_acs_airticket_language
 
     def validate(self):
@@ -11984,6 +12682,8 @@ class RefundDetailRequest(TeaModel):
         self,
         refund_order_num: int = None,
     ):
+        # refund order number
+        # 
         # This parameter is required.
         self.refund_order_num = refund_order_num
 
@@ -12014,8 +12714,11 @@ class RefundDetailResponseBodyDataMultiRefundDetailsPassengerMultiRefundDetailsP
         first_name: str = None,
         last_name: str = None,
     ):
+        # credential number
         self.document = document
+        # first name
         self.first_name = first_name
+        # last name
         self.last_name = last_name
 
     def validate(self):
@@ -12053,8 +12756,11 @@ class RefundDetailResponseBodyDataMultiRefundDetailsPassengerMultiRefundDetails(
         original_order_refund_fee: float = None,
         passenger: RefundDetailResponseBodyDataMultiRefundDetailsPassengerMultiRefundDetailsPassenger = None,
     ):
+        # amount of the supplementary refund for the change order
         self.change_order_refund_fee = change_order_refund_fee
+        # amount of the supplementary refund for the original order
         self.original_order_refund_fee = original_order_refund_fee
+        # passenger for the refund
         self.passenger = passenger
 
     def validate(self):
@@ -12094,8 +12800,11 @@ class RefundDetailResponseBodyDataMultiRefundDetails(TeaModel):
         multi_refund_transaction_no: str = None,
         passenger_multi_refund_details: List[RefundDetailResponseBodyDataMultiRefundDetailsPassengerMultiRefundDetails] = None,
     ):
+        # supplementary refund order number
         self.multi_refund_order_num = multi_refund_order_num
+        # transaction number of the supplementary refund order
         self.multi_refund_transaction_no = multi_refund_transaction_no
+        # supplementary refund details in passenger dimension
         self.passenger_multi_refund_details = passenger_multi_refund_details
 
     def validate(self):
@@ -12141,8 +12850,11 @@ class RefundDetailResponseBodyDataPassengerRefundDetailsPassenger(TeaModel):
         first_name: str = None,
         last_name: str = None,
     ):
+        # credential number
         self.document = document
+        # first name
         self.first_name = first_name
+        # first name
         self.last_name = last_name
 
     def validate(self):
@@ -12184,12 +12896,19 @@ class RefundDetailResponseBodyDataPassengerRefundDetailsRefundFee(TeaModel):
         non_refundable_ticket_fee: float = None,
         refund_to_buyer_money: float = None,
     ):
+        # total price of the used flight tickets
         self.already_used_total_fee = already_used_total_fee
+        # amount refunded to the user after change (only available when has change order)
         self.modify_refund_to_buyer_money = modify_refund_to_buyer_money
+        # non-refundable change service fee
         self.non_refundable_change_service_fee = non_refundable_change_service_fee
+        # non-refundable upgrade fee
         self.non_refundable_change_upgrade_fee = non_refundable_change_upgrade_fee
+        # non-refundable tax amount, i.e., tax refund fee
         self.non_refundable_tax_fee = non_refundable_tax_fee
+        # non-refundable ticket amount, i.e., ticket refund fee
         self.non_refundable_ticket_fee = non_refundable_ticket_fee
+        # amount refundable to the user from the original ticket (fare + tax - non_refundable_ticket_fee - non_refundable_tax_fee - already_used_total_fee - discount)
         self.refund_to_buyer_money = refund_to_buyer_money
 
     def validate(self):
@@ -12242,7 +12961,9 @@ class RefundDetailResponseBodyDataPassengerRefundDetails(TeaModel):
         passenger: RefundDetailResponseBodyDataPassengerRefundDetailsPassenger = None,
         refund_fee: RefundDetailResponseBodyDataPassengerRefundDetailsRefundFee = None,
     ):
+        # information of the passenger applying for a refund
         self.passenger = passenger
+        # details of the refund fee
         self.refund_fee = refund_fee
 
     def validate(self):
@@ -12300,27 +13021,49 @@ class RefundDetailResponseBodyDataRefundJourneysSegmentList(TeaModel):
         stop_city_list: str = None,
         stop_quantity: int = None,
     ):
+        # arrival airport code (capitalized)
         self.arrival_airport = arrival_airport
+        # arrival city code (capitalized)
         self.arrival_city = arrival_city
+        # arrival terminal
         self.arrival_terminal = arrival_terminal
+        # arrival time in string format (yyyy-MM-dd HH:mm:ss)
         self.arrival_time = arrival_time
+        # field deprecated
         self.availability = availability
+        # RBD
         self.cabin = cabin
+        # cabin class
         self.cabin_class = cabin_class
+        # code share or not
         self.code_share = code_share
+        # departure airport code (capitalized)
         self.departure_airport = departure_airport
+        # departure city code (capitalized)
         self.departure_city = departure_city
+        # departure terminal
         self.departure_terminal = departure_terminal
+        # departure time in string format (yyyy-MM-dd HH:mm:ss)
         self.departure_time = departure_time
+        # equipment type
         self.equip_type = equip_type
+        # flight time, unit: minute
         self.flight_duration = flight_duration
+        # marketing airline code (eg: KA)
         self.marketing_airline = marketing_airline
+        # marketing flight no. (eg: KA5809)
         self.marketing_flight_no = marketing_flight_no
+        # marketing flight no. (eg: 5809)
         self.marketing_flight_no_int = marketing_flight_no_int
+        # operating airline code (eg: CX)
         self.operating_airline = operating_airline
+        # operating flight no. (eg: CX601)
         self.operating_flight_no = operating_flight_no
+        # segment ID format: flight no.+departure airport[IATA airport code]+arrival airport[IATA airport code]+departure time(MMdd)
         self.segment_id = segment_id
+        # stopover city list when stop_quantity > 0 , use “,” for seperation use
         self.stop_city_list = stop_city_list
+        # number of stopover
         self.stop_quantity = stop_quantity
 
     def validate(self):
@@ -12433,7 +13176,9 @@ class RefundDetailResponseBodyDataRefundJourneys(TeaModel):
         segment_list: List[RefundDetailResponseBodyDataRefundJourneysSegmentList] = None,
         transfer_count: int = None,
     ):
+        # segment list
         self.segment_list = segment_list
+        # number of transfer
         self.transfer_count = transfer_count
 
     def validate(self):
@@ -12486,19 +13231,51 @@ class RefundDetailResponseBodyData(TeaModel):
         transaction_no: str = None,
         utc_create_time: int = None,
     ):
+        # whether it is a supplementary refund order (if the refund amount is not enough, you can use RefundApply to create a supplementary refund order)
         self.contain_multi_refund = contain_multi_refund
+        # supplementary refund orders
         self.multi_refund_details = multi_refund_details
+        # order number that returned by Book
         self.order_num = order_num
+        # refund details by passenger dimension
         self.passenger_refund_details = passenger_refund_details
+        # refund completed time(timestamp)
         self.pay_success_utc_time = pay_success_utc_time
+        # URLs for refund attachments
         self.refund_attachment_urls = refund_attachment_urls
+        # refunded journey
         self.refund_journeys = refund_journeys
+        # refund order number that returned by RefundApply
         self.refund_order_num = refund_order_num
+        # reason for refund
         self.refund_reason = refund_reason
+        # refund type 
+        # 
+        # 2: voluntary application
+        # 
+        # 5: flight delay or cancellation, flight schedule change, etc., due to airline reasons
+        # 
+        # 6: health reasons with a certificate from a secondary class A hospital or above
+        # 
+        # 7: non-voluntary confirmed guidance
+        # 
+        # 100: non-voluntary non-confirmed guidance
         self.refund_type = refund_type
+        # reason for refund rejection
         self.refuse_reason = refuse_reason
+        # refund order status
+        # 
+        # 0: refund application
+        # 
+        # 1: refund in progress
+        # 
+        # 2: refund failed
+        # 
+        # 3: refund succeeded
         self.status = status
+        # transaction number
         self.transaction_no = transaction_no
+        # refund order created time(timestamp)
         self.utc_create_time = utc_create_time
 
     def validate(self):
@@ -12611,11 +13388,17 @@ class RefundDetailResponseBody(TeaModel):
         success: bool = None,
     ):
         self.request_id = request_id
+        # data
         self.data = data
+        # error code
         self.error_code = error_code
+        # error data
         self.error_data = error_data
+        # error message
         self.error_msg = error_msg
+        # http reqeust has been processed successfully，status code is 200
         self.status = status
+        # true represents success, false represents failure
         self.success = success
 
     def validate(self):
@@ -12713,10 +13496,11 @@ class RefundDetailListHeaders(TeaModel):
         x_acs_airticket_language: str = None,
     ):
         self.common_headers = common_headers
-        # access_token
+        # access token
         # 
         # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
+        # language code(refer to ISO_639), defaults to the buyer\\"s account configuration
         self.x_acs_airticket_language = x_acs_airticket_language
 
     def validate(self):
@@ -12756,11 +13540,18 @@ class RefundDetailListRequest(TeaModel):
         refund_create_begin_time: int = None,
         refund_create_end_time: int = None,
     ):
+        # order number returned by Book
         self.order_num = order_num
+        # pagination query parameters, from which page to start querying
         self.page_index = page_index
+        # pagination query parameters, how many orders to return
         self.page_size = page_size
+        # the earliest time(timestamp) of refund order creation
+        # 
         # This parameter is required.
         self.refund_create_begin_time = refund_create_begin_time
+        # the latest time(timestamp) of refund order creation
+        # 
         # This parameter is required.
         self.refund_create_end_time = refund_create_end_time
 
@@ -12811,12 +13602,27 @@ class RefundDetailListResponseBodyDataList(TeaModel):
         transaction_no: str = None,
         utc_create_time: int = None,
     ):
+        # whether it is a supplementary refund order (if the refund amount is not enough, you can use RefundApply to create a supplementary refund order)
         self.is_multi_refund = is_multi_refund
+        # order number that returned by Book
         self.order_num = order_num
+        # refund order number that returned by RefundApply
         self.refund_order_num = refund_order_num
+        # refund order status 
+        # 
+        # 0: refund application
+        # 
+        # 1: refund in progress
+        # 
+        # 2: refund failed
+        # 
+        # 3: refund succeeded
         self.refund_order_status = refund_order_status
+        # the original refund order number associated with this supplementary refund order, only avaliable when is_multi_refund=true
         self.related_refund_order_num = related_refund_order_num
+        # transaction number
         self.transaction_no = transaction_no
+        # refund time(timestamp)
         self.utc_create_time = utc_create_time
 
     def validate(self):
@@ -12871,9 +13677,13 @@ class RefundDetailListResponseBodyDataPagination(TeaModel):
         total_count: int = None,
         total_page: int = None,
     ):
+        # current page index
         self.current_page = current_page
+        # page size
         self.page_size = page_size
+        # the number of total refund orders
         self.total_count = total_count
+        # the number of total pages
         self.total_page = total_page
 
     def validate(self):
@@ -12914,7 +13724,9 @@ class RefundDetailListResponseBodyData(TeaModel):
         list: List[RefundDetailListResponseBodyDataList] = None,
         pagination: RefundDetailListResponseBodyDataPagination = None,
     ):
+        # refund order list
         self.list = list
+        # information of pagination
         self.pagination = pagination
 
     def validate(self):
@@ -12963,12 +13775,19 @@ class RefundDetailListResponseBody(TeaModel):
         status: int = None,
         success: bool = None,
     ):
+        # request ID
         self.request_id = request_id
+        # data
         self.data = data
+        # error code
         self.error_code = error_code
+        # error data
         self.error_data = error_data
+        # error message
         self.error_msg = error_msg
+        # http reqeust has been processed successfully，status code is 200
         self.status = status
+        # true represents success, false represents failure
         self.success = success
 
     def validate(self):
@@ -13066,10 +13885,11 @@ class SearchHeaders(TeaModel):
         x_acs_airticket_language: str = None,
     ):
         self.common_headers = common_headers
-        # access_token
+        # access token
         # 
         # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
+        # language code(refer to ISO_639), defaults to the buyer\\"s account configuration
         self.x_acs_airticket_language = x_acs_airticket_language
 
     def validate(self):
@@ -13109,12 +13929,20 @@ class SearchRequestAirLegs(TeaModel):
         departure_city: str = None,
         departure_date: str = None,
     ):
+        # arrival airport [IATA airport code] list
         self.arrival_airport_list = arrival_airport_list
+        # arrival city code
+        # 
         # This parameter is required.
         self.arrival_city = arrival_city
+        # departure airport [IATA airport code] list
         self.departure_airport_list = departure_airport_list
+        # departure city code
+        # 
         # This parameter is required.
         self.departure_city = departure_city
+        # departure date (eg: yyyyMMdd)
+        # 
         # This parameter is required.
         self.departure_date = departure_date
 
@@ -13160,7 +13988,9 @@ class SearchRequestSearchControlOptions(TeaModel):
         airline_excluded_list: List[str] = None,
         airline_prefer_list: List[str] = None,
     ):
+        # excluded airlines list
         self.airline_excluded_list = airline_excluded_list
+        # preferred airlines list
         self.airline_prefer_list = airline_prefer_list
 
     def validate(self):
@@ -13197,12 +14027,25 @@ class SearchRequest(TeaModel):
         infants: int = None,
         search_control_options: SearchRequestSearchControlOptions = None,
     ):
+        # adult passenger amount 1-9
         self.adults = adults
+        # itinerary list
+        # 
         # This parameter is required.
         self.air_legs = air_legs
+        # cabin class
+        # 1. **ALL_CABIN** : all cabin class
+        # 2. **Y** : economy class
+        # 3. **FC** : first class and business class
+        # 4. **S** : premium economy class
+        # 5. **YS** : economy class and premium economy class
+        # 6. **YSC** : economy class, premium economy class and business class
         self.cabin_class = cabin_class
+        # child passenger amount 0-9
         self.children = children
+        # infant passenger amount 0-9
         self.infants = infants
+        # search controls
         self.search_control_options = search_control_options
 
     def validate(self):
@@ -13266,12 +14109,25 @@ class SearchShrinkRequest(TeaModel):
         infants: int = None,
         search_control_options_shrink: str = None,
     ):
+        # adult passenger amount 1-9
         self.adults = adults
+        # itinerary list
+        # 
         # This parameter is required.
         self.air_legs_shrink = air_legs_shrink
+        # cabin class
+        # 1. **ALL_CABIN** : all cabin class
+        # 2. **Y** : economy class
+        # 3. **FC** : first class and business class
+        # 4. **S** : premium economy class
+        # 5. **YS** : economy class and premium economy class
+        # 6. **YSC** : economy class, premium economy class and business class
         self.cabin_class = cabin_class
+        # child passenger amount 0-9
         self.children = children
+        # infant passenger amount 0-9
         self.infants = infants
+        # search controls
         self.search_control_options_shrink = search_control_options_shrink
 
     def validate(self):
@@ -13340,27 +14196,50 @@ class SearchResponseBodyDataSolutionListJourneyListSegmentList(TeaModel):
         stop_city_list: str = None,
         stop_quantity: int = None,
     ):
+        # arrival airport code (capitalized)
         self.arrival_airport = arrival_airport
+        # arrival city code (capitalized)
         self.arrival_city = arrival_city
+        # arrival terminal
         self.arrival_terminal = arrival_terminal
+        # arrival time in string format (yyyy-MM-dd HH:mm:ss)
         self.arrival_time = arrival_time
+        # available seats (for reference only)
         self.availability = availability
+        # RBD
         self.cabin = cabin
+        # cabin class
         self.cabin_class = cabin_class
+        # code share or not
         self.code_share = code_share
+        # departure airport code (capitalized)
         self.departure_airport = departure_airport
+        # departure city code (capitalized)
         self.departure_city = departure_city
+        # departure terminal
         self.departure_terminal = departure_terminal
+        # departure time in string format (yyyy-MM-dd HH:mm:ss)
         self.departure_time = departure_time
+        # equipment type
         self.equip_type = equip_type
+        # flight time, unit: minute
         self.flight_duration = flight_duration
+        # marketing airline code (ex.: KA)
         self.marketing_airline = marketing_airline
+        # marketing airline flight no. (ex.: KA5809)
         self.marketing_flight_no = marketing_flight_no
+        # marketing airline integer flight no. (ex.: 5809)
         self.marketing_flight_no_int = marketing_flight_no_int
+        # operating airline code (ex.: CX)
         self.operating_airline = operating_airline
+        # operating airline flight no. (ex.: CX601)
         self.operating_flight_no = operating_flight_no
+        # segment ID format: flight no.+departure airport[IATA airport code]+arrival airport[IATA airport code]+departure time(MMdd)
         self.segment_id = segment_id
+        # stop city list
+        # when stop_quantity > 1, use “,” for seperation
         self.stop_city_list = stop_city_list
+        # number of stops
         self.stop_quantity = stop_quantity
 
     def validate(self):
@@ -13473,7 +14352,9 @@ class SearchResponseBodyDataSolutionListJourneyList(TeaModel):
         segment_list: List[SearchResponseBodyDataSolutionListJourneyListSegmentList] = None,
         transfer_count: int = None,
     ):
+        # segment Info
         self.segment_list = segment_list
+        # number of transfers
         self.transfer_count = transfer_count
 
     def validate(self):
@@ -13514,7 +14395,14 @@ class SearchResponseBodyDataSolutionListSegmentBaggageCheckInInfoList(TeaModel):
         luggage_direct_info_type: int = None,
         segment_id_list: List[str] = None,
     ):
+        # through check-in baggage policy type
+        # 1. baggage through check-in between segments
+        # 2. baggage re-check-in needed between segments
+        # 3. baggage through check-in at stop city ( applies for stop flight )
+        # 4. baggage re-checkin needed at stop city ( applies for stop flight )
         self.luggage_direct_info_type = luggage_direct_info_type
+        # segment id list. 
+        # all the listed segment ids share the same baggage through check-in  policy
         self.segment_id_list = segment_id_list
 
     def validate(self):
@@ -13547,7 +14435,10 @@ class SearchResponseBodyDataSolutionListSegmentBaggageMappingList(TeaModel):
         passenger_baggage_allowance_mapping: Dict[str, DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue] = None,
         segment_id_list: List[str] = None,
     ):
+        # baggage rule mapping, key is passenger type, value is baggage allowance details
         self.passenger_baggage_allowance_mapping = passenger_baggage_allowance_mapping
+        # segment id list. 
+        # all the listed segment id share the same baggage rule
         self.segment_id_list = segment_id_list
 
     def validate(self):
@@ -13588,7 +14479,10 @@ class SearchResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList(TeaMo
         refund_change_rule_map: Dict[str, DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValue] = None,
         segment_id_list: List[str] = None,
     ):
+        # change and refund policy mapping, key is passenger type, value is change and refund policy details
         self.refund_change_rule_map = refund_change_rule_map
+        # segment id list. 
+        # all the listed segment ids share the same change and refund policy
         self.segment_id_list = segment_id_list
 
     def validate(self):
@@ -13640,19 +14534,31 @@ class SearchResponseBodyDataSolutionList(TeaModel):
         segment_refund_change_rule_mapping_list: List[SearchResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList] = None,
         solution_id: str = None,
     ):
+        # adult fare
         self.adult_price = adult_price
+        # adult tax
         self.adult_tax = adult_tax
+        # child fare
         self.child_price = child_price
+        # child tax
         self.child_tax = child_tax
+        # infant fare
         self.infant_price = infant_price
+        # infant tax
         self.infant_tax = infant_tax
+        # segment list
         self.journey_list = journey_list
+        # product type description
         self.product_type_description = product_type_description
+        # refund airline coupon description
         self.refund_ticket_coupon_description = refund_ticket_coupon_description
+        # through check-in baggage policy
         self.segment_baggage_check_in_info_list = segment_baggage_check_in_info_list
+        # baggage rule
         self.segment_baggage_mapping_list = segment_baggage_mapping_list
+        # change and refund policy
         self.segment_refund_change_rule_mapping_list = segment_refund_change_rule_mapping_list
-        # solution_id
+        # solution ID
         self.solution_id = solution_id
 
     def validate(self):
@@ -13763,6 +14669,7 @@ class SearchResponseBodyData(TeaModel):
         self,
         solution_list: List[SearchResponseBodyDataSolutionList] = None,
     ):
+        # solution list
         self.solution_list = solution_list
 
     def validate(self):
@@ -13804,12 +14711,19 @@ class SearchResponseBody(TeaModel):
         status: int = None,
         success: bool = None,
     ):
+        # request ID
         self.request_id = request_id
+        # data
         self.data = data
+        # error code
         self.error_code = error_code
+        # error data
         self.error_data = error_data
+        # error message
         self.error_msg = error_msg
+        # http reqeust has been processed successfully，status code is 200
         self.status = status
+        # true represents success, false represents failure
         self.success = success
 
     def validate(self):
@@ -13907,10 +14821,11 @@ class TicketingHeaders(TeaModel):
         x_acs_airticket_language: str = None,
     ):
         self.common_headers = common_headers
-        # access_token
+        # access token
         # 
         # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
+        # language code(refer to ISO_639), defaults to the buyer\\"s account configuration
         self.x_acs_airticket_language = x_acs_airticket_language
 
     def validate(self):
@@ -13946,6 +14861,8 @@ class TicketingRequest(TeaModel):
         self,
         order_num: int = None,
     ):
+        # order number
+        # 
         # This parameter is required.
         self.order_num = order_num
 
@@ -13975,7 +14892,9 @@ class TicketingResponseBodyData(TeaModel):
         order_num: int = None,
         transaction_no: str = None,
     ):
+        # order number
         self.order_num = order_num
+        # transaction serial number
         self.transaction_no = transaction_no
 
     def validate(self):
@@ -14013,12 +14932,19 @@ class TicketingResponseBody(TeaModel):
         status: int = None,
         success: bool = None,
     ):
+        # request ID
         self.request_id = request_id
+        # data
         self.data = data
+        # error code
         self.error_code = error_code
+        # error data
         self.error_data = error_data
+        # error message
         self.error_msg = error_msg
+        # http reqeust has been processed successfully，status code is 200
         self.status = status
+        # true represents success, false represents failure
         self.success = success
 
     def validate(self):
@@ -14116,10 +15042,11 @@ class TicketingCheckHeaders(TeaModel):
         x_acs_airticket_language: str = None,
     ):
         self.common_headers = common_headers
-        # access_token
+        # access token
         # 
         # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
+        # language Code(refer to ISO_639), defaults to the buyer\\"s account configuration
         self.x_acs_airticket_language = x_acs_airticket_language
 
     def validate(self):
@@ -14155,6 +15082,8 @@ class TicketingCheckRequest(TeaModel):
         self,
         order_num: int = None,
     ):
+        # order number
+        # 
         # This parameter is required.
         self.order_num = order_num
 
@@ -14183,6 +15112,7 @@ class TicketingCheckResponseBodyData(TeaModel):
         self,
         order_num: int = None,
     ):
+        # order number
         self.order_num = order_num
 
     def validate(self):
@@ -14216,12 +15146,19 @@ class TicketingCheckResponseBody(TeaModel):
         status: int = None,
         success: bool = None,
     ):
+        # request ID
         self.request_id = request_id
+        # data
         self.data = data
+        # error code
         self.error_code = error_code
+        # error data
         self.error_data = error_data
+        # error message
         self.error_msg = error_msg
+        # http reqeust has been processed successfully，status code is 200
         self.status = status
+        # true represents success, false represents failure
         self.success = success
 
     def validate(self):

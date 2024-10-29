@@ -178,7 +178,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.AncillarySuggestResponse:
         """
-        @summary 辅营-推荐
+        @summary Ancillary - Suggestion
+        
+        @description search ancillary for selected solution, you should enter the solution_id returned by enrich.
         
         @param request: AncillarySuggestRequest
         @param headers: AncillarySuggestHeaders
@@ -223,7 +225,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.AncillarySuggestResponse:
         """
-        @summary 辅营-推荐
+        @summary Ancillary - Suggestion
+        
+        @description search ancillary for selected solution, you should enter the solution_id returned by enrich.
         
         @param request: AncillarySuggestRequest
         @param headers: AncillarySuggestHeaders
@@ -266,7 +270,9 @@ class Client(OpenApiClient):
         request: airticket_open_20230117_models.AncillarySuggestRequest,
     ) -> airticket_open_20230117_models.AncillarySuggestResponse:
         """
-        @summary 辅营-推荐
+        @summary Ancillary - Suggestion
+        
+        @description search ancillary for selected solution, you should enter the solution_id returned by enrich.
         
         @param request: AncillarySuggestRequest
         @return: AncillarySuggestResponse
@@ -280,7 +286,9 @@ class Client(OpenApiClient):
         request: airticket_open_20230117_models.AncillarySuggestRequest,
     ) -> airticket_open_20230117_models.AncillarySuggestResponse:
         """
-        @summary 辅营-推荐
+        @summary Ancillary - Suggestion
+        
+        @description search ancillary for selected solution, you should enter the solution_id returned by enrich.
         
         @param request: AncillarySuggestRequest
         @return: AncillarySuggestResponse
@@ -296,7 +304,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.BookResponse:
         """
-        @summary 交易-预定
+        @summary Transaction-Reservation
+        
+        @description Enter solution_id returned by enrich, ancillary_id returned by ancillarySuggest(optional), passengers information and contact information, the book interface will create an order wait for pay.
+        There are two issues should be noticed:
+        1. the solution_id must be processed by pricing.
+        2. the order created by book interface should be pay within 30 minutes, otherwise the order will be closed.
         
         @param tmp_req: BookRequest
         @param headers: BookHeaders
@@ -357,7 +370,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.BookResponse:
         """
-        @summary 交易-预定
+        @summary Transaction-Reservation
+        
+        @description Enter solution_id returned by enrich, ancillary_id returned by ancillarySuggest(optional), passengers information and contact information, the book interface will create an order wait for pay.
+        There are two issues should be noticed:
+        1. the solution_id must be processed by pricing.
+        2. the order created by book interface should be pay within 30 minutes, otherwise the order will be closed.
         
         @param tmp_req: BookRequest
         @param headers: BookHeaders
@@ -416,7 +434,12 @@ class Client(OpenApiClient):
         request: airticket_open_20230117_models.BookRequest,
     ) -> airticket_open_20230117_models.BookResponse:
         """
-        @summary 交易-预定
+        @summary Transaction-Reservation
+        
+        @description Enter solution_id returned by enrich, ancillary_id returned by ancillarySuggest(optional), passengers information and contact information, the book interface will create an order wait for pay.
+        There are two issues should be noticed:
+        1. the solution_id must be processed by pricing.
+        2. the order created by book interface should be pay within 30 minutes, otherwise the order will be closed.
         
         @param request: BookRequest
         @return: BookResponse
@@ -430,7 +453,12 @@ class Client(OpenApiClient):
         request: airticket_open_20230117_models.BookRequest,
     ) -> airticket_open_20230117_models.BookResponse:
         """
-        @summary 交易-预定
+        @summary Transaction-Reservation
+        
+        @description Enter solution_id returned by enrich, ancillary_id returned by ancillarySuggest(optional), passengers information and contact information, the book interface will create an order wait for pay.
+        There are two issues should be noticed:
+        1. the solution_id must be processed by pricing.
+        2. the order created by book interface should be pay within 30 minutes, otherwise the order will be closed.
         
         @param request: BookRequest
         @return: BookResponse
@@ -446,7 +474,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.CancelResponse:
         """
-        @summary 交易-未支付取消
+        @summary Transaction - Unpaid Cancellation
+        
+        @description close an unpaid order
         
         @param request: CancelRequest
         @param headers: CancelHeaders
@@ -491,7 +521,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.CancelResponse:
         """
-        @summary 交易-未支付取消
+        @summary Transaction - Unpaid Cancellation
+        
+        @description close an unpaid order
         
         @param request: CancelRequest
         @param headers: CancelHeaders
@@ -534,7 +566,9 @@ class Client(OpenApiClient):
         request: airticket_open_20230117_models.CancelRequest,
     ) -> airticket_open_20230117_models.CancelResponse:
         """
-        @summary 交易-未支付取消
+        @summary Transaction - Unpaid Cancellation
+        
+        @description close an unpaid order
         
         @param request: CancelRequest
         @return: CancelResponse
@@ -548,7 +582,9 @@ class Client(OpenApiClient):
         request: airticket_open_20230117_models.CancelRequest,
     ) -> airticket_open_20230117_models.CancelResponse:
         """
-        @summary 交易-未支付取消
+        @summary Transaction - Unpaid Cancellation
+        
+        @description close an unpaid order
         
         @param request: CancelRequest
         @return: CancelResponse
@@ -1328,7 +1364,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.EnrichResponse:
         """
-        @summary 搜索-Enrich
+        @summary Search-Enrich
+        
+        @description Enrich supports two modes:
+        1. mode1: enter solution_id returned by Search.
+        2. mode2: enter journeyParamList.
+        If you already confirm which flight to fly with, then you can use mode2, otherwise, use mode1(search first, then chose one solution_ID and Enrich).
         
         @param tmp_req: EnrichRequest
         @param headers: EnrichHeaders
@@ -1387,7 +1428,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.EnrichResponse:
         """
-        @summary 搜索-Enrich
+        @summary Search-Enrich
+        
+        @description Enrich supports two modes:
+        1. mode1: enter solution_id returned by Search.
+        2. mode2: enter journeyParamList.
+        If you already confirm which flight to fly with, then you can use mode2, otherwise, use mode1(search first, then chose one solution_ID and Enrich).
         
         @param tmp_req: EnrichRequest
         @param headers: EnrichHeaders
@@ -1444,7 +1490,12 @@ class Client(OpenApiClient):
         request: airticket_open_20230117_models.EnrichRequest,
     ) -> airticket_open_20230117_models.EnrichResponse:
         """
-        @summary 搜索-Enrich
+        @summary Search-Enrich
+        
+        @description Enrich supports two modes:
+        1. mode1: enter solution_id returned by Search.
+        2. mode2: enter journeyParamList.
+        If you already confirm which flight to fly with, then you can use mode2, otherwise, use mode1(search first, then chose one solution_ID and Enrich).
         
         @param request: EnrichRequest
         @return: EnrichResponse
@@ -1458,7 +1509,12 @@ class Client(OpenApiClient):
         request: airticket_open_20230117_models.EnrichRequest,
     ) -> airticket_open_20230117_models.EnrichResponse:
         """
-        @summary 搜索-Enrich
+        @summary Search-Enrich
+        
+        @description Enrich supports two modes:
+        1. mode1: enter solution_id returned by Search.
+        2. mode2: enter journeyParamList.
+        If you already confirm which flight to fly with, then you can use mode2, otherwise, use mode1(search first, then chose one solution_ID and Enrich).
         
         @param request: EnrichRequest
         @return: EnrichResponse
@@ -1714,7 +1770,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.GetTokenResponse:
         """
-        @summary 获取token
+        @summary Get Token
         
         @param request: GetTokenRequest
         @param headers: map
@@ -1754,7 +1810,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.GetTokenResponse:
         """
-        @summary 获取token
+        @summary Get Token
         
         @param request: GetTokenRequest
         @param headers: map
@@ -1792,7 +1848,7 @@ class Client(OpenApiClient):
         request: airticket_open_20230117_models.GetTokenRequest,
     ) -> airticket_open_20230117_models.GetTokenResponse:
         """
-        @summary 获取token
+        @summary Get Token
         
         @param request: GetTokenRequest
         @return: GetTokenResponse
@@ -1806,7 +1862,7 @@ class Client(OpenApiClient):
         request: airticket_open_20230117_models.GetTokenRequest,
     ) -> airticket_open_20230117_models.GetTokenResponse:
         """
-        @summary 获取token
+        @summary Get Token
         
         @param request: GetTokenRequest
         @return: GetTokenResponse
@@ -1948,7 +2004,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.OrderDetailResponse:
         """
-        @summary 交易-订单详情
+        @summary Trade-Order Details
+        
+        @description query order detail
         
         @param request: OrderDetailRequest
         @param headers: OrderDetailHeaders
@@ -1995,7 +2053,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.OrderDetailResponse:
         """
-        @summary 交易-订单详情
+        @summary Trade-Order Details
+        
+        @description query order detail
         
         @param request: OrderDetailRequest
         @param headers: OrderDetailHeaders
@@ -2040,7 +2100,9 @@ class Client(OpenApiClient):
         request: airticket_open_20230117_models.OrderDetailRequest,
     ) -> airticket_open_20230117_models.OrderDetailResponse:
         """
-        @summary 交易-订单详情
+        @summary Trade-Order Details
+        
+        @description query order detail
         
         @param request: OrderDetailRequest
         @return: OrderDetailResponse
@@ -2054,7 +2116,9 @@ class Client(OpenApiClient):
         request: airticket_open_20230117_models.OrderDetailRequest,
     ) -> airticket_open_20230117_models.OrderDetailResponse:
         """
-        @summary 交易-订单详情
+        @summary Trade-Order Details
+        
+        @description query order detail
         
         @param request: OrderDetailRequest
         @return: OrderDetailResponse
@@ -2070,7 +2134,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.OrderListResponse:
         """
-        @summary 交易-订单列表
+        @summary Trade - Order List
+        
+        @description query order list
         
         @param request: OrderListRequest
         @param headers: OrderListHeaders
@@ -2123,7 +2189,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.OrderListResponse:
         """
-        @summary 交易-订单列表
+        @summary Trade - Order List
+        
+        @description query order list
         
         @param request: OrderListRequest
         @param headers: OrderListHeaders
@@ -2174,7 +2242,9 @@ class Client(OpenApiClient):
         request: airticket_open_20230117_models.OrderListRequest,
     ) -> airticket_open_20230117_models.OrderListResponse:
         """
-        @summary 交易-订单列表
+        @summary Trade - Order List
+        
+        @description query order list
         
         @param request: OrderListRequest
         @return: OrderListResponse
@@ -2188,7 +2258,9 @@ class Client(OpenApiClient):
         request: airticket_open_20230117_models.OrderListRequest,
     ) -> airticket_open_20230117_models.OrderListResponse:
         """
-        @summary 交易-订单列表
+        @summary Trade - Order List
+        
+        @description query order list
         
         @param request: OrderListRequest
         @return: OrderListResponse
@@ -2204,7 +2276,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.PricingResponse:
         """
-        @summary Pricing
+        @summary Trade - Seat and Price Verification
+        
+        @description Check is price and remaining seats of solution you selected has changed. You should enter the solution_id returned by enrich.
         
         @param request: PricingRequest
         @param headers: PricingHeaders
@@ -2249,7 +2323,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.PricingResponse:
         """
-        @summary Pricing
+        @summary Trade - Seat and Price Verification
+        
+        @description Check is price and remaining seats of solution you selected has changed. You should enter the solution_id returned by enrich.
         
         @param request: PricingRequest
         @param headers: PricingHeaders
@@ -2292,7 +2368,9 @@ class Client(OpenApiClient):
         request: airticket_open_20230117_models.PricingRequest,
     ) -> airticket_open_20230117_models.PricingResponse:
         """
-        @summary Pricing
+        @summary Trade - Seat and Price Verification
+        
+        @description Check is price and remaining seats of solution you selected has changed. You should enter the solution_id returned by enrich.
         
         @param request: PricingRequest
         @return: PricingResponse
@@ -2306,7 +2384,9 @@ class Client(OpenApiClient):
         request: airticket_open_20230117_models.PricingRequest,
     ) -> airticket_open_20230117_models.PricingResponse:
         """
-        @summary Pricing
+        @summary Trade - Seat and Price Verification
+        
+        @description Check is price and remaining seats of solution you selected has changed. You should enter the solution_id returned by enrich.
         
         @param request: PricingRequest
         @return: PricingResponse
@@ -2323,6 +2403,8 @@ class Client(OpenApiClient):
     ) -> airticket_open_20230117_models.RefundApplyResponse:
         """
         @summary 退票-申请
+        
+        @description Apply for a refund and generate a refund order.
         
         @param tmp_req: RefundApplyRequest
         @param headers: RefundApplyHeaders
@@ -2383,6 +2465,8 @@ class Client(OpenApiClient):
         """
         @summary 退票-申请
         
+        @description Apply for a refund and generate a refund order.
+        
         @param tmp_req: RefundApplyRequest
         @param headers: RefundApplyHeaders
         @param runtime: runtime options for this request RuntimeOptions
@@ -2440,6 +2524,8 @@ class Client(OpenApiClient):
         """
         @summary 退票-申请
         
+        @description Apply for a refund and generate a refund order.
+        
         @param request: RefundApplyRequest
         @return: RefundApplyResponse
         """
@@ -2453,6 +2539,8 @@ class Client(OpenApiClient):
     ) -> airticket_open_20230117_models.RefundApplyResponse:
         """
         @summary 退票-申请
+        
+        @description Apply for a refund and generate a refund order.
         
         @param request: RefundApplyRequest
         @return: RefundApplyResponse
@@ -2468,7 +2556,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.RefundDetailResponse:
         """
-        @summary 退票-Detail
+        @summary Refund - Detail
+        
+        @description Query refund order detail.
         
         @param request: RefundDetailRequest
         @param headers: RefundDetailHeaders
@@ -2513,7 +2603,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.RefundDetailResponse:
         """
-        @summary 退票-Detail
+        @summary Refund - Detail
+        
+        @description Query refund order detail.
         
         @param request: RefundDetailRequest
         @param headers: RefundDetailHeaders
@@ -2556,7 +2648,9 @@ class Client(OpenApiClient):
         request: airticket_open_20230117_models.RefundDetailRequest,
     ) -> airticket_open_20230117_models.RefundDetailResponse:
         """
-        @summary 退票-Detail
+        @summary Refund - Detail
+        
+        @description Query refund order detail.
         
         @param request: RefundDetailRequest
         @return: RefundDetailResponse
@@ -2570,7 +2664,9 @@ class Client(OpenApiClient):
         request: airticket_open_20230117_models.RefundDetailRequest,
     ) -> airticket_open_20230117_models.RefundDetailResponse:
         """
-        @summary 退票-Detail
+        @summary Refund - Detail
+        
+        @description Query refund order detail.
         
         @param request: RefundDetailRequest
         @return: RefundDetailResponse
@@ -2586,7 +2682,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.RefundDetailListResponse:
         """
-        @summary 退票-DetailList
+        @summary Refund - Detail List
+        
+        @description Query refund order detail.
         
         @param request: RefundDetailListRequest
         @param headers: RefundDetailListHeaders
@@ -2639,7 +2737,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.RefundDetailListResponse:
         """
-        @summary 退票-DetailList
+        @summary Refund - Detail List
+        
+        @description Query refund order detail.
         
         @param request: RefundDetailListRequest
         @param headers: RefundDetailListHeaders
@@ -2690,7 +2790,9 @@ class Client(OpenApiClient):
         request: airticket_open_20230117_models.RefundDetailListRequest,
     ) -> airticket_open_20230117_models.RefundDetailListResponse:
         """
-        @summary 退票-DetailList
+        @summary Refund - Detail List
+        
+        @description Query refund order detail.
         
         @param request: RefundDetailListRequest
         @return: RefundDetailListResponse
@@ -2704,7 +2806,9 @@ class Client(OpenApiClient):
         request: airticket_open_20230117_models.RefundDetailListRequest,
     ) -> airticket_open_20230117_models.RefundDetailListResponse:
         """
-        @summary 退票-DetailList
+        @summary Refund - Detail List
+        
+        @description Query refund order detail.
         
         @param request: RefundDetailListRequest
         @return: RefundDetailListResponse
@@ -2720,7 +2824,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.SearchResponse:
         """
-        @summary 搜索
+        @summary search
+        
+        @description Enter the information of departure, arrival, departure date, passenger number and cabin, return the lowest price for each flight.
         
         @param tmp_req: SearchRequest
         @param headers: SearchHeaders
@@ -2781,7 +2887,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.SearchResponse:
         """
-        @summary 搜索
+        @summary search
+        
+        @description Enter the information of departure, arrival, departure date, passenger number and cabin, return the lowest price for each flight.
         
         @param tmp_req: SearchRequest
         @param headers: SearchHeaders
@@ -2840,7 +2948,9 @@ class Client(OpenApiClient):
         request: airticket_open_20230117_models.SearchRequest,
     ) -> airticket_open_20230117_models.SearchResponse:
         """
-        @summary 搜索
+        @summary search
+        
+        @description Enter the information of departure, arrival, departure date, passenger number and cabin, return the lowest price for each flight.
         
         @param request: SearchRequest
         @return: SearchResponse
@@ -2854,7 +2964,9 @@ class Client(OpenApiClient):
         request: airticket_open_20230117_models.SearchRequest,
     ) -> airticket_open_20230117_models.SearchResponse:
         """
-        @summary 搜索
+        @summary search
+        
+        @description Enter the information of departure, arrival, departure date, passenger number and cabin, return the lowest price for each flight.
         
         @param request: SearchRequest
         @return: SearchResponse
@@ -2870,7 +2982,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.TicketingResponse:
         """
-        @summary 交易-支付出票
+        @summary Transaction - Payment and Ticket Issuance
         
         @param request: TicketingRequest
         @param headers: TicketingHeaders
@@ -2915,7 +3027,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.TicketingResponse:
         """
-        @summary 交易-支付出票
+        @summary Transaction - Payment and Ticket Issuance
         
         @param request: TicketingRequest
         @param headers: TicketingHeaders
@@ -2958,7 +3070,7 @@ class Client(OpenApiClient):
         request: airticket_open_20230117_models.TicketingRequest,
     ) -> airticket_open_20230117_models.TicketingResponse:
         """
-        @summary 交易-支付出票
+        @summary Transaction - Payment and Ticket Issuance
         
         @param request: TicketingRequest
         @return: TicketingResponse
@@ -2972,7 +3084,7 @@ class Client(OpenApiClient):
         request: airticket_open_20230117_models.TicketingRequest,
     ) -> airticket_open_20230117_models.TicketingResponse:
         """
-        @summary 交易-支付出票
+        @summary Transaction - Payment and Ticket Issuance
         
         @param request: TicketingRequest
         @return: TicketingResponse
@@ -2988,7 +3100,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.TicketingCheckResponse:
         """
-        @summary 交易-支付前校验
+        @summary Transaction - Pre-payment verification
+        
+        @description Pre-check for Ticketing, this interface is optional to use.
         
         @param request: TicketingCheckRequest
         @param headers: TicketingCheckHeaders
@@ -3033,7 +3147,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.TicketingCheckResponse:
         """
-        @summary 交易-支付前校验
+        @summary Transaction - Pre-payment verification
+        
+        @description Pre-check for Ticketing, this interface is optional to use.
         
         @param request: TicketingCheckRequest
         @param headers: TicketingCheckHeaders
@@ -3076,7 +3192,9 @@ class Client(OpenApiClient):
         request: airticket_open_20230117_models.TicketingCheckRequest,
     ) -> airticket_open_20230117_models.TicketingCheckResponse:
         """
-        @summary 交易-支付前校验
+        @summary Transaction - Pre-payment verification
+        
+        @description Pre-check for Ticketing, this interface is optional to use.
         
         @param request: TicketingCheckRequest
         @return: TicketingCheckResponse
@@ -3090,7 +3208,9 @@ class Client(OpenApiClient):
         request: airticket_open_20230117_models.TicketingCheckRequest,
     ) -> airticket_open_20230117_models.TicketingCheckResponse:
         """
-        @summary 交易-支付前校验
+        @summary Transaction - Pre-payment verification
+        
+        @description Pre-check for Ticketing, this interface is optional to use.
         
         @param request: TicketingCheckRequest
         @return: TicketingCheckResponse
