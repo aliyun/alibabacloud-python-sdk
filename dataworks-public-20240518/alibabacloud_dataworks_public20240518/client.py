@@ -4317,7 +4317,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetProjectResponse:
         """
-        @summary 查询工作空间详情
+        @summary Queries the information about a DataWorks workspace.
         
         @param request: GetProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4350,7 +4350,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.GetProjectResponse:
         """
-        @summary 查询工作空间详情
+        @summary Queries the information about a DataWorks workspace.
         
         @param request: GetProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4382,7 +4382,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetProjectRequest,
     ) -> dataworks_public_20240518_models.GetProjectResponse:
         """
-        @summary 查询工作空间详情
+        @summary Queries the information about a DataWorks workspace.
         
         @param request: GetProjectRequest
         @return: GetProjectResponse
@@ -4395,7 +4395,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.GetProjectRequest,
     ) -> dataworks_public_20240518_models.GetProjectResponse:
         """
-        @summary 查询工作空间详情
+        @summary Queries the information about a DataWorks workspace.
         
         @param request: GetProjectRequest
         @return: GetProjectResponse

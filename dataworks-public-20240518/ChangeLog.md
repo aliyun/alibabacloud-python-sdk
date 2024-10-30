@@ -1,3 +1,6 @@
+2024-10-30 Version: 2.1.1
+- Generated python 2024-05-18 for dataworks-public.
+
 2024-10-28 Version: 2.1.0
 - Support API CreateProjectMember.
 - Support API DeleteProjectMember.

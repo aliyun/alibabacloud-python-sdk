@@ -9322,6 +9322,10 @@ class GetProjectRequest(TeaModel):
         self,
         id: int = None,
     ):
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/workspace/list) and go to the Workspace page to query the ID.
+        # 
+        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -9351,7 +9355,9 @@ class GetProjectResponseBodyProjectAliyunResourceTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -9393,16 +9399,58 @@ class GetProjectResponseBodyProject(TeaModel):
         pai_task_enabled: bool = None,
         status: str = None,
     ):
+        # The ID of the Alibaba Cloud resource group to which the workspace belongs.
         self.aliyun_resource_group_id = aliyun_resource_group_id
+        # The tags.
         self.aliyun_resource_tags = aliyun_resource_tags
+        # The description of the workspace.
         self.description = description
+        # Indicates whether the development environment is enabled. Valid values:
+        # 
+        # *   true: The development environment is enabled. In this case, the development environment is isolated from the production environment in the workspace.
+        # *   false: The development environment is disabled. In this case, only the production environment is used in the workspace.
         self.dev_environment_enabled = dev_environment_enabled
+        # Indicates whether the Develop role is disabled. Valid values:
+        # 
+        # *   false
+        # *   true
         self.dev_role_disabled = dev_role_disabled
+        # The display name of the workspace.
         self.display_name = display_name
+        # The workspace ID.
         self.id = id
+        # The name of the workspace.
         self.name = name
+        # The ID of the Alibaba Cloud account to which the workspace belongs.
         self.owner = owner
+        # Indicates whether scheduling of Platform for AI (PAI) tasks is enabled. Valid values:
+        # 
+        # *   true: Scheduling of PAI tasks is enabled. In this case, you can create a PAI node in a DataWorks workspace and configure scheduling properties for the node to implement periodic scheduling of PAI tasks.
+        # *   false: Scheduling of PAI tasks is disabled.
         self.pai_task_enabled = pai_task_enabled
+        # The status of the workspace. Valid values:
+        # 
+        # *   Available
+        # *   Initializing
+        # *   InitFailed
+        # *   Forbidden
+        # *   Deleting
+        # *   DeleteFailed
+        # *   Frozen
+        # *   Updating
+        # *   UpdateFailed
+        # 
+        # <!---->
+        # 
+        # *\
+        # *\
+        # *\
+        # *\
+        # *\
+        # *\
+        # *\
+        # *\
+        # *\
         self.status = status
 
     def validate(self):
@@ -9479,7 +9527,9 @@ class GetProjectResponseBody(TeaModel):
         project: GetProjectResponseBodyProject = None,
         request_id: str = None,
     ):
+        # The information about the workspace.
         self.project = project
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
