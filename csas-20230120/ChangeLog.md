@@ -1,3 +1,6 @@
+2024-10-30 Version: 1.8.2
+- Generated python 2023-01-20 for csas.
+
 2024-10-29 Version: 1.8.1
 - Update API CreatePrivateAccessApplication: add param BrowserAccessStatus.
 - Update API CreatePrivateAccessApplication: add param L7ProxyDomainAutomaticPrefix.
