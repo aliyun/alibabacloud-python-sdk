@@ -2305,13 +2305,16 @@ class CreateDatasetVersionRequest(TeaModel):
     ):
         self.data_count = data_count
         self.data_size = data_size
+        # This parameter is required.
         self.data_source_type = data_source_type
         self.description = description
         self.labels = labels
         self.options = options
+        # This parameter is required.
         self.property = property
         self.source_id = source_id
         self.source_type = source_type
+        # This parameter is required.
         self.uri = uri
 
     def validate(self):
@@ -2381,11 +2384,11 @@ class CreateDatasetVersionRequest(TeaModel):
 class CreateDatasetVersionResponseBody(TeaModel):
     def __init__(
         self,
-        version_name: str = None,
         request_id: str = None,
+        version_name: str = None,
     ):
-        self.version_name = version_name
         self.request_id = request_id
+        self.version_name = version_name
 
     def validate(self):
         pass
@@ -2396,18 +2399,18 @@ class CreateDatasetVersionResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.version_name is not None:
             result['VersionName'] = self.version_name
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('VersionName') is not None:
             self.version_name = m.get('VersionName')
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
         return self
 
 
@@ -2505,13 +2508,13 @@ class CreateDatasetVersionLabelsResponseBody(TeaModel):
 
         result = dict()
         if self.request_id is not None:
-            result['requestId'] = self.request_id
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -4560,13 +4563,13 @@ class DeleteDatasetVersionResponseBody(TeaModel):
 
         result = dict()
         if self.request_id is not None:
-            result['requestId'] = self.request_id
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -4656,13 +4659,13 @@ class DeleteDatasetVersionLabelsResponseBody(TeaModel):
 
         result = dict()
         if self.request_id is not None:
-            result['requestId'] = self.request_id
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -5986,15 +5989,76 @@ class GetDatasetResponse(TeaModel):
 class GetDatasetVersionResponseBody(TeaModel):
     def __init__(
         self,
-        dataset_version: DatasetVersion = None,
+        data_count: int = None,
+        data_size: int = None,
+        data_source_type: str = None,
+        dataset_id: str = None,
+        description: str = None,
+        gmt_create_time: str = None,
+        gmt_modified_time: str = None,
+        labels: List[Label] = None,
+        options: str = None,
+        property: str = None,
         request_id: str = None,
+        source_id: str = None,
+        source_type: str = None,
+        uri: str = None,
+        version_name: str = None,
     ):
-        self.dataset_version = dataset_version
+        # 数据集的数据量
+        self.data_count = data_count
+        # 数据集版本的数据大小。
+        self.data_size = data_size
+        # 数据源类型。支持以下取值：
+        # - OSS：阿里云对象存储（OSS）。
+        # - NAS：阿里云文件存储（NAS）。
+        # 
+        # This parameter is required.
+        self.data_source_type = data_source_type
+        # 代表资源一级ID的资源属性字段
+        self.dataset_id = dataset_id
+        # 数据集版本的描述信息。
+        self.description = description
+        self.gmt_create_time = gmt_create_time
+        # 创建时间。
+        self.gmt_modified_time = gmt_modified_time
+        # 代表资源标签的资源属性字段
+        self.labels = labels
+        # 扩展字段，JsonString类型。
+        # 当DLC使用数据集时，可通过配置mountPath字段指定数据集默认挂载路径。
+        self.options = options
+        # 数据集的属性。支持以下取值：
+        # - FILE：文件。
+        # - DIRECTORY：文件夹。
+        # 
+        # This parameter is required.
+        self.property = property
         self.request_id = request_id
+        # 数据来源ID。
+        self.source_id = source_id
+        # 数据来源类型，默认为USER。支持以下取值：
+        # - PAI-PUBLIC-DATASET：PAI公共数据集。
+        # - ITAG：iTAG模块标注结果生成的数据集。
+        # - USER：用户注册的数据集。
+        self.source_type = source_type
+        # Uri配置样例如下：
+        # - 数据源类型为OSS：`oss://bucket.endpoint/object`
+        # - 数据源类型为NAS：
+        # 通用型NAS格式为：`nas://<nasfisid>.region/subpath/to/dir/`；
+        # CPFS1.0：`nas://<cpfs-fsid>.region/subpath/to/dir/`；
+        # CPFS2.0：`nas://<cpfs-fsid>.region/<protocolserviceid>/`。
+        # CPFS1.0和CPFS2.0根据fsid的格式来区分：CPFS1.0 格式为cpfs-<8位ascii字符>；CPFS2.0 格式为cpfs-<16为ascii字符>。
+        # 
+        # This parameter is required.
+        self.uri = uri
+        # 代表资源名称的资源属性字段
+        self.version_name = version_name
 
     def validate(self):
-        if self.dataset_version:
-            self.dataset_version.validate()
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6002,19 +6066,75 @@ class GetDatasetVersionResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.dataset_version is not None:
-            result['DatasetVersion'] = self.dataset_version.to_map()
+        if self.data_count is not None:
+            result['DataCount'] = self.data_count
+        if self.data_size is not None:
+            result['DataSize'] = self.data_size
+        if self.data_source_type is not None:
+            result['DataSourceType'] = self.data_source_type
+        if self.dataset_id is not None:
+            result['DatasetId'] = self.dataset_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.gmt_create_time is not None:
+            result['GmtCreateTime'] = self.gmt_create_time
+        if self.gmt_modified_time is not None:
+            result['GmtModifiedTime'] = self.gmt_modified_time
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
+        if self.options is not None:
+            result['Options'] = self.options
+        if self.property is not None:
+            result['Property'] = self.property
         if self.request_id is not None:
-            result['requestId'] = self.request_id
+            result['RequestId'] = self.request_id
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        if self.uri is not None:
+            result['Uri'] = self.uri
+        if self.version_name is not None:
+            result['VersionName'] = self.version_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('DatasetVersion') is not None:
-            temp_model = DatasetVersion()
-            self.dataset_version = temp_model.from_map(m['DatasetVersion'])
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
+        if m.get('DataCount') is not None:
+            self.data_count = m.get('DataCount')
+        if m.get('DataSize') is not None:
+            self.data_size = m.get('DataSize')
+        if m.get('DataSourceType') is not None:
+            self.data_source_type = m.get('DataSourceType')
+        if m.get('DatasetId') is not None:
+            self.dataset_id = m.get('DatasetId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GmtCreateTime') is not None:
+            self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('GmtModifiedTime') is not None:
+            self.gmt_modified_time = m.get('GmtModifiedTime')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = Label()
+                self.labels.append(temp_model.from_map(k))
+        if m.get('Options') is not None:
+            self.options = m.get('Options')
+        if m.get('Property') is not None:
+            self.property = m.get('Property')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
+        if m.get('VersionName') is not None:
+            self.version_name = m.get('VersionName')
         return self
 
 
@@ -7793,14 +7913,14 @@ class ListDatasetVersionsResponseBody(TeaModel):
         dataset_versions: List[DatasetVersion] = None,
         page_number: int = None,
         page_size: int = None,
-        total_count: int = None,
         request_id: str = None,
+        total_count: int = None,
     ):
         self.dataset_versions = dataset_versions
         self.page_number = page_number
         self.page_size = page_size
-        self.total_count = total_count
         self.request_id = request_id
+        self.total_count = total_count
 
     def validate(self):
         if self.dataset_versions:
@@ -7822,10 +7942,10 @@ class ListDatasetVersionsResponseBody(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
@@ -7839,10 +7959,10 @@ class ListDatasetVersionsResponseBody(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
         return self
 
 
@@ -12112,13 +12232,13 @@ class UpdateDatasetVersionResponseBody(TeaModel):
 
         result = dict()
         if self.request_id is not None:
-            result['requestId'] = self.request_id
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
