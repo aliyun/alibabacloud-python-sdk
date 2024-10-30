@@ -297,6 +297,8 @@ class Client(OpenApiClient):
             body['ReceiptUrl'] = request.receipt_url
         if not UtilClient.is_unset(request.third_party_id):
             body['ThirdPartyId'] = request.third_party_id
+        if not UtilClient.is_unset(request.callback_params):
+            body['callbackParams'] = request.callback_params
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -365,6 +367,8 @@ class Client(OpenApiClient):
             body['ReceiptUrl'] = request.receipt_url
         if not UtilClient.is_unset(request.third_party_id):
             body['ThirdPartyId'] = request.third_party_id
+        if not UtilClient.is_unset(request.callback_params):
+            body['callbackParams'] = request.callback_params
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -461,6 +465,8 @@ class Client(OpenApiClient):
             body['ReceiptUrl'] = request.receipt_url
         if not UtilClient.is_unset(request.third_party_id):
             body['ThirdPartyId'] = request.third_party_id
+        if not UtilClient.is_unset(request.callback_params):
+            body['callbackParams'] = request.callback_params
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -529,6 +535,8 @@ class Client(OpenApiClient):
             body['ReceiptUrl'] = request.receipt_url
         if not UtilClient.is_unset(request.third_party_id):
             body['ThirdPartyId'] = request.third_party_id
+        if not UtilClient.is_unset(request.callback_params):
+            body['callbackParams'] = request.callback_params
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -621,6 +629,8 @@ class Client(OpenApiClient):
             body['ReceiptUrl'] = request.receipt_url
         if not UtilClient.is_unset(request.third_party_id):
             body['ThirdPartyId'] = request.third_party_id
+        if not UtilClient.is_unset(request.callback_params):
+            body['callbackParams'] = request.callback_params
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -685,6 +695,8 @@ class Client(OpenApiClient):
             body['ReceiptUrl'] = request.receipt_url
         if not UtilClient.is_unset(request.third_party_id):
             body['ThirdPartyId'] = request.third_party_id
+        if not UtilClient.is_unset(request.callback_params):
+            body['callbackParams'] = request.callback_params
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -779,6 +791,8 @@ class Client(OpenApiClient):
             body['ReceiptUrl'] = request.receipt_url
         if not UtilClient.is_unset(request.third_party_id):
             body['ThirdPartyId'] = request.third_party_id
+        if not UtilClient.is_unset(request.callback_params):
+            body['callbackParams'] = request.callback_params
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -845,6 +859,8 @@ class Client(OpenApiClient):
             body['ReceiptUrl'] = request.receipt_url
         if not UtilClient.is_unset(request.third_party_id):
             body['ThirdPartyId'] = request.third_party_id
+        if not UtilClient.is_unset(request.callback_params):
+            body['callbackParams'] = request.callback_params
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -939,6 +955,8 @@ class Client(OpenApiClient):
             body['ReceiptUrl'] = request.receipt_url
         if not UtilClient.is_unset(request.third_party_id):
             body['ThirdPartyId'] = request.third_party_id
+        if not UtilClient.is_unset(request.callback_params):
+            body['callbackParams'] = request.callback_params
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1005,6 +1023,8 @@ class Client(OpenApiClient):
             body['ReceiptUrl'] = request.receipt_url
         if not UtilClient.is_unset(request.third_party_id):
             body['ThirdPartyId'] = request.third_party_id
+        if not UtilClient.is_unset(request.callback_params):
+            body['callbackParams'] = request.callback_params
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1099,6 +1119,8 @@ class Client(OpenApiClient):
             body['ReceiptUrl'] = request.receipt_url
         if not UtilClient.is_unset(request.third_party_id):
             body['ThirdPartyId'] = request.third_party_id
+        if not UtilClient.is_unset(request.callback_params):
+            body['callbackParams'] = request.callback_params
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1165,6 +1187,8 @@ class Client(OpenApiClient):
             body['ReceiptUrl'] = request.receipt_url
         if not UtilClient.is_unset(request.third_party_id):
             body['ThirdPartyId'] = request.third_party_id
+        if not UtilClient.is_unset(request.callback_params):
+            body['callbackParams'] = request.callback_params
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)

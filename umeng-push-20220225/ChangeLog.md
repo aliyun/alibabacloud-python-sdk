@@ -1,3 +1,12 @@
+2024-10-30 Version: 1.0.10
+- Update API SendByAlias: add param callbackParams.
+- Update API SendByAliasFileId: add param callbackParams.
+- Update API SendByApp: add param callbackParams.
+- Update API SendByDevice: add param callbackParams.
+- Update API SendByDeviceFileId: add param callbackParams.
+- Update API SendByFilter: add param callbackParams.
+
+
 2024-10-16 Version: 1.0.9
 - Generated python 2022-02-25 for umeng-push.
 

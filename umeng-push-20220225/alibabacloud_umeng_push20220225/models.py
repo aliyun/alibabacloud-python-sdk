@@ -363,8 +363,10 @@ class ChannelProperties(TeaModel):
         channel_fcm: str = None,
         huawei_channel_category: str = None,
         huawei_channel_importance: str = None,
+        huawei_message_urgency: str = None,
         main_activity: str = None,
         oppo_channel_id: str = None,
+        use_huawei_message: str = None,
         vivo_add_badge: str = None,
         vivo_category: str = None,
         xiaomi_channel_id: str = None,
@@ -373,8 +375,10 @@ class ChannelProperties(TeaModel):
         self.channel_fcm = channel_fcm
         self.huawei_channel_category = huawei_channel_category
         self.huawei_channel_importance = huawei_channel_importance
+        self.huawei_message_urgency = huawei_message_urgency
         self.main_activity = main_activity
         self.oppo_channel_id = oppo_channel_id
+        self.use_huawei_message = use_huawei_message
         self.vivo_add_badge = vivo_add_badge
         self.vivo_category = vivo_category
         self.xiaomi_channel_id = xiaomi_channel_id
@@ -396,10 +400,14 @@ class ChannelProperties(TeaModel):
             result['huaweiChannelCategory'] = self.huawei_channel_category
         if self.huawei_channel_importance is not None:
             result['huaweiChannelImportance'] = self.huawei_channel_importance
+        if self.huawei_message_urgency is not None:
+            result['huaweiMessageUrgency'] = self.huawei_message_urgency
         if self.main_activity is not None:
             result['mainActivity'] = self.main_activity
         if self.oppo_channel_id is not None:
             result['oppoChannelId'] = self.oppo_channel_id
+        if self.use_huawei_message is not None:
+            result['useHuaweiMessage'] = self.use_huawei_message
         if self.vivo_add_badge is not None:
             result['vivoAddBadge'] = self.vivo_add_badge
         if self.vivo_category is not None:
@@ -418,10 +426,14 @@ class ChannelProperties(TeaModel):
             self.huawei_channel_category = m.get('huaweiChannelCategory')
         if m.get('huaweiChannelImportance') is not None:
             self.huawei_channel_importance = m.get('huaweiChannelImportance')
+        if m.get('huaweiMessageUrgency') is not None:
+            self.huawei_message_urgency = m.get('huaweiMessageUrgency')
         if m.get('mainActivity') is not None:
             self.main_activity = m.get('mainActivity')
         if m.get('oppoChannelId') is not None:
             self.oppo_channel_id = m.get('oppoChannelId')
+        if m.get('useHuaweiMessage') is not None:
+            self.use_huawei_message = m.get('useHuaweiMessage')
         if m.get('vivoAddBadge') is not None:
             self.vivo_add_badge = m.get('vivoAddBadge')
         if m.get('vivoCategory') is not None:
@@ -875,6 +887,7 @@ class SendByAliasRequest(TeaModel):
         receipt_type: int = None,
         receipt_url: str = None,
         third_party_id: str = None,
+        callback_params: str = None,
     ):
         # This parameter is required.
         self.alias = alias
@@ -888,6 +901,7 @@ class SendByAliasRequest(TeaModel):
         self.receipt_type = receipt_type
         self.receipt_url = receipt_url
         self.third_party_id = third_party_id
+        self.callback_params = callback_params
 
     def validate(self):
         if self.android_payload:
@@ -927,6 +941,8 @@ class SendByAliasRequest(TeaModel):
             result['ReceiptUrl'] = self.receipt_url
         if self.third_party_id is not None:
             result['ThirdPartyId'] = self.third_party_id
+        if self.callback_params is not None:
+            result['callbackParams'] = self.callback_params
         return result
 
     def from_map(self, m: dict = None):
@@ -957,6 +973,8 @@ class SendByAliasRequest(TeaModel):
             self.receipt_url = m.get('ReceiptUrl')
         if m.get('ThirdPartyId') is not None:
             self.third_party_id = m.get('ThirdPartyId')
+        if m.get('callbackParams') is not None:
+            self.callback_params = m.get('callbackParams')
         return self
 
 
@@ -974,6 +992,7 @@ class SendByAliasShrinkRequest(TeaModel):
         receipt_type: int = None,
         receipt_url: str = None,
         third_party_id: str = None,
+        callback_params: str = None,
     ):
         # This parameter is required.
         self.alias = alias
@@ -987,6 +1006,7 @@ class SendByAliasShrinkRequest(TeaModel):
         self.receipt_type = receipt_type
         self.receipt_url = receipt_url
         self.third_party_id = third_party_id
+        self.callback_params = callback_params
 
     def validate(self):
         pass
@@ -1019,6 +1039,8 @@ class SendByAliasShrinkRequest(TeaModel):
             result['ReceiptUrl'] = self.receipt_url
         if self.third_party_id is not None:
             result['ThirdPartyId'] = self.third_party_id
+        if self.callback_params is not None:
+            result['callbackParams'] = self.callback_params
         return result
 
     def from_map(self, m: dict = None):
@@ -1045,6 +1067,8 @@ class SendByAliasShrinkRequest(TeaModel):
             self.receipt_url = m.get('ReceiptUrl')
         if m.get('ThirdPartyId') is not None:
             self.third_party_id = m.get('ThirdPartyId')
+        if m.get('callbackParams') is not None:
+            self.callback_params = m.get('callbackParams')
         return self
 
 
@@ -1189,6 +1213,7 @@ class SendByAliasFileIdRequest(TeaModel):
         receipt_type: int = None,
         receipt_url: str = None,
         third_party_id: str = None,
+        callback_params: str = None,
     ):
         self.alias_type = alias_type
         self.android_payload = android_payload
@@ -1202,6 +1227,7 @@ class SendByAliasFileIdRequest(TeaModel):
         self.receipt_type = receipt_type
         self.receipt_url = receipt_url
         self.third_party_id = third_party_id
+        self.callback_params = callback_params
 
     def validate(self):
         if self.android_payload:
@@ -1241,6 +1267,8 @@ class SendByAliasFileIdRequest(TeaModel):
             result['ReceiptUrl'] = self.receipt_url
         if self.third_party_id is not None:
             result['ThirdPartyId'] = self.third_party_id
+        if self.callback_params is not None:
+            result['callbackParams'] = self.callback_params
         return result
 
     def from_map(self, m: dict = None):
@@ -1271,6 +1299,8 @@ class SendByAliasFileIdRequest(TeaModel):
             self.receipt_url = m.get('ReceiptUrl')
         if m.get('ThirdPartyId') is not None:
             self.third_party_id = m.get('ThirdPartyId')
+        if m.get('callbackParams') is not None:
+            self.callback_params = m.get('callbackParams')
         return self
 
 
@@ -1288,6 +1318,7 @@ class SendByAliasFileIdShrinkRequest(TeaModel):
         receipt_type: int = None,
         receipt_url: str = None,
         third_party_id: str = None,
+        callback_params: str = None,
     ):
         self.alias_type = alias_type
         self.android_payload_shrink = android_payload_shrink
@@ -1301,6 +1332,7 @@ class SendByAliasFileIdShrinkRequest(TeaModel):
         self.receipt_type = receipt_type
         self.receipt_url = receipt_url
         self.third_party_id = third_party_id
+        self.callback_params = callback_params
 
     def validate(self):
         pass
@@ -1333,6 +1365,8 @@ class SendByAliasFileIdShrinkRequest(TeaModel):
             result['ReceiptUrl'] = self.receipt_url
         if self.third_party_id is not None:
             result['ThirdPartyId'] = self.third_party_id
+        if self.callback_params is not None:
+            result['callbackParams'] = self.callback_params
         return result
 
     def from_map(self, m: dict = None):
@@ -1359,6 +1393,8 @@ class SendByAliasFileIdShrinkRequest(TeaModel):
             self.receipt_url = m.get('ReceiptUrl')
         if m.get('ThirdPartyId') is not None:
             self.third_party_id = m.get('ThirdPartyId')
+        if m.get('callbackParams') is not None:
+            self.callback_params = m.get('callbackParams')
         return self
 
 
@@ -1501,6 +1537,7 @@ class SendByAppRequest(TeaModel):
         receipt_type: int = None,
         receipt_url: str = None,
         third_party_id: str = None,
+        callback_params: str = None,
     ):
         self.android_payload = android_payload
         self.channel_properties = channel_properties
@@ -1511,6 +1548,7 @@ class SendByAppRequest(TeaModel):
         self.receipt_type = receipt_type
         self.receipt_url = receipt_url
         self.third_party_id = third_party_id
+        self.callback_params = callback_params
 
     def validate(self):
         if self.android_payload:
@@ -1546,6 +1584,8 @@ class SendByAppRequest(TeaModel):
             result['ReceiptUrl'] = self.receipt_url
         if self.third_party_id is not None:
             result['ThirdPartyId'] = self.third_party_id
+        if self.callback_params is not None:
+            result['callbackParams'] = self.callback_params
         return result
 
     def from_map(self, m: dict = None):
@@ -1572,6 +1612,8 @@ class SendByAppRequest(TeaModel):
             self.receipt_url = m.get('ReceiptUrl')
         if m.get('ThirdPartyId') is not None:
             self.third_party_id = m.get('ThirdPartyId')
+        if m.get('callbackParams') is not None:
+            self.callback_params = m.get('callbackParams')
         return self
 
 
@@ -1587,6 +1629,7 @@ class SendByAppShrinkRequest(TeaModel):
         receipt_type: int = None,
         receipt_url: str = None,
         third_party_id: str = None,
+        callback_params: str = None,
     ):
         self.android_payload_shrink = android_payload_shrink
         self.channel_properties_shrink = channel_properties_shrink
@@ -1597,6 +1640,7 @@ class SendByAppShrinkRequest(TeaModel):
         self.receipt_type = receipt_type
         self.receipt_url = receipt_url
         self.third_party_id = third_party_id
+        self.callback_params = callback_params
 
     def validate(self):
         pass
@@ -1625,6 +1669,8 @@ class SendByAppShrinkRequest(TeaModel):
             result['ReceiptUrl'] = self.receipt_url
         if self.third_party_id is not None:
             result['ThirdPartyId'] = self.third_party_id
+        if self.callback_params is not None:
+            result['callbackParams'] = self.callback_params
         return result
 
     def from_map(self, m: dict = None):
@@ -1647,6 +1693,8 @@ class SendByAppShrinkRequest(TeaModel):
             self.receipt_url = m.get('ReceiptUrl')
         if m.get('ThirdPartyId') is not None:
             self.third_party_id = m.get('ThirdPartyId')
+        if m.get('callbackParams') is not None:
+            self.callback_params = m.get('callbackParams')
         return self
 
 
@@ -1790,6 +1838,7 @@ class SendByDeviceRequest(TeaModel):
         receipt_type: int = None,
         receipt_url: str = None,
         third_party_id: str = None,
+        callback_params: str = None,
     ):
         self.android_payload = android_payload
         self.channel_properties = channel_properties
@@ -1802,6 +1851,7 @@ class SendByDeviceRequest(TeaModel):
         self.receipt_type = receipt_type
         self.receipt_url = receipt_url
         self.third_party_id = third_party_id
+        self.callback_params = callback_params
 
     def validate(self):
         if self.android_payload:
@@ -1839,6 +1889,8 @@ class SendByDeviceRequest(TeaModel):
             result['ReceiptUrl'] = self.receipt_url
         if self.third_party_id is not None:
             result['ThirdPartyId'] = self.third_party_id
+        if self.callback_params is not None:
+            result['callbackParams'] = self.callback_params
         return result
 
     def from_map(self, m: dict = None):
@@ -1867,6 +1919,8 @@ class SendByDeviceRequest(TeaModel):
             self.receipt_url = m.get('ReceiptUrl')
         if m.get('ThirdPartyId') is not None:
             self.third_party_id = m.get('ThirdPartyId')
+        if m.get('callbackParams') is not None:
+            self.callback_params = m.get('callbackParams')
         return self
 
 
@@ -1883,6 +1937,7 @@ class SendByDeviceShrinkRequest(TeaModel):
         receipt_type: int = None,
         receipt_url: str = None,
         third_party_id: str = None,
+        callback_params: str = None,
     ):
         self.android_payload_shrink = android_payload_shrink
         self.channel_properties_shrink = channel_properties_shrink
@@ -1895,6 +1950,7 @@ class SendByDeviceShrinkRequest(TeaModel):
         self.receipt_type = receipt_type
         self.receipt_url = receipt_url
         self.third_party_id = third_party_id
+        self.callback_params = callback_params
 
     def validate(self):
         pass
@@ -1925,6 +1981,8 @@ class SendByDeviceShrinkRequest(TeaModel):
             result['ReceiptUrl'] = self.receipt_url
         if self.third_party_id is not None:
             result['ThirdPartyId'] = self.third_party_id
+        if self.callback_params is not None:
+            result['callbackParams'] = self.callback_params
         return result
 
     def from_map(self, m: dict = None):
@@ -1949,6 +2007,8 @@ class SendByDeviceShrinkRequest(TeaModel):
             self.receipt_url = m.get('ReceiptUrl')
         if m.get('ThirdPartyId') is not None:
             self.third_party_id = m.get('ThirdPartyId')
+        if m.get('callbackParams') is not None:
+            self.callback_params = m.get('callbackParams')
         return self
 
 
@@ -2092,6 +2152,7 @@ class SendByDeviceFileIdRequest(TeaModel):
         receipt_type: int = None,
         receipt_url: str = None,
         third_party_id: str = None,
+        callback_params: str = None,
     ):
         self.android_payload = android_payload
         self.channel_properties = channel_properties
@@ -2104,6 +2165,7 @@ class SendByDeviceFileIdRequest(TeaModel):
         self.receipt_type = receipt_type
         self.receipt_url = receipt_url
         self.third_party_id = third_party_id
+        self.callback_params = callback_params
 
     def validate(self):
         if self.android_payload:
@@ -2141,6 +2203,8 @@ class SendByDeviceFileIdRequest(TeaModel):
             result['ReceiptUrl'] = self.receipt_url
         if self.third_party_id is not None:
             result['ThirdPartyId'] = self.third_party_id
+        if self.callback_params is not None:
+            result['callbackParams'] = self.callback_params
         return result
 
     def from_map(self, m: dict = None):
@@ -2169,6 +2233,8 @@ class SendByDeviceFileIdRequest(TeaModel):
             self.receipt_url = m.get('ReceiptUrl')
         if m.get('ThirdPartyId') is not None:
             self.third_party_id = m.get('ThirdPartyId')
+        if m.get('callbackParams') is not None:
+            self.callback_params = m.get('callbackParams')
         return self
 
 
@@ -2185,6 +2251,7 @@ class SendByDeviceFileIdShrinkRequest(TeaModel):
         receipt_type: int = None,
         receipt_url: str = None,
         third_party_id: str = None,
+        callback_params: str = None,
     ):
         self.android_payload_shrink = android_payload_shrink
         self.channel_properties_shrink = channel_properties_shrink
@@ -2197,6 +2264,7 @@ class SendByDeviceFileIdShrinkRequest(TeaModel):
         self.receipt_type = receipt_type
         self.receipt_url = receipt_url
         self.third_party_id = third_party_id
+        self.callback_params = callback_params
 
     def validate(self):
         pass
@@ -2227,6 +2295,8 @@ class SendByDeviceFileIdShrinkRequest(TeaModel):
             result['ReceiptUrl'] = self.receipt_url
         if self.third_party_id is not None:
             result['ThirdPartyId'] = self.third_party_id
+        if self.callback_params is not None:
+            result['callbackParams'] = self.callback_params
         return result
 
     def from_map(self, m: dict = None):
@@ -2251,6 +2321,8 @@ class SendByDeviceFileIdShrinkRequest(TeaModel):
             self.receipt_url = m.get('ReceiptUrl')
         if m.get('ThirdPartyId') is not None:
             self.third_party_id = m.get('ThirdPartyId')
+        if m.get('callbackParams') is not None:
+            self.callback_params = m.get('callbackParams')
         return self
 
 
@@ -2394,6 +2466,7 @@ class SendByFilterRequest(TeaModel):
         receipt_type: int = None,
         receipt_url: str = None,
         third_party_id: str = None,
+        callback_params: str = None,
     ):
         self.android_payload = android_payload
         self.channel_properties = channel_properties
@@ -2405,6 +2478,7 @@ class SendByFilterRequest(TeaModel):
         self.receipt_type = receipt_type
         self.receipt_url = receipt_url
         self.third_party_id = third_party_id
+        self.callback_params = callback_params
 
     def validate(self):
         if self.android_payload:
@@ -2442,6 +2516,8 @@ class SendByFilterRequest(TeaModel):
             result['ReceiptUrl'] = self.receipt_url
         if self.third_party_id is not None:
             result['ThirdPartyId'] = self.third_party_id
+        if self.callback_params is not None:
+            result['callbackParams'] = self.callback_params
         return result
 
     def from_map(self, m: dict = None):
@@ -2470,6 +2546,8 @@ class SendByFilterRequest(TeaModel):
             self.receipt_url = m.get('ReceiptUrl')
         if m.get('ThirdPartyId') is not None:
             self.third_party_id = m.get('ThirdPartyId')
+        if m.get('callbackParams') is not None:
+            self.callback_params = m.get('callbackParams')
         return self
 
 
@@ -2486,6 +2564,7 @@ class SendByFilterShrinkRequest(TeaModel):
         receipt_type: int = None,
         receipt_url: str = None,
         third_party_id: str = None,
+        callback_params: str = None,
     ):
         self.android_payload_shrink = android_payload_shrink
         self.channel_properties_shrink = channel_properties_shrink
@@ -2497,6 +2576,7 @@ class SendByFilterShrinkRequest(TeaModel):
         self.receipt_type = receipt_type
         self.receipt_url = receipt_url
         self.third_party_id = third_party_id
+        self.callback_params = callback_params
 
     def validate(self):
         pass
@@ -2527,6 +2607,8 @@ class SendByFilterShrinkRequest(TeaModel):
             result['ReceiptUrl'] = self.receipt_url
         if self.third_party_id is not None:
             result['ThirdPartyId'] = self.third_party_id
+        if self.callback_params is not None:
+            result['callbackParams'] = self.callback_params
         return result
 
     def from_map(self, m: dict = None):
@@ -2551,6 +2633,8 @@ class SendByFilterShrinkRequest(TeaModel):
             self.receipt_url = m.get('ReceiptUrl')
         if m.get('ThirdPartyId') is not None:
             self.third_party_id = m.get('ThirdPartyId')
+        if m.get('callbackParams') is not None:
+            self.callback_params = m.get('callbackParams')
         return self
 
 
