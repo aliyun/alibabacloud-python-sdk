@@ -1,3 +1,7 @@
+2024-10-30 Version: 2.0.1
+- Update API DescribeVaults: update response param.
+
+
 2024-10-08 Version: 2.0.0
 - Support API DeleteUdmDisk.
 - Support API DeleteUdmEcsInstance.

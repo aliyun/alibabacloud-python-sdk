@@ -16823,6 +16823,7 @@ class DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics(TeaModel):
     def __init__(
         self,
         archive: int = None,
+        common_file_system: int = None,
         common_nas: int = None,
         csg: int = None,
         ecs_file: int = None,
@@ -16839,6 +16840,7 @@ class DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics(TeaModel):
     ):
         # The number of archive plans.
         self.archive = archive
+        self.common_file_system = common_file_system
         # The number of backup plans for General-purpose NAS file systems.
         self.common_nas = common_nas
         # The number of backup plans for Cloud Storage Gateway (CSG) gateways.
@@ -16877,6 +16879,8 @@ class DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics(TeaModel):
         result = dict()
         if self.archive is not None:
             result['Archive'] = self.archive
+        if self.common_file_system is not None:
+            result['CommonFileSystem'] = self.common_file_system
         if self.common_nas is not None:
             result['CommonNas'] = self.common_nas
         if self.csg is not None:
@@ -16909,6 +16913,8 @@ class DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics(TeaModel):
         m = m or dict()
         if m.get('Archive') is not None:
             self.archive = m.get('Archive')
+        if m.get('CommonFileSystem') is not None:
+            self.common_file_system = m.get('CommonFileSystem')
         if m.get('CommonNas') is not None:
             self.common_nas = m.get('CommonNas')
         if m.get('Csg') is not None:
