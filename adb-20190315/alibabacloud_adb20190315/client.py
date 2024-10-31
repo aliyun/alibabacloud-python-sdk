@@ -1691,6 +1691,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_account_with_options_async(request, runtime)
 
+    def delete_backups_with_options(
+        self,
+        request: adb_20190315_models.DeleteBackupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DeleteBackupsResponse:
+        """
+        @summary 手动删除备份集
+        
+        @param request: DeleteBackupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBackupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBackups',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DeleteBackupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_backups_with_options_async(
+        self,
+        request: adb_20190315_models.DeleteBackupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DeleteBackupsResponse:
+        """
+        @summary 手动删除备份集
+        
+        @param request: DeleteBackupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBackupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBackups',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DeleteBackupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_backups(
+        self,
+        request: adb_20190315_models.DeleteBackupsRequest,
+    ) -> adb_20190315_models.DeleteBackupsResponse:
+        """
+        @summary 手动删除备份集
+        
+        @param request: DeleteBackupsRequest
+        @return: DeleteBackupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_backups_with_options(request, runtime)
+
+    async def delete_backups_async(
+        self,
+        request: adb_20190315_models.DeleteBackupsRequest,
+    ) -> adb_20190315_models.DeleteBackupsResponse:
+        """
+        @summary 手动删除备份集
+        
+        @param request: DeleteBackupsRequest
+        @return: DeleteBackupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_backups_with_options_async(request, runtime)
+
     def delete_dbcluster_with_options(
         self,
         request: adb_20190315_models.DeleteDBClusterRequest,

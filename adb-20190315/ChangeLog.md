@@ -1,3 +1,7 @@
+2024-10-31 Version: 4.2.0
+- Support API DeleteBackups.
+
+
 2024-10-28 Version: 4.1.1
 - Update API DescribeDBClusterSSL: add param RegionId.
 
