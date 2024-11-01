@@ -393,6 +393,298 @@ class Client(OpenApiClient):
         headers = {}
         return await self.run_comment_generation_with_options_async(workspace_id, request, headers, runtime)
 
+    def run_hot_topic_chat_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: quan_miao_light_app_20240801_models.RunHotTopicChatRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.RunHotTopicChatResponse:
+        """
+        @summary 轻应用-热点播报-问答
+        
+        @param tmp_req: RunHotTopicChatRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunHotTopicChatResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = quan_miao_light_app_20240801_models.RunHotTopicChatShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.generate_options):
+            request.generate_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.generate_options, 'generateOptions', 'json')
+        if not UtilClient.is_unset(tmp_req.hot_topics):
+            request.hot_topics_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hot_topics, 'hotTopics', 'json')
+        if not UtilClient.is_unset(tmp_req.step_for_broadcast_content_config):
+            request.step_for_broadcast_content_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.step_for_broadcast_content_config, 'stepForBroadcastContentConfig', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.category):
+            body['category'] = request.category
+        if not UtilClient.is_unset(request.generate_options_shrink):
+            body['generateOptions'] = request.generate_options_shrink
+        if not UtilClient.is_unset(request.hot_topic_version):
+            body['hotTopicVersion'] = request.hot_topic_version
+        if not UtilClient.is_unset(request.hot_topics_shrink):
+            body['hotTopics'] = request.hot_topics_shrink
+        if not UtilClient.is_unset(request.image_count):
+            body['imageCount'] = request.image_count
+        if not UtilClient.is_unset(request.model_custom_prompt_template):
+            body['modelCustomPromptTemplate'] = request.model_custom_prompt_template
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.original_session_id):
+            body['originalSessionId'] = request.original_session_id
+        if not UtilClient.is_unset(request.prompt):
+            body['prompt'] = request.prompt
+        if not UtilClient.is_unset(request.step_for_broadcast_content_config_shrink):
+            body['stepForBroadcastContentConfig'] = request.step_for_broadcast_content_config_shrink
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunHotTopicChat',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/runHotTopicChat',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunHotTopicChatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_hot_topic_chat_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: quan_miao_light_app_20240801_models.RunHotTopicChatRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.RunHotTopicChatResponse:
+        """
+        @summary 轻应用-热点播报-问答
+        
+        @param tmp_req: RunHotTopicChatRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunHotTopicChatResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = quan_miao_light_app_20240801_models.RunHotTopicChatShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.generate_options):
+            request.generate_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.generate_options, 'generateOptions', 'json')
+        if not UtilClient.is_unset(tmp_req.hot_topics):
+            request.hot_topics_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hot_topics, 'hotTopics', 'json')
+        if not UtilClient.is_unset(tmp_req.step_for_broadcast_content_config):
+            request.step_for_broadcast_content_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.step_for_broadcast_content_config, 'stepForBroadcastContentConfig', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.category):
+            body['category'] = request.category
+        if not UtilClient.is_unset(request.generate_options_shrink):
+            body['generateOptions'] = request.generate_options_shrink
+        if not UtilClient.is_unset(request.hot_topic_version):
+            body['hotTopicVersion'] = request.hot_topic_version
+        if not UtilClient.is_unset(request.hot_topics_shrink):
+            body['hotTopics'] = request.hot_topics_shrink
+        if not UtilClient.is_unset(request.image_count):
+            body['imageCount'] = request.image_count
+        if not UtilClient.is_unset(request.model_custom_prompt_template):
+            body['modelCustomPromptTemplate'] = request.model_custom_prompt_template
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.original_session_id):
+            body['originalSessionId'] = request.original_session_id
+        if not UtilClient.is_unset(request.prompt):
+            body['prompt'] = request.prompt
+        if not UtilClient.is_unset(request.step_for_broadcast_content_config_shrink):
+            body['stepForBroadcastContentConfig'] = request.step_for_broadcast_content_config_shrink
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunHotTopicChat',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/runHotTopicChat',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunHotTopicChatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_hot_topic_chat(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunHotTopicChatRequest,
+    ) -> quan_miao_light_app_20240801_models.RunHotTopicChatResponse:
+        """
+        @summary 轻应用-热点播报-问答
+        
+        @param request: RunHotTopicChatRequest
+        @return: RunHotTopicChatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.run_hot_topic_chat_with_options(workspace_id, request, headers, runtime)
+
+    async def run_hot_topic_chat_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunHotTopicChatRequest,
+    ) -> quan_miao_light_app_20240801_models.RunHotTopicChatResponse:
+        """
+        @summary 轻应用-热点播报-问答
+        
+        @param request: RunHotTopicChatRequest
+        @return: RunHotTopicChatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.run_hot_topic_chat_with_options_async(workspace_id, request, headers, runtime)
+
+    def run_hot_topic_summary_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: quan_miao_light_app_20240801_models.RunHotTopicSummaryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.RunHotTopicSummaryResponse:
+        """
+        @summary 轻应用-热点播报-热点摘要生成
+        
+        @param tmp_req: RunHotTopicSummaryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunHotTopicSummaryResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = quan_miao_light_app_20240801_models.RunHotTopicSummaryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.step_for_custom_summary_style_config):
+            request.step_for_custom_summary_style_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.step_for_custom_summary_style_config, 'stepForCustomSummaryStyleConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.topic_ids):
+            request.topic_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.topic_ids, 'topicIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.hot_topic_version):
+            body['hotTopicVersion'] = request.hot_topic_version
+        if not UtilClient.is_unset(request.step_for_custom_summary_style_config_shrink):
+            body['stepForCustomSummaryStyleConfig'] = request.step_for_custom_summary_style_config_shrink
+        if not UtilClient.is_unset(request.topic_ids_shrink):
+            body['topicIds'] = request.topic_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunHotTopicSummary',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/runHotTopicSummary',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunHotTopicSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_hot_topic_summary_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: quan_miao_light_app_20240801_models.RunHotTopicSummaryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.RunHotTopicSummaryResponse:
+        """
+        @summary 轻应用-热点播报-热点摘要生成
+        
+        @param tmp_req: RunHotTopicSummaryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunHotTopicSummaryResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = quan_miao_light_app_20240801_models.RunHotTopicSummaryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.step_for_custom_summary_style_config):
+            request.step_for_custom_summary_style_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.step_for_custom_summary_style_config, 'stepForCustomSummaryStyleConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.topic_ids):
+            request.topic_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.topic_ids, 'topicIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.hot_topic_version):
+            body['hotTopicVersion'] = request.hot_topic_version
+        if not UtilClient.is_unset(request.step_for_custom_summary_style_config_shrink):
+            body['stepForCustomSummaryStyleConfig'] = request.step_for_custom_summary_style_config_shrink
+        if not UtilClient.is_unset(request.topic_ids_shrink):
+            body['topicIds'] = request.topic_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunHotTopicSummary',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/runHotTopicSummary',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunHotTopicSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_hot_topic_summary(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunHotTopicSummaryRequest,
+    ) -> quan_miao_light_app_20240801_models.RunHotTopicSummaryResponse:
+        """
+        @summary 轻应用-热点播报-热点摘要生成
+        
+        @param request: RunHotTopicSummaryRequest
+        @return: RunHotTopicSummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.run_hot_topic_summary_with_options(workspace_id, request, headers, runtime)
+
+    async def run_hot_topic_summary_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunHotTopicSummaryRequest,
+    ) -> quan_miao_light_app_20240801_models.RunHotTopicSummaryResponse:
+        """
+        @summary 轻应用-热点播报-热点摘要生成
+        
+        @param request: RunHotTopicSummaryRequest
+        @return: RunHotTopicSummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.run_hot_topic_summary_with_options_async(workspace_id, request, headers, runtime)
+
     def run_marketing_information_extract_with_options(
         self,
         workspace_id: str,

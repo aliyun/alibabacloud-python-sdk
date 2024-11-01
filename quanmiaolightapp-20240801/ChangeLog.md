@@ -1,3 +1,8 @@
+2024-11-01 Version: 1.4.0
+- Support API RunHotTopicChat.
+- Support API RunHotTopicSummary.
+
+
 2024-09-26 Version: 1.3.0
 - Support API GenerateBroadcastNews.
 - Support API RunCommentGeneration.

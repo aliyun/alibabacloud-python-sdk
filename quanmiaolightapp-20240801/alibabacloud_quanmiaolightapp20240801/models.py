@@ -1032,6 +1032,1102 @@ class RunCommentGenerationResponse(TeaModel):
         return self
 
 
+class RunHotTopicChatRequestStepForBroadcastContentConfigCustomHotValueWeights(TeaModel):
+    def __init__(
+        self,
+        dimension: str = None,
+        weight: int = None,
+    ):
+        self.dimension = dimension
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dimension is not None:
+            result['dimension'] = self.dimension
+        if self.weight is not None:
+            result['weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('dimension') is not None:
+            self.dimension = m.get('dimension')
+        if m.get('weight') is not None:
+            self.weight = m.get('weight')
+        return self
+
+
+class RunHotTopicChatRequestStepForBroadcastContentConfig(TeaModel):
+    def __init__(
+        self,
+        categories: List[str] = None,
+        custom_hot_value_weights: List[RunHotTopicChatRequestStepForBroadcastContentConfigCustomHotValueWeights] = None,
+        topic_count: int = None,
+    ):
+        self.categories = categories
+        self.custom_hot_value_weights = custom_hot_value_weights
+        self.topic_count = topic_count
+
+    def validate(self):
+        if self.custom_hot_value_weights:
+            for k in self.custom_hot_value_weights:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.categories is not None:
+            result['categories'] = self.categories
+        result['customHotValueWeights'] = []
+        if self.custom_hot_value_weights is not None:
+            for k in self.custom_hot_value_weights:
+                result['customHotValueWeights'].append(k.to_map() if k else None)
+        if self.topic_count is not None:
+            result['topicCount'] = self.topic_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('categories') is not None:
+            self.categories = m.get('categories')
+        self.custom_hot_value_weights = []
+        if m.get('customHotValueWeights') is not None:
+            for k in m.get('customHotValueWeights'):
+                temp_model = RunHotTopicChatRequestStepForBroadcastContentConfigCustomHotValueWeights()
+                self.custom_hot_value_weights.append(temp_model.from_map(k))
+        if m.get('topicCount') is not None:
+            self.topic_count = m.get('topicCount')
+        return self
+
+
+class RunHotTopicChatRequest(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        generate_options: List[str] = None,
+        hot_topic_version: str = None,
+        hot_topics: List[str] = None,
+        image_count: int = None,
+        model_custom_prompt_template: str = None,
+        model_id: str = None,
+        original_session_id: str = None,
+        prompt: str = None,
+        step_for_broadcast_content_config: RunHotTopicChatRequestStepForBroadcastContentConfig = None,
+        task_id: str = None,
+    ):
+        self.category = category
+        self.generate_options = generate_options
+        self.hot_topic_version = hot_topic_version
+        self.hot_topics = hot_topics
+        self.image_count = image_count
+        self.model_custom_prompt_template = model_custom_prompt_template
+        self.model_id = model_id
+        self.original_session_id = original_session_id
+        self.prompt = prompt
+        self.step_for_broadcast_content_config = step_for_broadcast_content_config
+        self.task_id = task_id
+
+    def validate(self):
+        if self.step_for_broadcast_content_config:
+            self.step_for_broadcast_content_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['category'] = self.category
+        if self.generate_options is not None:
+            result['generateOptions'] = self.generate_options
+        if self.hot_topic_version is not None:
+            result['hotTopicVersion'] = self.hot_topic_version
+        if self.hot_topics is not None:
+            result['hotTopics'] = self.hot_topics
+        if self.image_count is not None:
+            result['imageCount'] = self.image_count
+        if self.model_custom_prompt_template is not None:
+            result['modelCustomPromptTemplate'] = self.model_custom_prompt_template
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        if self.original_session_id is not None:
+            result['originalSessionId'] = self.original_session_id
+        if self.prompt is not None:
+            result['prompt'] = self.prompt
+        if self.step_for_broadcast_content_config is not None:
+            result['stepForBroadcastContentConfig'] = self.step_for_broadcast_content_config.to_map()
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        if m.get('generateOptions') is not None:
+            self.generate_options = m.get('generateOptions')
+        if m.get('hotTopicVersion') is not None:
+            self.hot_topic_version = m.get('hotTopicVersion')
+        if m.get('hotTopics') is not None:
+            self.hot_topics = m.get('hotTopics')
+        if m.get('imageCount') is not None:
+            self.image_count = m.get('imageCount')
+        if m.get('modelCustomPromptTemplate') is not None:
+            self.model_custom_prompt_template = m.get('modelCustomPromptTemplate')
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        if m.get('originalSessionId') is not None:
+            self.original_session_id = m.get('originalSessionId')
+        if m.get('prompt') is not None:
+            self.prompt = m.get('prompt')
+        if m.get('stepForBroadcastContentConfig') is not None:
+            temp_model = RunHotTopicChatRequestStepForBroadcastContentConfig()
+            self.step_for_broadcast_content_config = temp_model.from_map(m['stepForBroadcastContentConfig'])
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class RunHotTopicChatShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        generate_options_shrink: str = None,
+        hot_topic_version: str = None,
+        hot_topics_shrink: str = None,
+        image_count: int = None,
+        model_custom_prompt_template: str = None,
+        model_id: str = None,
+        original_session_id: str = None,
+        prompt: str = None,
+        step_for_broadcast_content_config_shrink: str = None,
+        task_id: str = None,
+    ):
+        self.category = category
+        self.generate_options_shrink = generate_options_shrink
+        self.hot_topic_version = hot_topic_version
+        self.hot_topics_shrink = hot_topics_shrink
+        self.image_count = image_count
+        self.model_custom_prompt_template = model_custom_prompt_template
+        self.model_id = model_id
+        self.original_session_id = original_session_id
+        self.prompt = prompt
+        self.step_for_broadcast_content_config_shrink = step_for_broadcast_content_config_shrink
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['category'] = self.category
+        if self.generate_options_shrink is not None:
+            result['generateOptions'] = self.generate_options_shrink
+        if self.hot_topic_version is not None:
+            result['hotTopicVersion'] = self.hot_topic_version
+        if self.hot_topics_shrink is not None:
+            result['hotTopics'] = self.hot_topics_shrink
+        if self.image_count is not None:
+            result['imageCount'] = self.image_count
+        if self.model_custom_prompt_template is not None:
+            result['modelCustomPromptTemplate'] = self.model_custom_prompt_template
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        if self.original_session_id is not None:
+            result['originalSessionId'] = self.original_session_id
+        if self.prompt is not None:
+            result['prompt'] = self.prompt
+        if self.step_for_broadcast_content_config_shrink is not None:
+            result['stepForBroadcastContentConfig'] = self.step_for_broadcast_content_config_shrink
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        if m.get('generateOptions') is not None:
+            self.generate_options_shrink = m.get('generateOptions')
+        if m.get('hotTopicVersion') is not None:
+            self.hot_topic_version = m.get('hotTopicVersion')
+        if m.get('hotTopics') is not None:
+            self.hot_topics_shrink = m.get('hotTopics')
+        if m.get('imageCount') is not None:
+            self.image_count = m.get('imageCount')
+        if m.get('modelCustomPromptTemplate') is not None:
+            self.model_custom_prompt_template = m.get('modelCustomPromptTemplate')
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        if m.get('originalSessionId') is not None:
+            self.original_session_id = m.get('originalSessionId')
+        if m.get('prompt') is not None:
+            self.prompt = m.get('prompt')
+        if m.get('stepForBroadcastContentConfig') is not None:
+            self.step_for_broadcast_content_config_shrink = m.get('stepForBroadcastContentConfig')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class RunHotTopicChatResponseBodyHeader(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        event: str = None,
+        event_info: str = None,
+        session_id: str = None,
+        task_id: str = None,
+        trace_id: str = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.event = event
+        self.event_info = event_info
+        self.session_id = session_id
+        self.task_id = task_id
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.event is not None:
+            result['event'] = self.event
+        if self.event_info is not None:
+            result['eventInfo'] = self.event_info
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('event') is not None:
+            self.event = m.get('event')
+        if m.get('eventInfo') is not None:
+            self.event_info = m.get('eventInfo')
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class RunHotTopicChatResponseBodyPayloadOutputArticles(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        pub_time: str = None,
+        score: float = None,
+        search_source_name: str = None,
+        select: bool = None,
+        summary: str = None,
+        title: str = None,
+        url: str = None,
+    ):
+        self.content = content
+        self.pub_time = pub_time
+        self.score = score
+        self.search_source_name = search_source_name
+        self.select = select
+        self.summary = summary
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.pub_time is not None:
+            result['pubTime'] = self.pub_time
+        if self.score is not None:
+            result['score'] = self.score
+        if self.search_source_name is not None:
+            result['searchSourceName'] = self.search_source_name
+        if self.select is not None:
+            result['select'] = self.select
+        if self.summary is not None:
+            result['summary'] = self.summary
+        if self.title is not None:
+            result['title'] = self.title
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('pubTime') is not None:
+            self.pub_time = m.get('pubTime')
+        if m.get('score') is not None:
+            self.score = m.get('score')
+        if m.get('searchSourceName') is not None:
+            self.search_source_name = m.get('searchSourceName')
+        if m.get('select') is not None:
+            self.select = m.get('select')
+        if m.get('summary') is not None:
+            self.summary = m.get('summary')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries(TeaModel):
+    def __init__(
+        self,
+        custom_hot_value: float = None,
+        hot_topic: str = None,
+        hot_topic_version: str = None,
+        hot_value: float = None,
+    ):
+        self.custom_hot_value = custom_hot_value
+        self.hot_topic = hot_topic
+        self.hot_topic_version = hot_topic_version
+        self.hot_value = hot_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_hot_value is not None:
+            result['customHotValue'] = self.custom_hot_value
+        if self.hot_topic is not None:
+            result['hotTopic'] = self.hot_topic
+        if self.hot_topic_version is not None:
+            result['hotTopicVersion'] = self.hot_topic_version
+        if self.hot_value is not None:
+            result['hotValue'] = self.hot_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('customHotValue') is not None:
+            self.custom_hot_value = m.get('customHotValue')
+        if m.get('hotTopic') is not None:
+            self.hot_topic = m.get('hotTopic')
+        if m.get('hotTopicVersion') is not None:
+            self.hot_topic_version = m.get('hotTopicVersion')
+        if m.get('hotValue') is not None:
+            self.hot_value = m.get('hotValue')
+        return self
+
+
+class RunHotTopicChatResponseBodyPayloadOutputMultimodalMedias(TeaModel):
+    def __init__(
+        self,
+        file_url: str = None,
+        media_type: str = None,
+        sort_score: float = None,
+    ):
+        self.file_url = file_url
+        self.media_type = media_type
+        self.sort_score = sort_score
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_url is not None:
+            result['fileUrl'] = self.file_url
+        if self.media_type is not None:
+            result['mediaType'] = self.media_type
+        if self.sort_score is not None:
+            result['sortScore'] = self.sort_score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileUrl') is not None:
+            self.file_url = m.get('fileUrl')
+        if m.get('mediaType') is not None:
+            self.media_type = m.get('mediaType')
+        if m.get('sortScore') is not None:
+            self.sort_score = m.get('sortScore')
+        return self
+
+
+class RunHotTopicChatResponseBodyPayloadOutput(TeaModel):
+    def __init__(
+        self,
+        articles: List[RunHotTopicChatResponseBodyPayloadOutputArticles] = None,
+        hot_topic_summaries: List[RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries] = None,
+        multimodal_medias: List[RunHotTopicChatResponseBodyPayloadOutputMultimodalMedias] = None,
+        recommend_queries: List[str] = None,
+        search_query: str = None,
+        text: str = None,
+    ):
+        self.articles = articles
+        self.hot_topic_summaries = hot_topic_summaries
+        self.multimodal_medias = multimodal_medias
+        self.recommend_queries = recommend_queries
+        self.search_query = search_query
+        self.text = text
+
+    def validate(self):
+        if self.articles:
+            for k in self.articles:
+                if k:
+                    k.validate()
+        if self.hot_topic_summaries:
+            for k in self.hot_topic_summaries:
+                if k:
+                    k.validate()
+        if self.multimodal_medias:
+            for k in self.multimodal_medias:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['articles'] = []
+        if self.articles is not None:
+            for k in self.articles:
+                result['articles'].append(k.to_map() if k else None)
+        result['hotTopicSummaries'] = []
+        if self.hot_topic_summaries is not None:
+            for k in self.hot_topic_summaries:
+                result['hotTopicSummaries'].append(k.to_map() if k else None)
+        result['multimodalMedias'] = []
+        if self.multimodal_medias is not None:
+            for k in self.multimodal_medias:
+                result['multimodalMedias'].append(k.to_map() if k else None)
+        if self.recommend_queries is not None:
+            result['recommendQueries'] = self.recommend_queries
+        if self.search_query is not None:
+            result['searchQuery'] = self.search_query
+        if self.text is not None:
+            result['text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.articles = []
+        if m.get('articles') is not None:
+            for k in m.get('articles'):
+                temp_model = RunHotTopicChatResponseBodyPayloadOutputArticles()
+                self.articles.append(temp_model.from_map(k))
+        self.hot_topic_summaries = []
+        if m.get('hotTopicSummaries') is not None:
+            for k in m.get('hotTopicSummaries'):
+                temp_model = RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries()
+                self.hot_topic_summaries.append(temp_model.from_map(k))
+        self.multimodal_medias = []
+        if m.get('multimodalMedias') is not None:
+            for k in m.get('multimodalMedias'):
+                temp_model = RunHotTopicChatResponseBodyPayloadOutputMultimodalMedias()
+                self.multimodal_medias.append(temp_model.from_map(k))
+        if m.get('recommendQueries') is not None:
+            self.recommend_queries = m.get('recommendQueries')
+        if m.get('searchQuery') is not None:
+            self.search_query = m.get('searchQuery')
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        return self
+
+
+class RunHotTopicChatResponseBodyPayloadUsage(TeaModel):
+    def __init__(
+        self,
+        input_tokens: int = None,
+        output_tokens: int = None,
+        total_tokens: int = None,
+    ):
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+        self.total_tokens = total_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_tokens is not None:
+            result['inputTokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['outputTokens'] = self.output_tokens
+        if self.total_tokens is not None:
+            result['totalTokens'] = self.total_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('inputTokens') is not None:
+            self.input_tokens = m.get('inputTokens')
+        if m.get('outputTokens') is not None:
+            self.output_tokens = m.get('outputTokens')
+        if m.get('totalTokens') is not None:
+            self.total_tokens = m.get('totalTokens')
+        return self
+
+
+class RunHotTopicChatResponseBodyPayload(TeaModel):
+    def __init__(
+        self,
+        output: RunHotTopicChatResponseBodyPayloadOutput = None,
+        usage: RunHotTopicChatResponseBodyPayloadUsage = None,
+    ):
+        self.output = output
+        self.usage = usage
+
+    def validate(self):
+        if self.output:
+            self.output.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output is not None:
+            result['output'] = self.output.to_map()
+        if self.usage is not None:
+            result['usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('output') is not None:
+            temp_model = RunHotTopicChatResponseBodyPayloadOutput()
+            self.output = temp_model.from_map(m['output'])
+        if m.get('usage') is not None:
+            temp_model = RunHotTopicChatResponseBodyPayloadUsage()
+            self.usage = temp_model.from_map(m['usage'])
+        return self
+
+
+class RunHotTopicChatResponseBody(TeaModel):
+    def __init__(
+        self,
+        header: RunHotTopicChatResponseBodyHeader = None,
+        payload: RunHotTopicChatResponseBodyPayload = None,
+        request_id: str = None,
+    ):
+        self.header = header
+        self.payload = payload
+        self.request_id = request_id
+
+    def validate(self):
+        if self.header:
+            self.header.validate()
+        if self.payload:
+            self.payload.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.header is not None:
+            result['header'] = self.header.to_map()
+        if self.payload is not None:
+            result['payload'] = self.payload.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('header') is not None:
+            temp_model = RunHotTopicChatResponseBodyHeader()
+            self.header = temp_model.from_map(m['header'])
+        if m.get('payload') is not None:
+            temp_model = RunHotTopicChatResponseBodyPayload()
+            self.payload = temp_model.from_map(m['payload'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class RunHotTopicChatResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RunHotTopicChatResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RunHotTopicChatResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RunHotTopicSummaryRequestStepForCustomSummaryStyleConfig(TeaModel):
+    def __init__(
+        self,
+        summary_image_count: int = None,
+        summary_model: str = None,
+        summary_prompt: str = None,
+    ):
+        self.summary_image_count = summary_image_count
+        # This parameter is required.
+        self.summary_model = summary_model
+        self.summary_prompt = summary_prompt
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.summary_image_count is not None:
+            result['summaryImageCount'] = self.summary_image_count
+        if self.summary_model is not None:
+            result['summaryModel'] = self.summary_model
+        if self.summary_prompt is not None:
+            result['summaryPrompt'] = self.summary_prompt
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('summaryImageCount') is not None:
+            self.summary_image_count = m.get('summaryImageCount')
+        if m.get('summaryModel') is not None:
+            self.summary_model = m.get('summaryModel')
+        if m.get('summaryPrompt') is not None:
+            self.summary_prompt = m.get('summaryPrompt')
+        return self
+
+
+class RunHotTopicSummaryRequest(TeaModel):
+    def __init__(
+        self,
+        hot_topic_version: str = None,
+        step_for_custom_summary_style_config: RunHotTopicSummaryRequestStepForCustomSummaryStyleConfig = None,
+        topic_ids: List[str] = None,
+    ):
+        # This parameter is required.
+        self.hot_topic_version = hot_topic_version
+        # This parameter is required.
+        self.step_for_custom_summary_style_config = step_for_custom_summary_style_config
+        # This parameter is required.
+        self.topic_ids = topic_ids
+
+    def validate(self):
+        if self.step_for_custom_summary_style_config:
+            self.step_for_custom_summary_style_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hot_topic_version is not None:
+            result['hotTopicVersion'] = self.hot_topic_version
+        if self.step_for_custom_summary_style_config is not None:
+            result['stepForCustomSummaryStyleConfig'] = self.step_for_custom_summary_style_config.to_map()
+        if self.topic_ids is not None:
+            result['topicIds'] = self.topic_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('hotTopicVersion') is not None:
+            self.hot_topic_version = m.get('hotTopicVersion')
+        if m.get('stepForCustomSummaryStyleConfig') is not None:
+            temp_model = RunHotTopicSummaryRequestStepForCustomSummaryStyleConfig()
+            self.step_for_custom_summary_style_config = temp_model.from_map(m['stepForCustomSummaryStyleConfig'])
+        if m.get('topicIds') is not None:
+            self.topic_ids = m.get('topicIds')
+        return self
+
+
+class RunHotTopicSummaryShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        hot_topic_version: str = None,
+        step_for_custom_summary_style_config_shrink: str = None,
+        topic_ids_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.hot_topic_version = hot_topic_version
+        # This parameter is required.
+        self.step_for_custom_summary_style_config_shrink = step_for_custom_summary_style_config_shrink
+        # This parameter is required.
+        self.topic_ids_shrink = topic_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hot_topic_version is not None:
+            result['hotTopicVersion'] = self.hot_topic_version
+        if self.step_for_custom_summary_style_config_shrink is not None:
+            result['stepForCustomSummaryStyleConfig'] = self.step_for_custom_summary_style_config_shrink
+        if self.topic_ids_shrink is not None:
+            result['topicIds'] = self.topic_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('hotTopicVersion') is not None:
+            self.hot_topic_version = m.get('hotTopicVersion')
+        if m.get('stepForCustomSummaryStyleConfig') is not None:
+            self.step_for_custom_summary_style_config_shrink = m.get('stepForCustomSummaryStyleConfig')
+        if m.get('topicIds') is not None:
+            self.topic_ids_shrink = m.get('topicIds')
+        return self
+
+
+class RunHotTopicSummaryResponseBodyHeader(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        event: str = None,
+        session_id: str = None,
+        task_id: str = None,
+        trace_id: str = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.event = event
+        self.session_id = session_id
+        self.task_id = task_id
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.event is not None:
+            result['event'] = self.event
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('event') is not None:
+            self.event = m.get('event')
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class RunHotTopicSummaryResponseBodyPayloadOutput(TeaModel):
+    def __init__(
+        self,
+        text: str = None,
+        topic_id: str = None,
+    ):
+        self.text = text
+        self.topic_id = topic_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.text is not None:
+            result['text'] = self.text
+        if self.topic_id is not None:
+            result['topicId'] = self.topic_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        if m.get('topicId') is not None:
+            self.topic_id = m.get('topicId')
+        return self
+
+
+class RunHotTopicSummaryResponseBodyPayloadUsage(TeaModel):
+    def __init__(
+        self,
+        input_tokens: int = None,
+        output_tokens: int = None,
+        total_tokens: int = None,
+    ):
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+        self.total_tokens = total_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_tokens is not None:
+            result['inputTokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['outputTokens'] = self.output_tokens
+        if self.total_tokens is not None:
+            result['totalTokens'] = self.total_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('inputTokens') is not None:
+            self.input_tokens = m.get('inputTokens')
+        if m.get('outputTokens') is not None:
+            self.output_tokens = m.get('outputTokens')
+        if m.get('totalTokens') is not None:
+            self.total_tokens = m.get('totalTokens')
+        return self
+
+
+class RunHotTopicSummaryResponseBodyPayload(TeaModel):
+    def __init__(
+        self,
+        output: RunHotTopicSummaryResponseBodyPayloadOutput = None,
+        usage: RunHotTopicSummaryResponseBodyPayloadUsage = None,
+    ):
+        self.output = output
+        self.usage = usage
+
+    def validate(self):
+        if self.output:
+            self.output.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output is not None:
+            result['output'] = self.output.to_map()
+        if self.usage is not None:
+            result['usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('output') is not None:
+            temp_model = RunHotTopicSummaryResponseBodyPayloadOutput()
+            self.output = temp_model.from_map(m['output'])
+        if m.get('usage') is not None:
+            temp_model = RunHotTopicSummaryResponseBodyPayloadUsage()
+            self.usage = temp_model.from_map(m['usage'])
+        return self
+
+
+class RunHotTopicSummaryResponseBody(TeaModel):
+    def __init__(
+        self,
+        header: RunHotTopicSummaryResponseBodyHeader = None,
+        payload: RunHotTopicSummaryResponseBodyPayload = None,
+        request_id: str = None,
+    ):
+        self.header = header
+        self.payload = payload
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.header:
+            self.header.validate()
+        if self.payload:
+            self.payload.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.header is not None:
+            result['header'] = self.header.to_map()
+        if self.payload is not None:
+            result['payload'] = self.payload.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('header') is not None:
+            temp_model = RunHotTopicSummaryResponseBodyHeader()
+            self.header = temp_model.from_map(m['header'])
+        if m.get('payload') is not None:
+            temp_model = RunHotTopicSummaryResponseBodyPayload()
+            self.payload = temp_model.from_map(m['payload'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class RunHotTopicSummaryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RunHotTopicSummaryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RunHotTopicSummaryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RunMarketingInformationExtractRequest(TeaModel):
     def __init__(
         self,
