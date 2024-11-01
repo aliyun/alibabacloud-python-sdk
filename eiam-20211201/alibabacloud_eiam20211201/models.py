@@ -20728,11 +20728,11 @@ class UnlockUserRequest(TeaModel):
         instance_id: str = None,
         user_id: str = None,
     ):
-        # The instance ID.
+        # IDaaS EIAM实例的ID。
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The account ID.
+        # 账户ID
         # 
         # This parameter is required.
         self.user_id = user_id
@@ -20766,7 +20766,6 @@ class UnlockUserResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

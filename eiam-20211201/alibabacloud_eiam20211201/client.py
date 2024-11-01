@@ -10705,7 +10705,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.UnlockUserResponse:
         """
-        @summary Unlocks an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS) that is locked.
+        @summary 解锁账户
         
         @param request: UnlockUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10742,7 +10742,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.UnlockUserResponse:
         """
-        @summary Unlocks an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS) that is locked.
+        @summary 解锁账户
         
         @param request: UnlockUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10778,7 +10778,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.UnlockUserRequest,
     ) -> eiam_20211201_models.UnlockUserResponse:
         """
-        @summary Unlocks an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS) that is locked.
+        @summary 解锁账户
         
         @param request: UnlockUserRequest
         @return: UnlockUserResponse
@@ -10791,7 +10791,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.UnlockUserRequest,
     ) -> eiam_20211201_models.UnlockUserResponse:
         """
-        @summary Unlocks an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS) that is locked.
+        @summary 解锁账户
         
         @param request: UnlockUserRequest
         @return: UnlockUserResponse
