@@ -3773,6 +3773,180 @@ class GenerateViewPointResponse(TeaModel):
         return self
 
 
+class GetCustomHotTopicBroadcastJobRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.task_id = task_id
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class GetCustomHotTopicBroadcastJobResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        hot_topic_version: str = None,
+        status: str = None,
+    ):
+        self.error_message = error_message
+        self.hot_topic_version = hot_topic_version
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.hot_topic_version is not None:
+            result['HotTopicVersion'] = self.hot_topic_version
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HotTopicVersion') is not None:
+            self.hot_topic_version = m.get('HotTopicVersion')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetCustomHotTopicBroadcastJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetCustomHotTopicBroadcastJobResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetCustomHotTopicBroadcastJobResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetCustomHotTopicBroadcastJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetCustomHotTopicBroadcastJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetCustomHotTopicBroadcastJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetCustomTextRequest(TeaModel):
     def __init__(
         self,
@@ -5005,6 +5179,881 @@ class GetGeneratedContentResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetGeneratedContentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetHotTopicBroadcastRequestStepForCustomSummaryStyleConfig(TeaModel):
+    def __init__(
+        self,
+        summary_image_count: int = None,
+        summary_model: str = None,
+        summary_prompt: str = None,
+    ):
+        self.summary_image_count = summary_image_count
+        # This parameter is required.
+        self.summary_model = summary_model
+        self.summary_prompt = summary_prompt
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.summary_image_count is not None:
+            result['SummaryImageCount'] = self.summary_image_count
+        if self.summary_model is not None:
+            result['SummaryModel'] = self.summary_model
+        if self.summary_prompt is not None:
+            result['SummaryPrompt'] = self.summary_prompt
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SummaryImageCount') is not None:
+            self.summary_image_count = m.get('SummaryImageCount')
+        if m.get('SummaryModel') is not None:
+            self.summary_model = m.get('SummaryModel')
+        if m.get('SummaryPrompt') is not None:
+            self.summary_prompt = m.get('SummaryPrompt')
+        return self
+
+
+class GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfigCustomHotValueWeights(TeaModel):
+    def __init__(
+        self,
+        dimension: str = None,
+        weight: int = None,
+    ):
+        self.dimension = dimension
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dimension is not None:
+            result['Dimension'] = self.dimension
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Dimension') is not None:
+            self.dimension = m.get('Dimension')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        return self
+
+
+class GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfig(TeaModel):
+    def __init__(
+        self,
+        categories: List[str] = None,
+        custom_hot_value_weights: List[GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfigCustomHotValueWeights] = None,
+        topic_count: int = None,
+    ):
+        self.categories = categories
+        self.custom_hot_value_weights = custom_hot_value_weights
+        self.topic_count = topic_count
+
+    def validate(self):
+        if self.custom_hot_value_weights:
+            for k in self.custom_hot_value_weights:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.categories is not None:
+            result['Categories'] = self.categories
+        result['CustomHotValueWeights'] = []
+        if self.custom_hot_value_weights is not None:
+            for k in self.custom_hot_value_weights:
+                result['CustomHotValueWeights'].append(k.to_map() if k else None)
+        if self.topic_count is not None:
+            result['TopicCount'] = self.topic_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Categories') is not None:
+            self.categories = m.get('Categories')
+        self.custom_hot_value_weights = []
+        if m.get('CustomHotValueWeights') is not None:
+            for k in m.get('CustomHotValueWeights'):
+                temp_model = GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfigCustomHotValueWeights()
+                self.custom_hot_value_weights.append(temp_model.from_map(k))
+        if m.get('TopicCount') is not None:
+            self.topic_count = m.get('TopicCount')
+        return self
+
+
+class GetHotTopicBroadcastRequest(TeaModel):
+    def __init__(
+        self,
+        calc_total_token: bool = None,
+        category: str = None,
+        current: int = None,
+        hot_topic_version: str = None,
+        size: int = None,
+        step_for_custom_summary_style_config: GetHotTopicBroadcastRequestStepForCustomSummaryStyleConfig = None,
+        step_for_news_broadcast_content_config: GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfig = None,
+        topics: List[str] = None,
+        workspace_id: str = None,
+    ):
+        self.calc_total_token = calc_total_token
+        self.category = category
+        self.current = current
+        self.hot_topic_version = hot_topic_version
+        self.size = size
+        self.step_for_custom_summary_style_config = step_for_custom_summary_style_config
+        self.step_for_news_broadcast_content_config = step_for_news_broadcast_content_config
+        self.topics = topics
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.step_for_custom_summary_style_config:
+            self.step_for_custom_summary_style_config.validate()
+        if self.step_for_news_broadcast_content_config:
+            self.step_for_news_broadcast_content_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.calc_total_token is not None:
+            result['CalcTotalToken'] = self.calc_total_token
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.current is not None:
+            result['Current'] = self.current
+        if self.hot_topic_version is not None:
+            result['HotTopicVersion'] = self.hot_topic_version
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.step_for_custom_summary_style_config is not None:
+            result['StepForCustomSummaryStyleConfig'] = self.step_for_custom_summary_style_config.to_map()
+        if self.step_for_news_broadcast_content_config is not None:
+            result['StepForNewsBroadcastContentConfig'] = self.step_for_news_broadcast_content_config.to_map()
+        if self.topics is not None:
+            result['Topics'] = self.topics
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CalcTotalToken') is not None:
+            self.calc_total_token = m.get('CalcTotalToken')
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('Current') is not None:
+            self.current = m.get('Current')
+        if m.get('HotTopicVersion') is not None:
+            self.hot_topic_version = m.get('HotTopicVersion')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('StepForCustomSummaryStyleConfig') is not None:
+            temp_model = GetHotTopicBroadcastRequestStepForCustomSummaryStyleConfig()
+            self.step_for_custom_summary_style_config = temp_model.from_map(m['StepForCustomSummaryStyleConfig'])
+        if m.get('StepForNewsBroadcastContentConfig') is not None:
+            temp_model = GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfig()
+            self.step_for_news_broadcast_content_config = temp_model.from_map(m['StepForNewsBroadcastContentConfig'])
+        if m.get('Topics') is not None:
+            self.topics = m.get('Topics')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class GetHotTopicBroadcastShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        calc_total_token: bool = None,
+        category: str = None,
+        current: int = None,
+        hot_topic_version: str = None,
+        size: int = None,
+        step_for_custom_summary_style_config_shrink: str = None,
+        step_for_news_broadcast_content_config_shrink: str = None,
+        topics_shrink: str = None,
+        workspace_id: str = None,
+    ):
+        self.calc_total_token = calc_total_token
+        self.category = category
+        self.current = current
+        self.hot_topic_version = hot_topic_version
+        self.size = size
+        self.step_for_custom_summary_style_config_shrink = step_for_custom_summary_style_config_shrink
+        self.step_for_news_broadcast_content_config_shrink = step_for_news_broadcast_content_config_shrink
+        self.topics_shrink = topics_shrink
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.calc_total_token is not None:
+            result['CalcTotalToken'] = self.calc_total_token
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.current is not None:
+            result['Current'] = self.current
+        if self.hot_topic_version is not None:
+            result['HotTopicVersion'] = self.hot_topic_version
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.step_for_custom_summary_style_config_shrink is not None:
+            result['StepForCustomSummaryStyleConfig'] = self.step_for_custom_summary_style_config_shrink
+        if self.step_for_news_broadcast_content_config_shrink is not None:
+            result['StepForNewsBroadcastContentConfig'] = self.step_for_news_broadcast_content_config_shrink
+        if self.topics_shrink is not None:
+            result['Topics'] = self.topics_shrink
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CalcTotalToken') is not None:
+            self.calc_total_token = m.get('CalcTotalToken')
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('Current') is not None:
+            self.current = m.get('Current')
+        if m.get('HotTopicVersion') is not None:
+            self.hot_topic_version = m.get('HotTopicVersion')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('StepForCustomSummaryStyleConfig') is not None:
+            self.step_for_custom_summary_style_config_shrink = m.get('StepForCustomSummaryStyleConfig')
+        if m.get('StepForNewsBroadcastContentConfig') is not None:
+            self.step_for_news_broadcast_content_config_shrink = m.get('StepForNewsBroadcastContentConfig')
+        if m.get('Topics') is not None:
+            self.topics_shrink = m.get('Topics')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class GetHotTopicBroadcastResponseBodyDataDataImages(TeaModel):
+    def __init__(
+        self,
+        url: str = None,
+    ):
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class GetHotTopicBroadcastResponseBodyDataDataNewsComments(TeaModel):
+    def __init__(
+        self,
+        text: str = None,
+        username: str = None,
+    ):
+        self.text = text
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class GetHotTopicBroadcastResponseBodyDataDataNews(TeaModel):
+    def __init__(
+        self,
+        analysis_category: str = None,
+        analysis_topic: str = None,
+        author: str = None,
+        category: List[str] = None,
+        comments: List[GetHotTopicBroadcastResponseBodyDataDataNewsComments] = None,
+        content: str = None,
+        create_time: str = None,
+        domain: str = None,
+        dt: str = None,
+        hot_topic: str = None,
+        img_list: List[str] = None,
+        logo: str = None,
+        pub_time: str = None,
+        summary: str = None,
+        title: str = None,
+        url: str = None,
+        uuid: str = None,
+        website: str = None,
+    ):
+        self.analysis_category = analysis_category
+        self.analysis_topic = analysis_topic
+        self.author = author
+        self.category = category
+        self.comments = comments
+        self.content = content
+        self.create_time = create_time
+        self.domain = domain
+        self.dt = dt
+        self.hot_topic = hot_topic
+        self.img_list = img_list
+        # logo
+        self.logo = logo
+        self.pub_time = pub_time
+        self.summary = summary
+        self.title = title
+        self.url = url
+        self.uuid = uuid
+        self.website = website
+
+    def validate(self):
+        if self.comments:
+            for k in self.comments:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.analysis_category is not None:
+            result['AnalysisCategory'] = self.analysis_category
+        if self.analysis_topic is not None:
+            result['AnalysisTopic'] = self.analysis_topic
+        if self.author is not None:
+            result['Author'] = self.author
+        if self.category is not None:
+            result['Category'] = self.category
+        result['Comments'] = []
+        if self.comments is not None:
+            for k in self.comments:
+                result['Comments'].append(k.to_map() if k else None)
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.dt is not None:
+            result['Dt'] = self.dt
+        if self.hot_topic is not None:
+            result['HotTopic'] = self.hot_topic
+        if self.img_list is not None:
+            result['ImgList'] = self.img_list
+        if self.logo is not None:
+            result['Logo'] = self.logo
+        if self.pub_time is not None:
+            result['PubTime'] = self.pub_time
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        if self.website is not None:
+            result['Website'] = self.website
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnalysisCategory') is not None:
+            self.analysis_category = m.get('AnalysisCategory')
+        if m.get('AnalysisTopic') is not None:
+            self.analysis_topic = m.get('AnalysisTopic')
+        if m.get('Author') is not None:
+            self.author = m.get('Author')
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        self.comments = []
+        if m.get('Comments') is not None:
+            for k in m.get('Comments'):
+                temp_model = GetHotTopicBroadcastResponseBodyDataDataNewsComments()
+                self.comments.append(temp_model.from_map(k))
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Dt') is not None:
+            self.dt = m.get('Dt')
+        if m.get('HotTopic') is not None:
+            self.hot_topic = m.get('HotTopic')
+        if m.get('ImgList') is not None:
+            self.img_list = m.get('ImgList')
+        if m.get('Logo') is not None:
+            self.logo = m.get('Logo')
+        if m.get('PubTime') is not None:
+            self.pub_time = m.get('PubTime')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        if m.get('Website') is not None:
+            self.website = m.get('Website')
+        return self
+
+
+class GetHotTopicBroadcastResponseBodyDataDataSummarySummaries(TeaModel):
+    def __init__(
+        self,
+        summary: str = None,
+        title: str = None,
+    ):
+        self.summary = summary
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class GetHotTopicBroadcastResponseBodyDataDataSummary(TeaModel):
+    def __init__(
+        self,
+        input_token: int = None,
+        output_token: int = None,
+        summaries: List[GetHotTopicBroadcastResponseBodyDataDataSummarySummaries] = None,
+    ):
+        self.input_token = input_token
+        self.output_token = output_token
+        self.summaries = summaries
+
+    def validate(self):
+        if self.summaries:
+            for k in self.summaries:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_token is not None:
+            result['InputToken'] = self.input_token
+        if self.output_token is not None:
+            result['OutputToken'] = self.output_token
+        result['Summaries'] = []
+        if self.summaries is not None:
+            for k in self.summaries:
+                result['Summaries'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputToken') is not None:
+            self.input_token = m.get('InputToken')
+        if m.get('OutputToken') is not None:
+            self.output_token = m.get('OutputToken')
+        self.summaries = []
+        if m.get('Summaries') is not None:
+            for k in m.get('Summaries'):
+                temp_model = GetHotTopicBroadcastResponseBodyDataDataSummarySummaries()
+                self.summaries.append(temp_model.from_map(k))
+        return self
+
+
+class GetHotTopicBroadcastResponseBodyDataData(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        create_time: str = None,
+        custom_hot_value: float = None,
+        custom_text_summary: str = None,
+        hot_topic: str = None,
+        hot_topic_version: str = None,
+        hot_value: float = None,
+        id: str = None,
+        images: List[GetHotTopicBroadcastResponseBodyDataDataImages] = None,
+        input_token: int = None,
+        news: List[GetHotTopicBroadcastResponseBodyDataDataNews] = None,
+        output_token: int = None,
+        summary: GetHotTopicBroadcastResponseBodyDataDataSummary = None,
+        text_summary: str = None,
+    ):
+        self.category = category
+        self.create_time = create_time
+        self.custom_hot_value = custom_hot_value
+        self.custom_text_summary = custom_text_summary
+        self.hot_topic = hot_topic
+        self.hot_topic_version = hot_topic_version
+        self.hot_value = hot_value
+        self.id = id
+        self.images = images
+        self.input_token = input_token
+        self.news = news
+        self.output_token = output_token
+        self.summary = summary
+        self.text_summary = text_summary
+
+    def validate(self):
+        if self.images:
+            for k in self.images:
+                if k:
+                    k.validate()
+        if self.news:
+            for k in self.news:
+                if k:
+                    k.validate()
+        if self.summary:
+            self.summary.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.custom_hot_value is not None:
+            result['CustomHotValue'] = self.custom_hot_value
+        if self.custom_text_summary is not None:
+            result['CustomTextSummary'] = self.custom_text_summary
+        if self.hot_topic is not None:
+            result['HotTopic'] = self.hot_topic
+        if self.hot_topic_version is not None:
+            result['HotTopicVersion'] = self.hot_topic_version
+        if self.hot_value is not None:
+            result['HotValue'] = self.hot_value
+        if self.id is not None:
+            result['Id'] = self.id
+        result['Images'] = []
+        if self.images is not None:
+            for k in self.images:
+                result['Images'].append(k.to_map() if k else None)
+        if self.input_token is not None:
+            result['InputToken'] = self.input_token
+        result['News'] = []
+        if self.news is not None:
+            for k in self.news:
+                result['News'].append(k.to_map() if k else None)
+        if self.output_token is not None:
+            result['OutputToken'] = self.output_token
+        if self.summary is not None:
+            result['Summary'] = self.summary.to_map()
+        if self.text_summary is not None:
+            result['TextSummary'] = self.text_summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CustomHotValue') is not None:
+            self.custom_hot_value = m.get('CustomHotValue')
+        if m.get('CustomTextSummary') is not None:
+            self.custom_text_summary = m.get('CustomTextSummary')
+        if m.get('HotTopic') is not None:
+            self.hot_topic = m.get('HotTopic')
+        if m.get('HotTopicVersion') is not None:
+            self.hot_topic_version = m.get('HotTopicVersion')
+        if m.get('HotValue') is not None:
+            self.hot_value = m.get('HotValue')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        self.images = []
+        if m.get('Images') is not None:
+            for k in m.get('Images'):
+                temp_model = GetHotTopicBroadcastResponseBodyDataDataImages()
+                self.images.append(temp_model.from_map(k))
+        if m.get('InputToken') is not None:
+            self.input_token = m.get('InputToken')
+        self.news = []
+        if m.get('News') is not None:
+            for k in m.get('News'):
+                temp_model = GetHotTopicBroadcastResponseBodyDataDataNews()
+                self.news.append(temp_model.from_map(k))
+        if m.get('OutputToken') is not None:
+            self.output_token = m.get('OutputToken')
+        if m.get('Summary') is not None:
+            temp_model = GetHotTopicBroadcastResponseBodyDataDataSummary()
+            self.summary = temp_model.from_map(m['Summary'])
+        if m.get('TextSummary') is not None:
+            self.text_summary = m.get('TextSummary')
+        return self
+
+
+class GetHotTopicBroadcastResponseBodyDataTotalTokenInfo(TeaModel):
+    def __init__(
+        self,
+        hot_topic_count: int = None,
+        input_tokens: int = None,
+        output_tokens: int = None,
+        word_count: int = None,
+    ):
+        self.hot_topic_count = hot_topic_count
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+        self.word_count = word_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hot_topic_count is not None:
+            result['HotTopicCount'] = self.hot_topic_count
+        if self.input_tokens is not None:
+            result['InputTokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['OutputTokens'] = self.output_tokens
+        if self.word_count is not None:
+            result['WordCount'] = self.word_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HotTopicCount') is not None:
+            self.hot_topic_count = m.get('HotTopicCount')
+        if m.get('InputTokens') is not None:
+            self.input_tokens = m.get('InputTokens')
+        if m.get('OutputTokens') is not None:
+            self.output_tokens = m.get('OutputTokens')
+        if m.get('WordCount') is not None:
+            self.word_count = m.get('WordCount')
+        return self
+
+
+class GetHotTopicBroadcastResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        data: List[GetHotTopicBroadcastResponseBodyDataData] = None,
+        total_count: int = None,
+        total_token_info: GetHotTopicBroadcastResponseBodyDataTotalTokenInfo = None,
+    ):
+        self.data = data
+        self.total_count = total_count
+        self.total_token_info = total_token_info
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+        if self.total_token_info:
+            self.total_token_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_token_info is not None:
+            result['TotalTokenInfo'] = self.total_token_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetHotTopicBroadcastResponseBodyDataData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalTokenInfo') is not None:
+            temp_model = GetHotTopicBroadcastResponseBodyDataTotalTokenInfo()
+            self.total_token_info = temp_model.from_map(m['TotalTokenInfo'])
+        return self
+
+
+class GetHotTopicBroadcastResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetHotTopicBroadcastResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetHotTopicBroadcastResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetHotTopicBroadcastResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetHotTopicBroadcastResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetHotTopicBroadcastResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -23273,6 +24322,395 @@ class SubmitAsyncTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SubmitAsyncTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForCustomSummaryStyleConfig(TeaModel):
+    def __init__(
+        self,
+        summary_image_count: int = None,
+        summary_model: str = None,
+        summary_prompt: str = None,
+    ):
+        self.summary_image_count = summary_image_count
+        # This parameter is required.
+        self.summary_model = summary_model
+        self.summary_prompt = summary_prompt
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.summary_image_count is not None:
+            result['SummaryImageCount'] = self.summary_image_count
+        if self.summary_model is not None:
+            result['SummaryModel'] = self.summary_model
+        if self.summary_prompt is not None:
+            result['SummaryPrompt'] = self.summary_prompt
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SummaryImageCount') is not None:
+            self.summary_image_count = m.get('SummaryImageCount')
+        if m.get('SummaryModel') is not None:
+            self.summary_model = m.get('SummaryModel')
+        if m.get('SummaryPrompt') is not None:
+            self.summary_prompt = m.get('SummaryPrompt')
+        return self
+
+
+class SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfigCustomHotValueWeights(TeaModel):
+    def __init__(
+        self,
+        dimension: str = None,
+        dimension_name: str = None,
+        weight: int = None,
+    ):
+        self.dimension = dimension
+        self.dimension_name = dimension_name
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dimension is not None:
+            result['Dimension'] = self.dimension
+        if self.dimension_name is not None:
+            result['DimensionName'] = self.dimension_name
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Dimension') is not None:
+            self.dimension = m.get('Dimension')
+        if m.get('DimensionName') is not None:
+            self.dimension_name = m.get('DimensionName')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        return self
+
+
+class SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfig(TeaModel):
+    def __init__(
+        self,
+        categories: List[str] = None,
+        custom_hot_value_weights: List[SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfigCustomHotValueWeights] = None,
+        topic_count: int = None,
+    ):
+        self.categories = categories
+        self.custom_hot_value_weights = custom_hot_value_weights
+        self.topic_count = topic_count
+
+    def validate(self):
+        if self.custom_hot_value_weights:
+            for k in self.custom_hot_value_weights:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.categories is not None:
+            result['Categories'] = self.categories
+        result['CustomHotValueWeights'] = []
+        if self.custom_hot_value_weights is not None:
+            for k in self.custom_hot_value_weights:
+                result['CustomHotValueWeights'].append(k.to_map() if k else None)
+        if self.topic_count is not None:
+            result['TopicCount'] = self.topic_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Categories') is not None:
+            self.categories = m.get('Categories')
+        self.custom_hot_value_weights = []
+        if m.get('CustomHotValueWeights') is not None:
+            for k in m.get('CustomHotValueWeights'):
+                temp_model = SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfigCustomHotValueWeights()
+                self.custom_hot_value_weights.append(temp_model.from_map(k))
+        if m.get('TopicCount') is not None:
+            self.topic_count = m.get('TopicCount')
+        return self
+
+
+class SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfig(TeaModel):
+    def __init__(
+        self,
+        step_for_custom_summary_style_config: SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForCustomSummaryStyleConfig = None,
+        step_for_news_broadcast_content_config: SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfig = None,
+    ):
+        # This parameter is required.
+        self.step_for_custom_summary_style_config = step_for_custom_summary_style_config
+        # This parameter is required.
+        self.step_for_news_broadcast_content_config = step_for_news_broadcast_content_config
+
+    def validate(self):
+        if self.step_for_custom_summary_style_config:
+            self.step_for_custom_summary_style_config.validate()
+        if self.step_for_news_broadcast_content_config:
+            self.step_for_news_broadcast_content_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.step_for_custom_summary_style_config is not None:
+            result['StepForCustomSummaryStyleConfig'] = self.step_for_custom_summary_style_config.to_map()
+        if self.step_for_news_broadcast_content_config is not None:
+            result['StepForNewsBroadcastContentConfig'] = self.step_for_news_broadcast_content_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('StepForCustomSummaryStyleConfig') is not None:
+            temp_model = SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForCustomSummaryStyleConfig()
+            self.step_for_custom_summary_style_config = temp_model.from_map(m['StepForCustomSummaryStyleConfig'])
+        if m.get('StepForNewsBroadcastContentConfig') is not None:
+            temp_model = SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfig()
+            self.step_for_news_broadcast_content_config = temp_model.from_map(m['StepForNewsBroadcastContentConfig'])
+        return self
+
+
+class SubmitCustomHotTopicBroadcastJobRequest(TeaModel):
+    def __init__(
+        self,
+        hot_topic_broadcast_config: SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfig = None,
+        hot_topic_version: str = None,
+        topics: List[str] = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.hot_topic_broadcast_config = hot_topic_broadcast_config
+        self.hot_topic_version = hot_topic_version
+        self.topics = topics
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.hot_topic_broadcast_config:
+            self.hot_topic_broadcast_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hot_topic_broadcast_config is not None:
+            result['HotTopicBroadcastConfig'] = self.hot_topic_broadcast_config.to_map()
+        if self.hot_topic_version is not None:
+            result['HotTopicVersion'] = self.hot_topic_version
+        if self.topics is not None:
+            result['Topics'] = self.topics
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HotTopicBroadcastConfig') is not None:
+            temp_model = SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfig()
+            self.hot_topic_broadcast_config = temp_model.from_map(m['HotTopicBroadcastConfig'])
+        if m.get('HotTopicVersion') is not None:
+            self.hot_topic_version = m.get('HotTopicVersion')
+        if m.get('Topics') is not None:
+            self.topics = m.get('Topics')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class SubmitCustomHotTopicBroadcastJobShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        hot_topic_broadcast_config_shrink: str = None,
+        hot_topic_version: str = None,
+        topics_shrink: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.hot_topic_broadcast_config_shrink = hot_topic_broadcast_config_shrink
+        self.hot_topic_version = hot_topic_version
+        self.topics_shrink = topics_shrink
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hot_topic_broadcast_config_shrink is not None:
+            result['HotTopicBroadcastConfig'] = self.hot_topic_broadcast_config_shrink
+        if self.hot_topic_version is not None:
+            result['HotTopicVersion'] = self.hot_topic_version
+        if self.topics_shrink is not None:
+            result['Topics'] = self.topics_shrink
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HotTopicBroadcastConfig') is not None:
+            self.hot_topic_broadcast_config_shrink = m.get('HotTopicBroadcastConfig')
+        if m.get('HotTopicVersion') is not None:
+            self.hot_topic_version = m.get('HotTopicVersion')
+        if m.get('Topics') is not None:
+            self.topics_shrink = m.get('Topics')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class SubmitCustomHotTopicBroadcastJobResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class SubmitCustomHotTopicBroadcastJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: SubmitCustomHotTopicBroadcastJobResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = SubmitCustomHotTopicBroadcastJobResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SubmitCustomHotTopicBroadcastJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitCustomHotTopicBroadcastJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitCustomHotTopicBroadcastJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

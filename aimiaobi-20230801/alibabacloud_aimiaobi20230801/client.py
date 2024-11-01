@@ -2261,6 +2261,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.generate_view_point_with_options_async(request, runtime)
 
+    def get_custom_hot_topic_broadcast_job_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetCustomHotTopicBroadcastJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetCustomHotTopicBroadcastJobResponse:
+        """
+        @summary 获取自定义播报单任务结果
+        
+        @param request: GetCustomHotTopicBroadcastJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCustomHotTopicBroadcastJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetCustomHotTopicBroadcastJob',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetCustomHotTopicBroadcastJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_custom_hot_topic_broadcast_job_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetCustomHotTopicBroadcastJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetCustomHotTopicBroadcastJobResponse:
+        """
+        @summary 获取自定义播报单任务结果
+        
+        @param request: GetCustomHotTopicBroadcastJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCustomHotTopicBroadcastJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetCustomHotTopicBroadcastJob',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetCustomHotTopicBroadcastJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_custom_hot_topic_broadcast_job(
+        self,
+        request: ai_miao_bi_20230801_models.GetCustomHotTopicBroadcastJobRequest,
+    ) -> ai_miao_bi_20230801_models.GetCustomHotTopicBroadcastJobResponse:
+        """
+        @summary 获取自定义播报单任务结果
+        
+        @param request: GetCustomHotTopicBroadcastJobRequest
+        @return: GetCustomHotTopicBroadcastJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_custom_hot_topic_broadcast_job_with_options(request, runtime)
+
+    async def get_custom_hot_topic_broadcast_job_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetCustomHotTopicBroadcastJobRequest,
+    ) -> ai_miao_bi_20230801_models.GetCustomHotTopicBroadcastJobResponse:
+        """
+        @summary 获取自定义播报单任务结果
+        
+        @param request: GetCustomHotTopicBroadcastJobRequest
+        @return: GetCustomHotTopicBroadcastJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_custom_hot_topic_broadcast_job_with_options_async(request, runtime)
+
     def get_custom_text_with_options(
         self,
         request: ai_miao_bi_20230801_models.GetCustomTextRequest,
@@ -2784,6 +2884,150 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_generated_content_with_options_async(request, runtime)
+
+    def get_hot_topic_broadcast_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.GetHotTopicBroadcastRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetHotTopicBroadcastResponse:
+        """
+        @summary 查询新闻播报单
+        
+        @param tmp_req: GetHotTopicBroadcastRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotTopicBroadcastResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.GetHotTopicBroadcastShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.step_for_custom_summary_style_config):
+            request.step_for_custom_summary_style_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.step_for_custom_summary_style_config, 'StepForCustomSummaryStyleConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.step_for_news_broadcast_content_config):
+            request.step_for_news_broadcast_content_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.step_for_news_broadcast_content_config, 'StepForNewsBroadcastContentConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.topics):
+            request.topics_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.topics, 'Topics', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.calc_total_token):
+            body['CalcTotalToken'] = request.calc_total_token
+        if not UtilClient.is_unset(request.category):
+            body['Category'] = request.category
+        if not UtilClient.is_unset(request.current):
+            body['Current'] = request.current
+        if not UtilClient.is_unset(request.hot_topic_version):
+            body['HotTopicVersion'] = request.hot_topic_version
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        if not UtilClient.is_unset(request.step_for_custom_summary_style_config_shrink):
+            body['StepForCustomSummaryStyleConfig'] = request.step_for_custom_summary_style_config_shrink
+        if not UtilClient.is_unset(request.step_for_news_broadcast_content_config_shrink):
+            body['StepForNewsBroadcastContentConfig'] = request.step_for_news_broadcast_content_config_shrink
+        if not UtilClient.is_unset(request.topics_shrink):
+            body['Topics'] = request.topics_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetHotTopicBroadcast',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetHotTopicBroadcastResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_hot_topic_broadcast_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.GetHotTopicBroadcastRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetHotTopicBroadcastResponse:
+        """
+        @summary 查询新闻播报单
+        
+        @param tmp_req: GetHotTopicBroadcastRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotTopicBroadcastResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.GetHotTopicBroadcastShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.step_for_custom_summary_style_config):
+            request.step_for_custom_summary_style_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.step_for_custom_summary_style_config, 'StepForCustomSummaryStyleConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.step_for_news_broadcast_content_config):
+            request.step_for_news_broadcast_content_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.step_for_news_broadcast_content_config, 'StepForNewsBroadcastContentConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.topics):
+            request.topics_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.topics, 'Topics', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.calc_total_token):
+            body['CalcTotalToken'] = request.calc_total_token
+        if not UtilClient.is_unset(request.category):
+            body['Category'] = request.category
+        if not UtilClient.is_unset(request.current):
+            body['Current'] = request.current
+        if not UtilClient.is_unset(request.hot_topic_version):
+            body['HotTopicVersion'] = request.hot_topic_version
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        if not UtilClient.is_unset(request.step_for_custom_summary_style_config_shrink):
+            body['StepForCustomSummaryStyleConfig'] = request.step_for_custom_summary_style_config_shrink
+        if not UtilClient.is_unset(request.step_for_news_broadcast_content_config_shrink):
+            body['StepForNewsBroadcastContentConfig'] = request.step_for_news_broadcast_content_config_shrink
+        if not UtilClient.is_unset(request.topics_shrink):
+            body['Topics'] = request.topics_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetHotTopicBroadcast',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetHotTopicBroadcastResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_hot_topic_broadcast(
+        self,
+        request: ai_miao_bi_20230801_models.GetHotTopicBroadcastRequest,
+    ) -> ai_miao_bi_20230801_models.GetHotTopicBroadcastResponse:
+        """
+        @summary 查询新闻播报单
+        
+        @param request: GetHotTopicBroadcastRequest
+        @return: GetHotTopicBroadcastResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_hot_topic_broadcast_with_options(request, runtime)
+
+    async def get_hot_topic_broadcast_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetHotTopicBroadcastRequest,
+    ) -> ai_miao_bi_20230801_models.GetHotTopicBroadcastResponse:
+        """
+        @summary 查询新闻播报单
+        
+        @param request: GetHotTopicBroadcastRequest
+        @return: GetHotTopicBroadcastResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_hot_topic_broadcast_with_options_async(request, runtime)
 
     def get_intervene_global_reply_with_options(
         self,
@@ -9056,6 +9300,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.submit_async_task_with_options_async(request, runtime)
+
+    def submit_custom_hot_topic_broadcast_job_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.SubmitCustomHotTopicBroadcastJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SubmitCustomHotTopicBroadcastJobResponse:
+        """
+        @summary 提交自定义播报单任务
+        
+        @param tmp_req: SubmitCustomHotTopicBroadcastJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitCustomHotTopicBroadcastJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.SubmitCustomHotTopicBroadcastJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.hot_topic_broadcast_config):
+            request.hot_topic_broadcast_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hot_topic_broadcast_config, 'HotTopicBroadcastConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.topics):
+            request.topics_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.topics, 'Topics', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.hot_topic_broadcast_config_shrink):
+            body['HotTopicBroadcastConfig'] = request.hot_topic_broadcast_config_shrink
+        if not UtilClient.is_unset(request.hot_topic_version):
+            body['HotTopicVersion'] = request.hot_topic_version
+        if not UtilClient.is_unset(request.topics_shrink):
+            body['Topics'] = request.topics_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitCustomHotTopicBroadcastJob',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SubmitCustomHotTopicBroadcastJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_custom_hot_topic_broadcast_job_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.SubmitCustomHotTopicBroadcastJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SubmitCustomHotTopicBroadcastJobResponse:
+        """
+        @summary 提交自定义播报单任务
+        
+        @param tmp_req: SubmitCustomHotTopicBroadcastJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitCustomHotTopicBroadcastJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.SubmitCustomHotTopicBroadcastJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.hot_topic_broadcast_config):
+            request.hot_topic_broadcast_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hot_topic_broadcast_config, 'HotTopicBroadcastConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.topics):
+            request.topics_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.topics, 'Topics', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.hot_topic_broadcast_config_shrink):
+            body['HotTopicBroadcastConfig'] = request.hot_topic_broadcast_config_shrink
+        if not UtilClient.is_unset(request.hot_topic_version):
+            body['HotTopicVersion'] = request.hot_topic_version
+        if not UtilClient.is_unset(request.topics_shrink):
+            body['Topics'] = request.topics_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitCustomHotTopicBroadcastJob',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SubmitCustomHotTopicBroadcastJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_custom_hot_topic_broadcast_job(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitCustomHotTopicBroadcastJobRequest,
+    ) -> ai_miao_bi_20230801_models.SubmitCustomHotTopicBroadcastJobResponse:
+        """
+        @summary 提交自定义播报单任务
+        
+        @param request: SubmitCustomHotTopicBroadcastJobRequest
+        @return: SubmitCustomHotTopicBroadcastJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_custom_hot_topic_broadcast_job_with_options(request, runtime)
+
+    async def submit_custom_hot_topic_broadcast_job_async(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitCustomHotTopicBroadcastJobRequest,
+    ) -> ai_miao_bi_20230801_models.SubmitCustomHotTopicBroadcastJobResponse:
+        """
+        @summary 提交自定义播报单任务
+        
+        @param request: SubmitCustomHotTopicBroadcastJobRequest
+        @return: SubmitCustomHotTopicBroadcastJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_custom_hot_topic_broadcast_job_with_options_async(request, runtime)
 
     def submit_custom_topic_selection_perspective_analysis_task_with_options(
         self,

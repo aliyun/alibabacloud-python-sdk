@@ -1,3 +1,9 @@
+2024-11-01 Version: 1.9.0
+- Support API GetCustomHotTopicBroadcastJob.
+- Support API GetHotTopicBroadcast.
+- Support API SubmitCustomHotTopicBroadcastJob.
+
+
 2024-11-01 Version: 1.8.4
 - Generated python 2023-08-01 for AiMiaoBi.
 
