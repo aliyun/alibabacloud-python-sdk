@@ -1,3 +1,8 @@
+2024-11-02 Version: 3.0.0
+- Support API GenericSearch.
+- Delete API AISearch.
+
+
 2024-08-23 Version: 2.0.0
 - Update API AISearchV2: update response param.
 

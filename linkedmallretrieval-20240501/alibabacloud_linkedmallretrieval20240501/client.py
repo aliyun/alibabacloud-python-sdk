@@ -41,114 +41,6 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def a_isearch_with_options(
-        self,
-        request: linkedmall_retrieval_20240501_models.AISearchRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> linkedmall_retrieval_20240501_models.AISearchResponse:
-        """
-        @summary AI搜索
-        
-        @param request: AISearchRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AISearchResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.card):
-            query['card'] = request.card
-        if not UtilClient.is_unset(request.query):
-            query['query'] = request.query
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AISearch',
-            version='2024-05-01',
-            protocol='HTTPS',
-            pathname=f'/linked-retrieval/linked-retrieval-entry/v1/linkedRetrieval/commands/aiSearch',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            linkedmall_retrieval_20240501_models.AISearchResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def a_isearch_with_options_async(
-        self,
-        request: linkedmall_retrieval_20240501_models.AISearchRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> linkedmall_retrieval_20240501_models.AISearchResponse:
-        """
-        @summary AI搜索
-        
-        @param request: AISearchRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AISearchResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.card):
-            query['card'] = request.card
-        if not UtilClient.is_unset(request.query):
-            query['query'] = request.query
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AISearch',
-            version='2024-05-01',
-            protocol='HTTPS',
-            pathname=f'/linked-retrieval/linked-retrieval-entry/v1/linkedRetrieval/commands/aiSearch',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            linkedmall_retrieval_20240501_models.AISearchResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def a_isearch(
-        self,
-        request: linkedmall_retrieval_20240501_models.AISearchRequest,
-    ) -> linkedmall_retrieval_20240501_models.AISearchResponse:
-        """
-        @summary AI搜索
-        
-        @param request: AISearchRequest
-        @return: AISearchResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.a_isearch_with_options(request, headers, runtime)
-
-    async def a_isearch_async(
-        self,
-        request: linkedmall_retrieval_20240501_models.AISearchRequest,
-    ) -> linkedmall_retrieval_20240501_models.AISearchResponse:
-        """
-        @summary AI搜索
-        
-        @param request: AISearchRequest
-        @return: AISearchResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.a_isearch_with_options_async(request, headers, runtime)
-
     def a_isearch_v2with_options(
         self,
         request: linkedmall_retrieval_20240501_models.AISearchV2Request,
@@ -260,3 +152,111 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.a_isearch_v2with_options_async(request, headers, runtime)
+
+    def generic_search_with_options(
+        self,
+        request: linkedmall_retrieval_20240501_models.GenericSearchRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_retrieval_20240501_models.GenericSearchResponse:
+        """
+        @summary 通用搜索
+        
+        @param request: GenericSearchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenericSearchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.query):
+            query['query'] = request.query
+        if not UtilClient.is_unset(request.time_range):
+            query['timeRange'] = request.time_range
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenericSearch',
+            version='2024-05-01',
+            protocol='HTTPS',
+            pathname=f'/linked-retrieval/linked-retrieval-entry/v2/linkedRetrieval/commands/genericSearch',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_retrieval_20240501_models.GenericSearchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generic_search_with_options_async(
+        self,
+        request: linkedmall_retrieval_20240501_models.GenericSearchRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_retrieval_20240501_models.GenericSearchResponse:
+        """
+        @summary 通用搜索
+        
+        @param request: GenericSearchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenericSearchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.query):
+            query['query'] = request.query
+        if not UtilClient.is_unset(request.time_range):
+            query['timeRange'] = request.time_range
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenericSearch',
+            version='2024-05-01',
+            protocol='HTTPS',
+            pathname=f'/linked-retrieval/linked-retrieval-entry/v2/linkedRetrieval/commands/genericSearch',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkedmall_retrieval_20240501_models.GenericSearchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generic_search(
+        self,
+        request: linkedmall_retrieval_20240501_models.GenericSearchRequest,
+    ) -> linkedmall_retrieval_20240501_models.GenericSearchResponse:
+        """
+        @summary 通用搜索
+        
+        @param request: GenericSearchRequest
+        @return: GenericSearchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.generic_search_with_options(request, headers, runtime)
+
+    async def generic_search_async(
+        self,
+        request: linkedmall_retrieval_20240501_models.GenericSearchRequest,
+    ) -> linkedmall_retrieval_20240501_models.GenericSearchResponse:
+        """
+        @summary 通用搜索
+        
+        @param request: GenericSearchRequest
+        @return: GenericSearchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.generic_search_with_options_async(request, headers, runtime)
