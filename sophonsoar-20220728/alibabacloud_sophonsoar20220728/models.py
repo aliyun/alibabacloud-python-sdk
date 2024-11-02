@@ -1758,8 +1758,12 @@ class DescribeDistinctReleasesResponseBodyRecords(TeaModel):
     ):
         # The version description.
         self.description = description
-        # The MD5 value of the playbook XML configuration.
+        # The MD5 value of the version XML configuration.
         self.taskflow_md_5 = taskflow_md_5
+        # The format of the playbook. Valid values:
+        # 
+        # *   **xml**: XML format.
+        # *   **x6**: JSON format.
         self.taskflow_type = taskflow_type
 
     def validate(self):
@@ -1796,7 +1800,7 @@ class DescribeDistinctReleasesResponseBody(TeaModel):
         records: List[DescribeDistinctReleasesResponseBodyRecords] = None,
         request_id: str = None,
     ):
-        # The version information.
+        # The information about versions.
         self.records = records
         # The request ID.
         self.request_id = request_id
@@ -4136,6 +4140,7 @@ class DescribePlaybooksRequest(TeaModel):
         own_type: str = None,
         page_number: str = None,
         page_size: str = None,
+        param_types: str = None,
         playbook_uuid: str = None,
         sort: str = None,
         start_millis: int = None,
@@ -4154,6 +4159,10 @@ class DescribePlaybooksRequest(TeaModel):
         self.lang = lang
         # The name of the playbook.
         self.name = name
+        # The sorting order. Default value: desc. Valid values:
+        # 
+        # *   desc: descending order
+        # *   asc: ascending order
         self.order = order
         # The type of the playbook. Valid values:
         # 
@@ -4166,12 +4175,17 @@ class DescribePlaybooksRequest(TeaModel):
         # 
         # >  We recommend that you do not leave this parameter empty.
         self.page_size = page_size
+        self.param_types = param_types
         # The playbook UUID.
         # 
         # >  You can use the UUID to query the information about a specific playbook.
         # 
         # *   You can call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to query the playbook UUID.
         self.playbook_uuid = playbook_uuid
+        # The sorting basis. Default value: 1. Valid values:
+        # 
+        # *   1: last modification time
+        # *   2: last execution time
         self.sort = sort
         # The beginning of the time range to query. The value is a 13-digit timestamp.
         self.start_millis = start_millis
@@ -4201,6 +4215,8 @@ class DescribePlaybooksRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.param_types is not None:
+            result['ParamTypes'] = self.param_types
         if self.playbook_uuid is not None:
             result['PlaybookUuid'] = self.playbook_uuid
         if self.sort is not None:
@@ -4227,6 +4243,8 @@ class DescribePlaybooksRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ParamTypes') is not None:
+            self.param_types = m.get('ParamTypes')
         if m.get('PlaybookUuid') is not None:
             self.playbook_uuid = m.get('PlaybookUuid')
         if m.get('Sort') is not None:
@@ -4287,6 +4305,7 @@ class DescribePlaybooksResponseBodyPlaybooks(TeaModel):
         gmt_modified: str = None,
         last_runtime: int = None,
         own_type: str = None,
+        param_type: str = None,
         playbook_uuid: str = None,
     ):
         # The playbook status. Valid values:
@@ -4298,6 +4317,7 @@ class DescribePlaybooksResponseBodyPlaybooks(TeaModel):
         self.display_name = display_name
         # The time when the playbook was created. The value is a 13-digit timestamp.
         self.gmt_create = gmt_create
+        # The time when the playbook was modified.
         self.gmt_modified = gmt_modified
         # The time when the playbook was last run. The value is a 13-digit timestamp.
         self.last_runtime = last_runtime
@@ -4306,6 +4326,7 @@ class DescribePlaybooksResponseBodyPlaybooks(TeaModel):
         # *   **preset**: predefined playbook
         # *   **user**: custom playbook
         self.own_type = own_type
+        self.param_type = param_type
         # The UUID of the playbook.
         self.playbook_uuid = playbook_uuid
 
@@ -4330,6 +4351,8 @@ class DescribePlaybooksResponseBodyPlaybooks(TeaModel):
             result['LastRuntime'] = self.last_runtime
         if self.own_type is not None:
             result['OwnType'] = self.own_type
+        if self.param_type is not None:
+            result['ParamType'] = self.param_type
         if self.playbook_uuid is not None:
             result['PlaybookUuid'] = self.playbook_uuid
         return result
@@ -4348,6 +4371,8 @@ class DescribePlaybooksResponseBodyPlaybooks(TeaModel):
             self.last_runtime = m.get('LastRuntime')
         if m.get('OwnType') is not None:
             self.own_type = m.get('OwnType')
+        if m.get('ParamType') is not None:
+            self.param_type = m.get('ParamType')
         if m.get('PlaybookUuid') is not None:
             self.playbook_uuid = m.get('PlaybookUuid')
         return self
@@ -4362,7 +4387,7 @@ class DescribePlaybooksResponseBody(TeaModel):
     ):
         # The pagination information.
         self.page = page
-        # The list of playbooks.
+        # The playbooks.
         self.playbooks = playbooks
         # The request ID.
         self.request_id = request_id
@@ -5040,6 +5065,7 @@ class DescribeProcessTasksRequest(TeaModel):
         direction: str = None,
         entity_name: str = None,
         entity_type: str = None,
+        entity_uuid: str = None,
         order_field: str = None,
         page_number: str = None,
         page_size: int = None,
@@ -5069,6 +5095,7 @@ class DescribeProcessTasksRequest(TeaModel):
         # *   **file**\
         # *   **process**\
         self.entity_type = entity_type
+        self.entity_uuid = entity_uuid
         # The field that you use to sort the result.
         # 
         # >  You can obtain the field from the response result.
@@ -5145,6 +5172,8 @@ class DescribeProcessTasksRequest(TeaModel):
             result['EntityName'] = self.entity_name
         if self.entity_type is not None:
             result['EntityType'] = self.entity_type
+        if self.entity_uuid is not None:
+            result['EntityUuid'] = self.entity_uuid
         if self.order_field is not None:
             result['OrderField'] = self.order_field
         if self.page_number is not None:
@@ -5185,6 +5214,8 @@ class DescribeProcessTasksRequest(TeaModel):
             self.entity_name = m.get('EntityName')
         if m.get('EntityType') is not None:
             self.entity_type = m.get('EntityType')
+        if m.get('EntityUuid') is not None:
+            self.entity_uuid = m.get('EntityUuid')
         if m.get('OrderField') is not None:
             self.order_field = m.get('OrderField')
         if m.get('PageNumber') is not None:
@@ -5266,6 +5297,7 @@ class DescribeProcessTasksResponseBodyProcessTasks(TeaModel):
         creator: str = None,
         entity_name: str = None,
         entity_type: str = None,
+        entity_uuid: str = None,
         err_code: str = None,
         err_msg: str = None,
         err_tip: str = None,
@@ -5289,6 +5321,7 @@ class DescribeProcessTasksResponseBodyProcessTasks(TeaModel):
         self.entity_name = entity_name
         # The type of the handling entity.
         self.entity_type = entity_type
+        self.entity_uuid = entity_uuid
         # The error code returned if the call failed.
         self.err_code = err_code
         # The error message returned if the call failed.
@@ -5337,6 +5370,8 @@ class DescribeProcessTasksResponseBodyProcessTasks(TeaModel):
             result['EntityName'] = self.entity_name
         if self.entity_type is not None:
             result['EntityType'] = self.entity_type
+        if self.entity_uuid is not None:
+            result['EntityUuid'] = self.entity_uuid
         if self.err_code is not None:
             result['ErrCode'] = self.err_code
         if self.err_msg is not None:
@@ -5379,6 +5414,8 @@ class DescribeProcessTasksResponseBodyProcessTasks(TeaModel):
             self.entity_name = m.get('EntityName')
         if m.get('EntityType') is not None:
             self.entity_type = m.get('EntityType')
+        if m.get('EntityUuid') is not None:
+            self.entity_uuid = m.get('EntityUuid')
         if m.get('ErrCode') is not None:
             self.err_code = m.get('ErrCode')
         if m.get('ErrMsg') is not None:
