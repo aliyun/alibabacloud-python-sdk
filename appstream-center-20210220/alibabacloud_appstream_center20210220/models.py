@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict
+from typing import Dict, List
 
 
 class FindIdpListByLoginIdentifierRequest(TeaModel):
     def __init__(
         self,
+        available_features: Dict[str, str] = None,
         client_channel: str = None,
         client_id: str = None,
         client_ip: str = None,
@@ -16,6 +17,7 @@ class FindIdpListByLoginIdentifierRequest(TeaModel):
         support_types: List[str] = None,
         uuid: str = None,
     ):
+        self.available_features = available_features
         self.client_channel = client_channel
         self.client_id = client_id
         self.client_ip = client_ip
@@ -35,6 +37,8 @@ class FindIdpListByLoginIdentifierRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.available_features is not None:
+            result['AvailableFeatures'] = self.available_features
         if self.client_channel is not None:
             result['ClientChannel'] = self.client_channel
         if self.client_id is not None:
@@ -55,6 +59,84 @@ class FindIdpListByLoginIdentifierRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AvailableFeatures') is not None:
+            self.available_features = m.get('AvailableFeatures')
+        if m.get('ClientChannel') is not None:
+            self.client_channel = m.get('ClientChannel')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('ClientIp') is not None:
+            self.client_ip = m.get('ClientIp')
+        if m.get('ClientOS') is not None:
+            self.client_os = m.get('ClientOS')
+        if m.get('ClientVersion') is not None:
+            self.client_version = m.get('ClientVersion')
+        if m.get('LoginIdentifier') is not None:
+            self.login_identifier = m.get('LoginIdentifier')
+        if m.get('SupportTypes') is not None:
+            self.support_types = m.get('SupportTypes')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class FindIdpListByLoginIdentifierShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        available_features_shrink: str = None,
+        client_channel: str = None,
+        client_id: str = None,
+        client_ip: str = None,
+        client_os: str = None,
+        client_version: str = None,
+        login_identifier: str = None,
+        support_types: List[str] = None,
+        uuid: str = None,
+    ):
+        self.available_features_shrink = available_features_shrink
+        self.client_channel = client_channel
+        self.client_id = client_id
+        self.client_ip = client_ip
+        self.client_os = client_os
+        self.client_version = client_version
+        # This parameter is required.
+        self.login_identifier = login_identifier
+        self.support_types = support_types
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.available_features_shrink is not None:
+            result['AvailableFeatures'] = self.available_features_shrink
+        if self.client_channel is not None:
+            result['ClientChannel'] = self.client_channel
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.client_ip is not None:
+            result['ClientIp'] = self.client_ip
+        if self.client_os is not None:
+            result['ClientOS'] = self.client_os
+        if self.client_version is not None:
+            result['ClientVersion'] = self.client_version
+        if self.login_identifier is not None:
+            result['LoginIdentifier'] = self.login_identifier
+        if self.support_types is not None:
+            result['SupportTypes'] = self.support_types
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvailableFeatures') is not None:
+            self.available_features_shrink = m.get('AvailableFeatures')
         if m.get('ClientChannel') is not None:
             self.client_channel = m.get('ClientChannel')
         if m.get('ClientId') is not None:
@@ -81,6 +163,7 @@ class FindIdpListByLoginIdentifierResponseBodyIdpInfos(TeaModel):
         cookies: str = None,
         idp_id: str = None,
         idp_name: str = None,
+        idp_name_en: str = None,
         idp_provider: str = None,
         jump_switch: str = None,
         sso_protocol: str = None,
@@ -90,6 +173,7 @@ class FindIdpListByLoginIdentifierResponseBodyIdpInfos(TeaModel):
         self.cookies = cookies
         self.idp_id = idp_id
         self.idp_name = idp_name
+        self.idp_name_en = idp_name_en
         self.idp_provider = idp_provider
         self.jump_switch = jump_switch
         self.sso_protocol = sso_protocol
@@ -112,6 +196,8 @@ class FindIdpListByLoginIdentifierResponseBodyIdpInfos(TeaModel):
             result['IdpId'] = self.idp_id
         if self.idp_name is not None:
             result['IdpName'] = self.idp_name
+        if self.idp_name_en is not None:
+            result['IdpNameEN'] = self.idp_name_en
         if self.idp_provider is not None:
             result['IdpProvider'] = self.idp_provider
         if self.jump_switch is not None:
@@ -132,6 +218,8 @@ class FindIdpListByLoginIdentifierResponseBodyIdpInfos(TeaModel):
             self.idp_id = m.get('IdpId')
         if m.get('IdpName') is not None:
             self.idp_name = m.get('IdpName')
+        if m.get('IdpNameEN') is not None:
+            self.idp_name_en = m.get('IdpNameEN')
         if m.get('IdpProvider') is not None:
             self.idp_provider = m.get('IdpProvider')
         if m.get('JumpSwitch') is not None:
@@ -343,6 +431,7 @@ class GetLoginTokenRequest(TeaModel):
     def __init__(
         self,
         authentication_code: str = None,
+        available_features: Dict[str, str] = None,
         client_id: str = None,
         client_os: str = None,
         client_type: str = None,
@@ -360,6 +449,7 @@ class GetLoginTokenRequest(TeaModel):
         keep_alive_token: str = None,
         login_identifier: str = None,
         login_name: str = None,
+        mfa_type: str = None,
         network_type: str = None,
         new_password: str = None,
         office_site_id: str = None,
@@ -376,6 +466,7 @@ class GetLoginTokenRequest(TeaModel):
         uuid: str = None,
     ):
         self.authentication_code = authentication_code
+        self.available_features = available_features
         # This parameter is required.
         self.client_id = client_id
         self.client_os = client_os
@@ -394,6 +485,7 @@ class GetLoginTokenRequest(TeaModel):
         self.keep_alive_token = keep_alive_token
         self.login_identifier = login_identifier
         self.login_name = login_name
+        self.mfa_type = mfa_type
         self.network_type = network_type
         self.new_password = new_password
         self.office_site_id = office_site_id
@@ -420,6 +512,8 @@ class GetLoginTokenRequest(TeaModel):
         result = dict()
         if self.authentication_code is not None:
             result['AuthenticationCode'] = self.authentication_code
+        if self.available_features is not None:
+            result['AvailableFeatures'] = self.available_features
         if self.client_id is not None:
             result['ClientId'] = self.client_id
         if self.client_os is not None:
@@ -454,6 +548,8 @@ class GetLoginTokenRequest(TeaModel):
             result['LoginIdentifier'] = self.login_identifier
         if self.login_name is not None:
             result['LoginName'] = self.login_name
+        if self.mfa_type is not None:
+            result['MfaType'] = self.mfa_type
         if self.network_type is not None:
             result['NetworkType'] = self.network_type
         if self.new_password is not None:
@@ -488,6 +584,8 @@ class GetLoginTokenRequest(TeaModel):
         m = m or dict()
         if m.get('AuthenticationCode') is not None:
             self.authentication_code = m.get('AuthenticationCode')
+        if m.get('AvailableFeatures') is not None:
+            self.available_features = m.get('AvailableFeatures')
         if m.get('ClientId') is not None:
             self.client_id = m.get('ClientId')
         if m.get('ClientOS') is not None:
@@ -522,6 +620,8 @@ class GetLoginTokenRequest(TeaModel):
             self.login_identifier = m.get('LoginIdentifier')
         if m.get('LoginName') is not None:
             self.login_name = m.get('LoginName')
+        if m.get('MfaType') is not None:
+            self.mfa_type = m.get('MfaType')
         if m.get('NetworkType') is not None:
             self.network_type = m.get('NetworkType')
         if m.get('NewPassword') is not None:
@@ -550,6 +650,265 @@ class GetLoginTokenRequest(TeaModel):
             self.umid_token = m.get('UmidToken')
         if m.get('Uuid') is not None:
             self.uuid = m.get('Uuid')
+        return self
+
+
+class GetLoginTokenShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        authentication_code: str = None,
+        available_features_shrink: str = None,
+        client_id: str = None,
+        client_os: str = None,
+        client_type: str = None,
+        client_version: str = None,
+        current_stage: str = None,
+        directory_id: str = None,
+        encrypted_finger_print_data: str = None,
+        encrypted_key: str = None,
+        encrypted_password: str = None,
+        end_user_id: str = None,
+        finger_print_data: str = None,
+        idp_id: str = None,
+        image_url: str = None,
+        keep_alive: bool = None,
+        keep_alive_token: str = None,
+        login_identifier: str = None,
+        login_name: str = None,
+        mfa_type: str = None,
+        network_type: str = None,
+        new_password: str = None,
+        office_site_id: str = None,
+        old_password: str = None,
+        password: str = None,
+        phone: str = None,
+        phone_verify_code: str = None,
+        region_id: str = None,
+        session_id: str = None,
+        sso_extends_cookies: str = None,
+        sso_session_token: str = None,
+        token_code: str = None,
+        umid_token: str = None,
+        uuid: str = None,
+    ):
+        self.authentication_code = authentication_code
+        self.available_features_shrink = available_features_shrink
+        # This parameter is required.
+        self.client_id = client_id
+        self.client_os = client_os
+        self.client_type = client_type
+        self.client_version = client_version
+        self.current_stage = current_stage
+        self.directory_id = directory_id
+        self.encrypted_finger_print_data = encrypted_finger_print_data
+        self.encrypted_key = encrypted_key
+        self.encrypted_password = encrypted_password
+        self.end_user_id = end_user_id
+        self.finger_print_data = finger_print_data
+        self.idp_id = idp_id
+        self.image_url = image_url
+        self.keep_alive = keep_alive
+        self.keep_alive_token = keep_alive_token
+        self.login_identifier = login_identifier
+        self.login_name = login_name
+        self.mfa_type = mfa_type
+        self.network_type = network_type
+        self.new_password = new_password
+        self.office_site_id = office_site_id
+        self.old_password = old_password
+        self.password = password
+        self.phone = phone
+        self.phone_verify_code = phone_verify_code
+        self.region_id = region_id
+        self.session_id = session_id
+        self.sso_extends_cookies = sso_extends_cookies
+        self.sso_session_token = sso_session_token
+        self.token_code = token_code
+        self.umid_token = umid_token
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authentication_code is not None:
+            result['AuthenticationCode'] = self.authentication_code
+        if self.available_features_shrink is not None:
+            result['AvailableFeatures'] = self.available_features_shrink
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.client_os is not None:
+            result['ClientOS'] = self.client_os
+        if self.client_type is not None:
+            result['ClientType'] = self.client_type
+        if self.client_version is not None:
+            result['ClientVersion'] = self.client_version
+        if self.current_stage is not None:
+            result['CurrentStage'] = self.current_stage
+        if self.directory_id is not None:
+            result['DirectoryId'] = self.directory_id
+        if self.encrypted_finger_print_data is not None:
+            result['EncryptedFingerPrintData'] = self.encrypted_finger_print_data
+        if self.encrypted_key is not None:
+            result['EncryptedKey'] = self.encrypted_key
+        if self.encrypted_password is not None:
+            result['EncryptedPassword'] = self.encrypted_password
+        if self.end_user_id is not None:
+            result['EndUserId'] = self.end_user_id
+        if self.finger_print_data is not None:
+            result['FingerPrintData'] = self.finger_print_data
+        if self.idp_id is not None:
+            result['IdpId'] = self.idp_id
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.keep_alive is not None:
+            result['KeepAlive'] = self.keep_alive
+        if self.keep_alive_token is not None:
+            result['KeepAliveToken'] = self.keep_alive_token
+        if self.login_identifier is not None:
+            result['LoginIdentifier'] = self.login_identifier
+        if self.login_name is not None:
+            result['LoginName'] = self.login_name
+        if self.mfa_type is not None:
+            result['MfaType'] = self.mfa_type
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+        if self.new_password is not None:
+            result['NewPassword'] = self.new_password
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+        if self.old_password is not None:
+            result['OldPassword'] = self.old_password
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.phone is not None:
+            result['Phone'] = self.phone
+        if self.phone_verify_code is not None:
+            result['PhoneVerifyCode'] = self.phone_verify_code
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.sso_extends_cookies is not None:
+            result['SsoExtendsCookies'] = self.sso_extends_cookies
+        if self.sso_session_token is not None:
+            result['SsoSessionToken'] = self.sso_session_token
+        if self.token_code is not None:
+            result['TokenCode'] = self.token_code
+        if self.umid_token is not None:
+            result['UmidToken'] = self.umid_token
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthenticationCode') is not None:
+            self.authentication_code = m.get('AuthenticationCode')
+        if m.get('AvailableFeatures') is not None:
+            self.available_features_shrink = m.get('AvailableFeatures')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('ClientOS') is not None:
+            self.client_os = m.get('ClientOS')
+        if m.get('ClientType') is not None:
+            self.client_type = m.get('ClientType')
+        if m.get('ClientVersion') is not None:
+            self.client_version = m.get('ClientVersion')
+        if m.get('CurrentStage') is not None:
+            self.current_stage = m.get('CurrentStage')
+        if m.get('DirectoryId') is not None:
+            self.directory_id = m.get('DirectoryId')
+        if m.get('EncryptedFingerPrintData') is not None:
+            self.encrypted_finger_print_data = m.get('EncryptedFingerPrintData')
+        if m.get('EncryptedKey') is not None:
+            self.encrypted_key = m.get('EncryptedKey')
+        if m.get('EncryptedPassword') is not None:
+            self.encrypted_password = m.get('EncryptedPassword')
+        if m.get('EndUserId') is not None:
+            self.end_user_id = m.get('EndUserId')
+        if m.get('FingerPrintData') is not None:
+            self.finger_print_data = m.get('FingerPrintData')
+        if m.get('IdpId') is not None:
+            self.idp_id = m.get('IdpId')
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('KeepAlive') is not None:
+            self.keep_alive = m.get('KeepAlive')
+        if m.get('KeepAliveToken') is not None:
+            self.keep_alive_token = m.get('KeepAliveToken')
+        if m.get('LoginIdentifier') is not None:
+            self.login_identifier = m.get('LoginIdentifier')
+        if m.get('LoginName') is not None:
+            self.login_name = m.get('LoginName')
+        if m.get('MfaType') is not None:
+            self.mfa_type = m.get('MfaType')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+        if m.get('NewPassword') is not None:
+            self.new_password = m.get('NewPassword')
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+        if m.get('OldPassword') is not None:
+            self.old_password = m.get('OldPassword')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('Phone') is not None:
+            self.phone = m.get('Phone')
+        if m.get('PhoneVerifyCode') is not None:
+            self.phone_verify_code = m.get('PhoneVerifyCode')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('SsoExtendsCookies') is not None:
+            self.sso_extends_cookies = m.get('SsoExtendsCookies')
+        if m.get('SsoSessionToken') is not None:
+            self.sso_session_token = m.get('SsoSessionToken')
+        if m.get('TokenCode') is not None:
+            self.token_code = m.get('TokenCode')
+        if m.get('UmidToken') is not None:
+            self.umid_token = m.get('UmidToken')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class GetLoginTokenResponseBodyMfaTypeList(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        stage: str = None,
+    ):
+        self.name = name
+        self.stage = stage
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.stage is not None:
+            result['Stage'] = self.stage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Stage') is not None:
+            self.stage = m.get('Stage')
         return self
 
 
@@ -677,6 +1036,7 @@ class GetLoginTokenResponseBody(TeaModel):
         keep_alive_token: str = None,
         label: str = None,
         login_token: str = None,
+        mfa_type_list: List[GetLoginTokenResponseBodyMfaTypeList] = None,
         next_stage: str = None,
         office_sites: List[str] = None,
         password_strategy: GetLoginTokenResponseBodyPasswordStrategy = None,
@@ -705,6 +1065,7 @@ class GetLoginTokenResponseBody(TeaModel):
         self.keep_alive_token = keep_alive_token
         self.label = label
         self.login_token = login_token
+        self.mfa_type_list = mfa_type_list
         self.next_stage = next_stage
         self.office_sites = office_sites
         self.password_strategy = password_strategy
@@ -724,6 +1085,10 @@ class GetLoginTokenResponseBody(TeaModel):
         self.wy_id = wy_id
 
     def validate(self):
+        if self.mfa_type_list:
+            for k in self.mfa_type_list:
+                if k:
+                    k.validate()
         if self.password_strategy:
             self.password_strategy.validate()
         if self.risk_verify_info:
@@ -759,6 +1124,10 @@ class GetLoginTokenResponseBody(TeaModel):
             result['Label'] = self.label
         if self.login_token is not None:
             result['LoginToken'] = self.login_token
+        result['MfaTypeList'] = []
+        if self.mfa_type_list is not None:
+            for k in self.mfa_type_list:
+                result['MfaTypeList'].append(k.to_map() if k else None)
         if self.next_stage is not None:
             result['NextStage'] = self.next_stage
         if self.office_sites is not None:
@@ -819,6 +1188,11 @@ class GetLoginTokenResponseBody(TeaModel):
             self.label = m.get('Label')
         if m.get('LoginToken') is not None:
             self.login_token = m.get('LoginToken')
+        self.mfa_type_list = []
+        if m.get('MfaTypeList') is not None:
+            for k in m.get('MfaTypeList'):
+                temp_model = GetLoginTokenResponseBodyMfaTypeList()
+                self.mfa_type_list.append(temp_model.from_map(k))
         if m.get('NextStage') is not None:
             self.next_stage = m.get('NextStage')
         if m.get('OfficeSites') is not None:

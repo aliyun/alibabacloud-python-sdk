@@ -1,3 +1,11 @@
+2024-11-03 Version: 1.1.2
+- Update API FindIdpListByLoginIdentifier: add param AvailableFeatures.
+- Update API FindIdpListByLoginIdentifier: update response param.
+- Update API GetLoginToken: add param AvailableFeatures.
+- Update API GetLoginToken: add param MfaType.
+- Update API GetLoginToken: update response param.
+
+
 2024-08-13 Version: 1.1.1
 - Generated python 2021-02-20 for appstream-center.
 
