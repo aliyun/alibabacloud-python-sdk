@@ -1823,9 +1823,7 @@ class ChangeCdnDomainToDcdnRequest(TeaModel):
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The operation that you want to perform on the check items. Valid values:
-        # 
-        # **preCheck**: return the verification result.
+        # The operation to perform. Set the value to preCheck. Precheck is performed, and the result is returned. If the precheck passes, set the value to enforce to perform the transfer.
         self.operation = operation
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -31681,6 +31679,7 @@ class PushObjectCacheRequest(TeaModel):
         l_2preload: bool = None,
         object_path: str = None,
         owner_id: int = None,
+        query_hashkey: bool = None,
         security_token: str = None,
         with_header: str = None,
     ):
@@ -31707,6 +31706,7 @@ class PushObjectCacheRequest(TeaModel):
         # This parameter is required.
         self.object_path = object_path
         self.owner_id = owner_id
+        self.query_hashkey = query_hashkey
         self.security_token = security_token
         # The custom header for prefetch in the JSON format.
         self.with_header = with_header
@@ -31728,6 +31728,8 @@ class PushObjectCacheRequest(TeaModel):
             result['ObjectPath'] = self.object_path
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.query_hashkey is not None:
+            result['QueryHashkey'] = self.query_hashkey
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
         if self.with_header is not None:
@@ -31744,6 +31746,8 @@ class PushObjectCacheRequest(TeaModel):
             self.object_path = m.get('ObjectPath')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('QueryHashkey') is not None:
+            self.query_hashkey = m.get('QueryHashkey')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
         if m.get('WithHeader') is not None:
@@ -31954,11 +31958,16 @@ class RefreshObjectCachesRequest(TeaModel):
         owner_id: int = None,
         security_token: str = None,
     ):
-        # Specifies whether to refresh resources in a directory if the resources are different from the resources in the same directory in the origin server. Default value: false.
+        # When the comparison between the source content and the source site resources is consistent, should the resources within the corresponding range be forcibly refreshed. The default is false.
         # 
-        # *   **true**: refresh all resources in the directory.
-        # *   **false**: refresh the changed resources in the directory.
+        # *   **true**: purges all resources in the range that corresponds to the type of the purge task. If you set this parameter to true, when the requested resource matches the resource in the range that corresponds to the type of the purge task, the POP retrieves the resource from the origin server, returns the resource to the client, and caches the resource.
+        # *   **false**: purges the changed resources in the range that corresponds to the type of the purge task. If you set this parameter to false, when the requested resource matches the resource in the range that corresponds to the type of the purge task, the POP obtains the Last-Modified parameter of the resource from the origin server. If the obtained value of the Last-Modified parameter is the same as that of the cached resource, the cached resource is returned. Otherwise, the POP retrieves the resource from the origin server, returns the resource to the client, and caches the resource.
+        # 
+        # >  This parameter takes effect only when the ObjectType parameter is not set to File.
         self.force = force
+        # *   If you submit multiple URLs or directories at a time, separate them with line breaks (\\n) or (\\r\\n).
+        # *   The total number of domain names contained all URLs in a submitted task cannot exceed 10.
+        # 
         # This parameter is required.
         self.object_path = object_path
         # The type of the object that you want to refresh. Valid values:

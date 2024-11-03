@@ -17966,6 +17966,8 @@ class Client(OpenApiClient):
             query['ObjectPath'] = request.object_path
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.query_hashkey):
+            query['QueryHashkey'] = request.query_hashkey
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.with_header):
@@ -18023,6 +18025,8 @@ class Client(OpenApiClient):
             query['ObjectPath'] = request.object_path
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.query_hashkey):
+            query['QueryHashkey'] = request.query_hashkey
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.with_header):

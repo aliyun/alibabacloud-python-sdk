@@ -1,3 +1,7 @@
+2024-11-03 Version: 4.0.1
+- Update API PushObjectCache: add param QueryHashkey.
+
+
 2024-07-09 Version: 4.0.0
 - Support API DescribeCdnFullDomainsBlockIPConfig.
 - Support API DescribeCdnFullDomainsBlockIPHistory.
