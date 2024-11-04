@@ -1,3 +1,17 @@
+2024-11-04 Version: 6.1.0
+- Support API AttachGatewayDomain.
+- Support API CreateGatewayIntranetLinkedVpcPeer.
+- Support API CreateVirtualResource.
+- Support API DeleteGatewayIntranetLinkedVpcPeer.
+- Support API DeleteVirtualResource.
+- Support API DescribeVirtualResource.
+- Support API DetachGatewayDomain.
+- Support API ListGatewayDomains.
+- Support API ListGatewayIntranetLinkedVpcPeer.
+- Support API ListVirtualResource.
+- Support API UpdateVirtualResource.
+
+
 2024-10-11 Version: 6.0.1
 - Update API CreateAclPolicy: update param AclPolicyList.
 - Update API CreateGateway: update param body.

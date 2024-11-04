@@ -58,6 +58,126 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def attach_gateway_domain_with_options(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        tmp_req: eas_20210701_models.AttachGatewayDomainRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.AttachGatewayDomainResponse:
+        """
+        @summary Binds a custom domain name to a private gateway.
+        
+        @param tmp_req: AttachGatewayDomainRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachGatewayDomainResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eas_20210701_models.AttachGatewayDomainShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.custom_domain):
+            request.custom_domain_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_domain, 'CustomDomain', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.custom_domain_shrink):
+            query['CustomDomain'] = request.custom_domain_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachGatewayDomain',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/gateways/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(gateway_id)}/domain/attach',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.AttachGatewayDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def attach_gateway_domain_with_options_async(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        tmp_req: eas_20210701_models.AttachGatewayDomainRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.AttachGatewayDomainResponse:
+        """
+        @summary Binds a custom domain name to a private gateway.
+        
+        @param tmp_req: AttachGatewayDomainRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachGatewayDomainResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eas_20210701_models.AttachGatewayDomainShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.custom_domain):
+            request.custom_domain_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_domain, 'CustomDomain', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.custom_domain_shrink):
+            query['CustomDomain'] = request.custom_domain_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachGatewayDomain',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/gateways/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(gateway_id)}/domain/attach',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.AttachGatewayDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def attach_gateway_domain(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        request: eas_20210701_models.AttachGatewayDomainRequest,
+    ) -> eas_20210701_models.AttachGatewayDomainResponse:
+        """
+        @summary Binds a custom domain name to a private gateway.
+        
+        @param request: AttachGatewayDomainRequest
+        @return: AttachGatewayDomainResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.attach_gateway_domain_with_options(cluster_id, gateway_id, request, headers, runtime)
+
+    async def attach_gateway_domain_async(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        request: eas_20210701_models.AttachGatewayDomainRequest,
+    ) -> eas_20210701_models.AttachGatewayDomainResponse:
+        """
+        @summary Binds a custom domain name to a private gateway.
+        
+        @param request: AttachGatewayDomainRequest
+        @return: AttachGatewayDomainResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.attach_gateway_domain_with_options_async(cluster_id, gateway_id, request, headers, runtime)
+
     def clone_service_with_options(
         self,
         cluster_id: str,
@@ -639,7 +759,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateGatewayResponse:
         """
-        @summary Creates a private gateway. You can create a private gateway only in a self-managed resource group.
+        @summary Creates a gateway.
         
         @param request: CreateGatewayRequest
         @param headers: map
@@ -693,7 +813,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateGatewayResponse:
         """
-        @summary Creates a private gateway. You can create a private gateway only in a self-managed resource group.
+        @summary Creates a gateway.
         
         @param request: CreateGatewayRequest
         @param headers: map
@@ -745,7 +865,7 @@ class Client(OpenApiClient):
         request: eas_20210701_models.CreateGatewayRequest,
     ) -> eas_20210701_models.CreateGatewayResponse:
         """
-        @summary Creates a private gateway. You can create a private gateway only in a self-managed resource group.
+        @summary Creates a gateway.
         
         @param request: CreateGatewayRequest
         @return: CreateGatewayResponse
@@ -759,7 +879,7 @@ class Client(OpenApiClient):
         request: eas_20210701_models.CreateGatewayRequest,
     ) -> eas_20210701_models.CreateGatewayResponse:
         """
-        @summary Creates a private gateway. You can create a private gateway only in a self-managed resource group.
+        @summary Creates a gateway.
         
         @param request: CreateGatewayRequest
         @return: CreateGatewayResponse
@@ -883,6 +1003,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_gateway_intranet_linked_vpc_with_options_async(cluster_id, gateway_id, request, headers, runtime)
+
+    def create_gateway_intranet_linked_vpc_peer_with_options(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        tmp_req: eas_20210701_models.CreateGatewayIntranetLinkedVpcPeerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.CreateGatewayIntranetLinkedVpcPeerResponse:
+        """
+        @summary 创建网关内网访问端点跨VPC连接
+        
+        @param tmp_req: CreateGatewayIntranetLinkedVpcPeerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGatewayIntranetLinkedVpcPeerResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eas_20210701_models.CreateGatewayIntranetLinkedVpcPeerShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.peer_vpcs):
+            request.peer_vpcs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.peer_vpcs, 'PeerVpcs', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.peer_vpcs_shrink):
+            query['PeerVpcs'] = request.peer_vpcs_shrink
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateGatewayIntranetLinkedVpcPeer',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/gateways/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(gateway_id)}/intranet_endpoint_linked_vpc_peer',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateGatewayIntranetLinkedVpcPeerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_gateway_intranet_linked_vpc_peer_with_options_async(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        tmp_req: eas_20210701_models.CreateGatewayIntranetLinkedVpcPeerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.CreateGatewayIntranetLinkedVpcPeerResponse:
+        """
+        @summary 创建网关内网访问端点跨VPC连接
+        
+        @param tmp_req: CreateGatewayIntranetLinkedVpcPeerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGatewayIntranetLinkedVpcPeerResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eas_20210701_models.CreateGatewayIntranetLinkedVpcPeerShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.peer_vpcs):
+            request.peer_vpcs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.peer_vpcs, 'PeerVpcs', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.peer_vpcs_shrink):
+            query['PeerVpcs'] = request.peer_vpcs_shrink
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateGatewayIntranetLinkedVpcPeer',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/gateways/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(gateway_id)}/intranet_endpoint_linked_vpc_peer',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateGatewayIntranetLinkedVpcPeerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_gateway_intranet_linked_vpc_peer(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        request: eas_20210701_models.CreateGatewayIntranetLinkedVpcPeerRequest,
+    ) -> eas_20210701_models.CreateGatewayIntranetLinkedVpcPeerResponse:
+        """
+        @summary 创建网关内网访问端点跨VPC连接
+        
+        @param request: CreateGatewayIntranetLinkedVpcPeerRequest
+        @return: CreateGatewayIntranetLinkedVpcPeerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_gateway_intranet_linked_vpc_peer_with_options(cluster_id, gateway_id, request, headers, runtime)
+
+    async def create_gateway_intranet_linked_vpc_peer_async(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        request: eas_20210701_models.CreateGatewayIntranetLinkedVpcPeerRequest,
+    ) -> eas_20210701_models.CreateGatewayIntranetLinkedVpcPeerResponse:
+        """
+        @summary 创建网关内网访问端点跨VPC连接
+        
+        @param request: CreateGatewayIntranetLinkedVpcPeerRequest
+        @return: CreateGatewayIntranetLinkedVpcPeerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_gateway_intranet_linked_vpc_peer_with_options_async(cluster_id, gateway_id, request, headers, runtime)
 
     def create_resource_with_options(
         self,
@@ -1762,6 +2006,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_service_mirror_with_options_async(cluster_id, service_name, request, headers, runtime)
 
+    def create_virtual_resource_with_options(
+        self,
+        request: eas_20210701_models.CreateVirtualResourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.CreateVirtualResourceResponse:
+        """
+        @summary Creates a virtual resource group.
+        
+        @param request: CreateVirtualResourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVirtualResourceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resources):
+            body['Resources'] = request.resources
+        if not UtilClient.is_unset(request.virtual_resource_name):
+            body['VirtualResourceName'] = request.virtual_resource_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateVirtualResource',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/virtualresources',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateVirtualResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_virtual_resource_with_options_async(
+        self,
+        request: eas_20210701_models.CreateVirtualResourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.CreateVirtualResourceResponse:
+        """
+        @summary Creates a virtual resource group.
+        
+        @param request: CreateVirtualResourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVirtualResourceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resources):
+            body['Resources'] = request.resources
+        if not UtilClient.is_unset(request.virtual_resource_name):
+            body['VirtualResourceName'] = request.virtual_resource_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateVirtualResource',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/virtualresources',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateVirtualResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_virtual_resource(
+        self,
+        request: eas_20210701_models.CreateVirtualResourceRequest,
+    ) -> eas_20210701_models.CreateVirtualResourceResponse:
+        """
+        @summary Creates a virtual resource group.
+        
+        @param request: CreateVirtualResourceRequest
+        @return: CreateVirtualResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_virtual_resource_with_options(request, headers, runtime)
+
+    async def create_virtual_resource_async(
+        self,
+        request: eas_20210701_models.CreateVirtualResourceRequest,
+    ) -> eas_20210701_models.CreateVirtualResourceResponse:
+        """
+        @summary Creates a virtual resource group.
+        
+        @param request: CreateVirtualResourceRequest
+        @return: CreateVirtualResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_virtual_resource_with_options_async(request, headers, runtime)
+
     def delete_acl_policy_with_options(
         self,
         cluster_id: str,
@@ -2189,6 +2541,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_gateway_intranet_linked_vpc_with_options_async(cluster_id, gateway_id, request, headers, runtime)
+
+    def delete_gateway_intranet_linked_vpc_peer_with_options(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        tmp_req: eas_20210701_models.DeleteGatewayIntranetLinkedVpcPeerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DeleteGatewayIntranetLinkedVpcPeerResponse:
+        """
+        @summary 删除网关内网访问端点跨VPC连接
+        
+        @param tmp_req: DeleteGatewayIntranetLinkedVpcPeerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewayIntranetLinkedVpcPeerResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eas_20210701_models.DeleteGatewayIntranetLinkedVpcPeerShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.peer_vpcs):
+            request.peer_vpcs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.peer_vpcs, 'PeerVpcs', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.peer_vpcs_shrink):
+            query['PeerVpcs'] = request.peer_vpcs_shrink
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteGatewayIntranetLinkedVpcPeer',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/gateways/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(gateway_id)}/intranet_endpoint_linked_vpc_peer',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteGatewayIntranetLinkedVpcPeerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_gateway_intranet_linked_vpc_peer_with_options_async(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        tmp_req: eas_20210701_models.DeleteGatewayIntranetLinkedVpcPeerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DeleteGatewayIntranetLinkedVpcPeerResponse:
+        """
+        @summary 删除网关内网访问端点跨VPC连接
+        
+        @param tmp_req: DeleteGatewayIntranetLinkedVpcPeerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewayIntranetLinkedVpcPeerResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eas_20210701_models.DeleteGatewayIntranetLinkedVpcPeerShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.peer_vpcs):
+            request.peer_vpcs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.peer_vpcs, 'PeerVpcs', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.peer_vpcs_shrink):
+            query['PeerVpcs'] = request.peer_vpcs_shrink
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteGatewayIntranetLinkedVpcPeer',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/gateways/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(gateway_id)}/intranet_endpoint_linked_vpc_peer',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteGatewayIntranetLinkedVpcPeerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_gateway_intranet_linked_vpc_peer(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        request: eas_20210701_models.DeleteGatewayIntranetLinkedVpcPeerRequest,
+    ) -> eas_20210701_models.DeleteGatewayIntranetLinkedVpcPeerResponse:
+        """
+        @summary 删除网关内网访问端点跨VPC连接
+        
+        @param request: DeleteGatewayIntranetLinkedVpcPeerRequest
+        @return: DeleteGatewayIntranetLinkedVpcPeerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_gateway_intranet_linked_vpc_peer_with_options(cluster_id, gateway_id, request, headers, runtime)
+
+    async def delete_gateway_intranet_linked_vpc_peer_async(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        request: eas_20210701_models.DeleteGatewayIntranetLinkedVpcPeerRequest,
+    ) -> eas_20210701_models.DeleteGatewayIntranetLinkedVpcPeerResponse:
+        """
+        @summary 删除网关内网访问端点跨VPC连接
+        
+        @param request: DeleteGatewayIntranetLinkedVpcPeerRequest
+        @return: DeleteGatewayIntranetLinkedVpcPeerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_gateway_intranet_linked_vpc_peer_with_options_async(cluster_id, gateway_id, request, headers, runtime)
 
     def delete_resource_with_options(
         self,
@@ -3203,6 +3679,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_service_mirror_with_options_async(cluster_id, service_name, headers, runtime)
+
+    def delete_virtual_resource_with_options(
+        self,
+        cluster_id: str,
+        virtual_resource_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DeleteVirtualResourceResponse:
+        """
+        @summary Deletes a virtual resource group that contains no resources or instances.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVirtualResourceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteVirtualResource',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/virtualresources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(virtual_resource_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteVirtualResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_virtual_resource_with_options_async(
+        self,
+        cluster_id: str,
+        virtual_resource_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DeleteVirtualResourceResponse:
+        """
+        @summary Deletes a virtual resource group that contains no resources or instances.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVirtualResourceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteVirtualResource',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/virtualresources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(virtual_resource_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteVirtualResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_virtual_resource(
+        self,
+        cluster_id: str,
+        virtual_resource_id: str,
+    ) -> eas_20210701_models.DeleteVirtualResourceResponse:
+        """
+        @summary Deletes a virtual resource group that contains no resources or instances.
+        
+        @return: DeleteVirtualResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_virtual_resource_with_options(cluster_id, virtual_resource_id, headers, runtime)
+
+    async def delete_virtual_resource_async(
+        self,
+        cluster_id: str,
+        virtual_resource_id: str,
+    ) -> eas_20210701_models.DeleteVirtualResourceResponse:
+        """
+        @summary Deletes a virtual resource group that contains no resources or instances.
+        
+        @return: DeleteVirtualResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_virtual_resource_with_options_async(cluster_id, virtual_resource_id, headers, runtime)
 
     def describe_benchmark_task_with_options(
         self,
@@ -4832,6 +5402,220 @@ class Client(OpenApiClient):
         headers = {}
         return await self.describe_spot_discount_history_with_options_async(request, headers, runtime)
 
+    def describe_virtual_resource_with_options(
+        self,
+        cluster_id: str,
+        virtual_resource_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DescribeVirtualResourceResponse:
+        """
+        @summary Views the details of a virtual resource group.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVirtualResourceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DescribeVirtualResource',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/virtualresources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(virtual_resource_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeVirtualResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_virtual_resource_with_options_async(
+        self,
+        cluster_id: str,
+        virtual_resource_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DescribeVirtualResourceResponse:
+        """
+        @summary Views the details of a virtual resource group.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVirtualResourceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DescribeVirtualResource',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/virtualresources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(virtual_resource_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeVirtualResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_virtual_resource(
+        self,
+        cluster_id: str,
+        virtual_resource_id: str,
+    ) -> eas_20210701_models.DescribeVirtualResourceResponse:
+        """
+        @summary Views the details of a virtual resource group.
+        
+        @return: DescribeVirtualResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_virtual_resource_with_options(cluster_id, virtual_resource_id, headers, runtime)
+
+    async def describe_virtual_resource_async(
+        self,
+        cluster_id: str,
+        virtual_resource_id: str,
+    ) -> eas_20210701_models.DescribeVirtualResourceResponse:
+        """
+        @summary Views the details of a virtual resource group.
+        
+        @return: DescribeVirtualResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_virtual_resource_with_options_async(cluster_id, virtual_resource_id, headers, runtime)
+
+    def detach_gateway_domain_with_options(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        tmp_req: eas_20210701_models.DetachGatewayDomainRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DetachGatewayDomainResponse:
+        """
+        @summary Unbinds a custom domain name from a private gateway.
+        
+        @param tmp_req: DetachGatewayDomainRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachGatewayDomainResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eas_20210701_models.DetachGatewayDomainShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.custom_domain):
+            request.custom_domain_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_domain, 'CustomDomain', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.custom_domain_shrink):
+            query['CustomDomain'] = request.custom_domain_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetachGatewayDomain',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/gateways/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(gateway_id)}/domain/detach',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DetachGatewayDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detach_gateway_domain_with_options_async(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        tmp_req: eas_20210701_models.DetachGatewayDomainRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DetachGatewayDomainResponse:
+        """
+        @summary Unbinds a custom domain name from a private gateway.
+        
+        @param tmp_req: DetachGatewayDomainRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachGatewayDomainResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eas_20210701_models.DetachGatewayDomainShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.custom_domain):
+            request.custom_domain_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_domain, 'CustomDomain', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.custom_domain_shrink):
+            query['CustomDomain'] = request.custom_domain_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetachGatewayDomain',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/gateways/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(gateway_id)}/domain/detach',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DetachGatewayDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detach_gateway_domain(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        request: eas_20210701_models.DetachGatewayDomainRequest,
+    ) -> eas_20210701_models.DetachGatewayDomainResponse:
+        """
+        @summary Unbinds a custom domain name from a private gateway.
+        
+        @param request: DetachGatewayDomainRequest
+        @return: DetachGatewayDomainResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.detach_gateway_domain_with_options(cluster_id, gateway_id, request, headers, runtime)
+
+    async def detach_gateway_domain_async(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        request: eas_20210701_models.DetachGatewayDomainRequest,
+    ) -> eas_20210701_models.DetachGatewayDomainResponse:
+        """
+        @summary Unbinds a custom domain name from a private gateway.
+        
+        @param request: DetachGatewayDomainRequest
+        @return: DetachGatewayDomainResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.detach_gateway_domain_with_options_async(cluster_id, gateway_id, request, headers, runtime)
+
     def develop_service_with_options(
         self,
         cluster_id: str,
@@ -5292,6 +6076,100 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_gateway_with_options_async(request, headers, runtime)
 
+    def list_gateway_domains_with_options(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.ListGatewayDomainsResponse:
+        """
+        @summary Queries a list of custom domain names of a private gateway.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayDomainsResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListGatewayDomains',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/gateways/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(gateway_id)}/domains',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.ListGatewayDomainsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_gateway_domains_with_options_async(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.ListGatewayDomainsResponse:
+        """
+        @summary Queries a list of custom domain names of a private gateway.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayDomainsResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListGatewayDomains',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/gateways/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(gateway_id)}/domains',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.ListGatewayDomainsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_gateway_domains(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+    ) -> eas_20210701_models.ListGatewayDomainsResponse:
+        """
+        @summary Queries a list of custom domain names of a private gateway.
+        
+        @return: ListGatewayDomainsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_gateway_domains_with_options(cluster_id, gateway_id, headers, runtime)
+
+    async def list_gateway_domains_async(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+    ) -> eas_20210701_models.ListGatewayDomainsResponse:
+        """
+        @summary Queries a list of custom domain names of a private gateway.
+        
+        @return: ListGatewayDomainsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_gateway_domains_with_options_async(cluster_id, gateway_id, headers, runtime)
+
     def list_gateway_intranet_linked_vpc_with_options(
         self,
         cluster_id: str,
@@ -5385,6 +6263,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_gateway_intranet_linked_vpc_with_options_async(cluster_id, gateway_id, headers, runtime)
+
+    def list_gateway_intranet_linked_vpc_peer_with_options(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        request: eas_20210701_models.ListGatewayIntranetLinkedVpcPeerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.ListGatewayIntranetLinkedVpcPeerResponse:
+        """
+        @summary 获取网关内网访问端点跨VPC连接列表
+        
+        @param request: ListGatewayIntranetLinkedVpcPeerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayIntranetLinkedVpcPeerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGatewayIntranetLinkedVpcPeer',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/gateways/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(gateway_id)}/intranet_endpoint_linked_vpc_peer',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.ListGatewayIntranetLinkedVpcPeerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_gateway_intranet_linked_vpc_peer_with_options_async(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        request: eas_20210701_models.ListGatewayIntranetLinkedVpcPeerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.ListGatewayIntranetLinkedVpcPeerResponse:
+        """
+        @summary 获取网关内网访问端点跨VPC连接列表
+        
+        @param request: ListGatewayIntranetLinkedVpcPeerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayIntranetLinkedVpcPeerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGatewayIntranetLinkedVpcPeer',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/gateways/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(gateway_id)}/intranet_endpoint_linked_vpc_peer',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.ListGatewayIntranetLinkedVpcPeerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_gateway_intranet_linked_vpc_peer(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        request: eas_20210701_models.ListGatewayIntranetLinkedVpcPeerRequest,
+    ) -> eas_20210701_models.ListGatewayIntranetLinkedVpcPeerResponse:
+        """
+        @summary 获取网关内网访问端点跨VPC连接列表
+        
+        @param request: ListGatewayIntranetLinkedVpcPeerRequest
+        @return: ListGatewayIntranetLinkedVpcPeerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_gateway_intranet_linked_vpc_peer_with_options(cluster_id, gateway_id, request, headers, runtime)
+
+    async def list_gateway_intranet_linked_vpc_peer_async(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        request: eas_20210701_models.ListGatewayIntranetLinkedVpcPeerRequest,
+    ) -> eas_20210701_models.ListGatewayIntranetLinkedVpcPeerResponse:
+        """
+        @summary 获取网关内网访问端点跨VPC连接列表
+        
+        @param request: ListGatewayIntranetLinkedVpcPeerRequest
+        @return: ListGatewayIntranetLinkedVpcPeerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_gateway_intranet_linked_vpc_peer_with_options_async(cluster_id, gateway_id, request, headers, runtime)
 
     def list_groups_with_options(
         self,
@@ -6650,6 +7640,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_tenant_addons_with_options_async(headers, runtime)
 
+    def list_virtual_resource_with_options(
+        self,
+        request: eas_20210701_models.ListVirtualResourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.ListVirtualResourceResponse:
+        """
+        @summary Queries a list of virtual resource groups for the current user.
+        
+        @param request: ListVirtualResourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVirtualResourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.virtual_resource_id):
+            query['VirtualResourceId'] = request.virtual_resource_id
+        if not UtilClient.is_unset(request.virtual_resource_name):
+            query['VirtualResourceName'] = request.virtual_resource_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListVirtualResource',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/virtualresources',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.ListVirtualResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_virtual_resource_with_options_async(
+        self,
+        request: eas_20210701_models.ListVirtualResourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.ListVirtualResourceResponse:
+        """
+        @summary Queries a list of virtual resource groups for the current user.
+        
+        @param request: ListVirtualResourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVirtualResourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.virtual_resource_id):
+            query['VirtualResourceId'] = request.virtual_resource_id
+        if not UtilClient.is_unset(request.virtual_resource_name):
+            query['VirtualResourceName'] = request.virtual_resource_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListVirtualResource',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/virtualresources',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.ListVirtualResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_virtual_resource(
+        self,
+        request: eas_20210701_models.ListVirtualResourceRequest,
+    ) -> eas_20210701_models.ListVirtualResourceResponse:
+        """
+        @summary Queries a list of virtual resource groups for the current user.
+        
+        @param request: ListVirtualResourceRequest
+        @return: ListVirtualResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_virtual_resource_with_options(request, headers, runtime)
+
+    async def list_virtual_resource_async(
+        self,
+        request: eas_20210701_models.ListVirtualResourceRequest,
+    ) -> eas_20210701_models.ListVirtualResourceResponse:
+        """
+        @summary Queries a list of virtual resource groups for the current user.
+        
+        @param request: ListVirtualResourceRequest
+        @return: ListVirtualResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_virtual_resource_with_options_async(request, headers, runtime)
+
     def reinstall_tenant_addon_with_options(
         self,
         cluster_id: str,
@@ -6658,7 +7764,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ReinstallTenantAddonResponse:
         """
-        @summary Updates the information about a tenant plug-in.
+        @summary Resets tenant configurations.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -6691,7 +7797,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ReinstallTenantAddonResponse:
         """
-        @summary Updates the information about a tenant plug-in.
+        @summary Resets tenant configurations.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -6722,7 +7828,7 @@ class Client(OpenApiClient):
         tenant_addon_name: str,
     ) -> eas_20210701_models.ReinstallTenantAddonResponse:
         """
-        @summary Updates the information about a tenant plug-in.
+        @summary Resets tenant configurations.
         
         @return: ReinstallTenantAddonResponse
         """
@@ -6736,7 +7842,7 @@ class Client(OpenApiClient):
         tenant_addon_name: str,
     ) -> eas_20210701_models.ReinstallTenantAddonResponse:
         """
-        @summary Updates the information about a tenant plug-in.
+        @summary Resets tenant configurations.
         
         @return: ReinstallTenantAddonResponse
         """
@@ -8985,3 +10091,119 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_service_version_with_options_async(cluster_id, service_name, request, headers, runtime)
+
+    def update_virtual_resource_with_options(
+        self,
+        cluster_id: str,
+        virtual_resource_id: str,
+        request: eas_20210701_models.UpdateVirtualResourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.UpdateVirtualResourceResponse:
+        """
+        @summary Updates the information about a virtual resource group.
+        
+        @param request: UpdateVirtualResourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateVirtualResourceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resources):
+            body['Resources'] = request.resources
+        if not UtilClient.is_unset(request.virtual_resource_name):
+            body['VirtualResourceName'] = request.virtual_resource_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateVirtualResource',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/virtualresources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(virtual_resource_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateVirtualResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_virtual_resource_with_options_async(
+        self,
+        cluster_id: str,
+        virtual_resource_id: str,
+        request: eas_20210701_models.UpdateVirtualResourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.UpdateVirtualResourceResponse:
+        """
+        @summary Updates the information about a virtual resource group.
+        
+        @param request: UpdateVirtualResourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateVirtualResourceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resources):
+            body['Resources'] = request.resources
+        if not UtilClient.is_unset(request.virtual_resource_name):
+            body['VirtualResourceName'] = request.virtual_resource_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateVirtualResource',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/virtualresources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(virtual_resource_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateVirtualResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_virtual_resource(
+        self,
+        cluster_id: str,
+        virtual_resource_id: str,
+        request: eas_20210701_models.UpdateVirtualResourceRequest,
+    ) -> eas_20210701_models.UpdateVirtualResourceResponse:
+        """
+        @summary Updates the information about a virtual resource group.
+        
+        @param request: UpdateVirtualResourceRequest
+        @return: UpdateVirtualResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_virtual_resource_with_options(cluster_id, virtual_resource_id, request, headers, runtime)
+
+    async def update_virtual_resource_async(
+        self,
+        cluster_id: str,
+        virtual_resource_id: str,
+        request: eas_20210701_models.UpdateVirtualResourceRequest,
+    ) -> eas_20210701_models.UpdateVirtualResourceResponse:
+        """
+        @summary Updates the information about a virtual resource group.
+        
+        @param request: UpdateVirtualResourceRequest
+        @return: UpdateVirtualResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_virtual_resource_with_options_async(cluster_id, virtual_resource_id, request, headers, runtime)

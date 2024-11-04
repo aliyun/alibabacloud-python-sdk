@@ -1014,6 +1014,202 @@ class Service(TeaModel):
         return self
 
 
+class AttachGatewayDomainRequestCustomDomain(TeaModel):
+    def __init__(
+        self,
+        certificate_id: str = None,
+        domain: str = None,
+        type: str = None,
+    ):
+        # The ID of the SSL certificate bound to the domain name. Obtain the certificate ID after you upload or purchase a certificate in the [Certificate Management Service](https://yundunnext.console.aliyun.com/?spm=5176.2020520163.console-base_help.2.4b3baJixaJixOc\\&p=cas) console.
+        self.certificate_id = certificate_id
+        # The custom domain name.
+        # 
+        # This parameter is required.
+        self.domain = domain
+        # The domain name type.
+        # 
+        # Valid value:
+        # 
+        # *   intranet: internal network.
+        # *   internet: public network.
+        # 
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.certificate_id is not None:
+            result['CertificateId'] = self.certificate_id
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertificateId') is not None:
+            self.certificate_id = m.get('CertificateId')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class AttachGatewayDomainRequest(TeaModel):
+    def __init__(
+        self,
+        custom_domain: AttachGatewayDomainRequestCustomDomain = None,
+    ):
+        # The custom domain name information.
+        # 
+        # This parameter is required.
+        self.custom_domain = custom_domain
+
+    def validate(self):
+        if self.custom_domain:
+            self.custom_domain.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_domain is not None:
+            result['CustomDomain'] = self.custom_domain.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomDomain') is not None:
+            temp_model = AttachGatewayDomainRequestCustomDomain()
+            self.custom_domain = temp_model.from_map(m['CustomDomain'])
+        return self
+
+
+class AttachGatewayDomainShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        custom_domain_shrink: str = None,
+    ):
+        # The custom domain name information.
+        # 
+        # This parameter is required.
+        self.custom_domain_shrink = custom_domain_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_domain_shrink is not None:
+            result['CustomDomain'] = self.custom_domain_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomDomain') is not None:
+            self.custom_domain_shrink = m.get('CustomDomain')
+        return self
+
+
+class AttachGatewayDomainResponseBody(TeaModel):
+    def __init__(
+        self,
+        gateway_id: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # The ID of the private gateway. To obtain the private gateway ID, see the GatewayId parameter in the response parameters of the [ListGateway](https://apiworkbench.aliyun-inc.com/document/eas/2021-07-01/ListGateway?spm=openapi-amp.newDocPublishment.0.0.765e281fL2IcjJ\\&ampEnv=online) operation.
+        self.gateway_id = gateway_id
+        # The error message.
+        self.message = message
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gateway_id is not None:
+            result['GatewayId'] = self.gateway_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GatewayId') is not None:
+            self.gateway_id = m.get('GatewayId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AttachGatewayDomainResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AttachGatewayDomainResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AttachGatewayDomainResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CloneServiceRequest(TeaModel):
     def __init__(
         self,
@@ -1815,7 +2011,15 @@ class CreateGatewayRequest(TeaModel):
     ):
         # The resource group ID. To obtain a resource group ID, see the ResourceId field in the response of the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation.
         self.resource_name = resource_name
+        # Specifies whether to enable auto-renewal. Valid values:
+        # 
+        # *   false (default)
+        # *   true
         self.auto_renewal = auto_renewal
+        # The billing method. Valid values:
+        # 
+        # *   PrePaid: subscription.
+        # *   PostPaid: pay-as-you-go.
         self.charge_type = charge_type
         # Specifies whether to enable Internet access. Default value: false.
         # 
@@ -2097,6 +2301,193 @@ class CreateGatewayIntranetLinkedVpcResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateGatewayIntranetLinkedVpcResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateGatewayIntranetLinkedVpcPeerRequestPeerVpcs(TeaModel):
+    def __init__(
+        self,
+        region: str = None,
+        vpc_id: str = None,
+    ):
+        self.region = region
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class CreateGatewayIntranetLinkedVpcPeerRequest(TeaModel):
+    def __init__(
+        self,
+        peer_vpcs: List[CreateGatewayIntranetLinkedVpcPeerRequestPeerVpcs] = None,
+        vpc_id: str = None,
+    ):
+        self.peer_vpcs = peer_vpcs
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        if self.peer_vpcs:
+            for k in self.peer_vpcs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PeerVpcs'] = []
+        if self.peer_vpcs is not None:
+            for k in self.peer_vpcs:
+                result['PeerVpcs'].append(k.to_map() if k else None)
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.peer_vpcs = []
+        if m.get('PeerVpcs') is not None:
+            for k in m.get('PeerVpcs'):
+                temp_model = CreateGatewayIntranetLinkedVpcPeerRequestPeerVpcs()
+                self.peer_vpcs.append(temp_model.from_map(k))
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class CreateGatewayIntranetLinkedVpcPeerShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        peer_vpcs_shrink: str = None,
+        vpc_id: str = None,
+    ):
+        self.peer_vpcs_shrink = peer_vpcs_shrink
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.peer_vpcs_shrink is not None:
+            result['PeerVpcs'] = self.peer_vpcs_shrink
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PeerVpcs') is not None:
+            self.peer_vpcs_shrink = m.get('PeerVpcs')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class CreateGatewayIntranetLinkedVpcPeerResponseBody(TeaModel):
+    def __init__(
+        self,
+        gateway_id: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.gateway_id = gateway_id
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gateway_id is not None:
+            result['GatewayId'] = self.gateway_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GatewayId') is not None:
+            self.gateway_id = m.get('GatewayId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreateGatewayIntranetLinkedVpcPeerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateGatewayIntranetLinkedVpcPeerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateGatewayIntranetLinkedVpcPeerResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3558,6 +3949,203 @@ class CreateServiceMirrorResponse(TeaModel):
         return self
 
 
+class CreateVirtualResourceRequestResources(TeaModel):
+    def __init__(
+        self,
+        instance_type: str = None,
+        priority: int = None,
+        quota_id: str = None,
+        region: str = None,
+        resource_id: str = None,
+        spot_price_limit: float = None,
+    ):
+        # The instance type of the public resource group.
+        # 
+        # >  You must specify one and only one of the InstanceType, ResourceId, and QuotaId parameters.
+        self.instance_type = instance_type
+        # The priority of resource scheduling. A greater number specifies a higher priority.
+        self.priority = priority
+        # Lingjun Resource Quota ID.
+        # 
+        # >  You must specify one and only one of the InstanceType, ResourceId, and QuotaId parameters.
+        self.quota_id = quota_id
+        # The region where the resource resides.
+        self.region = region
+        # The ID of the dedicated resource group. For information about how to query the ID of a dedicated resource group, see [ListResources](https://help.aliyun.com/document_detail/412133.html).
+        # 
+        # >  You must specify one and only one of the InstanceType, ResourceId, and QuotaId parameters.
+        self.resource_id = resource_id
+        # The maximum price of preemptible instances in a public resource group.
+        # 
+        # >  If you do not set this value, preemptible instances are not used.
+        self.spot_price_limit = spot_price_limit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.quota_id is not None:
+            result['QuotaId'] = self.quota_id
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.spot_price_limit is not None:
+            result['SpotPriceLimit'] = self.spot_price_limit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('QuotaId') is not None:
+            self.quota_id = m.get('QuotaId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('SpotPriceLimit') is not None:
+            self.spot_price_limit = m.get('SpotPriceLimit')
+        return self
+
+
+class CreateVirtualResourceRequest(TeaModel):
+    def __init__(
+        self,
+        resources: List[CreateVirtualResourceRequestResources] = None,
+        virtual_resource_name: str = None,
+    ):
+        # The list of resources in the virtual resource group.
+        self.resources = resources
+        # The name of the virtual resource group. Default value: the ID of the virtual resource group.
+        self.virtual_resource_name = virtual_resource_name
+
+    def validate(self):
+        if self.resources:
+            for k in self.resources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Resources'] = []
+        if self.resources is not None:
+            for k in self.resources:
+                result['Resources'].append(k.to_map() if k else None)
+        if self.virtual_resource_name is not None:
+            result['VirtualResourceName'] = self.virtual_resource_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.resources = []
+        if m.get('Resources') is not None:
+            for k in m.get('Resources'):
+                temp_model = CreateVirtualResourceRequestResources()
+                self.resources.append(temp_model.from_map(k))
+        if m.get('VirtualResourceName') is not None:
+            self.virtual_resource_name = m.get('VirtualResourceName')
+        return self
+
+
+class CreateVirtualResourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        virtual_resource_id: str = None,
+    ):
+        # The returned message.
+        self.message = message
+        # The ID of the request.
+        self.request_id = request_id
+        # The ID of the virtual resource group.
+        self.virtual_resource_id = virtual_resource_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.virtual_resource_id is not None:
+            result['VirtualResourceId'] = self.virtual_resource_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('VirtualResourceId') is not None:
+            self.virtual_resource_id = m.get('VirtualResourceId')
+        return self
+
+
+class CreateVirtualResourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateVirtualResourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateVirtualResourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteAclPolicyRequestAclPolicyList(TeaModel):
     def __init__(
         self,
@@ -4027,6 +4615,193 @@ class DeleteGatewayIntranetLinkedVpcResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteGatewayIntranetLinkedVpcResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteGatewayIntranetLinkedVpcPeerRequestPeerVpcs(TeaModel):
+    def __init__(
+        self,
+        region: str = None,
+        vpc_id: str = None,
+    ):
+        self.region = region
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class DeleteGatewayIntranetLinkedVpcPeerRequest(TeaModel):
+    def __init__(
+        self,
+        peer_vpcs: List[DeleteGatewayIntranetLinkedVpcPeerRequestPeerVpcs] = None,
+        vpc_id: str = None,
+    ):
+        self.peer_vpcs = peer_vpcs
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        if self.peer_vpcs:
+            for k in self.peer_vpcs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PeerVpcs'] = []
+        if self.peer_vpcs is not None:
+            for k in self.peer_vpcs:
+                result['PeerVpcs'].append(k.to_map() if k else None)
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.peer_vpcs = []
+        if m.get('PeerVpcs') is not None:
+            for k in m.get('PeerVpcs'):
+                temp_model = DeleteGatewayIntranetLinkedVpcPeerRequestPeerVpcs()
+                self.peer_vpcs.append(temp_model.from_map(k))
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class DeleteGatewayIntranetLinkedVpcPeerShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        peer_vpcs_shrink: str = None,
+        vpc_id: str = None,
+    ):
+        self.peer_vpcs_shrink = peer_vpcs_shrink
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.peer_vpcs_shrink is not None:
+            result['PeerVpcs'] = self.peer_vpcs_shrink
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PeerVpcs') is not None:
+            self.peer_vpcs_shrink = m.get('PeerVpcs')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class DeleteGatewayIntranetLinkedVpcPeerResponseBody(TeaModel):
+    def __init__(
+        self,
+        gateway_id: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.gateway_id = gateway_id
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gateway_id is not None:
+            result['GatewayId'] = self.gateway_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GatewayId') is not None:
+            self.gateway_id = m.get('GatewayId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeleteGatewayIntranetLinkedVpcPeerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteGatewayIntranetLinkedVpcPeerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteGatewayIntranetLinkedVpcPeerResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4929,6 +5704,82 @@ class DeleteServiceMirrorResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteServiceMirrorResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteVirtualResourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # The information about the operation result.
+        self.message = message
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteVirtualResourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteVirtualResourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteVirtualResourceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7233,6 +8084,370 @@ class DescribeSpotDiscountHistoryResponse(TeaModel):
         return self
 
 
+class DescribeVirtualResourceResponseBodyResources(TeaModel):
+    def __init__(
+        self,
+        instance_type: str = None,
+        priority: int = None,
+        quota_id: str = None,
+        region: str = None,
+        resource_id: str = None,
+        spot_price_limit: float = None,
+    ):
+        # The instance type of the public resource group.
+        self.instance_type = instance_type
+        # The priority of resource scheduling. A greater number specifies a higher priority.
+        self.priority = priority
+        # The instance type of the public resource group.
+        self.quota_id = quota_id
+        # The region where the resource resides.
+        self.region = region
+        # The ID of the dedicated resource group.
+        self.resource_id = resource_id
+        # The maximum price of preemptible instances in a public resource group.
+        self.spot_price_limit = spot_price_limit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.quota_id is not None:
+            result['QuotaId'] = self.quota_id
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.spot_price_limit is not None:
+            result['SpotPriceLimit'] = self.spot_price_limit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('QuotaId') is not None:
+            self.quota_id = m.get('QuotaId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('SpotPriceLimit') is not None:
+            self.spot_price_limit = m.get('SpotPriceLimit')
+        return self
+
+
+class DescribeVirtualResourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        request_id: str = None,
+        resources: List[DescribeVirtualResourceResponseBodyResources] = None,
+        update_time: str = None,
+        virtual_resource_id: str = None,
+        virtual_resource_name: str = None,
+    ):
+        # The time when the virtual resource group was created.
+        self.create_time = create_time
+        # The ID of the request.
+        self.request_id = request_id
+        # The list of resources in the virtual resource group.
+        self.resources = resources
+        # The time when the virtual resource group was last updated.
+        self.update_time = update_time
+        # The ID of the virtual resource group.
+        self.virtual_resource_id = virtual_resource_id
+        # The name of the virtual resource group.
+        self.virtual_resource_name = virtual_resource_name
+
+    def validate(self):
+        if self.resources:
+            for k in self.resources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Resources'] = []
+        if self.resources is not None:
+            for k in self.resources:
+                result['Resources'].append(k.to_map() if k else None)
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.virtual_resource_id is not None:
+            result['VirtualResourceId'] = self.virtual_resource_id
+        if self.virtual_resource_name is not None:
+            result['VirtualResourceName'] = self.virtual_resource_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.resources = []
+        if m.get('Resources') is not None:
+            for k in m.get('Resources'):
+                temp_model = DescribeVirtualResourceResponseBodyResources()
+                self.resources.append(temp_model.from_map(k))
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('VirtualResourceId') is not None:
+            self.virtual_resource_id = m.get('VirtualResourceId')
+        if m.get('VirtualResourceName') is not None:
+            self.virtual_resource_name = m.get('VirtualResourceName')
+        return self
+
+
+class DescribeVirtualResourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVirtualResourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVirtualResourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DetachGatewayDomainRequestCustomDomain(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        type: str = None,
+    ):
+        # The custom domain name.
+        # 
+        # This parameter is required.
+        self.domain = domain
+        # The domain name type.
+        # 
+        # Valid value:
+        # 
+        # *   intranet: internal network.
+        # *   internet: public network.
+        # 
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DetachGatewayDomainRequest(TeaModel):
+    def __init__(
+        self,
+        custom_domain: DetachGatewayDomainRequestCustomDomain = None,
+    ):
+        # The custom domain name information.
+        # 
+        # This parameter is required.
+        self.custom_domain = custom_domain
+
+    def validate(self):
+        if self.custom_domain:
+            self.custom_domain.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_domain is not None:
+            result['CustomDomain'] = self.custom_domain.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomDomain') is not None:
+            temp_model = DetachGatewayDomainRequestCustomDomain()
+            self.custom_domain = temp_model.from_map(m['CustomDomain'])
+        return self
+
+
+class DetachGatewayDomainShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        custom_domain_shrink: str = None,
+    ):
+        # The custom domain name information.
+        # 
+        # This parameter is required.
+        self.custom_domain_shrink = custom_domain_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_domain_shrink is not None:
+            result['CustomDomain'] = self.custom_domain_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomDomain') is not None:
+            self.custom_domain_shrink = m.get('CustomDomain')
+        return self
+
+
+class DetachGatewayDomainResponseBody(TeaModel):
+    def __init__(
+        self,
+        gateway_id: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # The ID of the private gateway. To obtain the private gateway ID, see the GatewayId parameter in the response parameters of the [ListGateway](https://apiworkbench.aliyun-inc.com/document/eas/2021-07-01/ListGateway?spm=openapi-amp.newDocPublishment.0.0.765e281fL2IcjJ\\&ampEnv=online) operation.
+        self.gateway_id = gateway_id
+        # The message that is returned.
+        self.message = message
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gateway_id is not None:
+            result['GatewayId'] = self.gateway_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GatewayId') is not None:
+            self.gateway_id = m.get('GatewayId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DetachGatewayDomainResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DetachGatewayDomainResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DetachGatewayDomainResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DevelopServiceRequest(TeaModel):
     def __init__(
         self,
@@ -7953,6 +9168,7 @@ class ListGatewayRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Default value: 100.
         self.page_size = page_size
+        # The ID of the resource group. To obtain a resource group ID, see the ResourceId field in the response of the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation.
         self.resource_name = resource_name
 
     def validate(self):
@@ -8007,6 +9223,10 @@ class ListGatewayResponseBodyGateways(TeaModel):
         status: str = None,
         update_time: str = None,
     ):
+        # The billing method. Valid values:
+        # 
+        # *   PrePaid: subscription.
+        # *   PostPaid: pay-as-you-go.
         self.charge_type = charge_type
         # The time when the private gateway was created. The time is displayed in UTC.
         self.create_time = create_time
@@ -8210,6 +9430,144 @@ class ListGatewayResponse(TeaModel):
         return self
 
 
+class ListGatewayDomainsResponseBodyCustomDomains(TeaModel):
+    def __init__(
+        self,
+        certificate_id: str = None,
+        domain: str = None,
+        type: str = None,
+    ):
+        # The ID of the SSL certificate bound to the domain name. Obtain the certificate ID after you upload or purchase a certificate in the [Certificate Management Service](https://yundunnext.console.aliyun.com/?spm=5176.2020520163.console-base_help.2.4b3baJixaJixOc\\&p=cas) console.
+        self.certificate_id = certificate_id
+        # The custom domain name.
+        self.domain = domain
+        # The domain name type.
+        # 
+        # Valid value:
+        # 
+        # *   intranet: internal network.
+        # *   internet: public network.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.certificate_id is not None:
+            result['CertificateId'] = self.certificate_id
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertificateId') is not None:
+            self.certificate_id = m.get('CertificateId')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListGatewayDomainsResponseBody(TeaModel):
+    def __init__(
+        self,
+        custom_domains: List[ListGatewayDomainsResponseBodyCustomDomains] = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # The list of custom domain names.
+        self.custom_domains = custom_domains
+        # The message that is returned.
+        self.message = message
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.custom_domains:
+            for k in self.custom_domains:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CustomDomains'] = []
+        if self.custom_domains is not None:
+            for k in self.custom_domains:
+                result['CustomDomains'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.custom_domains = []
+        if m.get('CustomDomains') is not None:
+            for k in m.get('CustomDomains'):
+                temp_model = ListGatewayDomainsResponseBodyCustomDomains()
+                self.custom_domains.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListGatewayDomainsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListGatewayDomainsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListGatewayDomainsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList(TeaModel):
     def __init__(
         self,
@@ -8379,6 +9737,195 @@ class ListGatewayIntranetLinkedVpcResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListGatewayIntranetLinkedVpcResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListGatewayIntranetLinkedVpcPeerRequest(TeaModel):
+    def __init__(
+        self,
+        vpc_id: str = None,
+    ):
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs(TeaModel):
+    def __init__(
+        self,
+        region: str = None,
+        vpc_id: str = None,
+    ):
+        self.region = region
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcList(TeaModel):
+    def __init__(
+        self,
+        peer_vpcs: List[ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs] = None,
+        vpc_id: str = None,
+    ):
+        self.peer_vpcs = peer_vpcs
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        if self.peer_vpcs:
+            for k in self.peer_vpcs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PeerVpcs'] = []
+        if self.peer_vpcs is not None:
+            for k in self.peer_vpcs:
+                result['PeerVpcs'].append(k.to_map() if k else None)
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.peer_vpcs = []
+        if m.get('PeerVpcs') is not None:
+            for k in m.get('PeerVpcs'):
+                temp_model = ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs()
+                self.peer_vpcs.append(temp_model.from_map(k))
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class ListGatewayIntranetLinkedVpcPeerResponseBody(TeaModel):
+    def __init__(
+        self,
+        gateway_id: str = None,
+        peer_vpc_list: List[ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcList] = None,
+        request_id: str = None,
+    ):
+        self.gateway_id = gateway_id
+        self.peer_vpc_list = peer_vpc_list
+        self.request_id = request_id
+
+    def validate(self):
+        if self.peer_vpc_list:
+            for k in self.peer_vpc_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gateway_id is not None:
+            result['GatewayId'] = self.gateway_id
+        result['PeerVpcList'] = []
+        if self.peer_vpc_list is not None:
+            for k in self.peer_vpc_list:
+                result['PeerVpcList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GatewayId') is not None:
+            self.gateway_id = m.get('GatewayId')
+        self.peer_vpc_list = []
+        if m.get('PeerVpcList') is not None:
+            for k in m.get('PeerVpcList'):
+                temp_model = ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcList()
+                self.peer_vpc_list.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListGatewayIntranetLinkedVpcPeerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListGatewayIntranetLinkedVpcPeerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListGatewayIntranetLinkedVpcPeerResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10887,6 +12434,209 @@ class ListTenantAddonsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListTenantAddonsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListVirtualResourceRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        virtual_resource_id: str = None,
+        virtual_resource_name: str = None,
+    ):
+        # The page number. Pages start from page 1. Default value: 1.
+        self.page_number = page_number
+        # The number of entries per page. Default value: 100.
+        self.page_size = page_size
+        # The ID of the virtual resource group.
+        self.virtual_resource_id = virtual_resource_id
+        # The name of the virtual resource group.
+        self.virtual_resource_name = virtual_resource_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.virtual_resource_id is not None:
+            result['VirtualResourceId'] = self.virtual_resource_id
+        if self.virtual_resource_name is not None:
+            result['VirtualResourceName'] = self.virtual_resource_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('VirtualResourceId') is not None:
+            self.virtual_resource_id = m.get('VirtualResourceId')
+        if m.get('VirtualResourceName') is not None:
+            self.virtual_resource_name = m.get('VirtualResourceName')
+        return self
+
+
+class ListVirtualResourceResponseBodyVirtualResources(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        update_time: str = None,
+        virtual_resource_id: str = None,
+        virtual_resource_name: str = None,
+    ):
+        # The time when the virtual resource group was created.
+        self.create_time = create_time
+        # The time when the virtual resource group was last updated.
+        self.update_time = update_time
+        # The ID of the virtual resource group.
+        self.virtual_resource_id = virtual_resource_id
+        # The name of the virtual resource group.
+        self.virtual_resource_name = virtual_resource_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.virtual_resource_id is not None:
+            result['VirtualResourceId'] = self.virtual_resource_id
+        if self.virtual_resource_name is not None:
+            result['VirtualResourceName'] = self.virtual_resource_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('VirtualResourceId') is not None:
+            self.virtual_resource_id = m.get('VirtualResourceId')
+        if m.get('VirtualResourceName') is not None:
+            self.virtual_resource_name = m.get('VirtualResourceName')
+        return self
+
+
+class ListVirtualResourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+        virtual_resources: List[ListVirtualResourceResponseBodyVirtualResources] = None,
+    ):
+        # The page number.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # The ID of the request.
+        self.request_id = request_id
+        # The total number of entries returned.
+        self.total_count = total_count
+        # The list of virtual resource groups.
+        self.virtual_resources = virtual_resources
+
+    def validate(self):
+        if self.virtual_resources:
+            for k in self.virtual_resources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['VirtualResources'] = []
+        if self.virtual_resources is not None:
+            for k in self.virtual_resources:
+                result['VirtualResources'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.virtual_resources = []
+        if m.get('VirtualResources') is not None:
+            for k in m.get('VirtualResources'):
+                temp_model = ListVirtualResourceResponseBodyVirtualResources()
+                self.virtual_resources.append(temp_model.from_map(k))
+        return self
+
+
+class ListVirtualResourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListVirtualResourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListVirtualResourceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13513,6 +15263,198 @@ class UpdateServiceVersionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateServiceVersionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateVirtualResourceRequestResources(TeaModel):
+    def __init__(
+        self,
+        instance_type: str = None,
+        priority: int = None,
+        quota_id: str = None,
+        region: str = None,
+        resource_id: str = None,
+        spot_price_limit: float = None,
+    ):
+        # The instance type of the public resource group.
+        # 
+        # >  You must specify one and only one of the InstanceType, ResourceId, and QuotaId parameters.
+        self.instance_type = instance_type
+        # The priority of resource scheduling. A greater number specifies a higher priority.
+        self.priority = priority
+        # The Lingjun resource quota ID.
+        # 
+        # >  You must specify one and only one of the InstanceType, ResourceId, and QuotaId parameters.
+        self.quota_id = quota_id
+        # The region where the resource resides.
+        self.region = region
+        # The ID of the dedicated resource group. For information about how to query the ID of a dedicated resource group, see [ListResources](https://help.aliyun.com/document_detail/412133.html).
+        # 
+        # >  You must specify one and only one of the InstanceType, ResourceId, and QuotaId parameters.
+        self.resource_id = resource_id
+        # The maximum price of preemptible instances in a public resource group.
+        # 
+        # >  If you do not specify this parameter, preemptible instances are not used.
+        self.spot_price_limit = spot_price_limit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.quota_id is not None:
+            result['QuotaId'] = self.quota_id
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.spot_price_limit is not None:
+            result['SpotPriceLimit'] = self.spot_price_limit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('QuotaId') is not None:
+            self.quota_id = m.get('QuotaId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('SpotPriceLimit') is not None:
+            self.spot_price_limit = m.get('SpotPriceLimit')
+        return self
+
+
+class UpdateVirtualResourceRequest(TeaModel):
+    def __init__(
+        self,
+        resources: List[UpdateVirtualResourceRequestResources] = None,
+        virtual_resource_name: str = None,
+    ):
+        # The list of resources in the virtual resource group.
+        # 
+        # >  If you specify this parameter, previous data are overwritten.
+        self.resources = resources
+        # The new name for the virtual resource group.
+        self.virtual_resource_name = virtual_resource_name
+
+    def validate(self):
+        if self.resources:
+            for k in self.resources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Resources'] = []
+        if self.resources is not None:
+            for k in self.resources:
+                result['Resources'].append(k.to_map() if k else None)
+        if self.virtual_resource_name is not None:
+            result['VirtualResourceName'] = self.virtual_resource_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.resources = []
+        if m.get('Resources') is not None:
+            for k in m.get('Resources'):
+                temp_model = UpdateVirtualResourceRequestResources()
+                self.resources.append(temp_model.from_map(k))
+        if m.get('VirtualResourceName') is not None:
+            self.virtual_resource_name = m.get('VirtualResourceName')
+        return self
+
+
+class UpdateVirtualResourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # The returned message.
+        self.message = message
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateVirtualResourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateVirtualResourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateVirtualResourceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
