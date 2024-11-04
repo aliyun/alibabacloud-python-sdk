@@ -11947,8 +11947,10 @@ class GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses(TeaM
         eip_type: str = None,
         intranet_address: str = None,
         intranet_address_hc_status: str = None,
+        ipv_4local_addresses: List[str] = None,
         ipv_6address: str = None,
         ipv_6address_hc_status: str = None,
+        ipv_6local_addresses: List[str] = None,
     ):
         # An IPv4 address.
         # 
@@ -11966,11 +11968,13 @@ class GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses(TeaM
         # The private IPv4 address.
         self.intranet_address = intranet_address
         self.intranet_address_hc_status = intranet_address_hc_status
+        self.ipv_4local_addresses = ipv_4local_addresses
         # An IPv6 address.
         # 
         # This parameter takes effect only when **AddressIPVersion** is set to **DualStack**. The network type is determined by the value of **Ipv6AddressType**.
         self.ipv_6address = ipv_6address
         self.ipv_6address_hc_status = ipv_6address_hc_status
+        self.ipv_6local_addresses = ipv_6local_addresses
 
     def validate(self):
         pass
@@ -11991,10 +11995,14 @@ class GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses(TeaM
             result['IntranetAddress'] = self.intranet_address
         if self.intranet_address_hc_status is not None:
             result['IntranetAddressHcStatus'] = self.intranet_address_hc_status
+        if self.ipv_4local_addresses is not None:
+            result['Ipv4LocalAddresses'] = self.ipv_4local_addresses
         if self.ipv_6address is not None:
             result['Ipv6Address'] = self.ipv_6address
         if self.ipv_6address_hc_status is not None:
             result['Ipv6AddressHcStatus'] = self.ipv_6address_hc_status
+        if self.ipv_6local_addresses is not None:
+            result['Ipv6LocalAddresses'] = self.ipv_6local_addresses
         return result
 
     def from_map(self, m: dict = None):
@@ -12009,10 +12017,14 @@ class GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses(TeaM
             self.intranet_address = m.get('IntranetAddress')
         if m.get('IntranetAddressHcStatus') is not None:
             self.intranet_address_hc_status = m.get('IntranetAddressHcStatus')
+        if m.get('Ipv4LocalAddresses') is not None:
+            self.ipv_4local_addresses = m.get('Ipv4LocalAddresses')
         if m.get('Ipv6Address') is not None:
             self.ipv_6address = m.get('Ipv6Address')
         if m.get('Ipv6AddressHcStatus') is not None:
             self.ipv_6address_hc_status = m.get('Ipv6AddressHcStatus')
+        if m.get('Ipv6LocalAddresses') is not None:
+            self.ipv_6local_addresses = m.get('Ipv6LocalAddresses')
         return self
 
 

@@ -1,3 +1,7 @@
+2024-11-04 Version: 1.2.3
+- Update API GetLoadBalancerAttribute: update response param.
+
+
 2024-11-02 Version: 1.2.2
 - Update API CreateListener: update param Certificates.
 - Update API CreateLoadBalancer: update param ZoneMappings.
