@@ -4279,6 +4279,126 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_and_publish_agent_with_options_async(workspace_id, app_code, request, headers, runtime)
 
+    def update_file_tag_with_options(
+        self,
+        workspace_id: str,
+        file_id: str,
+        tmp_req: bailian_20231229_models.UpdateFileTagRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.UpdateFileTagResponse:
+        """
+        @summary 更新文档Tag
+        
+        @param tmp_req: UpdateFileTagRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFileTagResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bailian_20231229_models.UpdateFileTagShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tags_shrink):
+            body['Tags'] = request.tags_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateFileTag',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/datacenter/file/{OpenApiUtilClient.get_encode_param(file_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.UpdateFileTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_file_tag_with_options_async(
+        self,
+        workspace_id: str,
+        file_id: str,
+        tmp_req: bailian_20231229_models.UpdateFileTagRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.UpdateFileTagResponse:
+        """
+        @summary 更新文档Tag
+        
+        @param tmp_req: UpdateFileTagRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFileTagResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bailian_20231229_models.UpdateFileTagShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tags_shrink):
+            body['Tags'] = request.tags_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateFileTag',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/datacenter/file/{OpenApiUtilClient.get_encode_param(file_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.UpdateFileTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_file_tag(
+        self,
+        workspace_id: str,
+        file_id: str,
+        request: bailian_20231229_models.UpdateFileTagRequest,
+    ) -> bailian_20231229_models.UpdateFileTagResponse:
+        """
+        @summary 更新文档Tag
+        
+        @param request: UpdateFileTagRequest
+        @return: UpdateFileTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_file_tag_with_options(workspace_id, file_id, request, headers, runtime)
+
+    async def update_file_tag_async(
+        self,
+        workspace_id: str,
+        file_id: str,
+        request: bailian_20231229_models.UpdateFileTagRequest,
+    ) -> bailian_20231229_models.UpdateFileTagResponse:
+        """
+        @summary 更新文档Tag
+        
+        @param request: UpdateFileTagRequest
+        @return: UpdateFileTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_file_tag_with_options_async(workspace_id, file_id, request, headers, runtime)
+
     def update_memory_with_options(
         self,
         workspace_id: str,

@@ -1,3 +1,7 @@
+2024-11-04 Version: 1.10.0
+- Support API UpdateFileTag.
+
+
 2024-10-16 Version: 1.9.0
 - Support API CreatePromptTemplate.
 - Support API DeletePromptTemplate.
