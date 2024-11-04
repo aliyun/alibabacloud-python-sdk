@@ -298,6 +298,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_secret_blacklist_with_options_async(request, runtime)
 
+    def bind_axbcall_with_options(
+        self,
+        request: dyplsapi_20170525_models.BindAXBCallRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.BindAXBCallResponse:
+        """
+        @summary 调用本接口向工作号平台请求为员工B的工作号X建立呼叫绑定（B，X，A），允许B通过X呼叫客户A
+        
+        @param request: BindAXBCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindAXBCallResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_id):
+            query['AuthId'] = request.auth_id
+        if not UtilClient.is_unset(request.caller_parent_id):
+            query['CallerParentId'] = request.caller_parent_id
+        if not UtilClient.is_unset(request.customer_pool_key):
+            query['CustomerPoolKey'] = request.customer_pool_key
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.req_id):
+            query['ReqId'] = request.req_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tel_a):
+            query['TelA'] = request.tel_a
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindAXBCall',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.BindAXBCallResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bind_axbcall_with_options_async(
+        self,
+        request: dyplsapi_20170525_models.BindAXBCallRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.BindAXBCallResponse:
+        """
+        @summary 调用本接口向工作号平台请求为员工B的工作号X建立呼叫绑定（B，X，A），允许B通过X呼叫客户A
+        
+        @param request: BindAXBCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindAXBCallResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_id):
+            query['AuthId'] = request.auth_id
+        if not UtilClient.is_unset(request.caller_parent_id):
+            query['CallerParentId'] = request.caller_parent_id
+        if not UtilClient.is_unset(request.customer_pool_key):
+            query['CustomerPoolKey'] = request.customer_pool_key
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.req_id):
+            query['ReqId'] = request.req_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tel_a):
+            query['TelA'] = request.tel_a
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindAXBCall',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.BindAXBCallResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bind_axbcall(
+        self,
+        request: dyplsapi_20170525_models.BindAXBCallRequest,
+    ) -> dyplsapi_20170525_models.BindAXBCallResponse:
+        """
+        @summary 调用本接口向工作号平台请求为员工B的工作号X建立呼叫绑定（B，X，A），允许B通过X呼叫客户A
+        
+        @param request: BindAXBCallRequest
+        @return: BindAXBCallResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.bind_axbcall_with_options(request, runtime)
+
+    async def bind_axbcall_async(
+        self,
+        request: dyplsapi_20170525_models.BindAXBCallRequest,
+    ) -> dyplsapi_20170525_models.BindAXBCallResponse:
+        """
+        @summary 调用本接口向工作号平台请求为员工B的工作号X建立呼叫绑定（B，X，A），允许B通过X呼叫客户A
+        
+        @param request: BindAXBCallRequest
+        @return: BindAXBCallResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.bind_axbcall_with_options_async(request, runtime)
+
     def bind_axb_with_options(
         self,
         request: dyplsapi_20170525_models.BindAxbRequest,
@@ -692,6 +824,8 @@ class Client(OpenApiClient):
             query['ExpectCity'] = request.expect_city
         if not UtilClient.is_unset(request.expiration):
             query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.extend):
+            query['Extend'] = request.extend
         if not UtilClient.is_unset(request.is_recording_enabled):
             query['IsRecordingEnabled'] = request.is_recording_enabled
         if not UtilClient.is_unset(request.no_type):
@@ -765,6 +899,8 @@ class Client(OpenApiClient):
             query['ExpectCity'] = request.expect_city
         if not UtilClient.is_unset(request.expiration):
             query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.extend):
+            query['Extend'] = request.extend
         if not UtilClient.is_unset(request.is_recording_enabled):
             query['IsRecordingEnabled'] = request.is_recording_enabled
         if not UtilClient.is_unset(request.no_type):
@@ -1134,6 +1270,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.bind_batch_axg_with_options_async(request, runtime)
 
+    def bind_xbwith_options(
+        self,
+        request: dyplsapi_20170525_models.BindXBRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.BindXBResponse:
+        """
+        @summary 平台指定工作号X 和员工号B建立关联，完成X 实名认证，绑定生效后，所有X 的呼叫都会转接到B
+        
+        @param request: BindXBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindXBResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.caller_parent_id):
+            query['CallerParentId'] = request.caller_parent_id
+        if not UtilClient.is_unset(request.customer_pool_key):
+            query['CustomerPoolKey'] = request.customer_pool_key
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.req_id):
+            query['ReqId'] = request.req_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tel_b):
+            query['TelB'] = request.tel_b
+        if not UtilClient.is_unset(request.tel_x):
+            query['TelX'] = request.tel_x
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindXB',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.BindXBResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bind_xbwith_options_async(
+        self,
+        request: dyplsapi_20170525_models.BindXBRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.BindXBResponse:
+        """
+        @summary 平台指定工作号X 和员工号B建立关联，完成X 实名认证，绑定生效后，所有X 的呼叫都会转接到B
+        
+        @param request: BindXBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindXBResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.caller_parent_id):
+            query['CallerParentId'] = request.caller_parent_id
+        if not UtilClient.is_unset(request.customer_pool_key):
+            query['CustomerPoolKey'] = request.customer_pool_key
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.req_id):
+            query['ReqId'] = request.req_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tel_b):
+            query['TelB'] = request.tel_b
+        if not UtilClient.is_unset(request.tel_x):
+            query['TelX'] = request.tel_x
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindXB',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.BindXBResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bind_xb(
+        self,
+        request: dyplsapi_20170525_models.BindXBRequest,
+    ) -> dyplsapi_20170525_models.BindXBResponse:
+        """
+        @summary 平台指定工作号X 和员工号B建立关联，完成X 实名认证，绑定生效后，所有X 的呼叫都会转接到B
+        
+        @param request: BindXBRequest
+        @return: BindXBResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.bind_xbwith_options(request, runtime)
+
+    async def bind_xb_async(
+        self,
+        request: dyplsapi_20170525_models.BindXBRequest,
+    ) -> dyplsapi_20170525_models.BindXBResponse:
+        """
+        @summary 平台指定工作号X 和员工号B建立关联，完成X 实名认证，绑定生效后，所有X 的呼叫都会转接到B
+        
+        @param request: BindXBRequest
+        @return: BindXBResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.bind_xbwith_options_async(request, runtime)
+
     def buy_secret_no_with_options(
         self,
         request: dyplsapi_20170525_models.BuySecretNoRequest,
@@ -1401,6 +1665,158 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_pick_up_waybill_with_options_async(request, runtime)
+
+    def config_xwith_options(
+        self,
+        tmp_req: dyplsapi_20170525_models.ConfigXRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.ConfigXResponse:
+        """
+        @summary 配置X号码，单独对工作号的话音呼叫、企业名片等通信功能进行配置操作
+        
+        @param tmp_req: ConfigXRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigXResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dyplsapi_20170525_models.ConfigXShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sequence_calls):
+            request.sequence_calls_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sequence_calls, 'SequenceCalls', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.call_ability):
+            query['CallAbility'] = request.call_ability
+        if not UtilClient.is_unset(request.caller_parent_id):
+            query['CallerParentId'] = request.caller_parent_id
+        if not UtilClient.is_unset(request.customer_pool_key):
+            query['CustomerPoolKey'] = request.customer_pool_key
+        if not UtilClient.is_unset(request.gnflag):
+            query['GNFlag'] = request.gnflag
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.req_id):
+            query['ReqId'] = request.req_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sequence_calls_shrink):
+            query['SequenceCalls'] = request.sequence_calls_shrink
+        if not UtilClient.is_unset(request.sequence_mode):
+            query['SequenceMode'] = request.sequence_mode
+        if not UtilClient.is_unset(request.sms_ability):
+            query['SmsAbility'] = request.sms_ability
+        if not UtilClient.is_unset(request.sms_sign_mode):
+            query['SmsSignMode'] = request.sms_sign_mode
+        if not UtilClient.is_unset(request.tel_x):
+            query['TelX'] = request.tel_x
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigX',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.ConfigXResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_xwith_options_async(
+        self,
+        tmp_req: dyplsapi_20170525_models.ConfigXRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.ConfigXResponse:
+        """
+        @summary 配置X号码，单独对工作号的话音呼叫、企业名片等通信功能进行配置操作
+        
+        @param tmp_req: ConfigXRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigXResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dyplsapi_20170525_models.ConfigXShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sequence_calls):
+            request.sequence_calls_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sequence_calls, 'SequenceCalls', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.call_ability):
+            query['CallAbility'] = request.call_ability
+        if not UtilClient.is_unset(request.caller_parent_id):
+            query['CallerParentId'] = request.caller_parent_id
+        if not UtilClient.is_unset(request.customer_pool_key):
+            query['CustomerPoolKey'] = request.customer_pool_key
+        if not UtilClient.is_unset(request.gnflag):
+            query['GNFlag'] = request.gnflag
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.req_id):
+            query['ReqId'] = request.req_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sequence_calls_shrink):
+            query['SequenceCalls'] = request.sequence_calls_shrink
+        if not UtilClient.is_unset(request.sequence_mode):
+            query['SequenceMode'] = request.sequence_mode
+        if not UtilClient.is_unset(request.sms_ability):
+            query['SmsAbility'] = request.sms_ability
+        if not UtilClient.is_unset(request.sms_sign_mode):
+            query['SmsSignMode'] = request.sms_sign_mode
+        if not UtilClient.is_unset(request.tel_x):
+            query['TelX'] = request.tel_x
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigX',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.ConfigXResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_x(
+        self,
+        request: dyplsapi_20170525_models.ConfigXRequest,
+    ) -> dyplsapi_20170525_models.ConfigXResponse:
+        """
+        @summary 配置X号码，单独对工作号的话音呼叫、企业名片等通信功能进行配置操作
+        
+        @param request: ConfigXRequest
+        @return: ConfigXResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.config_xwith_options(request, runtime)
+
+    async def config_x_async(
+        self,
+        request: dyplsapi_20170525_models.ConfigXRequest,
+    ) -> dyplsapi_20170525_models.ConfigXResponse:
+        """
+        @summary 配置X号码，单独对工作号的话音呼叫、企业名片等通信功能进行配置操作
+        
+        @param request: ConfigXRequest
+        @return: ConfigXResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.config_xwith_options_async(request, runtime)
 
     def create_axg_group_with_options(
         self,
@@ -1857,6 +2273,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_pick_up_waybill_pre_query_with_options_async(request, runtime)
+
+    def create_sms_sign_with_options(
+        self,
+        request: dyplsapi_20170525_models.CreateSmsSignRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.CreateSmsSignResponse:
+        """
+        @summary B向A 发短信，客户端获取“短信标签”，尾部添加“标签”。通过“标签”解析被叫A，发短信到A。
+        
+        @param request: CreateSmsSignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSmsSignResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.called_no):
+            query['CalledNo'] = request.called_no
+        if not UtilClient.is_unset(request.caller_parent_id):
+            query['CallerParentId'] = request.caller_parent_id
+        if not UtilClient.is_unset(request.calling_no):
+            query['CallingNo'] = request.calling_no
+        if not UtilClient.is_unset(request.customer_pool_key):
+            query['CustomerPoolKey'] = request.customer_pool_key
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.req_id):
+            query['ReqId'] = request.req_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSmsSign',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.CreateSmsSignResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_sms_sign_with_options_async(
+        self,
+        request: dyplsapi_20170525_models.CreateSmsSignRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.CreateSmsSignResponse:
+        """
+        @summary B向A 发短信，客户端获取“短信标签”，尾部添加“标签”。通过“标签”解析被叫A，发短信到A。
+        
+        @param request: CreateSmsSignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSmsSignResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.called_no):
+            query['CalledNo'] = request.called_no
+        if not UtilClient.is_unset(request.caller_parent_id):
+            query['CallerParentId'] = request.caller_parent_id
+        if not UtilClient.is_unset(request.calling_no):
+            query['CallingNo'] = request.calling_no
+        if not UtilClient.is_unset(request.customer_pool_key):
+            query['CustomerPoolKey'] = request.customer_pool_key
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.req_id):
+            query['ReqId'] = request.req_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSmsSign',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.CreateSmsSignResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_sms_sign(
+        self,
+        request: dyplsapi_20170525_models.CreateSmsSignRequest,
+    ) -> dyplsapi_20170525_models.CreateSmsSignResponse:
+        """
+        @summary B向A 发短信，客户端获取“短信标签”，尾部添加“标签”。通过“标签”解析被叫A，发短信到A。
+        
+        @param request: CreateSmsSignRequest
+        @return: CreateSmsSignResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_sms_sign_with_options(request, runtime)
+
+    async def create_sms_sign_async(
+        self,
+        request: dyplsapi_20170525_models.CreateSmsSignRequest,
+    ) -> dyplsapi_20170525_models.CreateSmsSignResponse:
+        """
+        @summary B向A 发短信，客户端获取“短信标签”，尾部添加“标签”。通过“标签”解析被叫A，发短信到A。
+        
+        @param request: CreateSmsSignRequest
+        @return: CreateSmsSignResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_sms_sign_with_options_async(request, runtime)
 
     def delete_axg_group_with_options(
         self,
@@ -2337,6 +2877,370 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_total_public_url_with_options_async(request, runtime)
+
+    def get_xconfig_with_options(
+        self,
+        request: dyplsapi_20170525_models.GetXConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.GetXConfigResponse:
+        """
+        @summary 获取X号码配置信息
+        
+        @param request: GetXConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetXConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.caller_parent_id):
+            query['CallerParentId'] = request.caller_parent_id
+        if not UtilClient.is_unset(request.customer_pool_key):
+            query['CustomerPoolKey'] = request.customer_pool_key
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.req_id):
+            query['ReqId'] = request.req_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tel_x):
+            query['TelX'] = request.tel_x
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetXConfig',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.GetXConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_xconfig_with_options_async(
+        self,
+        request: dyplsapi_20170525_models.GetXConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.GetXConfigResponse:
+        """
+        @summary 获取X号码配置信息
+        
+        @param request: GetXConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetXConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.caller_parent_id):
+            query['CallerParentId'] = request.caller_parent_id
+        if not UtilClient.is_unset(request.customer_pool_key):
+            query['CustomerPoolKey'] = request.customer_pool_key
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.req_id):
+            query['ReqId'] = request.req_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tel_x):
+            query['TelX'] = request.tel_x
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetXConfig',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.GetXConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_xconfig(
+        self,
+        request: dyplsapi_20170525_models.GetXConfigRequest,
+    ) -> dyplsapi_20170525_models.GetXConfigResponse:
+        """
+        @summary 获取X号码配置信息
+        
+        @param request: GetXConfigRequest
+        @return: GetXConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_xconfig_with_options(request, runtime)
+
+    async def get_xconfig_async(
+        self,
+        request: dyplsapi_20170525_models.GetXConfigRequest,
+    ) -> dyplsapi_20170525_models.GetXConfigResponse:
+        """
+        @summary 获取X号码配置信息
+        
+        @param request: GetXConfigRequest
+        @return: GetXConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_xconfig_with_options_async(request, runtime)
+
+    def get_xdefault_config_with_options(
+        self,
+        request: dyplsapi_20170525_models.GetXDefaultConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.GetXDefaultConfigResponse:
+        """
+        @summary 获取X号码默认配置信息
+        
+        @param request: GetXDefaultConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetXDefaultConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.caller_parent_id):
+            query['CallerParentId'] = request.caller_parent_id
+        if not UtilClient.is_unset(request.customer_pool_key):
+            query['CustomerPoolKey'] = request.customer_pool_key
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.req_id):
+            query['ReqId'] = request.req_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tel_x):
+            query['TelX'] = request.tel_x
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetXDefaultConfig',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.GetXDefaultConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_xdefault_config_with_options_async(
+        self,
+        request: dyplsapi_20170525_models.GetXDefaultConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.GetXDefaultConfigResponse:
+        """
+        @summary 获取X号码默认配置信息
+        
+        @param request: GetXDefaultConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetXDefaultConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.caller_parent_id):
+            query['CallerParentId'] = request.caller_parent_id
+        if not UtilClient.is_unset(request.customer_pool_key):
+            query['CustomerPoolKey'] = request.customer_pool_key
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.req_id):
+            query['ReqId'] = request.req_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tel_x):
+            query['TelX'] = request.tel_x
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetXDefaultConfig',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.GetXDefaultConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_xdefault_config(
+        self,
+        request: dyplsapi_20170525_models.GetXDefaultConfigRequest,
+    ) -> dyplsapi_20170525_models.GetXDefaultConfigResponse:
+        """
+        @summary 获取X号码默认配置信息
+        
+        @param request: GetXDefaultConfigRequest
+        @return: GetXDefaultConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_xdefault_config_with_options(request, runtime)
+
+    async def get_xdefault_config_async(
+        self,
+        request: dyplsapi_20170525_models.GetXDefaultConfigRequest,
+    ) -> dyplsapi_20170525_models.GetXDefaultConfigResponse:
+        """
+        @summary 获取X号码默认配置信息
+        
+        @param request: GetXDefaultConfigRequest
+        @return: GetXDefaultConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_xdefault_config_with_options_async(request, runtime)
+
+    def list_xtelephones_with_options(
+        self,
+        request: dyplsapi_20170525_models.ListXTelephonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.ListXTelephonesResponse:
+        """
+        @summary 查询客户名下X号码列表
+        
+        @param request: ListXTelephonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListXTelephonesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.caller_parent_id):
+            query['CallerParentId'] = request.caller_parent_id
+        if not UtilClient.is_unset(request.customer_pool_key):
+            query['CustomerPoolKey'] = request.customer_pool_key
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.req_id):
+            query['ReqId'] = request.req_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListXTelephones',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.ListXTelephonesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_xtelephones_with_options_async(
+        self,
+        request: dyplsapi_20170525_models.ListXTelephonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.ListXTelephonesResponse:
+        """
+        @summary 查询客户名下X号码列表
+        
+        @param request: ListXTelephonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListXTelephonesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.caller_parent_id):
+            query['CallerParentId'] = request.caller_parent_id
+        if not UtilClient.is_unset(request.customer_pool_key):
+            query['CustomerPoolKey'] = request.customer_pool_key
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.req_id):
+            query['ReqId'] = request.req_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListXTelephones',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.ListXTelephonesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_xtelephones(
+        self,
+        request: dyplsapi_20170525_models.ListXTelephonesRequest,
+    ) -> dyplsapi_20170525_models.ListXTelephonesResponse:
+        """
+        @summary 查询客户名下X号码列表
+        
+        @param request: ListXTelephonesRequest
+        @return: ListXTelephonesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_xtelephones_with_options(request, runtime)
+
+    async def list_xtelephones_async(
+        self,
+        request: dyplsapi_20170525_models.ListXTelephonesRequest,
+    ) -> dyplsapi_20170525_models.ListXTelephonesResponse:
+        """
+        @summary 查询客户名下X号码列表
+        
+        @param request: ListXTelephonesRequest
+        @return: ListXTelephonesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_xtelephones_with_options_async(request, runtime)
 
     def lock_secret_no_with_options(
         self,
@@ -3274,6 +4178,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_secret_no_remain_with_options_async(request, runtime)
 
+    def query_sound_record_with_options(
+        self,
+        request: dyplsapi_20170525_models.QuerySoundRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.QuerySoundRecordResponse:
+        """
+        @summary 查询通话录音链接
+        
+        @param request: QuerySoundRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySoundRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.call_id):
+            query['CallId'] = request.call_id
+        if not UtilClient.is_unset(request.caller_parent_id):
+            query['CallerParentId'] = request.caller_parent_id
+        if not UtilClient.is_unset(request.customer_pool_key):
+            query['CustomerPoolKey'] = request.customer_pool_key
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.req_id):
+            query['ReqId'] = request.req_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySoundRecord',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.QuerySoundRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_sound_record_with_options_async(
+        self,
+        request: dyplsapi_20170525_models.QuerySoundRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.QuerySoundRecordResponse:
+        """
+        @summary 查询通话录音链接
+        
+        @param request: QuerySoundRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySoundRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.call_id):
+            query['CallId'] = request.call_id
+        if not UtilClient.is_unset(request.caller_parent_id):
+            query['CallerParentId'] = request.caller_parent_id
+        if not UtilClient.is_unset(request.customer_pool_key):
+            query['CustomerPoolKey'] = request.customer_pool_key
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.req_id):
+            query['ReqId'] = request.req_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySoundRecord',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.QuerySoundRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_sound_record(
+        self,
+        request: dyplsapi_20170525_models.QuerySoundRecordRequest,
+    ) -> dyplsapi_20170525_models.QuerySoundRecordResponse:
+        """
+        @summary 查询通话录音链接
+        
+        @param request: QuerySoundRecordRequest
+        @return: QuerySoundRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_sound_record_with_options(request, runtime)
+
+    async def query_sound_record_async(
+        self,
+        request: dyplsapi_20170525_models.QuerySoundRecordRequest,
+    ) -> dyplsapi_20170525_models.QuerySoundRecordResponse:
+        """
+        @summary 查询通话录音链接
+        
+        @param request: QuerySoundRecordRequest
+        @return: QuerySoundRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_sound_record_with_options_async(request, runtime)
+
     def query_subs_id_with_options(
         self,
         request: dyplsapi_20170525_models.QuerySubsIdRequest,
@@ -3657,6 +4681,250 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.release_secret_no_with_options_async(request, runtime)
+
+    def un_bind_axbwith_options(
+        self,
+        request: dyplsapi_20170525_models.UnBindAXBRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.UnBindAXBResponse:
+        """
+        @summary 解除指定的呼叫绑定关系（A，X，B），解决呼叫绑定关系后，员工B不能通过工作号X呼叫到客户A。
+        
+        @param request: UnBindAXBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnBindAXBResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bind_id):
+            query['BindId'] = request.bind_id
+        if not UtilClient.is_unset(request.caller_parent_id):
+            query['CallerParentId'] = request.caller_parent_id
+        if not UtilClient.is_unset(request.customer_pool_key):
+            query['CustomerPoolKey'] = request.customer_pool_key
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.req_id):
+            query['ReqId'] = request.req_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnBindAXB',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.UnBindAXBResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def un_bind_axbwith_options_async(
+        self,
+        request: dyplsapi_20170525_models.UnBindAXBRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.UnBindAXBResponse:
+        """
+        @summary 解除指定的呼叫绑定关系（A，X，B），解决呼叫绑定关系后，员工B不能通过工作号X呼叫到客户A。
+        
+        @param request: UnBindAXBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnBindAXBResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bind_id):
+            query['BindId'] = request.bind_id
+        if not UtilClient.is_unset(request.caller_parent_id):
+            query['CallerParentId'] = request.caller_parent_id
+        if not UtilClient.is_unset(request.customer_pool_key):
+            query['CustomerPoolKey'] = request.customer_pool_key
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.req_id):
+            query['ReqId'] = request.req_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnBindAXB',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.UnBindAXBResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def un_bind_axb(
+        self,
+        request: dyplsapi_20170525_models.UnBindAXBRequest,
+    ) -> dyplsapi_20170525_models.UnBindAXBResponse:
+        """
+        @summary 解除指定的呼叫绑定关系（A，X，B），解决呼叫绑定关系后，员工B不能通过工作号X呼叫到客户A。
+        
+        @param request: UnBindAXBRequest
+        @return: UnBindAXBResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.un_bind_axbwith_options(request, runtime)
+
+    async def un_bind_axb_async(
+        self,
+        request: dyplsapi_20170525_models.UnBindAXBRequest,
+    ) -> dyplsapi_20170525_models.UnBindAXBResponse:
+        """
+        @summary 解除指定的呼叫绑定关系（A，X，B），解决呼叫绑定关系后，员工B不能通过工作号X呼叫到客户A。
+        
+        @param request: UnBindAXBRequest
+        @return: UnBindAXBResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.un_bind_axbwith_options_async(request, runtime)
+
+    def un_bind_xbwith_options(
+        self,
+        request: dyplsapi_20170525_models.UnBindXBRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.UnBindXBResponse:
+        """
+        @summary 调用本接口可取消工作号X与员工号码B的绑定。绑定解除后，对X的呼叫都不会转接给B。
+        
+        @param request: UnBindXBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnBindXBResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_id):
+            query['AuthId'] = request.auth_id
+        if not UtilClient.is_unset(request.caller_parent_id):
+            query['CallerParentId'] = request.caller_parent_id
+        if not UtilClient.is_unset(request.customer_pool_key):
+            query['CustomerPoolKey'] = request.customer_pool_key
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.req_id):
+            query['ReqId'] = request.req_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tel_x):
+            query['TelX'] = request.tel_x
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnBindXB',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.UnBindXBResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def un_bind_xbwith_options_async(
+        self,
+        request: dyplsapi_20170525_models.UnBindXBRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyplsapi_20170525_models.UnBindXBResponse:
+        """
+        @summary 调用本接口可取消工作号X与员工号码B的绑定。绑定解除后，对X的呼叫都不会转接给B。
+        
+        @param request: UnBindXBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnBindXBResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_id):
+            query['AuthId'] = request.auth_id
+        if not UtilClient.is_unset(request.caller_parent_id):
+            query['CallerParentId'] = request.caller_parent_id
+        if not UtilClient.is_unset(request.customer_pool_key):
+            query['CustomerPoolKey'] = request.customer_pool_key
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.req_id):
+            query['ReqId'] = request.req_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tel_x):
+            query['TelX'] = request.tel_x
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnBindXB',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyplsapi_20170525_models.UnBindXBResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def un_bind_xb(
+        self,
+        request: dyplsapi_20170525_models.UnBindXBRequest,
+    ) -> dyplsapi_20170525_models.UnBindXBResponse:
+        """
+        @summary 调用本接口可取消工作号X与员工号码B的绑定。绑定解除后，对X的呼叫都不会转接给B。
+        
+        @param request: UnBindXBRequest
+        @return: UnBindXBResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.un_bind_xbwith_options(request, runtime)
+
+    async def un_bind_xb_async(
+        self,
+        request: dyplsapi_20170525_models.UnBindXBRequest,
+    ) -> dyplsapi_20170525_models.UnBindXBResponse:
+        """
+        @summary 调用本接口可取消工作号X与员工号码B的绑定。绑定解除后，对X的呼叫都不会转接给B。
+        
+        @param request: UnBindXBRequest
+        @return: UnBindXBResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.un_bind_xbwith_options_async(request, runtime)
 
     def unbind_subscription_with_options(
         self,

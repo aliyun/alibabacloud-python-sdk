@@ -1,3 +1,17 @@
+2024-11-04 Version: 1.1.0
+- Support API BindAXBCall.
+- Support API BindXB.
+- Support API ConfigX.
+- Support API CreateSmsSign.
+- Support API GetXConfig.
+- Support API GetXDefaultConfig.
+- Support API ListXTelephones.
+- Support API QuerySoundRecord.
+- Support API UnBindAXB.
+- Support API UnBindXB.
+- Update API BindAxn: add param Extend.
+
+
 2024-07-03 Version: 1.0.9
 - Generated python 2017-05-25 for Dyplsapi.
 

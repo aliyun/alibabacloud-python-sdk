@@ -336,6 +336,200 @@ class AddSecretBlacklistResponse(TeaModel):
         return self
 
 
+class BindAXBCallRequest(TeaModel):
+    def __init__(
+        self,
+        auth_id: str = None,
+        caller_parent_id: int = None,
+        customer_pool_key: str = None,
+        expiration: int = None,
+        owner_id: int = None,
+        req_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        tel_a: str = None,
+        user_data: str = None,
+    ):
+        # authId绑定关系BX唯一id
+        # 
+        # This parameter is required.
+        self.auth_id = auth_id
+        # 客户uid
+        self.caller_parent_id = caller_parent_id
+        # 号码池key
+        # 
+        # This parameter is required.
+        self.customer_pool_key = customer_pool_key
+        # 绑定关系过期失效时间： 取值必须大于0； 单位：秒，ct_time + expiration = 自动解绑时间
+        # 
+        # This parameter is required.
+        self.expiration = expiration
+        self.owner_id = owner_id
+        # 请求去重ID, reqId最大长度为20位,接入方需要保持原子性
+        # 
+        # This parameter is required.
+        self.req_id = req_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 客户A号码
+        # 
+        # This parameter is required.
+        self.tel_a = tel_a
+        # 客户自定义参数回调带回
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_id is not None:
+            result['AuthId'] = self.auth_id
+        if self.caller_parent_id is not None:
+            result['CallerParentId'] = self.caller_parent_id
+        if self.customer_pool_key is not None:
+            result['CustomerPoolKey'] = self.customer_pool_key
+        if self.expiration is not None:
+            result['Expiration'] = self.expiration
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.req_id is not None:
+            result['ReqId'] = self.req_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.tel_a is not None:
+            result['TelA'] = self.tel_a
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthId') is not None:
+            self.auth_id = m.get('AuthId')
+        if m.get('CallerParentId') is not None:
+            self.caller_parent_id = m.get('CallerParentId')
+        if m.get('CustomerPoolKey') is not None:
+            self.customer_pool_key = m.get('CustomerPoolKey')
+        if m.get('Expiration') is not None:
+            self.expiration = m.get('Expiration')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ReqId') is not None:
+            self.req_id = m.get('ReqId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TelA') is not None:
+            self.tel_a = m.get('TelA')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class BindAXBCallResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        bind_id: str = None,
+        code: str = None,
+        message: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        # 绑定关系ID
+        self.bind_id = bind_id
+        # 返回状态码 0000表示成功 其他表示失败
+        self.code = code
+        # 返回信息
+        self.message = message
+        # 返回是否成功 true  表示成功 false表示失败
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.bind_id is not None:
+            result['BindId'] = self.bind_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('BindId') is not None:
+            self.bind_id = m.get('BindId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class BindAXBCallResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BindAXBCallResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BindAXBCallResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class BindAxbRequest(TeaModel):
     def __init__(
         self,
@@ -999,6 +1193,7 @@ class BindAxnRequest(TeaModel):
         call_timeout: int = None,
         expect_city: str = None,
         expiration: str = None,
+        extend: str = None,
         is_recording_enabled: bool = None,
         no_type: str = None,
         out_id: str = None,
@@ -1041,6 +1236,7 @@ class BindAxnRequest(TeaModel):
         # 
         # This parameter is required.
         self.expiration = expiration
+        self.extend = extend
         # Specifies whether to record all calls made by the bound phone numbers. Valid values:
         # 
         # *   **true**\
@@ -1105,6 +1301,8 @@ class BindAxnRequest(TeaModel):
             result['ExpectCity'] = self.expect_city
         if self.expiration is not None:
             result['Expiration'] = self.expiration
+        if self.extend is not None:
+            result['Extend'] = self.extend
         if self.is_recording_enabled is not None:
             result['IsRecordingEnabled'] = self.is_recording_enabled
         if self.no_type is not None:
@@ -1147,6 +1345,8 @@ class BindAxnRequest(TeaModel):
             self.expect_city = m.get('ExpectCity')
         if m.get('Expiration') is not None:
             self.expiration = m.get('Expiration')
+        if m.get('Extend') is not None:
+            self.extend = m.get('Extend')
         if m.get('IsRecordingEnabled') is not None:
             self.is_recording_enabled = m.get('IsRecordingEnabled')
         if m.get('NoType') is not None:
@@ -2039,6 +2239,198 @@ class BindBatchAxgResponse(TeaModel):
         return self
 
 
+class BindXBRequest(TeaModel):
+    def __init__(
+        self,
+        caller_parent_id: int = None,
+        customer_pool_key: str = None,
+        owner_id: int = None,
+        req_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        tel_b: str = None,
+        tel_x: str = None,
+        user_data: str = None,
+    ):
+        # 客户uid
+        self.caller_parent_id = caller_parent_id
+        # 号码池key
+        # 
+        # This parameter is required.
+        self.customer_pool_key = customer_pool_key
+        self.owner_id = owner_id
+        # 请求去重ID, reqId最大长度为20位,接入方需要保持原子性
+        # 
+        # This parameter is required.
+        self.req_id = req_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 员工真实号码
+        # 
+        # This parameter is required.
+        self.tel_b = tel_b
+        # X号码
+        # 
+        # This parameter is required.
+        self.tel_x = tel_x
+        # 客户自定义参数回调带回
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.caller_parent_id is not None:
+            result['CallerParentId'] = self.caller_parent_id
+        if self.customer_pool_key is not None:
+            result['CustomerPoolKey'] = self.customer_pool_key
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.req_id is not None:
+            result['ReqId'] = self.req_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.tel_b is not None:
+            result['TelB'] = self.tel_b
+        if self.tel_x is not None:
+            result['TelX'] = self.tel_x
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallerParentId') is not None:
+            self.caller_parent_id = m.get('CallerParentId')
+        if m.get('CustomerPoolKey') is not None:
+            self.customer_pool_key = m.get('CustomerPoolKey')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ReqId') is not None:
+            self.req_id = m.get('ReqId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TelB') is not None:
+            self.tel_b = m.get('TelB')
+        if m.get('TelX') is not None:
+            self.tel_x = m.get('TelX')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class BindXBResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        auth_id: str = None,
+        code: str = None,
+        message: str = None,
+        success: bool = None,
+        tel_x: str = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        # 工作号关系绑定的唯一标识
+        self.auth_id = auth_id
+        # 返回状态码 0000表示成功 其他表示失败
+        self.code = code
+        # 返回信息
+        self.message = message
+        # 返回是否成功 true  表示成功 false表示失败
+        self.success = success
+        # 工作号号码
+        self.tel_x = tel_x
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.auth_id is not None:
+            result['AuthId'] = self.auth_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.tel_x is not None:
+            result['TelX'] = self.tel_x
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('AuthId') is not None:
+            self.auth_id = m.get('AuthId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TelX') is not None:
+            self.tel_x = m.get('TelX')
+        return self
+
+
+class BindXBResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BindXBResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BindXBResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class BuySecretNoRequest(TeaModel):
     def __init__(
         self,
@@ -2453,6 +2845,375 @@ class CancelPickUpWaybillResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CancelPickUpWaybillResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ConfigXRequestSequenceCalls(TeaModel):
+    def __init__(
+        self,
+        sequence_call_no_play_code: str = None,
+        sequence_called_no: str = None,
+        sequence_called_play_code: str = None,
+    ):
+        # 顺振提示音放音编号，格式如callNoPlayCode
+        self.sequence_call_no_play_code = sequence_call_no_play_code
+        # 顺振被叫号码
+        self.sequence_called_no = sequence_called_no
+        # 接通后主被叫放音编号，格式如calledPlayCode
+        self.sequence_called_play_code = sequence_called_play_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sequence_call_no_play_code is not None:
+            result['SequenceCallNoPlayCode'] = self.sequence_call_no_play_code
+        if self.sequence_called_no is not None:
+            result['SequenceCalledNo'] = self.sequence_called_no
+        if self.sequence_called_play_code is not None:
+            result['SequenceCalledPlayCode'] = self.sequence_called_play_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SequenceCallNoPlayCode') is not None:
+            self.sequence_call_no_play_code = m.get('SequenceCallNoPlayCode')
+        if m.get('SequenceCalledNo') is not None:
+            self.sequence_called_no = m.get('SequenceCalledNo')
+        if m.get('SequenceCalledPlayCode') is not None:
+            self.sequence_called_play_code = m.get('SequenceCalledPlayCode')
+        return self
+
+
+class ConfigXRequest(TeaModel):
+    def __init__(
+        self,
+        call_ability: str = None,
+        caller_parent_id: int = None,
+        customer_pool_key: str = None,
+        gnflag: str = None,
+        owner_id: int = None,
+        req_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        sequence_calls: List[ConfigXRequestSequenceCalls] = None,
+        sequence_mode: str = None,
+        sms_ability: str = None,
+        sms_sign_mode: str = None,
+        tel_x: str = None,
+    ):
+        # 开/关呼叫能力状态‘0’：禁用‘1’：开启
+        self.call_ability = call_ability
+        # 客户uid
+        self.caller_parent_id = caller_parent_id
+        # 号码池key
+        # 
+        # This parameter is required.
+        self.customer_pool_key = customer_pool_key
+        # 是否透传来显为真实主叫：00-非透传：互相拨打时都显示工作号;10-透传：A客户为主叫时,B员工的来显为客户A号码;B员工为主叫时,A客户的来显为工作号;默认为 00
+        self.gnflag = gnflag
+        self.owner_id = owner_id
+        # 请求去重ID, reqId最大长度为20位,接入方需要保持原子性
+        # 
+        # This parameter is required.
+        self.req_id = req_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 顺振控制参数
+        self.sequence_calls = sequence_calls
+        # 顺振模式：0-不顺振（默认）1-有条件顺振，先接续calledNo指定被叫，如果该被叫未能接通，再顺振sequenceCalls号码列表2-无条件顺振，不接续calledNo指定被叫，直接顺振sequenceCalls号码列表
+        self.sequence_mode = sequence_mode
+        # 开/关短信功能状态‘0’：禁用；‘1’：开启；
+        self.sms_ability = sms_ability
+        # 是否透传来显为真实用户0：不透传; 1：透传默认：0不透传
+        self.sms_sign_mode = sms_sign_mode
+        # X号码
+        # 
+        # This parameter is required.
+        self.tel_x = tel_x
+
+    def validate(self):
+        if self.sequence_calls:
+            for k in self.sequence_calls:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.call_ability is not None:
+            result['CallAbility'] = self.call_ability
+        if self.caller_parent_id is not None:
+            result['CallerParentId'] = self.caller_parent_id
+        if self.customer_pool_key is not None:
+            result['CustomerPoolKey'] = self.customer_pool_key
+        if self.gnflag is not None:
+            result['GNFlag'] = self.gnflag
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.req_id is not None:
+            result['ReqId'] = self.req_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        result['SequenceCalls'] = []
+        if self.sequence_calls is not None:
+            for k in self.sequence_calls:
+                result['SequenceCalls'].append(k.to_map() if k else None)
+        if self.sequence_mode is not None:
+            result['SequenceMode'] = self.sequence_mode
+        if self.sms_ability is not None:
+            result['SmsAbility'] = self.sms_ability
+        if self.sms_sign_mode is not None:
+            result['SmsSignMode'] = self.sms_sign_mode
+        if self.tel_x is not None:
+            result['TelX'] = self.tel_x
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallAbility') is not None:
+            self.call_ability = m.get('CallAbility')
+        if m.get('CallerParentId') is not None:
+            self.caller_parent_id = m.get('CallerParentId')
+        if m.get('CustomerPoolKey') is not None:
+            self.customer_pool_key = m.get('CustomerPoolKey')
+        if m.get('GNFlag') is not None:
+            self.gnflag = m.get('GNFlag')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ReqId') is not None:
+            self.req_id = m.get('ReqId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        self.sequence_calls = []
+        if m.get('SequenceCalls') is not None:
+            for k in m.get('SequenceCalls'):
+                temp_model = ConfigXRequestSequenceCalls()
+                self.sequence_calls.append(temp_model.from_map(k))
+        if m.get('SequenceMode') is not None:
+            self.sequence_mode = m.get('SequenceMode')
+        if m.get('SmsAbility') is not None:
+            self.sms_ability = m.get('SmsAbility')
+        if m.get('SmsSignMode') is not None:
+            self.sms_sign_mode = m.get('SmsSignMode')
+        if m.get('TelX') is not None:
+            self.tel_x = m.get('TelX')
+        return self
+
+
+class ConfigXShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        call_ability: str = None,
+        caller_parent_id: int = None,
+        customer_pool_key: str = None,
+        gnflag: str = None,
+        owner_id: int = None,
+        req_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        sequence_calls_shrink: str = None,
+        sequence_mode: str = None,
+        sms_ability: str = None,
+        sms_sign_mode: str = None,
+        tel_x: str = None,
+    ):
+        # 开/关呼叫能力状态‘0’：禁用‘1’：开启
+        self.call_ability = call_ability
+        # 客户uid
+        self.caller_parent_id = caller_parent_id
+        # 号码池key
+        # 
+        # This parameter is required.
+        self.customer_pool_key = customer_pool_key
+        # 是否透传来显为真实主叫：00-非透传：互相拨打时都显示工作号;10-透传：A客户为主叫时,B员工的来显为客户A号码;B员工为主叫时,A客户的来显为工作号;默认为 00
+        self.gnflag = gnflag
+        self.owner_id = owner_id
+        # 请求去重ID, reqId最大长度为20位,接入方需要保持原子性
+        # 
+        # This parameter is required.
+        self.req_id = req_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 顺振控制参数
+        self.sequence_calls_shrink = sequence_calls_shrink
+        # 顺振模式：0-不顺振（默认）1-有条件顺振，先接续calledNo指定被叫，如果该被叫未能接通，再顺振sequenceCalls号码列表2-无条件顺振，不接续calledNo指定被叫，直接顺振sequenceCalls号码列表
+        self.sequence_mode = sequence_mode
+        # 开/关短信功能状态‘0’：禁用；‘1’：开启；
+        self.sms_ability = sms_ability
+        # 是否透传来显为真实用户0：不透传; 1：透传默认：0不透传
+        self.sms_sign_mode = sms_sign_mode
+        # X号码
+        # 
+        # This parameter is required.
+        self.tel_x = tel_x
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.call_ability is not None:
+            result['CallAbility'] = self.call_ability
+        if self.caller_parent_id is not None:
+            result['CallerParentId'] = self.caller_parent_id
+        if self.customer_pool_key is not None:
+            result['CustomerPoolKey'] = self.customer_pool_key
+        if self.gnflag is not None:
+            result['GNFlag'] = self.gnflag
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.req_id is not None:
+            result['ReqId'] = self.req_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.sequence_calls_shrink is not None:
+            result['SequenceCalls'] = self.sequence_calls_shrink
+        if self.sequence_mode is not None:
+            result['SequenceMode'] = self.sequence_mode
+        if self.sms_ability is not None:
+            result['SmsAbility'] = self.sms_ability
+        if self.sms_sign_mode is not None:
+            result['SmsSignMode'] = self.sms_sign_mode
+        if self.tel_x is not None:
+            result['TelX'] = self.tel_x
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallAbility') is not None:
+            self.call_ability = m.get('CallAbility')
+        if m.get('CallerParentId') is not None:
+            self.caller_parent_id = m.get('CallerParentId')
+        if m.get('CustomerPoolKey') is not None:
+            self.customer_pool_key = m.get('CustomerPoolKey')
+        if m.get('GNFlag') is not None:
+            self.gnflag = m.get('GNFlag')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ReqId') is not None:
+            self.req_id = m.get('ReqId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SequenceCalls') is not None:
+            self.sequence_calls_shrink = m.get('SequenceCalls')
+        if m.get('SequenceMode') is not None:
+            self.sequence_mode = m.get('SequenceMode')
+        if m.get('SmsAbility') is not None:
+            self.sms_ability = m.get('SmsAbility')
+        if m.get('SmsSignMode') is not None:
+            self.sms_sign_mode = m.get('SmsSignMode')
+        if m.get('TelX') is not None:
+            self.tel_x = m.get('TelX')
+        return self
+
+
+class ConfigXResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        # 返回状态码 0000表示成功 其他表示失败
+        self.code = code
+        # 返回信息
+        self.message = message
+        # 返回是否成功 true  表示成功 false表示失败
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ConfigXResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ConfigXResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ConfigXResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3992,6 +4753,184 @@ class CreatePickUpWaybillPreQueryResponse(TeaModel):
         return self
 
 
+class CreateSmsSignRequest(TeaModel):
+    def __init__(
+        self,
+        called_no: str = None,
+        caller_parent_id: int = None,
+        calling_no: str = None,
+        customer_pool_key: str = None,
+        owner_id: int = None,
+        req_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # 收信人号码
+        # 
+        # This parameter is required.
+        self.called_no = called_no
+        # 客户uid
+        self.caller_parent_id = caller_parent_id
+        # 发信人号码
+        # 
+        # This parameter is required.
+        self.calling_no = calling_no
+        # 号码池key
+        # 
+        # This parameter is required.
+        self.customer_pool_key = customer_pool_key
+        self.owner_id = owner_id
+        # 请求去重ID, reqId最大长度为20位,接入方需要保持原子性
+        # 
+        # This parameter is required.
+        self.req_id = req_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.called_no is not None:
+            result['CalledNo'] = self.called_no
+        if self.caller_parent_id is not None:
+            result['CallerParentId'] = self.caller_parent_id
+        if self.calling_no is not None:
+            result['CallingNo'] = self.calling_no
+        if self.customer_pool_key is not None:
+            result['CustomerPoolKey'] = self.customer_pool_key
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.req_id is not None:
+            result['ReqId'] = self.req_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CalledNo') is not None:
+            self.called_no = m.get('CalledNo')
+        if m.get('CallerParentId') is not None:
+            self.caller_parent_id = m.get('CallerParentId')
+        if m.get('CallingNo') is not None:
+            self.calling_no = m.get('CallingNo')
+        if m.get('CustomerPoolKey') is not None:
+            self.customer_pool_key = m.get('CustomerPoolKey')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ReqId') is not None:
+            self.req_id = m.get('ReqId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class CreateSmsSignResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        called_no_sign: str = None,
+        code: str = None,
+        message: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        # 短信接收者号码签名串(加到短信内容中供解析真实被叫号码)
+        self.called_no_sign = called_no_sign
+        # 返回状态码 0000表示成功 其他表示失败
+        self.code = code
+        # 返回信息
+        self.message = message
+        # 返回是否成功 true  表示成功 false表示失败
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.called_no_sign is not None:
+            result['CalledNoSign'] = self.called_no_sign
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('CalledNoSign') is not None:
+            self.called_no_sign = m.get('CalledNoSign')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateSmsSignResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSmsSignResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSmsSignResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteAxgGroupRequest(TeaModel):
     def __init__(
         self,
@@ -4796,6 +5735,906 @@ class GetTotalPublicUrlResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetTotalPublicUrlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetXConfigRequest(TeaModel):
+    def __init__(
+        self,
+        caller_parent_id: int = None,
+        customer_pool_key: str = None,
+        owner_id: int = None,
+        req_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        tel_x: str = None,
+    ):
+        # 客户uid
+        self.caller_parent_id = caller_parent_id
+        # 号码池key
+        # 
+        # This parameter is required.
+        self.customer_pool_key = customer_pool_key
+        self.owner_id = owner_id
+        # 请求去重ID, reqId最大长度为20位,接入方需要保持原子性
+        # 
+        # This parameter is required.
+        self.req_id = req_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # X号码
+        # 
+        # This parameter is required.
+        self.tel_x = tel_x
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.caller_parent_id is not None:
+            result['CallerParentId'] = self.caller_parent_id
+        if self.customer_pool_key is not None:
+            result['CustomerPoolKey'] = self.customer_pool_key
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.req_id is not None:
+            result['ReqId'] = self.req_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.tel_x is not None:
+            result['TelX'] = self.tel_x
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallerParentId') is not None:
+            self.caller_parent_id = m.get('CallerParentId')
+        if m.get('CustomerPoolKey') is not None:
+            self.customer_pool_key = m.get('CustomerPoolKey')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ReqId') is not None:
+            self.req_id = m.get('ReqId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TelX') is not None:
+            self.tel_x = m.get('TelX')
+        return self
+
+
+class GetXConfigResponseBodySequenceCalls(TeaModel):
+    def __init__(
+        self,
+        sequence_call_no_play_code: str = None,
+        sequence_called_no: str = None,
+        sequence_called_play_code: str = None,
+    ):
+        # 顺振提示音放音编号，格式如callNoPlayCode
+        self.sequence_call_no_play_code = sequence_call_no_play_code
+        # 顺振被叫号码
+        self.sequence_called_no = sequence_called_no
+        # 接通后主被叫放音编号，格式如calledPlayCode
+        self.sequence_called_play_code = sequence_called_play_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sequence_call_no_play_code is not None:
+            result['SequenceCallNoPlayCode'] = self.sequence_call_no_play_code
+        if self.sequence_called_no is not None:
+            result['SequenceCalledNo'] = self.sequence_called_no
+        if self.sequence_called_play_code is not None:
+            result['SequenceCalledPlayCode'] = self.sequence_called_play_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SequenceCallNoPlayCode') is not None:
+            self.sequence_call_no_play_code = m.get('SequenceCallNoPlayCode')
+        if m.get('SequenceCalledNo') is not None:
+            self.sequence_called_no = m.get('SequenceCalledNo')
+        if m.get('SequenceCalledPlayCode') is not None:
+            self.sequence_called_play_code = m.get('SequenceCalledPlayCode')
+        return self
+
+
+class GetXConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        call_ability: str = None,
+        code: str = None,
+        gnflag: str = None,
+        message: str = None,
+        sequence_calls: List[GetXConfigResponseBodySequenceCalls] = None,
+        sequence_mode: str = None,
+        sms_ability: str = None,
+        sms_sign_mode: str = None,
+        success: bool = None,
+        tel_x: str = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        # 开/关呼叫能力状态： ‘0’：禁用； ‘1’：开启；
+        self.call_ability = call_ability
+        # 返回状态码 0000表示成功 其他表示失败
+        self.code = code
+        # 是否透传来显为真实主叫： 00-非透传：互相拨打时都显示工作号; 10-透传：A客户为主叫时,B员工的来显为客户A号码;B员工为主叫时,A客户的来显为工作号; 默认为 00
+        self.gnflag = gnflag
+        # 返回信息
+        self.message = message
+        # 顺振控制参数
+        self.sequence_calls = sequence_calls
+        # 顺振模式： 0-不顺振（默认） 1-有条件顺振，先接续calledNo指定被叫，如果该被叫未能接通，再顺振sequenceCalls号码列表 2-无条件顺振，不接续calledNo指定被叫，直接顺振sequenceCalls号码列表
+        self.sequence_mode = sequence_mode
+        # 开/关短信功能状态： ‘0’：禁用；‘1’：开启；
+        self.sms_ability = sms_ability
+        # 是否透传来显为真实用户 0：不透传; 1：透传 默认：0不透传
+        self.sms_sign_mode = sms_sign_mode
+        # 返回是否成功 true  表示成功 false表示失败
+        self.success = success
+        # X号码
+        self.tel_x = tel_x
+
+    def validate(self):
+        if self.sequence_calls:
+            for k in self.sequence_calls:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.call_ability is not None:
+            result['CallAbility'] = self.call_ability
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.gnflag is not None:
+            result['GNFlag'] = self.gnflag
+        if self.message is not None:
+            result['Message'] = self.message
+        result['SequenceCalls'] = []
+        if self.sequence_calls is not None:
+            for k in self.sequence_calls:
+                result['SequenceCalls'].append(k.to_map() if k else None)
+        if self.sequence_mode is not None:
+            result['SequenceMode'] = self.sequence_mode
+        if self.sms_ability is not None:
+            result['SmsAbility'] = self.sms_ability
+        if self.sms_sign_mode is not None:
+            result['SmsSignMode'] = self.sms_sign_mode
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.tel_x is not None:
+            result['TelX'] = self.tel_x
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('CallAbility') is not None:
+            self.call_ability = m.get('CallAbility')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('GNFlag') is not None:
+            self.gnflag = m.get('GNFlag')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        self.sequence_calls = []
+        if m.get('SequenceCalls') is not None:
+            for k in m.get('SequenceCalls'):
+                temp_model = GetXConfigResponseBodySequenceCalls()
+                self.sequence_calls.append(temp_model.from_map(k))
+        if m.get('SequenceMode') is not None:
+            self.sequence_mode = m.get('SequenceMode')
+        if m.get('SmsAbility') is not None:
+            self.sms_ability = m.get('SmsAbility')
+        if m.get('SmsSignMode') is not None:
+            self.sms_sign_mode = m.get('SmsSignMode')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TelX') is not None:
+            self.tel_x = m.get('TelX')
+        return self
+
+
+class GetXConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetXConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetXConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetXDefaultConfigRequest(TeaModel):
+    def __init__(
+        self,
+        caller_parent_id: int = None,
+        customer_pool_key: str = None,
+        owner_id: int = None,
+        req_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        tel_x: str = None,
+    ):
+        # 客户uid
+        self.caller_parent_id = caller_parent_id
+        # 号码池key
+        # 
+        # This parameter is required.
+        self.customer_pool_key = customer_pool_key
+        self.owner_id = owner_id
+        # 请求去重ID, reqId最大长度为20位,接入方需要保持原子性
+        # 
+        # This parameter is required.
+        self.req_id = req_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # X号码
+        # 
+        # This parameter is required.
+        self.tel_x = tel_x
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.caller_parent_id is not None:
+            result['CallerParentId'] = self.caller_parent_id
+        if self.customer_pool_key is not None:
+            result['CustomerPoolKey'] = self.customer_pool_key
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.req_id is not None:
+            result['ReqId'] = self.req_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.tel_x is not None:
+            result['TelX'] = self.tel_x
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallerParentId') is not None:
+            self.caller_parent_id = m.get('CallerParentId')
+        if m.get('CustomerPoolKey') is not None:
+            self.customer_pool_key = m.get('CustomerPoolKey')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ReqId') is not None:
+            self.req_id = m.get('ReqId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TelX') is not None:
+            self.tel_x = m.get('TelX')
+        return self
+
+
+class GetXDefaultConfigResponseBodyReachJson(TeaModel):
+    def __init__(
+        self,
+        call_dir: str = None,
+        call_status: str = None,
+        receive_dir: str = None,
+        rule_id: str = None,
+        rule_name: str = None,
+        rule_type: str = None,
+        temp_id: str = None,
+    ):
+        # 呼叫方向 1:员工B呼叫客户A 2:客户A呼叫员工B
+        self.call_dir = call_dir
+        # 通话状态 1:通话振铃 2:接通前 3:接通后 4:通话结束 5:已接通6:未接通
+        self.call_status = call_status
+        # 接收方向 1:主叫 2:被叫
+        self.receive_dir = receive_dir
+        # 规则ID
+        self.rule_id = rule_id
+        # 规则名称
+        self.rule_name = rule_name
+        # 规则类型： 1：企业名片-短信 2：企业名片-闪信 3：企业名片-视频 4：企业名片-音频
+        self.rule_type = rule_type
+        # 模板ID
+        self.temp_id = temp_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.call_dir is not None:
+            result['CallDir'] = self.call_dir
+        if self.call_status is not None:
+            result['CallStatus'] = self.call_status
+        if self.receive_dir is not None:
+            result['ReceiveDir'] = self.receive_dir
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.rule_type is not None:
+            result['RuleType'] = self.rule_type
+        if self.temp_id is not None:
+            result['TempId'] = self.temp_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallDir') is not None:
+            self.call_dir = m.get('CallDir')
+        if m.get('CallStatus') is not None:
+            self.call_status = m.get('CallStatus')
+        if m.get('ReceiveDir') is not None:
+            self.receive_dir = m.get('ReceiveDir')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('RuleType') is not None:
+            self.rule_type = m.get('RuleType')
+        if m.get('TempId') is not None:
+            self.temp_id = m.get('TempId')
+        return self
+
+
+class GetXDefaultConfigResponseBodySequenceCalls(TeaModel):
+    def __init__(
+        self,
+        sequence_call_no_play_code: str = None,
+        sequence_called_no: str = None,
+        sequence_called_play_code: str = None,
+    ):
+        # 顺振提示音放音编号，格式如callNoPlayCode
+        self.sequence_call_no_play_code = sequence_call_no_play_code
+        # 顺振被叫号码
+        self.sequence_called_no = sequence_called_no
+        # 接通后主被叫放音编号，格式如calledPlayCode
+        self.sequence_called_play_code = sequence_called_play_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sequence_call_no_play_code is not None:
+            result['SequenceCallNoPlayCode'] = self.sequence_call_no_play_code
+        if self.sequence_called_no is not None:
+            result['SequenceCalledNo'] = self.sequence_called_no
+        if self.sequence_called_play_code is not None:
+            result['SequenceCalledPlayCode'] = self.sequence_called_play_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SequenceCallNoPlayCode') is not None:
+            self.sequence_call_no_play_code = m.get('SequenceCallNoPlayCode')
+        if m.get('SequenceCalledNo') is not None:
+            self.sequence_called_no = m.get('SequenceCalledNo')
+        if m.get('SequenceCalledPlayCode') is not None:
+            self.sequence_called_play_code = m.get('SequenceCalledPlayCode')
+        return self
+
+
+class GetXDefaultConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        call_ability: str = None,
+        code: str = None,
+        gnflag: str = None,
+        message: str = None,
+        reach_json: List[GetXDefaultConfigResponseBodyReachJson] = None,
+        sequence_calls: List[GetXDefaultConfigResponseBodySequenceCalls] = None,
+        sequence_end_time: str = None,
+        sequence_start_time: str = None,
+        sms_ability: str = None,
+        sms_sign_mode: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        # 开/关呼叫能力状态： ‘0’：禁用； ‘1’：开启；
+        self.call_ability = call_ability
+        # 返回状态码 0000表示成功 其他表示失败
+        self.code = code
+        # 是否透传来显为真实主叫： 00-非透传：互相拨打时都显示工作号; 10-透传：A客户为主叫时,B员工的来显为客户A号码;B员工为主叫时,A客户的来显为工作号; 默认为 00
+        self.gnflag = gnflag
+        # 返回信息
+        self.message = message
+        # 企业名片规则控制参数
+        self.reach_json = reach_json
+        # 顺振控制参数
+        self.sequence_calls = sequence_calls
+        # 顺振结束时间 格式：HH:mm:ss 18:00:00
+        self.sequence_end_time = sequence_end_time
+        # 顺振开启时间 格式：HH:mm:ss 09:00:00
+        self.sequence_start_time = sequence_start_time
+        # 开/关短信功能状态： ‘0’：禁用； ‘1’：开启；
+        self.sms_ability = sms_ability
+        # 是否透传来显为真实用户 0：不透传; 1：透传 默认：0不透传
+        self.sms_sign_mode = sms_sign_mode
+        # 返回是否成功 true  表示成功 false表示失败
+        self.success = success
+
+    def validate(self):
+        if self.reach_json:
+            for k in self.reach_json:
+                if k:
+                    k.validate()
+        if self.sequence_calls:
+            for k in self.sequence_calls:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.call_ability is not None:
+            result['CallAbility'] = self.call_ability
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.gnflag is not None:
+            result['GNFlag'] = self.gnflag
+        if self.message is not None:
+            result['Message'] = self.message
+        result['ReachJson'] = []
+        if self.reach_json is not None:
+            for k in self.reach_json:
+                result['ReachJson'].append(k.to_map() if k else None)
+        result['SequenceCalls'] = []
+        if self.sequence_calls is not None:
+            for k in self.sequence_calls:
+                result['SequenceCalls'].append(k.to_map() if k else None)
+        if self.sequence_end_time is not None:
+            result['SequenceEndTime'] = self.sequence_end_time
+        if self.sequence_start_time is not None:
+            result['SequenceStartTime'] = self.sequence_start_time
+        if self.sms_ability is not None:
+            result['SmsAbility'] = self.sms_ability
+        if self.sms_sign_mode is not None:
+            result['SmsSignMode'] = self.sms_sign_mode
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('CallAbility') is not None:
+            self.call_ability = m.get('CallAbility')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('GNFlag') is not None:
+            self.gnflag = m.get('GNFlag')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        self.reach_json = []
+        if m.get('ReachJson') is not None:
+            for k in m.get('ReachJson'):
+                temp_model = GetXDefaultConfigResponseBodyReachJson()
+                self.reach_json.append(temp_model.from_map(k))
+        self.sequence_calls = []
+        if m.get('SequenceCalls') is not None:
+            for k in m.get('SequenceCalls'):
+                temp_model = GetXDefaultConfigResponseBodySequenceCalls()
+                self.sequence_calls.append(temp_model.from_map(k))
+        if m.get('SequenceEndTime') is not None:
+            self.sequence_end_time = m.get('SequenceEndTime')
+        if m.get('SequenceStartTime') is not None:
+            self.sequence_start_time = m.get('SequenceStartTime')
+        if m.get('SmsAbility') is not None:
+            self.sms_ability = m.get('SmsAbility')
+        if m.get('SmsSignMode') is not None:
+            self.sms_sign_mode = m.get('SmsSignMode')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetXDefaultConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetXDefaultConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetXDefaultConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListXTelephonesRequest(TeaModel):
+    def __init__(
+        self,
+        caller_parent_id: int = None,
+        customer_pool_key: str = None,
+        owner_id: int = None,
+        page_no: int = None,
+        page_size: int = None,
+        req_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # 客户uid
+        self.caller_parent_id = caller_parent_id
+        # 号码池key
+        self.customer_pool_key = customer_pool_key
+        self.owner_id = owner_id
+        # 页码从1开始
+        self.page_no = page_no
+        # 每页条数
+        self.page_size = page_size
+        # 请求去重ID, reqId最大长度为20位,接入方需要保持原子性
+        # 
+        # This parameter is required.
+        self.req_id = req_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.caller_parent_id is not None:
+            result['CallerParentId'] = self.caller_parent_id
+        if self.customer_pool_key is not None:
+            result['CustomerPoolKey'] = self.customer_pool_key
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.req_id is not None:
+            result['ReqId'] = self.req_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallerParentId') is not None:
+            self.caller_parent_id = m.get('CallerParentId')
+        if m.get('CustomerPoolKey') is not None:
+            self.customer_pool_key = m.get('CustomerPoolKey')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ReqId') is not None:
+            self.req_id = m.get('ReqId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ListXTelephonesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        auth_msg: str = None,
+        bind_time: str = None,
+        buy_time: str = None,
+        customer_pool_key: str = None,
+        customer_pool_name: str = None,
+        release_time: str = None,
+        sms_status: str = None,
+        telephone: str = None,
+        telephone_status: str = None,
+        unbind_time: str = None,
+    ):
+        # 绑定失败原因
+        self.auth_msg = auth_msg
+        # 绑定时间
+        self.bind_time = bind_time
+        # 购买时间
+        self.buy_time = buy_time
+        # 客户号码池key
+        self.customer_pool_key = customer_pool_key
+        # 号码池名称
+        self.customer_pool_name = customer_pool_name
+        # 释放时间
+        self.release_time = release_time
+        # 短信开通状态：0 未开通 1已开通
+        self.sms_status = sms_status
+        # X号码
+        self.telephone = telephone
+        # 号码状态：0 空闲中 1 调拨完成待购买 2购买完成待认证  3 实名认证中  4 实名认证成功  5 认证失败  6 解绑中 7 解绑失败 8已释放 99 超时释放
+        self.telephone_status = telephone_status
+        # 解绑时间
+        self.unbind_time = unbind_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_msg is not None:
+            result['AuthMsg'] = self.auth_msg
+        if self.bind_time is not None:
+            result['BindTime'] = self.bind_time
+        if self.buy_time is not None:
+            result['BuyTime'] = self.buy_time
+        if self.customer_pool_key is not None:
+            result['CustomerPoolKey'] = self.customer_pool_key
+        if self.customer_pool_name is not None:
+            result['CustomerPoolName'] = self.customer_pool_name
+        if self.release_time is not None:
+            result['ReleaseTime'] = self.release_time
+        if self.sms_status is not None:
+            result['SmsStatus'] = self.sms_status
+        if self.telephone is not None:
+            result['Telephone'] = self.telephone
+        if self.telephone_status is not None:
+            result['TelephoneStatus'] = self.telephone_status
+        if self.unbind_time is not None:
+            result['UnbindTime'] = self.unbind_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthMsg') is not None:
+            self.auth_msg = m.get('AuthMsg')
+        if m.get('BindTime') is not None:
+            self.bind_time = m.get('BindTime')
+        if m.get('BuyTime') is not None:
+            self.buy_time = m.get('BuyTime')
+        if m.get('CustomerPoolKey') is not None:
+            self.customer_pool_key = m.get('CustomerPoolKey')
+        if m.get('CustomerPoolName') is not None:
+            self.customer_pool_name = m.get('CustomerPoolName')
+        if m.get('ReleaseTime') is not None:
+            self.release_time = m.get('ReleaseTime')
+        if m.get('SmsStatus') is not None:
+            self.sms_status = m.get('SmsStatus')
+        if m.get('Telephone') is not None:
+            self.telephone = m.get('Telephone')
+        if m.get('TelephoneStatus') is not None:
+            self.telephone_status = m.get('TelephoneStatus')
+        if m.get('UnbindTime') is not None:
+            self.unbind_time = m.get('UnbindTime')
+        return self
+
+
+class ListXTelephonesResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: List[ListXTelephonesResponseBodyData] = None,
+        message: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        # 返回状态码 0000表示成功 其他表示失败
+        self.code = code
+        # 数据集合
+        self.data = data
+        # 返回信息
+        self.message = message
+        # 页码
+        self.page_no = page_no
+        # 每页条数
+        self.page_size = page_size
+        # 返回是否成功 true  表示成功 false表示失败
+        self.success = success
+        # 符合查询条件的总数量
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListXTelephonesResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListXTelephonesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListXTelephonesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListXTelephonesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6183,6 +8022,175 @@ class QuerySecretNoRemainResponse(TeaModel):
         return self
 
 
+class QuerySoundRecordRequest(TeaModel):
+    def __init__(
+        self,
+        call_id: str = None,
+        caller_parent_id: int = None,
+        customer_pool_key: str = None,
+        owner_id: int = None,
+        req_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # 本次呼叫唯一id
+        # 
+        # This parameter is required.
+        self.call_id = call_id
+        # 客户uid
+        self.caller_parent_id = caller_parent_id
+        # 号码池key
+        # 
+        # This parameter is required.
+        self.customer_pool_key = customer_pool_key
+        self.owner_id = owner_id
+        # 请求去重ID, reqId最大长度为20位,接入方需要保持原子性
+        # 
+        # This parameter is required.
+        self.req_id = req_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.call_id is not None:
+            result['CallId'] = self.call_id
+        if self.caller_parent_id is not None:
+            result['CallerParentId'] = self.caller_parent_id
+        if self.customer_pool_key is not None:
+            result['CustomerPoolKey'] = self.customer_pool_key
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.req_id is not None:
+            result['ReqId'] = self.req_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallId') is not None:
+            self.call_id = m.get('CallId')
+        if m.get('CallerParentId') is not None:
+            self.caller_parent_id = m.get('CallerParentId')
+        if m.get('CustomerPoolKey') is not None:
+            self.customer_pool_key = m.get('CustomerPoolKey')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ReqId') is not None:
+            self.req_id = m.get('ReqId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class QuerySoundRecordResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        file_url: str = None,
+        message: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        # 返回状态码 0000表示成功 其他表示失败
+        self.code = code
+        # 通话录音url路径，最大长度1000，有效期1小时
+        self.file_url = file_url
+        # 返回信息
+        self.message = message
+        # 返回是否成功 true  表示成功 false表示失败
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QuerySoundRecordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QuerySoundRecordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QuerySoundRecordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QuerySubsIdRequest(TeaModel):
     def __init__(
         self,
@@ -6776,6 +8784,339 @@ class ReleaseSecretNoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ReleaseSecretNoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UnBindAXBRequest(TeaModel):
+    def __init__(
+        self,
+        bind_id: str = None,
+        caller_parent_id: int = None,
+        customer_pool_key: str = None,
+        owner_id: int = None,
+        req_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # bindId绑定关系AXB唯一id
+        # 
+        # This parameter is required.
+        self.bind_id = bind_id
+        # 客户uid
+        self.caller_parent_id = caller_parent_id
+        # 号码池key
+        # 
+        # This parameter is required.
+        self.customer_pool_key = customer_pool_key
+        self.owner_id = owner_id
+        # 请求去重ID, reqId最大长度为20位,接入方需要保持原子性
+        # 
+        # This parameter is required.
+        self.req_id = req_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bind_id is not None:
+            result['BindId'] = self.bind_id
+        if self.caller_parent_id is not None:
+            result['CallerParentId'] = self.caller_parent_id
+        if self.customer_pool_key is not None:
+            result['CustomerPoolKey'] = self.customer_pool_key
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.req_id is not None:
+            result['ReqId'] = self.req_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BindId') is not None:
+            self.bind_id = m.get('BindId')
+        if m.get('CallerParentId') is not None:
+            self.caller_parent_id = m.get('CallerParentId')
+        if m.get('CustomerPoolKey') is not None:
+            self.customer_pool_key = m.get('CustomerPoolKey')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ReqId') is not None:
+            self.req_id = m.get('ReqId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class UnBindAXBResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        # 返回状态码 0000表示成功 其他表示失败
+        self.code = code
+        # 返回信息
+        self.message = message
+        # 返回是否成功 true  表示成功 false表示失败
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UnBindAXBResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UnBindAXBResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UnBindAXBResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UnBindXBRequest(TeaModel):
+    def __init__(
+        self,
+        auth_id: str = None,
+        caller_parent_id: int = None,
+        customer_pool_key: str = None,
+        owner_id: int = None,
+        req_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        tel_x: str = None,
+    ):
+        # authId绑定关系BX唯一id
+        # 
+        # This parameter is required.
+        self.auth_id = auth_id
+        # 客户uid
+        self.caller_parent_id = caller_parent_id
+        # 号码池key
+        # 
+        # This parameter is required.
+        self.customer_pool_key = customer_pool_key
+        self.owner_id = owner_id
+        # 请求去重ID, reqId最大长度为20位,接入方需要保持原子性
+        # 
+        # This parameter is required.
+        self.req_id = req_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # X号码
+        # 
+        # This parameter is required.
+        self.tel_x = tel_x
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_id is not None:
+            result['AuthId'] = self.auth_id
+        if self.caller_parent_id is not None:
+            result['CallerParentId'] = self.caller_parent_id
+        if self.customer_pool_key is not None:
+            result['CustomerPoolKey'] = self.customer_pool_key
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.req_id is not None:
+            result['ReqId'] = self.req_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.tel_x is not None:
+            result['TelX'] = self.tel_x
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthId') is not None:
+            self.auth_id = m.get('AuthId')
+        if m.get('CallerParentId') is not None:
+            self.caller_parent_id = m.get('CallerParentId')
+        if m.get('CustomerPoolKey') is not None:
+            self.customer_pool_key = m.get('CustomerPoolKey')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ReqId') is not None:
+            self.req_id = m.get('ReqId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TelX') is not None:
+            self.tel_x = m.get('TelX')
+        return self
+
+
+class UnBindXBResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        # 返回状态码 0000表示成功 其他表示失败
+        self.code = code
+        # 返回信息
+        self.message = message
+        # 返回是否成功 true  表示成功 false表示失败
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UnBindXBResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UnBindXBResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UnBindXBResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
