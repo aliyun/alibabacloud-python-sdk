@@ -1,3 +1,27 @@
+2024-11-04 Version: 4.4.4
+- Update API CreateAutoProvisioningGroup: add param ResourcePoolOptions.
+- Update API CreateCommand: add param Launcher.
+- Update API CreateLaunchTemplate: add param HttpEndpoint.
+- Update API CreateLaunchTemplate: add param HttpPutResponseHopLimit.
+- Update API CreateLaunchTemplate: add param HttpTokens.
+- Update API CreateLaunchTemplateVersion: add param HttpEndpoint.
+- Update API CreateLaunchTemplateVersion: add param HttpPutResponseHopLimit.
+- Update API CreateLaunchTemplateVersion: add param HttpTokens.
+- Update API DescribeCommands: update response param.
+- Update API DescribeElasticityAssurances: update response param.
+- Update API DescribeInstanceTypes: update param InstanceTypes.
+- Update API DescribeInstanceTypes: update response param.
+- Update API DescribeInstances: update response param.
+- Update API DescribeLaunchTemplateVersions: update response param.
+- Update API ModifyCommand: add param Launcher.
+- Update API PurchaseElasticityAssurance: add param Action.
+- Update API PurchaseElasticityAssurance: add param OwnerAccount.
+- Update API PurchaseElasticityAssurance: add param OwnerId.
+- Update API PurchaseElasticityAssurance: add param ResourceOwnerAccount.
+- Update API PurchaseElasticityAssurance: add param ResourceOwnerId.
+- Update API PurchaseElasticityAssurance: update param RegionId.
+
+
 2024-10-12 Version: 4.4.3
 - Update API CreateLaunchTemplate: add param HttpEndpoint.
 - Update API CreateLaunchTemplate: add param HttpPutResponseHopLimit.
