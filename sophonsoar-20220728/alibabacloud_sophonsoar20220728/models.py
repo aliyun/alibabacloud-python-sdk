@@ -5059,6 +5059,167 @@ class DescribePopApiVersionListResponse(TeaModel):
         return self
 
 
+class DescribeProcessTaskCountRequest(TeaModel):
+    def __init__(
+        self,
+        entity_uuid_list: List[str] = None,
+        lang: str = None,
+        role_for: int = None,
+        role_type: str = None,
+    ):
+        # This parameter is required.
+        self.entity_uuid_list = entity_uuid_list
+        self.lang = lang
+        self.role_for = role_for
+        self.role_type = role_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.entity_uuid_list is not None:
+            result['EntityUuidList'] = self.entity_uuid_list
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.role_for is not None:
+            result['RoleFor'] = self.role_for
+        if self.role_type is not None:
+            result['RoleType'] = self.role_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EntityUuidList') is not None:
+            self.entity_uuid_list = m.get('EntityUuidList')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('RoleFor') is not None:
+            self.role_for = m.get('RoleFor')
+        if m.get('RoleType') is not None:
+            self.role_type = m.get('RoleType')
+        return self
+
+
+class DescribeProcessTaskCountResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        entity_uuid: str = None,
+    ):
+        self.count = count
+        self.entity_uuid = entity_uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.entity_uuid is not None:
+            result['EntityUuid'] = self.entity_uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('EntityUuid') is not None:
+            self.entity_uuid = m.get('EntityUuid')
+        return self
+
+
+class DescribeProcessTaskCountResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[DescribeProcessTaskCountResponseBodyData] = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DescribeProcessTaskCountResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeProcessTaskCountResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeProcessTaskCountResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeProcessTaskCountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeProcessTasksRequest(TeaModel):
     def __init__(
         self,

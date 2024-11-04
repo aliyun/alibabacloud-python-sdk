@@ -2789,6 +2789,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_pop_api_version_list_with_options_async(request, runtime)
 
+    def describe_process_task_count_with_options(
+        self,
+        request: sophonsoar_20220728_models.DescribeProcessTaskCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sophonsoar_20220728_models.DescribeProcessTaskCountResponse:
+        """
+        @summary 根据实体uuid查询关联的处置任务数
+        
+        @param request: DescribeProcessTaskCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProcessTaskCountResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeProcessTaskCount',
+            version='2022-07-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeProcessTaskCountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_process_task_count_with_options_async(
+        self,
+        request: sophonsoar_20220728_models.DescribeProcessTaskCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sophonsoar_20220728_models.DescribeProcessTaskCountResponse:
+        """
+        @summary 根据实体uuid查询关联的处置任务数
+        
+        @param request: DescribeProcessTaskCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProcessTaskCountResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeProcessTaskCount',
+            version='2022-07-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sophonsoar_20220728_models.DescribeProcessTaskCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_process_task_count(
+        self,
+        request: sophonsoar_20220728_models.DescribeProcessTaskCountRequest,
+    ) -> sophonsoar_20220728_models.DescribeProcessTaskCountResponse:
+        """
+        @summary 根据实体uuid查询关联的处置任务数
+        
+        @param request: DescribeProcessTaskCountRequest
+        @return: DescribeProcessTaskCountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_process_task_count_with_options(request, runtime)
+
+    async def describe_process_task_count_async(
+        self,
+        request: sophonsoar_20220728_models.DescribeProcessTaskCountRequest,
+    ) -> sophonsoar_20220728_models.DescribeProcessTaskCountResponse:
+        """
+        @summary 根据实体uuid查询关联的处置任务数
+        
+        @param request: DescribeProcessTaskCountRequest
+        @return: DescribeProcessTaskCountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_process_task_count_with_options_async(request, runtime)
+
     def describe_process_tasks_with_options(
         self,
         request: sophonsoar_20220728_models.DescribeProcessTasksRequest,

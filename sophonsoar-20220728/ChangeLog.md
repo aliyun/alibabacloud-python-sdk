@@ -1,3 +1,7 @@
+2024-11-04 Version: 2.1.0
+- Support API DescribeProcessTaskCount.
+
+
 2024-11-02 Version: 2.0.1
 - Update API CreatePlaybook: add param TaskflowType.
 - Update API DescribeDistinctReleases: update response param.
