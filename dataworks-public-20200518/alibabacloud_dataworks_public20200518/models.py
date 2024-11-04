@@ -4448,10 +4448,11 @@ class CreateDISyncTaskRequest(TeaModel):
         self.task_content = task_content
         # The name of the data synchronization task.
         self.task_name = task_name
-        # The settings that specify the storage path of the data synchronization task and the resource group used by the task. The following parameters are supported:
+        # The configuration parameters of the data synchronization task. The following parameters are supported:
         # 
         # *   FileFolderPath: the storage path of the data synchronization task.
         # *   ResourceGroup: the identifier of the resource group for Data Integration that is used by the data synchronization task. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/173913.html) operation to query the identifier of the resource group.
+        # *   Cu: the specifications occupied by the data synchronization task in the serverless resource group. The value of this parameter must be a multiple of 0.5.
         self.task_param = task_param
         # The type of the data synchronization task. Valid values: DI_OFFLINE, DI_REALTIME, and DI_SOLUTION.
         # 
@@ -7969,8 +7970,6 @@ class CreateProjectRequest(TeaModel):
         # *   **0**: does not allow you to download the query result from DataStudio.
         self.is_allow_download = is_allow_download
         # The description of the workspace.
-        # 
-        # This parameter is required.
         self.project_description = project_description
         # The name of the workspace. The name can contain only letters, digits, and underscores (_) and must start with a letter or digit.
         # 
@@ -8078,8 +8077,6 @@ class CreateProjectShrinkRequest(TeaModel):
         # *   **0**: does not allow you to download the query result from DataStudio.
         self.is_allow_download = is_allow_download
         # The description of the workspace.
-        # 
-        # This parameter is required.
         self.project_description = project_description
         # The name of the workspace. The name can contain only letters, digits, and underscores (_) and must start with a letter or digit.
         # 
@@ -43251,7 +43248,7 @@ class GetRemindResponseBodyDataBizProcesses(TeaModel):
         biz_id: int = None,
         biz_process_name: str = None,
     ):
-        # The workflow ID.
+        # The ID of the workflow.
         self.biz_id = biz_id
         # The name of the workflow.
         self.biz_process_name = biz_process_name
@@ -43453,7 +43450,9 @@ class GetRemindResponseBodyData(TeaModel):
     ):
         # The minimum interval at which alerts are reported. Unit: seconds.
         self.alert_interval = alert_interval
+        # The alert notification method.
         self.alert_methods = alert_methods
+        # The description of the alert recipient.
         self.alert_targets = alert_targets
         # The recipient of the alert. Valid values: OWNER and OTHER. The value OWNER indicates the node owner. The value OTHER indicates a specified user.
         self.alert_unit = alert_unit
@@ -43493,6 +43492,7 @@ class GetRemindResponseBodyData(TeaModel):
         self.robots = robots
         # Indicates whether the custom alert rule is enabled. Valid values: true and false.
         self.useflag = useflag
+        # The information about the webhook URL.
         self.webhooks = webhooks
 
     def validate(self):
@@ -78281,9 +78281,10 @@ class UpdateDISyncTaskRequest(TeaModel):
         self.project_id = project_id
         # The updated configurations of the data synchronization task. Calling this API operation to update a data synchronization task is equivalent to updating a data synchronization task by using the code editor in the DataWorks console. For more information, see [Create a synchronization task by using the code editor](https://help.aliyun.com/document_detail/137717.html). You can call the UpdateDISyncTask operation to update only batch synchronization tasks. If you do not need to update the configurations of the data synchronization task, leave this parameter empty.
         self.task_content = task_content
-        # The setting based on which the resource group used by the data synchronization task is updated. You must configure this parameter in the JSON format.
+        # The configuration parameters of the data synchronization task. You must configure this parameter in the JSON format.
         # 
-        # Only the ResourceGroup field is supported. This field specifies the identifier of the resource group for Data Integration that is used by the data synchronization task. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/173913.html) operation to query the identifier of the resource group. If you do not need to update the resource group for the data synchronization task, leave this parameter empty.
+        # *   ResourceGroup: the identifier of the resource group for Data Integration that is used by the data synchronization task. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/173913.html) operation to query the identifier of the resource group.
+        # *   Cu: the specifications occupied by the data synchronization task in the serverless resource group. The value of this parameter must be a multiple of 0.5.
         self.task_param = task_param
         # The type of the data synchronization task. Set the value to DI_OFFLINE. You can call the UpdateDISyncTask operation to update only batch synchronization tasks.
         # 
@@ -80733,7 +80734,7 @@ class UpdateQualityRuleRequest(TeaModel):
         # *   1: The monitoring rule is a strong rule.
         # *   0: The monitoring rule is a weak rule. You can specify the strength of a monitoring rule based on your business requirements. If a monitoring rule is a strong rule and the critical threshold is exceeded, a critical alert is reported and tasks that are associated with the rule are blocked from running.
         self.block_type = block_type
-        # The checker ID. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to obtain the ID of the checker.
+        # The checker ID. Valid values: 2: indicates that the current value is compared with the average value of the previous 7 days. 3: indicates that the current value is compared with the average value of the previous 30 days. 4: indicates that the current value is compared with the value 1 day earlier. 5: indicates that the current value is compared with the value 7 days earlier. 6: indicates that the current value is compared with the value 30 days earlier. 7: indicates the variance between the current value and the value 7 days earlier. 8: indicates the variance between the current value and the value 30 days earlier. 9: indicates that the current value is compared with a fixed value. 10: indicates that the current value is compared with the value 1, 7, or 30 days earlier. 11: indicates that the current value is compared with the value of the previous cycle. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to query the ID.
         # 
         # This parameter is required.
         self.checker = checker
@@ -80759,6 +80760,8 @@ class UpdateQualityRuleRequest(TeaModel):
         # *   false: The monitoring rule is not triggered when the associated auto triggered node that generates the output data starts to run.
         self.open_switch = open_switch
         # The comparison operator, such as >, >=, =, ≠, <, or <=.
+        # 
+        # >  If you set the Checker parameter to 9, you must configure the Operator parameter.
         self.operator = operator
         # Specifies whether the threshold is a dynamic threshold. Valid values:
         # 

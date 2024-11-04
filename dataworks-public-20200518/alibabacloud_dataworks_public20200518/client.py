@@ -18649,7 +18649,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetRemindResponse:
         """
-        @summary Queries the details of a custom alert rule.
+        @summary Queries the information about a custom alert rule.
         
         @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=dataworks-public\\&api=GetRemind\\&type=RPC\\&version=2020-05-18)
@@ -18687,7 +18687,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetRemindResponse:
         """
-        @summary Queries the details of a custom alert rule.
+        @summary Queries the information about a custom alert rule.
         
         @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=dataworks-public\\&api=GetRemind\\&type=RPC\\&version=2020-05-18)
@@ -18724,7 +18724,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetRemindRequest,
     ) -> dataworks_public_20200518_models.GetRemindResponse:
         """
-        @summary Queries the details of a custom alert rule.
+        @summary Queries the information about a custom alert rule.
         
         @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=dataworks-public\\&api=GetRemind\\&type=RPC\\&version=2020-05-18)
@@ -18740,7 +18740,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetRemindRequest,
     ) -> dataworks_public_20200518_models.GetRemindResponse:
         """
-        @summary Queries the details of a custom alert rule.
+        @summary Queries the information about a custom alert rule.
         
         @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=dataworks-public\\&api=GetRemind\\&type=RPC\\&version=2020-05-18)
@@ -26473,7 +26473,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListTablesResponse:
         """
-        @summary 分页获取租户下面的数据源类型粒度的表名称
+        @summary Obtains tables of different data source types within a tenant by page.
         
         @param request: ListTablesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26512,7 +26512,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListTablesResponse:
         """
-        @summary 分页获取租户下面的数据源类型粒度的表名称
+        @summary Obtains tables of different data source types within a tenant by page.
         
         @param request: ListTablesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26550,7 +26550,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListTablesRequest,
     ) -> dataworks_public_20200518_models.ListTablesResponse:
         """
-        @summary 分页获取租户下面的数据源类型粒度的表名称
+        @summary Obtains tables of different data source types within a tenant by page.
         
         @param request: ListTablesRequest
         @return: ListTablesResponse
@@ -26563,7 +26563,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListTablesRequest,
     ) -> dataworks_public_20200518_models.ListTablesResponse:
         """
-        @summary 分页获取租户下面的数据源类型粒度的表名称
+        @summary Obtains tables of different data source types within a tenant by page.
         
         @param request: ListTablesRequest
         @return: ListTablesResponse
@@ -33487,7 +33487,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateMetaTableResponse:
         """
-        @summary Updates the metadata information about a table.
+        @summary Updates the metadata information about a table. Only MaxCompute tables are supported.
         
         @param request: UpdateMetaTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -33544,7 +33544,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateMetaTableResponse:
         """
-        @summary Updates the metadata information about a table.
+        @summary Updates the metadata information about a table. Only MaxCompute tables are supported.
         
         @param request: UpdateMetaTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -33600,7 +33600,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateMetaTableRequest,
     ) -> dataworks_public_20200518_models.UpdateMetaTableResponse:
         """
-        @summary Updates the metadata information about a table.
+        @summary Updates the metadata information about a table. Only MaxCompute tables are supported.
         
         @param request: UpdateMetaTableRequest
         @return: UpdateMetaTableResponse
@@ -33613,7 +33613,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateMetaTableRequest,
     ) -> dataworks_public_20200518_models.UpdateMetaTableResponse:
         """
-        @summary Updates the metadata information about a table.
+        @summary Updates the metadata information about a table. Only MaxCompute tables are supported.
         
         @param request: UpdateMetaTableRequest
         @return: UpdateMetaTableResponse
