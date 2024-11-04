@@ -7051,10 +7051,12 @@ class RunCommandRequest(TeaModel):
     def __init__(
         self,
         command_content: str = None,
+        content_encoding: str = None,
         instance_ids: List[str] = None,
         timeout: int = None,
     ):
         self.command_content = command_content
+        self.content_encoding = content_encoding
         self.instance_ids = instance_ids
         self.timeout = timeout
 
@@ -7069,6 +7071,8 @@ class RunCommandRequest(TeaModel):
         result = dict()
         if self.command_content is not None:
             result['CommandContent'] = self.command_content
+        if self.content_encoding is not None:
+            result['ContentEncoding'] = self.content_encoding
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
         if self.timeout is not None:
@@ -7079,6 +7083,8 @@ class RunCommandRequest(TeaModel):
         m = m or dict()
         if m.get('CommandContent') is not None:
             self.command_content = m.get('CommandContent')
+        if m.get('ContentEncoding') is not None:
+            self.content_encoding = m.get('ContentEncoding')
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
         if m.get('Timeout') is not None:

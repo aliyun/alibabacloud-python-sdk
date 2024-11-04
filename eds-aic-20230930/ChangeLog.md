@@ -1,3 +1,7 @@
+2024-11-04 Version: 2.0.2
+- Update API RunCommand: add param ContentEncoding.
+
+
 2024-10-24 Version: 2.0.1
 - Update API CreateAndroidInstanceGroup: add param KeyPairId.
 

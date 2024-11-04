@@ -4504,6 +4504,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.command_content):
             query['CommandContent'] = request.command_content
+        if not UtilClient.is_unset(request.content_encoding):
+            query['ContentEncoding'] = request.content_encoding
         if not UtilClient.is_unset(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.timeout):
@@ -4543,6 +4545,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.command_content):
             query['CommandContent'] = request.command_content
+        if not UtilClient.is_unset(request.content_encoding):
+            query['ContentEncoding'] = request.content_encoding
         if not UtilClient.is_unset(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.timeout):
