@@ -7,6 +7,15 @@
 - Update API SearchTracesByPage: update response param.
 
 
+2024-11-05 Version: 7.2.0
+- Support API DescribeAddonMetrics.
+- Update API GetRumExceptionStack: update response param.
+- Update API GetStack: add param SpanID.
+- Update API GetStack: update response param.
+- Update API SearchTraces: update response param.
+- Update API SearchTracesByPage: update response param.
+
+
 2024-09-29 Version: 7.1.2
 - Update API GetRumAppInfo: update response param.
 - Update API UpdateRumApp: add param BackendServiceTraceRegion.
