@@ -464,6 +464,7 @@ class CheckRecoveryConditionRequest(TeaModel):
         backup_id: str = None,
         database_names: str = None,
         dest_region: str = None,
+        engine_version: str = None,
         instance_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -489,6 +490,7 @@ class CheckRecoveryConditionRequest(TeaModel):
         # 
         # >  This parameter is required when you set the RestoreType parameter to 3.
         self.dest_region = dest_region
+        self.engine_version = engine_version
         # The instance architecture. Valid values:
         # 
         # *   replicate
@@ -538,6 +540,8 @@ class CheckRecoveryConditionRequest(TeaModel):
             result['DatabaseNames'] = self.database_names
         if self.dest_region is not None:
             result['DestRegion'] = self.dest_region
+        if self.engine_version is not None:
+            result['EngineVersion'] = self.engine_version
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
         if self.owner_account is not None:
@@ -568,6 +572,8 @@ class CheckRecoveryConditionRequest(TeaModel):
             self.database_names = m.get('DatabaseNames')
         if m.get('DestRegion') is not None:
             self.dest_region = m.get('DestRegion')
+        if m.get('EngineVersion') is not None:
+            self.engine_version = m.get('EngineVersion')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
         if m.get('OwnerAccount') is not None:
@@ -1102,7 +1108,7 @@ class CreateDBInstanceRequest(TeaModel):
         self.encrypted = encrypted
         # The ID of the custom key.
         self.encryption_key = encryption_key
-        # The database engine of the instance. The value is fixed as **MongoDB**.
+        # The database engine of the instance. Set the value to **MongoDB**.
         self.engine = engine
         # The version of the database engine. Valid values:
         # 
@@ -1176,6 +1182,11 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # > When you call this operation to restore an instance to the specified time, this parameter is required. The **SrcDBInstanceId** parameter is also required.
         self.restore_time = restore_time
+        # The backup restore type of the instance.
+        # - 0: restore an instance to the specified backup set.
+        # - 1:  restore an instance to the specified time.
+        # - 2: restore an  released instance to the specified backup set.
+        # - 3：restore an instance to the specified cross-regional backup set.
         self.restore_type = restore_type
         # The zone where the secondary node resides for multi-zone deployment. Valid values:
         # 
@@ -1214,15 +1225,14 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # > When you call this operation to clone an instance, this parameter is required. The **BackupId** or **RestoreTime** parameter is also required. When you call this operation to restore an instance from the recycle bin, this parameter is required. The **BackupId** or **RestoreTime** parameter is not required.
         self.src_dbinstance_id = src_dbinstance_id
+        # The region ID of the instance.
+        # 
+        # > -  This parameter is required when restore type is set to 2 or 3.
         self.src_region = src_region
-        # The storage engine of the instance. Default value: WiredTiger. Valid values:
+        # The storage engine of the instance. Set the value to **WiredTiger**.
         # 
-        # *   **WiredTiger**\
-        # *   **RocksDB**\
-        # *   **TerarkDB**\
-        # 
-        # >  *   When you call this operation to clone an instance or restore an instance from the recycle bin, set the value of this parameter to the storage engine of the source instance.
-        # >  *   For more information about the limits on database versions and storage engines, see [MongoDB versions and storage engines](https://help.aliyun.com/document_detail/61906.html).
+        # > * If you call this operation to clone an instance or restore an instance from the recycle bin, set this parameter to the storage engine of the source instance.
+        # > * For more information about the limits on database versions and storage engines of an instance, see [MongoDB versions and storage engines](https://help.aliyun.com/document_detail/61906.html).
         self.storage_engine = storage_engine
         # The storage type of the instance. Valid values:
         # 
@@ -2298,21 +2308,21 @@ class CreateShardingDBInstanceRequestReplicaSet(TeaModel):
     ):
         # The instance type of the shard node. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
         # 
-        # > *   **N** specifies the serial number of the shard node for which the instance type is specified. For example, **ReplicaSet.2.Class** specifies the instance type of the second shard node.
-        # > *   Valid values for **N**: **2** to **32**.
+        # > * **N** specifies the serial number of the shard node for which the instance type is specified. For example, **ReplicaSet.2.Class** specifies the instance type of the second shard node.
+        # > * Valid values of **N**: **2** to **32**.
         # 
         # This parameter is required.
         self.class_ = class_
-        # The number of read-only nodes in shard node N.
+        # The number of read-only nodes in the shard node.
         # 
-        # Valid values: **0**, 1, 2, 3, 4, and **5**. Default value: **0**.
+        # Valid values: **0**, **1, 2, 3, 4, and 5**. Default value: **0**.
         # 
-        # >  **N** specifies the serial number of the shard node for which you want to set the number of read-only nodes. For example, **ReplicaSet.2.ReadonlyReplicas** specifies the number of read-only nodes in the second shard node.
+        # >  **N** specifies the serial number of the shard node for which you want to set the number of read-only nodes. **ReplicaSet.2.ReadonlyReplicas** specifies the number of read-only nodes in the second shard node.
         self.readonly_replicas = readonly_replicas
-        # The storage space of the shard node. Unit: GB.
+        # The storage capacity of the shard node. Unit: GB.
         # 
-        # > *   The values that can be specified for this parameter vary based on the instance types. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
-        # > *   **N** specifies the serial number of the shard node for which the storage space is specified. For example, **ReplicaSet.2.Storage** specifies the storage space of the second shard node.
+        # > * The values that can be specified for this parameter vary based on the instance types. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
+        # > * **N** specifies the serial number of the shard node for which the storage space is specified. For example, **ReplicaSet.2.Storage** specifies the storage space of the second shard node.
         # 
         # This parameter is required.
         self.storage = storage
@@ -2439,13 +2449,16 @@ class CreateShardingDBInstanceRequest(TeaModel):
         # 
         # > This parameter is available and optional if you set the value of **ChargeType** to **PrePaid**.
         self.auto_renew = auto_renew
+        # The ID of the backup set. 
+        # 
+        # > When you call this operation to clone an instance based on the backup set, this parameter is required. The **SrcDBInstanceId** parameter is also required.
         self.backup_id = backup_id
         # The billing method of the instance. Valid values:
         # 
         # *   **PostPaid** (default): pay-as-you-go
         # *   **PrePaid**: subscription
         # 
-        # >  If you set this parameter to **PrePaid**, you must also specify the **Period** parameter.
+        # >  If this parameter is set to **PrePaid**, you must also configure the **Period** parameter.
         self.charge_type = charge_type
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
@@ -2459,8 +2472,11 @@ class CreateShardingDBInstanceRequest(TeaModel):
         # *   It can contain digits, letters, underscores (_), and hyphens (-).
         # *   It must be 2 to 256 characters in length.
         self.dbinstance_description = dbinstance_description
+        # The region of the backup set used for the cross-region backup and restoration.
+        # 
+        # >  This parameter is required when you set the RestoreType parameter to 3.
         self.dest_region = dest_region
-        # Specifies whether to enable disk encryption.
+        # Indicates whether disk encryption is enabled.
         self.encrypted = encrypted
         # The ID of the custom key.
         self.encryption_key = encryption_key
@@ -2468,17 +2484,17 @@ class CreateShardingDBInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.engine = engine
-        # The version of the database engine. Valid values:
+        # The database engine version of the instance. Valid values:
         # 
+        # *   **7.0**\
         # *   **6.0**\
         # *   **5.0**\
         # *   **4.4**\
         # *   **4.2**\
         # *   **4.0**\
-        # *   **3.4**\
         # 
-        # > *   For more information about the limits on database versions and storage engines, see [MongoDB versions and storage engines](https://help.aliyun.com/document_detail/61906.html).
-        # > *   If you call this operation to clone an instance, set the value of this parameter to the engine version of the source instance.
+        # > * For more information about the limits on database versions and storage engines, see [MongoDB versions and storage engines](https://help.aliyun.com/document_detail/61906.html).
+        # > * If you call this operation to clone an instance, set the value of this parameter to the database engine version of the source instance.
         # 
         # This parameter is required.
         self.engine_version = engine_version
@@ -2513,7 +2529,9 @@ class CreateShardingDBInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.mongos = mongos
-        # The network type of the instance. Set the value to VPC.
+        # The network type of the instance.
+        # 
+        # Set the value to **VPC**.
         self.network_type = network_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -2525,8 +2543,8 @@ class CreateShardingDBInstanceRequest(TeaModel):
         self.period = period
         # The access protocol type of the instance. Valid values:
         # 
-        # *   **mongodb**: the MongoDB protocol
-        # *   **dynamodb**: the DynamoDB protocol
+        # *   **mongodb**\
+        # *   **dynamodb**\
         self.protocol_type = protocol_type
         # The provisioned IOPS of the instance:
         self.provisioned_iops = provisioned_iops
@@ -2546,6 +2564,10 @@ class CreateShardingDBInstanceRequest(TeaModel):
         # 
         # > This parameter is required only if you call this operation to clone an instance. If you specify this parameter, you must also specify **SrcDBInstanceId**.
         self.restore_time = restore_time
+        # The backup restore type of the instance.
+        # - 1:  restore an instance to the specified time.
+        # - 2: restore an  released instance to the specified backup set.
+        # - 3：restore an instance to the specified cross-regional backup set.
         self.restore_type = restore_type
         # The ID of secondary zone 1 for multi-zone deployment. Valid values:
         # 
@@ -2585,11 +2607,14 @@ class CreateShardingDBInstanceRequest(TeaModel):
         # 
         # > This parameter is required only if you call this operation to clone an instance. If you specify this parameter, you must also specify **RestoreTime**.
         self.src_dbinstance_id = src_dbinstance_id
+        # The region ID of the instance.
+        # 
+        # > This parameter is required when restore type is set to 2 or 3.
         self.src_region = src_region
         # The storage engine of the instance. Set the value to **WiredTiger**.
         # 
-        # > *   If you call this operation to clone an instance, set the value of this parameter to the storage engine of the source instance.
-        # > *   For more information about the limits on database versions and storage engines, see [MongoDB versions and storage engines](https://help.aliyun.com/document_detail/61906.html).
+        # > * If you call this operation to clone an instance, set the value of this parameter to the storage engine of the source instance.
+        # > * For more information about the limits on database versions and storage engines, see [MongoDB versions and storage engines](https://help.aliyun.com/document_detail/61906.html).
         self.storage_engine = storage_engine
         # The storage type of the instance. Valid values:
         # 
@@ -6446,12 +6471,17 @@ class DescribeBackupPolicyRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The architecture of the instance. Valid values:
+        # 
+        # *   **sharding**: sharded cluster instance
+        # *   **replicate**: replica set or standalone instance
         self.instance_type = instance_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        # The region ID of the instance.
         self.src_region = src_region
 
     def validate(self):
@@ -6540,18 +6570,49 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         self.backup_interval = backup_interval
         # The retention period of the backup data. Unit: day.
         self.backup_retention_period = backup_retention_period
+        # The backup retention policy configured for the instance. Valid values:
+        # 
+        # 1.  0: All backup sets are immediately deleted when the instance is released.
+        # 2.  1: Automatic backup is performed and the backup set is retained for a long period of time when the instance is released.
+        # 3.  2: Automatic backup is performed and all backup sets are retained for a long period of time when the instance is released.
+        # 
+        # For more information, see [Retain the backup files of an ApsaraDB for MongoDB instance for a long period of time](https://help.aliyun.com/document_detail/2779111.html).
         self.backup_retention_policy_on_cluster_deletion = backup_retention_policy_on_cluster_deletion
+        # The retention period of Cross-regional backup.
+        # Valid values:
+        # 
+        # *   **Monday**\
+        # *   **Tuesday**\
+        # *   **Wednesday**\
+        # *   **Thursday**\
+        # *   **Friday**\
+        # *   **Saturday**\
+        # *   **Sunday**\
         self.cross_backup_period = cross_backup_period
+        # The retention type of Cross-regional  log backup.
+        # 
+        # - delay : retain the backup for a period of time.
+        # - never : retain the backup permanently.
         self.cross_log_retention_type = cross_log_retention_type
+        # The retention time of Cross-regional log backup.
         self.cross_log_retention_value = cross_log_retention_value
+        # The retention type of Cross-regional backup.
+        # 
+        # - delay : retain the backup for a period of time.
+        # - never : retain the backup permanently.
         self.cross_retention_type = cross_retention_type
+        # The retention time of Cross-regional backup.
         self.cross_retention_value = cross_retention_value
+        # The region ID of the cross-regional backup..
         self.dest_region = dest_region
         # Indicates whether the log backup feature is enabled. Valid values:
         # 
         # *   **0** (default): The log backup feature is disabled.
         # *   **1**: The log backup feature is enabled.
         self.enable_backup_log = enable_backup_log
+        # Whether to turn on cross-regional log backup.
+        # - 1: turn on . Used for sharded cluster.
+        # - 0: turn off. Used for replicate set.
         self.enable_cross_log_backup = enable_cross_log_backup
         # The retention period of high-frequency backups. Unit: day.
         self.high_frequency_backup_retention = high_frequency_backup_retention
@@ -6569,6 +6630,7 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         self.preferred_backup_period = preferred_backup_period
         # The time range during which the backup was created. The time follows the ISO 8601 standard in the *HH:mm*Z-*HH:mm*Z format. The time is displayed in UTC.
         self.preferred_backup_time = preferred_backup_time
+        # The time of next standard backup.
         self.preferred_next_backup_time = preferred_next_backup_time
         # The request ID.
         self.request_id = request_id
@@ -6577,6 +6639,7 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         # *   **Flash**: single-digit second backup
         # *   **Standard** (default): standard backup
         self.snapshot_backup_type = snapshot_backup_type
+        # The region ID of the instance.
         self.src_region = src_region
 
     def validate(self):
@@ -7118,6 +7181,9 @@ class DescribeBackupsRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The region ID of the Cross-regional backup.
+        # 
+        # >  This parameter is required for the Cross-regional backup.
         self.dest_region = dest_region
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
         self.end_time = end_time
@@ -7127,9 +7193,9 @@ class DescribeBackupsRequest(TeaModel):
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number of the page to return.
+        # The number of the page to return. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
+        # The number of entries to return per page. Valid values:
         # 
         # *   **30** (default)
         # *   **50**\
@@ -7137,6 +7203,10 @@ class DescribeBackupsRequest(TeaModel):
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The region ID of the instance.
+        # 
+        # >- This parameter is required if you want to query the backup sets of a released instance.
+        # >-  This parameter is required if you want to query cross-region backups.
         self.src_region = src_region
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
         self.start_time = start_time
@@ -7226,6 +7296,7 @@ class DescribeBackupsResponseBodyBackupsBackup(TeaModel):
         backup_start_time: str = None,
         backup_status: str = None,
         backup_type: str = None,
+        engine_version: str = None,
         is_avail: bool = None,
     ):
         # The name of the database that has been backed up.
@@ -7238,7 +7309,7 @@ class DescribeBackupsResponseBodyBackupsBackup(TeaModel):
         self.backup_id = backup_id
         # The internal download URL of the backup set.
         # 
-        # >  You can use the URL to download the specified backup set on an Elastic Compute Service (ECS) instance that is in the same Virtual Private Cloud (VPC) as the ApsaraDB for MongoDB instance.
+        # >  You can use the URL to download the specified backup set on an Elastic Compute Service (ECS) instance that is in the same virtual private cloud (VPC) as the ApsaraDB for MongoDB instance.
         self.backup_intranet_download_url = backup_intranet_download_url
         # The ID of the backup task.
         self.backup_job_id = backup_job_id
@@ -7250,10 +7321,12 @@ class DescribeBackupsResponseBodyBackupsBackup(TeaModel):
         self.backup_method = backup_method
         # The backup mode of the backup set. Valid values:
         # 
-        # *   **Automated**:
+        # *   **Automated**\
         # *   **Manual**\
         self.backup_mode = backup_mode
+        # The name of the backup set (invalid now).
         self.backup_name = backup_name
+        # The scale of the backup set (invalid now).
         self.backup_scale = backup_scale
         # The size of the backup set. Unit: bytes.
         self.backup_size = backup_size
@@ -7269,6 +7342,10 @@ class DescribeBackupsResponseBodyBackupsBackup(TeaModel):
         # *   **FullBackup**\
         # *   **IncrementalBackup**\
         self.backup_type = backup_type
+        self.engine_version = engine_version
+        # Availability of the backup set.
+        # - 0: unavailable
+        # - 1: available
         self.is_avail = is_avail
 
     def validate(self):
@@ -7308,6 +7385,8 @@ class DescribeBackupsResponseBodyBackupsBackup(TeaModel):
             result['BackupStatus'] = self.backup_status
         if self.backup_type is not None:
             result['BackupType'] = self.backup_type
+        if self.engine_version is not None:
+            result['EngineVersion'] = self.engine_version
         if self.is_avail is not None:
             result['IsAvail'] = self.is_avail
         return result
@@ -7342,6 +7421,8 @@ class DescribeBackupsResponseBodyBackupsBackup(TeaModel):
             self.backup_status = m.get('BackupStatus')
         if m.get('BackupType') is not None:
             self.backup_type = m.get('BackupType')
+        if m.get('EngineVersion') is not None:
+            self.engine_version = m.get('EngineVersion')
         if m.get('IsAvail') is not None:
             self.is_avail = m.get('IsAvail')
         return self
@@ -7804,6 +7885,7 @@ class DescribeClusterBackupsResponseBodyClusterBackups(TeaModel):
         cluster_backup_size: str = None,
         cluster_backup_start_time: str = None,
         cluster_backup_status: str = None,
+        engine_version: str = None,
         extra_info: DescribeClusterBackupsResponseBodyClusterBackupsExtraInfo = None,
         is_avail: int = None,
         progress: str = None,
@@ -7832,6 +7914,7 @@ class DescribeClusterBackupsResponseBodyClusterBackups(TeaModel):
         self.cluster_backup_start_time = cluster_backup_start_time
         # The status of the cluster backup set.
         self.cluster_backup_status = cluster_backup_status
+        self.engine_version = engine_version
         # The additional information in the JSON format.
         self.extra_info = extra_info
         # Indicates whether the cluster backup sets take effect. Valid values:
@@ -7874,6 +7957,8 @@ class DescribeClusterBackupsResponseBodyClusterBackups(TeaModel):
             result['ClusterBackupStartTime'] = self.cluster_backup_start_time
         if self.cluster_backup_status is not None:
             result['ClusterBackupStatus'] = self.cluster_backup_status
+        if self.engine_version is not None:
+            result['EngineVersion'] = self.engine_version
         if self.extra_info is not None:
             result['ExtraInfo'] = self.extra_info.to_map()
         if self.is_avail is not None:
@@ -7903,6 +7988,8 @@ class DescribeClusterBackupsResponseBodyClusterBackups(TeaModel):
             self.cluster_backup_start_time = m.get('ClusterBackupStartTime')
         if m.get('ClusterBackupStatus') is not None:
             self.cluster_backup_status = m.get('ClusterBackupStatus')
+        if m.get('EngineVersion') is not None:
+            self.engine_version = m.get('EngineVersion')
         if m.get('ExtraInfo') is not None:
             temp_model = DescribeClusterBackupsResponseBodyClusterBackupsExtraInfo()
             self.extra_info = temp_model.from_map(m['ExtraInfo'])
@@ -8217,12 +8304,12 @@ class DescribeDBInstanceAttributeRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The database engine of the instance. Set the value to **MongoDB**.
+        # The database engine. Set the value to **MongoDB**.
         self.engine = engine
-        # Specifies whether to delete the instance. Valid values:
+        # Specifies whether to query instances that are deleted. Valid values:
         # 
-        # - **false**: queries the details of running instances.
-        # - **true**: queries the details of deleted instances.
+        # *   **false**: queries instances that are running.
+        # *   **true**: queries instance that are deleted.
         self.is_delete = is_delete
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -8290,6 +8377,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserverLi
     def __init__(
         self,
         connect_string: str = None,
+        current_kernel_version: str = None,
         lock_mode: str = None,
         max_connections: int = None,
         max_iops: int = None,
@@ -8302,6 +8390,15 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserverLi
     ):
         # The endpoint of the Configserver node.
         self.connect_string = connect_string
+        # The minor version of the current MongoDB kernel.
+        self.current_kernel_version = current_kernel_version
+        # The lock status of the Configserver node. Valid values:
+        # 
+        # *   **Unlock**: The instance is not locked.
+        # *   **ManualLock**: The instance is manually locked.
+        # *   **LockByExpiration**: The instance is automatically locked due to instance expiration.
+        # *   **LockByRestoration**: The instance is automatically locked before a rollback.
+        # *   **LockByDiskQuota**: The instance is automatically locked because its storage capacity is exhausted and the instance is inaccessible.
         self.lock_mode = lock_mode
         # The maximum number of connections to the Configserver node.
         self.max_connections = max_connections
@@ -8331,6 +8428,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserverLi
         result = dict()
         if self.connect_string is not None:
             result['ConnectString'] = self.connect_string
+        if self.current_kernel_version is not None:
+            result['CurrentKernelVersion'] = self.current_kernel_version
         if self.lock_mode is not None:
             result['LockMode'] = self.lock_mode
         if self.max_connections is not None:
@@ -8355,6 +8454,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserverLi
         m = m or dict()
         if m.get('ConnectString') is not None:
             self.connect_string = m.get('ConnectString')
+        if m.get('CurrentKernelVersion') is not None:
+            self.current_kernel_version = m.get('CurrentKernelVersion')
         if m.get('LockMode') is not None:
             self.lock_mode = m.get('LockMode')
         if m.get('MaxConnections') is not None:
@@ -8415,6 +8516,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMong
     def __init__(
         self,
         connect_sting: str = None,
+        current_kernel_version: str = None,
         lock_mode: str = None,
         max_connections: int = None,
         max_iops: int = None,
@@ -8429,6 +8531,15 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMong
     ):
         # The endpoint of the mongos node.
         self.connect_sting = connect_sting
+        # The minor version of the current MongoDB kernel.
+        self.current_kernel_version = current_kernel_version
+        # The lock status of the instance. Valid values:
+        # 
+        # *   **Unlock**: The instance is not locked.
+        # *   **ManualLock**: The instance is manually locked.
+        # *   **LockByExpiration**: The instance is automatically locked due to instance expiration.
+        # *   **LockByRestoration**: The instance is automatically locked before a rollback.
+        # *   **LockByDiskQuota**: The instance is automatically locked because its storage capacity is exhausted and the instance is inaccessible.
         self.lock_mode = lock_mode
         # The maximum number of connections to the mongos node.
         self.max_connections = max_connections
@@ -8466,6 +8577,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMong
         result = dict()
         if self.connect_sting is not None:
             result['ConnectSting'] = self.connect_sting
+        if self.current_kernel_version is not None:
+            result['CurrentKernelVersion'] = self.current_kernel_version
         if self.lock_mode is not None:
             result['LockMode'] = self.lock_mode
         if self.max_connections is not None:
@@ -8494,6 +8607,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMong
         m = m or dict()
         if m.get('ConnectSting') is not None:
             self.connect_sting = m.get('ConnectSting')
+        if m.get('CurrentKernelVersion') is not None:
+            self.current_kernel_version = m.get('CurrentKernelVersion')
         if m.get('LockMode') is not None:
             self.lock_mode = m.get('LockMode')
         if m.get('MaxConnections') is not None:
@@ -8675,6 +8790,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShard
     def __init__(
         self,
         connect_string: str = None,
+        current_kernel_version: str = None,
         lock_mode: str = None,
         max_connections: int = None,
         max_disk_mbps: str = None,
@@ -8689,10 +8805,19 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShard
     ):
         # The endpoint of the shard node.
         self.connect_string = connect_string
+        # The minor version of the current MongoDB kernel.
+        self.current_kernel_version = current_kernel_version
+        # The lock status of the shard node. Valid values:
+        # 
+        # *   **Unlock**: The instance is not locked.
+        # *   **ManualLock**: The instance is manually locked.
+        # *   **LockByExpiration**: The instance is automatically locked due to instance expiration.
+        # *   **LockByRestoration**: The instance is automatically locked before a rollback.
+        # *   **LockByDiskQuota**: The instance is automatically locked because its storage capacity is exhausted and the instance is inaccessible.
         self.lock_mode = lock_mode
         # The maximum number of connections to the shard node.
         self.max_connections = max_connections
-        # shard节点的最大云盘吞吐量。
+        # The maximum MBPS of the shard node.
         self.max_disk_mbps = max_disk_mbps
         # The maximum IOPS of the shard node.
         self.max_iops = max_iops
@@ -8722,6 +8847,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShard
         result = dict()
         if self.connect_string is not None:
             result['ConnectString'] = self.connect_string
+        if self.current_kernel_version is not None:
+            result['CurrentKernelVersion'] = self.current_kernel_version
         if self.lock_mode is not None:
             result['LockMode'] = self.lock_mode
         if self.max_connections is not None:
@@ -8750,6 +8877,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShard
         m = m or dict()
         if m.get('ConnectString') is not None:
             self.connect_string = m.get('ConnectString')
+        if m.get('CurrentKernelVersion') is not None:
+            self.current_kernel_version = m.get('CurrentKernelVersion')
         if m.get('LockMode') is not None:
             self.lock_mode = m.get('LockMode')
         if m.get('MaxConnections') is not None:
@@ -8945,7 +9074,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         # *   **PrePaid**: subscription
         # *   **PostPaid**: pay-as-you-go
         self.charge_type = charge_type
-        # The information of the Configserver nodes.
+        # The details of the ConfigServer node.
         # 
         # >  This parameter is returned if the instance is a sharded cluster instance.
         self.configserver_list = configserver_list
@@ -9057,9 +9186,9 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         self.max_connections = max_connections
         # The maximum IOPS of the instance.
         self.max_iops = max_iops
-        # 实例的最大云盘吞吐量，单位MB/s。
+        # The maximum MBPS of the instance.
         self.max_mbps = max_mbps
-        # The information of the mongos nodes.
+        # The details of the mongos node.
         # 
         # >  This parameter is returned if the instance is a sharded cluster instance.
         self.mongos_list = mongos_list
@@ -9128,7 +9257,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         # 
         # *   This parameter is returned only if you use the China site (aliyun.com).
         self.secondary_zone_id = secondary_zone_id
-        # The information of the shard nodes.
+        # The details of the shard node.
         # 
         # >  This parameter is returned if the instance is a sharded cluster instance.
         self.shard_list = shard_list
@@ -9447,7 +9576,7 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
         dbinstances: DescribeDBInstanceAttributeResponseBodyDBInstances = None,
         request_id: str = None,
     ):
-        # The information of the instance.
+        # The instance details.
         self.dbinstances = dbinstances
         # The request ID.
         self.request_id = request_id
@@ -18801,6 +18930,7 @@ class DescribeReplicaSetRoleResponseBodyReplicaSetsReplicaSet(TeaModel):
         self,
         connection_domain: str = None,
         connection_port: str = None,
+        connection_type: str = None,
         expired_time: str = None,
         network_type: str = None,
         replica_set_role: str = None,
@@ -18810,6 +18940,8 @@ class DescribeReplicaSetRoleResponseBodyReplicaSetsReplicaSet(TeaModel):
         self.connection_domain = connection_domain
         # The port number that is used to connect to the node.
         self.connection_port = connection_port
+        # The connection type of the node.
+        self.connection_type = connection_type
         # The remaining duration of the classic network endpoint. Unit: seconds.
         self.expired_time = expired_time
         # The network type of the instance. Valid values:
@@ -18839,6 +18971,8 @@ class DescribeReplicaSetRoleResponseBodyReplicaSetsReplicaSet(TeaModel):
             result['ConnectionDomain'] = self.connection_domain
         if self.connection_port is not None:
             result['ConnectionPort'] = self.connection_port
+        if self.connection_type is not None:
+            result['ConnectionType'] = self.connection_type
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
         if self.network_type is not None:
@@ -18855,6 +18989,8 @@ class DescribeReplicaSetRoleResponseBodyReplicaSetsReplicaSet(TeaModel):
             self.connection_domain = m.get('ConnectionDomain')
         if m.get('ConnectionPort') is not None:
             self.connection_port = m.get('ConnectionPort')
+        if m.get('ConnectionType') is not None:
+            self.connection_type = m.get('ConnectionType')
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
         if m.get('NetworkType') is not None:
@@ -18982,6 +19118,299 @@ class DescribeReplicaSetRoleResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeReplicaSetRoleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeRestoreDBInstanceListRequest(TeaModel):
+    def __init__(
+        self,
+        creation_time_after: str = None,
+        dbinstance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.creation_time_after = creation_time_after
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creation_time_after is not None:
+            result['CreationTimeAfter'] = self.creation_time_after
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreationTimeAfter') is not None:
+            self.creation_time_after = m.get('CreationTimeAfter')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeRestoreDBInstanceListResponseBodyDBInstancesDBInstance(TeaModel):
+    def __init__(
+        self,
+        creation_time: str = None,
+        dbinstance_description: str = None,
+        dbinstance_id: str = None,
+        dbinstance_status: str = None,
+        dbinstance_type: str = None,
+        engine_version: str = None,
+        hidden_zone_id: str = None,
+        is_deleted: int = None,
+        lock_mode: str = None,
+        region_id: str = None,
+        secondary_zone_id: str = None,
+        zone_id: str = None,
+    ):
+        self.creation_time = creation_time
+        self.dbinstance_description = dbinstance_description
+        self.dbinstance_id = dbinstance_id
+        self.dbinstance_status = dbinstance_status
+        self.dbinstance_type = dbinstance_type
+        self.engine_version = engine_version
+        self.hidden_zone_id = hidden_zone_id
+        self.is_deleted = is_deleted
+        self.lock_mode = lock_mode
+        self.region_id = region_id
+        self.secondary_zone_id = secondary_zone_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.dbinstance_description is not None:
+            result['DBInstanceDescription'] = self.dbinstance_description
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.dbinstance_status is not None:
+            result['DBInstanceStatus'] = self.dbinstance_status
+        if self.dbinstance_type is not None:
+            result['DBInstanceType'] = self.dbinstance_type
+        if self.engine_version is not None:
+            result['EngineVersion'] = self.engine_version
+        if self.hidden_zone_id is not None:
+            result['HiddenZoneId'] = self.hidden_zone_id
+        if self.is_deleted is not None:
+            result['IsDeleted'] = self.is_deleted
+        if self.lock_mode is not None:
+            result['LockMode'] = self.lock_mode
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.secondary_zone_id is not None:
+            result['SecondaryZoneId'] = self.secondary_zone_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('DBInstanceDescription') is not None:
+            self.dbinstance_description = m.get('DBInstanceDescription')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('DBInstanceStatus') is not None:
+            self.dbinstance_status = m.get('DBInstanceStatus')
+        if m.get('DBInstanceType') is not None:
+            self.dbinstance_type = m.get('DBInstanceType')
+        if m.get('EngineVersion') is not None:
+            self.engine_version = m.get('EngineVersion')
+        if m.get('HiddenZoneId') is not None:
+            self.hidden_zone_id = m.get('HiddenZoneId')
+        if m.get('IsDeleted') is not None:
+            self.is_deleted = m.get('IsDeleted')
+        if m.get('LockMode') is not None:
+            self.lock_mode = m.get('LockMode')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecondaryZoneId') is not None:
+            self.secondary_zone_id = m.get('SecondaryZoneId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeRestoreDBInstanceListResponseBodyDBInstances(TeaModel):
+    def __init__(
+        self,
+        dbinstance: List[DescribeRestoreDBInstanceListResponseBodyDBInstancesDBInstance] = None,
+    ):
+        self.dbinstance = dbinstance
+
+    def validate(self):
+        if self.dbinstance:
+            for k in self.dbinstance:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DBInstance'] = []
+        if self.dbinstance is not None:
+            for k in self.dbinstance:
+                result['DBInstance'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dbinstance = []
+        if m.get('DBInstance') is not None:
+            for k in m.get('DBInstance'):
+                temp_model = DescribeRestoreDBInstanceListResponseBodyDBInstancesDBInstance()
+                self.dbinstance.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeRestoreDBInstanceListResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbinstances: DescribeRestoreDBInstanceListResponseBodyDBInstances = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.dbinstances = dbinstances
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.dbinstances:
+            self.dbinstances.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstances is not None:
+            result['DBInstances'] = self.dbinstances.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstances') is not None:
+            temp_model = DescribeRestoreDBInstanceListResponseBodyDBInstances()
+            self.dbinstances = temp_model.from_map(m['DBInstances'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeRestoreDBInstanceListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeRestoreDBInstanceListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeRestoreDBInstanceListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -20183,6 +20612,7 @@ class DescribeShardingNetworkAddressResponseBodyCompatibleConnections(TeaModel):
 class DescribeShardingNetworkAddressResponseBodyNetworkAddressesNetworkAddress(TeaModel):
     def __init__(
         self,
+        connection_type: str = None,
         expired_time: str = None,
         ipaddress: str = None,
         network_address: str = None,
@@ -20191,9 +20621,11 @@ class DescribeShardingNetworkAddressResponseBodyNetworkAddressesNetworkAddress(T
         node_type: str = None,
         port: str = None,
         role: str = None,
+        txt_record: str = None,
         vpcid: str = None,
         vswitch_id: str = None,
     ):
+        self.connection_type = connection_type
         # The remaining duration of the classic network endpoint. Unit: seconds.
         self.expired_time = expired_time
         # The IP address of the instance.
@@ -20221,6 +20653,7 @@ class DescribeShardingNetworkAddressResponseBodyNetworkAddressesNetworkAddress(T
         # *   Primary
         # *   Secondary
         self.role = role
+        self.txt_record = txt_record
         # The VPC ID of the instance.
         # 
         # >  This parameter is returned when the network type is **VPC**.
@@ -20239,6 +20672,8 @@ class DescribeShardingNetworkAddressResponseBodyNetworkAddressesNetworkAddress(T
             return _map
 
         result = dict()
+        if self.connection_type is not None:
+            result['ConnectionType'] = self.connection_type
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
         if self.ipaddress is not None:
@@ -20255,6 +20690,8 @@ class DescribeShardingNetworkAddressResponseBodyNetworkAddressesNetworkAddress(T
             result['Port'] = self.port
         if self.role is not None:
             result['Role'] = self.role
+        if self.txt_record is not None:
+            result['TxtRecord'] = self.txt_record
         if self.vpcid is not None:
             result['VPCId'] = self.vpcid
         if self.vswitch_id is not None:
@@ -20263,6 +20700,8 @@ class DescribeShardingNetworkAddressResponseBodyNetworkAddressesNetworkAddress(T
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ConnectionType') is not None:
+            self.connection_type = m.get('ConnectionType')
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
         if m.get('IPAddress') is not None:
@@ -20279,6 +20718,8 @@ class DescribeShardingNetworkAddressResponseBodyNetworkAddressesNetworkAddress(T
             self.port = m.get('Port')
         if m.get('Role') is not None:
             self.role = m.get('Role')
+        if m.get('TxtRecord') is not None:
+            self.txt_record = m.get('TxtRecord')
         if m.get('VPCId') is not None:
             self.vpcid = m.get('VPCId')
         if m.get('VswitchId') is not None:
@@ -21884,11 +22325,13 @@ class MigrateAvailableZoneRequest(TeaModel):
         # 
         # Default value: **Immediately**.
         self.effective_time = effective_time
+        # The ID of the destination hidden zone.
         self.hidden_zone_id = hidden_zone_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the destination secondary zone.
         self.secondary_zone_id = secondary_zone_id
         # The ID of the vSwitch in the destination zone.
         # 
@@ -22827,7 +23270,7 @@ class ModifyBackupPolicyRequest(TeaModel):
         snapshot_backup_type: str = None,
         src_region: str = None,
     ):
-        # The frequency at which high-frequency backup is created. Valid values:
+        # The frequency at which high-frequency backups are generated. Valid values:
         # 
         # *   **-1**: High-frequency backup is disabled.
         # *   **30**: High-frequency backups are generated every 30 minutes.
@@ -22841,9 +23284,9 @@ class ModifyBackupPolicyRequest(TeaModel):
         # 
         # > 
         # 
-        # *   If the **SnapshotBackupType** parameter is set to **Standard**, this parameter is set to -1 and cannot be changed.
+        # *   If you set the **SnapshotBackupType** parameter to **Standard**, you must fix the value of this parameter to -1.
         # 
-        # *   High-frequency backup takes effect only when the **SnapshotBackupType** parameter is set to **Flash** and the value of this parameter is greater than 0.
+        # *   High-frequency backup takes effect only when you set the **SnapshotBackupType** parameter to **Flash** and this parameter to a value greater than 0.
         self.backup_interval = backup_interval
         # The retention period of full backups.
         # 
@@ -22853,26 +23296,80 @@ class ModifyBackupPolicyRequest(TeaModel):
         # 
         # *   If your instance is created after September 10, 2021, backups are retained for 30 days by default.
         self.backup_retention_period = backup_retention_period
+        # The backup retention policy configured for the instance. Valid values:
+        # 
+        # 1.  0: All backup sets are immediately deleted when the instance is released.
+        # 2.  1: Automatic backup is performed and the backup set is retained for a long period of time when the instance is released.
+        # 3.  2: Automatic backup is performed and all backup sets are retained for a long period of time when the instance is released.
+        # 
+        # For more information, see [Retain the backup files of an ApsaraDB for MongoDB instance for a long period of time](https://help.aliyun.com/document_detail/4920562.html).
         self.backup_retention_policy_on_cluster_deletion = backup_retention_policy_on_cluster_deletion
+        # The retention period of Cross-regional backup.
+        # Valid values:
+        # 
+        # *   **Monday**\
+        # *   **Tuesday**\
+        # *   **Wednesday**\
+        # *   **Thursday**\
+        # *   **Friday**\
+        # *   **Saturday**\
+        # *   **Sunday**\
+        # 
+        # **\
+        # 
+        # 
+        # 
+        # 
+        # 
+        # >- Separate multiple values with commas (,).
+        # >- When SnapshotBackupType  is set to standard, this value needs to be a subset of the PreferredBackupPeriod.
         self.cross_backup_period = cross_backup_period
+        # The operation strategy of Cross-regional backup.
+        # - update
+        # - delete
         self.cross_backup_type = cross_backup_type
+        # The retention type of Cross-regional  log backup.
+        # 
+        # - delay : retain the backup for a period of time.
+        # - never : retain the backup permanently.
         self.cross_log_retention_type = cross_log_retention_type
+        # The retention time of Cross-regional log backup, 3 - 1825 days.
         self.cross_log_retention_value = cross_log_retention_value
+        # The retention type of Cross-regional backup.
+        # 
+        # - delay : retain the backup for a period of time.
+        # - never : retain the backup permanently.
         self.cross_retention_type = cross_retention_type
+        # The retention time of Cross-regional backup, 3 - 1825 days.
+        # > 
+        # > - Used and must be used when CrossRetentionType is delay.
         self.cross_retention_value = cross_retention_value
         # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The region id of Cross-regional backup.
+        # > 
+        # > - Required for Cross-regional backup.
         self.dest_region = dest_region
         # Specifies whether to enable the log backup feature. Valid values:
         # 
         # *   **0** (default): The log backup feature is disabled.
         # *   **1**: The log backup feature is enabled.
         self.enable_backup_log = enable_backup_log
+        # Whether to turn on cross-regional log backup.
+        # - 1：turn on . Used for sharded cluster.
+        # - 0: turn off. Used for replicate set.
         self.enable_cross_log_backup = enable_cross_log_backup
         # The number of days for which high-frequency backups are retained. Before you use this parameter, make sure that you specify the BackupInterval parameter. By default, high-frequency backups are retained for one day.
         self.high_frequency_backup_retention = high_frequency_backup_retention
+        # The instance architecture. Valid values:
+        # 
+        # *   replicate
+        # *   sharding
+        # 
+        # > * This parameter is required  for Cross-regional backup.
+        # > * This parameter is required for backup recovery of deleted instances.
         self.instance_type = instance_type
         # The number of days for which log backups are retained. Default value: 7.
         # 
@@ -22890,6 +23387,10 @@ class ModifyBackupPolicyRequest(TeaModel):
         # *   **Saturday**\
         # *   **Sunday**\
         # 
+        # **\
+        # 
+        # **Notice**: To ensure data security, make sure that the system backs up data at least twice a week.
+        # 
         # >  Separate multiple values with commas (,).
         self.preferred_backup_period = preferred_backup_period
         # The start time of the backup. Specify the time in the ISO 8601 standard in the *HH:mm*Z-*HH:mm*Z format. The time must be in UTC.
@@ -22903,6 +23404,11 @@ class ModifyBackupPolicyRequest(TeaModel):
         # *   **Flash**: single-digit second backup
         # *   **Standard** (default): standard backup
         self.snapshot_backup_type = snapshot_backup_type
+        # The region ID of the instance.
+        # 
+        # > 
+        # > - Required for Cross-regional backup.
+        # > - Required for backup recovery of deleted instances.
         self.src_region = src_region
 
     def validate(self):
@@ -27531,13 +28037,25 @@ class RestartNodeRequest(TeaModel):
         resource_owner_id: int = None,
         role_id: str = None,
     ):
+        # The instance ID.
+        # 
+        # >  If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The ID of the shard, mongos, or ConfigServer node in a child instance of the sharded cluster instance.
+        # 
+        # >  If you set the **DBInstanceId** parameter to the ID of a sharded cluster instance, you must specify this parameter.
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The role ID of the node.
+        # 
+        # 1.  You can call the [DescribeReplicaSetRole](https://help.aliyun.com/document_detail/468469.html) operation to query the role ID of a node in a replica set instance.
+        # 2.  You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/468472.html) operation to query the role ID of a node in a sharded cluster instance.
+        # 
         # This parameter is required.
         self.role_id = role_id
 
@@ -27590,6 +28108,7 @@ class RestartNodeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -28173,7 +28692,7 @@ class TransformInstanceChargeTypeRequest(TeaModel):
         # *   **true**\
         # *   **false**\
         # 
-        # >  Default value: **true**.
+        # > Default value: **true**.
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal. Valid values:
         # 
@@ -28186,33 +28705,27 @@ class TransformInstanceChargeTypeRequest(TeaModel):
         self.business_info = business_info
         # The billing method of the instance. Valid values:
         # 
-        # *   **PrePaid**: subscription
-        # *   **PostPaid**: pay-as-you-go
+        # *   **PrePaid:** subscription.
+        # *   **PostPaid:** pay-as-you-go.
         # 
         # This parameter is required.
         self.charge_type = charge_type
-        # Specifies whether to use coupons. Default value: null. Valid values:
-        # 
-        # *   **default** or **null**: uses coupons.
-        # *   **youhuiquan_promotion_option_id_for_blank**: does not use coupons.
+        # The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
         self.coupon_no = coupon_no
-        # The ID of the instance
+        # The ID of the instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The subscription duration. Valid values:
-        # 
-        # *   If the PricingCycle parameter is set to Month, the valid values of this parameter range from **1** to **9**.
-        # *   If the PricingCycle parameter is set to Year, the valid values of this parameter are **1**, **2**, **3**, and **5**.
+        # The subscription duration of the instance. Unit: months. Valid values: **1, 2, 3, 4, 5, 6, 7, 8, 9******, **12**, **24**, and **36**.
         self.period = period
-        # The unit of the subscription duration. Valid values:
+        # 实例付费时长单位
+        # 取值说明：
+        # - **Month：** 月
+        # -  **Year：** 年
         # 
-        # *   **Month**\
-        # *   **Year**\
-        # 
-        # Default value: Month.
+        # 默认值：Month
         self.pricing_cycle = pricing_cycle
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -28287,9 +28800,9 @@ class TransformInstanceChargeTypeResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the order.
+        # The order ID.
         self.order_id = order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -28714,6 +29227,7 @@ class UpgradeDBInstanceEngineVersionRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        switch_mode: int = None,
     ):
         # The ID of the instance.
         # 
@@ -28729,6 +29243,7 @@ class UpgradeDBInstanceEngineVersionRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.switch_mode = switch_mode
 
     def validate(self):
         pass
@@ -28751,6 +29266,8 @@ class UpgradeDBInstanceEngineVersionRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.switch_mode is not None:
+            result['SwitchMode'] = self.switch_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -28767,6 +29284,8 @@ class UpgradeDBInstanceEngineVersionRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SwitchMode') is not None:
+            self.switch_mode = m.get('SwitchMode')
         return self
 
 
@@ -28847,6 +29366,7 @@ class UpgradeDBInstanceKernelVersionRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        switch_mode: str = None,
     ):
         # The ID of the instance.
         # 
@@ -28856,6 +29376,7 @@ class UpgradeDBInstanceKernelVersionRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.switch_mode = switch_mode
 
     def validate(self):
         pass
@@ -28876,6 +29397,8 @@ class UpgradeDBInstanceKernelVersionRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.switch_mode is not None:
+            result['SwitchMode'] = self.switch_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -28890,6 +29413,8 @@ class UpgradeDBInstanceKernelVersionRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SwitchMode') is not None:
+            self.switch_mode = m.get('SwitchMode')
         return self
 
 

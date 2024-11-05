@@ -1,3 +1,16 @@
+2024-11-05 Version: 8.1.0
+- Support API DescribeRestoreDBInstanceList.
+- Update API CheckRecoveryCondition: add param EngineVersion.
+- Update API DescribeBackups: update response param.
+- Update API DescribeClusterBackups: update response param.
+- Update API DescribeDBInstanceAttribute: update response param.
+- Update API DescribeDBInstanceMonitor: update response param.
+- Update API DescribeReplicaSetRole: update response param.
+- Update API DescribeShardingNetworkAddress: update response param.
+- Update API UpgradeDBInstanceEngineVersion: add param SwitchMode.
+- Update API UpgradeDBInstanceKernelVersion: add param SwitchMode.
+
+
 2024-08-28 Version: 8.0.1
 - Update API DescribeDBInstanceAttribute: update response param.
 

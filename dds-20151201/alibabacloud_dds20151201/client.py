@@ -505,6 +505,8 @@ class Client(OpenApiClient):
             query['DatabaseNames'] = request.database_names
         if not UtilClient.is_unset(request.dest_region):
             query['DestRegion'] = request.dest_region
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
         if not UtilClient.is_unset(request.instance_type):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.owner_account):
@@ -569,6 +571,8 @@ class Client(OpenApiClient):
             query['DatabaseNames'] = request.database_names
         if not UtilClient.is_unset(request.dest_region):
             query['DestRegion'] = request.dest_region
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
         if not UtilClient.is_unset(request.instance_type):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.owner_account):
@@ -906,7 +910,7 @@ class Client(OpenApiClient):
         """
         @summary Creates or clones an ApsaraDB for MongoDB replica set instance.
         
-        @description Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail/mongodb_computeudr_dp_cn) of ApsaraDB for MongoDB before you call this operation.
+        @description Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
         For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](https://www.alibabacloud.com/help/en/mongodb/product-overview/instance-types-1).
         To create sharded cluster instances, you can call the [CreateShardingDBInstance](~~CreateShardingDBInstance~~) operation.
         
@@ -1025,7 +1029,7 @@ class Client(OpenApiClient):
         """
         @summary Creates or clones an ApsaraDB for MongoDB replica set instance.
         
-        @description Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail/mongodb_computeudr_dp_cn) of ApsaraDB for MongoDB before you call this operation.
+        @description Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
         For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](https://www.alibabacloud.com/help/en/mongodb/product-overview/instance-types-1).
         To create sharded cluster instances, you can call the [CreateShardingDBInstance](~~CreateShardingDBInstance~~) operation.
         
@@ -1143,7 +1147,7 @@ class Client(OpenApiClient):
         """
         @summary Creates or clones an ApsaraDB for MongoDB replica set instance.
         
-        @description Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail/mongodb_computeudr_dp_cn) of ApsaraDB for MongoDB before you call this operation.
+        @description Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
         For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](https://www.alibabacloud.com/help/en/mongodb/product-overview/instance-types-1).
         To create sharded cluster instances, you can call the [CreateShardingDBInstance](~~CreateShardingDBInstance~~) operation.
         
@@ -1160,7 +1164,7 @@ class Client(OpenApiClient):
         """
         @summary Creates or clones an ApsaraDB for MongoDB replica set instance.
         
-        @description Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail/mongodb_computeudr_dp_cn) of ApsaraDB for MongoDB before you call this operation.
+        @description Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
         For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](https://www.alibabacloud.com/help/en/mongodb/product-overview/instance-types-1).
         To create sharded cluster instances, you can call the [CreateShardingDBInstance](~~CreateShardingDBInstance~~) operation.
         
@@ -1630,7 +1634,7 @@ class Client(OpenApiClient):
         """
         @summary Creates or clones an ApsaraDB for MongoDB sharded cluster instance.
         
-        @description    Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB before you call this operation.
+        @description    Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
         For more information about the instance types of ApsaraDB for MongoDB, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
         To create standalone instances and replica set instances, you can call the [CreateDBInstance](https://help.aliyun.com/document_detail/61763.html) operation.
         
@@ -1743,7 +1747,7 @@ class Client(OpenApiClient):
         """
         @summary Creates or clones an ApsaraDB for MongoDB sharded cluster instance.
         
-        @description    Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB before you call this operation.
+        @description    Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
         For more information about the instance types of ApsaraDB for MongoDB, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
         To create standalone instances and replica set instances, you can call the [CreateDBInstance](https://help.aliyun.com/document_detail/61763.html) operation.
         
@@ -1855,7 +1859,7 @@ class Client(OpenApiClient):
         """
         @summary Creates or clones an ApsaraDB for MongoDB sharded cluster instance.
         
-        @description    Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB before you call this operation.
+        @description    Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
         For more information about the instance types of ApsaraDB for MongoDB, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
         To create standalone instances and replica set instances, you can call the [CreateDBInstance](https://help.aliyun.com/document_detail/61763.html) operation.
         
@@ -1872,7 +1876,7 @@ class Client(OpenApiClient):
         """
         @summary Creates or clones an ApsaraDB for MongoDB sharded cluster instance.
         
-        @description    Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB before you call this operation.
+        @description    Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
         For more information about the instance types of ApsaraDB for MongoDB, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
         To create standalone instances and replica set instances, you can call the [CreateDBInstance](https://help.aliyun.com/document_detail/61763.html) operation.
         
@@ -7926,6 +7930,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_replica_set_role_with_options_async(request, runtime)
 
+    def describe_restore_dbinstance_list_with_options(
+        self,
+        request: dds_20151201_models.DescribeRestoreDBInstanceListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeRestoreDBInstanceListResponse:
+        """
+        @param request: DescribeRestoreDBInstanceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRestoreDBInstanceListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.creation_time_after):
+            query['CreationTimeAfter'] = request.creation_time_after
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRestoreDBInstanceList',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DescribeRestoreDBInstanceListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_restore_dbinstance_list_with_options_async(
+        self,
+        request: dds_20151201_models.DescribeRestoreDBInstanceListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeRestoreDBInstanceListResponse:
+        """
+        @param request: DescribeRestoreDBInstanceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRestoreDBInstanceListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.creation_time_after):
+            query['CreationTimeAfter'] = request.creation_time_after
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRestoreDBInstanceList',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DescribeRestoreDBInstanceListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_restore_dbinstance_list(
+        self,
+        request: dds_20151201_models.DescribeRestoreDBInstanceListRequest,
+    ) -> dds_20151201_models.DescribeRestoreDBInstanceListResponse:
+        """
+        @param request: DescribeRestoreDBInstanceListRequest
+        @return: DescribeRestoreDBInstanceListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_restore_dbinstance_list_with_options(request, runtime)
+
+    async def describe_restore_dbinstance_list_async(
+        self,
+        request: dds_20151201_models.DescribeRestoreDBInstanceListRequest,
+    ) -> dds_20151201_models.DescribeRestoreDBInstanceListResponse:
+        """
+        @param request: DescribeRestoreDBInstanceListRequest
+        @return: DescribeRestoreDBInstanceListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_restore_dbinstance_list_with_options_async(request, runtime)
+
     def describe_role_zone_info_with_options(
         self,
         request: dds_20151201_models.DescribeRoleZoneInfoRequest,
@@ -10242,6 +10362,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies a backup policy for an ApsaraDB for MongoDB instance.
         
+        @description Cross-regional backup only supports  MongoDB sharded cluster instance and MongoDB replica set.
+        
         @param request: ModifyBackupPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyBackupPolicyResponse
@@ -10323,6 +10445,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies a backup policy for an ApsaraDB for MongoDB instance.
         
+        @description Cross-regional backup only supports  MongoDB sharded cluster instance and MongoDB replica set.
+        
         @param request: ModifyBackupPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyBackupPolicyResponse
@@ -10403,6 +10527,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies a backup policy for an ApsaraDB for MongoDB instance.
         
+        @description Cross-regional backup only supports  MongoDB sharded cluster instance and MongoDB replica set.
+        
         @param request: ModifyBackupPolicyRequest
         @return: ModifyBackupPolicyResponse
         """
@@ -10415,6 +10541,8 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.ModifyBackupPolicyResponse:
         """
         @summary Modifies a backup policy for an ApsaraDB for MongoDB instance.
+        
+        @description Cross-regional backup only supports  MongoDB sharded cluster instance and MongoDB replica set.
         
         @param request: ModifyBackupPolicyRequest
         @return: ModifyBackupPolicyResponse
@@ -14120,7 +14248,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.RestartNodeResponse:
         """
-        @summary 重启副本集单个节点
+        @summary Restarts a node in an ApsaraDB for MongoDB instance.
+        
+        @description You can call this operation to restart a node in a replica set instance or a child instance in a sharded cluster instance.
+        >  When you call this operation, the instance must meet the following requirements:
+        The instance is in the Running state.
+        The instance is a replica set or sharded cluster instance of the standard edition.
         
         @param request: RestartNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14167,7 +14300,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.RestartNodeResponse:
         """
-        @summary 重启副本集单个节点
+        @summary Restarts a node in an ApsaraDB for MongoDB instance.
+        
+        @description You can call this operation to restart a node in a replica set instance or a child instance in a sharded cluster instance.
+        >  When you call this operation, the instance must meet the following requirements:
+        The instance is in the Running state.
+        The instance is a replica set or sharded cluster instance of the standard edition.
         
         @param request: RestartNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14213,7 +14351,12 @@ class Client(OpenApiClient):
         request: dds_20151201_models.RestartNodeRequest,
     ) -> dds_20151201_models.RestartNodeResponse:
         """
-        @summary 重启副本集单个节点
+        @summary Restarts a node in an ApsaraDB for MongoDB instance.
+        
+        @description You can call this operation to restart a node in a replica set instance or a child instance in a sharded cluster instance.
+        >  When you call this operation, the instance must meet the following requirements:
+        The instance is in the Running state.
+        The instance is a replica set or sharded cluster instance of the standard edition.
         
         @param request: RestartNodeRequest
         @return: RestartNodeResponse
@@ -14226,7 +14369,12 @@ class Client(OpenApiClient):
         request: dds_20151201_models.RestartNodeRequest,
     ) -> dds_20151201_models.RestartNodeResponse:
         """
-        @summary 重启副本集单个节点
+        @summary Restarts a node in an ApsaraDB for MongoDB instance.
+        
+        @description You can call this operation to restart a node in a replica set instance or a child instance in a sharded cluster instance.
+        >  When you call this operation, the instance must meet the following requirements:
+        The instance is in the Running state.
+        The instance is a replica set or sharded cluster instance of the standard edition.
         
         @param request: RestartNodeRequest
         @return: RestartNodeResponse
@@ -14666,12 +14814,12 @@ class Client(OpenApiClient):
         """
         @summary Changes the billing method of an instance from pay-as-you-go to subscription or from subscription to pay-as-you-go.
         
-        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB.
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB
         Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
         The instance is in the Running state.
         Your instance has no unpaid billing method change orders.
         The instance type is available for purchase. For more information about unavailable instance types, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
-        > To change the billing method of an instance whose instance type is no longer available to purchase, call the [ModifyDBInstanceSpec](https://help.aliyun.com/document_detail/61816.html) or [ModifyNodeSpec](https://help.aliyun.com/document_detail/61923.html) operation to first change the instance type.
+        > To change the billing method of an instance whose instance type is no longer available to purchase, call the [ModifyDBInstanceSpec](https://help.aliyun.com/document_detail/61816.html) or [ModifyNodeSpec](https://help.aliyun.com/document_detail/61923.html) operation to change the instance type first.
         
         @param request: TransformInstanceChargeTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14730,12 +14878,12 @@ class Client(OpenApiClient):
         """
         @summary Changes the billing method of an instance from pay-as-you-go to subscription or from subscription to pay-as-you-go.
         
-        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB.
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB
         Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
         The instance is in the Running state.
         Your instance has no unpaid billing method change orders.
         The instance type is available for purchase. For more information about unavailable instance types, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
-        > To change the billing method of an instance whose instance type is no longer available to purchase, call the [ModifyDBInstanceSpec](https://help.aliyun.com/document_detail/61816.html) or [ModifyNodeSpec](https://help.aliyun.com/document_detail/61923.html) operation to first change the instance type.
+        > To change the billing method of an instance whose instance type is no longer available to purchase, call the [ModifyDBInstanceSpec](https://help.aliyun.com/document_detail/61816.html) or [ModifyNodeSpec](https://help.aliyun.com/document_detail/61923.html) operation to change the instance type first.
         
         @param request: TransformInstanceChargeTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14793,12 +14941,12 @@ class Client(OpenApiClient):
         """
         @summary Changes the billing method of an instance from pay-as-you-go to subscription or from subscription to pay-as-you-go.
         
-        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB.
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB
         Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
         The instance is in the Running state.
         Your instance has no unpaid billing method change orders.
         The instance type is available for purchase. For more information about unavailable instance types, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
-        > To change the billing method of an instance whose instance type is no longer available to purchase, call the [ModifyDBInstanceSpec](https://help.aliyun.com/document_detail/61816.html) or [ModifyNodeSpec](https://help.aliyun.com/document_detail/61923.html) operation to first change the instance type.
+        > To change the billing method of an instance whose instance type is no longer available to purchase, call the [ModifyDBInstanceSpec](https://help.aliyun.com/document_detail/61816.html) or [ModifyNodeSpec](https://help.aliyun.com/document_detail/61923.html) operation to change the instance type first.
         
         @param request: TransformInstanceChargeTypeRequest
         @return: TransformInstanceChargeTypeResponse
@@ -14813,12 +14961,12 @@ class Client(OpenApiClient):
         """
         @summary Changes the billing method of an instance from pay-as-you-go to subscription or from subscription to pay-as-you-go.
         
-        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB.
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB
         Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
         The instance is in the Running state.
         Your instance has no unpaid billing method change orders.
         The instance type is available for purchase. For more information about unavailable instance types, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
-        > To change the billing method of an instance whose instance type is no longer available to purchase, call the [ModifyDBInstanceSpec](https://help.aliyun.com/document_detail/61816.html) or [ModifyNodeSpec](https://help.aliyun.com/document_detail/61923.html) operation to first change the instance type.
+        > To change the billing method of an instance whose instance type is no longer available to purchase, call the [ModifyDBInstanceSpec](https://help.aliyun.com/document_detail/61816.html) or [ModifyNodeSpec](https://help.aliyun.com/document_detail/61923.html) operation to change the instance type first.
         
         @param request: TransformInstanceChargeTypeRequest
         @return: TransformInstanceChargeTypeResponse
@@ -15173,6 +15321,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.switch_mode):
+            query['SwitchMode'] = request.switch_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -15223,6 +15373,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.switch_mode):
+            query['SwitchMode'] = request.switch_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -15306,6 +15458,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.switch_mode):
+            query['SwitchMode'] = request.switch_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -15353,6 +15507,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.switch_mode):
+            query['SwitchMode'] = request.switch_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
