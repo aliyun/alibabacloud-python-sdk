@@ -19134,13 +19134,23 @@ class DescribeRestoreDBInstanceListRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # Find instances created after the specified time, formatted as <i>yyyy-MM-dd</i>T<i>HH:00:00</i>Z (UTC time).
+        # 
+        # > 
+        # > - The time must be on the hour.
+        # > - The time cannot be earlier than 7 days before the current time.
+        # 
         # This parameter is required.
         self.creation_time_after = creation_time_after
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -19209,17 +19219,48 @@ class DescribeRestoreDBInstanceListResponseBodyDBInstancesDBInstance(TeaModel):
         secondary_zone_id: str = None,
         zone_id: str = None,
     ):
+        # The time of instance creation, formatted as <i>yyyy-MM-dd</i>T<i>HH:00:00</i>Z (UTC time).
         self.creation_time = creation_time
+        # The description of the instance.
         self.dbinstance_description = dbinstance_description
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The status of the instance. For more information, see [Instance states](https://help.aliyun.com/document_detail/63870.html).
         self.dbinstance_status = dbinstance_status
+        # The architecture of the instance. Valid values:
+        # 
+        # *   **sharding**: sharded cluster instance
+        # *   **replicate**: replica set or standalone instance
         self.dbinstance_type = dbinstance_type
+        # The database engine version of the instance. Valid values:
+        # 
+        # *   **7.0**\
+        # *   **6.0**\
+        # *   **5.0**\
+        # *   **4.4**\
+        # *   **4.2**\
+        # *   **4.0**\
+        # *   **3.4**\
         self.engine_version = engine_version
+        # The secondary availability zone 2 for the instance when implementing multi-AZ deployment.
         self.hidden_zone_id = hidden_zone_id
+        # Specifies whether the instance is deleted. Valid values:
+        # 
+        # *   **0**: not deleted
+        # *   **1**: deleted
         self.is_deleted = is_deleted
+        # The locked state of the instance, value description:
+        # - Unlock: Normal.
+        # - ManualLock: Manually triggered lock.
+        # - LockByExpiration: Automatically locked due to expiration.
+        # - LockByRestoration: Automatically locked before restoration.
+        # - LockByDiskQuota: Automatically locked due to disk quota exceeded.
         self.lock_mode = lock_mode
+        # The region ID of the instance.
         self.region_id = region_id
+        # The secondary availability zone 1 for the instance when implementing multi-AZ deployment.
         self.secondary_zone_id = secondary_zone_id
+        # The zone ID of the instance.
         self.zone_id = zone_id
 
     def validate(self):
@@ -19330,10 +19371,15 @@ class DescribeRestoreDBInstanceListResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # DB instances list.
         self.dbinstances = dbinstances
+        # The page number.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The number of instances in the query results.
         self.total_count = total_count
 
     def validate(self):
@@ -20625,6 +20671,10 @@ class DescribeShardingNetworkAddressResponseBodyNetworkAddressesNetworkAddress(T
         vpcid: str = None,
         vswitch_id: str = None,
     ):
+        # The public endpoint type. Valid values:
+        # 
+        # *   **SRV**\
+        # *   **Normal**\
         self.connection_type = connection_type
         # The remaining duration of the classic network endpoint. Unit: seconds.
         self.expired_time = expired_time
@@ -20653,6 +20703,7 @@ class DescribeShardingNetworkAddressResponseBodyNetworkAddressesNetworkAddress(T
         # *   Primary
         # *   Secondary
         self.role = role
+        # Txt record which can be used to store MongoDB-related meta data, such as version, configuration parameters and etc. With the combination of txt record and other technology, for example SRV record, the MongoDB client can complete the complex service discovery and configuration passing.
         self.txt_record = txt_record
         # The VPC ID of the instance.
         # 
@@ -20771,7 +20822,7 @@ class DescribeShardingNetworkAddressResponseBody(TeaModel):
     ):
         # The endpoints of DynamoDB-compatible instances.
         self.compatible_connections = compatible_connections
-        # The endpoints of ApsaraDB for MongoDB instances.
+        # The endpoints of the ApsaraDB for MongoDB sharded cluster instance.
         self.network_addresses = network_addresses
         # The request ID.
         self.request_id = request_id

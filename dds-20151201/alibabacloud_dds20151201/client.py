@@ -7936,6 +7936,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeRestoreDBInstanceListResponse:
         """
+        @summary Queries ApsaraDB for MongoDB instances whose backups are restored within seven days.
+        
         @param request: DescribeRestoreDBInstanceListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeRestoreDBInstanceListResponse
@@ -7983,6 +7985,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeRestoreDBInstanceListResponse:
         """
+        @summary Queries ApsaraDB for MongoDB instances whose backups are restored within seven days.
+        
         @param request: DescribeRestoreDBInstanceListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeRestoreDBInstanceListResponse
@@ -8029,6 +8033,8 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeRestoreDBInstanceListRequest,
     ) -> dds_20151201_models.DescribeRestoreDBInstanceListResponse:
         """
+        @summary Queries ApsaraDB for MongoDB instances whose backups are restored within seven days.
+        
         @param request: DescribeRestoreDBInstanceListRequest
         @return: DescribeRestoreDBInstanceListResponse
         """
@@ -8040,6 +8046,8 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeRestoreDBInstanceListRequest,
     ) -> dds_20151201_models.DescribeRestoreDBInstanceListResponse:
         """
+        @summary Queries ApsaraDB for MongoDB instances whose backups are restored within seven days.
+        
         @param request: DescribeRestoreDBInstanceListRequest
         @return: DescribeRestoreDBInstanceListResponse
         """

@@ -1,3 +1,6 @@
+2024-11-05 Version: 8.1.1
+- Generated python 2015-12-01 for Dds.
+
 2024-11-05 Version: 8.1.0
 - Support API DescribeRestoreDBInstanceList.
 - Update API CheckRecoveryCondition: add param EngineVersion.
