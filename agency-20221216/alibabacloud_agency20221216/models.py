@@ -1790,12 +1790,15 @@ class GetAccountInfoResponseBodyAccountInfoListAccountInfo(TeaModel):
         aliyun_id: str = None,
         association_success_time: str = None,
         cid: int = None,
+        customer_account_type: int = None,
         customer_bd: str = None,
+        customer_enterprise_certified: int = None,
         delay_amount: str = None,
         delay_status: str = None,
         email: str = None,
         mobile: str = None,
         new_buy_status: str = None,
+        register_country_code: str = None,
         remark: str = None,
         sub_account_type: int = None,
         uid: int = None,
@@ -1808,8 +1811,10 @@ class GetAccountInfoResponseBodyAccountInfoListAccountInfo(TeaModel):
         self.association_success_time = association_success_time
         # customer\\"s CID
         self.cid = cid
+        self.customer_account_type = customer_account_type
         # customer manager
         self.customer_bd = customer_bd
+        self.customer_enterprise_certified = customer_enterprise_certified
         # The account have Shutdown-delay Privilege, After Shutdown-delay Credit is ran out, Alibaba Cloud will take over resources and keep the instance for 15 days. In addition, the instance will be released if Sub Account failed to pay the bill within these 15 days.
         self.delay_amount = delay_amount
         # Partner\\"s Shutdown Policy Management for Sub Account.
@@ -1824,6 +1829,7 @@ class GetAccountInfoResponseBodyAccountInfoListAccountInfo(TeaModel):
         # Purchase Forbidden：Ban the new purchase action
         # normal：Normal--End Use can issue Cloud Resource order immediately.
         self.new_buy_status = new_buy_status
+        self.register_country_code = register_country_code
         # Valid mobile number of Distribution Customer.
         self.remark = remark
         # The name of Sub Account:
@@ -1850,8 +1856,12 @@ class GetAccountInfoResponseBodyAccountInfoListAccountInfo(TeaModel):
             result['AssociationSuccessTime'] = self.association_success_time
         if self.cid is not None:
             result['Cid'] = self.cid
+        if self.customer_account_type is not None:
+            result['CustomerAccountType'] = self.customer_account_type
         if self.customer_bd is not None:
             result['CustomerBd'] = self.customer_bd
+        if self.customer_enterprise_certified is not None:
+            result['CustomerEnterpriseCertified'] = self.customer_enterprise_certified
         if self.delay_amount is not None:
             result['DelayAmount'] = self.delay_amount
         if self.delay_status is not None:
@@ -1862,6 +1872,8 @@ class GetAccountInfoResponseBodyAccountInfoListAccountInfo(TeaModel):
             result['Mobile'] = self.mobile
         if self.new_buy_status is not None:
             result['NewBuyStatus'] = self.new_buy_status
+        if self.register_country_code is not None:
+            result['RegisterCountryCode'] = self.register_country_code
         if self.remark is not None:
             result['Remark'] = self.remark
         if self.sub_account_type is not None:
@@ -1880,8 +1892,12 @@ class GetAccountInfoResponseBodyAccountInfoListAccountInfo(TeaModel):
             self.association_success_time = m.get('AssociationSuccessTime')
         if m.get('Cid') is not None:
             self.cid = m.get('Cid')
+        if m.get('CustomerAccountType') is not None:
+            self.customer_account_type = m.get('CustomerAccountType')
         if m.get('CustomerBd') is not None:
             self.customer_bd = m.get('CustomerBd')
+        if m.get('CustomerEnterpriseCertified') is not None:
+            self.customer_enterprise_certified = m.get('CustomerEnterpriseCertified')
         if m.get('DelayAmount') is not None:
             self.delay_amount = m.get('DelayAmount')
         if m.get('DelayStatus') is not None:
@@ -1892,6 +1908,8 @@ class GetAccountInfoResponseBodyAccountInfoListAccountInfo(TeaModel):
             self.mobile = m.get('Mobile')
         if m.get('NewBuyStatus') is not None:
             self.new_buy_status = m.get('NewBuyStatus')
+        if m.get('RegisterCountryCode') is not None:
+            self.register_country_code = m.get('RegisterCountryCode')
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
         if m.get('SubAccountType') is not None:

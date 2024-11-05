@@ -1,3 +1,10 @@
+2024-11-05 Version: 1.5.1
+- Update API CreateCouponTemplate: update param CouponDescription.
+- Update API CreateCouponTemplate: update param ReasonForApplication.
+- Update API CreateCouponTemplate: update param TemplateName.
+- Update API GetAccountInfo: update response param.
+
+
 2024-09-04 Version: 1.5.0
 - Support API CreateCouponTemplate.
 - Support API GetCoupondeductProductCode.
