@@ -21108,6 +21108,376 @@ class DeleteWebhookContactResponse(TeaModel):
         return self
 
 
+class DescribeAddonMetricsRequest(TeaModel):
+    def __init__(
+        self,
+        addon_version: str = None,
+        aliyun_lang: str = None,
+        environment_type: str = None,
+        name: str = None,
+        region_id: str = None,
+    ):
+        # Version of Addon.
+        self.addon_version = addon_version
+        # The language. Valid values: zh and en. Default value: zh.
+        self.aliyun_lang = aliyun_lang
+        # The environment type. Valid values: CS, ECS, and Cloud.
+        self.environment_type = environment_type
+        # Name fo Addon.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The region ID.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.addon_version is not None:
+            result['AddonVersion'] = self.addon_version
+        if self.aliyun_lang is not None:
+            result['AliyunLang'] = self.aliyun_lang
+        if self.environment_type is not None:
+            result['EnvironmentType'] = self.environment_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddonVersion') is not None:
+            self.addon_version = m.get('AddonVersion')
+        if m.get('AliyunLang') is not None:
+            self.aliyun_lang = m.get('AliyunLang')
+        if m.get('EnvironmentType') is not None:
+            self.environment_type = m.get('EnvironmentType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeAddonMetricsResponseBodyDataLabels(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        key: str = None,
+        source: str = None,
+    ):
+        # Metric label description.
+        self.description = description
+        # Metric label key.
+        self.key = key
+        # Metric label value.
+        self.source = source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.source is not None:
+            result['Source'] = self.source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        return self
+
+
+class DescribeAddonMetricsResponseBodyDataMetricsLabels(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        key: str = None,
+        source: str = None,
+    ):
+        # Label description.
+        self.description = description
+        # Label key.
+        self.key = key
+        # Metric source.
+        self.source = source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.source is not None:
+            result['Source'] = self.source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        return self
+
+
+class DescribeAddonMetricsResponseBodyDataMetrics(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        labels: List[DescribeAddonMetricsResponseBodyDataMetricsLabels] = None,
+        metric: str = None,
+        type: str = None,
+        unit: str = None,
+    ):
+        # Metric description.
+        self.description = description
+        # Metric label collection.
+        self.labels = labels
+        # Metric name.
+        self.metric = metric
+        # Metric type.
+        self.type = type
+        # Metric unit.
+        self.unit = unit
+
+    def validate(self):
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
+        if self.metric is not None:
+            result['Metric'] = self.metric
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.unit is not None:
+            result['Unit'] = self.unit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = DescribeAddonMetricsResponseBodyDataMetricsLabels()
+                self.labels.append(temp_model.from_map(k))
+        if m.get('Metric') is not None:
+            self.metric = m.get('Metric')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Unit') is not None:
+            self.unit = m.get('Unit')
+        return self
+
+
+class DescribeAddonMetricsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        group: str = None,
+        labels: List[DescribeAddonMetricsResponseBodyDataLabels] = None,
+        metrics: List[DescribeAddonMetricsResponseBodyDataMetrics] = None,
+    ):
+        # Metric Group.
+        self.group = group
+        # Metric Labels.
+        self.labels = labels
+        # Metric list.
+        self.metrics = metrics
+
+    def validate(self):
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
+        if self.metrics:
+            for k in self.metrics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group is not None:
+            result['Group'] = self.group
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
+        result['Metrics'] = []
+        if self.metrics is not None:
+            for k in self.metrics:
+                result['Metrics'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Group') is not None:
+            self.group = m.get('Group')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = DescribeAddonMetricsResponseBodyDataLabels()
+                self.labels.append(temp_model.from_map(k))
+        self.metrics = []
+        if m.get('Metrics') is not None:
+            for k in m.get('Metrics'):
+                temp_model = DescribeAddonMetricsResponseBodyDataMetrics()
+                self.metrics.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeAddonMetricsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: List[DescribeAddonMetricsResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The HTTP status code. The status code 200 indicates that the request was successful.
+        self.code = code
+        # Metric information list.
+        self.data = data
+        # The error message.
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: true and false.
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DescribeAddonMetricsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeAddonMetricsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAddonMetricsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAddonMetricsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeAddonReleaseRequest(TeaModel):
     def __init__(
         self,
@@ -30077,7 +30447,7 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         self.enable_auth_free_write = enable_auth_free_write
         # Indicates whether access token authentication is enabled.
         self.enable_auth_token = enable_auth_token
-        # 扩展信息（仅控制台请求才返回）
+        # The extra information.
         self.extra_info = extra_info
         # The ID of the Grafana workspace.
         self.grafana_instance_id = grafana_instance_id
@@ -30116,7 +30486,7 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         self.storage_duration = storage_duration
         # The child instances of the Prometheus instance for GlobalView. The value is a JSON string.
         self.sub_clusters_json = sub_clusters_json
-        # Supported authentication types.
+        # The supported authentication types.
         self.support_auth_types = support_auth_types
         # The tags of the instance.
         self.tags = tags
@@ -33199,16 +33569,14 @@ class GetRumExceptionStackRequest(TeaModel):
         return self
 
 
-class GetRumExceptionStackResponseBodyData(TeaModel):
+class GetRumExceptionStackResponseBodyDataThreadInfoList(TeaModel):
     def __init__(
         self,
-        lines: List[str] = None,
-        thread_id: str = None,
+        thread_detail: str = None,
+        thread_tag: str = None,
     ):
-        # The list of stacks.
-        self.lines = lines
-        # The thread ID.
-        self.thread_id = thread_id
+        self.thread_detail = thread_detail
+        self.thread_tag = thread_tag
 
     def validate(self):
         pass
@@ -33219,18 +33587,91 @@ class GetRumExceptionStackResponseBodyData(TeaModel):
             return _map
 
         result = dict()
-        if self.lines is not None:
-            result['Lines'] = self.lines
-        if self.thread_id is not None:
-            result['ThreadId'] = self.thread_id
+        if self.thread_detail is not None:
+            result['ThreadDetail'] = self.thread_detail
+        if self.thread_tag is not None:
+            result['ThreadTag'] = self.thread_tag
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ThreadDetail') is not None:
+            self.thread_detail = m.get('ThreadDetail')
+        if m.get('ThreadTag') is not None:
+            self.thread_tag = m.get('ThreadTag')
+        return self
+
+
+class GetRumExceptionStackResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        crash_address: str = None,
+        crash_reason: str = None,
+        lines: List[str] = None,
+        module_name: str = None,
+        thread_id: str = None,
+        thread_info_list: List[GetRumExceptionStackResponseBodyDataThreadInfoList] = None,
+        uuid: str = None,
+    ):
+        self.crash_address = crash_address
+        self.crash_reason = crash_reason
+        # The list of stacks.
+        self.lines = lines
+        self.module_name = module_name
+        # The thread ID.
+        self.thread_id = thread_id
+        self.thread_info_list = thread_info_list
+        self.uuid = uuid
+
+    def validate(self):
+        if self.thread_info_list:
+            for k in self.thread_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.crash_address is not None:
+            result['CrashAddress'] = self.crash_address
+        if self.crash_reason is not None:
+            result['CrashReason'] = self.crash_reason
+        if self.lines is not None:
+            result['Lines'] = self.lines
+        if self.module_name is not None:
+            result['ModuleName'] = self.module_name
+        if self.thread_id is not None:
+            result['ThreadId'] = self.thread_id
+        result['ThreadInfoList'] = []
+        if self.thread_info_list is not None:
+            for k in self.thread_info_list:
+                result['ThreadInfoList'].append(k.to_map() if k else None)
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CrashAddress') is not None:
+            self.crash_address = m.get('CrashAddress')
+        if m.get('CrashReason') is not None:
+            self.crash_reason = m.get('CrashReason')
         if m.get('Lines') is not None:
             self.lines = m.get('Lines')
+        if m.get('ModuleName') is not None:
+            self.module_name = m.get('ModuleName')
         if m.get('ThreadId') is not None:
             self.thread_id = m.get('ThreadId')
+        self.thread_info_list = []
+        if m.get('ThreadInfoList') is not None:
+            for k in m.get('ThreadInfoList'):
+                temp_model = GetRumExceptionStackResponseBodyDataThreadInfoList()
+                self.thread_info_list.append(temp_model.from_map(k))
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
         return self
 
 
@@ -34177,6 +34618,7 @@ class GetStackRequest(TeaModel):
         pid: str = None,
         region_id: str = None,
         rpc_id: str = None,
+        span_id: str = None,
         start_time: int = None,
         trace_id: str = None,
     ):
@@ -34192,6 +34634,7 @@ class GetStackRequest(TeaModel):
         # 
         # This parameter is required.
         self.rpc_id = rpc_id
+        self.span_id = span_id
         # The start time of the call method.
         self.start_time = start_time
         # The trace ID. You can log on to the Application Real-Time Monitoring Service (ARMS) console and obtain the trace ID on the **Trace Query** page.
@@ -34216,6 +34659,8 @@ class GetStackRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.rpc_id is not None:
             result['RpcID'] = self.rpc_id
+        if self.span_id is not None:
+            result['SpanID'] = self.span_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.trace_id is not None:
@@ -34232,6 +34677,8 @@ class GetStackRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('RpcID') is not None:
             self.rpc_id = m.get('RpcID')
+        if m.get('SpanID') is not None:
+            self.span_id = m.get('SpanID')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('TraceID') is not None:
@@ -34278,6 +34725,7 @@ class GetStackResponseBodyStackInfo(TeaModel):
     def __init__(
         self,
         api: str = None,
+        call_count: str = None,
         duration: int = None,
         exception: str = None,
         ext_info: GetStackResponseBodyStackInfoExtInfo = None,
@@ -34288,6 +34736,7 @@ class GetStackResponseBodyStackInfo(TeaModel):
     ):
         # The name of the operation.
         self.api = api
+        self.call_count = call_count
         # The duration. Unit: milliseconds.
         self.duration = duration
         # The error message.
@@ -34315,6 +34764,8 @@ class GetStackResponseBodyStackInfo(TeaModel):
         result = dict()
         if self.api is not None:
             result['Api'] = self.api
+        if self.call_count is not None:
+            result['CallCount'] = self.call_count
         if self.duration is not None:
             result['Duration'] = self.duration
         if self.exception is not None:
@@ -34335,6 +34786,8 @@ class GetStackResponseBodyStackInfo(TeaModel):
         m = m or dict()
         if m.get('Api') is not None:
             self.api = m.get('Api')
+        if m.get('CallCount') is not None:
+            self.call_count = m.get('CallCount')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
         if m.get('Exception') is not None:
@@ -59837,6 +60290,7 @@ class SearchTracesResponseBodyTraceInfos(TeaModel):
         operation_name: str = None,
         service_ip: str = None,
         service_name: str = None,
+        span_id: str = None,
         timestamp: int = None,
         trace_id: str = None,
     ):
@@ -59848,6 +60302,7 @@ class SearchTracesResponseBodyTraceInfos(TeaModel):
         self.service_ip = service_ip
         # The name of the application.
         self.service_name = service_name
+        self.span_id = span_id
         # The timestamp.
         self.timestamp = timestamp
         # The trace ID.
@@ -59870,6 +60325,8 @@ class SearchTracesResponseBodyTraceInfos(TeaModel):
             result['ServiceIp'] = self.service_ip
         if self.service_name is not None:
             result['ServiceName'] = self.service_name
+        if self.span_id is not None:
+            result['SpanID'] = self.span_id
         if self.timestamp is not None:
             result['Timestamp'] = self.timestamp
         if self.trace_id is not None:
@@ -59886,6 +60343,8 @@ class SearchTracesResponseBodyTraceInfos(TeaModel):
             self.service_ip = m.get('ServiceIp')
         if m.get('ServiceName') is not None:
             self.service_name = m.get('ServiceName')
+        if m.get('SpanID') is not None:
+            self.span_id = m.get('SpanID')
         if m.get('Timestamp') is not None:
             self.timestamp = m.get('Timestamp')
         if m.get('TraceID') is not None:
@@ -60212,6 +60671,7 @@ class SearchTracesByPageResponseBodyPageBeanTraceInfos(TeaModel):
         operation_name: str = None,
         service_ip: str = None,
         service_name: str = None,
+        span_id: str = None,
         timestamp: int = None,
         trace_id: str = None,
     ):
@@ -60223,6 +60683,7 @@ class SearchTracesByPageResponseBodyPageBeanTraceInfos(TeaModel):
         self.service_ip = service_ip
         # The name of the application.
         self.service_name = service_name
+        self.span_id = span_id
         # The timestamp.
         self.timestamp = timestamp
         # The trace ID.
@@ -60245,6 +60706,8 @@ class SearchTracesByPageResponseBodyPageBeanTraceInfos(TeaModel):
             result['ServiceIp'] = self.service_ip
         if self.service_name is not None:
             result['ServiceName'] = self.service_name
+        if self.span_id is not None:
+            result['SpanID'] = self.span_id
         if self.timestamp is not None:
             result['Timestamp'] = self.timestamp
         if self.trace_id is not None:
@@ -60261,6 +60724,8 @@ class SearchTracesByPageResponseBodyPageBeanTraceInfos(TeaModel):
             self.service_ip = m.get('ServiceIp')
         if m.get('ServiceName') is not None:
             self.service_name = m.get('ServiceName')
+        if m.get('SpanID') is not None:
+            self.span_id = m.get('SpanID')
         if m.get('Timestamp') is not None:
             self.timestamp = m.get('Timestamp')
         if m.get('TraceID') is not None:
