@@ -1,3 +1,12 @@
+2024-11-05 Version: 1.5.6
+- Update API CreateInstance: update param body.
+- Update API CreateInstanceSnapshot: update param body.
+- Update API GetInstance: add param Token.
+- Update API GetInstanceEvents: add param Token.
+- Update API GetLifecycle: add param Token.
+- Update API UpdateInstance: update param body.
+
+
 2024-10-14 Version: 1.5.5
 - Update API CreateInstance: update param body.
 - Update API GetInstance: add param Token.

@@ -1422,10 +1422,12 @@ class CreateInstanceSnapshotRequest(TeaModel):
         snapshot_name: str = None,
     ):
         self.exclude_paths = exclude_paths
+        # This parameter is required.
         self.image_url = image_url
         self.labels = labels
         self.overwrite = overwrite
         self.snapshot_description = snapshot_description
+        # This parameter is required.
         self.snapshot_name = snapshot_name
 
     def validate(self):
