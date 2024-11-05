@@ -173,18 +173,30 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
         self,
         asr_max_silence: int = None,
         avatar_id: str = None,
+        bailian_app_params: str = None,
+        enable_push_to_talk: bool = None,
         enable_voice_interrupt: bool = None,
         graceful_shutdown: bool = None,
         greeting: str = None,
+        use_voiceprint: bool = None,
+        user_offline_timeout: int = None,
+        user_online_timeout: int = None,
         voice_id: str = None,
+        voiceprint_id: str = None,
         volume: int = None,
     ):
         self.asr_max_silence = asr_max_silence
         self.avatar_id = avatar_id
+        self.bailian_app_params = bailian_app_params
+        self.enable_push_to_talk = enable_push_to_talk
         self.enable_voice_interrupt = enable_voice_interrupt
         self.graceful_shutdown = graceful_shutdown
         self.greeting = greeting
+        self.use_voiceprint = use_voiceprint
+        self.user_offline_timeout = user_offline_timeout
+        self.user_online_timeout = user_online_timeout
         self.voice_id = voice_id
+        self.voiceprint_id = voiceprint_id
         self.volume = volume
 
     def validate(self):
@@ -200,14 +212,26 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
             result['AsrMaxSilence'] = self.asr_max_silence
         if self.avatar_id is not None:
             result['AvatarId'] = self.avatar_id
+        if self.bailian_app_params is not None:
+            result['BailianAppParams'] = self.bailian_app_params
+        if self.enable_push_to_talk is not None:
+            result['EnablePushToTalk'] = self.enable_push_to_talk
         if self.enable_voice_interrupt is not None:
             result['EnableVoiceInterrupt'] = self.enable_voice_interrupt
         if self.graceful_shutdown is not None:
             result['GracefulShutdown'] = self.graceful_shutdown
         if self.greeting is not None:
             result['Greeting'] = self.greeting
+        if self.use_voiceprint is not None:
+            result['UseVoiceprint'] = self.use_voiceprint
+        if self.user_offline_timeout is not None:
+            result['UserOfflineTimeout'] = self.user_offline_timeout
+        if self.user_online_timeout is not None:
+            result['UserOnlineTimeout'] = self.user_online_timeout
         if self.voice_id is not None:
             result['VoiceId'] = self.voice_id
+        if self.voiceprint_id is not None:
+            result['VoiceprintId'] = self.voiceprint_id
         if self.volume is not None:
             result['Volume'] = self.volume
         return result
@@ -218,14 +242,26 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
             self.asr_max_silence = m.get('AsrMaxSilence')
         if m.get('AvatarId') is not None:
             self.avatar_id = m.get('AvatarId')
+        if m.get('BailianAppParams') is not None:
+            self.bailian_app_params = m.get('BailianAppParams')
+        if m.get('EnablePushToTalk') is not None:
+            self.enable_push_to_talk = m.get('EnablePushToTalk')
         if m.get('EnableVoiceInterrupt') is not None:
             self.enable_voice_interrupt = m.get('EnableVoiceInterrupt')
         if m.get('GracefulShutdown') is not None:
             self.graceful_shutdown = m.get('GracefulShutdown')
         if m.get('Greeting') is not None:
             self.greeting = m.get('Greeting')
+        if m.get('UseVoiceprint') is not None:
+            self.use_voiceprint = m.get('UseVoiceprint')
+        if m.get('UserOfflineTimeout') is not None:
+            self.user_offline_timeout = m.get('UserOfflineTimeout')
+        if m.get('UserOnlineTimeout') is not None:
+            self.user_online_timeout = m.get('UserOnlineTimeout')
         if m.get('VoiceId') is not None:
             self.voice_id = m.get('VoiceId')
+        if m.get('VoiceprintId') is not None:
+            self.voiceprint_id = m.get('VoiceprintId')
         if m.get('Volume') is not None:
             self.volume = m.get('Volume')
         return self
@@ -235,19 +271,31 @@ class AIAgentTemplateConfigVisionChat(TeaModel):
     def __init__(
         self,
         asr_max_silence: int = None,
+        bailian_app_params: str = None,
         enable_intelligent_segment: bool = None,
+        enable_push_to_talk: bool = None,
         enable_voice_interrupt: bool = None,
         graceful_shutdown: bool = None,
         greeting: str = None,
+        use_voiceprint: bool = None,
+        user_offline_timeout: int = None,
+        user_online_timeout: int = None,
         voice_id: str = None,
+        voiceprint_id: str = None,
         volume: int = None,
     ):
         self.asr_max_silence = asr_max_silence
+        self.bailian_app_params = bailian_app_params
         self.enable_intelligent_segment = enable_intelligent_segment
+        self.enable_push_to_talk = enable_push_to_talk
         self.enable_voice_interrupt = enable_voice_interrupt
         self.graceful_shutdown = graceful_shutdown
         self.greeting = greeting
+        self.use_voiceprint = use_voiceprint
+        self.user_offline_timeout = user_offline_timeout
+        self.user_online_timeout = user_online_timeout
         self.voice_id = voice_id
+        self.voiceprint_id = voiceprint_id
         self.volume = volume
 
     def validate(self):
@@ -261,16 +309,28 @@ class AIAgentTemplateConfigVisionChat(TeaModel):
         result = dict()
         if self.asr_max_silence is not None:
             result['AsrMaxSilence'] = self.asr_max_silence
+        if self.bailian_app_params is not None:
+            result['BailianAppParams'] = self.bailian_app_params
         if self.enable_intelligent_segment is not None:
             result['EnableIntelligentSegment'] = self.enable_intelligent_segment
+        if self.enable_push_to_talk is not None:
+            result['EnablePushToTalk'] = self.enable_push_to_talk
         if self.enable_voice_interrupt is not None:
             result['EnableVoiceInterrupt'] = self.enable_voice_interrupt
         if self.graceful_shutdown is not None:
             result['GracefulShutdown'] = self.graceful_shutdown
         if self.greeting is not None:
             result['Greeting'] = self.greeting
+        if self.use_voiceprint is not None:
+            result['UseVoiceprint'] = self.use_voiceprint
+        if self.user_offline_timeout is not None:
+            result['UserOfflineTimeout'] = self.user_offline_timeout
+        if self.user_online_timeout is not None:
+            result['UserOnlineTimeout'] = self.user_online_timeout
         if self.voice_id is not None:
             result['VoiceId'] = self.voice_id
+        if self.voiceprint_id is not None:
+            result['VoiceprintId'] = self.voiceprint_id
         if self.volume is not None:
             result['Volume'] = self.volume
         return result
@@ -279,16 +339,28 @@ class AIAgentTemplateConfigVisionChat(TeaModel):
         m = m or dict()
         if m.get('AsrMaxSilence') is not None:
             self.asr_max_silence = m.get('AsrMaxSilence')
+        if m.get('BailianAppParams') is not None:
+            self.bailian_app_params = m.get('BailianAppParams')
         if m.get('EnableIntelligentSegment') is not None:
             self.enable_intelligent_segment = m.get('EnableIntelligentSegment')
+        if m.get('EnablePushToTalk') is not None:
+            self.enable_push_to_talk = m.get('EnablePushToTalk')
         if m.get('EnableVoiceInterrupt') is not None:
             self.enable_voice_interrupt = m.get('EnableVoiceInterrupt')
         if m.get('GracefulShutdown') is not None:
             self.graceful_shutdown = m.get('GracefulShutdown')
         if m.get('Greeting') is not None:
             self.greeting = m.get('Greeting')
+        if m.get('UseVoiceprint') is not None:
+            self.use_voiceprint = m.get('UseVoiceprint')
+        if m.get('UserOfflineTimeout') is not None:
+            self.user_offline_timeout = m.get('UserOfflineTimeout')
+        if m.get('UserOnlineTimeout') is not None:
+            self.user_online_timeout = m.get('UserOnlineTimeout')
         if m.get('VoiceId') is not None:
             self.voice_id = m.get('VoiceId')
+        if m.get('VoiceprintId') is not None:
+            self.voiceprint_id = m.get('VoiceprintId')
         if m.get('Volume') is not None:
             self.volume = m.get('Volume')
         return self
@@ -298,17 +370,29 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
     def __init__(
         self,
         asr_max_silence: int = None,
+        bailian_app_params: str = None,
+        enable_push_to_talk: bool = None,
         enable_voice_interrupt: bool = None,
         graceful_shutdown: bool = None,
         greeting: str = None,
+        use_voiceprint: bool = None,
+        user_offline_timeout: int = None,
+        user_online_timeout: int = None,
         voice_id: str = None,
+        voiceprint_id: str = None,
         volume: int = None,
     ):
         self.asr_max_silence = asr_max_silence
+        self.bailian_app_params = bailian_app_params
+        self.enable_push_to_talk = enable_push_to_talk
         self.enable_voice_interrupt = enable_voice_interrupt
         self.graceful_shutdown = graceful_shutdown
         self.greeting = greeting
+        self.use_voiceprint = use_voiceprint
+        self.user_offline_timeout = user_offline_timeout
+        self.user_online_timeout = user_online_timeout
         self.voice_id = voice_id
+        self.voiceprint_id = voiceprint_id
         self.volume = volume
 
     def validate(self):
@@ -322,14 +406,26 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
         result = dict()
         if self.asr_max_silence is not None:
             result['AsrMaxSilence'] = self.asr_max_silence
+        if self.bailian_app_params is not None:
+            result['BailianAppParams'] = self.bailian_app_params
+        if self.enable_push_to_talk is not None:
+            result['EnablePushToTalk'] = self.enable_push_to_talk
         if self.enable_voice_interrupt is not None:
             result['EnableVoiceInterrupt'] = self.enable_voice_interrupt
         if self.graceful_shutdown is not None:
             result['GracefulShutdown'] = self.graceful_shutdown
         if self.greeting is not None:
             result['Greeting'] = self.greeting
+        if self.use_voiceprint is not None:
+            result['UseVoiceprint'] = self.use_voiceprint
+        if self.user_offline_timeout is not None:
+            result['UserOfflineTimeout'] = self.user_offline_timeout
+        if self.user_online_timeout is not None:
+            result['UserOnlineTimeout'] = self.user_online_timeout
         if self.voice_id is not None:
             result['VoiceId'] = self.voice_id
+        if self.voiceprint_id is not None:
+            result['VoiceprintId'] = self.voiceprint_id
         if self.volume is not None:
             result['Volume'] = self.volume
         return result
@@ -338,14 +434,26 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
         m = m or dict()
         if m.get('AsrMaxSilence') is not None:
             self.asr_max_silence = m.get('AsrMaxSilence')
+        if m.get('BailianAppParams') is not None:
+            self.bailian_app_params = m.get('BailianAppParams')
+        if m.get('EnablePushToTalk') is not None:
+            self.enable_push_to_talk = m.get('EnablePushToTalk')
         if m.get('EnableVoiceInterrupt') is not None:
             self.enable_voice_interrupt = m.get('EnableVoiceInterrupt')
         if m.get('GracefulShutdown') is not None:
             self.graceful_shutdown = m.get('GracefulShutdown')
         if m.get('Greeting') is not None:
             self.greeting = m.get('Greeting')
+        if m.get('UseVoiceprint') is not None:
+            self.use_voiceprint = m.get('UseVoiceprint')
+        if m.get('UserOfflineTimeout') is not None:
+            self.user_offline_timeout = m.get('UserOfflineTimeout')
+        if m.get('UserOnlineTimeout') is not None:
+            self.user_online_timeout = m.get('UserOnlineTimeout')
         if m.get('VoiceId') is not None:
             self.voice_id = m.get('VoiceId')
+        if m.get('VoiceprintId') is not None:
+            self.voiceprint_id = m.get('VoiceprintId')
         if m.get('Volume') is not None:
             self.volume = m.get('Volume')
         return self
@@ -3741,7 +3849,7 @@ class CreateEditingProjectResponseBodyProject(TeaModel):
         # 
         # \\- VETemplate
         self.template_type = template_type
-        # The timeline of the online editing project, in the JSON format. For more information about objects in a timeline, see [Timeline configurations](https://help.aliyun.com/document_detail/198823.htm?spm=a2c4g.11186623.2.9.90dc653dF67srN#topic-2024662). If you leave this parameter empty, an empty timeline is created and the duration of the online editing project is zero.
+        # The timeline of the online editing project, in the JSON format.<props="china">For more information about objects in a timeline, see [Timeline configurations](https://help.aliyun.com/document_detail/198823.htm?spm=a2c4g.11186623.2.9.90dc653dF67srN#topic-2024662).  If you leave this parameter empty, an empty timeline is created and the duration of the online editing project is zero.
         self.timeline = timeline
         # The title of the online editing project.
         self.title = title
@@ -45567,13 +45675,23 @@ class StartAIAgentInstanceResponse(TeaModel):
 class StartRtcRobotInstanceRequestConfig(TeaModel):
     def __init__(
         self,
+        asr_max_silence: int = None,
         enable_voice_interrupt: bool = None,
         greeting: str = None,
+        use_voiceprint: bool = None,
+        user_offline_timeout: int = None,
+        user_online_timeout: int = None,
         voice_id: str = None,
+        voiceprint_id: str = None,
     ):
+        self.asr_max_silence = asr_max_silence
         self.enable_voice_interrupt = enable_voice_interrupt
         self.greeting = greeting
+        self.use_voiceprint = use_voiceprint
+        self.user_offline_timeout = user_offline_timeout
+        self.user_online_timeout = user_online_timeout
         self.voice_id = voice_id
+        self.voiceprint_id = voiceprint_id
 
     def validate(self):
         pass
@@ -45584,22 +45702,42 @@ class StartRtcRobotInstanceRequestConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.asr_max_silence is not None:
+            result['AsrMaxSilence'] = self.asr_max_silence
         if self.enable_voice_interrupt is not None:
             result['EnableVoiceInterrupt'] = self.enable_voice_interrupt
         if self.greeting is not None:
             result['Greeting'] = self.greeting
+        if self.use_voiceprint is not None:
+            result['UseVoiceprint'] = self.use_voiceprint
+        if self.user_offline_timeout is not None:
+            result['UserOfflineTimeout'] = self.user_offline_timeout
+        if self.user_online_timeout is not None:
+            result['UserOnlineTimeout'] = self.user_online_timeout
         if self.voice_id is not None:
             result['VoiceId'] = self.voice_id
+        if self.voiceprint_id is not None:
+            result['VoiceprintId'] = self.voiceprint_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AsrMaxSilence') is not None:
+            self.asr_max_silence = m.get('AsrMaxSilence')
         if m.get('EnableVoiceInterrupt') is not None:
             self.enable_voice_interrupt = m.get('EnableVoiceInterrupt')
         if m.get('Greeting') is not None:
             self.greeting = m.get('Greeting')
+        if m.get('UseVoiceprint') is not None:
+            self.use_voiceprint = m.get('UseVoiceprint')
+        if m.get('UserOfflineTimeout') is not None:
+            self.user_offline_timeout = m.get('UserOfflineTimeout')
+        if m.get('UserOnlineTimeout') is not None:
+            self.user_online_timeout = m.get('UserOnlineTimeout')
         if m.get('VoiceId') is not None:
             self.voice_id = m.get('VoiceId')
+        if m.get('VoiceprintId') is not None:
+            self.voiceprint_id = m.get('VoiceprintId')
         return self
 
 
@@ -47970,6 +48108,7 @@ class SubmitIProductionJobRequest(TeaModel):
         function_name: str = None,
         input: SubmitIProductionJobRequestInput = None,
         job_params: str = None,
+        model_id: str = None,
         name: str = None,
         output: SubmitIProductionJobRequestOutput = None,
         schedule_config: SubmitIProductionJobRequestScheduleConfig = None,
@@ -47981,6 +48120,7 @@ class SubmitIProductionJobRequest(TeaModel):
         # This parameter is required.
         self.input = input
         self.job_params = job_params
+        self.model_id = model_id
         self.name = name
         # This parameter is required.
         self.output = output
@@ -48008,6 +48148,8 @@ class SubmitIProductionJobRequest(TeaModel):
             result['Input'] = self.input.to_map()
         if self.job_params is not None:
             result['JobParams'] = self.job_params
+        if self.model_id is not None:
+            result['ModelId'] = self.model_id
         if self.name is not None:
             result['Name'] = self.name
         if self.output is not None:
@@ -48029,6 +48171,8 @@ class SubmitIProductionJobRequest(TeaModel):
             self.input = temp_model.from_map(m['Input'])
         if m.get('JobParams') is not None:
             self.job_params = m.get('JobParams')
+        if m.get('ModelId') is not None:
+            self.model_id = m.get('ModelId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Output') is not None:
@@ -48050,6 +48194,7 @@ class SubmitIProductionJobShrinkRequest(TeaModel):
         function_name: str = None,
         input_shrink: str = None,
         job_params: str = None,
+        model_id: str = None,
         name: str = None,
         output_shrink: str = None,
         schedule_config_shrink: str = None,
@@ -48061,6 +48206,7 @@ class SubmitIProductionJobShrinkRequest(TeaModel):
         # This parameter is required.
         self.input_shrink = input_shrink
         self.job_params = job_params
+        self.model_id = model_id
         self.name = name
         # This parameter is required.
         self.output_shrink = output_shrink
@@ -48083,6 +48229,8 @@ class SubmitIProductionJobShrinkRequest(TeaModel):
             result['Input'] = self.input_shrink
         if self.job_params is not None:
             result['JobParams'] = self.job_params
+        if self.model_id is not None:
+            result['ModelId'] = self.model_id
         if self.name is not None:
             result['Name'] = self.name
         if self.output_shrink is not None:
@@ -48103,6 +48251,8 @@ class SubmitIProductionJobShrinkRequest(TeaModel):
             self.input_shrink = m.get('Input')
         if m.get('JobParams') is not None:
             self.job_params = m.get('JobParams')
+        if m.get('ModelId') is not None:
+            self.model_id = m.get('ModelId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Output') is not None:

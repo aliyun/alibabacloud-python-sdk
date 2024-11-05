@@ -1,3 +1,8 @@
+2024-11-05 Version: 3.6.3
+- Update API StartRtcRobotInstance: update param Config.
+- Update API SubmitIProductionJob: add param ModelId.
+
+
 2024-10-24 Version: 3.6.2
 - Update API GetCustomTemplate: update response param.
 - Update API ListCustomTemplates: update response param.

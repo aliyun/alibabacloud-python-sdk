@@ -19122,6 +19122,8 @@ class Client(OpenApiClient):
             query['Input'] = request.input_shrink
         if not UtilClient.is_unset(request.job_params):
             query['JobParams'] = request.job_params
+        if not UtilClient.is_unset(request.model_id):
+            query['ModelId'] = request.model_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.output_shrink):
@@ -19179,6 +19181,8 @@ class Client(OpenApiClient):
             query['Input'] = request.input_shrink
         if not UtilClient.is_unset(request.job_params):
             query['JobParams'] = request.job_params
+        if not UtilClient.is_unset(request.model_id):
+            query['ModelId'] = request.model_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.output_shrink):
