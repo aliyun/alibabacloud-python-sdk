@@ -1,3 +1,9 @@
+2024-11-05 Version: 4.4.5
+- Update API CreateNetworkInterface: add param SourceDestCheck.
+- Update API CreateNetworkInterface: update response param.
+- Update API RunInstances: update param NetworkInterface.
+
+
 2024-11-04 Version: 4.4.4
 - Update API CreateAutoProvisioningGroup: add param ResourcePoolOptions.
 - Update API CreateCommand: add param Launcher.
