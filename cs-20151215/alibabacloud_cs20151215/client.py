@@ -1078,9 +1078,9 @@ class Client(OpenApiClient):
         """
         @summary You can call the CleanUserPermissions operation to delete the kubeconfig files of the specified users and revoke the relevant Role-Based Access Control (RBAC) permissions. This API operation is suitable for scenarios where employees have resigned or the accounts of employees are locked.
         
-        @description >- To call this operation, make sure that you have the AliyunCSFullAccess permissions.
-        >- You cannot revoke the permissions of an Alibaba Cloud account.
-        >- You cannot revoke the permissions of the account that you use to call this operation.
+        @description > - To call this operation, make sure that you have the AliyunCSFullAccess permission.
+        > - You cannot revoke the permissions of an Alibaba Cloud account.
+        > - You cannot revoke the permissions of the account that you use to call this operation.
         
         @param tmp_req: CleanUserPermissionsRequest
         @param headers: map
@@ -1127,9 +1127,9 @@ class Client(OpenApiClient):
         """
         @summary You can call the CleanUserPermissions operation to delete the kubeconfig files of the specified users and revoke the relevant Role-Based Access Control (RBAC) permissions. This API operation is suitable for scenarios where employees have resigned or the accounts of employees are locked.
         
-        @description >- To call this operation, make sure that you have the AliyunCSFullAccess permissions.
-        >- You cannot revoke the permissions of an Alibaba Cloud account.
-        >- You cannot revoke the permissions of the account that you use to call this operation.
+        @description > - To call this operation, make sure that you have the AliyunCSFullAccess permission.
+        > - You cannot revoke the permissions of an Alibaba Cloud account.
+        > - You cannot revoke the permissions of the account that you use to call this operation.
         
         @param tmp_req: CleanUserPermissionsRequest
         @param headers: map
@@ -1174,9 +1174,9 @@ class Client(OpenApiClient):
         """
         @summary You can call the CleanUserPermissions operation to delete the kubeconfig files of the specified users and revoke the relevant Role-Based Access Control (RBAC) permissions. This API operation is suitable for scenarios where employees have resigned or the accounts of employees are locked.
         
-        @description >- To call this operation, make sure that you have the AliyunCSFullAccess permissions.
-        >- You cannot revoke the permissions of an Alibaba Cloud account.
-        >- You cannot revoke the permissions of the account that you use to call this operation.
+        @description > - To call this operation, make sure that you have the AliyunCSFullAccess permission.
+        > - You cannot revoke the permissions of an Alibaba Cloud account.
+        > - You cannot revoke the permissions of the account that you use to call this operation.
         
         @param request: CleanUserPermissionsRequest
         @return: CleanUserPermissionsResponse
@@ -1193,9 +1193,9 @@ class Client(OpenApiClient):
         """
         @summary You can call the CleanUserPermissions operation to delete the kubeconfig files of the specified users and revoke the relevant Role-Based Access Control (RBAC) permissions. This API operation is suitable for scenarios where employees have resigned or the accounts of employees are locked.
         
-        @description >- To call this operation, make sure that you have the AliyunCSFullAccess permissions.
-        >- You cannot revoke the permissions of an Alibaba Cloud account.
-        >- You cannot revoke the permissions of the account that you use to call this operation.
+        @description > - To call this operation, make sure that you have the AliyunCSFullAccess permission.
+        > - You cannot revoke the permissions of an Alibaba Cloud account.
+        > - You cannot revoke the permissions of the account that you use to call this operation.
         
         @param request: CleanUserPermissionsRequest
         @return: CleanUserPermissionsResponse
@@ -2004,7 +2004,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateClusterNodePoolResponse:
         """
-        @summary Creates a node pool for a Container Service for Kubernetes (ACK) cluster. You can use node pools to facilitate node management. For example, you can schedule, configure, or maintain nodes by node pool, and enable auto scaling for a node pool. We recommend that you use a managed node pool, which can help automate specific O\\&M tasks for nodes, such as Common Vulnerabilities and Exposures (CVE) patching and node repair. This reduces your O\\&M workload.
+        @summary Creates a node pool for a Container Service for Kubernetes (ACK) cluster. You can use node pools to facilitate node management. For example, you can schedule, configure, or maintain nodes by node pool, and enable auto scaling for a node pool. We recommend that you use a managed node pool, which can help automate specific O\\\\\\&M tasks for nodes, such as Common Vulnerabilities and Exposures (CVE) patching and node repair. This reduces your O\\\\\\&M workload.
         
         @param request: CreateClusterNodePoolRequest
         @param headers: map
@@ -2017,10 +2017,14 @@ class Client(OpenApiClient):
             body['auto_scaling'] = request.auto_scaling
         if not UtilClient.is_unset(request.count):
             body['count'] = request.count
+        if not UtilClient.is_unset(request.host_network):
+            body['host_network'] = request.host_network
         if not UtilClient.is_unset(request.interconnect_config):
             body['interconnect_config'] = request.interconnect_config
         if not UtilClient.is_unset(request.interconnect_mode):
             body['interconnect_mode'] = request.interconnect_mode
+        if not UtilClient.is_unset(request.intranet):
+            body['intranet'] = request.intranet
         if not UtilClient.is_unset(request.kubernetes_config):
             body['kubernetes_config'] = request.kubernetes_config
         if not UtilClient.is_unset(request.management):
@@ -2063,7 +2067,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateClusterNodePoolResponse:
         """
-        @summary Creates a node pool for a Container Service for Kubernetes (ACK) cluster. You can use node pools to facilitate node management. For example, you can schedule, configure, or maintain nodes by node pool, and enable auto scaling for a node pool. We recommend that you use a managed node pool, which can help automate specific O\\&M tasks for nodes, such as Common Vulnerabilities and Exposures (CVE) patching and node repair. This reduces your O\\&M workload.
+        @summary Creates a node pool for a Container Service for Kubernetes (ACK) cluster. You can use node pools to facilitate node management. For example, you can schedule, configure, or maintain nodes by node pool, and enable auto scaling for a node pool. We recommend that you use a managed node pool, which can help automate specific O\\\\\\&M tasks for nodes, such as Common Vulnerabilities and Exposures (CVE) patching and node repair. This reduces your O\\\\\\&M workload.
         
         @param request: CreateClusterNodePoolRequest
         @param headers: map
@@ -2076,10 +2080,14 @@ class Client(OpenApiClient):
             body['auto_scaling'] = request.auto_scaling
         if not UtilClient.is_unset(request.count):
             body['count'] = request.count
+        if not UtilClient.is_unset(request.host_network):
+            body['host_network'] = request.host_network
         if not UtilClient.is_unset(request.interconnect_config):
             body['interconnect_config'] = request.interconnect_config
         if not UtilClient.is_unset(request.interconnect_mode):
             body['interconnect_mode'] = request.interconnect_mode
+        if not UtilClient.is_unset(request.intranet):
+            body['intranet'] = request.intranet
         if not UtilClient.is_unset(request.kubernetes_config):
             body['kubernetes_config'] = request.kubernetes_config
         if not UtilClient.is_unset(request.management):
@@ -2120,7 +2128,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.CreateClusterNodePoolRequest,
     ) -> cs20151215_models.CreateClusterNodePoolResponse:
         """
-        @summary Creates a node pool for a Container Service for Kubernetes (ACK) cluster. You can use node pools to facilitate node management. For example, you can schedule, configure, or maintain nodes by node pool, and enable auto scaling for a node pool. We recommend that you use a managed node pool, which can help automate specific O\\&M tasks for nodes, such as Common Vulnerabilities and Exposures (CVE) patching and node repair. This reduces your O\\&M workload.
+        @summary Creates a node pool for a Container Service for Kubernetes (ACK) cluster. You can use node pools to facilitate node management. For example, you can schedule, configure, or maintain nodes by node pool, and enable auto scaling for a node pool. We recommend that you use a managed node pool, which can help automate specific O\\\\\\&M tasks for nodes, such as Common Vulnerabilities and Exposures (CVE) patching and node repair. This reduces your O\\\\\\&M workload.
         
         @param request: CreateClusterNodePoolRequest
         @return: CreateClusterNodePoolResponse
@@ -2135,7 +2143,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.CreateClusterNodePoolRequest,
     ) -> cs20151215_models.CreateClusterNodePoolResponse:
         """
-        @summary Creates a node pool for a Container Service for Kubernetes (ACK) cluster. You can use node pools to facilitate node management. For example, you can schedule, configure, or maintain nodes by node pool, and enable auto scaling for a node pool. We recommend that you use a managed node pool, which can help automate specific O\\&M tasks for nodes, such as Common Vulnerabilities and Exposures (CVE) patching and node repair. This reduces your O\\&M workload.
+        @summary Creates a node pool for a Container Service for Kubernetes (ACK) cluster. You can use node pools to facilitate node management. For example, you can schedule, configure, or maintain nodes by node pool, and enable auto scaling for a node pool. We recommend that you use a managed node pool, which can help automate specific O\\\\\\&M tasks for nodes, such as Common Vulnerabilities and Exposures (CVE) patching and node repair. This reduces your O\\\\\\&M workload.
         
         @param request: CreateClusterNodePoolRequest
         @return: CreateClusterNodePoolResponse
@@ -5186,7 +5194,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterNodePoolsResponse:
         """
-        @summary Queries node pools in a Container Service for Kubernetes (ACK) cluster.
+        @summary Queries the information about all node pools in a cluster.
         
         @param request: DescribeClusterNodePoolsRequest
         @param headers: map
@@ -5225,7 +5233,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterNodePoolsResponse:
         """
-        @summary Queries node pools in a Container Service for Kubernetes (ACK) cluster.
+        @summary Queries the information about all node pools in a cluster.
         
         @param request: DescribeClusterNodePoolsRequest
         @param headers: map
@@ -5262,7 +5270,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeClusterNodePoolsRequest,
     ) -> cs20151215_models.DescribeClusterNodePoolsResponse:
         """
-        @summary Queries node pools in a Container Service for Kubernetes (ACK) cluster.
+        @summary Queries the information about all node pools in a cluster.
         
         @param request: DescribeClusterNodePoolsRequest
         @return: DescribeClusterNodePoolsResponse
@@ -5277,7 +5285,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeClusterNodePoolsRequest,
     ) -> cs20151215_models.DescribeClusterNodePoolsResponse:
         """
-        @summary Queries node pools in a Container Service for Kubernetes (ACK) cluster.
+        @summary Queries the information about all node pools in a cluster.
         
         @param request: DescribeClusterNodePoolsRequest
         @return: DescribeClusterNodePoolsResponse
@@ -5294,7 +5302,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterNodesResponse:
         """
-        @summary You can call the DescribeClusterNodes operation to query the details about all nodes in a cluster by cluster ID.
+        @summary null
         
         @param request: DescribeClusterNodesRequest
         @param headers: map
@@ -5341,7 +5349,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterNodesResponse:
         """
-        @summary You can call the DescribeClusterNodes operation to query the details about all nodes in a cluster by cluster ID.
+        @summary null
         
         @param request: DescribeClusterNodesRequest
         @param headers: map
@@ -5386,7 +5394,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeClusterNodesRequest,
     ) -> cs20151215_models.DescribeClusterNodesResponse:
         """
-        @summary You can call the DescribeClusterNodes operation to query the details about all nodes in a cluster by cluster ID.
+        @summary null
         
         @param request: DescribeClusterNodesRequest
         @return: DescribeClusterNodesResponse
@@ -5401,7 +5409,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeClusterNodesRequest,
     ) -> cs20151215_models.DescribeClusterNodesResponse:
         """
-        @summary You can call the DescribeClusterNodes operation to query the details about all nodes in a cluster by cluster ID.
+        @summary null
         
         @param request: DescribeClusterNodesRequest
         @return: DescribeClusterNodesResponse
@@ -6609,7 +6617,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeEventsResponse:
         """
-        @summary Queries detailed information about a type of events, including the severity level, status, and start time of each event. Events are generated when clusters are created, modified, and updated, node pools are created and scaled out, and components are installed.
+        @summary Queries the detailed information about a type of events, including the severity level, status, and time. Events are generated when clusters are created, modified, and updated, node pools are created and scaled out, and components are installed.
         
         @param request: DescribeEventsRequest
         @param headers: map
@@ -6653,7 +6661,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeEventsResponse:
         """
-        @summary Queries detailed information about a type of events, including the severity level, status, and start time of each event. Events are generated when clusters are created, modified, and updated, node pools are created and scaled out, and components are installed.
+        @summary Queries the detailed information about a type of events, including the severity level, status, and time. Events are generated when clusters are created, modified, and updated, node pools are created and scaled out, and components are installed.
         
         @param request: DescribeEventsRequest
         @param headers: map
@@ -6695,7 +6703,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeEventsRequest,
     ) -> cs20151215_models.DescribeEventsResponse:
         """
-        @summary Queries detailed information about a type of events, including the severity level, status, and start time of each event. Events are generated when clusters are created, modified, and updated, node pools are created and scaled out, and components are installed.
+        @summary Queries the detailed information about a type of events, including the severity level, status, and time. Events are generated when clusters are created, modified, and updated, node pools are created and scaled out, and components are installed.
         
         @param request: DescribeEventsRequest
         @return: DescribeEventsResponse
@@ -6709,7 +6717,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeEventsRequest,
     ) -> cs20151215_models.DescribeEventsResponse:
         """
-        @summary Queries detailed information about a type of events, including the severity level, status, and start time of each event. Events are generated when clusters are created, modified, and updated, node pools are created and scaled out, and components are installed.
+        @summary Queries the detailed information about a type of events, including the severity level, status, and time. Events are generated when clusters are created, modified, and updated, node pools are created and scaled out, and components are installed.
         
         @param request: DescribeEventsRequest
         @return: DescribeEventsResponse
@@ -7084,7 +7092,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribePoliciesResponse:
         """
-        @summary Queries the policies for a Container Service for Kubernetes (ACK) cluster. Container security policies for ACK clusters offer a variety of built-in policies, including cis-k8s, infra, k8s-general, and PodSecurityPolicy. You can use these policies to ensure the security of containers running in a production environment.
+        @summary Queries a list of security policies. Container Service for Kubernetes (ACK) clusters offer a variety of built-in container security policies, such as Compliance, Infra, K8s-general, and pod security policy (PSP). You can use these policies to ensure the security of containers running in a production environment.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -7115,7 +7123,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribePoliciesResponse:
         """
-        @summary Queries the policies for a Container Service for Kubernetes (ACK) cluster. Container security policies for ACK clusters offer a variety of built-in policies, including cis-k8s, infra, k8s-general, and PodSecurityPolicy. You can use these policies to ensure the security of containers running in a production environment.
+        @summary Queries a list of security policies. Container Service for Kubernetes (ACK) clusters offer a variety of built-in container security policies, such as Compliance, Infra, K8s-general, and pod security policy (PSP). You can use these policies to ensure the security of containers running in a production environment.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -7142,7 +7150,7 @@ class Client(OpenApiClient):
 
     def describe_policies(self) -> cs20151215_models.DescribePoliciesResponse:
         """
-        @summary Queries the policies for a Container Service for Kubernetes (ACK) cluster. Container security policies for ACK clusters offer a variety of built-in policies, including cis-k8s, infra, k8s-general, and PodSecurityPolicy. You can use these policies to ensure the security of containers running in a production environment.
+        @summary Queries a list of security policies. Container Service for Kubernetes (ACK) clusters offer a variety of built-in container security policies, such as Compliance, Infra, K8s-general, and pod security policy (PSP). You can use these policies to ensure the security of containers running in a production environment.
         
         @return: DescribePoliciesResponse
         """
@@ -7152,7 +7160,7 @@ class Client(OpenApiClient):
 
     async def describe_policies_async(self) -> cs20151215_models.DescribePoliciesResponse:
         """
-        @summary Queries the policies for a Container Service for Kubernetes (ACK) cluster. Container security policies for ACK clusters offer a variety of built-in policies, including cis-k8s, infra, k8s-general, and PodSecurityPolicy. You can use these policies to ensure the security of containers running in a production environment.
+        @summary Queries a list of security policies. Container Service for Kubernetes (ACK) clusters offer a variety of built-in container security policies, such as Compliance, Infra, K8s-general, and pod security policy (PSP). You can use these policies to ensure the security of containers running in a production environment.
         
         @return: DescribePoliciesResponse
         """
@@ -8855,6 +8863,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GetClusterAuditProjectResponse:
         """
+        @summary You can call the GetClusterAuditProject operation to query the Simple Log Service (SLS) project that stores the audit logs of the API server of a cluster.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetClusterAuditProjectResponse
@@ -8885,6 +8895,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GetClusterAuditProjectResponse:
         """
+        @summary You can call the GetClusterAuditProject operation to query the Simple Log Service (SLS) project that stores the audit logs of the API server of a cluster.
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetClusterAuditProjectResponse
@@ -8913,6 +8925,8 @@ class Client(OpenApiClient):
         clusterid: str,
     ) -> cs20151215_models.GetClusterAuditProjectResponse:
         """
+        @summary You can call the GetClusterAuditProject operation to query the Simple Log Service (SLS) project that stores the audit logs of the API server of a cluster.
+        
         @return: GetClusterAuditProjectResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -8924,6 +8938,8 @@ class Client(OpenApiClient):
         clusterid: str,
     ) -> cs20151215_models.GetClusterAuditProjectResponse:
         """
+        @summary You can call the GetClusterAuditProject operation to query the Simple Log Service (SLS) project that stores the audit logs of the API server of a cluster.
+        
         @return: GetClusterAuditProjectResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -9445,8 +9461,7 @@ class Client(OpenApiClient):
         @summary Updates the role-based access control (RBAC) permissions of a Resource Access Management (RAM) user or RAM role. By default, you do not have the RBAC permissions on a Container Service for Kubernetes (ACK) cluster if you are not the cluster owner or you are not using an Alibaba Cloud account. You can call this operation to specify the resources that can be accessed, permission scope, and predefined roles. This helps you better manage the access control on resources in ACK clusters.
         
         @description *Precautions**:
-        Make sure that you have attached a RAM policy that has at least the read-only permissions on the cluster to the RAM user or RAM role in the RAM console. Otherwise, the `ErrorRamPolicyConfig` error code is returned when you call the operation. For more information about how to authorize a RAM user by attaching RAM policies, see [Create a custom RAM policy](https://help.aliyun.com/document_detail/86485.html).
-        If you use a RAM user to call the operation, make sure that the RAM user has the permissions to modify the permissions of other RAM users or RAM roles. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` error code is returned when you call the operation. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](https://help.aliyun.com/document_detail/119035.html).
+        If you use a Resource Access Management (RAM) user to call the operation, make sure that the RAM user has the permissions to modify the permissions of other RAM users or RAM roles. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` error code is returned after you call the operation. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](https://help.aliyun.com/document_detail/119035.html).
         If you update full permissions, the existing permissions of the RAM user or RAM role on the cluster are overwritten. You must specify all the permissions that you want to grant to the RAM user or RAM role in the request parameters when you call the operation.
         
         @param request: GrantPermissionsRequest
@@ -9486,8 +9501,7 @@ class Client(OpenApiClient):
         @summary Updates the role-based access control (RBAC) permissions of a Resource Access Management (RAM) user or RAM role. By default, you do not have the RBAC permissions on a Container Service for Kubernetes (ACK) cluster if you are not the cluster owner or you are not using an Alibaba Cloud account. You can call this operation to specify the resources that can be accessed, permission scope, and predefined roles. This helps you better manage the access control on resources in ACK clusters.
         
         @description *Precautions**:
-        Make sure that you have attached a RAM policy that has at least the read-only permissions on the cluster to the RAM user or RAM role in the RAM console. Otherwise, the `ErrorRamPolicyConfig` error code is returned when you call the operation. For more information about how to authorize a RAM user by attaching RAM policies, see [Create a custom RAM policy](https://help.aliyun.com/document_detail/86485.html).
-        If you use a RAM user to call the operation, make sure that the RAM user has the permissions to modify the permissions of other RAM users or RAM roles. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` error code is returned when you call the operation. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](https://help.aliyun.com/document_detail/119035.html).
+        If you use a Resource Access Management (RAM) user to call the operation, make sure that the RAM user has the permissions to modify the permissions of other RAM users or RAM roles. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` error code is returned after you call the operation. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](https://help.aliyun.com/document_detail/119035.html).
         If you update full permissions, the existing permissions of the RAM user or RAM role on the cluster are overwritten. You must specify all the permissions that you want to grant to the RAM user or RAM role in the request parameters when you call the operation.
         
         @param request: GrantPermissionsRequest
@@ -9525,8 +9539,7 @@ class Client(OpenApiClient):
         @summary Updates the role-based access control (RBAC) permissions of a Resource Access Management (RAM) user or RAM role. By default, you do not have the RBAC permissions on a Container Service for Kubernetes (ACK) cluster if you are not the cluster owner or you are not using an Alibaba Cloud account. You can call this operation to specify the resources that can be accessed, permission scope, and predefined roles. This helps you better manage the access control on resources in ACK clusters.
         
         @description *Precautions**:
-        Make sure that you have attached a RAM policy that has at least the read-only permissions on the cluster to the RAM user or RAM role in the RAM console. Otherwise, the `ErrorRamPolicyConfig` error code is returned when you call the operation. For more information about how to authorize a RAM user by attaching RAM policies, see [Create a custom RAM policy](https://help.aliyun.com/document_detail/86485.html).
-        If you use a RAM user to call the operation, make sure that the RAM user has the permissions to modify the permissions of other RAM users or RAM roles. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` error code is returned when you call the operation. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](https://help.aliyun.com/document_detail/119035.html).
+        If you use a Resource Access Management (RAM) user to call the operation, make sure that the RAM user has the permissions to modify the permissions of other RAM users or RAM roles. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` error code is returned after you call the operation. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](https://help.aliyun.com/document_detail/119035.html).
         If you update full permissions, the existing permissions of the RAM user or RAM role on the cluster are overwritten. You must specify all the permissions that you want to grant to the RAM user or RAM role in the request parameters when you call the operation.
         
         @param request: GrantPermissionsRequest
@@ -9545,8 +9558,7 @@ class Client(OpenApiClient):
         @summary Updates the role-based access control (RBAC) permissions of a Resource Access Management (RAM) user or RAM role. By default, you do not have the RBAC permissions on a Container Service for Kubernetes (ACK) cluster if you are not the cluster owner or you are not using an Alibaba Cloud account. You can call this operation to specify the resources that can be accessed, permission scope, and predefined roles. This helps you better manage the access control on resources in ACK clusters.
         
         @description *Precautions**:
-        Make sure that you have attached a RAM policy that has at least the read-only permissions on the cluster to the RAM user or RAM role in the RAM console. Otherwise, the `ErrorRamPolicyConfig` error code is returned when you call the operation. For more information about how to authorize a RAM user by attaching RAM policies, see [Create a custom RAM policy](https://help.aliyun.com/document_detail/86485.html).
-        If you use a RAM user to call the operation, make sure that the RAM user has the permissions to modify the permissions of other RAM users or RAM roles. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` error code is returned when you call the operation. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](https://help.aliyun.com/document_detail/119035.html).
+        If you use a Resource Access Management (RAM) user to call the operation, make sure that the RAM user has the permissions to modify the permissions of other RAM users or RAM roles. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` error code is returned after you call the operation. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](https://help.aliyun.com/document_detail/119035.html).
         If you update full permissions, the existing permissions of the RAM user or RAM role on the cluster are overwritten. You must specify all the permissions that you want to grant to the RAM user or RAM role in the request parameters when you call the operation.
         
         @param request: GrantPermissionsRequest
@@ -12209,7 +12221,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RepairClusterNodePoolResponse:
         """
-        @summary Fixes issues on abnormal nodes in a node pool to ensure that the nodes can run as normal.
+        @summary Repairs a node pool.
         
         @param request: RepairClusterNodePoolRequest
         @param headers: map
@@ -12253,7 +12265,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RepairClusterNodePoolResponse:
         """
-        @summary Fixes issues on abnormal nodes in a node pool to ensure that the nodes can run as normal.
+        @summary Repairs a node pool.
         
         @param request: RepairClusterNodePoolRequest
         @param headers: map
@@ -12295,7 +12307,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.RepairClusterNodePoolRequest,
     ) -> cs20151215_models.RepairClusterNodePoolResponse:
         """
-        @summary Fixes issues on abnormal nodes in a node pool to ensure that the nodes can run as normal.
+        @summary Repairs a node pool.
         
         @param request: RepairClusterNodePoolRequest
         @return: RepairClusterNodePoolResponse
@@ -12311,7 +12323,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.RepairClusterNodePoolRequest,
     ) -> cs20151215_models.RepairClusterNodePoolResponse:
         """
-        @summary Fixes issues on abnormal nodes in a node pool to ensure that the nodes can run as normal.
+        @summary Repairs a node pool.
         
         @param request: RepairClusterNodePoolRequest
         @return: RepairClusterNodePoolResponse
@@ -12433,7 +12445,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ResumeTaskResponse:
         """
-        @summary You can call the ResumeTask operation to resume a task.
+        @summary Resumes a task.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -12465,7 +12477,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ResumeTaskResponse:
         """
-        @summary You can call the ResumeTask operation to resume a task.
+        @summary Resumes a task.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -12495,7 +12507,7 @@ class Client(OpenApiClient):
         task_id: str,
     ) -> cs20151215_models.ResumeTaskResponse:
         """
-        @summary You can call the ResumeTask operation to resume a task.
+        @summary Resumes a task.
         
         @return: ResumeTaskResponse
         """
@@ -12508,7 +12520,7 @@ class Client(OpenApiClient):
         task_id: str,
     ) -> cs20151215_models.ResumeTaskResponse:
         """
-        @summary You can call the ResumeTask operation to resume a task.
+        @summary Resumes a task.
         
         @return: ResumeTaskResponse
         """
@@ -13025,7 +13037,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ScaleClusterNodePoolResponse:
         """
-        @summary You can call the ScaleClusterNodePool operation to scale out a node pool by node pool ID.
+        @summary Scales out a node pool.
         
         @param request: ScaleClusterNodePoolRequest
         @param headers: map
@@ -13065,7 +13077,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ScaleClusterNodePoolResponse:
         """
-        @summary You can call the ScaleClusterNodePool operation to scale out a node pool by node pool ID.
+        @summary Scales out a node pool.
         
         @param request: ScaleClusterNodePoolRequest
         @param headers: map
@@ -13103,7 +13115,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.ScaleClusterNodePoolRequest,
     ) -> cs20151215_models.ScaleClusterNodePoolResponse:
         """
-        @summary You can call the ScaleClusterNodePool operation to scale out a node pool by node pool ID.
+        @summary Scales out a node pool.
         
         @param request: ScaleClusterNodePoolRequest
         @return: ScaleClusterNodePoolResponse
@@ -13119,7 +13131,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.ScaleClusterNodePoolRequest,
     ) -> cs20151215_models.ScaleClusterNodePoolResponse:
         """
-        @summary You can call the ScaleClusterNodePool operation to scale out a node pool by node pool ID.
+        @summary Scales out a node pool.
         
         @param request: ScaleClusterNodePoolRequest
         @return: ScaleClusterNodePoolResponse

@@ -1,3 +1,8 @@
+2024-11-05 Version: 4.7.10
+- Update API CreateClusterNodePool: update param body.
+- Update API DescribeClusterNodePoolDetail: update response param.
+
+
 2024-10-24 Version: 4.7.9
 - Update API DescribePolicyInstances: update response param.
 
