@@ -1,3 +1,10 @@
+2024-11-05 Version: 7.1.1
+- Update API CreateARMServerInstances: add param EnvironmentVar.
+- Update API CreateEnsRouteEntry: update param NextHopType.
+- Update API DescribeEnsRouteEntryList: update param NextHopType.
+- Update API DescribeEnsRouteEntryList: update response param.
+
+
 2024-10-25 Version: 7.1.0
 - Support API AttachNetworkInterface.
 - Support API CreateCluster.

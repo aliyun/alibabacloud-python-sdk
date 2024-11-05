@@ -823,14 +823,14 @@ class AddBackendServersRequestBackendServers(TeaModel):
         self.ip = ip
         # The backend port that is used by the ELB instance.
         self.port = port
-        # The ID of the ENS instance.
+        # The ID of the backend server.
         # 
         # This parameter is required.
         self.server_id = server_id
         # The type of the backend server. Valid values:
         # 
-        # *   **ens**: ENS instance.
-        # *   **eni**: ENI.
+        # *   **ens**: ENS instance
+        # *   **eni**: elastic network interface (ENI)
         self.type = type
         # The weight of the backend server. Default value: 100. Valid values: **0** to **100**.
         # 
@@ -879,9 +879,9 @@ class AddBackendServersRequest(TeaModel):
         backend_servers: List[AddBackendServersRequestBackendServers] = None,
         load_balancer_id: str = None,
     ):
-        # The list of backend servers that you want to add. You can add at most 20 backend servers.
+        # The list of backend servers that you want to add to the Edge Load Balancer (ELB) instance. You can add up to 20 backend servers at a time.
         # 
-        # >  Only ENS instances that are in the running state can be attached to the ELB instance as backend servers.
+        # >  Only Edge Node Service (ENS) instances that are in the running state can be added to the ELB instance as backend servers.
         # 
         # This parameter is required.
         self.backend_servers = backend_servers
@@ -928,9 +928,9 @@ class AddBackendServersShrinkRequest(TeaModel):
         backend_servers_shrink: str = None,
         load_balancer_id: str = None,
     ):
-        # The list of backend servers that you want to add. You can add at most 20 backend servers.
+        # The list of backend servers that you want to add to the Edge Load Balancer (ELB) instance. You can add up to 20 backend servers at a time.
         # 
-        # >  Only ENS instances that are in the running state can be attached to the ELB instance as backend servers.
+        # >  Only Edge Node Service (ENS) instances that are in the running state can be added to the ELB instance as backend servers.
         # 
         # This parameter is required.
         self.backend_servers_shrink = backend_servers_shrink
@@ -1807,10 +1807,18 @@ class AssociateHaVipRequest(TeaModel):
         instance_id: str = None,
         instance_type: str = None,
     ):
+        # The ID of the HAVIP.
+        # 
         # This parameter is required.
         self.ha_vip_id = ha_vip_id
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The type of the instance to be associated with the HAVIP. Valid values:
+        # 
+        # *   EnsInstance (default): ENS instance.
+        # *   NetworkInterface: ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
         self.instance_type = instance_type
 
     def validate(self):
@@ -1846,6 +1854,7 @@ class AssociateHaVipResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3278,6 +3287,7 @@ class CreateARMServerInstancesRequest(TeaModel):
         auto_renew: bool = None,
         auto_use_coupon: bool = None,
         ens_region_id: str = None,
+        environment_var: str = None,
         frequency: int = None,
         image_id: str = None,
         instance_type: str = None,
@@ -3308,6 +3318,7 @@ class CreateARMServerInstancesRequest(TeaModel):
         # 
         # This parameter is required.
         self.ens_region_id = ens_region_id
+        self.environment_var = environment_var
         # The refresh rate. Unit: Hz. Valid values: 30 and 60.
         self.frequency = frequency
         # The ID of the image.
@@ -3409,6 +3420,8 @@ class CreateARMServerInstancesRequest(TeaModel):
             result['AutoUseCoupon'] = self.auto_use_coupon
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
+        if self.environment_var is not None:
+            result['EnvironmentVar'] = self.environment_var
         if self.frequency is not None:
             result['Frequency'] = self.frequency
         if self.image_id is not None:
@@ -3443,6 +3456,8 @@ class CreateARMServerInstancesRequest(TeaModel):
             self.auto_use_coupon = m.get('AutoUseCoupon')
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
+        if m.get('EnvironmentVar') is not None:
+            self.environment_var = m.get('EnvironmentVar')
         if m.get('Frequency') is not None:
             self.frequency = m.get('Frequency')
         if m.get('ImageId') is not None:
@@ -3812,7 +3827,9 @@ class CreateClusterRequest(TeaModel):
         cluster_version: str = None,
         name: str = None,
     ):
+        # The version of the cluster.
         self.cluster_version = cluster_version
+        # The name of the cluster.
         self.name = name
 
     def validate(self):
@@ -3845,7 +3862,9 @@ class CreateClusterResponseBody(TeaModel):
         cluster_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the instance.
         self.cluster_id = cluster_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8793,6 +8812,7 @@ class CreateSnatEntryRequest(TeaModel):
         source_vswitch_id: str = None,
         standby_snat_ip: str = None,
     ):
+        # The timeout period for idle connections. Valid values: **1** to **86400**. Unit: seconds.
         self.idle_timeout = idle_timeout
         # The ID of the Network Address Translation (NAT) gateway.
         # 
@@ -16112,6 +16132,7 @@ class DescribeClusterRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -16143,10 +16164,20 @@ class DescribeClusterResponseBodyClusters(TeaModel):
         next_version: str = None,
         status: str = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The version of the cluster.
         self.current_version = current_version
+        # The cluster name.
         self.name = name
+        # The next version of the cluster.
         self.next_version = next_version
+        # The health status of the instance.
+        # 
+        # Valid values:
+        # 
+        # *   healthy
+        # *   unhealthy
         self.status = status
 
     def validate(self):
@@ -16191,7 +16222,9 @@ class DescribeClusterResponseBody(TeaModel):
         clusters: List[DescribeClusterResponseBodyClusters] = None,
         request_id: str = None,
     ):
+        # An array that consists of the information about clusters.
         self.clusters = clusters
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -16272,6 +16305,7 @@ class DescribeClusterKubeConfigRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -16301,8 +16335,11 @@ class DescribeClusterKubeConfigResponseBody(TeaModel):
         kubeconfig: str = None,
         request_id: str = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The cluster certificate.
         self.kubeconfig = kubeconfig
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -25524,14 +25561,28 @@ class DescribeHaVipsRequest(TeaModel):
         status: str = None,
         v_switch_id: str = None,
     ):
+        # The ID of the region.
         self.ens_region_id = ens_region_id
+        # The IP address of the HAVIP.
         self.ha_vip_address = ha_vip_address
+        # The ID of the HAVIP.
         self.ha_vip_id = ha_vip_id
+        # The name of the HAVIP.
         self.name = name
+        # The ID of the network.
         self.network_id = network_id
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The status of the HAVIP. Valid values:
+        # 
+        # *   Creating
+        # *   Available
+        # *   InUse
+        # *   Deleting
         self.status = status
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -25592,7 +25643,9 @@ class DescribeHaVipsResponseBodyHaVipsAssociatedEipAddresses(TeaModel):
         eip: str = None,
         eip_id: str = None,
     ):
+        # The EIP.
         self.eip = eip
+        # The ID of the EIP.
         self.eip_id = eip_id
 
     def validate(self):
@@ -25628,10 +25681,22 @@ class DescribeHaVipsResponseBodyHaVipsAssociatedInstances(TeaModel):
         ip_address: str = None,
         status: str = None,
     ):
+        # The time when the instance was created.
         self.creation_time = creation_time
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The type of the instance that is associated with the HAVIP. Valid values:
+        # 
+        # *   EnsInstance: ENS instance
+        # *   NetworkInterface: elastic network interface (ENI)
         self.instance_type = instance_type
+        # The private IP address of the instance that is associated with the HAVIP. Valid values:
         self.ip_address = ip_address
+        # The association status of the HAVIP. Valid values:
+        # 
+        # *   Associating
+        # *   InUse
+        # *   Unassociating
         self.status = status
 
     def validate(self):
@@ -25685,16 +25750,32 @@ class DescribeHaVipsResponseBodyHaVips(TeaModel):
         status: str = None,
         v_switch_id: str = None,
     ):
+        # The elastic IP addresses (EIPs) that are associated with the HAVIP.
         self.associated_eip_addresses = associated_eip_addresses
+        # The information about instances that are associated with the HAVIP.
         self.associated_instances = associated_instances
+        # The time when the HAVIP was created.
         self.creation_time = creation_time
+        # The description of the HAVIP.
         self.description = description
+        # The ID of the region.
         self.ens_region_id = ens_region_id
+        # The ID of the HAVIP.
         self.ha_vip_id = ha_vip_id
+        # The IP address of the HAVIP.
         self.ip_address = ip_address
+        # The name of the HAVIP.
         self.name = name
+        # The ID of the network.
         self.network_id = network_id
+        # The status of the HAVIP. Valid values:
+        # 
+        # *   Creating
+        # *   Available
+        # *   InUse
+        # *   Deleting
         self.status = status
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -25783,10 +25864,15 @@ class DescribeHaVipsResponseBody(TeaModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # Details of the HAVIPs.
         self.ha_vips = ha_vips
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -30798,13 +30884,22 @@ class DescribeLoadBalancerListenMonitorRequest(TeaModel):
         start_time: str = None,
         vport: str = None,
     ):
+        # The end of the time range to query.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The ID of the ELB instance.
+        # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
+        # The network protocol, such as tcp or udp.
         self.proto = proto
+        # The beginning of the time range to query.
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # The virtual IP address (VIP) port of the ELB instance.
+        # 
         # This parameter is required.
         self.vport = vport
 
@@ -30869,26 +30964,47 @@ class DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData
         vip: str = None,
         vni: str = None,
     ):
+        # The number of active connections.
         self.act_conns = act_conns
+        # The business time.
         self.biz_time = biz_time
+        # The number of new connections.
         self.conns = conns
+        # The number of dropped connections.
         self.drop_conns = drop_conns
+        # The ID of the node to which the ELB instance belongs.
         self.ens_region_id = ens_region_id
+        # The number of inactive connections.
         self.in_act_conns = in_act_conns
+        # The inbound traffic.
         self.in_bytes = in_bytes
+        # The dropped inbound traffic.
         self.in_drop_bytes = in_drop_bytes
+        # The number of dropped inbound packets.
         self.in_drop_pkts = in_drop_pkts
+        # The number of inbound packets.
         self.in_pkts = in_pkts
+        # The number of unavailable servers that are attached to the monitored ELB instance.
         self.in_valid_rs_num = in_valid_rs_num
+        # The ID of the ELB instance.
         self.load_balancer_id = load_balancer_id
+        # The outbound traffic.
         self.out_bytes = out_bytes
+        # The dropped outbound traffic.
         self.out_drop_bytes = out_drop_bytes
+        # The number of dropped outbound packets.
         self.out_drop_pkts = out_drop_pkts
+        # The number of outbound packets.
         self.out_pkts = out_pkts
+        # The network protocol.
         self.proto = proto
+        # The VIP port of the ELB instance.
         self.vport = vport
+        # The number of available servers that are attached to the monitored ELB instance.
         self.valid_rs_num = valid_rs_num
+        # The VIP of the instance.
         self.vip = vip
+        # The ID of the tunnel.
         self.vni = vni
 
     def validate(self):
@@ -30997,6 +31113,7 @@ class DescribeLoadBalancerListenMonitorResponseBody(TeaModel):
         load_balancer_monitor_listen_data: List[DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData] = None,
         request_id: str = None,
     ):
+        # The TCP/UDP monitoring data of the ELB instance.
         self.load_balancer_monitor_listen_data = load_balancer_monitor_listen_data
         # Id of the request.
         self.request_id = request_id
@@ -31081,9 +31198,13 @@ class DescribeLoadBalancerListenersRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The ID of the ELB instance.
+        # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):
@@ -31126,13 +31247,32 @@ class DescribeLoadBalancerListenersResponseBodyListenersListener(TeaModel):
         protocol: str = None,
         status: str = None,
     ):
+        # The timestamp when the listener was created.
         self.create_time = create_time
+        # The description of the listener.
         self.description = description
+        # The listener port that is used for HTTP-to-HTTPS redirection.
         self.forward_port = forward_port
+        # Indicates whether HTTP-to-HTTPS redirection is enabled for the listener. Valid values:
+        # 
+        # *   **on**\
+        # *   **off**\
         self.listener_forward = listener_forward
+        # The listening port.
         self.listener_port = listener_port
+        # The ID of the ELB instance.
         self.load_balancer_id = load_balancer_id
+        # The network transmission protocol that is used by the listener.
+        # 
+        # *   **tcp**\
+        # *   **udp**\
+        # *   **http**\
+        # *   **https**\
         self.protocol = protocol
+        # The status of the listener. Valid values:
+        # 
+        # *   **running**\
+        # *   **stopped**\
         self.status = status
 
     def validate(self):
@@ -31227,10 +31367,15 @@ class DescribeLoadBalancerListenersResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The listeners of the ELB instance.
         self.listeners = listeners
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -34989,6 +35134,7 @@ class DescribeNetworkInterfacesRequest(TeaModel):
         self.ens_region_id = ens_region_id
         # The ID of the instance.
         self.instance_id = instance_id
+        # IPv6 addresses N of the ENI. You can specify multiple IPv6 addresses. Valid values of N: 1 to 100.
         self.ipv_6address = ipv_6address
         # The ID of the network.
         self.network_id = network_id
@@ -35014,7 +35160,7 @@ class DescribeNetworkInterfacesRequest(TeaModel):
         # 
         # This parameter is empty by default, which indicates that ENIs in all states are queried.
         self.status = status
-        # The type of the ENI. Valid Values:
+        # The type of the ENI. Valid values:
         # 
         # *   Primary: primary ENI.
         # *   Secondary: secondary ENI.
@@ -35113,6 +35259,7 @@ class DescribeNetworkInterfacesShrinkRequest(TeaModel):
         self.ens_region_id = ens_region_id
         # The ID of the instance.
         self.instance_id = instance_id
+        # IPv6 addresses N of the ENI. You can specify multiple IPv6 addresses. Valid values of N: 1 to 100.
         self.ipv_6address_shrink = ipv_6address_shrink
         # The ID of the network.
         self.network_id = network_id
@@ -35138,7 +35285,7 @@ class DescribeNetworkInterfacesShrinkRequest(TeaModel):
         # 
         # This parameter is empty by default, which indicates that ENIs in all states are queried.
         self.status = status
-        # The type of the ENI. Valid Values:
+        # The type of the ENI. Valid values:
         # 
         # *   Primary: primary ENI.
         # *   Secondary: secondary ENI.
@@ -35221,6 +35368,7 @@ class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceS
         self,
         ipv_6address: str = None,
     ):
+        # The IPv6 address of the ENI.
         self.ipv_6address = ipv_6address
 
     def validate(self):
@@ -35406,6 +35554,7 @@ class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceS
         self.ens_region_id = ens_region_id
         # The ID of the instance to which the ENI is bound.
         self.instance_id = instance_id
+        # The IPv6 addresses of the ENIs.
         self.ipv_6sets = ipv_6sets
         # The MAC address of the ENI.
         self.mac_address = mac_address
@@ -41867,13 +42016,21 @@ class DescribeServerLoadBalancerListenMonitorRequest(TeaModel):
         start_time: str = None,
         vport: str = None,
     ):
+        # The end of the time range to query. The maximum range between StartTime and EndTime is 24 hours.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The ID of the ELB instance.
+        # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
+        # The request protocol, such as http, https, or tcp.
         self.proto = proto
+        # The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format.
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # The virtual IP address (VIP) port, such as 80, 8080, or 443.
         self.vport = vport
 
     def validate(self):
@@ -41931,20 +42088,35 @@ class DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonit
         vni: int = None,
         vport: int = None,
     ):
+        # The total number of requests.
         self.acc = acc
+        # The business time of the log. Logs are collected every minute.
         self.biz_time = biz_time
+        # The ID of the node to which the ELB instance belongs.
         self.ens_region_id = ens_region_id
+        # The ID of the ELB instance.
         self.load_balancer_id = load_balancer_id
+        # The name of the ELB instance.
         self.load_balancer_name = load_balancer_name
+        # The specification of the ELB instance.
         self.load_balancer_spec = load_balancer_spec
+        # The request protocol, such as http, https, or tcp.
         self.proto = proto
+        # The number of requests with HTTP 2xx status code returned.
         self.reqs_2xx = reqs_2xx
+        # The number of requests with HTTP 3xx status code returned.
         self.reqs_3xx = reqs_3xx
+        # The number of requests with HTTP 4xx status code returned.
         self.reqs_4xx = reqs_4xx
+        # The number of requests with HTTP 5xx status code returned.
         self.reqs_5xx = reqs_5xx
+        # The average response time. Unit: milliseconds.
         self.rt_avg = rt_avg
+        # The VIP of the instance.
         self.vip = vip
+        # The ID of the tunnel.
         self.vni = vni
+        # The VIP port, such as 80, 8080, or 443.
         self.vport = vport
 
     def validate(self):
@@ -42029,8 +42201,9 @@ class DescribeServerLoadBalancerListenMonitorResponseBody(TeaModel):
         request_id: str = None,
         server_load_balancer_monitor_data: List[DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData] = None,
     ):
-        # Id of the request。
+        # The ID of the request.
         self.request_id = request_id
+        # The array of the monitoring data.
         self.server_load_balancer_monitor_data = server_load_balancer_monitor_data
 
     def validate(self):
@@ -42113,10 +42286,16 @@ class DescribeServerLoadBalancerMonitorRequest(TeaModel):
         load_balancer_id: str = None,
         start_time: str = None,
     ):
+        # The end of the time range to query. The maximum range between StartTime and EndTime is 24 hours.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The ID of the ELB instance.
+        # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
+        # The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format.
+        # 
         # This parameter is required.
         self.start_time = start_time
 
@@ -42165,18 +42344,31 @@ class DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData
         vip: str = None,
         vni: int = None,
     ):
+        # The total number of requests.
         self.acc = acc
+        # The business time of the log. Logs are collected every minute.
         self.biz_time = biz_time
+        # The ID of the node to which the ELB instance belongs.
         self.ens_region_id = ens_region_id
+        # The ID of the ELB instance.
         self.load_balancer_id = load_balancer_id
+        # The name of the ELB instance.
         self.load_balancer_name = load_balancer_name
+        # The specification of the ELB instance.
         self.load_balancer_spec = load_balancer_spec
+        # The number of requests with HTTP 2xx status code returned.
         self.reqs_2xx = reqs_2xx
+        # The number of requests with HTTP 3xx status code returned.
         self.reqs_3xx = reqs_3xx
+        # The number of requests with HTTP 4xx status code returned.
         self.reqs_4xx = reqs_4xx
+        # The number of requests with HTTP 5xx status code returned.
         self.reqs_5xx = reqs_5xx
+        # The average response time. Unit: milliseconds.
         self.rt_avg = rt_avg
+        # The virtual IP address (VIP) of the instance.
         self.vip = vip
+        # The ID of the tunnel.
         self.vni = vni
 
     def validate(self):
@@ -42253,8 +42445,9 @@ class DescribeServerLoadBalancerMonitorResponseBody(TeaModel):
         request_id: str = None,
         server_load_balancer_monitor_data: List[DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData] = None,
     ):
-        # Id of the request。
+        # The ID of the request.
         self.request_id = request_id
+        # The array of the monitoring data.
         self.server_load_balancer_monitor_data = server_load_balancer_monitor_data
 
     def validate(self):
@@ -42963,6 +43156,7 @@ class DescribeSnatTableEntriesResponseBodySnatTableEntries(TeaModel):
         standby_status: str = None,
         status: str = None,
     ):
+        # The timeout period for idle connections. Valid values: **1** to **86400**. Unit: seconds.
         self.idle_timeout = idle_timeout
         # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
@@ -44871,11 +45065,7 @@ class ExportImageRequest(TeaModel):
         self.ossbucket = ossbucket
         # The prefix of the object as which you want to store the image in the OSS bucket. The prefix must be 1 to 30 characters in length and can contain digits and letters.
         self.ossprefix = ossprefix
-        # The ID of the region.
-        # 
-        # Valid values:
-        # 
-        # *   cn-beijing
+        # The region ID.
         # 
         # This parameter is required.
         self.ossregion_id = ossregion_id
@@ -54827,10 +55017,10 @@ class RevokeSecurityGroupRequest(TeaModel):
     ):
         # The transport layer protocol. The value of this parameter is case-sensitive. Valid values:
         # 
-        # *   tcp: TCP.
-        # *   udp: UDP.
-        # *   icmp: ICMP.
-        # *   gre: GRE.
+        # *   tcp
+        # *   udp
+        # *   icmp
+        # *   gre
         # *   all: all protocols.
         # 
         # This parameter is required.
@@ -54838,7 +55028,7 @@ class RevokeSecurityGroupRequest(TeaModel):
         # The authorization policy. Valid values:
         # 
         # *   accept: allows access. This is the default value.
-        # *   drop: denies access and returns no responses.
+        # *   drop: denies access and does not return responses.
         self.policy = policy
         # The range of destination ports that correspond to the transport layer protocol for the security group rule. Valid values:
         # 
@@ -54849,7 +55039,7 @@ class RevokeSecurityGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.port_range = port_range
-        # The priority of security group rule N. Valid values: **1** to **100**. Default value: **1**.
+        # The priority of the security group rule. Valid values: **1** to **100**. Default value: **1**.
         self.priority = priority
         # The ID of the security group.
         # 
@@ -59276,7 +59466,7 @@ class TagResourcesRequest(TeaModel):
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The type of resource. Set the value to instance.
+        # The type of the resource. Set the value to instance.
         # 
         # This parameter is required.
         self.resource_type = resource_type
@@ -60182,6 +60372,15 @@ class UntagResourcesRequest(TeaModel):
         # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource.
+        # 
+        # Valid values:
+        # 
+        # *   instance
+        # *   eip
+        # *   disk
+        # *   network
+        # *   natgateway
+        # *   vswitch
         # 
         # This parameter is required.
         self.resource_type = resource_type
