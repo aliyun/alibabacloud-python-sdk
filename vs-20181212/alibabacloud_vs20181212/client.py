@@ -3538,6 +3538,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_rendering_instance_with_options_async(request, runtime)
 
+    def create_rendering_instance_gateway_with_options(
+        self,
+        request: vs_20181212_models.CreateRenderingInstanceGatewayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.CreateRenderingInstanceGatewayResponse:
+        """
+        @summary 创建自定义网关
+        
+        @param request: CreateRenderingInstanceGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRenderingInstanceGatewayResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gateway_instance_id):
+            query['GatewayInstanceId'] = request.gateway_instance_id
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRenderingInstanceGateway',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.CreateRenderingInstanceGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_rendering_instance_gateway_with_options_async(
+        self,
+        request: vs_20181212_models.CreateRenderingInstanceGatewayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.CreateRenderingInstanceGatewayResponse:
+        """
+        @summary 创建自定义网关
+        
+        @param request: CreateRenderingInstanceGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRenderingInstanceGatewayResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gateway_instance_id):
+            query['GatewayInstanceId'] = request.gateway_instance_id
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRenderingInstanceGateway',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.CreateRenderingInstanceGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_rendering_instance_gateway(
+        self,
+        request: vs_20181212_models.CreateRenderingInstanceGatewayRequest,
+    ) -> vs_20181212_models.CreateRenderingInstanceGatewayResponse:
+        """
+        @summary 创建自定义网关
+        
+        @param request: CreateRenderingInstanceGatewayRequest
+        @return: CreateRenderingInstanceGatewayResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_rendering_instance_gateway_with_options(request, runtime)
+
+    async def create_rendering_instance_gateway_async(
+        self,
+        request: vs_20181212_models.CreateRenderingInstanceGatewayRequest,
+    ) -> vs_20181212_models.CreateRenderingInstanceGatewayResponse:
+        """
+        @summary 创建自定义网关
+        
+        @param request: CreateRenderingInstanceGatewayRequest
+        @return: CreateRenderingInstanceGatewayResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_rendering_instance_gateway_with_options_async(request, runtime)
+
     def create_stream_snapshot_with_options(
         self,
         request: vs_20181212_models.CreateStreamSnapshotRequest,
@@ -4757,6 +4857,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_rendering_instance_configuration_with_options_async(request, runtime)
+
+    def delete_rendering_instance_gateway_with_options(
+        self,
+        request: vs_20181212_models.DeleteRenderingInstanceGatewayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.DeleteRenderingInstanceGatewayResponse:
+        """
+        @summary 删除自定义网关
+        
+        @param request: DeleteRenderingInstanceGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRenderingInstanceGatewayResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRenderingInstanceGateway',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.DeleteRenderingInstanceGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_rendering_instance_gateway_with_options_async(
+        self,
+        request: vs_20181212_models.DeleteRenderingInstanceGatewayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.DeleteRenderingInstanceGatewayResponse:
+        """
+        @summary 删除自定义网关
+        
+        @param request: DeleteRenderingInstanceGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRenderingInstanceGatewayResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRenderingInstanceGateway',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.DeleteRenderingInstanceGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_rendering_instance_gateway(
+        self,
+        request: vs_20181212_models.DeleteRenderingInstanceGatewayRequest,
+    ) -> vs_20181212_models.DeleteRenderingInstanceGatewayResponse:
+        """
+        @summary 删除自定义网关
+        
+        @param request: DeleteRenderingInstanceGatewayRequest
+        @return: DeleteRenderingInstanceGatewayResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_rendering_instance_gateway_with_options(request, runtime)
+
+    async def delete_rendering_instance_gateway_async(
+        self,
+        request: vs_20181212_models.DeleteRenderingInstanceGatewayRequest,
+    ) -> vs_20181212_models.DeleteRenderingInstanceGatewayResponse:
+        """
+        @summary 删除自定义网关
+        
+        @param request: DeleteRenderingInstanceGatewayRequest
+        @return: DeleteRenderingInstanceGatewayResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_rendering_instance_gateway_with_options_async(request, runtime)
 
     def delete_template_with_options(
         self,
@@ -11722,6 +11918,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_public_keys_with_options_async(request, runtime)
 
+    def list_rendering_instance_gateway_with_options(
+        self,
+        request: vs_20181212_models.ListRenderingInstanceGatewayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ListRenderingInstanceGatewayResponse:
+        """
+        @summary 查询自定义网关
+        
+        @param request: ListRenderingInstanceGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRenderingInstanceGatewayResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gateway_instance_id):
+            query['GatewayInstanceId'] = request.gateway_instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRenderingInstanceGateway',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ListRenderingInstanceGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_rendering_instance_gateway_with_options_async(
+        self,
+        request: vs_20181212_models.ListRenderingInstanceGatewayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ListRenderingInstanceGatewayResponse:
+        """
+        @summary 查询自定义网关
+        
+        @param request: ListRenderingInstanceGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRenderingInstanceGatewayResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gateway_instance_id):
+            query['GatewayInstanceId'] = request.gateway_instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRenderingInstanceGateway',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ListRenderingInstanceGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_rendering_instance_gateway(
+        self,
+        request: vs_20181212_models.ListRenderingInstanceGatewayRequest,
+    ) -> vs_20181212_models.ListRenderingInstanceGatewayResponse:
+        """
+        @summary 查询自定义网关
+        
+        @param request: ListRenderingInstanceGatewayRequest
+        @return: ListRenderingInstanceGatewayResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_rendering_instance_gateway_with_options(request, runtime)
+
+    async def list_rendering_instance_gateway_async(
+        self,
+        request: vs_20181212_models.ListRenderingInstanceGatewayRequest,
+    ) -> vs_20181212_models.ListRenderingInstanceGatewayResponse:
+        """
+        @summary 查询自定义网关
+        
+        @param request: ListRenderingInstanceGatewayRequest
+        @return: ListRenderingInstanceGatewayResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_rendering_instance_gateway_with_options_async(request, runtime)
+
     def list_rendering_instances_with_options(
         self,
         request: vs_20181212_models.ListRenderingInstancesRequest,
@@ -16770,6 +17074,8 @@ class Client(OpenApiClient):
             query['KeyGroup'] = request.key_group
         if not UtilClient.is_unset(request.key_name):
             query['KeyName'] = request.key_name
+        if not UtilClient.is_unset(request.key_type):
+            query['KeyType'] = request.key_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -16811,6 +17117,8 @@ class Client(OpenApiClient):
             query['KeyGroup'] = request.key_group
         if not UtilClient.is_unset(request.key_name):
             query['KeyName'] = request.key_name
+        if not UtilClient.is_unset(request.key_type):
+            query['KeyType'] = request.key_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

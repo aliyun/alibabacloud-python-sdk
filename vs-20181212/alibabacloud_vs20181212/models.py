@@ -5413,6 +5413,109 @@ class CreateRenderingInstanceResponse(TeaModel):
         return self
 
 
+class CreateRenderingInstanceGatewayRequest(TeaModel):
+    def __init__(
+        self,
+        gateway_instance_id: str = None,
+        rendering_instance_id: str = None,
+    ):
+        # This parameter is required.
+        self.gateway_instance_id = gateway_instance_id
+        # This parameter is required.
+        self.rendering_instance_id = rendering_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gateway_instance_id is not None:
+            result['GatewayInstanceId'] = self.gateway_instance_id
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GatewayInstanceId') is not None:
+            self.gateway_instance_id = m.get('GatewayInstanceId')
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        return self
+
+
+class CreateRenderingInstanceGatewayResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateRenderingInstanceGatewayResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateRenderingInstanceGatewayResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateRenderingInstanceGatewayResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateStreamSnapshotRequest(TeaModel):
     def __init__(
         self,
@@ -6886,6 +6989,101 @@ class DeleteRenderingInstanceConfigurationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteRenderingInstanceConfigurationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteRenderingInstanceGatewayRequest(TeaModel):
+    def __init__(
+        self,
+        rendering_instance_id: str = None,
+    ):
+        self.rendering_instance_id = rendering_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        return self
+
+
+class DeleteRenderingInstanceGatewayResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteRenderingInstanceGatewayResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteRenderingInstanceGatewayResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteRenderingInstanceGatewayResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -21622,11 +21820,13 @@ class ListPublicKeysRequest(TeaModel):
         self,
         key_group: str = None,
         key_name: str = None,
+        key_type: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
         self.key_group = key_group
         self.key_name = key_name
+        self.key_type = key_type
         self.page_number = page_number
         self.page_size = page_size
 
@@ -21643,6 +21843,8 @@ class ListPublicKeysRequest(TeaModel):
             result['KeyGroup'] = self.key_group
         if self.key_name is not None:
             result['KeyName'] = self.key_name
+        if self.key_type is not None:
+            result['KeyType'] = self.key_type
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -21655,6 +21857,8 @@ class ListPublicKeysRequest(TeaModel):
             self.key_group = m.get('KeyGroup')
         if m.get('KeyName') is not None:
             self.key_name = m.get('KeyName')
+        if m.get('KeyType') is not None:
+            self.key_type = m.get('KeyType')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -21669,12 +21873,14 @@ class ListPublicKeysResponseBodyPublicKeys(TeaModel):
         description: str = None,
         key_group: str = None,
         key_name: str = None,
+        key_type: str = None,
         upload_time: str = None,
     ):
         self.content = content
         self.description = description
         self.key_group = key_group
         self.key_name = key_name
+        self.key_type = key_type
         self.upload_time = upload_time
 
     def validate(self):
@@ -21694,6 +21900,8 @@ class ListPublicKeysResponseBodyPublicKeys(TeaModel):
             result['KeyGroup'] = self.key_group
         if self.key_name is not None:
             result['KeyName'] = self.key_name
+        if self.key_type is not None:
+            result['KeyType'] = self.key_type
         if self.upload_time is not None:
             result['UploadTime'] = self.upload_time
         return result
@@ -21708,6 +21916,8 @@ class ListPublicKeysResponseBodyPublicKeys(TeaModel):
             self.key_group = m.get('KeyGroup')
         if m.get('KeyName') is not None:
             self.key_name = m.get('KeyName')
+        if m.get('KeyType') is not None:
+            self.key_type = m.get('KeyType')
         if m.get('UploadTime') is not None:
             self.upload_time = m.get('UploadTime')
         return self
@@ -21809,6 +22019,202 @@ class ListPublicKeysResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListPublicKeysResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListRenderingInstanceGatewayRequest(TeaModel):
+    def __init__(
+        self,
+        gateway_instance_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        rendering_instance_id: str = None,
+    ):
+        self.gateway_instance_id = gateway_instance_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.rendering_instance_id = rendering_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gateway_instance_id is not None:
+            result['GatewayInstanceId'] = self.gateway_instance_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GatewayInstanceId') is not None:
+            self.gateway_instance_id = m.get('GatewayInstanceId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        return self
+
+
+class ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos(TeaModel):
+    def __init__(
+        self,
+        creation_time: str = None,
+        gateway_instance_id: str = None,
+        rendering_instance_id: str = None,
+        status: str = None,
+        update_time: str = None,
+    ):
+        self.creation_time = creation_time
+        self.gateway_instance_id = gateway_instance_id
+        self.rendering_instance_id = rendering_instance_id
+        self.status = status
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.gateway_instance_id is not None:
+            result['GatewayInstanceId'] = self.gateway_instance_id
+        if self.rendering_instance_id is not None:
+            result['RenderingInstanceId'] = self.rendering_instance_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('GatewayInstanceId') is not None:
+            self.gateway_instance_id = m.get('GatewayInstanceId')
+        if m.get('RenderingInstanceId') is not None:
+            self.rendering_instance_id = m.get('RenderingInstanceId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListRenderingInstanceGatewayResponseBody(TeaModel):
+    def __init__(
+        self,
+        gateway_configuration_infos: List[ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos] = None,
+        page_number: str = None,
+        page_size: str = None,
+        request_id: str = None,
+        total_count: str = None,
+    ):
+        self.gateway_configuration_infos = gateway_configuration_infos
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.gateway_configuration_infos:
+            for k in self.gateway_configuration_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['GatewayConfigurationInfos'] = []
+        if self.gateway_configuration_infos is not None:
+            for k in self.gateway_configuration_infos:
+                result['GatewayConfigurationInfos'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.gateway_configuration_infos = []
+        if m.get('GatewayConfigurationInfos') is not None:
+            for k in m.get('GatewayConfigurationInfos'):
+                temp_model = ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos()
+                self.gateway_configuration_infos.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListRenderingInstanceGatewayResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListRenderingInstanceGatewayResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListRenderingInstanceGatewayResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -22034,9 +22440,11 @@ class ManageLoginRequest(TeaModel):
 class ManageLoginResponseBodyLoginInfo(TeaModel):
     def __init__(
         self,
+        adb_login_port: int = None,
         login_hostname: str = None,
         login_port: int = None,
     ):
+        self.adb_login_port = adb_login_port
         self.login_hostname = login_hostname
         self.login_port = login_port
 
@@ -22049,6 +22457,8 @@ class ManageLoginResponseBodyLoginInfo(TeaModel):
             return _map
 
         result = dict()
+        if self.adb_login_port is not None:
+            result['AdbLoginPort'] = self.adb_login_port
         if self.login_hostname is not None:
             result['LoginHostname'] = self.login_hostname
         if self.login_port is not None:
@@ -22057,6 +22467,8 @@ class ManageLoginResponseBodyLoginInfo(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdbLoginPort') is not None:
+            self.adb_login_port = m.get('AdbLoginPort')
         if m.get('LoginHostname') is not None:
             self.login_hostname = m.get('LoginHostname')
         if m.get('LoginPort') is not None:
@@ -27886,6 +28298,7 @@ class UploadPublicKeyRequest(TeaModel):
         description: str = None,
         key_group: str = None,
         key_name: str = None,
+        key_type: str = None,
     ):
         # This parameter is required.
         self.content = content
@@ -27893,6 +28306,7 @@ class UploadPublicKeyRequest(TeaModel):
         self.key_group = key_group
         # This parameter is required.
         self.key_name = key_name
+        self.key_type = key_type
 
     def validate(self):
         pass
@@ -27911,6 +28325,8 @@ class UploadPublicKeyRequest(TeaModel):
             result['KeyGroup'] = self.key_group
         if self.key_name is not None:
             result['KeyName'] = self.key_name
+        if self.key_type is not None:
+            result['KeyType'] = self.key_type
         return result
 
     def from_map(self, m: dict = None):
@@ -27923,6 +28339,8 @@ class UploadPublicKeyRequest(TeaModel):
             self.key_group = m.get('KeyGroup')
         if m.get('KeyName') is not None:
             self.key_name = m.get('KeyName')
+        if m.get('KeyType') is not None:
+            self.key_type = m.get('KeyType')
         return self
 
 

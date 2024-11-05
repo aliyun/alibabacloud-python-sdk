@@ -1,3 +1,13 @@
+2024-11-05 Version: 2.1.0
+- Support API CreateRenderingInstanceGateway.
+- Support API DeleteRenderingInstanceGateway.
+- Support API ListRenderingInstanceGateway.
+- Update API ListPublicKeys: add param KeyType.
+- Update API ListPublicKeys: update response param.
+- Update API ManageLogin: update response param.
+- Update API UploadPublicKey: add param KeyType.
+
+
 2024-07-05 Version: 2.0.0
 - Support API CreateRenderingInstance.
 - Support API DeleteCloudApp.
