@@ -6610,6 +6610,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_cdn_sub_list_with_options_async(runtime)
 
+    def describe_cdn_types_with_options(
+        self,
+        request: cdn_20180510_models.DescribeCdnTypesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeCdnTypesResponse:
+        """
+        @param request: DescribeCdnTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCdnTypesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnTypes',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeCdnTypesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cdn_types_with_options_async(
+        self,
+        request: cdn_20180510_models.DescribeCdnTypesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeCdnTypesResponse:
+        """
+        @param request: DescribeCdnTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCdnTypesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnTypes',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeCdnTypesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cdn_types(
+        self,
+        request: cdn_20180510_models.DescribeCdnTypesRequest,
+    ) -> cdn_20180510_models.DescribeCdnTypesResponse:
+        """
+        @param request: DescribeCdnTypesRequest
+        @return: DescribeCdnTypesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cdn_types_with_options(request, runtime)
+
+    async def describe_cdn_types_async(
+        self,
+        request: cdn_20180510_models.DescribeCdnTypesRequest,
+    ) -> cdn_20180510_models.DescribeCdnTypesResponse:
+        """
+        @param request: DescribeCdnTypesRequest
+        @return: DescribeCdnTypesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cdn_types_with_options_async(request, runtime)
+
     def describe_cdn_user_bill_history_with_options(
         self,
         request: cdn_20180510_models.DescribeCdnUserBillHistoryRequest,
@@ -15616,6 +15712,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_top_domains_by_flow_with_options_async(request, runtime)
 
+    def describe_user_cdn_status_with_options(
+        self,
+        request: cdn_20180510_models.DescribeUserCdnStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeUserCdnStatusResponse:
+        """
+        @param request: DescribeUserCdnStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserCdnStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserCdnStatus',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeUserCdnStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_user_cdn_status_with_options_async(
+        self,
+        request: cdn_20180510_models.DescribeUserCdnStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeUserCdnStatusResponse:
+        """
+        @param request: DescribeUserCdnStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserCdnStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserCdnStatus',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeUserCdnStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_user_cdn_status(
+        self,
+        request: cdn_20180510_models.DescribeUserCdnStatusRequest,
+    ) -> cdn_20180510_models.DescribeUserCdnStatusResponse:
+        """
+        @param request: DescribeUserCdnStatusRequest
+        @return: DescribeUserCdnStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_user_cdn_status_with_options(request, runtime)
+
+    async def describe_user_cdn_status_async(
+        self,
+        request: cdn_20180510_models.DescribeUserCdnStatusRequest,
+    ) -> cdn_20180510_models.DescribeUserCdnStatusResponse:
+        """
+        @param request: DescribeUserCdnStatusRequest
+        @return: DescribeUserCdnStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_user_cdn_status_with_options_async(request, runtime)
+
     def describe_user_certificate_expire_count_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -17611,6 +17799,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_cdn_domain_schdm_by_property_with_options_async(request, runtime)
+
+    def modify_cdn_service_with_options(
+        self,
+        request: cdn_20180510_models.ModifyCdnServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.ModifyCdnServiceResponse:
+        """
+        @summary Changes the metering method of Alibaba Cloud CDN.
+        
+        @param request: ModifyCdnServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCdnServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.internet_charge_type):
+            query['InternetChargeType'] = request.internet_charge_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCdnService',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.ModifyCdnServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_cdn_service_with_options_async(
+        self,
+        request: cdn_20180510_models.ModifyCdnServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.ModifyCdnServiceResponse:
+        """
+        @summary Changes the metering method of Alibaba Cloud CDN.
+        
+        @param request: ModifyCdnServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCdnServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.internet_charge_type):
+            query['InternetChargeType'] = request.internet_charge_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCdnService',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.ModifyCdnServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_cdn_service(
+        self,
+        request: cdn_20180510_models.ModifyCdnServiceRequest,
+    ) -> cdn_20180510_models.ModifyCdnServiceResponse:
+        """
+        @summary Changes the metering method of Alibaba Cloud CDN.
+        
+        @param request: ModifyCdnServiceRequest
+        @return: ModifyCdnServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_cdn_service_with_options(request, runtime)
+
+    async def modify_cdn_service_async(
+        self,
+        request: cdn_20180510_models.ModifyCdnServiceRequest,
+    ) -> cdn_20180510_models.ModifyCdnServiceResponse:
+        """
+        @summary Changes the metering method of Alibaba Cloud CDN.
+        
+        @param request: ModifyCdnServiceRequest
+        @return: ModifyCdnServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_cdn_service_with_options_async(request, runtime)
 
     def modify_realtime_log_delivery_with_options(
         self,

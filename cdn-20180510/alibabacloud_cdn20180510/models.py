@@ -9996,6 +9996,189 @@ class DescribeCdnSubListResponse(TeaModel):
         return self
 
 
+class DescribeCdnTypesRequest(TeaModel):
+    def __init__(
+        self,
+        owner_account: str = None,
+        owner_id: int = None,
+        security_token: str = None,
+    ):
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DescribeCdnTypesResponseBodyCdnTypesCdnType(TeaModel):
+    def __init__(
+        self,
+        desc: str = None,
+        type: str = None,
+    ):
+        self.desc = desc
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desc is not None:
+            result['Desc'] = self.desc
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Desc') is not None:
+            self.desc = m.get('Desc')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeCdnTypesResponseBodyCdnTypes(TeaModel):
+    def __init__(
+        self,
+        cdn_type: List[DescribeCdnTypesResponseBodyCdnTypesCdnType] = None,
+    ):
+        self.cdn_type = cdn_type
+
+    def validate(self):
+        if self.cdn_type:
+            for k in self.cdn_type:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CdnType'] = []
+        if self.cdn_type is not None:
+            for k in self.cdn_type:
+                result['CdnType'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cdn_type = []
+        if m.get('CdnType') is not None:
+            for k in m.get('CdnType'):
+                temp_model = DescribeCdnTypesResponseBodyCdnTypesCdnType()
+                self.cdn_type.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeCdnTypesResponseBody(TeaModel):
+    def __init__(
+        self,
+        cdn_types: DescribeCdnTypesResponseBodyCdnTypes = None,
+        request_id: str = None,
+    ):
+        self.cdn_types = cdn_types
+        self.request_id = request_id
+
+    def validate(self):
+        if self.cdn_types:
+            self.cdn_types.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cdn_types is not None:
+            result['CdnTypes'] = self.cdn_types.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CdnTypes') is not None:
+            temp_model = DescribeCdnTypesResponseBodyCdnTypes()
+            self.cdn_types = temp_model.from_map(m['CdnTypes'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeCdnTypesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCdnTypesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCdnTypesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeCdnUserBillHistoryRequest(TeaModel):
     def __init__(
         self,
@@ -27832,6 +28015,131 @@ class DescribeTopDomainsByFlowResponse(TeaModel):
         return self
 
 
+class DescribeUserCdnStatusRequest(TeaModel):
+    def __init__(
+        self,
+        owner_id: int = None,
+        security_token: str = None,
+    ):
+        self.owner_id = owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DescribeUserCdnStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        in_debt: bool = None,
+        in_debt_overdue: bool = None,
+        on_service: bool = None,
+        request_id: str = None,
+    ):
+        self.enabled = enabled
+        self.in_debt = in_debt
+        self.in_debt_overdue = in_debt_overdue
+        self.on_service = on_service
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.in_debt is not None:
+            result['InDebt'] = self.in_debt
+        if self.in_debt_overdue is not None:
+            result['InDebtOverdue'] = self.in_debt_overdue
+        if self.on_service is not None:
+            result['OnService'] = self.on_service
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('InDebt') is not None:
+            self.in_debt = m.get('InDebt')
+        if m.get('InDebtOverdue') is not None:
+            self.in_debt_overdue = m.get('InDebtOverdue')
+        if m.get('OnService') is not None:
+            self.on_service = m.get('OnService')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeUserCdnStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeUserCdnStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeUserCdnStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeUserCertificateExpireCountResponseBody(TeaModel):
     def __init__(
         self,
@@ -31332,6 +31640,120 @@ class ModifyCdnDomainSchdmByPropertyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyCdnDomainSchdmByPropertyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyCdnServiceRequest(TeaModel):
+    def __init__(
+        self,
+        internet_charge_type: str = None,
+        owner_id: int = None,
+        security_token: str = None,
+    ):
+        # The new metering method for Alibaba Cloud CDN. Valid values:
+        # 
+        # *   **PayByTraffic**: pay-by-data-transfer
+        # *   **PayByBandwidth**: pay-by-bandwidth
+        # 
+        # This parameter is required.
+        self.internet_charge_type = internet_charge_type
+        self.owner_id = owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.internet_charge_type is not None:
+            result['InternetChargeType'] = self.internet_charge_type
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InternetChargeType') is not None:
+            self.internet_charge_type = m.get('InternetChargeType')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class ModifyCdnServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyCdnServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyCdnServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyCdnServiceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
