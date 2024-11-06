@@ -437,6 +437,265 @@ class AddRecordTemplateResponse(TeaModel):
         return self
 
 
+class CreateAppLayoutRequestLayoutPanes(TeaModel):
+    def __init__(
+        self,
+        height: float = None,
+        pane_id: int = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+        zorder: int = None,
+    ):
+        self.height = height
+        self.pane_id = pane_id
+        self.width = width
+        self.x = x
+        self.y = y
+        self.zorder = zorder
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.pane_id is not None:
+            result['PaneId'] = self.pane_id
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        if self.zorder is not None:
+            result['ZOrder'] = self.zorder
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('PaneId') is not None:
+            self.pane_id = m.get('PaneId')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        if m.get('ZOrder') is not None:
+            self.zorder = m.get('ZOrder')
+        return self
+
+
+class CreateAppLayoutRequestLayout(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        panes: List[CreateAppLayoutRequestLayoutPanes] = None,
+    ):
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.panes = panes
+
+    def validate(self):
+        if self.panes:
+            for k in self.panes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        result['Panes'] = []
+        if self.panes is not None:
+            for k in self.panes:
+                result['Panes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.panes = []
+        if m.get('Panes') is not None:
+            for k in m.get('Panes'):
+                temp_model = CreateAppLayoutRequestLayoutPanes()
+                self.panes.append(temp_model.from_map(k))
+        return self
+
+
+class CreateAppLayoutRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        client_token: str = None,
+        layout: CreateAppLayoutRequestLayout = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.client_token = client_token
+        # This parameter is required.
+        self.layout = layout
+
+    def validate(self):
+        if self.layout:
+            self.layout.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.layout is not None:
+            result['Layout'] = self.layout.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Layout') is not None:
+            temp_model = CreateAppLayoutRequestLayout()
+            self.layout = temp_model.from_map(m['Layout'])
+        return self
+
+
+class CreateAppLayoutShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        client_token: str = None,
+        layout_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.client_token = client_token
+        # This parameter is required.
+        self.layout_shrink = layout_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.layout_shrink is not None:
+            result['Layout'] = self.layout_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Layout') is not None:
+            self.layout_shrink = m.get('Layout')
+        return self
+
+
+class CreateAppLayoutResponseBody(TeaModel):
+    def __init__(
+        self,
+        layout_id: str = None,
+        request_id: str = None,
+    ):
+        self.layout_id = layout_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.layout_id is not None:
+            result['LayoutId'] = self.layout_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LayoutId') is not None:
+            self.layout_id = m.get('LayoutId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateAppLayoutResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAppLayoutResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAppLayoutResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateAppRecordTemplateRequestRecordTemplate(TeaModel):
     def __init__(
         self,
@@ -1346,6 +1605,185 @@ class CreateMPULayoutResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateMPULayoutResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteAppLayoutRequestLayout(TeaModel):
+    def __init__(
+        self,
+        layout_id: str = None,
+    ):
+        # This parameter is required.
+        self.layout_id = layout_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.layout_id is not None:
+            result['LayoutId'] = self.layout_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LayoutId') is not None:
+            self.layout_id = m.get('LayoutId')
+        return self
+
+
+class DeleteAppLayoutRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        client_token: str = None,
+        layout: DeleteAppLayoutRequestLayout = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.client_token = client_token
+        self.layout = layout
+
+    def validate(self):
+        if self.layout:
+            self.layout.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.layout is not None:
+            result['Layout'] = self.layout.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Layout') is not None:
+            temp_model = DeleteAppLayoutRequestLayout()
+            self.layout = temp_model.from_map(m['Layout'])
+        return self
+
+
+class DeleteAppLayoutShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        client_token: str = None,
+        layout_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.client_token = client_token
+        self.layout_shrink = layout_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.layout_shrink is not None:
+            result['Layout'] = self.layout_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Layout') is not None:
+            self.layout_shrink = m.get('Layout')
+        return self
+
+
+class DeleteAppLayoutResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteAppLayoutResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAppLayoutResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAppLayoutResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15592,6 +16030,271 @@ class ModifyAppCallbackStatusResponse(TeaModel):
         return self
 
 
+class ModifyAppLayoutRequestLayoutPanes(TeaModel):
+    def __init__(
+        self,
+        height: float = None,
+        pane_id: int = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+        zorder: int = None,
+    ):
+        self.height = height
+        self.pane_id = pane_id
+        self.width = width
+        self.x = x
+        self.y = y
+        self.zorder = zorder
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.pane_id is not None:
+            result['PaneId'] = self.pane_id
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        if self.zorder is not None:
+            result['ZOrder'] = self.zorder
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('PaneId') is not None:
+            self.pane_id = m.get('PaneId')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        if m.get('ZOrder') is not None:
+            self.zorder = m.get('ZOrder')
+        return self
+
+
+class ModifyAppLayoutRequestLayout(TeaModel):
+    def __init__(
+        self,
+        layout_id: str = None,
+        name: str = None,
+        panes: List[ModifyAppLayoutRequestLayoutPanes] = None,
+    ):
+        # This parameter is required.
+        self.layout_id = layout_id
+        # This parameter is required.
+        self.name = name
+        self.panes = panes
+
+    def validate(self):
+        if self.panes:
+            for k in self.panes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.layout_id is not None:
+            result['LayoutId'] = self.layout_id
+        if self.name is not None:
+            result['Name'] = self.name
+        result['Panes'] = []
+        if self.panes is not None:
+            for k in self.panes:
+                result['Panes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LayoutId') is not None:
+            self.layout_id = m.get('LayoutId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.panes = []
+        if m.get('Panes') is not None:
+            for k in m.get('Panes'):
+                temp_model = ModifyAppLayoutRequestLayoutPanes()
+                self.panes.append(temp_model.from_map(k))
+        return self
+
+
+class ModifyAppLayoutRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        client_token: str = None,
+        layout: ModifyAppLayoutRequestLayout = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.client_token = client_token
+        # This parameter is required.
+        self.layout = layout
+
+    def validate(self):
+        if self.layout:
+            self.layout.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.layout is not None:
+            result['Layout'] = self.layout.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Layout') is not None:
+            temp_model = ModifyAppLayoutRequestLayout()
+            self.layout = temp_model.from_map(m['Layout'])
+        return self
+
+
+class ModifyAppLayoutShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        client_token: str = None,
+        layout_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.client_token = client_token
+        # This parameter is required.
+        self.layout_shrink = layout_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.layout_shrink is not None:
+            result['Layout'] = self.layout_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Layout') is not None:
+            self.layout_shrink = m.get('Layout')
+        return self
+
+
+class ModifyAppLayoutResponseBody(TeaModel):
+    def __init__(
+        self,
+        layout_id: str = None,
+        request_id: str = None,
+    ):
+        self.layout_id = layout_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.layout_id is not None:
+            result['LayoutId'] = self.layout_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LayoutId') is not None:
+            self.layout_id = m.get('LayoutId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyAppLayoutResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyAppLayoutResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyAppLayoutResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyAppLiveStreamStatusRequest(TeaModel):
     def __init__(
         self,
@@ -17209,6 +17912,80 @@ class StartCategoryCallbackResponse(TeaModel):
         return self
 
 
+class StartCloudRecordRequestBackgrounds(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        background_crop_mode: int = None,
+        height: float = None,
+        layer: int = None,
+        url: str = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        self.background_crop_mode = background_crop_mode
+        # This parameter is required.
+        self.height = height
+        self.layer = layer
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.width = width
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.background_crop_mode is not None:
+            result['BackgroundCropMode'] = self.background_crop_mode
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('BackgroundCropMode') is not None:
+            self.background_crop_mode = m.get('BackgroundCropMode')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
 class StartCloudRecordRequestClockWidgetsBoxColor(TeaModel):
     def __init__(
         self,
@@ -17793,6 +18570,45 @@ class StartCloudRecordRequestPanes(TeaModel):
         return self
 
 
+class StartCloudRecordRequestRegionColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
 class StartCloudRecordRequestStorageConfig(TeaModel):
     def __init__(
         self,
@@ -18042,11 +18858,13 @@ class StartCloudRecordRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        backgrounds: List[StartCloudRecordRequestBackgrounds] = None,
         channel_id: str = None,
         clock_widgets: List[StartCloudRecordRequestClockWidgets] = None,
         crop_mode: int = None,
         images: List[StartCloudRecordRequestImages] = None,
         panes: List[StartCloudRecordRequestPanes] = None,
+        region_color: StartCloudRecordRequestRegionColor = None,
         storage_config: StartCloudRecordRequestStorageConfig = None,
         task_id: str = None,
         template_id: str = None,
@@ -18056,6 +18874,7 @@ class StartCloudRecordRequest(TeaModel):
         # 
         # This parameter is required.
         self.app_id = app_id
+        self.backgrounds = backgrounds
         # channelName
         # 
         # This parameter is required.
@@ -18065,6 +18884,7 @@ class StartCloudRecordRequest(TeaModel):
         self.images = images
         # panes
         self.panes = panes
+        self.region_color = region_color
         # storageConfig
         # 
         # This parameter is required.
@@ -18078,6 +18898,10 @@ class StartCloudRecordRequest(TeaModel):
         self.texts = texts
 
     def validate(self):
+        if self.backgrounds:
+            for k in self.backgrounds:
+                if k:
+                    k.validate()
         if self.clock_widgets:
             for k in self.clock_widgets:
                 if k:
@@ -18090,6 +18914,8 @@ class StartCloudRecordRequest(TeaModel):
             for k in self.panes:
                 if k:
                     k.validate()
+        if self.region_color:
+            self.region_color.validate()
         if self.storage_config:
             self.storage_config.validate()
         if self.texts:
@@ -18105,6 +18931,10 @@ class StartCloudRecordRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        result['Backgrounds'] = []
+        if self.backgrounds is not None:
+            for k in self.backgrounds:
+                result['Backgrounds'].append(k.to_map() if k else None)
         if self.channel_id is not None:
             result['ChannelId'] = self.channel_id
         result['ClockWidgets'] = []
@@ -18121,6 +18951,8 @@ class StartCloudRecordRequest(TeaModel):
         if self.panes is not None:
             for k in self.panes:
                 result['Panes'].append(k.to_map() if k else None)
+        if self.region_color is not None:
+            result['RegionColor'] = self.region_color.to_map()
         if self.storage_config is not None:
             result['StorageConfig'] = self.storage_config.to_map()
         if self.task_id is not None:
@@ -18137,6 +18969,11 @@ class StartCloudRecordRequest(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        self.backgrounds = []
+        if m.get('Backgrounds') is not None:
+            for k in m.get('Backgrounds'):
+                temp_model = StartCloudRecordRequestBackgrounds()
+                self.backgrounds.append(temp_model.from_map(k))
         if m.get('ChannelId') is not None:
             self.channel_id = m.get('ChannelId')
         self.clock_widgets = []
@@ -18156,6 +18993,9 @@ class StartCloudRecordRequest(TeaModel):
             for k in m.get('Panes'):
                 temp_model = StartCloudRecordRequestPanes()
                 self.panes.append(temp_model.from_map(k))
+        if m.get('RegionColor') is not None:
+            temp_model = StartCloudRecordRequestRegionColor()
+            self.region_color = temp_model.from_map(m['RegionColor'])
         if m.get('StorageConfig') is not None:
             temp_model = StartCloudRecordRequestStorageConfig()
             self.storage_config = temp_model.from_map(m['StorageConfig'])
@@ -19460,6 +20300,80 @@ class StartRecordTaskResponse(TeaModel):
         return self
 
 
+class StartStreamingOutRequestBackgrounds(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        background_crop_mode: int = None,
+        height: float = None,
+        layer: int = None,
+        url: str = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        self.background_crop_mode = background_crop_mode
+        # This parameter is required.
+        self.height = height
+        self.layer = layer
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.width = width
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.background_crop_mode is not None:
+            result['BackgroundCropMode'] = self.background_crop_mode
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('BackgroundCropMode') is not None:
+            self.background_crop_mode = m.get('BackgroundCropMode')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
 class StartStreamingOutRequestClockWidgetsBoxColor(TeaModel):
     def __init__(
         self,
@@ -20040,6 +20954,45 @@ class StartStreamingOutRequestPanes(TeaModel):
         return self
 
 
+class StartStreamingOutRequestRegionColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
 class StartStreamingOutRequestTextsBoxColor(TeaModel):
     def __init__(
         self,
@@ -20223,11 +21176,13 @@ class StartStreamingOutRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        backgrounds: List[StartStreamingOutRequestBackgrounds] = None,
         channel_id: str = None,
         clock_widgets: List[StartStreamingOutRequestClockWidgets] = None,
         crop_mode: int = None,
         images: List[StartStreamingOutRequestImages] = None,
         panes: List[StartStreamingOutRequestPanes] = None,
+        region_color: StartStreamingOutRequestRegionColor = None,
         task_id: str = None,
         template_id: str = None,
         texts: List[StartStreamingOutRequestTexts] = None,
@@ -20235,12 +21190,14 @@ class StartStreamingOutRequest(TeaModel):
     ):
         # This parameter is required.
         self.app_id = app_id
+        self.backgrounds = backgrounds
         # This parameter is required.
         self.channel_id = channel_id
         self.clock_widgets = clock_widgets
         self.crop_mode = crop_mode
         self.images = images
         self.panes = panes
+        self.region_color = region_color
         self.task_id = task_id
         # This parameter is required.
         self.template_id = template_id
@@ -20249,6 +21206,10 @@ class StartStreamingOutRequest(TeaModel):
         self.url = url
 
     def validate(self):
+        if self.backgrounds:
+            for k in self.backgrounds:
+                if k:
+                    k.validate()
         if self.clock_widgets:
             for k in self.clock_widgets:
                 if k:
@@ -20261,6 +21222,8 @@ class StartStreamingOutRequest(TeaModel):
             for k in self.panes:
                 if k:
                     k.validate()
+        if self.region_color:
+            self.region_color.validate()
         if self.texts:
             for k in self.texts:
                 if k:
@@ -20274,6 +21237,10 @@ class StartStreamingOutRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        result['Backgrounds'] = []
+        if self.backgrounds is not None:
+            for k in self.backgrounds:
+                result['Backgrounds'].append(k.to_map() if k else None)
         if self.channel_id is not None:
             result['ChannelId'] = self.channel_id
         result['ClockWidgets'] = []
@@ -20290,6 +21257,8 @@ class StartStreamingOutRequest(TeaModel):
         if self.panes is not None:
             for k in self.panes:
                 result['Panes'].append(k.to_map() if k else None)
+        if self.region_color is not None:
+            result['RegionColor'] = self.region_color.to_map()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         if self.template_id is not None:
@@ -20306,6 +21275,11 @@ class StartStreamingOutRequest(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        self.backgrounds = []
+        if m.get('Backgrounds') is not None:
+            for k in m.get('Backgrounds'):
+                temp_model = StartStreamingOutRequestBackgrounds()
+                self.backgrounds.append(temp_model.from_map(k))
         if m.get('ChannelId') is not None:
             self.channel_id = m.get('ChannelId')
         self.clock_widgets = []
@@ -20325,6 +21299,9 @@ class StartStreamingOutRequest(TeaModel):
             for k in m.get('Panes'):
                 temp_model = StartStreamingOutRequestPanes()
                 self.panes.append(temp_model.from_map(k))
+        if m.get('RegionColor') is not None:
+            temp_model = StartStreamingOutRequestRegionColor()
+            self.region_color = temp_model.from_map(m['RegionColor'])
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         if m.get('TemplateId') is not None:
@@ -21281,6 +22258,80 @@ class UpdateAutoLiveStreamRuleResponse(TeaModel):
         return self
 
 
+class UpdateCloudRecordRequestBackgrounds(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        background_crop_mode: int = None,
+        height: float = None,
+        layer: int = None,
+        url: str = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        self.background_crop_mode = background_crop_mode
+        # This parameter is required.
+        self.height = height
+        self.layer = layer
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.width = width
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.background_crop_mode is not None:
+            result['BackgroundCropMode'] = self.background_crop_mode
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('BackgroundCropMode') is not None:
+            self.background_crop_mode = m.get('BackgroundCropMode')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
 class UpdateCloudRecordRequestClockWidgetsBoxColor(TeaModel):
     def __init__(
         self,
@@ -22044,6 +23095,7 @@ class UpdateCloudRecordRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        backgrounds: List[UpdateCloudRecordRequestBackgrounds] = None,
         channel_id: str = None,
         clock_widgets: List[UpdateCloudRecordRequestClockWidgets] = None,
         images: List[UpdateCloudRecordRequestImages] = None,
@@ -22054,6 +23106,7 @@ class UpdateCloudRecordRequest(TeaModel):
     ):
         # This parameter is required.
         self.app_id = app_id
+        self.backgrounds = backgrounds
         # This parameter is required.
         self.channel_id = channel_id
         self.clock_widgets = clock_widgets
@@ -22066,6 +23119,10 @@ class UpdateCloudRecordRequest(TeaModel):
         self.texts = texts
 
     def validate(self):
+        if self.backgrounds:
+            for k in self.backgrounds:
+                if k:
+                    k.validate()
         if self.clock_widgets:
             for k in self.clock_widgets:
                 if k:
@@ -22091,6 +23148,10 @@ class UpdateCloudRecordRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        result['Backgrounds'] = []
+        if self.backgrounds is not None:
+            for k in self.backgrounds:
+                result['Backgrounds'].append(k.to_map() if k else None)
         if self.channel_id is not None:
             result['ChannelId'] = self.channel_id
         result['ClockWidgets'] = []
@@ -22119,6 +23180,11 @@ class UpdateCloudRecordRequest(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        self.backgrounds = []
+        if m.get('Backgrounds') is not None:
+            for k in m.get('Backgrounds'):
+                temp_model = UpdateCloudRecordRequestBackgrounds()
+                self.backgrounds.append(temp_model.from_map(k))
         if m.get('ChannelId') is not None:
             self.channel_id = m.get('ChannelId')
         self.clock_widgets = []
@@ -23772,6 +24838,80 @@ class UpdateRecordTemplateResponse(TeaModel):
         return self
 
 
+class UpdateStreamingOutRequestBackgrounds(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        background_crop_mode: int = None,
+        height: float = None,
+        layer: int = None,
+        url: str = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        self.background_crop_mode = background_crop_mode
+        # This parameter is required.
+        self.height = height
+        self.layer = layer
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.width = width
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.background_crop_mode is not None:
+            result['BackgroundCropMode'] = self.background_crop_mode
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('BackgroundCropMode') is not None:
+            self.background_crop_mode = m.get('BackgroundCropMode')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
 class UpdateStreamingOutRequestClockWidgetsBoxColor(TeaModel):
     def __init__(
         self,
@@ -24534,6 +25674,7 @@ class UpdateStreamingOutRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        backgrounds: List[UpdateStreamingOutRequestBackgrounds] = None,
         channel_id: str = None,
         clock_widgets: List[UpdateStreamingOutRequestClockWidgets] = None,
         images: List[UpdateStreamingOutRequestImages] = None,
@@ -24544,6 +25685,7 @@ class UpdateStreamingOutRequest(TeaModel):
     ):
         # This parameter is required.
         self.app_id = app_id
+        self.backgrounds = backgrounds
         # This parameter is required.
         self.channel_id = channel_id
         self.clock_widgets = clock_widgets
@@ -24556,6 +25698,10 @@ class UpdateStreamingOutRequest(TeaModel):
         self.texts = texts
 
     def validate(self):
+        if self.backgrounds:
+            for k in self.backgrounds:
+                if k:
+                    k.validate()
         if self.clock_widgets:
             for k in self.clock_widgets:
                 if k:
@@ -24581,6 +25727,10 @@ class UpdateStreamingOutRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        result['Backgrounds'] = []
+        if self.backgrounds is not None:
+            for k in self.backgrounds:
+                result['Backgrounds'].append(k.to_map() if k else None)
         if self.channel_id is not None:
             result['ChannelId'] = self.channel_id
         result['ClockWidgets'] = []
@@ -24609,6 +25759,11 @@ class UpdateStreamingOutRequest(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        self.backgrounds = []
+        if m.get('Backgrounds') is not None:
+            for k in m.get('Backgrounds'):
+                temp_model = UpdateStreamingOutRequestBackgrounds()
+                self.backgrounds.append(temp_model.from_map(k))
         if m.get('ChannelId') is not None:
             self.channel_id = m.get('ChannelId')
         self.clock_widgets = []

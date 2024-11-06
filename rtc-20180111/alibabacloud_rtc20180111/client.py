@@ -201,6 +201,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_record_template_with_options_async(request, runtime)
 
+    def create_app_layout_with_options(
+        self,
+        tmp_req: rtc_20180111_models.CreateAppLayoutRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.CreateAppLayoutResponse:
+        """
+        @summary 新增app自定义布局
+        
+        @param tmp_req: CreateAppLayoutRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppLayoutResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.CreateAppLayoutShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.layout):
+            request.layout_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.layout, 'Layout', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.layout_shrink):
+            query['Layout'] = request.layout_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAppLayout',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.CreateAppLayoutResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_app_layout_with_options_async(
+        self,
+        tmp_req: rtc_20180111_models.CreateAppLayoutRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.CreateAppLayoutResponse:
+        """
+        @summary 新增app自定义布局
+        
+        @param tmp_req: CreateAppLayoutRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppLayoutResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.CreateAppLayoutShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.layout):
+            request.layout_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.layout, 'Layout', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.layout_shrink):
+            query['Layout'] = request.layout_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAppLayout',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.CreateAppLayoutResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_app_layout(
+        self,
+        request: rtc_20180111_models.CreateAppLayoutRequest,
+    ) -> rtc_20180111_models.CreateAppLayoutResponse:
+        """
+        @summary 新增app自定义布局
+        
+        @param request: CreateAppLayoutRequest
+        @return: CreateAppLayoutResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_app_layout_with_options(request, runtime)
+
+    async def create_app_layout_async(
+        self,
+        request: rtc_20180111_models.CreateAppLayoutRequest,
+    ) -> rtc_20180111_models.CreateAppLayoutResponse:
+        """
+        @summary 新增app自定义布局
+        
+        @param request: CreateAppLayoutRequest
+        @return: CreateAppLayoutResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_app_layout_with_options_async(request, runtime)
+
     def create_app_record_template_with_options(
         self,
         tmp_req: rtc_20180111_models.CreateAppRecordTemplateRequest,
@@ -760,6 +872,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_mpulayout_with_options_async(request, runtime)
+
+    def delete_app_layout_with_options(
+        self,
+        tmp_req: rtc_20180111_models.DeleteAppLayoutRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DeleteAppLayoutResponse:
+        """
+        @summary 删除app自定义布局
+        
+        @param tmp_req: DeleteAppLayoutRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppLayoutResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.DeleteAppLayoutShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.layout):
+            request.layout_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.layout, 'Layout', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.layout_shrink):
+            query['Layout'] = request.layout_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAppLayout',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DeleteAppLayoutResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_app_layout_with_options_async(
+        self,
+        tmp_req: rtc_20180111_models.DeleteAppLayoutRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DeleteAppLayoutResponse:
+        """
+        @summary 删除app自定义布局
+        
+        @param tmp_req: DeleteAppLayoutRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppLayoutResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.DeleteAppLayoutShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.layout):
+            request.layout_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.layout, 'Layout', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.layout_shrink):
+            query['Layout'] = request.layout_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAppLayout',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DeleteAppLayoutResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_app_layout(
+        self,
+        request: rtc_20180111_models.DeleteAppLayoutRequest,
+    ) -> rtc_20180111_models.DeleteAppLayoutResponse:
+        """
+        @summary 删除app自定义布局
+        
+        @param request: DeleteAppLayoutRequest
+        @return: DeleteAppLayoutResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_app_layout_with_options(request, runtime)
+
+    async def delete_app_layout_async(
+        self,
+        request: rtc_20180111_models.DeleteAppLayoutRequest,
+    ) -> rtc_20180111_models.DeleteAppLayoutResponse:
+        """
+        @summary 删除app自定义布局
+        
+        @param request: DeleteAppLayoutRequest
+        @return: DeleteAppLayoutResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_app_layout_with_options_async(request, runtime)
 
     def delete_app_record_template_with_options(
         self,
@@ -7567,6 +7791,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_app_callback_status_with_options_async(request, runtime)
 
+    def modify_app_layout_with_options(
+        self,
+        tmp_req: rtc_20180111_models.ModifyAppLayoutRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.ModifyAppLayoutResponse:
+        """
+        @summary 修改app自定义布局
+        
+        @param tmp_req: ModifyAppLayoutRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppLayoutResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.ModifyAppLayoutShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.layout):
+            request.layout_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.layout, 'Layout', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.layout_shrink):
+            query['Layout'] = request.layout_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAppLayout',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.ModifyAppLayoutResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_app_layout_with_options_async(
+        self,
+        tmp_req: rtc_20180111_models.ModifyAppLayoutRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.ModifyAppLayoutResponse:
+        """
+        @summary 修改app自定义布局
+        
+        @param tmp_req: ModifyAppLayoutRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppLayoutResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.ModifyAppLayoutShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.layout):
+            request.layout_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.layout, 'Layout', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.layout_shrink):
+            query['Layout'] = request.layout_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAppLayout',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.ModifyAppLayoutResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_app_layout(
+        self,
+        request: rtc_20180111_models.ModifyAppLayoutRequest,
+    ) -> rtc_20180111_models.ModifyAppLayoutResponse:
+        """
+        @summary 修改app自定义布局
+        
+        @param request: ModifyAppLayoutRequest
+        @return: ModifyAppLayoutResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_app_layout_with_options(request, runtime)
+
+    async def modify_app_layout_async(
+        self,
+        request: rtc_20180111_models.ModifyAppLayoutRequest,
+    ) -> rtc_20180111_models.ModifyAppLayoutResponse:
+        """
+        @summary 修改app自定义布局
+        
+        @param request: ModifyAppLayoutRequest
+        @return: ModifyAppLayoutResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_app_layout_with_options_async(request, runtime)
+
     def modify_app_live_stream_status_with_options(
         self,
         request: rtc_20180111_models.ModifyAppLiveStreamStatusRequest,
@@ -8535,6 +8871,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.backgrounds):
+            query['Backgrounds'] = request.backgrounds
         if not UtilClient.is_unset(request.channel_id):
             query['ChannelId'] = request.channel_id
         if not UtilClient.is_unset(request.clock_widgets):
@@ -8545,6 +8883,8 @@ class Client(OpenApiClient):
             query['Images'] = request.images
         if not UtilClient.is_unset(request.panes):
             query['Panes'] = request.panes
+        if not UtilClient.is_unset(request.region_color):
+            query['RegionColor'] = request.region_color
         if not UtilClient.is_unset(request.storage_config):
             query['StorageConfig'] = request.storage_config
         if not UtilClient.is_unset(request.task_id):
@@ -8588,6 +8928,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.backgrounds):
+            query['Backgrounds'] = request.backgrounds
         if not UtilClient.is_unset(request.channel_id):
             query['ChannelId'] = request.channel_id
         if not UtilClient.is_unset(request.clock_widgets):
@@ -8598,6 +8940,8 @@ class Client(OpenApiClient):
             query['Images'] = request.images
         if not UtilClient.is_unset(request.panes):
             query['Panes'] = request.panes
+        if not UtilClient.is_unset(request.region_color):
+            query['RegionColor'] = request.region_color
         if not UtilClient.is_unset(request.storage_config):
             query['StorageConfig'] = request.storage_config
         if not UtilClient.is_unset(request.task_id):
@@ -9045,6 +9389,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.backgrounds):
+            query['Backgrounds'] = request.backgrounds
         if not UtilClient.is_unset(request.channel_id):
             query['ChannelId'] = request.channel_id
         if not UtilClient.is_unset(request.clock_widgets):
@@ -9055,6 +9401,8 @@ class Client(OpenApiClient):
             query['Images'] = request.images
         if not UtilClient.is_unset(request.panes):
             query['Panes'] = request.panes
+        if not UtilClient.is_unset(request.region_color):
+            query['RegionColor'] = request.region_color
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.template_id):
@@ -9098,6 +9446,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.backgrounds):
+            query['Backgrounds'] = request.backgrounds
         if not UtilClient.is_unset(request.channel_id):
             query['ChannelId'] = request.channel_id
         if not UtilClient.is_unset(request.clock_widgets):
@@ -9108,6 +9458,8 @@ class Client(OpenApiClient):
             query['Images'] = request.images
         if not UtilClient.is_unset(request.panes):
             query['Panes'] = request.panes
+        if not UtilClient.is_unset(request.region_color):
+            query['RegionColor'] = request.region_color
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.template_id):
@@ -9905,6 +10257,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.backgrounds):
+            query['Backgrounds'] = request.backgrounds
         if not UtilClient.is_unset(request.channel_id):
             query['ChannelId'] = request.channel_id
         if not UtilClient.is_unset(request.clock_widgets):
@@ -9954,6 +10308,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.backgrounds):
+            query['Backgrounds'] = request.backgrounds
         if not UtilClient.is_unset(request.channel_id):
             query['ChannelId'] = request.channel_id
         if not UtilClient.is_unset(request.clock_widgets):
@@ -10513,6 +10869,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.backgrounds):
+            query['Backgrounds'] = request.backgrounds
         if not UtilClient.is_unset(request.channel_id):
             query['ChannelId'] = request.channel_id
         if not UtilClient.is_unset(request.clock_widgets):
@@ -10562,6 +10920,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.backgrounds):
+            query['Backgrounds'] = request.backgrounds
         if not UtilClient.is_unset(request.channel_id):
             query['ChannelId'] = request.channel_id
         if not UtilClient.is_unset(request.clock_widgets):

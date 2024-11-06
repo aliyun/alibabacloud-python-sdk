@@ -1,3 +1,15 @@
+2024-11-06 Version: 3.4.0
+- Support API CreateAppLayout.
+- Support API DeleteAppLayout.
+- Support API ModifyAppLayout.
+- Update API StartCloudRecord: add param Backgrounds.
+- Update API StartCloudRecord: add param RegionColor.
+- Update API StartStreamingOut: add param Backgrounds.
+- Update API StartStreamingOut: add param RegionColor.
+- Update API UpdateCloudRecord: add param Backgrounds.
+- Update API UpdateStreamingOut: add param Backgrounds.
+
+
 2024-07-29 Version: 3.3.0
 - Support API CreateAppRecordTemplate.
 - Support API DeleteAppRecordTemplate.
