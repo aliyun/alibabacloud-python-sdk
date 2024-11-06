@@ -3063,6 +3063,196 @@ class ListJobRunsResponse(TeaModel):
         return self
 
 
+class ListLogContentsRequest(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        length: int = None,
+        offset: int = None,
+        region_id: str = None,
+    ):
+        self.file_name = file_name
+        self.length = length
+        self.offset = offset
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.length is not None:
+            result['length'] = self.length
+        if self.offset is not None:
+            result['offset'] = self.offset
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        if m.get('length') is not None:
+            self.length = m.get('length')
+        if m.get('offset') is not None:
+            self.offset = m.get('offset')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class ListLogContentsResponseBodyListLogContentContents(TeaModel):
+    def __init__(
+        self,
+        line_content: str = None,
+    ):
+        self.line_content = line_content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.line_content is not None:
+            result['LineContent'] = self.line_content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LineContent') is not None:
+            self.line_content = m.get('LineContent')
+        return self
+
+
+class ListLogContentsResponseBodyListLogContent(TeaModel):
+    def __init__(
+        self,
+        contents: List[ListLogContentsResponseBodyListLogContentContents] = None,
+        total_length: int = None,
+    ):
+        self.contents = contents
+        self.total_length = total_length
+
+    def validate(self):
+        if self.contents:
+            for k in self.contents:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['contents'] = []
+        if self.contents is not None:
+            for k in self.contents:
+                result['contents'].append(k.to_map() if k else None)
+        if self.total_length is not None:
+            result['totalLength'] = self.total_length
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.contents = []
+        if m.get('contents') is not None:
+            for k in m.get('contents'):
+                temp_model = ListLogContentsResponseBodyListLogContentContents()
+                self.contents.append(temp_model.from_map(k))
+        if m.get('totalLength') is not None:
+            self.total_length = m.get('totalLength')
+        return self
+
+
+class ListLogContentsResponseBody(TeaModel):
+    def __init__(
+        self,
+        list_log_content: ListLogContentsResponseBodyListLogContent = None,
+        request_id: str = None,
+    ):
+        self.list_log_content = list_log_content
+        # 请求ID。
+        self.request_id = request_id
+
+    def validate(self):
+        if self.list_log_content:
+            self.list_log_content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.list_log_content is not None:
+            result['listLogContent'] = self.list_log_content.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('listLogContent') is not None:
+            temp_model = ListLogContentsResponseBodyListLogContent()
+            self.list_log_content = temp_model.from_map(m['listLogContent'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListLogContentsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListLogContentsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListLogContentsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListReleaseVersionsRequest(TeaModel):
     def __init__(
         self,
@@ -3335,6 +3525,13 @@ class ListSessionClustersRequest(TeaModel):
         region_id: str = None,
         session_cluster_id: str = None,
     ):
+        # The session type.
+        # 
+        # Valid values:
+        # 
+        # *   NOTEBOOK
+        # *   THRIFT
+        # *   SQL
         self.kind = kind
         # The maximum number of entries to return.
         self.max_results = max_results
@@ -3465,7 +3662,7 @@ class ListSessionClustersResponseBodySessionClustersAutoStopConfiguration(TeaMod
     ):
         # Indicates whether automatic termination is enabled.
         self.enable = enable
-        # The idle timeout period. The SQL Compute is automatically terminated if the idle timeout period is exceeded.
+        # The idle timeout period. The session is automatically terminated when the idle timeout period is exceeded.
         self.idle_timeout_minutes = idle_timeout_minutes
 
     def validate(self):
@@ -3549,32 +3746,44 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
         web_ui: str = None,
         workspace_id: str = None,
     ):
-        # The SQL Compute configurations, which are equivalent to the configurations of the Spark job.
+        # The session configurations, which are equivalent to the configurations of the Spark job.
         self.application_configs = application_configs
         # The automatic startup configurations.
         self.auto_start_configuration = auto_start_configuration
-        # The automatic termination configurations.
+        # The configurations of automatic termination.
         self.auto_stop_configuration = auto_stop_configuration
+        # The version of the Spark engine.
         self.display_release_version = display_release_version
         self.domain = domain
+        # The ID of the job that is associated with the session.
         self.draft_id = draft_id
+        # Indicates whether the Fusion engine is used for acceleration.
         self.fusion = fusion
+        # The session type.
+        # 
+        # Valid values:
+        # 
+        # *   NOTEBOOK
+        # *   THRIFT
+        # *   SQL
         self.kind = kind
-        # The name of the SQL Compute.
+        # The name of the session.
         self.name = name
-        # The name of the queue on which the SQL Compute runs.
+        # The name of the queue that is used to run the session.
         self.queue_name = queue_name
+        # The version of EMR Serverless Spark.
         self.release_version = release_version
-        # The SQL Compute ID.
+        # The session ID.
         self.session_cluster_id = session_cluster_id
-        # The status of the SQL Compute.
+        # The status of the session.
         self.state = state
-        # The details of the last status change of the SQL Compute.
+        # The details of the most recent status change of the session.
         self.state_change_reason = state_change_reason
         # The user ID.
         self.user_id = user_id
         # The name of the user.
         self.user_name = user_name
+        # The Spark UI of the session.
         self.web_ui = web_ui
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -3699,7 +3908,7 @@ class ListSessionClustersResponseBody(TeaModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The SQL computes.
+        # The list of sessions.
         self.session_clusters = session_clusters
         # The total number of entries returned.
         self.total_count = total_count
@@ -4757,8 +4966,11 @@ class StartSessionClusterRequest(TeaModel):
         session_cluster_id: str = None,
         region_id: str = None,
     ):
+        # The queue name.
         self.queue_name = queue_name
+        # The session ID.
         self.session_cluster_id = session_cluster_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -4795,9 +5007,9 @@ class StartSessionClusterResponseBody(TeaModel):
         request_id: str = None,
         session_cluster_id: str = None,
     ):
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
-        # Workspace Id。
+        # The workspace ID.
         self.session_cluster_id = session_cluster_id
 
     def validate(self):
@@ -4872,8 +5084,11 @@ class StopSessionClusterRequest(TeaModel):
         session_cluster_id: str = None,
         region_id: str = None,
     ):
+        # The queue name.
         self.queue_name = queue_name
+        # The session ID.
         self.session_cluster_id = session_cluster_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -4910,9 +5125,9 @@ class StopSessionClusterResponseBody(TeaModel):
         request_id: str = None,
         session_cluster_id: str = None,
     ):
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
-        # Workspace Id。
+        # The workspace ID.
         self.session_cluster_id = session_cluster_id
 
     def validate(self):

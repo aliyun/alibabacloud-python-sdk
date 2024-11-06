@@ -1,3 +1,7 @@
+2024-11-06 Version: 1.6.0
+- Support API ListLogContents.
+
+
 2024-10-17 Version: 1.5.0
 - Support API StartSessionCluster.
 - Support API StopSessionCluster.
