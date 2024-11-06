@@ -830,10 +830,16 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.custom_limitation):
+            body['customLimitation'] = request.custom_limitation
         if not UtilClient.is_unset(request.custom_prompt):
             body['customPrompt'] = request.custom_prompt
+        if not UtilClient.is_unset(request.input_example):
+            body['inputExample'] = request.input_example
         if not UtilClient.is_unset(request.model_id):
             body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.output_example):
+            body['outputExample'] = request.output_example
         if not UtilClient.is_unset(request.source_material):
             body['sourceMaterial'] = request.source_material
         if not UtilClient.is_unset(request.writing_type):
@@ -875,10 +881,16 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.custom_limitation):
+            body['customLimitation'] = request.custom_limitation
         if not UtilClient.is_unset(request.custom_prompt):
             body['customPrompt'] = request.custom_prompt
+        if not UtilClient.is_unset(request.input_example):
+            body['inputExample'] = request.input_example
         if not UtilClient.is_unset(request.model_id):
             body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.output_example):
+            body['outputExample'] = request.output_example
         if not UtilClient.is_unset(request.source_material):
             body['sourceMaterial'] = request.source_material
         if not UtilClient.is_unset(request.writing_type):

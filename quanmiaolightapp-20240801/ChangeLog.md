@@ -1,3 +1,9 @@
+2024-11-06 Version: 1.4.1
+- Update API RunMarketingInformationWriting: add param customLimitation.
+- Update API RunMarketingInformationWriting: add param inputExample.
+- Update API RunMarketingInformationWriting: add param outputExample.
+
+
 2024-11-01 Version: 1.4.0
 - Support API RunHotTopicChat.
 - Support API RunHotTopicSummary.

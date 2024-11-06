@@ -2467,13 +2467,19 @@ class RunMarketingInformationExtractResponse(TeaModel):
 class RunMarketingInformationWritingRequest(TeaModel):
     def __init__(
         self,
+        custom_limitation: str = None,
         custom_prompt: str = None,
+        input_example: str = None,
         model_id: str = None,
+        output_example: str = None,
         source_material: str = None,
         writing_type: str = None,
     ):
+        self.custom_limitation = custom_limitation
         self.custom_prompt = custom_prompt
+        self.input_example = input_example
         self.model_id = model_id
+        self.output_example = output_example
         self.source_material = source_material
         self.writing_type = writing_type
 
@@ -2486,10 +2492,16 @@ class RunMarketingInformationWritingRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.custom_limitation is not None:
+            result['customLimitation'] = self.custom_limitation
         if self.custom_prompt is not None:
             result['customPrompt'] = self.custom_prompt
+        if self.input_example is not None:
+            result['inputExample'] = self.input_example
         if self.model_id is not None:
             result['modelId'] = self.model_id
+        if self.output_example is not None:
+            result['outputExample'] = self.output_example
         if self.source_material is not None:
             result['sourceMaterial'] = self.source_material
         if self.writing_type is not None:
@@ -2498,10 +2510,16 @@ class RunMarketingInformationWritingRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('customLimitation') is not None:
+            self.custom_limitation = m.get('customLimitation')
         if m.get('customPrompt') is not None:
             self.custom_prompt = m.get('customPrompt')
+        if m.get('inputExample') is not None:
+            self.input_example = m.get('inputExample')
         if m.get('modelId') is not None:
             self.model_id = m.get('modelId')
+        if m.get('outputExample') is not None:
+            self.output_example = m.get('outputExample')
         if m.get('sourceMaterial') is not None:
             self.source_material = m.get('sourceMaterial')
         if m.get('writingType') is not None:
