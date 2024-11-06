@@ -271,6 +271,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.car_type):
+            query['carType'] = request.car_type
         if not UtilClient.is_unset(request.destination_latitude):
             query['destinationLatitude'] = request.destination_latitude
         if not UtilClient.is_unset(request.destination_longitude):
@@ -279,6 +281,8 @@ class Client(OpenApiClient):
             query['originLatitude'] = request.origin_latitude
         if not UtilClient.is_unset(request.origin_longitude):
             query['originLongitude'] = request.origin_longitude
+        if not UtilClient.is_unset(request.plate):
+            query['plate'] = request.plate
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -315,6 +319,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.car_type):
+            query['carType'] = request.car_type
         if not UtilClient.is_unset(request.destination_latitude):
             query['destinationLatitude'] = request.destination_latitude
         if not UtilClient.is_unset(request.destination_longitude):
@@ -323,6 +329,8 @@ class Client(OpenApiClient):
             query['originLatitude'] = request.origin_latitude
         if not UtilClient.is_unset(request.origin_longitude):
             query['originLongitude'] = request.origin_longitude
+        if not UtilClient.is_unset(request.plate):
+            query['plate'] = request.plate
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1492,6 +1500,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.rgeo_code_with_options_async(request, headers, runtime)
+
+    def transit_integrated_direction_with_options(
+        self,
+        request: iqs20240712_models.TransitIntegratedDirectionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20240712_models.TransitIntegratedDirectionResponse:
+        """
+        @summary 公共交通路线规划方案
+        
+        @param request: TransitIntegratedDirectionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransitIntegratedDirectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.destination_city):
+            query['destinationCity'] = request.destination_city
+        if not UtilClient.is_unset(request.destination_latitude):
+            query['destinationLatitude'] = request.destination_latitude
+        if not UtilClient.is_unset(request.destination_longitude):
+            query['destinationLongitude'] = request.destination_longitude
+        if not UtilClient.is_unset(request.origin_city):
+            query['originCity'] = request.origin_city
+        if not UtilClient.is_unset(request.origin_latitude):
+            query['originLatitude'] = request.origin_latitude
+        if not UtilClient.is_unset(request.origin_longitude):
+            query['originLongitude'] = request.origin_longitude
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TransitIntegratedDirection',
+            version='2024-07-12',
+            protocol='HTTPS',
+            pathname=f'/ipaas/v2/direction/transit/integrated',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iqs20240712_models.TransitIntegratedDirectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def transit_integrated_direction_with_options_async(
+        self,
+        request: iqs20240712_models.TransitIntegratedDirectionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20240712_models.TransitIntegratedDirectionResponse:
+        """
+        @summary 公共交通路线规划方案
+        
+        @param request: TransitIntegratedDirectionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransitIntegratedDirectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.destination_city):
+            query['destinationCity'] = request.destination_city
+        if not UtilClient.is_unset(request.destination_latitude):
+            query['destinationLatitude'] = request.destination_latitude
+        if not UtilClient.is_unset(request.destination_longitude):
+            query['destinationLongitude'] = request.destination_longitude
+        if not UtilClient.is_unset(request.origin_city):
+            query['originCity'] = request.origin_city
+        if not UtilClient.is_unset(request.origin_latitude):
+            query['originLatitude'] = request.origin_latitude
+        if not UtilClient.is_unset(request.origin_longitude):
+            query['originLongitude'] = request.origin_longitude
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TransitIntegratedDirection',
+            version='2024-07-12',
+            protocol='HTTPS',
+            pathname=f'/ipaas/v2/direction/transit/integrated',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iqs20240712_models.TransitIntegratedDirectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def transit_integrated_direction(
+        self,
+        request: iqs20240712_models.TransitIntegratedDirectionRequest,
+    ) -> iqs20240712_models.TransitIntegratedDirectionResponse:
+        """
+        @summary 公共交通路线规划方案
+        
+        @param request: TransitIntegratedDirectionRequest
+        @return: TransitIntegratedDirectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.transit_integrated_direction_with_options(request, headers, runtime)
+
+    async def transit_integrated_direction_async(
+        self,
+        request: iqs20240712_models.TransitIntegratedDirectionRequest,
+    ) -> iqs20240712_models.TransitIntegratedDirectionResponse:
+        """
+        @summary 公共交通路线规划方案
+        
+        @param request: TransitIntegratedDirectionRequest
+        @return: TransitIntegratedDirectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.transit_integrated_direction_with_options_async(request, headers, runtime)
 
     def walking_direction_nova_with_options(
         self,

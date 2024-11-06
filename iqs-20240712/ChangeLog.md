@@ -1,3 +1,13 @@
+2024-11-06 Version: 1.3.0
+- Support API TransitIntegratedDirection.
+- Update API BicyclingDirectionNova: update response param.
+- Update API DrivingDirectionNova: add param carType.
+- Update API DrivingDirectionNova: add param plate.
+- Update API DrivingDirectionNova: update response param.
+- Update API ElectrobikeDirectionNova: update response param.
+- Update API WalkingDirectionNova: update response param.
+
+
 2024-11-06 Version: 1.2.0
 - Support API BicyclingDirectionNova.
 - Support API DrivingDirectionNova.
