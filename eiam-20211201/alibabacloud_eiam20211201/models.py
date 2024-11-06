@@ -8141,6 +8141,7 @@ class GetPasswordExpirationConfigurationRequest(TeaModel):
 class GetPasswordExpirationConfigurationResponseBodyPasswordExpirationConfiguration(TeaModel):
     def __init__(
         self,
+        effective_authentication_source_ids: List[str] = None,
         password_expiration_action: str = None,
         password_expiration_notification_channels: List[str] = None,
         password_expiration_notification_duration: int = None,
@@ -8149,6 +8150,7 @@ class GetPasswordExpirationConfigurationResponseBodyPasswordExpirationConfigurat
         password_forced_update_duration: int = None,
         password_valid_max_day: int = None,
     ):
+        self.effective_authentication_source_ids = effective_authentication_source_ids
         # The action to take when a password expires. Valid values:
         # 
         # *   forbid_login: Prohibit the user from using the password to log on to IDaaS.
@@ -8183,6 +8185,8 @@ class GetPasswordExpirationConfigurationResponseBodyPasswordExpirationConfigurat
             return _map
 
         result = dict()
+        if self.effective_authentication_source_ids is not None:
+            result['EffectiveAuthenticationSourceIds'] = self.effective_authentication_source_ids
         if self.password_expiration_action is not None:
             result['PasswordExpirationAction'] = self.password_expiration_action
         if self.password_expiration_notification_channels is not None:
@@ -8201,6 +8205,8 @@ class GetPasswordExpirationConfigurationResponseBodyPasswordExpirationConfigurat
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EffectiveAuthenticationSourceIds') is not None:
+            self.effective_authentication_source_ids = m.get('EffectiveAuthenticationSourceIds')
         if m.get('PasswordExpirationAction') is not None:
             self.password_expiration_action = m.get('PasswordExpirationAction')
         if m.get('PasswordExpirationNotificationChannels') is not None:
@@ -20193,6 +20199,7 @@ class SetPasswordComplexityConfigurationResponse(TeaModel):
 class SetPasswordExpirationConfigurationRequest(TeaModel):
     def __init__(
         self,
+        effective_authentication_source_ids: List[str] = None,
         instance_id: str = None,
         password_expiration_action: str = None,
         password_expiration_notification_channels: List[str] = None,
@@ -20202,6 +20209,7 @@ class SetPasswordExpirationConfigurationRequest(TeaModel):
         password_forced_update_duration: int = None,
         password_valid_max_day: int = None,
     ):
+        self.effective_authentication_source_ids = effective_authentication_source_ids
         # The instance ID.
         # 
         # This parameter is required.
@@ -20242,6 +20250,8 @@ class SetPasswordExpirationConfigurationRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.effective_authentication_source_ids is not None:
+            result['EffectiveAuthenticationSourceIds'] = self.effective_authentication_source_ids
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.password_expiration_action is not None:
@@ -20262,6 +20272,8 @@ class SetPasswordExpirationConfigurationRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EffectiveAuthenticationSourceIds') is not None:
+            self.effective_authentication_source_ids = m.get('EffectiveAuthenticationSourceIds')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('PasswordExpirationAction') is not None:
@@ -20728,11 +20740,11 @@ class UnlockUserRequest(TeaModel):
         instance_id: str = None,
         user_id: str = None,
     ):
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 账户ID
+        # The account ID.
         # 
         # This parameter is required.
         self.user_id = user_id
@@ -20766,6 +20778,7 @@ class UnlockUserResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

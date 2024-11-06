@@ -1,3 +1,8 @@
+2024-11-06 Version: 1.5.2
+- Update API GetPasswordExpirationConfiguration: update response param.
+- Update API SetPasswordExpirationConfiguration: add param EffectiveAuthenticationSourceIds.
+
+
 2024-11-01 Version: 1.5.1
 - Generated python 2021-12-01 for Eiam.
 
