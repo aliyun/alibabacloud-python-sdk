@@ -1,3 +1,7 @@
+2024-11-06 Version: 5.0.1
+- Update API GetPermission: add param Labels.
+
+
 2024-10-30 Version: 5.0.0
 - Support API CreateDatasetVersion.
 - Support API CreateDatasetVersionLabels.

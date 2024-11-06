@@ -7230,11 +7230,13 @@ class GetPermissionRequest(TeaModel):
         self,
         accessibility: str = None,
         creator: str = None,
+        labels: Dict[str, Any] = None,
         option: str = None,
         resource: str = None,
     ):
         self.accessibility = accessibility
         self.creator = creator
+        self.labels = labels
         self.option = option
         self.resource = resource
 
@@ -7251,6 +7253,8 @@ class GetPermissionRequest(TeaModel):
             result['Accessibility'] = self.accessibility
         if self.creator is not None:
             result['Creator'] = self.creator
+        if self.labels is not None:
+            result['Labels'] = self.labels
         if self.option is not None:
             result['Option'] = self.option
         if self.resource is not None:
@@ -7263,6 +7267,59 @@ class GetPermissionRequest(TeaModel):
             self.accessibility = m.get('Accessibility')
         if m.get('Creator') is not None:
             self.creator = m.get('Creator')
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
+        if m.get('Option') is not None:
+            self.option = m.get('Option')
+        if m.get('Resource') is not None:
+            self.resource = m.get('Resource')
+        return self
+
+
+class GetPermissionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        accessibility: str = None,
+        creator: str = None,
+        labels_shrink: str = None,
+        option: str = None,
+        resource: str = None,
+    ):
+        self.accessibility = accessibility
+        self.creator = creator
+        self.labels_shrink = labels_shrink
+        self.option = option
+        self.resource = resource
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.labels_shrink is not None:
+            result['Labels'] = self.labels_shrink
+        if self.option is not None:
+            result['Option'] = self.option
+        if self.resource is not None:
+            result['Resource'] = self.resource
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('Labels') is not None:
+            self.labels_shrink = m.get('Labels')
         if m.get('Option') is not None:
             self.option = m.get('Option')
         if m.get('Resource') is not None:

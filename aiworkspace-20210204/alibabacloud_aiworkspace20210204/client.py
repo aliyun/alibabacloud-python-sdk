@@ -4773,24 +4773,30 @@ class Client(OpenApiClient):
         self,
         workspace_id: str,
         permission_code: str,
-        request: aiwork_space_20210204_models.GetPermissionRequest,
+        tmp_req: aiwork_space_20210204_models.GetPermissionRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetPermissionResponse:
         """
         @summary 获取权限，若无权限则返回错误
         
-        @param request: GetPermissionRequest
+        @param tmp_req: GetPermissionRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetPermissionResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = aiwork_space_20210204_models.GetPermissionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.labels):
+            request.labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.labels, 'Labels', 'json')
         query = {}
         if not UtilClient.is_unset(request.accessibility):
             query['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.creator):
             query['Creator'] = request.creator
+        if not UtilClient.is_unset(request.labels_shrink):
+            query['Labels'] = request.labels_shrink
         if not UtilClient.is_unset(request.option):
             query['Option'] = request.option
         if not UtilClient.is_unset(request.resource):
@@ -4819,24 +4825,30 @@ class Client(OpenApiClient):
         self,
         workspace_id: str,
         permission_code: str,
-        request: aiwork_space_20210204_models.GetPermissionRequest,
+        tmp_req: aiwork_space_20210204_models.GetPermissionRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetPermissionResponse:
         """
         @summary 获取权限，若无权限则返回错误
         
-        @param request: GetPermissionRequest
+        @param tmp_req: GetPermissionRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetPermissionResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = aiwork_space_20210204_models.GetPermissionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.labels):
+            request.labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.labels, 'Labels', 'json')
         query = {}
         if not UtilClient.is_unset(request.accessibility):
             query['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.creator):
             query['Creator'] = request.creator
+        if not UtilClient.is_unset(request.labels_shrink):
+            query['Labels'] = request.labels_shrink
         if not UtilClient.is_unset(request.option):
             query['Option'] = request.option
         if not UtilClient.is_unset(request.resource):
