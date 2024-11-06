@@ -1,3 +1,8 @@
+2024-11-06 Version: 1.3.0
+- Support API ChangeUserPassword.
+- Update API LockUsers: add param LogoutSession.
+
+
 2024-09-24 Version: 1.2.0
 - Support API BatchSetDesktopManager.
 - Support API DescribeOrgs.

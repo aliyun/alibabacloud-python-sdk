@@ -142,6 +142,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_set_desktop_manager_with_options_async(request, runtime)
 
+    def change_user_password_with_options(
+        self,
+        request: eds_user_20210308_models.ChangeUserPasswordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_user_20210308_models.ChangeUserPasswordResponse:
+        """
+        @summary 管理员修改用户密码
+        
+        @param request: ChangeUserPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeUserPasswordResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_user_id):
+            body['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.new_password):
+            body['NewPassword'] = request.new_password
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ChangeUserPassword',
+            version='2021-03-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_user_20210308_models.ChangeUserPasswordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_user_password_with_options_async(
+        self,
+        request: eds_user_20210308_models.ChangeUserPasswordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_user_20210308_models.ChangeUserPasswordResponse:
+        """
+        @summary 管理员修改用户密码
+        
+        @param request: ChangeUserPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeUserPasswordResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_user_id):
+            body['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.new_password):
+            body['NewPassword'] = request.new_password
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ChangeUserPassword',
+            version='2021-03-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_user_20210308_models.ChangeUserPasswordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_user_password(
+        self,
+        request: eds_user_20210308_models.ChangeUserPasswordRequest,
+    ) -> eds_user_20210308_models.ChangeUserPasswordResponse:
+        """
+        @summary 管理员修改用户密码
+        
+        @param request: ChangeUserPasswordRequest
+        @return: ChangeUserPasswordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.change_user_password_with_options(request, runtime)
+
+    async def change_user_password_async(
+        self,
+        request: eds_user_20210308_models.ChangeUserPasswordRequest,
+    ) -> eds_user_20210308_models.ChangeUserPasswordResponse:
+        """
+        @summary 管理员修改用户密码
+        
+        @param request: ChangeUserPasswordRequest
+        @return: ChangeUserPasswordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.change_user_password_with_options_async(request, runtime)
+
     def check_used_property_with_options(
         self,
         request: eds_user_20210308_models.CheckUsedPropertyRequest,
@@ -1597,10 +1697,14 @@ class Client(OpenApiClient):
         @return: LockUsersResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.logout_session):
+            query['LogoutSession'] = request.logout_session
         body = {}
         if not UtilClient.is_unset(request.users):
             body['Users'] = request.users
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1632,10 +1736,14 @@ class Client(OpenApiClient):
         @return: LockUsersResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.logout_session):
+            query['LogoutSession'] = request.logout_session
         body = {}
         if not UtilClient.is_unset(request.users):
             body['Users'] = request.users
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
