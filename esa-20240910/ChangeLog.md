@@ -1,3 +1,6 @@
+2024-11-06 Version: 2.4.1
+- Generated python 2024-09-10 for ESA.
+
 2024-10-28 Version: 2.4.0
 - Support API CreateEdgeContainerApp.
 - Support API CreateEdgeContainerAppRecord.
