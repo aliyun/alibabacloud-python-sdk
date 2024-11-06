@@ -21885,6 +21885,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_dcdn_kv_with_options_async(request, runtime)
 
+    def get_dcdn_kv_detail_with_options(
+        self,
+        request: dcdn_20180115_models.GetDcdnKvDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.GetDcdnKvDetailResponse:
+        """
+        @summary 查询KV对的值以及TTL信息
+        
+        @param request: GetDcdnKvDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDcdnKvDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDcdnKvDetail',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.GetDcdnKvDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_dcdn_kv_detail_with_options_async(
+        self,
+        request: dcdn_20180115_models.GetDcdnKvDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.GetDcdnKvDetailResponse:
+        """
+        @summary 查询KV对的值以及TTL信息
+        
+        @param request: GetDcdnKvDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDcdnKvDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDcdnKvDetail',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.GetDcdnKvDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_dcdn_kv_detail(
+        self,
+        request: dcdn_20180115_models.GetDcdnKvDetailRequest,
+    ) -> dcdn_20180115_models.GetDcdnKvDetailResponse:
+        """
+        @summary 查询KV对的值以及TTL信息
+        
+        @param request: GetDcdnKvDetailRequest
+        @return: GetDcdnKvDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_dcdn_kv_detail_with_options(request, runtime)
+
+    async def get_dcdn_kv_detail_async(
+        self,
+        request: dcdn_20180115_models.GetDcdnKvDetailRequest,
+    ) -> dcdn_20180115_models.GetDcdnKvDetailResponse:
+        """
+        @summary 查询KV对的值以及TTL信息
+        
+        @param request: GetDcdnKvDetailRequest
+        @return: GetDcdnKvDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_dcdn_kv_detail_with_options_async(request, runtime)
+
     def get_dcdn_kv_status_with_options(
         self,
         request: dcdn_20180115_models.GetDcdnKvStatusRequest,
@@ -22926,6 +23018,8 @@ class Client(OpenApiClient):
             query['ObjectPath'] = request.object_path
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.query_hashkey):
+            query['QueryHashkey'] = request.query_hashkey
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.with_header):
@@ -22982,6 +23076,8 @@ class Client(OpenApiClient):
             query['ObjectPath'] = request.object_path
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.query_hashkey):
+            query['QueryHashkey'] = request.query_hashkey
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.with_header):

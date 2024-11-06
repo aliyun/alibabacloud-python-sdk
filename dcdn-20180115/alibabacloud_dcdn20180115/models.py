@@ -3240,7 +3240,6 @@ class CreateDcdnSLSRealTimeLogDeliveryRequest(TeaModel):
         # 
         # *   cn: China
         # *   sg: Singapore
-        # *   in: India
         # *   eu: Europe
         # *   us: United States
         # 
@@ -37560,6 +37559,121 @@ class GetDcdnKvResponse(TeaModel):
         return self
 
 
+class GetDcdnKvDetailRequest(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        namespace: str = None,
+    ):
+        # This parameter is required.
+        self.key = key
+        # This parameter is required.
+        self.namespace = namespace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        return self
+
+
+class GetDcdnKvDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        expiration_ttl: str = None,
+        request_id: str = None,
+        value: str = None,
+    ):
+        self.expiration_ttl = expiration_ttl
+        self.request_id = request_id
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expiration_ttl is not None:
+            result['ExpirationTtl'] = self.expiration_ttl
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExpirationTtl') is not None:
+            self.expiration_ttl = m.get('ExpirationTtl')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetDcdnKvDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDcdnKvDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDcdnKvDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetDcdnKvStatusRequest(TeaModel):
     def __init__(
         self,
@@ -38882,6 +38996,7 @@ class PreloadDcdnObjectCachesRequest(TeaModel):
         l_2preload: bool = None,
         object_path: str = None,
         owner_id: int = None,
+        query_hashkey: bool = None,
         security_token: str = None,
         with_header: str = None,
     ):
@@ -38900,6 +39015,7 @@ class PreloadDcdnObjectCachesRequest(TeaModel):
         # This parameter is required.
         self.object_path = object_path
         self.owner_id = owner_id
+        self.query_hashkey = query_hashkey
         self.security_token = security_token
         # The custom header for prefetch in the JSON format.
         self.with_header = with_header
@@ -38921,6 +39037,8 @@ class PreloadDcdnObjectCachesRequest(TeaModel):
             result['ObjectPath'] = self.object_path
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.query_hashkey is not None:
+            result['QueryHashkey'] = self.query_hashkey
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
         if self.with_header is not None:
@@ -38937,6 +39055,8 @@ class PreloadDcdnObjectCachesRequest(TeaModel):
             self.object_path = m.get('ObjectPath')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('QueryHashkey') is not None:
+            self.query_hashkey = m.get('QueryHashkey')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
         if m.get('WithHeader') is not None:

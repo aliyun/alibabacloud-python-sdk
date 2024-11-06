@@ -1,3 +1,8 @@
+2024-11-06 Version: 2.5.0
+- Support API GetDcdnKvDetail.
+- Update API PreloadDcdnObjectCaches: add param QueryHashkey.
+
+
 2024-08-21 Version: 2.4.2
 - Update API DescribeDcdnKvAccount: update response param.
 
