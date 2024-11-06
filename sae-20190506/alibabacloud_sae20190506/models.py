@@ -16197,7 +16197,7 @@ class DeployApplicationRequest(TeaModel):
         # *   **mountDomain**: the domain name of the mount target. For more information, see [DescribeMountTargets](https://help.aliyun.com/document_detail/62626.html).
         # *   **nasPath**: the directory in the NAS file system.
         self.nas_configs = nas_configs
-        # The ID of the Apsara File Storage NAS file system. After the application is created, you may want to call other operations to manage the application. If you do not want to change the NAS configurations in these subsequent operations, you can omit the **NasId** parameter in the requests. If you want to unmount the NAS file system, you must set the **NasId** values in the subsequent requests to an empty string ("").
+        # The ID of the File Storage NAS file system. After the application is created, you may want to call other operations to manage the application. If you do not want to change the NAS configurations in these subsequent operations, you can omit the **NasId** parameter in the requests. If you want to unmount the NAS file system, you must set the **NasId** values in the subsequent requests to an empty string ("").
         self.nas_id = nas_id
         # The AccessKey ID that is used to read data from and write data to Object Storage Service (OSS) buckets.
         self.oss_ak_id = oss_ak_id
@@ -24124,6 +24124,39 @@ class DescribeIngressResponseBodyDataDefaultRule(TeaModel):
         return self
 
 
+class DescribeIngressResponseBodyDataRulesRuleActions(TeaModel):
+    def __init__(
+        self,
+        action_config: str = None,
+        action_type: str = None,
+    ):
+        self.action_config = action_config
+        self.action_type = action_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_config is not None:
+            result['ActionConfig'] = self.action_config
+        if self.action_type is not None:
+            result['ActionType'] = self.action_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionConfig') is not None:
+            self.action_config = m.get('ActionConfig')
+        if m.get('ActionType') is not None:
+            self.action_type = m.get('ActionType')
+        return self
+
+
 class DescribeIngressResponseBodyDataRules(TeaModel):
     def __init__(
         self,
@@ -24134,6 +24167,7 @@ class DescribeIngressResponseBodyDataRules(TeaModel):
         domain: str = None,
         path: str = None,
         rewrite_path: str = None,
+        rule_actions: List[DescribeIngressResponseBodyDataRulesRuleActions] = None,
     ):
         # The protocol used to forward requests. Valid values:
         # 
@@ -24156,9 +24190,13 @@ class DescribeIngressResponseBodyDataRules(TeaModel):
         # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.path = path
         self.rewrite_path = rewrite_path
+        self.rule_actions = rule_actions
 
     def validate(self):
-        pass
+        if self.rule_actions:
+            for k in self.rule_actions:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -24180,6 +24218,10 @@ class DescribeIngressResponseBodyDataRules(TeaModel):
             result['Path'] = self.path
         if self.rewrite_path is not None:
             result['RewritePath'] = self.rewrite_path
+        result['RuleActions'] = []
+        if self.rule_actions is not None:
+            for k in self.rule_actions:
+                result['RuleActions'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -24198,6 +24240,11 @@ class DescribeIngressResponseBodyDataRules(TeaModel):
             self.path = m.get('Path')
         if m.get('RewritePath') is not None:
             self.rewrite_path = m.get('RewritePath')
+        self.rule_actions = []
+        if m.get('RuleActions') is not None:
+            for k in m.get('RuleActions'):
+                temp_model = DescribeIngressResponseBodyDataRulesRuleActions()
+                self.rule_actions.append(temp_model.from_map(k))
         return self
 
 

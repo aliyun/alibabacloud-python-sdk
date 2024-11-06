@@ -1,3 +1,7 @@
+2024-11-06 Version: 1.24.5
+- Update API DescribeIngress: update response param.
+
+
 2024-10-29 Version: 1.24.4
 - Update API CreateIngress: add param EnableXForwardedFor.
 - Update API CreateIngress: add param EnableXForwardedForClientSrcPort.
