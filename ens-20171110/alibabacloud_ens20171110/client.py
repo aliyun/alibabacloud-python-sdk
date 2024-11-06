@@ -12129,6 +12129,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_ens_route_entry_list_with_options_async(request, runtime)
 
+    def describe_ens_route_tables_with_options(
+        self,
+        request: ens_20171110_models.DescribeEnsRouteTablesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeEnsRouteTablesResponse:
+        """
+        @summary Queries route tables.
+        
+        @param request: DescribeEnsRouteTablesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsRouteTablesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.network_id):
+            query['NetworkId'] = request.network_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEnsRouteTables',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeEnsRouteTablesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ens_route_tables_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeEnsRouteTablesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeEnsRouteTablesResponse:
+        """
+        @summary Queries route tables.
+        
+        @param request: DescribeEnsRouteTablesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsRouteTablesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.network_id):
+            query['NetworkId'] = request.network_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEnsRouteTables',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeEnsRouteTablesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ens_route_tables(
+        self,
+        request: ens_20171110_models.DescribeEnsRouteTablesRequest,
+    ) -> ens_20171110_models.DescribeEnsRouteTablesResponse:
+        """
+        @summary Queries route tables.
+        
+        @param request: DescribeEnsRouteTablesRequest
+        @return: DescribeEnsRouteTablesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ens_route_tables_with_options(request, runtime)
+
+    async def describe_ens_route_tables_async(
+        self,
+        request: ens_20171110_models.DescribeEnsRouteTablesRequest,
+    ) -> ens_20171110_models.DescribeEnsRouteTablesResponse:
+        """
+        @summary Queries route tables.
+        
+        @param request: DescribeEnsRouteTablesRequest
+        @return: DescribeEnsRouteTablesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ens_route_tables_with_options_async(request, runtime)
+
     def describe_ens_sale_control_with_options(
         self,
         request: ens_20171110_models.DescribeEnsSaleControlRequest,

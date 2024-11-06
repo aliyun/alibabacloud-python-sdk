@@ -21771,6 +21771,248 @@ class DescribeEnsRouteEntryListResponse(TeaModel):
         return self
 
 
+class DescribeEnsRouteTablesRequest(TeaModel):
+    def __init__(
+        self,
+        ens_region_id: str = None,
+        network_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        route_table_id: str = None,
+    ):
+        # The ID of the ENS node.
+        self.ens_region_id = ens_region_id
+        # The ID of the network.
+        self.network_id = network_id
+        # The page number.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # The ID of the route table.
+        self.route_table_id = route_table_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ens_region_id is not None:
+            result['EnsRegionId'] = self.ens_region_id
+        if self.network_id is not None:
+            result['NetworkId'] = self.network_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.route_table_id is not None:
+            result['RouteTableId'] = self.route_table_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnsRegionId') is not None:
+            self.ens_region_id = m.get('EnsRegionId')
+        if m.get('NetworkId') is not None:
+            self.network_id = m.get('NetworkId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RouteTableId') is not None:
+            self.route_table_id = m.get('RouteTableId')
+        return self
+
+
+class DescribeEnsRouteTablesResponseBodyRouteTables(TeaModel):
+    def __init__(
+        self,
+        creation_time: str = None,
+        ens_region_id: str = None,
+        network_id: str = None,
+        route_table_id: str = None,
+        route_table_name: str = None,
+        status: str = None,
+        type: str = None,
+        v_switch_ids: List[str] = None,
+    ):
+        # The time when the route table was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        self.creation_time = creation_time
+        # The ID of the edge node.
+        self.ens_region_id = ens_region_id
+        # The ID of the network.
+        self.network_id = network_id
+        # The ID of the route table.
+        self.route_table_id = route_table_id
+        self.route_table_name = route_table_name
+        # The status. Valid values:
+        # 
+        # *   Available: The route table is available.
+        self.status = status
+        # The type of the route table. Valid values:
+        # 
+        # *   Custom: custom route table.
+        # *   System: system route table.
+        self.type = type
+        # The vSwitches that are associated with the route table.
+        self.v_switch_ids = v_switch_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.ens_region_id is not None:
+            result['EnsRegionId'] = self.ens_region_id
+        if self.network_id is not None:
+            result['NetworkId'] = self.network_id
+        if self.route_table_id is not None:
+            result['RouteTableId'] = self.route_table_id
+        if self.route_table_name is not None:
+            result['RouteTableName'] = self.route_table_name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('EnsRegionId') is not None:
+            self.ens_region_id = m.get('EnsRegionId')
+        if m.get('NetworkId') is not None:
+            self.network_id = m.get('NetworkId')
+        if m.get('RouteTableId') is not None:
+            self.route_table_id = m.get('RouteTableId')
+        if m.get('RouteTableName') is not None:
+            self.route_table_name = m.get('RouteTableName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        return self
+
+
+class DescribeEnsRouteTablesResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        route_tables: List[DescribeEnsRouteTablesResponseBodyRouteTables] = None,
+        total_count: int = None,
+    ):
+        # The page number.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # The ID of the request.
+        self.request_id = request_id
+        # The information about the route tables.
+        self.route_tables = route_tables
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.route_tables:
+            for k in self.route_tables:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['RouteTables'] = []
+        if self.route_tables is not None:
+            for k in self.route_tables:
+                result['RouteTables'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.route_tables = []
+        if m.get('RouteTables') is not None:
+            for k in m.get('RouteTables'):
+                temp_model = DescribeEnsRouteTablesResponseBodyRouteTables()
+                self.route_tables.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeEnsRouteTablesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeEnsRouteTablesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeEnsRouteTablesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeEnsSaleControlRequest(TeaModel):
     def __init__(
         self,
