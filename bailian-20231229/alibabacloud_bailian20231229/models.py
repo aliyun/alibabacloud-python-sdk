@@ -539,7 +539,7 @@ class ApplyFileUploadLeaseResponseBodyData(TeaModel):
         param: ApplyFileUploadLeaseResponseBodyDataParam = None,
         type: str = None,
     ):
-        # The unique ID of the lease. You need to specify this parameter when you call the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) operation.
+        # The unique ID of the lease.
         self.file_upload_lease_id = file_upload_lease_id
         # The HTTP request parameters used to upload the document.
         self.param = param
@@ -1358,6 +1358,63 @@ class CreateIndexRequestDataSource(TeaModel):
         return self
 
 
+class CreateIndexRequestMetaExtractColumns(TeaModel):
+    def __init__(
+        self,
+        desc: str = None,
+        enable_llm: bool = None,
+        enable_search: bool = None,
+        key: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.desc = desc
+        self.enable_llm = enable_llm
+        self.enable_search = enable_search
+        self.key = key
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desc is not None:
+            result['Desc'] = self.desc
+        if self.enable_llm is not None:
+            result['EnableLlm'] = self.enable_llm
+        if self.enable_search is not None:
+            result['EnableSearch'] = self.enable_search
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Desc') is not None:
+            self.desc = m.get('Desc')
+        if m.get('EnableLlm') is not None:
+            self.enable_llm = m.get('EnableLlm')
+        if m.get('EnableSearch') is not None:
+            self.enable_search = m.get('EnableSearch')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateIndexRequest(TeaModel):
     def __init__(
         self,
@@ -1378,10 +1435,11 @@ class CreateIndexRequest(TeaModel):
         sink_type: str = None,
         source_type: str = None,
         structure_type: str = None,
+        meta_extract_columns: List[CreateIndexRequestMetaExtractColumns] = None,
     ):
         # The list of primary key IDs of the categories to be imported into the knowledge base.
         self.category_ids = category_ids
-        # The estimated length of chunks. The maximum number of characters for a chunk. Texts exceeding this limit are splited. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values: [1-2048].
+        # The estimated length of chunks. The maximum number of characters for a chunk. Texts exceeding this limit are splited. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values: [1-2048].
         # 
         # The default value is empty, which means using the intelligent splitting method.
         # 
@@ -1394,7 +1452,7 @@ class CreateIndexRequest(TeaModel):
         self.description = description
         # The list of primary key IDs of the documents to be imported into the knowledge base.
         self.document_ids = document_ids
-        # The name of the embedding model. The embedding model converts the original input prompt and knowledge text into numerical vectors for similarity comparison. The default and only model available is DashScope text-embedding-v2. It supports multiple languages including Chinese and English and normalizes the vector results. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid value:
+        # The name of the embedding model. The embedding model converts the original input prompt and knowledge text into numerical vectors for similarity comparison. The default and only model available is DashScope text-embedding-v2. It supports multiple languages including Chinese and English and normalizes the vector results. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid value:
         # 
         # *   text-embedding-v2
         # 
@@ -1404,15 +1462,15 @@ class CreateIndexRequest(TeaModel):
         # 
         # This parameter is required.
         self.name = name
-        # The overlap length. The number of overlapping characters between two consecutive chunks. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values: 0 to 1024.
+        # The overlap length. The number of overlapping characters between two consecutive chunks. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values: 0 to 1024.
         # 
         # The default value is empty, which means using the intelligent splitting method.
         self.overlap_size = overlap_size
-        # Similarity Threshold. The lowest similarity score of chunks that can be returned. This parameter is used to filter text chunks returned by the rank model. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values: [0.01-1.00].
+        # Similarity Threshold. The lowest similarity score of chunks that can be returned. This parameter is used to filter text chunks returned by the rank model. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values: [0.01-1.00].
         # 
         # Default value: 0.20.
         self.rerank_min_score = rerank_min_score
-        # The name of the rank model. The rank model is a scoring system outside the knowledge base. It calculates the similarity score of each text chunk in the input question and knowledge base and ranks them in descending order. Then, the model returns the top K chunks with the highest scores. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # The name of the rank model. The rank model is a scoring system outside the knowledge base. It calculates the similarity score of each text chunk in the input question and knowledge base and ranks them in descending order. Then, the model returns the top K chunks with the highest scores. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values:
         # 
         # *   gte-rerank-hybrid
         # *   gte-rerank
@@ -1421,7 +1479,7 @@ class CreateIndexRequest(TeaModel):
         # 
         # >  If you need only semantic ranking, we recommend that you use gte-rerank. If you need both semantic ranking and text matching features to ensure relevance, we recommend that you use gte-rerank-hybrid.
         self.rerank_model_name = rerank_model_name
-        # The clause identifier. The document is split into chunks based on this identifier. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). You can specify multiple identifiers and do not need to add any other characters to separate them. For example: !,\\\\\\n. Valid values:
+        # The clause identifier. The document is split into chunks based on this identifier. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). You can specify multiple identifiers and do not need to add any other characters to separate them. For example: !,\\\\\\n. Valid values:
         # 
         # *   \\n: line break
         # *   ，: Chinese comma
@@ -1432,16 +1490,16 @@ class CreateIndexRequest(TeaModel):
         # *   ! : English exclamation point
         # *   ；: Chinese semicolon
         # *   ;: English semicolon
-        # *   ？ : Chinese question mark
+        # *   ？: Chinese question mark
         # *   ?: English question mark
         # 
         # The default value is empty, which means using the intelligent splitting method.
         self.separator = separator
         # The ID of the vector storage instance. This parameter is available only when SinkType is set to ADB. You can view the ID on the [Instances](https://gpdbnext.console.aliyun.com/gpdb/list) page of AnalyticDB for PostgreSQL.
         self.sink_instance_id = sink_instance_id
-        # The region of the vector storage instance. This parameter is available only when SinkType is set to ADB. You can call the [DescribeRegions](https://help.aliyun.com/zh/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-describeregions) operation to query the most recent region list.
+        # The region of the vector storage instance. This parameter is available only when SinkType is set to ADB. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-describeregions) operation to query the most recent region list.
         self.sink_region = sink_region
-        # The vector storage type of the knowledge base. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # The vector storage type of the knowledge base. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values:
         # 
         # *   DEFAULT: The built-in vector database.
         # *   ADB: AnalyticDB for PostgreSQL database. If you need advanced features, such as managing, auditing, and monitoring, we recommend that you specify ADB.
@@ -1450,7 +1508,7 @@ class CreateIndexRequest(TeaModel):
         # 
         # This parameter is required.
         self.sink_type = sink_type
-        # The data type of [Data Management](https://bailian.console.aliyun.com/#/data-center). For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # The data type of [Data Management](https://bailian.console.aliyun.com/#/data-center). For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values:
         # 
         # *   DATA_CENTER_CATEGORY: The category type. Import all documents from one or more categories in Data Center.
         # *   DATA_CENTER_FILE: The document type. Import one or more documents from Data Center.
@@ -1461,7 +1519,7 @@ class CreateIndexRequest(TeaModel):
         # 
         # This parameter is required.
         self.source_type = source_type
-        # The data type of the knowledge base. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid value:
+        # The data type of the knowledge base. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid value:
         # 
         # *   unstructured
         # 
@@ -1469,6 +1527,7 @@ class CreateIndexRequest(TeaModel):
         # 
         # This parameter is required.
         self.structure_type = structure_type
+        self.meta_extract_columns = meta_extract_columns
 
     def validate(self):
         if self.columns:
@@ -1477,6 +1536,10 @@ class CreateIndexRequest(TeaModel):
                     k.validate()
         if self.data_source:
             self.data_source.validate()
+        if self.meta_extract_columns:
+            for k in self.meta_extract_columns:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1520,6 +1583,10 @@ class CreateIndexRequest(TeaModel):
             result['SourceType'] = self.source_type
         if self.structure_type is not None:
             result['StructureType'] = self.structure_type
+        result['metaExtractColumns'] = []
+        if self.meta_extract_columns is not None:
+            for k in self.meta_extract_columns:
+                result['metaExtractColumns'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -1562,6 +1629,11 @@ class CreateIndexRequest(TeaModel):
             self.source_type = m.get('SourceType')
         if m.get('StructureType') is not None:
             self.structure_type = m.get('StructureType')
+        self.meta_extract_columns = []
+        if m.get('metaExtractColumns') is not None:
+            for k in m.get('metaExtractColumns'):
+                temp_model = CreateIndexRequestMetaExtractColumns()
+                self.meta_extract_columns.append(temp_model.from_map(k))
         return self
 
 
@@ -1585,10 +1657,11 @@ class CreateIndexShrinkRequest(TeaModel):
         sink_type: str = None,
         source_type: str = None,
         structure_type: str = None,
+        meta_extract_columns_shrink: str = None,
     ):
         # The list of primary key IDs of the categories to be imported into the knowledge base.
         self.category_ids_shrink = category_ids_shrink
-        # The estimated length of chunks. The maximum number of characters for a chunk. Texts exceeding this limit are splited. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values: [1-2048].
+        # The estimated length of chunks. The maximum number of characters for a chunk. Texts exceeding this limit are splited. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values: [1-2048].
         # 
         # The default value is empty, which means using the intelligent splitting method.
         # 
@@ -1601,7 +1674,7 @@ class CreateIndexShrinkRequest(TeaModel):
         self.description = description
         # The list of primary key IDs of the documents to be imported into the knowledge base.
         self.document_ids_shrink = document_ids_shrink
-        # The name of the embedding model. The embedding model converts the original input prompt and knowledge text into numerical vectors for similarity comparison. The default and only model available is DashScope text-embedding-v2. It supports multiple languages including Chinese and English and normalizes the vector results. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid value:
+        # The name of the embedding model. The embedding model converts the original input prompt and knowledge text into numerical vectors for similarity comparison. The default and only model available is DashScope text-embedding-v2. It supports multiple languages including Chinese and English and normalizes the vector results. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid value:
         # 
         # *   text-embedding-v2
         # 
@@ -1611,15 +1684,15 @@ class CreateIndexShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.name = name
-        # The overlap length. The number of overlapping characters between two consecutive chunks. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values: 0 to 1024.
+        # The overlap length. The number of overlapping characters between two consecutive chunks. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values: 0 to 1024.
         # 
         # The default value is empty, which means using the intelligent splitting method.
         self.overlap_size = overlap_size
-        # Similarity Threshold. The lowest similarity score of chunks that can be returned. This parameter is used to filter text chunks returned by the rank model. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values: [0.01-1.00].
+        # Similarity Threshold. The lowest similarity score of chunks that can be returned. This parameter is used to filter text chunks returned by the rank model. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values: [0.01-1.00].
         # 
         # Default value: 0.20.
         self.rerank_min_score = rerank_min_score
-        # The name of the rank model. The rank model is a scoring system outside the knowledge base. It calculates the similarity score of each text chunk in the input question and knowledge base and ranks them in descending order. Then, the model returns the top K chunks with the highest scores. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # The name of the rank model. The rank model is a scoring system outside the knowledge base. It calculates the similarity score of each text chunk in the input question and knowledge base and ranks them in descending order. Then, the model returns the top K chunks with the highest scores. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values:
         # 
         # *   gte-rerank-hybrid
         # *   gte-rerank
@@ -1628,7 +1701,7 @@ class CreateIndexShrinkRequest(TeaModel):
         # 
         # >  If you need only semantic ranking, we recommend that you use gte-rerank. If you need both semantic ranking and text matching features to ensure relevance, we recommend that you use gte-rerank-hybrid.
         self.rerank_model_name = rerank_model_name
-        # The clause identifier. The document is split into chunks based on this identifier. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). You can specify multiple identifiers and do not need to add any other characters to separate them. For example: !,\\\\\\n. Valid values:
+        # The clause identifier. The document is split into chunks based on this identifier. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). You can specify multiple identifiers and do not need to add any other characters to separate them. For example: !,\\\\\\n. Valid values:
         # 
         # *   \\n: line break
         # *   ，: Chinese comma
@@ -1639,16 +1712,16 @@ class CreateIndexShrinkRequest(TeaModel):
         # *   ! : English exclamation point
         # *   ；: Chinese semicolon
         # *   ;: English semicolon
-        # *   ？ : Chinese question mark
+        # *   ？: Chinese question mark
         # *   ?: English question mark
         # 
         # The default value is empty, which means using the intelligent splitting method.
         self.separator = separator
         # The ID of the vector storage instance. This parameter is available only when SinkType is set to ADB. You can view the ID on the [Instances](https://gpdbnext.console.aliyun.com/gpdb/list) page of AnalyticDB for PostgreSQL.
         self.sink_instance_id = sink_instance_id
-        # The region of the vector storage instance. This parameter is available only when SinkType is set to ADB. You can call the [DescribeRegions](https://help.aliyun.com/zh/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-describeregions) operation to query the most recent region list.
+        # The region of the vector storage instance. This parameter is available only when SinkType is set to ADB. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-describeregions) operation to query the most recent region list.
         self.sink_region = sink_region
-        # The vector storage type of the knowledge base. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # The vector storage type of the knowledge base. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values:
         # 
         # *   DEFAULT: The built-in vector database.
         # *   ADB: AnalyticDB for PostgreSQL database. If you need advanced features, such as managing, auditing, and monitoring, we recommend that you specify ADB.
@@ -1657,7 +1730,7 @@ class CreateIndexShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.sink_type = sink_type
-        # The data type of [Data Management](https://bailian.console.aliyun.com/#/data-center). For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # The data type of [Data Management](https://bailian.console.aliyun.com/#/data-center). For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values:
         # 
         # *   DATA_CENTER_CATEGORY: The category type. Import all documents from one or more categories in Data Center.
         # *   DATA_CENTER_FILE: The document type. Import one or more documents from Data Center.
@@ -1668,7 +1741,7 @@ class CreateIndexShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.source_type = source_type
-        # The data type of the knowledge base. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid value:
+        # The data type of the knowledge base. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid value:
         # 
         # *   unstructured
         # 
@@ -1676,6 +1749,7 @@ class CreateIndexShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.structure_type = structure_type
+        self.meta_extract_columns_shrink = meta_extract_columns_shrink
 
     def validate(self):
         pass
@@ -1720,6 +1794,8 @@ class CreateIndexShrinkRequest(TeaModel):
             result['SourceType'] = self.source_type
         if self.structure_type is not None:
             result['StructureType'] = self.structure_type
+        if self.meta_extract_columns_shrink is not None:
+            result['metaExtractColumns'] = self.meta_extract_columns_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -1758,6 +1834,8 @@ class CreateIndexShrinkRequest(TeaModel):
             self.source_type = m.get('SourceType')
         if m.get('StructureType') is not None:
             self.structure_type = m.get('StructureType')
+        if m.get('metaExtractColumns') is not None:
+            self.meta_extract_columns_shrink = m.get('metaExtractColumns')
         return self
 
 
@@ -2572,7 +2650,7 @@ class DeleteIndexRequest(TeaModel):
         self,
         index_id: str = None,
     ):
-        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
         # 
         # This parameter is required.
         self.index_id = index_id
@@ -2707,7 +2785,7 @@ class DeleteIndexDocumentRequest(TeaModel):
         # 
         # This parameter is required.
         self.document_ids = document_ids
-        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
         # 
         # This parameter is required.
         self.index_id = index_id
@@ -2746,7 +2824,7 @@ class DeleteIndexDocumentShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.document_ids_shrink = document_ids_shrink
-        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
         # 
         # This parameter is required.
         self.index_id = index_id
@@ -3324,15 +3402,15 @@ class GetIndexJobStatusRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
         # 
         # This parameter is required.
         self.index_id = index_id
-        # The knowledge base job ID, which is the `Data.Id` parameter returned by the [SubmitIndexJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexjob) or [SubmitIndexAddDocumentsJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexadddocumentsjob) operations.
+        # The knowledge base job ID, which is the `Data.Id` parameter returned by the [SubmitIndexJob](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-submitindexjob) or [SubmitIndexAddDocumentsJob](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-submitindexadddocumentsjob) operations.
         # 
         # This parameter is required.
         self.job_id = job_id
-        # Both the [SubmitIndexJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexjob) and [SubmitIndexAddDocumentsJob](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-submitindexadddocumentsjob) operations support batch import of documents. This operation returns both the overall `Status` of the job and the `Document.Status` of each document. If there are a large number of documents, you can use the `PageNumber` parameter to perform a paged query. Pages start from page 1. Default value: 1.
+        # Both the [SubmitIndexJob](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-submitindexjob) and [SubmitIndexAddDocumentsJob](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-submitindexadddocumentsjob) operations support batch import of documents. This operation returns both the overall `Status` of the job and the `Document.Status` of each document. If there are a large number of documents, you can use the `PageNumber` parameter to perform a paged query. Pages start from page 1. Default value: 1.
         self.page_number = page_number
         # The number of document import jobs that are displayed on each page. No maximum value. Default value: 10.
         self.page_size = page_size
@@ -4629,9 +4707,9 @@ class ListChunksRequest(TeaModel):
     ):
         # An array of field names. This parameter is used to filter non-private fields (prefixed with_underscores) in the Metadata parameter returned by this operation. By default, this parameter is left empty, which means all non-private fields in the Metadata parameter are returned. If you only want specified non-private fields, such as title, set this parameter to title.
         self.fields = fields
-        # The primary key ID of the document, which is the `FieldID` parameter returned by the [AddFile](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addfile) operation. This parameter is not required for structured knowledge base, but is required for unstructured knowledge base. To view the ID, you can click the ID icon next to the file name on the [Data Management](https://bailian.console.aliyun.com/#/data-center) page. You can filter returned chunks by the document ID. This parameter is left empty by default.
+        # The primary key ID of the document. This parameter is not required for structured knowledge base, but is required for unstructured knowledge base. To view the ID, you can click the ID icon next to the file name on the [Data Management](https://bailian.console.aliyun.com/#/data-center) page. You can filter returned chunks by the document ID. This parameter is left empty by default.
         self.filed = filed
-        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
         # 
         # This parameter is required.
         self.index_id = index_id
@@ -5171,7 +5249,7 @@ class ListIndexDocumentsRequest(TeaModel):
         # 
         # The default value is null, which means the import status is not used to filter the results.
         self.document_status = document_status
-        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
         # 
         # This parameter is required.
         self.index_id = index_id
@@ -5240,7 +5318,7 @@ class ListIndexDocumentsResponseBodyDataDocuments(TeaModel):
         self.name = name
         # The size of the document. Unit: bytes.
         self.size = size
-        # For unstructured knowledge base, this parameter is the category ID, which is the `CategoryId` returned by the [AddCategory](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addcategory) interface. To view the category ID, you can click the ID icon next to the category name on the Unstructured Data tab of the [Data Management](https://bailian.console.aliyun.com/#/data-center) page.
+        # For unstructured knowledge base, this parameter is the category ID. To view the category ID, you can click the ID icon next to the category name on the Unstructured Data tab of the [Data Management](https://bailian.console.aliyun.com/#/data-center) page.
         # 
         # For structured knowledge base, this parameter is the data table ID. To view the table ID, you can click the ID icon next to the table name on the Structured Data tab of the [Data Management](https://bailian.console.aliyun.com/#/data-center) page.
         self.source_id = source_id
@@ -5546,7 +5624,7 @@ class ListIndicesResponseBodyDataIndices(TeaModel):
         # 
         # *   text-embedding-v2
         self.embedding_model_name = embedding_model_name
-        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
         self.id = id
         # The name of the knowledge base.
         self.name = name
@@ -6961,7 +7039,7 @@ class RetrieveRequestRerank(TeaModel):
         self,
         model_name: str = None,
     ):
-        # The name of the rank model. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # The name of the rank model. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values:
         # 
         # *   gte-rerank-hybrid: Recommended official model.
         # *   gte-rerank
@@ -7040,14 +7118,14 @@ class RetrieveRequest(TeaModel):
         # 
         # Default value: 100.
         self.dense_similarity_top_k = dense_similarity_top_k
-        # Specifies whether to enable reranking. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # Specifies whether to enable reranking. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values:
         # 
         # *   true
         # *   false
         # 
         # Default value: true.
         self.enable_reranking = enable_reranking
-        # Specifies whether to enable multi-round conversation rewriting. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # Specifies whether to enable multi-round conversation rewriting. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values:
         # 
         # *   true
         # *   false
@@ -7055,7 +7133,7 @@ class RetrieveRequest(TeaModel):
         # Default value: false.
         self.enable_rewrite = enable_rewrite
         self.images = images
-        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
         # 
         # This parameter is required.
         self.index_id = index_id
@@ -7063,7 +7141,7 @@ class RetrieveRequest(TeaModel):
         self.query = query
         # Ranking configurations.
         self.rerank = rerank
-        # Similarity Threshold The lowest similarity score of chunks that can be returned. This parameter is used to filter text chunks returned by the rank model. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values: [0.01-1.00]. The priority of this parameter is greater than the similarity threshold configured for the knowledge base.
+        # Similarity Threshold The lowest similarity score of chunks that can be returned. This parameter is used to filter text chunks returned by the rank model. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values: [0.01-1.00]. The priority of this parameter is greater than the similarity threshold configured for the knowledge base.
         # 
         # By default, this parameter is left empty. In this case, the similarity threshold of the knowledge base is used.
         self.rerank_min_score = rerank_min_score
@@ -7191,14 +7269,14 @@ class RetrieveShrinkRequest(TeaModel):
         # 
         # Default value: 100.
         self.dense_similarity_top_k = dense_similarity_top_k
-        # Specifies whether to enable reranking. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # Specifies whether to enable reranking. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values:
         # 
         # *   true
         # *   false
         # 
         # Default value: true.
         self.enable_reranking = enable_reranking
-        # Specifies whether to enable multi-round conversation rewriting. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # Specifies whether to enable multi-round conversation rewriting. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values:
         # 
         # *   true
         # *   false
@@ -7206,7 +7284,7 @@ class RetrieveShrinkRequest(TeaModel):
         # Default value: false.
         self.enable_rewrite = enable_rewrite
         self.images_shrink = images_shrink
-        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
         # 
         # This parameter is required.
         self.index_id = index_id
@@ -7214,7 +7292,7 @@ class RetrieveShrinkRequest(TeaModel):
         self.query = query
         # Ranking configurations.
         self.rerank_shrink = rerank_shrink
-        # Similarity Threshold The lowest similarity score of chunks that can be returned. This parameter is used to filter text chunks returned by the rank model. For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values: [0.01-1.00]. The priority of this parameter is greater than the similarity threshold configured for the knowledge base.
+        # Similarity Threshold The lowest similarity score of chunks that can be returned. This parameter is used to filter text chunks returned by the rank model. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values: [0.01-1.00]. The priority of this parameter is greater than the similarity threshold configured for the knowledge base.
         # 
         # By default, this parameter is left empty. In this case, the similarity threshold of the knowledge base is used.
         self.rerank_min_score = rerank_min_score
@@ -7503,11 +7581,11 @@ class SubmitIndexAddDocumentsJobRequest(TeaModel):
         self.category_ids = category_ids
         # The list of the primary key IDs of the documents.
         self.document_ids = document_ids
-        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
         # 
         # This parameter is required.
         self.index_id = index_id
-        # The data type of [Data Management](https://bailian.console.aliyun.com/#/data-center). For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # The data type of [Data Management](https://bailian.console.aliyun.com/#/data-center). For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values:
         # 
         # *   DATA_CENTER_CATEGORY: The category type. Import all documents from one or more categories in Data Center.
         # *   DATA_CENTER_FILE: The document type. Import one or more documents from Data Center.
@@ -7561,11 +7639,11 @@ class SubmitIndexAddDocumentsJobShrinkRequest(TeaModel):
         self.category_ids_shrink = category_ids_shrink
         # The list of the primary key IDs of the documents.
         self.document_ids_shrink = document_ids_shrink
-        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
         # 
         # This parameter is required.
         self.index_id = index_id
-        # The data type of [Data Management](https://bailian.console.aliyun.com/#/data-center). For more information, see [Create a knowledge base](https://help.aliyun.com/zh/model-studio/user-guide/rag-knowledge-base). Valid values:
+        # The data type of [Data Management](https://bailian.console.aliyun.com/#/data-center). For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values:
         # 
         # *   DATA_CENTER_CATEGORY: The category type. Import all documents from one or more categories in Data Center.
         # *   DATA_CENTER_FILE: The document type. Import one or more documents from Data Center.
@@ -7749,7 +7827,7 @@ class SubmitIndexJobRequest(TeaModel):
         self,
         index_id: str = None,
     ):
-        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
         # 
         # This parameter is required.
         self.index_id = index_id
@@ -7780,7 +7858,7 @@ class SubmitIndexJobResponseBodyData(TeaModel):
         id: str = None,
         index_id: str = None,
     ):
-        # The primary key ID of the job, which is the `JobId` parameter of the [GetIndexJobStatus](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-getindexjobstatus) operation.
+        # The primary key ID of the job, which is the `JobId` parameter of the [GetIndexJobStatus](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-getindexjobstatus) operation.
         self.id = id
         # The primary key ID of the knowledge base.
         self.index_id = index_id

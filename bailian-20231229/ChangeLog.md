@@ -1,3 +1,7 @@
+2024-11-07 Version: 1.10.1
+- Update API CreateIndex: add param metaExtractColumns.
+
+
 2024-11-04 Version: 1.10.0
 - Support API UpdateFileTag.
 
