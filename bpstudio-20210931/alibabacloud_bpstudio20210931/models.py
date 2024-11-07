@@ -3311,6 +3311,7 @@ class GetTemplateResponseBodyDataVariables(TeaModel):
         attribute: str = None,
         data_type: str = None,
         default_value: str = None,
+        options: str = None,
         variable: str = None,
     ):
         # The name of the variable.
@@ -3319,6 +3320,7 @@ class GetTemplateResponseBodyDataVariables(TeaModel):
         self.data_type = data_type
         # The default value of the variable.
         self.default_value = default_value
+        self.options = options
         # The value of the variable.
         self.variable = variable
 
@@ -3337,6 +3339,8 @@ class GetTemplateResponseBodyDataVariables(TeaModel):
             result['DataType'] = self.data_type
         if self.default_value is not None:
             result['DefaultValue'] = self.default_value
+        if self.options is not None:
+            result['Options'] = self.options
         if self.variable is not None:
             result['Variable'] = self.variable
         return result
@@ -3349,6 +3353,8 @@ class GetTemplateResponseBodyDataVariables(TeaModel):
             self.data_type = m.get('DataType')
         if m.get('DefaultValue') is not None:
             self.default_value = m.get('DefaultValue')
+        if m.get('Options') is not None:
+            self.options = m.get('Options')
         if m.get('Variable') is not None:
             self.variable = m.get('Variable')
         return self

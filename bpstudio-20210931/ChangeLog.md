@@ -1,3 +1,7 @@
+2024-11-07 Version: 6.0.2
+- Update API GetTemplate: update response param.
+
+
 2024-10-10 Version: 6.0.1
 - Update API GetResource4ModifyRecord: update response param.
 
