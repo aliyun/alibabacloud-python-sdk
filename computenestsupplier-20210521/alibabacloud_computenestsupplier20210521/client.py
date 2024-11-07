@@ -396,9 +396,13 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = compute_nest_supplier_20210521_models.CreateArtifactShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.artifact_build_property):
+            request.artifact_build_property_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.artifact_build_property, 'ArtifactBuildProperty', 'json')
         if not UtilClient.is_unset(tmp_req.artifact_property):
             request.artifact_property_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.artifact_property, 'ArtifactProperty', 'json')
         query = {}
+        if not UtilClient.is_unset(request.artifact_build_property_shrink):
+            query['ArtifactBuildProperty'] = request.artifact_build_property_shrink
         if not UtilClient.is_unset(request.artifact_id):
             query['ArtifactId'] = request.artifact_id
         if not UtilClient.is_unset(request.artifact_property_shrink):
@@ -451,9 +455,13 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = compute_nest_supplier_20210521_models.CreateArtifactShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.artifact_build_property):
+            request.artifact_build_property_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.artifact_build_property, 'ArtifactBuildProperty', 'json')
         if not UtilClient.is_unset(tmp_req.artifact_property):
             request.artifact_property_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.artifact_property, 'ArtifactProperty', 'json')
         query = {}
+        if not UtilClient.is_unset(request.artifact_build_property_shrink):
+            query['ArtifactBuildProperty'] = request.artifact_build_property_shrink
         if not UtilClient.is_unset(request.artifact_id):
             query['ArtifactId'] = request.artifact_id
         if not UtilClient.is_unset(request.artifact_property_shrink):
@@ -2523,20 +2531,26 @@ class Client(OpenApiClient):
 
     def list_artifact_versions_with_options(
         self,
-        request: compute_nest_supplier_20210521_models.ListArtifactVersionsRequest,
+        tmp_req: compute_nest_supplier_20210521_models.ListArtifactVersionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.ListArtifactVersionsResponse:
         """
         @summary Queries the version information about a deployment package.
         
-        @param request: ListArtifactVersionsRequest
+        @param tmp_req: ListArtifactVersionsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListArtifactVersionsResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = compute_nest_supplier_20210521_models.ListArtifactVersionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filters):
+            request.filters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filters, 'Filters', 'json')
         query = {}
         if not UtilClient.is_unset(request.artifact_id):
             query['ArtifactId'] = request.artifact_id
+        if not UtilClient.is_unset(request.filters_shrink):
+            query['Filters'] = request.filters_shrink
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -2562,20 +2576,26 @@ class Client(OpenApiClient):
 
     async def list_artifact_versions_with_options_async(
         self,
-        request: compute_nest_supplier_20210521_models.ListArtifactVersionsRequest,
+        tmp_req: compute_nest_supplier_20210521_models.ListArtifactVersionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.ListArtifactVersionsResponse:
         """
         @summary Queries the version information about a deployment package.
         
-        @param request: ListArtifactVersionsRequest
+        @param tmp_req: ListArtifactVersionsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListArtifactVersionsResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = compute_nest_supplier_20210521_models.ListArtifactVersionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filters):
+            request.filters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filters, 'Filters', 'json')
         query = {}
         if not UtilClient.is_unset(request.artifact_id):
             query['ArtifactId'] = request.artifact_id
+        if not UtilClient.is_unset(request.filters_shrink):
+            query['Filters'] = request.filters_shrink
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -2736,80 +2756,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_artifacts_with_options_async(request, runtime)
-
-    def list_service_categories_with_options(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> compute_nest_supplier_20210521_models.ListServiceCategoriesResponse:
-        """
-        @summary 查询服务分类
-        
-        @param request: ListServiceCategoriesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListServiceCategoriesResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='ListServiceCategories',
-            version='2021-05-21',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.ListServiceCategoriesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_service_categories_with_options_async(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> compute_nest_supplier_20210521_models.ListServiceCategoriesResponse:
-        """
-        @summary 查询服务分类
-        
-        @param request: ListServiceCategoriesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListServiceCategoriesResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='ListServiceCategories',
-            version='2021-05-21',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            compute_nest_supplier_20210521_models.ListServiceCategoriesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_service_categories(self) -> compute_nest_supplier_20210521_models.ListServiceCategoriesResponse:
-        """
-        @summary 查询服务分类
-        
-        @return: ListServiceCategoriesResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.list_service_categories_with_options(runtime)
-
-    async def list_service_categories_async(self) -> compute_nest_supplier_20210521_models.ListServiceCategoriesResponse:
-        """
-        @summary 查询服务分类
-        
-        @return: ListServiceCategoriesResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.list_service_categories_with_options_async(runtime)
 
     def list_service_instances_with_options(
         self,
@@ -3685,7 +3631,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.RejectServiceUsageResponse:
         """
-        @summary 商家拒绝服务使用请求
+        @summary Reject service usage.
         
         @param request: RejectServiceUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3728,7 +3674,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.RejectServiceUsageResponse:
         """
-        @summary 商家拒绝服务使用请求
+        @summary Reject service usage.
         
         @param request: RejectServiceUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3770,7 +3716,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.RejectServiceUsageRequest,
     ) -> compute_nest_supplier_20210521_models.RejectServiceUsageResponse:
         """
-        @summary 商家拒绝服务使用请求
+        @summary Reject service usage.
         
         @param request: RejectServiceUsageRequest
         @return: RejectServiceUsageResponse
@@ -3783,7 +3729,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.RejectServiceUsageRequest,
     ) -> compute_nest_supplier_20210521_models.RejectServiceUsageResponse:
         """
-        @summary 商家拒绝服务使用请求
+        @summary Reject service usage.
         
         @param request: RejectServiceUsageRequest
         @return: RejectServiceUsageResponse
@@ -4326,9 +4272,13 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = compute_nest_supplier_20210521_models.UpdateArtifactShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.artifact_build_property):
+            request.artifact_build_property_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.artifact_build_property, 'ArtifactBuildProperty', 'json')
         if not UtilClient.is_unset(tmp_req.artifact_property):
             request.artifact_property_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.artifact_property, 'ArtifactProperty', 'json')
         query = {}
+        if not UtilClient.is_unset(request.artifact_build_property_shrink):
+            query['ArtifactBuildProperty'] = request.artifact_build_property_shrink
         if not UtilClient.is_unset(request.artifact_id):
             query['ArtifactId'] = request.artifact_id
         if not UtilClient.is_unset(request.artifact_property_shrink):
@@ -4373,9 +4323,13 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = compute_nest_supplier_20210521_models.UpdateArtifactShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.artifact_build_property):
+            request.artifact_build_property_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.artifact_build_property, 'ArtifactBuildProperty', 'json')
         if not UtilClient.is_unset(tmp_req.artifact_property):
             request.artifact_property_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.artifact_property, 'ArtifactProperty', 'json')
         query = {}
+        if not UtilClient.is_unset(request.artifact_build_property_shrink):
+            query['ArtifactBuildProperty'] = request.artifact_build_property_shrink
         if not UtilClient.is_unset(request.artifact_id):
             query['ArtifactId'] = request.artifact_id
         if not UtilClient.is_unset(request.artifact_property_shrink):

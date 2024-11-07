@@ -1,3 +1,17 @@
+2024-11-07 Version: 4.0.0
+- Delete API ListServiceCategories.
+- Update API CreateArtifact: add param ArtifactBuildProperty.
+- Update API CreateArtifact: update param ArtifactProperty.
+- Update API CreateArtifact: update response param.
+- Update API GetArtifact: update response param.
+- Update API ListAcrImageRepositories: update response param.
+- Update API ListArtifactVersions: add param Filters.
+- Update API ListArtifactVersions: update response param.
+- Update API UpdateArtifact: add param ArtifactBuildProperty.
+- Update API UpdateArtifact: update param ArtifactProperty.
+- Update API UpdateArtifact: update response param.
+
+
 2024-10-25 Version: 2.8.0
 - Support API LaunchService.
 - Support API PreLaunchService.
