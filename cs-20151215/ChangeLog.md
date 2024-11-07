@@ -1,3 +1,8 @@
+2024-11-07 Version: 4.8.0
+- Support API DescribeClustersForRegion.
+- Support API DescribeEventsForRegion.
+
+
 2024-11-05 Version: 4.7.10
 - Update API CreateClusterNodePool: update param body.
 - Update API DescribeClusterNodePoolDetail: update response param.

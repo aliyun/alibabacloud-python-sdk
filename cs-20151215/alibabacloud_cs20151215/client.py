@@ -6092,6 +6092,138 @@ class Client(OpenApiClient):
         headers = {}
         return await self.describe_clusters_with_options_async(request, headers, runtime)
 
+    def describe_clusters_for_region_with_options(
+        self,
+        region_id: str,
+        request: cs20151215_models.DescribeClustersForRegionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescribeClustersForRegionResponse:
+        """
+        @summary 查询指定地域内全部集群列表
+        
+        @param request: DescribeClustersForRegionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClustersForRegionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['cluster_id'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_spec):
+            query['cluster_spec'] = request.cluster_spec
+        if not UtilClient.is_unset(request.cluster_type):
+            query['cluster_type'] = request.cluster_type
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['page_number'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['page_size'] = request.page_size
+        if not UtilClient.is_unset(request.profile):
+            query['profile'] = request.profile
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeClustersForRegion',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/regions/{OpenApiUtilClient.get_encode_param(region_id)}/clusters',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.DescribeClustersForRegionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_clusters_for_region_with_options_async(
+        self,
+        region_id: str,
+        request: cs20151215_models.DescribeClustersForRegionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescribeClustersForRegionResponse:
+        """
+        @summary 查询指定地域内全部集群列表
+        
+        @param request: DescribeClustersForRegionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClustersForRegionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['cluster_id'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_spec):
+            query['cluster_spec'] = request.cluster_spec
+        if not UtilClient.is_unset(request.cluster_type):
+            query['cluster_type'] = request.cluster_type
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['page_number'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['page_size'] = request.page_size
+        if not UtilClient.is_unset(request.profile):
+            query['profile'] = request.profile
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeClustersForRegion',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/regions/{OpenApiUtilClient.get_encode_param(region_id)}/clusters',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.DescribeClustersForRegionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_clusters_for_region(
+        self,
+        region_id: str,
+        request: cs20151215_models.DescribeClustersForRegionRequest,
+    ) -> cs20151215_models.DescribeClustersForRegionResponse:
+        """
+        @summary 查询指定地域内全部集群列表
+        
+        @param request: DescribeClustersForRegionRequest
+        @return: DescribeClustersForRegionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_clusters_for_region_with_options(region_id, request, headers, runtime)
+
+    async def describe_clusters_for_region_async(
+        self,
+        region_id: str,
+        request: cs20151215_models.DescribeClustersForRegionRequest,
+    ) -> cs20151215_models.DescribeClustersForRegionResponse:
+        """
+        @summary 查询指定地域内全部集群列表
+        
+        @param request: DescribeClustersForRegionRequest
+        @return: DescribeClustersForRegionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_clusters_for_region_with_options_async(region_id, request, headers, runtime)
+
     def describe_clusters_v1with_options(
         self,
         request: cs20151215_models.DescribeClustersV1Request,
@@ -6725,6 +6857,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_events_with_options_async(request, headers, runtime)
+
+    def describe_events_for_region_with_options(
+        self,
+        region_id: str,
+        request: cs20151215_models.DescribeEventsForRegionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescribeEventsForRegionResponse:
+        """
+        @summary 查询指定地域内全部事件列表
+        
+        @param request: DescribeEventsForRegionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEventsForRegionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['cluster_id'] = request.cluster_id
+        if not UtilClient.is_unset(request.page_number):
+            query['page_number'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['page_size'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEventsForRegion',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/regions/{OpenApiUtilClient.get_encode_param(region_id)}/events',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.DescribeEventsForRegionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_events_for_region_with_options_async(
+        self,
+        region_id: str,
+        request: cs20151215_models.DescribeEventsForRegionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescribeEventsForRegionResponse:
+        """
+        @summary 查询指定地域内全部事件列表
+        
+        @param request: DescribeEventsForRegionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEventsForRegionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['cluster_id'] = request.cluster_id
+        if not UtilClient.is_unset(request.page_number):
+            query['page_number'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['page_size'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEventsForRegion',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/regions/{OpenApiUtilClient.get_encode_param(region_id)}/events',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.DescribeEventsForRegionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_events_for_region(
+        self,
+        region_id: str,
+        request: cs20151215_models.DescribeEventsForRegionRequest,
+    ) -> cs20151215_models.DescribeEventsForRegionResponse:
+        """
+        @summary 查询指定地域内全部事件列表
+        
+        @param request: DescribeEventsForRegionRequest
+        @return: DescribeEventsForRegionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_events_for_region_with_options(region_id, request, headers, runtime)
+
+    async def describe_events_for_region_async(
+        self,
+        region_id: str,
+        request: cs20151215_models.DescribeEventsForRegionRequest,
+    ) -> cs20151215_models.DescribeEventsForRegionResponse:
+        """
+        @summary 查询指定地域内全部事件列表
+        
+        @param request: DescribeEventsForRegionRequest
+        @return: DescribeEventsForRegionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_events_for_region_with_options_async(region_id, request, headers, runtime)
 
     def describe_external_agent_with_options(
         self,

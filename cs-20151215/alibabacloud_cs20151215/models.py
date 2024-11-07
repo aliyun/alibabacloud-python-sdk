@@ -14210,6 +14210,373 @@ class DescribeClustersResponse(TeaModel):
         return self
 
 
+class DescribeClustersForRegionRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        cluster_spec: str = None,
+        cluster_type: str = None,
+        name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        profile: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.cluster_spec = cluster_spec
+        self.cluster_type = cluster_type
+        self.name = name
+        self.page_number = page_number
+        self.page_size = page_size
+        self.profile = profile
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['cluster_id'] = self.cluster_id
+        if self.cluster_spec is not None:
+            result['cluster_spec'] = self.cluster_spec
+        if self.cluster_type is not None:
+            result['cluster_type'] = self.cluster_type
+        if self.name is not None:
+            result['name'] = self.name
+        if self.page_number is not None:
+            result['page_number'] = self.page_number
+        if self.page_size is not None:
+            result['page_size'] = self.page_size
+        if self.profile is not None:
+            result['profile'] = self.profile
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('cluster_spec') is not None:
+            self.cluster_spec = m.get('cluster_spec')
+        if m.get('cluster_type') is not None:
+            self.cluster_type = m.get('cluster_type')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('page_number') is not None:
+            self.page_number = m.get('page_number')
+        if m.get('page_size') is not None:
+            self.page_size = m.get('page_size')
+        if m.get('profile') is not None:
+            self.profile = m.get('profile')
+        return self
+
+
+class DescribeClustersForRegionResponseBodyClusters(TeaModel):
+    def __init__(
+        self,
+        cluster_domain: str = None,
+        cluster_id: str = None,
+        cluster_spec: str = None,
+        cluster_type: str = None,
+        container_cidr: str = None,
+        created: str = None,
+        current_version: str = None,
+        deletion_protection: bool = None,
+        init_version: str = None,
+        ip_stack: str = None,
+        name: str = None,
+        next_version: str = None,
+        profile: str = None,
+        proxy_mode: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        security_group_id: str = None,
+        service_cidr: str = None,
+        size: int = None,
+        state: str = None,
+        tags: List[Tag] = None,
+        timezone: str = None,
+        updated: str = None,
+        vpc_id: str = None,
+        vswitch_ids: List[str] = None,
+    ):
+        self.cluster_domain = cluster_domain
+        self.cluster_id = cluster_id
+        self.cluster_spec = cluster_spec
+        self.cluster_type = cluster_type
+        self.container_cidr = container_cidr
+        self.created = created
+        self.current_version = current_version
+        self.deletion_protection = deletion_protection
+        self.init_version = init_version
+        self.ip_stack = ip_stack
+        self.name = name
+        self.next_version = next_version
+        self.profile = profile
+        self.proxy_mode = proxy_mode
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.security_group_id = security_group_id
+        # This parameter is required.
+        self.service_cidr = service_cidr
+        self.size = size
+        self.state = state
+        self.tags = tags
+        self.timezone = timezone
+        self.updated = updated
+        self.vpc_id = vpc_id
+        self.vswitch_ids = vswitch_ids
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_domain is not None:
+            result['cluster_domain'] = self.cluster_domain
+        if self.cluster_id is not None:
+            result['cluster_id'] = self.cluster_id
+        if self.cluster_spec is not None:
+            result['cluster_spec'] = self.cluster_spec
+        if self.cluster_type is not None:
+            result['cluster_type'] = self.cluster_type
+        if self.container_cidr is not None:
+            result['container_cidr'] = self.container_cidr
+        if self.created is not None:
+            result['created'] = self.created
+        if self.current_version is not None:
+            result['current_version'] = self.current_version
+        if self.deletion_protection is not None:
+            result['deletion_protection'] = self.deletion_protection
+        if self.init_version is not None:
+            result['init_version'] = self.init_version
+        if self.ip_stack is not None:
+            result['ip_stack'] = self.ip_stack
+        if self.name is not None:
+            result['name'] = self.name
+        if self.next_version is not None:
+            result['next_version'] = self.next_version
+        if self.profile is not None:
+            result['profile'] = self.profile
+        if self.proxy_mode is not None:
+            result['proxy_mode'] = self.proxy_mode
+        if self.region_id is not None:
+            result['region_id'] = self.region_id
+        if self.resource_group_id is not None:
+            result['resource_group_id'] = self.resource_group_id
+        if self.security_group_id is not None:
+            result['security_group_id'] = self.security_group_id
+        if self.service_cidr is not None:
+            result['service_cidr'] = self.service_cidr
+        if self.size is not None:
+            result['size'] = self.size
+        if self.state is not None:
+            result['state'] = self.state
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
+        if self.timezone is not None:
+            result['timezone'] = self.timezone
+        if self.updated is not None:
+            result['updated'] = self.updated
+        if self.vpc_id is not None:
+            result['vpc_id'] = self.vpc_id
+        if self.vswitch_ids is not None:
+            result['vswitch_ids'] = self.vswitch_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_domain') is not None:
+            self.cluster_domain = m.get('cluster_domain')
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('cluster_spec') is not None:
+            self.cluster_spec = m.get('cluster_spec')
+        if m.get('cluster_type') is not None:
+            self.cluster_type = m.get('cluster_type')
+        if m.get('container_cidr') is not None:
+            self.container_cidr = m.get('container_cidr')
+        if m.get('created') is not None:
+            self.created = m.get('created')
+        if m.get('current_version') is not None:
+            self.current_version = m.get('current_version')
+        if m.get('deletion_protection') is not None:
+            self.deletion_protection = m.get('deletion_protection')
+        if m.get('init_version') is not None:
+            self.init_version = m.get('init_version')
+        if m.get('ip_stack') is not None:
+            self.ip_stack = m.get('ip_stack')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('next_version') is not None:
+            self.next_version = m.get('next_version')
+        if m.get('profile') is not None:
+            self.profile = m.get('profile')
+        if m.get('proxy_mode') is not None:
+            self.proxy_mode = m.get('proxy_mode')
+        if m.get('region_id') is not None:
+            self.region_id = m.get('region_id')
+        if m.get('resource_group_id') is not None:
+            self.resource_group_id = m.get('resource_group_id')
+        if m.get('security_group_id') is not None:
+            self.security_group_id = m.get('security_group_id')
+        if m.get('service_cidr') is not None:
+            self.service_cidr = m.get('service_cidr')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = Tag()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('timezone') is not None:
+            self.timezone = m.get('timezone')
+        if m.get('updated') is not None:
+            self.updated = m.get('updated')
+        if m.get('vpc_id') is not None:
+            self.vpc_id = m.get('vpc_id')
+        if m.get('vswitch_ids') is not None:
+            self.vswitch_ids = m.get('vswitch_ids')
+        return self
+
+
+class DescribeClustersForRegionResponseBodyPageInfo(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['page_number'] = self.page_number
+        if self.page_size is not None:
+            result['page_size'] = self.page_size
+        if self.total_count is not None:
+            result['total_count'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('page_number') is not None:
+            self.page_number = m.get('page_number')
+        if m.get('page_size') is not None:
+            self.page_size = m.get('page_size')
+        if m.get('total_count') is not None:
+            self.total_count = m.get('total_count')
+        return self
+
+
+class DescribeClustersForRegionResponseBody(TeaModel):
+    def __init__(
+        self,
+        clusters: List[DescribeClustersForRegionResponseBodyClusters] = None,
+        page_info: DescribeClustersForRegionResponseBodyPageInfo = None,
+    ):
+        self.clusters = clusters
+        self.page_info = page_info
+
+    def validate(self):
+        if self.clusters:
+            for k in self.clusters:
+                if k:
+                    k.validate()
+        if self.page_info:
+            self.page_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['clusters'] = []
+        if self.clusters is not None:
+            for k in self.clusters:
+                result['clusters'].append(k.to_map() if k else None)
+        if self.page_info is not None:
+            result['page_info'] = self.page_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.clusters = []
+        if m.get('clusters') is not None:
+            for k in m.get('clusters'):
+                temp_model = DescribeClustersForRegionResponseBodyClusters()
+                self.clusters.append(temp_model.from_map(k))
+        if m.get('page_info') is not None:
+            temp_model = DescribeClustersForRegionResponseBodyPageInfo()
+            self.page_info = temp_model.from_map(m['page_info'])
+        return self
+
+
+class DescribeClustersForRegionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeClustersForRegionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeClustersForRegionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeClustersV1Request(TeaModel):
     def __init__(
         self,
@@ -15822,6 +16189,273 @@ class DescribeEventsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeEventsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeEventsForRegionRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.cluster_id = cluster_id
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['cluster_id'] = self.cluster_id
+        if self.page_number is not None:
+            result['page_number'] = self.page_number
+        if self.page_size is not None:
+            result['page_size'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('page_number') is not None:
+            self.page_number = m.get('page_number')
+        if m.get('page_size') is not None:
+            self.page_size = m.get('page_size')
+        return self
+
+
+class DescribeEventsForRegionResponseBodyEventsData(TeaModel):
+    def __init__(
+        self,
+        level: str = None,
+        message: str = None,
+        reason: str = None,
+    ):
+        self.level = level
+        self.message = message
+        self.reason = reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.level is not None:
+            result['level'] = self.level
+        if self.message is not None:
+            result['message'] = self.message
+        if self.reason is not None:
+            result['reason'] = self.reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('level') is not None:
+            self.level = m.get('level')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('reason') is not None:
+            self.reason = m.get('reason')
+        return self
+
+
+class DescribeEventsForRegionResponseBodyEvents(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        data: DescribeEventsForRegionResponseBodyEventsData = None,
+        event_id: str = None,
+        source: str = None,
+        subject: str = None,
+        time: str = None,
+        type: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.data = data
+        self.event_id = event_id
+        self.source = source
+        self.subject = subject
+        self.time = time
+        self.type = type
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['cluster_id'] = self.cluster_id
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.event_id is not None:
+            result['event_id'] = self.event_id
+        if self.source is not None:
+            result['source'] = self.source
+        if self.subject is not None:
+            result['subject'] = self.subject
+        if self.time is not None:
+            result['time'] = self.time
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('data') is not None:
+            temp_model = DescribeEventsForRegionResponseBodyEventsData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('event_id') is not None:
+            self.event_id = m.get('event_id')
+        if m.get('source') is not None:
+            self.source = m.get('source')
+        if m.get('subject') is not None:
+            self.subject = m.get('subject')
+        if m.get('time') is not None:
+            self.time = m.get('time')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class DescribeEventsForRegionResponseBodyPageInfo(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['page_number'] = self.page_number
+        if self.page_size is not None:
+            result['page_size'] = self.page_size
+        if self.total_count is not None:
+            result['total_count'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('page_number') is not None:
+            self.page_number = m.get('page_number')
+        if m.get('page_size') is not None:
+            self.page_size = m.get('page_size')
+        if m.get('total_count') is not None:
+            self.total_count = m.get('total_count')
+        return self
+
+
+class DescribeEventsForRegionResponseBody(TeaModel):
+    def __init__(
+        self,
+        events: List[DescribeEventsForRegionResponseBodyEvents] = None,
+        page_info: DescribeEventsForRegionResponseBodyPageInfo = None,
+    ):
+        self.events = events
+        self.page_info = page_info
+
+    def validate(self):
+        if self.events:
+            for k in self.events:
+                if k:
+                    k.validate()
+        if self.page_info:
+            self.page_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['events'] = []
+        if self.events is not None:
+            for k in self.events:
+                result['events'].append(k.to_map() if k else None)
+        if self.page_info is not None:
+            result['page_info'] = self.page_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.events = []
+        if m.get('events') is not None:
+            for k in m.get('events'):
+                temp_model = DescribeEventsForRegionResponseBodyEvents()
+                self.events.append(temp_model.from_map(k))
+        if m.get('page_info') is not None:
+            temp_model = DescribeEventsForRegionResponseBodyPageInfo()
+            self.page_info = temp_model.from_map(m['page_info'])
+        return self
+
+
+class DescribeEventsForRegionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeEventsForRegionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeEventsForRegionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
