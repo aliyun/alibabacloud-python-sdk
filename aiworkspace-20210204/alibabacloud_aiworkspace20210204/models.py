@@ -12120,6 +12120,149 @@ class SetExperimentLabelsResponse(TeaModel):
         return self
 
 
+class UpdateCodeSourceRequest(TeaModel):
+    def __init__(
+        self,
+        code_branch: str = None,
+        code_commit: str = None,
+        code_repo: str = None,
+        code_repo_access_token: str = None,
+        code_repo_user_name: str = None,
+        description: str = None,
+        display_name: str = None,
+        mount_path: str = None,
+    ):
+        self.code_branch = code_branch
+        self.code_commit = code_commit
+        self.code_repo = code_repo
+        self.code_repo_access_token = code_repo_access_token
+        self.code_repo_user_name = code_repo_user_name
+        self.description = description
+        self.display_name = display_name
+        self.mount_path = mount_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code_branch is not None:
+            result['CodeBranch'] = self.code_branch
+        if self.code_commit is not None:
+            result['CodeCommit'] = self.code_commit
+        if self.code_repo is not None:
+            result['CodeRepo'] = self.code_repo
+        if self.code_repo_access_token is not None:
+            result['CodeRepoAccessToken'] = self.code_repo_access_token
+        if self.code_repo_user_name is not None:
+            result['CodeRepoUserName'] = self.code_repo_user_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.mount_path is not None:
+            result['MountPath'] = self.mount_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CodeBranch') is not None:
+            self.code_branch = m.get('CodeBranch')
+        if m.get('CodeCommit') is not None:
+            self.code_commit = m.get('CodeCommit')
+        if m.get('CodeRepo') is not None:
+            self.code_repo = m.get('CodeRepo')
+        if m.get('CodeRepoAccessToken') is not None:
+            self.code_repo_access_token = m.get('CodeRepoAccessToken')
+        if m.get('CodeRepoUserName') is not None:
+            self.code_repo_user_name = m.get('CodeRepoUserName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('MountPath') is not None:
+            self.mount_path = m.get('MountPath')
+        return self
+
+
+class UpdateCodeSourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code_source_id: str = None,
+        request_id: str = None,
+    ):
+        self.code_source_id = code_source_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code_source_id is not None:
+            result['CodeSourceId'] = self.code_source_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CodeSourceId') is not None:
+            self.code_source_id = m.get('CodeSourceId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateCodeSourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCodeSourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCodeSourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateDatasetRequest(TeaModel):
     def __init__(
         self,

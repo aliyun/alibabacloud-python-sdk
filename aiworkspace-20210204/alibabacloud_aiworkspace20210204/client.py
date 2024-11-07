@@ -8143,6 +8143,142 @@ class Client(OpenApiClient):
         headers = {}
         return await self.set_experiment_labels_with_options_async(experiment_id, request, headers, runtime)
 
+    def update_code_source_with_options(
+        self,
+        code_source_id: str,
+        request: aiwork_space_20210204_models.UpdateCodeSourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.UpdateCodeSourceResponse:
+        """
+        @summary 更新代码配置
+        
+        @param request: UpdateCodeSourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCodeSourceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.code_branch):
+            body['CodeBranch'] = request.code_branch
+        if not UtilClient.is_unset(request.code_commit):
+            body['CodeCommit'] = request.code_commit
+        if not UtilClient.is_unset(request.code_repo):
+            body['CodeRepo'] = request.code_repo
+        if not UtilClient.is_unset(request.code_repo_access_token):
+            body['CodeRepoAccessToken'] = request.code_repo_access_token
+        if not UtilClient.is_unset(request.code_repo_user_name):
+            body['CodeRepoUserName'] = request.code_repo_user_name
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            body['DisplayName'] = request.display_name
+        if not UtilClient.is_unset(request.mount_path):
+            body['MountPath'] = request.mount_path
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateCodeSource',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/codesources/{OpenApiUtilClient.get_encode_param(code_source_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.UpdateCodeSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_code_source_with_options_async(
+        self,
+        code_source_id: str,
+        request: aiwork_space_20210204_models.UpdateCodeSourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.UpdateCodeSourceResponse:
+        """
+        @summary 更新代码配置
+        
+        @param request: UpdateCodeSourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCodeSourceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.code_branch):
+            body['CodeBranch'] = request.code_branch
+        if not UtilClient.is_unset(request.code_commit):
+            body['CodeCommit'] = request.code_commit
+        if not UtilClient.is_unset(request.code_repo):
+            body['CodeRepo'] = request.code_repo
+        if not UtilClient.is_unset(request.code_repo_access_token):
+            body['CodeRepoAccessToken'] = request.code_repo_access_token
+        if not UtilClient.is_unset(request.code_repo_user_name):
+            body['CodeRepoUserName'] = request.code_repo_user_name
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            body['DisplayName'] = request.display_name
+        if not UtilClient.is_unset(request.mount_path):
+            body['MountPath'] = request.mount_path
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateCodeSource',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/codesources/{OpenApiUtilClient.get_encode_param(code_source_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.UpdateCodeSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_code_source(
+        self,
+        code_source_id: str,
+        request: aiwork_space_20210204_models.UpdateCodeSourceRequest,
+    ) -> aiwork_space_20210204_models.UpdateCodeSourceResponse:
+        """
+        @summary 更新代码配置
+        
+        @param request: UpdateCodeSourceRequest
+        @return: UpdateCodeSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_code_source_with_options(code_source_id, request, headers, runtime)
+
+    async def update_code_source_async(
+        self,
+        code_source_id: str,
+        request: aiwork_space_20210204_models.UpdateCodeSourceRequest,
+    ) -> aiwork_space_20210204_models.UpdateCodeSourceResponse:
+        """
+        @summary 更新代码配置
+        
+        @param request: UpdateCodeSourceRequest
+        @return: UpdateCodeSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_code_source_with_options_async(code_source_id, request, headers, runtime)
+
     def update_dataset_with_options(
         self,
         dataset_id: str,
