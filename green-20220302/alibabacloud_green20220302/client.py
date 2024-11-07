@@ -1685,7 +1685,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.VoiceModerationResultResponse:
         """
-        @summary 语音检测结果获取接口
+        @summary Obtains the moderation results of a Voice Moderation 2.0 task.
         
         @param request: VoiceModerationResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1722,7 +1722,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.VoiceModerationResultResponse:
         """
-        @summary 语音检测结果获取接口
+        @summary Obtains the moderation results of a Voice Moderation 2.0 task.
         
         @param request: VoiceModerationResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1758,7 +1758,7 @@ class Client(OpenApiClient):
         request: green_20220302_models.VoiceModerationResultRequest,
     ) -> green_20220302_models.VoiceModerationResultResponse:
         """
-        @summary 语音检测结果获取接口
+        @summary Obtains the moderation results of a Voice Moderation 2.0 task.
         
         @param request: VoiceModerationResultRequest
         @return: VoiceModerationResultResponse
@@ -1771,7 +1771,7 @@ class Client(OpenApiClient):
         request: green_20220302_models.VoiceModerationResultRequest,
     ) -> green_20220302_models.VoiceModerationResultResponse:
         """
-        @summary 语音检测结果获取接口
+        @summary Obtains the moderation results of a Voice Moderation 2.0 task.
         
         @param request: VoiceModerationResultRequest
         @return: VoiceModerationResultResponse
