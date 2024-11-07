@@ -1,3 +1,6 @@
+2024-11-07 Version: 1.3.1
+- Generated python 2021-03-08 for eds-user.
+
 2024-11-06 Version: 1.3.0
 - Support API ChangeUserPassword.
 - Update API LockUsers: add param LogoutSession.
