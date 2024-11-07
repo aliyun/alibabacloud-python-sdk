@@ -1,3 +1,7 @@
+2024-11-07 Version: 2.26.2
+- Update API QueryGroupLiveInfo: update response param.
+
+
 2024-10-23 Version: 2.26.1
 - Update API QueryGroupLiveInfo: update param AccountContext.
 - Update API QueryGroupLiveInfo: update param AnchorUnionId.

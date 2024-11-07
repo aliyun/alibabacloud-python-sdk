@@ -59256,6 +59256,7 @@ class QueryGroupLiveInfoResponseBody(TeaModel):
         live_play_url: str = None,
         live_status: int = None,
         playback_duration: int = None,
+        replay_url: str = None,
         request_id: str = None,
         staff_id: str = None,
         start_time: int = None,
@@ -59273,6 +59274,7 @@ class QueryGroupLiveInfoResponseBody(TeaModel):
         self.live_play_url = live_play_url
         self.live_status = live_status
         self.playback_duration = playback_duration
+        self.replay_url = replay_url
         # requestId
         self.request_id = request_id
         self.staff_id = staff_id
@@ -59308,6 +59310,8 @@ class QueryGroupLiveInfoResponseBody(TeaModel):
             result['liveStatus'] = self.live_status
         if self.playback_duration is not None:
             result['playbackDuration'] = self.playback_duration
+        if self.replay_url is not None:
+            result['replayUrl'] = self.replay_url
         if self.request_id is not None:
             result['requestId'] = self.request_id
         if self.staff_id is not None:
@@ -59344,6 +59348,8 @@ class QueryGroupLiveInfoResponseBody(TeaModel):
             self.live_status = m.get('liveStatus')
         if m.get('playbackDuration') is not None:
             self.playback_duration = m.get('playbackDuration')
+        if m.get('replayUrl') is not None:
+            self.replay_url = m.get('replayUrl')
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
         if m.get('staffId') is not None:
