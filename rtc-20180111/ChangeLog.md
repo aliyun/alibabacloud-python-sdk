@@ -1,3 +1,7 @@
+2024-11-07 Version: 4.0.0
+- Update API DescribeAppRecordingFiles: update response param.
+
+
 2024-11-06 Version: 3.4.0
 - Support API CreateAppLayout.
 - Support API DeleteAppLayout.
