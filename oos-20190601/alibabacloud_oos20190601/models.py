@@ -3940,6 +3940,7 @@ class DeleteExecutionsRequest(TeaModel):
         # 
         # This parameter is required.
         self.execution_ids = execution_ids
+        # Whether to force delete the running task, the default value is false.
         self.force = force
         # The region ID.
         self.region_id = region_id
@@ -11051,6 +11052,7 @@ class ListGitRepositoriesRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
+        org_id: str = None,
         org_name: str = None,
         owner: str = None,
         page_number: int = None,
@@ -11059,6 +11061,7 @@ class ListGitRepositoriesRequest(TeaModel):
         region_id: str = None,
     ):
         self.client_token = client_token
+        self.org_id = org_id
         self.org_name = org_name
         # This parameter is required.
         self.owner = owner
@@ -11079,6 +11082,8 @@ class ListGitRepositoriesRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
         if self.org_name is not None:
             result['OrgName'] = self.org_name
         if self.owner is not None:
@@ -11097,6 +11102,8 @@ class ListGitRepositoriesRequest(TeaModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
         if m.get('OrgName') is not None:
             self.org_name = m.get('OrgName')
         if m.get('Owner') is not None:
@@ -11119,11 +11126,13 @@ class ListGitRepositoriesResponseBodyGitRepos(TeaModel):
         full_name: str = None,
         html_url: str = None,
         is_private: bool = None,
+        repo_id: int = None,
     ):
         self.description = description
         self.full_name = full_name
         self.html_url = html_url
         self.is_private = is_private
+        self.repo_id = repo_id
 
     def validate(self):
         pass
@@ -11142,6 +11151,8 @@ class ListGitRepositoriesResponseBodyGitRepos(TeaModel):
             result['HtmlUrl'] = self.html_url
         if self.is_private is not None:
             result['IsPrivate'] = self.is_private
+        if self.repo_id is not None:
+            result['RepoId'] = self.repo_id
         return result
 
     def from_map(self, m: dict = None):
@@ -11154,6 +11165,8 @@ class ListGitRepositoriesResponseBodyGitRepos(TeaModel):
             self.html_url = m.get('HtmlUrl')
         if m.get('IsPrivate') is not None:
             self.is_private = m.get('IsPrivate')
+        if m.get('RepoId') is not None:
+            self.repo_id = m.get('RepoId')
         return self
 
 
@@ -16637,6 +16650,7 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
         total_execution_count: int = None,
         updated_by: str = None,
         updated_date: str = None,
+        version_name: str = None,
     ):
         # The template type.
         self.category = category
@@ -16687,6 +16701,7 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
         self.updated_by = updated_by
         # The time when the template was last updated.
         self.updated_date = updated_date
+        self.version_name = version_name
 
     def validate(self):
         pass
@@ -16739,6 +16754,8 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
             result['UpdatedBy'] = self.updated_by
         if self.updated_date is not None:
             result['UpdatedDate'] = self.updated_date
+        if self.version_name is not None:
+            result['VersionName'] = self.version_name
         return result
 
     def from_map(self, m: dict = None):
@@ -16785,6 +16802,8 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
             self.updated_by = m.get('UpdatedBy')
         if m.get('UpdatedDate') is not None:
             self.updated_date = m.get('UpdatedDate')
+        if m.get('VersionName') is not None:
+            self.version_name = m.get('VersionName')
         return self
 
 

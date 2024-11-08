@@ -5125,6 +5125,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.org_id):
+            query['OrgId'] = request.org_id
         if not UtilClient.is_unset(request.org_name):
             query['OrgName'] = request.org_name
         if not UtilClient.is_unset(request.owner):
@@ -5172,6 +5174,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.org_id):
+            query['OrgId'] = request.org_id
         if not UtilClient.is_unset(request.org_name):
             query['OrgName'] = request.org_name
         if not UtilClient.is_unset(request.owner):
@@ -8759,7 +8763,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.UpdateExecutionResponse:
         """
-        @summary Updates an execution.
+        @summary Update executions that are in Running or Waiting status.
         
         @param request: UpdateExecutionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8806,7 +8810,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.UpdateExecutionResponse:
         """
-        @summary Updates an execution.
+        @summary Update executions that are in Running or Waiting status.
         
         @param request: UpdateExecutionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8852,7 +8856,7 @@ class Client(OpenApiClient):
         request: oos_20190601_models.UpdateExecutionRequest,
     ) -> oos_20190601_models.UpdateExecutionResponse:
         """
-        @summary Updates an execution.
+        @summary Update executions that are in Running or Waiting status.
         
         @param request: UpdateExecutionRequest
         @return: UpdateExecutionResponse
@@ -8865,7 +8869,7 @@ class Client(OpenApiClient):
         request: oos_20190601_models.UpdateExecutionRequest,
     ) -> oos_20190601_models.UpdateExecutionResponse:
         """
-        @summary Updates an execution.
+        @summary Update executions that are in Running or Waiting status.
         
         @param request: UpdateExecutionRequest
         @return: UpdateExecutionResponse
