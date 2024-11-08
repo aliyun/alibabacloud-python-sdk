@@ -1,3 +1,9 @@
+2024-11-08 Version: 1.24.6
+- Update API CreateApplication: add param OidcRoleName.
+- Update API DeployApplication: add param OidcRoleName.
+- Update API DescribeApplicationConfig: update response param.
+
+
 2024-11-06 Version: 1.24.5
 - Update API DescribeIngress: update response param.
 

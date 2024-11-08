@@ -11076,6 +11076,7 @@ class CreateApplicationRequest(TeaModel):
         namespace_id: str = None,
         nas_configs: str = None,
         nas_id: str = None,
+        oidc_role_name: str = None,
         oss_ak_id: str = None,
         oss_ak_secret: str = None,
         oss_mount_descs: str = None,
@@ -11167,6 +11168,7 @@ class CreateApplicationRequest(TeaModel):
         self.nas_configs = nas_configs
         # KSAK\\*\\*\\*\\*\
         self.nas_id = nas_id
+        self.oidc_role_name = oidc_role_name
         # xxxxxx
         self.oss_ak_id = oss_ak_id
         # xxxxxx
@@ -11302,6 +11304,8 @@ class CreateApplicationRequest(TeaModel):
             result['NasConfigs'] = self.nas_configs
         if self.nas_id is not None:
             result['NasId'] = self.nas_id
+        if self.oidc_role_name is not None:
+            result['OidcRoleName'] = self.oidc_role_name
         if self.oss_ak_id is not None:
             result['OssAkId'] = self.oss_ak_id
         if self.oss_ak_secret is not None:
@@ -11434,6 +11438,8 @@ class CreateApplicationRequest(TeaModel):
             self.nas_configs = m.get('NasConfigs')
         if m.get('NasId') is not None:
             self.nas_id = m.get('NasId')
+        if m.get('OidcRoleName') is not None:
+            self.oidc_role_name = m.get('OidcRoleName')
         if m.get('OssAkId') is not None:
             self.oss_ak_id = m.get('OssAkId')
         if m.get('OssAkSecret') is not None:
@@ -16003,6 +16009,7 @@ class DeployApplicationRequest(TeaModel):
         mount_host: str = None,
         nas_configs: str = None,
         nas_id: str = None,
+        oidc_role_name: str = None,
         oss_ak_id: str = None,
         oss_ak_secret: str = None,
         oss_mount_descs: str = None,
@@ -16199,6 +16206,7 @@ class DeployApplicationRequest(TeaModel):
         self.nas_configs = nas_configs
         # The ID of the File Storage NAS file system. After the application is created, you may want to call other operations to manage the application. If you do not want to change the NAS configurations in these subsequent operations, you can omit the **NasId** parameter in the requests. If you want to unmount the NAS file system, you must set the **NasId** values in the subsequent requests to an empty string ("").
         self.nas_id = nas_id
+        self.oidc_role_name = oidc_role_name
         # The AccessKey ID that is used to read data from and write data to Object Storage Service (OSS) buckets.
         self.oss_ak_id = oss_ak_id
         # The AccessKey secret that is used to read data from and write data to OSS buckets.
@@ -16389,6 +16397,8 @@ class DeployApplicationRequest(TeaModel):
             result['NasConfigs'] = self.nas_configs
         if self.nas_id is not None:
             result['NasId'] = self.nas_id
+        if self.oidc_role_name is not None:
+            result['OidcRoleName'] = self.oidc_role_name
         if self.oss_ak_id is not None:
             result['OssAkId'] = self.oss_ak_id
         if self.oss_ak_secret is not None:
@@ -16519,6 +16529,8 @@ class DeployApplicationRequest(TeaModel):
             self.nas_configs = m.get('NasConfigs')
         if m.get('NasId') is not None:
             self.nas_id = m.get('NasId')
+        if m.get('OidcRoleName') is not None:
+            self.oidc_role_name = m.get('OidcRoleName')
         if m.get('OssAkId') is not None:
             self.oss_ak_id = m.get('OssAkId')
         if m.get('OssAkSecret') is not None:
@@ -17452,6 +17464,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         namespace_id: str = None,
         nas_configs: str = None,
         nas_id: str = None,
+        oidc_role_name: str = None,
         oss_ak_id: str = None,
         oss_ak_secret: str = None,
         oss_mount_descs: List[DescribeApplicationConfigResponseBodyDataOssMountDescs] = None,
@@ -17660,6 +17673,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self.nas_configs = nas_configs
         # The ID of the NAS file system.
         self.nas_id = nas_id
+        self.oidc_role_name = oidc_role_name
         # The AccessKey ID that is used to read data from and write data to Object Storage Service (OSS) buckets.
         self.oss_ak_id = oss_ak_id
         # The AccessKey secret that is used to read data from and write data to OSS buckets.
@@ -17894,6 +17908,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['NasConfigs'] = self.nas_configs
         if self.nas_id is not None:
             result['NasId'] = self.nas_id
+        if self.oidc_role_name is not None:
+            result['OidcRoleName'] = self.oidc_role_name
         if self.oss_ak_id is not None:
             result['OssAkId'] = self.oss_ak_id
         if self.oss_ak_secret is not None:
@@ -18050,6 +18066,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.nas_configs = m.get('NasConfigs')
         if m.get('NasId') is not None:
             self.nas_id = m.get('NasId')
+        if m.get('OidcRoleName') is not None:
+            self.oidc_role_name = m.get('OidcRoleName')
         if m.get('OssAkId') is not None:
             self.oss_ak_id = m.get('OssAkId')
         if m.get('OssAkSecret') is not None:

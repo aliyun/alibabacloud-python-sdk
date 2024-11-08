@@ -759,6 +759,8 @@ class Client(OpenApiClient):
             query['NasConfigs'] = request.nas_configs
         if not UtilClient.is_unset(request.nas_id):
             query['NasId'] = request.nas_id
+        if not UtilClient.is_unset(request.oidc_role_name):
+            query['OidcRoleName'] = request.oidc_role_name
         if not UtilClient.is_unset(request.package_type):
             query['PackageType'] = request.package_type
         if not UtilClient.is_unset(request.package_url):
@@ -923,6 +925,8 @@ class Client(OpenApiClient):
             query['NasConfigs'] = request.nas_configs
         if not UtilClient.is_unset(request.nas_id):
             query['NasId'] = request.nas_id
+        if not UtilClient.is_unset(request.oidc_role_name):
+            query['OidcRoleName'] = request.oidc_role_name
         if not UtilClient.is_unset(request.package_type):
             query['PackageType'] = request.package_type
         if not UtilClient.is_unset(request.package_url):
@@ -3729,6 +3733,8 @@ class Client(OpenApiClient):
             query['NasConfigs'] = request.nas_configs
         if not UtilClient.is_unset(request.nas_id):
             query['NasId'] = request.nas_id
+        if not UtilClient.is_unset(request.oidc_role_name):
+            query['OidcRoleName'] = request.oidc_role_name
         if not UtilClient.is_unset(request.package_type):
             query['PackageType'] = request.package_type
         if not UtilClient.is_unset(request.package_url):
@@ -3893,6 +3899,8 @@ class Client(OpenApiClient):
             query['NasConfigs'] = request.nas_configs
         if not UtilClient.is_unset(request.nas_id):
             query['NasId'] = request.nas_id
+        if not UtilClient.is_unset(request.oidc_role_name):
+            query['OidcRoleName'] = request.oidc_role_name
         if not UtilClient.is_unset(request.package_type):
             query['PackageType'] = request.package_type
         if not UtilClient.is_unset(request.package_url):
