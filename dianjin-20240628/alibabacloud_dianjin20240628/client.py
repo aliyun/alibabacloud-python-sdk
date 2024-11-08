@@ -3045,6 +3045,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.re_index_with_options_async(workspace_id, request, headers, runtime)
 
+    def rebuild_task_with_options(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.RebuildTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.RebuildTaskResponse:
+        """
+        @summary 重建任务
+        
+        @param request: RebuildTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebuildTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_ids):
+            body['taskIds'] = request.task_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RebuildTask',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/task/rebuild',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.RebuildTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def rebuild_task_with_options_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.RebuildTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.RebuildTaskResponse:
+        """
+        @summary 重建任务
+        
+        @param request: RebuildTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebuildTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_ids):
+            body['taskIds'] = request.task_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RebuildTask',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/task/rebuild',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.RebuildTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def rebuild_task(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.RebuildTaskRequest,
+    ) -> dian_jin_20240628_models.RebuildTaskResponse:
+        """
+        @summary 重建任务
+        
+        @param request: RebuildTaskRequest
+        @return: RebuildTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.rebuild_task_with_options(workspace_id, request, headers, runtime)
+
+    async def rebuild_task_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.RebuildTaskRequest,
+    ) -> dian_jin_20240628_models.RebuildTaskResponse:
+        """
+        @summary 重建任务
+        
+        @param request: RebuildTaskRequest
+        @return: RebuildTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.rebuild_task_with_options_async(workspace_id, request, headers, runtime)
+
     def recall_document_with_options(
         self,
         workspace_id: str,

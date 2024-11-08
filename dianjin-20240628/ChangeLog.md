@@ -1,3 +1,7 @@
+2024-11-08 Version: 1.6.0
+- Support API RebuildTask.
+
+
 2024-10-12 Version: 1.5.0
 - Support API CreateAnnualDocSummaryTask.
 
