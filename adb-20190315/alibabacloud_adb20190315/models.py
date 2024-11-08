@@ -2181,12 +2181,17 @@ class DeleteBackupsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the backup set that you want to delete. Separate multiple backup set IDs with commas (,).
+        # 
         # This parameter is required.
         self.backup_ids = backup_ids
+        # The ID of the AnalyticDB for MySQL cluster.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the cluster.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -2240,7 +2245,7 @@ class DeleteBackupsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9332,12 +9337,14 @@ class DescribeDBClusterPerformanceResponseBodyPerformances(TeaModel):
 class DescribeDBClusterPerformanceResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         dbcluster_id: str = None,
         end_time: str = None,
         performances: List[DescribeDBClusterPerformanceResponseBodyPerformances] = None,
         request_id: str = None,
         start_time: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
         # The end time of the query. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time is displayed in UTC.
@@ -9361,6 +9368,8 @@ class DescribeDBClusterPerformanceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
         if self.end_time is not None:
@@ -9377,6 +9386,8 @@ class DescribeDBClusterPerformanceResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('EndTime') is not None:
@@ -9994,9 +10005,11 @@ class DescribeDBClusterShardNumberRequest(TeaModel):
 class DescribeDBClusterShardNumberResponseBody(TeaModel):
     def __init__(
         self,
+        available_shard_numbers: List[int] = None,
         request_id: str = None,
         shard_number: int = None,
     ):
+        self.available_shard_numbers = available_shard_numbers
         self.request_id = request_id
         self.shard_number = shard_number
 
@@ -10009,6 +10022,8 @@ class DescribeDBClusterShardNumberResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.available_shard_numbers is not None:
+            result['AvailableShardNumbers'] = self.available_shard_numbers
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.shard_number is not None:
@@ -10017,6 +10032,8 @@ class DescribeDBClusterShardNumberResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AvailableShardNumbers') is not None:
+            self.available_shard_numbers = m.get('AvailableShardNumbers')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('ShardNumber') is not None:

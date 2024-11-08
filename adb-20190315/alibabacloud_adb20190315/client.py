@@ -1697,7 +1697,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DeleteBackupsResponse:
         """
-        @summary 手动删除备份集
+        @summary Manually deletes backup sets.
+        
+        @description    Deleting backup sets is an asynchronous operation and may require 10 to 20 minutes to complete.
+        You can delete up to 100 backup sets at a time. If you want to delete more than 100 backup sets, call this operation twice.
+        To ensure data security, the system forcibly retains one valid backup set. If you want to delete the last backup set, the system prohibits your operation.
         
         @param request: DeleteBackupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1730,7 +1734,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.DeleteBackupsResponse:
         """
-        @summary 手动删除备份集
+        @summary Manually deletes backup sets.
+        
+        @description    Deleting backup sets is an asynchronous operation and may require 10 to 20 minutes to complete.
+        You can delete up to 100 backup sets at a time. If you want to delete more than 100 backup sets, call this operation twice.
+        To ensure data security, the system forcibly retains one valid backup set. If you want to delete the last backup set, the system prohibits your operation.
         
         @param request: DeleteBackupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1762,7 +1770,11 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DeleteBackupsRequest,
     ) -> adb_20190315_models.DeleteBackupsResponse:
         """
-        @summary 手动删除备份集
+        @summary Manually deletes backup sets.
+        
+        @description    Deleting backup sets is an asynchronous operation and may require 10 to 20 minutes to complete.
+        You can delete up to 100 backup sets at a time. If you want to delete more than 100 backup sets, call this operation twice.
+        To ensure data security, the system forcibly retains one valid backup set. If you want to delete the last backup set, the system prohibits your operation.
         
         @param request: DeleteBackupsRequest
         @return: DeleteBackupsResponse
@@ -1775,7 +1787,11 @@ class Client(OpenApiClient):
         request: adb_20190315_models.DeleteBackupsRequest,
     ) -> adb_20190315_models.DeleteBackupsResponse:
         """
-        @summary 手动删除备份集
+        @summary Manually deletes backup sets.
+        
+        @description    Deleting backup sets is an asynchronous operation and may require 10 to 20 minutes to complete.
+        You can delete up to 100 backup sets at a time. If you want to delete more than 100 backup sets, call this operation twice.
+        To ensure data security, the system forcibly retains one valid backup set. If you want to delete the last backup set, the system prohibits your operation.
         
         @param request: DeleteBackupsRequest
         @return: DeleteBackupsResponse
