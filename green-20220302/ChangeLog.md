@@ -1,3 +1,6 @@
+2024-11-08 Version: 2.18.0
+- Generated python 2022-03-02 for Green.
+
 2024-11-07 Version: 2.2.15
 - Update API ImageModeration: update response param.
 - Update API VoiceModerationResult: update response param.
