@@ -118,8 +118,11 @@ class ChangeResourceGroupRequest(TeaModel):
         resource_id: str = None,
         resource_region_id: str = None,
     ):
+        # This parameter is required.
         self.resource_group_id = resource_group_id
+        # This parameter is required.
         self.resource_id = resource_id
+        # This parameter is required.
         self.resource_region_id = resource_region_id
 
     def validate(self):
@@ -964,6 +967,7 @@ class CreateClusterRequest(TeaModel):
         networks: CreateClusterRequestNetworks = None,
         nimiz_vswitches: List[str] = None,
         node_groups: List[CreateClusterRequestNodeGroups] = None,
+        open_eni_jumbo_frame: bool = None,
         resource_group_id: str = None,
         tag: List[CreateClusterRequestTag] = None,
     ):
@@ -976,6 +980,7 @@ class CreateClusterRequest(TeaModel):
         self.networks = networks
         self.nimiz_vswitches = nimiz_vswitches
         self.node_groups = node_groups
+        self.open_eni_jumbo_frame = open_eni_jumbo_frame
         self.resource_group_id = resource_group_id
         self.tag = tag
 
@@ -1023,6 +1028,8 @@ class CreateClusterRequest(TeaModel):
         if self.node_groups is not None:
             for k in self.node_groups:
                 result['NodeGroups'].append(k.to_map() if k else None)
+        if self.open_eni_jumbo_frame is not None:
+            result['OpenEniJumboFrame'] = self.open_eni_jumbo_frame
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         result['Tag'] = []
@@ -1058,6 +1065,8 @@ class CreateClusterRequest(TeaModel):
             for k in m.get('NodeGroups'):
                 temp_model = CreateClusterRequestNodeGroups()
                 self.node_groups.append(temp_model.from_map(k))
+        if m.get('OpenEniJumboFrame') is not None:
+            self.open_eni_jumbo_frame = m.get('OpenEniJumboFrame')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         self.tag = []
@@ -1113,6 +1122,7 @@ class CreateClusterShrinkRequest(TeaModel):
         networks_shrink: str = None,
         nimiz_vswitches_shrink: str = None,
         node_groups_shrink: str = None,
+        open_eni_jumbo_frame: bool = None,
         resource_group_id: str = None,
         tag: List[CreateClusterShrinkRequestTag] = None,
     ):
@@ -1125,6 +1135,7 @@ class CreateClusterShrinkRequest(TeaModel):
         self.networks_shrink = networks_shrink
         self.nimiz_vswitches_shrink = nimiz_vswitches_shrink
         self.node_groups_shrink = node_groups_shrink
+        self.open_eni_jumbo_frame = open_eni_jumbo_frame
         self.resource_group_id = resource_group_id
         self.tag = tag
 
@@ -1158,6 +1169,8 @@ class CreateClusterShrinkRequest(TeaModel):
             result['NimizVSwitches'] = self.nimiz_vswitches_shrink
         if self.node_groups_shrink is not None:
             result['NodeGroups'] = self.node_groups_shrink
+        if self.open_eni_jumbo_frame is not None:
+            result['OpenEniJumboFrame'] = self.open_eni_jumbo_frame
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         result['Tag'] = []
@@ -1186,6 +1199,8 @@ class CreateClusterShrinkRequest(TeaModel):
             self.nimiz_vswitches_shrink = m.get('NimizVSwitches')
         if m.get('NodeGroups') is not None:
             self.node_groups_shrink = m.get('NodeGroups')
+        if m.get('OpenEniJumboFrame') is not None:
+            self.open_eni_jumbo_frame = m.get('OpenEniJumboFrame')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         self.tag = []
@@ -1281,6 +1296,7 @@ class DeleteClusterRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -1376,6 +1392,7 @@ class DescribeClusterRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -1472,6 +1489,7 @@ class DescribeClusterResponseBody(TeaModel):
         networks: List[DescribeClusterResponseBodyNetworks] = None,
         node_count: int = None,
         node_group_count: int = None,
+        open_eni_jumbo_frame: str = None,
         operating_state: str = None,
         request_id: str = None,
         resource_group_id: str = None,
@@ -1490,6 +1508,7 @@ class DescribeClusterResponseBody(TeaModel):
         self.networks = networks
         self.node_count = node_count
         self.node_group_count = node_group_count
+        self.open_eni_jumbo_frame = open_eni_jumbo_frame
         self.operating_state = operating_state
         self.request_id = request_id
         self.resource_group_id = resource_group_id
@@ -1539,6 +1558,8 @@ class DescribeClusterResponseBody(TeaModel):
             result['NodeCount'] = self.node_count
         if self.node_group_count is not None:
             result['NodeGroupCount'] = self.node_group_count
+        if self.open_eni_jumbo_frame is not None:
+            result['OpenEniJumboFrame'] = self.open_eni_jumbo_frame
         if self.operating_state is not None:
             result['OperatingState'] = self.operating_state
         if self.request_id is not None:
@@ -1583,6 +1604,8 @@ class DescribeClusterResponseBody(TeaModel):
             self.node_count = m.get('NodeCount')
         if m.get('NodeGroupCount') is not None:
             self.node_group_count = m.get('NodeGroupCount')
+        if m.get('OpenEniJumboFrame') is not None:
+            self.open_eni_jumbo_frame = m.get('OpenEniJumboFrame')
         if m.get('OperatingState') is not None:
             self.operating_state = m.get('OperatingState')
         if m.get('RequestId') is not None:
@@ -1649,6 +1672,7 @@ class DescribeInvocationsRequest(TeaModel):
     ):
         self.content_encoding = content_encoding
         self.include_output = include_output
+        # This parameter is required.
         self.invoke_id = invoke_id
         self.node_id = node_id
 
@@ -2053,6 +2077,7 @@ class DescribeNodeRequest(TeaModel):
         self,
         node_id: str = None,
     ):
+        # This parameter is required.
         self.node_id = node_id
 
     def validate(self):
@@ -2447,6 +2472,7 @@ class DescribeSendFileResultsRequest(TeaModel):
         invoke_id: str = None,
         node_id: str = None,
     ):
+        # This parameter is required.
         self.invoke_id = invoke_id
         self.node_id = node_id
 
@@ -2802,6 +2828,7 @@ class DescribeTaskRequest(TeaModel):
         self,
         task_id: str = None,
     ):
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -3828,6 +3855,7 @@ class ListClusterNodesRequest(TeaModel):
         next_token: str = None,
         node_group_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.max_results = max_results
         self.next_token = next_token
@@ -4594,8 +4622,11 @@ class ListTagResourcesRequest(TeaModel):
         tag: List[ListTagResourcesRequestTag] = None,
     ):
         self.next_token = next_token
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.resource_id = resource_id
+        # This parameter is required.
         self.resource_type = resource_type
         self.tag = tag
 
@@ -5192,6 +5223,7 @@ class RunCommandRequest(TeaModel):
         working_dir: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.command_content = command_content
         self.content_encoding = content_encoding
         self.description = description
@@ -5291,6 +5323,7 @@ class RunCommandShrinkRequest(TeaModel):
         working_dir: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.command_content = command_content
         self.content_encoding = content_encoding
         self.description = description
@@ -5462,15 +5495,19 @@ class SendFileRequest(TeaModel):
         target_dir: str = None,
         timeout: int = None,
     ):
+        # This parameter is required.
         self.content = content
         self.content_type = content_type
         self.description = description
         self.file_group = file_group
         self.file_mode = file_mode
         self.file_owner = file_owner
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.node_id_list = node_id_list
         self.overwrite = overwrite
+        # This parameter is required.
         self.target_dir = target_dir
         self.timeout = timeout
 
@@ -5549,15 +5586,19 @@ class SendFileShrinkRequest(TeaModel):
         target_dir: str = None,
         timeout: int = None,
     ):
+        # This parameter is required.
         self.content = content
         self.content_type = content_type
         self.description = description
         self.file_group = file_group
         self.file_mode = file_mode
         self.file_owner = file_owner
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.node_id_list_shrink = node_id_list_shrink
         self.overwrite = overwrite
+        # This parameter is required.
         self.target_dir = target_dir
         self.timeout = timeout
 
@@ -5930,6 +5971,7 @@ class StopInvocationRequest(TeaModel):
         invoke_id: str = None,
         node_id_list: List[str] = None,
     ):
+        # This parameter is required.
         self.invoke_id = invoke_id
         self.node_id_list = node_id_list
 
@@ -5963,6 +6005,7 @@ class StopInvocationShrinkRequest(TeaModel):
         invoke_id: str = None,
         node_id_list_shrink: str = None,
     ):
+        # This parameter is required.
         self.invoke_id = invoke_id
         self.node_id_list_shrink = node_id_list_shrink
 
@@ -6100,9 +6143,13 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.resource_id = resource_id
+        # This parameter is required.
         self.resource_type = resource_type
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -6224,8 +6271,11 @@ class UntagResourcesRequest(TeaModel):
         tag_key: List[str] = None,
     ):
         self.all = all
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.resource_id = resource_id
+        # This parameter is required.
         self.resource_type = resource_type
         self.tag_key = tag_key
 

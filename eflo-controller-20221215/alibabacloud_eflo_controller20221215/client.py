@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ApproveOperationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ApproveOperationResponse:
+        """
+        @summary 审批运维操作
+        
+        @param request: ApproveOperationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApproveOperationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.node_id):
@@ -76,6 +83,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ApproveOperationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ApproveOperationResponse:
+        """
+        @summary 审批运维操作
+        
+        @param request: ApproveOperationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApproveOperationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.node_id):
@@ -105,6 +119,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.ApproveOperationRequest,
     ) -> eflo_controller_20221215_models.ApproveOperationResponse:
+        """
+        @summary 审批运维操作
+        
+        @param request: ApproveOperationRequest
+        @return: ApproveOperationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.approve_operation_with_options(request, runtime)
 
@@ -112,6 +132,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.ApproveOperationRequest,
     ) -> eflo_controller_20221215_models.ApproveOperationResponse:
+        """
+        @summary 审批运维操作
+        
+        @param request: ApproveOperationRequest
+        @return: ApproveOperationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.approve_operation_with_options_async(request, runtime)
 
@@ -120,6 +146,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ChangeResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_group_id):
@@ -152,6 +185,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ChangeResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_group_id):
@@ -183,6 +223,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.ChangeResourceGroupRequest,
     ) -> eflo_controller_20221215_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.change_resource_group_with_options(request, runtime)
 
@@ -190,6 +236,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.ChangeResourceGroupRequest,
     ) -> eflo_controller_20221215_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.change_resource_group_with_options_async(request, runtime)
 
@@ -198,6 +250,13 @@ class Client(OpenApiClient):
         tmp_req: eflo_controller_20221215_models.CreateClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.CreateClusterResponse:
+        """
+        @summary 创建大计算集群
+        
+        @param tmp_req: CreateClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateClusterResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = eflo_controller_20221215_models.CreateClusterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -231,6 +290,8 @@ class Client(OpenApiClient):
             body['NimizVSwitches'] = request.nimiz_vswitches_shrink
         if not UtilClient.is_unset(request.node_groups_shrink):
             body['NodeGroups'] = request.node_groups_shrink
+        if not UtilClient.is_unset(request.open_eni_jumbo_frame):
+            body['OpenEniJumboFrame'] = request.open_eni_jumbo_frame
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
@@ -258,6 +319,13 @@ class Client(OpenApiClient):
         tmp_req: eflo_controller_20221215_models.CreateClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.CreateClusterResponse:
+        """
+        @summary 创建大计算集群
+        
+        @param tmp_req: CreateClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateClusterResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = eflo_controller_20221215_models.CreateClusterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -291,6 +359,8 @@ class Client(OpenApiClient):
             body['NimizVSwitches'] = request.nimiz_vswitches_shrink
         if not UtilClient.is_unset(request.node_groups_shrink):
             body['NodeGroups'] = request.node_groups_shrink
+        if not UtilClient.is_unset(request.open_eni_jumbo_frame):
+            body['OpenEniJumboFrame'] = request.open_eni_jumbo_frame
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
@@ -317,6 +387,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.CreateClusterRequest,
     ) -> eflo_controller_20221215_models.CreateClusterResponse:
+        """
+        @summary 创建大计算集群
+        
+        @param request: CreateClusterRequest
+        @return: CreateClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_cluster_with_options(request, runtime)
 
@@ -324,6 +400,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.CreateClusterRequest,
     ) -> eflo_controller_20221215_models.CreateClusterResponse:
+        """
+        @summary 创建大计算集群
+        
+        @param request: CreateClusterRequest
+        @return: CreateClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_cluster_with_options_async(request, runtime)
 
@@ -332,6 +414,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DeleteClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DeleteClusterResponse:
+        """
+        @summary 删除集群实例
+        
+        @param request: DeleteClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteClusterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -360,6 +449,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DeleteClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DeleteClusterResponse:
+        """
+        @summary 删除集群实例
+        
+        @param request: DeleteClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteClusterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -387,6 +483,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.DeleteClusterRequest,
     ) -> eflo_controller_20221215_models.DeleteClusterResponse:
+        """
+        @summary 删除集群实例
+        
+        @param request: DeleteClusterRequest
+        @return: DeleteClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_cluster_with_options(request, runtime)
 
@@ -394,6 +496,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.DeleteClusterRequest,
     ) -> eflo_controller_20221215_models.DeleteClusterResponse:
+        """
+        @summary 删除集群实例
+        
+        @param request: DeleteClusterRequest
+        @return: DeleteClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_cluster_with_options_async(request, runtime)
 
@@ -402,6 +510,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeClusterResponse:
+        """
+        @summary 集群详情
+        
+        @param request: DescribeClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -430,6 +545,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeClusterResponse:
+        """
+        @summary 集群详情
+        
+        @param request: DescribeClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -457,6 +579,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.DescribeClusterRequest,
     ) -> eflo_controller_20221215_models.DescribeClusterResponse:
+        """
+        @summary 集群详情
+        
+        @param request: DescribeClusterRequest
+        @return: DescribeClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cluster_with_options(request, runtime)
 
@@ -464,6 +592,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.DescribeClusterRequest,
     ) -> eflo_controller_20221215_models.DescribeClusterResponse:
+        """
+        @summary 集群详情
+        
+        @param request: DescribeClusterRequest
+        @return: DescribeClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cluster_with_options_async(request, runtime)
 
@@ -472,6 +606,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeInvocationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeInvocationsResponse:
+        """
+        @summary 查询运维助手命令的执行列表和状态
+        
+        @param request: DescribeInvocationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInvocationsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.content_encoding):
@@ -506,6 +647,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeInvocationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeInvocationsResponse:
+        """
+        @summary 查询运维助手命令的执行列表和状态
+        
+        @param request: DescribeInvocationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInvocationsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.content_encoding):
@@ -539,6 +687,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.DescribeInvocationsRequest,
     ) -> eflo_controller_20221215_models.DescribeInvocationsResponse:
+        """
+        @summary 查询运维助手命令的执行列表和状态
+        
+        @param request: DescribeInvocationsRequest
+        @return: DescribeInvocationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_invocations_with_options(request, runtime)
 
@@ -546,6 +700,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.DescribeInvocationsRequest,
     ) -> eflo_controller_20221215_models.DescribeInvocationsResponse:
+        """
+        @summary 查询运维助手命令的执行列表和状态
+        
+        @param request: DescribeInvocationsRequest
+        @return: DescribeInvocationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_invocations_with_options_async(request, runtime)
 
@@ -554,6 +714,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeNodeResponse:
+        """
+        @summary 查询节点列表
+        
+        @param request: DescribeNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.node_id):
@@ -582,6 +749,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeNodeResponse:
+        """
+        @summary 查询节点列表
+        
+        @param request: DescribeNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.node_id):
@@ -609,6 +783,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.DescribeNodeRequest,
     ) -> eflo_controller_20221215_models.DescribeNodeResponse:
+        """
+        @summary 查询节点列表
+        
+        @param request: DescribeNodeRequest
+        @return: DescribeNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_node_with_options(request, runtime)
 
@@ -616,6 +796,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.DescribeNodeRequest,
     ) -> eflo_controller_20221215_models.DescribeNodeResponse:
+        """
+        @summary 查询节点列表
+        
+        @param request: DescribeNodeRequest
+        @return: DescribeNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_node_with_options_async(request, runtime)
 
@@ -624,6 +810,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeRegionsResponse:
+        """
+        @summary 区域列表
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -652,6 +845,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeRegionsResponse:
+        """
+        @summary 区域列表
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -679,6 +879,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.DescribeRegionsRequest,
     ) -> eflo_controller_20221215_models.DescribeRegionsResponse:
+        """
+        @summary 区域列表
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_regions_with_options(request, runtime)
 
@@ -686,6 +892,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.DescribeRegionsRequest,
     ) -> eflo_controller_20221215_models.DescribeRegionsResponse:
+        """
+        @summary 区域列表
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
@@ -694,6 +906,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeSendFileResultsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeSendFileResultsResponse:
+        """
+        @summary 查询运维助手下发文件列表及状态
+        
+        @param request: DescribeSendFileResultsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSendFileResultsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.invoke_id):
@@ -724,6 +943,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeSendFileResultsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeSendFileResultsResponse:
+        """
+        @summary 查询运维助手下发文件列表及状态
+        
+        @param request: DescribeSendFileResultsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSendFileResultsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.invoke_id):
@@ -753,6 +979,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.DescribeSendFileResultsRequest,
     ) -> eflo_controller_20221215_models.DescribeSendFileResultsResponse:
+        """
+        @summary 查询运维助手下发文件列表及状态
+        
+        @param request: DescribeSendFileResultsRequest
+        @return: DescribeSendFileResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_send_file_results_with_options(request, runtime)
 
@@ -760,6 +992,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.DescribeSendFileResultsRequest,
     ) -> eflo_controller_20221215_models.DescribeSendFileResultsResponse:
+        """
+        @summary 查询运维助手下发文件列表及状态
+        
+        @param request: DescribeSendFileResultsRequest
+        @return: DescribeSendFileResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_send_file_results_with_options_async(request, runtime)
 
@@ -768,6 +1006,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeTaskResponse:
+        """
+        @summary 查询任务详情
+        
+        @param request: DescribeTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.task_id):
@@ -796,6 +1041,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeTaskResponse:
+        """
+        @summary 查询任务详情
+        
+        @param request: DescribeTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.task_id):
@@ -823,6 +1075,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.DescribeTaskRequest,
     ) -> eflo_controller_20221215_models.DescribeTaskResponse:
+        """
+        @summary 查询任务详情
+        
+        @param request: DescribeTaskRequest
+        @return: DescribeTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_task_with_options(request, runtime)
 
@@ -830,6 +1088,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.DescribeTaskRequest,
     ) -> eflo_controller_20221215_models.DescribeTaskResponse:
+        """
+        @summary 查询任务详情
+        
+        @param request: DescribeTaskRequest
+        @return: DescribeTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_task_with_options_async(request, runtime)
 
@@ -838,6 +1102,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeZonesResponse:
+        """
+        @summary 可用区列表
+        
+        @param request: DescribeZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZonesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -866,6 +1137,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeZonesResponse:
+        """
+        @summary 可用区列表
+        
+        @param request: DescribeZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZonesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -893,6 +1171,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.DescribeZonesRequest,
     ) -> eflo_controller_20221215_models.DescribeZonesResponse:
+        """
+        @summary 可用区列表
+        
+        @param request: DescribeZonesRequest
+        @return: DescribeZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_zones_with_options(request, runtime)
 
@@ -900,6 +1184,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.DescribeZonesRequest,
     ) -> eflo_controller_20221215_models.DescribeZonesResponse:
+        """
+        @summary 可用区列表
+        
+        @param request: DescribeZonesRequest
+        @return: DescribeZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_zones_with_options_async(request, runtime)
 
@@ -908,6 +1198,13 @@ class Client(OpenApiClient):
         tmp_req: eflo_controller_20221215_models.ExtendClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ExtendClusterResponse:
+        """
+        @summary 集群扩容
+        
+        @param tmp_req: ExtendClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExtendClusterResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = eflo_controller_20221215_models.ExtendClusterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -954,6 +1251,13 @@ class Client(OpenApiClient):
         tmp_req: eflo_controller_20221215_models.ExtendClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ExtendClusterResponse:
+        """
+        @summary 集群扩容
+        
+        @param tmp_req: ExtendClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExtendClusterResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = eflo_controller_20221215_models.ExtendClusterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -999,6 +1303,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.ExtendClusterRequest,
     ) -> eflo_controller_20221215_models.ExtendClusterResponse:
+        """
+        @summary 集群扩容
+        
+        @param request: ExtendClusterRequest
+        @return: ExtendClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.extend_cluster_with_options(request, runtime)
 
@@ -1006,6 +1316,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.ExtendClusterRequest,
     ) -> eflo_controller_20221215_models.ExtendClusterResponse:
+        """
+        @summary 集群扩容
+        
+        @param request: ExtendClusterRequest
+        @return: ExtendClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.extend_cluster_with_options_async(request, runtime)
 
@@ -1014,6 +1330,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListClusterNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListClusterNodesResponse:
+        """
+        @summary 集群下的主机分组列表，分组下的主机列表
+        
+        @param request: ListClusterNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClusterNodesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -1048,6 +1371,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListClusterNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListClusterNodesResponse:
+        """
+        @summary 集群下的主机分组列表，分组下的主机列表
+        
+        @param request: ListClusterNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClusterNodesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -1081,6 +1411,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.ListClusterNodesRequest,
     ) -> eflo_controller_20221215_models.ListClusterNodesResponse:
+        """
+        @summary 集群下的主机分组列表，分组下的主机列表
+        
+        @param request: ListClusterNodesRequest
+        @return: ListClusterNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_cluster_nodes_with_options(request, runtime)
 
@@ -1088,6 +1424,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.ListClusterNodesRequest,
     ) -> eflo_controller_20221215_models.ListClusterNodesResponse:
+        """
+        @summary 集群下的主机分组列表，分组下的主机列表
+        
+        @param request: ListClusterNodesRequest
+        @return: ListClusterNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_cluster_nodes_with_options_async(request, runtime)
 
@@ -1096,6 +1438,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListClustersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListClustersResponse:
+        """
+        @summary 获取集群实例列表
+        
+        @param request: ListClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClustersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.max_results):
@@ -1128,6 +1477,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListClustersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListClustersResponse:
+        """
+        @summary 获取集群实例列表
+        
+        @param request: ListClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClustersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.max_results):
@@ -1159,6 +1515,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.ListClustersRequest,
     ) -> eflo_controller_20221215_models.ListClustersResponse:
+        """
+        @summary 获取集群实例列表
+        
+        @param request: ListClustersRequest
+        @return: ListClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_clusters_with_options(request, runtime)
 
@@ -1166,6 +1528,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.ListClustersRequest,
     ) -> eflo_controller_20221215_models.ListClustersResponse:
+        """
+        @summary 获取集群实例列表
+        
+        @param request: ListClustersRequest
+        @return: ListClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_clusters_with_options_async(request, runtime)
 
@@ -1174,6 +1542,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListFreeNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListFreeNodesResponse:
+        """
+        @summary 可用物理机列表
+        
+        @param request: ListFreeNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFreeNodesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hpn_zone):
@@ -1210,6 +1585,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListFreeNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListFreeNodesResponse:
+        """
+        @summary 可用物理机列表
+        
+        @param request: ListFreeNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFreeNodesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hpn_zone):
@@ -1245,6 +1627,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.ListFreeNodesRequest,
     ) -> eflo_controller_20221215_models.ListFreeNodesResponse:
+        """
+        @summary 可用物理机列表
+        
+        @param request: ListFreeNodesRequest
+        @return: ListFreeNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_free_nodes_with_options(request, runtime)
 
@@ -1252,6 +1640,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.ListFreeNodesRequest,
     ) -> eflo_controller_20221215_models.ListFreeNodesResponse:
+        """
+        @summary 可用物理机列表
+        
+        @param request: ListFreeNodesRequest
+        @return: ListFreeNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_free_nodes_with_options_async(request, runtime)
 
@@ -1260,6 +1654,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListTagResourcesResponse:
+        """
+        @summary 查询资源标签
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -1296,6 +1697,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListTagResourcesResponse:
+        """
+        @summary 查询资源标签
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -1331,6 +1739,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.ListTagResourcesRequest,
     ) -> eflo_controller_20221215_models.ListTagResourcesResponse:
+        """
+        @summary 查询资源标签
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_resources_with_options(request, runtime)
 
@@ -1338,6 +1752,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.ListTagResourcesRequest,
     ) -> eflo_controller_20221215_models.ListTagResourcesResponse:
+        """
+        @summary 查询资源标签
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
@@ -1346,6 +1766,13 @@ class Client(OpenApiClient):
         tmp_req: eflo_controller_20221215_models.RebootNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.RebootNodesResponse:
+        """
+        @summary 重启机器
+        
+        @param tmp_req: RebootNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebootNodesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = eflo_controller_20221215_models.RebootNodesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1382,6 +1809,13 @@ class Client(OpenApiClient):
         tmp_req: eflo_controller_20221215_models.RebootNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.RebootNodesResponse:
+        """
+        @summary 重启机器
+        
+        @param tmp_req: RebootNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebootNodesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = eflo_controller_20221215_models.RebootNodesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1417,6 +1851,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.RebootNodesRequest,
     ) -> eflo_controller_20221215_models.RebootNodesResponse:
+        """
+        @summary 重启机器
+        
+        @param request: RebootNodesRequest
+        @return: RebootNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reboot_nodes_with_options(request, runtime)
 
@@ -1424,6 +1864,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.RebootNodesRequest,
     ) -> eflo_controller_20221215_models.RebootNodesResponse:
+        """
+        @summary 重启机器
+        
+        @param request: RebootNodesRequest
+        @return: RebootNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reboot_nodes_with_options_async(request, runtime)
 
@@ -1432,6 +1878,13 @@ class Client(OpenApiClient):
         tmp_req: eflo_controller_20221215_models.ReimageNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ReimageNodesResponse:
+        """
+        @summary 机器重装
+        
+        @param tmp_req: ReimageNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReimageNodesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = eflo_controller_20221215_models.ReimageNodesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1470,6 +1923,13 @@ class Client(OpenApiClient):
         tmp_req: eflo_controller_20221215_models.ReimageNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ReimageNodesResponse:
+        """
+        @summary 机器重装
+        
+        @param tmp_req: ReimageNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReimageNodesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = eflo_controller_20221215_models.ReimageNodesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1507,6 +1967,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.ReimageNodesRequest,
     ) -> eflo_controller_20221215_models.ReimageNodesResponse:
+        """
+        @summary 机器重装
+        
+        @param request: ReimageNodesRequest
+        @return: ReimageNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reimage_nodes_with_options(request, runtime)
 
@@ -1514,6 +1980,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.ReimageNodesRequest,
     ) -> eflo_controller_20221215_models.ReimageNodesResponse:
+        """
+        @summary 机器重装
+        
+        @param request: ReimageNodesRequest
+        @return: ReimageNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reimage_nodes_with_options_async(request, runtime)
 
@@ -1522,6 +1994,13 @@ class Client(OpenApiClient):
         tmp_req: eflo_controller_20221215_models.RunCommandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.RunCommandResponse:
+        """
+        @summary 一台或多台灵骏机器中执行一段Shell的脚本
+        
+        @param tmp_req: RunCommandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunCommandResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = eflo_controller_20221215_models.RunCommandShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1580,6 +2059,13 @@ class Client(OpenApiClient):
         tmp_req: eflo_controller_20221215_models.RunCommandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.RunCommandResponse:
+        """
+        @summary 一台或多台灵骏机器中执行一段Shell的脚本
+        
+        @param tmp_req: RunCommandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunCommandResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = eflo_controller_20221215_models.RunCommandShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1637,6 +2123,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.RunCommandRequest,
     ) -> eflo_controller_20221215_models.RunCommandResponse:
+        """
+        @summary 一台或多台灵骏机器中执行一段Shell的脚本
+        
+        @param request: RunCommandRequest
+        @return: RunCommandResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.run_command_with_options(request, runtime)
 
@@ -1644,6 +2136,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.RunCommandRequest,
     ) -> eflo_controller_20221215_models.RunCommandResponse:
+        """
+        @summary 一台或多台灵骏机器中执行一段Shell的脚本
+        
+        @param request: RunCommandRequest
+        @return: RunCommandResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.run_command_with_options_async(request, runtime)
 
@@ -1652,6 +2150,13 @@ class Client(OpenApiClient):
         tmp_req: eflo_controller_20221215_models.SendFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.SendFileResponse:
+        """
+        @summary 一台或多台灵骏机器下发远程文件
+        
+        @param tmp_req: SendFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendFileResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = eflo_controller_20221215_models.SendFileShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1704,6 +2209,13 @@ class Client(OpenApiClient):
         tmp_req: eflo_controller_20221215_models.SendFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.SendFileResponse:
+        """
+        @summary 一台或多台灵骏机器下发远程文件
+        
+        @param tmp_req: SendFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendFileResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = eflo_controller_20221215_models.SendFileShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1755,6 +2267,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.SendFileRequest,
     ) -> eflo_controller_20221215_models.SendFileResponse:
+        """
+        @summary 一台或多台灵骏机器下发远程文件
+        
+        @param request: SendFileRequest
+        @return: SendFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.send_file_with_options(request, runtime)
 
@@ -1762,6 +2280,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.SendFileRequest,
     ) -> eflo_controller_20221215_models.SendFileResponse:
+        """
+        @summary 一台或多台灵骏机器下发远程文件
+        
+        @param request: SendFileRequest
+        @return: SendFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.send_file_with_options_async(request, runtime)
 
@@ -1770,6 +2294,13 @@ class Client(OpenApiClient):
         tmp_req: eflo_controller_20221215_models.ShrinkClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ShrinkClusterResponse:
+        """
+        @summary 缩容
+        
+        @param tmp_req: ShrinkClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ShrinkClusterResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = eflo_controller_20221215_models.ShrinkClusterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1806,6 +2337,13 @@ class Client(OpenApiClient):
         tmp_req: eflo_controller_20221215_models.ShrinkClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ShrinkClusterResponse:
+        """
+        @summary 缩容
+        
+        @param tmp_req: ShrinkClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ShrinkClusterResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = eflo_controller_20221215_models.ShrinkClusterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1841,6 +2379,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.ShrinkClusterRequest,
     ) -> eflo_controller_20221215_models.ShrinkClusterResponse:
+        """
+        @summary 缩容
+        
+        @param request: ShrinkClusterRequest
+        @return: ShrinkClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.shrink_cluster_with_options(request, runtime)
 
@@ -1848,6 +2392,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.ShrinkClusterRequest,
     ) -> eflo_controller_20221215_models.ShrinkClusterResponse:
+        """
+        @summary 缩容
+        
+        @param request: ShrinkClusterRequest
+        @return: ShrinkClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.shrink_cluster_with_options_async(request, runtime)
 
@@ -1856,6 +2406,13 @@ class Client(OpenApiClient):
         tmp_req: eflo_controller_20221215_models.StopInvocationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.StopInvocationResponse:
+        """
+        @summary 停止运维助手命令进程
+        
+        @param tmp_req: StopInvocationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopInvocationResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = eflo_controller_20221215_models.StopInvocationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1890,6 +2447,13 @@ class Client(OpenApiClient):
         tmp_req: eflo_controller_20221215_models.StopInvocationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.StopInvocationResponse:
+        """
+        @summary 停止运维助手命令进程
+        
+        @param tmp_req: StopInvocationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopInvocationResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = eflo_controller_20221215_models.StopInvocationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1923,6 +2487,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.StopInvocationRequest,
     ) -> eflo_controller_20221215_models.StopInvocationResponse:
+        """
+        @summary 停止运维助手命令进程
+        
+        @param request: StopInvocationRequest
+        @return: StopInvocationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_invocation_with_options(request, runtime)
 
@@ -1930,6 +2500,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.StopInvocationRequest,
     ) -> eflo_controller_20221215_models.StopInvocationResponse:
+        """
+        @summary 停止运维助手命令进程
+        
+        @param request: StopInvocationRequest
+        @return: StopInvocationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_invocation_with_options_async(request, runtime)
 
@@ -1938,6 +2514,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.TagResourcesResponse:
+        """
+        @summary 资源打用户标签
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -1972,6 +2555,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.TagResourcesResponse:
+        """
+        @summary 资源打用户标签
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -2005,6 +2595,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.TagResourcesRequest,
     ) -> eflo_controller_20221215_models.TagResourcesResponse:
+        """
+        @summary 资源打用户标签
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
@@ -2012,6 +2608,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.TagResourcesRequest,
     ) -> eflo_controller_20221215_models.TagResourcesResponse:
+        """
+        @summary 资源打用户标签
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
@@ -2020,6 +2622,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.UntagResourcesResponse:
+        """
+        @summary 资源去除用户标签
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -2056,6 +2665,13 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.UntagResourcesResponse:
+        """
+        @summary 资源去除用户标签
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -2091,6 +2707,12 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.UntagResourcesRequest,
     ) -> eflo_controller_20221215_models.UntagResourcesResponse:
+        """
+        @summary 资源去除用户标签
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.untag_resources_with_options(request, runtime)
 
@@ -2098,5 +2720,11 @@ class Client(OpenApiClient):
         self,
         request: eflo_controller_20221215_models.UntagResourcesRequest,
     ) -> eflo_controller_20221215_models.UntagResourcesResponse:
+        """
+        @summary 资源去除用户标签
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)

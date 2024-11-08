@@ -1,3 +1,8 @@
+2024-11-08 Version: 1.2.3
+- Update API CreateCluster: add param OpenEniJumboFrame.
+- Update API DescribeCluster: update response param.
+
+
 2024-04-07 Version: 1.2.2
 - Update API DescribeCluster: update response param.
 - Update API ListClusters: update response param.
