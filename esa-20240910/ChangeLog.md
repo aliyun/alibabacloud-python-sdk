@@ -1,3 +1,6 @@
+2024-11-08 Version: 2.4.2
+- Generated python 2024-09-10 for ESA.
+
 2024-11-06 Version: 2.4.1
 - Generated python 2024-09-10 for ESA.
 
