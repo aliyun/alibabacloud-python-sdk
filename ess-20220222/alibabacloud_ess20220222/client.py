@@ -2613,6 +2613,10 @@ class Client(OpenApiClient):
             query['HostName'] = request.host_name
         if not UtilClient.is_unset(request.hpc_cluster_id):
             query['HpcClusterId'] = request.hpc_cluster_id
+        if not UtilClient.is_unset(request.http_endpoint):
+            query['HttpEndpoint'] = request.http_endpoint
+        if not UtilClient.is_unset(request.http_tokens):
+            query['HttpTokens'] = request.http_tokens
         if not UtilClient.is_unset(request.image_family):
             query['ImageFamily'] = request.image_family
         if not UtilClient.is_unset(request.image_id):
@@ -2774,6 +2778,10 @@ class Client(OpenApiClient):
             query['HostName'] = request.host_name
         if not UtilClient.is_unset(request.hpc_cluster_id):
             query['HpcClusterId'] = request.hpc_cluster_id
+        if not UtilClient.is_unset(request.http_endpoint):
+            query['HttpEndpoint'] = request.http_endpoint
+        if not UtilClient.is_unset(request.http_tokens):
+            query['HttpTokens'] = request.http_tokens
         if not UtilClient.is_unset(request.image_family):
             query['ImageFamily'] = request.image_family
         if not UtilClient.is_unset(request.image_id):
@@ -10672,6 +10680,10 @@ class Client(OpenApiClient):
             query['HostName'] = request.host_name
         if not UtilClient.is_unset(request.hpc_cluster_id):
             query['HpcClusterId'] = request.hpc_cluster_id
+        if not UtilClient.is_unset(request.http_endpoint):
+            query['HttpEndpoint'] = request.http_endpoint
+        if not UtilClient.is_unset(request.http_tokens):
+            query['HttpTokens'] = request.http_tokens
         if not UtilClient.is_unset(request.image_family):
             query['ImageFamily'] = request.image_family
         if not UtilClient.is_unset(request.image_id):
@@ -10690,6 +10702,8 @@ class Client(OpenApiClient):
             query['InstanceTypes'] = request.instance_types
         if not UtilClient.is_unset(request.internet_charge_type):
             query['InternetChargeType'] = request.internet_charge_type
+        if not UtilClient.is_unset(request.internet_max_bandwidth_in):
+            query['InternetMaxBandwidthIn'] = request.internet_max_bandwidth_in
         if not UtilClient.is_unset(request.internet_max_bandwidth_out):
             query['InternetMaxBandwidthOut'] = request.internet_max_bandwidth_out
         if not UtilClient.is_unset(request.io_optimized):
@@ -10824,6 +10838,10 @@ class Client(OpenApiClient):
             query['HostName'] = request.host_name
         if not UtilClient.is_unset(request.hpc_cluster_id):
             query['HpcClusterId'] = request.hpc_cluster_id
+        if not UtilClient.is_unset(request.http_endpoint):
+            query['HttpEndpoint'] = request.http_endpoint
+        if not UtilClient.is_unset(request.http_tokens):
+            query['HttpTokens'] = request.http_tokens
         if not UtilClient.is_unset(request.image_family):
             query['ImageFamily'] = request.image_family
         if not UtilClient.is_unset(request.image_id):
@@ -10842,6 +10860,8 @@ class Client(OpenApiClient):
             query['InstanceTypes'] = request.instance_types
         if not UtilClient.is_unset(request.internet_charge_type):
             query['InternetChargeType'] = request.internet_charge_type
+        if not UtilClient.is_unset(request.internet_max_bandwidth_in):
+            query['InternetMaxBandwidthIn'] = request.internet_max_bandwidth_in
         if not UtilClient.is_unset(request.internet_max_bandwidth_out):
             query['InternetMaxBandwidthOut'] = request.internet_max_bandwidth_out
         if not UtilClient.is_unset(request.io_optimized):

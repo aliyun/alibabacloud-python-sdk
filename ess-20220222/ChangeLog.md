@@ -1,3 +1,12 @@
+2024-11-08 Version: 1.9.1
+- Update API CreateScalingConfiguration: add param HttpEndpoint.
+- Update API CreateScalingConfiguration: add param HttpTokens.
+- Update API DescribeScalingConfigurations: update response param.
+- Update API ModifyScalingConfiguration: add param HttpEndpoint.
+- Update API ModifyScalingConfiguration: add param HttpTokens.
+- Update API ModifyScalingConfiguration: add param InternetMaxBandwidthIn.
+
+
 2024-10-21 Version: 1.9.0
 - Support API DescribeElasticStrength.
 

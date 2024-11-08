@@ -6022,6 +6022,8 @@ class CreateScalingConfigurationRequest(TeaModel):
         deployment_set_id: str = None,
         host_name: str = None,
         hpc_cluster_id: str = None,
+        http_endpoint: str = None,
+        http_tokens: str = None,
         image_family: str = None,
         image_id: str = None,
         image_name: str = None,
@@ -6119,6 +6121,8 @@ class CreateScalingConfigurationRequest(TeaModel):
         self.host_name = host_name
         # The ID of the Elastic High Performance Computing (E-HPC) cluster to which the ECS instances that are created by using the scaling configuration belong.
         self.hpc_cluster_id = hpc_cluster_id
+        self.http_endpoint = http_endpoint
+        self.http_tokens = http_tokens
         # The name of the image family. If you specify this parameter, the most recent custom images that are available in the specified image family are returned. You can use the images to create instances. If you specify ImageId, you cannot specify ImageFamily.
         self.image_family = image_family
         # The ID of the image that Auto Scaling uses to automatically create ECS instances.
@@ -6344,6 +6348,10 @@ class CreateScalingConfigurationRequest(TeaModel):
             result['HostName'] = self.host_name
         if self.hpc_cluster_id is not None:
             result['HpcClusterId'] = self.hpc_cluster_id
+        if self.http_endpoint is not None:
+            result['HttpEndpoint'] = self.http_endpoint
+        if self.http_tokens is not None:
+            result['HttpTokens'] = self.http_tokens
         if self.image_family is not None:
             result['ImageFamily'] = self.image_family
         if self.image_id is not None:
@@ -6481,6 +6489,10 @@ class CreateScalingConfigurationRequest(TeaModel):
             self.host_name = m.get('HostName')
         if m.get('HpcClusterId') is not None:
             self.hpc_cluster_id = m.get('HpcClusterId')
+        if m.get('HttpEndpoint') is not None:
+            self.http_endpoint = m.get('HttpEndpoint')
+        if m.get('HttpTokens') is not None:
+            self.http_tokens = m.get('HttpTokens')
         if m.get('ImageFamily') is not None:
             self.image_family = m.get('ImageFamily')
         if m.get('ImageId') is not None:
@@ -7434,6 +7446,8 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
         deployment_set_id: str = None,
         host_name: str = None,
         hpc_cluster_id: str = None,
+        http_endpoint: str = None,
+        http_tokens: str = None,
         image_family: str = None,
         image_id: str = None,
         image_name: str = None,
@@ -7531,6 +7545,8 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
         self.host_name = host_name
         # The ID of the Elastic High Performance Computing (E-HPC) cluster to which the ECS instances that are created by using the scaling configuration belong.
         self.hpc_cluster_id = hpc_cluster_id
+        self.http_endpoint = http_endpoint
+        self.http_tokens = http_tokens
         # The name of the image family. If you specify this parameter, the most recent custom images that are available in the specified image family are returned. You can use the images to create instances. If you specify ImageId, you cannot specify ImageFamily.
         self.image_family = image_family
         # The ID of the image that Auto Scaling uses to automatically create ECS instances.
@@ -7756,6 +7772,10 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
             result['HostName'] = self.host_name
         if self.hpc_cluster_id is not None:
             result['HpcClusterId'] = self.hpc_cluster_id
+        if self.http_endpoint is not None:
+            result['HttpEndpoint'] = self.http_endpoint
+        if self.http_tokens is not None:
+            result['HttpTokens'] = self.http_tokens
         if self.image_family is not None:
             result['ImageFamily'] = self.image_family
         if self.image_id is not None:
@@ -7893,6 +7913,10 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
             self.host_name = m.get('HostName')
         if m.get('HpcClusterId') is not None:
             self.hpc_cluster_id = m.get('HpcClusterId')
+        if m.get('HttpEndpoint') is not None:
+            self.http_endpoint = m.get('HttpEndpoint')
+        if m.get('HttpTokens') is not None:
+            self.http_tokens = m.get('HttpTokens')
         if m.get('ImageFamily') is not None:
             self.image_family = m.get('ImageFamily')
         if m.get('ImageId') is not None:
@@ -8244,7 +8268,7 @@ class CreateScalingGroupRequestLifecycleHooks(TeaModel):
     ):
         # The action that Auto Scaling performs when the lifecycle hook times out. Valid values:
         # 
-        # *   CONTINUE: Auto Scaling continues to respond to a scale-in or scale-out request.
+        # *   CONTINUE: Auto Scaling continues to respond to the scaling request.
         # *   ABANDON: Auto Scaling releases ECS instances that are created during scale-out events, or removes ECS instances from the scaling group during scale-in events.
         # 
         # If multiple lifecycle hooks in the scaling group are triggered during scale-in events, and you set DefaultResult to ABANDON for one of the lifecycle hooks, Auto Scaling immediately performs the action after the lifecycle hook whose DefaultResult is set to ABANDON times out. In this case, other lifecycle hooks time out ahead of schedule. In other cases, Auto Scaling performs the action only after all lifecycle hooks time out. The action that Auto Scaling performs is determined by the value of DefaultResult that you specify for the lifecycle hook that most recently times out.
@@ -8253,7 +8277,7 @@ class CreateScalingGroupRequestLifecycleHooks(TeaModel):
         self.default_result = default_result
         # The period of time before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action that is specified by DefaultResult. Valid values: 30 to 21600. Unit: seconds.
         # 
-        # After you create a lifecycle hook, you can call the RecordLifecycleActionHeartbeat operation to extend the timeout period of the lifecycle hook. You can also call the CompleteLifecycleAction operation to end the timeout period of the lifecycle hook ahead of scheduled.
+        # After you create a lifecycle hook, you can call the RecordLifecycleActionHeartbeat operation to extend the timeout period of the lifecycle hook. You can also call the CompleteLifecycleAction operation to end the timeout period of the lifecycle hook ahead of schedule.
         # 
         # Default value: 600.
         self.heartbeat_timeout = heartbeat_timeout
@@ -8266,17 +8290,17 @@ class CreateScalingGroupRequestLifecycleHooks(TeaModel):
         # 
         # >  If you specify lifecycle hooks for the scaling group, you must specify LifecycleTransition. Other parameters are optional.
         self.lifecycle_transition = lifecycle_transition
-        # The identifier of the notification recipient party when the lifecycle hook takes effect. You can specify a Message Service (MNS) topic or queue as the notification recipient party. Specify the value in the acs:ess:{region}:{account-id}:{resource-relative-id} format.
+        # The Alibaba Cloud Resource Name (ARN) of the notification recipient party. You can specify a Simple Message Queue (SMQ, formerly MNS) topic or queue as the recipient party. The value is in the acs:ess:{region}:{account-id}:{resource-relative-id} format.
         # 
         # *   region: the region ID of the scaling group
         # *   account-id: the ID of your Alibaba Cloud account.
         # 
         # Examples:
         # 
-        # *   MNS queue: acs:ess:{region}:{account-id}:queue/{queuename}
-        # *   MNS topic: acs:ess:{region}:{account-id}:topic/{topicname}
+        # *   SMQ queue: acs:ess:{region}:{account-id}:queue/{queuename}
+        # *   SMQ topic: acs:ess:{region}:{account-id}:topic/{topicname}
         self.notification_arn = notification_arn
-        # The fixed string that you want to include in a notification. When a lifecycle hook takes effect, Auto Scaling sends a notification. The fixed string can contain up to 4,096 characters in length. When Auto Scaling sends a notification to the recipient party, it includes predefined notification metadata into the notification. This helps in managing and labeling notifications of different categories. notificationmetadata takes effect only if you specify notificationarn.
+        # The fixed string that you want to include in notifications. When a lifecycle hook takes effect, Auto Scaling sends a notification. The fixed string can contain up to 4,096 characters in length. When Auto Scaling sends a notification to the recipient party, it includes predefined notification metadata into the notification. This helps in managing and labeling notifications of different categories. NotificationMetadata takes effect only if you specify NotificationArn.
         self.notification_metadata = notification_metadata
 
     def validate(self):
@@ -8794,6 +8818,15 @@ class CreateScalingGroupRequest(TeaModel):
         self.spot_instance_pools = spot_instance_pools
         # Specifies whether to supplement preemptible instances. If you set this parameter to true, Auto Scaling creates an instance to replace a preemptible instance when Auto Scaling receives a system message which indicates that the preemptible instance is to be reclaimed.
         self.spot_instance_remedy = spot_instance_remedy
+        # The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
+        # 
+        # > 
+        # 
+        # *   This parameter takes effect only if you set ScalingPolicy to release.
+        # 
+        # *   If you specify this parameter, the system will wait for the ECS instance to enter the Stopped state for the specified period of time before continuing with the scale-in operation, regardless of the status of the ECS instance.
+        # 
+        # *   If you do not specify this parameter, the system will wait for the ECS instance to stop before continuing with the scale-in operation. If the ECS instance is not successfully stopped, the scale-in process will be rolled back and considered failed.
         self.stop_instance_timeout = stop_instance_timeout
         # > This parameter is unavailable.
         self.sync_alarm_rule_to_cms = sync_alarm_rule_to_cms
@@ -15943,12 +15976,30 @@ class DescribeElasticStrengthRequest(TeaModel):
         scaling_group_ids: List[str] = None,
         system_disk_categories: List[str] = None,
     ):
+        # The instance types. The instance types specified by this parameter overwrite the instance types specified in the scaling configuration.
         self.instance_types = instance_types
+        # The preemption policy that you want to apply to pay-as-you-go instances. The preemption policy specified by this parameter overwrites the preemption policy specified in the scaling configuration. Valid values:
+        # 
+        # *   NoSpot: The instances are created as regular pay-as-you-go instances.
+        # *   SpotWithPriceLimit: The instances are created as preemptible instances that have a user-defined maximum hourly price.
+        # *   SpotAsPriceGo: The instances are created as preemptible instances for which the market price at the time of purchase is automatically used as the bidding price.
+        # 
+        # Default value: NoSpot.
         self.priority_strategy = priority_strategy
+        # The region ID of the scaling group.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
+        # The IDs of the scaling groups that you want to query.
         self.scaling_group_ids = scaling_group_ids
+        # The categories of the system disks. The categories of the system disks specified by this parameter overwrite the categories of the system disks specified in the scaling configuration. Valid values:
+        # 
+        # *   cloud: basic disk.
+        # *   cloud_efficiency: ultra disk.
+        # *   cloud_ssd: standard SSD.
+        # *   cloud_essd: Enterprise SSD (ESSD).
         self.system_disk_categories = system_disk_categories
 
     def validate(self):
@@ -16001,11 +16052,17 @@ class DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools(TeaM
         v_switch_ids: List[str] = None,
         zone_id: str = None,
     ):
+        # The error code returned when the scaling strength is the weakest.
         self.code = code
+        # The instance type of the resource pool.
         self.instance_type = instance_type
+        # The error message returned when the scaling strength is the weakest.
         self.msg = msg
+        # The scaling strength of the resource pool.
         self.strength = strength
+        # The IDs of the vSwitches in the zones of the resource pool.
         self.v_switch_ids = v_switch_ids
+        # The zone ID of the resource pool.
         self.zone_id = zone_id
 
     def validate(self):
@@ -16055,8 +16112,11 @@ class DescribeElasticStrengthResponseBodyElasticStrengthModels(TeaModel):
         scaling_group_id: str = None,
         total_strength: float = None,
     ):
+        # The resource pools.
         self.resource_pools = resource_pools
+        # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
+        # The scaling strength of the scaling group. Each combination of instance type + zone is scored from 0 to 1 based on its availability, with 0 being the weakest scaling strength and 1 being the strongest. The scaling strength of the scaling group is measured by the combined scores of all the combinations of instance type + zone.
         self.total_strength = total_strength
 
     def validate(self):
@@ -16105,11 +16165,17 @@ class DescribeElasticStrengthResponseBodyResourcePools(TeaModel):
         v_switch_ids: List[str] = None,
         zone_id: str = None,
     ):
+        # The error code returned when the scaling strength is the weakest.
         self.code = code
+        # The instance type of the resource pool.
         self.instance_type = instance_type
+        # The error message returned when the scaling strength is the weakest.
         self.msg = msg
+        # The scaling strength of the resource pool.
         self.strength = strength
+        # The IDs of the vSwitches in the zones of the resource pool.
         self.v_switch_ids = v_switch_ids
+        # The zone ID of the resource pool.
         self.zone_id = zone_id
 
     def validate(self):
@@ -16160,9 +16226,13 @@ class DescribeElasticStrengthResponseBody(TeaModel):
         resource_pools: List[DescribeElasticStrengthResponseBodyResourcePools] = None,
         total_strength: float = None,
     ):
+        # The scaling strength models.
         self.elastic_strength_models = elastic_strength_models
+        # The request ID.
         self.request_id = request_id
+        # The resource pools.
         self.resource_pools = resource_pools
+        # The scaling strength of the scaling group. Each combination of instance type + zone is scored from 0 to 1 based on its availability, with 0 being the weakest scaling strength and 1 being the strongest. The scaling strength of the scaling group is measured by the combined scores of all the combinations of instance type + zone.
         self.total_strength = total_strength
 
     def validate(self):
@@ -19494,10 +19564,9 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsSecurityOpti
         self,
         confidential_computing_mode: str = None,
     ):
-        # The confidential computing mode. Valid values:
-        # 
-        # *   Enclave: An enclave-based confidential computing environment is built on the instance. For more information, see [Build a confidential computing environment by using Enclave](https://help.aliyun.com/document_detail/203433.html).
-        # *   TDX: A Trust Domain Extensions (TDX) confidential computing environment is built on the instance. For more information, see [Build a TDX confidential computing environment](https://help.aliyun.com/document_detail/479090.html).
+        # 机密计算模式。可能值：
+        # -  Enclave：表示ECS实例使用Enclave构建机密计算环境。更多信息，请参见[使用Enclave构建机密计算环境](https://help.aliyun.com/document_detail/203433.html)。
+        # - TDX：表示构建TDX机密计算环境。更多信息，请参见[构建TDX机密计算环境](https://help.aliyun.com/document_detail/479090.html)。
         self.confidential_computing_mode = confidential_computing_mode
 
     def validate(self):
@@ -19609,6 +19678,8 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         deployment_set_id: str = None,
         host_name: str = None,
         hpc_cluster_id: str = None,
+        http_endpoint: str = None,
+        http_tokens: str = None,
         image_family: str = None,
         image_id: str = None,
         image_name: str = None,
@@ -19717,6 +19788,8 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         self.host_name = host_name
         # The ID of the High Performance Computing (HPC) cluster to which the ECS instances belong.
         self.hpc_cluster_id = hpc_cluster_id
+        self.http_endpoint = http_endpoint
+        self.http_tokens = http_tokens
         # The name of the image family. You can specify this parameter to obtain the latest available images in the current image family for instance creation. If you specify ImageId, you cannot specify `ImageFamily`.
         self.image_family = image_family
         # The ID of the image file that provides the image resource for Auto Scaling to create ECS instances.
@@ -19741,7 +19814,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         self.instance_generation = instance_generation
         # The naming series of the ECS instances.
         self.instance_name = instance_name
-        # The information about the intelligent configuration settings, which determine the available instance types.
+        # The intelligent configuration settings, which determine the available instance types.
         self.instance_pattern_infos = instance_pattern_infos
         # The instance types of the ECS instances.
         self.instance_type = instance_type
@@ -19810,7 +19883,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         self.security_group_id = security_group_id
         # The IDs of the security groups to which the ECS instances belong. ECS instances that belong to the same security group can communicate with each other.
         self.security_group_ids = security_group_ids
-        # The security options.
+        # 安全选项。
         self.security_options = security_options
         # The protection period of the preemptible instances. Unit: hours.
         self.spot_duration = spot_duration
@@ -19957,6 +20030,10 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
             result['HostName'] = self.host_name
         if self.hpc_cluster_id is not None:
             result['HpcClusterId'] = self.hpc_cluster_id
+        if self.http_endpoint is not None:
+            result['HttpEndpoint'] = self.http_endpoint
+        if self.http_tokens is not None:
+            result['HttpTokens'] = self.http_tokens
         if self.image_family is not None:
             result['ImageFamily'] = self.image_family
         if self.image_id is not None:
@@ -20115,6 +20192,10 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
             self.host_name = m.get('HostName')
         if m.get('HpcClusterId') is not None:
             self.hpc_cluster_id = m.get('HpcClusterId')
+        if m.get('HttpEndpoint') is not None:
+            self.http_endpoint = m.get('HttpEndpoint')
+        if m.get('HttpTokens') is not None:
+            self.http_tokens = m.get('HttpTokens')
         if m.get('ImageFamily') is not None:
             self.image_family = m.get('ImageFamily')
         if m.get('ImageId') is not None:
@@ -22098,6 +22179,7 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
         self.spot_instance_remedy = spot_instance_remedy
         # The number of ECS instances that are in the Standby state in the scaling group.
         self.standby_capacity = standby_capacity
+        # The period of time that is required by the Elastic Compute Service (ECS) instance to enter the Stopped state during the scale-in process. Unit: seconds.
         self.stop_instance_timeout = stop_instance_timeout
         # The number of instances that was stopped in Economical Mode in the scaling group.
         self.stopped_capacity = stopped_capacity
@@ -31400,6 +31482,8 @@ class ModifyScalingConfigurationRequest(TeaModel):
         deployment_set_id: str = None,
         host_name: str = None,
         hpc_cluster_id: str = None,
+        http_endpoint: str = None,
+        http_tokens: str = None,
         image_family: str = None,
         image_id: str = None,
         image_name: str = None,
@@ -31409,6 +31493,7 @@ class ModifyScalingConfigurationRequest(TeaModel):
         instance_type_overrides: List[ModifyScalingConfigurationRequestInstanceTypeOverrides] = None,
         instance_types: List[str] = None,
         internet_charge_type: str = None,
+        internet_max_bandwidth_in: int = None,
         internet_max_bandwidth_out: int = None,
         io_optimized: str = None,
         ipv_6address_count: int = None,
@@ -31495,6 +31580,8 @@ class ModifyScalingConfigurationRequest(TeaModel):
         self.host_name = host_name
         # The ID of the Elastic High Performance Computing (E-HPC) cluster to which the ECS instances belong.
         self.hpc_cluster_id = hpc_cluster_id
+        self.http_endpoint = http_endpoint
+        self.http_tokens = http_tokens
         # The name of the image family. If you specify this parameter, the latest custom images that are available in the specified image family are returned. Then, you can use the images to create instances. If you specify ImageId, you cannot specify ImageFamily.
         self.image_family = image_family
         # The ID of the image that is used by Auto Scaling to automatically create ECS instances.
@@ -31522,6 +31609,7 @@ class ModifyScalingConfigurationRequest(TeaModel):
         # *   PayByBandwidth: pay-by-bandwidth. You are charged for the bandwidth specified by InternetMaxBandwidthOut.
         # *   PayByTraffic: pay-by-traffic. You are charged for the actual traffic generated. InternetMaxBandwidthOut specifies only the maximum available bandwidth.
         self.internet_charge_type = internet_charge_type
+        self.internet_max_bandwidth_in = internet_max_bandwidth_in
         # The maximum outbound public bandwidth. Unit: Mbit/s. Valid values:
         # 
         # *   If you set InternetChargeType to PayByBandwidth: 0 to 100. If you leave this parameter empty, this parameter is automatically set to 0.
@@ -31703,6 +31791,10 @@ class ModifyScalingConfigurationRequest(TeaModel):
             result['HostName'] = self.host_name
         if self.hpc_cluster_id is not None:
             result['HpcClusterId'] = self.hpc_cluster_id
+        if self.http_endpoint is not None:
+            result['HttpEndpoint'] = self.http_endpoint
+        if self.http_tokens is not None:
+            result['HttpTokens'] = self.http_tokens
         if self.image_family is not None:
             result['ImageFamily'] = self.image_family
         if self.image_id is not None:
@@ -31725,6 +31817,8 @@ class ModifyScalingConfigurationRequest(TeaModel):
             result['InstanceTypes'] = self.instance_types
         if self.internet_charge_type is not None:
             result['InternetChargeType'] = self.internet_charge_type
+        if self.internet_max_bandwidth_in is not None:
+            result['InternetMaxBandwidthIn'] = self.internet_max_bandwidth_in
         if self.internet_max_bandwidth_out is not None:
             result['InternetMaxBandwidthOut'] = self.internet_max_bandwidth_out
         if self.io_optimized is not None:
@@ -31834,6 +31928,10 @@ class ModifyScalingConfigurationRequest(TeaModel):
             self.host_name = m.get('HostName')
         if m.get('HpcClusterId') is not None:
             self.hpc_cluster_id = m.get('HpcClusterId')
+        if m.get('HttpEndpoint') is not None:
+            self.http_endpoint = m.get('HttpEndpoint')
+        if m.get('HttpTokens') is not None:
+            self.http_tokens = m.get('HttpTokens')
         if m.get('ImageFamily') is not None:
             self.image_family = m.get('ImageFamily')
         if m.get('ImageId') is not None:
@@ -31858,6 +31956,8 @@ class ModifyScalingConfigurationRequest(TeaModel):
             self.instance_types = m.get('InstanceTypes')
         if m.get('InternetChargeType') is not None:
             self.internet_charge_type = m.get('InternetChargeType')
+        if m.get('InternetMaxBandwidthIn') is not None:
+            self.internet_max_bandwidth_in = m.get('InternetMaxBandwidthIn')
         if m.get('InternetMaxBandwidthOut') is not None:
             self.internet_max_bandwidth_out = m.get('InternetMaxBandwidthOut')
         if m.get('IoOptimized') is not None:
@@ -32791,6 +32891,8 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         deployment_set_id: str = None,
         host_name: str = None,
         hpc_cluster_id: str = None,
+        http_endpoint: str = None,
+        http_tokens: str = None,
         image_family: str = None,
         image_id: str = None,
         image_name: str = None,
@@ -32800,6 +32902,7 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         instance_type_overrides: List[ModifyScalingConfigurationShrinkRequestInstanceTypeOverrides] = None,
         instance_types: List[str] = None,
         internet_charge_type: str = None,
+        internet_max_bandwidth_in: int = None,
         internet_max_bandwidth_out: int = None,
         io_optimized: str = None,
         ipv_6address_count: int = None,
@@ -32886,6 +32989,8 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         self.host_name = host_name
         # The ID of the Elastic High Performance Computing (E-HPC) cluster to which the ECS instances belong.
         self.hpc_cluster_id = hpc_cluster_id
+        self.http_endpoint = http_endpoint
+        self.http_tokens = http_tokens
         # The name of the image family. If you specify this parameter, the latest custom images that are available in the specified image family are returned. Then, you can use the images to create instances. If you specify ImageId, you cannot specify ImageFamily.
         self.image_family = image_family
         # The ID of the image that is used by Auto Scaling to automatically create ECS instances.
@@ -32913,6 +33018,7 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         # *   PayByBandwidth: pay-by-bandwidth. You are charged for the bandwidth specified by InternetMaxBandwidthOut.
         # *   PayByTraffic: pay-by-traffic. You are charged for the actual traffic generated. InternetMaxBandwidthOut specifies only the maximum available bandwidth.
         self.internet_charge_type = internet_charge_type
+        self.internet_max_bandwidth_in = internet_max_bandwidth_in
         # The maximum outbound public bandwidth. Unit: Mbit/s. Valid values:
         # 
         # *   If you set InternetChargeType to PayByBandwidth: 0 to 100. If you leave this parameter empty, this parameter is automatically set to 0.
@@ -33094,6 +33200,10 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
             result['HostName'] = self.host_name
         if self.hpc_cluster_id is not None:
             result['HpcClusterId'] = self.hpc_cluster_id
+        if self.http_endpoint is not None:
+            result['HttpEndpoint'] = self.http_endpoint
+        if self.http_tokens is not None:
+            result['HttpTokens'] = self.http_tokens
         if self.image_family is not None:
             result['ImageFamily'] = self.image_family
         if self.image_id is not None:
@@ -33116,6 +33226,8 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
             result['InstanceTypes'] = self.instance_types
         if self.internet_charge_type is not None:
             result['InternetChargeType'] = self.internet_charge_type
+        if self.internet_max_bandwidth_in is not None:
+            result['InternetMaxBandwidthIn'] = self.internet_max_bandwidth_in
         if self.internet_max_bandwidth_out is not None:
             result['InternetMaxBandwidthOut'] = self.internet_max_bandwidth_out
         if self.io_optimized is not None:
@@ -33225,6 +33337,10 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
             self.host_name = m.get('HostName')
         if m.get('HpcClusterId') is not None:
             self.hpc_cluster_id = m.get('HpcClusterId')
+        if m.get('HttpEndpoint') is not None:
+            self.http_endpoint = m.get('HttpEndpoint')
+        if m.get('HttpTokens') is not None:
+            self.http_tokens = m.get('HttpTokens')
         if m.get('ImageFamily') is not None:
             self.image_family = m.get('ImageFamily')
         if m.get('ImageId') is not None:
@@ -33249,6 +33365,8 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
             self.instance_types = m.get('InstanceTypes')
         if m.get('InternetChargeType') is not None:
             self.internet_charge_type = m.get('InternetChargeType')
+        if m.get('InternetMaxBandwidthIn') is not None:
+            self.internet_max_bandwidth_in = m.get('InternetMaxBandwidthIn')
         if m.get('InternetMaxBandwidthOut') is not None:
             self.internet_max_bandwidth_out = m.get('InternetMaxBandwidthOut')
         if m.get('IoOptimized') is not None:
@@ -33636,6 +33754,15 @@ class ModifyScalingGroupRequest(TeaModel):
         self.spot_instance_pools = spot_instance_pools
         # Specifies whether to supplement preemptible instances. If this parameter is set to true, Auto Scaling creates an instance to replace a preemptible instance when Auto Scaling receives the system message that the preemptible instance is to be reclaimed.
         self.spot_instance_remedy = spot_instance_remedy
+        # The period of time that is required by the Elastic Compute Service (ECS) instance to enter the Stopped state during the scale-in process. Unit: seconds. Valid values: 30 to 240.
+        # 
+        # > 
+        # 
+        # *   This parameter takes effect only if you set ScalingPolicy to release.\\
+        #     If you specify this parameter, the system proceeds with the scale-in process only after the period of time specified by StopInstanceTimeout ends. In this case, the scale-in operation continues regardless of whether the ECS instance enters the Stopped state or not.\\
+        #     If you do not specify this parameter, the system proceeds with the scale-in process only after the ECS instance enters the Stopped state. If the ECS instance fails to enter the Stopped state, the scale-in process rolls back, and the scale-in operation is considered as failed.
+        # 
+        # *   When you call the ModifyScalingGroup operation, you can set the value to 0. In this case, the system ignores this parameter.
         self.stop_instance_timeout = stop_instance_timeout
         # The IDs of vSwitches.
         # 
@@ -34965,6 +35092,15 @@ class RemoveInstancesRequest(TeaModel):
         # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
+        # The period of time that is required by the Elastic Compute Service (ECS) instance to enter the Stopped state during the scale-in process. Unit: seconds. Valid values: 30 to 240.
+        # 
+        # > 
+        # 
+        # *   By default, this parameter inherits the value of StopInstanceTimeout specified in the CreateScalingGroup or ModifyScalingGroup operation. You can also specify a different value for this parameter in the RemoveInstances operation.
+        # 
+        # *   This parameter takes effect only if you set RemovePolicy to release.\\
+        #     If you specify this parameter, the system proceeds with the scale-in process only after the period of time specified by StopInstanceTimeout ends. In this case, the scale-in operation continues regardless of whether the ECS instance enters the Stopped state or not.\\
+        #     If you do not specify this parameter, the system proceeds with the scale-in process only after the ECS instance enters the Stopped state. If the ECS instance fails to enter the Stopped state, the scale-in process rolls back, and the scale-in operation is considered as failed.
         self.stop_instance_timeout = stop_instance_timeout
 
     def validate(self):
