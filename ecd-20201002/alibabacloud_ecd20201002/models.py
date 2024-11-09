@@ -854,6 +854,7 @@ class DescribeGlobalDesktopsRequest(TeaModel):
         desktop_status: str = None,
         directory_id: str = None,
         keyword: str = None,
+        language: str = None,
         login_region_id: str = None,
         login_token: str = None,
         max_results: int = None,
@@ -876,6 +877,7 @@ class DescribeGlobalDesktopsRequest(TeaModel):
         self.directory_id = directory_id
         # 关键字。支持模糊搜索桌面ID、云桌面名称和终端用户自定义的桌面名称。
         self.keyword = keyword
+        self.language = language
         self.login_region_id = login_region_id
         # This parameter is required.
         self.login_token = login_token
@@ -913,6 +915,8 @@ class DescribeGlobalDesktopsRequest(TeaModel):
             result['DirectoryId'] = self.directory_id
         if self.keyword is not None:
             result['Keyword'] = self.keyword
+        if self.language is not None:
+            result['Language'] = self.language
         if self.login_region_id is not None:
             result['LoginRegionId'] = self.login_region_id
         if self.login_token is not None:
@@ -955,6 +959,8 @@ class DescribeGlobalDesktopsRequest(TeaModel):
             self.directory_id = m.get('DirectoryId')
         if m.get('Keyword') is not None:
             self.keyword = m.get('Keyword')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
         if m.get('LoginRegionId') is not None:
             self.login_region_id = m.get('LoginRegionId')
         if m.get('LoginToken') is not None:
@@ -1142,6 +1148,7 @@ class DescribeGlobalDesktopsResponseBodyDesktopsFotaUpdate(TeaModel):
         current_app_version: str = None,
         force: bool = None,
         new_app_version: str = None,
+        new_dcd_version: str = None,
         project: str = None,
         release_note: str = None,
         release_note_en: str = None,
@@ -1152,6 +1159,7 @@ class DescribeGlobalDesktopsResponseBodyDesktopsFotaUpdate(TeaModel):
         self.current_app_version = current_app_version
         self.force = force
         self.new_app_version = new_app_version
+        self.new_dcd_version = new_dcd_version
         self.project = project
         self.release_note = release_note
         self.release_note_en = release_note_en
@@ -1175,6 +1183,8 @@ class DescribeGlobalDesktopsResponseBodyDesktopsFotaUpdate(TeaModel):
             result['Force'] = self.force
         if self.new_app_version is not None:
             result['NewAppVersion'] = self.new_app_version
+        if self.new_dcd_version is not None:
+            result['NewDcdVersion'] = self.new_dcd_version
         if self.project is not None:
             result['Project'] = self.project
         if self.release_note is not None:
@@ -1197,6 +1207,8 @@ class DescribeGlobalDesktopsResponseBodyDesktopsFotaUpdate(TeaModel):
             self.force = m.get('Force')
         if m.get('NewAppVersion') is not None:
             self.new_app_version = m.get('NewAppVersion')
+        if m.get('NewDcdVersion') is not None:
+            self.new_dcd_version = m.get('NewDcdVersion')
         if m.get('Project') is not None:
             self.project = m.get('Project')
         if m.get('ReleaseNote') is not None:
@@ -1274,6 +1286,7 @@ class DescribeGlobalDesktopsResponseBodyDesktops(TeaModel):
         network_interface_ip: str = None,
         office_site_id: str = None,
         os: str = None,
+        os_description: str = None,
         os_type: str = None,
         platform: str = None,
         policy_group_id: str = None,
@@ -1315,6 +1328,7 @@ class DescribeGlobalDesktopsResponseBodyDesktops(TeaModel):
         self.network_interface_ip = network_interface_ip
         self.office_site_id = office_site_id
         self.os = os
+        self.os_description = os_description
         self.os_type = os_type
         self.platform = platform
         self.policy_group_id = policy_group_id
@@ -1415,6 +1429,8 @@ class DescribeGlobalDesktopsResponseBodyDesktops(TeaModel):
             result['OfficeSiteId'] = self.office_site_id
         if self.os is not None:
             result['Os'] = self.os
+        if self.os_description is not None:
+            result['OsDescription'] = self.os_description
         if self.os_type is not None:
             result['OsType'] = self.os_type
         if self.platform is not None:
@@ -1509,6 +1525,8 @@ class DescribeGlobalDesktopsResponseBodyDesktops(TeaModel):
             self.office_site_id = m.get('OfficeSiteId')
         if m.get('Os') is not None:
             self.os = m.get('Os')
+        if m.get('OsDescription') is not None:
+            self.os_description = m.get('OsDescription')
         if m.get('OsType') is not None:
             self.os_type = m.get('OsType')
         if m.get('Platform') is not None:
@@ -4155,6 +4173,7 @@ class ResetSnapshotRequest(TeaModel):
     def __init__(
         self,
         client_id: str = None,
+        desktop_id: str = None,
         login_token: str = None,
         region_id: str = None,
         session_id: str = None,
@@ -4162,6 +4181,7 @@ class ResetSnapshotRequest(TeaModel):
     ):
         # This parameter is required.
         self.client_id = client_id
+        self.desktop_id = desktop_id
         # This parameter is required.
         self.login_token = login_token
         # This parameter is required.
@@ -4181,6 +4201,8 @@ class ResetSnapshotRequest(TeaModel):
         result = dict()
         if self.client_id is not None:
             result['ClientId'] = self.client_id
+        if self.desktop_id is not None:
+            result['DesktopId'] = self.desktop_id
         if self.login_token is not None:
             result['LoginToken'] = self.login_token
         if self.region_id is not None:
@@ -4195,6 +4217,8 @@ class ResetSnapshotRequest(TeaModel):
         m = m or dict()
         if m.get('ClientId') is not None:
             self.client_id = m.get('ClientId')
+        if m.get('DesktopId') is not None:
+            self.desktop_id = m.get('DesktopId')
         if m.get('LoginToken') is not None:
             self.login_token = m.get('LoginToken')
         if m.get('RegionId') is not None:

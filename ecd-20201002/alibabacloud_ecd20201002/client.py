@@ -608,6 +608,8 @@ class Client(OpenApiClient):
             query['DirectoryId'] = request.directory_id
         if not UtilClient.is_unset(request.keyword):
             query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
         if not UtilClient.is_unset(request.login_region_id):
             query['LoginRegionId'] = request.login_region_id
         if not UtilClient.is_unset(request.login_token):
@@ -677,6 +679,8 @@ class Client(OpenApiClient):
             query['DirectoryId'] = request.directory_id
         if not UtilClient.is_unset(request.keyword):
             query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
         if not UtilClient.is_unset(request.login_region_id):
             query['LoginRegionId'] = request.login_region_id
         if not UtilClient.is_unset(request.login_token):
@@ -2378,6 +2382,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_id):
             query['ClientId'] = request.client_id
+        if not UtilClient.is_unset(request.desktop_id):
+            query['DesktopId'] = request.desktop_id
         if not UtilClient.is_unset(request.login_token):
             query['LoginToken'] = request.login_token
         if not UtilClient.is_unset(request.region_id):
@@ -2421,6 +2427,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_id):
             query['ClientId'] = request.client_id
+        if not UtilClient.is_unset(request.desktop_id):
+            query['DesktopId'] = request.desktop_id
         if not UtilClient.is_unset(request.login_token):
             query['LoginToken'] = request.login_token
         if not UtilClient.is_unset(request.region_id):

@@ -1,3 +1,9 @@
+2024-11-09 Version: 1.1.4
+- Update API DescribeGlobalDesktops: add param Language.
+- Update API DescribeGlobalDesktops: update response param.
+- Update API ResetSnapshot: add param DesktopId.
+
+
 2024-08-13 Version: 1.1.3
 - Update API DescribeGlobalDesktops: update response param.
 - Update API StartRecordContent: update response param.
