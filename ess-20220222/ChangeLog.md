@@ -1,3 +1,9 @@
+2024-11-11 Version: 1.10.0
+- Support API CreateDiagnoseReport.
+- Support API DescribeDiagnoseReports.
+- Support API DescribeScalingGroupDiagnoseDetails.
+
+
 2024-11-08 Version: 1.9.1
 - Update API CreateScalingConfiguration: add param HttpEndpoint.
 - Update API CreateScalingConfiguration: add param HttpTokens.

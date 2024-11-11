@@ -1975,6 +1975,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_alarm_with_options_async(request, runtime)
 
+    def create_diagnose_report_with_options(
+        self,
+        request: ess_20220222_models.CreateDiagnoseReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.CreateDiagnoseReportResponse:
+        """
+        @summary CreateDiagnoseReport
+        
+        @param request: CreateDiagnoseReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDiagnoseReportResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDiagnoseReport',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.CreateDiagnoseReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_diagnose_report_with_options_async(
+        self,
+        request: ess_20220222_models.CreateDiagnoseReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.CreateDiagnoseReportResponse:
+        """
+        @summary CreateDiagnoseReport
+        
+        @param request: CreateDiagnoseReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDiagnoseReportResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDiagnoseReport',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.CreateDiagnoseReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_diagnose_report(
+        self,
+        request: ess_20220222_models.CreateDiagnoseReportRequest,
+    ) -> ess_20220222_models.CreateDiagnoseReportResponse:
+        """
+        @summary CreateDiagnoseReport
+        
+        @param request: CreateDiagnoseReportRequest
+        @return: CreateDiagnoseReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_diagnose_report_with_options(request, runtime)
+
+    async def create_diagnose_report_async(
+        self,
+        request: ess_20220222_models.CreateDiagnoseReportRequest,
+    ) -> ess_20220222_models.CreateDiagnoseReportResponse:
+        """
+        @summary CreateDiagnoseReport
+        
+        @param request: CreateDiagnoseReportRequest
+        @return: CreateDiagnoseReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_diagnose_report_with_options_async(request, runtime)
+
     def create_eci_scaling_configuration_with_options(
         self,
         request: ess_20220222_models.CreateEciScalingConfigurationRequest,
@@ -5107,6 +5199,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_alert_configuration_with_options_async(request, runtime)
 
+    def describe_diagnose_reports_with_options(
+        self,
+        request: ess_20220222_models.DescribeDiagnoseReportsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.DescribeDiagnoseReportsResponse:
+        """
+        @summary DescribeDiagnoseReports
+        
+        @param request: DescribeDiagnoseReportsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDiagnoseReportsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiagnoseReports',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.DescribeDiagnoseReportsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_diagnose_reports_with_options_async(
+        self,
+        request: ess_20220222_models.DescribeDiagnoseReportsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.DescribeDiagnoseReportsResponse:
+        """
+        @summary DescribeDiagnoseReports
+        
+        @param request: DescribeDiagnoseReportsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDiagnoseReportsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiagnoseReports',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.DescribeDiagnoseReportsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_diagnose_reports(
+        self,
+        request: ess_20220222_models.DescribeDiagnoseReportsRequest,
+    ) -> ess_20220222_models.DescribeDiagnoseReportsResponse:
+        """
+        @summary DescribeDiagnoseReports
+        
+        @param request: DescribeDiagnoseReportsRequest
+        @return: DescribeDiagnoseReportsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_diagnose_reports_with_options(request, runtime)
+
+    async def describe_diagnose_reports_async(
+        self,
+        request: ess_20220222_models.DescribeDiagnoseReportsRequest,
+    ) -> ess_20220222_models.DescribeDiagnoseReportsResponse:
+        """
+        @summary DescribeDiagnoseReports
+        
+        @param request: DescribeDiagnoseReportsRequest
+        @return: DescribeDiagnoseReportsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_diagnose_reports_with_options_async(request, runtime)
+
     def describe_eci_scaling_configuration_detail_with_options(
         self,
         request: ess_20220222_models.DescribeEciScalingConfigurationDetailRequest,
@@ -6866,6 +7050,98 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_scaling_group_detail_with_options_async(request, runtime)
+
+    def describe_scaling_group_diagnose_details_with_options(
+        self,
+        request: ess_20220222_models.DescribeScalingGroupDiagnoseDetailsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.DescribeScalingGroupDiagnoseDetailsResponse:
+        """
+        @summary DescribeScalingGroupDiagnoseDetails
+        
+        @param request: DescribeScalingGroupDiagnoseDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeScalingGroupDiagnoseDetailsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeScalingGroupDiagnoseDetails',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.DescribeScalingGroupDiagnoseDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_scaling_group_diagnose_details_with_options_async(
+        self,
+        request: ess_20220222_models.DescribeScalingGroupDiagnoseDetailsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.DescribeScalingGroupDiagnoseDetailsResponse:
+        """
+        @summary DescribeScalingGroupDiagnoseDetails
+        
+        @param request: DescribeScalingGroupDiagnoseDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeScalingGroupDiagnoseDetailsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeScalingGroupDiagnoseDetails',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.DescribeScalingGroupDiagnoseDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_scaling_group_diagnose_details(
+        self,
+        request: ess_20220222_models.DescribeScalingGroupDiagnoseDetailsRequest,
+    ) -> ess_20220222_models.DescribeScalingGroupDiagnoseDetailsResponse:
+        """
+        @summary DescribeScalingGroupDiagnoseDetails
+        
+        @param request: DescribeScalingGroupDiagnoseDetailsRequest
+        @return: DescribeScalingGroupDiagnoseDetailsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_scaling_group_diagnose_details_with_options(request, runtime)
+
+    async def describe_scaling_group_diagnose_details_async(
+        self,
+        request: ess_20220222_models.DescribeScalingGroupDiagnoseDetailsRequest,
+    ) -> ess_20220222_models.DescribeScalingGroupDiagnoseDetailsResponse:
+        """
+        @summary DescribeScalingGroupDiagnoseDetails
+        
+        @param request: DescribeScalingGroupDiagnoseDetailsRequest
+        @return: DescribeScalingGroupDiagnoseDetailsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_scaling_group_diagnose_details_with_options_async(request, runtime)
 
     def describe_scaling_groups_with_options(
         self,

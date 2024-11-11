@@ -2464,6 +2464,116 @@ class CreateAlarmResponse(TeaModel):
         return self
 
 
+class CreateDiagnoseReportRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        scaling_group_id: str = None,
+    ):
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.scaling_group_id = scaling_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.scaling_group_id is not None:
+            result['ScalingGroupId'] = self.scaling_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ScalingGroupId') is not None:
+            self.scaling_group_id = m.get('ScalingGroupId')
+        return self
+
+
+class CreateDiagnoseReportResponseBody(TeaModel):
+    def __init__(
+        self,
+        report_id: str = None,
+        request_id: str = None,
+    ):
+        self.report_id = report_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.report_id is not None:
+            result['ReportId'] = self.report_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReportId') is not None:
+            self.report_id = m.get('ReportId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateDiagnoseReportResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDiagnoseReportResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDiagnoseReportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateEciScalingConfigurationRequestAcrRegistryInfos(TeaModel):
     def __init__(
         self,
@@ -11987,6 +12097,282 @@ class DescribeAlertConfigurationResponse(TeaModel):
         return self
 
 
+class DescribeDiagnoseReportsRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        report_ids: List[str] = None,
+        scaling_group_id: str = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.region_id = region_id
+        self.report_ids = report_ids
+        # This parameter is required.
+        self.scaling_group_id = scaling_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.report_ids is not None:
+            result['ReportIds'] = self.report_ids
+        if self.scaling_group_id is not None:
+            result['ScalingGroupId'] = self.scaling_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ReportIds') is not None:
+            self.report_ids = m.get('ReportIds')
+        if m.get('ScalingGroupId') is not None:
+            self.scaling_group_id = m.get('ScalingGroupId')
+        return self
+
+
+class DescribeDiagnoseReportsResponseBodyReportsDetails(TeaModel):
+    def __init__(
+        self,
+        diagnose_type: str = None,
+        error_code: str = None,
+        resource_id: str = None,
+        status: str = None,
+    ):
+        self.diagnose_type = diagnose_type
+        self.error_code = error_code
+        self.resource_id = resource_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.diagnose_type is not None:
+            result['DiagnoseType'] = self.diagnose_type
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiagnoseType') is not None:
+            self.diagnose_type = m.get('DiagnoseType')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeDiagnoseReportsResponseBodyReports(TeaModel):
+    def __init__(
+        self,
+        creation_time: str = None,
+        details: List[DescribeDiagnoseReportsResponseBodyReportsDetails] = None,
+        diagnose_status: str = None,
+        process_status: str = None,
+        region_id: str = None,
+        report_id: str = None,
+        scaling_group_id: str = None,
+        user_id: str = None,
+    ):
+        self.creation_time = creation_time
+        self.details = details
+        self.diagnose_status = diagnose_status
+        self.process_status = process_status
+        self.region_id = region_id
+        self.report_id = report_id
+        self.scaling_group_id = scaling_group_id
+        self.user_id = user_id
+
+    def validate(self):
+        if self.details:
+            for k in self.details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        result['Details'] = []
+        if self.details is not None:
+            for k in self.details:
+                result['Details'].append(k.to_map() if k else None)
+        if self.diagnose_status is not None:
+            result['DiagnoseStatus'] = self.diagnose_status
+        if self.process_status is not None:
+            result['ProcessStatus'] = self.process_status
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.report_id is not None:
+            result['ReportId'] = self.report_id
+        if self.scaling_group_id is not None:
+            result['ScalingGroupId'] = self.scaling_group_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        self.details = []
+        if m.get('Details') is not None:
+            for k in m.get('Details'):
+                temp_model = DescribeDiagnoseReportsResponseBodyReportsDetails()
+                self.details.append(temp_model.from_map(k))
+        if m.get('DiagnoseStatus') is not None:
+            self.diagnose_status = m.get('DiagnoseStatus')
+        if m.get('ProcessStatus') is not None:
+            self.process_status = m.get('ProcessStatus')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ReportId') is not None:
+            self.report_id = m.get('ReportId')
+        if m.get('ScalingGroupId') is not None:
+            self.scaling_group_id = m.get('ScalingGroupId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class DescribeDiagnoseReportsResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        reports: List[DescribeDiagnoseReportsResponseBodyReports] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.reports = reports
+        # Id of the request
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.reports:
+            for k in self.reports:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['Reports'] = []
+        if self.reports is not None:
+            for k in self.reports:
+                result['Reports'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.reports = []
+        if m.get('Reports') is not None:
+            for k in m.get('Reports'):
+                temp_model = DescribeDiagnoseReportsResponseBodyReports()
+                self.reports.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeDiagnoseReportsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDiagnoseReportsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDiagnoseReportsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeEciScalingConfigurationDetailRequest(TeaModel):
     def __init__(
         self,
@@ -21430,6 +21816,169 @@ class DescribeScalingGroupDetailResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeScalingGroupDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeScalingGroupDiagnoseDetailsRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        scaling_group_id: str = None,
+    ):
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.scaling_group_id = scaling_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.scaling_group_id is not None:
+            result['ScalingGroupId'] = self.scaling_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ScalingGroupId') is not None:
+            self.scaling_group_id = m.get('ScalingGroupId')
+        return self
+
+
+class DescribeScalingGroupDiagnoseDetailsResponseBodyDetails(TeaModel):
+    def __init__(
+        self,
+        diagnose_type: str = None,
+        error_code: str = None,
+        resource_id: str = None,
+        status: str = None,
+    ):
+        self.diagnose_type = diagnose_type
+        self.error_code = error_code
+        self.resource_id = resource_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.diagnose_type is not None:
+            result['DiagnoseType'] = self.diagnose_type
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiagnoseType') is not None:
+            self.diagnose_type = m.get('DiagnoseType')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeScalingGroupDiagnoseDetailsResponseBody(TeaModel):
+    def __init__(
+        self,
+        details: List[DescribeScalingGroupDiagnoseDetailsResponseBodyDetails] = None,
+        request_id: str = None,
+    ):
+        self.details = details
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.details:
+            for k in self.details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Details'] = []
+        if self.details is not None:
+            for k in self.details:
+                result['Details'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.details = []
+        if m.get('Details') is not None:
+            for k in m.get('Details'):
+                temp_model = DescribeScalingGroupDiagnoseDetailsResponseBodyDetails()
+                self.details.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeScalingGroupDiagnoseDetailsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeScalingGroupDiagnoseDetailsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeScalingGroupDiagnoseDetailsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
