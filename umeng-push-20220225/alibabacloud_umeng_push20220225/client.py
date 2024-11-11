@@ -268,6 +268,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.android_payload):
             request.android_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_payload, 'AndroidPayload', 'json')
+        if not UtilClient.is_unset(tmp_req.android_short_payload):
+            request.android_short_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_short_payload, 'AndroidShortPayload', 'json')
         if not UtilClient.is_unset(tmp_req.channel_properties):
             request.channel_properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.channel_properties, 'ChannelProperties', 'json')
         if not UtilClient.is_unset(tmp_req.ios_payload):
@@ -281,6 +283,8 @@ class Client(OpenApiClient):
             body['AliasType'] = request.alias_type
         if not UtilClient.is_unset(request.android_payload_shrink):
             body['AndroidPayload'] = request.android_payload_shrink
+        if not UtilClient.is_unset(request.android_short_payload_shrink):
+            body['AndroidShortPayload'] = request.android_short_payload_shrink
         if not UtilClient.is_unset(request.channel_properties_shrink):
             body['ChannelProperties'] = request.channel_properties_shrink
         if not UtilClient.is_unset(request.description):
@@ -338,6 +342,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.android_payload):
             request.android_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_payload, 'AndroidPayload', 'json')
+        if not UtilClient.is_unset(tmp_req.android_short_payload):
+            request.android_short_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_short_payload, 'AndroidShortPayload', 'json')
         if not UtilClient.is_unset(tmp_req.channel_properties):
             request.channel_properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.channel_properties, 'ChannelProperties', 'json')
         if not UtilClient.is_unset(tmp_req.ios_payload):
@@ -351,6 +357,8 @@ class Client(OpenApiClient):
             body['AliasType'] = request.alias_type
         if not UtilClient.is_unset(request.android_payload_shrink):
             body['AndroidPayload'] = request.android_payload_shrink
+        if not UtilClient.is_unset(request.android_short_payload_shrink):
+            body['AndroidShortPayload'] = request.android_short_payload_shrink
         if not UtilClient.is_unset(request.channel_properties_shrink):
             body['ChannelProperties'] = request.channel_properties_shrink
         if not UtilClient.is_unset(request.description):
@@ -436,6 +444,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.android_payload):
             request.android_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_payload, 'AndroidPayload', 'json')
+        if not UtilClient.is_unset(tmp_req.android_short_payload):
+            request.android_short_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_short_payload, 'AndroidShortPayload', 'json')
         if not UtilClient.is_unset(tmp_req.channel_properties):
             request.channel_properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.channel_properties, 'ChannelProperties', 'json')
         if not UtilClient.is_unset(tmp_req.ios_payload):
@@ -447,6 +457,8 @@ class Client(OpenApiClient):
             body['AliasType'] = request.alias_type
         if not UtilClient.is_unset(request.android_payload_shrink):
             body['AndroidPayload'] = request.android_payload_shrink
+        if not UtilClient.is_unset(request.android_short_payload_shrink):
+            body['AndroidShortPayload'] = request.android_short_payload_shrink
         if not UtilClient.is_unset(request.channel_properties_shrink):
             body['ChannelProperties'] = request.channel_properties_shrink
         if not UtilClient.is_unset(request.description):
@@ -506,6 +518,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.android_payload):
             request.android_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_payload, 'AndroidPayload', 'json')
+        if not UtilClient.is_unset(tmp_req.android_short_payload):
+            request.android_short_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_short_payload, 'AndroidShortPayload', 'json')
         if not UtilClient.is_unset(tmp_req.channel_properties):
             request.channel_properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.channel_properties, 'ChannelProperties', 'json')
         if not UtilClient.is_unset(tmp_req.ios_payload):
@@ -517,6 +531,8 @@ class Client(OpenApiClient):
             body['AliasType'] = request.alias_type
         if not UtilClient.is_unset(request.android_payload_shrink):
             body['AndroidPayload'] = request.android_payload_shrink
+        if not UtilClient.is_unset(request.android_short_payload_shrink):
+            body['AndroidShortPayload'] = request.android_short_payload_shrink
         if not UtilClient.is_unset(request.channel_properties_shrink):
             body['ChannelProperties'] = request.channel_properties_shrink
         if not UtilClient.is_unset(request.description):
@@ -604,6 +620,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.android_payload):
             request.android_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_payload, 'AndroidPayload', 'json')
+        if not UtilClient.is_unset(tmp_req.android_short_payload):
+            request.android_short_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_short_payload, 'AndroidShortPayload', 'json')
         if not UtilClient.is_unset(tmp_req.channel_properties):
             request.channel_properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.channel_properties, 'ChannelProperties', 'json')
         if not UtilClient.is_unset(tmp_req.ios_payload):
@@ -613,6 +631,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.android_payload_shrink):
             body['AndroidPayload'] = request.android_payload_shrink
+        if not UtilClient.is_unset(request.android_short_payload_shrink):
+            body['AndroidShortPayload'] = request.android_short_payload_shrink
         if not UtilClient.is_unset(request.channel_properties_shrink):
             body['ChannelProperties'] = request.channel_properties_shrink
         if not UtilClient.is_unset(request.description):
@@ -670,6 +690,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.android_payload):
             request.android_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_payload, 'AndroidPayload', 'json')
+        if not UtilClient.is_unset(tmp_req.android_short_payload):
+            request.android_short_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_short_payload, 'AndroidShortPayload', 'json')
         if not UtilClient.is_unset(tmp_req.channel_properties):
             request.channel_properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.channel_properties, 'ChannelProperties', 'json')
         if not UtilClient.is_unset(tmp_req.ios_payload):
@@ -679,6 +701,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.android_payload_shrink):
             body['AndroidPayload'] = request.android_payload_shrink
+        if not UtilClient.is_unset(request.android_short_payload_shrink):
+            body['AndroidShortPayload'] = request.android_short_payload_shrink
         if not UtilClient.is_unset(request.channel_properties_shrink):
             body['ChannelProperties'] = request.channel_properties_shrink
         if not UtilClient.is_unset(request.description):
@@ -764,6 +788,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.android_payload):
             request.android_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_payload, 'AndroidPayload', 'json')
+        if not UtilClient.is_unset(tmp_req.android_short_payload):
+            request.android_short_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_short_payload, 'AndroidShortPayload', 'json')
         if not UtilClient.is_unset(tmp_req.channel_properties):
             request.channel_properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.channel_properties, 'ChannelProperties', 'json')
         if not UtilClient.is_unset(tmp_req.ios_payload):
@@ -773,6 +799,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.android_payload_shrink):
             body['AndroidPayload'] = request.android_payload_shrink
+        if not UtilClient.is_unset(request.android_short_payload_shrink):
+            body['AndroidShortPayload'] = request.android_short_payload_shrink
         if not UtilClient.is_unset(request.channel_properties_shrink):
             body['ChannelProperties'] = request.channel_properties_shrink
         if not UtilClient.is_unset(request.description):
@@ -832,6 +860,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.android_payload):
             request.android_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_payload, 'AndroidPayload', 'json')
+        if not UtilClient.is_unset(tmp_req.android_short_payload):
+            request.android_short_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_short_payload, 'AndroidShortPayload', 'json')
         if not UtilClient.is_unset(tmp_req.channel_properties):
             request.channel_properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.channel_properties, 'ChannelProperties', 'json')
         if not UtilClient.is_unset(tmp_req.ios_payload):
@@ -841,6 +871,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.android_payload_shrink):
             body['AndroidPayload'] = request.android_payload_shrink
+        if not UtilClient.is_unset(request.android_short_payload_shrink):
+            body['AndroidShortPayload'] = request.android_short_payload_shrink
         if not UtilClient.is_unset(request.channel_properties_shrink):
             body['ChannelProperties'] = request.channel_properties_shrink
         if not UtilClient.is_unset(request.description):
@@ -928,6 +960,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.android_payload):
             request.android_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_payload, 'AndroidPayload', 'json')
+        if not UtilClient.is_unset(tmp_req.android_short_payload):
+            request.android_short_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_short_payload, 'AndroidShortPayload', 'json')
         if not UtilClient.is_unset(tmp_req.channel_properties):
             request.channel_properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.channel_properties, 'ChannelProperties', 'json')
         if not UtilClient.is_unset(tmp_req.ios_payload):
@@ -937,6 +971,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.android_payload_shrink):
             body['AndroidPayload'] = request.android_payload_shrink
+        if not UtilClient.is_unset(request.android_short_payload_shrink):
+            body['AndroidShortPayload'] = request.android_short_payload_shrink
         if not UtilClient.is_unset(request.channel_properties_shrink):
             body['ChannelProperties'] = request.channel_properties_shrink
         if not UtilClient.is_unset(request.description):
@@ -996,6 +1032,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.android_payload):
             request.android_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_payload, 'AndroidPayload', 'json')
+        if not UtilClient.is_unset(tmp_req.android_short_payload):
+            request.android_short_payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_short_payload, 'AndroidShortPayload', 'json')
         if not UtilClient.is_unset(tmp_req.channel_properties):
             request.channel_properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.channel_properties, 'ChannelProperties', 'json')
         if not UtilClient.is_unset(tmp_req.ios_payload):
@@ -1005,6 +1043,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.android_payload_shrink):
             body['AndroidPayload'] = request.android_payload_shrink
+        if not UtilClient.is_unset(request.android_short_payload_shrink):
+            body['AndroidShortPayload'] = request.android_short_payload_shrink
         if not UtilClient.is_unset(request.channel_properties_shrink):
             body['ChannelProperties'] = request.channel_properties_shrink
         if not UtilClient.is_unset(request.description):
@@ -1101,6 +1141,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.android_payload_shrink):
             body['AndroidPayload'] = request.android_payload_shrink
+        if not UtilClient.is_unset(request.android_short_payload):
+            body['AndroidShortPayload'] = request.android_short_payload
         if not UtilClient.is_unset(request.channel_properties_shrink):
             body['ChannelProperties'] = request.channel_properties_shrink
         if not UtilClient.is_unset(request.description):
@@ -1169,6 +1211,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.android_payload_shrink):
             body['AndroidPayload'] = request.android_payload_shrink
+        if not UtilClient.is_unset(request.android_short_payload):
+            body['AndroidShortPayload'] = request.android_short_payload
         if not UtilClient.is_unset(request.channel_properties_shrink):
             body['ChannelProperties'] = request.channel_properties_shrink
         if not UtilClient.is_unset(request.description):

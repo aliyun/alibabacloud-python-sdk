@@ -1,3 +1,12 @@
+2024-11-11 Version: 1.0.11
+- Update API SendByAlias: add param AndroidShortPayload.
+- Update API SendByAliasFileId: add param AndroidShortPayload.
+- Update API SendByApp: add param AndroidShortPayload.
+- Update API SendByDevice: add param AndroidShortPayload.
+- Update API SendByDeviceFileId: add param AndroidShortPayload.
+- Update API SendByFilter: add param AndroidShortPayload.
+
+
 2024-10-30 Version: 1.0.10
 - Update API SendByAlias: add param callbackParams.
 - Update API SendByAliasFileId: add param callbackParams.

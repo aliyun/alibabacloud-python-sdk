@@ -291,6 +291,68 @@ class AndroidPayload(TeaModel):
         return self
 
 
+class AndroidShortPayloadBody(TeaModel):
+    def __init__(
+        self,
+        custom: str = None,
+    ):
+        self.custom = custom
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom is not None:
+            result['custom'] = self.custom
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('custom') is not None:
+            self.custom = m.get('custom')
+        return self
+
+
+class AndroidShortPayload(TeaModel):
+    def __init__(
+        self,
+        body: AndroidShortPayloadBody = None,
+        extra: Dict[str, Any] = None,
+    ):
+        self.body = body
+        self.extra = extra
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        if self.extra is not None:
+            result['extra'] = self.extra
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = AndroidShortPayloadBody()
+            self.body = temp_model.from_map(m['body'])
+        if m.get('extra') is not None:
+            self.extra = m.get('extra')
+        return self
+
+
 class Aps(TeaModel):
     def __init__(
         self,
@@ -369,6 +431,7 @@ class ChannelProperties(TeaModel):
         use_huawei_message: str = None,
         vivo_add_badge: str = None,
         vivo_category: str = None,
+        vivo_push_mode: str = None,
         xiaomi_channel_id: str = None,
     ):
         self.channel_activity = channel_activity
@@ -381,6 +444,7 @@ class ChannelProperties(TeaModel):
         self.use_huawei_message = use_huawei_message
         self.vivo_add_badge = vivo_add_badge
         self.vivo_category = vivo_category
+        self.vivo_push_mode = vivo_push_mode
         self.xiaomi_channel_id = xiaomi_channel_id
 
     def validate(self):
@@ -412,6 +476,8 @@ class ChannelProperties(TeaModel):
             result['vivoAddBadge'] = self.vivo_add_badge
         if self.vivo_category is not None:
             result['vivoCategory'] = self.vivo_category
+        if self.vivo_push_mode is not None:
+            result['vivoPushMode'] = self.vivo_push_mode
         if self.xiaomi_channel_id is not None:
             result['xiaomiChannelId'] = self.xiaomi_channel_id
         return result
@@ -438,6 +504,8 @@ class ChannelProperties(TeaModel):
             self.vivo_add_badge = m.get('vivoAddBadge')
         if m.get('vivoCategory') is not None:
             self.vivo_category = m.get('vivoCategory')
+        if m.get('vivoPushMode') is not None:
+            self.vivo_push_mode = m.get('vivoPushMode')
         if m.get('xiaomiChannelId') is not None:
             self.xiaomi_channel_id = m.get('xiaomiChannelId')
         return self
@@ -879,6 +947,7 @@ class SendByAliasRequest(TeaModel):
         alias: str = None,
         alias_type: str = None,
         android_payload: AndroidPayload = None,
+        android_short_payload: AndroidShortPayload = None,
         channel_properties: ChannelProperties = None,
         description: str = None,
         ios_payload: IosPayload = None,
@@ -893,6 +962,7 @@ class SendByAliasRequest(TeaModel):
         self.alias = alias
         self.alias_type = alias_type
         self.android_payload = android_payload
+        self.android_short_payload = android_short_payload
         self.channel_properties = channel_properties
         self.description = description
         self.ios_payload = ios_payload
@@ -906,6 +976,8 @@ class SendByAliasRequest(TeaModel):
     def validate(self):
         if self.android_payload:
             self.android_payload.validate()
+        if self.android_short_payload:
+            self.android_short_payload.validate()
         if self.channel_properties:
             self.channel_properties.validate()
         if self.ios_payload:
@@ -925,6 +997,8 @@ class SendByAliasRequest(TeaModel):
             result['AliasType'] = self.alias_type
         if self.android_payload is not None:
             result['AndroidPayload'] = self.android_payload.to_map()
+        if self.android_short_payload is not None:
+            result['AndroidShortPayload'] = self.android_short_payload.to_map()
         if self.channel_properties is not None:
             result['ChannelProperties'] = self.channel_properties.to_map()
         if self.description is not None:
@@ -954,6 +1028,9 @@ class SendByAliasRequest(TeaModel):
         if m.get('AndroidPayload') is not None:
             temp_model = AndroidPayload()
             self.android_payload = temp_model.from_map(m['AndroidPayload'])
+        if m.get('AndroidShortPayload') is not None:
+            temp_model = AndroidShortPayload()
+            self.android_short_payload = temp_model.from_map(m['AndroidShortPayload'])
         if m.get('ChannelProperties') is not None:
             temp_model = ChannelProperties()
             self.channel_properties = temp_model.from_map(m['ChannelProperties'])
@@ -984,6 +1061,7 @@ class SendByAliasShrinkRequest(TeaModel):
         alias: str = None,
         alias_type: str = None,
         android_payload_shrink: str = None,
+        android_short_payload_shrink: str = None,
         channel_properties_shrink: str = None,
         description: str = None,
         ios_payload_shrink: str = None,
@@ -998,6 +1076,7 @@ class SendByAliasShrinkRequest(TeaModel):
         self.alias = alias
         self.alias_type = alias_type
         self.android_payload_shrink = android_payload_shrink
+        self.android_short_payload_shrink = android_short_payload_shrink
         self.channel_properties_shrink = channel_properties_shrink
         self.description = description
         self.ios_payload_shrink = ios_payload_shrink
@@ -1023,6 +1102,8 @@ class SendByAliasShrinkRequest(TeaModel):
             result['AliasType'] = self.alias_type
         if self.android_payload_shrink is not None:
             result['AndroidPayload'] = self.android_payload_shrink
+        if self.android_short_payload_shrink is not None:
+            result['AndroidShortPayload'] = self.android_short_payload_shrink
         if self.channel_properties_shrink is not None:
             result['ChannelProperties'] = self.channel_properties_shrink
         if self.description is not None:
@@ -1051,6 +1132,8 @@ class SendByAliasShrinkRequest(TeaModel):
             self.alias_type = m.get('AliasType')
         if m.get('AndroidPayload') is not None:
             self.android_payload_shrink = m.get('AndroidPayload')
+        if m.get('AndroidShortPayload') is not None:
+            self.android_short_payload_shrink = m.get('AndroidShortPayload')
         if m.get('ChannelProperties') is not None:
             self.channel_properties_shrink = m.get('ChannelProperties')
         if m.get('Description') is not None:
@@ -1204,6 +1287,7 @@ class SendByAliasFileIdRequest(TeaModel):
         self,
         alias_type: str = None,
         android_payload: AndroidPayload = None,
+        android_short_payload: AndroidShortPayload = None,
         channel_properties: ChannelProperties = None,
         description: str = None,
         file_id: str = None,
@@ -1217,6 +1301,7 @@ class SendByAliasFileIdRequest(TeaModel):
     ):
         self.alias_type = alias_type
         self.android_payload = android_payload
+        self.android_short_payload = android_short_payload
         self.channel_properties = channel_properties
         self.description = description
         # This parameter is required.
@@ -1232,6 +1317,8 @@ class SendByAliasFileIdRequest(TeaModel):
     def validate(self):
         if self.android_payload:
             self.android_payload.validate()
+        if self.android_short_payload:
+            self.android_short_payload.validate()
         if self.channel_properties:
             self.channel_properties.validate()
         if self.ios_payload:
@@ -1249,6 +1336,8 @@ class SendByAliasFileIdRequest(TeaModel):
             result['AliasType'] = self.alias_type
         if self.android_payload is not None:
             result['AndroidPayload'] = self.android_payload.to_map()
+        if self.android_short_payload is not None:
+            result['AndroidShortPayload'] = self.android_short_payload.to_map()
         if self.channel_properties is not None:
             result['ChannelProperties'] = self.channel_properties.to_map()
         if self.description is not None:
@@ -1278,6 +1367,9 @@ class SendByAliasFileIdRequest(TeaModel):
         if m.get('AndroidPayload') is not None:
             temp_model = AndroidPayload()
             self.android_payload = temp_model.from_map(m['AndroidPayload'])
+        if m.get('AndroidShortPayload') is not None:
+            temp_model = AndroidShortPayload()
+            self.android_short_payload = temp_model.from_map(m['AndroidShortPayload'])
         if m.get('ChannelProperties') is not None:
             temp_model = ChannelProperties()
             self.channel_properties = temp_model.from_map(m['ChannelProperties'])
@@ -1309,6 +1401,7 @@ class SendByAliasFileIdShrinkRequest(TeaModel):
         self,
         alias_type: str = None,
         android_payload_shrink: str = None,
+        android_short_payload_shrink: str = None,
         channel_properties_shrink: str = None,
         description: str = None,
         file_id: str = None,
@@ -1322,6 +1415,7 @@ class SendByAliasFileIdShrinkRequest(TeaModel):
     ):
         self.alias_type = alias_type
         self.android_payload_shrink = android_payload_shrink
+        self.android_short_payload_shrink = android_short_payload_shrink
         self.channel_properties_shrink = channel_properties_shrink
         self.description = description
         # This parameter is required.
@@ -1347,6 +1441,8 @@ class SendByAliasFileIdShrinkRequest(TeaModel):
             result['AliasType'] = self.alias_type
         if self.android_payload_shrink is not None:
             result['AndroidPayload'] = self.android_payload_shrink
+        if self.android_short_payload_shrink is not None:
+            result['AndroidShortPayload'] = self.android_short_payload_shrink
         if self.channel_properties_shrink is not None:
             result['ChannelProperties'] = self.channel_properties_shrink
         if self.description is not None:
@@ -1375,6 +1471,8 @@ class SendByAliasFileIdShrinkRequest(TeaModel):
             self.alias_type = m.get('AliasType')
         if m.get('AndroidPayload') is not None:
             self.android_payload_shrink = m.get('AndroidPayload')
+        if m.get('AndroidShortPayload') is not None:
+            self.android_short_payload_shrink = m.get('AndroidShortPayload')
         if m.get('ChannelProperties') is not None:
             self.channel_properties_shrink = m.get('ChannelProperties')
         if m.get('Description') is not None:
@@ -1529,6 +1627,7 @@ class SendByAppRequest(TeaModel):
     def __init__(
         self,
         android_payload: AndroidPayload = None,
+        android_short_payload: AndroidShortPayload = None,
         channel_properties: ChannelProperties = None,
         description: str = None,
         ios_payload: IosPayload = None,
@@ -1540,6 +1639,7 @@ class SendByAppRequest(TeaModel):
         callback_params: str = None,
     ):
         self.android_payload = android_payload
+        self.android_short_payload = android_short_payload
         self.channel_properties = channel_properties
         self.description = description
         self.ios_payload = ios_payload
@@ -1553,6 +1653,8 @@ class SendByAppRequest(TeaModel):
     def validate(self):
         if self.android_payload:
             self.android_payload.validate()
+        if self.android_short_payload:
+            self.android_short_payload.validate()
         if self.channel_properties:
             self.channel_properties.validate()
         if self.ios_payload:
@@ -1568,6 +1670,8 @@ class SendByAppRequest(TeaModel):
         result = dict()
         if self.android_payload is not None:
             result['AndroidPayload'] = self.android_payload.to_map()
+        if self.android_short_payload is not None:
+            result['AndroidShortPayload'] = self.android_short_payload.to_map()
         if self.channel_properties is not None:
             result['ChannelProperties'] = self.channel_properties.to_map()
         if self.description is not None:
@@ -1593,6 +1697,9 @@ class SendByAppRequest(TeaModel):
         if m.get('AndroidPayload') is not None:
             temp_model = AndroidPayload()
             self.android_payload = temp_model.from_map(m['AndroidPayload'])
+        if m.get('AndroidShortPayload') is not None:
+            temp_model = AndroidShortPayload()
+            self.android_short_payload = temp_model.from_map(m['AndroidShortPayload'])
         if m.get('ChannelProperties') is not None:
             temp_model = ChannelProperties()
             self.channel_properties = temp_model.from_map(m['ChannelProperties'])
@@ -1621,6 +1728,7 @@ class SendByAppShrinkRequest(TeaModel):
     def __init__(
         self,
         android_payload_shrink: str = None,
+        android_short_payload_shrink: str = None,
         channel_properties_shrink: str = None,
         description: str = None,
         ios_payload_shrink: str = None,
@@ -1632,6 +1740,7 @@ class SendByAppShrinkRequest(TeaModel):
         callback_params: str = None,
     ):
         self.android_payload_shrink = android_payload_shrink
+        self.android_short_payload_shrink = android_short_payload_shrink
         self.channel_properties_shrink = channel_properties_shrink
         self.description = description
         self.ios_payload_shrink = ios_payload_shrink
@@ -1653,6 +1762,8 @@ class SendByAppShrinkRequest(TeaModel):
         result = dict()
         if self.android_payload_shrink is not None:
             result['AndroidPayload'] = self.android_payload_shrink
+        if self.android_short_payload_shrink is not None:
+            result['AndroidShortPayload'] = self.android_short_payload_shrink
         if self.channel_properties_shrink is not None:
             result['ChannelProperties'] = self.channel_properties_shrink
         if self.description is not None:
@@ -1677,6 +1788,8 @@ class SendByAppShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('AndroidPayload') is not None:
             self.android_payload_shrink = m.get('AndroidPayload')
+        if m.get('AndroidShortPayload') is not None:
+            self.android_short_payload_shrink = m.get('AndroidShortPayload')
         if m.get('ChannelProperties') is not None:
             self.channel_properties_shrink = m.get('ChannelProperties')
         if m.get('Description') is not None:
@@ -1829,6 +1942,7 @@ class SendByDeviceRequest(TeaModel):
     def __init__(
         self,
         android_payload: AndroidPayload = None,
+        android_short_payload: AndroidShortPayload = None,
         channel_properties: ChannelProperties = None,
         description: str = None,
         device_tokens: str = None,
@@ -1841,6 +1955,7 @@ class SendByDeviceRequest(TeaModel):
         callback_params: str = None,
     ):
         self.android_payload = android_payload
+        self.android_short_payload = android_short_payload
         self.channel_properties = channel_properties
         self.description = description
         # This parameter is required.
@@ -1856,6 +1971,8 @@ class SendByDeviceRequest(TeaModel):
     def validate(self):
         if self.android_payload:
             self.android_payload.validate()
+        if self.android_short_payload:
+            self.android_short_payload.validate()
         if self.channel_properties:
             self.channel_properties.validate()
         if self.ios_payload:
@@ -1871,6 +1988,8 @@ class SendByDeviceRequest(TeaModel):
         result = dict()
         if self.android_payload is not None:
             result['AndroidPayload'] = self.android_payload.to_map()
+        if self.android_short_payload is not None:
+            result['AndroidShortPayload'] = self.android_short_payload.to_map()
         if self.channel_properties is not None:
             result['ChannelProperties'] = self.channel_properties.to_map()
         if self.description is not None:
@@ -1898,6 +2017,9 @@ class SendByDeviceRequest(TeaModel):
         if m.get('AndroidPayload') is not None:
             temp_model = AndroidPayload()
             self.android_payload = temp_model.from_map(m['AndroidPayload'])
+        if m.get('AndroidShortPayload') is not None:
+            temp_model = AndroidShortPayload()
+            self.android_short_payload = temp_model.from_map(m['AndroidShortPayload'])
         if m.get('ChannelProperties') is not None:
             temp_model = ChannelProperties()
             self.channel_properties = temp_model.from_map(m['ChannelProperties'])
@@ -1928,6 +2050,7 @@ class SendByDeviceShrinkRequest(TeaModel):
     def __init__(
         self,
         android_payload_shrink: str = None,
+        android_short_payload_shrink: str = None,
         channel_properties_shrink: str = None,
         description: str = None,
         device_tokens: str = None,
@@ -1940,6 +2063,7 @@ class SendByDeviceShrinkRequest(TeaModel):
         callback_params: str = None,
     ):
         self.android_payload_shrink = android_payload_shrink
+        self.android_short_payload_shrink = android_short_payload_shrink
         self.channel_properties_shrink = channel_properties_shrink
         self.description = description
         # This parameter is required.
@@ -1963,6 +2087,8 @@ class SendByDeviceShrinkRequest(TeaModel):
         result = dict()
         if self.android_payload_shrink is not None:
             result['AndroidPayload'] = self.android_payload_shrink
+        if self.android_short_payload_shrink is not None:
+            result['AndroidShortPayload'] = self.android_short_payload_shrink
         if self.channel_properties_shrink is not None:
             result['ChannelProperties'] = self.channel_properties_shrink
         if self.description is not None:
@@ -1989,6 +2115,8 @@ class SendByDeviceShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('AndroidPayload') is not None:
             self.android_payload_shrink = m.get('AndroidPayload')
+        if m.get('AndroidShortPayload') is not None:
+            self.android_short_payload_shrink = m.get('AndroidShortPayload')
         if m.get('ChannelProperties') is not None:
             self.channel_properties_shrink = m.get('ChannelProperties')
         if m.get('Description') is not None:
@@ -2143,6 +2271,7 @@ class SendByDeviceFileIdRequest(TeaModel):
     def __init__(
         self,
         android_payload: AndroidPayload = None,
+        android_short_payload: AndroidShortPayload = None,
         channel_properties: ChannelProperties = None,
         description: str = None,
         file_id: str = None,
@@ -2155,6 +2284,7 @@ class SendByDeviceFileIdRequest(TeaModel):
         callback_params: str = None,
     ):
         self.android_payload = android_payload
+        self.android_short_payload = android_short_payload
         self.channel_properties = channel_properties
         self.description = description
         # This parameter is required.
@@ -2170,6 +2300,8 @@ class SendByDeviceFileIdRequest(TeaModel):
     def validate(self):
         if self.android_payload:
             self.android_payload.validate()
+        if self.android_short_payload:
+            self.android_short_payload.validate()
         if self.channel_properties:
             self.channel_properties.validate()
         if self.ios_payload:
@@ -2185,6 +2317,8 @@ class SendByDeviceFileIdRequest(TeaModel):
         result = dict()
         if self.android_payload is not None:
             result['AndroidPayload'] = self.android_payload.to_map()
+        if self.android_short_payload is not None:
+            result['AndroidShortPayload'] = self.android_short_payload.to_map()
         if self.channel_properties is not None:
             result['ChannelProperties'] = self.channel_properties.to_map()
         if self.description is not None:
@@ -2212,6 +2346,9 @@ class SendByDeviceFileIdRequest(TeaModel):
         if m.get('AndroidPayload') is not None:
             temp_model = AndroidPayload()
             self.android_payload = temp_model.from_map(m['AndroidPayload'])
+        if m.get('AndroidShortPayload') is not None:
+            temp_model = AndroidShortPayload()
+            self.android_short_payload = temp_model.from_map(m['AndroidShortPayload'])
         if m.get('ChannelProperties') is not None:
             temp_model = ChannelProperties()
             self.channel_properties = temp_model.from_map(m['ChannelProperties'])
@@ -2242,6 +2379,7 @@ class SendByDeviceFileIdShrinkRequest(TeaModel):
     def __init__(
         self,
         android_payload_shrink: str = None,
+        android_short_payload_shrink: str = None,
         channel_properties_shrink: str = None,
         description: str = None,
         file_id: str = None,
@@ -2254,6 +2392,7 @@ class SendByDeviceFileIdShrinkRequest(TeaModel):
         callback_params: str = None,
     ):
         self.android_payload_shrink = android_payload_shrink
+        self.android_short_payload_shrink = android_short_payload_shrink
         self.channel_properties_shrink = channel_properties_shrink
         self.description = description
         # This parameter is required.
@@ -2277,6 +2416,8 @@ class SendByDeviceFileIdShrinkRequest(TeaModel):
         result = dict()
         if self.android_payload_shrink is not None:
             result['AndroidPayload'] = self.android_payload_shrink
+        if self.android_short_payload_shrink is not None:
+            result['AndroidShortPayload'] = self.android_short_payload_shrink
         if self.channel_properties_shrink is not None:
             result['ChannelProperties'] = self.channel_properties_shrink
         if self.description is not None:
@@ -2303,6 +2444,8 @@ class SendByDeviceFileIdShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('AndroidPayload') is not None:
             self.android_payload_shrink = m.get('AndroidPayload')
+        if m.get('AndroidShortPayload') is not None:
+            self.android_short_payload_shrink = m.get('AndroidShortPayload')
         if m.get('ChannelProperties') is not None:
             self.channel_properties_shrink = m.get('ChannelProperties')
         if m.get('Description') is not None:
@@ -2457,6 +2600,7 @@ class SendByFilterRequest(TeaModel):
     def __init__(
         self,
         android_payload: AndroidPayload = None,
+        android_short_payload: AndroidShortPayload = None,
         channel_properties: ChannelProperties = None,
         description: str = None,
         filter: str = None,
@@ -2469,6 +2613,7 @@ class SendByFilterRequest(TeaModel):
         callback_params: str = None,
     ):
         self.android_payload = android_payload
+        self.android_short_payload = android_short_payload
         self.channel_properties = channel_properties
         self.description = description
         self.filter = filter
@@ -2483,6 +2628,8 @@ class SendByFilterRequest(TeaModel):
     def validate(self):
         if self.android_payload:
             self.android_payload.validate()
+        if self.android_short_payload:
+            self.android_short_payload.validate()
         if self.channel_properties:
             self.channel_properties.validate()
         if self.ios_payload:
@@ -2498,6 +2645,8 @@ class SendByFilterRequest(TeaModel):
         result = dict()
         if self.android_payload is not None:
             result['AndroidPayload'] = self.android_payload.to_map()
+        if self.android_short_payload is not None:
+            result['AndroidShortPayload'] = self.android_short_payload.to_map()
         if self.channel_properties is not None:
             result['ChannelProperties'] = self.channel_properties.to_map()
         if self.description is not None:
@@ -2525,6 +2674,9 @@ class SendByFilterRequest(TeaModel):
         if m.get('AndroidPayload') is not None:
             temp_model = AndroidPayload()
             self.android_payload = temp_model.from_map(m['AndroidPayload'])
+        if m.get('AndroidShortPayload') is not None:
+            temp_model = AndroidShortPayload()
+            self.android_short_payload = temp_model.from_map(m['AndroidShortPayload'])
         if m.get('ChannelProperties') is not None:
             temp_model = ChannelProperties()
             self.channel_properties = temp_model.from_map(m['ChannelProperties'])
@@ -2555,6 +2707,7 @@ class SendByFilterShrinkRequest(TeaModel):
     def __init__(
         self,
         android_payload_shrink: str = None,
+        android_short_payload: AndroidShortPayload = None,
         channel_properties_shrink: str = None,
         description: str = None,
         filter: str = None,
@@ -2567,6 +2720,7 @@ class SendByFilterShrinkRequest(TeaModel):
         callback_params: str = None,
     ):
         self.android_payload_shrink = android_payload_shrink
+        self.android_short_payload = android_short_payload
         self.channel_properties_shrink = channel_properties_shrink
         self.description = description
         self.filter = filter
@@ -2579,7 +2733,8 @@ class SendByFilterShrinkRequest(TeaModel):
         self.callback_params = callback_params
 
     def validate(self):
-        pass
+        if self.android_short_payload:
+            self.android_short_payload.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2589,6 +2744,8 @@ class SendByFilterShrinkRequest(TeaModel):
         result = dict()
         if self.android_payload_shrink is not None:
             result['AndroidPayload'] = self.android_payload_shrink
+        if self.android_short_payload is not None:
+            result['AndroidShortPayload'] = self.android_short_payload.to_map()
         if self.channel_properties_shrink is not None:
             result['ChannelProperties'] = self.channel_properties_shrink
         if self.description is not None:
@@ -2615,6 +2772,9 @@ class SendByFilterShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('AndroidPayload') is not None:
             self.android_payload_shrink = m.get('AndroidPayload')
+        if m.get('AndroidShortPayload') is not None:
+            temp_model = AndroidShortPayload()
+            self.android_short_payload = temp_model.from_map(m['AndroidShortPayload'])
         if m.get('ChannelProperties') is not None:
             self.channel_properties_shrink = m.get('ChannelProperties')
         if m.get('Description') is not None:
