@@ -5931,6 +5931,180 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.CreateSubscribedCalendarHeaders()
         return await self.create_subscribed_calendar_with_options_async(request, headers, runtime)
 
+    def create_ticket_with_options(
+        self,
+        tmp_req: aliding_20230426_models.CreateTicketRequest,
+        tmp_header: aliding_20230426_models.CreateTicketHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CreateTicketResponse:
+        """
+        @summary 创建工单
+        
+        @param tmp_req: CreateTicketRequest
+        @param tmp_header: CreateTicketHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTicketResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.CreateTicketShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.CreateTicketShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.notify):
+            request.notify_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notify, 'Notify', 'json')
+        if not UtilClient.is_unset(tmp_req.processor_user_ids):
+            request.processor_user_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.processor_user_ids, 'ProcessorUserIds', 'json')
+        if not UtilClient.is_unset(tmp_req.scene_context):
+            request.scene_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scene_context, 'SceneContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.custom_fields):
+            body['CustomFields'] = request.custom_fields
+        if not UtilClient.is_unset(request.notify_shrink):
+            body['Notify'] = request.notify_shrink
+        if not UtilClient.is_unset(request.open_team_id):
+            body['OpenTeamId'] = request.open_team_id
+        if not UtilClient.is_unset(request.open_template_biz_id):
+            body['OpenTemplateBizId'] = request.open_template_biz_id
+        if not UtilClient.is_unset(request.processor_user_ids_shrink):
+            body['ProcessorUserIds'] = request.processor_user_ids_shrink
+        if not UtilClient.is_unset(request.scene):
+            body['Scene'] = request.scene
+        if not UtilClient.is_unset(request.scene_context_shrink):
+            body['SceneContext'] = request.scene_context_shrink
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTicket',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ticket/createTicket',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CreateTicketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_ticket_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.CreateTicketRequest,
+        tmp_header: aliding_20230426_models.CreateTicketHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CreateTicketResponse:
+        """
+        @summary 创建工单
+        
+        @param tmp_req: CreateTicketRequest
+        @param tmp_header: CreateTicketHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTicketResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.CreateTicketShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.CreateTicketShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.notify):
+            request.notify_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notify, 'Notify', 'json')
+        if not UtilClient.is_unset(tmp_req.processor_user_ids):
+            request.processor_user_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.processor_user_ids, 'ProcessorUserIds', 'json')
+        if not UtilClient.is_unset(tmp_req.scene_context):
+            request.scene_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scene_context, 'SceneContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.custom_fields):
+            body['CustomFields'] = request.custom_fields
+        if not UtilClient.is_unset(request.notify_shrink):
+            body['Notify'] = request.notify_shrink
+        if not UtilClient.is_unset(request.open_team_id):
+            body['OpenTeamId'] = request.open_team_id
+        if not UtilClient.is_unset(request.open_template_biz_id):
+            body['OpenTemplateBizId'] = request.open_template_biz_id
+        if not UtilClient.is_unset(request.processor_user_ids_shrink):
+            body['ProcessorUserIds'] = request.processor_user_ids_shrink
+        if not UtilClient.is_unset(request.scene):
+            body['Scene'] = request.scene
+        if not UtilClient.is_unset(request.scene_context_shrink):
+            body['SceneContext'] = request.scene_context_shrink
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTicket',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ticket/createTicket',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CreateTicketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_ticket(
+        self,
+        request: aliding_20230426_models.CreateTicketRequest,
+    ) -> aliding_20230426_models.CreateTicketResponse:
+        """
+        @summary 创建工单
+        
+        @param request: CreateTicketRequest
+        @return: CreateTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CreateTicketHeaders()
+        return self.create_ticket_with_options(request, headers, runtime)
+
+    async def create_ticket_async(
+        self,
+        request: aliding_20230426_models.CreateTicketRequest,
+    ) -> aliding_20230426_models.CreateTicketResponse:
+        """
+        @summary 创建工单
+        
+        @param request: CreateTicketRequest
+        @return: CreateTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CreateTicketHeaders()
+        return await self.create_ticket_with_options_async(request, headers, runtime)
+
     def create_todo_task_with_options(
         self,
         tmp_req: aliding_20230426_models.CreateTodoTaskRequest,

@@ -1,3 +1,7 @@
+2024-11-11 Version: 2.27.0
+- Support API CreateTicket.
+
+
 2024-11-07 Version: 2.26.2
 - Update API QueryGroupLiveInfo: update response param.
 
