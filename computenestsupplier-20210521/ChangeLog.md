@@ -1,3 +1,7 @@
+2024-11-12 Version: 4.0.1
+- Update API GetService: update response param.
+
+
 2024-11-07 Version: 4.0.0
 - Delete API ListServiceCategories.
 - Update API CreateArtifact: add param ArtifactBuildProperty.

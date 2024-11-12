@@ -4533,6 +4533,45 @@ class GetServiceResponseBodyComplianceMetadata(TeaModel):
         return self
 
 
+class GetServiceResponseBodyServiceDocumentInfos(TeaModel):
+    def __init__(
+        self,
+        document_url: str = None,
+        locale: str = None,
+        template_name: str = None,
+    ):
+        self.document_url = document_url
+        self.locale = locale
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.document_url is not None:
+            result['DocumentUrl'] = self.document_url
+        if self.locale is not None:
+            result['Locale'] = self.locale
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DocumentUrl') is not None:
+            self.document_url = m.get('DocumentUrl')
+        if m.get('Locale') is not None:
+            self.locale = m.get('Locale')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
 class GetServiceResponseBodyServiceInfosAgreements(TeaModel):
     def __init__(
         self,
@@ -4843,6 +4882,7 @@ class GetServiceResponseBody(TeaModel):
         service_audit_document_url: str = None,
         service_discoverable: str = None,
         service_doc_url: str = None,
+        service_document_infos: List[GetServiceResponseBodyServiceDocumentInfos] = None,
         service_id: str = None,
         service_infos: List[GetServiceResponseBodyServiceInfos] = None,
         service_product_url: str = None,
@@ -4965,6 +5005,7 @@ class GetServiceResponseBody(TeaModel):
         self.service_discoverable = service_discoverable
         # The URL of the service documentation.
         self.service_doc_url = service_doc_url
+        self.service_document_infos = service_document_infos
         # The service ID.
         self.service_id = service_id
         # The information about the service.
@@ -5053,6 +5094,10 @@ class GetServiceResponseBody(TeaModel):
             self.commodity.validate()
         if self.compliance_metadata:
             self.compliance_metadata.validate()
+        if self.service_document_infos:
+            for k in self.service_document_infos:
+                if k:
+                    k.validate()
         if self.service_infos:
             for k in self.service_infos:
                 if k:
@@ -5132,6 +5177,10 @@ class GetServiceResponseBody(TeaModel):
             result['ServiceDiscoverable'] = self.service_discoverable
         if self.service_doc_url is not None:
             result['ServiceDocUrl'] = self.service_doc_url
+        result['ServiceDocumentInfos'] = []
+        if self.service_document_infos is not None:
+            for k in self.service_document_infos:
+                result['ServiceDocumentInfos'].append(k.to_map() if k else None)
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
         result['ServiceInfos'] = []
@@ -5254,6 +5303,11 @@ class GetServiceResponseBody(TeaModel):
             self.service_discoverable = m.get('ServiceDiscoverable')
         if m.get('ServiceDocUrl') is not None:
             self.service_doc_url = m.get('ServiceDocUrl')
+        self.service_document_infos = []
+        if m.get('ServiceDocumentInfos') is not None:
+            for k in m.get('ServiceDocumentInfos'):
+                temp_model = GetServiceResponseBodyServiceDocumentInfos()
+                self.service_document_infos.append(temp_model.from_map(k))
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
         self.service_infos = []
