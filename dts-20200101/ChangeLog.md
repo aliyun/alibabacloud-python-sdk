@@ -1,3 +1,25 @@
+2024-11-12 Version: 5.7.4
+- Update API ConfigureDtsJob: add param DestPrimaryVswId.
+- Update API ConfigureDtsJob: add param DestSecondaryVswId.
+- Update API ConfigureDtsJob: add param SrcPrimaryVswId.
+- Update API ConfigureDtsJob: add param SrcSecondaryVswId.
+- Update API DescribeDtsJobs: update param RegionId.
+- Update API ModifyDtsJobPassword: add param DtsInstanceId.
+- Update API ModifyDtsJobPassword: add param SynchronizationDirection.
+- Update API ModifyDtsJobPassword: update param DtsJobId.
+- Update API WhiteIpList: add param DestAliyunUid.
+- Update API WhiteIpList: add param DestPrimaryVswId.
+- Update API WhiteIpList: add param DestRoleName.
+- Update API WhiteIpList: add param DestSecondaryVswId.
+- Update API WhiteIpList: add param DestVpcId.
+- Update API WhiteIpList: add param SrcAliyunUid.
+- Update API WhiteIpList: add param SrcPrimaryVswId.
+- Update API WhiteIpList: add param SrcRoleName.
+- Update API WhiteIpList: add param SrcSecondaryVswId.
+- Update API WhiteIpList: add param SrcVpcId.
+- Update API WhiteIpList: update response param.
+
+
 2024-08-20 Version: 5.7.3
 - Update API CreateDtsInstance: add param DtsRegion.
 - Update API DescribeDtsJobs: update param RegionId.
