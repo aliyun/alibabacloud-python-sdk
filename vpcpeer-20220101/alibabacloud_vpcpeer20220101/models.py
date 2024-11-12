@@ -25,10 +25,12 @@ class AcceptVpcPeerConnectionRequest(TeaModel):
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the VPC peering connection to be accepted by the accepter VPC.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the resource group.
         # 
-        # For more information about resource groups, see [What is a resource group?](~~94475~~)
+        # For more information about resource groups, see [What is a resource group?](https://help.aliyun.com/document_detail/94475.html)
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
 
@@ -158,13 +160,19 @@ class CreateVpcPeerConnectionRequest(TeaModel):
         # *   To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
         # 
         # >  If the accepter is a RAM user, set **AcceptingAliUid** to the ID of the Alibaba Cloud account that created the RAM user.
+        # 
+        # This parameter is required.
         self.accepting_ali_uid = accepting_ali_uid
         # The region ID of the accepter VPC of the VPC peering connection that you want to create.
         # 
         # *   To create an intra-region VPC peering connection, enter a region ID that is the same as that of the requester VPC.
         # *   To create an inter-region VPC peering connection, enter a region ID that is different from that of the requester VPC.
+        # 
+        # This parameter is required.
         self.accepting_region_id = accepting_region_id
         # The ID of the accepter VPC.
+        # 
+        # This parameter is required.
         self.accepting_vpc_id = accepting_vpc_id
         # The bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0. Before you specify this parameter, make sure that you create an inter-region VPC peering connection.
         self.bandwidth = bandwidth
@@ -185,17 +193,21 @@ class CreateVpcPeerConnectionRequest(TeaModel):
         self.dry_run = dry_run
         # The name of the VPC peering connection.
         # 
-        # The name must be 2 to 128 characters in length, and can contain digits, underscores (\_), and hyphens (-). It must start with a letter.
+        # The name must be 2 to 128 characters in length, and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
         self.name = name
         # The ID of the region where you want to create a VPC peering connection.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         # 
-        # For more information about resource groups, see [Resource groups](~~94475~~).
+        # For more information about resource groups, see [Resource groups](https://help.aliyun.com/document_detail/94475.html).
         self.resource_group_id = resource_group_id
         # The ID of the requester VPC.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -359,6 +371,8 @@ class DeleteVpcPeerConnectionRequest(TeaModel):
         # *   **true**: yes. If you forcefully delete the VPC peering connection, the system deletes the routes that point to the VPC peering connection from the VPC route table.
         self.force = force
         # The ID of the VPC peering connection that you want to delete.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -468,7 +482,9 @@ class GetVpcPeerConnectionAttributeRequest(TeaModel):
         instance_id: str = None,
         resource_owner_account: str = None,
     ):
-        # The ID of the VPC peering connection that you want to query.
+        # The ID of the VPC peering connection.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.resource_owner_account = resource_owner_account
 
@@ -643,29 +659,29 @@ class GetVpcPeerConnectionAttributeResponseBody(TeaModel):
         self.accepting_region_id = accepting_region_id
         # The details of the accepter VPC.
         self.accepting_vpc = accepting_vpc
-        # The bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0.
+        # The bandwidth of the VPC peering connection. Unit: Mbit /s. The value is an integer greater than 0.
         # 
-        # >  If the value is set to **-1**, it indicates that no limit is imposed on the bandwidth.
+        # >  A value of -1 indicates that the bandwidth is unlimited.
         # 
         # Default value:
         # 
-        # *   The default bandwidth of an inter-region VPC peering connection is **1024** Mbit/s.
-        # *   The default bandwidth of an intra-region VPC peering connection is **-1** Mbit/s.
+        # *   The default bandwidth value of an inter-region VPC peering connection is 1,024 Mbit/s.
+        # *   The default bandwidth value of an intra-region VPC peering connection is -1 Mbit/s, which indicates that the bandwidth is unlimited.
         self.bandwidth = bandwidth
-        # The business status of the VPC peering connection. Valid values:
+        # The status of the VPC peering connection. Valid values:
         # 
         # *   **Normal**\
         # *   **FinancialLocked**\
         self.biz_status = biz_status
         # The description of the VPC peering connection.
         self.description = description
-        # The time when the VPC peering connection was created. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format in UTC.
+        # The time when the VPC peering connection was created. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ss` format. The time is displayed in UTC.
         self.gmt_create = gmt_create
         # The expiration time of the VPC peering connection.
         # 
-        # The expiration time is returned only when the **Status** of the VPC peering connection is **Accepting** or **Expired**. Otherwise, **null** is returned.
+        # A valid expiration time is returned only when the **Status** of the VPC peering connection is **Accepting** or **Expired**. Otherwise, **null** is returned.
         self.gmt_expired = gmt_expired
-        # The time when the VPC peering connection was modified. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format in UTC.
+        # The time when the VPC peering connection was modified. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ss` format. The time is displayed in UTC.
         self.gmt_modified = gmt_modified
         # The ID of the VPC peering connection.
         self.instance_id = instance_id
@@ -690,7 +706,7 @@ class GetVpcPeerConnectionAttributeResponseBody(TeaModel):
         # *   **Deleting**\
         # *   **Deleted**\
         # 
-        # For more information about the status of VPC peering connections, see [Overview of VPC peering connections](~~418507~~).
+        # For more information about the status of VPC peering connections, see [Overview](https://help.aliyun.com/document_detail/418507.html).
         self.status = status
         # The tag list.
         self.tags = tags
@@ -846,17 +862,17 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag that is added to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         # 
-        # >  Specify at least one of the **ResourceId.N** and **Tag.N** parameters (**Tag.N.Key** and **Tag.N.Value**).
+        # >  You must specify **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value**.
         self.key = key
-        # The value of the tag that is added to the resource. You can specify up to 20 tag values. It can be an empty string.
+        # The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
         # 
-        # The value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter but cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         # 
-        # >  Specify at least one of the **ResourceId.N** and **Tag.N** parameters (**Tag.N.Key** and **Tag.N.Value**).
+        # >  You must specify **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value**.
         self.value = value
 
     def validate(self):
@@ -902,11 +918,15 @@ class ListTagResourcesRequest(TeaModel):
         self.next_token = next_token
         # The region ID of the resource.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource ID.
         self.resource_id = resource_id
         # The type of the resource. Set the value to **PeerConnection**, which specifies a VPC peering connection.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags.
         self.tag = tag
@@ -1122,13 +1142,13 @@ class ListVpcPeerConnectionsRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can specify at most 20 tag keys. It cannot be an empty string.
+        # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # The tag key can be up to 128 characters in length. The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value. You can specify at most 20 tag values. The tag key can be an empty string.
+        # The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -1180,13 +1200,13 @@ class ListVpcPeerConnectionsRequest(TeaModel):
         self.next_token = next_token
         # The ID of the region where you want to query VPC peering connections.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group.
         # 
-        # For more information about resource groups, see [What is a resource group?](~~94475~~)
+        # For more information about resource groups, see [What is a resource group?](https://help.aliyun.com/document_detail/94475.html)
         self.resource_group_id = resource_group_id
-        # The tags.
+        # The tag list.
         self.tags = tags
         # The ID of the requester VPC or accepter VPC of the VPC peering connection that you want to query.
         self.vpc_id = vpc_id
@@ -1253,13 +1273,13 @@ class ListVpcPeerConnectionsShrinkRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can specify at most 20 tag keys. It cannot be an empty string.
+        # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # The tag key can be up to 128 characters in length. The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value. You can specify at most 20 tag values. The tag key can be an empty string.
+        # The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -1311,13 +1331,13 @@ class ListVpcPeerConnectionsShrinkRequest(TeaModel):
         self.next_token = next_token
         # The ID of the region where you want to query VPC peering connections.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group.
         # 
-        # For more information about resource groups, see [What is a resource group?](~~94475~~)
+        # For more information about resource groups, see [What is a resource group?](https://help.aliyun.com/document_detail/94475.html)
         self.resource_group_id = resource_group_id
-        # The tags.
+        # The tag list.
         self.tags = tags
         # The ID of the requester VPC or accepter VPC of the VPC peering connection that you want to query.
         self.vpc_id_shrink = vpc_id_shrink
@@ -1569,7 +1589,7 @@ class ListVpcPeerConnectionsResponseBodyVpcPeerConnects(TeaModel):
         # *   **Deleting**\
         # *   **Deleted**\
         # 
-        # For more information about the status of VPC peering connections, see [Overview of VPC peering connections](~~418507~~).
+        # For more information about the status of VPC peering connections, see [Overview of VPC peering connections](https://help.aliyun.com/document_detail/418507.html).
         self.status = status
         # The tag list.
         self.tags = tags
@@ -1810,6 +1830,8 @@ class ModifyVpcPeerConnectionRequest(TeaModel):
         # *   **false** (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the VPC peering connection whose name or description you want to modify.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The new name of the VPC peering connection.
         # 
@@ -1935,15 +1957,23 @@ class MoveResourceGroupRequest(TeaModel):
     ):
         # The ID of the new resource group.
         # 
-        # >  You can use resource groups to manage resources owned by your Alibaba Cloud account. Resource groups simplify the resource and permission management of your Alibaba Cloud account. For more information, see [What is resource management?](~~94475~~).
-        self.new_resource_group_id = new_resource_group_id
-        # The ID of the region to which the resource belongs.
+        # >  You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://help.aliyun.com/document_detail/94475.html)
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # This parameter is required.
+        self.new_resource_group_id = new_resource_group_id
+        # The region ID of the resource.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the VPC peering connection.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The resource type. Set the value to **PeerConnection**, which specifies a VPC peering connection.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -2077,6 +2107,8 @@ class RejectVpcPeerConnectionRequest(TeaModel):
         # *   **false** (default): sends the request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the VPC peering connection to be rejected by the acceptor VPC.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.resource_owner_account = resource_owner_account
 
@@ -2187,13 +2219,13 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. You must enter at least one tag key and at most 20 tag keys. The tag key cannot be an empty string.
+        # The tag key. You must specify at least one tag key and at most 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # The tag key can be up to 128 characters in length. It cannot start with `acs:` or `aliyun` and cannot contain `http://` or `https://`.
         self.key = key
-        # The value of the tag. You must enter at least one tag value and at most 20 tag values. It can be an empty string.
+        # The tag value. You must specify at least one tag value and can specify at most 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -2237,13 +2269,21 @@ class TagResourcesRequest(TeaModel):
         self.client_token = client_token
         # The region ID of the resource to which you want to create and add tags.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of resources.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource. Set the value to **PeerConnection**, which specifies a VPC peering connection.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags.
+        # 
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -2392,13 +2432,21 @@ class UnTagResourcesRequest(TeaModel):
         self.client_token = client_token
         # The region ID of the tag.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of resources.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource. Set the value to **PeerConnection**, which specifies a VPC peering connection.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
-        # The tags.
+        # The key of the tag that you want to remove. You can specify at most 20 tag keys. It can be an empty string.
+        # 
+        # It can be up to 128 characters in length. It cannot start with `acs:` or `aliyun` and cannot contain `http://` or `https://`.
         self.tag_key = tag_key
 
     def validate(self):

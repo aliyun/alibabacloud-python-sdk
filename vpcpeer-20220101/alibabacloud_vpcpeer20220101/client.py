@@ -47,11 +47,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_peer_20220101_models.AcceptVpcPeerConnectionResponse:
         """
-        For a cross-account VPC peering connection, the connection is activated only after the accepter VPC accepts the connection request.
-        *   **AcceptVpcPeerConnection** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the operation in the background. You can call the [GetVpcPeerConnectionAttribute](~~426100~~) operation to query the status of the task.
-        *   If a VPC peering connection is in the **Updating** state, the VPC peering connection is being activated.
-        *   If a VPC peering connection is in the **Activated** state, the VPC peering connection is activated.
-        *   You cannot repeatedly call the **AcceptVpcPeerConnection** operation within a specific period of time.
+        @summary 接收VPC对等连接
+        
+        @description    For a cross-account VPC peering connection, the connection is activated only after the accepter VPC accepts the connection request.
+        **AcceptVpcPeerConnection** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the operation in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of the task.
+        If a VPC peering connection is in the **Updating** state, the VPC peering connection is being activated.
+        If a VPC peering connection is in the **Activated** state, the VPC peering connection is activated.
+        You cannot repeatedly call the **AcceptVpcPeerConnection** operation within a specific period of time.
         
         @param request: AcceptVpcPeerConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -94,11 +96,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_peer_20220101_models.AcceptVpcPeerConnectionResponse:
         """
-        For a cross-account VPC peering connection, the connection is activated only after the accepter VPC accepts the connection request.
-        *   **AcceptVpcPeerConnection** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the operation in the background. You can call the [GetVpcPeerConnectionAttribute](~~426100~~) operation to query the status of the task.
-        *   If a VPC peering connection is in the **Updating** state, the VPC peering connection is being activated.
-        *   If a VPC peering connection is in the **Activated** state, the VPC peering connection is activated.
-        *   You cannot repeatedly call the **AcceptVpcPeerConnection** operation within a specific period of time.
+        @summary 接收VPC对等连接
+        
+        @description    For a cross-account VPC peering connection, the connection is activated only after the accepter VPC accepts the connection request.
+        **AcceptVpcPeerConnection** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the operation in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of the task.
+        If a VPC peering connection is in the **Updating** state, the VPC peering connection is being activated.
+        If a VPC peering connection is in the **Activated** state, the VPC peering connection is activated.
+        You cannot repeatedly call the **AcceptVpcPeerConnection** operation within a specific period of time.
         
         @param request: AcceptVpcPeerConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -140,11 +144,13 @@ class Client(OpenApiClient):
         request: vpc_peer_20220101_models.AcceptVpcPeerConnectionRequest,
     ) -> vpc_peer_20220101_models.AcceptVpcPeerConnectionResponse:
         """
-        For a cross-account VPC peering connection, the connection is activated only after the accepter VPC accepts the connection request.
-        *   **AcceptVpcPeerConnection** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the operation in the background. You can call the [GetVpcPeerConnectionAttribute](~~426100~~) operation to query the status of the task.
-        *   If a VPC peering connection is in the **Updating** state, the VPC peering connection is being activated.
-        *   If a VPC peering connection is in the **Activated** state, the VPC peering connection is activated.
-        *   You cannot repeatedly call the **AcceptVpcPeerConnection** operation within a specific period of time.
+        @summary 接收VPC对等连接
+        
+        @description    For a cross-account VPC peering connection, the connection is activated only after the accepter VPC accepts the connection request.
+        **AcceptVpcPeerConnection** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the operation in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of the task.
+        If a VPC peering connection is in the **Updating** state, the VPC peering connection is being activated.
+        If a VPC peering connection is in the **Activated** state, the VPC peering connection is activated.
+        You cannot repeatedly call the **AcceptVpcPeerConnection** operation within a specific period of time.
         
         @param request: AcceptVpcPeerConnectionRequest
         @return: AcceptVpcPeerConnectionResponse
@@ -157,11 +163,13 @@ class Client(OpenApiClient):
         request: vpc_peer_20220101_models.AcceptVpcPeerConnectionRequest,
     ) -> vpc_peer_20220101_models.AcceptVpcPeerConnectionResponse:
         """
-        For a cross-account VPC peering connection, the connection is activated only after the accepter VPC accepts the connection request.
-        *   **AcceptVpcPeerConnection** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the operation in the background. You can call the [GetVpcPeerConnectionAttribute](~~426100~~) operation to query the status of the task.
-        *   If a VPC peering connection is in the **Updating** state, the VPC peering connection is being activated.
-        *   If a VPC peering connection is in the **Activated** state, the VPC peering connection is activated.
-        *   You cannot repeatedly call the **AcceptVpcPeerConnection** operation within a specific period of time.
+        @summary 接收VPC对等连接
+        
+        @description    For a cross-account VPC peering connection, the connection is activated only after the accepter VPC accepts the connection request.
+        **AcceptVpcPeerConnection** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the operation in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of the task.
+        If a VPC peering connection is in the **Updating** state, the VPC peering connection is being activated.
+        If a VPC peering connection is in the **Activated** state, the VPC peering connection is activated.
+        You cannot repeatedly call the **AcceptVpcPeerConnection** operation within a specific period of time.
         
         @param request: AcceptVpcPeerConnectionRequest
         @return: AcceptVpcPeerConnectionResponse
@@ -175,13 +183,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_peer_20220101_models.CreateVpcPeerConnectionResponse:
         """
-        Before you create a VPC peering connection, make sure that the following requirements are met:
-        *   Cloud Data Transfer (CDT) is activated to manage the billing of intra-border data transfers. To activate CDT, call the [OpenCdtService](~~337842~~) operation.
-        *   **CreateVpcPeerConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and an **instance ID** and runs the task in the background. You can call the [GetVpcPeerConnectionAttribute](~~426095~~) operation to query the status of the task.
-        *   If a VPC peering connection is in the **Creating** state, the VPC peering connection is being created.
-        *   If a VPC peering connection is in the **Activated** state, the VPC peering connection is created.
-        *   If a VPC peering connection is in the **Accepting** state, the VPC peering connection is created across accounts and the accepter is accepting the VPC peering connection.
-        *   You cannot repeatedly call the **CreateVpcPeerConnection** operation within a specific period of time.
+        @summary Creates a VPC peering connection
+        
+        @description Before you create a VPC peering connection, take note of the following items:
+        **CreateVpcPeerConnection** is an asynchronous operation. After a request is sent, the system returns an **instance ID** and runs the task in the background. You can call [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426095.html) to query the status of the task.
+        If the VPC peering connection is in the **Creating** state, the VPC peering connection is being created.
+        If the VPC peering connection is in the **Activated** state, the VPC peering connection is created.
+        If the VPC peering connection is in the **Accepting** state, it is a cross-account connection. The connection needs to be accepted on the accepter side.
+        You cannot repeatedly call **CreateVpcPeerConnection** within the specified period of time.
+        When you create a VPC peering connection, the system automatically activates Cloud Data Transfer (CDT) for you.
         
         @param request: CreateVpcPeerConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -236,13 +246,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_peer_20220101_models.CreateVpcPeerConnectionResponse:
         """
-        Before you create a VPC peering connection, make sure that the following requirements are met:
-        *   Cloud Data Transfer (CDT) is activated to manage the billing of intra-border data transfers. To activate CDT, call the [OpenCdtService](~~337842~~) operation.
-        *   **CreateVpcPeerConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and an **instance ID** and runs the task in the background. You can call the [GetVpcPeerConnectionAttribute](~~426095~~) operation to query the status of the task.
-        *   If a VPC peering connection is in the **Creating** state, the VPC peering connection is being created.
-        *   If a VPC peering connection is in the **Activated** state, the VPC peering connection is created.
-        *   If a VPC peering connection is in the **Accepting** state, the VPC peering connection is created across accounts and the accepter is accepting the VPC peering connection.
-        *   You cannot repeatedly call the **CreateVpcPeerConnection** operation within a specific period of time.
+        @summary Creates a VPC peering connection
+        
+        @description Before you create a VPC peering connection, take note of the following items:
+        **CreateVpcPeerConnection** is an asynchronous operation. After a request is sent, the system returns an **instance ID** and runs the task in the background. You can call [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426095.html) to query the status of the task.
+        If the VPC peering connection is in the **Creating** state, the VPC peering connection is being created.
+        If the VPC peering connection is in the **Activated** state, the VPC peering connection is created.
+        If the VPC peering connection is in the **Accepting** state, it is a cross-account connection. The connection needs to be accepted on the accepter side.
+        You cannot repeatedly call **CreateVpcPeerConnection** within the specified period of time.
+        When you create a VPC peering connection, the system automatically activates Cloud Data Transfer (CDT) for you.
         
         @param request: CreateVpcPeerConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -296,13 +308,15 @@ class Client(OpenApiClient):
         request: vpc_peer_20220101_models.CreateVpcPeerConnectionRequest,
     ) -> vpc_peer_20220101_models.CreateVpcPeerConnectionResponse:
         """
-        Before you create a VPC peering connection, make sure that the following requirements are met:
-        *   Cloud Data Transfer (CDT) is activated to manage the billing of intra-border data transfers. To activate CDT, call the [OpenCdtService](~~337842~~) operation.
-        *   **CreateVpcPeerConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and an **instance ID** and runs the task in the background. You can call the [GetVpcPeerConnectionAttribute](~~426095~~) operation to query the status of the task.
-        *   If a VPC peering connection is in the **Creating** state, the VPC peering connection is being created.
-        *   If a VPC peering connection is in the **Activated** state, the VPC peering connection is created.
-        *   If a VPC peering connection is in the **Accepting** state, the VPC peering connection is created across accounts and the accepter is accepting the VPC peering connection.
-        *   You cannot repeatedly call the **CreateVpcPeerConnection** operation within a specific period of time.
+        @summary Creates a VPC peering connection
+        
+        @description Before you create a VPC peering connection, take note of the following items:
+        **CreateVpcPeerConnection** is an asynchronous operation. After a request is sent, the system returns an **instance ID** and runs the task in the background. You can call [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426095.html) to query the status of the task.
+        If the VPC peering connection is in the **Creating** state, the VPC peering connection is being created.
+        If the VPC peering connection is in the **Activated** state, the VPC peering connection is created.
+        If the VPC peering connection is in the **Accepting** state, it is a cross-account connection. The connection needs to be accepted on the accepter side.
+        You cannot repeatedly call **CreateVpcPeerConnection** within the specified period of time.
+        When you create a VPC peering connection, the system automatically activates Cloud Data Transfer (CDT) for you.
         
         @param request: CreateVpcPeerConnectionRequest
         @return: CreateVpcPeerConnectionResponse
@@ -315,13 +329,15 @@ class Client(OpenApiClient):
         request: vpc_peer_20220101_models.CreateVpcPeerConnectionRequest,
     ) -> vpc_peer_20220101_models.CreateVpcPeerConnectionResponse:
         """
-        Before you create a VPC peering connection, make sure that the following requirements are met:
-        *   Cloud Data Transfer (CDT) is activated to manage the billing of intra-border data transfers. To activate CDT, call the [OpenCdtService](~~337842~~) operation.
-        *   **CreateVpcPeerConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and an **instance ID** and runs the task in the background. You can call the [GetVpcPeerConnectionAttribute](~~426095~~) operation to query the status of the task.
-        *   If a VPC peering connection is in the **Creating** state, the VPC peering connection is being created.
-        *   If a VPC peering connection is in the **Activated** state, the VPC peering connection is created.
-        *   If a VPC peering connection is in the **Accepting** state, the VPC peering connection is created across accounts and the accepter is accepting the VPC peering connection.
-        *   You cannot repeatedly call the **CreateVpcPeerConnection** operation within a specific period of time.
+        @summary Creates a VPC peering connection
+        
+        @description Before you create a VPC peering connection, take note of the following items:
+        **CreateVpcPeerConnection** is an asynchronous operation. After a request is sent, the system returns an **instance ID** and runs the task in the background. You can call [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426095.html) to query the status of the task.
+        If the VPC peering connection is in the **Creating** state, the VPC peering connection is being created.
+        If the VPC peering connection is in the **Activated** state, the VPC peering connection is created.
+        If the VPC peering connection is in the **Accepting** state, it is a cross-account connection. The connection needs to be accepted on the accepter side.
+        You cannot repeatedly call **CreateVpcPeerConnection** within the specified period of time.
+        When you create a VPC peering connection, the system automatically activates Cloud Data Transfer (CDT) for you.
         
         @param request: CreateVpcPeerConnectionRequest
         @return: CreateVpcPeerConnectionResponse
@@ -335,13 +351,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_peer_20220101_models.DeleteVpcPeerConnectionResponse:
         """
-        You can delete VPC peering connections. After you delete a VPC peering connection, your service is affected. Proceed with caution.
-        *   If you forcefully delete a VPC peering connection, the system deletes the routes that point to the VPC peering connection from the VPC route table.
-        *   If you do not forcefully delete a VPC peering connection, the system does not delete these routes. You must manually delete them.
-        *   The **DeleteVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](~~426100~~) operation to query the status of a VPC peering connection.
-        *   If a VPC peering connection is in the **Deleting** state, it is being deleted.
-        *   If a VPC peering connection is in the **Deleted** state, it is deleted.
-        *   You cannot repeatedly call the **DeleteVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
+        @summary 删除VPC对等连接
+        
+        @description    You can delete VPC peering connections. After you delete a VPC peering connection, your service is affected. Proceed with caution.
+        If you forcefully delete a VPC peering connection, the system deletes the routes that point to the VPC peering connection from the VPC route table.
+        If you do not forcefully delete a VPC peering connection, the system does not delete these routes. You must manually delete them.
+        The **DeleteVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of a VPC peering connection.
+        If a VPC peering connection is in the **Deleting** state, it is being deleted.
+        If a VPC peering connection is in the **Deleted** state, it is deleted.
+        You cannot repeatedly call the **DeleteVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
         
         @param request: DeleteVpcPeerConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -382,13 +400,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_peer_20220101_models.DeleteVpcPeerConnectionResponse:
         """
-        You can delete VPC peering connections. After you delete a VPC peering connection, your service is affected. Proceed with caution.
-        *   If you forcefully delete a VPC peering connection, the system deletes the routes that point to the VPC peering connection from the VPC route table.
-        *   If you do not forcefully delete a VPC peering connection, the system does not delete these routes. You must manually delete them.
-        *   The **DeleteVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](~~426100~~) operation to query the status of a VPC peering connection.
-        *   If a VPC peering connection is in the **Deleting** state, it is being deleted.
-        *   If a VPC peering connection is in the **Deleted** state, it is deleted.
-        *   You cannot repeatedly call the **DeleteVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
+        @summary 删除VPC对等连接
+        
+        @description    You can delete VPC peering connections. After you delete a VPC peering connection, your service is affected. Proceed with caution.
+        If you forcefully delete a VPC peering connection, the system deletes the routes that point to the VPC peering connection from the VPC route table.
+        If you do not forcefully delete a VPC peering connection, the system does not delete these routes. You must manually delete them.
+        The **DeleteVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of a VPC peering connection.
+        If a VPC peering connection is in the **Deleting** state, it is being deleted.
+        If a VPC peering connection is in the **Deleted** state, it is deleted.
+        You cannot repeatedly call the **DeleteVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
         
         @param request: DeleteVpcPeerConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -428,13 +448,15 @@ class Client(OpenApiClient):
         request: vpc_peer_20220101_models.DeleteVpcPeerConnectionRequest,
     ) -> vpc_peer_20220101_models.DeleteVpcPeerConnectionResponse:
         """
-        You can delete VPC peering connections. After you delete a VPC peering connection, your service is affected. Proceed with caution.
-        *   If you forcefully delete a VPC peering connection, the system deletes the routes that point to the VPC peering connection from the VPC route table.
-        *   If you do not forcefully delete a VPC peering connection, the system does not delete these routes. You must manually delete them.
-        *   The **DeleteVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](~~426100~~) operation to query the status of a VPC peering connection.
-        *   If a VPC peering connection is in the **Deleting** state, it is being deleted.
-        *   If a VPC peering connection is in the **Deleted** state, it is deleted.
-        *   You cannot repeatedly call the **DeleteVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
+        @summary 删除VPC对等连接
+        
+        @description    You can delete VPC peering connections. After you delete a VPC peering connection, your service is affected. Proceed with caution.
+        If you forcefully delete a VPC peering connection, the system deletes the routes that point to the VPC peering connection from the VPC route table.
+        If you do not forcefully delete a VPC peering connection, the system does not delete these routes. You must manually delete them.
+        The **DeleteVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of a VPC peering connection.
+        If a VPC peering connection is in the **Deleting** state, it is being deleted.
+        If a VPC peering connection is in the **Deleted** state, it is deleted.
+        You cannot repeatedly call the **DeleteVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
         
         @param request: DeleteVpcPeerConnectionRequest
         @return: DeleteVpcPeerConnectionResponse
@@ -447,13 +469,15 @@ class Client(OpenApiClient):
         request: vpc_peer_20220101_models.DeleteVpcPeerConnectionRequest,
     ) -> vpc_peer_20220101_models.DeleteVpcPeerConnectionResponse:
         """
-        You can delete VPC peering connections. After you delete a VPC peering connection, your service is affected. Proceed with caution.
-        *   If you forcefully delete a VPC peering connection, the system deletes the routes that point to the VPC peering connection from the VPC route table.
-        *   If you do not forcefully delete a VPC peering connection, the system does not delete these routes. You must manually delete them.
-        *   The **DeleteVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](~~426100~~) operation to query the status of a VPC peering connection.
-        *   If a VPC peering connection is in the **Deleting** state, it is being deleted.
-        *   If a VPC peering connection is in the **Deleted** state, it is deleted.
-        *   You cannot repeatedly call the **DeleteVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
+        @summary 删除VPC对等连接
+        
+        @description    You can delete VPC peering connections. After you delete a VPC peering connection, your service is affected. Proceed with caution.
+        If you forcefully delete a VPC peering connection, the system deletes the routes that point to the VPC peering connection from the VPC route table.
+        If you do not forcefully delete a VPC peering connection, the system does not delete these routes. You must manually delete them.
+        The **DeleteVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of a VPC peering connection.
+        If a VPC peering connection is in the **Deleting** state, it is being deleted.
+        If a VPC peering connection is in the **Deleted** state, it is deleted.
+        You cannot repeatedly call the **DeleteVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
         
         @param request: DeleteVpcPeerConnectionRequest
         @return: DeleteVpcPeerConnectionResponse
@@ -466,6 +490,13 @@ class Client(OpenApiClient):
         request: vpc_peer_20220101_models.GetVpcPeerConnectionAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_peer_20220101_models.GetVpcPeerConnectionAttributeResponse:
+        """
+        @summary Queries the details of a virtual private cloud (VPC) peering connection.
+        
+        @param request: GetVpcPeerConnectionAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVpcPeerConnectionAttributeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -496,6 +527,13 @@ class Client(OpenApiClient):
         request: vpc_peer_20220101_models.GetVpcPeerConnectionAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_peer_20220101_models.GetVpcPeerConnectionAttributeResponse:
+        """
+        @summary Queries the details of a virtual private cloud (VPC) peering connection.
+        
+        @param request: GetVpcPeerConnectionAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVpcPeerConnectionAttributeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -525,6 +563,12 @@ class Client(OpenApiClient):
         self,
         request: vpc_peer_20220101_models.GetVpcPeerConnectionAttributeRequest,
     ) -> vpc_peer_20220101_models.GetVpcPeerConnectionAttributeResponse:
+        """
+        @summary Queries the details of a virtual private cloud (VPC) peering connection.
+        
+        @param request: GetVpcPeerConnectionAttributeRequest
+        @return: GetVpcPeerConnectionAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_vpc_peer_connection_attribute_with_options(request, runtime)
 
@@ -532,6 +576,12 @@ class Client(OpenApiClient):
         self,
         request: vpc_peer_20220101_models.GetVpcPeerConnectionAttributeRequest,
     ) -> vpc_peer_20220101_models.GetVpcPeerConnectionAttributeResponse:
+        """
+        @summary Queries the details of a virtual private cloud (VPC) peering connection.
+        
+        @param request: GetVpcPeerConnectionAttributeRequest
+        @return: GetVpcPeerConnectionAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_vpc_peer_connection_attribute_with_options_async(request, runtime)
 
@@ -541,10 +591,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_peer_20220101_models.ListTagResourcesResponse:
         """
-        Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
-        *   **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you set only **Tag.N.Value**, an error message is returned.
-        *   If you set **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
-        *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+        @summary Queries tags that are added to Virtual Private Cloud (VPC) peering connections.
+        
+        @description    Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
+        **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you set only **Tag.N.Value**, an error message is returned.
+        If you set **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
+        If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -589,10 +641,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_peer_20220101_models.ListTagResourcesResponse:
         """
-        Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
-        *   **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you set only **Tag.N.Value**, an error message is returned.
-        *   If you set **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
-        *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+        @summary Queries tags that are added to Virtual Private Cloud (VPC) peering connections.
+        
+        @description    Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
+        **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you set only **Tag.N.Value**, an error message is returned.
+        If you set **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
+        If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -636,10 +690,12 @@ class Client(OpenApiClient):
         request: vpc_peer_20220101_models.ListTagResourcesRequest,
     ) -> vpc_peer_20220101_models.ListTagResourcesResponse:
         """
-        Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
-        *   **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you set only **Tag.N.Value**, an error message is returned.
-        *   If you set **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
-        *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+        @summary Queries tags that are added to Virtual Private Cloud (VPC) peering connections.
+        
+        @description    Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
+        **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you set only **Tag.N.Value**, an error message is returned.
+        If you set **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
+        If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -652,10 +708,12 @@ class Client(OpenApiClient):
         request: vpc_peer_20220101_models.ListTagResourcesRequest,
     ) -> vpc_peer_20220101_models.ListTagResourcesResponse:
         """
-        Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
-        *   **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you set only **Tag.N.Value**, an error message is returned.
-        *   If you set **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
-        *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+        @summary Queries tags that are added to Virtual Private Cloud (VPC) peering connections.
+        
+        @description    Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
+        **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you set only **Tag.N.Value**, an error message is returned.
+        If you set **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
+        If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -668,6 +726,13 @@ class Client(OpenApiClient):
         tmp_req: vpc_peer_20220101_models.ListVpcPeerConnectionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_peer_20220101_models.ListVpcPeerConnectionsResponse:
+        """
+        @summary 查询VPC对等连接列表
+        
+        @param tmp_req: ListVpcPeerConnectionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVpcPeerConnectionsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = vpc_peer_20220101_models.ListVpcPeerConnectionsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -716,6 +781,13 @@ class Client(OpenApiClient):
         tmp_req: vpc_peer_20220101_models.ListVpcPeerConnectionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_peer_20220101_models.ListVpcPeerConnectionsResponse:
+        """
+        @summary 查询VPC对等连接列表
+        
+        @param tmp_req: ListVpcPeerConnectionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVpcPeerConnectionsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = vpc_peer_20220101_models.ListVpcPeerConnectionsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -763,6 +835,12 @@ class Client(OpenApiClient):
         self,
         request: vpc_peer_20220101_models.ListVpcPeerConnectionsRequest,
     ) -> vpc_peer_20220101_models.ListVpcPeerConnectionsResponse:
+        """
+        @summary 查询VPC对等连接列表
+        
+        @param request: ListVpcPeerConnectionsRequest
+        @return: ListVpcPeerConnectionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_vpc_peer_connections_with_options(request, runtime)
 
@@ -770,6 +848,12 @@ class Client(OpenApiClient):
         self,
         request: vpc_peer_20220101_models.ListVpcPeerConnectionsRequest,
     ) -> vpc_peer_20220101_models.ListVpcPeerConnectionsResponse:
+        """
+        @summary 查询VPC对等连接列表
+        
+        @param request: ListVpcPeerConnectionsRequest
+        @return: ListVpcPeerConnectionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_vpc_peer_connections_with_options_async(request, runtime)
 
@@ -779,10 +863,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_peer_20220101_models.ModifyVpcPeerConnectionResponse:
         """
-        The **ModifyVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](~~426100~~) operation to query the status of a VPC peering connection.
-        *   If a VPC peering connection is in the **Updating** state, the VPC peering connection is being modified.
-        *   If a VPC peering connection is in the **Activated** state, the VPC peering connection is modified.
-        *   You cannot repeatedly call the **ModifyVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
+        @summary 修改VPC对等连接
+        
+        @description    The **ModifyVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of a VPC peering connection.
+        If a VPC peering connection is in the **Updating** state, the VPC peering connection is being modified.
+        If a VPC peering connection is in the **Activated** state, the VPC peering connection is modified.
+        You cannot repeatedly call the **ModifyVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
         
         @param request: ModifyVpcPeerConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -827,10 +913,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_peer_20220101_models.ModifyVpcPeerConnectionResponse:
         """
-        The **ModifyVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](~~426100~~) operation to query the status of a VPC peering connection.
-        *   If a VPC peering connection is in the **Updating** state, the VPC peering connection is being modified.
-        *   If a VPC peering connection is in the **Activated** state, the VPC peering connection is modified.
-        *   You cannot repeatedly call the **ModifyVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
+        @summary 修改VPC对等连接
+        
+        @description    The **ModifyVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of a VPC peering connection.
+        If a VPC peering connection is in the **Updating** state, the VPC peering connection is being modified.
+        If a VPC peering connection is in the **Activated** state, the VPC peering connection is modified.
+        You cannot repeatedly call the **ModifyVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
         
         @param request: ModifyVpcPeerConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -874,10 +962,12 @@ class Client(OpenApiClient):
         request: vpc_peer_20220101_models.ModifyVpcPeerConnectionRequest,
     ) -> vpc_peer_20220101_models.ModifyVpcPeerConnectionResponse:
         """
-        The **ModifyVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](~~426100~~) operation to query the status of a VPC peering connection.
-        *   If a VPC peering connection is in the **Updating** state, the VPC peering connection is being modified.
-        *   If a VPC peering connection is in the **Activated** state, the VPC peering connection is modified.
-        *   You cannot repeatedly call the **ModifyVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
+        @summary 修改VPC对等连接
+        
+        @description    The **ModifyVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of a VPC peering connection.
+        If a VPC peering connection is in the **Updating** state, the VPC peering connection is being modified.
+        If a VPC peering connection is in the **Activated** state, the VPC peering connection is modified.
+        You cannot repeatedly call the **ModifyVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
         
         @param request: ModifyVpcPeerConnectionRequest
         @return: ModifyVpcPeerConnectionResponse
@@ -890,10 +980,12 @@ class Client(OpenApiClient):
         request: vpc_peer_20220101_models.ModifyVpcPeerConnectionRequest,
     ) -> vpc_peer_20220101_models.ModifyVpcPeerConnectionResponse:
         """
-        The **ModifyVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](~~426100~~) operation to query the status of a VPC peering connection.
-        *   If a VPC peering connection is in the **Updating** state, the VPC peering connection is being modified.
-        *   If a VPC peering connection is in the **Activated** state, the VPC peering connection is modified.
-        *   You cannot repeatedly call the **ModifyVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
+        @summary 修改VPC对等连接
+        
+        @description    The **ModifyVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of a VPC peering connection.
+        If a VPC peering connection is in the **Updating** state, the VPC peering connection is being modified.
+        If a VPC peering connection is in the **Activated** state, the VPC peering connection is modified.
+        You cannot repeatedly call the **ModifyVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
         
         @param request: ModifyVpcPeerConnectionRequest
         @return: ModifyVpcPeerConnectionResponse
@@ -906,6 +998,13 @@ class Client(OpenApiClient):
         request: vpc_peer_20220101_models.MoveResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_peer_20220101_models.MoveResourceGroupResponse:
+        """
+        @summary Moves a Virtual Private Cloud (VPC) peering connection from one resource group to another.
+        
+        @param request: MoveResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_resource_group_id):
@@ -940,6 +1039,13 @@ class Client(OpenApiClient):
         request: vpc_peer_20220101_models.MoveResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_peer_20220101_models.MoveResourceGroupResponse:
+        """
+        @summary Moves a Virtual Private Cloud (VPC) peering connection from one resource group to another.
+        
+        @param request: MoveResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_resource_group_id):
@@ -973,6 +1079,12 @@ class Client(OpenApiClient):
         self,
         request: vpc_peer_20220101_models.MoveResourceGroupRequest,
     ) -> vpc_peer_20220101_models.MoveResourceGroupResponse:
+        """
+        @summary Moves a Virtual Private Cloud (VPC) peering connection from one resource group to another.
+        
+        @param request: MoveResourceGroupRequest
+        @return: MoveResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.move_resource_group_with_options(request, runtime)
 
@@ -980,6 +1092,12 @@ class Client(OpenApiClient):
         self,
         request: vpc_peer_20220101_models.MoveResourceGroupRequest,
     ) -> vpc_peer_20220101_models.MoveResourceGroupResponse:
+        """
+        @summary Moves a Virtual Private Cloud (VPC) peering connection from one resource group to another.
+        
+        @param request: MoveResourceGroupRequest
+        @return: MoveResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.move_resource_group_with_options_async(request, runtime)
 
@@ -989,8 +1107,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_peer_20220101_models.RejectVpcPeerConnectionResponse:
         """
-        An acceptor VPC can reject a connection request from the requester VPC of a cross-account VPC peering connection. After the connection request is rejected, the VPC peering connection enters the **Rejected** state.
-        *   You cannot repeatedly call the **RejectVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
+        @summary 拒绝VPC对等连接
+        
+        @description    An acceptor VPC can reject a connection request from the requester VPC of a cross-account VPC peering connection. After the connection request is rejected, the VPC peering connection enters the **Rejected** state.
+        You cannot repeatedly call the **RejectVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
         
         @param request: RejectVpcPeerConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1031,8 +1151,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_peer_20220101_models.RejectVpcPeerConnectionResponse:
         """
-        An acceptor VPC can reject a connection request from the requester VPC of a cross-account VPC peering connection. After the connection request is rejected, the VPC peering connection enters the **Rejected** state.
-        *   You cannot repeatedly call the **RejectVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
+        @summary 拒绝VPC对等连接
+        
+        @description    An acceptor VPC can reject a connection request from the requester VPC of a cross-account VPC peering connection. After the connection request is rejected, the VPC peering connection enters the **Rejected** state.
+        You cannot repeatedly call the **RejectVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
         
         @param request: RejectVpcPeerConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1072,8 +1194,10 @@ class Client(OpenApiClient):
         request: vpc_peer_20220101_models.RejectVpcPeerConnectionRequest,
     ) -> vpc_peer_20220101_models.RejectVpcPeerConnectionResponse:
         """
-        An acceptor VPC can reject a connection request from the requester VPC of a cross-account VPC peering connection. After the connection request is rejected, the VPC peering connection enters the **Rejected** state.
-        *   You cannot repeatedly call the **RejectVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
+        @summary 拒绝VPC对等连接
+        
+        @description    An acceptor VPC can reject a connection request from the requester VPC of a cross-account VPC peering connection. After the connection request is rejected, the VPC peering connection enters the **Rejected** state.
+        You cannot repeatedly call the **RejectVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
         
         @param request: RejectVpcPeerConnectionRequest
         @return: RejectVpcPeerConnectionResponse
@@ -1086,8 +1210,10 @@ class Client(OpenApiClient):
         request: vpc_peer_20220101_models.RejectVpcPeerConnectionRequest,
     ) -> vpc_peer_20220101_models.RejectVpcPeerConnectionResponse:
         """
-        An acceptor VPC can reject a connection request from the requester VPC of a cross-account VPC peering connection. After the connection request is rejected, the VPC peering connection enters the **Rejected** state.
-        *   You cannot repeatedly call the **RejectVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
+        @summary 拒绝VPC对等连接
+        
+        @description    An acceptor VPC can reject a connection request from the requester VPC of a cross-account VPC peering connection. After the connection request is rejected, the VPC peering connection enters the **Rejected** state.
+        You cannot repeatedly call the **RejectVpcPeerConnection** operation for the same VPC peering connection within the specified period of time.
         
         @param request: RejectVpcPeerConnectionRequest
         @return: RejectVpcPeerConnectionResponse
@@ -1101,14 +1227,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_peer_20220101_models.TagResourcesResponse:
         """
-        Tags are used to classify instances. Each tag consists of a key-value pair. Before you use tags, take note of the following limits:
-        *   The keys of tags that are added to the same instance must be unique.
-        *   You cannot create tags without adding them to instances. All tags must be added to instances.
-        *   Tag information is not shared across regions.
+        @summary Creates tags and adds them to a virtual private cloud (VPC) peering connection.
+        
+        @description Tags are used to classify instances. Each tag consists of a key-value pair. Before you use tags, take note of the following limits:
+        The keys of tags that are added to the same instance must be unique.
+        You cannot create tags without adding them to instances. All tags must be added to instances.
+        Tag information is not shared across regions.
         For example, you cannot view the tags that are created in the China (Hangzhou) region from the China (Shanghai) region.
-        *   For the same account and region, tags added to different VPC peering connections are shared.
+        For the same account and region, tags added to different VPC peering connections are shared.
         For example, if a tag is added to a VPC peering connection, the tag can also be added to other VPC peering connections within the same account and region. You can modify the key and the value of a tag or remove a tag from an instance. After you delete an instance, all tags that are added to the instance are deleted.
-        *   You can add up to 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
+        You can add up to 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1151,14 +1279,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_peer_20220101_models.TagResourcesResponse:
         """
-        Tags are used to classify instances. Each tag consists of a key-value pair. Before you use tags, take note of the following limits:
-        *   The keys of tags that are added to the same instance must be unique.
-        *   You cannot create tags without adding them to instances. All tags must be added to instances.
-        *   Tag information is not shared across regions.
+        @summary Creates tags and adds them to a virtual private cloud (VPC) peering connection.
+        
+        @description Tags are used to classify instances. Each tag consists of a key-value pair. Before you use tags, take note of the following limits:
+        The keys of tags that are added to the same instance must be unique.
+        You cannot create tags without adding them to instances. All tags must be added to instances.
+        Tag information is not shared across regions.
         For example, you cannot view the tags that are created in the China (Hangzhou) region from the China (Shanghai) region.
-        *   For the same account and region, tags added to different VPC peering connections are shared.
+        For the same account and region, tags added to different VPC peering connections are shared.
         For example, if a tag is added to a VPC peering connection, the tag can also be added to other VPC peering connections within the same account and region. You can modify the key and the value of a tag or remove a tag from an instance. After you delete an instance, all tags that are added to the instance are deleted.
-        *   You can add up to 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
+        You can add up to 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1200,14 +1330,16 @@ class Client(OpenApiClient):
         request: vpc_peer_20220101_models.TagResourcesRequest,
     ) -> vpc_peer_20220101_models.TagResourcesResponse:
         """
-        Tags are used to classify instances. Each tag consists of a key-value pair. Before you use tags, take note of the following limits:
-        *   The keys of tags that are added to the same instance must be unique.
-        *   You cannot create tags without adding them to instances. All tags must be added to instances.
-        *   Tag information is not shared across regions.
+        @summary Creates tags and adds them to a virtual private cloud (VPC) peering connection.
+        
+        @description Tags are used to classify instances. Each tag consists of a key-value pair. Before you use tags, take note of the following limits:
+        The keys of tags that are added to the same instance must be unique.
+        You cannot create tags without adding them to instances. All tags must be added to instances.
+        Tag information is not shared across regions.
         For example, you cannot view the tags that are created in the China (Hangzhou) region from the China (Shanghai) region.
-        *   For the same account and region, tags added to different VPC peering connections are shared.
+        For the same account and region, tags added to different VPC peering connections are shared.
         For example, if a tag is added to a VPC peering connection, the tag can also be added to other VPC peering connections within the same account and region. You can modify the key and the value of a tag or remove a tag from an instance. After you delete an instance, all tags that are added to the instance are deleted.
-        *   You can add up to 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
+        You can add up to 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -1220,14 +1352,16 @@ class Client(OpenApiClient):
         request: vpc_peer_20220101_models.TagResourcesRequest,
     ) -> vpc_peer_20220101_models.TagResourcesResponse:
         """
-        Tags are used to classify instances. Each tag consists of a key-value pair. Before you use tags, take note of the following limits:
-        *   The keys of tags that are added to the same instance must be unique.
-        *   You cannot create tags without adding them to instances. All tags must be added to instances.
-        *   Tag information is not shared across regions.
+        @summary Creates tags and adds them to a virtual private cloud (VPC) peering connection.
+        
+        @description Tags are used to classify instances. Each tag consists of a key-value pair. Before you use tags, take note of the following limits:
+        The keys of tags that are added to the same instance must be unique.
+        You cannot create tags without adding them to instances. All tags must be added to instances.
+        Tag information is not shared across regions.
         For example, you cannot view the tags that are created in the China (Hangzhou) region from the China (Shanghai) region.
-        *   For the same account and region, tags added to different VPC peering connections are shared.
+        For the same account and region, tags added to different VPC peering connections are shared.
         For example, if a tag is added to a VPC peering connection, the tag can also be added to other VPC peering connections within the same account and region. You can modify the key and the value of a tag or remove a tag from an instance. After you delete an instance, all tags that are added to the instance are deleted.
-        *   You can add up to 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
+        You can add up to 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -1240,6 +1374,13 @@ class Client(OpenApiClient):
         request: vpc_peer_20220101_models.UnTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_peer_20220101_models.UnTagResourcesResponse:
+        """
+        @summary Removes tags from specified Virtual Private Cloud (VPC) peering connections.
+        
+        @param request: UnTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -1278,6 +1419,13 @@ class Client(OpenApiClient):
         request: vpc_peer_20220101_models.UnTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_peer_20220101_models.UnTagResourcesResponse:
+        """
+        @summary Removes tags from specified Virtual Private Cloud (VPC) peering connections.
+        
+        @param request: UnTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -1315,6 +1463,12 @@ class Client(OpenApiClient):
         self,
         request: vpc_peer_20220101_models.UnTagResourcesRequest,
     ) -> vpc_peer_20220101_models.UnTagResourcesResponse:
+        """
+        @summary Removes tags from specified Virtual Private Cloud (VPC) peering connections.
+        
+        @param request: UnTagResourcesRequest
+        @return: UnTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.un_tag_resources_with_options(request, runtime)
 
@@ -1322,5 +1476,11 @@ class Client(OpenApiClient):
         self,
         request: vpc_peer_20220101_models.UnTagResourcesRequest,
     ) -> vpc_peer_20220101_models.UnTagResourcesResponse:
+        """
+        @summary Removes tags from specified Virtual Private Cloud (VPC) peering connections.
+        
+        @param request: UnTagResourcesRequest
+        @return: UnTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.un_tag_resources_with_options_async(request, runtime)
