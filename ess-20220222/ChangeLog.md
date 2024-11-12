@@ -1,3 +1,7 @@
+2024-11-12 Version: 1.10.1
+- Update API DescribePatternTypes: add param ZoneId.
+
+
 2024-11-11 Version: 1.10.0
 - Support API CreateDiagnoseReport.
 - Support API DescribeDiagnoseReports.

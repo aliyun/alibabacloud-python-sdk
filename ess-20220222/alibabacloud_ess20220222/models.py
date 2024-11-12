@@ -18149,6 +18149,7 @@ class DescribePatternTypesRequest(TeaModel):
         region_id: str = None,
         spot_strategy: str = None,
         v_switch_id: List[str] = None,
+        zone_id: List[str] = None,
     ):
         # The architectures of instance types. Valid values:
         # 
@@ -18255,6 +18256,7 @@ class DescribePatternTypesRequest(TeaModel):
         self.spot_strategy = spot_strategy
         # The IDs of the vSwitches.
         self.v_switch_id = v_switch_id
+        self.zone_id = zone_id
 
     def validate(self):
         pass
@@ -18323,6 +18325,8 @@ class DescribePatternTypesRequest(TeaModel):
             result['SpotStrategy'] = self.spot_strategy
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
         return result
 
     def from_map(self, m: dict = None):
@@ -18385,6 +18389,8 @@ class DescribePatternTypesRequest(TeaModel):
             self.spot_strategy = m.get('SpotStrategy')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
         return self
 
 
