@@ -399,6 +399,8 @@ class Client(OpenApiClient):
             body['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.code_branch):
             body['CodeBranch'] = request.code_branch
+        if not UtilClient.is_unset(request.code_commit):
+            body['CodeCommit'] = request.code_commit
         if not UtilClient.is_unset(request.code_repo):
             body['CodeRepo'] = request.code_repo
         if not UtilClient.is_unset(request.code_repo_access_token):
@@ -453,6 +455,8 @@ class Client(OpenApiClient):
             body['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.code_branch):
             body['CodeBranch'] = request.code_branch
+        if not UtilClient.is_unset(request.code_commit):
+            body['CodeCommit'] = request.code_commit
         if not UtilClient.is_unset(request.code_repo):
             body['CodeRepo'] = request.code_repo
         if not UtilClient.is_unset(request.code_repo_access_token):

@@ -1798,6 +1798,7 @@ class CreateCodeSourceRequest(TeaModel):
         self,
         accessibility: str = None,
         code_branch: str = None,
+        code_commit: str = None,
         code_repo: str = None,
         code_repo_access_token: str = None,
         code_repo_user_name: str = None,
@@ -1808,6 +1809,7 @@ class CreateCodeSourceRequest(TeaModel):
     ):
         self.accessibility = accessibility
         self.code_branch = code_branch
+        self.code_commit = code_commit
         self.code_repo = code_repo
         self.code_repo_access_token = code_repo_access_token
         self.code_repo_user_name = code_repo_user_name
@@ -1831,6 +1833,8 @@ class CreateCodeSourceRequest(TeaModel):
             result['Accessibility'] = self.accessibility
         if self.code_branch is not None:
             result['CodeBranch'] = self.code_branch
+        if self.code_commit is not None:
+            result['CodeCommit'] = self.code_commit
         if self.code_repo is not None:
             result['CodeRepo'] = self.code_repo
         if self.code_repo_access_token is not None:
@@ -1853,6 +1857,8 @@ class CreateCodeSourceRequest(TeaModel):
             self.accessibility = m.get('Accessibility')
         if m.get('CodeBranch') is not None:
             self.code_branch = m.get('CodeBranch')
+        if m.get('CodeCommit') is not None:
+            self.code_commit = m.get('CodeCommit')
         if m.get('CodeRepo') is not None:
             self.code_repo = m.get('CodeRepo')
         if m.get('CodeRepoAccessToken') is not None:
