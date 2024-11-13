@@ -499,6 +499,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.template_name):
             query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.version_name):
+            query['VersionName'] = request.version_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -544,6 +546,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.template_name):
             query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.version_name):
+            query['VersionName'] = request.version_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4455,6 +4459,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.template_name):
             query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.version_name):
+            query['VersionName'] = request.version_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4498,6 +4504,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.template_name):
             query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.version_name):
+            query['VersionName'] = request.version_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

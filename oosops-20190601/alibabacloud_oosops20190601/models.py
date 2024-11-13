@@ -785,6 +785,7 @@ class CreatePublicTemplateRequest(TeaModel):
         publisher: str = None,
         region_id: str = None,
         template_name: str = None,
+        version_name: str = None,
     ):
         self.category = category
         # This parameter is required.
@@ -795,6 +796,7 @@ class CreatePublicTemplateRequest(TeaModel):
         self.region_id = region_id
         # This parameter is required.
         self.template_name = template_name
+        self.version_name = version_name
 
     def validate(self):
         pass
@@ -819,6 +821,8 @@ class CreatePublicTemplateRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.template_name is not None:
             result['TemplateName'] = self.template_name
+        if self.version_name is not None:
+            result['VersionName'] = self.version_name
         return result
 
     def from_map(self, m: dict = None):
@@ -837,6 +841,8 @@ class CreatePublicTemplateRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('TemplateName') is not None:
             self.template_name = m.get('TemplateName')
+        if m.get('VersionName') is not None:
+            self.version_name = m.get('VersionName')
         return self
 
 
@@ -7956,6 +7962,7 @@ class UpdatePublicTemplateRequest(TeaModel):
         publisher: str = None,
         region_id: str = None,
         template_name: str = None,
+        version_name: str = None,
     ):
         self.category = category
         # This parameter is required.
@@ -7965,6 +7972,7 @@ class UpdatePublicTemplateRequest(TeaModel):
         self.region_id = region_id
         # This parameter is required.
         self.template_name = template_name
+        self.version_name = version_name
 
     def validate(self):
         pass
@@ -7987,6 +7995,8 @@ class UpdatePublicTemplateRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.template_name is not None:
             result['TemplateName'] = self.template_name
+        if self.version_name is not None:
+            result['VersionName'] = self.version_name
         return result
 
     def from_map(self, m: dict = None):
@@ -8003,6 +8013,8 @@ class UpdatePublicTemplateRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('TemplateName') is not None:
             self.template_name = m.get('TemplateName')
+        if m.get('VersionName') is not None:
+            self.version_name = m.get('VersionName')
         return self
 
 

@@ -1,3 +1,8 @@
+2024-11-13 Version: 1.0.8
+- Update API CreatePublicTemplate: add param VersionName.
+- Update API UpdatePublicTemplate: add param VersionName.
+
+
 2024-07-12 Version: 1.0.7
 - Update API CreatePublicTemplate: add param IsExample.
 - Update API ListPublicTemplates: add param IsExample.
