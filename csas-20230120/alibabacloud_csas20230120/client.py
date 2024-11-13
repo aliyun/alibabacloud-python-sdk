@@ -6041,6 +6041,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_tags_for_private_access_policy_with_options_async(request, runtime)
 
+    def list_user_applications_with_options(
+        self,
+        request: csas_20230120_models.ListUserApplicationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListUserApplicationsResponse:
+        """
+        @summary 列表查询用户应用权限
+        
+        @param request: ListUserApplicationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserApplicationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUserApplications',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListUserApplicationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_user_applications_with_options_async(
+        self,
+        request: csas_20230120_models.ListUserApplicationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListUserApplicationsResponse:
+        """
+        @summary 列表查询用户应用权限
+        
+        @param request: ListUserApplicationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserApplicationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUserApplications',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListUserApplicationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_user_applications(
+        self,
+        request: csas_20230120_models.ListUserApplicationsRequest,
+    ) -> csas_20230120_models.ListUserApplicationsResponse:
+        """
+        @summary 列表查询用户应用权限
+        
+        @param request: ListUserApplicationsRequest
+        @return: ListUserApplicationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_user_applications_with_options(request, runtime)
+
+    async def list_user_applications_async(
+        self,
+        request: csas_20230120_models.ListUserApplicationsRequest,
+    ) -> csas_20230120_models.ListUserApplicationsResponse:
+        """
+        @summary 列表查询用户应用权限
+        
+        @param request: ListUserApplicationsRequest
+        @return: ListUserApplicationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_user_applications_with_options_async(request, runtime)
+
     def list_user_devices_with_options(
         self,
         request: csas_20230120_models.ListUserDevicesRequest,
@@ -6408,6 +6500,98 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_user_groups_for_registration_policy_with_options_async(request, runtime)
+
+    def list_user_private_access_policies_with_options(
+        self,
+        request: csas_20230120_models.ListUserPrivateAccessPoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListUserPrivateAccessPoliciesResponse:
+        """
+        @summary 列表查询用户零信任策略
+        
+        @param request: ListUserPrivateAccessPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserPrivateAccessPoliciesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUserPrivateAccessPolicies',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListUserPrivateAccessPoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_user_private_access_policies_with_options_async(
+        self,
+        request: csas_20230120_models.ListUserPrivateAccessPoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListUserPrivateAccessPoliciesResponse:
+        """
+        @summary 列表查询用户零信任策略
+        
+        @param request: ListUserPrivateAccessPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserPrivateAccessPoliciesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUserPrivateAccessPolicies',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListUserPrivateAccessPoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_user_private_access_policies(
+        self,
+        request: csas_20230120_models.ListUserPrivateAccessPoliciesRequest,
+    ) -> csas_20230120_models.ListUserPrivateAccessPoliciesResponse:
+        """
+        @summary 列表查询用户零信任策略
+        
+        @param request: ListUserPrivateAccessPoliciesRequest
+        @return: ListUserPrivateAccessPoliciesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_user_private_access_policies_with_options(request, runtime)
+
+    async def list_user_private_access_policies_async(
+        self,
+        request: csas_20230120_models.ListUserPrivateAccessPoliciesRequest,
+    ) -> csas_20230120_models.ListUserPrivateAccessPoliciesResponse:
+        """
+        @summary 列表查询用户零信任策略
+        
+        @param request: ListUserPrivateAccessPoliciesRequest
+        @return: ListUserPrivateAccessPoliciesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_user_private_access_policies_with_options_async(request, runtime)
 
     def list_users_with_options(
         self,

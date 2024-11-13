@@ -1,3 +1,8 @@
+2024-11-13 Version: 1.9.0
+- Support API ListUserApplications.
+- Support API ListUserPrivateAccessPolicies.
+
+
 2024-10-30 Version: 1.8.2
 - Generated python 2023-01-20 for csas.
 

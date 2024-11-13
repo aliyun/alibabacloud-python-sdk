@@ -12595,6 +12595,241 @@ class ListTagsForPrivateAccessPolicyResponse(TeaModel):
         return self
 
 
+class ListUserApplicationsRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        name: str = None,
+        page_size: int = None,
+        sase_user_id: str = None,
+    ):
+        # This parameter is required.
+        self.current_page = current_page
+        self.name = name
+        # This parameter is required.
+        self.page_size = page_size
+        # This parameter is required.
+        self.sase_user_id = sase_user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sase_user_id is not None:
+            result['SaseUserId'] = self.sase_user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SaseUserId') is not None:
+            self.sase_user_id = m.get('SaseUserId')
+        return self
+
+
+class ListUserApplicationsResponseBodyApplicationsPortRanges(TeaModel):
+    def __init__(
+        self,
+        begin: str = None,
+        end: str = None,
+    ):
+        self.begin = begin
+        self.end = end
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.begin is not None:
+            result['Begin'] = self.begin
+        if self.end is not None:
+            result['End'] = self.end
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Begin') is not None:
+            self.begin = m.get('Begin')
+        if m.get('End') is not None:
+            self.end = m.get('End')
+        return self
+
+
+class ListUserApplicationsResponseBodyApplications(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        addresses: List[str] = None,
+        application_id: str = None,
+        name: str = None,
+        port_ranges: List[ListUserApplicationsResponseBodyApplicationsPortRanges] = None,
+        protocol: str = None,
+    ):
+        self.action = action
+        self.addresses = addresses
+        self.application_id = application_id
+        self.name = name
+        self.port_ranges = port_ranges
+        self.protocol = protocol
+
+    def validate(self):
+        if self.port_ranges:
+            for k in self.port_ranges:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.addresses is not None:
+            result['Addresses'] = self.addresses
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.name is not None:
+            result['Name'] = self.name
+        result['PortRanges'] = []
+        if self.port_ranges is not None:
+            for k in self.port_ranges:
+                result['PortRanges'].append(k.to_map() if k else None)
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('Addresses') is not None:
+            self.addresses = m.get('Addresses')
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.port_ranges = []
+        if m.get('PortRanges') is not None:
+            for k in m.get('PortRanges'):
+                temp_model = ListUserApplicationsResponseBodyApplicationsPortRanges()
+                self.port_ranges.append(temp_model.from_map(k))
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        return self
+
+
+class ListUserApplicationsResponseBody(TeaModel):
+    def __init__(
+        self,
+        applications: List[ListUserApplicationsResponseBodyApplications] = None,
+        request_id: str = None,
+        total_num: int = None,
+    ):
+        self.applications = applications
+        # Id of the request
+        self.request_id = request_id
+        self.total_num = total_num
+
+    def validate(self):
+        if self.applications:
+            for k in self.applications:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Applications'] = []
+        if self.applications is not None:
+            for k in self.applications:
+                result['Applications'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_num is not None:
+            result['TotalNum'] = self.total_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.applications = []
+        if m.get('Applications') is not None:
+            for k in m.get('Applications'):
+                temp_model = ListUserApplicationsResponseBodyApplications()
+                self.applications.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalNum') is not None:
+            self.total_num = m.get('TotalNum')
+        return self
+
+
+class ListUserApplicationsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListUserApplicationsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListUserApplicationsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListUserDevicesRequest(TeaModel):
     def __init__(
         self,
@@ -13750,6 +13985,265 @@ class ListUserGroupsForRegistrationPolicyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListUserGroupsForRegistrationPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListUserPrivateAccessPoliciesRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        name: str = None,
+        page_size: int = None,
+        sase_user_id: str = None,
+    ):
+        # This parameter is required.
+        self.current_page = current_page
+        self.name = name
+        # This parameter is required.
+        self.page_size = page_size
+        # This parameter is required.
+        self.sase_user_id = sase_user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sase_user_id is not None:
+            result['SaseUserId'] = self.sase_user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SaseUserId') is not None:
+            self.sase_user_id = m.get('SaseUserId')
+        return self
+
+
+class ListUserPrivateAccessPoliciesResponseBodyPolicesCustomUserAttributes(TeaModel):
+    def __init__(
+        self,
+        idp_id: int = None,
+        relation: str = None,
+        user_group_type: str = None,
+        value: str = None,
+    ):
+        self.idp_id = idp_id
+        self.relation = relation
+        self.user_group_type = user_group_type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.idp_id is not None:
+            result['IdpId'] = self.idp_id
+        if self.relation is not None:
+            result['Relation'] = self.relation
+        if self.user_group_type is not None:
+            result['UserGroupType'] = self.user_group_type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IdpId') is not None:
+            self.idp_id = m.get('IdpId')
+        if m.get('Relation') is not None:
+            self.relation = m.get('Relation')
+        if m.get('UserGroupType') is not None:
+            self.user_group_type = m.get('UserGroupType')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListUserPrivateAccessPoliciesResponseBodyPolices(TeaModel):
+    def __init__(
+        self,
+        custom_user_attributes: List[ListUserPrivateAccessPoliciesResponseBodyPolicesCustomUserAttributes] = None,
+        device_attribute_name: str = None,
+        matched_user_group: str = None,
+        name: str = None,
+        policy_action: str = None,
+        policy_id: str = None,
+        priority: int = None,
+        user_group_mode: str = None,
+    ):
+        self.custom_user_attributes = custom_user_attributes
+        self.device_attribute_name = device_attribute_name
+        self.matched_user_group = matched_user_group
+        self.name = name
+        self.policy_action = policy_action
+        self.policy_id = policy_id
+        self.priority = priority
+        self.user_group_mode = user_group_mode
+
+    def validate(self):
+        if self.custom_user_attributes:
+            for k in self.custom_user_attributes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CustomUserAttributes'] = []
+        if self.custom_user_attributes is not None:
+            for k in self.custom_user_attributes:
+                result['CustomUserAttributes'].append(k.to_map() if k else None)
+        if self.device_attribute_name is not None:
+            result['DeviceAttributeName'] = self.device_attribute_name
+        if self.matched_user_group is not None:
+            result['MatchedUserGroup'] = self.matched_user_group
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.policy_action is not None:
+            result['PolicyAction'] = self.policy_action
+        if self.policy_id is not None:
+            result['PolicyId'] = self.policy_id
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.user_group_mode is not None:
+            result['UserGroupMode'] = self.user_group_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.custom_user_attributes = []
+        if m.get('CustomUserAttributes') is not None:
+            for k in m.get('CustomUserAttributes'):
+                temp_model = ListUserPrivateAccessPoliciesResponseBodyPolicesCustomUserAttributes()
+                self.custom_user_attributes.append(temp_model.from_map(k))
+        if m.get('DeviceAttributeName') is not None:
+            self.device_attribute_name = m.get('DeviceAttributeName')
+        if m.get('MatchedUserGroup') is not None:
+            self.matched_user_group = m.get('MatchedUserGroup')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PolicyAction') is not None:
+            self.policy_action = m.get('PolicyAction')
+        if m.get('PolicyId') is not None:
+            self.policy_id = m.get('PolicyId')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('UserGroupMode') is not None:
+            self.user_group_mode = m.get('UserGroupMode')
+        return self
+
+
+class ListUserPrivateAccessPoliciesResponseBody(TeaModel):
+    def __init__(
+        self,
+        polices: List[ListUserPrivateAccessPoliciesResponseBodyPolices] = None,
+        request_id: str = None,
+        total_num: int = None,
+    ):
+        self.polices = polices
+        # Id of the request
+        self.request_id = request_id
+        self.total_num = total_num
+
+    def validate(self):
+        if self.polices:
+            for k in self.polices:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Polices'] = []
+        if self.polices is not None:
+            for k in self.polices:
+                result['Polices'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_num is not None:
+            result['TotalNum'] = self.total_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.polices = []
+        if m.get('Polices') is not None:
+            for k in m.get('Polices'):
+                temp_model = ListUserPrivateAccessPoliciesResponseBodyPolices()
+                self.polices.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalNum') is not None:
+            self.total_num = m.get('TotalNum')
+        return self
+
+
+class ListUserPrivateAccessPoliciesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListUserPrivateAccessPoliciesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListUserPrivateAccessPoliciesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
