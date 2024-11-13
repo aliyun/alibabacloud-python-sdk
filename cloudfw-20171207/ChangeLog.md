@@ -1,3 +1,27 @@
+2024-11-13 Version: 4.3.0
+- Support API DescribeAssetStatistic.
+- Support API DescribeUserBuyVersion.
+- Update API AddAddressBook: update param AddressList.
+- Update API AddControlPolicy: update param ApplicationNameList.
+- Update API CreateNatFirewallControlPolicy: update param ApplicationNameList.
+- Update API CreateVpcFirewallControlPolicy: update param ApplicationNameList.
+- Update API DeleteControlPolicyTemplate: update response param.
+- Update API DescribeAssetList: add param OutStatistic.
+- Update API DescribeAssetList: add param SensitiveStatus.
+- Update API DescribeAssetList: update response param.
+- Update API DescribeAssetRiskList: update param IpAddrList.
+- Update API DescribeInternetOpenIp: update response param.
+- Update API DescribeOutgoingDestinationIP: update response param.
+- Update API DescribeOutgoingDomain: update response param.
+- Update API DescribePostpayTrafficDetail: add param RegionNo.
+- Update API DescribePostpayTrafficDetail: update response param.
+- Update API DescribeRiskEventPayload: update response param.
+- Update API DescribeTrFirewallsV2List: update response param.
+- Update API ModifyControlPolicy: update param ApplicationNameList.
+- Update API ModifyNatFirewallControlPolicy: update param ApplicationNameList.
+- Update API ModifyVpcFirewallControlPolicy: update param ApplicationNameList.
+
+
 2024-10-16 Version: 4.2.0
 - Support API DescribeUserBuyVersion.
 - Update API AddAddressBook: update param AddressList.

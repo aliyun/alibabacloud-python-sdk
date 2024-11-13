@@ -3809,6 +3809,8 @@ class Client(OpenApiClient):
             query['MemberUid'] = request.member_uid
         if not UtilClient.is_unset(request.new_resource_tag):
             query['NewResourceTag'] = request.new_resource_tag
+        if not UtilClient.is_unset(request.out_statistic):
+            query['OutStatistic'] = request.out_statistic
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_no):
@@ -3817,6 +3819,8 @@ class Client(OpenApiClient):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.search_item):
             query['SearchItem'] = request.search_item
+        if not UtilClient.is_unset(request.sensitive_status):
+            query['SensitiveStatus'] = request.sensitive_status
         if not UtilClient.is_unset(request.sg_status):
             query['SgStatus'] = request.sg_status
         if not UtilClient.is_unset(request.status):
@@ -3872,6 +3876,8 @@ class Client(OpenApiClient):
             query['MemberUid'] = request.member_uid
         if not UtilClient.is_unset(request.new_resource_tag):
             query['NewResourceTag'] = request.new_resource_tag
+        if not UtilClient.is_unset(request.out_statistic):
+            query['OutStatistic'] = request.out_statistic
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_no):
@@ -3880,6 +3886,8 @@ class Client(OpenApiClient):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.search_item):
             query['SearchItem'] = request.search_item
+        if not UtilClient.is_unset(request.sensitive_status):
+            query['SensitiveStatus'] = request.sensitive_status
         if not UtilClient.is_unset(request.sg_status):
             query['SgStatus'] = request.sg_status
         if not UtilClient.is_unset(request.status):
@@ -4048,6 +4056,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_asset_risk_list_with_options_async(request, runtime)
+
+    def describe_asset_statistic_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeAssetStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAssetStatisticResponse:
+        """
+        @summary 获取资产统计信息
+        
+        @param request: DescribeAssetStatisticRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAssetStatisticResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAssetStatistic',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAssetStatisticResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_asset_statistic_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAssetStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeAssetStatisticResponse:
+        """
+        @summary 获取资产统计信息
+        
+        @param request: DescribeAssetStatisticRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAssetStatisticResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAssetStatistic',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeAssetStatisticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_asset_statistic(
+        self,
+        request: cloudfw_20171207_models.DescribeAssetStatisticRequest,
+    ) -> cloudfw_20171207_models.DescribeAssetStatisticResponse:
+        """
+        @summary 获取资产统计信息
+        
+        @param request: DescribeAssetStatisticRequest
+        @return: DescribeAssetStatisticResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_asset_statistic_with_options(request, runtime)
+
+    async def describe_asset_statistic_async(
+        self,
+        request: cloudfw_20171207_models.DescribeAssetStatisticRequest,
+    ) -> cloudfw_20171207_models.DescribeAssetStatisticResponse:
+        """
+        @summary 获取资产统计信息
+        
+        @param request: DescribeAssetStatisticRequest
+        @return: DescribeAssetStatisticResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_asset_statistic_with_options_async(request, runtime)
 
     def describe_cfw_risk_level_summary_with_options(
         self,
@@ -12827,9 +12939,9 @@ class Client(OpenApiClient):
         """
         @summary Enables firewalls for specific assets.
         
-        @description You can call the PutEnableFwSwitch operation to enable a firewall. After you enable a firewall, traffic passes through Cloud Firewall.
-        ## Limits
-        You can call this operation up to 5 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+        @description You can call this operation to enable a firewall. After you enable a firewall, traffic passes through Cloud Firewall.
+        ## [](#qps-)Limits
+        You can call this operation up to five times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: PutEnableFwSwitchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12874,9 +12986,9 @@ class Client(OpenApiClient):
         """
         @summary Enables firewalls for specific assets.
         
-        @description You can call the PutEnableFwSwitch operation to enable a firewall. After you enable a firewall, traffic passes through Cloud Firewall.
-        ## Limits
-        You can call this operation up to 5 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+        @description You can call this operation to enable a firewall. After you enable a firewall, traffic passes through Cloud Firewall.
+        ## [](#qps-)Limits
+        You can call this operation up to five times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: PutEnableFwSwitchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12920,9 +13032,9 @@ class Client(OpenApiClient):
         """
         @summary Enables firewalls for specific assets.
         
-        @description You can call the PutEnableFwSwitch operation to enable a firewall. After you enable a firewall, traffic passes through Cloud Firewall.
-        ## Limits
-        You can call this operation up to 5 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+        @description You can call this operation to enable a firewall. After you enable a firewall, traffic passes through Cloud Firewall.
+        ## [](#qps-)Limits
+        You can call this operation up to five times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: PutEnableFwSwitchRequest
         @return: PutEnableFwSwitchResponse
@@ -12937,9 +13049,9 @@ class Client(OpenApiClient):
         """
         @summary Enables firewalls for specific assets.
         
-        @description You can call the PutEnableFwSwitch operation to enable a firewall. After you enable a firewall, traffic passes through Cloud Firewall.
-        ## Limits
-        You can call this operation up to 5 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+        @description You can call this operation to enable a firewall. After you enable a firewall, traffic passes through Cloud Firewall.
+        ## [](#qps-)Limits
+        You can call this operation up to five times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: PutEnableFwSwitchRequest
         @return: PutEnableFwSwitchResponse

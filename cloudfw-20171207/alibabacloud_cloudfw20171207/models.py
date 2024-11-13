@@ -5307,10 +5307,12 @@ class DescribeAssetListRequest(TeaModel):
         lang: str = None,
         member_uid: int = None,
         new_resource_tag: str = None,
+        out_statistic: str = None,
         page_size: str = None,
         region_no: str = None,
         resource_type: str = None,
         search_item: str = None,
+        sensitive_status: str = None,
         sg_status: str = None,
         status: str = None,
         type: str = None,
@@ -5338,6 +5340,7 @@ class DescribeAssetListRequest(TeaModel):
         # *   **discovered in 1 day**: within one day.
         # *   **discovered in 7 days**: within seven days.
         self.new_resource_tag = new_resource_tag
+        self.out_statistic = out_statistic
         # The number of entries per page. Valid values: 1 to 50.
         # 
         # This parameter is required.
@@ -5362,6 +5365,7 @@ class DescribeAssetListRequest(TeaModel):
         self.resource_type = resource_type
         # The instance ID or IP address of the asset.
         self.search_item = search_item
+        self.sensitive_status = sensitive_status
         # The status of the security group policy. Valid values:
         # 
         # *   **pass**: delivered
@@ -5406,6 +5410,8 @@ class DescribeAssetListRequest(TeaModel):
             result['MemberUid'] = self.member_uid
         if self.new_resource_tag is not None:
             result['NewResourceTag'] = self.new_resource_tag
+        if self.out_statistic is not None:
+            result['OutStatistic'] = self.out_statistic
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.region_no is not None:
@@ -5414,6 +5420,8 @@ class DescribeAssetListRequest(TeaModel):
             result['ResourceType'] = self.resource_type
         if self.search_item is not None:
             result['SearchItem'] = self.search_item
+        if self.sensitive_status is not None:
+            result['SensitiveStatus'] = self.sensitive_status
         if self.sg_status is not None:
             result['SgStatus'] = self.sg_status
         if self.status is not None:
@@ -5436,6 +5444,8 @@ class DescribeAssetListRequest(TeaModel):
             self.member_uid = m.get('MemberUid')
         if m.get('NewResourceTag') is not None:
             self.new_resource_tag = m.get('NewResourceTag')
+        if m.get('OutStatistic') is not None:
+            self.out_statistic = m.get('OutStatistic')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('RegionNo') is not None:
@@ -5444,6 +5454,8 @@ class DescribeAssetListRequest(TeaModel):
             self.resource_type = m.get('ResourceType')
         if m.get('SearchItem') is not None:
             self.search_item = m.get('SearchItem')
+        if m.get('SensitiveStatus') is not None:
+            self.sensitive_status = m.get('SensitiveStatus')
         if m.get('SgStatus') is not None:
             self.sg_status = m.get('SgStatus')
         if m.get('Status') is not None:
@@ -5465,6 +5477,7 @@ class DescribeAssetListResponseBodyAssets(TeaModel):
         internet_address: str = None,
         intranet_address: str = None,
         ip_version: int = None,
+        last_7day_out_traffic_bytes: int = None,
         member_uid: int = None,
         name: str = None,
         new_resource_tag: str = None,
@@ -5475,6 +5488,7 @@ class DescribeAssetListResponseBodyAssets(TeaModel):
         resource_instance_id: str = None,
         resource_type: str = None,
         risk_level: str = None,
+        sensitive_data_status: str = None,
         sg_status: str = None,
         sg_status_time: int = None,
         sync_status: str = None,
@@ -5501,6 +5515,7 @@ class DescribeAssetListResponseBodyAssets(TeaModel):
         # *   **4**: IPv4
         # *   **6**: IPv6
         self.ip_version = ip_version
+        self.last_7day_out_traffic_bytes = last_7day_out_traffic_bytes
         # The UID of the member.
         self.member_uid = member_uid
         # The instance name of the asset that is protected by Cloud Firewall.
@@ -5554,6 +5569,7 @@ class DescribeAssetListResponseBodyAssets(TeaModel):
         # 
         # >  The value of this parameter is returned only when the UserType parameter is set to free.
         self.risk_level = risk_level
+        self.sensitive_data_status = sensitive_data_status
         # The status of the security group policy. Valid values:
         # 
         # *   **pass**: applied
@@ -5593,6 +5609,8 @@ class DescribeAssetListResponseBodyAssets(TeaModel):
             result['IntranetAddress'] = self.intranet_address
         if self.ip_version is not None:
             result['IpVersion'] = self.ip_version
+        if self.last_7day_out_traffic_bytes is not None:
+            result['Last7DayOutTrafficBytes'] = self.last_7day_out_traffic_bytes
         if self.member_uid is not None:
             result['MemberUid'] = self.member_uid
         if self.name is not None:
@@ -5613,6 +5631,8 @@ class DescribeAssetListResponseBodyAssets(TeaModel):
             result['ResourceType'] = self.resource_type
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
+        if self.sensitive_data_status is not None:
+            result['SensitiveDataStatus'] = self.sensitive_data_status
         if self.sg_status is not None:
             result['SgStatus'] = self.sg_status
         if self.sg_status_time is not None:
@@ -5639,6 +5659,8 @@ class DescribeAssetListResponseBodyAssets(TeaModel):
             self.intranet_address = m.get('IntranetAddress')
         if m.get('IpVersion') is not None:
             self.ip_version = m.get('IpVersion')
+        if m.get('Last7DayOutTrafficBytes') is not None:
+            self.last_7day_out_traffic_bytes = m.get('Last7DayOutTrafficBytes')
         if m.get('MemberUid') is not None:
             self.member_uid = m.get('MemberUid')
         if m.get('Name') is not None:
@@ -5659,6 +5681,8 @@ class DescribeAssetListResponseBodyAssets(TeaModel):
             self.resource_type = m.get('ResourceType')
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
+        if m.get('SensitiveDataStatus') is not None:
+            self.sensitive_data_status = m.get('SensitiveDataStatus')
         if m.get('SgStatus') is not None:
             self.sg_status = m.get('SgStatus')
         if m.get('SgStatusTime') is not None:
@@ -5971,6 +5995,190 @@ class DescribeAssetRiskListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeAssetRiskListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAssetStatisticRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        source_ip: str = None,
+    ):
+        self.lang = lang
+        self.source_ip = source_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        return self
+
+
+class DescribeAssetStatisticResponseBodyResourceSpecStatistic(TeaModel):
+    def __init__(
+        self,
+        ip_num_spec: int = None,
+        ip_num_used: int = None,
+        is_ip_num_enough: int = None,
+        is_region_num_enough: int = None,
+        is_suggest_update: int = None,
+        region_num_spec: int = None,
+        region_num_used: int = None,
+        sensitive_data_ip_num_spec: int = None,
+        sensitive_data_ip_num_used: int = None,
+    ):
+        self.ip_num_spec = ip_num_spec
+        self.ip_num_used = ip_num_used
+        self.is_ip_num_enough = is_ip_num_enough
+        self.is_region_num_enough = is_region_num_enough
+        self.is_suggest_update = is_suggest_update
+        self.region_num_spec = region_num_spec
+        self.region_num_used = region_num_used
+        self.sensitive_data_ip_num_spec = sensitive_data_ip_num_spec
+        self.sensitive_data_ip_num_used = sensitive_data_ip_num_used
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip_num_spec is not None:
+            result['IpNumSpec'] = self.ip_num_spec
+        if self.ip_num_used is not None:
+            result['IpNumUsed'] = self.ip_num_used
+        if self.is_ip_num_enough is not None:
+            result['IsIpNumEnough'] = self.is_ip_num_enough
+        if self.is_region_num_enough is not None:
+            result['IsRegionNumEnough'] = self.is_region_num_enough
+        if self.is_suggest_update is not None:
+            result['IsSuggestUpdate'] = self.is_suggest_update
+        if self.region_num_spec is not None:
+            result['RegionNumSpec'] = self.region_num_spec
+        if self.region_num_used is not None:
+            result['RegionNumUsed'] = self.region_num_used
+        if self.sensitive_data_ip_num_spec is not None:
+            result['SensitiveDataIpNumSpec'] = self.sensitive_data_ip_num_spec
+        if self.sensitive_data_ip_num_used is not None:
+            result['SensitiveDataIpNumUsed'] = self.sensitive_data_ip_num_used
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IpNumSpec') is not None:
+            self.ip_num_spec = m.get('IpNumSpec')
+        if m.get('IpNumUsed') is not None:
+            self.ip_num_used = m.get('IpNumUsed')
+        if m.get('IsIpNumEnough') is not None:
+            self.is_ip_num_enough = m.get('IsIpNumEnough')
+        if m.get('IsRegionNumEnough') is not None:
+            self.is_region_num_enough = m.get('IsRegionNumEnough')
+        if m.get('IsSuggestUpdate') is not None:
+            self.is_suggest_update = m.get('IsSuggestUpdate')
+        if m.get('RegionNumSpec') is not None:
+            self.region_num_spec = m.get('RegionNumSpec')
+        if m.get('RegionNumUsed') is not None:
+            self.region_num_used = m.get('RegionNumUsed')
+        if m.get('SensitiveDataIpNumSpec') is not None:
+            self.sensitive_data_ip_num_spec = m.get('SensitiveDataIpNumSpec')
+        if m.get('SensitiveDataIpNumUsed') is not None:
+            self.sensitive_data_ip_num_used = m.get('SensitiveDataIpNumUsed')
+        return self
+
+
+class DescribeAssetStatisticResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        resource_spec_statistic: DescribeAssetStatisticResponseBodyResourceSpecStatistic = None,
+    ):
+        self.request_id = request_id
+        self.resource_spec_statistic = resource_spec_statistic
+
+    def validate(self):
+        if self.resource_spec_statistic:
+            self.resource_spec_statistic.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_spec_statistic is not None:
+            result['ResourceSpecStatistic'] = self.resource_spec_statistic.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceSpecStatistic') is not None:
+            temp_model = DescribeAssetStatisticResponseBodyResourceSpecStatistic()
+            self.resource_spec_statistic = temp_model.from_map(m['ResourceSpecStatistic'])
+        return self
+
+
+class DescribeAssetStatisticResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAssetStatisticResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAssetStatisticResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10035,9 +10243,7 @@ class DescribeNatFirewallListRequest(TeaModel):
         self.page_no = page_no
         # The number of entries per page.
         # 
-        # Default value: 10. 
-        # 
-        #  Maximum value: 50.
+        # Default value: **10**.**** Maximum value: **50**.
         self.page_size = page_size
         # The ID of the NAT firewall.
         self.proxy_id = proxy_id
@@ -14901,6 +15107,7 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource(TeaMo
     def __init__(
         self,
         count: int = None,
+        ecr_list: List[str] = None,
         peer_tr_list: List[str] = None,
         vbr_list: List[str] = None,
         vpc_list: List[str] = None,
@@ -14908,6 +15115,7 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource(TeaMo
     ):
         # The number of protected resources.
         self.count = count
+        self.ecr_list = ecr_list
         # The protected peer transit routers.
         self.peer_tr_list = peer_tr_list
         # The protected virtual border routers (VBRs).
@@ -14928,6 +15136,8 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource(TeaMo
         result = dict()
         if self.count is not None:
             result['Count'] = self.count
+        if self.ecr_list is not None:
+            result['EcrList'] = self.ecr_list
         if self.peer_tr_list is not None:
             result['PeerTrList'] = self.peer_tr_list
         if self.vbr_list is not None:
@@ -14942,6 +15152,8 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource(TeaMo
         m = m or dict()
         if m.get('Count') is not None:
             self.count = m.get('Count')
+        if m.get('EcrList') is not None:
+            self.ecr_list = m.get('EcrList')
         if m.get('PeerTrList') is not None:
             self.peer_tr_list = m.get('PeerTrList')
         if m.get('VbrList') is not None:
@@ -14957,6 +15169,7 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource(Tea
     def __init__(
         self,
         count: int = None,
+        ecr_list: List[str] = None,
         peer_tr_list: List[str] = None,
         vbr_list: List[str] = None,
         vpc_list: List[str] = None,
@@ -14964,6 +15177,7 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource(Tea
     ):
         # The number of unprotected resources.
         self.count = count
+        self.ecr_list = ecr_list
         # The unprotected peer transit routers.
         self.peer_tr_list = peer_tr_list
         # The unprotected VBRs.
@@ -14984,6 +15198,8 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource(Tea
         result = dict()
         if self.count is not None:
             result['Count'] = self.count
+        if self.ecr_list is not None:
+            result['EcrList'] = self.ecr_list
         if self.peer_tr_list is not None:
             result['PeerTrList'] = self.peer_tr_list
         if self.vbr_list is not None:
@@ -14998,6 +15214,8 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource(Tea
         m = m or dict()
         if m.get('Count') is not None:
             self.count = m.get('Count')
+        if m.get('EcrList') is not None:
+            self.ecr_list = m.get('EcrList')
         if m.get('PeerTrList') is not None:
             self.peer_tr_list = m.get('PeerTrList')
         if m.get('VbrList') is not None:
@@ -15014,6 +15232,7 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls(TeaModel):
         self,
         cen_id: str = None,
         cen_name: str = None,
+        cloud_firewall_vpc_order_type: str = None,
         firewall_id: str = None,
         firewall_switch_status: str = None,
         ips_config: DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig = None,
@@ -15032,6 +15251,7 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls(TeaModel):
         self.cen_id = cen_id
         # The name of the CEN instance.
         self.cen_name = cen_name
+        self.cloud_firewall_vpc_order_type = cloud_firewall_vpc_order_type
         # The instance ID of the VPC firewall.
         self.firewall_id = firewall_id
         # The status of the VPC firewall. Valid values:
@@ -15100,6 +15320,8 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls(TeaModel):
             result['CenId'] = self.cen_id
         if self.cen_name is not None:
             result['CenName'] = self.cen_name
+        if self.cloud_firewall_vpc_order_type is not None:
+            result['CloudFirewallVpcOrderType'] = self.cloud_firewall_vpc_order_type
         if self.firewall_id is not None:
             result['FirewallId'] = self.firewall_id
         if self.firewall_switch_status is not None:
@@ -15134,6 +15356,8 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls(TeaModel):
             self.cen_id = m.get('CenId')
         if m.get('CenName') is not None:
             self.cen_name = m.get('CenName')
+        if m.get('CloudFirewallVpcOrderType') is not None:
+            self.cloud_firewall_vpc_order_type = m.get('CloudFirewallVpcOrderType')
         if m.get('FirewallId') is not None:
             self.firewall_id = m.get('FirewallId')
         if m.get('FirewallSwitchStatus') is not None:
