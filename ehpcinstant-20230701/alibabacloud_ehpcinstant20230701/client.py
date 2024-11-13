@@ -65,6 +65,8 @@ class Client(OpenApiClient):
             query['ContainerImageSpec'] = request.container_image_spec_shrink
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.image_type):
+            query['ImageType'] = request.image_type
         if not UtilClient.is_unset(request.image_version):
             query['ImageVersion'] = request.image_version
         if not UtilClient.is_unset(request.name):
@@ -114,6 +116,8 @@ class Client(OpenApiClient):
             query['ContainerImageSpec'] = request.container_image_spec_shrink
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.image_type):
+            query['ImageType'] = request.image_type
         if not UtilClient.is_unset(request.image_version):
             query['ImageVersion'] = request.image_version
         if not UtilClient.is_unset(request.name):
@@ -1297,6 +1301,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_jobs_with_options_async(request, runtime)
 
+    def list_tag_resources_with_options(
+        self,
+        request: ehpc_instant_20230701_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.ListTagResourcesResponse:
+        """
+        @summary 查询一个或多个资源已经绑定的标签列表
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_result):
+            query['MaxResult'] = request.max_result
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_resources_with_options_async(
+        self,
+        request: ehpc_instant_20230701_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.ListTagResourcesResponse:
+        """
+        @summary 查询一个或多个资源已经绑定的标签列表
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_result):
+            query['MaxResult'] = request.max_result
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_resources(
+        self,
+        request: ehpc_instant_20230701_models.ListTagResourcesRequest,
+    ) -> ehpc_instant_20230701_models.ListTagResourcesResponse:
+        """
+        @summary 查询一个或多个资源已经绑定的标签列表
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_tag_resources_with_options(request, runtime)
+
+    async def list_tag_resources_async(
+        self,
+        request: ehpc_instant_20230701_models.ListTagResourcesRequest,
+    ) -> ehpc_instant_20230701_models.ListTagResourcesResponse:
+        """
+        @summary 查询一个或多个资源已经绑定的标签列表
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tag_resources_with_options_async(request, runtime)
+
     def remove_image_with_options(
         self,
         request: ehpc_instant_20230701_models.RemoveImageRequest,
@@ -1313,6 +1429,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.image_type):
+            query['ImageType'] = request.image_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1348,6 +1466,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.image_type):
+            query['ImageType'] = request.image_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1392,3 +1512,215 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.remove_image_with_options_async(request, runtime)
+
+    def tag_resources_with_options(
+        self,
+        request: ehpc_instant_20230701_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.TagResourcesResponse:
+        """
+        @summary 为指定的资源列表统一创建并绑定标签
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_resources_with_options_async(
+        self,
+        request: ehpc_instant_20230701_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.TagResourcesResponse:
+        """
+        @summary 为指定的资源列表统一创建并绑定标签
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_resources(
+        self,
+        request: ehpc_instant_20230701_models.TagResourcesRequest,
+    ) -> ehpc_instant_20230701_models.TagResourcesResponse:
+        """
+        @summary 为指定的资源列表统一创建并绑定标签
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.tag_resources_with_options(request, runtime)
+
+    async def tag_resources_async(
+        self,
+        request: ehpc_instant_20230701_models.TagResourcesRequest,
+    ) -> ehpc_instant_20230701_models.TagResourcesResponse:
+        """
+        @summary 为指定的资源列表统一创建并绑定标签
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.tag_resources_with_options_async(request, runtime)
+
+    def un_tag_resources_with_options(
+        self,
+        request: ehpc_instant_20230701_models.UnTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.UnTagResourcesResponse:
+        """
+        @summary 为指定的ECS资源列表统一解绑标签
+        
+        @param request: UnTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnTagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnTagResources',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.UnTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def un_tag_resources_with_options_async(
+        self,
+        request: ehpc_instant_20230701_models.UnTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.UnTagResourcesResponse:
+        """
+        @summary 为指定的ECS资源列表统一解绑标签
+        
+        @param request: UnTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnTagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnTagResources',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.UnTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def un_tag_resources(
+        self,
+        request: ehpc_instant_20230701_models.UnTagResourcesRequest,
+    ) -> ehpc_instant_20230701_models.UnTagResourcesResponse:
+        """
+        @summary 为指定的ECS资源列表统一解绑标签
+        
+        @param request: UnTagResourcesRequest
+        @return: UnTagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.un_tag_resources_with_options(request, runtime)
+
+    async def un_tag_resources_async(
+        self,
+        request: ehpc_instant_20230701_models.UnTagResourcesRequest,
+    ) -> ehpc_instant_20230701_models.UnTagResourcesResponse:
+        """
+        @summary 为指定的ECS资源列表统一解绑标签
+        
+        @param request: UnTagResourcesRequest
+        @return: UnTagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.un_tag_resources_with_options_async(request, runtime)

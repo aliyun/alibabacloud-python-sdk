@@ -128,12 +128,14 @@ class AddImageRequest(TeaModel):
         self,
         container_image_spec: AddImageRequestContainerImageSpec = None,
         description: str = None,
+        image_type: str = None,
         image_version: str = None,
         name: str = None,
         vmimage_spec: AddImageRequestVMImageSpec = None,
     ):
         self.container_image_spec = container_image_spec
         self.description = description
+        self.image_type = image_type
         self.image_version = image_version
         # This parameter is required.
         self.name = name
@@ -155,6 +157,8 @@ class AddImageRequest(TeaModel):
             result['ContainerImageSpec'] = self.container_image_spec.to_map()
         if self.description is not None:
             result['Description'] = self.description
+        if self.image_type is not None:
+            result['ImageType'] = self.image_type
         if self.image_version is not None:
             result['ImageVersion'] = self.image_version
         if self.name is not None:
@@ -170,6 +174,8 @@ class AddImageRequest(TeaModel):
             self.container_image_spec = temp_model.from_map(m['ContainerImageSpec'])
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ImageType') is not None:
+            self.image_type = m.get('ImageType')
         if m.get('ImageVersion') is not None:
             self.image_version = m.get('ImageVersion')
         if m.get('Name') is not None:
@@ -185,12 +191,14 @@ class AddImageShrinkRequest(TeaModel):
         self,
         container_image_spec_shrink: str = None,
         description: str = None,
+        image_type: str = None,
         image_version: str = None,
         name: str = None,
         vmimage_spec_shrink: str = None,
     ):
         self.container_image_spec_shrink = container_image_spec_shrink
         self.description = description
+        self.image_type = image_type
         self.image_version = image_version
         # This parameter is required.
         self.name = name
@@ -209,6 +217,8 @@ class AddImageShrinkRequest(TeaModel):
             result['ContainerImageSpec'] = self.container_image_spec_shrink
         if self.description is not None:
             result['Description'] = self.description
+        if self.image_type is not None:
+            result['ImageType'] = self.image_type
         if self.image_version is not None:
             result['ImageVersion'] = self.image_version
         if self.name is not None:
@@ -223,6 +233,8 @@ class AddImageShrinkRequest(TeaModel):
             self.container_image_spec_shrink = m.get('ContainerImageSpec')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ImageType') is not None:
+            self.image_type = m.get('ImageType')
         if m.get('ImageVersion') is not None:
             self.image_version = m.get('ImageVersion')
         if m.get('Name') is not None:
@@ -315,8 +327,10 @@ class AddImageResponse(TeaModel):
 class CreateJobRequestDeploymentPolicyNetwork(TeaModel):
     def __init__(
         self,
+        enable_external_ip_address: bool = None,
         vswitch: List[str] = None,
     ):
+        self.enable_external_ip_address = enable_external_ip_address
         self.vswitch = vswitch
 
     def validate(self):
@@ -328,14 +342,52 @@ class CreateJobRequestDeploymentPolicyNetwork(TeaModel):
             return _map
 
         result = dict()
+        if self.enable_external_ip_address is not None:
+            result['EnableExternalIpAddress'] = self.enable_external_ip_address
         if self.vswitch is not None:
             result['Vswitch'] = self.vswitch
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EnableExternalIpAddress') is not None:
+            self.enable_external_ip_address = m.get('EnableExternalIpAddress')
         if m.get('Vswitch') is not None:
             self.vswitch = m.get('Vswitch')
+        return self
+
+
+class CreateJobRequestDeploymentPolicyTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # This parameter is required.
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -344,13 +396,19 @@ class CreateJobRequestDeploymentPolicy(TeaModel):
         self,
         allocation_spec: str = None,
         network: CreateJobRequestDeploymentPolicyNetwork = None,
+        tag: List[CreateJobRequestDeploymentPolicyTag] = None,
     ):
         self.allocation_spec = allocation_spec
         self.network = network
+        self.tag = tag
 
     def validate(self):
         if self.network:
             self.network.validate()
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -362,6 +420,10 @@ class CreateJobRequestDeploymentPolicy(TeaModel):
             result['AllocationSpec'] = self.allocation_spec
         if self.network is not None:
             result['Network'] = self.network.to_map()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -371,6 +433,11 @@ class CreateJobRequestDeploymentPolicy(TeaModel):
         if m.get('Network') is not None:
             temp_model = CreateJobRequestDeploymentPolicyNetwork()
             self.network = temp_model.from_map(m['Network'])
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateJobRequestDeploymentPolicyTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -2053,8 +2120,10 @@ class GetJobRequest(TeaModel):
 class GetJobResponseBodyJobInfoDeploymentPolicyNetwork(TeaModel):
     def __init__(
         self,
+        enable_external_ip_address: bool = None,
         vswitch: List[str] = None,
     ):
+        self.enable_external_ip_address = enable_external_ip_address
         self.vswitch = vswitch
 
     def validate(self):
@@ -2066,14 +2135,51 @@ class GetJobResponseBodyJobInfoDeploymentPolicyNetwork(TeaModel):
             return _map
 
         result = dict()
+        if self.enable_external_ip_address is not None:
+            result['EnableExternalIpAddress'] = self.enable_external_ip_address
         if self.vswitch is not None:
             result['Vswitch'] = self.vswitch
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EnableExternalIpAddress') is not None:
+            self.enable_external_ip_address = m.get('EnableExternalIpAddress')
         if m.get('Vswitch') is not None:
             self.vswitch = m.get('Vswitch')
+        return self
+
+
+class GetJobResponseBodyJobInfoDeploymentPolicyTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
         return self
 
 
@@ -2082,13 +2188,19 @@ class GetJobResponseBodyJobInfoDeploymentPolicy(TeaModel):
         self,
         allocation_spec: str = None,
         network: GetJobResponseBodyJobInfoDeploymentPolicyNetwork = None,
+        tags: List[GetJobResponseBodyJobInfoDeploymentPolicyTags] = None,
     ):
         self.allocation_spec = allocation_spec
         self.network = network
+        self.tags = tags
 
     def validate(self):
         if self.network:
             self.network.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2100,6 +2212,10 @@ class GetJobResponseBodyJobInfoDeploymentPolicy(TeaModel):
             result['AllocationSpec'] = self.allocation_spec
         if self.network is not None:
             result['Network'] = self.network.to_map()
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -2109,6 +2225,11 @@ class GetJobResponseBodyJobInfoDeploymentPolicy(TeaModel):
         if m.get('Network') is not None:
             temp_model = GetJobResponseBodyJobInfoDeploymentPolicyNetwork()
             self.network = temp_model.from_map(m['Network'])
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetJobResponseBodyJobInfoDeploymentPolicyTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -2674,12 +2795,14 @@ class ListExecutorsRequestFilter(TeaModel):
         executor_ids: List[str] = None,
         ip_addresses: List[str] = None,
         job_name: str = None,
+        status: List[str] = None,
         time_created_after: int = None,
         time_created_before: int = None,
     ):
         self.executor_ids = executor_ids
         self.ip_addresses = ip_addresses
         self.job_name = job_name
+        self.status = status
         self.time_created_after = time_created_after
         self.time_created_before = time_created_before
 
@@ -2698,6 +2821,8 @@ class ListExecutorsRequestFilter(TeaModel):
             result['IpAddresses'] = self.ip_addresses
         if self.job_name is not None:
             result['JobName'] = self.job_name
+        if self.status is not None:
+            result['Status'] = self.status
         if self.time_created_after is not None:
             result['TimeCreatedAfter'] = self.time_created_after
         if self.time_created_before is not None:
@@ -2712,6 +2837,8 @@ class ListExecutorsRequestFilter(TeaModel):
             self.ip_addresses = m.get('IpAddresses')
         if m.get('JobName') is not None:
             self.job_name = m.get('JobName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('TimeCreatedAfter') is not None:
             self.time_created_after = m.get('TimeCreatedAfter')
         if m.get('TimeCreatedBefore') is not None:
@@ -2799,6 +2926,119 @@ class ListExecutorsShrinkRequest(TeaModel):
         return self
 
 
+class ListExecutorsResponseBodyExecutorsResourceDisks(TeaModel):
+    def __init__(
+        self,
+        size: int = None,
+        type: str = None,
+    ):
+        self.size = size
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListExecutorsResponseBodyExecutorsResource(TeaModel):
+    def __init__(
+        self,
+        cores: float = None,
+        disks: List[ListExecutorsResponseBodyExecutorsResourceDisks] = None,
+        memory: float = None,
+    ):
+        self.cores = cores
+        self.disks = disks
+        self.memory = memory
+
+    def validate(self):
+        if self.disks:
+            for k in self.disks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cores is not None:
+            result['Cores'] = self.cores
+        result['Disks'] = []
+        if self.disks is not None:
+            for k in self.disks:
+                result['Disks'].append(k.to_map() if k else None)
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cores') is not None:
+            self.cores = m.get('Cores')
+        self.disks = []
+        if m.get('Disks') is not None:
+            for k in m.get('Disks'):
+                temp_model = ListExecutorsResponseBodyExecutorsResourceDisks()
+                self.disks.append(temp_model.from_map(k))
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        return self
+
+
+class ListExecutorsResponseBodyExecutorsTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
 class ListExecutorsResponseBodyExecutors(TeaModel):
     def __init__(
         self,
@@ -2806,30 +3046,49 @@ class ListExecutorsResponseBodyExecutors(TeaModel):
         create_time: str = None,
         end_time: str = None,
         executor_id: str = None,
+        external_ip_address: List[str] = None,
         host_name: List[str] = None,
         image: str = None,
         ip_address: List[str] = None,
         job_id: str = None,
         job_name: str = None,
+        resource: ListExecutorsResponseBodyExecutorsResource = None,
+        resource_type: str = None,
+        start_time: str = None,
         status: str = None,
         status_reason: str = None,
+        tags: List[ListExecutorsResponseBodyExecutorsTags] = None,
         task_name: str = None,
+        task_sustainable: bool = None,
+        vswitch_id: str = None,
     ):
         self.array_index = array_index
         self.create_time = create_time
         self.end_time = end_time
         self.executor_id = executor_id
+        self.external_ip_address = external_ip_address
         self.host_name = host_name
         self.image = image
         self.ip_address = ip_address
         self.job_id = job_id
         self.job_name = job_name
+        self.resource = resource
+        self.resource_type = resource_type
+        self.start_time = start_time
         self.status = status
         self.status_reason = status_reason
+        self.tags = tags
         self.task_name = task_name
+        self.task_sustainable = task_sustainable
+        self.vswitch_id = vswitch_id
 
     def validate(self):
-        pass
+        if self.resource:
+            self.resource.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2845,6 +3104,8 @@ class ListExecutorsResponseBodyExecutors(TeaModel):
             result['EndTime'] = self.end_time
         if self.executor_id is not None:
             result['ExecutorId'] = self.executor_id
+        if self.external_ip_address is not None:
+            result['ExternalIpAddress'] = self.external_ip_address
         if self.host_name is not None:
             result['HostName'] = self.host_name
         if self.image is not None:
@@ -2855,12 +3116,26 @@ class ListExecutorsResponseBodyExecutors(TeaModel):
             result['JobId'] = self.job_id
         if self.job_name is not None:
             result['JobName'] = self.job_name
+        if self.resource is not None:
+            result['Resource'] = self.resource.to_map()
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
         if self.status is not None:
             result['Status'] = self.status
         if self.status_reason is not None:
             result['StatusReason'] = self.status_reason
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.task_name is not None:
             result['TaskName'] = self.task_name
+        if self.task_sustainable is not None:
+            result['TaskSustainable'] = self.task_sustainable
+        if self.vswitch_id is not None:
+            result['VswitchId'] = self.vswitch_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2873,6 +3148,8 @@ class ListExecutorsResponseBodyExecutors(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('ExecutorId') is not None:
             self.executor_id = m.get('ExecutorId')
+        if m.get('ExternalIpAddress') is not None:
+            self.external_ip_address = m.get('ExternalIpAddress')
         if m.get('HostName') is not None:
             self.host_name = m.get('HostName')
         if m.get('Image') is not None:
@@ -2883,12 +3160,28 @@ class ListExecutorsResponseBodyExecutors(TeaModel):
             self.job_id = m.get('JobId')
         if m.get('JobName') is not None:
             self.job_name = m.get('JobName')
+        if m.get('Resource') is not None:
+            temp_model = ListExecutorsResponseBodyExecutorsResource()
+            self.resource = temp_model.from_map(m['Resource'])
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('StatusReason') is not None:
             self.status_reason = m.get('StatusReason')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListExecutorsResponseBodyExecutorsTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TaskName') is not None:
             self.task_name = m.get('TaskName')
+        if m.get('TaskSustainable') is not None:
+            self.task_sustainable = m.get('TaskSustainable')
+        if m.get('VswitchId') is not None:
+            self.vswitch_id = m.get('VswitchId')
         return self
 
 
@@ -3386,6 +3679,39 @@ class ListJobExecutorsResponseBodyExecutorStatus(TeaModel):
         return self
 
 
+class ListJobExecutorsResponseBodyExecutorsTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
 class ListJobExecutorsResponseBodyExecutors(TeaModel):
     def __init__(
         self,
@@ -3393,22 +3719,31 @@ class ListJobExecutorsResponseBodyExecutors(TeaModel):
         create_time: str = None,
         end_time: str = None,
         executor_id: str = None,
+        external_ip_address: List[str] = None,
         host_name: List[str] = None,
         ip_address: List[str] = None,
+        start_time: str = None,
         status: str = None,
         status_reason: str = None,
+        tags: List[ListJobExecutorsResponseBodyExecutorsTags] = None,
     ):
         self.array_index = array_index
         self.create_time = create_time
         self.end_time = end_time
         self.executor_id = executor_id
+        self.external_ip_address = external_ip_address
         self.host_name = host_name
         self.ip_address = ip_address
+        self.start_time = start_time
         self.status = status
         self.status_reason = status_reason
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3424,14 +3759,22 @@ class ListJobExecutorsResponseBodyExecutors(TeaModel):
             result['EndTime'] = self.end_time
         if self.executor_id is not None:
             result['ExecutorId'] = self.executor_id
+        if self.external_ip_address is not None:
+            result['ExternalIpAddress'] = self.external_ip_address
         if self.host_name is not None:
             result['HostName'] = self.host_name
         if self.ip_address is not None:
             result['IpAddress'] = self.ip_address
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
         if self.status is not None:
             result['Status'] = self.status
         if self.status_reason is not None:
             result['StatusReason'] = self.status_reason
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -3444,14 +3787,23 @@ class ListJobExecutorsResponseBodyExecutors(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('ExecutorId') is not None:
             self.executor_id = m.get('ExecutorId')
+        if m.get('ExternalIpAddress') is not None:
+            self.external_ip_address = m.get('ExternalIpAddress')
         if m.get('HostName') is not None:
             self.host_name = m.get('HostName')
         if m.get('IpAddress') is not None:
             self.ip_address = m.get('IpAddress')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('StatusReason') is not None:
             self.status_reason = m.get('StatusReason')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListJobExecutorsResponseBodyExecutorsTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -3755,6 +4107,39 @@ class ListJobsShrinkRequest(TeaModel):
         return self
 
 
+class ListJobsResponseBodyJobListTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
 class ListJobsResponseBodyJobList(TeaModel):
     def __init__(
         self,
@@ -3767,6 +4152,7 @@ class ListJobsResponseBodyJobList(TeaModel):
         owner_uid: str = None,
         start_time: str = None,
         status: str = None,
+        tags: List[ListJobsResponseBodyJobListTags] = None,
         task_count: int = None,
         task_sustainable: bool = None,
     ):
@@ -3779,11 +4165,15 @@ class ListJobsResponseBodyJobList(TeaModel):
         self.owner_uid = owner_uid
         self.start_time = start_time
         self.status = status
+        self.tags = tags
         self.task_count = task_count
         self.task_sustainable = task_sustainable
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3809,6 +4199,10 @@ class ListJobsResponseBodyJobList(TeaModel):
             result['StartTime'] = self.start_time
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.task_count is not None:
             result['TaskCount'] = self.task_count
         if self.task_sustainable is not None:
@@ -3835,6 +4229,11 @@ class ListJobsResponseBodyJobList(TeaModel):
             self.start_time = m.get('StartTime')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListJobsResponseBodyJobListTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TaskCount') is not None:
             self.task_count = m.get('TaskCount')
         if m.get('TaskSustainable') is not None:
@@ -3942,13 +4341,270 @@ class ListJobsResponse(TeaModel):
         return self
 
 
+class ListTagResourcesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListTagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        max_result: int = None,
+        next_token: str = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag: List[ListTagResourcesRequestTag] = None,
+    ):
+        self.max_result = max_result
+        self.next_token = next_token
+        self.resource_id = resource_id
+        # This parameter is required.
+        self.resource_type = resource_type
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_result is not None:
+            result['MaxResult'] = self.max_result
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResult') is not None:
+            self.max_result = m.get('MaxResult')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListTagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_type: str = None,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class ListTagResourcesResponseBodyTagResources(TeaModel):
+    def __init__(
+        self,
+        tag_resource: List[ListTagResourcesResponseBodyTagResourcesTagResource] = None,
+    ):
+        self.tag_resource = tag_resource
+
+    def validate(self):
+        if self.tag_resource:
+            for k in self.tag_resource:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['TagResource'] = []
+        if self.tag_resource is not None:
+            for k in self.tag_resource:
+                result['TagResource'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag_resource = []
+        if m.get('TagResource') is not None:
+            for k in m.get('TagResource'):
+                temp_model = ListTagResourcesResponseBodyTagResourcesTagResource()
+                self.tag_resource.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        request_id: str = None,
+        tag_resources: ListTagResourcesResponseBodyTagResources = None,
+    ):
+        self.next_token = next_token
+        self.request_id = request_id
+        self.tag_resources = tag_resources
+
+    def validate(self):
+        if self.tag_resources:
+            self.tag_resources.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.tag_resources is not None:
+            result['TagResources'] = self.tag_resources.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TagResources') is not None:
+            temp_model = ListTagResourcesResponseBodyTagResources()
+            self.tag_resources = temp_model.from_map(m['TagResources'])
+        return self
+
+
+class ListTagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RemoveImageRequest(TeaModel):
     def __init__(
         self,
         image_id: str = None,
+        image_type: str = None,
     ):
         # This parameter is required.
         self.image_id = image_id
+        self.image_type = image_type
 
     def validate(self):
         pass
@@ -3961,12 +4617,16 @@ class RemoveImageRequest(TeaModel):
         result = dict()
         if self.image_id is not None:
             result['ImageId'] = self.image_id
+        if self.image_type is not None:
+            result['ImageType'] = self.image_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
+        if m.get('ImageType') is not None:
+            self.image_type = m.get('ImageType')
         return self
 
 
@@ -4040,6 +4700,273 @@ class RemoveImageResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RemoveImageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TagResourcesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # This parameter is required.
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class TagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag: List[TagResourcesRequestTag] = None,
+    ):
+        # This parameter is required.
+        self.resource_id = resource_id
+        # This parameter is required.
+        self.resource_type = resource_type
+        # This parameter is required.
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = TagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class TagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class TagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UnTagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        all: bool = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag_key: List[str] = None,
+    ):
+        self.all = all
+        # This parameter is required.
+        self.resource_id = resource_id
+        # This parameter is required.
+        self.resource_type = resource_type
+        self.tag_key = tag_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all is not None:
+            result['All'] = self.all
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        return self
+
+
+class UnTagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UnTagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UnTagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UnTagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
