@@ -1357,6 +1357,132 @@ class Client(OpenApiClient):
         headers = airticket_open_20230117_models.ChangeDetailListOfOrderNumHeaders()
         return await self.change_detail_list_of_order_num_with_options_async(request, headers, runtime)
 
+    def collect_flight_lowest_price_with_options(
+        self,
+        tmp_req: airticket_open_20230117_models.CollectFlightLowestPriceRequest,
+        headers: airticket_open_20230117_models.CollectFlightLowestPriceHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> airticket_open_20230117_models.CollectFlightLowestPriceResponse:
+        """
+        @summary 数据收集-低价航班信息
+        
+        @param tmp_req: CollectFlightLowestPriceRequest
+        @param headers: CollectFlightLowestPriceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CollectFlightLowestPriceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = airticket_open_20230117_models.CollectFlightLowestPriceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.lowest_price_flight_list):
+            request.lowest_price_flight_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.lowest_price_flight_list, 'lowestPriceFlightList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.lowest_price_flight_list_shrink):
+            body['lowestPriceFlightList'] = request.lowest_price_flight_list_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_airticket_access_token):
+            real_headers['x-acs-airticket-access-token'] = UtilClient.to_jsonstring(headers.x_acs_airticket_access_token)
+        if not UtilClient.is_unset(headers.x_acs_airticket_language):
+            real_headers['x-acs-airticket-language'] = UtilClient.to_jsonstring(headers.x_acs_airticket_language)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CollectFlightLowestPrice',
+            version='2023-01-17',
+            protocol='HTTPS',
+            pathname=f'/airticket/v1/data-collect/flight-lowest-price',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airticket_open_20230117_models.CollectFlightLowestPriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def collect_flight_lowest_price_with_options_async(
+        self,
+        tmp_req: airticket_open_20230117_models.CollectFlightLowestPriceRequest,
+        headers: airticket_open_20230117_models.CollectFlightLowestPriceHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> airticket_open_20230117_models.CollectFlightLowestPriceResponse:
+        """
+        @summary 数据收集-低价航班信息
+        
+        @param tmp_req: CollectFlightLowestPriceRequest
+        @param headers: CollectFlightLowestPriceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CollectFlightLowestPriceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = airticket_open_20230117_models.CollectFlightLowestPriceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.lowest_price_flight_list):
+            request.lowest_price_flight_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.lowest_price_flight_list, 'lowestPriceFlightList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.lowest_price_flight_list_shrink):
+            body['lowestPriceFlightList'] = request.lowest_price_flight_list_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_airticket_access_token):
+            real_headers['x-acs-airticket-access-token'] = UtilClient.to_jsonstring(headers.x_acs_airticket_access_token)
+        if not UtilClient.is_unset(headers.x_acs_airticket_language):
+            real_headers['x-acs-airticket-language'] = UtilClient.to_jsonstring(headers.x_acs_airticket_language)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CollectFlightLowestPrice',
+            version='2023-01-17',
+            protocol='HTTPS',
+            pathname=f'/airticket/v1/data-collect/flight-lowest-price',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            airticket_open_20230117_models.CollectFlightLowestPriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def collect_flight_lowest_price(
+        self,
+        request: airticket_open_20230117_models.CollectFlightLowestPriceRequest,
+    ) -> airticket_open_20230117_models.CollectFlightLowestPriceResponse:
+        """
+        @summary 数据收集-低价航班信息
+        
+        @param request: CollectFlightLowestPriceRequest
+        @return: CollectFlightLowestPriceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = airticket_open_20230117_models.CollectFlightLowestPriceHeaders()
+        return self.collect_flight_lowest_price_with_options(request, headers, runtime)
+
+    async def collect_flight_lowest_price_async(
+        self,
+        request: airticket_open_20230117_models.CollectFlightLowestPriceRequest,
+    ) -> airticket_open_20230117_models.CollectFlightLowestPriceResponse:
+        """
+        @summary 数据收集-低价航班信息
+        
+        @param request: CollectFlightLowestPriceRequest
+        @return: CollectFlightLowestPriceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = airticket_open_20230117_models.CollectFlightLowestPriceHeaders()
+        return await self.collect_flight_lowest_price_with_options_async(request, headers, runtime)
+
     def enrich_with_options(
         self,
         tmp_req: airticket_open_20230117_models.EnrichRequest,
