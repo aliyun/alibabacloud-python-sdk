@@ -1483,6 +1483,8 @@ class MassPushRequestPushTask(TeaModel):
         android_inbox_body: str = None,
         android_message_huawei_category: str = None,
         android_message_huawei_urgency: str = None,
+        android_message_oppo_category: str = None,
+        android_message_oppo_notify_level: int = None,
         android_message_vivo_category: str = None,
         android_music: str = None,
         android_notification_bar_priority: int = None,
@@ -1574,6 +1576,8 @@ class MassPushRequestPushTask(TeaModel):
         self.android_inbox_body = android_inbox_body
         self.android_message_huawei_category = android_message_huawei_category
         self.android_message_huawei_urgency = android_message_huawei_urgency
+        self.android_message_oppo_category = android_message_oppo_category
+        self.android_message_oppo_notify_level = android_message_oppo_notify_level
         self.android_message_vivo_category = android_message_vivo_category
         self.android_music = android_music
         self.android_notification_bar_priority = android_notification_bar_priority
@@ -1694,6 +1698,10 @@ class MassPushRequestPushTask(TeaModel):
             result['AndroidMessageHuaweiCategory'] = self.android_message_huawei_category
         if self.android_message_huawei_urgency is not None:
             result['AndroidMessageHuaweiUrgency'] = self.android_message_huawei_urgency
+        if self.android_message_oppo_category is not None:
+            result['AndroidMessageOppoCategory'] = self.android_message_oppo_category
+        if self.android_message_oppo_notify_level is not None:
+            result['AndroidMessageOppoNotifyLevel'] = self.android_message_oppo_notify_level
         if self.android_message_vivo_category is not None:
             result['AndroidMessageVivoCategory'] = self.android_message_vivo_category
         if self.android_music is not None:
@@ -1878,6 +1886,10 @@ class MassPushRequestPushTask(TeaModel):
             self.android_message_huawei_category = m.get('AndroidMessageHuaweiCategory')
         if m.get('AndroidMessageHuaweiUrgency') is not None:
             self.android_message_huawei_urgency = m.get('AndroidMessageHuaweiUrgency')
+        if m.get('AndroidMessageOppoCategory') is not None:
+            self.android_message_oppo_category = m.get('AndroidMessageOppoCategory')
+        if m.get('AndroidMessageOppoNotifyLevel') is not None:
+            self.android_message_oppo_notify_level = m.get('AndroidMessageOppoNotifyLevel')
         if m.get('AndroidMessageVivoCategory') is not None:
             self.android_message_vivo_category = m.get('AndroidMessageVivoCategory')
         if m.get('AndroidMusic') is not None:
@@ -2195,6 +2207,8 @@ class PushRequest(TeaModel):
         android_inbox_body: str = None,
         android_message_huawei_category: str = None,
         android_message_huawei_urgency: str = None,
+        android_message_oppo_category: str = None,
+        android_message_oppo_notify_level: int = None,
         android_message_vivo_category: str = None,
         android_music: str = None,
         android_notification_bar_priority: int = None,
@@ -2292,6 +2306,8 @@ class PushRequest(TeaModel):
         self.android_inbox_body = android_inbox_body
         self.android_message_huawei_category = android_message_huawei_category
         self.android_message_huawei_urgency = android_message_huawei_urgency
+        self.android_message_oppo_category = android_message_oppo_category
+        self.android_message_oppo_notify_level = android_message_oppo_notify_level
         self.android_message_vivo_category = android_message_vivo_category
         self.android_music = android_music
         self.android_notification_bar_priority = android_notification_bar_priority
@@ -2419,6 +2435,10 @@ class PushRequest(TeaModel):
             result['AndroidMessageHuaweiCategory'] = self.android_message_huawei_category
         if self.android_message_huawei_urgency is not None:
             result['AndroidMessageHuaweiUrgency'] = self.android_message_huawei_urgency
+        if self.android_message_oppo_category is not None:
+            result['AndroidMessageOppoCategory'] = self.android_message_oppo_category
+        if self.android_message_oppo_notify_level is not None:
+            result['AndroidMessageOppoNotifyLevel'] = self.android_message_oppo_notify_level
         if self.android_message_vivo_category is not None:
             result['AndroidMessageVivoCategory'] = self.android_message_vivo_category
         if self.android_music is not None:
@@ -2615,6 +2635,10 @@ class PushRequest(TeaModel):
             self.android_message_huawei_category = m.get('AndroidMessageHuaweiCategory')
         if m.get('AndroidMessageHuaweiUrgency') is not None:
             self.android_message_huawei_urgency = m.get('AndroidMessageHuaweiUrgency')
+        if m.get('AndroidMessageOppoCategory') is not None:
+            self.android_message_oppo_category = m.get('AndroidMessageOppoCategory')
+        if m.get('AndroidMessageOppoNotifyLevel') is not None:
+            self.android_message_oppo_notify_level = m.get('AndroidMessageOppoNotifyLevel')
         if m.get('AndroidMessageVivoCategory') is not None:
             self.android_message_vivo_category = m.get('AndroidMessageVivoCategory')
         if m.get('AndroidMusic') is not None:

@@ -1351,6 +1351,10 @@ class Client(OpenApiClient):
             query['AndroidMessageHuaweiCategory'] = request.android_message_huawei_category
         if not UtilClient.is_unset(request.android_message_huawei_urgency):
             query['AndroidMessageHuaweiUrgency'] = request.android_message_huawei_urgency
+        if not UtilClient.is_unset(request.android_message_oppo_category):
+            query['AndroidMessageOppoCategory'] = request.android_message_oppo_category
+        if not UtilClient.is_unset(request.android_message_oppo_notify_level):
+            query['AndroidMessageOppoNotifyLevel'] = request.android_message_oppo_notify_level
         if not UtilClient.is_unset(request.android_message_vivo_category):
             query['AndroidMessageVivoCategory'] = request.android_message_vivo_category
         if not UtilClient.is_unset(request.android_music):
@@ -1576,6 +1580,10 @@ class Client(OpenApiClient):
             query['AndroidMessageHuaweiCategory'] = request.android_message_huawei_category
         if not UtilClient.is_unset(request.android_message_huawei_urgency):
             query['AndroidMessageHuaweiUrgency'] = request.android_message_huawei_urgency
+        if not UtilClient.is_unset(request.android_message_oppo_category):
+            query['AndroidMessageOppoCategory'] = request.android_message_oppo_category
+        if not UtilClient.is_unset(request.android_message_oppo_notify_level):
+            query['AndroidMessageOppoNotifyLevel'] = request.android_message_oppo_notify_level
         if not UtilClient.is_unset(request.android_message_vivo_category):
             query['AndroidMessageVivoCategory'] = request.android_message_vivo_category
         if not UtilClient.is_unset(request.android_music):

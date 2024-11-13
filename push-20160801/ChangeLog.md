@@ -1,3 +1,9 @@
+2024-11-13 Version: 1.0.15
+- Update API MassPush: update param PushTask.
+- Update API Push: add param AndroidMessageOppoCategory.
+- Update API Push: add param AndroidMessageOppoNotifyLevel.
+
+
 2024-10-24 Version: 1.0.14
 - Update API MassPush: update param PushTask.
 - Update API Push: add param AndroidNotificationThreadId.
