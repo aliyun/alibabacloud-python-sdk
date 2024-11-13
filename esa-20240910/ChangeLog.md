@@ -1,3 +1,14 @@
+2024-11-13 Version: 2.4.3
+- Update API BatchCreateRecords: update param RecordList.
+- Update API CreateScheduledPreloadExecutions: update param Executions.
+- Update API GetEdgeContainerAppVersion: update response param.
+- Update API ListEdgeContainerAppVersions: update response param.
+- Update API ListUserRatePlanInstances: update response param.
+- Update API ListWafManagedRules: add param ProtectionLevel.
+- Update API ListWafManagedRules: update param QueryArgs.
+- Update API ListWafTemplateRules: add param SiteId.
+
+
 2024-11-08 Version: 2.4.2
 - Generated python 2024-09-10 for ESA.
 

@@ -13767,6 +13767,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.protection_level):
+            query['ProtectionLevel'] = request.protection_level
         if not UtilClient.is_unset(request.query_args_shrink):
             query['QueryArgs'] = request.query_args_shrink
         if not UtilClient.is_unset(request.site_id):
@@ -13818,6 +13820,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.protection_level):
+            query['ProtectionLevel'] = request.protection_level
         if not UtilClient.is_unset(request.query_args_shrink):
             query['QueryArgs'] = request.query_args_shrink
         if not UtilClient.is_unset(request.site_id):
@@ -14237,6 +14241,8 @@ class Client(OpenApiClient):
             query['Phase'] = request.phase
         if not UtilClient.is_unset(request.query_args_shrink):
             query['QueryArgs'] = request.query_args_shrink
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -14278,6 +14284,8 @@ class Client(OpenApiClient):
             query['Phase'] = request.phase
         if not UtilClient.is_unset(request.query_args_shrink):
             query['QueryArgs'] = request.query_args_shrink
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -16398,230 +16406,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.stop_scheduled_preload_execution_with_options_async(request, runtime)
-
-    def transform_expression_to_match_with_options(
-        self,
-        request: esa20240910_models.TransformExpressionToMatchRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> esa20240910_models.TransformExpressionToMatchResponse:
-        """
-        @summary 将表达式转换为匹配项
-        
-        @param request: TransformExpressionToMatchRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: TransformExpressionToMatchResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.site_id):
-            query['SiteId'] = request.site_id
-        body = {}
-        if not UtilClient.is_unset(request.expression):
-            body['Expression'] = request.expression
-        if not UtilClient.is_unset(request.phase):
-            body['Phase'] = request.phase
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='TransformExpressionToMatch',
-            version='2024-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            esa20240910_models.TransformExpressionToMatchResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def transform_expression_to_match_with_options_async(
-        self,
-        request: esa20240910_models.TransformExpressionToMatchRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> esa20240910_models.TransformExpressionToMatchResponse:
-        """
-        @summary 将表达式转换为匹配项
-        
-        @param request: TransformExpressionToMatchRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: TransformExpressionToMatchResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.site_id):
-            query['SiteId'] = request.site_id
-        body = {}
-        if not UtilClient.is_unset(request.expression):
-            body['Expression'] = request.expression
-        if not UtilClient.is_unset(request.phase):
-            body['Phase'] = request.phase
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='TransformExpressionToMatch',
-            version='2024-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            esa20240910_models.TransformExpressionToMatchResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def transform_expression_to_match(
-        self,
-        request: esa20240910_models.TransformExpressionToMatchRequest,
-    ) -> esa20240910_models.TransformExpressionToMatchResponse:
-        """
-        @summary 将表达式转换为匹配项
-        
-        @param request: TransformExpressionToMatchRequest
-        @return: TransformExpressionToMatchResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.transform_expression_to_match_with_options(request, runtime)
-
-    async def transform_expression_to_match_async(
-        self,
-        request: esa20240910_models.TransformExpressionToMatchRequest,
-    ) -> esa20240910_models.TransformExpressionToMatchResponse:
-        """
-        @summary 将表达式转换为匹配项
-        
-        @param request: TransformExpressionToMatchRequest
-        @return: TransformExpressionToMatchResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.transform_expression_to_match_with_options_async(request, runtime)
-
-    def transform_match_to_expression_with_options(
-        self,
-        tmp_req: esa20240910_models.TransformMatchToExpressionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> esa20240910_models.TransformMatchToExpressionResponse:
-        """
-        @summary 将匹配项转换为表达式
-        
-        @param tmp_req: TransformMatchToExpressionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: TransformMatchToExpressionResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = esa20240910_models.TransformMatchToExpressionShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.match):
-            request.match_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.match, 'Match', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.site_id):
-            query['SiteId'] = request.site_id
-        body = {}
-        if not UtilClient.is_unset(request.match_shrink):
-            body['Match'] = request.match_shrink
-        if not UtilClient.is_unset(request.phase):
-            body['Phase'] = request.phase
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='TransformMatchToExpression',
-            version='2024-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            esa20240910_models.TransformMatchToExpressionResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def transform_match_to_expression_with_options_async(
-        self,
-        tmp_req: esa20240910_models.TransformMatchToExpressionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> esa20240910_models.TransformMatchToExpressionResponse:
-        """
-        @summary 将匹配项转换为表达式
-        
-        @param tmp_req: TransformMatchToExpressionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: TransformMatchToExpressionResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = esa20240910_models.TransformMatchToExpressionShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.match):
-            request.match_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.match, 'Match', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.site_id):
-            query['SiteId'] = request.site_id
-        body = {}
-        if not UtilClient.is_unset(request.match_shrink):
-            body['Match'] = request.match_shrink
-        if not UtilClient.is_unset(request.phase):
-            body['Phase'] = request.phase
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='TransformMatchToExpression',
-            version='2024-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            esa20240910_models.TransformMatchToExpressionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def transform_match_to_expression(
-        self,
-        request: esa20240910_models.TransformMatchToExpressionRequest,
-    ) -> esa20240910_models.TransformMatchToExpressionResponse:
-        """
-        @summary 将匹配项转换为表达式
-        
-        @param request: TransformMatchToExpressionRequest
-        @return: TransformMatchToExpressionResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.transform_match_to_expression_with_options(request, runtime)
-
-    async def transform_match_to_expression_async(
-        self,
-        request: esa20240910_models.TransformMatchToExpressionRequest,
-    ) -> esa20240910_models.TransformMatchToExpressionResponse:
-        """
-        @summary 将匹配项转换为表达式
-        
-        @param request: TransformMatchToExpressionRequest
-        @return: TransformMatchToExpressionResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.transform_match_to_expression_with_options_async(request, runtime)
 
     def untag_resources_with_options(
         self,

@@ -485,11 +485,13 @@ class WafQuotaString(TeaModel):
 class WafRuleConfigActionsBypass(TeaModel):
     def __init__(
         self,
+        custom_rules: List[int] = None,
         regular_rules: List[int] = None,
         regular_types: List[str] = None,
         skip: str = None,
         tags: List[str] = None,
     ):
+        self.custom_rules = custom_rules
         self.regular_rules = regular_rules
         self.regular_types = regular_types
         self.skip = skip
@@ -504,6 +506,8 @@ class WafRuleConfigActionsBypass(TeaModel):
             return _map
 
         result = dict()
+        if self.custom_rules is not None:
+            result['CustomRules'] = self.custom_rules
         if self.regular_rules is not None:
             result['RegularRules'] = self.regular_rules
         if self.regular_types is not None:
@@ -516,6 +520,8 @@ class WafRuleConfigActionsBypass(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CustomRules') is not None:
+            self.custom_rules = m.get('CustomRules')
         if m.get('RegularRules') is not None:
             self.regular_rules = m.get('RegularRules')
         if m.get('RegularTypes') is not None:
@@ -1894,6 +1900,57 @@ class ActivateClientCertificateResponse(TeaModel):
         return self
 
 
+class BatchCreateRecordsRequestRecordListAuthConf(TeaModel):
+    def __init__(
+        self,
+        access_key: str = None,
+        auth_type: str = None,
+        region: str = None,
+        secret_key: str = None,
+        version: str = None,
+    ):
+        self.access_key = access_key
+        self.auth_type = auth_type
+        self.region = region
+        self.secret_key = secret_key
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_key is not None:
+            result['AccessKey'] = self.access_key
+        if self.auth_type is not None:
+            result['AuthType'] = self.auth_type
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.secret_key is not None:
+            result['SecretKey'] = self.secret_key
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessKey') is not None:
+            self.access_key = m.get('AccessKey')
+        if m.get('AuthType') is not None:
+            self.auth_type = m.get('AuthType')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('SecretKey') is not None:
+            self.secret_key = m.get('SecretKey')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
 class BatchCreateRecordsRequestRecordListData(TeaModel):
     def __init__(
         self,
@@ -2002,6 +2059,7 @@ class BatchCreateRecordsRequestRecordListData(TeaModel):
 class BatchCreateRecordsRequestRecordList(TeaModel):
     def __init__(
         self,
+        auth_conf: BatchCreateRecordsRequestRecordListAuthConf = None,
         biz_name: str = None,
         data: BatchCreateRecordsRequestRecordListData = None,
         proxied: bool = None,
@@ -2010,6 +2068,7 @@ class BatchCreateRecordsRequestRecordList(TeaModel):
         ttl: int = None,
         type: str = None,
     ):
+        self.auth_conf = auth_conf
         self.biz_name = biz_name
         # This parameter is required.
         self.data = data
@@ -2024,6 +2083,8 @@ class BatchCreateRecordsRequestRecordList(TeaModel):
         self.type = type
 
     def validate(self):
+        if self.auth_conf:
+            self.auth_conf.validate()
         if self.data:
             self.data.validate()
 
@@ -2033,6 +2094,8 @@ class BatchCreateRecordsRequestRecordList(TeaModel):
             return _map
 
         result = dict()
+        if self.auth_conf is not None:
+            result['AuthConf'] = self.auth_conf.to_map()
         if self.biz_name is not None:
             result['BizName'] = self.biz_name
         if self.data is not None:
@@ -2051,6 +2114,9 @@ class BatchCreateRecordsRequestRecordList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthConf') is not None:
+            temp_model = BatchCreateRecordsRequestRecordListAuthConf()
+            self.auth_conf = temp_model.from_map(m['AuthConf'])
         if m.get('BizName') is not None:
             self.biz_name = m.get('BizName')
         if m.get('Data') is not None:
@@ -14952,7 +15018,6 @@ class GetEdgeContainerAppVersionResponseBodyVersionContainers(TeaModel):
         is_acrimage: bool = None,
         name: str = None,
         post_start: str = None,
-        pre_start: str = None,
         pre_stop: str = None,
         probe_content: GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent = None,
         probe_type: str = None,
@@ -14967,7 +15032,6 @@ class GetEdgeContainerAppVersionResponseBodyVersionContainers(TeaModel):
         self.is_acrimage = is_acrimage
         self.name = name
         self.post_start = post_start
-        self.pre_start = pre_start
         self.pre_stop = pre_stop
         self.probe_content = probe_content
         self.probe_type = probe_type
@@ -15002,8 +15066,6 @@ class GetEdgeContainerAppVersionResponseBodyVersionContainers(TeaModel):
             result['Name'] = self.name
         if self.post_start is not None:
             result['PostStart'] = self.post_start
-        if self.pre_start is not None:
-            result['PreStart'] = self.pre_start
         if self.pre_stop is not None:
             result['PreStop'] = self.pre_stop
         if self.probe_content is not None:
@@ -15035,8 +15097,6 @@ class GetEdgeContainerAppVersionResponseBodyVersionContainers(TeaModel):
             self.name = m.get('Name')
         if m.get('PostStart') is not None:
             self.post_start = m.get('PostStart')
-        if m.get('PreStart') is not None:
-            self.pre_start = m.get('PreStart')
         if m.get('PreStop') is not None:
             self.pre_stop = m.get('PreStop')
         if m.get('ProbeContent') is not None:
@@ -21377,7 +21437,6 @@ class ListEdgeContainerAppVersionsResponseBodyVersionsContainers(TeaModel):
         image: str = None,
         name: str = None,
         post_start: str = None,
-        pre_start: str = None,
         pre_stop: str = None,
         probe_content: ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent = None,
         probe_type: str = None,
@@ -21389,7 +21448,6 @@ class ListEdgeContainerAppVersionsResponseBodyVersionsContainers(TeaModel):
         self.image = image
         self.name = name
         self.post_start = post_start
-        self.pre_start = pre_start
         self.pre_stop = pre_stop
         self.probe_content = probe_content
         self.probe_type = probe_type
@@ -21417,8 +21475,6 @@ class ListEdgeContainerAppVersionsResponseBodyVersionsContainers(TeaModel):
             result['Name'] = self.name
         if self.post_start is not None:
             result['PostStart'] = self.post_start
-        if self.pre_start is not None:
-            result['PreStart'] = self.pre_start
         if self.pre_stop is not None:
             result['PreStop'] = self.pre_stop
         if self.probe_content is not None:
@@ -21443,8 +21499,6 @@ class ListEdgeContainerAppVersionsResponseBodyVersionsContainers(TeaModel):
             self.name = m.get('Name')
         if m.get('PostStart') is not None:
             self.post_start = m.get('PostStart')
-        if m.get('PreStart') is not None:
-            self.pre_start = m.get('PreStart')
         if m.get('PreStop') is not None:
             self.pre_stop = m.get('PreStop')
         if m.get('ProbeContent') is not None:
@@ -26525,27 +26579,51 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfo(TeaModel):
     def __init__(
         self,
         billing_mode: str = None,
+        bot_instance_level: str = None,
         coverages: str = None,
         create_time: str = None,
+        crossborder_traffic: str = None,
+        ddos_burstable_domestic_protection: str = None,
+        ddos_burstable_overseas_protection: str = None,
+        ddos_instance_level: str = None,
         duration: int = None,
+        edge_routine_rquest: str = None,
+        edge_waf_request: str = None,
         expire_time: str = None,
         instance_id: str = None,
+        layer_4traffic: str = None,
+        layer_4traffic_intl: str = None,
         plan_name: str = None,
+        plan_traffic: str = None,
         plan_type: str = None,
         site_quota: str = None,
         sites: List[ListUserRatePlanInstancesResponseBodyInstanceInfoSites] = None,
+        smart_routing_request: str = None,
+        static_request: str = None,
         status: str = None,
     ):
         self.billing_mode = billing_mode
+        self.bot_instance_level = bot_instance_level
         self.coverages = coverages
         self.create_time = create_time
+        self.crossborder_traffic = crossborder_traffic
+        self.ddos_burstable_domestic_protection = ddos_burstable_domestic_protection
+        self.ddos_burstable_overseas_protection = ddos_burstable_overseas_protection
+        self.ddos_instance_level = ddos_instance_level
         self.duration = duration
+        self.edge_routine_rquest = edge_routine_rquest
+        self.edge_waf_request = edge_waf_request
         self.expire_time = expire_time
         self.instance_id = instance_id
+        self.layer_4traffic = layer_4traffic
+        self.layer_4traffic_intl = layer_4traffic_intl
         self.plan_name = plan_name
+        self.plan_traffic = plan_traffic
         self.plan_type = plan_type
         self.site_quota = site_quota
         self.sites = sites
+        self.smart_routing_request = smart_routing_request
+        self.static_request = static_request
         self.status = status
 
     def validate(self):
@@ -26562,18 +26640,38 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfo(TeaModel):
         result = dict()
         if self.billing_mode is not None:
             result['BillingMode'] = self.billing_mode
+        if self.bot_instance_level is not None:
+            result['BotInstanceLevel'] = self.bot_instance_level
         if self.coverages is not None:
             result['Coverages'] = self.coverages
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.crossborder_traffic is not None:
+            result['CrossborderTraffic'] = self.crossborder_traffic
+        if self.ddos_burstable_domestic_protection is not None:
+            result['DdosBurstableDomesticProtection'] = self.ddos_burstable_domestic_protection
+        if self.ddos_burstable_overseas_protection is not None:
+            result['DdosBurstableOverseasProtection'] = self.ddos_burstable_overseas_protection
+        if self.ddos_instance_level is not None:
+            result['DdosInstanceLevel'] = self.ddos_instance_level
         if self.duration is not None:
             result['Duration'] = self.duration
+        if self.edge_routine_rquest is not None:
+            result['EdgeRoutineRquest'] = self.edge_routine_rquest
+        if self.edge_waf_request is not None:
+            result['EdgeWafRequest'] = self.edge_waf_request
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.layer_4traffic is not None:
+            result['Layer4Traffic'] = self.layer_4traffic
+        if self.layer_4traffic_intl is not None:
+            result['Layer4TrafficIntl'] = self.layer_4traffic_intl
         if self.plan_name is not None:
             result['PlanName'] = self.plan_name
+        if self.plan_traffic is not None:
+            result['PlanTraffic'] = self.plan_traffic
         if self.plan_type is not None:
             result['PlanType'] = self.plan_type
         if self.site_quota is not None:
@@ -26582,6 +26680,10 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfo(TeaModel):
         if self.sites is not None:
             for k in self.sites:
                 result['Sites'].append(k.to_map() if k else None)
+        if self.smart_routing_request is not None:
+            result['SmartRoutingRequest'] = self.smart_routing_request
+        if self.static_request is not None:
+            result['StaticRequest'] = self.static_request
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -26590,18 +26692,38 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfo(TeaModel):
         m = m or dict()
         if m.get('BillingMode') is not None:
             self.billing_mode = m.get('BillingMode')
+        if m.get('BotInstanceLevel') is not None:
+            self.bot_instance_level = m.get('BotInstanceLevel')
         if m.get('Coverages') is not None:
             self.coverages = m.get('Coverages')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('CrossborderTraffic') is not None:
+            self.crossborder_traffic = m.get('CrossborderTraffic')
+        if m.get('DdosBurstableDomesticProtection') is not None:
+            self.ddos_burstable_domestic_protection = m.get('DdosBurstableDomesticProtection')
+        if m.get('DdosBurstableOverseasProtection') is not None:
+            self.ddos_burstable_overseas_protection = m.get('DdosBurstableOverseasProtection')
+        if m.get('DdosInstanceLevel') is not None:
+            self.ddos_instance_level = m.get('DdosInstanceLevel')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
+        if m.get('EdgeRoutineRquest') is not None:
+            self.edge_routine_rquest = m.get('EdgeRoutineRquest')
+        if m.get('EdgeWafRequest') is not None:
+            self.edge_waf_request = m.get('EdgeWafRequest')
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Layer4Traffic') is not None:
+            self.layer_4traffic = m.get('Layer4Traffic')
+        if m.get('Layer4TrafficIntl') is not None:
+            self.layer_4traffic_intl = m.get('Layer4TrafficIntl')
         if m.get('PlanName') is not None:
             self.plan_name = m.get('PlanName')
+        if m.get('PlanTraffic') is not None:
+            self.plan_traffic = m.get('PlanTraffic')
         if m.get('PlanType') is not None:
             self.plan_type = m.get('PlanType')
         if m.get('SiteQuota') is not None:
@@ -26611,6 +26733,10 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfo(TeaModel):
             for k in m.get('Sites'):
                 temp_model = ListUserRatePlanInstancesResponseBodyInstanceInfoSites()
                 self.sites.append(temp_model.from_map(k))
+        if m.get('SmartRoutingRequest') is not None:
+            self.smart_routing_request = m.get('SmartRoutingRequest')
+        if m.get('StaticRequest') is not None:
+            self.static_request = m.get('StaticRequest')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -26728,13 +26854,11 @@ class ListWafManagedRulesRequestQueryArgs(TeaModel):
         self,
         action: str = None,
         id_name_like: str = None,
-        protection_level: int = None,
         protection_levels: List[int] = None,
         status: str = None,
     ):
         self.action = action
         self.id_name_like = id_name_like
-        self.protection_level = protection_level
         self.protection_levels = protection_levels
         self.status = status
 
@@ -26751,8 +26875,6 @@ class ListWafManagedRulesRequestQueryArgs(TeaModel):
             result['Action'] = self.action
         if self.id_name_like is not None:
             result['IdNameLike'] = self.id_name_like
-        if self.protection_level is not None:
-            result['ProtectionLevel'] = self.protection_level
         if self.protection_levels is not None:
             result['ProtectionLevels'] = self.protection_levels
         if self.status is not None:
@@ -26765,8 +26887,6 @@ class ListWafManagedRulesRequestQueryArgs(TeaModel):
             self.action = m.get('Action')
         if m.get('IdNameLike') is not None:
             self.id_name_like = m.get('IdNameLike')
-        if m.get('ProtectionLevel') is not None:
-            self.protection_level = m.get('ProtectionLevel')
         if m.get('ProtectionLevels') is not None:
             self.protection_levels = m.get('ProtectionLevels')
         if m.get('Status') is not None:
@@ -26782,6 +26902,7 @@ class ListWafManagedRulesRequest(TeaModel):
         language: str = None,
         page_number: int = None,
         page_size: int = None,
+        protection_level: int = None,
         query_args: ListWafManagedRulesRequestQueryArgs = None,
         site_id: int = None,
     ):
@@ -26792,6 +26913,7 @@ class ListWafManagedRulesRequest(TeaModel):
         self.language = language
         self.page_number = page_number
         self.page_size = page_size
+        self.protection_level = protection_level
         self.query_args = query_args
         # This parameter is required.
         self.site_id = site_id
@@ -26816,6 +26938,8 @@ class ListWafManagedRulesRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.protection_level is not None:
+            result['ProtectionLevel'] = self.protection_level
         if self.query_args is not None:
             result['QueryArgs'] = self.query_args.to_map()
         if self.site_id is not None:
@@ -26834,6 +26958,8 @@ class ListWafManagedRulesRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ProtectionLevel') is not None:
+            self.protection_level = m.get('ProtectionLevel')
         if m.get('QueryArgs') is not None:
             temp_model = ListWafManagedRulesRequestQueryArgs()
             self.query_args = temp_model.from_map(m['QueryArgs'])
@@ -26850,6 +26976,7 @@ class ListWafManagedRulesShrinkRequest(TeaModel):
         language: str = None,
         page_number: int = None,
         page_size: int = None,
+        protection_level: int = None,
         query_args_shrink: str = None,
         site_id: int = None,
     ):
@@ -26860,6 +26987,7 @@ class ListWafManagedRulesShrinkRequest(TeaModel):
         self.language = language
         self.page_number = page_number
         self.page_size = page_size
+        self.protection_level = protection_level
         self.query_args_shrink = query_args_shrink
         # This parameter is required.
         self.site_id = site_id
@@ -26883,6 +27011,8 @@ class ListWafManagedRulesShrinkRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.protection_level is not None:
+            result['ProtectionLevel'] = self.protection_level
         if self.query_args_shrink is not None:
             result['QueryArgs'] = self.query_args_shrink
         if self.site_id is not None:
@@ -26901,6 +27031,8 @@ class ListWafManagedRulesShrinkRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ProtectionLevel') is not None:
+            self.protection_level = m.get('ProtectionLevel')
         if m.get('QueryArgs') is not None:
             self.query_args_shrink = m.get('QueryArgs')
         if m.get('SiteId') is not None:
@@ -28057,9 +28189,11 @@ class ListWafTemplateRulesRequest(TeaModel):
         self,
         phase: str = None,
         query_args: ListWafTemplateRulesRequestQueryArgs = None,
+        site_id: int = None,
     ):
         self.phase = phase
         self.query_args = query_args
+        self.site_id = site_id
 
     def validate(self):
         if self.query_args:
@@ -28075,6 +28209,8 @@ class ListWafTemplateRulesRequest(TeaModel):
             result['Phase'] = self.phase
         if self.query_args is not None:
             result['QueryArgs'] = self.query_args.to_map()
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
         return result
 
     def from_map(self, m: dict = None):
@@ -28084,6 +28220,8 @@ class ListWafTemplateRulesRequest(TeaModel):
         if m.get('QueryArgs') is not None:
             temp_model = ListWafTemplateRulesRequestQueryArgs()
             self.query_args = temp_model.from_map(m['QueryArgs'])
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
         return self
 
 
@@ -28092,9 +28230,11 @@ class ListWafTemplateRulesShrinkRequest(TeaModel):
         self,
         phase: str = None,
         query_args_shrink: str = None,
+        site_id: int = None,
     ):
         self.phase = phase
         self.query_args_shrink = query_args_shrink
+        self.site_id = site_id
 
     def validate(self):
         pass
@@ -28109,6 +28249,8 @@ class ListWafTemplateRulesShrinkRequest(TeaModel):
             result['Phase'] = self.phase
         if self.query_args_shrink is not None:
             result['QueryArgs'] = self.query_args_shrink
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
         return result
 
     def from_map(self, m: dict = None):
@@ -28117,6 +28259,8 @@ class ListWafTemplateRulesShrinkRequest(TeaModel):
             self.phase = m.get('Phase')
         if m.get('QueryArgs') is not None:
             self.query_args_shrink = m.get('QueryArgs')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
         return self
 
 
@@ -31310,277 +31454,6 @@ class StopScheduledPreloadExecutionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StopScheduledPreloadExecutionResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class TransformExpressionToMatchRequest(TeaModel):
-    def __init__(
-        self,
-        expression: str = None,
-        phase: str = None,
-        site_id: int = None,
-    ):
-        self.expression = expression
-        self.phase = phase
-        self.site_id = site_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.expression is not None:
-            result['Expression'] = self.expression
-        if self.phase is not None:
-            result['Phase'] = self.phase
-        if self.site_id is not None:
-            result['SiteId'] = self.site_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Expression') is not None:
-            self.expression = m.get('Expression')
-        if m.get('Phase') is not None:
-            self.phase = m.get('Phase')
-        if m.get('SiteId') is not None:
-            self.site_id = m.get('SiteId')
-        return self
-
-
-class TransformExpressionToMatchResponseBody(TeaModel):
-    def __init__(
-        self,
-        match: WafRuleMatch = None,
-        request_id: str = None,
-    ):
-        self.match = match
-        # Id of the request
-        self.request_id = request_id
-
-    def validate(self):
-        if self.match:
-            self.match.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.match is not None:
-            result['Match'] = self.match.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Match') is not None:
-            temp_model = WafRuleMatch()
-            self.match = temp_model.from_map(m['Match'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class TransformExpressionToMatchResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: TransformExpressionToMatchResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = TransformExpressionToMatchResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class TransformMatchToExpressionRequest(TeaModel):
-    def __init__(
-        self,
-        match: WafRuleMatch = None,
-        phase: str = None,
-        site_id: int = None,
-    ):
-        self.match = match
-        self.phase = phase
-        self.site_id = site_id
-
-    def validate(self):
-        if self.match:
-            self.match.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.match is not None:
-            result['Match'] = self.match.to_map()
-        if self.phase is not None:
-            result['Phase'] = self.phase
-        if self.site_id is not None:
-            result['SiteId'] = self.site_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Match') is not None:
-            temp_model = WafRuleMatch()
-            self.match = temp_model.from_map(m['Match'])
-        if m.get('Phase') is not None:
-            self.phase = m.get('Phase')
-        if m.get('SiteId') is not None:
-            self.site_id = m.get('SiteId')
-        return self
-
-
-class TransformMatchToExpressionShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        match_shrink: str = None,
-        phase: str = None,
-        site_id: int = None,
-    ):
-        self.match_shrink = match_shrink
-        self.phase = phase
-        self.site_id = site_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.match_shrink is not None:
-            result['Match'] = self.match_shrink
-        if self.phase is not None:
-            result['Phase'] = self.phase
-        if self.site_id is not None:
-            result['SiteId'] = self.site_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Match') is not None:
-            self.match_shrink = m.get('Match')
-        if m.get('Phase') is not None:
-            self.phase = m.get('Phase')
-        if m.get('SiteId') is not None:
-            self.site_id = m.get('SiteId')
-        return self
-
-
-class TransformMatchToExpressionResponseBody(TeaModel):
-    def __init__(
-        self,
-        expression: str = None,
-        request_id: str = None,
-    ):
-        self.expression = expression
-        # Id of the request
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.expression is not None:
-            result['Expression'] = self.expression
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Expression') is not None:
-            self.expression = m.get('Expression')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class TransformMatchToExpressionResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: TransformMatchToExpressionResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = TransformMatchToExpressionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
