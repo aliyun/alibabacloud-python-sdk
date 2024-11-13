@@ -1,3 +1,12 @@
+2024-11-13 Version: 2.0.2
+- Update API CreatePolicyBindings: update param PolicyBindingList.
+- Update API CreatePolicyV2: update param Rules.
+- Update API DescribePoliciesV2: update response param.
+- Update API DescribePolicyBindings: update response param.
+- Update API UpdatePolicyBinding: update param AdvancedOptions.
+- Update API UpdatePolicyV2: update param Rules.
+
+
 2024-10-30 Version: 2.0.1
 - Update API DescribeVaults: update response param.
 

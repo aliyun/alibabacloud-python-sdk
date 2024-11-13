@@ -25,7 +25,6 @@ class Client(OpenApiClient):
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'ap-northeast-2-pop': 'hbr.aliyuncs.com',
-            'cn-beijing-finance-1': 'hbr.aliyuncs.com',
             'cn-beijing-finance-pop': 'hbr.aliyuncs.com',
             'cn-beijing-gov-1': 'hbr.aliyuncs.com',
             'cn-beijing-nu16-b01': 'hbr.aliyuncs.com',
@@ -49,7 +48,6 @@ class Client(OpenApiClient):
             'cn-shenzhen-st4-d01': 'hbr.aliyuncs.com',
             'cn-shenzhen-su18-b01': 'hbr.aliyuncs.com',
             'cn-wuhan': 'hbr.aliyuncs.com',
-            'cn-wulanchabu': 'hbr.aliyuncs.com',
             'cn-yushanfang': 'hbr.aliyuncs.com',
             'cn-zhangbei': 'hbr.aliyuncs.com',
             'cn-zhangbei-na61-b01': 'hbr.aliyuncs.com',
@@ -397,7 +395,7 @@ class Client(OpenApiClient):
         """
         @summary Changes the resource group to which an instance belongs.
         
-        @description    In Cloud Backup, you can use resource groups to manage resources such as backup vaults, backup clients, and SAP HANA instances.
+        @description    In the Cloud Backup console, you can use resource groups to manage resources such as backup vaults, Cloud Backup clients, and SAP HANA instances.
         A resource is a cloud service entity that you create on Alibaba Cloud, such as an Elastic Compute Service (ECS) instance, a backup vault, or an SAP HANA instance.
         You can sort resources owned by your Alibaba Cloud account into various resource groups. Resource groups facilitate resource management among multiple projects or applications within your Alibaba Cloud account and simplify permission management.
         
@@ -440,7 +438,7 @@ class Client(OpenApiClient):
         """
         @summary Changes the resource group to which an instance belongs.
         
-        @description    In Cloud Backup, you can use resource groups to manage resources such as backup vaults, backup clients, and SAP HANA instances.
+        @description    In the Cloud Backup console, you can use resource groups to manage resources such as backup vaults, Cloud Backup clients, and SAP HANA instances.
         A resource is a cloud service entity that you create on Alibaba Cloud, such as an Elastic Compute Service (ECS) instance, a backup vault, or an SAP HANA instance.
         You can sort resources owned by your Alibaba Cloud account into various resource groups. Resource groups facilitate resource management among multiple projects or applications within your Alibaba Cloud account and simplify permission management.
         
@@ -482,7 +480,7 @@ class Client(OpenApiClient):
         """
         @summary Changes the resource group to which an instance belongs.
         
-        @description    In Cloud Backup, you can use resource groups to manage resources such as backup vaults, backup clients, and SAP HANA instances.
+        @description    In the Cloud Backup console, you can use resource groups to manage resources such as backup vaults, Cloud Backup clients, and SAP HANA instances.
         A resource is a cloud service entity that you create on Alibaba Cloud, such as an Elastic Compute Service (ECS) instance, a backup vault, or an SAP HANA instance.
         You can sort resources owned by your Alibaba Cloud account into various resource groups. Resource groups facilitate resource management among multiple projects or applications within your Alibaba Cloud account and simplify permission management.
         
@@ -499,7 +497,7 @@ class Client(OpenApiClient):
         """
         @summary Changes the resource group to which an instance belongs.
         
-        @description    In Cloud Backup, you can use resource groups to manage resources such as backup vaults, backup clients, and SAP HANA instances.
+        @description    In the Cloud Backup console, you can use resource groups to manage resources such as backup vaults, Cloud Backup clients, and SAP HANA instances.
         A resource is a cloud service entity that you create on Alibaba Cloud, such as an Elastic Compute Service (ECS) instance, a backup vault, or an SAP HANA instance.
         You can sort resources owned by your Alibaba Cloud account into various resource groups. Resource groups facilitate resource management among multiple projects or applications within your Alibaba Cloud account and simplify permission management.
         
@@ -1045,7 +1043,7 @@ class Client(OpenApiClient):
         """
         @summary Installs one or more HBR clients on specified instances.
         
-        @description Before you call this operation, make sure that you fully understand the billing methods and pricing of Hybrid Backup Recovery (HBR). For more information, see [Billable items and billing methods](https://help.aliyun.com/document_detail/89062.html).
+        @description Before you call this operation, make sure that you fully understand the billing methods and pricing of Cloud Backup. For more information, see [Billing methods and billable items](https://help.aliyun.com/document_detail/89062.html).
         
         @param request: CreateClientsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1096,7 +1094,7 @@ class Client(OpenApiClient):
         """
         @summary Installs one or more HBR clients on specified instances.
         
-        @description Before you call this operation, make sure that you fully understand the billing methods and pricing of Hybrid Backup Recovery (HBR). For more information, see [Billable items and billing methods](https://help.aliyun.com/document_detail/89062.html).
+        @description Before you call this operation, make sure that you fully understand the billing methods and pricing of Cloud Backup. For more information, see [Billing methods and billable items](https://help.aliyun.com/document_detail/89062.html).
         
         @param request: CreateClientsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1146,7 +1144,7 @@ class Client(OpenApiClient):
         """
         @summary Installs one or more HBR clients on specified instances.
         
-        @description Before you call this operation, make sure that you fully understand the billing methods and pricing of Hybrid Backup Recovery (HBR). For more information, see [Billable items and billing methods](https://help.aliyun.com/document_detail/89062.html).
+        @description Before you call this operation, make sure that you fully understand the billing methods and pricing of Cloud Backup. For more information, see [Billing methods and billable items](https://help.aliyun.com/document_detail/89062.html).
         
         @param request: CreateClientsRequest
         @return: CreateClientsResponse
@@ -1161,7 +1159,7 @@ class Client(OpenApiClient):
         """
         @summary Installs one or more HBR clients on specified instances.
         
-        @description Before you call this operation, make sure that you fully understand the billing methods and pricing of Hybrid Backup Recovery (HBR). For more information, see [Billable items and billing methods](https://help.aliyun.com/document_detail/89062.html).
+        @description Before you call this operation, make sure that you fully understand the billing methods and pricing of Cloud Backup. For more information, see [Billing methods and billable items](https://help.aliyun.com/document_detail/89062.html).
         
         @param request: CreateClientsRequest
         @return: CreateClientsResponse
@@ -1321,7 +1319,7 @@ class Client(OpenApiClient):
         """
         @summary Registers an SAP HANA instance.
         
-        @description To register an SAP HANA instance, you must configure the connection parameters of the SAP HANA instance. After the SAP HANA instance is registered, Cloud Backup installs a Cloud Backup client on the Elastic Compute Service (ECS) instance that hosts the SAP HANA instance.
+        @description To register an SAP HANA instance, you must configure the SAP HANA connection information. After the SAP HANA instance is registered, Cloud Backup installs a backup client on the node of the SAP HANA instance.
         
         @param request: CreateHanaInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1386,7 +1384,7 @@ class Client(OpenApiClient):
         """
         @summary Registers an SAP HANA instance.
         
-        @description To register an SAP HANA instance, you must configure the connection parameters of the SAP HANA instance. After the SAP HANA instance is registered, Cloud Backup installs a Cloud Backup client on the Elastic Compute Service (ECS) instance that hosts the SAP HANA instance.
+        @description To register an SAP HANA instance, you must configure the SAP HANA connection information. After the SAP HANA instance is registered, Cloud Backup installs a backup client on the node of the SAP HANA instance.
         
         @param request: CreateHanaInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1450,7 +1448,7 @@ class Client(OpenApiClient):
         """
         @summary Registers an SAP HANA instance.
         
-        @description To register an SAP HANA instance, you must configure the connection parameters of the SAP HANA instance. After the SAP HANA instance is registered, Cloud Backup installs a Cloud Backup client on the Elastic Compute Service (ECS) instance that hosts the SAP HANA instance.
+        @description To register an SAP HANA instance, you must configure the SAP HANA connection information. After the SAP HANA instance is registered, Cloud Backup installs a backup client on the node of the SAP HANA instance.
         
         @param request: CreateHanaInstanceRequest
         @return: CreateHanaInstanceResponse
@@ -1465,7 +1463,7 @@ class Client(OpenApiClient):
         """
         @summary Registers an SAP HANA instance.
         
-        @description To register an SAP HANA instance, you must configure the connection parameters of the SAP HANA instance. After the SAP HANA instance is registered, Cloud Backup installs a Cloud Backup client on the Elastic Compute Service (ECS) instance that hosts the SAP HANA instance.
+        @description To register an SAP HANA instance, you must configure the SAP HANA connection information. After the SAP HANA instance is registered, Cloud Backup installs a backup client on the node of the SAP HANA instance.
         
         @param request: CreateHanaInstanceRequest
         @return: CreateHanaInstanceResponse
@@ -7706,7 +7704,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.OpenHbrServiceResponse:
         """
-        @summary Activates Hybrid Backup Recovery (HBR).
+        @summary Activates Cloud Backup.
         
         @param request: OpenHbrServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7734,7 +7732,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbr_20170908_models.OpenHbrServiceResponse:
         """
-        @summary Activates Hybrid Backup Recovery (HBR).
+        @summary Activates Cloud Backup.
         
         @param request: OpenHbrServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7759,7 +7757,7 @@ class Client(OpenApiClient):
 
     def open_hbr_service(self) -> hbr_20170908_models.OpenHbrServiceResponse:
         """
-        @summary Activates Hybrid Backup Recovery (HBR).
+        @summary Activates Cloud Backup.
         
         @return: OpenHbrServiceResponse
         """
@@ -7768,7 +7766,7 @@ class Client(OpenApiClient):
 
     async def open_hbr_service_async(self) -> hbr_20170908_models.OpenHbrServiceResponse:
         """
-        @summary Activates Hybrid Backup Recovery (HBR).
+        @summary Activates Cloud Backup.
         
         @return: OpenHbrServiceResponse
         """
