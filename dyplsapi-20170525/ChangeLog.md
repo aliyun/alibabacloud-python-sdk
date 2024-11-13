@@ -1,3 +1,16 @@
+2024-11-13 Version: 2.0.0
+- Update API BindAXBCall: update response param.
+- Update API BindXB: update response param.
+- Update API ConfigX: update response param.
+- Update API CreateSmsSign: update response param.
+- Update API GetXConfig: update response param.
+- Update API GetXDefaultConfig: update response param.
+- Update API ListXTelephones: update response param.
+- Update API QuerySoundRecord: update response param.
+- Update API UnBindAXB: update response param.
+- Update API UnBindXB: update response param.
+
+
 2024-11-04 Version: 1.1.0
 - Support API BindAXBCall.
 - Support API BindXB.

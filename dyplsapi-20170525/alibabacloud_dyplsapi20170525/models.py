@@ -434,24 +434,13 @@ class BindAXBCallRequest(TeaModel):
         return self
 
 
-class BindAXBCallResponseBody(TeaModel):
+class BindAXBCallResponseBodyData(TeaModel):
     def __init__(
         self,
-        access_denied_detail: str = None,
         bind_id: str = None,
-        code: str = None,
-        message: str = None,
-        success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # 绑定关系ID
         self.bind_id = bind_id
-        # 返回状态码 0000表示成功 其他表示失败
-        self.code = code
-        # 返回信息
-        self.message = message
-        # 返回是否成功 true  表示成功 false表示失败
-        self.success = success
 
     def validate(self):
         pass
@@ -462,12 +451,51 @@ class BindAXBCallResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.bind_id is not None:
             result['BindId'] = self.bind_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BindId') is not None:
+            self.bind_id = m.get('BindId')
+        return self
+
+
+class BindAXBCallResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: BindAXBCallResponseBodyData = None,
+        message: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        # 返回状态码 0000表示成功 其他表示失败
+        self.code = code
+        self.data = data
+        # 返回信息
+        self.message = message
+        # 返回是否成功 true  表示成功 false表示失败
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
         if self.message is not None:
             result['Message'] = self.message
         if self.success is not None:
@@ -478,10 +506,11 @@ class BindAXBCallResponseBody(TeaModel):
         m = m or dict()
         if m.get('AccessDeniedDetail') is not None:
             self.access_denied_detail = m.get('AccessDeniedDetail')
-        if m.get('BindId') is not None:
-            self.bind_id = m.get('BindId')
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = BindAXBCallResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('Success') is not None:
@@ -2328,26 +2357,15 @@ class BindXBRequest(TeaModel):
         return self
 
 
-class BindXBResponseBody(TeaModel):
+class BindXBResponseBodyData(TeaModel):
     def __init__(
         self,
-        access_denied_detail: str = None,
         auth_id: str = None,
-        code: str = None,
-        message: str = None,
-        success: bool = None,
         tel_x: str = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # 工作号关系绑定的唯一标识
         self.auth_id = auth_id
-        # 返回状态码 0000表示成功 其他表示失败
-        self.code = code
-        # 返回信息
-        self.message = message
-        # 返回是否成功 true  表示成功 false表示失败
-        self.success = success
-        # 工作号号码
+        # X号码
         self.tel_x = tel_x
 
     def validate(self):
@@ -2359,34 +2377,74 @@ class BindXBResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.auth_id is not None:
             result['AuthId'] = self.auth_id
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.success is not None:
-            result['Success'] = self.success
         if self.tel_x is not None:
             result['TelX'] = self.tel_x
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('AuthId') is not None:
             self.auth_id = m.get('AuthId')
+        if m.get('TelX') is not None:
+            self.tel_x = m.get('TelX')
+        return self
+
+
+class BindXBResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: BindXBResponseBodyData = None,
+        message: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        # 返回状态码 0000表示成功 其他表示失败
+        self.code = code
+        self.data = data
+        # 返回信息
+        self.message = message
+        # 返回是否成功 true  表示成功 false表示失败
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = BindXBResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('Success') is not None:
             self.success = m.get('Success')
-        if m.get('TelX') is not None:
-            self.tel_x = m.get('TelX')
         return self
 
 
@@ -3129,15 +3187,13 @@ class ConfigXShrinkRequest(TeaModel):
         return self
 
 
-class ConfigXResponseBody(TeaModel):
+class ConfigXResponseBodyData(TeaModel):
     def __init__(
         self,
-        access_denied_detail: str = None,
         code: str = None,
         message: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # 返回状态码 0000表示成功 其他表示失败
         self.code = code
         # 返回信息
@@ -3154,8 +3210,6 @@ class ConfigXResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -3166,12 +3220,69 @@ class ConfigXResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ConfigXResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: ConfigXResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ConfigXResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('Success') is not None:
             self.success = m.get('Success')
         return self
@@ -4835,24 +4946,13 @@ class CreateSmsSignRequest(TeaModel):
         return self
 
 
-class CreateSmsSignResponseBody(TeaModel):
+class CreateSmsSignResponseBodyData(TeaModel):
     def __init__(
         self,
-        access_denied_detail: str = None,
         called_no_sign: str = None,
-        code: str = None,
-        message: str = None,
-        success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # 短信接收者号码签名串(加到短信内容中供解析真实被叫号码)
         self.called_no_sign = called_no_sign
-        # 返回状态码 0000表示成功 其他表示失败
-        self.code = code
-        # 返回信息
-        self.message = message
-        # 返回是否成功 true  表示成功 false表示失败
-        self.success = success
 
     def validate(self):
         pass
@@ -4863,12 +4963,51 @@ class CreateSmsSignResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.called_no_sign is not None:
             result['CalledNoSign'] = self.called_no_sign
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CalledNoSign') is not None:
+            self.called_no_sign = m.get('CalledNoSign')
+        return self
+
+
+class CreateSmsSignResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: CreateSmsSignResponseBodyData = None,
+        message: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        # 返回状态码 0000表示成功 其他表示失败
+        self.code = code
+        self.data = data
+        # 返回信息
+        self.message = message
+        # 返回是否成功 true  表示成功 false表示失败
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
         if self.message is not None:
             result['Message'] = self.message
         if self.success is not None:
@@ -4879,10 +5018,11 @@ class CreateSmsSignResponseBody(TeaModel):
         m = m or dict()
         if m.get('AccessDeniedDetail') is not None:
             self.access_denied_detail = m.get('AccessDeniedDetail')
-        if m.get('CalledNoSign') is not None:
-            self.called_no_sign = m.get('CalledNoSign')
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreateSmsSignResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('Success') is not None:
@@ -5812,7 +5952,77 @@ class GetXConfigRequest(TeaModel):
         return self
 
 
-class GetXConfigResponseBodySequenceCalls(TeaModel):
+class GetXConfigResponseBodyDataReachJsons(TeaModel):
+    def __init__(
+        self,
+        call_dir: str = None,
+        call_status: str = None,
+        receive_dir: str = None,
+        rule_id: str = None,
+        rule_name: str = None,
+        rule_type: str = None,
+        temp_id: str = None,
+    ):
+        # 呼叫方向 1:员工B呼叫客户A 2:客户A呼叫员工B
+        self.call_dir = call_dir
+        # 通话状态 1:通话振铃 2:接通前 3:接通后 4:通话结束 5:已接通6:未接通
+        self.call_status = call_status
+        # 接收方向 1:主叫 2:被叫
+        self.receive_dir = receive_dir
+        # 规则ID
+        self.rule_id = rule_id
+        # 规则名称
+        self.rule_name = rule_name
+        # 规则类型： 1：企业名片-短信 2：企业名片-闪信 3：企业名片-视频 4：企业名片-音频
+        self.rule_type = rule_type
+        # 模板ID
+        self.temp_id = temp_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.call_dir is not None:
+            result['CallDir'] = self.call_dir
+        if self.call_status is not None:
+            result['CallStatus'] = self.call_status
+        if self.receive_dir is not None:
+            result['ReceiveDir'] = self.receive_dir
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.rule_type is not None:
+            result['RuleType'] = self.rule_type
+        if self.temp_id is not None:
+            result['TempId'] = self.temp_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallDir') is not None:
+            self.call_dir = m.get('CallDir')
+        if m.get('CallStatus') is not None:
+            self.call_status = m.get('CallStatus')
+        if m.get('ReceiveDir') is not None:
+            self.receive_dir = m.get('ReceiveDir')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('RuleType') is not None:
+            self.rule_type = m.get('RuleType')
+        if m.get('TempId') is not None:
+            self.temp_id = m.get('TempId')
+        return self
+
+
+class GetXConfigResponseBodyDataSequenceCalls(TeaModel):
     def __init__(
         self,
         sequence_call_no_play_code: str = None,
@@ -5854,44 +6064,40 @@ class GetXConfigResponseBodySequenceCalls(TeaModel):
         return self
 
 
-class GetXConfigResponseBody(TeaModel):
+class GetXConfigResponseBodyData(TeaModel):
     def __init__(
         self,
-        access_denied_detail: str = None,
         call_ability: str = None,
-        code: str = None,
         gnflag: str = None,
-        message: str = None,
-        sequence_calls: List[GetXConfigResponseBodySequenceCalls] = None,
-        sequence_mode: str = None,
+        reach_jsons: List[GetXConfigResponseBodyDataReachJsons] = None,
+        sequence_calls: List[GetXConfigResponseBodyDataSequenceCalls] = None,
+        sequence_end_time: str = None,
+        sequence_start_time: str = None,
         sms_ability: str = None,
         sms_sign_mode: str = None,
-        success: bool = None,
-        tel_x: str = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # 开/关呼叫能力状态： ‘0’：禁用； ‘1’：开启；
         self.call_ability = call_ability
-        # 返回状态码 0000表示成功 其他表示失败
-        self.code = code
         # 是否透传来显为真实主叫： 00-非透传：互相拨打时都显示工作号; 10-透传：A客户为主叫时,B员工的来显为客户A号码;B员工为主叫时,A客户的来显为工作号; 默认为 00
         self.gnflag = gnflag
-        # 返回信息
-        self.message = message
+        # 企业名片规则控制参数
+        self.reach_jsons = reach_jsons
         # 顺振控制参数
         self.sequence_calls = sequence_calls
-        # 顺振模式： 0-不顺振（默认） 1-有条件顺振，先接续calledNo指定被叫，如果该被叫未能接通，再顺振sequenceCalls号码列表 2-无条件顺振，不接续calledNo指定被叫，直接顺振sequenceCalls号码列表
-        self.sequence_mode = sequence_mode
-        # 开/关短信功能状态： ‘0’：禁用；‘1’：开启；
+        # 顺振结束时间 格式：HH:mm:ss 18:00:00
+        self.sequence_end_time = sequence_end_time
+        # 顺振开启时间 格式：HH:mm:ss 09:00:00
+        self.sequence_start_time = sequence_start_time
+        # 开/关短信功能状态： ‘0’：禁用； ‘1’：开启；
         self.sms_ability = sms_ability
-        # 是否透传来显为真实用户 0：不透传; 1：透传 默认：0不透传
+        # 是否透传来显为真实主叫： 00-非透传：互相拨打时都显示工作号; 10-透传：A客户为主叫时,B员工的来显为客户A号码;B员工为主叫时,A客户的来显为工作号; 默认为 00
         self.sms_sign_mode = sms_sign_mode
-        # 返回是否成功 true  表示成功 false表示失败
-        self.success = success
-        # X号码
-        self.tel_x = tel_x
 
     def validate(self):
+        if self.reach_jsons:
+            for k in self.reach_jsons:
+                if k:
+                    k.validate()
         if self.sequence_calls:
             for k in self.sequence_calls:
                 if k:
@@ -5903,59 +6109,108 @@ class GetXConfigResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.call_ability is not None:
             result['CallAbility'] = self.call_ability
-        if self.code is not None:
-            result['Code'] = self.code
         if self.gnflag is not None:
             result['GNFlag'] = self.gnflag
-        if self.message is not None:
-            result['Message'] = self.message
+        result['ReachJsons'] = []
+        if self.reach_jsons is not None:
+            for k in self.reach_jsons:
+                result['ReachJsons'].append(k.to_map() if k else None)
         result['SequenceCalls'] = []
         if self.sequence_calls is not None:
             for k in self.sequence_calls:
                 result['SequenceCalls'].append(k.to_map() if k else None)
-        if self.sequence_mode is not None:
-            result['SequenceMode'] = self.sequence_mode
+        if self.sequence_end_time is not None:
+            result['SequenceEndTime'] = self.sequence_end_time
+        if self.sequence_start_time is not None:
+            result['SequenceStartTime'] = self.sequence_start_time
         if self.sms_ability is not None:
             result['SmsAbility'] = self.sms_ability
         if self.sms_sign_mode is not None:
             result['SmsSignMode'] = self.sms_sign_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallAbility') is not None:
+            self.call_ability = m.get('CallAbility')
+        if m.get('GNFlag') is not None:
+            self.gnflag = m.get('GNFlag')
+        self.reach_jsons = []
+        if m.get('ReachJsons') is not None:
+            for k in m.get('ReachJsons'):
+                temp_model = GetXConfigResponseBodyDataReachJsons()
+                self.reach_jsons.append(temp_model.from_map(k))
+        self.sequence_calls = []
+        if m.get('SequenceCalls') is not None:
+            for k in m.get('SequenceCalls'):
+                temp_model = GetXConfigResponseBodyDataSequenceCalls()
+                self.sequence_calls.append(temp_model.from_map(k))
+        if m.get('SequenceEndTime') is not None:
+            self.sequence_end_time = m.get('SequenceEndTime')
+        if m.get('SequenceStartTime') is not None:
+            self.sequence_start_time = m.get('SequenceStartTime')
+        if m.get('SmsAbility') is not None:
+            self.sms_ability = m.get('SmsAbility')
+        if m.get('SmsSignMode') is not None:
+            self.sms_sign_mode = m.get('SmsSignMode')
+        return self
+
+
+class GetXConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: GetXConfigResponseBodyData = None,
+        message: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        # 返回状态码 0000表示成功 其他表示失败
+        self.code = code
+        self.data = data
+        # 返回信息
+        self.message = message
+        # 返回是否成功 true  表示成功 false表示失败
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.success is not None:
             result['Success'] = self.success
-        if self.tel_x is not None:
-            result['TelX'] = self.tel_x
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AccessDeniedDetail') is not None:
             self.access_denied_detail = m.get('AccessDeniedDetail')
-        if m.get('CallAbility') is not None:
-            self.call_ability = m.get('CallAbility')
         if m.get('Code') is not None:
             self.code = m.get('Code')
-        if m.get('GNFlag') is not None:
-            self.gnflag = m.get('GNFlag')
+        if m.get('Data') is not None:
+            temp_model = GetXConfigResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
-        self.sequence_calls = []
-        if m.get('SequenceCalls') is not None:
-            for k in m.get('SequenceCalls'):
-                temp_model = GetXConfigResponseBodySequenceCalls()
-                self.sequence_calls.append(temp_model.from_map(k))
-        if m.get('SequenceMode') is not None:
-            self.sequence_mode = m.get('SequenceMode')
-        if m.get('SmsAbility') is not None:
-            self.sms_ability = m.get('SmsAbility')
-        if m.get('SmsSignMode') is not None:
-            self.sms_sign_mode = m.get('SmsSignMode')
         if m.get('Success') is not None:
             self.success = m.get('Success')
-        if m.get('TelX') is not None:
-            self.tel_x = m.get('TelX')
         return self
 
 
@@ -6073,7 +6328,7 @@ class GetXDefaultConfigRequest(TeaModel):
         return self
 
 
-class GetXDefaultConfigResponseBodyReachJson(TeaModel):
+class GetXDefaultConfigResponseBodyDataReachJson(TeaModel):
     def __init__(
         self,
         call_dir: str = None,
@@ -6143,7 +6398,7 @@ class GetXDefaultConfigResponseBodyReachJson(TeaModel):
         return self
 
 
-class GetXDefaultConfigResponseBodySequenceCalls(TeaModel):
+class GetXDefaultConfigResponseBodyDataSequenceCall(TeaModel):
     def __init__(
         self,
         sequence_call_no_play_code: str = None,
@@ -6185,53 +6440,42 @@ class GetXDefaultConfigResponseBodySequenceCalls(TeaModel):
         return self
 
 
-class GetXDefaultConfigResponseBody(TeaModel):
+class GetXDefaultConfigResponseBodyData(TeaModel):
     def __init__(
         self,
-        access_denied_detail: str = None,
         call_ability: str = None,
-        code: str = None,
         gnflag: str = None,
-        message: str = None,
-        reach_json: List[GetXDefaultConfigResponseBodyReachJson] = None,
-        sequence_calls: List[GetXDefaultConfigResponseBodySequenceCalls] = None,
+        reach_json: List[GetXDefaultConfigResponseBodyDataReachJson] = None,
+        sequence_call: List[GetXDefaultConfigResponseBodyDataSequenceCall] = None,
         sequence_end_time: str = None,
         sequence_start_time: str = None,
         sms_ability: str = None,
         sms_sign_mode: str = None,
-        success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # 开/关呼叫能力状态： ‘0’：禁用； ‘1’：开启；
         self.call_ability = call_ability
-        # 返回状态码 0000表示成功 其他表示失败
-        self.code = code
         # 是否透传来显为真实主叫： 00-非透传：互相拨打时都显示工作号; 10-透传：A客户为主叫时,B员工的来显为客户A号码;B员工为主叫时,A客户的来显为工作号; 默认为 00
         self.gnflag = gnflag
-        # 返回信息
-        self.message = message
         # 企业名片规则控制参数
         self.reach_json = reach_json
         # 顺振控制参数
-        self.sequence_calls = sequence_calls
+        self.sequence_call = sequence_call
         # 顺振结束时间 格式：HH:mm:ss 18:00:00
         self.sequence_end_time = sequence_end_time
         # 顺振开启时间 格式：HH:mm:ss 09:00:00
         self.sequence_start_time = sequence_start_time
         # 开/关短信功能状态： ‘0’：禁用； ‘1’：开启；
         self.sms_ability = sms_ability
-        # 是否透传来显为真实用户 0：不透传; 1：透传 默认：0不透传
+        # 是否透传来显为真实主叫： 00-非透传：互相拨打时都显示工作号; 10-透传：A客户为主叫时,B员工的来显为客户A号码;B员工为主叫时,A客户的来显为工作号; 默认为 00
         self.sms_sign_mode = sms_sign_mode
-        # 返回是否成功 true  表示成功 false表示失败
-        self.success = success
 
     def validate(self):
         if self.reach_json:
             for k in self.reach_json:
                 if k:
                     k.validate()
-        if self.sequence_calls:
-            for k in self.sequence_calls:
+        if self.sequence_call:
+            for k in self.sequence_call:
                 if k:
                     k.validate()
 
@@ -6241,24 +6485,18 @@ class GetXDefaultConfigResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.call_ability is not None:
             result['CallAbility'] = self.call_ability
-        if self.code is not None:
-            result['Code'] = self.code
         if self.gnflag is not None:
             result['GNFlag'] = self.gnflag
-        if self.message is not None:
-            result['Message'] = self.message
         result['ReachJson'] = []
         if self.reach_json is not None:
             for k in self.reach_json:
                 result['ReachJson'].append(k.to_map() if k else None)
-        result['SequenceCalls'] = []
-        if self.sequence_calls is not None:
-            for k in self.sequence_calls:
-                result['SequenceCalls'].append(k.to_map() if k else None)
+        result['SequenceCall'] = []
+        if self.sequence_call is not None:
+            for k in self.sequence_call:
+                result['SequenceCall'].append(k.to_map() if k else None)
         if self.sequence_end_time is not None:
             result['SequenceEndTime'] = self.sequence_end_time
         if self.sequence_start_time is not None:
@@ -6267,32 +6505,24 @@ class GetXDefaultConfigResponseBody(TeaModel):
             result['SmsAbility'] = self.sms_ability
         if self.sms_sign_mode is not None:
             result['SmsSignMode'] = self.sms_sign_mode
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('CallAbility') is not None:
             self.call_ability = m.get('CallAbility')
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         if m.get('GNFlag') is not None:
             self.gnflag = m.get('GNFlag')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         self.reach_json = []
         if m.get('ReachJson') is not None:
             for k in m.get('ReachJson'):
-                temp_model = GetXDefaultConfigResponseBodyReachJson()
+                temp_model = GetXDefaultConfigResponseBodyDataReachJson()
                 self.reach_json.append(temp_model.from_map(k))
-        self.sequence_calls = []
-        if m.get('SequenceCalls') is not None:
-            for k in m.get('SequenceCalls'):
-                temp_model = GetXDefaultConfigResponseBodySequenceCalls()
-                self.sequence_calls.append(temp_model.from_map(k))
+        self.sequence_call = []
+        if m.get('SequenceCall') is not None:
+            for k in m.get('SequenceCall'):
+                temp_model = GetXDefaultConfigResponseBodyDataSequenceCall()
+                self.sequence_call.append(temp_model.from_map(k))
         if m.get('SequenceEndTime') is not None:
             self.sequence_end_time = m.get('SequenceEndTime')
         if m.get('SequenceStartTime') is not None:
@@ -6301,6 +6531,60 @@ class GetXDefaultConfigResponseBody(TeaModel):
             self.sms_ability = m.get('SmsAbility')
         if m.get('SmsSignMode') is not None:
             self.sms_sign_mode = m.get('SmsSignMode')
+        return self
+
+
+class GetXDefaultConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: GetXDefaultConfigResponseBodyData = None,
+        message: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        # 返回状态码 0000表示成功 其他表示失败
+        self.code = code
+        self.data = data
+        # 返回信息
+        self.message = message
+        # 返回是否成功 true  表示成功 false表示失败
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetXDefaultConfigResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('Success') is not None:
             self.success = m.get('Success')
         return self
@@ -6423,7 +6707,7 @@ class ListXTelephonesRequest(TeaModel):
         return self
 
 
-class ListXTelephonesResponseBodyData(TeaModel):
+class ListXTelephonesResponseBodyDataList(TeaModel):
     def __init__(
         self,
         auth_msg: str = None,
@@ -6514,39 +6798,84 @@ class ListXTelephonesResponseBodyData(TeaModel):
         return self
 
 
+class ListXTelephonesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        list: List[ListXTelephonesResponseBodyDataList] = None,
+        page_no: int = None,
+        page_size: int = None,
+        total: int = None,
+    ):
+        # 数据集合
+        self.list = list
+        # 页码
+        self.page_no = page_no
+        # 每页条数
+        self.page_size = page_size
+        # 符合查询条件的总数量
+        self.total = total
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = ListXTelephonesResponseBodyDataList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
 class ListXTelephonesResponseBody(TeaModel):
     def __init__(
         self,
         access_denied_detail: str = None,
         code: str = None,
-        data: List[ListXTelephonesResponseBodyData] = None,
+        data: ListXTelephonesResponseBodyData = None,
         message: str = None,
-        page_no: int = None,
-        page_size: int = None,
         success: bool = None,
-        total_count: int = None,
     ):
         self.access_denied_detail = access_denied_detail
         # 返回状态码 0000表示成功 其他表示失败
         self.code = code
-        # 数据集合
         self.data = data
         # 返回信息
         self.message = message
-        # 页码
-        self.page_no = page_no
-        # 每页条数
-        self.page_size = page_size
         # 返回是否成功 true  表示成功 false表示失败
         self.success = success
-        # 符合查询条件的总数量
-        self.total_count = total_count
 
     def validate(self):
         if self.data:
-            for k in self.data:
-                if k:
-                    k.validate()
+            self.data.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6558,20 +6887,12 @@ class ListXTelephonesResponseBody(TeaModel):
             result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
-        result['Data'] = []
         if self.data is not None:
-            for k in self.data:
-                result['Data'].append(k.to_map() if k else None)
+            result['Data'] = self.data.to_map()
         if self.message is not None:
             result['Message'] = self.message
-        if self.page_no is not None:
-            result['PageNo'] = self.page_no
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
         if self.success is not None:
             result['Success'] = self.success
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
@@ -6580,21 +6901,13 @@ class ListXTelephonesResponseBody(TeaModel):
             self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
-        self.data = []
         if m.get('Data') is not None:
-            for k in m.get('Data'):
-                temp_model = ListXTelephonesResponseBodyData()
-                self.data.append(temp_model.from_map(k))
+            temp_model = ListXTelephonesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
-        if m.get('PageNo') is not None:
-            self.page_no = m.get('PageNo')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
         if m.get('Success') is not None:
             self.success = m.get('Success')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -8095,27 +8408,55 @@ class QuerySoundRecordRequest(TeaModel):
         return self
 
 
+class QuerySoundRecordResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        file_url: str = None,
+    ):
+        # 通话录音url路径，最大长度1000，有效期1小时
+        self.file_url = file_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        return self
+
+
 class QuerySoundRecordResponseBody(TeaModel):
     def __init__(
         self,
         access_denied_detail: str = None,
         code: str = None,
-        file_url: str = None,
+        data: QuerySoundRecordResponseBodyData = None,
         message: str = None,
         success: bool = None,
     ):
         self.access_denied_detail = access_denied_detail
         # 返回状态码 0000表示成功 其他表示失败
         self.code = code
-        # 通话录音url路径，最大长度1000，有效期1小时
-        self.file_url = file_url
+        self.data = data
         # 返回信息
         self.message = message
         # 返回是否成功 true  表示成功 false表示失败
         self.success = success
 
     def validate(self):
-        pass
+        if self.data:
+            self.data.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -8127,8 +8468,8 @@ class QuerySoundRecordResponseBody(TeaModel):
             result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
-        if self.file_url is not None:
-            result['FileUrl'] = self.file_url
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
         if self.message is not None:
             result['Message'] = self.message
         if self.success is not None:
@@ -8141,8 +8482,9 @@ class QuerySoundRecordResponseBody(TeaModel):
             self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
-        if m.get('FileUrl') is not None:
-            self.file_url = m.get('FileUrl')
+        if m.get('Data') is not None:
+            temp_model = QuerySoundRecordResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('Success') is not None:
@@ -8861,15 +9203,13 @@ class UnBindAXBRequest(TeaModel):
         return self
 
 
-class UnBindAXBResponseBody(TeaModel):
+class UnBindAXBResponseBodyData(TeaModel):
     def __init__(
         self,
-        access_denied_detail: str = None,
         code: str = None,
         message: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # 返回状态码 0000表示成功 其他表示失败
         self.code = code
         # 返回信息
@@ -8886,8 +9226,6 @@ class UnBindAXBResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -8898,12 +9236,69 @@ class UnBindAXBResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UnBindAXBResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: UnBindAXBResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = UnBindAXBResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('Success') is not None:
             self.success = m.get('Success')
         return self
@@ -9032,15 +9427,13 @@ class UnBindXBRequest(TeaModel):
         return self
 
 
-class UnBindXBResponseBody(TeaModel):
+class UnBindXBResponseBodyData(TeaModel):
     def __init__(
         self,
-        access_denied_detail: str = None,
         code: str = None,
         message: str = None,
         success: bool = None,
     ):
-        self.access_denied_detail = access_denied_detail
         # 返回状态码 0000表示成功 其他表示失败
         self.code = code
         # 返回信息
@@ -9057,8 +9450,6 @@ class UnBindXBResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.access_denied_detail is not None:
-            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -9069,12 +9460,69 @@ class UnBindXBResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccessDeniedDetail') is not None:
-            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UnBindXBResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: UnBindXBResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = UnBindXBResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('Success') is not None:
             self.success = m.get('Success')
         return self
