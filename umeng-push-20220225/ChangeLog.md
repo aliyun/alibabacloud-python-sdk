@@ -1,3 +1,6 @@
+2024-11-13 Version: 1.0.12
+- Generated python 2022-02-25 for umeng-push.
+
 2024-11-11 Version: 1.0.11
 - Update API SendByAlias: add param AndroidShortPayload.
 - Update API SendByAliasFileId: add param AndroidShortPayload.

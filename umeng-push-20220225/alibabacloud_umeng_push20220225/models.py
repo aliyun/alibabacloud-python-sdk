@@ -427,7 +427,9 @@ class ChannelProperties(TeaModel):
         huawei_channel_importance: str = None,
         huawei_message_urgency: str = None,
         main_activity: str = None,
+        oppo_category: str = None,
         oppo_channel_id: str = None,
+        oppo_notify_level: str = None,
         use_huawei_message: str = None,
         vivo_add_badge: str = None,
         vivo_category: str = None,
@@ -440,7 +442,9 @@ class ChannelProperties(TeaModel):
         self.huawei_channel_importance = huawei_channel_importance
         self.huawei_message_urgency = huawei_message_urgency
         self.main_activity = main_activity
+        self.oppo_category = oppo_category
         self.oppo_channel_id = oppo_channel_id
+        self.oppo_notify_level = oppo_notify_level
         self.use_huawei_message = use_huawei_message
         self.vivo_add_badge = vivo_add_badge
         self.vivo_category = vivo_category
@@ -468,8 +472,12 @@ class ChannelProperties(TeaModel):
             result['huaweiMessageUrgency'] = self.huawei_message_urgency
         if self.main_activity is not None:
             result['mainActivity'] = self.main_activity
+        if self.oppo_category is not None:
+            result['oppoCategory'] = self.oppo_category
         if self.oppo_channel_id is not None:
             result['oppoChannelId'] = self.oppo_channel_id
+        if self.oppo_notify_level is not None:
+            result['oppoNotifyLevel'] = self.oppo_notify_level
         if self.use_huawei_message is not None:
             result['useHuaweiMessage'] = self.use_huawei_message
         if self.vivo_add_badge is not None:
@@ -496,8 +504,12 @@ class ChannelProperties(TeaModel):
             self.huawei_message_urgency = m.get('huaweiMessageUrgency')
         if m.get('mainActivity') is not None:
             self.main_activity = m.get('mainActivity')
+        if m.get('oppoCategory') is not None:
+            self.oppo_category = m.get('oppoCategory')
         if m.get('oppoChannelId') is not None:
             self.oppo_channel_id = m.get('oppoChannelId')
+        if m.get('oppoNotifyLevel') is not None:
+            self.oppo_notify_level = m.get('oppoNotifyLevel')
         if m.get('useHuaweiMessage') is not None:
             self.use_huawei_message = m.get('useHuaweiMessage')
         if m.get('vivoAddBadge') is not None:
