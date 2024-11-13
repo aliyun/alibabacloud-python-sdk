@@ -1,3 +1,9 @@
+2024-11-13 Version: 4.4.6
+- Update API DescribeInstanceHistoryEvents: add param MaxResults.
+- Update API DescribeInstanceHistoryEvents: add param NextToken.
+- Update API DescribeInstanceHistoryEvents: update response param.
+
+
 2024-11-05 Version: 4.4.5
 - Update API CreateNetworkInterface: add param SourceDestCheck.
 - Update API CreateNetworkInterface: update response param.

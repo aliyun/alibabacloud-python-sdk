@@ -3000,49 +3000,52 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.AuthorizeSecurityGroupEgressResponse:
         """
-        @summary Creates outbound rules in a security group. You can use the created rules to allow or deny outbound traffic from instances in the security group to other objects.
+        @summary Creates outbound rules in a security group. You can use the created rules to allow or deny outbound traffic from Elastic Compute Service (ECS) instances in the security group to other objects for fine-grained network access control.
         
-        @description In the security group-related API documents, outbound traffic refers to the traffic that is sent by the source device and received at the destination device.
-        When you call this operation, take note of the following items:
-        The total number of inbound and outbound security group rules in each security group cannot exceed 200. For more information, see the "Security group limits" section in [](~~25412#SecurityGroupQuota1~~).
-        You can set Policy to accept or drop for each security group rule to allow or deny access.
-        The valid value of Priority ranges from 1 to 100. A smaller value indicates a higher priority.
-        When several security group rules have the same priority, drop rules take precedence.
-        The destination can be a CIDR block specified by DestCidrIp, Ipv6DestCidrIp, or DestPrefixListId or can be Elastic Compute Service (ECS) instances in a security group specified by DestGroupId.
-        For advanced security groups, security groups cannot be used as authorization objects.
-        For each basic security group, a maximum of 20 security groups can be used as authorization objects.
-        If the specified security group rule exists in the security group, the call is successful but no security group rule is created.
-        The `Permissions.N` prefix is added to some parameters to generate new parameters. Original parameters and corresponding parameters prefixed with Permissions.N cannot be configured together. We recommend that you use parameters prefixed with `Permissions.N`.
-        You can determine a security group rule by configuring one of the following groups of parameters. You cannot determine a security group rule by configuring only one parameter.
-        Parameters used to specify a security group rule that controls access to a specified CIDR block: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, and DestCidrIp. Sample request:
-        http(s)://ecs.aliyuncs.com/?Action=AuthorizeSecurityGroupEgress
-        &SecurityGroupId=sg-bp67acfmxazb4ph**\
-        &Permissions.1.IpProtocol=ICMP
-        &Permissions.1.DestCidrIp=10.0.0.0/8
-        &Permissions.1.PortRange=-1/-1
-        &Permissions.1.NicType=intranet
-        &Permissions.1.Policy=Accept
-        &<Common request parameters>
-        Parameters used to specify a security group rule that controls access to a security group: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, DestGroupOwnerAccount, and DestGroupId. Sample request:
-        http(s)://ecs.aliyuncs.com/?Action=AuthorizeSecurityGroupEgress
-        &SecurityGroupId=sg-bp67acfmxazb4ph**\
-        &Permissions.1.DestGroupId=sg-bp67acfmxazb4pi**\
-        &Permissions.1.DestGroupOwnerAccount=Test@aliyun.com
-        &Permissions.1.IpProtocol=TCP
-        &Permissions.1.PortRange=22/22
-        &Permissions.1.NicType=intranet
-        &Permissions.1.Policy=Drop
-        &<Common request parameters>
-        Parameters used to specify a security group rule that controls access to a prefix list: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, and DestPrefixListId. In this case, prefix lists support only security groups in virtual private clouds (VPCs). NicType must be set to intranet. Sample request:
-        http(s)://ecs.aliyuncs.com/?Action=AuthorizeSecurityGroupEgress
-        &SecurityGroupId=sg-bp67acfmxazb4ph**\
-        &Permissions.1.DestPrefixListId=pl-x1j1k5ykzqlixdcy***\
-        &Permissions.1.DestGroupOwnerAccount=Test@aliyun.com
-        &Permissions.1.IpProtocol=TCP
-        &Permissions.1.PortRange=22/22
-        &Permissions.1.NicType=intranet
-        &Permissions.1.Policy=Drop
-        &<Common request parameters>
+        @description    **Precautions**\
+        **Quantity limit:** The total number of outbound security group rules in each security group cannot exceed 200. For more information, see the [Security group limits](~~25412#SecurityGroupQuota1~~) section of the "Limits" topic.
+        **Rule type:** For outbound security group rules, you can set Policy to accept or drop to specify whether to allow or deny access.
+        **Rule priority:**: For outbound security group rules, the valid values of Priority range from 1 to 100. A smaller value indicates a higher priority. When multiple security group rules have the same priority, drop rules take precedence.
+        **Considerations**\
+        If the security group rule that you call the AuthorizeSecurityGroupEgress operation to create exists in the security group, the call is successful but no security group rule is created.
+        Parameters and their `Permissions.N`-prefixed counterparts cannot be specified in the same request. We recommend that you use the `Permissions.N`-prefixed parameters.
+        **Parameters that define a security group rule**\
+        Define a security group rule by configuring the following parameters together:
+        One of the following parameters: DestCidrIp, Ipv6DestCidrIp, DestPrefixListId, and DestGroupId. DestCidrIp specifies the destination IPv4 CIDR block. Ipv6DestCidrIp specifies the destination IPv6 CIDR block. DestPrefixListId specifies the ID of the destination prefix list. DestGroupId specifies the destination security group.
+        PortRange: specifies the range of destination port numbers.
+        IpProtocol: specifies the protocol.
+        Policy: specifies the action.
+        *\
+        *Note** Advanced security groups do not support security group rules that reference security groups as authorization objects. Each basic security group can contain up to 20 security group rules that reference security groups as authorization objects.
+        **Sample requests**\
+        Sample requests to create outbound security group rules that control access to different destinations in a security group in the China (Hangzhou) region:
+        Sample request to create an outbound security group rule that controls access to a specified CIDR block:
+        "RegionId":"cn-hangzhou",  //The region ID.
+        "SecurityGroupId":"sg-bp17vs63txqxbds9**", //The ID of the source security group.
+        "Permissions":[
+        {
+        "DestCidrIp": "10.0.0.0/8", //The destination IPv4 CIDR block.
+        "PortRange": "-1/-1", //The range of destination port numbers.
+        "IpProtocol": "ICMP", //The protocol.
+        "Policy": "Accept" //The action.
+        }
+        ]
+        Sample request to create an outbound security group rule that controls access to a security group and an outbound security group rule that controls access to a prefix list:
+        "RegionId":"cn-hangzhou",
+        "SecurityGroupId":"sg-bp17vs63txqxbds9**",
+        "Permissions":[
+        {
+        "DestGroupId": "sg-bp67acfmxazb4pi**", //The ID of the destination security group.
+        "PortRange": "22/22",
+        "IpProtocol": "TCP",
+        "Policy": "Drop"
+        },{
+        "DestPrefixListId": "pl-x1j1k5ykzqlixdcy***", //The ID of the destination prefix list.
+        "PortRange": "22/22",
+        "IpProtocol": "TCP",
+        "Policy": "Drop"
+        }
+        ]
         
         @param request: AuthorizeSecurityGroupEgressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3129,49 +3132,52 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.AuthorizeSecurityGroupEgressResponse:
         """
-        @summary Creates outbound rules in a security group. You can use the created rules to allow or deny outbound traffic from instances in the security group to other objects.
+        @summary Creates outbound rules in a security group. You can use the created rules to allow or deny outbound traffic from Elastic Compute Service (ECS) instances in the security group to other objects for fine-grained network access control.
         
-        @description In the security group-related API documents, outbound traffic refers to the traffic that is sent by the source device and received at the destination device.
-        When you call this operation, take note of the following items:
-        The total number of inbound and outbound security group rules in each security group cannot exceed 200. For more information, see the "Security group limits" section in [](~~25412#SecurityGroupQuota1~~).
-        You can set Policy to accept or drop for each security group rule to allow or deny access.
-        The valid value of Priority ranges from 1 to 100. A smaller value indicates a higher priority.
-        When several security group rules have the same priority, drop rules take precedence.
-        The destination can be a CIDR block specified by DestCidrIp, Ipv6DestCidrIp, or DestPrefixListId or can be Elastic Compute Service (ECS) instances in a security group specified by DestGroupId.
-        For advanced security groups, security groups cannot be used as authorization objects.
-        For each basic security group, a maximum of 20 security groups can be used as authorization objects.
-        If the specified security group rule exists in the security group, the call is successful but no security group rule is created.
-        The `Permissions.N` prefix is added to some parameters to generate new parameters. Original parameters and corresponding parameters prefixed with Permissions.N cannot be configured together. We recommend that you use parameters prefixed with `Permissions.N`.
-        You can determine a security group rule by configuring one of the following groups of parameters. You cannot determine a security group rule by configuring only one parameter.
-        Parameters used to specify a security group rule that controls access to a specified CIDR block: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, and DestCidrIp. Sample request:
-        http(s)://ecs.aliyuncs.com/?Action=AuthorizeSecurityGroupEgress
-        &SecurityGroupId=sg-bp67acfmxazb4ph**\
-        &Permissions.1.IpProtocol=ICMP
-        &Permissions.1.DestCidrIp=10.0.0.0/8
-        &Permissions.1.PortRange=-1/-1
-        &Permissions.1.NicType=intranet
-        &Permissions.1.Policy=Accept
-        &<Common request parameters>
-        Parameters used to specify a security group rule that controls access to a security group: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, DestGroupOwnerAccount, and DestGroupId. Sample request:
-        http(s)://ecs.aliyuncs.com/?Action=AuthorizeSecurityGroupEgress
-        &SecurityGroupId=sg-bp67acfmxazb4ph**\
-        &Permissions.1.DestGroupId=sg-bp67acfmxazb4pi**\
-        &Permissions.1.DestGroupOwnerAccount=Test@aliyun.com
-        &Permissions.1.IpProtocol=TCP
-        &Permissions.1.PortRange=22/22
-        &Permissions.1.NicType=intranet
-        &Permissions.1.Policy=Drop
-        &<Common request parameters>
-        Parameters used to specify a security group rule that controls access to a prefix list: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, and DestPrefixListId. In this case, prefix lists support only security groups in virtual private clouds (VPCs). NicType must be set to intranet. Sample request:
-        http(s)://ecs.aliyuncs.com/?Action=AuthorizeSecurityGroupEgress
-        &SecurityGroupId=sg-bp67acfmxazb4ph**\
-        &Permissions.1.DestPrefixListId=pl-x1j1k5ykzqlixdcy***\
-        &Permissions.1.DestGroupOwnerAccount=Test@aliyun.com
-        &Permissions.1.IpProtocol=TCP
-        &Permissions.1.PortRange=22/22
-        &Permissions.1.NicType=intranet
-        &Permissions.1.Policy=Drop
-        &<Common request parameters>
+        @description    **Precautions**\
+        **Quantity limit:** The total number of outbound security group rules in each security group cannot exceed 200. For more information, see the [Security group limits](~~25412#SecurityGroupQuota1~~) section of the "Limits" topic.
+        **Rule type:** For outbound security group rules, you can set Policy to accept or drop to specify whether to allow or deny access.
+        **Rule priority:**: For outbound security group rules, the valid values of Priority range from 1 to 100. A smaller value indicates a higher priority. When multiple security group rules have the same priority, drop rules take precedence.
+        **Considerations**\
+        If the security group rule that you call the AuthorizeSecurityGroupEgress operation to create exists in the security group, the call is successful but no security group rule is created.
+        Parameters and their `Permissions.N`-prefixed counterparts cannot be specified in the same request. We recommend that you use the `Permissions.N`-prefixed parameters.
+        **Parameters that define a security group rule**\
+        Define a security group rule by configuring the following parameters together:
+        One of the following parameters: DestCidrIp, Ipv6DestCidrIp, DestPrefixListId, and DestGroupId. DestCidrIp specifies the destination IPv4 CIDR block. Ipv6DestCidrIp specifies the destination IPv6 CIDR block. DestPrefixListId specifies the ID of the destination prefix list. DestGroupId specifies the destination security group.
+        PortRange: specifies the range of destination port numbers.
+        IpProtocol: specifies the protocol.
+        Policy: specifies the action.
+        *\
+        *Note** Advanced security groups do not support security group rules that reference security groups as authorization objects. Each basic security group can contain up to 20 security group rules that reference security groups as authorization objects.
+        **Sample requests**\
+        Sample requests to create outbound security group rules that control access to different destinations in a security group in the China (Hangzhou) region:
+        Sample request to create an outbound security group rule that controls access to a specified CIDR block:
+        "RegionId":"cn-hangzhou",  //The region ID.
+        "SecurityGroupId":"sg-bp17vs63txqxbds9**", //The ID of the source security group.
+        "Permissions":[
+        {
+        "DestCidrIp": "10.0.0.0/8", //The destination IPv4 CIDR block.
+        "PortRange": "-1/-1", //The range of destination port numbers.
+        "IpProtocol": "ICMP", //The protocol.
+        "Policy": "Accept" //The action.
+        }
+        ]
+        Sample request to create an outbound security group rule that controls access to a security group and an outbound security group rule that controls access to a prefix list:
+        "RegionId":"cn-hangzhou",
+        "SecurityGroupId":"sg-bp17vs63txqxbds9**",
+        "Permissions":[
+        {
+        "DestGroupId": "sg-bp67acfmxazb4pi**", //The ID of the destination security group.
+        "PortRange": "22/22",
+        "IpProtocol": "TCP",
+        "Policy": "Drop"
+        },{
+        "DestPrefixListId": "pl-x1j1k5ykzqlixdcy***", //The ID of the destination prefix list.
+        "PortRange": "22/22",
+        "IpProtocol": "TCP",
+        "Policy": "Drop"
+        }
+        ]
         
         @param request: AuthorizeSecurityGroupEgressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3257,49 +3263,52 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.AuthorizeSecurityGroupEgressRequest,
     ) -> ecs_20140526_models.AuthorizeSecurityGroupEgressResponse:
         """
-        @summary Creates outbound rules in a security group. You can use the created rules to allow or deny outbound traffic from instances in the security group to other objects.
+        @summary Creates outbound rules in a security group. You can use the created rules to allow or deny outbound traffic from Elastic Compute Service (ECS) instances in the security group to other objects for fine-grained network access control.
         
-        @description In the security group-related API documents, outbound traffic refers to the traffic that is sent by the source device and received at the destination device.
-        When you call this operation, take note of the following items:
-        The total number of inbound and outbound security group rules in each security group cannot exceed 200. For more information, see the "Security group limits" section in [](~~25412#SecurityGroupQuota1~~).
-        You can set Policy to accept or drop for each security group rule to allow or deny access.
-        The valid value of Priority ranges from 1 to 100. A smaller value indicates a higher priority.
-        When several security group rules have the same priority, drop rules take precedence.
-        The destination can be a CIDR block specified by DestCidrIp, Ipv6DestCidrIp, or DestPrefixListId or can be Elastic Compute Service (ECS) instances in a security group specified by DestGroupId.
-        For advanced security groups, security groups cannot be used as authorization objects.
-        For each basic security group, a maximum of 20 security groups can be used as authorization objects.
-        If the specified security group rule exists in the security group, the call is successful but no security group rule is created.
-        The `Permissions.N` prefix is added to some parameters to generate new parameters. Original parameters and corresponding parameters prefixed with Permissions.N cannot be configured together. We recommend that you use parameters prefixed with `Permissions.N`.
-        You can determine a security group rule by configuring one of the following groups of parameters. You cannot determine a security group rule by configuring only one parameter.
-        Parameters used to specify a security group rule that controls access to a specified CIDR block: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, and DestCidrIp. Sample request:
-        http(s)://ecs.aliyuncs.com/?Action=AuthorizeSecurityGroupEgress
-        &SecurityGroupId=sg-bp67acfmxazb4ph**\
-        &Permissions.1.IpProtocol=ICMP
-        &Permissions.1.DestCidrIp=10.0.0.0/8
-        &Permissions.1.PortRange=-1/-1
-        &Permissions.1.NicType=intranet
-        &Permissions.1.Policy=Accept
-        &<Common request parameters>
-        Parameters used to specify a security group rule that controls access to a security group: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, DestGroupOwnerAccount, and DestGroupId. Sample request:
-        http(s)://ecs.aliyuncs.com/?Action=AuthorizeSecurityGroupEgress
-        &SecurityGroupId=sg-bp67acfmxazb4ph**\
-        &Permissions.1.DestGroupId=sg-bp67acfmxazb4pi**\
-        &Permissions.1.DestGroupOwnerAccount=Test@aliyun.com
-        &Permissions.1.IpProtocol=TCP
-        &Permissions.1.PortRange=22/22
-        &Permissions.1.NicType=intranet
-        &Permissions.1.Policy=Drop
-        &<Common request parameters>
-        Parameters used to specify a security group rule that controls access to a prefix list: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, and DestPrefixListId. In this case, prefix lists support only security groups in virtual private clouds (VPCs). NicType must be set to intranet. Sample request:
-        http(s)://ecs.aliyuncs.com/?Action=AuthorizeSecurityGroupEgress
-        &SecurityGroupId=sg-bp67acfmxazb4ph**\
-        &Permissions.1.DestPrefixListId=pl-x1j1k5ykzqlixdcy***\
-        &Permissions.1.DestGroupOwnerAccount=Test@aliyun.com
-        &Permissions.1.IpProtocol=TCP
-        &Permissions.1.PortRange=22/22
-        &Permissions.1.NicType=intranet
-        &Permissions.1.Policy=Drop
-        &<Common request parameters>
+        @description    **Precautions**\
+        **Quantity limit:** The total number of outbound security group rules in each security group cannot exceed 200. For more information, see the [Security group limits](~~25412#SecurityGroupQuota1~~) section of the "Limits" topic.
+        **Rule type:** For outbound security group rules, you can set Policy to accept or drop to specify whether to allow or deny access.
+        **Rule priority:**: For outbound security group rules, the valid values of Priority range from 1 to 100. A smaller value indicates a higher priority. When multiple security group rules have the same priority, drop rules take precedence.
+        **Considerations**\
+        If the security group rule that you call the AuthorizeSecurityGroupEgress operation to create exists in the security group, the call is successful but no security group rule is created.
+        Parameters and their `Permissions.N`-prefixed counterparts cannot be specified in the same request. We recommend that you use the `Permissions.N`-prefixed parameters.
+        **Parameters that define a security group rule**\
+        Define a security group rule by configuring the following parameters together:
+        One of the following parameters: DestCidrIp, Ipv6DestCidrIp, DestPrefixListId, and DestGroupId. DestCidrIp specifies the destination IPv4 CIDR block. Ipv6DestCidrIp specifies the destination IPv6 CIDR block. DestPrefixListId specifies the ID of the destination prefix list. DestGroupId specifies the destination security group.
+        PortRange: specifies the range of destination port numbers.
+        IpProtocol: specifies the protocol.
+        Policy: specifies the action.
+        *\
+        *Note** Advanced security groups do not support security group rules that reference security groups as authorization objects. Each basic security group can contain up to 20 security group rules that reference security groups as authorization objects.
+        **Sample requests**\
+        Sample requests to create outbound security group rules that control access to different destinations in a security group in the China (Hangzhou) region:
+        Sample request to create an outbound security group rule that controls access to a specified CIDR block:
+        "RegionId":"cn-hangzhou",  //The region ID.
+        "SecurityGroupId":"sg-bp17vs63txqxbds9**", //The ID of the source security group.
+        "Permissions":[
+        {
+        "DestCidrIp": "10.0.0.0/8", //The destination IPv4 CIDR block.
+        "PortRange": "-1/-1", //The range of destination port numbers.
+        "IpProtocol": "ICMP", //The protocol.
+        "Policy": "Accept" //The action.
+        }
+        ]
+        Sample request to create an outbound security group rule that controls access to a security group and an outbound security group rule that controls access to a prefix list:
+        "RegionId":"cn-hangzhou",
+        "SecurityGroupId":"sg-bp17vs63txqxbds9**",
+        "Permissions":[
+        {
+        "DestGroupId": "sg-bp67acfmxazb4pi**", //The ID of the destination security group.
+        "PortRange": "22/22",
+        "IpProtocol": "TCP",
+        "Policy": "Drop"
+        },{
+        "DestPrefixListId": "pl-x1j1k5ykzqlixdcy***", //The ID of the destination prefix list.
+        "PortRange": "22/22",
+        "IpProtocol": "TCP",
+        "Policy": "Drop"
+        }
+        ]
         
         @param request: AuthorizeSecurityGroupEgressRequest
         @return: AuthorizeSecurityGroupEgressResponse
@@ -3312,49 +3321,52 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.AuthorizeSecurityGroupEgressRequest,
     ) -> ecs_20140526_models.AuthorizeSecurityGroupEgressResponse:
         """
-        @summary Creates outbound rules in a security group. You can use the created rules to allow or deny outbound traffic from instances in the security group to other objects.
+        @summary Creates outbound rules in a security group. You can use the created rules to allow or deny outbound traffic from Elastic Compute Service (ECS) instances in the security group to other objects for fine-grained network access control.
         
-        @description In the security group-related API documents, outbound traffic refers to the traffic that is sent by the source device and received at the destination device.
-        When you call this operation, take note of the following items:
-        The total number of inbound and outbound security group rules in each security group cannot exceed 200. For more information, see the "Security group limits" section in [](~~25412#SecurityGroupQuota1~~).
-        You can set Policy to accept or drop for each security group rule to allow or deny access.
-        The valid value of Priority ranges from 1 to 100. A smaller value indicates a higher priority.
-        When several security group rules have the same priority, drop rules take precedence.
-        The destination can be a CIDR block specified by DestCidrIp, Ipv6DestCidrIp, or DestPrefixListId or can be Elastic Compute Service (ECS) instances in a security group specified by DestGroupId.
-        For advanced security groups, security groups cannot be used as authorization objects.
-        For each basic security group, a maximum of 20 security groups can be used as authorization objects.
-        If the specified security group rule exists in the security group, the call is successful but no security group rule is created.
-        The `Permissions.N` prefix is added to some parameters to generate new parameters. Original parameters and corresponding parameters prefixed with Permissions.N cannot be configured together. We recommend that you use parameters prefixed with `Permissions.N`.
-        You can determine a security group rule by configuring one of the following groups of parameters. You cannot determine a security group rule by configuring only one parameter.
-        Parameters used to specify a security group rule that controls access to a specified CIDR block: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, and DestCidrIp. Sample request:
-        http(s)://ecs.aliyuncs.com/?Action=AuthorizeSecurityGroupEgress
-        &SecurityGroupId=sg-bp67acfmxazb4ph**\
-        &Permissions.1.IpProtocol=ICMP
-        &Permissions.1.DestCidrIp=10.0.0.0/8
-        &Permissions.1.PortRange=-1/-1
-        &Permissions.1.NicType=intranet
-        &Permissions.1.Policy=Accept
-        &<Common request parameters>
-        Parameters used to specify a security group rule that controls access to a security group: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, DestGroupOwnerAccount, and DestGroupId. Sample request:
-        http(s)://ecs.aliyuncs.com/?Action=AuthorizeSecurityGroupEgress
-        &SecurityGroupId=sg-bp67acfmxazb4ph**\
-        &Permissions.1.DestGroupId=sg-bp67acfmxazb4pi**\
-        &Permissions.1.DestGroupOwnerAccount=Test@aliyun.com
-        &Permissions.1.IpProtocol=TCP
-        &Permissions.1.PortRange=22/22
-        &Permissions.1.NicType=intranet
-        &Permissions.1.Policy=Drop
-        &<Common request parameters>
-        Parameters used to specify a security group rule that controls access to a prefix list: IpProtocol, PortRange, SourcePortRange (optional), NicType, Policy, and DestPrefixListId. In this case, prefix lists support only security groups in virtual private clouds (VPCs). NicType must be set to intranet. Sample request:
-        http(s)://ecs.aliyuncs.com/?Action=AuthorizeSecurityGroupEgress
-        &SecurityGroupId=sg-bp67acfmxazb4ph**\
-        &Permissions.1.DestPrefixListId=pl-x1j1k5ykzqlixdcy***\
-        &Permissions.1.DestGroupOwnerAccount=Test@aliyun.com
-        &Permissions.1.IpProtocol=TCP
-        &Permissions.1.PortRange=22/22
-        &Permissions.1.NicType=intranet
-        &Permissions.1.Policy=Drop
-        &<Common request parameters>
+        @description    **Precautions**\
+        **Quantity limit:** The total number of outbound security group rules in each security group cannot exceed 200. For more information, see the [Security group limits](~~25412#SecurityGroupQuota1~~) section of the "Limits" topic.
+        **Rule type:** For outbound security group rules, you can set Policy to accept or drop to specify whether to allow or deny access.
+        **Rule priority:**: For outbound security group rules, the valid values of Priority range from 1 to 100. A smaller value indicates a higher priority. When multiple security group rules have the same priority, drop rules take precedence.
+        **Considerations**\
+        If the security group rule that you call the AuthorizeSecurityGroupEgress operation to create exists in the security group, the call is successful but no security group rule is created.
+        Parameters and their `Permissions.N`-prefixed counterparts cannot be specified in the same request. We recommend that you use the `Permissions.N`-prefixed parameters.
+        **Parameters that define a security group rule**\
+        Define a security group rule by configuring the following parameters together:
+        One of the following parameters: DestCidrIp, Ipv6DestCidrIp, DestPrefixListId, and DestGroupId. DestCidrIp specifies the destination IPv4 CIDR block. Ipv6DestCidrIp specifies the destination IPv6 CIDR block. DestPrefixListId specifies the ID of the destination prefix list. DestGroupId specifies the destination security group.
+        PortRange: specifies the range of destination port numbers.
+        IpProtocol: specifies the protocol.
+        Policy: specifies the action.
+        *\
+        *Note** Advanced security groups do not support security group rules that reference security groups as authorization objects. Each basic security group can contain up to 20 security group rules that reference security groups as authorization objects.
+        **Sample requests**\
+        Sample requests to create outbound security group rules that control access to different destinations in a security group in the China (Hangzhou) region:
+        Sample request to create an outbound security group rule that controls access to a specified CIDR block:
+        "RegionId":"cn-hangzhou",  //The region ID.
+        "SecurityGroupId":"sg-bp17vs63txqxbds9**", //The ID of the source security group.
+        "Permissions":[
+        {
+        "DestCidrIp": "10.0.0.0/8", //The destination IPv4 CIDR block.
+        "PortRange": "-1/-1", //The range of destination port numbers.
+        "IpProtocol": "ICMP", //The protocol.
+        "Policy": "Accept" //The action.
+        }
+        ]
+        Sample request to create an outbound security group rule that controls access to a security group and an outbound security group rule that controls access to a prefix list:
+        "RegionId":"cn-hangzhou",
+        "SecurityGroupId":"sg-bp17vs63txqxbds9**",
+        "Permissions":[
+        {
+        "DestGroupId": "sg-bp67acfmxazb4pi**", //The ID of the destination security group.
+        "PortRange": "22/22",
+        "IpProtocol": "TCP",
+        "Policy": "Drop"
+        },{
+        "DestPrefixListId": "pl-x1j1k5ykzqlixdcy***", //The ID of the destination prefix list.
+        "PortRange": "22/22",
+        "IpProtocol": "TCP",
+        "Policy": "Drop"
+        }
+        ]
         
         @param request: AuthorizeSecurityGroupEgressRequest
         @return: AuthorizeSecurityGroupEgressResponse
@@ -23784,7 +23796,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceAttributeResponse:
         """
-        @summary Queries the details of an instance by instance ID.
+        @summary Queries the attributes of an Elastic Compute Service (ECS) instance.
         
         @param request: DescribeInstanceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23827,7 +23839,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceAttributeResponse:
         """
-        @summary Queries the details of an instance by instance ID.
+        @summary Queries the attributes of an Elastic Compute Service (ECS) instance.
         
         @param request: DescribeInstanceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23869,7 +23881,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceAttributeRequest,
     ) -> ecs_20140526_models.DescribeInstanceAttributeResponse:
         """
-        @summary Queries the details of an instance by instance ID.
+        @summary Queries the attributes of an Elastic Compute Service (ECS) instance.
         
         @param request: DescribeInstanceAttributeRequest
         @return: DescribeInstanceAttributeResponse
@@ -23882,7 +23894,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceAttributeRequest,
     ) -> ecs_20140526_models.DescribeInstanceAttributeResponse:
         """
-        @summary Queries the details of an instance by instance ID.
+        @summary Queries the attributes of an Elastic Compute Service (ECS) instance.
         
         @param request: DescribeInstanceAttributeRequest
         @return: DescribeInstanceAttributeResponse
@@ -23896,7 +23908,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceAutoRenewAttributeResponse:
         """
-        @summary Queries the auto-renewal status of subscription Elastic Compute Service (ECS) instances.
+        @summary Queries the auto-renewal attribute of subscription Elastic Compute Service (ECS) instances, including whether auto-renewal is enabled for the instances and the auto-renewal durations of the instances.
         
         @description    Before you configure auto-renewal or manual renewal for subscription instances, you can query the auto-renewal status of the instances.
         This operation is applicable to only subscription instances. An error is returned if you call this operation on pay-as-you-go instances.
@@ -23950,7 +23962,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceAutoRenewAttributeResponse:
         """
-        @summary Queries the auto-renewal status of subscription Elastic Compute Service (ECS) instances.
+        @summary Queries the auto-renewal attribute of subscription Elastic Compute Service (ECS) instances, including whether auto-renewal is enabled for the instances and the auto-renewal durations of the instances.
         
         @description    Before you configure auto-renewal or manual renewal for subscription instances, you can query the auto-renewal status of the instances.
         This operation is applicable to only subscription instances. An error is returned if you call this operation on pay-as-you-go instances.
@@ -24003,7 +24015,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceAutoRenewAttributeRequest,
     ) -> ecs_20140526_models.DescribeInstanceAutoRenewAttributeResponse:
         """
-        @summary Queries the auto-renewal status of subscription Elastic Compute Service (ECS) instances.
+        @summary Queries the auto-renewal attribute of subscription Elastic Compute Service (ECS) instances, including whether auto-renewal is enabled for the instances and the auto-renewal durations of the instances.
         
         @description    Before you configure auto-renewal or manual renewal for subscription instances, you can query the auto-renewal status of the instances.
         This operation is applicable to only subscription instances. An error is returned if you call this operation on pay-as-you-go instances.
@@ -24019,7 +24031,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceAutoRenewAttributeRequest,
     ) -> ecs_20140526_models.DescribeInstanceAutoRenewAttributeResponse:
         """
-        @summary Queries the auto-renewal status of subscription Elastic Compute Service (ECS) instances.
+        @summary Queries the auto-renewal attribute of subscription Elastic Compute Service (ECS) instances, including whether auto-renewal is enabled for the instances and the auto-renewal durations of the instances.
         
         @description    Before you configure auto-renewal or manual renewal for subscription instances, you can query the auto-renewal status of the instances.
         This operation is applicable to only subscription instances. An error is returned if you call this operation on pay-as-you-go instances.
@@ -24061,6 +24073,10 @@ class Client(OpenApiClient):
             query['InstanceEventType'] = request.instance_event_type
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -24139,6 +24155,10 @@ class Client(OpenApiClient):
             query['InstanceEventType'] = request.instance_event_type
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -25546,16 +25566,15 @@ class Client(OpenApiClient):
         """
         @summary Queries the Virtual Network Computing (VNC) logon address of an Elastic Compute Service (ECS) instance.
         
-        @description ## [](#)Usage notes
-        Take note of the following items:
-        The **keepalive** time of a connection to a VNC management terminal is 300 seconds. If you do not interact with the VNC management terminal for 300 seconds, the VNC management terminal is automatically disconnected.
-        If the connection is interrupted, you must recall this operation to obtain a new logon address that is specified by `VncUrl` and use the new logon address to construct a URL that can be used to reconnect to the VNC management terminal. You can reconnect to a VNC management terminal for a maximum of 30 times per minute.
-        You need to add the `vncUrl=\\*\\*\\*\\*`, `instanceId=\\*\\*\\*\\*`, and `isWindows=true/false` parameters to the end of the link `https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?` and use an ampersand (`&`) between the parameters.
-        `vncUrl`: the value of `VncUrl` that is returned after a successful call of this operation.
-        `instanceId`: the ID of your instance.
-        `isWindows`: specifies whether the operating system of your instance is Windows. A value of `true` indicates that the operating system is Windows. A value of `false` indicates that the operating system is not Windows.
-        >  You can connect to an instance without a VNC logon password. Therefore, you do not need to configure the `password` parameter.
-        Sample URL:
+        @description    You cannot directly use the VNC logon address (VncUrl) in the response to log on to an ECS instance. To log on to the ECS instance, you can use the **web management terminal URL** that contains the VNC logon address.
+        >  To construct a web management terminal URL, add the `vncUrl=\\\\*\\*\\*`, `instanceId=****`, and `isWindows=true/false` parameters at the end of `https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?`. Separate each parameter with an ampersand (`&`). Parameter description:
+        `vncUrl`: the VNC logon address.
+        `instanceId`: the instance ID.
+        `isWindows`: specifies whether the operating system of your ECS instance is Windows. A value of `true` specifies that the operating system is Windows. A value of `false` specifies that the operating system is not Windows.
+        You can connect to an ECS instance without using a VNC logon password. Therefore, you do not need to specify the `password` parameter.
+        The keepalive time of a connection to a VNC management terminal is 300 seconds. If you do not interact with the VNC management terminal within 300 seconds, the VNC management terminal is automatically disconnected.
+        If the connection is interrupted, you must call the DescribeInstanceVncUrl operation to obtain a new VNC logon address (`VncUrl`) and use the new logon address to construct a new web management terminal URL that you can use to reconnect to the VNC management terminal. You can reconnect to a VNC management terminal up to 30 times per minute.
+        Sample web management terminal URL:
         https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?vncUrl=ws%3A%2F%***&instanceId=i-wz9hhwq5a6tm****&isWindows=true
         
         @param request: DescribeInstanceVncUrlRequest
@@ -25603,16 +25622,15 @@ class Client(OpenApiClient):
         """
         @summary Queries the Virtual Network Computing (VNC) logon address of an Elastic Compute Service (ECS) instance.
         
-        @description ## [](#)Usage notes
-        Take note of the following items:
-        The **keepalive** time of a connection to a VNC management terminal is 300 seconds. If you do not interact with the VNC management terminal for 300 seconds, the VNC management terminal is automatically disconnected.
-        If the connection is interrupted, you must recall this operation to obtain a new logon address that is specified by `VncUrl` and use the new logon address to construct a URL that can be used to reconnect to the VNC management terminal. You can reconnect to a VNC management terminal for a maximum of 30 times per minute.
-        You need to add the `vncUrl=\\*\\*\\*\\*`, `instanceId=\\*\\*\\*\\*`, and `isWindows=true/false` parameters to the end of the link `https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?` and use an ampersand (`&`) between the parameters.
-        `vncUrl`: the value of `VncUrl` that is returned after a successful call of this operation.
-        `instanceId`: the ID of your instance.
-        `isWindows`: specifies whether the operating system of your instance is Windows. A value of `true` indicates that the operating system is Windows. A value of `false` indicates that the operating system is not Windows.
-        >  You can connect to an instance without a VNC logon password. Therefore, you do not need to configure the `password` parameter.
-        Sample URL:
+        @description    You cannot directly use the VNC logon address (VncUrl) in the response to log on to an ECS instance. To log on to the ECS instance, you can use the **web management terminal URL** that contains the VNC logon address.
+        >  To construct a web management terminal URL, add the `vncUrl=\\\\*\\*\\*`, `instanceId=****`, and `isWindows=true/false` parameters at the end of `https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?`. Separate each parameter with an ampersand (`&`). Parameter description:
+        `vncUrl`: the VNC logon address.
+        `instanceId`: the instance ID.
+        `isWindows`: specifies whether the operating system of your ECS instance is Windows. A value of `true` specifies that the operating system is Windows. A value of `false` specifies that the operating system is not Windows.
+        You can connect to an ECS instance without using a VNC logon password. Therefore, you do not need to specify the `password` parameter.
+        The keepalive time of a connection to a VNC management terminal is 300 seconds. If you do not interact with the VNC management terminal within 300 seconds, the VNC management terminal is automatically disconnected.
+        If the connection is interrupted, you must call the DescribeInstanceVncUrl operation to obtain a new VNC logon address (`VncUrl`) and use the new logon address to construct a new web management terminal URL that you can use to reconnect to the VNC management terminal. You can reconnect to a VNC management terminal up to 30 times per minute.
+        Sample web management terminal URL:
         https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?vncUrl=ws%3A%2F%***&instanceId=i-wz9hhwq5a6tm****&isWindows=true
         
         @param request: DescribeInstanceVncUrlRequest
@@ -25659,16 +25677,15 @@ class Client(OpenApiClient):
         """
         @summary Queries the Virtual Network Computing (VNC) logon address of an Elastic Compute Service (ECS) instance.
         
-        @description ## [](#)Usage notes
-        Take note of the following items:
-        The **keepalive** time of a connection to a VNC management terminal is 300 seconds. If you do not interact with the VNC management terminal for 300 seconds, the VNC management terminal is automatically disconnected.
-        If the connection is interrupted, you must recall this operation to obtain a new logon address that is specified by `VncUrl` and use the new logon address to construct a URL that can be used to reconnect to the VNC management terminal. You can reconnect to a VNC management terminal for a maximum of 30 times per minute.
-        You need to add the `vncUrl=\\*\\*\\*\\*`, `instanceId=\\*\\*\\*\\*`, and `isWindows=true/false` parameters to the end of the link `https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?` and use an ampersand (`&`) between the parameters.
-        `vncUrl`: the value of `VncUrl` that is returned after a successful call of this operation.
-        `instanceId`: the ID of your instance.
-        `isWindows`: specifies whether the operating system of your instance is Windows. A value of `true` indicates that the operating system is Windows. A value of `false` indicates that the operating system is not Windows.
-        >  You can connect to an instance without a VNC logon password. Therefore, you do not need to configure the `password` parameter.
-        Sample URL:
+        @description    You cannot directly use the VNC logon address (VncUrl) in the response to log on to an ECS instance. To log on to the ECS instance, you can use the **web management terminal URL** that contains the VNC logon address.
+        >  To construct a web management terminal URL, add the `vncUrl=\\\\*\\*\\*`, `instanceId=****`, and `isWindows=true/false` parameters at the end of `https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?`. Separate each parameter with an ampersand (`&`). Parameter description:
+        `vncUrl`: the VNC logon address.
+        `instanceId`: the instance ID.
+        `isWindows`: specifies whether the operating system of your ECS instance is Windows. A value of `true` specifies that the operating system is Windows. A value of `false` specifies that the operating system is not Windows.
+        You can connect to an ECS instance without using a VNC logon password. Therefore, you do not need to specify the `password` parameter.
+        The keepalive time of a connection to a VNC management terminal is 300 seconds. If you do not interact with the VNC management terminal within 300 seconds, the VNC management terminal is automatically disconnected.
+        If the connection is interrupted, you must call the DescribeInstanceVncUrl operation to obtain a new VNC logon address (`VncUrl`) and use the new logon address to construct a new web management terminal URL that you can use to reconnect to the VNC management terminal. You can reconnect to a VNC management terminal up to 30 times per minute.
+        Sample web management terminal URL:
         https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?vncUrl=ws%3A%2F%***&instanceId=i-wz9hhwq5a6tm****&isWindows=true
         
         @param request: DescribeInstanceVncUrlRequest
@@ -25684,16 +25701,15 @@ class Client(OpenApiClient):
         """
         @summary Queries the Virtual Network Computing (VNC) logon address of an Elastic Compute Service (ECS) instance.
         
-        @description ## [](#)Usage notes
-        Take note of the following items:
-        The **keepalive** time of a connection to a VNC management terminal is 300 seconds. If you do not interact with the VNC management terminal for 300 seconds, the VNC management terminal is automatically disconnected.
-        If the connection is interrupted, you must recall this operation to obtain a new logon address that is specified by `VncUrl` and use the new logon address to construct a URL that can be used to reconnect to the VNC management terminal. You can reconnect to a VNC management terminal for a maximum of 30 times per minute.
-        You need to add the `vncUrl=\\*\\*\\*\\*`, `instanceId=\\*\\*\\*\\*`, and `isWindows=true/false` parameters to the end of the link `https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?` and use an ampersand (`&`) between the parameters.
-        `vncUrl`: the value of `VncUrl` that is returned after a successful call of this operation.
-        `instanceId`: the ID of your instance.
-        `isWindows`: specifies whether the operating system of your instance is Windows. A value of `true` indicates that the operating system is Windows. A value of `false` indicates that the operating system is not Windows.
-        >  You can connect to an instance without a VNC logon password. Therefore, you do not need to configure the `password` parameter.
-        Sample URL:
+        @description    You cannot directly use the VNC logon address (VncUrl) in the response to log on to an ECS instance. To log on to the ECS instance, you can use the **web management terminal URL** that contains the VNC logon address.
+        >  To construct a web management terminal URL, add the `vncUrl=\\\\*\\*\\*`, `instanceId=****`, and `isWindows=true/false` parameters at the end of `https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?`. Separate each parameter with an ampersand (`&`). Parameter description:
+        `vncUrl`: the VNC logon address.
+        `instanceId`: the instance ID.
+        `isWindows`: specifies whether the operating system of your ECS instance is Windows. A value of `true` specifies that the operating system is Windows. A value of `false` specifies that the operating system is not Windows.
+        You can connect to an ECS instance without using a VNC logon password. Therefore, you do not need to specify the `password` parameter.
+        The keepalive time of a connection to a VNC management terminal is 300 seconds. If you do not interact with the VNC management terminal within 300 seconds, the VNC management terminal is automatically disconnected.
+        If the connection is interrupted, you must call the DescribeInstanceVncUrl operation to obtain a new VNC logon address (`VncUrl`) and use the new logon address to construct a new web management terminal URL that you can use to reconnect to the VNC management terminal. You can reconnect to a VNC management terminal up to 30 times per minute.
+        Sample web management terminal URL:
         https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?vncUrl=ws%3A%2F%***&instanceId=i-wz9hhwq5a6tm****&isWindows=true
         
         @param request: DescribeInstanceVncUrlRequest
@@ -27508,7 +27524,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeNetworkInterfaceAttributeResponse:
         """
-        @summary Queries the details of an elastic network interface (ENI). When you call this operation, you can specify parameters, such as NetworkInterfaceId and Attribute, in the request.
+        @summary Queries the details of an elastic network interface (ENI). When you call this operation, you can set the NetworkInterfaceId parameter to specify an ENI.
         
         @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs\\&api=DescribeNetworkInterfaceAttribute\\&type=RPC\\&version=2014-05-26)
@@ -27562,7 +27578,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeNetworkInterfaceAttributeResponse:
         """
-        @summary Queries the details of an elastic network interface (ENI). When you call this operation, you can specify parameters, such as NetworkInterfaceId and Attribute, in the request.
+        @summary Queries the details of an elastic network interface (ENI). When you call this operation, you can set the NetworkInterfaceId parameter to specify an ENI.
         
         @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs\\&api=DescribeNetworkInterfaceAttribute\\&type=RPC\\&version=2014-05-26)
@@ -27615,7 +27631,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeNetworkInterfaceAttributeRequest,
     ) -> ecs_20140526_models.DescribeNetworkInterfaceAttributeResponse:
         """
-        @summary Queries the details of an elastic network interface (ENI). When you call this operation, you can specify parameters, such as NetworkInterfaceId and Attribute, in the request.
+        @summary Queries the details of an elastic network interface (ENI). When you call this operation, you can set the NetworkInterfaceId parameter to specify an ENI.
         
         @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs\\&api=DescribeNetworkInterfaceAttribute\\&type=RPC\\&version=2014-05-26)
@@ -27631,7 +27647,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeNetworkInterfaceAttributeRequest,
     ) -> ecs_20140526_models.DescribeNetworkInterfaceAttributeResponse:
         """
-        @summary Queries the details of an elastic network interface (ENI). When you call this operation, you can specify parameters, such as NetworkInterfaceId and Attribute, in the request.
+        @summary Queries the details of an elastic network interface (ENI). When you call this operation, you can set the NetworkInterfaceId parameter to specify an ENI.
         
         @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs\\&api=DescribeNetworkInterfaceAttribute\\&type=RPC\\&version=2014-05-26)
@@ -30714,11 +30730,10 @@ class Client(OpenApiClient):
         """
         @summary Queries the basic information of security groups.
         
-        @description ## [](#)Usage notes
-        Take note of the following items:
-        The basic information about security groups includes their IDs and descriptions. The response returns security groups in descending order of the IDs of the security groups.
+        @description Take note of the following items:
+        The basic information of security groups includes their IDs and descriptions. The response returns security groups in descending order of their IDs.
         We recommend that you use `MaxResults` and `NextToken` for a paged query. We recommend that you use `MaxResults` to specify the maximum number of entries to return for each request. The return value of `NextToken` is a pagination token, which can be used in the next request to retrieve a new page of results. When you call the DescribeSecurityGroups operation to retrieve a new page of results, set `NextToken` to the `NextToken` value that is returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call. If the return value of `NextToken` is empty, the current page of results is the last page and no more results are to be returned.
-        When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](https://help.aliyun.com/document_detail/110340.html).
+        When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter formats](https://help.aliyun.com/document_detail/110340.html).
         
         @param request: DescribeSecurityGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30795,11 +30810,10 @@ class Client(OpenApiClient):
         """
         @summary Queries the basic information of security groups.
         
-        @description ## [](#)Usage notes
-        Take note of the following items:
-        The basic information about security groups includes their IDs and descriptions. The response returns security groups in descending order of the IDs of the security groups.
+        @description Take note of the following items:
+        The basic information of security groups includes their IDs and descriptions. The response returns security groups in descending order of their IDs.
         We recommend that you use `MaxResults` and `NextToken` for a paged query. We recommend that you use `MaxResults` to specify the maximum number of entries to return for each request. The return value of `NextToken` is a pagination token, which can be used in the next request to retrieve a new page of results. When you call the DescribeSecurityGroups operation to retrieve a new page of results, set `NextToken` to the `NextToken` value that is returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call. If the return value of `NextToken` is empty, the current page of results is the last page and no more results are to be returned.
-        When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](https://help.aliyun.com/document_detail/110340.html).
+        When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter formats](https://help.aliyun.com/document_detail/110340.html).
         
         @param request: DescribeSecurityGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30875,11 +30889,10 @@ class Client(OpenApiClient):
         """
         @summary Queries the basic information of security groups.
         
-        @description ## [](#)Usage notes
-        Take note of the following items:
-        The basic information about security groups includes their IDs and descriptions. The response returns security groups in descending order of the IDs of the security groups.
+        @description Take note of the following items:
+        The basic information of security groups includes their IDs and descriptions. The response returns security groups in descending order of their IDs.
         We recommend that you use `MaxResults` and `NextToken` for a paged query. We recommend that you use `MaxResults` to specify the maximum number of entries to return for each request. The return value of `NextToken` is a pagination token, which can be used in the next request to retrieve a new page of results. When you call the DescribeSecurityGroups operation to retrieve a new page of results, set `NextToken` to the `NextToken` value that is returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call. If the return value of `NextToken` is empty, the current page of results is the last page and no more results are to be returned.
-        When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](https://help.aliyun.com/document_detail/110340.html).
+        When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter formats](https://help.aliyun.com/document_detail/110340.html).
         
         @param request: DescribeSecurityGroupsRequest
         @return: DescribeSecurityGroupsResponse
@@ -30894,11 +30907,10 @@ class Client(OpenApiClient):
         """
         @summary Queries the basic information of security groups.
         
-        @description ## [](#)Usage notes
-        Take note of the following items:
-        The basic information about security groups includes their IDs and descriptions. The response returns security groups in descending order of the IDs of the security groups.
+        @description Take note of the following items:
+        The basic information of security groups includes their IDs and descriptions. The response returns security groups in descending order of their IDs.
         We recommend that you use `MaxResults` and `NextToken` for a paged query. We recommend that you use `MaxResults` to specify the maximum number of entries to return for each request. The return value of `NextToken` is a pagination token, which can be used in the next request to retrieve a new page of results. When you call the DescribeSecurityGroups operation to retrieve a new page of results, set `NextToken` to the `NextToken` value that is returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call. If the return value of `NextToken` is empty, the current page of results is the last page and no more results are to be returned.
-        When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](https://help.aliyun.com/document_detail/110340.html).
+        When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter formats](https://help.aliyun.com/document_detail/110340.html).
         
         @param request: DescribeSecurityGroupsRequest
         @return: DescribeSecurityGroupsResponse
@@ -35585,7 +35597,7 @@ class Client(OpenApiClient):
         @description ## [](#)Usage notes
         Before you export images, take note of the following items:
         Make sure that you are familiar with the prerequisites and considerations. For more information, see [Export a custom image](https://help.aliyun.com/document_detail/58181.html).
-        The `ImageFormat` parameter is available only for the following regions: Japan (Tokyo), Australia (Sydney) Closing Down, Indonesia (Jakarta), Germany (Frankfurt), UAE (Dubai), US (Virginia), UK (London), Singapore, Malaysia (Kuala Lumpur), and US (Silicon Valley). Alibaba Cloud services will be discontinued in the India (Mumbai) region. By default, custom images are exported in the RAW format in regions where the ImageFormat parameter is unsupported.
+        The `ImageFormat` parameter is available only for the following regions: Japan (Tokyo), Indonesia (Jakarta), Germany (Frankfurt), UAE (Dubai), US (Virginia), UK (London), Singapore, Malaysia (Kuala Lumpur), and US (Silicon Valley). Alibaba Cloud services will be discontinued in the India (Mumbai) region. By default, custom images are exported in the RAW format in regions where the ImageFormat parameter is unsupported.
         Use Resource Access Management (RAM) to authorize Elastic Compute Service (ECS) to write data to OSS. To complete the authorization, perform the following operations:
         Create a role named `AliyunECSImageExportDefaultRole` and attach the following policy to the role:
         {
@@ -35679,7 +35691,7 @@ class Client(OpenApiClient):
         @description ## [](#)Usage notes
         Before you export images, take note of the following items:
         Make sure that you are familiar with the prerequisites and considerations. For more information, see [Export a custom image](https://help.aliyun.com/document_detail/58181.html).
-        The `ImageFormat` parameter is available only for the following regions: Japan (Tokyo), Australia (Sydney) Closing Down, Indonesia (Jakarta), Germany (Frankfurt), UAE (Dubai), US (Virginia), UK (London), Singapore, Malaysia (Kuala Lumpur), and US (Silicon Valley). Alibaba Cloud services will be discontinued in the India (Mumbai) region. By default, custom images are exported in the RAW format in regions where the ImageFormat parameter is unsupported.
+        The `ImageFormat` parameter is available only for the following regions: Japan (Tokyo), Indonesia (Jakarta), Germany (Frankfurt), UAE (Dubai), US (Virginia), UK (London), Singapore, Malaysia (Kuala Lumpur), and US (Silicon Valley). Alibaba Cloud services will be discontinued in the India (Mumbai) region. By default, custom images are exported in the RAW format in regions where the ImageFormat parameter is unsupported.
         Use Resource Access Management (RAM) to authorize Elastic Compute Service (ECS) to write data to OSS. To complete the authorization, perform the following operations:
         Create a role named `AliyunECSImageExportDefaultRole` and attach the following policy to the role:
         {
@@ -35772,7 +35784,7 @@ class Client(OpenApiClient):
         @description ## [](#)Usage notes
         Before you export images, take note of the following items:
         Make sure that you are familiar with the prerequisites and considerations. For more information, see [Export a custom image](https://help.aliyun.com/document_detail/58181.html).
-        The `ImageFormat` parameter is available only for the following regions: Japan (Tokyo), Australia (Sydney) Closing Down, Indonesia (Jakarta), Germany (Frankfurt), UAE (Dubai), US (Virginia), UK (London), Singapore, Malaysia (Kuala Lumpur), and US (Silicon Valley). Alibaba Cloud services will be discontinued in the India (Mumbai) region. By default, custom images are exported in the RAW format in regions where the ImageFormat parameter is unsupported.
+        The `ImageFormat` parameter is available only for the following regions: Japan (Tokyo), Indonesia (Jakarta), Germany (Frankfurt), UAE (Dubai), US (Virginia), UK (London), Singapore, Malaysia (Kuala Lumpur), and US (Silicon Valley). Alibaba Cloud services will be discontinued in the India (Mumbai) region. By default, custom images are exported in the RAW format in regions where the ImageFormat parameter is unsupported.
         Use Resource Access Management (RAM) to authorize Elastic Compute Service (ECS) to write data to OSS. To complete the authorization, perform the following operations:
         Create a role named `AliyunECSImageExportDefaultRole` and attach the following policy to the role:
         {
@@ -35828,7 +35840,7 @@ class Client(OpenApiClient):
         @description ## [](#)Usage notes
         Before you export images, take note of the following items:
         Make sure that you are familiar with the prerequisites and considerations. For more information, see [Export a custom image](https://help.aliyun.com/document_detail/58181.html).
-        The `ImageFormat` parameter is available only for the following regions: Japan (Tokyo), Australia (Sydney) Closing Down, Indonesia (Jakarta), Germany (Frankfurt), UAE (Dubai), US (Virginia), UK (London), Singapore, Malaysia (Kuala Lumpur), and US (Silicon Valley). Alibaba Cloud services will be discontinued in the India (Mumbai) region. By default, custom images are exported in the RAW format in regions where the ImageFormat parameter is unsupported.
+        The `ImageFormat` parameter is available only for the following regions: Japan (Tokyo), Indonesia (Jakarta), Germany (Frankfurt), UAE (Dubai), US (Virginia), UK (London), Singapore, Malaysia (Kuala Lumpur), and US (Silicon Valley). Alibaba Cloud services will be discontinued in the India (Mumbai) region. By default, custom images are exported in the RAW format in regions where the ImageFormat parameter is unsupported.
         Use Resource Access Management (RAM) to authorize Elastic Compute Service (ECS) to write data to OSS. To complete the authorization, perform the following operations:
         Create a role named `AliyunECSImageExportDefaultRole` and attach the following policy to the role:
         {
@@ -43984,12 +43996,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceVncPasswdResponse:
         """
-        @summary Changes the VNC password of an Elastic Compute Service (ECS) instance.
+        @summary Changes the Virtual Network Computing (VNC) password of an Elastic Compute Service (ECS) instance.
         
-        @description    The password must be six characters in length and can contain only uppercase letters, lowercase letters, and digits.
-        After you modify the VNC password of an instance, take note of the following items:
-        If the instance is I/O optimized, the new password takes effect immediately.
-        If the instance is not I/O optimized, you must [restart the instance](https://help.aliyun.com/document_detail/25440.html) by using the ECS console or by calling the [RebootInstance](https://help.aliyun.com/document_detail/25502.html) operation for the new password to take effect.
+        @description    The VNC password must be six characters in length and can contain uppercase letters, lowercase letters, and digits.
+        After you modify the VNC password of an ECS instance, take note of the following items:
+        If the instance is I/O optimized, the new password takes effect immediately without the need to restart the instance.
+        If the instance is not I/O optimized, you must [restart the instance](https://help.aliyun.com/document_detail/25440.html) in the ECS console or by calling the [RebootInstance](https://help.aliyun.com/document_detail/25502.html) operation for the new password to take effect.
         
         @param request: ModifyInstanceVncPasswdRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -44036,12 +44048,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceVncPasswdResponse:
         """
-        @summary Changes the VNC password of an Elastic Compute Service (ECS) instance.
+        @summary Changes the Virtual Network Computing (VNC) password of an Elastic Compute Service (ECS) instance.
         
-        @description    The password must be six characters in length and can contain only uppercase letters, lowercase letters, and digits.
-        After you modify the VNC password of an instance, take note of the following items:
-        If the instance is I/O optimized, the new password takes effect immediately.
-        If the instance is not I/O optimized, you must [restart the instance](https://help.aliyun.com/document_detail/25440.html) by using the ECS console or by calling the [RebootInstance](https://help.aliyun.com/document_detail/25502.html) operation for the new password to take effect.
+        @description    The VNC password must be six characters in length and can contain uppercase letters, lowercase letters, and digits.
+        After you modify the VNC password of an ECS instance, take note of the following items:
+        If the instance is I/O optimized, the new password takes effect immediately without the need to restart the instance.
+        If the instance is not I/O optimized, you must [restart the instance](https://help.aliyun.com/document_detail/25440.html) in the ECS console or by calling the [RebootInstance](https://help.aliyun.com/document_detail/25502.html) operation for the new password to take effect.
         
         @param request: ModifyInstanceVncPasswdRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -44087,12 +44099,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceVncPasswdRequest,
     ) -> ecs_20140526_models.ModifyInstanceVncPasswdResponse:
         """
-        @summary Changes the VNC password of an Elastic Compute Service (ECS) instance.
+        @summary Changes the Virtual Network Computing (VNC) password of an Elastic Compute Service (ECS) instance.
         
-        @description    The password must be six characters in length and can contain only uppercase letters, lowercase letters, and digits.
-        After you modify the VNC password of an instance, take note of the following items:
-        If the instance is I/O optimized, the new password takes effect immediately.
-        If the instance is not I/O optimized, you must [restart the instance](https://help.aliyun.com/document_detail/25440.html) by using the ECS console or by calling the [RebootInstance](https://help.aliyun.com/document_detail/25502.html) operation for the new password to take effect.
+        @description    The VNC password must be six characters in length and can contain uppercase letters, lowercase letters, and digits.
+        After you modify the VNC password of an ECS instance, take note of the following items:
+        If the instance is I/O optimized, the new password takes effect immediately without the need to restart the instance.
+        If the instance is not I/O optimized, you must [restart the instance](https://help.aliyun.com/document_detail/25440.html) in the ECS console or by calling the [RebootInstance](https://help.aliyun.com/document_detail/25502.html) operation for the new password to take effect.
         
         @param request: ModifyInstanceVncPasswdRequest
         @return: ModifyInstanceVncPasswdResponse
@@ -44105,12 +44117,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceVncPasswdRequest,
     ) -> ecs_20140526_models.ModifyInstanceVncPasswdResponse:
         """
-        @summary Changes the VNC password of an Elastic Compute Service (ECS) instance.
+        @summary Changes the Virtual Network Computing (VNC) password of an Elastic Compute Service (ECS) instance.
         
-        @description    The password must be six characters in length and can contain only uppercase letters, lowercase letters, and digits.
-        After you modify the VNC password of an instance, take note of the following items:
-        If the instance is I/O optimized, the new password takes effect immediately.
-        If the instance is not I/O optimized, you must [restart the instance](https://help.aliyun.com/document_detail/25440.html) by using the ECS console or by calling the [RebootInstance](https://help.aliyun.com/document_detail/25502.html) operation for the new password to take effect.
+        @description    The VNC password must be six characters in length and can contain uppercase letters, lowercase letters, and digits.
+        After you modify the VNC password of an ECS instance, take note of the following items:
+        If the instance is I/O optimized, the new password takes effect immediately without the need to restart the instance.
+        If the instance is not I/O optimized, you must [restart the instance](https://help.aliyun.com/document_detail/25440.html) in the ECS console or by calling the [RebootInstance](https://help.aliyun.com/document_detail/25502.html) operation for the new password to take effect.
         
         @param request: ModifyInstanceVncPasswdRequest
         @return: ModifyInstanceVncPasswdResponse
@@ -54307,9 +54319,9 @@ class Client(OpenApiClient):
         @summary Stops an Elastic Compute Service (ECS) instance in the Running state. After you call this operation, the state of the instance changes to Stopping and then to Stopped.
         
         @description This operation is an asynchronous operation. After you call this operation to stop an ECS instance, the operation sets the status of the ECS instance to Stopping and begins the stop process. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the ECS instance. When the status of the ECS instance changes to `Stopped`, the instance is stopped.
-        **Notes**\
+        ### [](#)Precautions
         You cannot call this operation to stop an ECS instance that is locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
-        After you enable the default economical mode for all ECS instances located in virtual private clouds (VPCs) in your account, you can set `StoppedMode` to KeepCharging for the ECS instance that you want to stop to enable standard mode. This way, the ECS instance continues to be billed after it is stopped. The instance type resources and public IP address of the instance are retained.
+        After you enable the default economical mode for all pay-as-you-go ECS instances located in virtual private clouds (VPCs) in your account, you can set `StoppedMode` to KeepCharging for the ECS instance that you want to stop to enable standard mode. This way, the ECS instance continues to be billed after the instance is stopped. The instance type resources and public IP address of the instance are retained.
         
         @param request: StopInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -54365,9 +54377,9 @@ class Client(OpenApiClient):
         @summary Stops an Elastic Compute Service (ECS) instance in the Running state. After you call this operation, the state of the instance changes to Stopping and then to Stopped.
         
         @description This operation is an asynchronous operation. After you call this operation to stop an ECS instance, the operation sets the status of the ECS instance to Stopping and begins the stop process. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the ECS instance. When the status of the ECS instance changes to `Stopped`, the instance is stopped.
-        **Notes**\
+        ### [](#)Precautions
         You cannot call this operation to stop an ECS instance that is locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
-        After you enable the default economical mode for all ECS instances located in virtual private clouds (VPCs) in your account, you can set `StoppedMode` to KeepCharging for the ECS instance that you want to stop to enable standard mode. This way, the ECS instance continues to be billed after it is stopped. The instance type resources and public IP address of the instance are retained.
+        After you enable the default economical mode for all pay-as-you-go ECS instances located in virtual private clouds (VPCs) in your account, you can set `StoppedMode` to KeepCharging for the ECS instance that you want to stop to enable standard mode. This way, the ECS instance continues to be billed after the instance is stopped. The instance type resources and public IP address of the instance are retained.
         
         @param request: StopInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -54422,9 +54434,9 @@ class Client(OpenApiClient):
         @summary Stops an Elastic Compute Service (ECS) instance in the Running state. After you call this operation, the state of the instance changes to Stopping and then to Stopped.
         
         @description This operation is an asynchronous operation. After you call this operation to stop an ECS instance, the operation sets the status of the ECS instance to Stopping and begins the stop process. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the ECS instance. When the status of the ECS instance changes to `Stopped`, the instance is stopped.
-        **Notes**\
+        ### [](#)Precautions
         You cannot call this operation to stop an ECS instance that is locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
-        After you enable the default economical mode for all ECS instances located in virtual private clouds (VPCs) in your account, you can set `StoppedMode` to KeepCharging for the ECS instance that you want to stop to enable standard mode. This way, the ECS instance continues to be billed after it is stopped. The instance type resources and public IP address of the instance are retained.
+        After you enable the default economical mode for all pay-as-you-go ECS instances located in virtual private clouds (VPCs) in your account, you can set `StoppedMode` to KeepCharging for the ECS instance that you want to stop to enable standard mode. This way, the ECS instance continues to be billed after the instance is stopped. The instance type resources and public IP address of the instance are retained.
         
         @param request: StopInstanceRequest
         @return: StopInstanceResponse
@@ -54440,9 +54452,9 @@ class Client(OpenApiClient):
         @summary Stops an Elastic Compute Service (ECS) instance in the Running state. After you call this operation, the state of the instance changes to Stopping and then to Stopped.
         
         @description This operation is an asynchronous operation. After you call this operation to stop an ECS instance, the operation sets the status of the ECS instance to Stopping and begins the stop process. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the ECS instance. When the status of the ECS instance changes to `Stopped`, the instance is stopped.
-        **Notes**\
+        ### [](#)Precautions
         You cannot call this operation to stop an ECS instance that is locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
-        After you enable the default economical mode for all ECS instances located in virtual private clouds (VPCs) in your account, you can set `StoppedMode` to KeepCharging for the ECS instance that you want to stop to enable standard mode. This way, the ECS instance continues to be billed after it is stopped. The instance type resources and public IP address of the instance are retained.
+        After you enable the default economical mode for all pay-as-you-go ECS instances located in virtual private clouds (VPCs) in your account, you can set `StoppedMode` to KeepCharging for the ECS instance that you want to stop to enable standard mode. This way, the ECS instance continues to be billed after the instance is stopped. The instance type resources and public IP address of the instance are retained.
         
         @param request: StopInstanceRequest
         @return: StopInstanceResponse
