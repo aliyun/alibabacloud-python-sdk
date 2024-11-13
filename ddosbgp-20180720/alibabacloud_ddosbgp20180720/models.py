@@ -12,13 +12,13 @@ class AddIpRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the Anti-DDoS Origin Enterprise instance.
+        # The ID of the Anti-DDoS Origin instance.
         # 
-        # >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin Enterprise instances.
+        # >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The list of IP addresses that you want to add to the Anti-DDoS Origin Enterprise instance. This parameter is a string consisting of JSON arrays. Each element in a JSON array is a JSON struct that includes the following field:
+        # The IP addresses that you want to add to the Anti-DDoS Origin instance. This parameter is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that includes the following field:
         # 
         # *   **ip**: required. The IP address that you want to add. Data type: string.
         # 
@@ -28,13 +28,13 @@ class AddIpRequest(TeaModel):
         # 
         # This parameter is required.
         self.ip_list = ip_list
-        # The region ID of the Anti-DDoS Origin Enterprise instance.
+        # The ID of the region where the Anti-DDoS Origin instance resides.
         # 
         # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
-        # The ID of the resource group to which the Anti-DDoS Origin Enterprise instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin instance belongs to the default resource group.
         # 
-        # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
+        # For information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -1675,29 +1675,29 @@ class DeleteIpRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the Anti-DDoS Origin Enterprise instance.
+        # The ID of the Anti-DDoS Origin instance.
         # 
-        # >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin Enterprise instances.
+        # >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The list of IP addresses that you want to remove from the Anti-DDoS Origin Enterprise instance. This parameter is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
+        # The IP addresses that you want to remove from the Anti-DDoS Origin instance. This parameter is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
         # 
         # *   **ip**: required. The IP address that you want to remove. Data type: string.
         # 
         #     **\
         # 
-        #     **Note** The IP addresses that you want to remove must be protected by the Anti-DDoS Origin Enterprise instance.
+        #     **Note** The IP addresses that you want to remove must be protected by the Anti-DDoS Origin instance.
         # 
         # This parameter is required.
         self.ip_list = ip_list
-        # The region ID of the Anti-DDoS Origin Enterprise instance.
+        # The ID of the region where the Anti-DDoS Origin instance resides.
         # 
         # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
-        # The ID of the resource group to which the Anti-DDoS Origin Enterprise instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin instance belongs to the default resource group.
         # 
-        # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
+        # For information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -2976,9 +2976,9 @@ class DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList(TeaModel):
     ):
         # The application scope of the instance. Valid values:
         # 
-        # *   **only_mainland_china**: regions in the Chinese mainland
-        # *   **global**: all regions
-        # *   **international_and_hmt**: regions outside the Chinese mainland
+        # *   **only_mainland_china**: regions in the Chinese mainland.
+        # *   **global**: all regions.
+        # *   **international_and_hmt**: regions outside the Chinese mainland.
         self.coverage = coverage
         # The number of IP addresses protected by the pay-as-you-go instance in the Chinese mainland.
         self.ip_cnt_cn = ip_cnt_cn
@@ -2986,11 +2986,11 @@ class DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList(TeaModel):
         self.ip_cnt_ov = ip_cnt_ov
         # The bill distribution by account. The JSON struct contains the following fields:
         # 
-        # *   **eipCnIpCount**: the number of EIPs with Anti-DDoS (Enhanced) enabled in the Chinese mainland
-        # *   **eipOvIpCount**: the number of EIPs with Anti-DDoS (Enhanced) enabled outside the Chinese mainland
-        # *   **memberUid**: the owner account
-        # *   **standardAssetsCnIpCount**: the number of IP addresses of regular Alibaba Cloud services in the Chinese mainland
-        # *   **standardAssetsOvIpCount**: the number of IP addresses of regular Alibaba Cloud services outside the Chinese mainland
+        # *   **eipCnIpCount**: the number of EIPs with Anti-DDoS (Enhanced) enabled in the Chinese mainland.
+        # *   **eipOvIpCount**: the number of EIPs with Anti-DDoS (Enhanced) enabled outside the Chinese mainland.
+        # *   **memberUid**: the owner account.
+        # *   **standardAssetsCnIpCount**: the number of IP addresses of regular Alibaba Cloud services in the Chinese mainland.
+        # *   **standardAssetsOvIpCount**: the number of IP addresses of regular Alibaba Cloud services outside the Chinese mainland.
         # 
         # >  If the memberUid field in the JSON struct is empty, the information about the current account is returned.
         self.member_ip_cnt = member_ip_cnt
@@ -3030,6 +3030,81 @@ class DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList(TeaModel):
             self.member_ip_cnt = m.get('MemberIpCnt')
         if m.get('Time') is not None:
             self.time = m.get('Time')
+        return self
+
+
+class DescribeDdosOriginInstanceBillResponseBodyMonthlySummaryList(TeaModel):
+    def __init__(
+        self,
+        enable_days: int = None,
+        flow_cn: int = None,
+        flow_intl: int = None,
+        ip_count_cn: int = None,
+        ip_count_intl: int = None,
+        member_uid: str = None,
+        standard_assets_flow_cn: int = None,
+        standard_assets_flow_intl: int = None,
+        uid: str = None,
+    ):
+        self.enable_days = enable_days
+        self.flow_cn = flow_cn
+        self.flow_intl = flow_intl
+        self.ip_count_cn = ip_count_cn
+        self.ip_count_intl = ip_count_intl
+        self.member_uid = member_uid
+        self.standard_assets_flow_cn = standard_assets_flow_cn
+        self.standard_assets_flow_intl = standard_assets_flow_intl
+        self.uid = uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_days is not None:
+            result['EnableDays'] = self.enable_days
+        if self.flow_cn is not None:
+            result['FlowCn'] = self.flow_cn
+        if self.flow_intl is not None:
+            result['FlowIntl'] = self.flow_intl
+        if self.ip_count_cn is not None:
+            result['IpCountCn'] = self.ip_count_cn
+        if self.ip_count_intl is not None:
+            result['IpCountIntl'] = self.ip_count_intl
+        if self.member_uid is not None:
+            result['MemberUid'] = self.member_uid
+        if self.standard_assets_flow_cn is not None:
+            result['StandardAssetsFlowCn'] = self.standard_assets_flow_cn
+        if self.standard_assets_flow_intl is not None:
+            result['StandardAssetsFlowIntl'] = self.standard_assets_flow_intl
+        if self.uid is not None:
+            result['Uid'] = self.uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableDays') is not None:
+            self.enable_days = m.get('EnableDays')
+        if m.get('FlowCn') is not None:
+            self.flow_cn = m.get('FlowCn')
+        if m.get('FlowIntl') is not None:
+            self.flow_intl = m.get('FlowIntl')
+        if m.get('IpCountCn') is not None:
+            self.ip_count_cn = m.get('IpCountCn')
+        if m.get('IpCountIntl') is not None:
+            self.ip_count_intl = m.get('IpCountIntl')
+        if m.get('MemberUid') is not None:
+            self.member_uid = m.get('MemberUid')
+        if m.get('StandardAssetsFlowCn') is not None:
+            self.standard_assets_flow_cn = m.get('StandardAssetsFlowCn')
+        if m.get('StandardAssetsFlowIntl') is not None:
+            self.standard_assets_flow_intl = m.get('StandardAssetsFlowIntl')
+        if m.get('Uid') is not None:
+            self.uid = m.get('Uid')
         return self
 
 
@@ -3106,6 +3181,7 @@ class DescribeDdosOriginInstanceBillResponseBody(TeaModel):
         ip_count: int = None,
         ip_count_or_function_list: List[DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList] = None,
         ip_info: str = None,
+        monthly_summary_list: List[DescribeDdosOriginInstanceBillResponseBodyMonthlySummaryList] = None,
         request_id: str = None,
         standard_assets_flow_list: List[DescribeDdosOriginInstanceBillResponseBodyStandardAssetsFlowList] = None,
         standard_assets_flow_region: Dict[str, Any] = None,
@@ -3115,6 +3191,10 @@ class DescribeDdosOriginInstanceBillResponseBody(TeaModel):
         total_flow_cn: int = None,
         total_flow_ov: int = None,
     ):
+        # The asset status.
+        # 
+        # *   **0**: No asset is added to the instance for protection.
+        # *   **1**: Assets are added to the instance for protection.
         self.asset_status = asset_status
         # The payment status. Valid values:
         # 
@@ -3133,11 +3213,12 @@ class DescribeDdosOriginInstanceBillResponseBody(TeaModel):
         self.ip_count_or_function_list = ip_count_or_function_list
         # The IP address distribution. The JSON struct contains the following fields:
         # 
-        # *   **eipCnIpCount**: the number of EIPs with Anti-DDoS (Enhanced) enabled in the Chinese mainland
-        # *   **eipOvIpCount**: the number of EIPs with Anti-DDoS (Enhanced) enabled outside the Chinese mainland
-        # *   **standardAssetsCnIpCount**: the number of IP addresses of regular Alibaba Cloud services in the Chinese mainland
-        # *   **standardAssetsOvIpCount**: the number of IP addresses of regular Alibaba Cloud services outside the Chinese mainland
+        # *   **eipCnIpCount**: the number of EIPs with Anti-DDoS (Enhanced) enabled in the Chinese mainland.
+        # *   **eipOvIpCount**: the number of EIPs with Anti-DDoS (Enhanced) enabled outside the Chinese mainland.
+        # *   **standardAssetsCnIpCount**: the number of IP addresses of regular Alibaba Cloud services in the Chinese mainland.
+        # *   **standardAssetsOvIpCount**: the number of IP addresses of regular Alibaba Cloud services outside the Chinese mainland.
         self.ip_info = ip_info
+        self.monthly_summary_list = monthly_summary_list
         # The request ID.
         self.request_id = request_id
         # The details about the traffic of regular Alibaba Cloud services.
@@ -3166,6 +3247,10 @@ class DescribeDdosOriginInstanceBillResponseBody(TeaModel):
                     k.validate()
         if self.ip_count_or_function_list:
             for k in self.ip_count_or_function_list:
+                if k:
+                    k.validate()
+        if self.monthly_summary_list:
+            for k in self.monthly_summary_list:
                 if k:
                     k.validate()
         if self.standard_assets_flow_list:
@@ -3199,6 +3284,10 @@ class DescribeDdosOriginInstanceBillResponseBody(TeaModel):
                 result['IpCountOrFunctionList'].append(k.to_map() if k else None)
         if self.ip_info is not None:
             result['IpInfo'] = self.ip_info
+        result['MonthlySummaryList'] = []
+        if self.monthly_summary_list is not None:
+            for k in self.monthly_summary_list:
+                result['MonthlySummaryList'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         result['StandardAssetsFlowList'] = []
@@ -3243,6 +3332,11 @@ class DescribeDdosOriginInstanceBillResponseBody(TeaModel):
                 self.ip_count_or_function_list.append(temp_model.from_map(k))
         if m.get('IpInfo') is not None:
             self.ip_info = m.get('IpInfo')
+        self.monthly_summary_list = []
+        if m.get('MonthlySummaryList') is not None:
+            for k in m.get('MonthlySummaryList'):
+                temp_model = DescribeDdosOriginInstanceBillResponseBodyMonthlySummaryList()
+                self.monthly_summary_list.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         self.standard_assets_flow_list = []
@@ -3434,9 +3528,9 @@ class DescribeInstanceListRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag that is added to the Anti-DDoS Origin instance to query.
+        # The key of the tag that is added to the Anti-DDoS Origin instance.
         self.key = key
-        # The value of the tag that is added to the Anti-DDoS Origin instance to query.
+        # The value of the tag that is added to the Anti-DDoS Origin instance.
         self.value = value
 
     def validate(self):
@@ -3487,6 +3581,7 @@ class DescribeInstanceListRequest(TeaModel):
         # *   **0**: the Professional mitigation plan
         # *   **1**: the Enterprise mitigation plan
         self.instance_type = instance_type
+        # The mitigation plan of the Anti-DDoS Origin instance.
         self.instance_type_list = instance_type_list
         # The IP address of the object that is protected by the Anti-DDoS Origin instance to query.
         self.ip = ip
@@ -3522,6 +3617,7 @@ class DescribeInstanceListRequest(TeaModel):
         # 
         # If you do not specify this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The tags that are added to the Anti-DDoS Origin instance.
         self.tag = tag
 
     def validate(self):
@@ -3605,6 +3701,7 @@ class DescribeInstanceListResponseBodyInstanceListAutoProtectCondition(TeaModel)
         self,
         events: List[str] = None,
     ):
+        # The events that trigger automatic association.
         self.events = events
 
     def validate(self):
@@ -3657,8 +3754,8 @@ class DescribeInstanceListResponseBodyInstanceList(TeaModel):
         self.blackholding_count = blackholding_count
         # The type of the instance.
         # 
-        # *   **ddos_ddosorigin_public_cn**: Anti-DDoS Origin 2.0 (Pay-as-you-go) on the China site (aliyun.com)
-        # *   **ddos_ddosorigin_public_intl**: Anti-DDoS Origin 2.0 (Pay-as-you-go) on the International site (alibabacloud.com)
+        # *   **ddos_ddosorigin_public_cn**: Anti-DDoS Origin 2.0 (Pay-as-you-go) on the China site (aliyun.com).
+        # *   **ddos_ddosorigin_public_intl**: Anti-DDoS Origin 2.0 (Pay-as-you-go) on the International site (alibabacloud.com).
         self.commodity_type = commodity_type
         # The application scope of the instance.
         # 
@@ -3867,19 +3964,19 @@ class DescribeInstanceSpecsRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the Anti-DDoS Origin Enterprise instance. This parameter value is a string consisting of JSON arrays. Each element in a JSON array indicates an instance ID. If you want to query more than one instance, separate instance IDs with commas (,).
+        # The ID of the Anti-DDoS Origin instance. This parameter is a string that consists of JSON arrays. Each element in a JSON array indicates an instance ID. If you want to query more than one instance, separate instance IDs with commas (,).
         # 
-        # >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin Enterprise instances in a specific region.
+        # >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances in a specific region.
         # 
         # This parameter is required.
         self.instance_id_list = instance_id_list
-        # The region ID of the Anti-DDoS Origin Enterprise instance. Default value: **cn-hangzhou**, which indicates the China (Hangzhou) region.
+        # The region ID of the Anti-DDoS Origin instance. Default value: **cn-hangzhou**, which indicates the China (Hangzhou) region.
         # 
-        # >  If your instance does not reside in the China (Hangzhou) region, you must specify this parameter to the region ID of your instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the regions of cloud assets that are supported by an Anti-DDoS Origin instance.
+        # >  If your instance does not reside in the China (Hangzhou) region, you must set this parameter to the region ID of your instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the regions of assets that can be protected by Anti-DDoS Origin in a specific region.
         self.region_id = region_id
-        # The ID of the resource group to which the Anti-DDoS Origin Enterprise instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin Enterprise instance belongs to the default resource group.
+        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin instance belongs to the default resource group.
         # 
-        # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
+        # For information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -3915,6 +4012,8 @@ class DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig(TeaModel):
         self,
         bandwidth: int = None,
         bind_ip_count: int = None,
+        elastic_bw_mbps: int = None,
+        elastic_bw_mode: str = None,
         ip_advance_thre: int = None,
         ip_basic_thre: int = None,
         ip_spec: int = None,
@@ -3926,6 +4025,13 @@ class DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig(TeaModel):
         self.bandwidth = bandwidth
         # The number of IP addresses that are protected by the Anti-DDoS Origin Enterprise instance.
         self.bind_ip_count = bind_ip_count
+        # The burstable clean bandwidth. Unit: Mbit/s.
+        self.elastic_bw_mbps = elastic_bw_mbps
+        # The metering method of burstable clean bandwidth. Valid values:
+        # 
+        # *   **month**: the monthly 95th percentile metering method.
+        # *   **day**: the daily 95th percentile metering method.
+        self.elastic_bw_mode = elastic_bw_mode
         # The burstable protection bandwidth of each protected IP address. Unit: Gbit/s.
         self.ip_advance_thre = ip_advance_thre
         # The basic protection bandwidth of each protected IP address. Unit: Gbit/s.
@@ -3934,9 +4040,9 @@ class DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig(TeaModel):
         self.ip_spec = ip_spec
         # The clean bandwidth. Unit: Mbit/s.
         self.normal_bandwidth = normal_bandwidth
-        # The burstable protection bandwidth of the Anti-DDoS Origin Enterprise instance. Unit: Gbit/s.
+        # The burstable protection bandwidth of the Anti-DDoS Origin instance. Unit: Gbit/s.
         self.pack_adv_thre = pack_adv_thre
-        # The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Unit: Gbit/s.
+        # The basic protection bandwidth of the Anti-DDoS Origin instance. Unit: Gbit/s.
         self.pack_basic_thre = pack_basic_thre
 
     def validate(self):
@@ -3952,6 +4058,10 @@ class DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig(TeaModel):
             result['Bandwidth'] = self.bandwidth
         if self.bind_ip_count is not None:
             result['BindIpCount'] = self.bind_ip_count
+        if self.elastic_bw_mbps is not None:
+            result['ElasticBwMbps'] = self.elastic_bw_mbps
+        if self.elastic_bw_mode is not None:
+            result['ElasticBwMode'] = self.elastic_bw_mode
         if self.ip_advance_thre is not None:
             result['IpAdvanceThre'] = self.ip_advance_thre
         if self.ip_basic_thre is not None:
@@ -3972,6 +4082,10 @@ class DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig(TeaModel):
             self.bandwidth = m.get('Bandwidth')
         if m.get('BindIpCount') is not None:
             self.bind_ip_count = m.get('BindIpCount')
+        if m.get('ElasticBwMbps') is not None:
+            self.elastic_bw_mbps = m.get('ElasticBwMbps')
+        if m.get('ElasticBwMode') is not None:
+            self.elastic_bw_mode = m.get('ElasticBwMode')
         if m.get('IpAdvanceThre') is not None:
             self.ip_advance_thre = m.get('IpAdvanceThre')
         if m.get('IpBasicThre') is not None:
@@ -3993,6 +4107,7 @@ class DescribeInstanceSpecsResponseBodyInstanceSpecs(TeaModel):
         available_defense_times: int = None,
         available_delete_blackhole_count: str = None,
         defense_times_percent: int = None,
+        downgrade_status: int = None,
         instance_id: str = None,
         is_full_defense_mode: int = None,
         pack_config: DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig = None,
@@ -4005,18 +4120,22 @@ class DescribeInstanceSpecsResponseBodyInstanceSpecs(TeaModel):
         self.available_delete_blackhole_count = available_delete_blackhole_count
         # The percentage of the used best-effort protection sessions. Unit: %.
         self.defense_times_percent = defense_times_percent
-        # The region ID of the Anti-DDoS Origin Enterprise instance.
+        # Indicates whether the instance is downgraded. Valid value:
+        # 
+        # *   **8**: The instance is downgraded due to excessive bandwidth usage.
+        self.downgrade_status = downgrade_status
+        # The ID of the Anti-DDoS Origin instance.
         self.instance_id = instance_id
         # Indicates whether best-effort protection is enabled. Valid values:
         # 
         # *   **0**: Best-effort protection is disabled.
         # *   **1**: Best-effort protection is enabled.
         self.is_full_defense_mode = is_full_defense_mode
-        # The configurations of the Anti-DDoS Origin Enterprise instance, including the number of protected IP addresses and protection bandwidth.
+        # The configurations of the Anti-DDoS Origin instance, including the number of protected IP addresses and protection bandwidth.
         self.pack_config = pack_config
-        # The region ID of the Anti-DDoS Origin Enterprise instance.
+        # The region ID of the Anti-DDoS Origin instance.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the name of the region.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the name of the region.
         self.region = region
         # The total best-effort protection sessions.
         self.total_defense_times = total_defense_times
@@ -4037,6 +4156,8 @@ class DescribeInstanceSpecsResponseBodyInstanceSpecs(TeaModel):
             result['AvailableDeleteBlackholeCount'] = self.available_delete_blackhole_count
         if self.defense_times_percent is not None:
             result['DefenseTimesPercent'] = self.defense_times_percent
+        if self.downgrade_status is not None:
+            result['DowngradeStatus'] = self.downgrade_status
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.is_full_defense_mode is not None:
@@ -4057,6 +4178,8 @@ class DescribeInstanceSpecsResponseBodyInstanceSpecs(TeaModel):
             self.available_delete_blackhole_count = m.get('AvailableDeleteBlackholeCount')
         if m.get('DefenseTimesPercent') is not None:
             self.defense_times_percent = m.get('DefenseTimesPercent')
+        if m.get('DowngradeStatus') is not None:
+            self.downgrade_status = m.get('DowngradeStatus')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('IsFullDefenseMode') is not None:
@@ -4077,7 +4200,7 @@ class DescribeInstanceSpecsResponseBody(TeaModel):
         instance_specs: List[DescribeInstanceSpecsResponseBodyInstanceSpecs] = None,
         request_id: str = None,
     ):
-        # The specifications of the Anti-DDoS Origin Enterprise instance, including whether best-effort protection is enabled, the number of available best-effort protection sessions, and the number of used best-effort protection sessions.
+        # The specifications of the Anti-DDoS Origin instance, including whether best-effort protection is enabled, the number of available best-effort protection sessions, and the number of used best-effort protection sessions.
         self.instance_specs = instance_specs
         # The ID of the request.
         self.request_id = request_id
@@ -5518,13 +5641,13 @@ class DescribeRegionsRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The region ID to query. The default value is **cn-hangzhou**, which indicates that the regions of cloud assets that are supported by an Anti-DDoS Origin instance in the China (Hangzhou) region are queried.
+        # The ID of the region. The default value is **cn-hangzhou**. If the default value is used, the regions of cloud assets that can be protected by Anti-DDoS Origin in the China (Hangzhou) region are queried.
         # 
-        # For more information about the IDs of other regions, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # If you want to specify another value for **RegionId**, see [Regions and Zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin instance belongs to the default resource group.
         # 
-        # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
+        # For information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -5558,11 +5681,11 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
         region_id: str = None,
         region_name: str = None,
     ):
-        # The English name of the region where the cloud assets reside.
+        # The English name of the region.
         self.region_en_name = region_en_name
         # The ID of the region.
         self.region_id = region_id
-        # The name of the region where the cloud assets reside.
+        # The Chinese name of the region.
         self.region_name = region_name
 
     def validate(self):
@@ -5603,14 +5726,14 @@ class DescribeRegionsResponseBody(TeaModel):
     ):
         # The HTTP status code.
         self.code = code
-        # The information about regions of the cloud assets that are supported by the Anti-DDoS Origin instance. The information includes region IDs and names.
+        # The information about the regions of cloud assets that can be protected by Anti-DDoS Origin. The information includes region IDs and names.
         self.regions = regions
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The request is successful.
-        # *   **false**: The request failed.
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -6700,9 +6823,18 @@ class ListPolicyRequest(TeaModel):
         self.page_no = page_no
         # The number of entries per page. Default value: **10**.
         self.page_size = page_size
+        # The service type. Valid values:
+        # 
+        # *   **ecs**: Elastic Compute Service (ECS).
+        # *   **slb**: Server Load Balancer (SLB).
+        # *   **eip**: Elastic IP Address (EIP).
+        # *   **gf-eip**: EIP with Anti-DDoS (Enhanced) enabled.
+        # 
+        # >  This parameter is available only if Type is set to `default`.
         self.product_type = product_type
         # The type of the policy. Valid values:
         # 
+        # *   **default**: the default mitigation policy.
         # *   **l3**: IP-specific mitigation policies.
         # *   **l4**: port-specific mitigation policies.
         self.type = type
@@ -7359,9 +7491,11 @@ class ListPolicyResponseBodyPolicyList(TeaModel):
         self.id = id
         # The name of the policy.
         self.name = name
+        # The remarks of the policy.
         self.remark = remark
         # The type of the policy. Valid values:
         # 
+        # *   **default**: the default mitigation policy.
         # *   **l3**: IP-specific mitigation policies.
         # *   **l4**: port-specific mitigation policies.
         self.type = type
@@ -7695,6 +7829,7 @@ class ListPolicyAttachmentResponseBodyAttachmentList(TeaModel):
         self.policy_id = policy_id
         # The name of the rule.
         self.policy_name = policy_name
+        # The description of the policy.
         self.policy_remark = policy_remark
         # The type of the policy. Valid values:
         # 
@@ -8391,7 +8526,7 @@ class ModifyPolicyRequestContentFingerPrintRuleList(TeaModel):
         self.offset = offset
         # The payload. The value is a hexadecimal string.
         self.payload_bytes = payload_bytes
-        # The type of the protocol. Valid value:
+        # The type of the protocol. Valid values:
         # 
         # *   **tcp**\
         # *   **udp**\
@@ -8659,7 +8794,7 @@ class ModifyPolicyRequestContentPortRuleList(TeaModel):
         self.dst_port_start = dst_port_start
         # The ID of the rule.
         self.id = id
-        # The action triggered if the rule is matched. Valid value:
+        # The action triggered if the rule is matched. Valid values:
         # 
         # *   **drop**: The traffic is discarded.
         # 
@@ -8757,9 +8892,9 @@ class ModifyPolicyRequestContentSourceBlockList(TeaModel):
         self.exceed_limit_times = exceed_limit_times
         # The type of the source rate limit. Valid values:
         # 
-        # *   **3**: the PPS limit on source IP addresses.
+        # *   **3**: the pps limit on source IP addresses.
         # *   **4**: the bandwidth limit on source IP addresses.
-        # *   **5**: the PPS limit on source SYN packets.
+        # *   **5**: the pps limit on source SYN packets.
         # *   **6**: the bandwidth limit on source SYN packets.
         # 
         # This parameter is required.
@@ -8807,11 +8942,11 @@ class ModifyPolicyRequestContentSourceLimit(TeaModel):
     ):
         # The bandwidth limit on source IP addresses. Unit: bytes per second.
         self.bps = bps
-        # The packets per second (PPS) limit on source IP addresses.
+        # The packets per second (pps) limit on source IP addresses.
         self.pps = pps
         # The bandwidth limit on source SYN packets. Unit: bytes per second.
         self.syn_bps = syn_bps
-        # The PPS limit on source SYN packets.
+        # The pps limit on source SYN packets.
         self.syn_pps = syn_pps
 
     def validate(self):
@@ -9056,7 +9191,7 @@ class ModifyPolicyRequest(TeaModel):
         # 
         # This parameter is required.
         self.action_type = action_type
-        # The content of the policy.
+        # The policy content.
         self.content = content
         # The ID of the policy.
         # 
@@ -9134,7 +9269,7 @@ class ModifyPolicyShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.action_type = action_type
-        # The content of the policy.
+        # The policy content.
         self.content_shrink = content_shrink
         # The ID of the policy.
         # 
@@ -9560,7 +9695,7 @@ class ModifyPolicyContentRequestContentPortRuleList(TeaModel):
         self.dst_port_start = dst_port_start
         # The ID of the rule.
         self.id = id
-        # The action triggered if the rule is matched. Valid value:
+        # The action triggered if the rule is matched. Valid values:
         # 
         # *   **drop**: The traffic is discarded.
         # 
@@ -9658,9 +9793,9 @@ class ModifyPolicyContentRequestContentSourceBlockList(TeaModel):
         self.exceed_limit_times = exceed_limit_times
         # The type of the source rate limit. Valid values:
         # 
-        # *   **3**: the PPS limit on source IP addresses.
+        # *   **3**: the pps limit on source IP addresses.
         # *   **4**: the bandwidth limit on source IP addresses.
-        # *   **5**: the PPS limit on source SYN packets.
+        # *   **5**: the pps limit on source SYN packets.
         # *   **6**: the bandwidth limit on source SYN packets.
         # 
         # This parameter is required.
@@ -9708,11 +9843,11 @@ class ModifyPolicyContentRequestContentSourceLimit(TeaModel):
     ):
         # The bandwidth limit on source IP addresses. Unit: bytes per second.
         self.bps = bps
-        # The packets per second (PPS) limit on source IP addresses.
+        # The packets per second (pps) limit on source IP addresses.
         self.pps = pps
         # The bandwidth limit on source SYN packets. Unit: bytes per second.
         self.syn_bps = syn_bps
-        # The PPS limit on source SYN packets.
+        # The pps limit on source SYN packets.
         self.syn_pps = syn_pps
 
     def validate(self):
@@ -9915,7 +10050,7 @@ class ModifyPolicyContentRequest(TeaModel):
         id: str = None,
         name: str = None,
     ):
-        # The content of the policy.
+        # The policy content.
         self.content = content
         # The ID of the policy.
         # 
@@ -9961,7 +10096,7 @@ class ModifyPolicyContentShrinkRequest(TeaModel):
         id: str = None,
         name: str = None,
     ):
-        # The content of the policy.
+        # The policy content.
         self.content_shrink = content_shrink
         # The ID of the policy.
         # 

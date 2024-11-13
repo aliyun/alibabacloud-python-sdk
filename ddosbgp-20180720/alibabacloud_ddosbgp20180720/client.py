@@ -69,7 +69,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.AddIpResponse:
         """
-        @summary Adds IP addresses to an Anti-DDoS Origin Enterprise instance.
+        @summary Adds IP addresses to an Anti-DDoS Origin instance.
         
         @param request: AddIpRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -110,7 +110,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.AddIpResponse:
         """
-        @summary Adds IP addresses to an Anti-DDoS Origin Enterprise instance.
+        @summary Adds IP addresses to an Anti-DDoS Origin instance.
         
         @param request: AddIpRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -150,7 +150,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.AddIpRequest,
     ) -> ddosbgp_20180720_models.AddIpResponse:
         """
-        @summary Adds IP addresses to an Anti-DDoS Origin Enterprise instance.
+        @summary Adds IP addresses to an Anti-DDoS Origin instance.
         
         @param request: AddIpRequest
         @return: AddIpResponse
@@ -163,7 +163,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.AddIpRequest,
     ) -> ddosbgp_20180720_models.AddIpResponse:
         """
-        @summary Adds IP addresses to an Anti-DDoS Origin Enterprise instance.
+        @summary Adds IP addresses to an Anti-DDoS Origin instance.
         
         @param request: AddIpRequest
         @return: AddIpResponse
@@ -1225,7 +1225,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DeleteIpResponse:
         """
-        @summary Removes specific IP addresses from an Anti-DDoS Origin Enterprise instance.
+        @summary Removes specific IP addresses from an Anti-DDoS Origin instance.
         
         @description The Anti-DDoS Origin Enterprise instance no longer protects the IP addresses that are removed.
         
@@ -1268,7 +1268,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DeleteIpResponse:
         """
-        @summary Removes specific IP addresses from an Anti-DDoS Origin Enterprise instance.
+        @summary Removes specific IP addresses from an Anti-DDoS Origin instance.
         
         @description The Anti-DDoS Origin Enterprise instance no longer protects the IP addresses that are removed.
         
@@ -1310,7 +1310,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.DeleteIpRequest,
     ) -> ddosbgp_20180720_models.DeleteIpResponse:
         """
-        @summary Removes specific IP addresses from an Anti-DDoS Origin Enterprise instance.
+        @summary Removes specific IP addresses from an Anti-DDoS Origin instance.
         
         @description The Anti-DDoS Origin Enterprise instance no longer protects the IP addresses that are removed.
         
@@ -1325,7 +1325,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.DeleteIpRequest,
     ) -> ddosbgp_20180720_models.DeleteIpResponse:
         """
-        @summary Removes specific IP addresses from an Anti-DDoS Origin Enterprise instance.
+        @summary Removes specific IP addresses from an Anti-DDoS Origin instance.
         
         @description The Anti-DDoS Origin Enterprise instance no longer protects the IP addresses that are removed.
         
@@ -2405,6 +2405,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DescribeInstanceSpecsResponse:
         """
+        @summary Queries the specifications of a specific Anti-DDoS Origin instance.
+        
         @param request: DescribeInstanceSpecsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeInstanceSpecsResponse
@@ -2442,6 +2444,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DescribeInstanceSpecsResponse:
         """
+        @summary Queries the specifications of a specific Anti-DDoS Origin instance.
+        
         @param request: DescribeInstanceSpecsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeInstanceSpecsResponse
@@ -2478,6 +2482,8 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.DescribeInstanceSpecsRequest,
     ) -> ddosbgp_20180720_models.DescribeInstanceSpecsResponse:
         """
+        @summary Queries the specifications of a specific Anti-DDoS Origin instance.
+        
         @param request: DescribeInstanceSpecsRequest
         @return: DescribeInstanceSpecsResponse
         """
@@ -2489,6 +2495,8 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.DescribeInstanceSpecsRequest,
     ) -> ddosbgp_20180720_models.DescribeInstanceSpecsResponse:
         """
+        @summary Queries the specifications of a specific Anti-DDoS Origin instance.
+        
         @param request: DescribeInstanceSpecsRequest
         @return: DescribeInstanceSpecsResponse
         """
@@ -3203,7 +3211,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DescribeRegionsResponse:
         """
-        @summary Queries the regions of cloud assets that are supported by an Anti-DDoS Origin instance.
+        @summary Queries the regions of assets that can be protected by Anti-DDoS Origin Enterprise in a specific region.
         
         @param request: DescribeRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3240,7 +3248,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DescribeRegionsResponse:
         """
-        @summary Queries the regions of cloud assets that are supported by an Anti-DDoS Origin instance.
+        @summary Queries the regions of assets that can be protected by Anti-DDoS Origin Enterprise in a specific region.
         
         @param request: DescribeRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3276,7 +3284,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.DescribeRegionsRequest,
     ) -> ddosbgp_20180720_models.DescribeRegionsResponse:
         """
-        @summary Queries the regions of cloud assets that are supported by an Anti-DDoS Origin instance.
+        @summary Queries the regions of assets that can be protected by Anti-DDoS Origin Enterprise in a specific region.
         
         @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse
@@ -3289,7 +3297,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.DescribeRegionsRequest,
     ) -> ddosbgp_20180720_models.DescribeRegionsResponse:
         """
-        @summary Queries the regions of cloud assets that are supported by an Anti-DDoS Origin instance.
+        @summary Queries the regions of assets that can be protected by Anti-DDoS Origin Enterprise in a specific region.
         
         @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse

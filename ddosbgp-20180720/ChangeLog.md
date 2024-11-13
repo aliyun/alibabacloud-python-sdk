@@ -1,3 +1,9 @@
+2024-11-13 Version: 2.7.3
+- Update API DescribeDdosOriginInstanceBill: update param Type.
+- Update API DescribeDdosOriginInstanceBill: update response param.
+- Update API DescribeInstanceSpecs: update response param.
+
+
 2024-08-21 Version: 2.7.2
 - Update API DescribeDdosOriginInstanceBill: update response param.
 
