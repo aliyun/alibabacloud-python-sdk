@@ -1,3 +1,6 @@
+2024-11-14 Version: 3.5.1
+- Generated python 2023-01-17 for airticketOpen.
+
 2024-11-13 Version: 3.5.0
 - Support API CollectFlightLowestPrice.
 
