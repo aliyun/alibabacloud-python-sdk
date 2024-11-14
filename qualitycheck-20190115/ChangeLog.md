@@ -1,3 +1,16 @@
+2024-11-14 Version: 8.0.0
+- Support API DeleteCheckTypeToScheme.
+- Delete API CreateUser.
+- Delete API DeleteScoreForApi.
+- Delete API DeleteSubScoreForApi.
+- Delete API InsertScoreForApi.
+- Delete API InsertSubScoreForApi.
+- Delete API UpdateScoreForApi.
+- Delete API UpdateSubScoreForApi.
+- Update API GetQualityCheckScheme: update response param.
+- Update API GetResult: update response param.
+
+
 2024-07-30 Version: 7.0.1
 - Update API GetResult: update response param.
 

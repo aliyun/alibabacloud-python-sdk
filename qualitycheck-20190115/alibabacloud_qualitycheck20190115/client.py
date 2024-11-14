@@ -431,11 +431,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.AssignReviewerBySessionGroupResponse:
         """
+        @deprecated OpenAPI AssignReviewerBySessionGroup is deprecated
+        
         @summary 会话组批量分配
         
         @param request: AssignReviewerBySessionGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AssignReviewerBySessionGroupResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -468,11 +471,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.AssignReviewerBySessionGroupResponse:
         """
+        @deprecated OpenAPI AssignReviewerBySessionGroup is deprecated
+        
         @summary 会话组批量分配
         
         @param request: AssignReviewerBySessionGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AssignReviewerBySessionGroupResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -504,10 +510,13 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.AssignReviewerBySessionGroupRequest,
     ) -> qualitycheck_20190115_models.AssignReviewerBySessionGroupResponse:
         """
+        @deprecated OpenAPI AssignReviewerBySessionGroup is deprecated
+        
         @summary 会话组批量分配
         
         @param request: AssignReviewerBySessionGroupRequest
         @return: AssignReviewerBySessionGroupResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.assign_reviewer_by_session_group_with_options(request, runtime)
@@ -517,10 +526,13 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.AssignReviewerBySessionGroupRequest,
     ) -> qualitycheck_20190115_models.AssignReviewerBySessionGroupResponse:
         """
+        @deprecated OpenAPI AssignReviewerBySessionGroup is deprecated
+        
         @summary 会话组批量分配
         
         @param request: AssignReviewerBySessionGroupRequest
         @return: AssignReviewerBySessionGroupResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.assign_reviewer_by_session_group_with_options_async(request, runtime)
@@ -1201,110 +1213,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_task_assign_rule_with_options_async(request, runtime)
 
-    def create_user_with_options(
-        self,
-        request: qualitycheck_20190115_models.CreateUserRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> qualitycheck_20190115_models.CreateUserResponse:
-        """
-        @deprecated OpenAPI CreateUser is deprecated
-        
-        @param request: CreateUserRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateUserResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.base_me_agent_id):
-            query['BaseMeAgentId'] = request.base_me_agent_id
-        if not UtilClient.is_unset(request.json_str):
-            query['JsonStr'] = request.json_str
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateUser',
-            version='2019-01-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            qualitycheck_20190115_models.CreateUserResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_user_with_options_async(
-        self,
-        request: qualitycheck_20190115_models.CreateUserRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> qualitycheck_20190115_models.CreateUserResponse:
-        """
-        @deprecated OpenAPI CreateUser is deprecated
-        
-        @param request: CreateUserRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateUserResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.base_me_agent_id):
-            query['BaseMeAgentId'] = request.base_me_agent_id
-        if not UtilClient.is_unset(request.json_str):
-            query['JsonStr'] = request.json_str
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateUser',
-            version='2019-01-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            qualitycheck_20190115_models.CreateUserResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_user(
-        self,
-        request: qualitycheck_20190115_models.CreateUserRequest,
-    ) -> qualitycheck_20190115_models.CreateUserResponse:
-        """
-        @deprecated OpenAPI CreateUser is deprecated
-        
-        @param request: CreateUserRequest
-        @return: CreateUserResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.create_user_with_options(request, runtime)
-
-    async def create_user_async(
-        self,
-        request: qualitycheck_20190115_models.CreateUserRequest,
-    ) -> qualitycheck_20190115_models.CreateUserResponse:
-        """
-        @deprecated OpenAPI CreateUser is deprecated
-        
-        @param request: CreateUserRequest
-        @return: CreateUserResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.create_user_with_options_async(request, runtime)
-
     def create_warning_config_with_options(
         self,
         request: qualitycheck_20190115_models.CreateWarningConfigRequest,
@@ -1773,6 +1681,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_business_category_with_options_async(request, runtime)
 
+    def delete_check_type_to_scheme_with_options(
+        self,
+        request: qualitycheck_20190115_models.DeleteCheckTypeToSchemeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> qualitycheck_20190115_models.DeleteCheckTypeToSchemeResponse:
+        """
+        @summary 删除质检唯独
+        
+        @param request: DeleteCheckTypeToSchemeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCheckTypeToSchemeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
+        if not UtilClient.is_unset(request.json_str):
+            query['JsonStr'] = request.json_str
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCheckTypeToScheme',
+            version='2019-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            qualitycheck_20190115_models.DeleteCheckTypeToSchemeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_check_type_to_scheme_with_options_async(
+        self,
+        request: qualitycheck_20190115_models.DeleteCheckTypeToSchemeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> qualitycheck_20190115_models.DeleteCheckTypeToSchemeResponse:
+        """
+        @summary 删除质检唯独
+        
+        @param request: DeleteCheckTypeToSchemeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCheckTypeToSchemeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
+        if not UtilClient.is_unset(request.json_str):
+            query['JsonStr'] = request.json_str
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCheckTypeToScheme',
+            version='2019-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            qualitycheck_20190115_models.DeleteCheckTypeToSchemeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_check_type_to_scheme(
+        self,
+        request: qualitycheck_20190115_models.DeleteCheckTypeToSchemeRequest,
+    ) -> qualitycheck_20190115_models.DeleteCheckTypeToSchemeResponse:
+        """
+        @summary 删除质检唯独
+        
+        @param request: DeleteCheckTypeToSchemeRequest
+        @return: DeleteCheckTypeToSchemeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_check_type_to_scheme_with_options(request, runtime)
+
+    async def delete_check_type_to_scheme_async(
+        self,
+        request: qualitycheck_20190115_models.DeleteCheckTypeToSchemeRequest,
+    ) -> qualitycheck_20190115_models.DeleteCheckTypeToSchemeResponse:
+        """
+        @summary 删除质检唯独
+        
+        @param request: DeleteCheckTypeToSchemeRequest
+        @return: DeleteCheckTypeToSchemeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_check_type_to_scheme_with_options_async(request, runtime)
+
     def delete_customization_config_with_options(
         self,
         request: qualitycheck_20190115_models.DeleteCustomizationConfigRequest,
@@ -1871,9 +1879,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.DeleteDataSetResponse:
         """
+        @deprecated OpenAPI DeleteDataSet is deprecated
+        
         @param request: DeleteDataSetRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteDataSetResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -1906,9 +1917,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.DeleteDataSetResponse:
         """
+        @deprecated OpenAPI DeleteDataSet is deprecated
+        
         @param request: DeleteDataSetRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteDataSetResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -1940,8 +1954,11 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.DeleteDataSetRequest,
     ) -> qualitycheck_20190115_models.DeleteDataSetResponse:
         """
+        @deprecated OpenAPI DeleteDataSet is deprecated
+        
         @param request: DeleteDataSetRequest
         @return: DeleteDataSetResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.delete_data_set_with_options(request, runtime)
@@ -1951,8 +1968,11 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.DeleteDataSetRequest,
     ) -> qualitycheck_20190115_models.DeleteDataSetResponse:
         """
+        @deprecated OpenAPI DeleteDataSet is deprecated
+        
         @param request: DeleteDataSetRequest
         @return: DeleteDataSetResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_data_set_with_options_async(request, runtime)
@@ -2481,110 +2501,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_scheme_task_config_with_options_async(request, runtime)
 
-    def delete_score_for_api_with_options(
-        self,
-        request: qualitycheck_20190115_models.DeleteScoreForApiRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> qualitycheck_20190115_models.DeleteScoreForApiResponse:
-        """
-        @deprecated OpenAPI DeleteScoreForApi is deprecated
-        
-        @param request: DeleteScoreForApiRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteScoreForApiResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.base_me_agent_id):
-            query['BaseMeAgentId'] = request.base_me_agent_id
-        if not UtilClient.is_unset(request.json_str):
-            query['JsonStr'] = request.json_str
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteScoreForApi',
-            version='2019-01-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            qualitycheck_20190115_models.DeleteScoreForApiResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_score_for_api_with_options_async(
-        self,
-        request: qualitycheck_20190115_models.DeleteScoreForApiRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> qualitycheck_20190115_models.DeleteScoreForApiResponse:
-        """
-        @deprecated OpenAPI DeleteScoreForApi is deprecated
-        
-        @param request: DeleteScoreForApiRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteScoreForApiResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.base_me_agent_id):
-            query['BaseMeAgentId'] = request.base_me_agent_id
-        if not UtilClient.is_unset(request.json_str):
-            query['JsonStr'] = request.json_str
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteScoreForApi',
-            version='2019-01-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            qualitycheck_20190115_models.DeleteScoreForApiResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_score_for_api(
-        self,
-        request: qualitycheck_20190115_models.DeleteScoreForApiRequest,
-    ) -> qualitycheck_20190115_models.DeleteScoreForApiResponse:
-        """
-        @deprecated OpenAPI DeleteScoreForApi is deprecated
-        
-        @param request: DeleteScoreForApiRequest
-        @return: DeleteScoreForApiResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.delete_score_for_api_with_options(request, runtime)
-
-    async def delete_score_for_api_async(
-        self,
-        request: qualitycheck_20190115_models.DeleteScoreForApiRequest,
-    ) -> qualitycheck_20190115_models.DeleteScoreForApiResponse:
-        """
-        @deprecated OpenAPI DeleteScoreForApi is deprecated
-        
-        @param request: DeleteScoreForApiRequest
-        @return: DeleteScoreForApiResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_score_for_api_with_options_async(request, runtime)
-
     def delete_skill_group_config_with_options(
         self,
         request: qualitycheck_20190115_models.DeleteSkillGroupConfigRequest,
@@ -2676,110 +2592,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_skill_group_config_with_options_async(request, runtime)
-
-    def delete_sub_score_for_api_with_options(
-        self,
-        request: qualitycheck_20190115_models.DeleteSubScoreForApiRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> qualitycheck_20190115_models.DeleteSubScoreForApiResponse:
-        """
-        @deprecated OpenAPI DeleteSubScoreForApi is deprecated
-        
-        @param request: DeleteSubScoreForApiRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteSubScoreForApiResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.base_me_agent_id):
-            query['BaseMeAgentId'] = request.base_me_agent_id
-        if not UtilClient.is_unset(request.json_str):
-            query['JsonStr'] = request.json_str
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteSubScoreForApi',
-            version='2019-01-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            qualitycheck_20190115_models.DeleteSubScoreForApiResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_sub_score_for_api_with_options_async(
-        self,
-        request: qualitycheck_20190115_models.DeleteSubScoreForApiRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> qualitycheck_20190115_models.DeleteSubScoreForApiResponse:
-        """
-        @deprecated OpenAPI DeleteSubScoreForApi is deprecated
-        
-        @param request: DeleteSubScoreForApiRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteSubScoreForApiResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.base_me_agent_id):
-            query['BaseMeAgentId'] = request.base_me_agent_id
-        if not UtilClient.is_unset(request.json_str):
-            query['JsonStr'] = request.json_str
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteSubScoreForApi',
-            version='2019-01-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            qualitycheck_20190115_models.DeleteSubScoreForApiResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_sub_score_for_api(
-        self,
-        request: qualitycheck_20190115_models.DeleteSubScoreForApiRequest,
-    ) -> qualitycheck_20190115_models.DeleteSubScoreForApiResponse:
-        """
-        @deprecated OpenAPI DeleteSubScoreForApi is deprecated
-        
-        @param request: DeleteSubScoreForApiRequest
-        @return: DeleteSubScoreForApiResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.delete_sub_score_for_api_with_options(request, runtime)
-
-    async def delete_sub_score_for_api_async(
-        self,
-        request: qualitycheck_20190115_models.DeleteSubScoreForApiRequest,
-    ) -> qualitycheck_20190115_models.DeleteSubScoreForApiResponse:
-        """
-        @deprecated OpenAPI DeleteSubScoreForApi is deprecated
-        
-        @param request: DeleteSubScoreForApiRequest
-        @return: DeleteSubScoreForApiResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_sub_score_for_api_with_options_async(request, runtime)
 
     def delete_task_assign_rule_with_options(
         self,
@@ -5021,214 +4833,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.handle_complaint_with_options_async(request, runtime)
 
-    def insert_score_for_api_with_options(
-        self,
-        request: qualitycheck_20190115_models.InsertScoreForApiRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> qualitycheck_20190115_models.InsertScoreForApiResponse:
-        """
-        @deprecated OpenAPI InsertScoreForApi is deprecated
-        
-        @param request: InsertScoreForApiRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: InsertScoreForApiResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.base_me_agent_id):
-            query['BaseMeAgentId'] = request.base_me_agent_id
-        if not UtilClient.is_unset(request.json_str):
-            query['JsonStr'] = request.json_str
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='InsertScoreForApi',
-            version='2019-01-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            qualitycheck_20190115_models.InsertScoreForApiResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def insert_score_for_api_with_options_async(
-        self,
-        request: qualitycheck_20190115_models.InsertScoreForApiRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> qualitycheck_20190115_models.InsertScoreForApiResponse:
-        """
-        @deprecated OpenAPI InsertScoreForApi is deprecated
-        
-        @param request: InsertScoreForApiRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: InsertScoreForApiResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.base_me_agent_id):
-            query['BaseMeAgentId'] = request.base_me_agent_id
-        if not UtilClient.is_unset(request.json_str):
-            query['JsonStr'] = request.json_str
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='InsertScoreForApi',
-            version='2019-01-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            qualitycheck_20190115_models.InsertScoreForApiResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def insert_score_for_api(
-        self,
-        request: qualitycheck_20190115_models.InsertScoreForApiRequest,
-    ) -> qualitycheck_20190115_models.InsertScoreForApiResponse:
-        """
-        @deprecated OpenAPI InsertScoreForApi is deprecated
-        
-        @param request: InsertScoreForApiRequest
-        @return: InsertScoreForApiResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.insert_score_for_api_with_options(request, runtime)
-
-    async def insert_score_for_api_async(
-        self,
-        request: qualitycheck_20190115_models.InsertScoreForApiRequest,
-    ) -> qualitycheck_20190115_models.InsertScoreForApiResponse:
-        """
-        @deprecated OpenAPI InsertScoreForApi is deprecated
-        
-        @param request: InsertScoreForApiRequest
-        @return: InsertScoreForApiResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.insert_score_for_api_with_options_async(request, runtime)
-
-    def insert_sub_score_for_api_with_options(
-        self,
-        request: qualitycheck_20190115_models.InsertSubScoreForApiRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> qualitycheck_20190115_models.InsertSubScoreForApiResponse:
-        """
-        @deprecated OpenAPI InsertSubScoreForApi is deprecated
-        
-        @param request: InsertSubScoreForApiRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: InsertSubScoreForApiResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.base_me_agent_id):
-            query['BaseMeAgentId'] = request.base_me_agent_id
-        if not UtilClient.is_unset(request.json_str):
-            query['JsonStr'] = request.json_str
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='InsertSubScoreForApi',
-            version='2019-01-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            qualitycheck_20190115_models.InsertSubScoreForApiResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def insert_sub_score_for_api_with_options_async(
-        self,
-        request: qualitycheck_20190115_models.InsertSubScoreForApiRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> qualitycheck_20190115_models.InsertSubScoreForApiResponse:
-        """
-        @deprecated OpenAPI InsertSubScoreForApi is deprecated
-        
-        @param request: InsertSubScoreForApiRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: InsertSubScoreForApiResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.base_me_agent_id):
-            query['BaseMeAgentId'] = request.base_me_agent_id
-        if not UtilClient.is_unset(request.json_str):
-            query['JsonStr'] = request.json_str
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='InsertSubScoreForApi',
-            version='2019-01-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            qualitycheck_20190115_models.InsertSubScoreForApiResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def insert_sub_score_for_api(
-        self,
-        request: qualitycheck_20190115_models.InsertSubScoreForApiRequest,
-    ) -> qualitycheck_20190115_models.InsertSubScoreForApiResponse:
-        """
-        @deprecated OpenAPI InsertSubScoreForApi is deprecated
-        
-        @param request: InsertSubScoreForApiRequest
-        @return: InsertSubScoreForApiResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.insert_sub_score_for_api_with_options(request, runtime)
-
-    async def insert_sub_score_for_api_async(
-        self,
-        request: qualitycheck_20190115_models.InsertSubScoreForApiRequest,
-    ) -> qualitycheck_20190115_models.InsertSubScoreForApiResponse:
-        """
-        @deprecated OpenAPI InsertSubScoreForApi is deprecated
-        
-        @param request: InsertSubScoreForApiRequest
-        @return: InsertSubScoreForApiResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.insert_sub_score_for_api_with_options_async(request, runtime)
-
     def invalid_rule_with_options(
         self,
         request: qualitycheck_20190115_models.InvalidRuleRequest,
@@ -5431,11 +5035,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.ListDataSetResponse:
         """
+        @deprecated OpenAPI ListDataSet is deprecated
+        
         @summary 获取数据集列表
         
         @param request: ListDataSetRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDataSetResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -5468,11 +5075,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.ListDataSetResponse:
         """
+        @deprecated OpenAPI ListDataSet is deprecated
+        
         @summary 获取数据集列表
         
         @param request: ListDataSetRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDataSetResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -5504,10 +5114,13 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.ListDataSetRequest,
     ) -> qualitycheck_20190115_models.ListDataSetResponse:
         """
+        @deprecated OpenAPI ListDataSet is deprecated
+        
         @summary 获取数据集列表
         
         @param request: ListDataSetRequest
         @return: ListDataSetResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.list_data_set_with_options(request, runtime)
@@ -5517,10 +5130,13 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.ListDataSetRequest,
     ) -> qualitycheck_20190115_models.ListDataSetResponse:
         """
+        @deprecated OpenAPI ListDataSet is deprecated
+        
         @summary 获取数据集列表
         
         @param request: ListDataSetRequest
         @return: ListDataSetResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_data_set_with_options_async(request, runtime)
@@ -6127,11 +5743,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.ListSessionGroupResponse:
         """
+        @deprecated OpenAPI ListSessionGroup is deprecated
+        
         @summary 获取会话组列表
         
         @param request: ListSessionGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListSessionGroupResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -6164,11 +5783,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.ListSessionGroupResponse:
         """
+        @deprecated OpenAPI ListSessionGroup is deprecated
+        
         @summary 获取会话组列表
         
         @param request: ListSessionGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListSessionGroupResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -6200,10 +5822,13 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.ListSessionGroupRequest,
     ) -> qualitycheck_20190115_models.ListSessionGroupResponse:
         """
+        @deprecated OpenAPI ListSessionGroup is deprecated
+        
         @summary 获取会话组列表
         
         @param request: ListSessionGroupRequest
         @return: ListSessionGroupResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.list_session_group_with_options(request, runtime)
@@ -6213,10 +5838,13 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.ListSessionGroupRequest,
     ) -> qualitycheck_20190115_models.ListSessionGroupResponse:
         """
+        @deprecated OpenAPI ListSessionGroup is deprecated
+        
         @summary 获取会话组列表
         
         @param request: ListSessionGroupRequest
         @return: ListSessionGroupResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_session_group_with_options_async(request, runtime)
@@ -6795,11 +6423,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.RevertAssignedSessionGroupResponse:
         """
+        @deprecated OpenAPI RevertAssignedSessionGroup is deprecated
+        
         @summary 会话组批量回收
         
         @param request: RevertAssignedSessionGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RevertAssignedSessionGroupResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -6832,11 +6463,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.RevertAssignedSessionGroupResponse:
         """
+        @deprecated OpenAPI RevertAssignedSessionGroup is deprecated
+        
         @summary 会话组批量回收
         
         @param request: RevertAssignedSessionGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RevertAssignedSessionGroupResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -6868,10 +6502,13 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.RevertAssignedSessionGroupRequest,
     ) -> qualitycheck_20190115_models.RevertAssignedSessionGroupResponse:
         """
+        @deprecated OpenAPI RevertAssignedSessionGroup is deprecated
+        
         @summary 会话组批量回收
         
         @param request: RevertAssignedSessionGroupRequest
         @return: RevertAssignedSessionGroupResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.revert_assigned_session_group_with_options(request, runtime)
@@ -6881,10 +6518,13 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.RevertAssignedSessionGroupRequest,
     ) -> qualitycheck_20190115_models.RevertAssignedSessionGroupResponse:
         """
+        @deprecated OpenAPI RevertAssignedSessionGroup is deprecated
+        
         @summary 会话组批量回收
         
         @param request: RevertAssignedSessionGroupRequest
         @return: RevertAssignedSessionGroupResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.revert_assigned_session_group_with_options_async(request, runtime)
@@ -6895,9 +6535,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.SaveConfigDataSetResponse:
         """
+        @deprecated OpenAPI SaveConfigDataSet is deprecated
+        
         @param request: SaveConfigDataSetRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SaveConfigDataSetResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -6930,9 +6573,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> qualitycheck_20190115_models.SaveConfigDataSetResponse:
         """
+        @deprecated OpenAPI SaveConfigDataSet is deprecated
+        
         @param request: SaveConfigDataSetRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SaveConfigDataSetResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -6964,8 +6610,11 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.SaveConfigDataSetRequest,
     ) -> qualitycheck_20190115_models.SaveConfigDataSetResponse:
         """
+        @deprecated OpenAPI SaveConfigDataSet is deprecated
+        
         @param request: SaveConfigDataSetRequest
         @return: SaveConfigDataSetResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.save_config_data_set_with_options(request, runtime)
@@ -6975,8 +6624,11 @@ class Client(OpenApiClient):
         request: qualitycheck_20190115_models.SaveConfigDataSetRequest,
     ) -> qualitycheck_20190115_models.SaveConfigDataSetResponse:
         """
+        @deprecated OpenAPI SaveConfigDataSet is deprecated
+        
         @param request: SaveConfigDataSetRequest
         @return: SaveConfigDataSetResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.save_config_data_set_with_options_async(request, runtime)
@@ -8473,110 +8125,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_scheme_task_config_with_options_async(request, runtime)
 
-    def update_score_for_api_with_options(
-        self,
-        request: qualitycheck_20190115_models.UpdateScoreForApiRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> qualitycheck_20190115_models.UpdateScoreForApiResponse:
-        """
-        @deprecated OpenAPI UpdateScoreForApi is deprecated
-        
-        @param request: UpdateScoreForApiRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateScoreForApiResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.base_me_agent_id):
-            query['BaseMeAgentId'] = request.base_me_agent_id
-        if not UtilClient.is_unset(request.json_str):
-            query['JsonStr'] = request.json_str
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='UpdateScoreForApi',
-            version='2019-01-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            qualitycheck_20190115_models.UpdateScoreForApiResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_score_for_api_with_options_async(
-        self,
-        request: qualitycheck_20190115_models.UpdateScoreForApiRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> qualitycheck_20190115_models.UpdateScoreForApiResponse:
-        """
-        @deprecated OpenAPI UpdateScoreForApi is deprecated
-        
-        @param request: UpdateScoreForApiRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateScoreForApiResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.base_me_agent_id):
-            query['BaseMeAgentId'] = request.base_me_agent_id
-        if not UtilClient.is_unset(request.json_str):
-            query['JsonStr'] = request.json_str
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='UpdateScoreForApi',
-            version='2019-01-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            qualitycheck_20190115_models.UpdateScoreForApiResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_score_for_api(
-        self,
-        request: qualitycheck_20190115_models.UpdateScoreForApiRequest,
-    ) -> qualitycheck_20190115_models.UpdateScoreForApiResponse:
-        """
-        @deprecated OpenAPI UpdateScoreForApi is deprecated
-        
-        @param request: UpdateScoreForApiRequest
-        @return: UpdateScoreForApiResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.update_score_for_api_with_options(request, runtime)
-
-    async def update_score_for_api_async(
-        self,
-        request: qualitycheck_20190115_models.UpdateScoreForApiRequest,
-    ) -> qualitycheck_20190115_models.UpdateScoreForApiResponse:
-        """
-        @deprecated OpenAPI UpdateScoreForApi is deprecated
-        
-        @param request: UpdateScoreForApiRequest
-        @return: UpdateScoreForApiResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.update_score_for_api_with_options_async(request, runtime)
-
     def update_skill_group_config_with_options(
         self,
         request: qualitycheck_20190115_models.UpdateSkillGroupConfigRequest,
@@ -8668,110 +8216,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_skill_group_config_with_options_async(request, runtime)
-
-    def update_sub_score_for_api_with_options(
-        self,
-        request: qualitycheck_20190115_models.UpdateSubScoreForApiRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> qualitycheck_20190115_models.UpdateSubScoreForApiResponse:
-        """
-        @deprecated OpenAPI UpdateSubScoreForApi is deprecated
-        
-        @param request: UpdateSubScoreForApiRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateSubScoreForApiResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.base_me_agent_id):
-            query['BaseMeAgentId'] = request.base_me_agent_id
-        if not UtilClient.is_unset(request.json_str):
-            query['JsonStr'] = request.json_str
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='UpdateSubScoreForApi',
-            version='2019-01-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            qualitycheck_20190115_models.UpdateSubScoreForApiResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_sub_score_for_api_with_options_async(
-        self,
-        request: qualitycheck_20190115_models.UpdateSubScoreForApiRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> qualitycheck_20190115_models.UpdateSubScoreForApiResponse:
-        """
-        @deprecated OpenAPI UpdateSubScoreForApi is deprecated
-        
-        @param request: UpdateSubScoreForApiRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateSubScoreForApiResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.base_me_agent_id):
-            query['BaseMeAgentId'] = request.base_me_agent_id
-        if not UtilClient.is_unset(request.json_str):
-            query['JsonStr'] = request.json_str
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='UpdateSubScoreForApi',
-            version='2019-01-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            qualitycheck_20190115_models.UpdateSubScoreForApiResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_sub_score_for_api(
-        self,
-        request: qualitycheck_20190115_models.UpdateSubScoreForApiRequest,
-    ) -> qualitycheck_20190115_models.UpdateSubScoreForApiResponse:
-        """
-        @deprecated OpenAPI UpdateSubScoreForApi is deprecated
-        
-        @param request: UpdateSubScoreForApiRequest
-        @return: UpdateSubScoreForApiResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.update_sub_score_for_api_with_options(request, runtime)
-
-    async def update_sub_score_for_api_async(
-        self,
-        request: qualitycheck_20190115_models.UpdateSubScoreForApiRequest,
-    ) -> qualitycheck_20190115_models.UpdateSubScoreForApiResponse:
-        """
-        @deprecated OpenAPI UpdateSubScoreForApi is deprecated
-        
-        @param request: UpdateSubScoreForApiRequest
-        @return: UpdateSubScoreForApiResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.update_sub_score_for_api_with_options_async(request, runtime)
 
     def update_sync_quality_check_data_with_options(
         self,
