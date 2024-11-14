@@ -1,3 +1,84 @@
+2024-11-14 Version: 5.0.0
+- Support API CreateApiExport.
+- Support API DeleteApisecAbnormals.
+- Support API DeleteApisecEvents.
+- Support API DescribeApiExports.
+- Support API DescribeApisecAbnormals.
+- Support API DescribeApisecApiResources.
+- Support API DescribeApisecEvents.
+- Support API DescribeApisecMatchedHosts.
+- Support API DescribeApisecProtectionGroups.
+- Support API DescribeApisecProtectionResources.
+- Support API DescribeApisecRules.
+- Support API DescribeApisecStatistics.
+- Support API DescribeApisecSuggestions.
+- Support API DescribeApisecUserOperations.
+- Support API DescribeFreeUserAssetCount.
+- Support API DescribeFreeUserEventCount.
+- Support API DescribeFreeUserEventTypes.
+- Support API DescribeFreeUserEvents.
+- Support API DescribeSensitiveApiStatistic.
+- Support API DescribeSensitiveDetectionResult.
+- Support API DescribeSensitiveOutboundDistribution.
+- Support API DescribeSensitiveOutboundStatistic.
+- Support API DescribeSensitiveOutboundTrend.
+- Support API DescribeSensitiveRequestLog.
+- Support API DescribeSensitiveRequests.
+- Support API DescribeSensitiveStatistic.
+- Support API DescribeUserAbnormalTrend.
+- Support API DescribeUserAbnormalType.
+- Support API DescribeUserApiRequest.
+- Support API DescribeUserAsset.
+- Support API DescribeUserEventTrend.
+- Support API DescribeUserEventType.
+- Support API ModifyApisecAbnormals.
+- Support API ModifyApisecApiResource.
+- Support API ModifyApisecEvents.
+- Support API ModifyApisecModuleStatus.
+- Support API ModifyApisecStatus.
+- Delete API DeleteApisecAbnormal.
+- Delete API DeleteApisecEvent.
+- Update API ChangeResourceGroup: update param NewResourceGroupId.
+- Update API ChangeResourceGroup: update param ResourceId.
+- Update API ChangeResourceGroup: update param ResourceType.
+- Update API ChangeResourceGroup: update response param.
+- Update API CreateCloudResource: update param Listen.
+- Update API CreateDefenseRule: update param Rules.
+- Update API CreateDefenseRule: update response param.
+- Update API CreateSM2Cert: update param InstanceId.
+- Update API CreateSM2Cert: update param RegionId.
+- Update API DeleteDefenseResourceGroup: update response param.
+- Update API DescribeAccountDelegatedStatus: update param ResourceManagerResourceGroupId.
+- Update API DescribeApisecAbnormalDomainStatistic: delete param Region.
+- Update API DescribeApisecAbnormalDomainStatistic: update param PageNumber.
+- Update API DescribeApisecAbnormalDomainStatistic: update param PageSize.
+- Update API DescribeApisecAssetTrend: delete param Region.
+- Update API DescribeApisecEventDomainStatistic: delete param Region.
+- Update API DescribeApisecEventDomainStatistic: update param PageNumber.
+- Update API DescribeApisecEventDomainStatistic: update param PageSize.
+- Update API DescribeApisecSensitiveDomainStatistic: delete param Region.
+- Update API DescribeApisecSensitiveDomainStatistic: update param PageNumber.
+- Update API DescribeApisecSensitiveDomainStatistic: update param PageSize.
+- Update API DescribeCnameCount: update param InstanceId.
+- Update API DescribeCnameCount: update param RegionId.
+- Update API DescribeDDoSStatus: update param RegionId.
+- Update API DescribeDDoSStatus: update param ResourceManagerResourceGroupId.
+- Update API DescribeDefenseResources: update param ResourceManagerResourceGroupId.
+- Update API DescribeResourceSupportRegions: add param ResourceProduct.
+- Update API DescribeResourceSupportRegions: update response param.
+- Update API DescribeRuleHitsTopClientIp: update param RuleType.
+- Update API DescribeRuleHitsTopRuleId: update param RuleType.
+- Update API DescribeRuleHitsTopTuleType: add param ResourceManagerResourceGroupId.
+- Update API DescribeVisitUas: add param ResourceManagerResourceGroupId.
+- Update API ListTagKeys: update param InstanceId.
+- Update API ListTagValues: add param InstanceId.
+- Update API ListTagValues: add param ResourceManagerResourceGroupId.
+- Update API ListTagValues: update param RegionId.
+- Update API ModifyCloudResource: update param Listen.
+- Update API ModifyDefenseRule: update param Rules.
+- Update API ModifyResourceLogStatus: update response param.
+
+
 2024-07-31 Version: 4.6.0
 - Support API CreateCloudResource.
 - Support API CreateHybridCloudGroup.

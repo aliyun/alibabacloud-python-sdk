@@ -73,7 +73,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.ChangeResourceGroupResponse:
         """
-        @summary ChangeResourceGroup
+        @summary Changes the resource group to which a protected object belongs.
         
         @param request: ChangeResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -116,7 +116,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.ChangeResourceGroupResponse:
         """
-        @summary ChangeResourceGroup
+        @summary Changes the resource group to which a protected object belongs.
         
         @param request: ChangeResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -158,7 +158,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.ChangeResourceGroupRequest,
     ) -> waf_openapi_20211001_models.ChangeResourceGroupResponse:
         """
-        @summary ChangeResourceGroup
+        @summary Changes the resource group to which a protected object belongs.
         
         @param request: ChangeResourceGroupRequest
         @return: ChangeResourceGroupResponse
@@ -171,7 +171,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.ChangeResourceGroupRequest,
     ) -> waf_openapi_20211001_models.ChangeResourceGroupResponse:
         """
-        @summary ChangeResourceGroup
+        @summary Changes the resource group to which a protected object belongs.
         
         @param request: ChangeResourceGroupRequest
         @return: ChangeResourceGroupResponse
@@ -399,13 +399,137 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.copy_defense_template_with_options_async(request, runtime)
 
+    def create_api_export_with_options(
+        self,
+        request: waf_openapi_20211001_models.CreateApiExportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.CreateApiExportResponse:
+        """
+        @summary Creates a data export task in the API security module.
+        
+        @param request: CreateApiExportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApiExportResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.param):
+            query['Param'] = request.param
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateApiExport',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateApiExportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_api_export_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.CreateApiExportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.CreateApiExportResponse:
+        """
+        @summary Creates a data export task in the API security module.
+        
+        @param request: CreateApiExportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApiExportResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.param):
+            query['Param'] = request.param
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateApiExport',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateApiExportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_api_export(
+        self,
+        request: waf_openapi_20211001_models.CreateApiExportRequest,
+    ) -> waf_openapi_20211001_models.CreateApiExportResponse:
+        """
+        @summary Creates a data export task in the API security module.
+        
+        @param request: CreateApiExportRequest
+        @return: CreateApiExportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_api_export_with_options(request, runtime)
+
+    async def create_api_export_async(
+        self,
+        request: waf_openapi_20211001_models.CreateApiExportRequest,
+    ) -> waf_openapi_20211001_models.CreateApiExportResponse:
+        """
+        @summary Creates a data export task in the API security module.
+        
+        @param request: CreateApiExportRequest
+        @return: CreateApiExportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_api_export_with_options_async(request, runtime)
+
     def create_cloud_resource_with_options(
         self,
         tmp_req: waf_openapi_20211001_models.CreateCloudResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.CreateCloudResourceResponse:
         """
-        @summary 接入云产品资源
+        @summary Adds a service to Web Application Firewall (WAF). This operation is supported for only the Elastic Compute Service (ECS) and Classic Load Balancer (CLB) services.
         
         @param tmp_req: CreateCloudResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -456,7 +580,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.CreateCloudResourceResponse:
         """
-        @summary 接入云产品资源
+        @summary Adds a service to Web Application Firewall (WAF). This operation is supported for only the Elastic Compute Service (ECS) and Classic Load Balancer (CLB) services.
         
         @param tmp_req: CreateCloudResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -506,7 +630,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.CreateCloudResourceRequest,
     ) -> waf_openapi_20211001_models.CreateCloudResourceResponse:
         """
-        @summary 接入云产品资源
+        @summary Adds a service to Web Application Firewall (WAF). This operation is supported for only the Elastic Compute Service (ECS) and Classic Load Balancer (CLB) services.
         
         @param request: CreateCloudResourceRequest
         @return: CreateCloudResourceResponse
@@ -519,7 +643,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.CreateCloudResourceRequest,
     ) -> waf_openapi_20211001_models.CreateCloudResourceResponse:
         """
-        @summary 接入云产品资源
+        @summary Adds a service to Web Application Firewall (WAF). This operation is supported for only the Elastic Compute Service (ECS) and Classic Load Balancer (CLB) services.
         
         @param request: CreateCloudResourceRequest
         @return: CreateCloudResourceResponse
@@ -665,12 +789,14 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
-        if not UtilClient.is_unset(request.rules):
-            query['Rules'] = request.rules
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        body = {}
+        if not UtilClient.is_unset(request.rules):
+            body['Rules'] = request.rules
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateDefenseRule',
@@ -710,12 +836,14 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
-        if not UtilClient.is_unset(request.rules):
-            query['Rules'] = request.rules
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        body = {}
+        if not UtilClient.is_unset(request.rules):
+            body['Rules'] = request.rules
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateDefenseRule',
@@ -1619,28 +1747,26 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_sm2cert_with_options_async(request, runtime)
 
-    def delete_apisec_abnormal_with_options(
+    def delete_apisec_abnormals_with_options(
         self,
-        request: waf_openapi_20211001_models.DeleteApisecAbnormalRequest,
+        request: waf_openapi_20211001_models.DeleteApisecAbnormalsRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> waf_openapi_20211001_models.DeleteApisecAbnormalResponse:
+    ) -> waf_openapi_20211001_models.DeleteApisecAbnormalsResponse:
         """
-        @summary 删除API安全风险
+        @summary Deletes multiple risks detected by the API security module at a time.
         
-        @param request: DeleteApisecAbnormalRequest
+        @param request: DeleteApisecAbnormalsRequest
         @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteApisecAbnormalResponse
+        @return: DeleteApisecAbnormalsResponse
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.abnormal_id):
-            query['AbnormalId'] = request.abnormal_id
+        if not UtilClient.is_unset(request.abnormal_ids):
+            query['AbnormalIds'] = request.abnormal_ids
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.region):
-            query['Region'] = request.region
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
@@ -1649,7 +1775,7 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DeleteApisecAbnormal',
+            action='DeleteApisecAbnormals',
             version='2021-10-01',
             protocol='HTTPS',
             pathname='/',
@@ -1660,32 +1786,30 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            waf_openapi_20211001_models.DeleteApisecAbnormalResponse(),
+            waf_openapi_20211001_models.DeleteApisecAbnormalsResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def delete_apisec_abnormal_with_options_async(
+    async def delete_apisec_abnormals_with_options_async(
         self,
-        request: waf_openapi_20211001_models.DeleteApisecAbnormalRequest,
+        request: waf_openapi_20211001_models.DeleteApisecAbnormalsRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> waf_openapi_20211001_models.DeleteApisecAbnormalResponse:
+    ) -> waf_openapi_20211001_models.DeleteApisecAbnormalsResponse:
         """
-        @summary 删除API安全风险
+        @summary Deletes multiple risks detected by the API security module at a time.
         
-        @param request: DeleteApisecAbnormalRequest
+        @param request: DeleteApisecAbnormalsRequest
         @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteApisecAbnormalResponse
+        @return: DeleteApisecAbnormalsResponse
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.abnormal_id):
-            query['AbnormalId'] = request.abnormal_id
+        if not UtilClient.is_unset(request.abnormal_ids):
+            query['AbnormalIds'] = request.abnormal_ids
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.region):
-            query['Region'] = request.region
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
@@ -1694,7 +1818,7 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DeleteApisecAbnormal',
+            action='DeleteApisecAbnormals',
             version='2021-10-01',
             protocol='HTTPS',
             pathname='/',
@@ -1705,58 +1829,56 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            waf_openapi_20211001_models.DeleteApisecAbnormalResponse(),
+            waf_openapi_20211001_models.DeleteApisecAbnormalsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_apisec_abnormal(
+    def delete_apisec_abnormals(
         self,
-        request: waf_openapi_20211001_models.DeleteApisecAbnormalRequest,
-    ) -> waf_openapi_20211001_models.DeleteApisecAbnormalResponse:
+        request: waf_openapi_20211001_models.DeleteApisecAbnormalsRequest,
+    ) -> waf_openapi_20211001_models.DeleteApisecAbnormalsResponse:
         """
-        @summary 删除API安全风险
+        @summary Deletes multiple risks detected by the API security module at a time.
         
-        @param request: DeleteApisecAbnormalRequest
-        @return: DeleteApisecAbnormalResponse
+        @param request: DeleteApisecAbnormalsRequest
+        @return: DeleteApisecAbnormalsResponse
         """
         runtime = util_models.RuntimeOptions()
-        return self.delete_apisec_abnormal_with_options(request, runtime)
+        return self.delete_apisec_abnormals_with_options(request, runtime)
 
-    async def delete_apisec_abnormal_async(
+    async def delete_apisec_abnormals_async(
         self,
-        request: waf_openapi_20211001_models.DeleteApisecAbnormalRequest,
-    ) -> waf_openapi_20211001_models.DeleteApisecAbnormalResponse:
+        request: waf_openapi_20211001_models.DeleteApisecAbnormalsRequest,
+    ) -> waf_openapi_20211001_models.DeleteApisecAbnormalsResponse:
         """
-        @summary 删除API安全风险
+        @summary Deletes multiple risks detected by the API security module at a time.
         
-        @param request: DeleteApisecAbnormalRequest
-        @return: DeleteApisecAbnormalResponse
+        @param request: DeleteApisecAbnormalsRequest
+        @return: DeleteApisecAbnormalsResponse
         """
         runtime = util_models.RuntimeOptions()
-        return await self.delete_apisec_abnormal_with_options_async(request, runtime)
+        return await self.delete_apisec_abnormals_with_options_async(request, runtime)
 
-    def delete_apisec_event_with_options(
+    def delete_apisec_events_with_options(
         self,
-        request: waf_openapi_20211001_models.DeleteApisecEventRequest,
+        request: waf_openapi_20211001_models.DeleteApisecEventsRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> waf_openapi_20211001_models.DeleteApisecEventResponse:
+    ) -> waf_openapi_20211001_models.DeleteApisecEventsResponse:
         """
-        @summary 删除API安全事件
+        @summary Deletes multiple security events detected by the API security module at a time.
         
-        @param request: DeleteApisecEventRequest
+        @param request: DeleteApisecEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteApisecEventResponse
+        @return: DeleteApisecEventsResponse
         """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.event_id):
-            query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.event_ids):
+            query['EventIds'] = request.event_ids
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.region):
-            query['Region'] = request.region
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
@@ -1765,7 +1887,7 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DeleteApisecEvent',
+            action='DeleteApisecEvents',
             version='2021-10-01',
             protocol='HTTPS',
             pathname='/',
@@ -1776,32 +1898,30 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            waf_openapi_20211001_models.DeleteApisecEventResponse(),
+            waf_openapi_20211001_models.DeleteApisecEventsResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def delete_apisec_event_with_options_async(
+    async def delete_apisec_events_with_options_async(
         self,
-        request: waf_openapi_20211001_models.DeleteApisecEventRequest,
+        request: waf_openapi_20211001_models.DeleteApisecEventsRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> waf_openapi_20211001_models.DeleteApisecEventResponse:
+    ) -> waf_openapi_20211001_models.DeleteApisecEventsResponse:
         """
-        @summary 删除API安全事件
+        @summary Deletes multiple security events detected by the API security module at a time.
         
-        @param request: DeleteApisecEventRequest
+        @param request: DeleteApisecEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteApisecEventResponse
+        @return: DeleteApisecEventsResponse
         """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.event_id):
-            query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.event_ids):
+            query['EventIds'] = request.event_ids
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.region):
-            query['Region'] = request.region
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
@@ -1810,7 +1930,7 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DeleteApisecEvent',
+            action='DeleteApisecEvents',
             version='2021-10-01',
             protocol='HTTPS',
             pathname='/',
@@ -1821,35 +1941,35 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            waf_openapi_20211001_models.DeleteApisecEventResponse(),
+            waf_openapi_20211001_models.DeleteApisecEventsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_apisec_event(
+    def delete_apisec_events(
         self,
-        request: waf_openapi_20211001_models.DeleteApisecEventRequest,
-    ) -> waf_openapi_20211001_models.DeleteApisecEventResponse:
+        request: waf_openapi_20211001_models.DeleteApisecEventsRequest,
+    ) -> waf_openapi_20211001_models.DeleteApisecEventsResponse:
         """
-        @summary 删除API安全事件
+        @summary Deletes multiple security events detected by the API security module at a time.
         
-        @param request: DeleteApisecEventRequest
-        @return: DeleteApisecEventResponse
+        @param request: DeleteApisecEventsRequest
+        @return: DeleteApisecEventsResponse
         """
         runtime = util_models.RuntimeOptions()
-        return self.delete_apisec_event_with_options(request, runtime)
+        return self.delete_apisec_events_with_options(request, runtime)
 
-    async def delete_apisec_event_async(
+    async def delete_apisec_events_async(
         self,
-        request: waf_openapi_20211001_models.DeleteApisecEventRequest,
-    ) -> waf_openapi_20211001_models.DeleteApisecEventResponse:
+        request: waf_openapi_20211001_models.DeleteApisecEventsRequest,
+    ) -> waf_openapi_20211001_models.DeleteApisecEventsResponse:
         """
-        @summary 删除API安全事件
+        @summary Deletes multiple security events detected by the API security module at a time.
         
-        @param request: DeleteApisecEventRequest
-        @return: DeleteApisecEventResponse
+        @param request: DeleteApisecEventsRequest
+        @return: DeleteApisecEventsResponse
         """
         runtime = util_models.RuntimeOptions()
-        return await self.delete_apisec_event_with_options_async(request, runtime)
+        return await self.delete_apisec_events_with_options_async(request, runtime)
 
     def delete_cloud_resource_with_options(
         self,
@@ -1857,7 +1977,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DeleteCloudResourceResponse:
         """
-        @summary 删除云产品资源
+        @summary Removes a service from Web Application Firewall (WAF). This operation is supported for only the Elastic Compute Service (ECS) and Classic Load Balancer (CLB) services.
         
         @param request: DeleteCloudResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1902,7 +2022,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DeleteCloudResourceResponse:
         """
-        @summary 删除云产品资源
+        @summary Removes a service from Web Application Firewall (WAF). This operation is supported for only the Elastic Compute Service (ECS) and Classic Load Balancer (CLB) services.
         
         @param request: DeleteCloudResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1946,7 +2066,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DeleteCloudResourceRequest,
     ) -> waf_openapi_20211001_models.DeleteCloudResourceResponse:
         """
-        @summary 删除云产品资源
+        @summary Removes a service from Web Application Firewall (WAF). This operation is supported for only the Elastic Compute Service (ECS) and Classic Load Balancer (CLB) services.
         
         @param request: DeleteCloudResourceRequest
         @return: DeleteCloudResourceResponse
@@ -1959,7 +2079,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DeleteCloudResourceRequest,
     ) -> waf_openapi_20211001_models.DeleteCloudResourceResponse:
         """
-        @summary 删除云产品资源
+        @summary Removes a service from Web Application Firewall (WAF). This operation is supported for only the Elastic Compute Service (ECS) and Classic Load Balancer (CLB) services.
         
         @param request: DeleteCloudResourceRequest
         @return: DeleteCloudResourceResponse
@@ -2739,13 +2859,129 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_account_delegated_status_with_options_async(request, runtime)
 
+    def describe_api_exports_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeApiExportsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeApiExportsResponse:
+        """
+        @summary Queries the list of data export tasks in the API security module.
+        
+        @param request: DescribeApiExportsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApiExportsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApiExports',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApiExportsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_api_exports_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeApiExportsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeApiExportsResponse:
+        """
+        @summary Queries the list of data export tasks in the API security module.
+        
+        @param request: DescribeApiExportsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApiExportsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApiExports',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApiExportsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_api_exports(
+        self,
+        request: waf_openapi_20211001_models.DescribeApiExportsRequest,
+    ) -> waf_openapi_20211001_models.DescribeApiExportsResponse:
+        """
+        @summary Queries the list of data export tasks in the API security module.
+        
+        @param request: DescribeApiExportsRequest
+        @return: DescribeApiExportsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_api_exports_with_options(request, runtime)
+
+    async def describe_api_exports_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeApiExportsRequest,
+    ) -> waf_openapi_20211001_models.DescribeApiExportsResponse:
+        """
+        @summary Queries the list of data export tasks in the API security module.
+        
+        @param request: DescribeApiExportsRequest
+        @return: DescribeApiExportsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_api_exports_with_options_async(request, runtime)
+
     def describe_apisec_abnormal_domain_statistic_with_options(
         self,
         request: waf_openapi_20211001_models.DescribeApisecAbnormalDomainStatisticRequest,
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DescribeApisecAbnormalDomainStatisticResponse:
         """
-        @summary 查询API安全风险站点统计
+        @summary Queries the statistics on domain names on which risks are detected by the API security module.
         
         @param request: DescribeApisecAbnormalDomainStatisticRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2765,8 +3001,6 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region):
-            query['Region'] = request.region
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
@@ -2798,7 +3032,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DescribeApisecAbnormalDomainStatisticResponse:
         """
-        @summary 查询API安全风险站点统计
+        @summary Queries the statistics on domain names on which risks are detected by the API security module.
         
         @param request: DescribeApisecAbnormalDomainStatisticRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2818,8 +3052,6 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region):
-            query['Region'] = request.region
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
@@ -2850,7 +3082,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DescribeApisecAbnormalDomainStatisticRequest,
     ) -> waf_openapi_20211001_models.DescribeApisecAbnormalDomainStatisticResponse:
         """
-        @summary 查询API安全风险站点统计
+        @summary Queries the statistics on domain names on which risks are detected by the API security module.
         
         @param request: DescribeApisecAbnormalDomainStatisticRequest
         @return: DescribeApisecAbnormalDomainStatisticResponse
@@ -2863,7 +3095,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DescribeApisecAbnormalDomainStatisticRequest,
     ) -> waf_openapi_20211001_models.DescribeApisecAbnormalDomainStatisticResponse:
         """
-        @summary 查询API安全风险站点统计
+        @summary Queries the statistics on domain names on which risks are detected by the API security module.
         
         @param request: DescribeApisecAbnormalDomainStatisticRequest
         @return: DescribeApisecAbnormalDomainStatisticResponse
@@ -2871,13 +3103,365 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_apisec_abnormal_domain_statistic_with_options_async(request, runtime)
 
+    def describe_apisec_abnormals_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecAbnormalsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeApisecAbnormalsResponse:
+        """
+        @summary Queries the list of API security risks.
+        
+        @param request: DescribeApisecAbnormalsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisecAbnormalsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.abnormal_id):
+            query['AbnormalId'] = request.abnormal_id
+        if not UtilClient.is_unset(request.abnormal_level):
+            query['AbnormalLevel'] = request.abnormal_level
+        if not UtilClient.is_unset(request.abnormal_tag):
+            query['AbnormalTag'] = request.abnormal_tag
+        if not UtilClient.is_unset(request.api_format):
+            query['ApiFormat'] = request.api_format
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.api_tag):
+            query['ApiTag'] = request.api_tag
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.matched_host):
+            query['MatchedHost'] = request.matched_host
+        if not UtilClient.is_unset(request.order_key):
+            query['OrderKey'] = request.order_key
+        if not UtilClient.is_unset(request.order_way):
+            query['OrderWay'] = request.order_way
+        if not UtilClient.is_unset(request.origin):
+            query['Origin'] = request.origin
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.user_status):
+            query['UserStatus'] = request.user_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisecAbnormals',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecAbnormalsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_apisec_abnormals_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecAbnormalsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeApisecAbnormalsResponse:
+        """
+        @summary Queries the list of API security risks.
+        
+        @param request: DescribeApisecAbnormalsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisecAbnormalsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.abnormal_id):
+            query['AbnormalId'] = request.abnormal_id
+        if not UtilClient.is_unset(request.abnormal_level):
+            query['AbnormalLevel'] = request.abnormal_level
+        if not UtilClient.is_unset(request.abnormal_tag):
+            query['AbnormalTag'] = request.abnormal_tag
+        if not UtilClient.is_unset(request.api_format):
+            query['ApiFormat'] = request.api_format
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.api_tag):
+            query['ApiTag'] = request.api_tag
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.matched_host):
+            query['MatchedHost'] = request.matched_host
+        if not UtilClient.is_unset(request.order_key):
+            query['OrderKey'] = request.order_key
+        if not UtilClient.is_unset(request.order_way):
+            query['OrderWay'] = request.order_way
+        if not UtilClient.is_unset(request.origin):
+            query['Origin'] = request.origin
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.user_status):
+            query['UserStatus'] = request.user_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisecAbnormals',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecAbnormalsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_apisec_abnormals(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecAbnormalsRequest,
+    ) -> waf_openapi_20211001_models.DescribeApisecAbnormalsResponse:
+        """
+        @summary Queries the list of API security risks.
+        
+        @param request: DescribeApisecAbnormalsRequest
+        @return: DescribeApisecAbnormalsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_apisec_abnormals_with_options(request, runtime)
+
+    async def describe_apisec_abnormals_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecAbnormalsRequest,
+    ) -> waf_openapi_20211001_models.DescribeApisecAbnormalsResponse:
+        """
+        @summary Queries the list of API security risks.
+        
+        @param request: DescribeApisecAbnormalsRequest
+        @return: DescribeApisecAbnormalsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_apisec_abnormals_with_options_async(request, runtime)
+
+    def describe_apisec_api_resources_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecApiResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeApisecApiResourcesResponse:
+        """
+        @summary Queries API assets in the API security module.
+        
+        @param request: DescribeApisecApiResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisecApiResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_format):
+            query['ApiFormat'] = request.api_format
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.api_method):
+            query['ApiMethod'] = request.api_method
+        if not UtilClient.is_unset(request.api_status):
+            query['ApiStatus'] = request.api_status
+        if not UtilClient.is_unset(request.api_tag):
+            query['ApiTag'] = request.api_tag
+        if not UtilClient.is_unset(request.api_type):
+            query['ApiType'] = request.api_type
+        if not UtilClient.is_unset(request.auth_flag):
+            query['AuthFlag'] = request.auth_flag
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.follow):
+            query['Follow'] = request.follow
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.matched_host):
+            query['MatchedHost'] = request.matched_host
+        if not UtilClient.is_unset(request.note):
+            query['Note'] = request.note
+        if not UtilClient.is_unset(request.order_key):
+            query['OrderKey'] = request.order_key
+        if not UtilClient.is_unset(request.order_way):
+            query['OrderWay'] = request.order_way
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.request_sensitive_type):
+            query['RequestSensitiveType'] = request.request_sensitive_type
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.sensitive_level):
+            query['SensitiveLevel'] = request.sensitive_level
+        if not UtilClient.is_unset(request.sensitive_type):
+            query['SensitiveType'] = request.sensitive_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisecApiResources',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecApiResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_apisec_api_resources_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecApiResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeApisecApiResourcesResponse:
+        """
+        @summary Queries API assets in the API security module.
+        
+        @param request: DescribeApisecApiResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisecApiResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_format):
+            query['ApiFormat'] = request.api_format
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.api_method):
+            query['ApiMethod'] = request.api_method
+        if not UtilClient.is_unset(request.api_status):
+            query['ApiStatus'] = request.api_status
+        if not UtilClient.is_unset(request.api_tag):
+            query['ApiTag'] = request.api_tag
+        if not UtilClient.is_unset(request.api_type):
+            query['ApiType'] = request.api_type
+        if not UtilClient.is_unset(request.auth_flag):
+            query['AuthFlag'] = request.auth_flag
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.follow):
+            query['Follow'] = request.follow
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.matched_host):
+            query['MatchedHost'] = request.matched_host
+        if not UtilClient.is_unset(request.note):
+            query['Note'] = request.note
+        if not UtilClient.is_unset(request.order_key):
+            query['OrderKey'] = request.order_key
+        if not UtilClient.is_unset(request.order_way):
+            query['OrderWay'] = request.order_way
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.request_sensitive_type):
+            query['RequestSensitiveType'] = request.request_sensitive_type
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.sensitive_level):
+            query['SensitiveLevel'] = request.sensitive_level
+        if not UtilClient.is_unset(request.sensitive_type):
+            query['SensitiveType'] = request.sensitive_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisecApiResources',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecApiResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_apisec_api_resources(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecApiResourcesRequest,
+    ) -> waf_openapi_20211001_models.DescribeApisecApiResourcesResponse:
+        """
+        @summary Queries API assets in the API security module.
+        
+        @param request: DescribeApisecApiResourcesRequest
+        @return: DescribeApisecApiResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_apisec_api_resources_with_options(request, runtime)
+
+    async def describe_apisec_api_resources_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecApiResourcesRequest,
+    ) -> waf_openapi_20211001_models.DescribeApisecApiResourcesResponse:
+        """
+        @summary Queries API assets in the API security module.
+        
+        @param request: DescribeApisecApiResourcesRequest
+        @return: DescribeApisecApiResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_apisec_api_resources_with_options_async(request, runtime)
+
     def describe_apisec_asset_trend_with_options(
         self,
         request: waf_openapi_20211001_models.DescribeApisecAssetTrendRequest,
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DescribeApisecAssetTrendResponse:
         """
-        @summary 查询API安全资产趋势图
+        @summary Queries the asset trends in the API security module.
         
         @param request: DescribeApisecAssetTrendRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2891,8 +3475,6 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.region):
-            query['Region'] = request.region
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
@@ -2924,7 +3506,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DescribeApisecAssetTrendResponse:
         """
-        @summary 查询API安全资产趋势图
+        @summary Queries the asset trends in the API security module.
         
         @param request: DescribeApisecAssetTrendRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2938,8 +3520,6 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.region):
-            query['Region'] = request.region
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
@@ -2970,7 +3550,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DescribeApisecAssetTrendRequest,
     ) -> waf_openapi_20211001_models.DescribeApisecAssetTrendResponse:
         """
-        @summary 查询API安全资产趋势图
+        @summary Queries the asset trends in the API security module.
         
         @param request: DescribeApisecAssetTrendRequest
         @return: DescribeApisecAssetTrendResponse
@@ -2983,7 +3563,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DescribeApisecAssetTrendRequest,
     ) -> waf_openapi_20211001_models.DescribeApisecAssetTrendResponse:
         """
-        @summary 查询API安全资产趋势图
+        @summary Queries the asset trends in the API security module.
         
         @param request: DescribeApisecAssetTrendRequest
         @return: DescribeApisecAssetTrendResponse
@@ -2997,7 +3577,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DescribeApisecEventDomainStatisticResponse:
         """
-        @summary 查询API安全事件站点统计
+        @summary Queries the statistics on domain names on which security events are detected by the API security module.
         
         @param request: DescribeApisecEventDomainStatisticRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3017,8 +3597,6 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region):
-            query['Region'] = request.region
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
@@ -3050,7 +3628,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DescribeApisecEventDomainStatisticResponse:
         """
-        @summary 查询API安全事件站点统计
+        @summary Queries the statistics on domain names on which security events are detected by the API security module.
         
         @param request: DescribeApisecEventDomainStatisticRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3070,8 +3648,6 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region):
-            query['Region'] = request.region
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
@@ -3102,7 +3678,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DescribeApisecEventDomainStatisticRequest,
     ) -> waf_openapi_20211001_models.DescribeApisecEventDomainStatisticResponse:
         """
-        @summary 查询API安全事件站点统计
+        @summary Queries the statistics on domain names on which security events are detected by the API security module.
         
         @param request: DescribeApisecEventDomainStatisticRequest
         @return: DescribeApisecEventDomainStatisticResponse
@@ -3115,13 +3691,185 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DescribeApisecEventDomainStatisticRequest,
     ) -> waf_openapi_20211001_models.DescribeApisecEventDomainStatisticResponse:
         """
-        @summary 查询API安全事件站点统计
+        @summary Queries the statistics on domain names on which security events are detected by the API security module.
         
         @param request: DescribeApisecEventDomainStatisticRequest
         @return: DescribeApisecEventDomainStatisticResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_apisec_event_domain_statistic_with_options_async(request, runtime)
+
+    def describe_apisec_events_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeApisecEventsResponse:
+        """
+        @summary Queries API security events.
+        
+        @param request: DescribeApisecEventsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisecEventsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_format):
+            query['ApiFormat'] = request.api_format
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.api_tag):
+            query['ApiTag'] = request.api_tag
+        if not UtilClient.is_unset(request.attack_ip):
+            query['AttackIp'] = request.attack_ip
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.end_ts):
+            query['EndTs'] = request.end_ts
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.event_level):
+            query['EventLevel'] = request.event_level
+        if not UtilClient.is_unset(request.event_tag):
+            query['EventTag'] = request.event_tag
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.matched_host):
+            query['MatchedHost'] = request.matched_host
+        if not UtilClient.is_unset(request.order_key):
+            query['OrderKey'] = request.order_key
+        if not UtilClient.is_unset(request.order_way):
+            query['OrderWay'] = request.order_way
+        if not UtilClient.is_unset(request.origin):
+            query['Origin'] = request.origin
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.start_ts):
+            query['StartTs'] = request.start_ts
+        if not UtilClient.is_unset(request.user_status):
+            query['UserStatus'] = request.user_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisecEvents',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_apisec_events_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeApisecEventsResponse:
+        """
+        @summary Queries API security events.
+        
+        @param request: DescribeApisecEventsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisecEventsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_format):
+            query['ApiFormat'] = request.api_format
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.api_tag):
+            query['ApiTag'] = request.api_tag
+        if not UtilClient.is_unset(request.attack_ip):
+            query['AttackIp'] = request.attack_ip
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.end_ts):
+            query['EndTs'] = request.end_ts
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.event_level):
+            query['EventLevel'] = request.event_level
+        if not UtilClient.is_unset(request.event_tag):
+            query['EventTag'] = request.event_tag
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.matched_host):
+            query['MatchedHost'] = request.matched_host
+        if not UtilClient.is_unset(request.order_key):
+            query['OrderKey'] = request.order_key
+        if not UtilClient.is_unset(request.order_way):
+            query['OrderWay'] = request.order_way
+        if not UtilClient.is_unset(request.origin):
+            query['Origin'] = request.origin
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.start_ts):
+            query['StartTs'] = request.start_ts
+        if not UtilClient.is_unset(request.user_status):
+            query['UserStatus'] = request.user_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisecEvents',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_apisec_events(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecEventsRequest,
+    ) -> waf_openapi_20211001_models.DescribeApisecEventsResponse:
+        """
+        @summary Queries API security events.
+        
+        @param request: DescribeApisecEventsRequest
+        @return: DescribeApisecEventsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_apisec_events_with_options(request, runtime)
+
+    async def describe_apisec_events_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecEventsRequest,
+    ) -> waf_openapi_20211001_models.DescribeApisecEventsResponse:
+        """
+        @summary Queries API security events.
+        
+        @param request: DescribeApisecEventsRequest
+        @return: DescribeApisecEventsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_apisec_events_with_options_async(request, runtime)
 
     def describe_apisec_log_deliveries_with_options(
         self,
@@ -3227,13 +3975,509 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_apisec_log_deliveries_with_options_async(request, runtime)
 
+    def describe_apisec_matched_hosts_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecMatchedHostsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeApisecMatchedHostsResponse:
+        """
+        @summary Queries the list of domain names detected in the API security module.
+        
+        @param request: DescribeApisecMatchedHostsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisecMatchedHostsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.matched_host):
+            query['MatchedHost'] = request.matched_host
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisecMatchedHosts',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecMatchedHostsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_apisec_matched_hosts_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecMatchedHostsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeApisecMatchedHostsResponse:
+        """
+        @summary Queries the list of domain names detected in the API security module.
+        
+        @param request: DescribeApisecMatchedHostsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisecMatchedHostsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.matched_host):
+            query['MatchedHost'] = request.matched_host
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisecMatchedHosts',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecMatchedHostsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_apisec_matched_hosts(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecMatchedHostsRequest,
+    ) -> waf_openapi_20211001_models.DescribeApisecMatchedHostsResponse:
+        """
+        @summary Queries the list of domain names detected in the API security module.
+        
+        @param request: DescribeApisecMatchedHostsRequest
+        @return: DescribeApisecMatchedHostsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_apisec_matched_hosts_with_options(request, runtime)
+
+    async def describe_apisec_matched_hosts_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecMatchedHostsRequest,
+    ) -> waf_openapi_20211001_models.DescribeApisecMatchedHostsResponse:
+        """
+        @summary Queries the list of domain names detected in the API security module.
+        
+        @param request: DescribeApisecMatchedHostsRequest
+        @return: DescribeApisecMatchedHostsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_apisec_matched_hosts_with_options_async(request, runtime)
+
+    def describe_apisec_protection_groups_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecProtectionGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeApisecProtectionGroupsResponse:
+        """
+        @summary Queries the list of protected object groups to which API security policies are applied.
+        
+        @param request: DescribeApisecProtectionGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisecProtectionGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.apisec_status):
+            query['ApisecStatus'] = request.apisec_status
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group):
+            query['ResourceGroup'] = request.resource_group
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisecProtectionGroups',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecProtectionGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_apisec_protection_groups_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecProtectionGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeApisecProtectionGroupsResponse:
+        """
+        @summary Queries the list of protected object groups to which API security policies are applied.
+        
+        @param request: DescribeApisecProtectionGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisecProtectionGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.apisec_status):
+            query['ApisecStatus'] = request.apisec_status
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group):
+            query['ResourceGroup'] = request.resource_group
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisecProtectionGroups',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecProtectionGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_apisec_protection_groups(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecProtectionGroupsRequest,
+    ) -> waf_openapi_20211001_models.DescribeApisecProtectionGroupsResponse:
+        """
+        @summary Queries the list of protected object groups to which API security policies are applied.
+        
+        @param request: DescribeApisecProtectionGroupsRequest
+        @return: DescribeApisecProtectionGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_apisec_protection_groups_with_options(request, runtime)
+
+    async def describe_apisec_protection_groups_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecProtectionGroupsRequest,
+    ) -> waf_openapi_20211001_models.DescribeApisecProtectionGroupsResponse:
+        """
+        @summary Queries the list of protected object groups to which API security policies are applied.
+        
+        @param request: DescribeApisecProtectionGroupsRequest
+        @return: DescribeApisecProtectionGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_apisec_protection_groups_with_options_async(request, runtime)
+
+    def describe_apisec_protection_resources_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecProtectionResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeApisecProtectionResourcesResponse:
+        """
+        @summary Queries the list of protected objects to which API security policies are applied.
+        
+        @param request: DescribeApisecProtectionResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisecProtectionResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.apisec_status):
+            query['ApisecStatus'] = request.apisec_status
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisecProtectionResources',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecProtectionResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_apisec_protection_resources_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecProtectionResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeApisecProtectionResourcesResponse:
+        """
+        @summary Queries the list of protected objects to which API security policies are applied.
+        
+        @param request: DescribeApisecProtectionResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisecProtectionResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.apisec_status):
+            query['ApisecStatus'] = request.apisec_status
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisecProtectionResources',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecProtectionResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_apisec_protection_resources(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecProtectionResourcesRequest,
+    ) -> waf_openapi_20211001_models.DescribeApisecProtectionResourcesResponse:
+        """
+        @summary Queries the list of protected objects to which API security policies are applied.
+        
+        @param request: DescribeApisecProtectionResourcesRequest
+        @return: DescribeApisecProtectionResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_apisec_protection_resources_with_options(request, runtime)
+
+    async def describe_apisec_protection_resources_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecProtectionResourcesRequest,
+    ) -> waf_openapi_20211001_models.DescribeApisecProtectionResourcesResponse:
+        """
+        @summary Queries the list of protected objects to which API security policies are applied.
+        
+        @param request: DescribeApisecProtectionResourcesRequest
+        @return: DescribeApisecProtectionResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_apisec_protection_resources_with_options_async(request, runtime)
+
+    def describe_apisec_rules_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeApisecRulesResponse:
+        """
+        @summary Queries the policies configured in the API security module.
+        
+        @param request: DescribeApisecRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisecRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.level):
+            query['Level'] = request.level
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.origin):
+            query['Origin'] = request.origin
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisecRules',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_apisec_rules_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeApisecRulesResponse:
+        """
+        @summary Queries the policies configured in the API security module.
+        
+        @param request: DescribeApisecRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisecRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.level):
+            query['Level'] = request.level
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.origin):
+            query['Origin'] = request.origin
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisecRules',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_apisec_rules(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecRulesRequest,
+    ) -> waf_openapi_20211001_models.DescribeApisecRulesResponse:
+        """
+        @summary Queries the policies configured in the API security module.
+        
+        @param request: DescribeApisecRulesRequest
+        @return: DescribeApisecRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_apisec_rules_with_options(request, runtime)
+
+    async def describe_apisec_rules_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecRulesRequest,
+    ) -> waf_openapi_20211001_models.DescribeApisecRulesResponse:
+        """
+        @summary Queries the policies configured in the API security module.
+        
+        @param request: DescribeApisecRulesRequest
+        @return: DescribeApisecRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_apisec_rules_with_options_async(request, runtime)
+
     def describe_apisec_sensitive_domain_statistic_with_options(
         self,
         request: waf_openapi_20211001_models.DescribeApisecSensitiveDomainStatisticRequest,
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DescribeApisecSensitiveDomainStatisticResponse:
         """
-        @summary 查询API安全敏感数据类型统计
+        @summary Queries the statistics on domain names on which sensitive data is detected by the API security module.
         
         @param request: DescribeApisecSensitiveDomainStatisticRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3253,8 +4497,6 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region):
-            query['Region'] = request.region
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
@@ -3288,7 +4530,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DescribeApisecSensitiveDomainStatisticResponse:
         """
-        @summary 查询API安全敏感数据类型统计
+        @summary Queries the statistics on domain names on which sensitive data is detected by the API security module.
         
         @param request: DescribeApisecSensitiveDomainStatisticRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3308,8 +4550,6 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region):
-            query['Region'] = request.region
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
@@ -3342,7 +4582,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DescribeApisecSensitiveDomainStatisticRequest,
     ) -> waf_openapi_20211001_models.DescribeApisecSensitiveDomainStatisticResponse:
         """
-        @summary 查询API安全敏感数据类型统计
+        @summary Queries the statistics on domain names on which sensitive data is detected by the API security module.
         
         @param request: DescribeApisecSensitiveDomainStatisticRequest
         @return: DescribeApisecSensitiveDomainStatisticResponse
@@ -3355,7 +4595,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DescribeApisecSensitiveDomainStatisticRequest,
     ) -> waf_openapi_20211001_models.DescribeApisecSensitiveDomainStatisticResponse:
         """
-        @summary 查询API安全敏感数据类型统计
+        @summary Queries the statistics on domain names on which sensitive data is detected by the API security module.
         
         @param request: DescribeApisecSensitiveDomainStatisticRequest
         @return: DescribeApisecSensitiveDomainStatisticResponse
@@ -3582,6 +4822,346 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_apisec_sls_projects_with_options_async(request, runtime)
+
+    def describe_apisec_statistics_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeApisecStatisticsResponse:
+        """
+        @summary Queries the statistics of API security-related risks and events.
+        
+        @param request: DescribeApisecStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisecStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisecStatistics',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_apisec_statistics_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeApisecStatisticsResponse:
+        """
+        @summary Queries the statistics of API security-related risks and events.
+        
+        @param request: DescribeApisecStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisecStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisecStatistics',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_apisec_statistics(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecStatisticsRequest,
+    ) -> waf_openapi_20211001_models.DescribeApisecStatisticsResponse:
+        """
+        @summary Queries the statistics of API security-related risks and events.
+        
+        @param request: DescribeApisecStatisticsRequest
+        @return: DescribeApisecStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_apisec_statistics_with_options(request, runtime)
+
+    async def describe_apisec_statistics_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecStatisticsRequest,
+    ) -> waf_openapi_20211001_models.DescribeApisecStatisticsResponse:
+        """
+        @summary Queries the statistics of API security-related risks and events.
+        
+        @param request: DescribeApisecStatisticsRequest
+        @return: DescribeApisecStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_apisec_statistics_with_options_async(request, runtime)
+
+    def describe_apisec_suggestions_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecSuggestionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeApisecSuggestionsResponse:
+        """
+        @summary Queries the protection suggestions for APIs.
+        
+        @param request: DescribeApisecSuggestionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisecSuggestionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisecSuggestions',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecSuggestionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_apisec_suggestions_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecSuggestionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeApisecSuggestionsResponse:
+        """
+        @summary Queries the protection suggestions for APIs.
+        
+        @param request: DescribeApisecSuggestionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisecSuggestionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisecSuggestions',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecSuggestionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_apisec_suggestions(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecSuggestionsRequest,
+    ) -> waf_openapi_20211001_models.DescribeApisecSuggestionsResponse:
+        """
+        @summary Queries the protection suggestions for APIs.
+        
+        @param request: DescribeApisecSuggestionsRequest
+        @return: DescribeApisecSuggestionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_apisec_suggestions_with_options(request, runtime)
+
+    async def describe_apisec_suggestions_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecSuggestionsRequest,
+    ) -> waf_openapi_20211001_models.DescribeApisecSuggestionsResponse:
+        """
+        @summary Queries the protection suggestions for APIs.
+        
+        @param request: DescribeApisecSuggestionsRequest
+        @return: DescribeApisecSuggestionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_apisec_suggestions_with_options_async(request, runtime)
+
+    def describe_apisec_user_operations_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecUserOperationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeApisecUserOperationsResponse:
+        """
+        @summary Queries user operation records in the API security module.
+        
+        @param request: DescribeApisecUserOperationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisecUserOperationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.object_id):
+            query['ObjectId'] = request.object_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisecUserOperations',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecUserOperationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_apisec_user_operations_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecUserOperationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeApisecUserOperationsResponse:
+        """
+        @summary Queries user operation records in the API security module.
+        
+        @param request: DescribeApisecUserOperationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisecUserOperationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.object_id):
+            query['ObjectId'] = request.object_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisecUserOperations',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecUserOperationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_apisec_user_operations(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecUserOperationsRequest,
+    ) -> waf_openapi_20211001_models.DescribeApisecUserOperationsResponse:
+        """
+        @summary Queries user operation records in the API security module.
+        
+        @param request: DescribeApisecUserOperationsRequest
+        @return: DescribeApisecUserOperationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_apisec_user_operations_with_options(request, runtime)
+
+    async def describe_apisec_user_operations_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecUserOperationsRequest,
+    ) -> waf_openapi_20211001_models.DescribeApisecUserOperationsResponse:
+        """
+        @summary Queries user operation records in the API security module.
+        
+        @param request: DescribeApisecUserOperationsRequest
+        @return: DescribeApisecUserOperationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_apisec_user_operations_with_options_async(request, runtime)
 
     def describe_cert_detail_with_options(
         self,
@@ -3817,7 +5397,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DescribeCloudResourceAccessPortDetailsResponse:
         """
-        @summary 查询云产品的端口详情
+        @summary Queries a port of the cloud service that is added to Web Application Firewall (WAF). This operation is supported for only Elastic Compute Service (ECS) and Classic Load Balancer (CLB).
         
         @param request: DescribeCloudResourceAccessPortDetailsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3868,7 +5448,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DescribeCloudResourceAccessPortDetailsResponse:
         """
-        @summary 查询云产品的端口详情
+        @summary Queries a port of the cloud service that is added to Web Application Firewall (WAF). This operation is supported for only Elastic Compute Service (ECS) and Classic Load Balancer (CLB).
         
         @param request: DescribeCloudResourceAccessPortDetailsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3918,7 +5498,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DescribeCloudResourceAccessPortDetailsRequest,
     ) -> waf_openapi_20211001_models.DescribeCloudResourceAccessPortDetailsResponse:
         """
-        @summary 查询云产品的端口详情
+        @summary Queries a port of the cloud service that is added to Web Application Firewall (WAF). This operation is supported for only Elastic Compute Service (ECS) and Classic Load Balancer (CLB).
         
         @param request: DescribeCloudResourceAccessPortDetailsRequest
         @return: DescribeCloudResourceAccessPortDetailsResponse
@@ -3931,7 +5511,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DescribeCloudResourceAccessPortDetailsRequest,
     ) -> waf_openapi_20211001_models.DescribeCloudResourceAccessPortDetailsResponse:
         """
-        @summary 查询云产品的端口详情
+        @summary Queries a port of the cloud service that is added to Web Application Firewall (WAF). This operation is supported for only Elastic Compute Service (ECS) and Classic Load Balancer (CLB).
         
         @param request: DescribeCloudResourceAccessPortDetailsRequest
         @return: DescribeCloudResourceAccessPortDetailsResponse
@@ -3945,7 +5525,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DescribeCloudResourceAccessedPortsResponse:
         """
-        @summary 查询已接入云产品的端口列表
+        @summary Queries the ports of the cloud service that is added to Web Application Firewall (WAF). This operation is supported for only Elastic Compute Service (ECS) and Classic Load Balancer (CLB).
         
         @param request: DescribeCloudResourceAccessedPortsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3986,7 +5566,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DescribeCloudResourceAccessedPortsResponse:
         """
-        @summary 查询已接入云产品的端口列表
+        @summary Queries the ports of the cloud service that is added to Web Application Firewall (WAF). This operation is supported for only Elastic Compute Service (ECS) and Classic Load Balancer (CLB).
         
         @param request: DescribeCloudResourceAccessedPortsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4026,7 +5606,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DescribeCloudResourceAccessedPortsRequest,
     ) -> waf_openapi_20211001_models.DescribeCloudResourceAccessedPortsResponse:
         """
-        @summary 查询已接入云产品的端口列表
+        @summary Queries the ports of the cloud service that is added to Web Application Firewall (WAF). This operation is supported for only Elastic Compute Service (ECS) and Classic Load Balancer (CLB).
         
         @param request: DescribeCloudResourceAccessedPortsRequest
         @return: DescribeCloudResourceAccessedPortsResponse
@@ -4039,7 +5619,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DescribeCloudResourceAccessedPortsRequest,
     ) -> waf_openapi_20211001_models.DescribeCloudResourceAccessedPortsResponse:
         """
-        @summary 查询已接入云产品的端口列表
+        @summary Queries the ports of the cloud service that is added to Web Application Firewall (WAF). This operation is supported for only Elastic Compute Service (ECS) and Classic Load Balancer (CLB).
         
         @param request: DescribeCloudResourceAccessedPortsRequest
         @return: DescribeCloudResourceAccessedPortsResponse
@@ -4201,7 +5781,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DescribeCnameCountResponse:
         """
-        @summary 查询Cname接入的数量
+        @summary Queries the total number of domain names that are added to Web Application Firewall (WAF) in CNAME record mode and hybrid cloud reverse proxy mode.
         
         @param request: DescribeCnameCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4240,7 +5820,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DescribeCnameCountResponse:
         """
-        @summary 查询Cname接入的数量
+        @summary Queries the total number of domain names that are added to Web Application Firewall (WAF) in CNAME record mode and hybrid cloud reverse proxy mode.
         
         @param request: DescribeCnameCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4278,7 +5858,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DescribeCnameCountRequest,
     ) -> waf_openapi_20211001_models.DescribeCnameCountResponse:
         """
-        @summary 查询Cname接入的数量
+        @summary Queries the total number of domain names that are added to Web Application Firewall (WAF) in CNAME record mode and hybrid cloud reverse proxy mode.
         
         @param request: DescribeCnameCountRequest
         @return: DescribeCnameCountResponse
@@ -4291,7 +5871,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DescribeCnameCountRequest,
     ) -> waf_openapi_20211001_models.DescribeCnameCountResponse:
         """
-        @summary 查询Cname接入的数量
+        @summary Queries the total number of domain names that are added to Web Application Firewall (WAF) in CNAME record mode and hybrid cloud reverse proxy mode.
         
         @param request: DescribeCnameCountRequest
         @return: DescribeCnameCountResponse
@@ -4409,7 +5989,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DescribeDefaultHttpsResponse:
         """
-        @summary 查询默认HTTPS配置
+        @summary Queries the default SSL and Transport Layer Security (TLS) settings.
         
         @param request: DescribeDefaultHttpsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4448,7 +6028,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DescribeDefaultHttpsResponse:
         """
-        @summary 查询默认HTTPS配置
+        @summary Queries the default SSL and Transport Layer Security (TLS) settings.
         
         @param request: DescribeDefaultHttpsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4486,7 +6066,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DescribeDefaultHttpsRequest,
     ) -> waf_openapi_20211001_models.DescribeDefaultHttpsResponse:
         """
-        @summary 查询默认HTTPS配置
+        @summary Queries the default SSL and Transport Layer Security (TLS) settings.
         
         @param request: DescribeDefaultHttpsRequest
         @return: DescribeDefaultHttpsResponse
@@ -4499,7 +6079,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DescribeDefaultHttpsRequest,
     ) -> waf_openapi_20211001_models.DescribeDefaultHttpsResponse:
         """
-        @summary 查询默认HTTPS配置
+        @summary Queries the default SSL and Transport Layer Security (TLS) settings.
         
         @param request: DescribeDefaultHttpsRequest
         @return: DescribeDefaultHttpsResponse
@@ -6599,6 +8179,422 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_flow_top_url_with_options_async(request, runtime)
 
+    def describe_free_user_asset_count_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeFreeUserAssetCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeFreeUserAssetCountResponse:
+        """
+        @summary Queries the asset statistics provided by basic detection in the API security module.
+        
+        @param request: DescribeFreeUserAssetCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFreeUserAssetCountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFreeUserAssetCount',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeFreeUserAssetCountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_free_user_asset_count_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeFreeUserAssetCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeFreeUserAssetCountResponse:
+        """
+        @summary Queries the asset statistics provided by basic detection in the API security module.
+        
+        @param request: DescribeFreeUserAssetCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFreeUserAssetCountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFreeUserAssetCount',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeFreeUserAssetCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_free_user_asset_count(
+        self,
+        request: waf_openapi_20211001_models.DescribeFreeUserAssetCountRequest,
+    ) -> waf_openapi_20211001_models.DescribeFreeUserAssetCountResponse:
+        """
+        @summary Queries the asset statistics provided by basic detection in the API security module.
+        
+        @param request: DescribeFreeUserAssetCountRequest
+        @return: DescribeFreeUserAssetCountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_free_user_asset_count_with_options(request, runtime)
+
+    async def describe_free_user_asset_count_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeFreeUserAssetCountRequest,
+    ) -> waf_openapi_20211001_models.DescribeFreeUserAssetCountResponse:
+        """
+        @summary Queries the asset statistics provided by basic detection in the API security module.
+        
+        @param request: DescribeFreeUserAssetCountRequest
+        @return: DescribeFreeUserAssetCountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_free_user_asset_count_with_options_async(request, runtime)
+
+    def describe_free_user_event_count_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeFreeUserEventCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeFreeUserEventCountResponse:
+        """
+        @summary Queries the statistics of security events that are detected by using the basic detection feature of the API security module.
+        
+        @param request: DescribeFreeUserEventCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFreeUserEventCountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFreeUserEventCount',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeFreeUserEventCountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_free_user_event_count_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeFreeUserEventCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeFreeUserEventCountResponse:
+        """
+        @summary Queries the statistics of security events that are detected by using the basic detection feature of the API security module.
+        
+        @param request: DescribeFreeUserEventCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFreeUserEventCountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFreeUserEventCount',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeFreeUserEventCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_free_user_event_count(
+        self,
+        request: waf_openapi_20211001_models.DescribeFreeUserEventCountRequest,
+    ) -> waf_openapi_20211001_models.DescribeFreeUserEventCountResponse:
+        """
+        @summary Queries the statistics of security events that are detected by using the basic detection feature of the API security module.
+        
+        @param request: DescribeFreeUserEventCountRequest
+        @return: DescribeFreeUserEventCountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_free_user_event_count_with_options(request, runtime)
+
+    async def describe_free_user_event_count_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeFreeUserEventCountRequest,
+    ) -> waf_openapi_20211001_models.DescribeFreeUserEventCountResponse:
+        """
+        @summary Queries the statistics of security events that are detected by using the basic detection feature of the API security module.
+        
+        @param request: DescribeFreeUserEventCountRequest
+        @return: DescribeFreeUserEventCountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_free_user_event_count_with_options_async(request, runtime)
+
+    def describe_free_user_event_types_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeFreeUserEventTypesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeFreeUserEventTypesResponse:
+        """
+        @summary Queries the types of security events on which basic detection is performed in the API security module.
+        
+        @param request: DescribeFreeUserEventTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFreeUserEventTypesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFreeUserEventTypes',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeFreeUserEventTypesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_free_user_event_types_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeFreeUserEventTypesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeFreeUserEventTypesResponse:
+        """
+        @summary Queries the types of security events on which basic detection is performed in the API security module.
+        
+        @param request: DescribeFreeUserEventTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFreeUserEventTypesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFreeUserEventTypes',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeFreeUserEventTypesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_free_user_event_types(
+        self,
+        request: waf_openapi_20211001_models.DescribeFreeUserEventTypesRequest,
+    ) -> waf_openapi_20211001_models.DescribeFreeUserEventTypesResponse:
+        """
+        @summary Queries the types of security events on which basic detection is performed in the API security module.
+        
+        @param request: DescribeFreeUserEventTypesRequest
+        @return: DescribeFreeUserEventTypesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_free_user_event_types_with_options(request, runtime)
+
+    async def describe_free_user_event_types_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeFreeUserEventTypesRequest,
+    ) -> waf_openapi_20211001_models.DescribeFreeUserEventTypesResponse:
+        """
+        @summary Queries the types of security events on which basic detection is performed in the API security module.
+        
+        @param request: DescribeFreeUserEventTypesRequest
+        @return: DescribeFreeUserEventTypesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_free_user_event_types_with_options_async(request, runtime)
+
+    def describe_free_user_events_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeFreeUserEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeFreeUserEventsResponse:
+        """
+        @summary Queries the list of security events on which basic detection is performed in the API security module.
+        
+        @param request: DescribeFreeUserEventsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFreeUserEventsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFreeUserEvents',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeFreeUserEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_free_user_events_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeFreeUserEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeFreeUserEventsResponse:
+        """
+        @summary Queries the list of security events on which basic detection is performed in the API security module.
+        
+        @param request: DescribeFreeUserEventsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFreeUserEventsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFreeUserEvents',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeFreeUserEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_free_user_events(
+        self,
+        request: waf_openapi_20211001_models.DescribeFreeUserEventsRequest,
+    ) -> waf_openapi_20211001_models.DescribeFreeUserEventsResponse:
+        """
+        @summary Queries the list of security events on which basic detection is performed in the API security module.
+        
+        @param request: DescribeFreeUserEventsRequest
+        @return: DescribeFreeUserEventsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_free_user_events_with_options(request, runtime)
+
+    async def describe_free_user_events_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeFreeUserEventsRequest,
+    ) -> waf_openapi_20211001_models.DescribeFreeUserEventsResponse:
+        """
+        @summary Queries the list of security events on which basic detection is performed in the API security module.
+        
+        @param request: DescribeFreeUserEventsRequest
+        @return: DescribeFreeUserEventsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_free_user_events_with_options_async(request, runtime)
+
     def describe_hybrid_cloud_cluster_rule_with_options(
         self,
         request: waf_openapi_20211001_models.DescribeHybridCloudClusterRuleRequest,
@@ -6697,7 +8693,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DescribeHybridCloudClustersResponse:
         """
-        @summary 查询混合云集群列表
+        @summary Queries a list of hybrid cloud clusters.
         
         @param request: DescribeHybridCloudClustersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6736,7 +8732,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DescribeHybridCloudClustersResponse:
         """
-        @summary 查询混合云集群列表
+        @summary Queries a list of hybrid cloud clusters.
         
         @param request: DescribeHybridCloudClustersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6774,7 +8770,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DescribeHybridCloudClustersRequest,
     ) -> waf_openapi_20211001_models.DescribeHybridCloudClustersResponse:
         """
-        @summary 查询混合云集群列表
+        @summary Queries a list of hybrid cloud clusters.
         
         @param request: DescribeHybridCloudClustersRequest
         @return: DescribeHybridCloudClustersResponse
@@ -6787,7 +8783,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DescribeHybridCloudClustersRequest,
     ) -> waf_openapi_20211001_models.DescribeHybridCloudClustersResponse:
         """
-        @summary 查询混合云集群列表
+        @summary Queries a list of hybrid cloud clusters.
         
         @param request: DescribeHybridCloudClustersRequest
         @return: DescribeHybridCloudClustersResponse
@@ -8659,6 +10655,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.resource_product):
+            query['ResourceProduct'] = request.resource_product
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8698,6 +10696,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.resource_product):
+            query['ResourceProduct'] = request.resource_product
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9369,6 +11369,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource):
             query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
         if not UtilClient.is_unset(request.start_timestamp):
             query['StartTimestamp'] = request.start_timestamp
         req = open_api_models.OpenApiRequest(
@@ -9412,6 +11414,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource):
             query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
         if not UtilClient.is_unset(request.start_timestamp):
             query['StartTimestamp'] = request.start_timestamp
         req = open_api_models.OpenApiRequest(
@@ -9694,6 +11698,1034 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_rule_hits_top_url_with_options_async(request, runtime)
+
+    def describe_sensitive_api_statistic_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveApiStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveApiStatisticResponse:
+        """
+        @summary Queries the personal information-related APIs and domain names.
+        
+        @param request: DescribeSensitiveApiStatisticRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSensitiveApiStatisticResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.matched_host):
+            query['MatchedHost'] = request.matched_host
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSensitiveApiStatistic',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveApiStatisticResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sensitive_api_statistic_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveApiStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveApiStatisticResponse:
+        """
+        @summary Queries the personal information-related APIs and domain names.
+        
+        @param request: DescribeSensitiveApiStatisticRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSensitiveApiStatisticResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.matched_host):
+            query['MatchedHost'] = request.matched_host
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSensitiveApiStatistic',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveApiStatisticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sensitive_api_statistic(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveApiStatisticRequest,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveApiStatisticResponse:
+        """
+        @summary Queries the personal information-related APIs and domain names.
+        
+        @param request: DescribeSensitiveApiStatisticRequest
+        @return: DescribeSensitiveApiStatisticResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sensitive_api_statistic_with_options(request, runtime)
+
+    async def describe_sensitive_api_statistic_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveApiStatisticRequest,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveApiStatisticResponse:
+        """
+        @summary Queries the personal information-related APIs and domain names.
+        
+        @param request: DescribeSensitiveApiStatisticRequest
+        @return: DescribeSensitiveApiStatisticResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sensitive_api_statistic_with_options_async(request, runtime)
+
+    def describe_sensitive_detection_result_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveDetectionResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveDetectionResultResponse:
+        """
+        @summary Queries the compliance check results of API security.
+        
+        @param request: DescribeSensitiveDetectionResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSensitiveDetectionResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSensitiveDetectionResult',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveDetectionResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sensitive_detection_result_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveDetectionResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveDetectionResultResponse:
+        """
+        @summary Queries the compliance check results of API security.
+        
+        @param request: DescribeSensitiveDetectionResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSensitiveDetectionResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSensitiveDetectionResult',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveDetectionResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sensitive_detection_result(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveDetectionResultRequest,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveDetectionResultResponse:
+        """
+        @summary Queries the compliance check results of API security.
+        
+        @param request: DescribeSensitiveDetectionResultRequest
+        @return: DescribeSensitiveDetectionResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sensitive_detection_result_with_options(request, runtime)
+
+    async def describe_sensitive_detection_result_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveDetectionResultRequest,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveDetectionResultResponse:
+        """
+        @summary Queries the compliance check results of API security.
+        
+        @param request: DescribeSensitiveDetectionResultRequest
+        @return: DescribeSensitiveDetectionResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sensitive_detection_result_with_options_async(request, runtime)
+
+    def describe_sensitive_outbound_distribution_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveOutboundDistributionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveOutboundDistributionResponse:
+        """
+        @summary Queries the traffic distribution of personal information records involved in cross-border data transfer.
+        
+        @param request: DescribeSensitiveOutboundDistributionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSensitiveOutboundDistributionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSensitiveOutboundDistribution',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveOutboundDistributionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sensitive_outbound_distribution_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveOutboundDistributionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveOutboundDistributionResponse:
+        """
+        @summary Queries the traffic distribution of personal information records involved in cross-border data transfer.
+        
+        @param request: DescribeSensitiveOutboundDistributionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSensitiveOutboundDistributionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSensitiveOutboundDistribution',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveOutboundDistributionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sensitive_outbound_distribution(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveOutboundDistributionRequest,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveOutboundDistributionResponse:
+        """
+        @summary Queries the traffic distribution of personal information records involved in cross-border data transfer.
+        
+        @param request: DescribeSensitiveOutboundDistributionRequest
+        @return: DescribeSensitiveOutboundDistributionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sensitive_outbound_distribution_with_options(request, runtime)
+
+    async def describe_sensitive_outbound_distribution_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveOutboundDistributionRequest,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveOutboundDistributionResponse:
+        """
+        @summary Queries the traffic distribution of personal information records involved in cross-border data transfer.
+        
+        @param request: DescribeSensitiveOutboundDistributionRequest
+        @return: DescribeSensitiveOutboundDistributionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sensitive_outbound_distribution_with_options_async(request, runtime)
+
+    def describe_sensitive_outbound_statistic_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveOutboundStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveOutboundStatisticResponse:
+        """
+        @summary Queries the data types of personal information involved in cross-border data transfer.
+        
+        @param request: DescribeSensitiveOutboundStatisticRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSensitiveOutboundStatisticResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.detection_result):
+            query['DetectionResult'] = request.detection_result
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.order_key):
+            query['OrderKey'] = request.order_key
+        if not UtilClient.is_unset(request.order_way):
+            query['OrderWay'] = request.order_way
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.sensitive_code):
+            query['SensitiveCode'] = request.sensitive_code
+        if not UtilClient.is_unset(request.sensitive_level):
+            query['SensitiveLevel'] = request.sensitive_level
+        if not UtilClient.is_unset(request.sensitive_type):
+            query['SensitiveType'] = request.sensitive_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSensitiveOutboundStatistic',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveOutboundStatisticResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sensitive_outbound_statistic_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveOutboundStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveOutboundStatisticResponse:
+        """
+        @summary Queries the data types of personal information involved in cross-border data transfer.
+        
+        @param request: DescribeSensitiveOutboundStatisticRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSensitiveOutboundStatisticResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.detection_result):
+            query['DetectionResult'] = request.detection_result
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.order_key):
+            query['OrderKey'] = request.order_key
+        if not UtilClient.is_unset(request.order_way):
+            query['OrderWay'] = request.order_way
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.sensitive_code):
+            query['SensitiveCode'] = request.sensitive_code
+        if not UtilClient.is_unset(request.sensitive_level):
+            query['SensitiveLevel'] = request.sensitive_level
+        if not UtilClient.is_unset(request.sensitive_type):
+            query['SensitiveType'] = request.sensitive_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSensitiveOutboundStatistic',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveOutboundStatisticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sensitive_outbound_statistic(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveOutboundStatisticRequest,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveOutboundStatisticResponse:
+        """
+        @summary Queries the data types of personal information involved in cross-border data transfer.
+        
+        @param request: DescribeSensitiveOutboundStatisticRequest
+        @return: DescribeSensitiveOutboundStatisticResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sensitive_outbound_statistic_with_options(request, runtime)
+
+    async def describe_sensitive_outbound_statistic_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveOutboundStatisticRequest,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveOutboundStatisticResponse:
+        """
+        @summary Queries the data types of personal information involved in cross-border data transfer.
+        
+        @param request: DescribeSensitiveOutboundStatisticRequest
+        @return: DescribeSensitiveOutboundStatisticResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sensitive_outbound_statistic_with_options_async(request, runtime)
+
+    def describe_sensitive_outbound_trend_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveOutboundTrendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveOutboundTrendResponse:
+        """
+        @summary Queries the trends of cross-border data transfer of personal information.
+        
+        @param request: DescribeSensitiveOutboundTrendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSensitiveOutboundTrendResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSensitiveOutboundTrend',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveOutboundTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sensitive_outbound_trend_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveOutboundTrendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveOutboundTrendResponse:
+        """
+        @summary Queries the trends of cross-border data transfer of personal information.
+        
+        @param request: DescribeSensitiveOutboundTrendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSensitiveOutboundTrendResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSensitiveOutboundTrend',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveOutboundTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sensitive_outbound_trend(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveOutboundTrendRequest,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveOutboundTrendResponse:
+        """
+        @summary Queries the trends of cross-border data transfer of personal information.
+        
+        @param request: DescribeSensitiveOutboundTrendRequest
+        @return: DescribeSensitiveOutboundTrendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sensitive_outbound_trend_with_options(request, runtime)
+
+    async def describe_sensitive_outbound_trend_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveOutboundTrendRequest,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveOutboundTrendResponse:
+        """
+        @summary Queries the trends of cross-border data transfer of personal information.
+        
+        @param request: DescribeSensitiveOutboundTrendRequest
+        @return: DescribeSensitiveOutboundTrendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sensitive_outbound_trend_with_options_async(request, runtime)
+
+    def describe_sensitive_request_log_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveRequestLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveRequestLogResponse:
+        """
+        @summary Queries the access logs of sensitive data.
+        
+        @param request: DescribeSensitiveRequestLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSensitiveRequestLogResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_format):
+            query['ApiFormat'] = request.api_format
+        if not UtilClient.is_unset(request.client_ip):
+            query['ClientIP'] = request.client_ip
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.matched_host):
+            query['MatchedHost'] = request.matched_host
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.sensitive_code):
+            query['SensitiveCode'] = request.sensitive_code
+        if not UtilClient.is_unset(request.sensitive_data):
+            query['SensitiveData'] = request.sensitive_data
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSensitiveRequestLog',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveRequestLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sensitive_request_log_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveRequestLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveRequestLogResponse:
+        """
+        @summary Queries the access logs of sensitive data.
+        
+        @param request: DescribeSensitiveRequestLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSensitiveRequestLogResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_format):
+            query['ApiFormat'] = request.api_format
+        if not UtilClient.is_unset(request.client_ip):
+            query['ClientIP'] = request.client_ip
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.matched_host):
+            query['MatchedHost'] = request.matched_host
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.sensitive_code):
+            query['SensitiveCode'] = request.sensitive_code
+        if not UtilClient.is_unset(request.sensitive_data):
+            query['SensitiveData'] = request.sensitive_data
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSensitiveRequestLog',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveRequestLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sensitive_request_log(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveRequestLogRequest,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveRequestLogResponse:
+        """
+        @summary Queries the access logs of sensitive data.
+        
+        @param request: DescribeSensitiveRequestLogRequest
+        @return: DescribeSensitiveRequestLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sensitive_request_log_with_options(request, runtime)
+
+    async def describe_sensitive_request_log_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveRequestLogRequest,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveRequestLogResponse:
+        """
+        @summary Queries the access logs of sensitive data.
+        
+        @param request: DescribeSensitiveRequestLogRequest
+        @return: DescribeSensitiveRequestLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sensitive_request_log_with_options_async(request, runtime)
+
+    def describe_sensitive_requests_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveRequestsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveRequestsResponse:
+        """
+        @summary Queries the tracing results of sensitive data.
+        
+        @param request: DescribeSensitiveRequestsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSensitiveRequestsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.sensitive_code):
+            query['SensitiveCode'] = request.sensitive_code
+        if not UtilClient.is_unset(request.sensitive_data):
+            query['SensitiveData'] = request.sensitive_data
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSensitiveRequests',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveRequestsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sensitive_requests_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveRequestsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveRequestsResponse:
+        """
+        @summary Queries the tracing results of sensitive data.
+        
+        @param request: DescribeSensitiveRequestsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSensitiveRequestsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.sensitive_code):
+            query['SensitiveCode'] = request.sensitive_code
+        if not UtilClient.is_unset(request.sensitive_data):
+            query['SensitiveData'] = request.sensitive_data
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSensitiveRequests',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveRequestsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sensitive_requests(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveRequestsRequest,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveRequestsResponse:
+        """
+        @summary Queries the tracing results of sensitive data.
+        
+        @param request: DescribeSensitiveRequestsRequest
+        @return: DescribeSensitiveRequestsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sensitive_requests_with_options(request, runtime)
+
+    async def describe_sensitive_requests_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveRequestsRequest,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveRequestsResponse:
+        """
+        @summary Queries the tracing results of sensitive data.
+        
+        @param request: DescribeSensitiveRequestsRequest
+        @return: DescribeSensitiveRequestsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sensitive_requests_with_options_async(request, runtime)
+
+    def describe_sensitive_statistic_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveStatisticResponse:
+        """
+        @summary Queries the sensitive data statistics of the tracing and auditing feature.
+        
+        @param request: DescribeSensitiveStatisticRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSensitiveStatisticResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.statistic_type):
+            query['StatisticType'] = request.statistic_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSensitiveStatistic',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveStatisticResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sensitive_statistic_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveStatisticResponse:
+        """
+        @summary Queries the sensitive data statistics of the tracing and auditing feature.
+        
+        @param request: DescribeSensitiveStatisticRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSensitiveStatisticResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.statistic_type):
+            query['StatisticType'] = request.statistic_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSensitiveStatistic',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeSensitiveStatisticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sensitive_statistic(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveStatisticRequest,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveStatisticResponse:
+        """
+        @summary Queries the sensitive data statistics of the tracing and auditing feature.
+        
+        @param request: DescribeSensitiveStatisticRequest
+        @return: DescribeSensitiveStatisticResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sensitive_statistic_with_options(request, runtime)
+
+    async def describe_sensitive_statistic_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeSensitiveStatisticRequest,
+    ) -> waf_openapi_20211001_models.DescribeSensitiveStatisticResponse:
+        """
+        @summary Queries the sensitive data statistics of the tracing and auditing feature.
+        
+        @param request: DescribeSensitiveStatisticRequest
+        @return: DescribeSensitiveStatisticResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sensitive_statistic_with_options_async(request, runtime)
 
     def describe_sls_auth_status_with_options(
         self,
@@ -10227,6 +13259,694 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_template_resources_with_options_async(request, runtime)
 
+    def describe_user_abnormal_trend_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeUserAbnormalTrendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeUserAbnormalTrendResponse:
+        """
+        @summary Queries the trends of API security risks.
+        
+        @param request: DescribeUserAbnormalTrendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserAbnormalTrendResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserAbnormalTrend',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserAbnormalTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_user_abnormal_trend_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeUserAbnormalTrendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeUserAbnormalTrendResponse:
+        """
+        @summary Queries the trends of API security risks.
+        
+        @param request: DescribeUserAbnormalTrendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserAbnormalTrendResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserAbnormalTrend',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserAbnormalTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_user_abnormal_trend(
+        self,
+        request: waf_openapi_20211001_models.DescribeUserAbnormalTrendRequest,
+    ) -> waf_openapi_20211001_models.DescribeUserAbnormalTrendResponse:
+        """
+        @summary Queries the trends of API security risks.
+        
+        @param request: DescribeUserAbnormalTrendRequest
+        @return: DescribeUserAbnormalTrendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_user_abnormal_trend_with_options(request, runtime)
+
+    async def describe_user_abnormal_trend_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeUserAbnormalTrendRequest,
+    ) -> waf_openapi_20211001_models.DescribeUserAbnormalTrendResponse:
+        """
+        @summary Queries the trends of API security risks.
+        
+        @param request: DescribeUserAbnormalTrendRequest
+        @return: DescribeUserAbnormalTrendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_user_abnormal_trend_with_options_async(request, runtime)
+
+    def describe_user_abnormal_type_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeUserAbnormalTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeUserAbnormalTypeResponse:
+        """
+        @summary Queries the types and statistics of risks in the API security module.
+        
+        @param request: DescribeUserAbnormalTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserAbnormalTypeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserAbnormalType',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserAbnormalTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_user_abnormal_type_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeUserAbnormalTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeUserAbnormalTypeResponse:
+        """
+        @summary Queries the types and statistics of risks in the API security module.
+        
+        @param request: DescribeUserAbnormalTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserAbnormalTypeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserAbnormalType',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserAbnormalTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_user_abnormal_type(
+        self,
+        request: waf_openapi_20211001_models.DescribeUserAbnormalTypeRequest,
+    ) -> waf_openapi_20211001_models.DescribeUserAbnormalTypeResponse:
+        """
+        @summary Queries the types and statistics of risks in the API security module.
+        
+        @param request: DescribeUserAbnormalTypeRequest
+        @return: DescribeUserAbnormalTypeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_user_abnormal_type_with_options(request, runtime)
+
+    async def describe_user_abnormal_type_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeUserAbnormalTypeRequest,
+    ) -> waf_openapi_20211001_models.DescribeUserAbnormalTypeResponse:
+        """
+        @summary Queries the types and statistics of risks in the API security module.
+        
+        @param request: DescribeUserAbnormalTypeRequest
+        @return: DescribeUserAbnormalTypeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_user_abnormal_type_with_options_async(request, runtime)
+
+    def describe_user_api_request_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeUserApiRequestRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeUserApiRequestResponse:
+        """
+        @summary Queries the traffic statistics of an API.
+        
+        @param request: DescribeUserApiRequestRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserApiRequestResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_format):
+            query['ApiFormat'] = request.api_format
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserApiRequest',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserApiRequestResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_user_api_request_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeUserApiRequestRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeUserApiRequestResponse:
+        """
+        @summary Queries the traffic statistics of an API.
+        
+        @param request: DescribeUserApiRequestRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserApiRequestResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_format):
+            query['ApiFormat'] = request.api_format
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserApiRequest',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserApiRequestResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_user_api_request(
+        self,
+        request: waf_openapi_20211001_models.DescribeUserApiRequestRequest,
+    ) -> waf_openapi_20211001_models.DescribeUserApiRequestResponse:
+        """
+        @summary Queries the traffic statistics of an API.
+        
+        @param request: DescribeUserApiRequestRequest
+        @return: DescribeUserApiRequestResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_user_api_request_with_options(request, runtime)
+
+    async def describe_user_api_request_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeUserApiRequestRequest,
+    ) -> waf_openapi_20211001_models.DescribeUserApiRequestResponse:
+        """
+        @summary Queries the traffic statistics of an API.
+        
+        @param request: DescribeUserApiRequestRequest
+        @return: DescribeUserApiRequestResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_user_api_request_with_options_async(request, runtime)
+
+    def describe_user_asset_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeUserAssetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeUserAssetResponse:
+        """
+        @summary Queries the user asset statistics in the API security module.
+        
+        @param request: DescribeUserAssetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserAssetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.data_type):
+            query['DataType'] = request.data_type
+        if not UtilClient.is_unset(request.days):
+            query['Days'] = request.days
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserAsset',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserAssetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_user_asset_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeUserAssetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeUserAssetResponse:
+        """
+        @summary Queries the user asset statistics in the API security module.
+        
+        @param request: DescribeUserAssetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserAssetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.data_type):
+            query['DataType'] = request.data_type
+        if not UtilClient.is_unset(request.days):
+            query['Days'] = request.days
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserAsset',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserAssetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_user_asset(
+        self,
+        request: waf_openapi_20211001_models.DescribeUserAssetRequest,
+    ) -> waf_openapi_20211001_models.DescribeUserAssetResponse:
+        """
+        @summary Queries the user asset statistics in the API security module.
+        
+        @param request: DescribeUserAssetRequest
+        @return: DescribeUserAssetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_user_asset_with_options(request, runtime)
+
+    async def describe_user_asset_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeUserAssetRequest,
+    ) -> waf_openapi_20211001_models.DescribeUserAssetResponse:
+        """
+        @summary Queries the user asset statistics in the API security module.
+        
+        @param request: DescribeUserAssetRequest
+        @return: DescribeUserAssetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_user_asset_with_options_async(request, runtime)
+
+    def describe_user_event_trend_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeUserEventTrendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeUserEventTrendResponse:
+        """
+        @summary Queries the trends of attacks detected by the API security module.
+        
+        @param request: DescribeUserEventTrendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserEventTrendResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserEventTrend',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserEventTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_user_event_trend_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeUserEventTrendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeUserEventTrendResponse:
+        """
+        @summary Queries the trends of attacks detected by the API security module.
+        
+        @param request: DescribeUserEventTrendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserEventTrendResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserEventTrend',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserEventTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_user_event_trend(
+        self,
+        request: waf_openapi_20211001_models.DescribeUserEventTrendRequest,
+    ) -> waf_openapi_20211001_models.DescribeUserEventTrendResponse:
+        """
+        @summary Queries the trends of attacks detected by the API security module.
+        
+        @param request: DescribeUserEventTrendRequest
+        @return: DescribeUserEventTrendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_user_event_trend_with_options(request, runtime)
+
+    async def describe_user_event_trend_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeUserEventTrendRequest,
+    ) -> waf_openapi_20211001_models.DescribeUserEventTrendResponse:
+        """
+        @summary Queries the trends of attacks detected by the API security module.
+        
+        @param request: DescribeUserEventTrendRequest
+        @return: DescribeUserEventTrendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_user_event_trend_with_options_async(request, runtime)
+
+    def describe_user_event_type_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeUserEventTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeUserEventTypeResponse:
+        """
+        @summary Queries the types and statistics of security events in the API security module.
+        
+        @param request: DescribeUserEventTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserEventTypeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserEventType',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserEventTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_user_event_type_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeUserEventTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeUserEventTypeResponse:
+        """
+        @summary Queries the types and statistics of security events in the API security module.
+        
+        @param request: DescribeUserEventTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserEventTypeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserEventType',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserEventTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_user_event_type(
+        self,
+        request: waf_openapi_20211001_models.DescribeUserEventTypeRequest,
+    ) -> waf_openapi_20211001_models.DescribeUserEventTypeResponse:
+        """
+        @summary Queries the types and statistics of security events in the API security module.
+        
+        @param request: DescribeUserEventTypeRequest
+        @return: DescribeUserEventTypeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_user_event_type_with_options(request, runtime)
+
+    async def describe_user_event_type_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeUserEventTypeRequest,
+    ) -> waf_openapi_20211001_models.DescribeUserEventTypeResponse:
+        """
+        @summary Queries the types and statistics of security events in the API security module.
+        
+        @param request: DescribeUserEventTypeRequest
+        @return: DescribeUserEventTypeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_user_event_type_with_options_async(request, runtime)
+
     def describe_user_sls_log_regions_with_options(
         self,
         request: waf_openapi_20211001_models.DescribeUserSlsLogRegionsRequest,
@@ -10573,6 +14293,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource):
             query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
         if not UtilClient.is_unset(request.start_timestamp):
             query['StartTimestamp'] = request.start_timestamp
         req = open_api_models.OpenApiRequest(
@@ -10616,6 +14338,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource):
             query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
         if not UtilClient.is_unset(request.start_timestamp):
             query['StartTimestamp'] = request.start_timestamp
         req = open_api_models.OpenApiRequest(
@@ -11001,12 +14725,16 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.key):
             query['Key'] = request.key
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
@@ -11042,12 +14770,16 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.key):
             query['Key'] = request.key
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
@@ -11094,6 +14826,366 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_values_with_options_async(request, runtime)
+
+    def modify_apisec_abnormals_with_options(
+        self,
+        request: waf_openapi_20211001_models.ModifyApisecAbnormalsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ModifyApisecAbnormalsResponse:
+        """
+        @summary Modifies the status of multiple risks detected by the API security module at a time.
+        
+        @param request: ModifyApisecAbnormalsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApisecAbnormalsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.abnormal_ids):
+            query['AbnormalIds'] = request.abnormal_ids
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.note):
+            query['Note'] = request.note
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.user_status):
+            query['UserStatus'] = request.user_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyApisecAbnormals',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyApisecAbnormalsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_apisec_abnormals_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.ModifyApisecAbnormalsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ModifyApisecAbnormalsResponse:
+        """
+        @summary Modifies the status of multiple risks detected by the API security module at a time.
+        
+        @param request: ModifyApisecAbnormalsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApisecAbnormalsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.abnormal_ids):
+            query['AbnormalIds'] = request.abnormal_ids
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.note):
+            query['Note'] = request.note
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.user_status):
+            query['UserStatus'] = request.user_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyApisecAbnormals',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyApisecAbnormalsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_apisec_abnormals(
+        self,
+        request: waf_openapi_20211001_models.ModifyApisecAbnormalsRequest,
+    ) -> waf_openapi_20211001_models.ModifyApisecAbnormalsResponse:
+        """
+        @summary Modifies the status of multiple risks detected by the API security module at a time.
+        
+        @param request: ModifyApisecAbnormalsRequest
+        @return: ModifyApisecAbnormalsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_apisec_abnormals_with_options(request, runtime)
+
+    async def modify_apisec_abnormals_async(
+        self,
+        request: waf_openapi_20211001_models.ModifyApisecAbnormalsRequest,
+    ) -> waf_openapi_20211001_models.ModifyApisecAbnormalsResponse:
+        """
+        @summary Modifies the status of multiple risks detected by the API security module at a time.
+        
+        @param request: ModifyApisecAbnormalsRequest
+        @return: ModifyApisecAbnormalsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_apisec_abnormals_with_options_async(request, runtime)
+
+    def modify_apisec_api_resource_with_options(
+        self,
+        request: waf_openapi_20211001_models.ModifyApisecApiResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ModifyApisecApiResourceResponse:
+        """
+        @summary Modifies the annotations of APIs in the API security module.
+        
+        @param request: ModifyApisecApiResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApisecApiResourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.follow):
+            query['Follow'] = request.follow
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.note):
+            query['Note'] = request.note
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyApisecApiResource',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyApisecApiResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_apisec_api_resource_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.ModifyApisecApiResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ModifyApisecApiResourceResponse:
+        """
+        @summary Modifies the annotations of APIs in the API security module.
+        
+        @param request: ModifyApisecApiResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApisecApiResourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.follow):
+            query['Follow'] = request.follow
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.note):
+            query['Note'] = request.note
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyApisecApiResource',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyApisecApiResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_apisec_api_resource(
+        self,
+        request: waf_openapi_20211001_models.ModifyApisecApiResourceRequest,
+    ) -> waf_openapi_20211001_models.ModifyApisecApiResourceResponse:
+        """
+        @summary Modifies the annotations of APIs in the API security module.
+        
+        @param request: ModifyApisecApiResourceRequest
+        @return: ModifyApisecApiResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_apisec_api_resource_with_options(request, runtime)
+
+    async def modify_apisec_api_resource_async(
+        self,
+        request: waf_openapi_20211001_models.ModifyApisecApiResourceRequest,
+    ) -> waf_openapi_20211001_models.ModifyApisecApiResourceResponse:
+        """
+        @summary Modifies the annotations of APIs in the API security module.
+        
+        @param request: ModifyApisecApiResourceRequest
+        @return: ModifyApisecApiResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_apisec_api_resource_with_options_async(request, runtime)
+
+    def modify_apisec_events_with_options(
+        self,
+        request: waf_openapi_20211001_models.ModifyApisecEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ModifyApisecEventsResponse:
+        """
+        @summary Modifies the status of multiple security events detected by the API security module at a time.
+        
+        @param request: ModifyApisecEventsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApisecEventsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.event_ids):
+            query['EventIds'] = request.event_ids
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.note):
+            query['Note'] = request.note
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.user_status):
+            query['UserStatus'] = request.user_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyApisecEvents',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyApisecEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_apisec_events_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.ModifyApisecEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ModifyApisecEventsResponse:
+        """
+        @summary Modifies the status of multiple security events detected by the API security module at a time.
+        
+        @param request: ModifyApisecEventsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApisecEventsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.event_ids):
+            query['EventIds'] = request.event_ids
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.note):
+            query['Note'] = request.note
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.user_status):
+            query['UserStatus'] = request.user_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyApisecEvents',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyApisecEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_apisec_events(
+        self,
+        request: waf_openapi_20211001_models.ModifyApisecEventsRequest,
+    ) -> waf_openapi_20211001_models.ModifyApisecEventsResponse:
+        """
+        @summary Modifies the status of multiple security events detected by the API security module at a time.
+        
+        @param request: ModifyApisecEventsRequest
+        @return: ModifyApisecEventsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_apisec_events_with_options(request, runtime)
+
+    async def modify_apisec_events_async(
+        self,
+        request: waf_openapi_20211001_models.ModifyApisecEventsRequest,
+    ) -> waf_openapi_20211001_models.ModifyApisecEventsResponse:
+        """
+        @summary Modifies the status of multiple security events detected by the API security module at a time.
+        
+        @param request: ModifyApisecEventsRequest
+        @return: ModifyApisecEventsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_apisec_events_with_options_async(request, runtime)
 
     def modify_apisec_log_delivery_with_options(
         self,
@@ -11327,13 +15419,249 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_apisec_log_delivery_status_with_options_async(request, runtime)
 
+    def modify_apisec_module_status_with_options(
+        self,
+        request: waf_openapi_20211001_models.ModifyApisecModuleStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ModifyApisecModuleStatusResponse:
+        """
+        @summary Changes the status of features in the API security module for protected objects or protected object groups.
+        
+        @param request: ModifyApisecModuleStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApisecModuleStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.report_status):
+            query['ReportStatus'] = request.report_status
+        if not UtilClient.is_unset(request.resource_groups):
+            query['ResourceGroups'] = request.resource_groups
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.resources):
+            query['Resources'] = request.resources
+        if not UtilClient.is_unset(request.trace_status):
+            query['TraceStatus'] = request.trace_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyApisecModuleStatus',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyApisecModuleStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_apisec_module_status_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.ModifyApisecModuleStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ModifyApisecModuleStatusResponse:
+        """
+        @summary Changes the status of features in the API security module for protected objects or protected object groups.
+        
+        @param request: ModifyApisecModuleStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApisecModuleStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.report_status):
+            query['ReportStatus'] = request.report_status
+        if not UtilClient.is_unset(request.resource_groups):
+            query['ResourceGroups'] = request.resource_groups
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.resources):
+            query['Resources'] = request.resources
+        if not UtilClient.is_unset(request.trace_status):
+            query['TraceStatus'] = request.trace_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyApisecModuleStatus',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyApisecModuleStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_apisec_module_status(
+        self,
+        request: waf_openapi_20211001_models.ModifyApisecModuleStatusRequest,
+    ) -> waf_openapi_20211001_models.ModifyApisecModuleStatusResponse:
+        """
+        @summary Changes the status of features in the API security module for protected objects or protected object groups.
+        
+        @param request: ModifyApisecModuleStatusRequest
+        @return: ModifyApisecModuleStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_apisec_module_status_with_options(request, runtime)
+
+    async def modify_apisec_module_status_async(
+        self,
+        request: waf_openapi_20211001_models.ModifyApisecModuleStatusRequest,
+    ) -> waf_openapi_20211001_models.ModifyApisecModuleStatusResponse:
+        """
+        @summary Changes the status of features in the API security module for protected objects or protected object groups.
+        
+        @param request: ModifyApisecModuleStatusRequest
+        @return: ModifyApisecModuleStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_apisec_module_status_with_options_async(request, runtime)
+
+    def modify_apisec_status_with_options(
+        self,
+        request: waf_openapi_20211001_models.ModifyApisecStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ModifyApisecStatusResponse:
+        """
+        @summary Changes the status of the API security module for protected objects or protected object groups.
+        
+        @param request: ModifyApisecStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApisecStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.apisec_status):
+            query['ApisecStatus'] = request.apisec_status
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_groups):
+            query['ResourceGroups'] = request.resource_groups
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.resources):
+            query['Resources'] = request.resources
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyApisecStatus',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyApisecStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_apisec_status_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.ModifyApisecStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ModifyApisecStatusResponse:
+        """
+        @summary Changes the status of the API security module for protected objects or protected object groups.
+        
+        @param request: ModifyApisecStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApisecStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.apisec_status):
+            query['ApisecStatus'] = request.apisec_status
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_groups):
+            query['ResourceGroups'] = request.resource_groups
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.resources):
+            query['Resources'] = request.resources
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyApisecStatus',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyApisecStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_apisec_status(
+        self,
+        request: waf_openapi_20211001_models.ModifyApisecStatusRequest,
+    ) -> waf_openapi_20211001_models.ModifyApisecStatusResponse:
+        """
+        @summary Changes the status of the API security module for protected objects or protected object groups.
+        
+        @param request: ModifyApisecStatusRequest
+        @return: ModifyApisecStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_apisec_status_with_options(request, runtime)
+
+    async def modify_apisec_status_async(
+        self,
+        request: waf_openapi_20211001_models.ModifyApisecStatusRequest,
+    ) -> waf_openapi_20211001_models.ModifyApisecStatusResponse:
+        """
+        @summary Changes the status of the API security module for protected objects or protected object groups.
+        
+        @param request: ModifyApisecStatusRequest
+        @return: ModifyApisecStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_apisec_status_with_options_async(request, runtime)
+
     def modify_cloud_resource_with_options(
         self,
         tmp_req: waf_openapi_20211001_models.ModifyCloudResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.ModifyCloudResourceResponse:
         """
-        @summary 修改云产品资源
+        @summary Modifies the configurations of a service that is added to Web Application Firewall (WAF).
         
         @param tmp_req: ModifyCloudResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11382,7 +15710,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.ModifyCloudResourceResponse:
         """
-        @summary 修改云产品资源
+        @summary Modifies the configurations of a service that is added to Web Application Firewall (WAF).
         
         @param tmp_req: ModifyCloudResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11430,7 +15758,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.ModifyCloudResourceRequest,
     ) -> waf_openapi_20211001_models.ModifyCloudResourceResponse:
         """
-        @summary 修改云产品资源
+        @summary Modifies the configurations of a service that is added to Web Application Firewall (WAF).
         
         @param request: ModifyCloudResourceRequest
         @return: ModifyCloudResourceResponse
@@ -11443,7 +15771,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.ModifyCloudResourceRequest,
     ) -> waf_openapi_20211001_models.ModifyCloudResourceResponse:
         """
-        @summary 修改云产品资源
+        @summary Modifies the configurations of a service that is added to Web Application Firewall (WAF).
         
         @param request: ModifyCloudResourceRequest
         @return: ModifyCloudResourceResponse
@@ -11457,7 +15785,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.ModifyDefaultHttpsResponse:
         """
-        @summary 修改默认HTTPS配置
+        @summary Modifies the default SSL and Transport Layer Security (TLS) settings.
         
         @param request: ModifyDefaultHttpsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11506,7 +15834,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.ModifyDefaultHttpsResponse:
         """
-        @summary 修改默认HTTPS配置
+        @summary Modifies the default SSL and Transport Layer Security (TLS) settings.
         
         @param request: ModifyDefaultHttpsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11554,7 +15882,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.ModifyDefaultHttpsRequest,
     ) -> waf_openapi_20211001_models.ModifyDefaultHttpsResponse:
         """
-        @summary 修改默认HTTPS配置
+        @summary Modifies the default SSL and Transport Layer Security (TLS) settings.
         
         @param request: ModifyDefaultHttpsRequest
         @return: ModifyDefaultHttpsResponse
@@ -11567,7 +15895,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.ModifyDefaultHttpsRequest,
     ) -> waf_openapi_20211001_models.ModifyDefaultHttpsResponse:
         """
-        @summary 修改默认HTTPS配置
+        @summary Modifies the default SSL and Transport Layer Security (TLS) settings.
         
         @param request: ModifyDefaultHttpsRequest
         @return: ModifyDefaultHttpsResponse
@@ -11845,12 +16173,14 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
-        if not UtilClient.is_unset(request.rules):
-            query['Rules'] = request.rules
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        body = {}
+        if not UtilClient.is_unset(request.rules):
+            body['Rules'] = request.rules
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ModifyDefenseRule',
@@ -11890,12 +16220,14 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
-        if not UtilClient.is_unset(request.rules):
-            query['Rules'] = request.rules
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        body = {}
+        if not UtilClient.is_unset(request.rules):
+            body['Rules'] = request.rules
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ModifyDefenseRule',
