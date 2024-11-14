@@ -47,7 +47,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.AllocateInstancePublicConnectionResponse:
         """
-        @summary 申请公网地址
+        @summary Applies for a public endpoint for an ApsaraDB for SelectDB instance.
         
         @param request: AllocateInstancePublicConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -90,7 +90,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.AllocateInstancePublicConnectionResponse:
         """
-        @summary 申请公网地址
+        @summary Applies for a public endpoint for an ApsaraDB for SelectDB instance.
         
         @param request: AllocateInstancePublicConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -132,7 +132,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.AllocateInstancePublicConnectionRequest,
     ) -> selectdb_20230522_models.AllocateInstancePublicConnectionResponse:
         """
-        @summary 申请公网地址
+        @summary Applies for a public endpoint for an ApsaraDB for SelectDB instance.
         
         @param request: AllocateInstancePublicConnectionRequest
         @return: AllocateInstancePublicConnectionResponse
@@ -145,7 +145,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.AllocateInstancePublicConnectionRequest,
     ) -> selectdb_20230522_models.AllocateInstancePublicConnectionResponse:
         """
-        @summary 申请公网地址
+        @summary Applies for a public endpoint for an ApsaraDB for SelectDB instance.
         
         @param request: AllocateInstancePublicConnectionRequest
         @return: AllocateInstancePublicConnectionResponse
@@ -419,7 +419,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.CreateDBClusterResponse:
         """
-        @summary SelectDB实例下创建集群
+        @summary Creates a cluster in an ApsaraDB for SelectDB instance. Note: You can create only pay-as-you-go clusters in a pay-as-you-go instance.
         
         @param request: CreateDBClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -456,8 +456,6 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             body['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.resource_group_id):
-            body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
@@ -484,7 +482,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.CreateDBClusterResponse:
         """
-        @summary SelectDB实例下创建集群
+        @summary Creates a cluster in an ApsaraDB for SelectDB instance. Note: You can create only pay-as-you-go clusters in a pay-as-you-go instance.
         
         @param request: CreateDBClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -521,8 +519,6 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             body['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.resource_group_id):
-            body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
@@ -548,7 +544,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.CreateDBClusterRequest,
     ) -> selectdb_20230522_models.CreateDBClusterResponse:
         """
-        @summary SelectDB实例下创建集群
+        @summary Creates a cluster in an ApsaraDB for SelectDB instance. Note: You can create only pay-as-you-go clusters in a pay-as-you-go instance.
         
         @param request: CreateDBClusterRequest
         @return: CreateDBClusterResponse
@@ -561,7 +557,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.CreateDBClusterRequest,
     ) -> selectdb_20230522_models.CreateDBClusterResponse:
         """
-        @summary SelectDB实例下创建集群
+        @summary Creates a cluster in an ApsaraDB for SelectDB instance. Note: You can create only pay-as-you-go clusters in a pay-as-you-go instance.
         
         @param request: CreateDBClusterRequest
         @return: CreateDBClusterResponse
@@ -571,17 +567,21 @@ class Client(OpenApiClient):
 
     def create_dbinstance_with_options(
         self,
-        request: selectdb_20230522_models.CreateDBInstanceRequest,
+        tmp_req: selectdb_20230522_models.CreateDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.CreateDBInstanceResponse:
         """
         @summary 创建SelectDB实例
         
-        @param request: CreateDBInstanceRequest
+        @param tmp_req: CreateDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateDBInstanceResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = selectdb_20230522_models.CreateDBInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.cache_size):
             query['CacheSize'] = request.cache_size
@@ -607,6 +607,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         if not UtilClient.is_unset(request.used_time):
             query['UsedTime'] = request.used_time
         if not UtilClient.is_unset(request.v_switch_id):
@@ -640,17 +642,21 @@ class Client(OpenApiClient):
 
     async def create_dbinstance_with_options_async(
         self,
-        request: selectdb_20230522_models.CreateDBInstanceRequest,
+        tmp_req: selectdb_20230522_models.CreateDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.CreateDBInstanceResponse:
         """
         @summary 创建SelectDB实例
         
-        @param request: CreateDBInstanceRequest
+        @param tmp_req: CreateDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateDBInstanceResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = selectdb_20230522_models.CreateDBInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.cache_size):
             query['CacheSize'] = request.cache_size
@@ -676,6 +682,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         if not UtilClient.is_unset(request.used_time):
             query['UsedTime'] = request.used_time
         if not UtilClient.is_unset(request.v_switch_id):
@@ -739,7 +747,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.CreateServiceLinkedRoleForSelectDBResponse:
         """
-        @summary 创建服务关联角色
+        @summary Creates a service-linked role for ApsaraDB for SelectDB.
         
         @param request: CreateServiceLinkedRoleForSelectDBRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -776,7 +784,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.CreateServiceLinkedRoleForSelectDBResponse:
         """
-        @summary 创建服务关联角色
+        @summary Creates a service-linked role for ApsaraDB for SelectDB.
         
         @param request: CreateServiceLinkedRoleForSelectDBRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -812,7 +820,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.CreateServiceLinkedRoleForSelectDBRequest,
     ) -> selectdb_20230522_models.CreateServiceLinkedRoleForSelectDBResponse:
         """
-        @summary 创建服务关联角色
+        @summary Creates a service-linked role for ApsaraDB for SelectDB.
         
         @param request: CreateServiceLinkedRoleForSelectDBRequest
         @return: CreateServiceLinkedRoleForSelectDBResponse
@@ -825,7 +833,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.CreateServiceLinkedRoleForSelectDBRequest,
     ) -> selectdb_20230522_models.CreateServiceLinkedRoleForSelectDBResponse:
         """
-        @summary 创建服务关联角色
+        @summary Creates a service-linked role for ApsaraDB for SelectDB.
         
         @param request: CreateServiceLinkedRoleForSelectDBRequest
         @return: CreateServiceLinkedRoleForSelectDBResponse
@@ -1057,13 +1065,113 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_dbinstance_with_options_async(request, runtime)
 
+    def describe_all_dbinstance_class_with_options(
+        self,
+        request: selectdb_20230522_models.DescribeAllDBInstanceClassRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.DescribeAllDBInstanceClassResponse:
+        """
+        @summary 获取所有实例规格信息
+        
+        @param request: DescribeAllDBInstanceClassRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAllDBInstanceClassResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAllDBInstanceClass',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.DescribeAllDBInstanceClassResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_all_dbinstance_class_with_options_async(
+        self,
+        request: selectdb_20230522_models.DescribeAllDBInstanceClassRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> selectdb_20230522_models.DescribeAllDBInstanceClassResponse:
+        """
+        @summary 获取所有实例规格信息
+        
+        @param request: DescribeAllDBInstanceClassRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAllDBInstanceClassResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAllDBInstanceClass',
+            version='2023-05-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            selectdb_20230522_models.DescribeAllDBInstanceClassResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_all_dbinstance_class(
+        self,
+        request: selectdb_20230522_models.DescribeAllDBInstanceClassRequest,
+    ) -> selectdb_20230522_models.DescribeAllDBInstanceClassResponse:
+        """
+        @summary 获取所有实例规格信息
+        
+        @param request: DescribeAllDBInstanceClassRequest
+        @return: DescribeAllDBInstanceClassResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_all_dbinstance_class_with_options(request, runtime)
+
+    async def describe_all_dbinstance_class_async(
+        self,
+        request: selectdb_20230522_models.DescribeAllDBInstanceClassRequest,
+    ) -> selectdb_20230522_models.DescribeAllDBInstanceClassResponse:
+        """
+        @summary 获取所有实例规格信息
+        
+        @param request: DescribeAllDBInstanceClassRequest
+        @return: DescribeAllDBInstanceClassResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_all_dbinstance_class_with_options_async(request, runtime)
+
     def describe_dbcluster_config_with_options(
         self,
         request: selectdb_20230522_models.DescribeDBClusterConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.DescribeDBClusterConfigResponse:
         """
-        @summary 查看集群配置
+        @summary Queries the configuration information about a cluster in an ApsaraDB for SelectDB instance.
         
         @param request: DescribeDBClusterConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1104,7 +1212,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.DescribeDBClusterConfigResponse:
         """
-        @summary 查看集群配置
+        @summary Queries the configuration information about a cluster in an ApsaraDB for SelectDB instance.
         
         @param request: DescribeDBClusterConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1144,7 +1252,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.DescribeDBClusterConfigRequest,
     ) -> selectdb_20230522_models.DescribeDBClusterConfigResponse:
         """
-        @summary 查看集群配置
+        @summary Queries the configuration information about a cluster in an ApsaraDB for SelectDB instance.
         
         @param request: DescribeDBClusterConfigRequest
         @return: DescribeDBClusterConfigResponse
@@ -1157,7 +1265,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.DescribeDBClusterConfigRequest,
     ) -> selectdb_20230522_models.DescribeDBClusterConfigResponse:
         """
-        @summary 查看集群配置
+        @summary Queries the configuration information about a cluster in an ApsaraDB for SelectDB instance.
         
         @param request: DescribeDBClusterConfigRequest
         @return: DescribeDBClusterConfigResponse
@@ -1171,7 +1279,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.DescribeDBClusterConfigChangeLogsResponse:
         """
-        @summary 查看集群配置变更记录
+        @summary Queries the configuration change logs of a cluster in an ApsaraDB for SelectDB instance.
         
         @param request: DescribeDBClusterConfigChangeLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1216,7 +1324,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.DescribeDBClusterConfigChangeLogsResponse:
         """
-        @summary 查看集群配置变更记录
+        @summary Queries the configuration change logs of a cluster in an ApsaraDB for SelectDB instance.
         
         @param request: DescribeDBClusterConfigChangeLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1260,7 +1368,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.DescribeDBClusterConfigChangeLogsRequest,
     ) -> selectdb_20230522_models.DescribeDBClusterConfigChangeLogsResponse:
         """
-        @summary 查看集群配置变更记录
+        @summary Queries the configuration change logs of a cluster in an ApsaraDB for SelectDB instance.
         
         @param request: DescribeDBClusterConfigChangeLogsRequest
         @return: DescribeDBClusterConfigChangeLogsResponse
@@ -1273,7 +1381,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.DescribeDBClusterConfigChangeLogsRequest,
     ) -> selectdb_20230522_models.DescribeDBClusterConfigChangeLogsResponse:
         """
-        @summary 查看集群配置变更记录
+        @summary Queries the configuration change logs of a cluster in an ApsaraDB for SelectDB instance.
         
         @param request: DescribeDBClusterConfigChangeLogsRequest
         @return: DescribeDBClusterConfigChangeLogsResponse
@@ -1287,7 +1395,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.DescribeDBInstanceAttributeResponse:
         """
-        @summary 查询实例详情
+        @summary Queries the details about an ApsaraDB for SelectDB instance.
         
         @param request: DescribeDBInstanceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1326,7 +1434,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.DescribeDBInstanceAttributeResponse:
         """
-        @summary 查询实例详情
+        @summary Queries the details about an ApsaraDB for SelectDB instance.
         
         @param request: DescribeDBInstanceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1364,7 +1472,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.DescribeDBInstanceAttributeRequest,
     ) -> selectdb_20230522_models.DescribeDBInstanceAttributeResponse:
         """
-        @summary 查询实例详情
+        @summary Queries the details about an ApsaraDB for SelectDB instance.
         
         @param request: DescribeDBInstanceAttributeRequest
         @return: DescribeDBInstanceAttributeResponse
@@ -1377,7 +1485,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.DescribeDBInstanceAttributeRequest,
     ) -> selectdb_20230522_models.DescribeDBInstanceAttributeResponse:
         """
-        @summary 查询实例详情
+        @summary Queries the details about an ApsaraDB for SelectDB instance.
         
         @param request: DescribeDBInstanceAttributeRequest
         @return: DescribeDBInstanceAttributeResponse
@@ -1391,7 +1499,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.DescribeDBInstanceNetInfoResponse:
         """
-        @summary 查询实例网络链接
+        @summary Queries the network information about an ApsaraDB for SelectDB instance.
         
         @param request: DescribeDBInstanceNetInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1430,7 +1538,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.DescribeDBInstanceNetInfoResponse:
         """
-        @summary 查询实例网络链接
+        @summary Queries the network information about an ApsaraDB for SelectDB instance.
         
         @param request: DescribeDBInstanceNetInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1468,7 +1576,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.DescribeDBInstanceNetInfoRequest,
     ) -> selectdb_20230522_models.DescribeDBInstanceNetInfoResponse:
         """
-        @summary 查询实例网络链接
+        @summary Queries the network information about an ApsaraDB for SelectDB instance.
         
         @param request: DescribeDBInstanceNetInfoRequest
         @return: DescribeDBInstanceNetInfoResponse
@@ -1481,7 +1589,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.DescribeDBInstanceNetInfoRequest,
     ) -> selectdb_20230522_models.DescribeDBInstanceNetInfoResponse:
         """
-        @summary 查询实例网络链接
+        @summary Queries the network information about an ApsaraDB for SelectDB instance.
         
         @param request: DescribeDBInstanceNetInfoRequest
         @return: DescribeDBInstanceNetInfoResponse
@@ -1491,17 +1599,21 @@ class Client(OpenApiClient):
 
     def describe_dbinstances_with_options(
         self,
-        request: selectdb_20230522_models.DescribeDBInstancesRequest,
+        tmp_req: selectdb_20230522_models.DescribeDBInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.DescribeDBInstancesResponse:
         """
-        @summary 查询实例列表
+        @summary Queries the information about ApsaraDB for SelectDB instances.
         
-        @param request: DescribeDBInstancesRequest
+        @param tmp_req: DescribeDBInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDBInstancesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = selectdb_20230522_models.DescribeDBInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.dbinstance_description):
             query['DBInstanceDescription'] = request.dbinstance_description
@@ -1519,6 +1631,8 @@ class Client(OpenApiClient):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1540,17 +1654,21 @@ class Client(OpenApiClient):
 
     async def describe_dbinstances_with_options_async(
         self,
-        request: selectdb_20230522_models.DescribeDBInstancesRequest,
+        tmp_req: selectdb_20230522_models.DescribeDBInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.DescribeDBInstancesResponse:
         """
-        @summary 查询实例列表
+        @summary Queries the information about ApsaraDB for SelectDB instances.
         
-        @param request: DescribeDBInstancesRequest
+        @param tmp_req: DescribeDBInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDBInstancesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = selectdb_20230522_models.DescribeDBInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.dbinstance_description):
             query['DBInstanceDescription'] = request.dbinstance_description
@@ -1568,6 +1686,8 @@ class Client(OpenApiClient):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1592,7 +1712,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.DescribeDBInstancesRequest,
     ) -> selectdb_20230522_models.DescribeDBInstancesResponse:
         """
-        @summary 查询实例列表
+        @summary Queries the information about ApsaraDB for SelectDB instances.
         
         @param request: DescribeDBInstancesRequest
         @return: DescribeDBInstancesResponse
@@ -1605,7 +1725,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.DescribeDBInstancesRequest,
     ) -> selectdb_20230522_models.DescribeDBInstancesResponse:
         """
-        @summary 查询实例列表
+        @summary Queries the information about ApsaraDB for SelectDB instances.
         
         @param request: DescribeDBInstancesRequest
         @return: DescribeDBInstancesResponse
@@ -1619,7 +1739,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.DescribeSecurityIPListResponse:
         """
-        @summary 查看白名单
+        @summary Queries the IP addresses in the whitelists of an ApsaraDB for SelectDB instance.
         
         @param request: DescribeSecurityIPListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1658,7 +1778,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.DescribeSecurityIPListResponse:
         """
-        @summary 查看白名单
+        @summary Queries the IP addresses in the whitelists of an ApsaraDB for SelectDB instance.
         
         @param request: DescribeSecurityIPListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1696,7 +1816,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.DescribeSecurityIPListRequest,
     ) -> selectdb_20230522_models.DescribeSecurityIPListResponse:
         """
-        @summary 查看白名单
+        @summary Queries the IP addresses in the whitelists of an ApsaraDB for SelectDB instance.
         
         @param request: DescribeSecurityIPListRequest
         @return: DescribeSecurityIPListResponse
@@ -1709,7 +1829,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.DescribeSecurityIPListRequest,
     ) -> selectdb_20230522_models.DescribeSecurityIPListResponse:
         """
-        @summary 查看白名单
+        @summary Queries the IP addresses in the whitelists of an ApsaraDB for SelectDB instance.
         
         @param request: DescribeSecurityIPListRequest
         @return: DescribeSecurityIPListResponse
@@ -1723,7 +1843,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.GetCreateBEClusterInquiryResponse:
         """
-        @summary 新建集群询价
+        @summary Queries the pricing for creating a cluster in an ApsaraDB for SelectDB instance.
         
         @param request: GetCreateBEClusterInquiryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1756,7 +1876,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.GetCreateBEClusterInquiryResponse:
         """
-        @summary 新建集群询价
+        @summary Queries the pricing for creating a cluster in an ApsaraDB for SelectDB instance.
         
         @param request: GetCreateBEClusterInquiryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1788,7 +1908,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.GetCreateBEClusterInquiryRequest,
     ) -> selectdb_20230522_models.GetCreateBEClusterInquiryResponse:
         """
-        @summary 新建集群询价
+        @summary Queries the pricing for creating a cluster in an ApsaraDB for SelectDB instance.
         
         @param request: GetCreateBEClusterInquiryRequest
         @return: GetCreateBEClusterInquiryResponse
@@ -1801,7 +1921,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.GetCreateBEClusterInquiryRequest,
     ) -> selectdb_20230522_models.GetCreateBEClusterInquiryResponse:
         """
-        @summary 新建集群询价
+        @summary Queries the pricing for creating a cluster in an ApsaraDB for SelectDB instance.
         
         @param request: GetCreateBEClusterInquiryRequest
         @return: GetCreateBEClusterInquiryResponse
@@ -1815,7 +1935,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.GetModifyBEClusterInquiryResponse:
         """
-        @summary 集群变配询价
+        @summary Queries the pricing for changing the specifications of a cluster in an ApsaraDB for SelectDB instance.
         
         @param request: GetModifyBEClusterInquiryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1848,7 +1968,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.GetModifyBEClusterInquiryResponse:
         """
-        @summary 集群变配询价
+        @summary Queries the pricing for changing the specifications of a cluster in an ApsaraDB for SelectDB instance.
         
         @param request: GetModifyBEClusterInquiryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1880,7 +2000,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.GetModifyBEClusterInquiryRequest,
     ) -> selectdb_20230522_models.GetModifyBEClusterInquiryResponse:
         """
-        @summary 集群变配询价
+        @summary Queries the pricing for changing the specifications of a cluster in an ApsaraDB for SelectDB instance.
         
         @param request: GetModifyBEClusterInquiryRequest
         @return: GetModifyBEClusterInquiryResponse
@@ -1893,7 +2013,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.GetModifyBEClusterInquiryRequest,
     ) -> selectdb_20230522_models.GetModifyBEClusterInquiryResponse:
         """
-        @summary 集群变配询价
+        @summary Queries the pricing for changing the specifications of a cluster in an ApsaraDB for SelectDB instance.
         
         @param request: GetModifyBEClusterInquiryRequest
         @return: GetModifyBEClusterInquiryResponse
@@ -2031,6 +2151,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cache_size):
+            query['CacheSize'] = request.cache_size
         if not UtilClient.is_unset(request.dbcluster_class):
             query['DBClusterClass'] = request.dbcluster_class
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -2076,6 +2198,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cache_size):
+            query['CacheSize'] = request.cache_size
         if not UtilClient.is_unset(request.dbcluster_class):
             query['DBClusterClass'] = request.dbcluster_class
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -2139,7 +2263,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.ModifyDBClusterConfigResponse:
         """
-        @summary 修改集群配置
+        @summary Modifies the configurations of a cluster in an ApsaraDB for SelectDB instance.
         
         @param request: ModifyDBClusterConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2184,7 +2308,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.ModifyDBClusterConfigResponse:
         """
-        @summary 修改集群配置
+        @summary Modifies the configurations of a cluster in an ApsaraDB for SelectDB instance.
         
         @param request: ModifyDBClusterConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2228,7 +2352,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.ModifyDBClusterConfigRequest,
     ) -> selectdb_20230522_models.ModifyDBClusterConfigResponse:
         """
-        @summary 修改集群配置
+        @summary Modifies the configurations of a cluster in an ApsaraDB for SelectDB instance.
         
         @param request: ModifyDBClusterConfigRequest
         @return: ModifyDBClusterConfigResponse
@@ -2241,7 +2365,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.ModifyDBClusterConfigRequest,
     ) -> selectdb_20230522_models.ModifyDBClusterConfigResponse:
         """
-        @summary 修改集群配置
+        @summary Modifies the configurations of a cluster in an ApsaraDB for SelectDB instance.
         
         @param request: ModifyDBClusterConfigRequest
         @return: ModifyDBClusterConfigResponse
@@ -2255,7 +2379,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.ModifyDBInstanceAttributeResponse:
         """
-        @summary 修改实例属性
+        @summary Modifies the maintenance window or description of an ApsaraDB for SelectDB instance.
         
         @param request: ModifyDBInstanceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2298,7 +2422,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.ModifyDBInstanceAttributeResponse:
         """
-        @summary 修改实例属性
+        @summary Modifies the maintenance window or description of an ApsaraDB for SelectDB instance.
         
         @param request: ModifyDBInstanceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2340,7 +2464,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.ModifyDBInstanceAttributeRequest,
     ) -> selectdb_20230522_models.ModifyDBInstanceAttributeResponse:
         """
-        @summary 修改实例属性
+        @summary Modifies the maintenance window or description of an ApsaraDB for SelectDB instance.
         
         @param request: ModifyDBInstanceAttributeRequest
         @return: ModifyDBInstanceAttributeResponse
@@ -2353,7 +2477,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.ModifyDBInstanceAttributeRequest,
     ) -> selectdb_20230522_models.ModifyDBInstanceAttributeResponse:
         """
-        @summary 修改实例属性
+        @summary Modifies the maintenance window or description of an ApsaraDB for SelectDB instance.
         
         @param request: ModifyDBInstanceAttributeRequest
         @return: ModifyDBInstanceAttributeResponse
@@ -2367,14 +2491,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.ModifySecurityIPListResponse:
         """
-        @summary 变更白名单
+        @summary Modifies the IP addresses in a whitelist of an ApsaraDB for SelectDB instance.
         
         @param request: ModifySecurityIPListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifySecurityIPListResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.modify_mode):
+            query['ModifyMode'] = request.modify_mode
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2383,7 +2519,7 @@ class Client(OpenApiClient):
             version='2023-05-22',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -2400,14 +2536,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.ModifySecurityIPListResponse:
         """
-        @summary 变更白名单
+        @summary Modifies the IP addresses in a whitelist of an ApsaraDB for SelectDB instance.
         
         @param request: ModifySecurityIPListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifySecurityIPListResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.modify_mode):
+            query['ModifyMode'] = request.modify_mode
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2416,7 +2564,7 @@ class Client(OpenApiClient):
             version='2023-05-22',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -2432,7 +2580,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.ModifySecurityIPListRequest,
     ) -> selectdb_20230522_models.ModifySecurityIPListResponse:
         """
-        @summary 变更白名单
+        @summary Modifies the IP addresses in a whitelist of an ApsaraDB for SelectDB instance.
         
         @param request: ModifySecurityIPListRequest
         @return: ModifySecurityIPListResponse
@@ -2445,7 +2593,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.ModifySecurityIPListRequest,
     ) -> selectdb_20230522_models.ModifySecurityIPListResponse:
         """
-        @summary 变更白名单
+        @summary Modifies the IP addresses in a whitelist of an ApsaraDB for SelectDB instance.
         
         @param request: ModifySecurityIPListRequest
         @return: ModifySecurityIPListResponse
@@ -2459,7 +2607,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.ReleaseInstancePublicConnectionResponse:
         """
-        @summary 释放公网地址
+        @summary Releases the public endpoint of an ApsaraDB for SelectDB instance.
         
         @param request: ReleaseInstancePublicConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2500,7 +2648,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.ReleaseInstancePublicConnectionResponse:
         """
-        @summary 释放公网地址
+        @summary Releases the public endpoint of an ApsaraDB for SelectDB instance.
         
         @param request: ReleaseInstancePublicConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2540,7 +2688,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.ReleaseInstancePublicConnectionRequest,
     ) -> selectdb_20230522_models.ReleaseInstancePublicConnectionResponse:
         """
-        @summary 释放公网地址
+        @summary Releases the public endpoint of an ApsaraDB for SelectDB instance.
         
         @param request: ReleaseInstancePublicConnectionRequest
         @return: ReleaseInstancePublicConnectionResponse
@@ -2553,7 +2701,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.ReleaseInstancePublicConnectionRequest,
     ) -> selectdb_20230522_models.ReleaseInstancePublicConnectionResponse:
         """
-        @summary 释放公网地址
+        @summary Releases the public endpoint of an ApsaraDB for SelectDB instance.
         
         @param request: ReleaseInstancePublicConnectionRequest
         @return: ReleaseInstancePublicConnectionResponse
@@ -2567,7 +2715,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.ResetAccountPasswordResponse:
         """
-        @summary 修改 Admin 账号的密码。
+        @summary Resets the password of an account for an ApsaraDB for SelectDB instance.
         
         @param request: ResetAccountPasswordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2600,7 +2748,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.ResetAccountPasswordResponse:
         """
-        @summary 修改 Admin 账号的密码。
+        @summary Resets the password of an account for an ApsaraDB for SelectDB instance.
         
         @param request: ResetAccountPasswordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2632,7 +2780,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.ResetAccountPasswordRequest,
     ) -> selectdb_20230522_models.ResetAccountPasswordResponse:
         """
-        @summary 修改 Admin 账号的密码。
+        @summary Resets the password of an account for an ApsaraDB for SelectDB instance.
         
         @param request: ResetAccountPasswordRequest
         @return: ResetAccountPasswordResponse
@@ -2645,7 +2793,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.ResetAccountPasswordRequest,
     ) -> selectdb_20230522_models.ResetAccountPasswordResponse:
         """
-        @summary 修改 Admin 账号的密码。
+        @summary Resets the password of an account for an ApsaraDB for SelectDB instance.
         
         @param request: ResetAccountPasswordRequest
         @return: ResetAccountPasswordResponse
@@ -2659,7 +2807,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.RestartDBClusterResponse:
         """
-        @summary 重启BE集群
+        @summary Restarts a cluster in an ApsaraDB for SelectDB instance.
         
         @param request: RestartDBClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2704,7 +2852,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.RestartDBClusterResponse:
         """
-        @summary 重启BE集群
+        @summary Restarts a cluster in an ApsaraDB for SelectDB instance.
         
         @param request: RestartDBClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2748,7 +2896,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.RestartDBClusterRequest,
     ) -> selectdb_20230522_models.RestartDBClusterResponse:
         """
-        @summary 重启BE集群
+        @summary Restarts a cluster in an ApsaraDB for SelectDB instance.
         
         @param request: RestartDBClusterRequest
         @return: RestartDBClusterResponse
@@ -2761,7 +2909,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.RestartDBClusterRequest,
     ) -> selectdb_20230522_models.RestartDBClusterResponse:
         """
-        @summary 重启BE集群
+        @summary Restarts a cluster in an ApsaraDB for SelectDB instance.
         
         @param request: RestartDBClusterRequest
         @return: RestartDBClusterResponse
@@ -2890,7 +3038,15 @@ class Client(OpenApiClient):
         @return: StopBEClusterResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2899,7 +3055,7 @@ class Client(OpenApiClient):
             version='2023-05-22',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -2923,7 +3079,15 @@ class Client(OpenApiClient):
         @return: StopBEClusterResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2932,7 +3096,7 @@ class Client(OpenApiClient):
             version='2023-05-22',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -2975,14 +3139,24 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.UpgradeDBInstanceEngineVersionResponse:
         """
-        @summary 实例内核版本升级
+        @summary Updates the database engine version of an ApsaraDB for SelectDB instance.
         
         @param request: UpgradeDBInstanceEngineVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpgradeDBInstanceEngineVersionResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.switch_time_mode):
+            query['SwitchTimeMode'] = request.switch_time_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2991,7 +3165,7 @@ class Client(OpenApiClient):
             version='2023-05-22',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -3008,14 +3182,24 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> selectdb_20230522_models.UpgradeDBInstanceEngineVersionResponse:
         """
-        @summary 实例内核版本升级
+        @summary Updates the database engine version of an ApsaraDB for SelectDB instance.
         
         @param request: UpgradeDBInstanceEngineVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpgradeDBInstanceEngineVersionResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.switch_time_mode):
+            query['SwitchTimeMode'] = request.switch_time_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3024,7 +3208,7 @@ class Client(OpenApiClient):
             version='2023-05-22',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -3040,7 +3224,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.UpgradeDBInstanceEngineVersionRequest,
     ) -> selectdb_20230522_models.UpgradeDBInstanceEngineVersionResponse:
         """
-        @summary 实例内核版本升级
+        @summary Updates the database engine version of an ApsaraDB for SelectDB instance.
         
         @param request: UpgradeDBInstanceEngineVersionRequest
         @return: UpgradeDBInstanceEngineVersionResponse
@@ -3053,7 +3237,7 @@ class Client(OpenApiClient):
         request: selectdb_20230522_models.UpgradeDBInstanceEngineVersionRequest,
     ) -> selectdb_20230522_models.UpgradeDBInstanceEngineVersionResponse:
         """
-        @summary 实例内核版本升级
+        @summary Updates the database engine version of an ApsaraDB for SelectDB instance.
         
         @param request: UpgradeDBInstanceEngineVersionRequest
         @return: UpgradeDBInstanceEngineVersionResponse
