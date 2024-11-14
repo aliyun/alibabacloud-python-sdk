@@ -1,3 +1,10 @@
+2024-11-14 Version: 3.0.0
+- Delete API DeleteDisk.
+- Delete API DescribeDisks.
+- Delete API GetDisk.
+- Update API DescribeMetricData: add param AggreOps.
+
+
 2024-10-24 Version: 2.9.0
 - Support API GetReport.
 - Support API ListReports.

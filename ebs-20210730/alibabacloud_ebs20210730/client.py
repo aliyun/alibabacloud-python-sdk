@@ -1453,106 +1453,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_enterprise_snapshot_policy_with_options_async(request, runtime)
 
-    def delete_disk_with_options(
-        self,
-        request: ebs_20210730_models.DeleteDiskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ebs_20210730_models.DeleteDiskResponse:
-        """
-        @description Currently, this API is only available for use with ACS resource hosting and is not yet open for direct invocation.
-        
-        @param request: DeleteDiskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteDiskResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.disk_id):
-            query['DiskId'] = request.disk_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteDisk',
-            version='2021-07-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ebs_20210730_models.DeleteDiskResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_disk_with_options_async(
-        self,
-        request: ebs_20210730_models.DeleteDiskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ebs_20210730_models.DeleteDiskResponse:
-        """
-        @description Currently, this API is only available for use with ACS resource hosting and is not yet open for direct invocation.
-        
-        @param request: DeleteDiskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteDiskResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.disk_id):
-            query['DiskId'] = request.disk_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteDisk',
-            version='2021-07-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ebs_20210730_models.DeleteDiskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_disk(
-        self,
-        request: ebs_20210730_models.DeleteDiskRequest,
-    ) -> ebs_20210730_models.DeleteDiskResponse:
-        """
-        @description Currently, this API is only available for use with ACS resource hosting and is not yet open for direct invocation.
-        
-        @param request: DeleteDiskRequest
-        @return: DeleteDiskResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.delete_disk_with_options(request, runtime)
-
-    async def delete_disk_async(
-        self,
-        request: ebs_20210730_models.DeleteDiskRequest,
-    ) -> ebs_20210730_models.DeleteDiskResponse:
-        """
-        @description Currently, this API is only available for use with ACS resource hosting and is not yet open for direct invocation.
-        
-        @param request: DeleteDiskRequest
-        @return: DeleteDiskResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_disk_with_options_async(request, runtime)
-
     def delete_disk_replica_group_with_options(
         self,
         request: ebs_20210730_models.DeleteDiskReplicaGroupRequest,
@@ -3013,138 +2913,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_disk_replica_pairs_with_options_async(request, runtime)
 
-    def describe_disks_with_options(
-        self,
-        request: ebs_20210730_models.DescribeDisksRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ebs_20210730_models.DescribeDisksResponse:
-        """
-        @param request: DescribeDisksRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeDisksResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.category):
-            query['Category'] = request.category
-        if not UtilClient.is_unset(request.disk_ids):
-            query['DiskIds'] = request.disk_ids
-        if not UtilClient.is_unset(request.disk_name):
-            query['DiskName'] = request.disk_name
-        if not UtilClient.is_unset(request.max_results):
-            query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
-            query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
-        if not UtilClient.is_unset(request.tag):
-            query['Tag'] = request.tag
-        if not UtilClient.is_unset(request.zone_id):
-            query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeDisks',
-            version='2021-07-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ebs_20210730_models.DescribeDisksResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_disks_with_options_async(
-        self,
-        request: ebs_20210730_models.DescribeDisksRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ebs_20210730_models.DescribeDisksResponse:
-        """
-        @param request: DescribeDisksRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeDisksResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.category):
-            query['Category'] = request.category
-        if not UtilClient.is_unset(request.disk_ids):
-            query['DiskIds'] = request.disk_ids
-        if not UtilClient.is_unset(request.disk_name):
-            query['DiskName'] = request.disk_name
-        if not UtilClient.is_unset(request.max_results):
-            query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
-            query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
-        if not UtilClient.is_unset(request.tag):
-            query['Tag'] = request.tag
-        if not UtilClient.is_unset(request.zone_id):
-            query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeDisks',
-            version='2021-07-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ebs_20210730_models.DescribeDisksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_disks(
-        self,
-        request: ebs_20210730_models.DescribeDisksRequest,
-    ) -> ebs_20210730_models.DescribeDisksResponse:
-        """
-        @param request: DescribeDisksRequest
-        @return: DescribeDisksResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.describe_disks_with_options(request, runtime)
-
-    async def describe_disks_async(
-        self,
-        request: ebs_20210730_models.DescribeDisksRequest,
-    ) -> ebs_20210730_models.DescribeDisksResponse:
-        """
-        @param request: DescribeDisksRequest
-        @return: DescribeDisksResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_disks_with_options_async(request, runtime)
-
     def describe_enterprise_snapshot_policy_with_options(
         self,
         request: ebs_20210730_models.DescribeEnterpriseSnapshotPolicyRequest,
@@ -3621,6 +3389,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.aggre_ops):
+            query['AggreOps'] = request.aggre_ops
         if not UtilClient.is_unset(request.dimensions):
             query['Dimensions'] = request.dimensions
         if not UtilClient.is_unset(request.end_time):
@@ -3666,6 +3436,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.aggre_ops):
+            query['AggreOps'] = request.aggre_ops
         if not UtilClient.is_unset(request.dimensions):
             query['Dimensions'] = request.dimensions
         if not UtilClient.is_unset(request.end_time):
@@ -4427,105 +4199,13 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.failover_disk_replica_pair_with_options_async(request, runtime)
 
-    def get_disk_with_options(
-        self,
-        request: ebs_20210730_models.GetDiskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ebs_20210730_models.GetDiskResponse:
-        """
-        @param request: GetDiskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetDiskResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.disk_id):
-            query['DiskId'] = request.disk_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetDisk',
-            version='2021-07-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ebs_20210730_models.GetDiskResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_disk_with_options_async(
-        self,
-        request: ebs_20210730_models.GetDiskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ebs_20210730_models.GetDiskResponse:
-        """
-        @param request: GetDiskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetDiskResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.disk_id):
-            query['DiskId'] = request.disk_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetDisk',
-            version='2021-07-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ebs_20210730_models.GetDiskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_disk(
-        self,
-        request: ebs_20210730_models.GetDiskRequest,
-    ) -> ebs_20210730_models.GetDiskResponse:
-        """
-        @param request: GetDiskRequest
-        @return: GetDiskResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.get_disk_with_options(request, runtime)
-
-    async def get_disk_async(
-        self,
-        request: ebs_20210730_models.GetDiskRequest,
-    ) -> ebs_20210730_models.GetDiskResponse:
-        """
-        @param request: GetDiskRequest
-        @return: GetDiskResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.get_disk_with_options_async(request, runtime)
-
     def get_report_with_options(
         self,
         request: ebs_20210730_models.GetReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.GetReportResponse:
         """
-        @summary 中心化角色：使用reportId获取用户使用报告
+        @summary Centralized Role: Obtain User Usage Report with reportId
         
         @param request: GetReportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4568,7 +4248,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.GetReportResponse:
         """
-        @summary 中心化角色：使用reportId获取用户使用报告
+        @summary Centralized Role: Obtain User Usage Report with reportId
         
         @param request: GetReportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4610,7 +4290,7 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.GetReportRequest,
     ) -> ebs_20210730_models.GetReportResponse:
         """
-        @summary 中心化角色：使用reportId获取用户使用报告
+        @summary Centralized Role: Obtain User Usage Report with reportId
         
         @param request: GetReportRequest
         @return: GetReportResponse
@@ -4623,7 +4303,7 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.GetReportRequest,
     ) -> ebs_20210730_models.GetReportResponse:
         """
-        @summary 中心化角色：使用reportId获取用户使用报告
+        @summary Centralized Role: Obtain User Usage Report with reportId
         
         @param request: GetReportRequest
         @return: GetReportResponse
@@ -4637,7 +4317,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.ListReportsResponse:
         """
-        @summary 中心化角色：查询历史报告
+        @summary Centralized Role: Query Historical Reports
         
         @param request: ListReportsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4684,7 +4364,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.ListReportsResponse:
         """
-        @summary 中心化角色：查询历史报告
+        @summary Centralized Role: Query Historical Reports
         
         @param request: ListReportsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4730,7 +4410,7 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.ListReportsRequest,
     ) -> ebs_20210730_models.ListReportsResponse:
         """
-        @summary 中心化角色：查询历史报告
+        @summary Centralized Role: Query Historical Reports
         
         @param request: ListReportsRequest
         @return: ListReportsResponse
@@ -4743,7 +4423,7 @@ class Client(OpenApiClient):
         request: ebs_20210730_models.ListReportsRequest,
     ) -> ebs_20210730_models.ListReportsResponse:
         """
-        @summary 中心化角色：查询历史报告
+        @summary Centralized Role: Query Historical Reports
         
         @param request: ListReportsRequest
         @return: ListReportsResponse
