@@ -1,3 +1,14 @@
+2024-11-14 Version: 1.4.0
+- Support API BicyclingDirection.
+- Support API CircleTrafficStatus.
+- Support API DrivingDirection.
+- Support API ElectrobikeDirection.
+- Support API RectangleTrafficStatus.
+- Support API RoadTrafficStatus.
+- Support API TransitIntegratedDirectionOld.
+- Support API WalkingDirection.
+
+
 2024-11-06 Version: 1.3.0
 - Support API TransitIntegratedDirection.
 - Update API BicyclingDirectionNova: update response param.

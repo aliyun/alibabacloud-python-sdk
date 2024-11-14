@@ -311,6 +311,315 @@ class QueryResult(TeaModel):
         return self
 
 
+class BicyclingDirectionRequest(TeaModel):
+    def __init__(
+        self,
+        destination_latitude: str = None,
+        destination_longitude: str = None,
+        origin_latitude: str = None,
+        origin_longitude: str = None,
+    ):
+        self.destination_latitude = destination_latitude
+        self.destination_longitude = destination_longitude
+        self.origin_latitude = origin_latitude
+        self.origin_longitude = origin_longitude
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_latitude is not None:
+            result['destinationLatitude'] = self.destination_latitude
+        if self.destination_longitude is not None:
+            result['destinationLongitude'] = self.destination_longitude
+        if self.origin_latitude is not None:
+            result['originLatitude'] = self.origin_latitude
+        if self.origin_longitude is not None:
+            result['originLongitude'] = self.origin_longitude
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('destinationLatitude') is not None:
+            self.destination_latitude = m.get('destinationLatitude')
+        if m.get('destinationLongitude') is not None:
+            self.destination_longitude = m.get('destinationLongitude')
+        if m.get('originLatitude') is not None:
+            self.origin_latitude = m.get('originLatitude')
+        if m.get('originLongitude') is not None:
+            self.origin_longitude = m.get('originLongitude')
+        return self
+
+
+class BicyclingDirectionResponseBodyDataStepsCost(TeaModel):
+    def __init__(
+        self,
+        duration_second: str = None,
+        taxi_fee: str = None,
+        toll_distance_meter: str = None,
+        toll_roads: str = None,
+        tolls: str = None,
+        traffic_lights: str = None,
+        transit_fee: str = None,
+    ):
+        self.duration_second = duration_second
+        self.taxi_fee = taxi_fee
+        self.toll_distance_meter = toll_distance_meter
+        self.toll_roads = toll_roads
+        self.tolls = tolls
+        self.traffic_lights = traffic_lights
+        self.transit_fee = transit_fee
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration_second is not None:
+            result['durationSecond'] = self.duration_second
+        if self.taxi_fee is not None:
+            result['taxiFee'] = self.taxi_fee
+        if self.toll_distance_meter is not None:
+            result['tollDistanceMeter'] = self.toll_distance_meter
+        if self.toll_roads is not None:
+            result['tollRoads'] = self.toll_roads
+        if self.tolls is not None:
+            result['tolls'] = self.tolls
+        if self.traffic_lights is not None:
+            result['trafficLights'] = self.traffic_lights
+        if self.transit_fee is not None:
+            result['transitFee'] = self.transit_fee
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('durationSecond') is not None:
+            self.duration_second = m.get('durationSecond')
+        if m.get('taxiFee') is not None:
+            self.taxi_fee = m.get('taxiFee')
+        if m.get('tollDistanceMeter') is not None:
+            self.toll_distance_meter = m.get('tollDistanceMeter')
+        if m.get('tollRoads') is not None:
+            self.toll_roads = m.get('tollRoads')
+        if m.get('tolls') is not None:
+            self.tolls = m.get('tolls')
+        if m.get('trafficLights') is not None:
+            self.traffic_lights = m.get('trafficLights')
+        if m.get('transitFee') is not None:
+            self.transit_fee = m.get('transitFee')
+        return self
+
+
+class BicyclingDirectionResponseBodyDataSteps(TeaModel):
+    def __init__(
+        self,
+        cost: BicyclingDirectionResponseBodyDataStepsCost = None,
+        instruction: str = None,
+        orientation: str = None,
+        road_name: str = None,
+        step_distance_meter: str = None,
+    ):
+        self.cost = cost
+        self.instruction = instruction
+        self.orientation = orientation
+        self.road_name = road_name
+        self.step_distance_meter = step_distance_meter
+
+    def validate(self):
+        if self.cost:
+            self.cost.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost is not None:
+            result['cost'] = self.cost.to_map()
+        if self.instruction is not None:
+            result['instruction'] = self.instruction
+        if self.orientation is not None:
+            result['orientation'] = self.orientation
+        if self.road_name is not None:
+            result['roadName'] = self.road_name
+        if self.step_distance_meter is not None:
+            result['stepDistanceMeter'] = self.step_distance_meter
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cost') is not None:
+            temp_model = BicyclingDirectionResponseBodyDataStepsCost()
+            self.cost = temp_model.from_map(m['cost'])
+        if m.get('instruction') is not None:
+            self.instruction = m.get('instruction')
+        if m.get('orientation') is not None:
+            self.orientation = m.get('orientation')
+        if m.get('roadName') is not None:
+            self.road_name = m.get('roadName')
+        if m.get('stepDistanceMeter') is not None:
+            self.step_distance_meter = m.get('stepDistanceMeter')
+        return self
+
+
+class BicyclingDirectionResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        distance_meter: str = None,
+        duration_second: str = None,
+        steps: List[BicyclingDirectionResponseBodyDataSteps] = None,
+    ):
+        self.distance_meter = distance_meter
+        self.duration_second = duration_second
+        self.steps = steps
+
+    def validate(self):
+        if self.steps:
+            for k in self.steps:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distance_meter is not None:
+            result['distanceMeter'] = self.distance_meter
+        if self.duration_second is not None:
+            result['durationSecond'] = self.duration_second
+        result['steps'] = []
+        if self.steps is not None:
+            for k in self.steps:
+                result['steps'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('distanceMeter') is not None:
+            self.distance_meter = m.get('distanceMeter')
+        if m.get('durationSecond') is not None:
+            self.duration_second = m.get('durationSecond')
+        self.steps = []
+        if m.get('steps') is not None:
+            for k in m.get('steps'):
+                temp_model = BicyclingDirectionResponseBodyDataSteps()
+                self.steps.append(temp_model.from_map(k))
+        return self
+
+
+class BicyclingDirectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[BicyclingDirectionResponseBodyData] = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = BicyclingDirectionResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class BicyclingDirectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BicyclingDirectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BicyclingDirectionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class BicyclingDirectionNovaRequest(TeaModel):
     def __init__(
         self,
@@ -762,6 +1071,244 @@ class BicyclingDirectionNovaResponse(TeaModel):
         return self
 
 
+class CircleTrafficStatusRequest(TeaModel):
+    def __init__(
+        self,
+        latitude: str = None,
+        longitude: str = None,
+        radius: str = None,
+        road_level: str = None,
+    ):
+        self.latitude = latitude
+        self.longitude = longitude
+        self.radius = radius
+        self.road_level = road_level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.latitude is not None:
+            result['latitude'] = self.latitude
+        if self.longitude is not None:
+            result['longitude'] = self.longitude
+        if self.radius is not None:
+            result['radius'] = self.radius
+        if self.road_level is not None:
+            result['roadLevel'] = self.road_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('latitude') is not None:
+            self.latitude = m.get('latitude')
+        if m.get('longitude') is not None:
+            self.longitude = m.get('longitude')
+        if m.get('radius') is not None:
+            self.radius = m.get('radius')
+        if m.get('roadLevel') is not None:
+            self.road_level = m.get('roadLevel')
+        return self
+
+
+class CircleTrafficStatusResponseBodyDataEvaluation(TeaModel):
+    def __init__(
+        self,
+        blocked_percentage: str = None,
+        clear_percentage: str = None,
+        description: str = None,
+        heavy_percentage: str = None,
+        status: str = None,
+        unknown_percentage: str = None,
+    ):
+        self.blocked_percentage = blocked_percentage
+        self.clear_percentage = clear_percentage
+        self.description = description
+        self.heavy_percentage = heavy_percentage
+        self.status = status
+        self.unknown_percentage = unknown_percentage
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.blocked_percentage is not None:
+            result['blockedPercentage'] = self.blocked_percentage
+        if self.clear_percentage is not None:
+            result['clearPercentage'] = self.clear_percentage
+        if self.description is not None:
+            result['description'] = self.description
+        if self.heavy_percentage is not None:
+            result['heavyPercentage'] = self.heavy_percentage
+        if self.status is not None:
+            result['status'] = self.status
+        if self.unknown_percentage is not None:
+            result['unknownPercentage'] = self.unknown_percentage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('blockedPercentage') is not None:
+            self.blocked_percentage = m.get('blockedPercentage')
+        if m.get('clearPercentage') is not None:
+            self.clear_percentage = m.get('clearPercentage')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('heavyPercentage') is not None:
+            self.heavy_percentage = m.get('heavyPercentage')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('unknownPercentage') is not None:
+            self.unknown_percentage = m.get('unknownPercentage')
+        return self
+
+
+class CircleTrafficStatusResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        evaluation: CircleTrafficStatusResponseBodyDataEvaluation = None,
+    ):
+        self.description = description
+        self.evaluation = evaluation
+
+    def validate(self):
+        if self.evaluation:
+            self.evaluation.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.evaluation is not None:
+            result['evaluation'] = self.evaluation.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('evaluation') is not None:
+            temp_model = CircleTrafficStatusResponseBodyDataEvaluation()
+            self.evaluation = temp_model.from_map(m['evaluation'])
+        return self
+
+
+class CircleTrafficStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[CircleTrafficStatusResponseBodyData] = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = CircleTrafficStatusResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CircleTrafficStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CircleTrafficStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CircleTrafficStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CommonQueryBySceneRequest(TeaModel):
     def __init__(
         self,
@@ -828,6 +1375,387 @@ class CommonQueryBySceneResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryResult()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DrivingDirectionRequest(TeaModel):
+    def __init__(
+        self,
+        destination_latitude: str = None,
+        destination_longitude: str = None,
+        origin_latitude: str = None,
+        origin_longitude: str = None,
+    ):
+        self.destination_latitude = destination_latitude
+        self.destination_longitude = destination_longitude
+        self.origin_latitude = origin_latitude
+        self.origin_longitude = origin_longitude
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_latitude is not None:
+            result['destinationLatitude'] = self.destination_latitude
+        if self.destination_longitude is not None:
+            result['destinationLongitude'] = self.destination_longitude
+        if self.origin_latitude is not None:
+            result['originLatitude'] = self.origin_latitude
+        if self.origin_longitude is not None:
+            result['originLongitude'] = self.origin_longitude
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('destinationLatitude') is not None:
+            self.destination_latitude = m.get('destinationLatitude')
+        if m.get('destinationLongitude') is not None:
+            self.destination_longitude = m.get('destinationLongitude')
+        if m.get('originLatitude') is not None:
+            self.origin_latitude = m.get('originLatitude')
+        if m.get('originLongitude') is not None:
+            self.origin_longitude = m.get('originLongitude')
+        return self
+
+
+class DrivingDirectionResponseBodyDataCost(TeaModel):
+    def __init__(
+        self,
+        duration_second: str = None,
+        taxi_fee: str = None,
+        toll_distance_meter: str = None,
+        toll_roads: str = None,
+        tolls: str = None,
+        traffic_lights: str = None,
+        transit_fee: str = None,
+    ):
+        self.duration_second = duration_second
+        self.taxi_fee = taxi_fee
+        self.toll_distance_meter = toll_distance_meter
+        self.toll_roads = toll_roads
+        self.tolls = tolls
+        self.traffic_lights = traffic_lights
+        self.transit_fee = transit_fee
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration_second is not None:
+            result['durationSecond'] = self.duration_second
+        if self.taxi_fee is not None:
+            result['taxiFee'] = self.taxi_fee
+        if self.toll_distance_meter is not None:
+            result['tollDistanceMeter'] = self.toll_distance_meter
+        if self.toll_roads is not None:
+            result['tollRoads'] = self.toll_roads
+        if self.tolls is not None:
+            result['tolls'] = self.tolls
+        if self.traffic_lights is not None:
+            result['trafficLights'] = self.traffic_lights
+        if self.transit_fee is not None:
+            result['transitFee'] = self.transit_fee
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('durationSecond') is not None:
+            self.duration_second = m.get('durationSecond')
+        if m.get('taxiFee') is not None:
+            self.taxi_fee = m.get('taxiFee')
+        if m.get('tollDistanceMeter') is not None:
+            self.toll_distance_meter = m.get('tollDistanceMeter')
+        if m.get('tollRoads') is not None:
+            self.toll_roads = m.get('tollRoads')
+        if m.get('tolls') is not None:
+            self.tolls = m.get('tolls')
+        if m.get('trafficLights') is not None:
+            self.traffic_lights = m.get('trafficLights')
+        if m.get('transitFee') is not None:
+            self.transit_fee = m.get('transitFee')
+        return self
+
+
+class DrivingDirectionResponseBodyDataStepsCost(TeaModel):
+    def __init__(
+        self,
+        duration_second: str = None,
+        taxi_fee: str = None,
+        toll_distance_meter: str = None,
+        toll_roads: str = None,
+        tolls: str = None,
+        traffic_lights: str = None,
+        transit_fee: str = None,
+    ):
+        self.duration_second = duration_second
+        self.taxi_fee = taxi_fee
+        self.toll_distance_meter = toll_distance_meter
+        self.toll_roads = toll_roads
+        self.tolls = tolls
+        self.traffic_lights = traffic_lights
+        self.transit_fee = transit_fee
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration_second is not None:
+            result['durationSecond'] = self.duration_second
+        if self.taxi_fee is not None:
+            result['taxiFee'] = self.taxi_fee
+        if self.toll_distance_meter is not None:
+            result['tollDistanceMeter'] = self.toll_distance_meter
+        if self.toll_roads is not None:
+            result['tollRoads'] = self.toll_roads
+        if self.tolls is not None:
+            result['tolls'] = self.tolls
+        if self.traffic_lights is not None:
+            result['trafficLights'] = self.traffic_lights
+        if self.transit_fee is not None:
+            result['transitFee'] = self.transit_fee
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('durationSecond') is not None:
+            self.duration_second = m.get('durationSecond')
+        if m.get('taxiFee') is not None:
+            self.taxi_fee = m.get('taxiFee')
+        if m.get('tollDistanceMeter') is not None:
+            self.toll_distance_meter = m.get('tollDistanceMeter')
+        if m.get('tollRoads') is not None:
+            self.toll_roads = m.get('tollRoads')
+        if m.get('tolls') is not None:
+            self.tolls = m.get('tolls')
+        if m.get('trafficLights') is not None:
+            self.traffic_lights = m.get('trafficLights')
+        if m.get('transitFee') is not None:
+            self.transit_fee = m.get('transitFee')
+        return self
+
+
+class DrivingDirectionResponseBodyDataSteps(TeaModel):
+    def __init__(
+        self,
+        cost: DrivingDirectionResponseBodyDataStepsCost = None,
+        instruction: str = None,
+        orientation: str = None,
+        road_name: str = None,
+        step_distance_meter: str = None,
+    ):
+        self.cost = cost
+        self.instruction = instruction
+        self.orientation = orientation
+        self.road_name = road_name
+        self.step_distance_meter = step_distance_meter
+
+    def validate(self):
+        if self.cost:
+            self.cost.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost is not None:
+            result['cost'] = self.cost.to_map()
+        if self.instruction is not None:
+            result['instruction'] = self.instruction
+        if self.orientation is not None:
+            result['orientation'] = self.orientation
+        if self.road_name is not None:
+            result['roadName'] = self.road_name
+        if self.step_distance_meter is not None:
+            result['stepDistanceMeter'] = self.step_distance_meter
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cost') is not None:
+            temp_model = DrivingDirectionResponseBodyDataStepsCost()
+            self.cost = temp_model.from_map(m['cost'])
+        if m.get('instruction') is not None:
+            self.instruction = m.get('instruction')
+        if m.get('orientation') is not None:
+            self.orientation = m.get('orientation')
+        if m.get('roadName') is not None:
+            self.road_name = m.get('roadName')
+        if m.get('stepDistanceMeter') is not None:
+            self.step_distance_meter = m.get('stepDistanceMeter')
+        return self
+
+
+class DrivingDirectionResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cost: DrivingDirectionResponseBodyDataCost = None,
+        distance_meter: str = None,
+        restriction: str = None,
+        steps: List[DrivingDirectionResponseBodyDataSteps] = None,
+    ):
+        self.cost = cost
+        self.distance_meter = distance_meter
+        self.restriction = restriction
+        self.steps = steps
+
+    def validate(self):
+        if self.cost:
+            self.cost.validate()
+        if self.steps:
+            for k in self.steps:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost is not None:
+            result['cost'] = self.cost.to_map()
+        if self.distance_meter is not None:
+            result['distanceMeter'] = self.distance_meter
+        if self.restriction is not None:
+            result['restriction'] = self.restriction
+        result['steps'] = []
+        if self.steps is not None:
+            for k in self.steps:
+                result['steps'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cost') is not None:
+            temp_model = DrivingDirectionResponseBodyDataCost()
+            self.cost = temp_model.from_map(m['cost'])
+        if m.get('distanceMeter') is not None:
+            self.distance_meter = m.get('distanceMeter')
+        if m.get('restriction') is not None:
+            self.restriction = m.get('restriction')
+        self.steps = []
+        if m.get('steps') is not None:
+            for k in m.get('steps'):
+                temp_model = DrivingDirectionResponseBodyDataSteps()
+                self.steps.append(temp_model.from_map(k))
+        return self
+
+
+class DrivingDirectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[DrivingDirectionResponseBodyData] = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = DrivingDirectionResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class DrivingDirectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DrivingDirectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DrivingDirectionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1291,6 +2219,315 @@ class DrivingDirectionNovaResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DrivingDirectionNovaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ElectrobikeDirectionRequest(TeaModel):
+    def __init__(
+        self,
+        destination_latitude: str = None,
+        destination_longitude: str = None,
+        origin_latitude: str = None,
+        origin_longitude: str = None,
+    ):
+        self.destination_latitude = destination_latitude
+        self.destination_longitude = destination_longitude
+        self.origin_latitude = origin_latitude
+        self.origin_longitude = origin_longitude
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_latitude is not None:
+            result['destinationLatitude'] = self.destination_latitude
+        if self.destination_longitude is not None:
+            result['destinationLongitude'] = self.destination_longitude
+        if self.origin_latitude is not None:
+            result['originLatitude'] = self.origin_latitude
+        if self.origin_longitude is not None:
+            result['originLongitude'] = self.origin_longitude
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('destinationLatitude') is not None:
+            self.destination_latitude = m.get('destinationLatitude')
+        if m.get('destinationLongitude') is not None:
+            self.destination_longitude = m.get('destinationLongitude')
+        if m.get('originLatitude') is not None:
+            self.origin_latitude = m.get('originLatitude')
+        if m.get('originLongitude') is not None:
+            self.origin_longitude = m.get('originLongitude')
+        return self
+
+
+class ElectrobikeDirectionResponseBodyDataStepsCost(TeaModel):
+    def __init__(
+        self,
+        duration_second: str = None,
+        taxi_fee: str = None,
+        toll_distance_meter: str = None,
+        toll_roads: str = None,
+        tolls: str = None,
+        traffic_lights: str = None,
+        transit_fee: str = None,
+    ):
+        self.duration_second = duration_second
+        self.taxi_fee = taxi_fee
+        self.toll_distance_meter = toll_distance_meter
+        self.toll_roads = toll_roads
+        self.tolls = tolls
+        self.traffic_lights = traffic_lights
+        self.transit_fee = transit_fee
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration_second is not None:
+            result['durationSecond'] = self.duration_second
+        if self.taxi_fee is not None:
+            result['taxiFee'] = self.taxi_fee
+        if self.toll_distance_meter is not None:
+            result['tollDistanceMeter'] = self.toll_distance_meter
+        if self.toll_roads is not None:
+            result['tollRoads'] = self.toll_roads
+        if self.tolls is not None:
+            result['tolls'] = self.tolls
+        if self.traffic_lights is not None:
+            result['trafficLights'] = self.traffic_lights
+        if self.transit_fee is not None:
+            result['transitFee'] = self.transit_fee
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('durationSecond') is not None:
+            self.duration_second = m.get('durationSecond')
+        if m.get('taxiFee') is not None:
+            self.taxi_fee = m.get('taxiFee')
+        if m.get('tollDistanceMeter') is not None:
+            self.toll_distance_meter = m.get('tollDistanceMeter')
+        if m.get('tollRoads') is not None:
+            self.toll_roads = m.get('tollRoads')
+        if m.get('tolls') is not None:
+            self.tolls = m.get('tolls')
+        if m.get('trafficLights') is not None:
+            self.traffic_lights = m.get('trafficLights')
+        if m.get('transitFee') is not None:
+            self.transit_fee = m.get('transitFee')
+        return self
+
+
+class ElectrobikeDirectionResponseBodyDataSteps(TeaModel):
+    def __init__(
+        self,
+        cost: ElectrobikeDirectionResponseBodyDataStepsCost = None,
+        instruction: str = None,
+        orientation: str = None,
+        road_name: str = None,
+        step_distance_meter: str = None,
+    ):
+        self.cost = cost
+        self.instruction = instruction
+        self.orientation = orientation
+        self.road_name = road_name
+        self.step_distance_meter = step_distance_meter
+
+    def validate(self):
+        if self.cost:
+            self.cost.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost is not None:
+            result['cost'] = self.cost.to_map()
+        if self.instruction is not None:
+            result['instruction'] = self.instruction
+        if self.orientation is not None:
+            result['orientation'] = self.orientation
+        if self.road_name is not None:
+            result['roadName'] = self.road_name
+        if self.step_distance_meter is not None:
+            result['stepDistanceMeter'] = self.step_distance_meter
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cost') is not None:
+            temp_model = ElectrobikeDirectionResponseBodyDataStepsCost()
+            self.cost = temp_model.from_map(m['cost'])
+        if m.get('instruction') is not None:
+            self.instruction = m.get('instruction')
+        if m.get('orientation') is not None:
+            self.orientation = m.get('orientation')
+        if m.get('roadName') is not None:
+            self.road_name = m.get('roadName')
+        if m.get('stepDistanceMeter') is not None:
+            self.step_distance_meter = m.get('stepDistanceMeter')
+        return self
+
+
+class ElectrobikeDirectionResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        distance_meter: str = None,
+        duration_second: str = None,
+        steps: List[ElectrobikeDirectionResponseBodyDataSteps] = None,
+    ):
+        self.distance_meter = distance_meter
+        self.duration_second = duration_second
+        self.steps = steps
+
+    def validate(self):
+        if self.steps:
+            for k in self.steps:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distance_meter is not None:
+            result['distanceMeter'] = self.distance_meter
+        if self.duration_second is not None:
+            result['durationSecond'] = self.duration_second
+        result['steps'] = []
+        if self.steps is not None:
+            for k in self.steps:
+                result['steps'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('distanceMeter') is not None:
+            self.distance_meter = m.get('distanceMeter')
+        if m.get('durationSecond') is not None:
+            self.duration_second = m.get('durationSecond')
+        self.steps = []
+        if m.get('steps') is not None:
+            for k in m.get('steps'):
+                temp_model = ElectrobikeDirectionResponseBodyDataSteps()
+                self.steps.append(temp_model.from_map(k))
+        return self
+
+
+class ElectrobikeDirectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[ElectrobikeDirectionResponseBodyData] = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = ElectrobikeDirectionResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ElectrobikeDirectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ElectrobikeDirectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ElectrobikeDirectionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3808,6 +5045,250 @@ class QueryRestaurantsResponse(TeaModel):
         return self
 
 
+class RectangleTrafficStatusRequest(TeaModel):
+    def __init__(
+        self,
+        lower_left_latitude: str = None,
+        lower_left_longitude: str = None,
+        road_level: str = None,
+        upper_right_latitude: str = None,
+        upper_right_longitude: str = None,
+    ):
+        self.lower_left_latitude = lower_left_latitude
+        self.lower_left_longitude = lower_left_longitude
+        self.road_level = road_level
+        self.upper_right_latitude = upper_right_latitude
+        self.upper_right_longitude = upper_right_longitude
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lower_left_latitude is not None:
+            result['lowerLeftLatitude'] = self.lower_left_latitude
+        if self.lower_left_longitude is not None:
+            result['lowerLeftLongitude'] = self.lower_left_longitude
+        if self.road_level is not None:
+            result['roadLevel'] = self.road_level
+        if self.upper_right_latitude is not None:
+            result['upperRightLatitude'] = self.upper_right_latitude
+        if self.upper_right_longitude is not None:
+            result['upperRightLongitude'] = self.upper_right_longitude
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('lowerLeftLatitude') is not None:
+            self.lower_left_latitude = m.get('lowerLeftLatitude')
+        if m.get('lowerLeftLongitude') is not None:
+            self.lower_left_longitude = m.get('lowerLeftLongitude')
+        if m.get('roadLevel') is not None:
+            self.road_level = m.get('roadLevel')
+        if m.get('upperRightLatitude') is not None:
+            self.upper_right_latitude = m.get('upperRightLatitude')
+        if m.get('upperRightLongitude') is not None:
+            self.upper_right_longitude = m.get('upperRightLongitude')
+        return self
+
+
+class RectangleTrafficStatusResponseBodyDataEvaluation(TeaModel):
+    def __init__(
+        self,
+        blocked_percentage: str = None,
+        clear_percentage: str = None,
+        description: str = None,
+        heavy_percentage: str = None,
+        status: str = None,
+        unknown_percentage: str = None,
+    ):
+        self.blocked_percentage = blocked_percentage
+        self.clear_percentage = clear_percentage
+        self.description = description
+        self.heavy_percentage = heavy_percentage
+        self.status = status
+        self.unknown_percentage = unknown_percentage
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.blocked_percentage is not None:
+            result['blockedPercentage'] = self.blocked_percentage
+        if self.clear_percentage is not None:
+            result['clearPercentage'] = self.clear_percentage
+        if self.description is not None:
+            result['description'] = self.description
+        if self.heavy_percentage is not None:
+            result['heavyPercentage'] = self.heavy_percentage
+        if self.status is not None:
+            result['status'] = self.status
+        if self.unknown_percentage is not None:
+            result['unknownPercentage'] = self.unknown_percentage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('blockedPercentage') is not None:
+            self.blocked_percentage = m.get('blockedPercentage')
+        if m.get('clearPercentage') is not None:
+            self.clear_percentage = m.get('clearPercentage')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('heavyPercentage') is not None:
+            self.heavy_percentage = m.get('heavyPercentage')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('unknownPercentage') is not None:
+            self.unknown_percentage = m.get('unknownPercentage')
+        return self
+
+
+class RectangleTrafficStatusResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        evaluation: RectangleTrafficStatusResponseBodyDataEvaluation = None,
+    ):
+        self.description = description
+        self.evaluation = evaluation
+
+    def validate(self):
+        if self.evaluation:
+            self.evaluation.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.evaluation is not None:
+            result['evaluation'] = self.evaluation.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('evaluation') is not None:
+            temp_model = RectangleTrafficStatusResponseBodyDataEvaluation()
+            self.evaluation = temp_model.from_map(m['evaluation'])
+        return self
+
+
+class RectangleTrafficStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[RectangleTrafficStatusResponseBodyData] = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = RectangleTrafficStatusResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class RectangleTrafficStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RectangleTrafficStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RectangleTrafficStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RgeoCodeRequest(TeaModel):
     def __init__(
         self,
@@ -4209,6 +5690,238 @@ class RgeoCodeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RgeoCodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RoadTrafficStatusRequest(TeaModel):
+    def __init__(
+        self,
+        city: str = None,
+        road_level: str = None,
+        road_name: str = None,
+    ):
+        self.city = city
+        self.road_level = road_level
+        self.road_name = road_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.city is not None:
+            result['city'] = self.city
+        if self.road_level is not None:
+            result['roadLevel'] = self.road_level
+        if self.road_name is not None:
+            result['roadName'] = self.road_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('city') is not None:
+            self.city = m.get('city')
+        if m.get('roadLevel') is not None:
+            self.road_level = m.get('roadLevel')
+        if m.get('roadName') is not None:
+            self.road_name = m.get('roadName')
+        return self
+
+
+class RoadTrafficStatusResponseBodyDataEvaluation(TeaModel):
+    def __init__(
+        self,
+        blocked_percentage: str = None,
+        clear_percentage: str = None,
+        description: str = None,
+        heavy_percentage: str = None,
+        status: str = None,
+        unknown_percentage: str = None,
+    ):
+        self.blocked_percentage = blocked_percentage
+        self.clear_percentage = clear_percentage
+        self.description = description
+        self.heavy_percentage = heavy_percentage
+        self.status = status
+        self.unknown_percentage = unknown_percentage
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.blocked_percentage is not None:
+            result['blockedPercentage'] = self.blocked_percentage
+        if self.clear_percentage is not None:
+            result['clearPercentage'] = self.clear_percentage
+        if self.description is not None:
+            result['description'] = self.description
+        if self.heavy_percentage is not None:
+            result['heavyPercentage'] = self.heavy_percentage
+        if self.status is not None:
+            result['status'] = self.status
+        if self.unknown_percentage is not None:
+            result['unknownPercentage'] = self.unknown_percentage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('blockedPercentage') is not None:
+            self.blocked_percentage = m.get('blockedPercentage')
+        if m.get('clearPercentage') is not None:
+            self.clear_percentage = m.get('clearPercentage')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('heavyPercentage') is not None:
+            self.heavy_percentage = m.get('heavyPercentage')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('unknownPercentage') is not None:
+            self.unknown_percentage = m.get('unknownPercentage')
+        return self
+
+
+class RoadTrafficStatusResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        evaluation: RoadTrafficStatusResponseBodyDataEvaluation = None,
+    ):
+        self.description = description
+        self.evaluation = evaluation
+
+    def validate(self):
+        if self.evaluation:
+            self.evaluation.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.evaluation is not None:
+            result['evaluation'] = self.evaluation.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('evaluation') is not None:
+            temp_model = RoadTrafficStatusResponseBodyDataEvaluation()
+            self.evaluation = temp_model.from_map(m['evaluation'])
+        return self
+
+
+class RoadTrafficStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[RoadTrafficStatusResponseBodyData] = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = RoadTrafficStatusResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class RoadTrafficStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RoadTrafficStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RoadTrafficStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5716,6 +7429,1686 @@ class TransitIntegratedDirectionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TransitIntegratedDirectionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TransitIntegratedDirectionOldRequest(TeaModel):
+    def __init__(
+        self,
+        destination_city: str = None,
+        destination_latitude: str = None,
+        destination_longitude: str = None,
+        origin_city: str = None,
+        origin_latitude: str = None,
+        origin_longitude: str = None,
+    ):
+        self.destination_city = destination_city
+        self.destination_latitude = destination_latitude
+        self.destination_longitude = destination_longitude
+        self.origin_city = origin_city
+        self.origin_latitude = origin_latitude
+        self.origin_longitude = origin_longitude
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_city is not None:
+            result['destinationCity'] = self.destination_city
+        if self.destination_latitude is not None:
+            result['destinationLatitude'] = self.destination_latitude
+        if self.destination_longitude is not None:
+            result['destinationLongitude'] = self.destination_longitude
+        if self.origin_city is not None:
+            result['originCity'] = self.origin_city
+        if self.origin_latitude is not None:
+            result['originLatitude'] = self.origin_latitude
+        if self.origin_longitude is not None:
+            result['originLongitude'] = self.origin_longitude
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('destinationCity') is not None:
+            self.destination_city = m.get('destinationCity')
+        if m.get('destinationLatitude') is not None:
+            self.destination_latitude = m.get('destinationLatitude')
+        if m.get('destinationLongitude') is not None:
+            self.destination_longitude = m.get('destinationLongitude')
+        if m.get('originCity') is not None:
+            self.origin_city = m.get('originCity')
+        if m.get('originLatitude') is not None:
+            self.origin_latitude = m.get('originLatitude')
+        if m.get('originLongitude') is not None:
+            self.origin_longitude = m.get('originLongitude')
+        return self
+
+
+class TransitIntegratedDirectionOldResponseBodyDataCost(TeaModel):
+    def __init__(
+        self,
+        duration_second: str = None,
+        taxi_fee: str = None,
+        toll_distance_meter: str = None,
+        toll_roads: str = None,
+        tolls: str = None,
+        traffic_lights: str = None,
+        transit_fee: str = None,
+    ):
+        self.duration_second = duration_second
+        self.taxi_fee = taxi_fee
+        self.toll_distance_meter = toll_distance_meter
+        self.toll_roads = toll_roads
+        self.tolls = tolls
+        self.traffic_lights = traffic_lights
+        self.transit_fee = transit_fee
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration_second is not None:
+            result['durationSecond'] = self.duration_second
+        if self.taxi_fee is not None:
+            result['taxiFee'] = self.taxi_fee
+        if self.toll_distance_meter is not None:
+            result['tollDistanceMeter'] = self.toll_distance_meter
+        if self.toll_roads is not None:
+            result['tollRoads'] = self.toll_roads
+        if self.tolls is not None:
+            result['tolls'] = self.tolls
+        if self.traffic_lights is not None:
+            result['trafficLights'] = self.traffic_lights
+        if self.transit_fee is not None:
+            result['transitFee'] = self.transit_fee
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('durationSecond') is not None:
+            self.duration_second = m.get('durationSecond')
+        if m.get('taxiFee') is not None:
+            self.taxi_fee = m.get('taxiFee')
+        if m.get('tollDistanceMeter') is not None:
+            self.toll_distance_meter = m.get('tollDistanceMeter')
+        if m.get('tollRoads') is not None:
+            self.toll_roads = m.get('tollRoads')
+        if m.get('tolls') is not None:
+            self.tolls = m.get('tolls')
+        if m.get('trafficLights') is not None:
+            self.traffic_lights = m.get('trafficLights')
+        if m.get('transitFee') is not None:
+            self.transit_fee = m.get('transitFee')
+        return self
+
+
+class TransitIntegratedDirectionOldResponseBodyDataSegmentsBusBuslinesArrivalStopExit(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        location: str = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.location = location
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        if self.location is not None:
+            result['location'] = self.location
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('location') is not None:
+            self.location = m.get('location')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class TransitIntegratedDirectionOldResponseBodyDataSegmentsBusBuslinesArrivalStop(TeaModel):
+    def __init__(
+        self,
+        exit: TransitIntegratedDirectionOldResponseBodyDataSegmentsBusBuslinesArrivalStopExit = None,
+        id: str = None,
+        location: str = None,
+        name: str = None,
+    ):
+        self.exit = exit
+        self.id = id
+        self.location = location
+        self.name = name
+
+    def validate(self):
+        if self.exit:
+            self.exit.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exit is not None:
+            result['exit'] = self.exit.to_map()
+        if self.id is not None:
+            result['id'] = self.id
+        if self.location is not None:
+            result['location'] = self.location
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('exit') is not None:
+            temp_model = TransitIntegratedDirectionOldResponseBodyDataSegmentsBusBuslinesArrivalStopExit()
+            self.exit = temp_model.from_map(m['exit'])
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('location') is not None:
+            self.location = m.get('location')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class TransitIntegratedDirectionOldResponseBodyDataSegmentsBusBuslinesCost(TeaModel):
+    def __init__(
+        self,
+        duration_second: str = None,
+        taxi_fee: str = None,
+        toll_distance_meter: str = None,
+        toll_roads: str = None,
+        tolls: str = None,
+        traffic_lights: str = None,
+        transit_fee: str = None,
+    ):
+        self.duration_second = duration_second
+        self.taxi_fee = taxi_fee
+        self.toll_distance_meter = toll_distance_meter
+        self.toll_roads = toll_roads
+        self.tolls = tolls
+        self.traffic_lights = traffic_lights
+        self.transit_fee = transit_fee
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration_second is not None:
+            result['durationSecond'] = self.duration_second
+        if self.taxi_fee is not None:
+            result['taxiFee'] = self.taxi_fee
+        if self.toll_distance_meter is not None:
+            result['tollDistanceMeter'] = self.toll_distance_meter
+        if self.toll_roads is not None:
+            result['tollRoads'] = self.toll_roads
+        if self.tolls is not None:
+            result['tolls'] = self.tolls
+        if self.traffic_lights is not None:
+            result['trafficLights'] = self.traffic_lights
+        if self.transit_fee is not None:
+            result['transitFee'] = self.transit_fee
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('durationSecond') is not None:
+            self.duration_second = m.get('durationSecond')
+        if m.get('taxiFee') is not None:
+            self.taxi_fee = m.get('taxiFee')
+        if m.get('tollDistanceMeter') is not None:
+            self.toll_distance_meter = m.get('tollDistanceMeter')
+        if m.get('tollRoads') is not None:
+            self.toll_roads = m.get('tollRoads')
+        if m.get('tolls') is not None:
+            self.tolls = m.get('tolls')
+        if m.get('trafficLights') is not None:
+            self.traffic_lights = m.get('trafficLights')
+        if m.get('transitFee') is not None:
+            self.transit_fee = m.get('transitFee')
+        return self
+
+
+class TransitIntegratedDirectionOldResponseBodyDataSegmentsBusBuslinesDepartureStopEntrance(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        location: str = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.location = location
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        if self.location is not None:
+            result['location'] = self.location
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('location') is not None:
+            self.location = m.get('location')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class TransitIntegratedDirectionOldResponseBodyDataSegmentsBusBuslinesDepartureStop(TeaModel):
+    def __init__(
+        self,
+        entrance: TransitIntegratedDirectionOldResponseBodyDataSegmentsBusBuslinesDepartureStopEntrance = None,
+        id: str = None,
+        location: str = None,
+        name: str = None,
+    ):
+        self.entrance = entrance
+        self.id = id
+        self.location = location
+        self.name = name
+
+    def validate(self):
+        if self.entrance:
+            self.entrance.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.entrance is not None:
+            result['entrance'] = self.entrance.to_map()
+        if self.id is not None:
+            result['id'] = self.id
+        if self.location is not None:
+            result['location'] = self.location
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('entrance') is not None:
+            temp_model = TransitIntegratedDirectionOldResponseBodyDataSegmentsBusBuslinesDepartureStopEntrance()
+            self.entrance = temp_model.from_map(m['entrance'])
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('location') is not None:
+            self.location = m.get('location')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class TransitIntegratedDirectionOldResponseBodyDataSegmentsBusBuslinesViaStops(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        location: str = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.location = location
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        if self.location is not None:
+            result['location'] = self.location
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('location') is not None:
+            self.location = m.get('location')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class TransitIntegratedDirectionOldResponseBodyDataSegmentsBusBuslines(TeaModel):
+    def __init__(
+        self,
+        arrival_stop: TransitIntegratedDirectionOldResponseBodyDataSegmentsBusBuslinesArrivalStop = None,
+        bus_time_tips: str = None,
+        bustimetag: str = None,
+        cost: TransitIntegratedDirectionOldResponseBodyDataSegmentsBusBuslinesCost = None,
+        departure_stop: TransitIntegratedDirectionOldResponseBodyDataSegmentsBusBuslinesDepartureStop = None,
+        distance_meter: str = None,
+        end_time: str = None,
+        id: str = None,
+        name: str = None,
+        start_time: str = None,
+        type: str = None,
+        via_num: str = None,
+        via_stops: List[TransitIntegratedDirectionOldResponseBodyDataSegmentsBusBuslinesViaStops] = None,
+    ):
+        self.arrival_stop = arrival_stop
+        self.bus_time_tips = bus_time_tips
+        self.bustimetag = bustimetag
+        self.cost = cost
+        self.departure_stop = departure_stop
+        self.distance_meter = distance_meter
+        self.end_time = end_time
+        self.id = id
+        self.name = name
+        self.start_time = start_time
+        self.type = type
+        self.via_num = via_num
+        self.via_stops = via_stops
+
+    def validate(self):
+        if self.arrival_stop:
+            self.arrival_stop.validate()
+        if self.cost:
+            self.cost.validate()
+        if self.departure_stop:
+            self.departure_stop.validate()
+        if self.via_stops:
+            for k in self.via_stops:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arrival_stop is not None:
+            result['arrivalStop'] = self.arrival_stop.to_map()
+        if self.bus_time_tips is not None:
+            result['busTimeTips'] = self.bus_time_tips
+        if self.bustimetag is not None:
+            result['bustimetag'] = self.bustimetag
+        if self.cost is not None:
+            result['cost'] = self.cost.to_map()
+        if self.departure_stop is not None:
+            result['departureStop'] = self.departure_stop.to_map()
+        if self.distance_meter is not None:
+            result['distanceMeter'] = self.distance_meter
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.type is not None:
+            result['type'] = self.type
+        if self.via_num is not None:
+            result['viaNum'] = self.via_num
+        result['viaStops'] = []
+        if self.via_stops is not None:
+            for k in self.via_stops:
+                result['viaStops'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('arrivalStop') is not None:
+            temp_model = TransitIntegratedDirectionOldResponseBodyDataSegmentsBusBuslinesArrivalStop()
+            self.arrival_stop = temp_model.from_map(m['arrivalStop'])
+        if m.get('busTimeTips') is not None:
+            self.bus_time_tips = m.get('busTimeTips')
+        if m.get('bustimetag') is not None:
+            self.bustimetag = m.get('bustimetag')
+        if m.get('cost') is not None:
+            temp_model = TransitIntegratedDirectionOldResponseBodyDataSegmentsBusBuslinesCost()
+            self.cost = temp_model.from_map(m['cost'])
+        if m.get('departureStop') is not None:
+            temp_model = TransitIntegratedDirectionOldResponseBodyDataSegmentsBusBuslinesDepartureStop()
+            self.departure_stop = temp_model.from_map(m['departureStop'])
+        if m.get('distanceMeter') is not None:
+            self.distance_meter = m.get('distanceMeter')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('viaNum') is not None:
+            self.via_num = m.get('viaNum')
+        self.via_stops = []
+        if m.get('viaStops') is not None:
+            for k in m.get('viaStops'):
+                temp_model = TransitIntegratedDirectionOldResponseBodyDataSegmentsBusBuslinesViaStops()
+                self.via_stops.append(temp_model.from_map(k))
+        return self
+
+
+class TransitIntegratedDirectionOldResponseBodyDataSegmentsBus(TeaModel):
+    def __init__(
+        self,
+        buslines: List[TransitIntegratedDirectionOldResponseBodyDataSegmentsBusBuslines] = None,
+    ):
+        self.buslines = buslines
+
+    def validate(self):
+        if self.buslines:
+            for k in self.buslines:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['buslines'] = []
+        if self.buslines is not None:
+            for k in self.buslines:
+                result['buslines'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.buslines = []
+        if m.get('buslines') is not None:
+            for k in m.get('buslines'):
+                temp_model = TransitIntegratedDirectionOldResponseBodyDataSegmentsBusBuslines()
+                self.buslines.append(temp_model.from_map(k))
+        return self
+
+
+class TransitIntegratedDirectionOldResponseBodyDataSegmentsRailwayArrivalStop(TeaModel):
+    def __init__(
+        self,
+        adcode: str = None,
+        end: str = None,
+        id: str = None,
+        location: str = None,
+        name: str = None,
+        time: str = None,
+    ):
+        self.adcode = adcode
+        # end
+        self.end = end
+        self.id = id
+        self.location = location
+        self.name = name
+        self.time = time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adcode is not None:
+            result['adcode'] = self.adcode
+        if self.end is not None:
+            result['end'] = self.end
+        if self.id is not None:
+            result['id'] = self.id
+        if self.location is not None:
+            result['location'] = self.location
+        if self.name is not None:
+            result['name'] = self.name
+        if self.time is not None:
+            result['time'] = self.time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('adcode') is not None:
+            self.adcode = m.get('adcode')
+        if m.get('end') is not None:
+            self.end = m.get('end')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('location') is not None:
+            self.location = m.get('location')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('time') is not None:
+            self.time = m.get('time')
+        return self
+
+
+class TransitIntegratedDirectionOldResponseBodyDataSegmentsRailwayDepartureStop(TeaModel):
+    def __init__(
+        self,
+        adcode: str = None,
+        id: str = None,
+        location: str = None,
+        name: str = None,
+        start: str = None,
+        time: str = None,
+    ):
+        self.adcode = adcode
+        self.id = id
+        self.location = location
+        self.name = name
+        self.start = start
+        self.time = time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adcode is not None:
+            result['adcode'] = self.adcode
+        if self.id is not None:
+            result['id'] = self.id
+        if self.location is not None:
+            result['location'] = self.location
+        if self.name is not None:
+            result['name'] = self.name
+        if self.start is not None:
+            result['start'] = self.start
+        if self.time is not None:
+            result['time'] = self.time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('adcode') is not None:
+            self.adcode = m.get('adcode')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('location') is not None:
+            self.location = m.get('location')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('start') is not None:
+            self.start = m.get('start')
+        if m.get('time') is not None:
+            self.time = m.get('time')
+        return self
+
+
+class TransitIntegratedDirectionOldResponseBodyDataSegmentsRailwaySpaces(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        cost: str = None,
+    ):
+        self.code = code
+        self.cost = cost
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.cost is not None:
+            result['cost'] = self.cost
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('cost') is not None:
+            self.cost = m.get('cost')
+        return self
+
+
+class TransitIntegratedDirectionOldResponseBodyDataSegmentsRailway(TeaModel):
+    def __init__(
+        self,
+        arrival_stop: TransitIntegratedDirectionOldResponseBodyDataSegmentsRailwayArrivalStop = None,
+        departure_stop: TransitIntegratedDirectionOldResponseBodyDataSegmentsRailwayDepartureStop = None,
+        distance_meter: str = None,
+        id: str = None,
+        name: str = None,
+        spaces: List[TransitIntegratedDirectionOldResponseBodyDataSegmentsRailwaySpaces] = None,
+        time: str = None,
+        trip: str = None,
+        type: str = None,
+    ):
+        self.arrival_stop = arrival_stop
+        self.departure_stop = departure_stop
+        self.distance_meter = distance_meter
+        self.id = id
+        self.name = name
+        self.spaces = spaces
+        self.time = time
+        self.trip = trip
+        self.type = type
+
+    def validate(self):
+        if self.arrival_stop:
+            self.arrival_stop.validate()
+        if self.departure_stop:
+            self.departure_stop.validate()
+        if self.spaces:
+            for k in self.spaces:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arrival_stop is not None:
+            result['arrivalStop'] = self.arrival_stop.to_map()
+        if self.departure_stop is not None:
+            result['departureStop'] = self.departure_stop.to_map()
+        if self.distance_meter is not None:
+            result['distanceMeter'] = self.distance_meter
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        result['spaces'] = []
+        if self.spaces is not None:
+            for k in self.spaces:
+                result['spaces'].append(k.to_map() if k else None)
+        if self.time is not None:
+            result['time'] = self.time
+        if self.trip is not None:
+            result['trip'] = self.trip
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('arrivalStop') is not None:
+            temp_model = TransitIntegratedDirectionOldResponseBodyDataSegmentsRailwayArrivalStop()
+            self.arrival_stop = temp_model.from_map(m['arrivalStop'])
+        if m.get('departureStop') is not None:
+            temp_model = TransitIntegratedDirectionOldResponseBodyDataSegmentsRailwayDepartureStop()
+            self.departure_stop = temp_model.from_map(m['departureStop'])
+        if m.get('distanceMeter') is not None:
+            self.distance_meter = m.get('distanceMeter')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        self.spaces = []
+        if m.get('spaces') is not None:
+            for k in m.get('spaces'):
+                temp_model = TransitIntegratedDirectionOldResponseBodyDataSegmentsRailwaySpaces()
+                self.spaces.append(temp_model.from_map(k))
+        if m.get('time') is not None:
+            self.time = m.get('time')
+        if m.get('trip') is not None:
+            self.trip = m.get('trip')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class TransitIntegratedDirectionOldResponseBodyDataSegmentsTaxi(TeaModel):
+    def __init__(
+        self,
+        destination_name: str = None,
+        destination_point: str = None,
+        distance_meter: str = None,
+        drive_time_second: str = None,
+        origin_name: str = None,
+        origin_point: str = None,
+        price: str = None,
+    ):
+        self.destination_name = destination_name
+        self.destination_point = destination_point
+        self.distance_meter = distance_meter
+        self.drive_time_second = drive_time_second
+        self.origin_name = origin_name
+        self.origin_point = origin_point
+        self.price = price
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_name is not None:
+            result['destinationName'] = self.destination_name
+        if self.destination_point is not None:
+            result['destinationPoint'] = self.destination_point
+        if self.distance_meter is not None:
+            result['distanceMeter'] = self.distance_meter
+        if self.drive_time_second is not None:
+            result['driveTimeSecond'] = self.drive_time_second
+        if self.origin_name is not None:
+            result['originName'] = self.origin_name
+        if self.origin_point is not None:
+            result['originPoint'] = self.origin_point
+        if self.price is not None:
+            result['price'] = self.price
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('destinationName') is not None:
+            self.destination_name = m.get('destinationName')
+        if m.get('destinationPoint') is not None:
+            self.destination_point = m.get('destinationPoint')
+        if m.get('distanceMeter') is not None:
+            self.distance_meter = m.get('distanceMeter')
+        if m.get('driveTimeSecond') is not None:
+            self.drive_time_second = m.get('driveTimeSecond')
+        if m.get('originName') is not None:
+            self.origin_name = m.get('originName')
+        if m.get('originPoint') is not None:
+            self.origin_point = m.get('originPoint')
+        if m.get('price') is not None:
+            self.price = m.get('price')
+        return self
+
+
+class TransitIntegratedDirectionOldResponseBodyDataSegmentsWalkingCost(TeaModel):
+    def __init__(
+        self,
+        duration_second: str = None,
+        taxi_fee: str = None,
+        toll_distance_meter: str = None,
+        toll_roads: str = None,
+        tolls: str = None,
+        traffic_lights: str = None,
+        transit_fee: str = None,
+    ):
+        self.duration_second = duration_second
+        self.taxi_fee = taxi_fee
+        self.toll_distance_meter = toll_distance_meter
+        self.toll_roads = toll_roads
+        self.tolls = tolls
+        self.traffic_lights = traffic_lights
+        self.transit_fee = transit_fee
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration_second is not None:
+            result['durationSecond'] = self.duration_second
+        if self.taxi_fee is not None:
+            result['taxiFee'] = self.taxi_fee
+        if self.toll_distance_meter is not None:
+            result['tollDistanceMeter'] = self.toll_distance_meter
+        if self.toll_roads is not None:
+            result['tollRoads'] = self.toll_roads
+        if self.tolls is not None:
+            result['tolls'] = self.tolls
+        if self.traffic_lights is not None:
+            result['trafficLights'] = self.traffic_lights
+        if self.transit_fee is not None:
+            result['transitFee'] = self.transit_fee
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('durationSecond') is not None:
+            self.duration_second = m.get('durationSecond')
+        if m.get('taxiFee') is not None:
+            self.taxi_fee = m.get('taxiFee')
+        if m.get('tollDistanceMeter') is not None:
+            self.toll_distance_meter = m.get('tollDistanceMeter')
+        if m.get('tollRoads') is not None:
+            self.toll_roads = m.get('tollRoads')
+        if m.get('tolls') is not None:
+            self.tolls = m.get('tolls')
+        if m.get('trafficLights') is not None:
+            self.traffic_lights = m.get('trafficLights')
+        if m.get('transitFee') is not None:
+            self.transit_fee = m.get('transitFee')
+        return self
+
+
+class TransitIntegratedDirectionOldResponseBodyDataSegmentsWalkingStepsCost(TeaModel):
+    def __init__(
+        self,
+        duration_second: str = None,
+        taxi_fee: str = None,
+        toll_distance_meter: str = None,
+        toll_roads: str = None,
+        tolls: str = None,
+        traffic_lights: str = None,
+        transit_fee: str = None,
+    ):
+        self.duration_second = duration_second
+        self.taxi_fee = taxi_fee
+        self.toll_distance_meter = toll_distance_meter
+        self.toll_roads = toll_roads
+        self.tolls = tolls
+        self.traffic_lights = traffic_lights
+        self.transit_fee = transit_fee
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration_second is not None:
+            result['durationSecond'] = self.duration_second
+        if self.taxi_fee is not None:
+            result['taxiFee'] = self.taxi_fee
+        if self.toll_distance_meter is not None:
+            result['tollDistanceMeter'] = self.toll_distance_meter
+        if self.toll_roads is not None:
+            result['tollRoads'] = self.toll_roads
+        if self.tolls is not None:
+            result['tolls'] = self.tolls
+        if self.traffic_lights is not None:
+            result['trafficLights'] = self.traffic_lights
+        if self.transit_fee is not None:
+            result['transitFee'] = self.transit_fee
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('durationSecond') is not None:
+            self.duration_second = m.get('durationSecond')
+        if m.get('taxiFee') is not None:
+            self.taxi_fee = m.get('taxiFee')
+        if m.get('tollDistanceMeter') is not None:
+            self.toll_distance_meter = m.get('tollDistanceMeter')
+        if m.get('tollRoads') is not None:
+            self.toll_roads = m.get('tollRoads')
+        if m.get('tolls') is not None:
+            self.tolls = m.get('tolls')
+        if m.get('trafficLights') is not None:
+            self.traffic_lights = m.get('trafficLights')
+        if m.get('transitFee') is not None:
+            self.transit_fee = m.get('transitFee')
+        return self
+
+
+class TransitIntegratedDirectionOldResponseBodyDataSegmentsWalkingSteps(TeaModel):
+    def __init__(
+        self,
+        cost: TransitIntegratedDirectionOldResponseBodyDataSegmentsWalkingStepsCost = None,
+        instruction: str = None,
+        orientation: str = None,
+        road_name: str = None,
+        step_distance_meter: str = None,
+    ):
+        self.cost = cost
+        self.instruction = instruction
+        self.orientation = orientation
+        self.road_name = road_name
+        self.step_distance_meter = step_distance_meter
+
+    def validate(self):
+        if self.cost:
+            self.cost.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost is not None:
+            result['cost'] = self.cost.to_map()
+        if self.instruction is not None:
+            result['instruction'] = self.instruction
+        if self.orientation is not None:
+            result['orientation'] = self.orientation
+        if self.road_name is not None:
+            result['roadName'] = self.road_name
+        if self.step_distance_meter is not None:
+            result['stepDistanceMeter'] = self.step_distance_meter
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cost') is not None:
+            temp_model = TransitIntegratedDirectionOldResponseBodyDataSegmentsWalkingStepsCost()
+            self.cost = temp_model.from_map(m['cost'])
+        if m.get('instruction') is not None:
+            self.instruction = m.get('instruction')
+        if m.get('orientation') is not None:
+            self.orientation = m.get('orientation')
+        if m.get('roadName') is not None:
+            self.road_name = m.get('roadName')
+        if m.get('stepDistanceMeter') is not None:
+            self.step_distance_meter = m.get('stepDistanceMeter')
+        return self
+
+
+class TransitIntegratedDirectionOldResponseBodyDataSegmentsWalking(TeaModel):
+    def __init__(
+        self,
+        cost: TransitIntegratedDirectionOldResponseBodyDataSegmentsWalkingCost = None,
+        destination: str = None,
+        distance_meter: str = None,
+        origin: str = None,
+        steps: List[TransitIntegratedDirectionOldResponseBodyDataSegmentsWalkingSteps] = None,
+    ):
+        self.cost = cost
+        self.destination = destination
+        self.distance_meter = distance_meter
+        self.origin = origin
+        self.steps = steps
+
+    def validate(self):
+        if self.cost:
+            self.cost.validate()
+        if self.steps:
+            for k in self.steps:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost is not None:
+            result['cost'] = self.cost.to_map()
+        if self.destination is not None:
+            result['destination'] = self.destination
+        if self.distance_meter is not None:
+            result['distanceMeter'] = self.distance_meter
+        if self.origin is not None:
+            result['origin'] = self.origin
+        result['steps'] = []
+        if self.steps is not None:
+            for k in self.steps:
+                result['steps'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cost') is not None:
+            temp_model = TransitIntegratedDirectionOldResponseBodyDataSegmentsWalkingCost()
+            self.cost = temp_model.from_map(m['cost'])
+        if m.get('destination') is not None:
+            self.destination = m.get('destination')
+        if m.get('distanceMeter') is not None:
+            self.distance_meter = m.get('distanceMeter')
+        if m.get('origin') is not None:
+            self.origin = m.get('origin')
+        self.steps = []
+        if m.get('steps') is not None:
+            for k in m.get('steps'):
+                temp_model = TransitIntegratedDirectionOldResponseBodyDataSegmentsWalkingSteps()
+                self.steps.append(temp_model.from_map(k))
+        return self
+
+
+class TransitIntegratedDirectionOldResponseBodyDataSegments(TeaModel):
+    def __init__(
+        self,
+        bus: TransitIntegratedDirectionOldResponseBodyDataSegmentsBus = None,
+        railway: TransitIntegratedDirectionOldResponseBodyDataSegmentsRailway = None,
+        taxi: TransitIntegratedDirectionOldResponseBodyDataSegmentsTaxi = None,
+        walking: TransitIntegratedDirectionOldResponseBodyDataSegmentsWalking = None,
+    ):
+        self.bus = bus
+        self.railway = railway
+        self.taxi = taxi
+        self.walking = walking
+
+    def validate(self):
+        if self.bus:
+            self.bus.validate()
+        if self.railway:
+            self.railway.validate()
+        if self.taxi:
+            self.taxi.validate()
+        if self.walking:
+            self.walking.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bus is not None:
+            result['bus'] = self.bus.to_map()
+        if self.railway is not None:
+            result['railway'] = self.railway.to_map()
+        if self.taxi is not None:
+            result['taxi'] = self.taxi.to_map()
+        if self.walking is not None:
+            result['walking'] = self.walking.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bus') is not None:
+            temp_model = TransitIntegratedDirectionOldResponseBodyDataSegmentsBus()
+            self.bus = temp_model.from_map(m['bus'])
+        if m.get('railway') is not None:
+            temp_model = TransitIntegratedDirectionOldResponseBodyDataSegmentsRailway()
+            self.railway = temp_model.from_map(m['railway'])
+        if m.get('taxi') is not None:
+            temp_model = TransitIntegratedDirectionOldResponseBodyDataSegmentsTaxi()
+            self.taxi = temp_model.from_map(m['taxi'])
+        if m.get('walking') is not None:
+            temp_model = TransitIntegratedDirectionOldResponseBodyDataSegmentsWalking()
+            self.walking = temp_model.from_map(m['walking'])
+        return self
+
+
+class TransitIntegratedDirectionOldResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cost: TransitIntegratedDirectionOldResponseBodyDataCost = None,
+        distance_meter: str = None,
+        nightflag: str = None,
+        segments: List[TransitIntegratedDirectionOldResponseBodyDataSegments] = None,
+        walking_distance_meter: str = None,
+    ):
+        self.cost = cost
+        self.distance_meter = distance_meter
+        self.nightflag = nightflag
+        self.segments = segments
+        self.walking_distance_meter = walking_distance_meter
+
+    def validate(self):
+        if self.cost:
+            self.cost.validate()
+        if self.segments:
+            for k in self.segments:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost is not None:
+            result['cost'] = self.cost.to_map()
+        if self.distance_meter is not None:
+            result['distanceMeter'] = self.distance_meter
+        if self.nightflag is not None:
+            result['nightflag'] = self.nightflag
+        result['segments'] = []
+        if self.segments is not None:
+            for k in self.segments:
+                result['segments'].append(k.to_map() if k else None)
+        if self.walking_distance_meter is not None:
+            result['walkingDistanceMeter'] = self.walking_distance_meter
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cost') is not None:
+            temp_model = TransitIntegratedDirectionOldResponseBodyDataCost()
+            self.cost = temp_model.from_map(m['cost'])
+        if m.get('distanceMeter') is not None:
+            self.distance_meter = m.get('distanceMeter')
+        if m.get('nightflag') is not None:
+            self.nightflag = m.get('nightflag')
+        self.segments = []
+        if m.get('segments') is not None:
+            for k in m.get('segments'):
+                temp_model = TransitIntegratedDirectionOldResponseBodyDataSegments()
+                self.segments.append(temp_model.from_map(k))
+        if m.get('walkingDistanceMeter') is not None:
+            self.walking_distance_meter = m.get('walkingDistanceMeter')
+        return self
+
+
+class TransitIntegratedDirectionOldResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[TransitIntegratedDirectionOldResponseBodyData] = None,
+        error_code: int = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = TransitIntegratedDirectionOldResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class TransitIntegratedDirectionOldResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TransitIntegratedDirectionOldResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TransitIntegratedDirectionOldResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class WalkingDirectionRequest(TeaModel):
+    def __init__(
+        self,
+        destination_latitude: str = None,
+        destination_longitude: str = None,
+        origin_latitude: str = None,
+        origin_longitude: str = None,
+    ):
+        self.destination_latitude = destination_latitude
+        self.destination_longitude = destination_longitude
+        self.origin_latitude = origin_latitude
+        self.origin_longitude = origin_longitude
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_latitude is not None:
+            result['destinationLatitude'] = self.destination_latitude
+        if self.destination_longitude is not None:
+            result['destinationLongitude'] = self.destination_longitude
+        if self.origin_latitude is not None:
+            result['originLatitude'] = self.origin_latitude
+        if self.origin_longitude is not None:
+            result['originLongitude'] = self.origin_longitude
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('destinationLatitude') is not None:
+            self.destination_latitude = m.get('destinationLatitude')
+        if m.get('destinationLongitude') is not None:
+            self.destination_longitude = m.get('destinationLongitude')
+        if m.get('originLatitude') is not None:
+            self.origin_latitude = m.get('originLatitude')
+        if m.get('originLongitude') is not None:
+            self.origin_longitude = m.get('originLongitude')
+        return self
+
+
+class WalkingDirectionResponseBodyDataCost(TeaModel):
+    def __init__(
+        self,
+        duration_second: str = None,
+        taxi_fee: str = None,
+        toll_distance_meter: str = None,
+        toll_roads: str = None,
+        tolls: str = None,
+        traffic_lights: str = None,
+        transit_fee: str = None,
+    ):
+        self.duration_second = duration_second
+        self.taxi_fee = taxi_fee
+        self.toll_distance_meter = toll_distance_meter
+        self.toll_roads = toll_roads
+        self.tolls = tolls
+        self.traffic_lights = traffic_lights
+        self.transit_fee = transit_fee
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration_second is not None:
+            result['durationSecond'] = self.duration_second
+        if self.taxi_fee is not None:
+            result['taxiFee'] = self.taxi_fee
+        if self.toll_distance_meter is not None:
+            result['tollDistanceMeter'] = self.toll_distance_meter
+        if self.toll_roads is not None:
+            result['tollRoads'] = self.toll_roads
+        if self.tolls is not None:
+            result['tolls'] = self.tolls
+        if self.traffic_lights is not None:
+            result['trafficLights'] = self.traffic_lights
+        if self.transit_fee is not None:
+            result['transitFee'] = self.transit_fee
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('durationSecond') is not None:
+            self.duration_second = m.get('durationSecond')
+        if m.get('taxiFee') is not None:
+            self.taxi_fee = m.get('taxiFee')
+        if m.get('tollDistanceMeter') is not None:
+            self.toll_distance_meter = m.get('tollDistanceMeter')
+        if m.get('tollRoads') is not None:
+            self.toll_roads = m.get('tollRoads')
+        if m.get('tolls') is not None:
+            self.tolls = m.get('tolls')
+        if m.get('trafficLights') is not None:
+            self.traffic_lights = m.get('trafficLights')
+        if m.get('transitFee') is not None:
+            self.transit_fee = m.get('transitFee')
+        return self
+
+
+class WalkingDirectionResponseBodyDataStepsCost(TeaModel):
+    def __init__(
+        self,
+        duration_second: str = None,
+        taxi_fee: str = None,
+        toll_distance_meter: str = None,
+        toll_roads: str = None,
+        tolls: str = None,
+        traffic_lights: str = None,
+        transit_fee: str = None,
+    ):
+        self.duration_second = duration_second
+        self.taxi_fee = taxi_fee
+        self.toll_distance_meter = toll_distance_meter
+        self.toll_roads = toll_roads
+        self.tolls = tolls
+        self.traffic_lights = traffic_lights
+        self.transit_fee = transit_fee
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration_second is not None:
+            result['durationSecond'] = self.duration_second
+        if self.taxi_fee is not None:
+            result['taxiFee'] = self.taxi_fee
+        if self.toll_distance_meter is not None:
+            result['tollDistanceMeter'] = self.toll_distance_meter
+        if self.toll_roads is not None:
+            result['tollRoads'] = self.toll_roads
+        if self.tolls is not None:
+            result['tolls'] = self.tolls
+        if self.traffic_lights is not None:
+            result['trafficLights'] = self.traffic_lights
+        if self.transit_fee is not None:
+            result['transitFee'] = self.transit_fee
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('durationSecond') is not None:
+            self.duration_second = m.get('durationSecond')
+        if m.get('taxiFee') is not None:
+            self.taxi_fee = m.get('taxiFee')
+        if m.get('tollDistanceMeter') is not None:
+            self.toll_distance_meter = m.get('tollDistanceMeter')
+        if m.get('tollRoads') is not None:
+            self.toll_roads = m.get('tollRoads')
+        if m.get('tolls') is not None:
+            self.tolls = m.get('tolls')
+        if m.get('trafficLights') is not None:
+            self.traffic_lights = m.get('trafficLights')
+        if m.get('transitFee') is not None:
+            self.transit_fee = m.get('transitFee')
+        return self
+
+
+class WalkingDirectionResponseBodyDataSteps(TeaModel):
+    def __init__(
+        self,
+        cost: WalkingDirectionResponseBodyDataStepsCost = None,
+        instruction: str = None,
+        orientation: str = None,
+        road_name: str = None,
+        step_distance_meter: str = None,
+    ):
+        self.cost = cost
+        self.instruction = instruction
+        self.orientation = orientation
+        self.road_name = road_name
+        self.step_distance_meter = step_distance_meter
+
+    def validate(self):
+        if self.cost:
+            self.cost.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost is not None:
+            result['cost'] = self.cost.to_map()
+        if self.instruction is not None:
+            result['instruction'] = self.instruction
+        if self.orientation is not None:
+            result['orientation'] = self.orientation
+        if self.road_name is not None:
+            result['roadName'] = self.road_name
+        if self.step_distance_meter is not None:
+            result['stepDistanceMeter'] = self.step_distance_meter
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cost') is not None:
+            temp_model = WalkingDirectionResponseBodyDataStepsCost()
+            self.cost = temp_model.from_map(m['cost'])
+        if m.get('instruction') is not None:
+            self.instruction = m.get('instruction')
+        if m.get('orientation') is not None:
+            self.orientation = m.get('orientation')
+        if m.get('roadName') is not None:
+            self.road_name = m.get('roadName')
+        if m.get('stepDistanceMeter') is not None:
+            self.step_distance_meter = m.get('stepDistanceMeter')
+        return self
+
+
+class WalkingDirectionResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cost: WalkingDirectionResponseBodyDataCost = None,
+        distance_meter: str = None,
+        steps: List[WalkingDirectionResponseBodyDataSteps] = None,
+    ):
+        self.cost = cost
+        self.distance_meter = distance_meter
+        self.steps = steps
+
+    def validate(self):
+        if self.cost:
+            self.cost.validate()
+        if self.steps:
+            for k in self.steps:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost is not None:
+            result['cost'] = self.cost.to_map()
+        if self.distance_meter is not None:
+            result['distanceMeter'] = self.distance_meter
+        result['steps'] = []
+        if self.steps is not None:
+            for k in self.steps:
+                result['steps'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cost') is not None:
+            temp_model = WalkingDirectionResponseBodyDataCost()
+            self.cost = temp_model.from_map(m['cost'])
+        if m.get('distanceMeter') is not None:
+            self.distance_meter = m.get('distanceMeter')
+        self.steps = []
+        if m.get('steps') is not None:
+            for k in m.get('steps'):
+                temp_model = WalkingDirectionResponseBodyDataSteps()
+                self.steps.append(temp_model.from_map(k))
+        return self
+
+
+class WalkingDirectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[WalkingDirectionResponseBodyData] = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = WalkingDirectionResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class WalkingDirectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: WalkingDirectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = WalkingDirectionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
