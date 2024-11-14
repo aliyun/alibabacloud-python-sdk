@@ -1,3 +1,12 @@
+2024-11-14 Version: 2.7.0
+- Support API CloseAICoachTaskSession.
+- Support API CreateAICoachTaskSession.
+- Support API FinishAICoachTaskSession.
+- Support API GetAICoachTaskSessionHistory.
+- Support API GetAICoachTaskSessionReport.
+- Support API ListAICoachTaskPage.
+
+
 2024-10-24 Version: 2.6.0
 - Support API OperateAvatarProject.
 - Support API QuerySessionInfo.

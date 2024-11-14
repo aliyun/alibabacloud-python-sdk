@@ -373,6 +373,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.check_session_with_options_async(request, headers, runtime)
 
+    def close_aicoach_task_session_with_options(
+        self,
+        request: intelligent_creation_20240313_models.CloseAICoachTaskSessionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.CloseAICoachTaskSessionResponse:
+        """
+        @summary 学员关闭会话
+        
+        @param request: CloseAICoachTaskSessionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseAICoachTaskSessionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.session_id):
+            body['sessionId'] = request.session_id
+        if not UtilClient.is_unset(request.uid):
+            body['uid'] = request.uid
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CloseAICoachTaskSession',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/aicoach/closeSession',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CloseAICoachTaskSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def close_aicoach_task_session_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.CloseAICoachTaskSessionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.CloseAICoachTaskSessionResponse:
+        """
+        @summary 学员关闭会话
+        
+        @param request: CloseAICoachTaskSessionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseAICoachTaskSessionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.session_id):
+            body['sessionId'] = request.session_id
+        if not UtilClient.is_unset(request.uid):
+            body['uid'] = request.uid
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CloseAICoachTaskSession',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/aicoach/closeSession',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CloseAICoachTaskSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def close_aicoach_task_session(
+        self,
+        request: intelligent_creation_20240313_models.CloseAICoachTaskSessionRequest,
+    ) -> intelligent_creation_20240313_models.CloseAICoachTaskSessionResponse:
+        """
+        @summary 学员关闭会话
+        
+        @param request: CloseAICoachTaskSessionRequest
+        @return: CloseAICoachTaskSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.close_aicoach_task_session_with_options(request, headers, runtime)
+
+    async def close_aicoach_task_session_async(
+        self,
+        request: intelligent_creation_20240313_models.CloseAICoachTaskSessionRequest,
+    ) -> intelligent_creation_20240313_models.CloseAICoachTaskSessionResponse:
+        """
+        @summary 学员关闭会话
+        
+        @param request: CloseAICoachTaskSessionRequest
+        @return: CloseAICoachTaskSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.close_aicoach_task_session_with_options_async(request, headers, runtime)
+
     def count_text_with_options(
         self,
         request: intelligent_creation_20240313_models.CountTextRequest,
@@ -488,6 +596,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.count_text_with_options_async(request, headers, runtime)
+
+    def create_aicoach_task_session_with_options(
+        self,
+        request: intelligent_creation_20240313_models.CreateAICoachTaskSessionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.CreateAICoachTaskSessionResponse:
+        """
+        @summary 学员开启对练会话
+        
+        @param request: CreateAICoachTaskSessionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAICoachTaskSessionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        if not UtilClient.is_unset(request.uid):
+            body['uid'] = request.uid
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAICoachTaskSession',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/aicoach/startSession',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CreateAICoachTaskSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_aicoach_task_session_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.CreateAICoachTaskSessionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.CreateAICoachTaskSessionResponse:
+        """
+        @summary 学员开启对练会话
+        
+        @param request: CreateAICoachTaskSessionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAICoachTaskSessionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        if not UtilClient.is_unset(request.uid):
+            body['uid'] = request.uid
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAICoachTaskSession',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/aicoach/startSession',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CreateAICoachTaskSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_aicoach_task_session(
+        self,
+        request: intelligent_creation_20240313_models.CreateAICoachTaskSessionRequest,
+    ) -> intelligent_creation_20240313_models.CreateAICoachTaskSessionResponse:
+        """
+        @summary 学员开启对练会话
+        
+        @param request: CreateAICoachTaskSessionRequest
+        @return: CreateAICoachTaskSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_aicoach_task_session_with_options(request, headers, runtime)
+
+    async def create_aicoach_task_session_async(
+        self,
+        request: intelligent_creation_20240313_models.CreateAICoachTaskSessionRequest,
+    ) -> intelligent_creation_20240313_models.CreateAICoachTaskSessionResponse:
+        """
+        @summary 学员开启对练会话
+        
+        @param request: CreateAICoachTaskSessionRequest
+        @return: CreateAICoachTaskSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_aicoach_task_session_with_options_async(request, headers, runtime)
 
     def create_illustration_task_with_options(
         self,
@@ -844,6 +1060,330 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_text_task_with_options_async(request, headers, runtime)
+
+    def finish_aicoach_task_session_with_options(
+        self,
+        request: intelligent_creation_20240313_models.FinishAICoachTaskSessionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.FinishAICoachTaskSessionResponse:
+        """
+        @summary 学员完成会话
+        
+        @param request: FinishAICoachTaskSessionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FinishAICoachTaskSessionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.session_id):
+            body['sessionId'] = request.session_id
+        if not UtilClient.is_unset(request.uid):
+            body['uid'] = request.uid
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='FinishAICoachTaskSession',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/aicoach/finishSession',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.FinishAICoachTaskSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def finish_aicoach_task_session_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.FinishAICoachTaskSessionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.FinishAICoachTaskSessionResponse:
+        """
+        @summary 学员完成会话
+        
+        @param request: FinishAICoachTaskSessionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FinishAICoachTaskSessionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.session_id):
+            body['sessionId'] = request.session_id
+        if not UtilClient.is_unset(request.uid):
+            body['uid'] = request.uid
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='FinishAICoachTaskSession',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/aicoach/finishSession',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.FinishAICoachTaskSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def finish_aicoach_task_session(
+        self,
+        request: intelligent_creation_20240313_models.FinishAICoachTaskSessionRequest,
+    ) -> intelligent_creation_20240313_models.FinishAICoachTaskSessionResponse:
+        """
+        @summary 学员完成会话
+        
+        @param request: FinishAICoachTaskSessionRequest
+        @return: FinishAICoachTaskSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.finish_aicoach_task_session_with_options(request, headers, runtime)
+
+    async def finish_aicoach_task_session_async(
+        self,
+        request: intelligent_creation_20240313_models.FinishAICoachTaskSessionRequest,
+    ) -> intelligent_creation_20240313_models.FinishAICoachTaskSessionResponse:
+        """
+        @summary 学员完成会话
+        
+        @param request: FinishAICoachTaskSessionRequest
+        @return: FinishAICoachTaskSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.finish_aicoach_task_session_with_options_async(request, headers, runtime)
+
+    def get_aicoach_task_session_history_with_options(
+        self,
+        request: intelligent_creation_20240313_models.GetAICoachTaskSessionHistoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.GetAICoachTaskSessionHistoryResponse:
+        """
+        @summary 学员查询会话历史
+        
+        @param request: GetAICoachTaskSessionHistoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAICoachTaskSessionHistoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.session_id):
+            query['sessionId'] = request.session_id
+        if not UtilClient.is_unset(request.uid):
+            query['uid'] = request.uid
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAICoachTaskSessionHistory',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/aicoach/querySessionHistory',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetAICoachTaskSessionHistoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_aicoach_task_session_history_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.GetAICoachTaskSessionHistoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.GetAICoachTaskSessionHistoryResponse:
+        """
+        @summary 学员查询会话历史
+        
+        @param request: GetAICoachTaskSessionHistoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAICoachTaskSessionHistoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.session_id):
+            query['sessionId'] = request.session_id
+        if not UtilClient.is_unset(request.uid):
+            query['uid'] = request.uid
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAICoachTaskSessionHistory',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/aicoach/querySessionHistory',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetAICoachTaskSessionHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_aicoach_task_session_history(
+        self,
+        request: intelligent_creation_20240313_models.GetAICoachTaskSessionHistoryRequest,
+    ) -> intelligent_creation_20240313_models.GetAICoachTaskSessionHistoryResponse:
+        """
+        @summary 学员查询会话历史
+        
+        @param request: GetAICoachTaskSessionHistoryRequest
+        @return: GetAICoachTaskSessionHistoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_aicoach_task_session_history_with_options(request, headers, runtime)
+
+    async def get_aicoach_task_session_history_async(
+        self,
+        request: intelligent_creation_20240313_models.GetAICoachTaskSessionHistoryRequest,
+    ) -> intelligent_creation_20240313_models.GetAICoachTaskSessionHistoryResponse:
+        """
+        @summary 学员查询会话历史
+        
+        @param request: GetAICoachTaskSessionHistoryRequest
+        @return: GetAICoachTaskSessionHistoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_aicoach_task_session_history_with_options_async(request, headers, runtime)
+
+    def get_aicoach_task_session_report_with_options(
+        self,
+        request: intelligent_creation_20240313_models.GetAICoachTaskSessionReportRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.GetAICoachTaskSessionReportResponse:
+        """
+        @summary 学员查询会话评测报告
+        
+        @param request: GetAICoachTaskSessionReportRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAICoachTaskSessionReportResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.session_id):
+            query['sessionId'] = request.session_id
+        if not UtilClient.is_unset(request.uid):
+            query['uid'] = request.uid
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAICoachTaskSessionReport',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/aicoach/queryTaskSessionReport',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetAICoachTaskSessionReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_aicoach_task_session_report_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.GetAICoachTaskSessionReportRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.GetAICoachTaskSessionReportResponse:
+        """
+        @summary 学员查询会话评测报告
+        
+        @param request: GetAICoachTaskSessionReportRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAICoachTaskSessionReportResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.session_id):
+            query['sessionId'] = request.session_id
+        if not UtilClient.is_unset(request.uid):
+            query['uid'] = request.uid
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAICoachTaskSessionReport',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/aicoach/queryTaskSessionReport',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.GetAICoachTaskSessionReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_aicoach_task_session_report(
+        self,
+        request: intelligent_creation_20240313_models.GetAICoachTaskSessionReportRequest,
+    ) -> intelligent_creation_20240313_models.GetAICoachTaskSessionReportResponse:
+        """
+        @summary 学员查询会话评测报告
+        
+        @param request: GetAICoachTaskSessionReportRequest
+        @return: GetAICoachTaskSessionReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_aicoach_task_session_report_with_options(request, headers, runtime)
+
+    async def get_aicoach_task_session_report_async(
+        self,
+        request: intelligent_creation_20240313_models.GetAICoachTaskSessionReportRequest,
+    ) -> intelligent_creation_20240313_models.GetAICoachTaskSessionReportResponse:
+        """
+        @summary 学员查询会话评测报告
+        
+        @param request: GetAICoachTaskSessionReportRequest
+        @return: GetAICoachTaskSessionReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_aicoach_task_session_report_with_options_async(request, headers, runtime)
 
     def get_illustration_with_options(
         self,
@@ -1644,6 +2184,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.interact_text_with_options_async(request, headers, runtime)
+
+    def list_aicoach_task_page_with_options(
+        self,
+        request: intelligent_creation_20240313_models.ListAICoachTaskPageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.ListAICoachTaskPageResponse:
+        """
+        @summary 查询任务列表
+        
+        @param request: ListAICoachTaskPageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAICoachTaskPageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        if not UtilClient.is_unset(request.student_id):
+            query['studentId'] = request.student_id
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAICoachTaskPage',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/aicoach/listTaskPage',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.ListAICoachTaskPageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_aicoach_task_page_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.ListAICoachTaskPageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.ListAICoachTaskPageResponse:
+        """
+        @summary 查询任务列表
+        
+        @param request: ListAICoachTaskPageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAICoachTaskPageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        if not UtilClient.is_unset(request.student_id):
+            query['studentId'] = request.student_id
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAICoachTaskPage',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/aicoach/listTaskPage',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.ListAICoachTaskPageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_aicoach_task_page(
+        self,
+        request: intelligent_creation_20240313_models.ListAICoachTaskPageRequest,
+    ) -> intelligent_creation_20240313_models.ListAICoachTaskPageResponse:
+        """
+        @summary 查询任务列表
+        
+        @param request: ListAICoachTaskPageRequest
+        @return: ListAICoachTaskPageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_aicoach_task_page_with_options(request, headers, runtime)
+
+    async def list_aicoach_task_page_async(
+        self,
+        request: intelligent_creation_20240313_models.ListAICoachTaskPageRequest,
+    ) -> intelligent_creation_20240313_models.ListAICoachTaskPageResponse:
+        """
+        @summary 查询任务列表
+        
+        @param request: ListAICoachTaskPageRequest
+        @return: ListAICoachTaskPageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_aicoach_task_page_with_options_async(request, headers, runtime)
 
     def list_anchor_with_options(
         self,

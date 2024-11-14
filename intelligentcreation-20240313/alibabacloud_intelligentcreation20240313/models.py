@@ -19,6 +19,7 @@ class AnchorResponse(TeaModel):
         gender: str = None,
         resource_type_desc: str = None,
         status: str = None,
+        support_bg_change: int = None,
         use_scene: str = None,
     ):
         self.anchor_id = anchor_id
@@ -33,6 +34,7 @@ class AnchorResponse(TeaModel):
         self.gender = gender
         self.resource_type_desc = resource_type_desc
         self.status = status
+        self.support_bg_change = support_bg_change
         self.use_scene = use_scene
 
     def validate(self):
@@ -68,6 +70,8 @@ class AnchorResponse(TeaModel):
             result['resourceTypeDesc'] = self.resource_type_desc
         if self.status is not None:
             result['status'] = self.status
+        if self.support_bg_change is not None:
+            result['supportBgChange'] = self.support_bg_change
         if self.use_scene is not None:
             result['useScene'] = self.use_scene
         return result
@@ -98,6 +102,8 @@ class AnchorResponse(TeaModel):
             self.resource_type_desc = m.get('resourceTypeDesc')
         if m.get('status') is not None:
             self.status = m.get('status')
+        if m.get('supportBgChange') is not None:
+            self.support_bg_change = m.get('supportBgChange')
         if m.get('useScene') is not None:
             self.use_scene = m.get('useScene')
         return self
@@ -463,6 +469,7 @@ class Text(TeaModel):
         agent_id: str = None,
         agent_name: str = None,
         desc: str = None,
+        err_msg: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
         illustration_task_id_list: List[int] = None,
@@ -483,6 +490,7 @@ class Text(TeaModel):
         self.agent_name = agent_name
         # This parameter is required.
         self.desc = desc
+        self.err_msg = err_msg
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.illustration_task_id_list = illustration_task_id_list
@@ -519,6 +527,8 @@ class Text(TeaModel):
             result['agentName'] = self.agent_name
         if self.desc is not None:
             result['desc'] = self.desc
+        if self.err_msg is not None:
+            result['errMsg'] = self.err_msg
         if self.gmt_create is not None:
             result['gmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
@@ -559,6 +569,8 @@ class Text(TeaModel):
             self.agent_name = m.get('agentName')
         if m.get('desc') is not None:
             self.desc = m.get('desc')
+        if m.get('errMsg') is not None:
+            self.err_msg = m.get('errMsg')
         if m.get('gmtCreate') is not None:
             self.gmt_create = m.get('gmtCreate')
         if m.get('gmtModified') is not None:
@@ -1545,6 +1557,113 @@ class CheckSessionResponse(TeaModel):
         return self
 
 
+class CloseAICoachTaskSessionRequest(TeaModel):
+    def __init__(
+        self,
+        session_id: str = None,
+        uid: str = None,
+    ):
+        self.session_id = session_id
+        self.uid = uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        if self.uid is not None:
+            result['uid'] = self.uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        if m.get('uid') is not None:
+            self.uid = m.get('uid')
+        return self
+
+
+class CloseAICoachTaskSessionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class CloseAICoachTaskSessionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CloseAICoachTaskSessionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CloseAICoachTaskSessionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CountTextRequest(TeaModel):
     def __init__(
         self,
@@ -1702,6 +1821,186 @@ class CountTextResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CountTextResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateAICoachTaskSessionRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+        uid: str = None,
+    ):
+        self.task_id = task_id
+        self.uid = uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        if self.uid is not None:
+            result['uid'] = self.uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        if m.get('uid') is not None:
+            self.uid = m.get('uid')
+        return self
+
+
+class CreateAICoachTaskSessionResponseBodyScriptInfo(TeaModel):
+    def __init__(
+        self,
+        initiator: str = None,
+        max_duration: int = None,
+        script_desc: str = None,
+        script_name: str = None,
+    ):
+        self.initiator = initiator
+        self.max_duration = max_duration
+        self.script_desc = script_desc
+        self.script_name = script_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.initiator is not None:
+            result['initiator'] = self.initiator
+        if self.max_duration is not None:
+            result['maxDuration'] = self.max_duration
+        if self.script_desc is not None:
+            result['scriptDesc'] = self.script_desc
+        if self.script_name is not None:
+            result['scriptName'] = self.script_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('initiator') is not None:
+            self.initiator = m.get('initiator')
+        if m.get('maxDuration') is not None:
+            self.max_duration = m.get('maxDuration')
+        if m.get('scriptDesc') is not None:
+            self.script_desc = m.get('scriptDesc')
+        if m.get('scriptName') is not None:
+            self.script_name = m.get('scriptName')
+        return self
+
+
+class CreateAICoachTaskSessionResponseBody(TeaModel):
+    def __init__(
+        self,
+        channel_token: str = None,
+        request_id: str = None,
+        script_info: CreateAICoachTaskSessionResponseBodyScriptInfo = None,
+        session_id: str = None,
+        token: str = None,
+        web_socket_url: str = None,
+    ):
+        # rtctoken
+        self.channel_token = channel_token
+        self.request_id = request_id
+        self.script_info = script_info
+        self.session_id = session_id
+        # Token
+        self.token = token
+        self.web_socket_url = web_socket_url
+
+    def validate(self):
+        if self.script_info:
+            self.script_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_token is not None:
+            result['channelToken'] = self.channel_token
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.script_info is not None:
+            result['scriptInfo'] = self.script_info.to_map()
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        if self.token is not None:
+            result['token'] = self.token
+        if self.web_socket_url is not None:
+            result['webSocketUrl'] = self.web_socket_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('channelToken') is not None:
+            self.channel_token = m.get('channelToken')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('scriptInfo') is not None:
+            temp_model = CreateAICoachTaskSessionResponseBodyScriptInfo()
+            self.script_info = temp_model.from_map(m['scriptInfo'])
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        if m.get('token') is not None:
+            self.token = m.get('token')
+        if m.get('webSocketUrl') is not None:
+            self.web_socket_url = m.get('webSocketUrl')
+        return self
+
+
+class CreateAICoachTaskSessionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAICoachTaskSessionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAICoachTaskSessionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2022,6 +2321,446 @@ class CreateTextTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TextTaskResult()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class FinishAICoachTaskSessionRequest(TeaModel):
+    def __init__(
+        self,
+        session_id: str = None,
+        uid: str = None,
+    ):
+        self.session_id = session_id
+        self.uid = uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        if self.uid is not None:
+            result['uid'] = self.uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        if m.get('uid') is not None:
+            self.uid = m.get('uid')
+        return self
+
+
+class FinishAICoachTaskSessionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class FinishAICoachTaskSessionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: FinishAICoachTaskSessionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = FinishAICoachTaskSessionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAICoachTaskSessionHistoryRequest(TeaModel):
+    def __init__(
+        self,
+        session_id: str = None,
+        uid: str = None,
+    ):
+        self.session_id = session_id
+        self.uid = uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        if self.uid is not None:
+            result['uid'] = self.uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        if m.get('uid') is not None:
+            self.uid = m.get('uid')
+        return self
+
+
+class GetAICoachTaskSessionHistoryResponseBodyConversationList(TeaModel):
+    def __init__(
+        self,
+        evaluation_result: str = None,
+        message: str = None,
+        role: str = None,
+    ):
+        self.evaluation_result = evaluation_result
+        self.message = message
+        self.role = role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.evaluation_result is not None:
+            result['evaluationResult'] = self.evaluation_result
+        if self.message is not None:
+            result['message'] = self.message
+        if self.role is not None:
+            result['role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('evaluationResult') is not None:
+            self.evaluation_result = m.get('evaluationResult')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        return self
+
+
+class GetAICoachTaskSessionHistoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        conversation_list: List[GetAICoachTaskSessionHistoryResponseBodyConversationList] = None,
+        duration: int = None,
+        end_time: str = None,
+        request_id: str = None,
+        script_name: str = None,
+        start_time: str = None,
+        status: str = None,
+        uid: str = None,
+    ):
+        self.conversation_list = conversation_list
+        self.duration = duration
+        self.end_time = end_time
+        self.request_id = request_id
+        self.script_name = script_name
+        self.start_time = start_time
+        self.status = status
+        self.uid = uid
+
+    def validate(self):
+        if self.conversation_list:
+            for k in self.conversation_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['conversationList'] = []
+        if self.conversation_list is not None:
+            for k in self.conversation_list:
+                result['conversationList'].append(k.to_map() if k else None)
+        if self.duration is not None:
+            result['duration'] = self.duration
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.script_name is not None:
+            result['scriptName'] = self.script_name
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.status is not None:
+            result['status'] = self.status
+        if self.uid is not None:
+            result['uid'] = self.uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.conversation_list = []
+        if m.get('conversationList') is not None:
+            for k in m.get('conversationList'):
+                temp_model = GetAICoachTaskSessionHistoryResponseBodyConversationList()
+                self.conversation_list.append(temp_model.from_map(k))
+        if m.get('duration') is not None:
+            self.duration = m.get('duration')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('scriptName') is not None:
+            self.script_name = m.get('scriptName')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('uid') is not None:
+            self.uid = m.get('uid')
+        return self
+
+
+class GetAICoachTaskSessionHistoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAICoachTaskSessionHistoryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAICoachTaskSessionHistoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAICoachTaskSessionReportRequest(TeaModel):
+    def __init__(
+        self,
+        session_id: str = None,
+        uid: str = None,
+    ):
+        self.session_id = session_id
+        self.uid = uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        if self.uid is not None:
+            result['uid'] = self.uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        if m.get('uid') is not None:
+            self.uid = m.get('uid')
+        return self
+
+
+class GetAICoachTaskSessionReportResponseBody(TeaModel):
+    def __init__(
+        self,
+        duration: int = None,
+        end_time: str = None,
+        evaluation_result: str = None,
+        request_id: str = None,
+        script_name: str = None,
+        start_time: str = None,
+        status: str = None,
+        uid: str = None,
+    ):
+        self.duration = duration
+        self.end_time = end_time
+        self.evaluation_result = evaluation_result
+        self.request_id = request_id
+        self.script_name = script_name
+        self.start_time = start_time
+        self.status = status
+        self.uid = uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration is not None:
+            result['duration'] = self.duration
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.evaluation_result is not None:
+            result['evaluationResult'] = self.evaluation_result
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.script_name is not None:
+            result['scriptName'] = self.script_name
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.status is not None:
+            result['status'] = self.status
+        if self.uid is not None:
+            result['uid'] = self.uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('duration') is not None:
+            self.duration = m.get('duration')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('evaluationResult') is not None:
+            self.evaluation_result = m.get('evaluationResult')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('scriptName') is not None:
+            self.script_name = m.get('scriptName')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('uid') is not None:
+            self.uid = m.get('uid')
+        return self
+
+
+class GetAICoachTaskSessionReportResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAICoachTaskSessionReportResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAICoachTaskSessionReportResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2766,6 +3505,185 @@ class InteractTextResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = InteractTextResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAICoachTaskPageRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        status: str = None,
+        student_id: str = None,
+        task_id: str = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.status = status
+        self.student_id = student_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.status is not None:
+            result['status'] = self.status
+        if self.student_id is not None:
+            result['studentId'] = self.student_id
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('studentId') is not None:
+            self.student_id = m.get('studentId')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class ListAICoachTaskPageResponseBodyTaskList(TeaModel):
+    def __init__(
+        self,
+        finish_time: str = None,
+        status: str = None,
+        student_id: str = None,
+        task_id: str = None,
+    ):
+        self.finish_time = finish_time
+        self.status = status
+        self.student_id = student_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.finish_time is not None:
+            result['finishTime'] = self.finish_time
+        if self.status is not None:
+            result['status'] = self.status
+        if self.student_id is not None:
+            result['studentId'] = self.student_id
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('finishTime') is not None:
+            self.finish_time = m.get('finishTime')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('studentId') is not None:
+            self.student_id = m.get('studentId')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class ListAICoachTaskPageResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_list: List[ListAICoachTaskPageResponseBodyTaskList] = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.task_list = task_list
+
+    def validate(self):
+        if self.task_list:
+            for k in self.task_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['taskList'] = []
+        if self.task_list is not None:
+            for k in self.task_list:
+                result['taskList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.task_list = []
+        if m.get('taskList') is not None:
+            for k in m.get('taskList'):
+                temp_model = ListAICoachTaskPageResponseBodyTaskList()
+                self.task_list.append(temp_model.from_map(k))
+        return self
+
+
+class ListAICoachTaskPageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAICoachTaskPageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAICoachTaskPageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
