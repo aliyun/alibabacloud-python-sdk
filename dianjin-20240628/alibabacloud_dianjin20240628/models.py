@@ -5278,11 +5278,13 @@ class GetParseResultRequest(TeaModel):
         self,
         doc_id: str = None,
         library_id: str = None,
+        use_url_result: bool = None,
     ):
         # This parameter is required.
         self.doc_id = doc_id
         # This parameter is required.
         self.library_id = library_id
+        self.use_url_result = use_url_result
 
     def validate(self):
         pass
@@ -5297,6 +5299,8 @@ class GetParseResultRequest(TeaModel):
             result['docId'] = self.doc_id
         if self.library_id is not None:
             result['libraryId'] = self.library_id
+        if self.use_url_result is not None:
+            result['useUrlResult'] = self.use_url_result
         return result
 
     def from_map(self, m: dict = None):
@@ -5305,6 +5309,8 @@ class GetParseResultRequest(TeaModel):
             self.doc_id = m.get('docId')
         if m.get('libraryId') is not None:
             self.library_id = m.get('libraryId')
+        if m.get('useUrlResult') is not None:
+            self.use_url_result = m.get('useUrlResult')
         return self
 
 
@@ -5315,12 +5321,14 @@ class GetParseResultResponseBodyData(TeaModel):
         provider_type: str = None,
         request_id: str = None,
         result: Dict[str, Any] = None,
+        result_url: str = None,
         status: str = None,
     ):
         self.file_type = file_type
         self.provider_type = provider_type
         self.request_id = request_id
         self.result = result
+        self.result_url = result_url
         self.status = status
 
     def validate(self):
@@ -5340,6 +5348,8 @@ class GetParseResultResponseBodyData(TeaModel):
             result['requestId'] = self.request_id
         if self.result is not None:
             result['result'] = self.result
+        if self.result_url is not None:
+            result['resultUrl'] = self.result_url
         if self.status is not None:
             result['status'] = self.status
         return result
@@ -5354,6 +5364,8 @@ class GetParseResultResponseBodyData(TeaModel):
             self.request_id = m.get('requestId')
         if m.get('result') is not None:
             self.result = m.get('result')
+        if m.get('resultUrl') is not None:
+            self.result_url = m.get('resultUrl')
         if m.get('status') is not None:
             self.status = m.get('status')
         return self
@@ -8377,10 +8389,12 @@ class RecognizeIntentionRequestGlobalIntentionList(TeaModel):
         description: str = None,
         intention: str = None,
         intention_code: str = None,
+        intention_script: str = None,
     ):
         self.description = description
         self.intention = intention
         self.intention_code = intention_code
+        self.intention_script = intention_script
 
     def validate(self):
         pass
@@ -8397,6 +8411,8 @@ class RecognizeIntentionRequestGlobalIntentionList(TeaModel):
             result['intention'] = self.intention
         if self.intention_code is not None:
             result['intentionCode'] = self.intention_code
+        if self.intention_script is not None:
+            result['intentionScript'] = self.intention_script
         return result
 
     def from_map(self, m: dict = None):
@@ -8407,6 +8423,8 @@ class RecognizeIntentionRequestGlobalIntentionList(TeaModel):
             self.intention = m.get('intention')
         if m.get('intentionCode') is not None:
             self.intention_code = m.get('intentionCode')
+        if m.get('intentionScript') is not None:
+            self.intention_script = m.get('intentionScript')
         return self
 
 
@@ -8416,10 +8434,12 @@ class RecognizeIntentionRequestHierarchicalIntentionList(TeaModel):
         description: str = None,
         intention: str = None,
         intention_code: str = None,
+        intention_script: str = None,
     ):
         self.description = description
         self.intention = intention
         self.intention_code = intention_code
+        self.intention_script = intention_script
 
     def validate(self):
         pass
@@ -8436,6 +8456,8 @@ class RecognizeIntentionRequestHierarchicalIntentionList(TeaModel):
             result['intention'] = self.intention
         if self.intention_code is not None:
             result['intentionCode'] = self.intention_code
+        if self.intention_script is not None:
+            result['intentionScript'] = self.intention_script
         return result
 
     def from_map(self, m: dict = None):
@@ -8446,6 +8468,8 @@ class RecognizeIntentionRequestHierarchicalIntentionList(TeaModel):
             self.intention = m.get('intention')
         if m.get('intentionCode') is not None:
             self.intention_code = m.get('intentionCode')
+        if m.get('intentionScript') is not None:
+            self.intention_script = m.get('intentionScript')
         return self
 
 
@@ -8455,10 +8479,12 @@ class RecognizeIntentionRequestIntentionList(TeaModel):
         description: str = None,
         intention: str = None,
         intention_code: str = None,
+        intention_script: str = None,
     ):
         self.description = description
         self.intention = intention
         self.intention_code = intention_code
+        self.intention_script = intention_script
 
     def validate(self):
         pass
@@ -8475,6 +8501,8 @@ class RecognizeIntentionRequestIntentionList(TeaModel):
             result['intention'] = self.intention
         if self.intention_code is not None:
             result['intentionCode'] = self.intention_code
+        if self.intention_script is not None:
+            result['intentionScript'] = self.intention_script
         return result
 
     def from_map(self, m: dict = None):
@@ -8485,6 +8513,8 @@ class RecognizeIntentionRequestIntentionList(TeaModel):
             self.intention = m.get('intention')
         if m.get('intentionCode') is not None:
             self.intention_code = m.get('intentionCode')
+        if m.get('intentionScript') is not None:
+            self.intention_script = m.get('intentionScript')
         return self
 
 
@@ -8496,6 +8526,7 @@ class RecognizeIntentionRequest(TeaModel):
         conversation: str = None,
         global_intention_list: List[RecognizeIntentionRequestGlobalIntentionList] = None,
         hierarchical_intention_list: List[RecognizeIntentionRequestHierarchicalIntentionList] = None,
+        intention_domain_code: str = None,
         intention_list: List[RecognizeIntentionRequestIntentionList] = None,
         op_type: str = None,
         recommend: bool = None,
@@ -8507,6 +8538,7 @@ class RecognizeIntentionRequest(TeaModel):
         self.conversation = conversation
         self.global_intention_list = global_intention_list
         self.hierarchical_intention_list = hierarchical_intention_list
+        self.intention_domain_code = intention_domain_code
         self.intention_list = intention_list
         self.op_type = op_type
         self.recommend = recommend
@@ -8545,6 +8577,8 @@ class RecognizeIntentionRequest(TeaModel):
         if self.hierarchical_intention_list is not None:
             for k in self.hierarchical_intention_list:
                 result['hierarchicalIntentionList'].append(k.to_map() if k else None)
+        if self.intention_domain_code is not None:
+            result['intentionDomainCode'] = self.intention_domain_code
         result['intentionList'] = []
         if self.intention_list is not None:
             for k in self.intention_list:
@@ -8573,6 +8607,8 @@ class RecognizeIntentionRequest(TeaModel):
             for k in m.get('hierarchicalIntentionList'):
                 temp_model = RecognizeIntentionRequestHierarchicalIntentionList()
                 self.hierarchical_intention_list.append(temp_model.from_map(k))
+        if m.get('intentionDomainCode') is not None:
+            self.intention_domain_code = m.get('intentionDomainCode')
         self.intention_list = []
         if m.get('intentionList') is not None:
             for k in m.get('intentionList'):
@@ -8591,12 +8627,14 @@ class RecognizeIntentionResponseBodyData(TeaModel):
         analysis_process: str = None,
         intention_code: str = None,
         intention_name: str = None,
+        intention_script: str = None,
         recommend_intention: str = None,
         recommend_script: str = None,
     ):
         self.analysis_process = analysis_process
         self.intention_code = intention_code
         self.intention_name = intention_name
+        self.intention_script = intention_script
         self.recommend_intention = recommend_intention
         self.recommend_script = recommend_script
 
@@ -8615,6 +8653,8 @@ class RecognizeIntentionResponseBodyData(TeaModel):
             result['intentionCode'] = self.intention_code
         if self.intention_name is not None:
             result['intentionName'] = self.intention_name
+        if self.intention_script is not None:
+            result['intentionScript'] = self.intention_script
         if self.recommend_intention is not None:
             result['recommendIntention'] = self.recommend_intention
         if self.recommend_script is not None:
@@ -8629,6 +8669,8 @@ class RecognizeIntentionResponseBodyData(TeaModel):
             self.intention_code = m.get('intentionCode')
         if m.get('intentionName') is not None:
             self.intention_name = m.get('intentionName')
+        if m.get('intentionScript') is not None:
+            self.intention_script = m.get('intentionScript')
         if m.get('recommendIntention') is not None:
             self.recommend_intention = m.get('recommendIntention')
         if m.get('recommendScript') is not None:

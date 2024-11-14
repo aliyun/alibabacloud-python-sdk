@@ -2194,6 +2194,8 @@ class Client(OpenApiClient):
             body['docId'] = request.doc_id
         if not UtilClient.is_unset(request.library_id):
             body['libraryId'] = request.library_id
+        if not UtilClient.is_unset(request.use_url_result):
+            body['useUrlResult'] = request.use_url_result
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -2235,6 +2237,8 @@ class Client(OpenApiClient):
             body['docId'] = request.doc_id
         if not UtilClient.is_unset(request.library_id):
             body['libraryId'] = request.library_id
+        if not UtilClient.is_unset(request.use_url_result):
+            body['useUrlResult'] = request.use_url_result
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -3300,6 +3304,8 @@ class Client(OpenApiClient):
             body['globalIntentionList'] = request.global_intention_list
         if not UtilClient.is_unset(request.hierarchical_intention_list):
             body['hierarchicalIntentionList'] = request.hierarchical_intention_list
+        if not UtilClient.is_unset(request.intention_domain_code):
+            body['intentionDomainCode'] = request.intention_domain_code
         if not UtilClient.is_unset(request.intention_list):
             body['intentionList'] = request.intention_list
         if not UtilClient.is_unset(request.op_type):
@@ -3353,6 +3359,8 @@ class Client(OpenApiClient):
             body['globalIntentionList'] = request.global_intention_list
         if not UtilClient.is_unset(request.hierarchical_intention_list):
             body['hierarchicalIntentionList'] = request.hierarchical_intention_list
+        if not UtilClient.is_unset(request.intention_domain_code):
+            body['intentionDomainCode'] = request.intention_domain_code
         if not UtilClient.is_unset(request.intention_list):
             body['intentionList'] = request.intention_list
         if not UtilClient.is_unset(request.op_type):
